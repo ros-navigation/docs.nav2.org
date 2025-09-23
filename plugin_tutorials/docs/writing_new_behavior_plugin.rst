@@ -98,7 +98,7 @@ For the case of our call for help behavior, we can trivially compute all of our 
 
 .. code-block:: c++
 
-  Status SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
+  ResultStatus SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
   {
     std::string response;
     bool message_success = _twilio->send_message(
@@ -136,9 +136,9 @@ For our example, we simply return success because we already completed our missi
 
 .. code-block:: c++
 
-  Status SendSms::onCycleUpdate()
+  ResultStatus SendSms::onCycleUpdate()
   {
-    return Status::SUCCEEDED;
+    return ResultStatus{Status::SUCCEEDED};
   }
 
 The remaining methods are not used and are not mandatory to override them.
@@ -148,14 +148,14 @@ The remaining methods are not used and are not mandatory to override them.
 
 Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won't be able to load it. In ROS 2, exporting and loading plugins is handled by ``pluginlib``.
 
-Coming to our tutorial, class ``nav2_sms_bahavior::SendSms`` is loaded dynamically as ``nav2_core::Behavior`` which is our base class.
+Coming to our tutorial, class ``nav2_sms_behavior::SendSms`` is loaded dynamically as ``nav2_core::Behavior`` which is our base class.
 
 1. To export the behavior, we need to provide two lines
 
 .. code-block:: c++
 
   #include "pluginlib/class_list_macros.hpp"
-  PLUGINLIB_EXPORT_CLASS(nav2_sms_bahavior::SendSms, nav2_core::Behavior)
+  PLUGINLIB_EXPORT_CLASS(nav2_sms_behavior::SendSms, nav2_core::Behavior)
 
 Note that it requires pluginlib to export out plugin's class. Pluginlib would provide as macro ``PLUGINLIB_EXPORT_CLASS`` which does all the work of exporting.
 
@@ -218,8 +218,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
         plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
       global_frame: odom
       robot_base_frame: base_link
-      transform_timeout: 0.1
-      use_sim_time: true
+      transform_tolerance: 0.1
       simulate_ahead_time: 2.0
       max_rotational_vel: 1.0
       min_rotational_vel: 0.4
@@ -253,8 +252,7 @@ with
       to_number: ... # the operations center number
       global_frame: odom
       robot_base_frame: base_link
-      transform_timeout: 0.1
-      use_sim_time: true
+      transform_tolerance: 0.1
       simulate_ahead_time: 2.0
       max_rotational_vel: 1.0
       min_rotational_vel: 0.4

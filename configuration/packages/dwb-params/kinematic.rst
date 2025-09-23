@@ -13,7 +13,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -24,7 +24,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -35,7 +35,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -46,7 +46,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -57,7 +57,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -68,7 +68,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -79,7 +79,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -90,7 +90,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -101,7 +101,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -112,7 +112,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -123,7 +123,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -134,7 +134,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description
@@ -145,7 +145,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0    
+  double 0.0
   ====== =======
 
   Description

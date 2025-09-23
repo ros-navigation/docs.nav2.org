@@ -7,11 +7,11 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator
 
-The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose, NavigateThroughPoses, and other task interfaces. 
-It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility 
+The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose, NavigateThroughPoses, and other task interfaces.
+It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility
 in the navigation task and provide a way to easily specify complex robot behaviors, including recovery.
 
-Consider checking out the :ref:`groot_introduction` tutorial for using Groot to visualize and modify behavior trees.
+Consider checking out the :ref:`using_groot` tutorial for using Groot to visualize and modify behavior trees.
 
 Make sure to review all parameters for non-default navigator plugins not discussed on this page (e.g. ``CoverageNavigator`` or custom additions).
 
@@ -23,7 +23,7 @@ Parameters
   ============== ============================================================
   Type           Default
   -------------- ------------------------------------------------------------
-  vector<string> {'navigate_to_pose', 'navigate_through_poses'} 
+  vector<string> {'navigate_to_pose', 'navigate_through_poses'}
   ============== ============================================================
 
   Description
@@ -35,7 +35,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  string N/A   
+  string N/A
   ====== =======
 
   Description
@@ -49,11 +49,11 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  string N/A   
+  string N/A
   ====== =======
 
   Description
-    Path to the default behavior tree XML description for ``NavigateThroughPoses``, see :ref:`configuring_behavior_tree_xml` for details on this file. New to Galactic after ``NavigateThroughPoses`` was added. 
+    Path to the default behavior tree XML description for ``NavigateThroughPoses``, see :ref:`configuring_behavior_tree_xml` for details on this file. New to Galactic after ``NavigateThroughPoses`` was added.
     You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml``. However, if left empty, the default behavior tree XML will be loaded from the ``nav2_bt_navigator`` package.
 
 
@@ -62,7 +62,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  bool   false 
+  bool   false
   ====== =======
 
   Description
@@ -71,9 +71,9 @@ Parameters
 :plugin_lib_names:
 
   ============== ==========================================================
-  Type           Default                                                   
+  Type           Default
   -------------- ----------------------------------------------------------
-  vector<string> [""]             
+  vector<string> [""]
   ============== ==========================================================
 
   Description
@@ -89,6 +89,17 @@ Parameters
 
   Description
     Duration (in milliseconds) for each iteration of BT execution.
+
+:filter_duration:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double  0.3
+  ====== =======
+
+  Description
+      Duration (secs) over which robot velocity should be smoothed.
 
 :default_server_timeout:
 
@@ -113,24 +124,21 @@ Parameters
   Description
     Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
-    
-:action_server_result_timeout:
 
-  ====== ======= ======= 
-  Type   Default Unit
-  ------ ------- -------
-  double 900.0   seconds
-  ====== ======= =======
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
 
   Description
-    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
-    15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
-    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. 
-    This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 :transform_tolerance:
 
-  ====== ======= ======= 
+  ====== ======= =======
   Type   Default Unit
   ------ ------- -------
   double 0.1     seconds
@@ -141,10 +149,10 @@ Parameters
 
 :global_frame:
 
-  ====== ======== 
+  ====== ========
   Type   Default
   ------ --------
-  string map    
+  string map
   ====== ========
 
   Description
@@ -152,14 +160,14 @@ Parameters
 
 :robot_base_frame:
 
-  ====== ========= 
-  Type   Default  
+  ====== =========
+  Type   Default
   ------ ---------
   string base_link
   ====== =========
 
   Description
-    Path to behavior tree XML description.
+    Robot base frame.
 
 :odom_topic:
 
@@ -172,61 +180,39 @@ Parameters
   Description
     Topic on which odometry is published
 
-:goal_blackboard_id:
+:error_code_name_prefixes:
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string "goal"
-  ====== =======
-
-  Description
-    Blackboard variable to use to supply the goal to the behavior tree for ``NavigateToPose``. Should match ports of BT XML file.
-
-:path_blackboard_id:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "path"
-  ====== =======
-
-  Description
-    Blackboard variable to get the path from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
-
-:goals_blackboard_id:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "goals"
-  ====== =======
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  vector<string> ["assisted_teleop",
+                  "backup",
+                  "compute_path",
+                  "dock_robot",
+                  "drive_on_heading",
+                  "follow_path",
+                  "nav_thru_poses",
+                  "nav_to_pose",
+                  "spin",
+                  "route",
+                  "undock_robot",
+                  "wait"]
+  ============== ===========================
 
   Description
-    Blackboard variable to use to supply the goals to the behavior tree for ``NavigateThroughPoses``. Should match ports of BT XML file.
-
-:use_sim_time:
-
-  ==== =======
-  Type Default
-  ---- -------
-  bool false  
-  ==== =======
-
-  Description
-    Use time provided by simulation.
+    For Kilted and newer: List of of error code name prefixes to be appended with '_error_code' and '_error_msg' and searched for during aborted navigator error processing.
 
 :error_code_names:
 
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  vector<string> ["compute_path_error_code", 
-                 "follow_path_error_code"]
+  vector<string> ["compute_path_error_code",
+                  "follow_path_error_code"]
   ============== ===========================
 
   Description
-    List of of error codes to compare.
+    For Jazzy and older: List of of error codes to compare.
 
 :bond_heartbeat_period:
 
@@ -239,28 +225,163 @@ Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
+:bt_search_directories:
+
+  ============== ==================================================
+  Type           Default
+  -------------- --------------------------------------------------
+  vector<string> $(find-pkg-share nav2_bt_navigator)/behavior_trees
+  ============== ==================================================
+
+  Description
+    List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.
+
+NavigateToPose Parameters
+*************************
+
+:``<navigate_to_pose_name>``.goal_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goal"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goal to the behavior tree for ``NavigateToPose``. Should match ports of BT XML file.
+
+:``<navigate_to_pose_name>``.path_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "path"
+  ====== =======
+
+  Description
+    Blackboard variable to get the path from the behavior tree for ``NavigateToPose`` feedback. Should match port names of BT XML file.
+
+:``<navigate_to_pose_name>``.enable_groot_monitoring:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False
+  ============== =======
+
+  Description
+    Whether to enable Groot2 monitoring for this navigator.
+
+:``<navigate_to_pose_name>``.groot_server_port:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  1667
+  ==== =======
+
+  Description
+    The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+
+NavigateThroughPoses Parameters
+*******************************
+
+:``<navigate_through_poses>``.goals_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goals"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goals to the behavior tree for ``NavigateThroughPoses``. Should match ports of BT XML file.
+
+:``<navigate_through_poses>``.path_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "path"
+  ====== =======
+
+  Description
+    Blackboard variable to get the path from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
+
+:``<navigate_through_poses>``.waypoint_statuses_blackboard_id:
+
+  ====== ===================
+  Type   Default
+  ------ -------------------
+  string "waypoint_statuses"
+  ====== ===================
+
+  Description
+    Blackboard variable to get the statuses of waypoints from the behavior tree for ``NavigateThroughPoses`` feedback/result. Should match ports of BT XML file.
+
+:``<navigate_through_poses>``.enable_groot_monitoring:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False
+  ============== =======
+
+  Description
+    Whether to enable Groot2 monitoring for this navigator.
+
+:``<navigate_through_poses>``.groot_server_port:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  1669
+  ==== =======
+
+  Description
+    The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
+
 Example
 *******
 .. code-block:: yaml
 
     bt_navigator:
       ros__parameters:
-        use_sim_time: true
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1
+        filter_duration: 0.3
+        introspection_mode: "disabled"
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
         always_reload_bt_xml: false
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
+        waypoint_statuses_blackboard_id: waypoint_statuses
         navigators: ['navigate_to_pose', 'navigate_through_poses']
+        bt_search_directories:
+          - $(find-pkg-share nav2_bt_navigator)/behavior_trees
         navigate_to_pose:
           plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
+          enable_groot_monitoring: false
+          groot_server_port: 1667
         navigate_through_poses:
           plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
-        plugin_lib_names: 
+          enable_groot_monitoring: false
+          groot_server_port: 1669
+        plugin_lib_names:
           - nav2_compute_path_to_pose_action_bt_node
           - nav2_follow_path_action_bt_node
           - nav2_back_up_action_bt_node
@@ -278,12 +399,23 @@ Example
           - nav2_speed_controller_bt_node
           - nav2_recovery_node_bt_node
           - nav2_pipeline_sequence_bt_node
+          - nav2_persistent_sequence_bt_node
+          - nav2_pause_resume_controller_bt_node
           - nav2_round_robin_node_bt_node
           - nav2_transform_available_condition_bt_node
           - nav2_time_expired_condition_bt_node
           - nav2_distance_traveled_condition_bt_node
           - nav2_single_trigger_bt_node
-        error_code_names:
-          - compute_path_error_code
-          - follow_path_error_code
-          # - smoother_error_code, navigate_to_pose_error_code, navigate_through_poses_error_code, etc
+        error_code_name_prefixes:
+          - assisted_teleop
+          - backup
+          - compute_path
+          - dock_robot
+          - drive_on_heading
+          - follow_path
+          - nav_thru_poses
+          - nav_to_pose
+          - spin
+          - route
+          - undock_robot
+          - wait

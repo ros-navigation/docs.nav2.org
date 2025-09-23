@@ -8,7 +8,7 @@ Source code on Github_.
 .. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d
 
 The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins (AI outputs, depth sensor obstacle buffering, semantic information, etc).
-It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around. 
+It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around.
 
 Costmap2D ROS Parameters
 ************************
@@ -18,18 +18,40 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
     Whether to send full costmap every update, rather than updates.
+
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 :footprint_padding:
 
   ============== =======
   Type           Default
   -------------- -------
-  double         0.01   
+  double         0.01
   ============== =======
 
   Description
@@ -40,7 +62,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  vector<double> "[]"   
+  vector<double> "[]"
   ============== =======
 
   Description
@@ -51,7 +73,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  string         "map"   
+  string         "map"
   ============== =======
 
   Description
@@ -62,7 +84,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            5   
+  int            5
   ============== =======
 
   Description
@@ -73,7 +95,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            5   
+  int            5
   ============== =======
 
   Description
@@ -84,7 +106,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            100    
+  int            100
   ============== =======
 
   Description
@@ -95,7 +117,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.0   
+  double         0.0
   ============== =======
 
   Description
@@ -106,7 +128,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  string         ""   
+  string         ""
   ============== =======
 
   Description
@@ -117,7 +139,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.0   
+  double         0.0
   ============== =======
 
   Description
@@ -128,7 +150,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.0   
+  double         0.0
   ============== =======
 
   Description
@@ -139,7 +161,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         1.0   
+  double         1.0
   ============== =======
 
   Description
@@ -150,7 +172,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.1   
+  double         0.1
   ============== =======
 
   Description
@@ -159,9 +181,9 @@ Costmap2D ROS Parameters
 :robot_base_frame:
 
   ============== ===========
-  Type           Default    
+  Type           Default
   -------------- -----------
-  string         "base_link"   
+  string         "base_link"
   ============== ===========
 
   Description
@@ -172,18 +194,29 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.1   
+  double         0.1
   ============== =======
 
   Description
     Robot radius to use, if footprint coordinates not provided. If this parameter is set, ``isPathValid`` will do circular collision checking.
+
+:subscribe_to_stamped_footprint:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False
+  ============== =======
+
+  Description
+    If true, the costmap will subscribe to PolygonStamped footprint messages instead of Polygon messages. This allows the footprint to include timestamp and frame information, which can be useful for applications that need temporally-aware footprint data.
 
 :rolling_window:
 
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -194,7 +227,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -205,7 +238,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.3   
+  double         0.3
   ============== =======
 
   Description
@@ -216,7 +249,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         60.0   
+  double         60.0
   ============== =======
 
   Description
@@ -227,7 +260,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           True   
+  bool           True
   ============== =======
 
   Description
@@ -238,7 +271,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            255    
+  int            255
   ============== =======
 
   Description
@@ -249,7 +282,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         5.0   
+  double         5.0
   ============== =======
 
   Description
@@ -260,7 +293,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -373,7 +406,6 @@ Example
           publish_frequency: 1.0
           global_frame: map
           robot_base_frame: base_link
-          use_sim_time: True
           robot_radius: 0.22 # radius set and used, so no footprint points
           resolution: 0.05
           plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
@@ -421,6 +453,7 @@ Example
               clearing: True
               marking: True
               data_type: "PointCloud2"
+              transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
           static_layer:
             plugin: "nav2_costmap_2d::StaticLayer"
             map_subscribe_transient_local: True
@@ -435,6 +468,7 @@ Example
             inflate_unknown: false
             inflate_around_unknown: true
           always_send_full_costmap: True
+          introspection_mode: "disabled"
 
 
     local_costmap:
@@ -444,8 +478,8 @@ Example
           publish_frequency: 2.0
           global_frame: odom
           robot_base_frame: base_link
-          use_sim_time: True
           rolling_window: true
           width: 3
           height: 3
           resolution: 0.05
+          introspection_mode: "disabled"

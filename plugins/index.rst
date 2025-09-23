@@ -311,9 +311,15 @@ Goal Checkers
 |                                 |                        | , rotational distance of goal,   |
 |                                 |                        | and velocity threshold.          |
 +---------------------------------+------------------------+----------------------------------+
+| `PositionGoalChecker`_          | Prabhav Saxena         | A plugin check whether robot     |
+|                                 |                        | is within translational distance |
+|                                 |                        | of goal, without requiring       |
+|                                 |                        | rotational convergence.          |
++---------------------------------+------------------------+----------------------------------+
 
 .. _SimpleGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 .. _StoppedGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
+.. _PositionGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp
 
 Progress Checkers
 =================
@@ -409,6 +415,14 @@ Behavior Tree Nodes
 |                                             |                     | rather than a single end goal pose       |
 |                                             |                     | using the planner plugin specified       |
 +---------------------------------------------+---------------------+------------------------------------------+
+| `Compute Route`_                            | Steve Macenski      | Computes a Route through a navigation    |
+|                                             |                     | graph and returns both a dense path and  |
+|                                             |                     | set of sparse route nodes and edges.     |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Compute And Track Route`_                  | Steve Macenski      | Computes a Route as above, but also      |
+|                                             |                     | actively tracks progress and triggers    |
+|                                             |                     | route contextual semantic operations.    |
++---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Control Action`_                    |Pradheep Padmanabhan | Cancels Nav2 controller server           |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel BackUp Action`_                     |Pradheep Padmanabhan | Cancels backup behavior action           |
@@ -416,6 +430,8 @@ Behavior Tree Nodes
 | `Cancel Spin Action`_                       |Pradheep Padmanabhan | Cancels spin behavior action             |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Wait Action`_                       |Pradheep Padmanabhan | Cancels wait behavior action             |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Route Action`_                      |Steve Macenski       | Cancels ComputeAndTrackRoute action      |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Drive on Heading Action`_           | Joshua Wallace      | Cancels drive on heading behavior action |
 +---------------------------------------------+---------------------+------------------------------------------+
@@ -430,6 +446,16 @@ Behavior Tree Nodes
 | `Dock Robot Action`_                        | Steve Macenski      | Calls dock robot action                  |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Undock Robot Action`_                      | Steve Macenski      | Calls undock robot action                |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Concatenate Paths Action`_                 | Steve Macenski      | Concatenates 2 paths together            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Get Current Pose Action`_                  | Steve Macenski      | Gets current pose to the blackboard      |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Append Goal Pose To Goals Action`_         | Steve Macenski      | Appends a goal pose to a goals vector    |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Extract Route Nodes To Goals Action`_      | Steve Macenski      | Converts Route Nodes to Goals            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Get Next Few Goals Action`_                | Steve Macenski      | Obtains the next N goals in a goal vector|
 +---------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
@@ -456,9 +482,12 @@ Behavior Tree Nodes
 .. _Remove Passed Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Remove In Collision Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
+.. _Compute Route: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp
+.. _Compute And Track Route: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp
 .. _Cancel Control Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
 .. _Cancel BackUp Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
 .. _Cancel Spin Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
+.. _Cancel Route Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp
 .. _Cancel Wait Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
 .. _Cancel Drive on Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
 .. _Cancel Assisted Teleop Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
@@ -467,6 +496,11 @@ Behavior Tree Nodes
 .. _Get Pose From Path Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
 .. _Dock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp
 .. _Undock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
+.. _Concatenate Paths Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
+.. _Get Current Pose Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
+.. _Append Goal Pose To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp
+.. _Extract Route Nodes To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
+.. _Get Next Few Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
 
 
 +------------------------------------+--------------------+------------------------+
@@ -478,7 +512,7 @@ Behavior Tree Nodes
 | `Goal Updated Condition`_          |Aitor Miguel Blanco | Checks if goal is      |
 |                                    |                    | preempted.             |
 +------------------------------------+--------------------+------------------------+
-| `Globally Updated Goal Condition`_ | Joshua Wallace     | Checks if goal is      |
+| `Global Updated Goal Condition`_   | Joshua Wallace     | Checks if goal is      |
 |                                    |                    | preempted in the global|
 |                                    |                    | BT context             |
 +------------------------------------+--------------------+------------------------+
@@ -541,13 +575,21 @@ Behavior Tree Nodes
 |                                    |                    | clear the smoother     |
 |                                    |                    | server error code.     |
 +------------------------------------+--------------------+------------------------+
+| `Would A Route Recovery Help`_     | Steve Macenski     | Checks if a Route      |
+|                                    |                    | recovery could help    |
+|                                    |                    | clear the route        |
+|                                    |                    | server error code.     |
++------------------------------------+--------------------+------------------------+
 | `Is Battery Charging Condition`_   |  Alberto Tudela    | Checks if the battery  |
 |                                    |                    | is charging.           |
++------------------------------------+--------------------+------------------------+
+| `Are Poses Near Condition`_        |  Steve Macenski    | Checks if 2 poses are  |
+|                                    |                    | nearby to each other.  |
 +------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
-.. _Globally Updated Goal Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
+.. _Global Updated Goal Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
 .. _Is Stopped Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp
@@ -555,13 +597,15 @@ Behavior Tree Nodes
 .. _Distance Traveled Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 .. _Is Battery Low Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
-.. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
+.. _Is Path Valid Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 .. _Path Expiring Timer: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 .. _Are Error Codes Present: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
-.. _Would A Controller Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
-.. _Would A Planner Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
-.. _Would A Smoother Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help.cpp
+.. _Would A Controller Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp
+.. _Would A Planner Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help_condition.cpp
+.. _Would A Smoother Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help_condition.cpp
+.. _Would A Route Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_route_recovery_help_condition.cpp
 .. _Is Battery Charging Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
+.. _Are Poses Near Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
@@ -586,6 +630,9 @@ Behavior Tree Nodes
 |                          |                     | larger than the old global path  |
 |                          |                     | on approach to the goal          |
 +--------------------------+---------------------+----------------------------------+
+| `GoalUpdatedController`_ | Sophia Koffler      | Ticks child node if the goal     |
+|                          |                     | has been updated                 |
++--------------------------+---------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
@@ -593,25 +640,109 @@ Behavior Tree Nodes
 .. _Goal Updater: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
 .. _Single Trigger: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
 .. _PathLongerOnApproach: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
+.. _GoalUpdatedController: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
 
-+-----------------------+------------------------+----------------------------------+
-| Control Plugin Name   |         Creator        |       Description                |
-+=======================+========================+==================================+
-| `Pipeline Sequence`_  | Carl Delsey            | A variant of a sequence node that|
-|                       |                        | will re-tick previous children   |
-|                       |                        | even if another child is running |
-+-----------------------+------------------------+----------------------------------+
-| `Recovery`_           | Carl Delsey            | Node must contain 2 children     |
-|                       |                        | and returns success if first     |
-|                       |                        | succeeds. If first fails, the    |
-|                       |                        | second will be ticked. If        |
-|                       |                        | successful, it will retry the    |
-|                       |                        | first and then return its value  |
-+-----------------------+------------------------+----------------------------------+
-| `Round Robin`_        | Mohammad Haghighipanah | Will tick ``i`` th child until   |
-|                       |                        | a result and move on to ``i+1``  |
-+-----------------------+------------------------+----------------------------------+
++----------------------------+------------------------+----------------------------------+
+| Control Plugin Name        |         Creator        |       Description                |
++============================+========================+==================================+
+| `Pipeline Sequence`_       | Carl Delsey            | A variant of a sequence node that|
+|                            |                        | will re-tick previous children   |
+|                            |                        | even if another child is running |
++----------------------------+------------------------+----------------------------------+
+| `Recovery`_                | Carl Delsey            | Node must contain 2 children     |
+|                            |                        | and returns success if first     |
+|                            |                        | succeeds. If first fails, the    |
+|                            |                        | second will be ticked. If        |
+|                            |                        | successful, it will retry the    |
+|                            |                        | first and then return its value  |
++----------------------------+------------------------+----------------------------------+
+| `Round Robin`_             | Mohammad Haghighipanah | Will tick ``i`` th child until   |
+|                            |                        | a result and move on to ``i+1``  |
++----------------------------+------------------------+----------------------------------+
+| `Nonblocking Sequence`_    | Alexander Yuen         | A variant of a sequence node that|
+|                            |                        | will tick through the whole      |
+|                            |                        | sequence even if a child returns |
+|                            |                        | running. On reticks of this      |
+|                            |                        | control node, successful children|
+|                            |                        | will be ticked once again to     |
+|                            |                        | prevent a stale state from being |
+|                            |                        | latched.                         |
++----------------------------+------------------------+----------------------------------+
+| `Persistent Sequence`_     | Enjoy Robotics         | A variant of a sequence node that|
+|                            |                        | exposes ``current_child_idx`` as |
+|                            |                        | a bidirectional port.            |
++----------------------------+------------------------+----------------------------------+
+| `Pause Resume Controller`_ | Enjoy Robotics         | Controlled through service calls |
+|                            |                        | to pause and resume the          |
+|                            |                        | execution of the tree.           |
++----------------------------+------------------------+----------------------------------+
 
 .. _Pipeline Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 .. _Recovery: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
 .. _Round Robin: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
+.. _Nonblocking Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/nonblocking_sequence.cpp
+.. _Persistent Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/persistent_sequence.cpp
+.. _Pause Resume Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pause_resume_controller.cpp
+
+
+
+Route Plugins
+=============
+
+Edge Scorers
+------------
+
++--------------------------------+------------------------+----------------------------------+
+|            Plugin Name         |         Creator        |       Description                |
++================================+========================+==================================+
+| DistanceScorer                 | Steve Macenski         | Scores an edge's length,         |
+|                                |                        | optionally scaled by relative    |
+|                                |                        | speed limits.                    |
++--------------------------------+------------------------+----------------------------------+
+| TimeScorer                     | Steve Macenski         | Scores and edge traversal time   |
+|                                |                        | using absolute speed limits or   |
+|                                |                        | previous traversal times.        |
++--------------------------------+------------------------+----------------------------------+
+| PenaltyScorer                  | Steve Macenski         | Scores using a static semantic   |
+|                                |                        | penalty.                         |
++--------------------------------+------------------------+----------------------------------+
+| SemanticScorer                 | Steve Macenski         | Scores using stored semantic data|
+|                                |                        | regarding the edge and/or nodes. |
++--------------------------------+------------------------+----------------------------------+
+|  StartPoseOrientationScorer    | Alex Yuen              | Scores based on the initial pose |
+|                                |                        | and start edge orientations.     |
++--------------------------------+------------------------+----------------------------------+
+|  GoalPoseOrientationScorer     | Alex Yuen              | Scores based on the goal pose and|
+|                                |                        | goal edge orientations.          |
++--------------------------------+------------------------+----------------------------------+
+|  DynamicEdgesScorer            | Steve Macenski         | Scores based on a dynamically set|
+|                                |                        | service cost and/or closure.     |
++--------------------------------+------------------------+----------------------------------+
+
+Route Operations
+----------------
+
++--------------------------------+------------------------+----------------------------------+
+|            Plugin Name         |         Creator        |       Description                |
++================================+========================+==================================+
+| AdjustSpeedLimit               | Steve Macenski         | Adjusts robot speed limits using |
+|                                |                        | an edge's semantic data.         |
++--------------------------------+------------------------+----------------------------------+
+| CollisionMoniter               | Steve Macenski         | Checks for collision in the      |
+|                                |                        | immediate future which tracking  |
+|                                |                        | a route.                         |
++--------------------------------+------------------------+----------------------------------+
+| TimeMarker                     | Steve Macenski         | Records the traversal time for an|
+|                                |                        | edge in the edge's metadata.     |
++--------------------------------+------------------------+----------------------------------+
+|  ReroutingService              | Steve Macenski         | Triggers a rereoute from an      |
+|                                |                        | external server.                 |
++--------------------------------+------------------------+----------------------------------+
+|  TriggerEvent                  | Steve Macenski         | Triggers an event based on a     |
+|                                |                        | configurable server name.        |
++--------------------------------+------------------------+----------------------------------+
+
+Graph File Parsers
+------------------
+
+Currently, only ``geojson`` parsing is supported.

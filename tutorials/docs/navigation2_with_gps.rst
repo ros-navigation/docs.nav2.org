@@ -26,16 +26,20 @@ This tutorial shows how to set up a localization system using a GPS sensor(s) as
 Requirements
 ============
 
-It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally you will have to install robot_localization and mapviz: 
+It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally you will have to install robot_localization and mapviz:
 
    .. code-block:: bash
 
       source /opt/ros/<ros2-distro>/setup.bash
+      sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb3*
       sudo apt install ros-$ROS_DISTRO-robot-localization
       sudo apt install ros-$ROS_DISTRO-mapviz
       sudo apt install ros-$ROS_DISTRO-mapviz-plugins
       sudo apt install ros-$ROS_DISTRO-tile-map
-    
+      sudo apt install ros-$ROS_DISTRO-teleop-twist-keyboard
+
+If some of the packages are not available by apt install, go to the respective projects and build from source.
+
 The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
 This is available in ROS 2 Iron and newer.
 
@@ -72,9 +76,9 @@ In the real world GPS sensors can be noisy: With standalone GPSs you should expe
 
 Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer to 'absolute heading' as a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
 
-When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several strategies for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
+When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several strategies for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north.
 
-Despite the above assumption, in the real world commercial grade IMU's mounted in actual robots will often not produce accurate absolute heading measurements because: 
+Despite the above assumption, in the real world commercial grade IMU's mounted in actual robots will often not produce accurate absolute heading measurements because:
 
 1. They may not have a magnetometer.
 
@@ -82,7 +86,7 @@ Despite the above assumption, in the real world commercial grade IMU's mounted i
 
 3. Robots can be a huge source of electromagnetic noise for magnetometers: Electric motors are full of permanent magnets and can draw several amps, producing significant disturbances to the sensor.
 
-Thus, for a particular application you should consider the behavior and localization quality you require when making decisions about how to estimate your absolute heading. When using IMU's without relative headings to a cardinal direction, the robot may need to move around for a bit in an 'initialization dance' to converge to the right heading using the filter. Using dual-GPS or 3D mapping system overlay, the initial heading is quite good. 
+Thus, for a particular application you should consider the behavior and localization quality you require when making decisions about how to estimate your absolute heading. When using IMU's without relative headings to a cardinal direction, the robot may need to move around for a bit in an 'initialization dance' to converge to the right heading using the filter. Using dual-GPS or 3D mapping system overlay, the initial heading is quite good.
 
 For the purposes of this tutorial, we model a well-built system using an IMU that has absolute orientation already, but that may be augmented or replaced on a practical system using one of the techniques above (or others).
 
@@ -92,76 +96,92 @@ Tutorial Steps
 0- Setup Gazebo World
 ---------------------
 
-To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
+To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway>`_ because its aligned with the real location. A sample `world <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro>`_ has been setup using gazebo's navsat and spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
 .. code-block:: xml
+
+  <!-- Navsat plugin >
+  <plugin
+    filename="gz-sim-navsat-system"
+    name="gz::sim::systems::NavSat">
+  </plugin>
+
+  ...
 
   <spherical_coordinates>
-    <!-- currently gazebo has a bug: instead of outputting lat, long, altitude in ENU
-    (x = East, y = North and z = Up) as the default configurations, it's outputting (-E)(-N)U,
-    therefore we rotate the default frame 180 so that it would go back to ENU 
-    see: https://github.com/osrf/gazebo/issues/2022 --> 
     <surface_model>EARTH_WGS84</surface_model>
+    <world_frame_orientation>ENU</world_frame_orientation>
     <latitude_deg>38.161479</latitude_deg>
     <longitude_deg>-122.454630</longitude_deg>
-    <elevation>488.0</elevation>
-    <heading_deg>180</heading_deg>
+    <elevation>0</elevation>
+    <heading_deg>0</heading_deg>
   </spherical_coordinates>
 
-To get GPS readings from Gazebo we need to create a robot model with a GPS sensor. An updated Turtlebot model with such sensor is provided in the `tutorial repo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``:
+To get GPS readings from Gazebo, we also need to modify the xacro and urdf for the turtlebot3 robot. The final files can be found in the  `nav2_minimal_turtlebot_simulation repo <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/urdf>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``.
+
+The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to include the ``gps_link`` that includes the navsat sensor. In addition we create a joint for this link that publishes a static transform w.r.t. ``base_link``.
 
 .. code-block:: xml
 
-  <sensor name="tb3_gps" type="gps">
-    <always_on>true</always_on>
-    <update_rate>1</update_rate>
-    <pose>0 0 0 0 0 0</pose>
-    <gps>
-      <position_sensing>
-        <horizontal>
-          <noise type="gaussian">
-            <mean>0.0</mean>
-            <stddev>0.01</stddev>
-          </noise>
-        </horizontal>
-        <vertical>
-          <noise type="gaussian">
-            <mean>0.0</mean>
-            <stddev>0.01</stddev>
-          </noise>
-        </vertical>
-      </position_sensing>
-    </gps>
-    <plugin name="my_gps_plugin" filename="libgazebo_ros_gps_sensor.so">
-      <ros>
-        <remapping>~/out:=/gps/fix</remapping>
-      </ros>
-    </plugin>
-  </sensor>
+  <link name="gps_link">
+    <sensor name="navsat" type="navsat">
+      <always_on>true</always_on>
+      <update_rate>1</update_rate>
+      <topic>$(arg namespace)/gps/fix</topic>
+      <gz_frame_id>gps_link</gz_frame_id>
+      <navsat>
+        <position_sensing>
+          <horizontal>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0</stddev>
+            </noise>
+          </horizontal>
+          <vertical>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0</stddev>
+            </noise>
+          </vertical>
+        </position_sensing>
+      </navsat>
+    </sensor>
+  </link>
 
-Additionally, since we added a new GPS sensor in the ``gps_link`` we need to add a joint for this link that publishes a static transform w.r.t. ``base_link``
+Additionally, the joint needs to be defined again in the urdf file ``turtlebot3_waffle_gps.urdf``
 
 .. code-block:: xml
 
-  <joint name="base_joint" type="fixed">
+   <joint name="gps_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="base_footprint" />
-    <origin xyz="0 0 -0.010" rpy="0 0 0"/>
+    <child link="gps_link"/>
+    <origin xyz="-0.05 0 0.05" rpy="0 0 0"/>
   </joint>
+  <link name="gps_link"/>
 
-Build the ``nav2_gps_waypoint_follower_demo`` package, source your workspace and test your gazebo world is properly set up by launching: 
+In addition you need to include the gps topic in your gazebo to ros bridge file, an example of this can be found in the ``turtlebot3_waffle_gps_bridge.yaml`` in the `nav2_minimal_turtlebot_simulation <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/config/turtlebot3_waffle_gps_bridge.yaml>`_ repository.
+
+.. code-block:: yaml
+
+  # replace navsat_bridge - check gz topic name
+  - topic_name: "gps/fix"
+    ros_type_name: "sensor_msgs/msg/NavSatFix"
+    gz_type_name: "gz.msgs.NavSat"
+    direction: GZ_TO_ROS
+
+Build the ``nav2_gps_waypoint_follower_demo`` package, source your workspace and test your gazebo world is properly set up by launching:
 
 .. code-block:: bash
 
   ros2 launch nav2_gps_waypoint_follower_demo gazebo_gps_world.launch.py
 
-A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo the topic ``/gps/fix`` to verify the robot is indeed producing GPS measurements 
+A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo the topic ``/gps/fix`` to verify the robot is indeed producing GPS measurements
 
 .. image:: images/Gps_Navigation/gazebo_sonoma_raceway.png
     :width: 700px
     :align: center
     :alt: Turtlebot in the sonoma raceway
- 
+
 1- Setup GPS Localization system
 --------------------------------
 
@@ -169,7 +189,7 @@ Once you have your simulation (or real robot) up and running, it's time to set u
 
 In this tutorial, the GPS sensor on the robot will replace ``amcl`` in providing global localization. Though you may build a custom module that takes in the ``NavSatFix`` and ``Imu`` messages of your GPS and imu, and outputs a ``tf`` between your ``map`` and ``odom`` frames using a planar projection, Nav2's GPS waypoint follower currently uses robot_localization for converting GPS goals to cartesian goals, and thus at a `navsat_transform_node <http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html>`_ should be active. Additionally, ``robot_localization`` features reconfigurable state estimation nodes that use Kalman Filters to fuse multiple sources of data, which is yet another reason to use it.
 
-We will setup one Extended Kalman Filter for local odometry, fusing wheel odometry and IMU data; a second one for global localization, fusing the local cartesian converted GPS coordinates, the wheel odometry and the IMU data; and a navsat_transform node to output cartesian odometry messages from GPS data. This is a common setup on robot_localization when using GPS data and more details around its configuration can be found in `RL's docs <http://docs.ros.org/en/jade/api/robot_localization/html/integrating_gps.html>`_. 
+We will setup one Extended Kalman Filter for local odometry, fusing wheel odometry and IMU data; a second one for global localization, fusing the local cartesian converted GPS coordinates, the wheel odometry and the IMU data; and a navsat_transform node to output cartesian odometry messages from GPS data. This is a common setup on robot_localization when using GPS data and more details around its configuration can be found in `RL's docs <http://docs.ros.org/en/jade/api/robot_localization/html/integrating_gps.html>`_.
 
 A `configuration file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/dual_ekf_navsat_params.yaml>`_ and a `launch file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/launch/dual_ekf_navsat.launch.py>`_ are provided for this purpose. You may take a while before continuing to understand these two files and what they configure. Let's walk through the most relevant setting of each node.
 
@@ -199,7 +219,7 @@ Since per `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ the position of th
                 false, false, true,
                 false, false, false]
 
-  imu0: imu
+  imu0: imu/data
   imu0_config: [false, false, false,
                 false,  false,  true,
                 false, false, false,
@@ -231,7 +251,7 @@ The global odometry is provided by the ``ekf_filter_node_map``, which publishes 
 Navsat Transform
 ^^^^^^^^^^^^^^^^
 
-The navsat transform produces an odometry output with the position of the GPS in the ``map`` frame, which is ingested by the global EKF as said above. It exposes the ``datum`` parameter to set the GPS coordinates and heading of the origin of ``map``; if left undeclared it will be set automatically to the coordinates of the first valid ``NavSatFix`` message it gets, and it may be changed in runtime as well calling the ``/datum`` service. 
+The navsat transform produces an odometry output with the position of the GPS in the ``map`` frame, which is ingested by the global EKF as said above. It exposes the ``datum`` parameter to set the GPS coordinates and heading of the origin of ``map``; if left undeclared it will be set automatically to the coordinates of the first valid ``NavSatFix`` message it gets, and it may be changed in runtime as well calling the ``/datum`` service.
 
 In this tutorial we will go with the automatic ``datum`` initialization because there is no information about the environment stored in cartesian coordinates (a static map, semantic navigation waypoints, a 3D pointcloud map, etc), however if that's the case in your application you may fix the ``datum`` so a given pair of coordinates produced by the GPS always correspond to the same cartesian coordinates in your reference system.
 
@@ -248,7 +268,7 @@ Here's the full configuration for the ``navsat_transform`` node:
       magnetic_declination_radians: 0.0
       yaw_offset: 0.0
       zero_altitude: true
-      broadcast_utm_transform: true
+      broadcast_cartesian_transform: true
       publish_filtered_gps: true
       use_odometry_yaw: true
       wait_for_datum: false
@@ -257,13 +277,32 @@ Here's the full configuration for the ``navsat_transform`` node:
 Localization Testing
 ^^^^^^^^^^^^^^^^^^^^
 
-As a sanity check that everything is working correctly, launch RL's launch file while Gazebo is still running: 
+As a sanity check that everything is working correctly, launch RL's launch file while Gazebo is still running:
 
 .. code-block:: bash
 
   ros2 launch nav2_gps_waypoint_follower_demo dual_ekf_navsat.launch.py
 
-On a different terminal launch mapviz using the pre-built `config file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/gps_wpf_demo.mvc>`_ in the repo. `Get a bing maps API key <https://www.microsoft.com/en-us/maps/create-a-bing-maps-key>`_ and use it to display satellite pictures.
+On a different terminal launch mapviz using the pre-built `config file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/gps_wpf_demo.mvc>`_ in the repo. There are multiple options to visualize satalite map on with mapviz:
+
+* Stadiamaps: This would require an api key, see `Get a stadiamap Api key  <https://docs.stadiamaps.com/static-maps/>`_ . Modify the config file as follows:
+
+.. code-block:: yaml
+
+  - type: mapviz_plugins/tile_map
+    name: new display
+    config:
+      visible: true
+      collapsed: false
+      custom_sources:
+        - base_url: https://tiles.stadiamaps.com/tiles/alidade_satellite/{level}/{x}/{y}.png?api_key=api_key
+          max_zoom: 15
+          name: Stadia
+          type: wmts
+      bing_api_key: ""
+      source: Stadia (alidade_satellite)
+
+* For those interested in locally hosted map see `Local tile_map imagery <https://swri-robotics.github.io/mapviz/guides/local_tile_map_imagery/>`_
 
 .. code-block:: bash
 
@@ -272,15 +311,15 @@ On a different terminal launch mapviz using the pre-built `config file <https://
 You should see the window below after properly setting the API key:
 
 .. image:: images/Gps_Navigation/mapviz_init.png
-    :width: 700px
+    :width: 800px
     :align: center
     :alt: Turtlebot in the sonoma raceway
 
-Finally run the teleop twist keyboard node to teleoperate the simulated Turtlebot: 
+Finally run the teleop twist keyboard node to teleoperate the simulated Turtlebot:
 
 .. code-block:: bash
 
-  ros2 run teleop_twist_keyboard teleop_twist_keyboard
+  ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --param stamped:=True
 
 When you have everything up and running, start teleoperating the Turtlebot and check that:
 
@@ -291,7 +330,7 @@ When you have everything up and running, start teleoperating the Turtlebot and c
 The gif below shows what you should see:
 
 .. image:: images/Gps_Navigation/localization_check.gif
-  :width: 600px
+  :width: 800px
   :align: center
 
 Sensors in a real robot may be less accurate than Gazebo's, especially GPSs and absolute heading measurements from IMUs. To mitigate this you can leverage robot_localization's EKFs to complement sensor's capabilities:
@@ -343,7 +382,7 @@ There are three main possible setups for the global costmap:
         origin_x: 25.0
         origin_y: 25.0
 
-We provide a `Nav2 params file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/nav2_no_map_params.yaml>`_ with the rolling costmap setup and a `launch file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/gps_waypoint_follower.launch.py>`_ to put it all together. Remember that the GPS setup of robot_localization was just a means for setting up the global localization system, however Nav2 is still a cartesian navigation stack and you may still use all its cartesian tools. To confirm that everything is working, launch the provided file (this launches gazebo and RL as well so close them if you have them running from the previous steps) and use rviz to send a goal to the robot:
+We provide a `Nav2 params file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/nav2_no_map_params.yaml>`_ with the rolling costmap setup and a `launch <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/gps_waypoint_follower.launch.py>`_ file to put it all together. Remember that the GPS setup of robot_localization was just a means for setting up the global localization system, however Nav2 is still a cartesian navigation stack and you may still use all its cartesian tools. To confirm that everything is working, launch the provided file (this launches gazebo and RL as well so close them if you have them running from the previous steps) and use rviz to send a goal to the robot:
 
 .. code-block:: bash
 
@@ -407,7 +446,7 @@ To run this node source your workspace and with the rest of the system running t
 
   ros2 run nav2_gps_waypoint_follower_demo logged_waypoint_follower </path/to/yaml/file.yaml>
 
-You should now see the robot following the waypoints you previously logged: 
+You should now see the robot following the waypoints you previously logged:
 
 .. image:: images/Gps_Navigation/logged_waypoint_follower.gif
   :width: 800px

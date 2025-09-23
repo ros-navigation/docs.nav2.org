@@ -65,7 +65,7 @@ Launch your robot's interface and robot state publisher, for example:
 
 Launch Navigation without nav2_amcl and nav2_map_server.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map->odom transform.
-              
+
   ``ros2 launch nav2_bringup navigation_launch.py``
 
 2- Launch SLAM

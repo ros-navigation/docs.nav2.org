@@ -18,9 +18,9 @@ Parameters
 :stop_on_failure:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool true            
+  bool true
   ==== =======
 
   Description
@@ -29,9 +29,9 @@ Parameters
 :loop_rate:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  20            
+  int  20
   ==== =======
 
   Description
@@ -49,19 +49,16 @@ Parameters
     The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
     convert GPS waypoints to this frame.
 
-:action_server_result_timeout:
+:introspection_mode:
 
-  ====== ======= ======= 
-  Type   Default Unit
-  ------ ------- -------
-  double 900.0   seconds
-  ====== ======= =======
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
 
   Description
-    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
-    15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
-    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. 
-    This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 :bond_heartbeat_period:
 
@@ -73,6 +70,17 @@ Parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 :waypoint_task_executor_plugin:
 
@@ -131,6 +139,7 @@ Example
         loop_rate: 20
         stop_on_failure: false
         waypoint_task_executor_plugin: "wait_at_waypoint"
+        introspection_mode: "disabled"
           wait_at_waypoint:
             plugin: "nav2_waypoint_follower::WaitAtWaypoint"
             enabled: True

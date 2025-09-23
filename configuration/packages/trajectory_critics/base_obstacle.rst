@@ -3,7 +3,7 @@
 BaseObstacleCritic
 ==================
 
-Scores a trajectory based on where the path passes over the costmap. 
+Scores a trajectory based on where the path passes over the costmap.
 To use this properly, you must use the inflation layer in costmap to expand obstacles by the robot's radius.
 
 Parameters
@@ -18,9 +18,9 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool false 
+  bool false
   ==== =======
-    
+
     Description
         Whether to allow for scores to be summed up.
 
@@ -29,8 +29,8 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 1.0 
+  double 1.0
   ====== =======
-    
+
     Description
         Weighed scale for critic.

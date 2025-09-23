@@ -5,7 +5,7 @@
 7. Reduce ROS 2 Nodes and Determinism
 =====================================
 
-**Task description** 
+**Task description**
 
 This project is admittedly abstract to explain to someone unfamiliar with the inner-details of ROS 2 and its layers. If you're interested in working on this, you will become one of the few that truly understand the inner workings of it and be a very marketable skill. We do not expect anyone applying for this project to have that knowledge beforehand and we will help you learn the necessary items.
 
@@ -32,7 +32,7 @@ More details about this project can be supplied if interested, but the tickets l
 
 - C++, ROS
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_

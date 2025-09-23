@@ -79,7 +79,6 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
 
     collision_monitor:
       ros__parameters:
-        use_sim_time: True
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
         cmd_vel_in_topic: "cmd_vel_smoothed"
@@ -161,7 +160,7 @@ Below is the example configuration using 4 sub-polygons to cover the full range 
         theta_max: 1.0
       # This is the last polygon to be checked, it should cover the entire range of robot's velocities
       # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
-      # is not covered by any of the other sub-polygons 
+      # is not covered by any of the other sub-polygons
       stopped:
         points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
         linear_min: -1.0
@@ -177,7 +176,7 @@ Below is the example configuration using 4 sub-polygons to cover the full range 
 
 **For holomic robots:**
 
-For holomic robots, the ``holonomic`` property should be set to ``true``. In this scenario, the ``linear_min`` and ``linear_max`` parameters should cover the robot's resultant velocity limits, while the ``theta_min`` and ``theta_max`` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction. The covered direction will always span from ``direction_start_angle`` to ``direction_end_angle`` in the **counter-clockwise** direction. 
+For holomic robots, the ``holonomic`` property should be set to ``true``. In this scenario, the ``linear_min`` and ``linear_max`` parameters should cover the robot's resultant velocity limits, while the ``theta_min`` and ``theta_max`` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction. The covered direction will always span from ``direction_start_angle`` to ``direction_end_angle`` in the **counter-clockwise** direction.
 
 .. image:: images/Collision_Monitor/holonomic_direction.png
   :width: 365px
@@ -193,7 +192,7 @@ Preparing Nav2 stack
 The Collision Monitor is designed to operate below Nav2 as an independent safety node.
 It acts as a filter for the ``cmd_vel`` messages from the controller to avoid potential collisions.
 If no such zone is triggered, then the ``cmd_vel`` message is used.
-Else, it is scaled or set to stop as appropriate. 
+Else, it is scaled or set to stop as appropriate.
 
 By default, the Collision Monitor is configured for usage with the Nav2 bringup package, running in parallel with the ``navigation_launch.py`` launch file. For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's ``cmd_vel_smoothed`` remapping in the ``navigation_launch.py`` bringup script as presented below. This will make the output topic of the Velocity Smoother to be untouched, which will be the input to the newly added Collision Monitor:
 
@@ -223,7 +222,7 @@ By default, the Collision Monitor is configured for usage with the Nav2 bringup 
 
 If you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
 
-.. note:: As the Collision Monitor acts as a safety node, it must be the last link in the velocity message post-processing chain, making it the node that publishes to the ``cmd_vel`` topic. It could be placed after smoothed velocity, as in our demonstration, or after non-smoothed velocity from Controller Server, e.g. if Velocity Smoother was not enabled in the system, or going after any other module in custom configuration producing the end-velocity. Therefore, in any custom Nav2 launch configuration, the last node publishing to the ``cmd_vel`` topic, should be remapped to publish to the Collision Monitor input topic configured by ``cmd_vel_in_topic`` ROS-parameter (``cmd_vel_smoothed`` by default). 
+.. note:: As the Collision Monitor acts as a safety node, it must be the last link in the velocity message post-processing chain, making it the node that publishes to the ``cmd_vel`` topic. It could be placed after smoothed velocity, as in our demonstration, or after non-smoothed velocity from Controller Server, e.g. if Velocity Smoother was not enabled in the system, or going after any other module in custom configuration producing the end-velocity. Therefore, in any custom Nav2 launch configuration, the last node publishing to the ``cmd_vel`` topic, should be remapped to publish to the Collision Monitor input topic configured by ``cmd_vel_in_topic`` ROS-parameter (``cmd_vel_smoothed`` by default).
 
 Demo Execution
 ==============

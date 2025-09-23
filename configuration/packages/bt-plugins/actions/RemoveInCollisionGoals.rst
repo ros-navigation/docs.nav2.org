@@ -14,7 +14,7 @@ Input Ports
   ====== =======================================
   Type   Default
   ------ ---------------------------------------
-  string /global_costmap/get_cost_global_costmap  
+  string /global_costmap/get_cost_global_costmap
   ====== =======================================
 
   Description
@@ -22,11 +22,11 @@ Input Ports
 
 :input_goals:
 
-  =============================== =======
-  Type                            Default
-  ------------------------------- -------
-  geometry_msgs::msg::PoseStamped   N/A  
-  =============================== =======
+  ==================== =======
+  Type                 Default
+  -------------------- -------
+  nav_msgs::msg::Goals   N/A
+  ==================== =======
 
   Description
     A vector of goals to check if in collision
@@ -36,18 +36,18 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 254.0  
+  double 254.0
   ====== =======
 
   Description
-    The cost threshold above which a waypoint is considered in collision and should be removed. If ``use_footprint = false``, consider setting to 253 for occupied. 
+    The cost threshold above which a waypoint is considered in collision and should be removed. If ``use_footprint = false``, consider setting to 253 for occupied.
 
 :use_footprint:
 
   ====== =======
   Type   Default
   ------ -------
-  bool   true  
+  bool   true
   ====== =======
 
   Description
@@ -58,11 +58,22 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  bool   false  
+  bool   false
   ====== =======
 
   Description
     Whether to consider unknown cost (255) as obstacle.
+
+:input_waypoint_statuses:
+
+  =========================================== =======
+  Type                                        Default
+  ------------------------------------------- -------
+  std::vector<nav2_msgs::msg::WaypointStatus>   N/A
+  =========================================== =======
+
+  Description
+    Original waypoint_statuses to mark waypoint status from.
 
 Output Ports
 ------------
@@ -72,16 +83,26 @@ Output Ports
   =============================== =======
   Type                            Default
   ------------------------------- -------
-  geometry_msgs::msg::PoseStamped   N/A  
+  geometry_msgs::msg::PoseStamped   N/A
   =============================== =======
 
   Description
     A vector of goals containing only those that are not in collision.
+
+:output_waypoint_statuses:
+
+  =========================================== =======
+  Type                                        Default
+  ------------------------------------------- -------
+  std::vector<nav2_msgs::msg::WaypointStatus>   N/A
+  =========================================== =======
+
+  Description
+    Waypoint_statuses with in-collision waypoints marked.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" />
-    
+  <RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}" />

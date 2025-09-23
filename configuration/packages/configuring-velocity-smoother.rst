@@ -21,7 +21,7 @@ Velocity Smoother Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           false   
+  bool           false
   ============== =======
 
   Description
@@ -30,7 +30,7 @@ Velocity Smoother Parameters
 :smoothing_frequency:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         20.0
   ============== ===========================
@@ -41,7 +41,7 @@ Velocity Smoother Parameters
 :scale_velocities:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -52,7 +52,7 @@ Velocity Smoother Parameters
 :feedback:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "OPEN_LOOP"
   ============== ===========================
@@ -63,40 +63,40 @@ Velocity Smoother Parameters
 :max_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [0.5, 0.0, 2.5]
   ============== ===========================
 
   Description
-    Maximum velocities (m/s) in ``[x, y, theta]`` axes.
+    Maximum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support.
 
 :min_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [-0.5, 0.0, -2.5]
   ============== ===========================
 
   Description
-    Minimum velocities (m/s) in ``[x, y, theta]`` axes. This is **signed** and thus must be **negative** to reverse. Note: rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.
+    Minimum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support. This is **signed** and thus must be **negative** to reverse. Note: rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.
 
 :deadband_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [0.0, 0.0, 0.0]
   ============== ===========================
 
   Description
-    Minimum velocities (m/s) to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
+    Minimum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
 
 :velocity_timeout:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.0
   ============== ===========================
@@ -107,29 +107,29 @@ Velocity Smoother Parameters
 :max_accel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [2.5, 0.0, 3.2]
   ============== ===========================
 
   Description
-    Maximum acceleration to apply to each axis ``[x, y, theta]``.
+    Maximum acceleration to apply to each axis ``[x, y, theta]`` or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support.
 
 :max_decel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [-2.5, 0.0, -3.2]
   ============== ===========================
 
   Description
-    Minimum acceleration to apply to each axis ``[x, y, theta]``. This is **signed** and thus these should generally all be **negative**.
+    Minimum acceleration to apply to each axis ``[x, y, theta]`` or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support. This is **signed** and thus these should generally all be **negative**.
 
 :odom_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "odom"
   ============== ===========================
@@ -140,7 +140,7 @@ Velocity Smoother Parameters
 :odom_duration:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.1
   ============== ===========================
@@ -172,6 +172,16 @@ Velocity Smoother Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******

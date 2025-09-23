@@ -184,9 +184,3 @@ Tutorial Steps
        ``tar -xvf calibration.tar.gz``
 
 11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
-
-
-
-
-
-  
