@@ -1270,6 +1270,8 @@
 </li>
 <li class="toctree-l1"><a class="reference external" href="https://api.nav2.org">API Docs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Roadmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lyrical-roadmap">Lyrical Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kilted-roadmap">Kilted Roadmap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#jazzy-roadmap">Jazzy Roadmap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iron-roadmap">Iron Roadmap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#humble-roadmap">Humble Roadmap</a></li>
@@ -1342,6 +1344,72 @@
 This is <em>not</em> an exhaustive list of planned features or what changes may be found in the new distribution.
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the <a class="reference external" href="https://docs.ros.org/en/rolling/Roadmap.html">ROS 2 Roadmap</a>.
 For a full list of important completed changes in the project, see the Migration Guides <a class="reference internal" href="../migration/index.html#migration"><span class="std std-ref">Migration Guides</span></a>.</p>
+<div class="section" id="lyrical-roadmap">
+<h2>Lyrical Roadmap<a class="headerlink" href="#lyrical-roadmap" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Controller Server and Plugin
+factor for centralized path
+handling and crosstrack error
+estimation and enforcement.</p></td>
+<td><p>Large</p></td>
+</tr>
+<tr class="row-even"><td><p>Massive refactor of <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>
+types to <code class="docutils literal notranslate"><span class="pre">nav2</span></code> types for
+ROS API abstraction</p></td>
+<td><p>Large (in progress)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Improve dynamic feasibility
+on approach to goal on all
+control and behavior plugins</p></td>
+<td><p>Medium (DONE)</p></td>
+</tr>
+<tr class="row-even"><td><p>Introduce Vector Object Server
+to augment Costmap Filters
+with polygons rather than
+annotated masks</p></td>
+<td><p>Medium  (DONE)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/5082">Continued Route Server</a></p></td>
+<td><p>Medium</p></td>
+</tr>
+<tr class="row-even"><td><p>Add Pause and Resume feature
+to Nav2 behavior tree tasks</p></td>
+<td><p>Medium (DONE)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Use PointCloud Transport for
+all pointcloud subscriptions</p></td>
+<td><p>Medium (DONE)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="kilted-roadmap">
+<h2>Kilted Roadmap<a class="headerlink" href="#kilted-roadmap" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Release of Route server</p></td>
+<td><p>Large (DONE)</p></td>
+</tr>
+<tr class="row-even"><td><p>Allow non-orientation sp. for
+smac planner goals</p></td>
+<td><p>Medium (DONE)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Allow docking server to operate
+forward and backwards</p></td>
+<td><p>Medium (DONE)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="jazzy-roadmap">
 <h2>Jazzy Roadmap<a class="headerlink" href="#jazzy-roadmap" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
