@@ -22,7 +22,7 @@ Lyrical Roadmap
 | types to ``nav2`` types for    |                        |
 | ROS API abstraction            |                        |
 +--------------------------------+------------------------+
-|  Improve dynamic feasibility   |  Medium (DONE)         |
+| Improve dynamic feasibility    |  Medium (DONE)         |
 | on approach to goal on all     |                        |
 | control and behavior plugins   |                        |
 +--------------------------------+------------------------+
