@@ -14,7 +14,7 @@ and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 .. warning::
 
   This is a simplified version of the Turtlebot 3 instructions. We highly
-  recommend you follow the `official Turtlebot 3 manual`_ if you intend to
+  recommend you follow the `official Turtlebot 3 manual <https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/>`_ if you intend to
   continue working with this robot beyond the minimal example provided here.
 
 Installation
@@ -23,7 +23,7 @@ Installation
 Jazzy introduced the new Gazebo modern simulator, replacing Gazebo Classic.
 Thus, for Jazzy and newer, the installation packages and instructions are slightly different to pull in the appropriate packages.
 
-1. Install the `ROS 2 binary packages`_ as described in the official docs
+1. Install the `ROS 2 binary packages <https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html>`_  as described in the official docs
 2. Install the |PN| packages using your operating system's package manager:
 
    .. code-block:: bash
