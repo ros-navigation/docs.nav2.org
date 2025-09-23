@@ -31,6 +31,18 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:plugins:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+      If you provide a list, only those layers and the master costmap will be cleared (e.g., "keepout_filter,obstacle_layer").
+      If you leave this empty, all clearable layers and the master costmap will be cleared.
+
 Example
 -------
 
