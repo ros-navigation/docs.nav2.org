@@ -8,6 +8,56 @@ This is *not* an exhaustive list of planned features or what changes may be foun
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the `ROS 2 Roadmap <https://docs.ros.org/en/rolling/Roadmap.html>`_.
 For a full list of important completed changes in the project, see the Migration Guides :ref:`migration`.
 
+
+Lyrical Roadmap
+***************
+
++--------------------------------+------------------------+
+| Controller Server and Plugin   |  Large                 |
+| factor for centralized path    |                        |
+| handling and crosstrack error  |                        |
+| estimation and enforcement.    |                        |
++--------------------------------+------------------------+
+| Massive refactor of ``rclcpp`` |  Large (in progress)   |
+| types to ``nav2`` types for    |                        |
+| ROS API abstraction            |                        |
++--------------------------------+------------------------+
+|  Improve dynamic feasibility   |  Medium (DONE)         |
+| on approach to goal on all     |                        |
+| control and behavior plugins   |                        |
++--------------------------------+------------------------+
+| Introduce Vector Object Server |  Medium  (DONE)        |
+| to augment Costmap Filters     |                        |
+| with polygons rather than      |                        |
+| annotated masks                |                        |
++--------------------------------+------------------------+
+| `Continued Route Server`_      |  Medium                |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| Add Pause and Resume feature   | Medium (DONE)          |
+| to Nav2 behavior tree tasks    |                        |
++--------------------------------+------------------------+
+| Use PointCloud Transport for   |  Medium (DONE)         |
+| all pointcloud subscriptions   |                        |
++--------------------------------+------------------------+
+
+.. _Continued Route Server: https://github.com/ros-navigation/navigation2/issues/5082
+
+
+Kilted Roadmap
+**************
+
++--------------------------------+------------------------+
+| Release of Route server        |   Large (DONE)         |
++--------------------------------+------------------------+
+| Allow non-orientation sp. for  |  Medium (DONE)         |
+| smac planner goals             |                        |
++--------------------------------+------------------------+
+| Allow docking server to operate|  Medium (DONE)         |
+| forward and backwards          |                        |
++--------------------------------+------------------------+
+
 Jazzy Roadmap
 *************
 
