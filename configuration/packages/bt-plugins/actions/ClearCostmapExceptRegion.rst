@@ -52,7 +52,7 @@ Input Ports
 
   Description
       If you provide a list, only those layers and the master costmap will be cleared (e.g., "keepout_filter,obstacle_layer").
-      If you leave this empty, all clearable layers and the master costmap will be cleared.    
+      If you leave this empty, all clearable layers and the master costmap will be cleared.
 
 Example
 -------
