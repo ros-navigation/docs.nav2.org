@@ -33,4 +33,4 @@ repos:
     rev: v2.0.0
     hooks:
       - id: doc8
-        args: ['--ignore=D001,D004']
+        args: ['--ignore=D001']  # ignore line length rule
