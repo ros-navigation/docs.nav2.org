@@ -28,7 +28,7 @@ Input Ports
   ====== ===========
 
   Description
-    	The distance to the original goal for truncating the path.
+      The distance to the original goal for truncating the path.
 
 Output Ports
 ------------
@@ -42,7 +42,7 @@ Output Ports
   ============= =======
 
   Description
-    	The resulting truncated path.
+      The resulting truncated path.
 
 Example
 -------

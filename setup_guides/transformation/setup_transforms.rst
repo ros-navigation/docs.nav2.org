@@ -89,9 +89,9 @@ REP 103, on the other hand, discusses some standard units of measure and other r
 
 Now let's move on to some specifics for the Navigation2 package to function correctly. Nav2 requires the following transformations to be published in ROS:
 
-1.	``map`` => ``odom``
-2.	``odom`` => ``base_link``
-3.	``base_link`` => ``base_laser`` (sensor base frames)
+1.  ``map`` => ``odom``
+2.  ``odom`` => ``base_link``
+3.  ``base_link`` => ``base_laser`` (sensor base frames)
 
 .. note::
   The ``base_laser`` coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, base_laser2, lidar_link etc.), then a transformation back to ``base_link`` for each one is required.

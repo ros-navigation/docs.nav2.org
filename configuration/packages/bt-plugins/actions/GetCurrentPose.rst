@@ -42,7 +42,7 @@ Output Ports
   =============================== =======
 
   Description
-    	The current pose in the global frame.
+      The current pose in the global frame.
 
 Example
 -------

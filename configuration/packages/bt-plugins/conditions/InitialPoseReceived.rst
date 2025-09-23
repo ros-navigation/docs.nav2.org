@@ -17,7 +17,7 @@ Input Ports
   ===== =========================
 
   Description
-    	Success if the value in the port is true. Takes in a blackboard variable,
+      Success if the value in the port is true. Takes in a blackboard variable,
         "{initial_pose_received}" if not specified.
 
 Example

@@ -44,7 +44,7 @@ Parameters
   ====== =======
 
     Description
-       	Factor to slow robot motion by while rotating to goal.
+         Factor to slow robot motion by while rotating to goal.
 
 :``<dwb plugin>``.\ ``<name>``.lookahead_time:
 

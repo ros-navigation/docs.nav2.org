@@ -18,7 +18,7 @@ Input Ports
   =============================== =======
 
   Description
-    	Pose around which to clear the costmap
+      Pose around which to clear the costmap
 
 :reset_distance:
 
@@ -29,7 +29,7 @@ Input Ports
   ============== =======
 
   Description
-    	Distance from the pose under which obstacles are cleared
+      Distance from the pose under which obstacles are cleared
 
 :service_name:
 
@@ -40,7 +40,7 @@ Input Ports
   ============== =======
 
   Description
-    	costmap service name responsible for clearing the costmap.
+      costmap service name responsible for clearing the costmap.
 
 :server_timeout:
 
@@ -51,7 +51,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server timeout (ms).
+      Action server timeout (ms).
 
 Example
 -------

@@ -18,7 +18,7 @@ Input Ports
   =============================== ========
 
   Description
-    	Destination to check. Takes in a blackboard variable, "{goal}" if not specified.
+      Destination to check. Takes in a blackboard variable, "{goal}" if not specified.
 
 :goals:
 
@@ -29,7 +29,7 @@ Input Ports
   ==================== =========
 
   Description
-    	Vector of goals to check. Takes in a blackboard variable, "{goals}" if not specified.
+      Vector of goals to check. Takes in a blackboard variable, "{goals}" if not specified.
 
 Example
 -------

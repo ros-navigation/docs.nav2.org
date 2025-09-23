@@ -19,7 +19,7 @@ Input Ports
   ============== =======
 
   Description
-    	The active error code to compare against.
+      The active error code to compare against.
 
 :error_codes_to_check:
 
@@ -30,7 +30,7 @@ Input Ports
   ======================== =======
 
   Description
-    	The set of error codes you wish to compare against the active error code.
+      The set of error codes you wish to compare against the active error code.
 
 Example
 -------

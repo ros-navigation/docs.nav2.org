@@ -17,7 +17,7 @@ Input Ports
   ====== =======
 
   Description
-    	Service name.
+      Service name.
 
 
 :server_timeout:
@@ -29,7 +29,7 @@ Input Ports
   ====== =======
 
   Description
-    	Server timeout (ms).
+      Server timeout (ms).
 
 Example
 -------

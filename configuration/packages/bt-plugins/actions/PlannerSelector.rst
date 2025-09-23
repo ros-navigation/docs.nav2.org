@@ -21,7 +21,7 @@ Input Ports
   ====== =======
 
   Description
-    	The name of the topic used to received select command messages. This is used to support multiple PlannerSelector nodes.
+      The name of the topic used to received select command messages. This is used to support multiple PlannerSelector nodes.
 
 :default_planner:
 
@@ -32,7 +32,7 @@ Input Ports
   ====== =======
 
   Description
-    	The default value for the selected planner if no message is received from the input topic.
+      The default value for the selected planner if no message is received from the input topic.
 
 
 Output Ports
@@ -47,7 +47,7 @@ Output Ports
   ====== =======
 
   Description
-    	The output selected planner id. This selected_planner string is usually passed to the ComputePathToPose behavior via the planner_id input port.
+      The output selected planner id. This selected_planner string is usually passed to the ComputePathToPose behavior via the planner_id input port.
 
 
 Example

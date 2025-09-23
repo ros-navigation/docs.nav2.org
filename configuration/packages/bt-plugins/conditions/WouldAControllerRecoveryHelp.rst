@@ -19,7 +19,7 @@ Input Port
   ============== =======
 
   Description
-    	The active error code to compare against. This should match the controller server error code.
+      The active error code to compare against. This should match the controller server error code.
 
 Example
 -------

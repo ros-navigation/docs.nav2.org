@@ -19,7 +19,7 @@ Input Port
   ============== =======
 
   Description
-    	The active error code to compare against. This should match the planner server error code.
+      The active error code to compare against. This should match the planner server error code.
 
 Example
 -------

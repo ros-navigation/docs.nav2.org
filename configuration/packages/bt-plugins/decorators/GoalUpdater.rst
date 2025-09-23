@@ -67,7 +67,7 @@ Output Ports
   ========================= =======
 
   Description
-    	The resulting updated goal. If no goal received by subscription, it will be the input_goal
+      The resulting updated goal. If no goal received by subscription, it will be the input_goal
 
 :output_goals:
 
@@ -78,7 +78,7 @@ Output Ports
   ============== =======
 
     Description
-      	The resulting updated goals. If no goals received by subscription, it will be the input_goals
+        The resulting updated goals. If no goals received by subscription, it will be the input_goals
 
 Example
 -------

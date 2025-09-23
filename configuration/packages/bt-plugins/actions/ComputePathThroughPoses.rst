@@ -19,7 +19,7 @@ Input Ports
   ===================================== =======
 
   Description
-    	Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+      Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
 
 :goals:
 
@@ -30,7 +30,7 @@ Input Ports
   ==================== =======
 
   Description
-    	Goal poses. Takes in a blackboard variable, e.g. "{goals}".
+      Goal poses. Takes in a blackboard variable, e.g. "{goals}".
 
 :planner_id:
 
@@ -41,7 +41,7 @@ Input Ports
   ============== =======
 
   Description
-    	Mapped name to the planner plugin type to use, e.g. GridBased.
+      Mapped name to the planner plugin type to use, e.g. GridBased.
 
 :server_name:
 
@@ -52,7 +52,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server name.
+      Action server name.
 
 
 :server_timeout:
@@ -64,7 +64,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server timeout (ms).
+      Action server timeout (ms).
 
 Output Ports
 ------------
@@ -78,7 +78,7 @@ Output Ports
   ========================== =======
 
   Description
-    	Path created by action server. Takes in a blackboard variable, e.g. "{path}".
+      Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
 :error_code_id:
 
@@ -89,7 +89,7 @@ Output Ports
   ============== =======
 
   Description
-    	Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+      Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
 
 :error_msg:
 
@@ -100,7 +100,7 @@ Output Ports
   ============== =======
 
   Description
-    	Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+      Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
 
 Example
 -------

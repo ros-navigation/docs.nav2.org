@@ -18,7 +18,7 @@ Input Ports
   ============== =======
 
   Description
-    	costmap service name responsible for clearing the costmap.
+      costmap service name responsible for clearing the costmap.
 
 :server_timeout:
 
@@ -29,7 +29,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server timeout (ms).
+      Action server timeout (ms).
 
 Example
 -------

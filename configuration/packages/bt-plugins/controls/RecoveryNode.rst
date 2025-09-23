@@ -22,7 +22,7 @@ Input Ports
   ==== =======
 
   Description
-    	Number of retries.
+      Number of retries.
 
 Example
 -------
