@@ -18,7 +18,7 @@ Input Ports
   ============== =======
 
   Description
-    	Wether to enable or disable the collision monitor.
+    	Whether to enable or disable the collision monitor.
 
 :service_name:
 
