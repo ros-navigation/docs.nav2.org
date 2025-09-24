@@ -4,7 +4,7 @@
 ToggleCollisionMonitor
 ======================
 
-Calls the ToggleCollisionMonitor serice. Used to toggle the collision monitor on (enabled) and off (disabled).
+Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor on (enabled) and off (disabled).
 
 Input Ports
 -----------

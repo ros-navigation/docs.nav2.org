@@ -395,7 +395,7 @@ The information about Vector Object server parameters set-up could be found at :
 Toggle collision monitor service and BT plugin
 ----------------------------------------------
 
-`PR #5493 <https://github.com/ros-navigation/navigation2/pull/5493>`_ and `PR #5532 <https://github.com/ros-navigation/navigation2/pull/5532>`_ introduce a new toggle service for the collision monitor.  
+`PR #5493 <https://github.com/ros-navigation/navigation2/pull/5493>`_ and `PR #5532 <https://github.com/ros-navigation/navigation2/pull/5532>`_ introduce a new toggle service for the collision monitor.
 This service allows enabling or disabling all collision monitor polygons while keeping sensor checks within the collision monitor active.
 
 The service is defined using a new interface, ``Toggle.srv``:
@@ -409,12 +409,12 @@ The service is defined using a new interface, ``Toggle.srv``:
 
 This interface can be extended in the future if needed.
 
-A corresponding Behavior Tree (BT) plugin was also created to call this service.  
+A corresponding Behavior Tree (BT) plugin was also created to call this service.
 The plugin is based on ``BtServiceNode`` and provides the following input ports:
 
-- ``service_name``: name of the toggle service  
-- ``server_timeout``: timeout for service calls  
-- ``enable``: boolean flag to enable or disable the collision monitor  
+- ``service_name``: name of the toggle service
+- ``server_timeout``: timeout for service calls
+- ``enable``: boolean flag to enable or disable the collision monitor
 
 An example usage in a Behavior Tree XML file:
 
