@@ -503,7 +503,7 @@ Behavior Tree Nodes
 .. _Append Goal Pose To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp
 .. _Extract Route Nodes To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
 .. _Get Next Few Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
-.. _Toggle Collision Monitor Service: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
+.. _Toggle Collision Monitor Service: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp
 
 
 +------------------------------------+--------------------+------------------------+
