@@ -390,3 +390,34 @@ adding virtual obstacles on maps, dynamic objects simulation/highlighting, hidin
 To run Vector Object server a new ``vector_object_server.launch.py`` launch-file is being supplied.
 :ref:`navigation2_with_vector_objects` tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
 The information about Vector Object server parameters set-up could be found at :ref:`configuring_vector_object_server` configuration guide.
+
+
+Toggle collision monitor service and BT plugin
+----------------------------------------------
+
+`PR #5493 <https://github.com/ros-navigation/navigation2/pull/5493>`_ and `PR #5532 <https://github.com/ros-navigation/navigation2/pull/5532>`_ introduce a new toggle service for the collision monitor.
+This service allows enabling or disabling all collision monitor polygons while keeping sensor checks within the collision monitor active.
+
+The service is defined using a new interface, ``Toggle.srv``:
+
+.. code-block:: text
+
+   bool enable
+   ---
+   bool success
+   string message
+
+This interface can be extended in the future if needed.
+
+A corresponding Behavior Tree (BT) plugin was also created to call this service.
+The plugin is based on ``BtServiceNode`` and provides the following input ports:
+
+- ``service_name``: name of the toggle service
+- ``server_timeout``: timeout for service calls
+- ``enable``: boolean flag to enable or disable the collision monitor
+
+An example usage in a Behavior Tree XML file:
+
+.. code-block:: xml
+
+   <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle_collision_monitor"/>
