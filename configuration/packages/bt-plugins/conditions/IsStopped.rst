@@ -18,7 +18,7 @@ Input Port
   ======= =======
 
   Description
-    	Velocity threshold below which robot is considered stopped
+      Velocity threshold below which robot is considered stopped
 
 :duration_stopped:
 
@@ -29,7 +29,7 @@ Input Port
   ========  =======
 
   Description
-    	Duration (ms) the velocity must remain below the threshold
+      Duration (ms) the velocity must remain below the threshold
 
 Example
 -------

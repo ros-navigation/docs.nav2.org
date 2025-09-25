@@ -50,7 +50,7 @@ Input Ports
   ====== =======
 
   Description
-    	Tolerance to check poses if nearby with respect to.
+      Tolerance to check poses if nearby with respect to.
 
 Example
 -------

@@ -21,7 +21,7 @@ Input Ports
   ====== =======
 
   Description
-    	The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.
+      The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.
 
 :default_controller:
 
@@ -32,7 +32,7 @@ Input Ports
   ====== =======
 
   Description
-    	The default value for the selected Controller if no message is received from the input topic.
+      The default value for the selected Controller if no message is received from the input topic.
 
 
 Output Ports
@@ -47,7 +47,7 @@ Output Ports
   ====== =======
 
   Description
-    	The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.
+      The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.
 
 
 Example

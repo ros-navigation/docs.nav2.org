@@ -31,7 +31,7 @@ Input Ports
   ====== =======
 
   Description
-    	Reference frame.
+      Reference frame.
 
 :robot_base_frame:
 
@@ -42,7 +42,7 @@ Input Ports
   ====== ===========
 
   Description
-    	Robot base frame.
+      Robot base frame.
 
 Example
 -------

@@ -51,7 +51,7 @@ Input Ports
   ====== =======
 
   Description
-    	Mapped name of the progress checker plugin type to use, e.g. SimpleProgressChecker.
+      Mapped name of the progress checker plugin type to use, e.g. SimpleProgressChecker.
 
 :server_name:
 

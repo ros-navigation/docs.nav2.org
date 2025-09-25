@@ -100,7 +100,7 @@ When a developer submits a patch, it is a commitment that the
 contributor has the right to submit the patch per the license.  The DCO
 agreement is shown below and at http://developercertificate.org/.
 
-.. code-block:: none
+.. code-block:: text
 
     Developer's Certificate of Origin 1.1
 

@@ -21,7 +21,7 @@ Input Ports
   ====== =======
 
   Description
-    	The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes.
+      The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes.
 
 :default_goal_checker:
 
@@ -32,7 +32,7 @@ Input Ports
   ====== =======
 
   Description
-    	The default value for the selected GoalChecker if no message is received from the input topic.
+      The default value for the selected GoalChecker if no message is received from the input topic.
 
 
 Output Ports
@@ -47,7 +47,7 @@ Output Ports
   ====== =======
 
   Description
-    	The output selected GoalChecker id. This selected_goal_checker string is usually passed to the FollowPath behavior via the goal_checker_id input port.
+      The output selected GoalChecker id. This selected_goal_checker string is usually passed to the FollowPath behavior via the goal_checker_id input port.
 
 
 Example

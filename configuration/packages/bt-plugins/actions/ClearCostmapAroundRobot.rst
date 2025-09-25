@@ -18,7 +18,7 @@ Input Ports
   ============== =======
 
   Description
-    	side size of the square area centered on the robot that will be cleared on the costmap (the rest of the costmap won't)
+      side size of the square area centered on the robot that will be cleared on the costmap (the rest of the costmap won't)
 
 :service_name:
 
@@ -29,7 +29,7 @@ Input Ports
   ============== =======
 
   Description
-    	costmap service name responsible for clearing the costmap.
+      costmap service name responsible for clearing the costmap.
 
 :server_timeout:
 
@@ -40,7 +40,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server timeout (ms).
+      Action server timeout (ms).
 
 Example
 -------

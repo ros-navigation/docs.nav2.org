@@ -55,7 +55,7 @@ Input Ports
   ====== ===========
 
   Description
-  	Robot base frame.
+    Robot base frame.
 
 Example
 -------

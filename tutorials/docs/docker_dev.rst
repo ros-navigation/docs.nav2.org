@@ -190,8 +190,8 @@ Now we can do something fun while we have both terminals of the same docker cont
 
 .. code-block:: bash
 
-	ros2 run demo_nodes_cpp talker
-	ros2 run demo_nodes_py listener
+  ros2 run demo_nodes_cpp talker
+  ros2 run demo_nodes_py listener
 
 ------------
 
@@ -209,7 +209,7 @@ This time, we want to expose ROS to our broader system, including our host compu
 
 .. code-block:: bash
 
-	sudo docker run -it --net=host osrf/ros:rolling-desktop-full
+  sudo docker run -it --net=host osrf/ros:rolling-desktop-full
 
 In this session, if we run the talker ``ros2 run demo_nodes_py talker``, now we should be able to subscribe to it from our host computer!
 
@@ -231,14 +231,14 @@ Lets start off by showing that there are no containers running with ``sudo docke
 
 .. code-block:: bash
 
-	sudo docker run -it --net=host -d osrf/ros:rolling-desktop-full
+  sudo docker run -it --net=host -d osrf/ros:rolling-desktop-full
 
 You'll see the command run for a moment and return. ``sudo docker ps`` should now show a container running.
 Copy that container ID and we can now ``attach`` to it:
 
 .. code-block:: bash
 
-	sudo docker attach e1d7e035a824  # <-- use your ID
+  sudo docker attach e1d7e035a824  # <-- use your ID
 
 You should now be in the terminal session. After you do your work, if you want to stop the container, you can exit as we have been in this tutorial (``exit``) and that will also stop the container.
 If you wish to leave the container running, you can use the key sequence Control+P+Q to exit but leave the container running.
@@ -247,7 +247,7 @@ If you left it running and now wish to stop it externally, you can do so with th
 
 .. code-block:: bash
 
-	sudo docker stop e1d7e035a824  # <-- use your ID
+  sudo docker stop e1d7e035a824  # <-- use your ID
 
 ------------
 
@@ -362,10 +362,10 @@ Putting it altogether, you should now be able to open rviz2 inside of the docker
 
 .. code-block:: bash
 
-	sudo docker run -it --net=host --privileged \
-	    --env="DISPLAY=$DISPLAY" \
-	    --volume="${XAUTHORITY}:/root/.Xauthority" \
-	    osrf/ros:rolling-desktop-full
+  sudo docker run -it --net=host --privileged \
+      --env="DISPLAY=$DISPLAY" \
+      --volume="${XAUTHORITY}:/root/.Xauthority" \
+      osrf/ros:rolling-desktop-full
 
 .. code-block:: bash
 

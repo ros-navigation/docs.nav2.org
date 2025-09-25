@@ -21,7 +21,7 @@ Input Ports
   ====== =======
 
   Description
-    	The name of the topic used to received select command messages. This is used to support multiple SmootherSelector nodes.
+      The name of the topic used to received select command messages. This is used to support multiple SmootherSelector nodes.
 
 :default_smoother:
 
@@ -32,7 +32,7 @@ Input Ports
   ====== =======
 
   Description
-    	The default value for the selected Smoother if no message is received from the input topic.
+      The default value for the selected Smoother if no message is received from the input topic.
 
 
 Output Ports
@@ -47,7 +47,7 @@ Output Ports
   ====== =======
 
   Description
-    	The output selected Smoother id.
+      The output selected Smoother id.
 
 
 Example
