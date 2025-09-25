@@ -641,6 +641,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GetNextFewGoals.html">GetNextFewGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ToggleCollisionMonitor.html">ToggleCollisionMonitor</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -1256,6 +1257,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#add-behaviortree-subtrees-support">Add BehaviorTree SubTrees Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -1697,6 +1699,30 @@ adding virtual obstacles on maps, dynamic objects simulation/highlighting, hidin
 <p>To run Vector Object server a new <code class="docutils literal notranslate"><span class="pre">vector_object_server.launch.py</span></code> launch-file is being supplied.
 <a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#navigation2-with-vector-objects"><span class="std std-ref">Navigating with Vector Objects</span></a> tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
 The information about Vector Object server parameters set-up could be found at <a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html#configuring-vector-object-server"><span class="std std-ref">Vector Object Server</span></a> configuration guide.</p>
+</div>
+<div class="section" id="toggle-collision-monitor-service-and-bt-plugin">
+<h2>Toggle collision monitor service and BT plugin<a class="headerlink" href="#toggle-collision-monitor-service-and-bt-plugin" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5493">PR #5493</a> and <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5532">PR #5532</a> introduce a new toggle service for the collision monitor.
+This service allows enabling or disabling all collision monitor polygons while keeping sensor checks within the collision monitor active.</p>
+<p>The service is defined using a new interface, <code class="docutils literal notranslate"><span class="pre">Toggle.srv</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bool enable
+---
+bool success
+string message
+</pre></div>
+</div>
+<p>This interface can be extended in the future if needed.</p>
+<p>A corresponding Behavior Tree (BT) plugin was also created to call this service.
+The plugin is based on <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> and provides the following input ports:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">service_name</span></code>: name of the toggle service</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">server_timeout</span></code>: timeout for service calls</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable</span></code>: boolean flag to enable or disable the collision monitor</p></li>
+</ul>
+<p>An example usage in a Behavior Tree XML file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ToggleCollisionMonitor</span><span class="w"> </span><span class="na">enable=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;collision_monitor/toggle_collision_monitor&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 

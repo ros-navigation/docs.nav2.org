@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CancelWait &mdash; Nav2 1.0.0 documentation</title>
+  <title>ToggleCollisionMonitor &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="CancelDriveOnHeading" href="CancelDriveOnHeading.html" />
-    <link rel="prev" title="CancelSpin" href="CancelSpin.html" />
+    <link rel="next" title="GoalReached" href="../conditions/GoalReached.html" />
+    <link rel="prev" title="GetNextFewGoals" href="GetNextFewGoals.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -628,7 +628,7 @@
 <li class="toctree-l4"><a class="reference internal" href="CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelBackUp.html">CancelBackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelSpin.html">CancelSpin</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">CancelWait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelWait.html">CancelWait</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
@@ -641,7 +641,7 @@
 <li class="toctree-l4"><a class="reference internal" href="AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GetNextFewGoals.html">GetNextFewGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ToggleCollisionMonitor.html">ToggleCollisionMonitor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ToggleCollisionMonitor</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -1333,7 +1333,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">CancelWait</li>
+      <li class="breadcrumb-item active">ToggleCollisionMonitor</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1342,17 +1342,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="cancelwait">
-<span id="bt-cancel-wait"></span><h1>CancelWait<a class="headerlink" href="#cancelwait" title="Permalink to this heading"></a></h1>
-<p>Used to cancel the wait action that is part of the behavior server. The server address can be remapped using the <code class="docutils literal notranslate"><span class="pre">server_name</span></code> input port.</p>
+  <div class="section" id="togglecollisionmonitor">
+<span id="bt-toggle-colllsion-monitor-service"></span><h1>ToggleCollisionMonitor<a class="headerlink" href="#togglecollisionmonitor" title="Permalink to this heading"></a></h1>
+<p>Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor on (enabled) and off (disabled).</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
-<dt class="field-odd">service_name</dt>
+<dt class="field-odd">enable</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to enable or disable the collision monitor.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">service_name</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
@@ -1364,15 +1384,15 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Service name, if not using default of <code class="docutils literal notranslate"><span class="pre">wait</span></code> due to remapping.</p>
+<dt>Description</dt><dd><p>Service name.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">server_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">server_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
@@ -1392,7 +1412,7 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;CancelWait</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;Wait&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ToggleCollisionMonitor</span><span class="w"> </span><span class="na">enable=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;collision_monitor/toggle_collision_monitor&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
