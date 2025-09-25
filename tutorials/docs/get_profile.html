@@ -1364,7 +1364,7 @@
 </div>
 <p>More information can be found in the <a class="reference external" href="https://valgrind.org/docs/manual/cl-manual.html">Valgrind manual</a> including additional valgrind arguments that can be used to specify more information.</p>
 <p>Generally speaking, to use valgrind we need to compile with debugging information. This can be done by passing <code class="docutils literal notranslate"><span class="pre">-g</span></code> as a compiling option or compile <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> as <code class="docutils literal notranslate"><span class="pre">Debug</span></code> or <code class="docutils literal notranslate"><span class="pre">RelWithDebInfo</span></code>. Then, we run our program using valgrind to capture the run-time statistics for later analysis. These are stored in <code class="docutils literal notranslate"><span class="pre">callgrind.out.XXX</span></code> files, where the suffix is the PID of the process. kcachegrind is used to visualize and analyze the results of the program execution.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="c"># CMakeLists.txt</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># CMakeLists.txt</span>
 <span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-g</span><span class="p">)</span>
 </pre></div>
 </div>

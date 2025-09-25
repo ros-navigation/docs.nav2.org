@@ -33,7 +33,7 @@ Parameters
   ====== =======
 
     Description
-        	Minimum X velocity before penalty.
+          Minimum X velocity before penalty.
 
 :``<dwb plugin>``.\ ``<name>``.strafe_theta:
 

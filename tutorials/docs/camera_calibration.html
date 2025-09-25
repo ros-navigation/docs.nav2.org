@@ -1398,46 +1398,46 @@
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">camera_calibration</span> <span class="pre">cameracalibrator</span> <span class="pre">--size</span> <span class="pre">7x9</span> <span class="pre">--square</span> <span class="pre">0.02</span> <span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">image:=/my_camera/image_raw</span> <span class="pre">-p</span> <span class="pre">camera:=/my_camera</span></code></p>
 </div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Camera</span> <span class="n">Name</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Camera</span> <span class="n">Name</span><span class="p">:</span>
 
-<span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">camera_name</span>
-        <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">camera</span> <span class="n">to</span> <span class="n">appear</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">calibration</span> <span class="n">file</span>
+  <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">camera_name</span>
+          <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">camera</span> <span class="n">to</span> <span class="n">appear</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">calibration</span> <span class="n">file</span>
 
 
-<span class="n">Chessboard</span> <span class="n">Options</span><span class="p">:</span>
+  <span class="n">Chessboard</span> <span class="n">Options</span><span class="p">:</span>
 
-<span class="n">You</span> <span class="n">must</span> <span class="n">specify</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">chessboards</span> <span class="k">as</span> <span class="n">pairs</span> <span class="n">of</span> <span class="o">--</span><span class="n">size</span> <span class="ow">and</span><span class="o">--</span><span class="n">square</span> <span class="n">options</span><span class="o">.</span>
+  <span class="n">You</span> <span class="n">must</span> <span class="n">specify</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">chessboards</span> <span class="k">as</span> <span class="n">pairs</span> <span class="n">of</span> <span class="o">--</span><span class="n">size</span> <span class="ow">and</span><span class="o">--</span><span class="n">square</span> <span class="n">options</span><span class="o">.</span>
 
-  <span class="o">-</span><span class="n">p</span> <span class="n">PATTERN</span><span class="p">,</span> <span class="o">--</span><span class="n">pattern</span><span class="o">=</span><span class="n">PATTERN</span>
-                    <span class="n">calibration</span> <span class="n">pattern</span> <span class="n">to</span> <span class="n">detect</span> <span class="o">-</span> <span class="s1">&#39;chessboard&#39;</span><span class="p">,</span><span class="s1">&#39;circles&#39;</span><span class="p">,</span> <span class="s1">&#39;acircles&#39;</span><span class="p">,</span><span class="s1">&#39;charuco&#39;</span>
-  <span class="o">-</span><span class="n">s</span> <span class="n">SIZE</span><span class="p">,</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="n">SIZE</span>
-                    <span class="n">chessboard</span> <span class="n">size</span> <span class="k">as</span> <span class="n">NxM</span><span class="p">,</span> <span class="n">counting</span> <span class="n">interior</span> <span class="n">corners</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">a</span> <span class="n">standard</span> <span class="n">chessboard</span> <span class="ow">is</span> <span class="mi">7</span><span class="n">x7</span><span class="p">)</span>
-  <span class="o">-</span><span class="n">q</span> <span class="n">SQUARE</span><span class="p">,</span> <span class="o">--</span><span class="n">square</span><span class="o">=</span><span class="n">SQUARE</span>
-                    <span class="n">chessboard</span> <span class="n">square</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">meters</span>
+    <span class="o">-</span><span class="n">p</span> <span class="n">PATTERN</span><span class="p">,</span> <span class="o">--</span><span class="n">pattern</span><span class="o">=</span><span class="n">PATTERN</span>
+                      <span class="n">calibration</span> <span class="n">pattern</span> <span class="n">to</span> <span class="n">detect</span> <span class="o">-</span> <span class="s1">&#39;chessboard&#39;</span><span class="p">,</span><span class="s1">&#39;circles&#39;</span><span class="p">,</span> <span class="s1">&#39;acircles&#39;</span><span class="p">,</span><span class="s1">&#39;charuco&#39;</span>
+    <span class="o">-</span><span class="n">s</span> <span class="n">SIZE</span><span class="p">,</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="n">SIZE</span>
+                      <span class="n">chessboard</span> <span class="n">size</span> <span class="k">as</span> <span class="n">NxM</span><span class="p">,</span> <span class="n">counting</span> <span class="n">interior</span> <span class="n">corners</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">a</span> <span class="n">standard</span> <span class="n">chessboard</span> <span class="ow">is</span> <span class="mi">7</span><span class="n">x7</span><span class="p">)</span>
+    <span class="o">-</span><span class="n">q</span> <span class="n">SQUARE</span><span class="p">,</span> <span class="o">--</span><span class="n">square</span><span class="o">=</span><span class="n">SQUARE</span>
+                      <span class="n">chessboard</span> <span class="n">square</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">meters</span>
 
-<span class="n">ROS</span> <span class="n">Communication</span> <span class="n">Options</span><span class="p">:</span>
+  <span class="n">ROS</span> <span class="n">Communication</span> <span class="n">Options</span><span class="p">:</span>
 
- <span class="o">--</span><span class="n">approximate</span><span class="o">=</span><span class="n">APPROXIMATE</span>
-                    <span class="n">allow</span> <span class="n">specified</span> <span class="n">slop</span> <span class="p">(</span><span class="ow">in</span> <span class="n">seconds</span><span class="p">)</span> <span class="n">when</span> <span class="n">pairing</span> <span class="n">images</span> <span class="kn">from</span><span class="w"> </span><span class="nn">unsynchronized</span> <span class="n">stereo</span> <span class="n">cameras</span>
- <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">check</span>
-                    <span class="n">disable</span> <span class="n">check</span> <span class="k">for</span> <span class="n">set_camera_info</span> <span class="n">services</span> <span class="n">at</span> <span class="n">startup</span>
+   <span class="o">--</span><span class="n">approximate</span><span class="o">=</span><span class="n">APPROXIMATE</span>
+                      <span class="n">allow</span> <span class="n">specified</span> <span class="n">slop</span> <span class="p">(</span><span class="ow">in</span> <span class="n">seconds</span><span class="p">)</span> <span class="n">when</span> <span class="n">pairing</span> <span class="n">images</span> <span class="kn">from</span><span class="w"> </span><span class="nn">unsynchronized</span> <span class="n">stereo</span> <span class="n">cameras</span>
+   <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">check</span>
+                      <span class="n">disable</span> <span class="n">check</span> <span class="k">for</span> <span class="n">set_camera_info</span> <span class="n">services</span> <span class="n">at</span> <span class="n">startup</span>
 
-<span class="n">Calibration</span> <span class="n">Optimizer</span> <span class="n">Options</span><span class="p">:</span>
+  <span class="n">Calibration</span> <span class="n">Optimizer</span> <span class="n">Options</span><span class="p">:</span>
 
- <span class="o">--</span><span class="n">fix</span><span class="o">-</span><span class="n">principal</span><span class="o">-</span><span class="n">point</span>
-                    <span class="n">fix</span> <span class="n">the</span> <span class="n">principal</span> <span class="n">point</span> <span class="n">at</span> <span class="n">the</span> <span class="n">image</span> <span class="n">center</span>
- <span class="o">--</span><span class="n">fix</span><span class="o">-</span><span class="n">aspect</span><span class="o">-</span><span class="n">ratio</span>
-                    <span class="n">enforce</span> <span class="n">focal</span> <span class="n">lengths</span> <span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">)</span> <span class="n">are</span> <span class="n">equal</span>
- <span class="o">--</span><span class="n">zero</span><span class="o">-</span><span class="n">tangent</span><span class="o">-</span><span class="n">dist</span>
-                    <span class="nb">set</span> <span class="n">tangential</span> <span class="n">distortion</span> <span class="n">coefficients</span> <span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="n">to</span>
-                    <span class="n">zero</span>
- <span class="o">-</span><span class="n">k</span> <span class="n">NUM_COEFFS</span><span class="p">,</span> <span class="o">--</span><span class="n">k</span><span class="o">-</span><span class="n">coefficients</span><span class="o">=</span><span class="n">NUM_COEFFS</span>
-                    <span class="n">number</span> <span class="n">of</span> <span class="n">radial</span> <span class="n">distortion</span> <span class="n">coefficients</span> <span class="n">to</span> <span class="n">use</span> <span class="p">(</span><span class="n">up</span> <span class="n">to</span>
-                    <span class="mi">6</span><span class="p">,</span> <span class="n">default</span> <span class="mi">2</span><span class="p">)</span>
- <span class="o">--</span><span class="n">disable_calib_cb_fast_check</span>
-                    <span class="n">uses</span> <span class="n">the</span> <span class="n">CALIB_CB_FAST_CHECK</span> <span class="n">flag</span> <span class="k">for</span> <span class="n">findChessboardCorners</span>
+   <span class="o">--</span><span class="n">fix</span><span class="o">-</span><span class="n">principal</span><span class="o">-</span><span class="n">point</span>
+                      <span class="n">fix</span> <span class="n">the</span> <span class="n">principal</span> <span class="n">point</span> <span class="n">at</span> <span class="n">the</span> <span class="n">image</span> <span class="n">center</span>
+   <span class="o">--</span><span class="n">fix</span><span class="o">-</span><span class="n">aspect</span><span class="o">-</span><span class="n">ratio</span>
+                      <span class="n">enforce</span> <span class="n">focal</span> <span class="n">lengths</span> <span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">)</span> <span class="n">are</span> <span class="n">equal</span>
+   <span class="o">--</span><span class="n">zero</span><span class="o">-</span><span class="n">tangent</span><span class="o">-</span><span class="n">dist</span>
+                      <span class="nb">set</span> <span class="n">tangential</span> <span class="n">distortion</span> <span class="n">coefficients</span> <span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="n">to</span>
+                      <span class="n">zero</span>
+   <span class="o">-</span><span class="n">k</span> <span class="n">NUM_COEFFS</span><span class="p">,</span> <span class="o">--</span><span class="n">k</span><span class="o">-</span><span class="n">coefficients</span><span class="o">=</span><span class="n">NUM_COEFFS</span>
+                      <span class="n">number</span> <span class="n">of</span> <span class="n">radial</span> <span class="n">distortion</span> <span class="n">coefficients</span> <span class="n">to</span> <span class="n">use</span> <span class="p">(</span><span class="n">up</span> <span class="n">to</span>
+                      <span class="mi">6</span><span class="p">,</span> <span class="n">default</span> <span class="mi">2</span><span class="p">)</span>
+   <span class="o">--</span><span class="n">disable_calib_cb_fast_check</span>
+                      <span class="n">uses</span> <span class="n">the</span> <span class="n">CALIB_CB_FAST_CHECK</span> <span class="n">flag</span> <span class="k">for</span> <span class="n">findChessboardCorners</span>
 
-    <span class="n">This</span> <span class="n">will</span> <span class="nb">open</span> <span class="n">a</span> <span class="n">calibration</span> <span class="n">window</span> <span class="n">which</span> <span class="n">highlight</span> <span class="n">the</span> <span class="n">checkerboard</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">will</span> <span class="nb">open</span> <span class="n">a</span> <span class="n">calibration</span> <span class="n">window</span> <span class="n">which</span> <span class="n">highlight</span> <span class="n">the</span> <span class="n">checkerboard</span><span class="o">.</span>
 </pre></div>
 </div>
 <div class="line-block">

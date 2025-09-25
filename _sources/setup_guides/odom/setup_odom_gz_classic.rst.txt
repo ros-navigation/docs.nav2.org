@@ -127,7 +127,7 @@ Now, we will set up our IMU sensor plugin according to the description above by 
    <gazebo reference="imu_link">
     <sensor name="imu_sensor" type="imu">
      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-      	<ros>
+        <ros>
           <namespace>/demo</namespace>
           <remapping>~/out:=imu</remapping>
         </ros>

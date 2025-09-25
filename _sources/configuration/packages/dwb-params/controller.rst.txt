@@ -127,7 +127,7 @@ Parameters
   ============== =============================
 
   Description
-    	Stop evaluating scores after best score is found.
+      Stop evaluating scores after best score is found.
 
 :``<dwb plugin>``.path_distance_bias (Legacy):
 
@@ -138,7 +138,7 @@ Parameters
   ============== =============================
 
   Description
-    	Old version of PathAlign.scale, use that instead.
+      Old version of PathAlign.scale, use that instead.
 
 :``<dwb plugin>``.goal_distance_bias (Legacy):
 

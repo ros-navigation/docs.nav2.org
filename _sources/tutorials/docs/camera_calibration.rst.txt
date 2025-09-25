@@ -109,7 +109,7 @@ Tutorial Steps
      --disable_calib_cb_fast_check
                         uses the CALIB_CB_FAST_CHECK flag for findChessboardCorners
 
-	This will open a calibration window which highlight the checkerboard.
+  This will open a calibration window which highlight the checkerboard.
 
 |
 

@@ -17,7 +17,7 @@ Input Ports
   ====== =======
 
   Description
-    	Child frame for transform.
+      Child frame for transform.
 
 :parent:
 
@@ -28,7 +28,7 @@ Input Ports
   ====== =======
 
   Description
-    	Parent frame for transform.
+      Parent frame for transform.
 
 Example
 -------

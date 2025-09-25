@@ -20,7 +20,7 @@ Input Ports
   ====== =======
 
   Description
-    	Wait time (s).
+      Wait time (s).
 
 :server_name:
 
@@ -31,7 +31,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+      Action server name.
 
 :server_timeout:
 
@@ -42,7 +42,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+      Action server timeout (ms).
 
 Output Ports
 ------------

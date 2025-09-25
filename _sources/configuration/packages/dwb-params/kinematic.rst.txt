@@ -61,7 +61,7 @@ Parameters
   ====== =======
 
   Description
-    	Minimum velocity X (m/s).
+      Minimum velocity X (m/s).
 
 :``<dwb plugin>``.min_vel_y:
 
@@ -83,7 +83,7 @@ Parameters
   ====== =======
 
   Description
-    	Maximum velocity X (m/s).
+      Maximum velocity X (m/s).
 
 :``<dwb plugin>``.max_vel_y:
 
@@ -105,7 +105,7 @@ Parameters
   ====== =======
 
   Description
-    	Maximum acceleration X (m/s^2).
+      Maximum acceleration X (m/s^2).
 
 :``<dwb plugin>``.acc_lim_y:
 
@@ -127,7 +127,7 @@ Parameters
   ====== =======
 
   Description
-    	Maximum acceleration rotation (rad/s^2).
+      Maximum acceleration rotation (rad/s^2).
 
 :``<dwb plugin>``.decel_lim_x:
 

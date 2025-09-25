@@ -28,7 +28,7 @@ Input Ports
   ====== ===========
 
   Description
-    	The trimming distance in forward direction.
+      The trimming distance in forward direction.
 
 :distance_backward:
 
@@ -39,7 +39,7 @@ Input Ports
   ====== ===========
 
   Description
-    	The trimming distance in backward direction.
+      The trimming distance in backward direction.
 
 :robot_frame:
 
@@ -50,7 +50,7 @@ Input Ports
   ====== ===========
 
   Description
-    	Robot base frame id.
+      Robot base frame id.
 
 :transform_tolerance:
 
@@ -61,7 +61,7 @@ Input Ports
   ====== ===========
 
   Description
-    	Robot pose lookup tolerance.
+      Robot pose lookup tolerance.
 
 :pose:
 
@@ -72,7 +72,7 @@ Input Ports
   ========================= ===========
 
   Description
-    	Manually specified pose to be used alternatively to current robot pose.
+      Manually specified pose to be used alternatively to current robot pose.
 
 :angular_distance_weight:
 
@@ -83,7 +83,7 @@ Input Ports
   ====== ===========
 
   Description
-    	Weight of angular distance relative to positional distance when finding which path pose is closest to robot. Not applicable on paths without orientations assigned.
+      Weight of angular distance relative to positional distance when finding which path pose is closest to robot. Not applicable on paths without orientations assigned.
 
 :max_robot_pose_search_dist:
 
@@ -94,7 +94,7 @@ Input Ports
   ====== ========
 
   Description
-    	Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to infinity (default), whole path is searched every time.
+      Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to infinity (default), whole path is searched every time.
 
 Output Ports
 ------------
@@ -108,7 +108,7 @@ Output Ports
   ============= =======
 
   Description
-    	The resulting truncated path.
+      The resulting truncated path.
 
 Example
 -------

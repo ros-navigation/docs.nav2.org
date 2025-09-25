@@ -28,7 +28,7 @@ Parameters
   ==== =======
 
   Description
-    	Whether to publish the global plan.
+      Whether to publish the global plan.
 
 :``<dwb plugin>``.publish_transformed_plan:
 
@@ -61,7 +61,7 @@ Parameters
   ==== =======
 
   Description
-    	Whether to publish debug trajectories.
+      Whether to publish debug trajectories.
 
 :``<dwb plugin>``.publish_cost_grid_pc:
 
