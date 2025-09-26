@@ -61,6 +61,19 @@ The data may be obtained from different data sources:
 Parameters
 **********
 
+:enabled:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           True
+  ============== =============================
+
+  Description:
+    Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then. 
+    Please note that is not a dynamic parameter, there's ``/toggle`` service interface 
+    and `BT Node <https://docs.nav2.org/configuration/packages/bt-plugins/actions/ToggleCollisionMonitor.html>`_ to update this state later at runtime.
+
 :base_frame_id:
 
   ============== =============================
@@ -651,6 +664,7 @@ Here is an example of configuration YAML for the Collision Monitor.
 
     collision_monitor:
       ros__parameters:
+        enabled: True
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
         cmd_vel_in_topic: "cmd_vel_smoothed"
