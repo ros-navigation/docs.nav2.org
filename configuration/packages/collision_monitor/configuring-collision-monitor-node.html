@@ -1391,8 +1391,30 @@ Subscribed footprint is also having the same properties as other polygons, but i
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
-<dt class="field-odd">base_frame_id</dt>
+<dt class="field-odd">enabled</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then.
+Please note that is not a dynamic parameter, there’s <code class="docutils literal notranslate"><span class="pre">/toggle</span></code> service interface
+and <a class="reference external" href="https://docs.nav2.org/configuration/packages/bt-plugins/actions/ToggleCollisionMonitor.html">BT Node</a> to update this state later at runtime.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">base_frame_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1411,8 +1433,8 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </dd>
 </dl>
 </dd>
-<dt class="field-even">odom_frame_id</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">odom_frame_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1431,8 +1453,8 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">cmd_vel_in_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">cmd_vel_in_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1452,8 +1474,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-even">cmd_vel_out_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">cmd_vel_out_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1472,8 +1494,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">state_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">state_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1492,8 +1514,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-even">transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1512,8 +1534,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">source_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">source_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1532,8 +1554,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-even">base_shift_correction</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">base_shift_correction</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1552,8 +1574,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">stop_pub_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">stop_pub_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1572,8 +1594,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-even">polygons</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">polygons</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1592,8 +1614,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">observation_sources</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">observation_sources</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1612,8 +1634,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_realtime_priority</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">use_realtime_priority</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1632,8 +1654,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">enable_stamped_cmd_vel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2428,6 +2450,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <p>Here is an example of configuration YAML for the Collision Monitor.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collision_monitor</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_footprint&quot;</span>
 <span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
 <span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_smoothed&quot;</span>
