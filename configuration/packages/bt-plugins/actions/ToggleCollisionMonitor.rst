@@ -18,7 +18,7 @@ Input Ports
   ============== =======
 
   Description
-    	Whether to enable or disable the collision monitor.
+      Whether to enable or disable the collision monitor.
 
 :service_name:
 
@@ -29,7 +29,7 @@ Input Ports
   ============== =======
 
   Description
-    	Service name.
+      Service name.
 
 :server_timeout:
 
@@ -40,7 +40,7 @@ Input Ports
   ============== =======
 
   Description
-    	Server timeout (ms).
+      Server timeout (ms).
 
 Example
 -------
