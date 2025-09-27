@@ -589,6 +589,9 @@ Behavior Tree Nodes
 | `Are Poses Near Condition`_        |  Steve Macenski    | Checks if 2 poses are  |
 |                                    |                    | nearby to each other.  |
 +------------------------------------+--------------------+------------------------+
+| `Is Pose Occupied Condition`_      | Maurice Alexander  | Checks if a pose is    |
+|                                    | Purnawan           | occupied.              |
++------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
@@ -609,6 +612,7 @@ Behavior Tree Nodes
 .. _Would A Route Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_route_recovery_help_condition.cpp
 .. _Is Battery Charging Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 .. _Are Poses Near Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
+.. _Is Pose Occupied Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_pose_occupied_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
