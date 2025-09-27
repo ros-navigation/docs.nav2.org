@@ -40,11 +40,11 @@ Input Ports
 
 :goal:
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+  =============================== ========
+  Type                            Default
+  ------------------------------- --------
+  geometry_msgs::msg::PoseStamped N/A
+  =============================== ========
 
   Description
       Destination to check. Takes in a blackboard variable, e.g. "{goal}".
