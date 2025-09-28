@@ -420,4 +420,4 @@ An example usage in a Behavior Tree XML file:
 
 .. code-block:: xml
 
-   <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle_collision_monitor"/>
+   <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle"/>
