@@ -145,6 +145,8 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 +---------------------------------------+----------------------------------------------------------------------------+
 | getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
 +---------------------------------------+----------------------------------------------------------------------------+
+| toggleCollisionMonitor(enable)        | Toggles the collision monitor on (`True`) or off (`False`).                |
++---------------------------------------+----------------------------------------------------------------------------+
 | waitUntilNav2Active(                  | Blocks until Nav2 is completely online and lifecycle nodes are in the      |
 | navigator='bt_navigator',             | active state. To be used in conjunction with autostart or external         |
 | localizer='amcl')                     | lifecycle bringup. Custom navigator and localizer nodes can be specified   |
