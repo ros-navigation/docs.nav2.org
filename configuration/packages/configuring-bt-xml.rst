@@ -82,6 +82,7 @@ Condition Plugins
   bt-plugins/conditions/TimeExpired.rst
   bt-plugins/conditions/IsBatteryLow.rst
   bt-plugins/conditions/IsPathValid.rst
+  bt-plugins/conditions/IsPoseOccupied.rst
   bt-plugins/conditions/PathExpiringTimer.rst
   bt-plugins/conditions/AreErrorCodesPresent.rst
   bt-plugins/conditions/WouldAControllerRecoveryHelp.rst
