@@ -10,7 +10,7 @@ it returns SUCCESS.
 Input Ports
 -----------
 
-:service_timeout:
+:server_timeout:
 
   ====== =======
   Type   Default
