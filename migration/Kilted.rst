@@ -421,3 +421,13 @@ An example usage in a Behavior Tree XML file:
 .. code-block:: xml
 
    <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle"/>
+
+
+Following Server
+----------------
+
+`PR #5565 <https://github.com/ros-navigation/navigation2/pull/5565>`_ adds a new Following Server into the ``opennav_following`` package.
+The Following Server implements a server for following dynamic objects or specific reference frames.
+This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.
+
+The information about Following Server parameters set-up could be found at :ref:`configuring_following_server` configuration guide.

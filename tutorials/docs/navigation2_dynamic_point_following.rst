@@ -3,8 +3,98 @@
 Dynamic Object Following
 ************************
 
-- `Overview`_
-- `Tutorial Steps`_
+Using Following server
+======================
+
+- `Following Server Overview`_
+- `Following Server Tutorial Steps`_
+
+Following Server Overview
+=========================
+
+The Following server is a specialized server in Nav2 designed to handle dynamic object following tasks. It dynamically follows an object while maintaining a defined distance specified by the ``desired_distance`` parameter. The server abstracts away the complexities of tracking and following moving objects, allowing users to focus on higher-level navigation goals.
+
+The ``FollowObject`` action can be called using two different input methods:
+
+- **pose_topic**: Topic to publish the pose of the object to follow. When using this method, the server subscribes to the specified topic of type ``geometry_msgs::msg::PoseStamped`` containing the pose of the object to follow.
+- **tracked_frame**: Target frame to follow. When using this method, the server directly follows the specified frame name using the transform tree.
+
+The Following server uses the same controller as the Docking server, leveraging the ``SmoothControlLaw`` to generate velocity commands for smoothly following the target object. This ensures consistent and predictable motion behavior across Nav2's specialized servers.
+
+**Recovery Mechanism**: If the object becomes undetectable for a period of time (e.g., when the pose topic stops publishing), the server implements a recovery mechanism where the robot will rotate left and right in a search pattern until it relocates the target object.
+
+
+Following Server Tutorial Steps
+===============================
+
+To use the Following server, you need to configure it in your behavior tree. This involves setting up the necessary action nodes and parameters to ensure smooth following behavior. The ``FollowObject`` action node provides two different approaches for object tracking.
+
+Method 1: Using pose_topic
+--------------------------
+
+The simplest behavior tree for following a dynamic object using a pose topic is as follows:
+
+.. code-block:: xml
+
+  <root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+      <FollowObject name="FollowPerson" pose_topic="/person_pose" max_duration="0.0"/>
+    </BehaviorTree>
+  </root>
+
+In this configuration:
+
+- ``pose_topic``: Specifies the topic (``/person_pose``) where ``geometry_msgs::msg::PoseStamped`` messages containing the object's pose are published
+- ``max_duration``: Duration to run the action (0.0 means indefinitely)
+
+Method 2: Using tracked_frame
+-----------------------------
+
+Alternatively, you can follow a specific TF frame directly:
+
+.. code-block:: xml
+
+  <root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+      <FollowObject name="FollowPerson" tracked_frame="person_frame" max_duration="0.0"/>
+    </BehaviorTree>
+  </root>
+
+In this configuration:
+
+- ``tracked_frame``: Specifies the frame name (``person_frame``) to follow using the transform tree
+- ``max_duration``: Duration to run the action (0.0 means indefinitely)
+
+**Additional Parameters**
+
+The ``FollowObject`` action supports additional parameters for fine-tuning:
+
+- ``desired_distance``: Distance to maintain from the target object (in meters)
+- ``detection_timeout``: Time to wait without detecting the object before triggering recovery behavior
+- ``rotate_to_object_timeout``: Maximum time allowed for the rotation recovery mechanism to find the object
+- ``static_object_timeout``: Time threshold to determine if an object has been stationary
+- ``search_by_rotating``: Enable/disable the rotational search recovery mechanism when the object is lost
+
+Recovery behavior is automatically activated when the target becomes undetectable, utilizing the search parameters above.
+
+**Following Server in Action**
+
+The following video demonstrates the Following Server functionality in a real-world scenario:
+
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="700" height="450" src="https://www.youtube.com/embed/g-g58J1g9Ww?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </h1>
+
+
+Using ComputePathToPose and FollowPath
+======================================
+
+- `ComputePathToPose Overview`_
+- `ComputePathToPose Tutorial Steps`_
 
 .. raw:: html
 
@@ -14,8 +104,8 @@ Dynamic Object Following
       </div>
     </h1>
 
-Overview
-========
+ComputePathToPose Overview
+==========================
 
 This tutorial shows how to use Nav2 for a different task other than going from point A to point B. In this case, we will use Nav2 to follow a moving object at a distance indefinitely.
 
@@ -45,8 +135,8 @@ send the initial pose to the ``NavigateToPose`` action, and update it on a topic
 .. image:: images/navigation2_dynamic_point_following/main_diagram.png
     :width: 48%
 
-Tutorial Steps
-==============
+ComputePathToPose Tutorial Steps
+================================
 
 0- Create the Behavior Tree
 ---------------------------
