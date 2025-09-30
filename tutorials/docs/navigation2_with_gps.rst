@@ -1,6 +1,6 @@
 .. _navigation2-with-gps:
 
-Navigating using GPS localization
+Navigating using GPS Localization
 *********************************
 
 - `Overview`_
