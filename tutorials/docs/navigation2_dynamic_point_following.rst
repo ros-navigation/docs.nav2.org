@@ -3,14 +3,19 @@
 Dynamic Object Following
 ************************
 
-Using Following server
+Nav2 provides two different approaches for dynamic object following tasks:
+
+1. **Following Server**: A specialized server that handles dynamic object following with built-in recovery mechanisms and smooth control.
+2. **ComputePathToPose and FollowPath**: A behavior tree-based approach using traditional navigation components for custom following behaviors.
+
+Using Following Server
 ======================
 
 - `Following Server Overview`_
 - `Following Server Tutorial Steps`_
 
 Following Server Overview
-=========================
+-------------------------
 
 The Following server is a specialized server in Nav2 designed to handle dynamic object following tasks. It dynamically follows an object while maintaining a defined distance specified by the ``desired_distance`` parameter. The server abstracts away the complexities of tracking and following moving objects, allowing users to focus on higher-level navigation goals.
 
@@ -25,12 +30,12 @@ The Following server uses the same controller as the Docking server, leveraging 
 
 
 Following Server Tutorial Steps
-===============================
+-------------------------------
 
 To use the Following server, you need to configure it in your behavior tree. This involves setting up the necessary action nodes and parameters to ensure smooth following behavior. The ``FollowObject`` action node provides two different approaches for object tracking.
 
 Method 1: Using pose_topic
---------------------------
+``````````````````````````
 
 The simplest behavior tree for following a dynamic object using a pose topic is as follows:
 
@@ -48,7 +53,7 @@ In this configuration:
 - ``max_duration``: Duration to run the action (0.0 means indefinitely)
 
 Method 2: Using tracked_frame
------------------------------
+`````````````````````````````
 
 Alternatively, you can follow a specific TF frame directly:
 
@@ -89,6 +94,7 @@ The following video demonstrates the Following Server functionality in a real-wo
       </div>
     </h1>
 
+----
 
 Using ComputePathToPose and FollowPath
 ======================================
@@ -105,7 +111,7 @@ Using ComputePathToPose and FollowPath
     </h1>
 
 ComputePathToPose Overview
-==========================
+--------------------------
 
 This tutorial shows how to use Nav2 for a different task other than going from point A to point B. In this case, we will use Nav2 to follow a moving object at a distance indefinitely.
 
@@ -136,10 +142,10 @@ send the initial pose to the ``NavigateToPose`` action, and update it on a topic
     :width: 48%
 
 ComputePathToPose Tutorial Steps
-================================
+--------------------------------
 
 0- Create the Behavior Tree
----------------------------
+````````````````````````````
 
 Let's start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:
 
@@ -219,7 +225,7 @@ Now, you may save this behavior tree and use it in our navigation task.
 For reference, this exact behavior tree is `made available <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/follow_point.xml>`_ to you batteries included in the ``nav2_bt_navigator`` package.
 
 1- Setup Rviz clicked point
----------------------------
+```````````````````````````
 
 We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the "clicked point" button on the toolbar to substitute object detections to provide goal updates to Nav2. This button allows you to
 publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone
@@ -230,7 +236,7 @@ this repo in your workspace, build, and type in a terminal.
 Optionally, you can remap this topic in your rviz configuration file to ``goal_updates``.
 
 2- Run Dynamic Object Following in Nav2 Simulation
---------------------------------------------------
+``````````````````````````````````````````````````
 
 Start Nav2 in one terminal:
 
