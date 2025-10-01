@@ -17,7 +17,7 @@ The Following server is a specialized server in Nav2 designed to handle dynamic 
 The ``FollowObject`` action can be called using two different input methods:
 
 - **pose_topic**: Topic to publish the pose of the object to follow. When using this method, the server subscribes to the specified topic of type ``geometry_msgs::msg::PoseStamped`` containing the pose of the object to follow.
-- **tracked_frame**: Target frame to follow. When using this method, the server directly follows the specified frame name using the transform tree.
+- **tracked_frame**: Target TF frame to follow. When using this method, the server directly follows the specified frame name using the transform tree.
 
 The Following server uses the same controller as the Docking server, leveraging the ``SmoothControlLaw`` to generate velocity commands for smoothly following the target object. This ensures consistent and predictable motion behavior across Nav2's specialized servers.
 
