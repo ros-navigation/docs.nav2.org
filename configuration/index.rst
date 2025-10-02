@@ -24,6 +24,7 @@ Core Servers
    packages/configuring-planner-server.rst
    packages/configuring-route-server.rst
    packages/configuring-smoother-server.rst
+   packages/configuring-velocity-smoother.rst
    packages/configuring-waypoint-follower.rst
 
 Planners Plugins
@@ -57,7 +58,6 @@ Smoother Plugins
    packages/configuring-constrained-smoother.rst
    packages/configuring-savitzky-golay-smoother.rst
    packages/configuring-simple-smoother.rst
-   packages/configuring-velocity-smoother.rst
 
 Others
 ******
