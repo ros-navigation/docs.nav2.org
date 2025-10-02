@@ -431,3 +431,5 @@ The Following Server implements a server for following dynamic objects or specif
 This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.
 
 The information about Following Server parameters set-up could be found at :ref:`configuring_following_server` configuration guide.
+
+The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see :ref:`navigation2-dynamic-point-following`.
