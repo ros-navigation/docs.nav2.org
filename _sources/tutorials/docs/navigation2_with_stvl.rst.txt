@@ -1,6 +1,6 @@
 .. _stvl:
 
-(STVL) Using an External Costmap Plugin
+Using an External Costmap Plugin (STVL)
 ***************************************
 
 - `Overview`_
