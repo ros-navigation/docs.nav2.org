@@ -19,6 +19,7 @@ Core Servers
    packages/configuring-controller-server.rst
    packages/configuring-costmaps.rst
    packages/configuring-docking-server.rst
+   packages/configuring-following-server.rst
    packages/configuring-lifecycle.rst
    packages/configuring-map-server.rst
    packages/configuring-planner-server.rst
