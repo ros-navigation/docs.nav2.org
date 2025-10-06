@@ -147,6 +147,12 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 +---------------------------------------+----------------------------------------------------------------------------+
 | toggleCollisionMonitor(enable)        | Toggles the collision monitor on (`True`) or off (`False`).                |
 +---------------------------------------+----------------------------------------------------------------------------+
+| followObjectByTopic(topic,            | Requests the robot to follow an object by subscribing to a given topic.    |
+| max_duration=0)                       |                                                                            |
++---------------------------------------+----------------------------------------------------------------------------+
+| followObjectByFrame(frame,            | Requests the robot to follow an object by a given frame.                   |
+| max_duration=0)                       |                                                                            |
++---------------------------------------+----------------------------------------------------------------------------+
 | waitUntilNav2Active(                  | Blocks until Nav2 is completely online and lifecycle nodes are in the      |
 | navigator='bt_navigator',             | active state. To be used in conjunction with autostart or external         |
 | localizer='amcl')                     | lifecycle bringup. Custom navigator and localizer nodes can be specified   |
