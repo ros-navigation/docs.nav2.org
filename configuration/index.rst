@@ -67,4 +67,5 @@ Others
 
    packages/configuring-amcl.rst
    packages/configuring-coverage-server.rst
+   packages/configuring-following-server.rst
    packages/configuring-loopback-sim.rst
