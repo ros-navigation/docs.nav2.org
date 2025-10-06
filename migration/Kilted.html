@@ -352,11 +352,14 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#using-following-server">Using Following Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#following-server-overview">Following Server Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#following-server-tutorial-steps">Following Server Tutorial Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#using-computepathtopose-and-followpath">Using ComputePathToPose and FollowPath</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#computepathtopose-overview">ComputePathToPose Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#computepathtopose-tutorial-steps">ComputePathToPose Tutorial Steps</a></li>
 </ul>
 </li>
 </ul>
@@ -762,6 +765,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-following-server.html">Following Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-following-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-following-server.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html">Loopback Simulator</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html#parameters">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html#example">Example</a></li>
@@ -1076,6 +1084,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#following-server">Following Server</a></li>
 </ul>
 </li>
 </ul>
@@ -1541,6 +1550,14 @@ The plugin is based on <code class="docutils literal notranslate"><span class="p
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ToggleCollisionMonitor</span><span class="w"> </span><span class="na">enable=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;collision_monitor/toggle&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="following-server">
+<h2>Following Server<a class="headerlink" href="#following-server" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5565">PR #5565</a> adds a new Following Server into the <code class="docutils literal notranslate"><span class="pre">opennav_following</span></code> package.
+The Following Server implements a server for following dynamic objects or specific reference frames.
+This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.</p>
+<p>The information about Following Server parameters set-up could be found at <a class="reference internal" href="../configuration/packages/configuring-following-server.html#configuring-following-server"><span class="std std-ref">Following Server</span></a> configuration guide.</p>
+<p>The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see <a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#navigation2-dynamic-point-following"><span class="std std-ref">Dynamic Object Following</span></a>.</p>
 </div>
 </div>
 

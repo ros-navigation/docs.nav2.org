@@ -352,11 +352,14 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Dynamic Object Following</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-following-server">Using Following Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#following-server-overview">Following Server Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#following-server-tutorial-steps">Following Server Tutorial Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-computepathtopose-and-followpath">Using ComputePathToPose and FollowPath</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#computepathtopose-overview">ComputePathToPose Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#computepathtopose-tutorial-steps">ComputePathToPose Tutorial Steps</a></li>
 </ul>
 </li>
 </ul>
@@ -762,6 +765,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-coverage-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-following-server.html">Following Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-following-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-following-server.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-loopback-sim.html">Loopback Simulator</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-loopback-sim.html#parameters">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-loopback-sim.html#example">Example</a></li>
@@ -1076,6 +1084,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#following-server">Following Server</a></li>
 </ul>
 </li>
 </ul>
@@ -1161,16 +1170,94 @@
              
   <div class="section" id="dynamic-object-following">
 <span id="navigation2-dynamic-point-following"></span><h1>Dynamic Object Following<a class="headerlink" href="#dynamic-object-following" title="Permalink to this heading"></a></h1>
+<p>Nav2 provides two different approaches for dynamic object following tasks:</p>
+<ol class="arabic simple">
+<li><p><strong>Following Server</strong>: A specialized server that handles dynamic object following with built-in recovery mechanisms and smooth control.</p></li>
+<li><p><strong>ComputePathToPose and FollowPath</strong>: A behavior tree-based approach using traditional navigation components for custom following behaviors.</p></li>
+</ol>
+<div class="section" id="using-following-server">
+<h2>Using Following Server<a class="headerlink" href="#using-following-server" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
-<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
+<li><p><a class="reference internal" href="#following-server-overview">Following Server Overview</a></p></li>
+<li><p><a class="reference internal" href="#following-server-tutorial-steps">Following Server Tutorial Steps</a></p></li>
+</ul>
+<div class="section" id="following-server-overview">
+<h3>Following Server Overview<a class="headerlink" href="#following-server-overview" title="Permalink to this heading"></a></h3>
+<p>The Following server is a specialized server in Nav2 designed to handle dynamic object following tasks. It dynamically follows an object while maintaining a defined distance specified by the <code class="docutils literal notranslate"><span class="pre">desired_distance</span></code> parameter. The server abstracts away the complexities of tracking and following moving objects, allowing users to focus on higher-level navigation goals.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FollowObject</span></code> action can be called using two different input methods:</p>
+<ul class="simple">
+<li><p><strong>pose_topic</strong>: Topic to publish the pose of the object to follow. When using this method, the server subscribes to the specified topic of type <code class="docutils literal notranslate"><span class="pre">geometry_msgs::msg::PoseStamped</span></code> containing the pose of the object to follow.</p></li>
+<li><p><strong>tracked_frame</strong>: Target TF frame to follow. When using this method, the server directly follows the specified frame name using the transform tree.</p></li>
+</ul>
+<p>The Following server uses the same controller as the Docking server, leveraging the <code class="docutils literal notranslate"><span class="pre">SmoothControlLaw</span></code> to generate velocity commands for smoothly following the target object. This ensures consistent and predictable motion behavior across Nav2’s specialized servers.</p>
+<p><strong>Recovery Mechanism</strong>: If the object becomes undetectable for a period of time (e.g., when the pose topic stops publishing), the server implements a recovery mechanism where the robot will rotate left and right in a search pattern until it relocates the target object.</p>
+</div>
+<div class="section" id="following-server-tutorial-steps">
+<h3>Following Server Tutorial Steps<a class="headerlink" href="#following-server-tutorial-steps" title="Permalink to this heading"></a></h3>
+<p>To use the Following server, you need to configure it in your behavior tree. This involves setting up the necessary action nodes and parameters to ensure smooth following behavior. The <code class="docutils literal notranslate"><span class="pre">FollowObject</span></code> action node provides two different approaches for object tracking.</p>
+<div class="section" id="method-1-using-pose-topic">
+<h4>Method 1: Using pose_topic<a class="headerlink" href="#method-1-using-pose-topic" title="Permalink to this heading"></a></h4>
+<p>The simplest behavior tree for following a dynamic object using a pose topic is as follows:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;FollowObject</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;FollowPerson&quot;</span><span class="w"> </span><span class="na">pose_topic=</span><span class="s">&quot;/person_pose&quot;</span><span class="w"> </span><span class="na">max_duration=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/BehaviorTree&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+<p>In this configuration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pose_topic</span></code>: Specifies the topic (<code class="docutils literal notranslate"><span class="pre">/person_pose</span></code>) where <code class="docutils literal notranslate"><span class="pre">geometry_msgs::msg::PoseStamped</span></code> messages containing the object’s pose are published</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_duration</span></code>: Duration to run the action (0.0 means indefinitely)</p></li>
+</ul>
+</div>
+<div class="section" id="method-2-using-tracked-frame">
+<h4>Method 2: Using tracked_frame<a class="headerlink" href="#method-2-using-tracked-frame" title="Permalink to this heading"></a></h4>
+<p>Alternatively, you can follow a specific TF frame directly:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;FollowObject</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;FollowPerson&quot;</span><span class="w"> </span><span class="na">tracked_frame=</span><span class="s">&quot;person_frame&quot;</span><span class="w"> </span><span class="na">max_duration=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/BehaviorTree&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+<p>In this configuration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tracked_frame</span></code>: Specifies the frame name (<code class="docutils literal notranslate"><span class="pre">person_frame</span></code>) to follow using the transform tree</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_duration</span></code>: Duration to run the action (0.0 means indefinitely)</p></li>
+</ul>
+<p><strong>Additional Parameters</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FollowObject</span></code> action supports additional parameters for fine-tuning:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">desired_distance</span></code>: Distance to maintain from the target object (in meters)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detection_timeout</span></code>: Time to wait without detecting the object before triggering recovery behavior</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotate_to_object_timeout</span></code>: Maximum time allowed for the rotation recovery mechanism to find the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">static_object_timeout</span></code>: Time threshold to determine if an object has been stationary</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">search_by_rotating</span></code>: Enable/disable the rotational search recovery mechanism when the object is lost</p></li>
+</ul>
+<p>Recovery behavior is automatically activated when the target becomes undetectable, utilizing the search parameters above.</p>
+<p><strong>Following Server in Action</strong></p>
+<p>The following video demonstrates the Following Server functionality in a real-world scenario:</p>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="700" height="450" src="https://www.youtube.com/embed/g-g58J1g9Ww?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</h1></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="using-computepathtopose-and-followpath">
+<h2>Using ComputePathToPose and FollowPath<a class="headerlink" href="#using-computepathtopose-and-followpath" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#computepathtopose-overview">ComputePathToPose Overview</a></p></li>
+<li><p><a class="reference internal" href="#computepathtopose-tutorial-steps">ComputePathToPose Tutorial Steps</a></p></li>
 </ul>
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
     <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-</h1><div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+</h1><div class="section" id="computepathtopose-overview">
+<h3>ComputePathToPose Overview<a class="headerlink" href="#computepathtopose-overview" title="Permalink to this heading"></a></h3>
 <p>This tutorial shows how to use Nav2 for a different task other than going from point A to point B. In this case, we will use Nav2 to follow a moving object at a distance indefinitely.</p>
 <p>This task is useful in cases such as following a person or another robot. Below are some sample videos of applications that could be created using this capability. The “Carry My Luggage” RoboCup &#64; Home test, in which the <a class="reference external" href="https://robotics.catie.fr/">CATIE Robotics</a> team performs the test successfully and this real (future) world application:</p>
 <h1 align="center">
@@ -1190,10 +1277,10 @@
 send the initial pose to the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:</p>
 <a class="reference internal image-reference" href="../../_images/main_diagram.png"><img alt="../../_images/main_diagram.png" src="../../_images/main_diagram.png" style="width: 48%;" /></a>
 </div>
-<div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
+<div class="section" id="computepathtopose-tutorial-steps">
+<h3>ComputePathToPose Tutorial Steps<a class="headerlink" href="#computepathtopose-tutorial-steps" title="Permalink to this heading"></a></h3>
 <div class="section" id="create-the-behavior-tree">
-<h3>0- Create the Behavior Tree<a class="headerlink" href="#create-the-behavior-tree" title="Permalink to this heading"></a></h3>
+<h4>0- Create the Behavior Tree<a class="headerlink" href="#create-the-behavior-tree" title="Permalink to this heading"></a></h4>
 <p>Let’s start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
@@ -1263,7 +1350,7 @@ send the initial pose to the <code class="docutils literal notranslate"><span cl
 <p>For reference, this exact behavior tree is <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/follow_point.xml">made available</a> to you batteries included in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> package.</p>
 </div>
 <div class="section" id="setup-rviz-clicked-point">
-<h3>1- Setup Rviz clicked point<a class="headerlink" href="#setup-rviz-clicked-point" title="Permalink to this heading"></a></h3>
+<h4>1- Setup Rviz clicked point<a class="headerlink" href="#setup-rviz-clicked-point" title="Permalink to this heading"></a></h4>
 <p>We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the “clicked point” button on the toolbar to substitute object detections to provide goal updates to Nav2. This button allows you to
 publish coordinates in the topic <code class="docutils literal notranslate"><span class="pre">/clicked_point</span></code>. This point needs to be sent to the behavior tree, using the program <code class="docutils literal notranslate"><span class="pre">clicked_point_to_pose</span></code>, from <a class="reference external" href="https://github.com/fmrico/nav2_test_utils">this repo</a>. Clone
 this repo in your workspace, build, and type in a terminal.</p>
@@ -1271,7 +1358,7 @@ this repo in your workspace, build, and type in a terminal.</p>
 <p>Optionally, you can remap this topic in your rviz configuration file to <code class="docutils literal notranslate"><span class="pre">goal_updates</span></code>.</p>
 </div>
 <div class="section" id="run-dynamic-object-following-in-nav2-simulation">
-<h3>2- Run Dynamic Object Following in Nav2 Simulation<a class="headerlink" href="#run-dynamic-object-following-in-nav2-simulation" title="Permalink to this heading"></a></h3>
+<h4>2- Run Dynamic Object Following in Nav2 Simulation<a class="headerlink" href="#run-dynamic-object-following-in-nav2-simulation" title="Permalink to this heading"></a></h4>
 <p>Start Nav2 in one terminal:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">tb3_simulation_launch.py</span> <span class="pre">headless:=False</span></code></p>
 <p>Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.</p>
@@ -1281,6 +1368,7 @@ this repo in your workspace, build, and type in a terminal.</p>
     <iframe width="700" height="450" src="https://www.youtube.com/embed/r4fIkcktZUM?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1></div>
+</div>
 </div>
 </div>
 
