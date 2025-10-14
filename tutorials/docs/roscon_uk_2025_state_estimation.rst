@@ -5,8 +5,6 @@ ROSCon UK 2025: State Estimation for Mobile Robotics Workshop
 
 - `Overview`_
 - `Workshop Content`_
-- `Learning Outcomes`_
-- `Getting Started`_
 
 Overview
 ========
