@@ -29,3 +29,4 @@ Nav2 Tutorials
    docs/docker_dev.rst
    docs/route_server_tools.rst
    docs/navigation2_with_vector_objects.rst
+   docs/roscon_uk_2025_state_estimation.rst
