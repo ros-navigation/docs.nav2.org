@@ -44,6 +44,7 @@ Research Robots
 |         |waratah|      +      |soon|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
+
 .. |walking| image:: images/walking.png
     :width: 100%
     :align: middle
