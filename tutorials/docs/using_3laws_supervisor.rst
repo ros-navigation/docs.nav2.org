@@ -3,6 +3,12 @@
 Enhanced Safety for Nav2 using 3Laws Supervisor
 ===============================================
 
+.. raw:: html
+
+  <div style="width:100%;max-width:960px;margin:0 auto;">
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/KDMI70BuDs0" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
 This tutorial provides a walkthrough of how to integrate the `3Laws Robotics <https://3laws.io/>`_ Supervisor with the Nav2 stack to enhance safety during navigation tasks.
 The 3Laws Supervisor is a dynamic collision avoidance solution that can augment Nav2 for production safety-conscious environments.
 It provides a layer that monitors the robot's behavior and sensors to adjust the robot's desired trajectory in real-time to better avoid collisions and other hazards.
@@ -58,6 +64,10 @@ The Supervisor should complement these systems rather than completely replacing 
 This can allow users to reduce the amount of tuning of Nav2's highly configurable but complex controller parameters, moving faster to market.
 It is also very good for teleoperation tasks either joysticking locally or via remote monitoring systems to avoid collisions due to remote operation delays! 
 
+.. image:: images/3laws_supervisor/graphics/Nav2Diagram_3laws.png
+  :alt: Nav2 and 3Laws Supervisor Integration Diagram
+  :align: center
+
 .. note::
 
    Supervisor should be paired with some global replanning and/or obstacle-avoiding trajectory planner is so that the Supervisor is not at odds with the trajectory planner, making it unable to route around obstacles and instead stops the robot. For example, if using Pure Pursuit to follow the path accurately with no global replanning, as the Supervisor deviates from the path, the algorithm will attempt to steer the robot back on the path into the obstacle. In such a case, the command's velocity 'intent' to move forward along the path is now replaced with driving into the obstacle to correct for the tracking error, creating a conflict with the Supervisor's attempt to avoid the obstacle. Thus, some kind of global replanning to avoid obstacles and/or use of a collision-avoiding trajectory planner like MPPI or DWB is recommended.
@@ -65,13 +75,6 @@ It is also very good for teleoperation tasks either joysticking locally or via r
    This, however, is not an issue with teleoperations since the teleoperation command will not adjust to track a path.
 
 If you wish to learn more about the technology behind the Supervisor, checkout the `3Laws Knowledge Base <https://docs.3laws.io/en/latest/sources/knowledge.html>`_ page.
-
-.. raw:: html
-
-   <video width="100%" controls>
-     <source src="../../_images/3laws_supervisor/graphics/3laws_amr2.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-   </video>
 
 0. Obtain a License Key
 -----------------------
@@ -497,10 +500,9 @@ However, a similar behavior could be accomplished by using the Supervisor, as yo
 
 .. raw:: html
 
-   <video width="100%" controls>
-     <source src="../../_images/3laws_supervisor/graphics/demo_3laws.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-   </video>
+  <div style="width:100%;max-width:960px;margin:0 auto;">
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/LEaFQItPP98" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
 This clearly shows how the Supervisor when paired with the Regulated Pure Pursuit controller can now overcome some challenges it faces without stopping, failing navigation, or enacting recovery behaviors in the system-level recovery branch of the behavior tree configuration.
 The robot tracks the path with a low-parameter easy to configure controller and deviates from the route as necessary to avoid the obstacle.
@@ -517,58 +519,59 @@ If using replanning and MPPI (and an intermediate to advanced application-specif
 5. Hardware Demonstrations
 --------------------------
 
-TODO
+Hardware demonstrations were performed in a bin-picking environment.
+Two double-sided aisles are configured with the Nav2 Route Server to simulate the lanes of a warehouse or factory.
+Each route lane is set as bidirectional to intentionally cause conflicts between two robots to demonstrate multi-robot & dynamic obstacle conflict avoidance.
+The Regulated Pure Pursuit Controller's collision avoidance is disabled as previously discussed and uses the Supervisor to avoid robots and give shelves maximum space to pass by.
+Each robot was initialized at the staging point at the front of the bin picking area and sent to random goals.
+The deconfliction between robots and deviations from the graph to give shelves additional clearance can be seen below:
 
-Show with 
-  - dynamic situations and more chaos
-  - narrow funnels / doorways
-  - dynamic agents stop, backup, deviate, etc
-  - higher speed, looping
+.. raw:: html
 
-Points to make:
-  - Fewer stoppages, so more throughput and average speed
-  - handles them more intuitively and gracefully
-  - Corrects for small discretization errors of controllers/planners, not needing precise fine tuning saving time and energy
+  <div style="width:100%;max-width:960px;margin:0 auto;">
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/jhCvL0TqG04" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
-Hardware demo:
-  - Deflection / force field effect
-    - Show driving into obstacles (stop), alongside obstacles (sheer), and doorways (deflect to center alignment)
-    - Do so with rviz + rviz with the velocity arrows to show the deflection effect (trajectory to use, not just vel arrow from internal information fom 3Laws? Our joystick we can project the same time horizon to have analogs)
-    - Unitree?
-  
-  - Application demo w/ Otto:
+To further test the Supervisor capabilities, the robot was sent from the start of the left most shelf to the right in order to create a testing environment for human interactions.
+Below you can see how the Supervisor can handle a variety of dynamic obstacles, resolving conflict without replanning or assistance from more advanced Nav2 controller algorithms.
+Note: Usually for tasks such as this, using a controller like MPPI or DWB is recommended in a production environment so Supervisor may focus on deviations as needed rather than fully relying on it for intelligent & autonomous behavior.
+This is being shown in isolation to highlight what it is possible to accomplish in extreme situations whereas an autonomy controller is not attempting to avoid collisions.
 
-    - Demo with robot driving and stuff getting in the way?
-    - Demo normal with obstacle on the route to go away
-    - Comparison collision avoidance with smart local planner (MPPI, DWB) alone vs dumb local planner (Graceful, RPP) + supervisor. Perform from my information (to include?)
-    - Dynamic obstacles like people walkign around and in the way
-    - Confined spaces and doorways like in the joystick demo in an application
-    - What kind of space do we have to work with?
+.. raw:: html
 
-  - Unitree
+  <div style="width:100%;max-width:960px;margin:0 auto;">
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/kJV_XGtQFVo" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
-Videos
+As shown, this can be used to create fewer stoppages of the system so the solution can increase throughput and average speed throughout a mission.
+This prevents situations where the robot stops and waits for a human or other obstacle to pass by out of safety zones.
+The 'force field' effect of the Supervisor allows the robot to continue moving and make progress towards its goal while still avoiding collisions.
 
-IN PERSON
-  - Dynamic obstacles move faster to deviate (?)
-  - What do you have in mind? 
-  - Demo AMR industrial moving. 
-  - Communicate: moving very fast with space available in the office. 2 m/s. 
-  - Robot going fast around. Or walk in front or another robot and keep safety margin.
-  - Nav2 running the looping for the demo.
-    - Controller tuned that this is possible. Then supervisor on top of it
+Narrow Doorways
+^^^^^^^^^^^^^^^
 
-Improvement in motion efficiency. How to stop slowing down and minimize times stopped.
-  - Case study on motion efficiency. They do the metrics/graphics.
+Navigating through narrow doorways is often a significant challenge for autonomous navigation systems.
+The difficulty lies in precisely positioning the robot in the center of the doorway to ensure that robots with minimal clearance can pass through reliably and gracefully.
+Traditional path planning and control algorithms often struggle with this scenario, as small deviations from the planned path can result in rubbing against the door frame or hesitation at the entrance.
 
-P.S. Teleop pipeline use reminder
+The 3Laws Supervisor excels in these kinds of situations by providing real-time trajectory adjustments that naturally align the robot with the center of narrow passages.
+Rather than requiring precise path following or complex controller tuning, the Supervisor's deflection field effect gently guides the robot to maintain safe clearances from both sides of the doorway.
+This results in smooth, confident passage through narrow spaces without the need for stopping, replanning, or recovery behaviors.
 
-TODO use nav2 3laws architecture disagram
+The video below demonstrates the Supervisor enabling a robot to navigate through narrow doorways with ease, maintaining proper alignment and clearance throughout the passage:
 
-TODO hardware videos: use bounce 2x + collision avoidance + teleop
+.. raw:: html
 
-* Talking point about multirobot conflict avoidance (only Supervisor at work, RPP doesn't attempt)
-* talking point on teleop safety for narrow spaces ++ helps alot for autonomy through doorways
+   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+      <iframe src="https://www.youtube.com/embed/v33rg1q2EtM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+   </div>
+
+As shown in the demonstration, the Supervisor's ability to handle narrow passages makes it particularly valuable for:
+
+* Indoor navigation in office and warehouse environments with standard doorways
+* Robots with large footprints or minimal clearance margins
+* Teleoperations in tight spaces where remote operators may have difficulty judging clearances
+* Reducing the need for extensive controller parameter tuning for specific environmental features
 
 6. Resources
 ------------
@@ -582,3 +585,11 @@ Related GitHub repositories can be found here:
 
 * https://github.com/open-navigation/opennav_3laws_demonstration
 * https://github.com/3LawsRobotics/3laws-demos/tree/master
+
+And we have one more fun video (it didn't fit anywhere else naturally, but is worth a gander)!
+
+.. raw:: html
+
+   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+      <iframe src="https://www.youtube.com/embed/fGc6fDwxchQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+   </div>
