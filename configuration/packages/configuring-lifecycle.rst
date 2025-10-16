@@ -59,6 +59,17 @@ Parameters
   Description
     Whether to try to reconnect to servers that go down, presumably because respawn is set to ``true`` to re-create crashed nodes. While default to ``true``, reconnections will not be made unless respawn is set to true in your launch files or your watchdog systems will bring up the server externally.
 
+:parallel_state_transitions:
+
+  ==== =======
+  Type Default
+  ---- -------
+  bool false
+  ==== =======
+
+  Description
+    Whether to transition all nodes in parallel. This may speed up launch significantly. However, some nodes might depend on other nodes and thus require a sequential launch.
+
 :bond_respawn_max_duration:
 
   ====== =======
