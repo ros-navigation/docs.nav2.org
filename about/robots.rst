@@ -45,12 +45,6 @@ Research Robots
 +------------------------+------------------------+------------------------+
 
 
-.. |walking| image:: images/walking.png
-    :width: 100%
-    :align: middle
-    :alt: walking
-    :target: https://www.ncnynl.com/category/walking-robot/
-
 .. |saxion| image:: images/saxion.jpeg
     :width: 100%
     :align: middle
