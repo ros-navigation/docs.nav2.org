@@ -6,7 +6,7 @@ Enhanced Safety for Nav2 using 3Laws Supervisor
 .. raw:: html
 
   <div style="width:100%;max-width:960px;margin:0 auto;">
-    <iframe width="100%" height="480" src="https://www.youtube.com/embed/KDMI70BuDs0" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/KDMI70BuDs0?autoplay=1&mute=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 
 This tutorial provides a walkthrough of how to integrate the `3Laws Robotics <https://3laws.io/>`_ Supervisor with the Nav2 stack to enhance safety during navigation tasks.
@@ -506,7 +506,7 @@ However, a similar behavior could be accomplished by using the Supervisor, as yo
 .. raw:: html
 
   <div style="width:100%;max-width:960px;margin:0 auto;">
-    <iframe width="100%" height="480" src="https://www.youtube.com/embed/LEaFQItPP98" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/LEaFQItPP98?autoplay=1&mute=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 
 This clearly shows how the Supervisor when paired with the Regulated Pure Pursuit controller can now overcome some challenges it faces without stopping, failing navigation, or enacting recovery behaviors in the system-level recovery branch of the behavior tree configuration.
@@ -534,7 +534,7 @@ The deconfliction between robots and deviations from the graph to give shelves a
 .. raw:: html
 
   <div style="width:100%;max-width:960px;margin:0 auto;">
-    <iframe width="100%" height="480" src="https://www.youtube.com/embed/jhCvL0TqG04" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/jhCvL0TqG04?autoplay=1&mute=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 
 To further test the Supervisor capabilities, the robot was sent from the start of the left most shelf to the right in order to create a testing environment for human interactions.
@@ -545,7 +545,7 @@ This is being shown in isolation to highlight what it is possible to accomplish 
 .. raw:: html
 
   <div style="width:100%;max-width:960px;margin:0 auto;">
-    <iframe width="100%" height="480" src="https://www.youtube.com/embed/kJV_XGtQFVo" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="480" src="https://www.youtube.com/embed/kJV_XGtQFVo?autoplay=1&mute=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 
 As shown, this can be used to create fewer stoppages of the system so the solution can increase throughput and average speed throughout a mission.
@@ -568,7 +568,7 @@ The video below demonstrates the Supervisor enabling a robot to navigate through
 .. raw:: html
 
    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe src="https://www.youtube.com/embed/v33rg1q2EtM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      <iframe src="https://www.youtube.com/embed/v33rg1q2EtM?autoplay=1&mute=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
    </div>
 
 As shown in the demonstration, the Supervisor's ability to handle narrow passages makes it particularly valuable for:
@@ -596,5 +596,5 @@ And we have one more fun video (it didn't fit anywhere else naturally, but is wo
 .. raw:: html
 
    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe src="https://www.youtube.com/embed/fGc6fDwxchQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      <iframe src="https://www.youtube.com/embed/fGc6fDwxchQ?autoplay=1&mute=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
    </div>
