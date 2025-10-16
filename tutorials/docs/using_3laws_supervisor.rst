@@ -69,7 +69,7 @@ If you wish to learn more about the technology behind the Supervisor, checkout t
 .. raw:: html
 
    <video width="100%" controls>
-     <source src="../_static/images/3laws_supervisor/graphics/3laws_amr2.mp4" type="video/mp4">
+     <source src="../../_images/3laws_supervisor/graphics/3laws_amr2.mp4" type="video/mp4">
      Your browser does not support the video tag.
    </video>
 
@@ -498,7 +498,7 @@ However, a similar behavior could be accomplished by using the Supervisor, as yo
 .. raw:: html
 
    <video width="100%" controls>
-     <source src="../_static/images/3laws_supervisor/graphics/demo_3laws.mp4" type="video/mp4">
+     <source src="../../_images/3laws_supervisor/graphics/demo_3laws.mp4" type="video/mp4">
      Your browser does not support the video tag.
    </video>
 
@@ -537,9 +537,10 @@ Hardware demo:
     - Unitree?
   
   - Application demo w/ Otto:
-		- Demo with robot driving and stuff getting in the way?
-		- Demo normal with obstacle on the route to go away
-	  - Comparison collision avoidance with smart local planner (MPPI, DWB) alone vs dumb local planner (Graceful, RPP) + supervisor. Perform from my information (to include?)
+
+    - Demo with robot driving and stuff getting in the way?
+    - Demo normal with obstacle on the route to go away
+    - Comparison collision avoidance with smart local planner (MPPI, DWB) alone vs dumb local planner (Graceful, RPP) + supervisor. Perform from my information (to include?)
     - Dynamic obstacles like people walkign around and in the way
     - Confined spaces and doorways like in the joystick demo in an application
     - What kind of space do we have to work with?
@@ -563,9 +564,11 @@ Improvement in motion efficiency. How to stop slowing down and minimize times st
 P.S. Teleop pipeline use reminder
 
 TODO use nav2 3laws architecture disagram
-TODO hardware videos: use bounce 2x + collision avoidance + teleop 
-  * Talking point about multirobot conflict avoidance (only Supervisor at work, RPP doesn't attempt)
-  * talking point on teleop safety for narrow spaces ++ helps alot for autonomy through doorways
+
+TODO hardware videos: use bounce 2x + collision avoidance + teleop
+
+* Talking point about multirobot conflict avoidance (only Supervisor at work, RPP doesn't attempt)
+* talking point on teleop safety for narrow spaces ++ helps alot for autonomy through doorways
 
 6. Resources
 ------------
