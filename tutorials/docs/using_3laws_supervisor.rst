@@ -76,6 +76,11 @@ It is also very good for teleoperation tasks either joysticking locally or via r
 
 If you wish to learn more about the technology behind the Supervisor, checkout the `3Laws Knowledge Base <https://docs.3laws.io/en/latest/sources/knowledge.html>`_ page.
 
+.. image:: ../../_images/3laws_supervisor/graphics/3laws_amr2.gif
+  :alt: 3Laws AMR demo
+  :align: center
+  :width: 100%
+
 0. Obtain a License Key
 -----------------------
 
