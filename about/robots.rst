@@ -44,11 +44,11 @@ Research Robots
 |         |waratah|      +      |soon|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
-.. |walking| image:: images/saxion.jpeg
+.. |walking| image:: images/walking.png
     :width: 100%
     :align: middle
-    :alt: Saxion Robotics
-    :target: https://www.saxion.nl/
+    :alt: walking
+    :target: https://www.ncnynl.com/category/walking-robot/
 
 .. |saxion| image:: images/saxion.jpeg
     :width: 100%
