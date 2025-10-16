@@ -20,10 +20,16 @@ references:
           python3-pip \
           ttf-dejavu
         pip3 install -r requirements.txt
-  make_docs: &make_docs
+  make_local_docs: &make_local_docs
     run:
+      name: Build local docs
       command: |
         make html
+  make_docs: &make_docs
+    run:
+      name: Build multiversion docs
+      command: |
+        make clean multiversion
   store_docs: &store_docs
     store_artifacts:
         path: _build/html
@@ -45,6 +51,7 @@ commands:
   build_docs:
     description: "Build docs"
     steps:
+      - *make_local_docs
       - *make_docs
       - *store_docs
   publish_docs_to_gh_pages_branch:
@@ -89,4 +96,8 @@ workflows:
             - docs_build
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - kilted
+                - jazzy
+                - humble

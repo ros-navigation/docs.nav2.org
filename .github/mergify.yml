@@ -1,0 +1,53 @@
+pull_request_rules:
+
+  - name: backport at reviewers discretion
+    conditions:
+      - base=master
+      - "label=backport-all"
+    actions:
+      backport:
+        branches:
+          - kilted
+          - jazzy
+          - humble
+
+  - name: backport to kilted at reviewers discretion
+    conditions:
+      - base=master
+      - "label=backport-kilted"
+    actions:
+      backport:
+        branches:
+          - kilted
+
+  - name: backport to jazzy at reviewers discretion
+    conditions:
+      - base=master
+      - "label=backport-jazzy"
+    actions:
+      backport:
+        branches:
+          - jazzy
+
+  - name: backport to humble at reviewers discretion
+    conditions:
+      - base=master
+      - "label=backport-humble"
+    actions:
+      backport:
+        branches:
+          - humble
+
+  - name: delete head branch after merge
+    conditions:
+      - merged
+    actions:
+      delete_head_branch:
+
+  - name: ask to resolve conflict
+    conditions:
+      - conflict
+      - author!=mergify
+    actions:
+        comment:
+          message: This pull request is in conflict. Could you fix it @{{author}}?
