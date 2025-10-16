@@ -34,7 +34,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |saxion|       +      |botr|            +      |walking|            |
+|         |saxion|       +      |botr|            +      |walking|         |
 +------------------------+------------------------+------------------------+
 
 Research Robots
