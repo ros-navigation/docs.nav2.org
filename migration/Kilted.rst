@@ -433,3 +433,10 @@ This server allows the robot to follow and maintain a determined distance from a
 The information about Following Server parameters set-up could be found at :ref:`configuring_following_server` configuration guide.
 
 The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see :ref:`navigation2-dynamic-point-following`.
+
+
+
+Lifecycle Manager
+----------------
+
+`PR #5541 <https://github.com/ros-navigation/navigation2/pull/5541>`_ adds a new parallel_state_transitions parameter. This will process all state transitions in parallel which can speed up launch in systems with many lifecycle nodes. On a system with 14 lifecycle nodes, the time for activating them goes from 17 seconds to 2 seconds.
