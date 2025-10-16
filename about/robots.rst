@@ -34,7 +34,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |saxion|       +      |botr|            +      |soon|            |
+|         |saxion|       +      |botr|            +      |walking|         |
 +------------------------+------------------------+------------------------+
 
 Research Robots
@@ -43,6 +43,12 @@ Research Robots
 +------------------------+------------------------+------------------------+
 |         |waratah|      +      |soon|            +      |soon|            |
 +------------------------+------------------------+------------------------+
+
+.. |walking| image:: images/walking.png
+    :width: 100%
+    :align: middle
+    :alt: walking
+    :target: https://www.ncnynl.com/category/walking-robot/
 
 .. |saxion| image:: images/saxion.jpeg
     :width: 100%
