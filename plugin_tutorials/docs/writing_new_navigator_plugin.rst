@@ -314,7 +314,7 @@ It is good practice to place these lines at the end of the file, but technically
 
 .. code-block:: shell
 
-  ros2 plugin list
+  $ ros2 plugin list
 
 You should see an output similar to below:
 

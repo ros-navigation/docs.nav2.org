@@ -178,7 +178,7 @@ Now the plugin is ready to use. You can verify that it has been successfully reg
 
 .. code-block:: shell
 
-  ros2 plugin list
+  $ ros2 plugin list
 
 You should see an output similar to below:
 
