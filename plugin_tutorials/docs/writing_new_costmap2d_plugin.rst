@@ -174,7 +174,18 @@ Plugin description file is also should be added to ``package.xml``. ``costmap_2d
 
 After everything is done put the plugin package into ``src`` directory of a certain ROS 2-workspace, build the plugin package (``colcon build --packages-select nav2_gradient_costmap_plugin --symlink-install``) and source ``setup.bash`` file when it necessary.
 
-Now the plugin is ready to use.
+Now the plugin is ready to use. You can verify that it has been successfully registered by running:
+
+.. code-block:: shell
+
+  ros2 plugin list
+
+You should see an output similar to below:
+
+.. code-block:: shell
+
+  nav2_gradient_costmap_plugin:
+        Plugin(name='nav2_gradient_costmap_plugin::GradientLayer', type='nav2_gradient_costmap_plugin::GradientLayer', base='nav2_costmap_2d::Layer')
 
 3- Enable the plugin in Costmap2D
 ---------------------------------

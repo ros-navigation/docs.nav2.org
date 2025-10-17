@@ -251,7 +251,18 @@ It is good practice to place these lines at the end of the file, but technically
     <nav2_core plugin="${prefix}/pure_pursuit_controller_plugin.xml" />
   </export>
 
-5. Compile, and it should be registered. Next, we'll use this plugin.
+5. Compile, and it should be registered. You can verify that it has been successfully registered by running:
+
+.. code-block:: shell
+
+  ros2 plugin list
+
+You should see an output similar to below:
+
+.. code-block:: shell
+
+  nav2_pure_pursuit_controller:
+        Plugin(name='nav2_pure_pursuit_controller::PurePursuitController', type='nav2_pure_pursuit_controller::PurePursuitController', base='nav2_core::Controller')
 
 3- Pass the plugin name through the params file
 -----------------------------------------------
