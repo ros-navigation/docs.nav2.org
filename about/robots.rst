@@ -48,7 +48,7 @@ Research Robots
     :width: 100%
     :align: middle
     :alt: walking
-    :target: https://www.ncnynl.com/category/walking-robot/
+    :target: https://www.aztrobotics.com/walking-y2.html
 
 .. |saxion| image:: images/saxion.jpeg
     :width: 100%
