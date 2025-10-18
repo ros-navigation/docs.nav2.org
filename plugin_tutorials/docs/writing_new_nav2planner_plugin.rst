@@ -196,6 +196,8 @@ You should see an output similar to below:
   nav2_straightline_planner:
         Plugin(name='nav2_straightline_planner::StraightLine', type='nav2_straightline_planner::StraightLine', base='nav2_core::GlobalPlanner')
 
+Next, we'll use this plugin.
+
 3- Pass the plugin name through params file
 -------------------------------------------
 

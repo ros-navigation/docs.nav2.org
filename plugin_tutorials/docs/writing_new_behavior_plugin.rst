@@ -205,6 +205,8 @@ You should see an output similar to below:
   nav2_sms_behavior:
         Plugin(name='nav2_sms_behavior::SendSms', type='nav2_sms_behavior::SendSms', base='nav2_core::Behavior')
 
+Next, we'll use this plugin.
+
 3- Pass the plugin name through params file
 -------------------------------------------
 

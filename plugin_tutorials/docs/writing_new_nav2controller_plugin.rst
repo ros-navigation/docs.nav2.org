@@ -264,6 +264,8 @@ You should see an output similar to below:
   nav2_pure_pursuit_controller:
         Plugin(name='nav2_pure_pursuit_controller::PurePursuitController', type='nav2_pure_pursuit_controller::PurePursuitController', base='nav2_core::Controller')
 
+Next, we'll use this plugin.
+
 3- Pass the plugin name through the params file
 -----------------------------------------------
 

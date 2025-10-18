@@ -323,6 +323,8 @@ You should see an output similar to below:
   nav2_bt_navigator:
         Plugin(name='nav2_bt_navigator::NavigateToPoseNavigator', type='nav2_bt_navigator::NavigateToPoseNavigator', base='nav2_core::NavigatorBase')
 
+Next, we'll use this plugin.
+
 3- Pass the plugin name through the params file
 -----------------------------------------------
 
