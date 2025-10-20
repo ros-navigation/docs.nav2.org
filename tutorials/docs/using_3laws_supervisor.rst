@@ -20,9 +20,9 @@ Rather than a strict replacement, this should be integrated in concert with othe
 The safety zone behavior of traditional systems can be provided to the 3Laws Supervisor so it has awareness of the safety system to make informed decisions about how to adjust the robot's trajectory without triggering it, wherever possible.
 Though, the Supervisor can also be used as a standalone solution to provide collision avoidance.
 
-The Supervisor is available in both a free community tier and a paid commercial tier with additional features and support.
-The community tier provides basic functionality for collision avoidance and is suitable for many applications.
-This tutorial focuses only on the features that are part of the community, Supervisor ROS.
+The Supervisor is available in both a free community tier (Supervisor ROS CE) and two paid commercial tiers with additional features and support.
+The community tier provides same functionality for collision avoidance and is suitable for many applications as Supervisor ROS, but limited to early-stage startups and R&D.
+This tutorial focuses only on the features that are part of the community, Supervisor ROS (CE).
 The commercial tier, Supervisor Pro, includes additional features such as: geofencing, stabilization, configuration limiting, command monitoring, altitude limitations, professional setup and support, and more.
 To learn more about Supervisor Pro, `please contact 3Laws Robotics <https://3laws.io/contact/>`_.
 
@@ -127,7 +127,7 @@ To run the configuration GUI server in this docker container, you will also want
 
 .. note::
 
-   The first time you run the docker container, you may see the error below. It is indicating that the Supervisor ROS node has not been configured yet and thus cannot start. As we're going to configure it next, this is fine and the backend control panel is still running. After configuration, the docker container will need to be restarted to run the Supervisor node with the newly set configuration.
+   When launching Supervisor for the first time (whether inside a docker container or not), you may see the error below. It is indicating that the Supervisor ROS node has not been configured yet and thus cannot start. As we're going to configure it next, this is fine and the backend control panel is still running. After configuration if using Docker, the container would need to be restarted to run the Supervisor node with the newly set configuration.
 
    .. code-block:: bash
 
