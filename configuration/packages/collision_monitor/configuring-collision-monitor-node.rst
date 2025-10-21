@@ -582,7 +582,7 @@ Observation sources parameters
   ============== =============================
 
   Description:
-    Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed with the rest of the cloud data. Applicable for ``pointcloud`` type.
+    Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for ``pointcloud`` type.
 
 :``<source name>``.min_range:
 
