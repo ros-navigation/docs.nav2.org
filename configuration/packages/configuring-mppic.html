@@ -1090,6 +1090,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#following-server">Following Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
 </ul>
 </li>
 </ul>
@@ -1709,8 +1710,28 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">TrajectoryValidator.plugin</dt>
+<dt class="field-odd">open_loop</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">TrajectoryValidator.plugin</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />

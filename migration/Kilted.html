@@ -1090,6 +1090,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#following-server">Following Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
 </ul>
 </li>
 </ul>
@@ -1563,6 +1564,16 @@ The Following Server implements a server for following dynamic objects or specif
 This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.</p>
 <p>The information about Following Server parameters set-up could be found at <a class="reference internal" href="../configuration/packages/configuring-following-server.html#configuring-following-server"><span class="std std-ref">Following Server</span></a> configuration guide.</p>
 <p>The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see <a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#navigation2-dynamic-point-following"><span class="std std-ref">Dynamic Object Following</span></a>.</p>
+</div>
+<div class="section" id="option-for-mppi-to-use-open-loop-mode">
+<h2>Option for MPPI to use open loop mode<a class="headerlink" href="#option-for-mppi-to-use-open-loop-mode" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5617">PR #5617</a>,add new option to have open loop for MPPI.
+Now it have 1 more option to use last command velocity for initial state estimation instead of odometry.
+Useful when using low accelerations or when wheel odometry’s latency (motor response is poor) causes issues in MPPI initial state estimation.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>open_loop: false</p></li>
+</ul>
 </div>
 </div>
 
