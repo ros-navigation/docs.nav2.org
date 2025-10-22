@@ -325,7 +325,7 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    Whether to use last command velocity or use wheel's odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
+    Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
 
 :TrajectoryValidator.plugin:
 

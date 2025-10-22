@@ -435,11 +435,10 @@ The information about Following Server parameters set-up could be found at :ref:
 The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see :ref:`navigation2-dynamic-point-following`.
 
 Option for MPPI to use open loop mode
----------------------------------------------------------------------------
-
+-------------------------------------
 In `PR #5617 <https://github.com/ros-navigation/navigation2/pull/5617>`_,add new option to have open loop for MPPI.
-Now it have 1 more option to use last command velocity for initial state estimation instead of wheel's odometry.
-Useful when using low accelerations or when wheel odometry's latency(motor response is poor) causes issues in MPPI initial state estimation.
+Now it have 1 more option to use last command velocity for initial state estimation instead of odometry.
+Useful when using low accelerations or when wheel odometry's latency (motor response is poor) causes issues in MPPI initial state estimation.
 
 Default value:
 
