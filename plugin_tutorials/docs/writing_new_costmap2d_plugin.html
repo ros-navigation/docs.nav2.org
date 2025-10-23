@@ -1374,7 +1374,15 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 </pre></div>
 </div>
 <p>After everything is done put the plugin package into <code class="docutils literal notranslate"><span class="pre">src</span></code> directory of a certain ROS 2-workspace, build the plugin package (<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--packages-select</span> <span class="pre">nav2_gradient_costmap_plugin</span> <span class="pre">--symlink-install</span></code>) and source <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> file when it necessary.</p>
-<p>Now the plugin is ready to use.</p>
+<p>Now the plugin is ready to use. You can verify that it has been successfully registered by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>plugin<span class="w"> </span>list
+</pre></div>
+</div>
+<p>You should see an output similar to below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>nav2_gradient_costmap_plugin:
+<span class="w">      </span>Plugin<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;nav2_gradient_costmap_plugin::GradientLayer&#39;</span>,<span class="w"> </span><span class="nv">type</span><span class="o">=</span><span class="s1">&#39;nav2_gradient_costmap_plugin::GradientLayer&#39;</span>,<span class="w"> </span><span class="nv">base</span><span class="o">=</span><span class="s1">&#39;nav2_costmap_2d::Layer&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="enable-the-plugin-in-costmap2d">
 <h3>3- Enable the plugin in Costmap2D<a class="headerlink" href="#enable-the-plugin-in-costmap2d" title="Permalink to this heading"></a></h3>

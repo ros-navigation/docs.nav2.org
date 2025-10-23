@@ -192,8 +192,20 @@ It is good practice to place these lines at the end of the file but technically,
     <nav2_core plugin="${prefix}/behavior_plugin.xml" />
   </export>
 
-5. Compile and it should be registered. Next, we'll use this plugin.
+5. Compile and it should be registered. You can verify that it has been successfully registered by running:
 
+.. code-block:: shell
+
+  $ ros2 plugin list
+
+You should see an output similar to below:
+
+.. code-block:: shell
+
+  nav2_sms_behavior:
+        Plugin(name='nav2_sms_behavior::SendSms', type='nav2_sms_behavior::SendSms', base='nav2_core::Behavior')
+
+Next, we'll use this plugin.
 
 3- Pass the plugin name through params file
 -------------------------------------------

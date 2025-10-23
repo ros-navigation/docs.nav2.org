@@ -1516,8 +1516,17 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Compile, and it should be registered. Next, we’ll use this plugin.</p></li>
+<li><p>Compile, and it should be registered. You can verify that it has been successfully registered by running:</p></li>
 </ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>plugin<span class="w"> </span>list
+</pre></div>
+</div>
+<p>You should see an output similar to below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>nav2_bt_navigator:
+<span class="w">      </span>Plugin<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;nav2_bt_navigator::NavigateToPoseNavigator&#39;</span>,<span class="w"> </span><span class="nv">type</span><span class="o">=</span><span class="s1">&#39;nav2_bt_navigator::NavigateToPoseNavigator&#39;</span>,<span class="w"> </span><span class="nv">base</span><span class="o">=</span><span class="s1">&#39;nav2_core::NavigatorBase&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Next, we’ll use this plugin.</p>
 </div>
 <div class="section" id="pass-the-plugin-name-through-the-params-file">
 <h3>3- Pass the plugin name through the params file<a class="headerlink" href="#pass-the-plugin-name-through-the-params-file" title="Permalink to this heading"></a></h3>
