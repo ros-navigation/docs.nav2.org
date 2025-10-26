@@ -18,7 +18,7 @@
 Our Sponsors
 ############
 
-.. image:: images/sponsors_sept_2025.png
+.. image:: images/sponsors_oct_2025.png
     :width: 700px
     :align: center
     :alt: Our Sponsors
