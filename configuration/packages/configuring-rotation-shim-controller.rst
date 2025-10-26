@@ -186,4 +186,5 @@ Example
         rotate_to_goal_heading: false
 
         # Primary controller params can be placed here below
+        PrimaryController:
         # ...
