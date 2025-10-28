@@ -462,7 +462,7 @@ After
 .. code-block:: yaml
 
   plugin: "nav2_rotation_shim_controller::RotationShimController"
-  primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-  PrimaryController:
+  primary_controller:
+    plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
     desired_linear_vel: 1.0
     lookahead_dist: 0.6
