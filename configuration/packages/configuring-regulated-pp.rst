@@ -12,6 +12,7 @@ It regulates the linear velocities by curvature of the path to help reduce overs
 It also better follows paths than any other variation currently available of Pure Pursuit.
 It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
 It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
+It also considers the robot’s velocity and acceleration constraints during velocity command computation using `Dynamic Window Pure Pursuit <https://github.com/Decwest/nav2_dynamic_window_pure_pursuit_controller/blob/main/algorithm.md>`_ algorithm.
 
 See the package's ``README`` for more complete information.
 
@@ -22,7 +23,7 @@ If you use the Regulated Pure Pursuit Controller algorithm or software from this
 Regulated Pure Pursuit Parameters
 *********************************
 
-:desired_linear_vel:
+:max_linear_vel:
 
   ============== ===========================
   Type           Default
@@ -31,7 +32,84 @@ Regulated Pure Pursuit Parameters
   ============== ===========================
 
   Description
-    The desired maximum linear velocity (m/s) to use.
+    The maximum linear velocity (m/s) to use.
+
+:min_linear_vel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+    The minimum linear velocity (m/s) to use.
+
+:max_angular_vel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         1.0
+  ============== ===========================
+
+  Description
+    The maximum angular velocity (rad/s) to use.
+
+:min_angular_vel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -1.0
+  ============== ===========================
+
+  Description
+    The minimum angular velocity (rad/s) to use.
+
+:max_linear_accel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.5
+  ============== ===========================
+
+  Description
+    The maximum linear acceleration (m/s^2) to use.
+
+:max_linear_decel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.5
+  ============== ===========================
+
+  Description
+    The maximum linear deceleration (m/s^2) to use.
+
+:max_angular_accel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         1.0
+  ============== ===========================
+
+  Description
+    The maximum angular acceleration (rad/s^2) to use.
+
+:max_angular_decel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         1.0
+  ============== ===========================
+
+  Description
+    The maximum angular deceleration (rad/s^2) to use.
 
 :lookahead_dist:
 
@@ -198,6 +276,17 @@ Regulated Pure Pursuit Parameters
   Description
     A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within ``cost_scaling_dist``. Lower value reduces speed more quickly.
 
+:inflation_cost_scaling_factor:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         3.0
+  ============== =============================
+
+  Description
+    The value of `cost_scaling_factor` set for the inflation layer in the local costmap. The value should be exactly the same for accurately computing distance from obstacles using the inflated cell values
+
 :regulated_linear_scaling_min_radius:
 
   ============== =============================
@@ -276,17 +365,6 @@ Regulated Pure Pursuit Parameters
 
   Description
     The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if ``use_rotate_to_heading`` is ``true``.
-
-:max_angular_accel:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         3.2
-  ============== =============================
-
-  Description
-    Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
 
 :use_cancel_deceleration:
 
@@ -367,6 +445,30 @@ Regulated Pure Pursuit Parameters
   Description
     The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
 
+:use_dynamic_window:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes optimal path tracking velocity commands under velocity and acceleration constraints.
+
+:velocity_feedback:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  std::string    "OPEN_LOOP"
+  ============== =============================
+
+  Description
+    How the current velocity is obtained during dynamic window computation. "OPEN_LOOP" uses the last commanded velocity (recommended). "CLOSED_LOOP" uses odometry velocity (may hinder proper acceleration/deceleration).
+
+
+
 Example
 *******
 .. code-block:: yaml
@@ -392,7 +494,14 @@ Example
         stateful: True
       FollowPath:
         plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-        desired_linear_vel: 0.5
+        max_linear_vel: 0.5
+        min_linear_vel: 0.0
+        max_angular_vel: 1.0
+        min_angular_vel: -1.0
+        max_linear_accel: 0.5
+        max_linear_decel: 0.5
+        max_angular_accel: 1.0
+        max_angular_decel: 1.0
         lookahead_dist: 0.6
         min_lookahead_dist: 0.3
         max_lookahead_dist: 0.9
@@ -406,16 +515,18 @@ Example
         max_allowed_time_to_collision_up_to_carrot: 1.0
         use_regulated_linear_velocity_scaling: true
         use_fixed_curvature_lookahead: false
-        curvature_lookahead_dist: 0.25
+        curvature_lookahead_dist: 0.6
         use_cost_regulated_linear_velocity_scaling: false
+        interpolate_curvature_after_goal: false
         cost_scaling_dist: 0.3
         cost_scaling_gain: 1.0
+        inflation_cost_scaling_factor: 3.0
         regulated_linear_scaling_min_radius: 0.9
         regulated_linear_scaling_min_speed: 0.25
         use_rotate_to_heading: true
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
-        max_angular_accel: 3.2
         max_robot_pose_search_dist: 10.0
         min_distance_to_obstacle: 0.0
-        stateful: true
+        use_dynamic_window: true
+        velocity_feedback: "OPEN_LOOP"
