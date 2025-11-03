@@ -57,6 +57,14 @@ The data may be obtained from different data sources:
 - Laser scanners (``sensor_msgs::msg::LaserScan`` messages)
 - PointClouds (``sensor_msgs::msg::PointCloud2`` messages)
 - IR/Sonars (``sensor_msgs::msg::Range`` messages)
+- Costmap (``nav2_msgs::msg::Costmap`` messages)
+
+.. warning::
+
+   **⚠️ when using CostmapSource**
+   Collision Monitor normally **bypasses the costmap** to minimize reaction latency using fresh sensor data.
+   Use at your own caution or when using external costmap sources from derived sources.
+   
 
 Parameters
 **********
@@ -520,7 +528,7 @@ Observation sources parameters
   ============== =============================
 
   Description:
-    Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
+    Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range``, ``polygon`` or ``costmap``.
 
 :``<source name>``.transport_type:
 
@@ -638,6 +646,32 @@ Observation sources parameters
 
   Description:
     Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. Overrides node parameter for each source individually, if desired.
+
+:``<source name>``.cost_threshold:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  int            253
+  ============== =============================
+
+  Description:
+    For ``costmap`` sources only. Minimum cell cost (0–255) to be treated as an
+    obstacle. By default this matches inscribed/lethal cells (253–254) and ignores
+    lower-cost cells.
+
+:``<source name>``.treat_unknown_as_obstacle:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description:
+    For ``costmap`` sources only. If ``true``, cells with cost ``255`` (``NO_INFORMATION``)
+    will also be turned into obstacle points. Set to ``false`` if your costmap has
+    large unknown areas you don’t want to trigger Collision Monitor.
 
 :bond_heartbeat_period:
 
@@ -774,3 +808,9 @@ Here is an example of configuration YAML for the Collision Monitor.
           max_height: 0.5
           min_range: 0.2
           enabled: True
+        # costmap:
+        #   type: "costmap"   # relative, respects namespaces
+        #   topic: "local_costmap/costmap"
+        #   cost_threshold: 254
+        #   enabled: True
+        #   treat_unknown_as_obstacle: True
