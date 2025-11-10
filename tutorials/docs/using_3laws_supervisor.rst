@@ -85,7 +85,7 @@ If you wish to learn more about the technology behind the Supervisor, checkout t
 -----------------------
 
 Supervisor ROS is available in a free community tier, but still requires a license key to be used.
-The license key can be obtained by requesting a key from the `3Laws Robotics Free-Trial <https://3laws.io/free-trial/>`_ page or by navigating from the 3Laws home page and clicking 'Get Started' in the upper right corner.
+The license key can be obtained by requesting a key from the `3Laws Robotics Free-Trial <https://3laws.io/free-trial-new/>`_ page or by navigating from the 3Laws home page and clicking 'Get Started' in the upper right corner.
 Once approved, the license key will be sent to the email address provided in the request form.
 It can be verified in Step 1 below in the Supervisor configuration GUI.
 
