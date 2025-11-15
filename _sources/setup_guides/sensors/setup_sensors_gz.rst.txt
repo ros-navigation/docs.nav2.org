@@ -288,6 +288,12 @@ We will also need to bridge the necessary sensor topics from Gazebo to ROS, add 
     gz_type_name: "gz.msgs.PointCloudPacked"
     direction: GZ_TO_ROS
 
+   - ros_topic_name: "/depth_camera/image_raw"
+     gz_topic_name: "/depth_camera/image"
+     ros_type_name: "sensor_msgs/msg/Image"
+     gz_type_name: "gz.msgs.Image"
+     direction: GZ_TO_ROS
+
 Build, Run and Verification
 ===========================
 
