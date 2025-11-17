@@ -30,7 +30,7 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
 
    .. code-block:: bash
 
-      source /opt/ros/<ros2-distro>/setup.bash
+      source /opt/ros/$ROS_DISTRO/setup.bash
       sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb3*
       sudo apt install ros-$ROS_DISTRO-robot-localization
       sudo apt install ros-$ROS_DISTRO-mapviz
