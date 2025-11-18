@@ -446,6 +446,7 @@ Default value:
 
 Namespace added for primary controller parameters in Rotation Shim Controller
 -----------------------------------------------------------------------------
+
 In `PR #5654 <https://github.com/ros-navigation/navigation2/pull/5654>`_, a namespace was introduced for the primary controller parameters within the Rotation Shim Controller.
 This change ensures proper handling of dynamic parameter updates by grouping the primary controller’s parameters under its own namespace.
 
