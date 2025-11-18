@@ -444,7 +444,7 @@ Default value:
 
 - open_loop: false
 
-Partial Paths from Planner Server
+Partial paths from Planner Server
 ---------------------------------
 
 `PR #5687 <https://github.com/ros-navigation/navigation2/pull/5687>`_ adds support for outputting partial paths when planning through poses with the Planner Server. This is an
@@ -452,3 +452,28 @@ alternative behavior to the existing all-or-nothing approach, where either a com
 While partial path output will still remain disabled by default, it can be set using the new `allow_partial_planning` dynamic parameter.
 
 When this feature is used, the result from `compute_path_through_poses` action server will now indicate the last reached pose from the goals list in `last_reached_index` field.
+
+Namespace added for primary controller parameters in Rotation Shim Controller
+-----------------------------------------------------------------------------
+
+In `PR #5654 <https://github.com/ros-navigation/navigation2/pull/5654>`_, a namespace was introduced for the primary controller parameters within the Rotation Shim Controller.
+This change ensures proper handling of dynamic parameter updates by grouping the primary controller’s parameters under its own namespace.
+
+Before
+
+.. code-block:: yaml
+
+  plugin: "nav2_rotation_shim_controller::RotationShimController"
+  primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+  desired_linear_vel: 1.0
+  lookahead_dist: 0.6
+
+After
+
+.. code-block:: yaml
+
+  plugin: "nav2_rotation_shim_controller::RotationShimController"
+  primary_controller:
+    plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+    desired_linear_vel: 1.0
+    lookahead_dist: 0.6
