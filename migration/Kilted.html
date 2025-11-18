@@ -1121,6 +1121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#following-server">Following Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -1604,6 +1605,26 @@ Useful when using low accelerations or when wheel odometry’s latency (motor re
 <ul class="simple">
 <li><p>open_loop: false</p></li>
 </ul>
+</div>
+<div class="section" id="namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">
+<h2>Namespace added for primary controller parameters in Rotation Shim Controller<a class="headerlink" href="#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5654">PR #5654</a>, a namespace was introduced for the primary controller parameters within the Rotation Shim Controller.
+This change ensures proper handling of dynamic parameter updates by grouping the primary controller’s parameters under its own namespace.</p>
+<p>Before</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_rotation_shim_controller::RotationShimController&quot;</span>
+<span class="nt">primary_controller</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
+<span class="nt">desired_linear_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+</pre></div>
+</div>
+<p>After</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_rotation_shim_controller::RotationShimController&quot;</span>
+<span class="nt">primary_controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
+<span class="w">  </span><span class="nt">desired_linear_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="nt">lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+</pre></div>
+</div>
 </div>
 </div>
 

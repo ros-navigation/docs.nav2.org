@@ -443,3 +443,28 @@ Useful when using low accelerations or when wheel odometry's latency (motor resp
 Default value:
 
 - open_loop: false
+
+Namespace added for primary controller parameters in Rotation Shim Controller
+-----------------------------------------------------------------------------
+
+In `PR #5654 <https://github.com/ros-navigation/navigation2/pull/5654>`_, a namespace was introduced for the primary controller parameters within the Rotation Shim Controller.
+This change ensures proper handling of dynamic parameter updates by grouping the primary controller’s parameters under its own namespace.
+
+Before
+
+.. code-block:: yaml
+
+  plugin: "nav2_rotation_shim_controller::RotationShimController"
+  primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+  desired_linear_vel: 1.0
+  lookahead_dist: 0.6
+
+After
+
+.. code-block:: yaml
+
+  plugin: "nav2_rotation_shim_controller::RotationShimController"
+  primary_controller:
+    plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+    desired_linear_vel: 1.0
+    lookahead_dist: 0.6

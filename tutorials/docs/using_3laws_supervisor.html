@@ -1121,6 +1121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#following-server">Following Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -1463,7 +1464,7 @@ By default this should already be enabled.</p>
 The filter rate is the update rate of the Supervisor’s collision avoidance calculations, which should be kept at 50 hz to start.</p>
 <p>For now, you may leave the configuration of Aggressiveness, Conservativeness, Pointiness, and Evasion Aggressiveness at their default values.
 These parameters control how aggressively the Supervisor will adjust the robot’s trajectory to avoid collisions.
-These can be fine-tuned later based on the robot’s emperical behavior and your application needs.</p>
+These can be fine-tuned later based on the robot’s empirical behavior and your application needs.</p>
 <p>The fault management section is not required for the Supervisor to function, but it can be useful for monitoring the robot’s health and performance.
 Set the <code class="docutils literal notranslate"><span class="pre">Can</span> <span class="pre">resume</span> <span class="pre">on</span> <span class="pre">failure</span></code> toggle to on so that we can resume from timeout failures from sensors and command velocity inputs if they occur.
 We will skip the rest of section for now, but you may enable it if desired.</p>
@@ -1609,7 +1610,7 @@ This faster judgement call improves the time-to-goal performance of the system.
 While MPPI was able to overcome this obstacle itself, the increased throughput over many such blockages and many robots in a facility can garner measurable improvements in efficiency over an entire robotics solution.</p>
 <p>Note that a similar thing could be created via an intermediate configuration of a behavior tree designed to leverage precise path tracking algorithms like Regulated Pure Pursuit when no obstacles are on the path and switch to dynamic replanning and/or an advanced controller when obstacles are present to navigate around them.
 However, that requires more effort to setup and manage and only provides benefit if strict management over the robot behavior is required.
-If using replanning and MPPI (and an intermediate to advanced application-specific behavior tree), the improvements using Supervisor in such a situation are relatively nominal, but can (a) increase throughput marginally, (b) provide an additional heirarchical layer of collision avoidance as part of a larger safety story, and (c) reduce some of the most tedious fine tuning of predictive controller behavior in close proximity to obstacles.</p>
+If using replanning and MPPI (and an intermediate to advanced application-specific behavior tree), the improvements using Supervisor in such a situation are relatively nominal, but can (a) increase throughput marginally, (b) provide an additional hierarchical layer of collision avoidance as part of a larger safety story, and (c) reduce some of the most tedious fine tuning of predictive controller behavior in close proximity to obstacles.</p>
 </div>
 <div class="section" id="hardware-demonstrations">
 <h2>5. Hardware Demonstrations<a class="headerlink" href="#hardware-demonstrations" title="Permalink to this heading"></a></h2>
