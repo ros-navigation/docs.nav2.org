@@ -89,9 +89,7 @@ Output Ports
   ========================== =======
 
   Description
-      In the case of a partial plan, index of the last reached pose from the goals list.
-      Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS 
-      if a full plan through all the goals was possible.
+      In the case of a partial plan, index of the last reached pose from the goals list. Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS if a full plan through all the goals was possible.
 
 :error_code_id:
 

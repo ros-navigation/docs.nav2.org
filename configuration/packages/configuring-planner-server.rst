@@ -48,8 +48,7 @@ Parameters
   ============== ========
 
   Description
-    Allows planner server to output partial paths in the presence of obstacles when planning through poses. 
-    Otherwise planner fails and aborts the plan request in such a case by default.
+    Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.
 
 :expected_planner_frequency:
 
