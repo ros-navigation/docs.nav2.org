@@ -80,6 +80,19 @@ Output Ports
   Description
       Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
+:last_reached_index:
+
+  ========================== =======
+  Type                       Default
+  -------------------------- -------
+  int16                       -1
+  ========================== =======
+
+  Description
+      In the case of a partial plan, index of the last reached pose from the goals list.
+      Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS 
+      if a full plan through all the goals was possible.
+
 :error_code_id:
 
   ============== =======
