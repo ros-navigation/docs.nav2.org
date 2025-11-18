@@ -1121,6 +1121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#following-server">Following Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 </ul>
 </li>
@@ -1244,8 +1245,28 @@ It also hosts the global costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">expected_planner_frequency</dt>
+<dt class="field-even">allow_partial_planning</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">expected_planner_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1264,8 +1285,8 @@ It also hosts the global costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1284,8 +1305,8 @@ It also hosts the global costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">costmap_update_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">costmap_update_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1304,8 +1325,8 @@ It also hosts the global costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">introspection_mode</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">introspection_mode</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1324,8 +1345,8 @@ It also hosts the global costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">allow_parameter_qos_overrides</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1370,6 +1391,7 @@ It also hosts the global costmap.</p>
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allow_partial_planning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">expected_planner_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
 <span class="w">    </span><span class="nt">costmap_update_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>

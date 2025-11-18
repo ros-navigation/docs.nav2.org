@@ -1121,6 +1121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#following-server">Following Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 </ul>
 </li>
@@ -1338,8 +1339,28 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-even">error_code_id</dt>
+<dt class="field-even">last_reached_index</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 79%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int16</p></td>
+<td><p>-1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>In the case of a partial plan, index of the last reached pose from the goals list. Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS if a full plan through all the goals was possible.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">error_code_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1358,8 +1379,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">error_msg</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">error_msg</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />

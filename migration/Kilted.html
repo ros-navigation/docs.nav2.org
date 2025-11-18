@@ -1121,6 +1121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#following-server">Following Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 </ul>
 </li>
@@ -1605,6 +1606,13 @@ Useful when using low accelerations or when wheel odometry’s latency (motor re
 <ul class="simple">
 <li><p>open_loop: false</p></li>
 </ul>
+</div>
+<div class="section" id="partial-paths-from-planner-server">
+<h2>Partial paths from Planner Server<a class="headerlink" href="#partial-paths-from-planner-server" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5687">PR #5687</a> adds support for outputting partial paths when planning through poses with the Planner Server. This is an
+alternative behavior to the existing all-or-nothing approach, where either a complete path through all poses is returned, or no path at all if any pose cannot be reached due to obstacles.
+While partial path output will still remain disabled by default, it can be set using the new <cite>allow_partial_planning</cite> dynamic parameter.</p>
+<p>When this feature is used, the result from <cite>compute_path_through_poses</cite> action server will now indicate the last reached pose from the goals list in <cite>last_reached_index</cite> field.</p>
 </div>
 <div class="section" id="namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">
 <h2>Namespace added for primary controller parameters in Rotation Shim Controller<a class="headerlink" href="#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller" title="Permalink to this heading"></a></h2>

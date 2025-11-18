@@ -444,6 +444,15 @@ Default value:
 
 - open_loop: false
 
+Partial paths from Planner Server
+---------------------------------
+
+`PR #5687 <https://github.com/ros-navigation/navigation2/pull/5687>`_ adds support for outputting partial paths when planning through poses with the Planner Server. This is an
+alternative behavior to the existing all-or-nothing approach, where either a complete path through all poses is returned, or no path at all if any pose cannot be reached due to obstacles.
+While partial path output will still remain disabled by default, it can be set using the new `allow_partial_planning` dynamic parameter.
+
+When this feature is used, the result from `compute_path_through_poses` action server will now indicate the last reached pose from the goals list in `last_reached_index` field.
+
 Namespace added for primary controller parameters in Rotation Shim Controller
 -----------------------------------------------------------------------------
 

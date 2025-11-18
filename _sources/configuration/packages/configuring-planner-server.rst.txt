@@ -39,6 +39,17 @@ Parameters
               plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
     ..
 
+:allow_partial_planning:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  bool           false
+  ============== ========
+
+  Description
+    Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.
+
 :expected_planner_frequency:
 
   ============== ========
@@ -111,6 +122,7 @@ Example
 
     planner_server:
       ros__parameters:
+        allow_partial_planning: false
         expected_planner_frequency: 20.0
         costmap_update_timeout: 1.0
         introspection_mode: "disabled"
