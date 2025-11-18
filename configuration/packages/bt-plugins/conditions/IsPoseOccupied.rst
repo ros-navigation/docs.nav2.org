@@ -64,28 +64,6 @@ Input Ports
   Description
     Service response timeout (ms).
 
-:path:
-
-  ==================================== =======
-  Type                                 Default
-  ------------------------------------ -------
-  nav_msgs::msg::Path                  N/A
-  ==================================== =======
-
-  Description
-    The global path to check for validity.
-
-:max_cost:
-
-  ============== ==========
-  Type           Default
-  -------------- ----------
-  unsigned int   253
-  ============== ==========
-
-  Description
-    The maximum allowable cost for the path to be considered valid.
-
 :consider_unknown_as_obstacle:
 
   ====== =======
@@ -103,4 +81,4 @@ Example
 
 .. code-block:: xml
 
-    <IsPoseOccupied server_timeout="10" pose="{goal}" max_cost="254"/>
+    <IsPoseOccupied server_timeout="10" pose="{goal}"/>
