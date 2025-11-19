@@ -477,3 +477,11 @@ After
     plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
     desired_linear_vel: 1.0
     lookahead_dist: 0.6
+
+New CostmapSource observation type for Collision Monitor and CollisionDetector
+------------------------------------------------------------------------------
+
+In `PR #5642 <https://github.com/ros-navigation/navigation2/pull/5642>`_, a new
+``CostmapSource`` observation type was added to both Collision Monitor and
+Collision Detector, allowing them to subscribe directly to
+``nav2_msgs/msg/Costmap`` messages as an observation source. This source should be used with caution.

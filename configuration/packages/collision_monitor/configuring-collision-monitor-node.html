@@ -1123,6 +1123,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
 </ul>
 </li>
 </ul>
@@ -1251,7 +1252,14 @@ Subscribed footprint is also having the same properties as other polygons, but i
 <li><p>Laser scanners (<code class="docutils literal notranslate"><span class="pre">sensor_msgs::msg::LaserScan</span></code> messages)</p></li>
 <li><p>PointClouds (<code class="docutils literal notranslate"><span class="pre">sensor_msgs::msg::PointCloud2</span></code> messages)</p></li>
 <li><p>IR/Sonars (<code class="docutils literal notranslate"><span class="pre">sensor_msgs::msg::Range</span></code> messages)</p></li>
+<li><p>Costmap (<code class="docutils literal notranslate"><span class="pre">nav2_msgs::msg::Costmap</span></code> messages)</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>⚠️ when using CostmapSource</strong>
+Collision Monitor normally <strong>bypasses the costmap</strong> to minimize reaction latency using fresh sensor data.
+Use at your own caution or when using external costmap sources from derived sources.</p>
+</div>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
@@ -2074,7 +2082,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Type of polygon shape. Could be <code class="docutils literal notranslate"><span class="pre">scan</span></code>, <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code> or <code class="docutils literal notranslate"><span class="pre">polygon</span></code>.</p>
+<dt>Description:</dt><dd><p>Type of polygon shape. Could be <code class="docutils literal notranslate"><span class="pre">scan</span></code>, <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">polygon</span></code> or <code class="docutils literal notranslate"><span class="pre">costmap</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -2285,6 +2293,50 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.cost_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>253</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>For <code class="docutils literal notranslate"><span class="pre">costmap</span></code> sources only. Minimum cell cost (0–255) to be treated as an
+obstacle. By default this matches inscribed/lethal cells (253–254) and ignores
+lower-cost cells.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.treat_unknown_as_obstacle</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>For <code class="docutils literal notranslate"><span class="pre">costmap</span></code> sources only. If <code class="docutils literal notranslate"><span class="pre">true</span></code>, cells with cost <code class="docutils literal notranslate"><span class="pre">255</span></code> (<code class="docutils literal notranslate"><span class="pre">NO_INFORMATION</span></code>)
+will also be turned into obstacle points. Set to <code class="docutils literal notranslate"><span class="pre">false</span></code> if your costmap has
+large unknown areas you don’t want to trigger Collision Monitor.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-even">bond_heartbeat_period</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
@@ -2434,6 +2486,12 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="c1"># costmap:</span>
+<span class="w">    </span><span class="c1">#   type: &quot;costmap&quot;   # relative, respects namespaces</span>
+<span class="w">    </span><span class="c1">#   topic: &quot;local_costmap/costmap&quot;</span>
+<span class="w">    </span><span class="c1">#   cost_threshold: 254</span>
+<span class="w">    </span><span class="c1">#   enabled: True</span>
+<span class="w">    </span><span class="c1">#   treat_unknown_as_obstacle: True</span>
 </pre></div>
 </div>
 </div>
