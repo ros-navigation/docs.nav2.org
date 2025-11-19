@@ -48,3 +48,55 @@ for (i = 0; i < contents.length; i++) {
     }
   }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const supportedVersions = ['rolling'];
+    const versionDropdown = document.createElement('div');
+    versionDropdown.className = 'version-dropdown';
+
+    // Detect current version from URL
+    const currentVersion = supportedVersions.find(version =>
+        window.location.pathname.includes(`/${version}/`)
+    ) || 'rolling'; // Default to rolling if none found
+
+    const dropdownBtn = document.createElement('button');
+    dropdownBtn.className = 'version-btn';
+    dropdownBtn.innerHTML = `${currentVersion} <span class="version-caret">▼</span>`;
+
+    const dropdownContent = document.createElement('div');
+    dropdownContent.className = 'version-dropdown-content';
+
+    supportedVersions.forEach(version => {
+        const link = document.createElement('a');
+
+        // Replace current version in path with selected version
+        const newPath = window.location.pathname.replace(
+            new RegExp(`/(${supportedVersions.join('|')})/`),
+            `/${version}/`
+        );
+
+        link.href = newPath;
+        link.textContent = version;
+        dropdownContent.appendChild(link);
+    });
+
+    versionDropdown.appendChild(dropdownBtn);
+    versionDropdown.appendChild(dropdownContent);
+
+    const searchBox = document.querySelector('.wy-side-nav-search');
+    const logo = document.querySelector('.wy-side-nav-search > a');
+
+    if (searchBox && logo) {
+        searchBox.insertBefore(versionDropdown, logo.nextSibling);
+    }
+    // Toggle dropdown
+    dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+        dropdownContent.classList.remove('show');
+    });
+});
