@@ -55,7 +55,7 @@ However, it has the same limitations due to the slow-and-stop nature of the solu
    :alt: Supervisor Solution Infographic
    :align: center
 
-The Supervisor ROS uses a dynamic approach to collision avoidance to enhance safety while addressing the efficiency challenges and lightening the system tuning load.
+The Supervisor ROS uses a dynamic approach to collision avoidance to enhance safety while addressing the efficiency challenges and reducing the system tuning load.
 Rather than solely stopping or slowing down when an obstacle is detected in proximity to the robot, the Supervisor takes over and adjusts the robot's trajectory in real-time to avoid collisions while still making progress towards its goal - also considering lower-level safety constraints described above if present (Pro version).
 This allows the robot to dynamically react to the environment while not prematurely stopping or slowing when maneuvers are available which can prevent triggering safety system reactions - increasing throughput.
 It will however still stop the robot is required as any other safety system might.
