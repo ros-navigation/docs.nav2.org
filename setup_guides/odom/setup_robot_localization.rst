@@ -36,7 +36,7 @@ Next, we specify the parameters of the ``ekf_node`` using a YAML file. Create a 
 .. code-block:: yaml
 
   ### ekf config file ###
-  ekf_node:
+  ekf_filter_node:
       ros__parameters:
   # The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin
   # computation until it receives at least one message from one of the inputs. It will then run continuously at the
@@ -103,7 +103,7 @@ Now, let us add the ``ekf_node`` into the launch file. Open ``launch/display.lau
   robot_localization_node = Node(
       package='robot_localization',
       executable='ekf_node',
-      name='ekf_node',
+      name='ekf_filter_node',
       output='screen',
       parameters=[os.path.join(pkg_share, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
   )
