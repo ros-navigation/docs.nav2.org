@@ -1232,7 +1232,7 @@
 </div>
 <p>Next, we specify the parameters of the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> using a YAML file. Create a directory named <code class="docutils literal notranslate"><span class="pre">config</span></code> at the root of your project and create a file named <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code>. Copy the following lines of code into your <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code> file.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span>
-<span class="nt">ekf_node</span><span class="p">:</span>
+<span class="nt">ekf_filter_node</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span>
 <span class="c1"># computation until it receives at least one message from one of the inputs. It will then run continuously at the</span>
@@ -1294,7 +1294,7 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">robot_localization_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Node<span class="o">(</span>
 <span class="w">    </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;robot_localization&#39;</span>,
 <span class="w">    </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;ekf_node&#39;</span>,
-<span class="w">    </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ekf_node&#39;</span>,
+<span class="w">    </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ekf_filter_node&#39;</span>,
 <span class="w">    </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>,
 <span class="w">    </span><span class="nv">parameters</span><span class="o">=[</span>os.path.join<span class="o">(</span>pkg_share,<span class="w"> </span><span class="s1">&#39;config/ekf.yaml&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="o">{</span><span class="s1">&#39;use_sim_time&#39;</span>:<span class="w"> </span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;use_sim_time&#39;</span><span class="o">)}]</span>
 <span class="o">)</span>
