@@ -1124,6 +1124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
 </ul>
 </li>
 </ul>
@@ -1315,6 +1316,15 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 </div>
 <p>You can then <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/nav2_ws/install/setup.bash</span></code> to get ready for demonstrations! It is safe
 to ignore the rosdep error of from the missing <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> key.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">rmw_zenoh_cpp</span></code> and want to run tests without a Zenoh router,
+you can enable isolated tests by building with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cmake-args<span class="w"> </span>-DUSE_ISOLATED_TESTS<span class="o">=</span>ON
+</pre></div>
+</div>
+</div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>For more examples on building Nav2 from rolling development source, checkout <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile">source.Dockerfile</a>.</p>

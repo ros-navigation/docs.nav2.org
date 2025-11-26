@@ -1124,6 +1124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
 </ul>
 </li>
 </ul>
@@ -1641,6 +1642,12 @@ This change ensures proper handling of dynamic parameter updates by grouping the
 <code class="docutils literal notranslate"><span class="pre">CostmapSource</span></code> observation type was added to both Collision Monitor and
 Collision Detector, allowing them to subscribe directly to
 <code class="docutils literal notranslate"><span class="pre">nav2_msgs/msg/Costmap</span></code> messages as an observation source. This source should be used with caution.</p>
+</div>
+<div class="section" id="options-to-build-with-isolated-tests">
+<h2>Options to build with isolated tests<a class="headerlink" href="#options-to-build-with-isolated-tests" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5516">PR #5516</a>, we added an option to build with isolated tests.
+This allows users of <code class="docutils literal notranslate"><span class="pre">rmw_zenoh_cpp</span></code> to run the tests without needing to start a Zenoh router in a separate terminal.
+You can enable this by building with <code class="docutils literal notranslate"><span class="pre">--cmake-args</span> <span class="pre">-DUSE_ISOLATED_TESTS=ON</span></code>.</p>
 </div>
 </div>
 

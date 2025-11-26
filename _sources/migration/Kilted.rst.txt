@@ -485,3 +485,10 @@ In `PR #5642 <https://github.com/ros-navigation/navigation2/pull/5642>`_, a new
 ``CostmapSource`` observation type was added to both Collision Monitor and
 Collision Detector, allowing them to subscribe directly to
 ``nav2_msgs/msg/Costmap`` messages as an observation source. This source should be used with caution.
+
+Options to build with isolated tests
+------------------------------------
+
+In `PR #5516 <https://github.com/ros-navigation/navigation2/pull/5516>`_, we added an option to build with isolated tests.
+This allows users of ``rmw_zenoh_cpp`` to run the tests without needing to start a Zenoh router in a separate terminal.
+You can enable this by building with ``--cmake-args -DUSE_ISOLATED_TESTS=ON``.
