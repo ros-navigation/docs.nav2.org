@@ -39,62 +39,62 @@ Regulated Pure Pursuit Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         0.0
+  double         -0.5
   ============== ===========================
 
   Description
-    The minimum linear velocity (m/s) to use.
+    The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
 
 :max_angular_vel:
 
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         1.0
+  double         2.5
   ============== ===========================
 
   Description
-    The maximum angular velocity (rad/s) to use.
+    The maximum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
 
 :min_angular_vel:
 
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         -1.0
+  double         -2.5
   ============== ===========================
 
   Description
-    The minimum angular velocity (rad/s) to use.
+    The minimum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
 
 :max_linear_accel:
 
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         0.5
+  double         2.5
   ============== ===========================
 
   Description
-    The maximum linear acceleration (m/s^2) to use.
+    The maximum linear acceleration (m/s^2) used when `use_dynamic_window` is `true`.
 
 :max_linear_decel:
 
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         0.5
+  double         2.5
   ============== ===========================
 
   Description
-    The maximum linear deceleration (m/s^2) to use.
+    The maximum linear deceleration (m/s^2) used when `use_dynamic_window` is `true`.
 
 :max_angular_accel:
 
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         1.0
+  double         3.2
   ============== ===========================
 
   Description
@@ -105,11 +105,11 @@ Regulated Pure Pursuit Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         1.0
+  double         3.2
   ============== ===========================
 
   Description
-    The maximum angular deceleration (rad/s^2) to use.
+    The maximum angular deceleration (rad/s^2) used when `use_dynamic_window` is `true`.
 
 :lookahead_dist:
 
@@ -439,7 +439,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           true
+  bool           false
   ============== =============================
 
   Description
@@ -472,13 +472,13 @@ Example
       FollowPath:
         plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
         max_linear_vel: 0.5
-        min_linear_vel: 0.0
-        max_angular_vel: 1.0
-        min_angular_vel: -1.0
-        max_linear_accel: 0.5
-        max_linear_decel: 0.5
-        max_angular_accel: 1.0
-        max_angular_decel: 1.0
+        min_linear_vel: -0.5
+        max_angular_vel: 2.5
+        min_angular_vel: -2.5
+        max_linear_accel: 2.5
+        max_linear_decel: 2.5
+        max_angular_accel: 3.2
+        max_angular_decel: 3.2
         lookahead_dist: 0.6
         min_lookahead_dist: 0.3
         max_lookahead_dist: 0.9
@@ -504,5 +504,5 @@ Example
         max_robot_pose_search_dist: 10.0
         min_distance_to_obstacle: 0.0
         stateful: true
-        use_dynamic_window: true
+        use_dynamic_window: false
 
