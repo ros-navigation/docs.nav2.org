@@ -276,17 +276,6 @@ Regulated Pure Pursuit Parameters
   Description
     A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within ``cost_scaling_dist``. Lower value reduces speed more quickly.
 
-:inflation_cost_scaling_factor:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         3.0
-  ============== =============================
-
-  Description
-    The value of `cost_scaling_factor` set for the inflation layer in the local costmap. The value should be exactly the same for accurately computing distance from obstacles using the inflated cell values
-
 :regulated_linear_scaling_min_radius:
 
   ============== =============================
@@ -456,18 +445,6 @@ Regulated Pure Pursuit Parameters
   Description
     Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes optimal path tracking velocity commands under velocity and acceleration constraints.
 
-:velocity_feedback:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  std::string    "OPEN_LOOP"
-  ============== =============================
-
-  Description
-    How the current velocity is obtained during dynamic window computation. "OPEN_LOOP" uses the last commanded velocity (recommended). "CLOSED_LOOP" uses odometry velocity (may hinder proper acceleration/deceleration).
-
-
 
 Example
 *******
@@ -515,12 +492,10 @@ Example
         max_allowed_time_to_collision_up_to_carrot: 1.0
         use_regulated_linear_velocity_scaling: true
         use_fixed_curvature_lookahead: false
-        curvature_lookahead_dist: 0.6
+        curvature_lookahead_dist: 0.25
         use_cost_regulated_linear_velocity_scaling: false
-        interpolate_curvature_after_goal: false
         cost_scaling_dist: 0.3
         cost_scaling_gain: 1.0
-        inflation_cost_scaling_factor: 3.0
         regulated_linear_scaling_min_radius: 0.9
         regulated_linear_scaling_min_speed: 0.25
         use_rotate_to_heading: true
@@ -528,5 +503,6 @@ Example
         rotate_to_heading_min_angle: 0.785
         max_robot_pose_search_dist: 10.0
         min_distance_to_obstacle: 0.0
+        stateful: true
         use_dynamic_window: true
-        velocity_feedback: "OPEN_LOOP"
+
