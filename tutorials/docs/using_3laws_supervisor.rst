@@ -48,21 +48,21 @@ Adding safety capabilities to the robot eliminates the burden of taking static s
 
 Applications that do not require safety-rating or are not able to leverage expensive safety-rated lidars can typically use the Nav2 Collision Monitor or similar to stop or slow down the robot when an obstacle is detected.
 This is a software-based solution that monitors the robot's sensors (lidar, depth camera, sonar, etc) to detect obstacles and trigger a stop or slow down.
-This is broadly analog to traditional safety-rated systems, but it does not provide the same level of safety assurance. 
+This is broadly analog to traditional safety-rated systems, but it does not provide the same level of safety assurance.
 However, it has the same limitations due to the slow-and-stop nature of the solution.
 
 .. image:: images/3laws_supervisor/graphics/solution_infographic.png
    :alt: Supervisor Solution Infographic
    :align: center
 
-The Supervisor ROS uses a dynamic approach to collision avoidance to enhance safety while addressing the efficiency challenges and lightening the system tuning load.
-Rather than solely stopping or slowing down when an obstacle is detected in proximity to the robot, the Supervisor takes over and adjusts the robot's trajectory in real-time to avoid collisions while still making progress towards its goal - also considering lower-level safety constraints described above if present (Pro version). 
+The Supervisor ROS uses a dynamic approach to collision avoidance to enhance safety while addressing the efficiency challenges and reducing the system tuning load.
+Rather than solely stopping or slowing down when an obstacle is detected in proximity to the robot, the Supervisor takes over and adjusts the robot's trajectory in real-time to avoid collisions while still making progress towards its goal - also considering lower-level safety constraints described above if present (Pro version).
 This allows the robot to dynamically react to the environment while not prematurely stopping or slowing when maneuvers are available which can prevent triggering safety system reactions - increasing throughput.
 It will however still stop the robot is required as any other safety system might.
 For best use, a system should still contain a global replanning mechanism and/or a trajectory planner that considers collision.
 The Supervisor should complement these systems rather than completely replacing them for maximum effectiveness, *especially* on robots moving fast, with heavy loads, or slow dynamics.
 This can allow users to reduce the amount of tuning of Nav2's highly configurable but complex controller parameters, moving faster to market.
-It is also very good for teleoperation tasks either joysticking locally or via remote monitoring systems to avoid collisions due to remote operation delays! 
+It is also very good for teleoperation tasks either joysticking locally or via remote monitoring systems to avoid collisions due to remote operation delays!
 
 .. image:: images/3laws_supervisor/graphics/Nav2Diagram_3laws.png
   :alt: Nav2 and 3Laws Supervisor Integration Diagram
@@ -85,7 +85,7 @@ If you wish to learn more about the technology behind the Supervisor, checkout t
 -----------------------
 
 Supervisor ROS is available in a free community tier, but still requires a license key to be used.
-The license key can be obtained by requesting a key from the `3Laws Robotics Free-Trial <https://3laws.io/free-trial/>`_ page or by navigating from the 3Laws home page and clicking 'Get Started' in the upper right corner.
+The license key can be obtained by requesting a key from the `3Laws Robotics Free-Trial <https://3laws.io/free-trial-new/>`_ page or by navigating from the 3Laws home page and clicking 'Get Started' in the upper right corner.
 Once approved, the license key will be sent to the email address provided in the request form.
 It can be verified in Step 1 below in the Supervisor configuration GUI.
 
@@ -178,7 +178,7 @@ Supervisor Configuration: General
 
 Now that we have the parameters extracted from the Nav2 configuration, we can complete the Supervisor configuration.
 
-On the landing page shown above: 
+On the landing page shown above:
 
 * Input your license key in the "License Key" field. When one is inputted, it should automatically validate and show the license status in the GUI
 * Name the robot this configuration belongs to, whether a specific robot or a model of robot depending on the granularity of your configuration settings
@@ -194,7 +194,7 @@ There are additional advanced settings that may be configured, including:
 
 .. note::
 
-   For safest operations, re-timestamping messages should be disabled and all messages in a system should be validated to be properly timestamped. For getting started, restamping all incoming messages would be OK if you are not confident in your system's timestamping or wish to use simulation time. 
+   For safest operations, re-timestamping messages should be disabled and all messages in a system should be validated to be properly timestamped. For getting started, restamping all incoming messages would be OK if you are not confident in your system's timestamping or wish to use simulation time.
 
 Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration and hit "Next" to proceed to the next page.
 
@@ -292,7 +292,7 @@ Set the sensor's QoS to be Sensor Data if not already default.
    :align: center
 
 Add in the additional information about your sensors (number of rays, angles, range, update rate, etc) which should be obtained from your sensor's documentation.
-If using a consumer-grade lidar, consider hitting the *Edit Perception parameters (advanced)* button toggle on ``Accept laserscan with wrong size``. 
+If using a consumer-grade lidar, consider hitting the *Edit Perception parameters (advanced)* button toggle on ``Accept laserscan with wrong size``.
 These sensors can frequently provide a different number of rays each iteration than it should based on low-cost hardware limitations.
 Thus, we want to bypass usual checks for safety-rated sensors to allow it to be used for the Supervisor.
 Similarly, set the Advanced *Min distance mode* to ``SET_AT_INFINITY`` so that readings with no range are set to infinity rather than minimal values.
@@ -301,7 +301,7 @@ Select the frame of reference setup in the General page for each Perception sour
 If you did not set this up previously, go back now and do so. It will now be available in the dropdown menu.
 
 If providing a set of pre-localized obstacles for collision advoidance, toggle on the Obstacles Map and provide the topic name for the map.
-This currently supports obstacles provided in the form of: 
+This currently supports obstacles provided in the form of:
 
 * ``lll_msgs/ObstacleArray``
 
@@ -347,7 +347,7 @@ The filter rate is the update rate of the Supervisor's collision avoidance calcu
 
 For now, you may leave the configuration of Aggressiveness, Conservativeness, Pointiness, and Evasion Aggressiveness at their default values.
 These parameters control how aggressively the Supervisor will adjust the robot's trajectory to avoid collisions.
-These can be fine-tuned later based on the robot's emperical behavior and your application needs.
+These can be fine-tuned later based on the robot's empirical behavior and your application needs.
 
 The fault management section is not required for the Supervisor to function, but it can be useful for monitoring the robot's health and performance.
 Set the ``Can resume on failure`` toggle to on so that we can resume from timeout failures from sensors and command velocity inputs if they occur.
@@ -430,13 +430,13 @@ In your Nav2 parameters file, change the ``cmd_vel_in_topic`` in the Collision M
        cmd_vel_out_topic: "cmd_vel"
 
 If you do not wish to use the Collision Monitor, then you can skip this step and have ``/cmd_vel_smoothed`` sent to the Supervisor which can directly output ``/cmd_vel``.
-If using the Approach Footprint Collision Monitor configuration or only using stop zones, this is likely redundant to the Supervisor. 
+If using the Approach Footprint Collision Monitor configuration or only using stop zones, this is likely redundant to the Supervisor.
 
 Controller Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nav2 may need some custom configuration to best leverage the Supervisor in its autonomy workflow.
-The changes to the controllers depend on which category of control algorithm it uses: 
+The changes to the controllers depend on which category of control algorithm it uses:
 
 1. Advanced, predictive or reactive
 2. Geometric or algebraic
@@ -445,7 +445,7 @@ For advanced, predictive, or reactive controllers which consider collision and a
 Since these controllers will automatically deviate from the path when it is blocked and find ways around obstacles, this can remain.
 The Supervisor may in some situations manipulate this command to provide additional safety margin from obstacles, it works more as a paired companion.
 While replanning is not required since these algorithms can deviate from the route to get around obstacles, it may be beneficial to utilize it to navigate in environments with particularly large obstacles.
-These controllers may be retuned to be more aggressive *or* do not require as close of tuning for collision avoidance when using the Supervisor. 
+These controllers may be retuned to be more aggressive *or* do not require as close of tuning for collision avoidance when using the Supervisor.
 
 For Geometric algorithms like Regulated Pure Pursuit and Graceful controllers, the collision detection and avoidance pipeline must be *disabled* such that the controller doesn't give up and stop navigation when obstacles are detected in the way.
 Instead, the responsibilities will be shifted to the Supervisor to detect obstacles and either deviate or stop the robot when necessary.
@@ -519,7 +519,7 @@ While MPPI was able to overcome this obstacle itself, the increased throughput o
 
 Note that a similar thing could be created via an intermediate configuration of a behavior tree designed to leverage precise path tracking algorithms like Regulated Pure Pursuit when no obstacles are on the path and switch to dynamic replanning and/or an advanced controller when obstacles are present to navigate around them.
 However, that requires more effort to setup and manage and only provides benefit if strict management over the robot behavior is required.
-If using replanning and MPPI (and an intermediate to advanced application-specific behavior tree), the improvements using Supervisor in such a situation are relatively nominal, but can (a) increase throughput marginally, (b) provide an additional heirarchical layer of collision avoidance as part of a larger safety story, and (c) reduce some of the most tedious fine tuning of predictive controller behavior in close proximity to obstacles.
+If using replanning and MPPI (and an intermediate to advanced application-specific behavior tree), the improvements using Supervisor in such a situation are relatively nominal, but can (a) increase throughput marginally, (b) provide an additional hierarchical layer of collision avoidance as part of a larger safety story, and (c) reduce some of the most tedious fine tuning of predictive controller behavior in close proximity to obstacles.
 
 5. Hardware Demonstrations
 --------------------------
