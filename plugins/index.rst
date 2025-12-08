@@ -506,93 +506,96 @@ Behavior Tree Nodes
 .. _Toggle Collision Monitor Service: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp
 
 
-+------------------------------------+--------------------+------------------------+
-| Condition Plugin Name              |         Creator    |       Description      |
-+====================================+====================+========================+
-| `Goal Reached Condition`_          | Carl Delsey        | Checks if goal is      |
-|                                    |                    | reached within tol.    |
-+------------------------------------+--------------------+------------------------+
-| `Goal Updated Condition`_          |Aitor Miguel Blanco | Checks if goal is      |
-|                                    |                    | preempted.             |
-+------------------------------------+--------------------+------------------------+
-| `Global Updated Goal Condition`_   | Joshua Wallace     | Checks if goal is      |
-|                                    |                    | preempted in the global|
-|                                    |                    | BT context             |
-+------------------------------------+--------------------+------------------------+
-| `Initial Pose received Condition`_ | Carl Delsey        | Checks if initial pose |
-|                                    |                    | has been set           |
-+------------------------------------+--------------------+------------------------+
-| `Is Stuck Condition`_              |  Michael Jeronimo  | Checks if robot is     |
-|                                    |                    | making progress or     |
-|                                    |                    | stuck                  |
-+------------------------------------+--------------------+------------------------+
-| `Is Stopped Condition`_            |  Tony Najjar       | Checks if robot is     |
-|                                    |                    | stopped for a duration |
-+------------------------------------+--------------------+------------------------+
-| `Transform Available Condition`_   |  Steve Macenski    | Checks if a TF         |
-|                                    |                    | transformation is      |
-|                                    |                    | available. When        |
-|                                    |                    | succeeds returns       |
-|                                    |                    | success for subsequent |
-|                                    |                    | calls.                 |
-+------------------------------------+--------------------+------------------------+
-| `Distance Traveled Condition`_     |  Sarthak Mittal    | Checks is robot has    |
-|                                    |                    | traveled a given       |
-|                                    |                    | distance.              |
-+------------------------------------+--------------------+------------------------+
-| `Time Expired Condition`_          |  Sarthak Mittal    | Checks if a given      |
-|                                    |                    | time period has        |
-|                                    |                    | passed.                |
-+------------------------------------+--------------------+------------------------+
-| `Is Battery Low Condition`_        |  Sarthak Mittal    | Checks if battery      |
-|                                    |                    | percentage is below    |
-|                                    |                    | a specified value.     |
-+------------------------------------+--------------------+------------------------+
-| `Is Path Valid Condition`_         |  Joshua Wallace    | Checks if a path is    |
-|                                    |                    | valid by making sure   |
-|                                    |                    | there are no LETHAL    |
-|                                    |                    | obstacles along the    |
-|                                    |                    | path.                  |
-+------------------------------------+--------------------+------------------------+
-| `Path Expiring Timer`_             |  Joshua Wallace    | Checks if the timer has|
-|                                    |                    | expired. The timer is  |
-|                                    |                    | reset if the path gets |
-|                                    |                    | updated.               |
-+------------------------------------+--------------------+------------------------+
-| `Are Error Codes Present`_         |  Joshua Wallace    | Checks if the specified|
-|                                    |                    | error codes are        |
-|                                    |                    | present.               |
-+------------------------------------+--------------------+------------------------+
-| `Would A Controller Recovery Help`_|  Joshua Wallace    | Checks if a controller |
-|                                    |                    | recovery could help    |
-|                                    |                    | clear the controller   |
-|                                    |                    | server error code.     |
-+------------------------------------+--------------------+------------------------+
-| `Would A Planner Recovery Help`_   |  Joshua Wallace    | Checks if a planner    |
-|                                    |                    | recovery could help    |
-|                                    |                    | clear the planner      |
-|                                    |                    | server error code.     |
-+------------------------------------+--------------------+------------------------+
-| `Would A Smoother Recovery Help`_  |  Joshua Wallace    | Checks if a Smoother   |
-|                                    |                    | recovery could help    |
-|                                    |                    | clear the smoother     |
-|                                    |                    | server error code.     |
-+------------------------------------+--------------------+------------------------+
-| `Would A Route Recovery Help`_     | Steve Macenski     | Checks if a Route      |
-|                                    |                    | recovery could help    |
-|                                    |                    | clear the route        |
-|                                    |                    | server error code.     |
-+------------------------------------+--------------------+------------------------+
-| `Is Battery Charging Condition`_   |  Alberto Tudela    | Checks if the battery  |
-|                                    |                    | is charging.           |
-+------------------------------------+--------------------+------------------------+
-| `Are Poses Near Condition`_        |  Steve Macenski    | Checks if 2 poses are  |
-|                                    |                    | nearby to each other.  |
-+------------------------------------+--------------------+------------------------+
-| `Is Pose Occupied Condition`_      | Maurice Alexander  | Checks if a pose is    |
-|                                    | Purnawan           | occupied.              |
-+------------------------------------+--------------------+------------------------+
-
++----------------------------------------------+--------------------+------------------------+
+| Condition Plugin Name                        |         Creator    |       Description      |
++==============================================+====================+========================+
+| `Goal Reached Condition`_                    | Carl Delsey        | Checks if goal is      |
+|                                              |                    | reached within tol.    |
++----------------------------------------------+--------------------+------------------------+
+| `Goal Updated Condition`_                    |Aitor Miguel Blanco | Checks if goal is      |
+|                                              |                    | preempted.             |
++----------------------------------------------+--------------------+------------------------+
+| `Global Updated Goal Condition`_             | Joshua Wallace     | Checks if goal is      |
+|                                              |                    | preempted in the global|
+|                                              |                    | BT context             |
++----------------------------------------------+--------------------+------------------------+
+| `Initial Pose received Condition`_           | Carl Delsey        | Checks if initial pose |
+|                                              |                    | has been set           |
++----------------------------------------------+--------------------+------------------------+
+| `Is Stuck Condition`_                        |  Michael Jeronimo  | Checks if robot is     |
+|                                              |                    | making progress or     |
+|                                              |                    | stuck                  |
++----------------------------------------------+--------------------+------------------------+
+| `Is Stopped Condition`_                      |  Tony Najjar       | Checks if robot is     |
+|                                              |                    | stopped for a duration |
++----------------------------------------------+--------------------+------------------------+
+| `Transform Available Condition`_             |  Steve Macenski    | Checks if a TF         |
+|                                              |                    | transformation is      |
+|                                              |                    | available. When        |
+|                                              |                    | succeeds returns       |
+|                                              |                    | success for subsequent |
+|                                              |                    | calls.                 |
++----------------------------------------------+--------------------+------------------------+
+| `Distance Traveled Condition`_               |  Sarthak Mittal    | Checks is robot has    |
+|                                              |                    | traveled a given       |
+|                                              |                    | distance.              |
++----------------------------------------------+--------------------+------------------------+
+| `Time Expired Condition`_                    |  Sarthak Mittal    | Checks if a given      |
+|                                              |                    | time period has        |
+|                                              |                    | passed.                |
++----------------------------------------------+--------------------+------------------------+
+| `Is Battery Low Condition`_                  |  Sarthak Mittal    | Checks if battery      |
+|                                              |                    | percentage is below    |
+|                                              |                    | a specified value.     |
++----------------------------------------------+--------------------+------------------------+
+| `Is Path Valid Condition`_                   |  Joshua Wallace    | Checks if a path is    |
+|                                              |                    | valid by making sure   |
+|                                              |                    | there are no LETHAL    |
+|                                              |                    | obstacles along the    |
+|                                              |                    | path.                  |
++----------------------------------------------+--------------------+------------------------+
+| `Path Expiring Timer`_                       |  Joshua Wallace    | Checks if the timer has|
+|                                              |                    | expired. The timer is  |
+|                                              |                    | reset if the path gets |
+|                                              |                    | updated.               |
++----------------------------------------------+--------------------+------------------------+
+| `Are Error Codes Present`_                   |  Joshua Wallace    | Checks if the specified|
+|                                              |                    | error codes are        |
+|                                              |                    | present.               |
++----------------------------------------------+--------------------+------------------------+
+| `Would A Controller Recovery Help`_          |  Joshua Wallace    | Checks if a controller |
+|                                              |                    | recovery could help    |
+|                                              |                    | clear the controller   |
+|                                              |                    | server error code.     |
++----------------------------------------------+--------------------+------------------------+
+| `Would A Planner Recovery Help`_             |  Joshua Wallace    | Checks if a planner    |
+|                                              |                    | recovery could help    |
+|                                              |                    | clear the planner      |
+|                                              |                    | server error code.     |
++----------------------------------------------+--------------------+------------------------+
+| `Would A Smoother Recovery Help`_            |  Joshua Wallace    | Checks if a Smoother   |
+|                                              |                    | recovery could help    |
+|                                              |                    | clear the smoother     |
+|                                              |                    | server error code.     |
++----------------------------------------------+--------------------+------------------------+
+| `Would A Route Recovery Help`_               | Steve Macenski     | Checks if a Route      |
+|                                              |                    | recovery could help    |
+|                                              |                    | clear the route        |
+|                                              |                    | server error code.     |
++----------------------------------------------+--------------------+------------------------+
+| `Is Battery Charging Condition`_             |  Alberto Tudela    | Checks if the battery  |
+|                                              |                    | is charging.           |
++----------------------------------------------+--------------------+------------------------+
+| `Are Poses Near Condition`_                  |  Steve Macenski    | Checks if 2 poses are  |
+|                                              |                    | nearby to each other.  |
++----------------------------------------------+--------------------+------------------------+
+| `Is Pose Occupied Condition`_                | Maurice Alexander  | Checks if a pose is    |
+|                                              | Purnawan           | occupied.              |
++----------------------------------------------+--------------------+------------------------+
+| `Is Within Path Tracking Bounds Condition`_  | Berkan Tali        | Checks if robot is     |
+|                                              |                    | within determined      |
+|                                              |                    | bounds.                |
++----------------------------------------------+--------------------+------------------------+
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
 .. _Global Updated Goal Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
@@ -613,6 +616,7 @@ Behavior Tree Nodes
 .. _Is Battery Charging Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 .. _Are Poses Near Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 .. _Is Pose Occupied Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_pose_occupied_condition.cpp
+.. _Is Within Path Tracking Bounds Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
