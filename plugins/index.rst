@@ -350,11 +350,11 @@ Path Handlers
 |                                 | Purnawan               | plan to the local costmap frame, |
 |                                 |                        | prunes it to the relevant portion|
 |                                 |                        | within the costmap bounds, and   |
-|                                 |                        | handles in-place rotation and    | 
+|                                 |                        | handles in-place rotation and    |
 |                                 |                        | cusp pruning.                    |
 +---------------------------------+------------------------+----------------------------------+
 
-.. _FeasiblePathHandler: 
+.. _FeasiblePathHandler:
 
 
 Behavior Tree Nodes
