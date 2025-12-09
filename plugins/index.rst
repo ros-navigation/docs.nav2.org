@@ -624,6 +624,7 @@ Behavior Tree Nodes
 |                                    |                    | remaining path length. |
 +------------------------------------+--------------------+------------------------+
 
+
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
 .. _Global Updated Goal Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
