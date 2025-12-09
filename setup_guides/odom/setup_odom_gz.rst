@@ -394,8 +394,8 @@ Add this two variables, which are needed for starting the Gazebo world and spawn
 
 .. code-block:: python
 
-  default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
-  default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
+  ros_gz_sim_share = get_package_share_directory('ros_gz_sim')
+  gz_spawn_model_launch_source = os.path.join(ros_gz_sim_share, "launch", "gz_spawn_model.launch.py")
 
 To make ``robot_state_publisher`` ``use_sim_time`` change it in the following way:
 
