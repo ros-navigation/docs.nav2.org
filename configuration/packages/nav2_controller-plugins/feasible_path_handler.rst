@@ -1,7 +1,7 @@
 .. _configuring_nav2_controller_feasible_path_handler_plugin:
 
 FeasiblePathHandler
-=================
+===================
 
 Transforms the global plan into the local costmap frame, prunes it to the relevant portion
 within the costmap bounds, and handles in-place rotation and cusp pruning.
@@ -103,6 +103,7 @@ Parameters
 Example
 *******
 .. code-block:: yaml
+
   PathHandler:
       plugin: "nav2_controller::FeasiblePathHandler"
       prune_distance: 1.4
