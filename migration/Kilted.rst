@@ -492,3 +492,49 @@ Options to build with isolated tests
 In `PR #5516 <https://github.com/ros-navigation/navigation2/pull/5516>`_, we added an option to build with isolated tests.
 This allows users of ``rmw_zenoh_cpp`` to run the tests without needing to start a Zenoh router in a separate terminal.
 You can enable this by building with ``--cmake-args -DUSE_ISOLATED_TESTS=ON``.
+
+New IsWithinPathTrackingBounds BT Condition Node
+-------------------------------------------------
+
+A new behavior tree condition node ``IsWithinPathTrackingBounds`` has been added to monitor real-time path tracking performance during navigation. This node subscribes to ``tracking_feedback`` messages (of type ``nav2_msgs::msg::TrackingFeedback``) published by controllers and checks if the robot's lateral tracking error stays within configured bounds.
+
+**Key Features:**
+
+* Monitors tracking error from controller feedback
+* Supports asymmetric bounds for left and right side errors
+* Returns SUCCESS when robot is within bounds, FAILURE otherwise
+* Useful for triggering recovery behaviors when path tracking degrades
+
+**Usage in Behavior Trees:**
+
+.. code-block:: xml
+
+    <RateController hz="3.0">
+      <Fallback name="PathTrackingRecoveryPlanner">
+        <IsWithinPathTrackingBounds max_error_left="2.0" max_error_right="2.0" />
+        <Fallback name="TieredReplanning">
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+          <Sequence>
+            <ClearEntireCostmap name="ClearGlobalCostmap-Tier2" service_name="global_costmap/clear_entirely_global_costmap"/>
+            <RetryUntilSuccessful num_attempts="1">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+            </RetryUntilSuccessful>
+          </Sequence>
+        </Fallback>
+      </Fallback>
+    </RateController>
+
+**Required Configuration:**
+
+Controllers must publish ``nav2_msgs::msg::TrackingFeedback`` messages on the ``tracking_feedback`` topic. The ``tracking_error`` field should contain the lateral deviation where:
+
+* Positive values = robot is left of the path
+* Negative values = robot is right of the path
+
+**Migration Notes:**
+
+If you want to use this condition node in your behavior trees:
+
+1. Ensure your controller publishes ``tracking_feedback`` messages
+2. Add the condition node to your BT XML with appropriate error bounds
+3. The node differentiates between left/right errors, allowing asymmetric tolerance
