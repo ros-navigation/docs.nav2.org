@@ -433,3 +433,90 @@ This server allows the robot to follow and maintain a determined distance from a
 The information about Following Server parameters set-up could be found at :ref:`configuring_following_server` configuration guide.
 
 The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see :ref:`navigation2-dynamic-point-following`.
+
+Centralize Path Handler logic in Controller Server
+--------------------------------------------------
+
+`PR #5446 <https://github.com/ros-navigation/navigation2/pull/5446>`_ centralizes
+path handling logic inside the controller server. Previously, each controller
+plugin implemented its own version of this logic.
+
+With this change, users can now configure a path handler in the controller server:
+
+.. code-block:: yaml
+
+  PathHandler:
+    plugin: "nav2_controller::FeasiblePathHandler"
+
+For more details, refer to the *Path Handler* section in the Controller Server
+documentation.
+
+This update resolves the issue where *Navigate Through Poses* could terminate
+prematurely when passing near intermediate goal poses. We also introduce the following API changes as part of this fix.
+
+GoalChecker
+^^^^^^^^^^^^
+
+Previously:
+
+.. code-block:: c++
+
+  virtual bool isGoalReached(
+    const geometry_msgs::msg::Pose & query_pose,
+    const geometry_msgs::msg::Pose & goal_pose,
+    const geometry_msgs::msg::Twist & velocity) = 0;
+
+Now:
+
+.. code-block:: c++
+
+  virtual bool isGoalReached(
+    const geometry_msgs::msg::Pose & query_pose,
+    const geometry_msgs::msg::Pose & goal_pose,
+    const geometry_msgs::msg::Twist & velocity,
+    const nav_msgs::msg::Path & transformed_global_plan) = 0;
+
+A new argument is added: the **transformed and pruned global plan** from the path handler.
+
+Controller Plugins
+^^^^^^^^^^^^^^^^^^
+
+Previously:
+
+.. code-block:: c++
+
+  virtual void setPlan(const nav_msgs::msg::Path & path) = 0;
+
+Now:
+
+.. code-block:: c++
+
+  virtual void newPathReceived(const nav_msgs::msg::Path & raw_global_path) = 0;
+
+This callback should now only perform lightweight tasks (e.g. resetting internal
+state). The controller will be provided the processed plan during computeVelocityCommands().
+
+Previously:
+
+.. code-block:: c++
+
+  virtual geometry_msgs::msg::TwistStamped computeVelocityCommands(
+    const geometry_msgs::msg::PoseStamped & pose,
+    const geometry_msgs::msg::Twist & velocity,
+    nav2_core::GoalChecker * goal_checker) = 0;
+
+Now:
+
+.. code-block:: c++
+
+  virtual geometry_msgs::msg::TwistStamped computeVelocityCommands(
+    const geometry_msgs::msg::PoseStamped & pose,
+    const geometry_msgs::msg::Twist & velocity,
+    nav2_core::GoalChecker * goal_checker,
+    const nav_msgs::msg::Path & transformed_global_plan,
+    const geometry_msgs::msg::PoseStamped & global_goal) = 0;
+
+New parameters are provided:
+
+- the **transformed and pruned global plan** from the path handler.
+- The last pose from the global plan.
