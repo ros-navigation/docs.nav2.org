@@ -813,20 +813,20 @@ A new behavior tree condition node ``IsWithinPathTrackingBounds`` has been added
 
 .. code-block:: xml
 
-<RateController hz="3.0">
-  <Fallback name="PathTrackingRecoveryPlanner">
-    <IsWithinPathTrackingBounds max_error_left="2.0" max_error_right="2.0" />
-    <Fallback name="TieredReplanning">
-      <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-      <Sequence>
-        <ClearEntireCostmap name="ClearGlobalCostmap-Tier2" service_name="global_costmap/clear_entirely_global_costmap"/>
-        <RetryUntilSuccessful num_attempts="1">
+    <RateController hz="3.0">
+      <Fallback name="PathTrackingRecoveryPlanner">
+        <IsWithinPathTrackingBounds max_error_left="2.0" max_error_right="2.0" />
+        <Fallback name="TieredReplanning">
           <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-        </RetryUntilSuccessful>
-      </Sequence>
-    </Fallback>
-  </Fallback>
-</RateController>
+          <Sequence>
+            <ClearEntireCostmap name="ClearGlobalCostmap-Tier2" service_name="global_costmap/clear_entirely_global_costmap"/>
+            <RetryUntilSuccessful num_attempts="1">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+            </RetryUntilSuccessful>
+          </Sequence>
+        </Fallback>
+      </Fallback>
+    </RateController>
 
 **Required Configuration:**
 
@@ -842,5 +842,3 @@ If you want to use this condition node in your behavior trees:
 1. Ensure your controller publishes ``tracking_feedback`` messages
 2. Add the condition node to your BT XML with appropriate error bounds
 3. The node differentiates between left/right errors, allowing asymmetric tolerance
-
-See :ref:`bt_is_within_path_tracking_bounds_condition` for complete documentation.

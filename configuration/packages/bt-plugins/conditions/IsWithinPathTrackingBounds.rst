@@ -32,20 +32,6 @@ Input Ports
   Description
     Maximum allowable tracking error (m) on the right side of the path before returning FAILURE. Must be a positive value.
 
-Subscribed Topics
------------------
-
-:tracking_feedback:
-
-  ==================================== 
-  Type                                 
-  ------------------------------------ 
-  nav2_msgs::msg::TrackingFeedback     
-  ==================================== 
-
-  Description
-    Receives real-time tracking error feedback from the controller. The tracking_error field contains the lateral deviation, where positive values indicate left-side error and negative values indicate right-side error.
-
 Example
 -------
 
@@ -54,9 +40,3 @@ Example
     <IsWithinPathTrackingBounds max_error_left="0.5" max_error_right="0.5"/>
 
 This example checks that the robot stays within 0.5 meters of the path on both sides.
-
-.. code-block:: xml
-
-    <IsWithinPathTrackingBounds max_error_left="0.8" max_error_right="0.3"/>
-
-This example uses asymmetric bounds, allowing more error on the left (0.8m) than the right (0.3m).
