@@ -356,5 +356,12 @@ Example
           stateful: True
         PathHandler:
           plugin: "nav2_controller::FeasiblePathHandler"
+          prune_distance: 1.4
+          enforce_path_inversion: True
+          enforce_path_rotation: False
+          inversion_xy_tolerance: 0.2
+          inversion_yaw_tolerance: 0.4
+          minimum_rotation_angle: 0.785
+          reject_unit_path: False
         FollowPath:
           plugin: "dwb_core::DWBLocalPlanner"

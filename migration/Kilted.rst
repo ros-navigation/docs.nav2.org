@@ -506,6 +506,14 @@ With this change, users can now configure a path handler in the controller serve
 
   PathHandler:
     plugin: "nav2_controller::FeasiblePathHandler"
+    prune_distance: 1.4
+    enforce_path_inversion: True
+    enforce_path_rotation: False
+    inversion_xy_tolerance: 0.2
+    inversion_yaw_tolerance: 0.4
+    minimum_rotation_angle: 0.785
+    reject_unit_path: False
+
 
 For more details, refer to the *Path Handler* section in the Controller Server
 documentation.
@@ -579,3 +587,50 @@ Two new arguments are provided:
 
 - the **transformed and pruned global plan** from the path handler.
 - The last pose from the global plan.
+
+Moreover, several parameters have also been added to / removed from individual controller plugin configurations as part of centralizing path-handling logic in the controller server.
+
+DWB
+^^^
+
+**Removed parameters**
+
+- ``prune_plan``
+- ``shorten_transformed_plan``
+- ``prune_distance``
+- ``forward_prune_distance``
+- ``transform_tolerance``
+- ``publish_global_plan``
+- ``publish_transformed_plan``
+
+**Added parameters**
+
+- ``path_length_tolerance``
+
+RPP
+^^^
+
+**Removed parameters**
+
+- ``transform_tolerance``
+- ``max_robot_pose_search_dist``
+
+Graceful
+^^^^^^^^
+
+**Removed parameters**
+
+- ``transform_tolerance``
+- ``max_robot_pose_search_dist``
+
+MPPI
+^^^^
+
+**Removed parameters**
+
+- ``transform_tolerance``
+- ``prune_distance``
+- ``max_robot_pose_search_dist``
+- ``enforce_path_inversion``
+- ``inversion_xy_tolerance``
+- ``inversion_yaw_tolerance``
