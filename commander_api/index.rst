@@ -73,7 +73,7 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | followPath(path, controller_id='',    | Requests the robot to follow a path from a starting to a goal              |
 | goal_checker_id='',                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
 | progress_checker_id='',               |                                                                            |
-| goal_checker_id='')                   |                                                                            |
+| path_handler_id='')                   |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | spin(spin_dist=1.57,                  | Requests the robot to performs an in-place rotation by a given angle.      |
 | time_allowance=10,                    |                                                                            |
