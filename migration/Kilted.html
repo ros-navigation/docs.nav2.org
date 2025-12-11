@@ -1125,6 +1125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1648,6 +1649,33 @@ Collision Detector, allowing them to subscribe directly to
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5516">PR #5516</a>, we added an option to build with isolated tests.
 This allows users of <code class="docutils literal notranslate"><span class="pre">rmw_zenoh_cpp</span></code> to run the tests without needing to start a Zenoh router in a separate terminal.
 You can enable this by building with <code class="docutils literal notranslate"><span class="pre">--cmake-args</span> <span class="pre">-DUSE_ISOLATED_TESTS=ON</span></code>.</p>
+</div>
+<div class="section" id="roundrobin-wrap-around-parameter">
+<h2>RoundRobin wrap_around Parameter<a class="headerlink" href="#roundrobin-wrap-around-parameter" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5308">PR #5308</a> adds a new <code class="docutils literal notranslate"><span class="pre">wrap_around</span></code> parameter to the RoundRobin behavior tree control node.</p>
+<p>This parameter controls whether the RoundRobin node wraps around to its first child after the last one fails:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wrap_around=false</span></code> (default): Node returns FAILURE instead of wrapping to first child</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wrap_around=true</span></code>: Node wraps around to the first child and continues round-robin behavior</p></li>
+</ul>
+<p><strong>Breaking Change</strong>: The default behavior has changed. Previously, RoundRobin would always wrap around. Now it defaults to <code class="docutils literal notranslate"><span class="pre">wrap_around=false</span></code>, which means existing behavior trees will use the new non-wrap-around behavior unless explicitly configured.</p>
+<p>This change addresses issues where RoundRobin index can become misaligned with RecoveryNode retry counter when used in recovery sequences, ensuring each recovery action is performed once and only once.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- New default behavior (no wrap-around) --&gt;</span>
+<span class="nt">&lt;RoundRobin</span><span class="w"> </span><span class="na">wrap_around=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Action_A/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Action_B/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Action_C/&gt;</span>
+<span class="nt">&lt;/RoundRobin&gt;</span>
+
+<span class="cm">&lt;!-- Previous behavior (wrap-around) --&gt;</span>
+<span class="nt">&lt;RoundRobin</span><span class="w"> </span><span class="na">wrap_around=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Action_A/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Action_B/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Action_C/&gt;</span>
+<span class="nt">&lt;/RoundRobin&gt;</span>
+</pre></div>
+</div>
+<p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">RoundRobin</span></code> please see the <a class="reference external" href="../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin configuration guide</a>.</p>
 </div>
 </div>
 

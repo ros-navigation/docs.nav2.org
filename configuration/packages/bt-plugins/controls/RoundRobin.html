@@ -1125,6 +1125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1212,9 +1213,36 @@
   <div class="section" id="roundrobin">
 <span id="bt-round-robin-control"></span><h1>RoundRobin<a class="headerlink" href="#roundrobin" title="Permalink to this heading"></a></h1>
 <p>Custom control flow node used to create a round-robin behavior for children BT nodes.</p>
+<div class="section" id="input-ports">
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">wrap_around</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 65%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Controls wrap-around behavior. When <code class="docutils literal notranslate"><span class="pre">false</span></code>, the node returns FAILURE instead of wrapping to the first child after all children have been attempted. When <code class="docutils literal notranslate"><span class="pre">true</span></code>, the node wraps around to the first child and continues the round-robin behavior.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RoundRobin&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RoundRobin</span><span class="w"> </span><span class="na">wrap_around=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="cm">&lt;!--Add tree components here---&gt;</span>
 <span class="nt">&lt;/RoundRobin&gt;</span>
 </pre></div>
