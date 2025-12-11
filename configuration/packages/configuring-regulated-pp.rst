@@ -443,7 +443,8 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes optimal path tracking velocity commands under velocity and acceleration constraints.
+    Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm*. This algorithm computes optimal path tracking velocity commands under velocity and acceleration constraints.
+    *Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
 
 
 Example
