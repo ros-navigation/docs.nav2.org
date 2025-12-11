@@ -492,3 +492,35 @@ Options to build with isolated tests
 In `PR #5516 <https://github.com/ros-navigation/navigation2/pull/5516>`_, we added an option to build with isolated tests.
 This allows users of ``rmw_zenoh_cpp`` to run the tests without needing to start a Zenoh router in a separate terminal.
 You can enable this by building with ``--cmake-args -DUSE_ISOLATED_TESTS=ON``.
+
+RoundRobin wrap_around Parameter
+--------------------------------
+
+`PR #5308 <https://github.com/ros-navigation/navigation2/pull/5308>`_ adds a new ``wrap_around`` parameter to the RoundRobin behavior tree control node.
+
+This parameter controls whether the RoundRobin node wraps around to its first child after the last one fails:
+
+- ``wrap_around=false`` (default): Node returns FAILURE instead of wrapping to first child
+- ``wrap_around=true``: Node wraps around to the first child and continues round-robin behavior
+
+**Breaking Change**: The default behavior has changed. Previously, RoundRobin would always wrap around. Now it defaults to ``wrap_around=false``, which means existing behavior trees will use the new non-wrap-around behavior unless explicitly configured.
+
+This change addresses issues where RoundRobin index can become misaligned with RecoveryNode retry counter when used in recovery sequences, ensuring each recovery action is performed once and only once.
+
+.. code-block:: xml
+
+    <!-- New default behavior (no wrap-around) -->
+    <RoundRobin wrap_around="false">
+        <Action_A/>
+        <Action_B/>
+        <Action_C/>
+    </RoundRobin>
+
+    <!-- Previous behavior (wrap-around) -->
+    <RoundRobin wrap_around="true">
+        <Action_A/>
+        <Action_B/>
+        <Action_C/>
+    </RoundRobin>
+
+For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
