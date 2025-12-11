@@ -41,6 +41,7 @@ Action Plugins
   bt-plugins/actions/SmootherSelector.rst
   bt-plugins/actions/GoalCheckerSelector.rst
   bt-plugins/actions/ProgressCheckerSelector.rst
+  bt-plugins/actions/PathHandlerSelector.rst
   bt-plugins/actions/NavigateThroughPoses.rst
   bt-plugins/actions/ComputePathThroughPoses.rst
   bt-plugins/actions/ComputeCoveragePath.rst

@@ -363,75 +363,6 @@ Trajectory Visualization
   Description
     The step between points on trajectories to visualize to downsample trajectory density.
 
-Path Handler
-------------
-
-:transform_tolerance:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.1
-  ============== ===========================
-
-  Description
-    Time tolerance for data transformations with TF (s).
-
-:prune_distance:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         1.5
-  ============== ===========================
-
-  Description
-    Distance ahead of nearest point on path to robot to prune path to (m). This distance should be at least as great as the furthest distance of interest by a critic (i.e. for maximum velocity projection forward, threshold to consider).
-
-:max_robot_pose_search_dist:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         Costmap size / 2
-  ============== ===========================
-
-  Description
-    Max integrated distance ahead of robot pose to search for nearest path point in case of path looping.
-
-:enforce_path_inversion:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
-
-  Description
-    If true, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner's requested inversion point. In addition, these cusping points will also be treated by the critics as local goals that the robot will attempt to reach. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.
-
-:inversion_xy_tolerance:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.2
-  ============== ===========================
-
-  Description
-    Cartesian proximity (m) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion.
-
-:inversion_yaw_tolerance:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.4
-  ============== ===========================
-
-  Description
-    Angular proximity (radians) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.
-
 :allow_parameter_qos_overrides:
 
   ============== =============================
@@ -1141,8 +1072,6 @@ Example
           ay_max: 3.0
           az_max: 3.5
           iteration_count: 1
-          prune_distance: 1.7
-          transform_tolerance: 0.1
           temperature: 0.3
           gamma: 0.015
           motion_model: "DiffDrive"

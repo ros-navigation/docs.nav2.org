@@ -14,17 +14,6 @@ See the package's ``README`` for more complete information.
 Graceful Controller Parameters
 ******************************
 
-:transform_tolerance:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.1
-  ============== ===========================
-
-  Description
-    The TF transform tolerance (s).
-
 :max_lookahead:
 
   ============== =============================
@@ -46,17 +35,6 @@ Graceful Controller Parameters
 
   Description
     The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning.
-
-:max_robot_pose_search_dist:
-
-  ============== =================================================
-  Type           Default
-  -------------- -------------------------------------------------
-  double         Local costmap max extent (max(width, height) / 2)
-  ============== =================================================
-
-  Description
-    Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to ``-1``, it will use the maximum distance possible to search every point on the path for the nearest path point.
 
 :k_phi:
 
@@ -270,7 +248,6 @@ Example
         stateful: True
       FollowPath:
         plugin: nav2_graceful_controller::GracefulController
-        transform_tolerance: 0.1
         min_lookahead: 0.25
         max_lookahead: 1.0
         initial_rotation: true

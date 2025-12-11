@@ -21,6 +21,17 @@ Parameters
     Description
         Tolerance to meet goal completion criteria (m).
 
+:``<nav2_controller plugin>``.path_length_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 1.0
+  ====== =======
+
+    Description
+        Tolerance to meet goal completion criteria (m).
+
 :``<nav2_controller plugin>``.stateful:
 
   ==== =======

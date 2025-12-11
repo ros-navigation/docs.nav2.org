@@ -88,17 +88,6 @@ Regulated Pure Pursuit Parameters
   Description
     If ``use_rotate_to_heading`` is ``true``, this is the angular velocity to use.
 
-:transform_tolerance:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.1
-  ============== =============================
-
-  Description
-    The TF transform tolerance (s).
-
 :use_velocity_scaled_lookahead_dist:
 
   ============== =============================
@@ -310,17 +299,6 @@ Regulated Pure Pursuit Parameters
   Description
     Linear deceleration (m/s/s) to apply when the goal is canceled.
 
-:max_robot_pose_search_dist:
-
-  ============== =================================================
-  Type           Default
-  -------------- -------------------------------------------------
-  double         Local costmap max extent (max(width, height) / 2)
-  ============== =================================================
-
-  Description
-    Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to ``-1``, it will use the maximum distance possible to search every point on the path for the nearest path point.
-
 :interpolate_curvature_after_goal:
 
   ============== =============================
@@ -398,7 +376,6 @@ Example
         max_lookahead_dist: 0.9
         lookahead_time: 1.5
         rotate_to_heading_angular_vel: 1.8
-        transform_tolerance: 0.1
         use_velocity_scaled_lookahead_dist: false
         min_approach_linear_velocity: 0.05
         approach_velocity_scaling_dist: 0.6
@@ -416,6 +393,5 @@ Example
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
-        max_robot_pose_search_dist: 10.0
         min_distance_to_obstacle: 0.0
         stateful: true
