@@ -32,7 +32,7 @@ Regulated Pure Pursuit Parameters
   ============== ===========================
 
   Description
-    The maximum linear velocity (m/s) to use.
+    The maximum linear velocity (m/s) to use.  Previously `desired_linear_vel`
 
 :min_linear_vel:
 
