@@ -524,3 +524,12 @@ This change addresses issues where RoundRobin index can become misaligned with R
     </RoundRobin>
 
 For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+
+Configurable Inscribed Obstacle Cost Value for Costmap Conversion
+-----------------------------------------------------------------
+
+In `PR #5781 <https://github.com/ros-navigation/navigation2/pull/5781>`_, a new parameter inscribed_obstacle_cost_value is added to fix the issue where Costmap2DPublisher maps INSCRIBED_INFLATED_OBSTACLE (253) to value 99 in OccupancyGrid, but StaticLayer incorrectly converts it back to 251 instead of 253.
+
+Default value:
+
+- inscribed_obstacle_cost_value: 99
