@@ -27,7 +27,7 @@ Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         1.5
+  double         2.0
   ============== ===========================
 
   Description
@@ -106,7 +106,7 @@ Example
 
   PathHandler:
       plugin: "nav2_controller::FeasiblePathHandler"
-      prune_distance: 1.4
+      prune_distance: 2.0
       enforce_path_inversion: True
       enforce_path_rotation: False
       inversion_xy_tolerance: 0.2
