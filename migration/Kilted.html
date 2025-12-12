@@ -1126,6 +1126,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurable-inscribed-obstacle-cost-value-for-costmap-conversion">Configurable Inscribed Obstacle Cost Value for Costmap Conversion</a></li>
 </ul>
 </li>
 </ul>
@@ -1676,6 +1677,14 @@ You can enable this by building with <code class="docutils literal notranslate">
 </pre></div>
 </div>
 <p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">RoundRobin</span></code> please see the <a class="reference external" href="../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin configuration guide</a>.</p>
+</div>
+<div class="section" id="configurable-inscribed-obstacle-cost-value-for-costmap-conversion">
+<h2>Configurable Inscribed Obstacle Cost Value for Costmap Conversion<a class="headerlink" href="#configurable-inscribed-obstacle-cost-value-for-costmap-conversion" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5781">PR #5781</a>, a new parameter inscribed_obstacle_cost_value is added to fix the issue where Costmap2DPublisher maps INSCRIBED_INFLATED_OBSTACLE (253) to value 99 in OccupancyGrid, but StaticLayer incorrectly converts it back to 251 instead of 253.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>inscribed_obstacle_cost_value: 99</p></li>
+</ul>
 </div>
 </div>
 
