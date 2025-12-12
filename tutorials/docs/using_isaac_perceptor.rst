@@ -463,7 +463,7 @@ More detailed information can be found in the following documentation:
 * `Isaac ROS Visual GLobal Localization <https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_mapping_and_localization/isaac_ros_visual_global_localization/index.html>`_
 * `Disparity Mapping & Image Fusion with Isaac ROS DNN ESS <https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_dnn_stereo_depth/index.html>`_
 * `Isaac ROS Stereo Image Proc <https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_image_pipeline/isaac_ros_stereo_image_proc/index.html>`_
-* `Isaac Perceptor <https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/index.html>`_
+* `Isaac Perceptor Docs <https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/index.html>`_
 * `Isaac ROS Mapping <https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_mapping_and_localization/isaac_mapping_ros/index.html>`_
 * `Nvidia TensorRT - CUDA Accelerated TensorFlow <https://developer.nvidia.com/tensorrt>`_
 
