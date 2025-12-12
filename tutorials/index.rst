@@ -6,7 +6,7 @@ General Tutorials
 Nav2 Tutorials
 
 .. toctree::
-   :maxdepth: 0
+   :maxdepth: 1
 
    docs/navigation2_on_real_turtlebot3.rst
    docs/navigation2_with_slam.rst

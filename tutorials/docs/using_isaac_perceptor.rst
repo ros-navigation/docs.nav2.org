@@ -1,7 +1,7 @@
 .. _navigation2_with_isaac_perceptor:
 
 Lidar-Free, Vision-Based Navigation
-===================================
+***********************************
 
 In this tutorial, you'll see how to use the NVIDIA Jetson, `Isaac ROS <https://developer.nvidia.com/isaac/ros>`_, `Isaac Perceptor <https://developer.nvidia.com/isaac/perceptor>`_, and `NVIDIA Nova <https://nvidia-isaac-ros.github.io/nova/index.html>`_ technologies to implement Vision-based Navigation entirely without the use of LIDARs, active depth sensors, or other range-providing modalities.
 Instead, we'll rely solely on passive stereo cameras as the extrinsic sensing source to achieve collision avoidance, localization, and mapping — a powerful and cost-effective alternative.
@@ -22,7 +22,7 @@ Whether you're developing for resource-constrained embedded systems or exploring
   </div>
 
 Preliminaries
--------------
+=============
 
 This tutorial assumes that you have an NVIDIA Jetson - such as the Orin NX or AGX Orin - and stereo camera sensor(s) compatible with the Nova reference platform.
 This tutorial will make use of the `Jetson AGX Orin <https://amzn.to/4k8jiQh>`_ powering the `Segway Nova Carter <https://robotics.segway.com/nova-carter/>`_ robot built in collaboration with NVIDIA for vision-based navigation tasks.
@@ -30,7 +30,7 @@ However, another Jetson product may suffice depending on the GPU compute demands
 Applying these technologies to a non-Nova design is possible using the general concepts and designs in this tutorial, however it involves a great deal of unique development as the launch files and nodes provided by NVIDIA assume this.
 
 Concepts
---------
+========
 
 Navigation is performed by combining sensor data map(s) of the environment, and task intent to successfully move a robot to a final destination.
 Major elements of this include Path Planning, Control, Perception, Localization, and the Autonomy system to pull them all together.
@@ -52,7 +52,7 @@ We must replace the existing solutions for the following with Vision-based syste
 Currently, these are solved in Lidar-based solutions using Costmap2D, a SLAM library like `SLAM Toolbox <https://github.com/SteveMacenski/slam_toolbox>`_ or Cartographer, and a global localizer like AMCL.
 
 NVIDIA Technologies
--------------------
+===================
 
 NVIDIA provides the necessary technologies to replace the existing Lidar-based navigation solutions.
 This is made possible by leveraging the power of NVIDIA's GPU and the Isaac ROS & Perceptor SDKs.
