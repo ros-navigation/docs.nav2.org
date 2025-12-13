@@ -435,7 +435,7 @@ You should now see something like this in Foxglove Studio:
 .. image:: images/perceptor/isaac_ros_perceptor_nvblox_kitchen.png
    :align: center
 
-And be able to now navigate as shown in the video below!
+And be able to now navigate as shown in the video below! A special thanks to Nav2 Sponsor `Polymath Robotics <https://www.polymathrobotics.com/>`_ for allowing us to use their space over the holidays to perform these demonstrations. 
 
 .. raw:: html
 
