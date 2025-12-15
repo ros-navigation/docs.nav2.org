@@ -26,7 +26,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Groot Tutorials" href="using_groot.html" />
+    <link rel="next" title="Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter" href="isaac_perceptor/rebuilding_tensorrt_engine.html" />
     <link rel="prev" title="Navigating using GPS Localization" href="navigation2_with_gps.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
@@ -333,6 +333,10 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Lidar-Free, Vision-Based Navigation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="isaac_perceptor/rebuilding_tensorrt_engine.html">Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#concepts">Concepts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvidia-technologies">NVIDIA Technologies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvidia-jetson-setup">0. NVIDIA Jetson Setup</a><ul>
@@ -1262,6 +1266,14 @@ This tutorial will make use of the <a class="reference external" href="https://a
 However, another Jetson product may suffice depending on the GPU compute demands placed on it by the number of cameras, resolutions, and models being run.
 Applying these technologies to a non-Nova design is possible using the general concepts and designs in this tutorial, however it involves a great deal of unique development as the launch files and nodes provided by NVIDIA assume this.</p>
 </div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="isaac_perceptor/rebuilding_tensorrt_engine.html">Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="concepts">
 <h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading"></a></h2>
 <p>Navigation is performed by combining sensor data map(s) of the environment, and task intent to successfully move a robot to a final destination.
@@ -1624,7 +1636,7 @@ To leverage even more vision features during Visual Navigation, you can also use
 <h4>Isaac Perceptor API Usage Errors<a class="headerlink" href="#isaac-perceptor-api-usage-errors" title="Permalink to this heading"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">Code</span> <span class="pre">6:</span> <span class="pre">API</span> <span class="pre">Usage</span> <span class="pre">Error</span> <span class="pre">(The</span> <span class="pre">engine</span> <span class="pre">plan</span> <span class="pre">file</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">compatible</span> <span class="pre">with</span> <span class="pre">this</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">TensorRT,</span> <span class="pre">expecting</span> <span class="pre">library</span> <span class="pre">version</span> <span class="pre">10.7.0.23</span> <span class="pre">got...</span></code></p>
 <p>This error occurs when the packages on the Nova Carter host install are different from those installed on the Docker container, specifically the TensorRT and nvblox packages. More specifically, this often occurs because the Nova Carter JetPack install provides 10.3.x versions of TensorRT(tensorrt,nvinfer,etc.) and the development Docker containers use 10.7.x</p>
-<p>See <em>Rebuilding TensorRT .engine files</em> for a step-by-step guide to fix this error.</p>
+<p>See <a class="reference internal" href="isaac_perceptor/rebuilding_tensorrt_engine.html#rebuilding-tensorrt-engine"><span class="std std-ref">Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter</span></a> for a step-by-step guide to fix this error.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">Code</span> <span class="pre">4:</span> <span class="pre">API</span> <span class="pre">Usage</span> <span class="pre">Error</span></code></p>
 <p>This error should be avoided as part of the engine regeneration solution to the <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">Code</span> <span class="pre">6:</span></code> issue. In case it still occurs, the problem is related to how trtexec generated the new .engine and .plan file.
 By default trtexec will generate a “lean” .engine runtime model. A “full” runtime model is necessary for the dnn_stereo_disparity node to run successfully.</p>

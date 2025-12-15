@@ -30,6 +30,14 @@ This tutorial will make use of the `Jetson AGX Orin <https://amzn.to/4k8jiQh>`_ 
 However, another Jetson product may suffice depending on the GPU compute demands placed on it by the number of cameras, resolutions, and models being run.
 Applying these technologies to a non-Nova design is possible using the general concepts and designs in this tutorial, however it involves a great deal of unique development as the launch files and nodes provided by NVIDIA assume this.
 
+Additional Resources
+====================
+
+.. toctree::
+  :maxdepth: 1
+
+  isaac_perceptor/rebuilding_tensorrt_engine.rst
+
 Concepts
 ========
 
@@ -493,7 +501,7 @@ Isaac Perceptor API Usage Errors
 
 This error occurs when the packages on the Nova Carter host install are different from those installed on the Docker container, specifically the TensorRT and nvblox packages. More specifically, this often occurs because the Nova Carter JetPack install provides 10.3.x versions of TensorRT(tensorrt,nvinfer,etc.) and the development Docker containers use 10.7.x
 
-See *Rebuilding TensorRT .engine files* for a step-by-step guide to fix this error.
+See :ref:`rebuilding_tensorrt_engine` for a step-by-step guide to fix this error.
 
 ``Error Code 4: API Usage Error``
 
