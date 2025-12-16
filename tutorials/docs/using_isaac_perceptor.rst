@@ -542,7 +542,29 @@ If you wanted to pick up the process using the existing data and (re)generate th
 .. code-block:: bash
 
   ros2 run isaac_mapping_ros create_map_offline.py --sensor_data_bag=/mnt/nova_ssd/recordings/<path_to_recorded_bag_file>/ \
-  --map_dir=/mnt/nova_ssd/recordings/maps/<path_to_partial_map_dir>/ --steps_to_run cuvslam
+  --map_dir=/mnt/nova_ssd/recordings/maps/${EXISTING_MAP_DIR}/ --steps_to_run cuvslam
+
+Similarly, to run the depth step by itself, the command-line would be:
+
+.. code-block:: bash
+
+    export LD_LIBRARY_PATH="${ISAAC_ROS_WS}/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64:$LD_LIBRARY_PATH"
+
+    ros2 run isaac_mapping_ros run_ess_ros_offline.py \
+     --image_dir=/mnt/nova_ssd/recordings/maps/${EXISTING_MAP_DIR}/map_frames/raw \
+     --output_dir=/mnt/nova_ssd/recordings/maps/${EXISTING_MAP_DIR}/map_frames/depth \
+    --frames_meta_file=/mnt/nova_ssd/recordings/maps/${EXISTING_MAP_DIR}/map_frames/raw/frames_meta.json
+
+The occupancy_map generation step can be run with this command:
+
+.. code-block:: bash
+
+    ros2 run isaac_mapping_ros create_map_offline.py \
+    --sensor_data_bag=/mnt/nova_ssd/recordings/${BAG_DIR} \
+    --base_output_folder=/mnt/nova_ssd/recordings/maps \
+    --map_dir=/mnt/nova_ssd/recordings/maps/${EXISTING_MAP_DIR} \
+    --print_mode all --steps_to_run occupancy
+
 
 Most of the tools used by ``./tools/create_map.sh`` can be found in the Docker container under ``/opt/ros/humble/lib/isaac_mapping_ros`` and run individually if necessary::
 
