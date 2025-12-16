@@ -1664,7 +1664,24 @@ ros2<span class="w"> </span>run<span class="w"> </span>isaac_mapping_ros<span cl
 </div>
 <p>If you wanted to pick up the process using the existing data and (re)generate the cuvslam dataset you could run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>isaac_mapping_ros<span class="w"> </span>create_map_offline.py<span class="w"> </span>--sensor_data_bag<span class="o">=</span>/mnt/nova_ssd/recordings/&lt;path_to_recorded_bag_file&gt;/<span class="w"> </span><span class="se">\</span>
---map_dir<span class="o">=</span>/mnt/nova_ssd/recordings/maps/&lt;path_to_partial_map_dir&gt;/<span class="w"> </span>--steps_to_run<span class="w"> </span>cuvslam
+--map_dir<span class="o">=</span>/mnt/nova_ssd/recordings/maps/<span class="si">${</span><span class="nv">EXISTING_MAP_DIR</span><span class="si">}</span>/<span class="w"> </span>--steps_to_run<span class="w"> </span>cuvslam
+</pre></div>
+</div>
+<p>Similarly, to run the depth step by itself, the command-line would be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ISAAC_ROS_WS</span><span class="si">}</span><span class="s2">/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span>
+
+ros2<span class="w"> </span>run<span class="w"> </span>isaac_mapping_ros<span class="w"> </span>run_ess_ros_offline.py<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--image_dir<span class="o">=</span>/mnt/nova_ssd/recordings/maps/<span class="si">${</span><span class="nv">EXISTING_MAP_DIR</span><span class="si">}</span>/map_frames/raw<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--output_dir<span class="o">=</span>/mnt/nova_ssd/recordings/maps/<span class="si">${</span><span class="nv">EXISTING_MAP_DIR</span><span class="si">}</span>/map_frames/depth<span class="w"> </span><span class="se">\</span>
+--frames_meta_file<span class="o">=</span>/mnt/nova_ssd/recordings/maps/<span class="si">${</span><span class="nv">EXISTING_MAP_DIR</span><span class="si">}</span>/map_frames/raw/frames_meta.json
+</pre></div>
+</div>
+<p>The occupancy_map generation step can be run with this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>isaac_mapping_ros<span class="w"> </span>create_map_offline.py<span class="w"> </span><span class="se">\</span>
+--sensor_data_bag<span class="o">=</span>/mnt/nova_ssd/recordings/<span class="si">${</span><span class="nv">BAG_DIR</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+--base_output_folder<span class="o">=</span>/mnt/nova_ssd/recordings/maps<span class="w"> </span><span class="se">\</span>
+--map_dir<span class="o">=</span>/mnt/nova_ssd/recordings/maps/<span class="si">${</span><span class="nv">EXISTING_MAP_DIR</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+--print_mode<span class="w"> </span>all<span class="w"> </span>--steps_to_run<span class="w"> </span>occupancy
 </pre></div>
 </div>
 <p>Most of the tools used by <code class="docutils literal notranslate"><span class="pre">./tools/create_map.sh</span></code> can be found in the Docker container under <code class="docutils literal notranslate"><span class="pre">/opt/ros/humble/lib/isaac_mapping_ros</span></code> and run individually if necessary:</p>
