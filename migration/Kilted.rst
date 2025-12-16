@@ -549,7 +549,7 @@ The UI workflow is now organized into two primary navigation modes:
 1. **Single-Goal Navigation** (``NavigateToPose``) Designed for individual targets. The goal can be defined using the standard "Nav2 Goal" tool (clicking on the map) or by manually entering precise coordinates directly in the panel.
 
 2. **Multiple-Goal Navigation** (``NavigateThroughPoses``, ``Waypoint Following`` ) Designed for executing sequences of poses. This mode utilizes a pose accumulation mode to build and manage a list of goals before execution:
-  
+
   - List Building: Poses can be added via a hybrid approach: using the "Nav2 Goal" tool, manually entering coordinates, or loading a YAML file.
 
   - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
