@@ -535,7 +535,7 @@ Default value:
 - inscribed_obstacle_cost_value: 99
 
 Updated Nav2 RViz Panel
------------------------------------------------------------------
+-----------------------
 
 In `PR #5774 <https://github.com/ros-navigation/navigation2/pull/5774>`_, the Nav2 panel (``nav2_rviz_plugins``) has been redesigned to provide comprehensive control over navigation requests and unify goal management tools.
 
