@@ -1162,6 +1162,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configurable-inscribed-obstacle-cost-value-for-costmap-conversion">Configurable Inscribed Obstacle Cost Value for Costmap Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
 </ul>
 </li>
 </ul>
@@ -1720,6 +1721,29 @@ You can enable this by building with <code class="docutils literal notranslate">
 <ul class="simple">
 <li><p>inscribed_obstacle_cost_value: 99</p></li>
 </ul>
+</div>
+<div class="section" id="updated-nav2-rviz-panel">
+<h2>Updated Nav2 RViz Panel<a class="headerlink" href="#updated-nav2-rviz-panel" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5774">PR #5774</a>, the Nav2 panel (<code class="docutils literal notranslate"><span class="pre">nav2_rviz_plugins</span></code>) has been redesigned to provide comprehensive control over navigation requests and unify goal management tools.</p>
+<p>Key Improvements:</p>
+<ul class="simple">
+<li><p><strong>Dynamic Behavior Tree (BT) Selection</strong>: Added a selector to specify a custom Behavior Tree XML file. This enables modifying navigation logic at runtime (e.g., specific recovery behaviors) for both <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> and <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> requests.</p></li>
+<li><p><strong>Manual Coordinate Entry</strong>: Enables precise input of coordinates (X, Y, Theta) and frame_id via numeric fields, complementing the visual tool.</p></li>
+</ul>
+<p>The UI workflow is now organized into two primary navigation modes:</p>
+<ol class="arabic simple">
+<li><p><strong>Single-Goal Navigation</strong> (<code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>) Designed for individual targets. The goal can be defined using the standard “Nav2 Goal” tool (clicking on the map) or by manually entering precise coordinates directly in the panel.</p></li>
+<li><p><strong>Multiple-Goal Navigation</strong> (<code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code>, <code class="docutils literal notranslate"><span class="pre">Waypoint</span> <span class="pre">Following</span></code> ) Designed for executing sequences of poses. This mode utilizes a pose accumulation mode to build and manage a list of goals before execution:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>List Building: Poses can be added via a hybrid approach: using the “Nav2 Goal” tool, manually entering coordinates, or loading a YAML file.</p></li>
+<li><p>Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.</p></li>
+<li><p>Execution: Once the list is defined, navigation can be executed via <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> or <code class="docutils literal notranslate"><span class="pre">Waypoint</span> <span class="pre">Following</span></code> actions.</p></li>
+</ul>
+</div></blockquote>
+<a class="reference internal image-reference" href="../_images/nav2_new_rviz_panel.gif"><img alt="Multiple-Goal Navigation in Nav2 RViz Panel" class="align-center" src="../_images/nav2_new_rviz_panel.gif" style="width: 800px;" /></a>
+<p>GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.</p>
 </div>
 </div>
 
