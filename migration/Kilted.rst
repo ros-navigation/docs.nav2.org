@@ -533,3 +533,32 @@ In `PR #5781 <https://github.com/ros-navigation/navigation2/pull/5781>`_, a new 
 Default value:
 
 - inscribed_obstacle_cost_value: 99
+
+Updated Nav2 RViz Panel
+-----------------------
+
+In `PR #5774 <https://github.com/ros-navigation/navigation2/pull/5774>`_, the Nav2 panel (``nav2_rviz_plugins``) has been redesigned to provide comprehensive control over navigation requests and unify goal management tools.
+
+Key Improvements:
+
+- **Dynamic Behavior Tree (BT) Selection**: Added a selector to specify a custom Behavior Tree XML file. This enables modifying navigation logic at runtime (e.g., specific recovery behaviors) for both ``NavigateToPose`` and ``NavigateThroughPoses`` requests.
+- **Manual Coordinate Entry**: Enables precise input of coordinates (X, Y, Theta) and frame_id via numeric fields, complementing the visual tool.
+
+The UI workflow is now organized into two primary navigation modes:
+
+1. **Single-Goal Navigation** (``NavigateToPose``) Designed for individual targets. The goal can be defined using the standard "Nav2 Goal" tool (clicking on the map) or by manually entering precise coordinates directly in the panel.
+
+2. **Multiple-Goal Navigation** (``NavigateThroughPoses``, ``Waypoint Following`` ) Designed for executing sequences of poses. This mode utilizes a pose accumulation mode to build and manage a list of goals before execution:
+
+  - List Building: Poses can be added via a hybrid approach: using the "Nav2 Goal" tool, manually entering coordinates, or loading a YAML file.
+
+  - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
+
+  - Execution: Once the list is defined, navigation can be executed via ``NavigateThroughPoses`` or ``Waypoint Following`` actions.
+
+.. image:: images/nav2_new_rviz_panel.gif
+  :width: 800
+  :alt: Multiple-Goal Navigation in Nav2 RViz Panel
+  :align: center
+
+GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
