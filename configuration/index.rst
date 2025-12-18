@@ -59,13 +59,6 @@ Smoother Plugins
    packages/configuring-savitzky-golay-smoother.rst
    packages/configuring-simple-smoother.rst
 
-Advanced Topics
-***************
-
-.. toctree::
-   :maxdepth: 1
-
-   packages/symmetric_yaw_tolerance.rst
 
 Others
 ******
