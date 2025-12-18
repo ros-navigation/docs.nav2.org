@@ -225,3 +225,7 @@ More information about ``Denoise Layer`` plugin and how it works could be found 
 SmacPlannerHybrid viz_expansions parameter
 ******************************************
 `PR #3577 <https://github.com/ros-navigation/navigation2/pull/3577>`_ adds a new parameter for visualising SmacPlannerHybrid expansions for debug purpose.
+
+Symmetric Yaw Tolerance for Goal Checking and Navigation
+********************************************************
+`PR #5795 <https://github.com/ros-navigation/navigation2/pull/5795>`_ introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.
