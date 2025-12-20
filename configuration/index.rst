@@ -59,7 +59,6 @@ Smoother Plugins
    packages/configuring-savitzky-golay-smoother.rst
    packages/configuring-simple-smoother.rst
 
-
 Others
 ******
 
