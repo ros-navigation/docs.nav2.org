@@ -1,7 +1,7 @@
 .. _symmetric_yaw_tolerance_guide:
 
 Symmetric Yaw Tolerance for Goal Checking and Navigation
-#########################################################
+########################################################
 
 Overview
 ********
