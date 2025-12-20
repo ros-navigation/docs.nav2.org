@@ -562,3 +562,114 @@ The UI workflow is now organized into two primary navigation modes:
   :align: center
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
+
+Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller
+---------------------------------------------------------------------------
+
+In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities.
+
+- Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, Proceedings of the 19th International Conference on Intelligent Autonomous Systems, Genoa, Italy, 2025.
+
+The following parameters are introduced or updated for this feature.
+
+:use_dynamic_window (new):
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to enable the Dynamic Window Pure Pursuit (DWPP) algorithm.
+
+:max_linear_vel (renamed):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.5
+  ============== ===========================
+
+  Description
+    The maximum linear velocity (m/s) to use.  **Previously named `desired_linear_vel`**
+
+:min_linear_vel (new):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -0.5
+  ============== ===========================
+
+  Description
+    The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
+
+:max_angular_vel (new):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.5
+  ============== ===========================
+
+  Description
+    The maximum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
+
+:min_angular_vel (new):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -2.5
+  ============== ===========================
+
+  Description
+    The minimum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
+
+:max_linear_accel (new):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.5
+  ============== ===========================
+
+  Description
+    The maximum linear acceleration (m/s^2) used when `use_dynamic_window` is `true`.
+
+:max_linear_decel (new):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.5
+  ============== ===========================
+
+  Description
+    The maximum linear deceleration (m/s^2) used when `use_dynamic_window` is `true`.
+
+:max_angular_accel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         3.2
+  ============== ===========================
+
+  Description
+    The maximum angular acceleration (rad/s^2) to use.
+
+:max_angular_decel (new):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         3.2
+  ============== ===========================
+
+  Description
+    The maximum angular deceleration (rad/s^2) used when `use_dynamic_window` is `true`.
+
+**Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing `cmd_vel`.
+Therefore, the velocity smoother parameters `max_velocity`, `min_velocity`, `max_accel`, and `max_decel` must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
