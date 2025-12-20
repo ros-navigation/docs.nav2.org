@@ -170,7 +170,7 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 
 
 Symmetric Yaw Tolerance for Goal Checking and Navigation
-#########################################################
+########################################################
 
 Overview
 ********
