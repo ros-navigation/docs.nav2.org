@@ -181,6 +181,7 @@ The **symmetric_yaw_tolerance** parameter enables symmetric robots (that can dri
 - **SimpleGoalChecker** (Controller Server) - for goal achievement detection
 
 When enabled, these plugins accept either the goal orientation or the goal orientation + 180°, preventing the robot from wasting time and energy rotating when it could simply drive backward.
+These work when it does not matter which orientation it ends in.
 
 Use Case
 ********
