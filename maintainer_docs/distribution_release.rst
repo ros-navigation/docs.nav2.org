@@ -93,7 +93,15 @@ Finally, create the new distribution branch from ``main`` and push to the server
 Go into the GitHub Actions tab on ``nav2_docker`` and retrigger its build job.
 The nightly and release jobs should now exist for the new distribution and return successfully (validate this).
 
-3. Setup Branch CI
+3. Mark Branch as Protected
+---------------------------
+
+Go to the Repo Settings -> Branches. Create a branch protection rule for the new branch that matches the last.
+
+* Request a PR before merging -> Require approvals & override for infra-admins.
+* Restrict who can push branches that match this rule.
+
+4. Setup Branch CI
 ------------------
 
 The final change to the branch is to setup CI so PRs targeting it can be successfully built.
@@ -108,7 +116,7 @@ Then, retrigger the Update CI Image workflow in Nav2's GitHub Actions tab, it sh
 Open a dummy PR against the new distribution branch and ensure that it builds successfully.
 
 
-4. Update Auxiliary Projects
+5. Update Auxiliary Projects
 ----------------------------
 
 Nav2 has a number of auxiliary projects that also need to be updated for a new distribution.
@@ -124,7 +132,7 @@ For each:
 * Update CI on the new branch to use this new distribution image
 * Review and update the readme as needed
 
-5. Run Bloom Release
+6. Run Bloom Release
 --------------------
 
 Once the new branches, versions, and CI are setup and ready, we can run the bloom release process.
@@ -136,7 +144,7 @@ Run the following command to create a new release for the distribution for each 
 
 Be patient, this will take a while to run.
 
-6. Nav2 Docker Build
+7. Nav2 Docker Build
 --------------------
 
 To allow the ``nav2_docker`` build of the released version in Step 5, we need to enable the first build to pass the latest tag check in the workflow.
@@ -144,7 +152,7 @@ You should see that the nightly of this distribution works, but the release vers
 To resolve, comment out the ``exit 1`` in the ``latest_version`` validity check.
 Once the job turns over, revert this commit to reintroduce the error.
 
-7. Announcements
+8. Announcements
 ----------------
 
 Finally, we can announce the updates!
