@@ -228,4 +228,5 @@ SmacPlannerHybrid viz_expansions parameter
 
 Symmetric Yaw Tolerance for Goal Checking and Navigation
 ********************************************************
+
 `PR #5795 <https://github.com/ros-navigation/navigation2/pull/5795>`_ introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.
