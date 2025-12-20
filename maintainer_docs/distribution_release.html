@@ -1197,11 +1197,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#local-functional-testing">1. Local Functional Testing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setup-nav2-docker-images">2. Setup Nav2 Docker Images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#branch-off-distribution">2. Branch Off Distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-branch-ci">3. Setup Branch CI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#update-auxiliary-projects">4. Update Auxiliary Projects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-bloom-release">5. Run Bloom Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nav2-docker-build">6. Nav2 Docker Build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#announcements">7. Announcements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mark-branch-as-protected">3. Mark Branch as Protected</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-branch-ci">4. Setup Branch CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-auxiliary-projects">5. Update Auxiliary Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-bloom-release">6. Run Bloom Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nav2-docker-build">7. Nav2 Docker Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#announcements">8. Announcements</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="distribution_syncs.html">ROS Distribution Sync Process</a><ul>
@@ -1319,8 +1320,16 @@ Remove any EOL distributions at this time.</p>
 Go into the GitHub Actions tab on <code class="docutils literal notranslate"><span class="pre">nav2_docker</span></code> and retrigger its build job.
 The nightly and release jobs should now exist for the new distribution and return successfully (validate this).</p>
 </div>
+<div class="section" id="mark-branch-as-protected">
+<h2>3. Mark Branch as Protected<a class="headerlink" href="#mark-branch-as-protected" title="Permalink to this heading"></a></h2>
+<p>Go to the Repo Settings -&gt; Branches. Create a branch protection rule for the new branch that matches the last.</p>
+<ul class="simple">
+<li><p>Request a PR before merging -&gt; Require approvals &amp; override for infra-admins.</p></li>
+<li><p>Restrict who can push branches that match this rule.</p></li>
+</ul>
+</div>
 <div class="section" id="setup-branch-ci">
-<h2>3. Setup Branch CI<a class="headerlink" href="#setup-branch-ci" title="Permalink to this heading"></a></h2>
+<h2>4. Setup Branch CI<a class="headerlink" href="#setup-branch-ci" title="Permalink to this heading"></a></h2>
 <p>The final change to the branch is to setup CI so PRs targeting it can be successfully built.
 In the new distribution branch, update the files for CI (<a class="reference external" href="https://github.com/ros-navigation/navigation2/commit/4eb4ee01967a3b881c05d962ffd856c668b2e4c0">Humble Example</a>).</p>
 <ul class="simple">
@@ -1333,7 +1342,7 @@ In the new distribution branch, update the files for CI (<a class="reference ext
 Open a dummy PR against the new distribution branch and ensure that it builds successfully.</p>
 </div>
 <div class="section" id="update-auxiliary-projects">
-<h2>4. Update Auxiliary Projects<a class="headerlink" href="#update-auxiliary-projects" title="Permalink to this heading"></a></h2>
+<h2>5. Update Auxiliary Projects<a class="headerlink" href="#update-auxiliary-projects" title="Permalink to this heading"></a></h2>
 <p>Nav2 has a number of auxiliary projects that also need to be updated for a new distribution.
 These include:</p>
 <ul class="simple">
@@ -1349,7 +1358,7 @@ These include:</p>
 </ul>
 </div>
 <div class="section" id="run-bloom-release">
-<h2>5. Run Bloom Release<a class="headerlink" href="#run-bloom-release" title="Permalink to this heading"></a></h2>
+<h2>6. Run Bloom Release<a class="headerlink" href="#run-bloom-release" title="Permalink to this heading"></a></h2>
 <p>Once the new branches, versions, and CI are setup and ready, we can run the bloom release process.
 Run the following command to create a new release for the distribution for each Nav2 repository (Nav2, Minimal Turtlebot Simulation, SLAM Toolbox, NPVL, STVL etc).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bloom-release<span class="w"> </span>navigation2<span class="w"> </span>--rosdistro<span class="w"> </span>distro<span class="w"> </span>--track<span class="w"> </span>distro<span class="w"> </span>--new-track<span class="w"> </span>--edit
@@ -1358,14 +1367,14 @@ Run the following command to create a new release for the distribution for each 
 <p>Be patient, this will take a while to run.</p>
 </div>
 <div class="section" id="nav2-docker-build">
-<h2>6. Nav2 Docker Build<a class="headerlink" href="#nav2-docker-build" title="Permalink to this heading"></a></h2>
+<h2>7. Nav2 Docker Build<a class="headerlink" href="#nav2-docker-build" title="Permalink to this heading"></a></h2>
 <p>To allow the <code class="docutils literal notranslate"><span class="pre">nav2_docker</span></code> build of the released version in Step 5, we need to enable the first build to pass the latest tag check in the workflow.
 You should see that the nightly of this distribution works, but the release version is failing with <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">No</span> <span class="pre">matching</span> <span class="pre">package</span> <span class="pre">versions</span> <span class="pre">found.</span></code>.
 To resolve, comment out the <code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">1</span></code> in the <code class="docutils literal notranslate"><span class="pre">latest_version</span></code> validity check.
 Once the job turns over, revert this commit to reintroduce the error.</p>
 </div>
 <div class="section" id="announcements">
-<h2>7. Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading"></a></h2>
+<h2>8. Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading"></a></h2>
 <p>Finally, we can announce the updates!
 Create a new migration guide page on the Nav2 website for contributors to populate with notable changes in the next distribution cycle.
 Update the Roadmap page with a new table of projects and features to be added over the next distribution.</p>
