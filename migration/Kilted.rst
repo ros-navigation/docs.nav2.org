@@ -643,7 +643,7 @@ The following parameters are introduced or updated for this feature.
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         2.5
+  double         -2.5
   ============== ===========================
 
   Description
@@ -665,7 +665,7 @@ The following parameters are introduced or updated for this feature.
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  double         3.2
+  double         -3.2
   ============== ===========================
 
   Description
