@@ -335,7 +335,7 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  double         0.1
+  double         0.25
   ============== =============================
 
   Description
