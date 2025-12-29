@@ -562,3 +562,31 @@ The UI workflow is now organized into two primary navigation modes:
   :align: center
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
+
+Bond Heartbeat Period Default Value Change
+------------------------------------------
+
+In L-turtle, the default value for ``bond_heartbeat_period`` parameter has been increased from ``0.1`` to ``0.25`` seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.
+
+**Migration note**: If you have explicitly set ``bond_heartbeat_period`` to ``0.1`` in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to ``0.25`` if you want to be explicit about the value. This value should now also be set in the lifecycle manager node as well.
+
+Performance Impact
+^^^^^^^^^^^^^^^^^^
+
+The following table shows the performance impact of changing the bond heartbeat period from 0.1s to 0.25s:
+
++------------------+----------------+------------------+
+| Bond Period (s)  | Composed CPU   | Single-Proc. CPU |
++==================+================+==================+
+| 0.1              | 140%           | 13%              |
++------------------+----------------+------------------+
+| 0.2              | 110%           | 10%              |
++------------------+----------------+------------------+
+| 0.25             | 100%           | 9%               |
++------------------+----------------+------------------+
+| 0.5              | 85%            | 8%               |
++------------------+----------------+------------------+
+| 1.0              | 80%            | 8%               |
++------------------+----------------+------------------+
+
+*Note: This table should be populated with data from issue #5784 comment. Composed CPU is for all Nav2 processes combined.*

@@ -81,6 +81,17 @@ Parameters
   Description
     The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
+:bond_heartbeat_period:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.25
+  ============== =============================
+
+  Description
+    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
 :allow_parameter_qos_overrides:
 
   ============== =============================
@@ -103,4 +114,5 @@ Example
         bond_timeout: 4.0
         attempt_respawn_reconnection: true
         bond_respawn_max_duration: 10.0
+        bond_heartbeat_period: 0.25
         introspection_mode: "disabled"

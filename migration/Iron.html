@@ -1163,6 +1163,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Kilted.html#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Kilted.html#configurable-inscribed-obstacle-cost-value-for-costmap-conversion">Configurable Inscribed Obstacle Cost Value for Costmap Conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Kilted.html#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Kilted.html#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Kilted.html#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1517,7 +1521,7 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 </div>
 <div class="section" id="lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">
 <h2>Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)<a class="headerlink" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4342">PR #4342</a> adds the parameter <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> to the lifecycle nodes to customize the bond mechanism publishing period (on the <code class="docutils literal notranslate"><span class="pre">/bond</span></code> topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.</p>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4342">PR #4342</a> adds the parameter <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> to the lifecycle nodes to customize the bond mechanism publishing period (on the <code class="docutils literal notranslate"><span class="pre">/bond</span></code> topic). Default value is 0.1s. Disabled if inferior or equal to 0.0.</p>
 </div>
 <div class="section" id="rotation-shim-controller-new-parameter-rotate-to-goal-heading">
 <h2>Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code><a class="headerlink" href="#rotation-shim-controller-new-parameter-rotate-to-goal-heading" title="Permalink to this heading"></a></h2>

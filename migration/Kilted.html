@@ -1163,6 +1163,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configurable-inscribed-obstacle-cost-value-for-costmap-conversion">Configurable Inscribed Obstacle Cost Value for Costmap Conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1745,6 +1749,51 @@ You can enable this by building with <code class="docutils literal notranslate">
 </div></blockquote>
 <a class="reference internal image-reference" href="../_images/nav2_new_rviz_panel.gif"><img alt="Multiple-Goal Navigation in Nav2 RViz Panel" class="align-center" src="../_images/nav2_new_rviz_panel.gif" style="width: 800px;" /></a>
 <p>GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.</p>
+</div>
+<div class="section" id="bond-heartbeat-period-default-value-change">
+<h2>Bond Heartbeat Period Default Value Change<a class="headerlink" href="#bond-heartbeat-period-default-value-change" title="Permalink to this heading"></a></h2>
+<p>In L-turtle, the default value for <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> parameter has been increased from <code class="docutils literal notranslate"><span class="pre">0.1</span></code> to <code class="docutils literal notranslate"><span class="pre">0.25</span></code> seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.</p>
+<p><strong>Migration note</strong>: If you have explicitly set <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> to <code class="docutils literal notranslate"><span class="pre">0.1</span></code> in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to <code class="docutils literal notranslate"><span class="pre">0.25</span></code> if you want to be explicit about the value. This value should now also be set in the lifecycle manager node as well.</p>
+<div class="section" id="performance-impact">
+<h3>Performance Impact<a class="headerlink" href="#performance-impact" title="Permalink to this heading"></a></h3>
+<p>The following table shows the performance impact of changing the bond heartbeat period from 0.1s to 0.25s:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 31%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bond Period (s)</p></th>
+<th class="head"><p>Composed CPU</p></th>
+<th class="head"><p>Single-Proc. CPU</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.1</p></td>
+<td><p>140%</p></td>
+<td><p>13%</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.2</p></td>
+<td><p>110%</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-even"><td><p>0.25</p></td>
+<td><p>100%</p></td>
+<td><p>9%</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>85%</p></td>
+<td><p>8%</p></td>
+</tr>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>80%</p></td>
+<td><p>8%</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: This table should be populated with data from issue #5784 comment. Composed CPU is for all Nav2 processes combined.</em></p>
+</div>
 </div>
 </div>
 

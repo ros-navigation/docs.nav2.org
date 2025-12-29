@@ -1163,6 +1163,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#configurable-inscribed-obstacle-cost-value-for-costmap-conversion">Configurable Inscribed Obstacle Cost Value for Costmap Conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1377,8 +1381,28 @@ It will also create bond connections with the servers to ensure they are still u
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
+<dt class="field-odd">bond_heartbeat_period</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1408,6 +1432,7 @@ It will also create bond connections with the servers to ensure they are still u
 <span class="w">    </span><span class="nt">bond_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.0</span>
 <span class="w">    </span><span class="nt">attempt_respawn_reconnection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">bond_respawn_max_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<span class="w">    </span><span class="nt">bond_heartbeat_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 </pre></div>
 </div>

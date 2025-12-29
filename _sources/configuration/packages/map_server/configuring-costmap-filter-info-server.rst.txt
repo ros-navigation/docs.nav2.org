@@ -75,7 +75,7 @@ Costmap Filter Info Server Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  double         0.1
+  double         0.25
   ============== =============================
 
   Description
