@@ -562,3 +562,42 @@ The UI workflow is now organized into two primary navigation modes:
   :align: center
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
+
+Bond Heartbeat Period Default Value Change
+------------------------------------------
+
+In L-turtle, the default value for ``bond_heartbeat_period`` parameter has been increased from ``0.1`` to ``0.25`` seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.
+
+The bond heartbeat mechanism is used by lifecycle nodes to monitor connectivity with the lifecycle manager. By increasing the heartbeat period, the frequency of bond messages is reduced, which helps decrease network traffic and CPU usage in complex robotic systems without significantly impacting system monitoring capabilities.
+
+This change affects all Nav2 servers that use the bond mechanism:
+
+- lifecycle_manager
+- controller_server  
+- planner_server
+- behavior_server
+- bt_navigator
+- waypoint_follower
+- smoother_server
+- velocity_smoother
+- amcl
+- collision_monitor
+- collision_detector
+- costmap_filter_info_server
+
+**Migration note**: If you have explicitly set ``bond_heartbeat_period`` to ``0.1`` in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to ``0.25`` if you want to be explicit about the value.
+
+Performance Impact
+^^^^^^^^^^^^^^^^^^
+
+The following table shows the performance impact of changing the bond heartbeat period from 0.1s to 0.25s:
+
++------------------+----------------+------------------+
+| Bond Period (s)  | CPU Usage (%)  | Network (bytes/s)|
++==================+================+==================+
+| 0.1              | [Data needed]  | [Data needed]    |
++------------------+----------------+------------------+
+| 0.25             | [Data needed]  | [Data needed]    |
++------------------+----------------+------------------+
+
+*Note: This table should be populated with data from issue #5784 comment.*
