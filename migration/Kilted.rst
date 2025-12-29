@@ -568,24 +568,7 @@ Bond Heartbeat Period Default Value Change
 
 In L-turtle, the default value for ``bond_heartbeat_period`` parameter has been increased from ``0.1`` to ``0.25`` seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.
 
-The bond heartbeat mechanism is used by lifecycle nodes to monitor connectivity with the lifecycle manager. By increasing the heartbeat period, the frequency of bond messages is reduced, which helps decrease network traffic and CPU usage in complex robotic systems without significantly impacting system monitoring capabilities.
-
-This change affects all Nav2 servers that use the bond mechanism:
-
-- lifecycle_manager
-- controller_server  
-- planner_server
-- behavior_server
-- bt_navigator
-- waypoint_follower
-- smoother_server
-- velocity_smoother
-- amcl
-- collision_monitor
-- collision_detector
-- costmap_filter_info_server
-
-**Migration note**: If you have explicitly set ``bond_heartbeat_period`` to ``0.1`` in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to ``0.25`` if you want to be explicit about the value.
+**Migration note**: If you have explicitly set ``bond_heartbeat_period`` to ``0.1`` in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to ``0.25`` if you want to be explicit about the value. This value should now also be set in the lifecycle manager node as well.
 
 Performance Impact
 ^^^^^^^^^^^^^^^^^^
@@ -593,11 +576,17 @@ Performance Impact
 The following table shows the performance impact of changing the bond heartbeat period from 0.1s to 0.25s:
 
 +------------------+----------------+------------------+
-| Bond Period (s)  | CPU Usage (%)  | Network (bytes/s)|
+| Bond Period (s)  | Composed CPU   | Single-Proc. CPU |
 +==================+================+==================+
-| 0.1              | [Data needed]  | [Data needed]    |
+| 0.1              | 140%           | 13%              |
 +------------------+----------------+------------------+
-| 0.25             | [Data needed]  | [Data needed]    |
+| 0.2              | 110%           | 10%              |
++------------------+----------------+------------------+
+| 0.25             | 100%           | 9%               |
++------------------+----------------+------------------+
+| 0.5              | 85%            | 8%               |
++------------------+----------------+------------------+
+| 1.0              | 80%            | 8%               |
 +------------------+----------------+------------------+
 
-*Note: This table should be populated with data from issue #5784 comment.*
+*Note: This table should be populated with data from issue #5784 comment. Composed CPU is for all Nav2 processes combined.*
