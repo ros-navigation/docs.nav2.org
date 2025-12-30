@@ -65,6 +65,8 @@ Action Plugins
   bt-plugins/actions/ExtractRouteNodesAsGoals.rst
   bt-plugins/actions/GetNextFewGoals.rst
   bt-plugins/actions/ToggleCollisionMonitor.rst
+  bt-plugins/actions/FollowObject.rst
+  bt-plugins/actions/CancelFollowObject.rst
 
 Condition Plugins
 *****************
