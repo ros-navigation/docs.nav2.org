@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#edge-scorers">Edge Scorers</a></li>
@@ -1165,6 +1166,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#mppi">MPPI</a></li>
 </ul>
 </li>
 </ul>
@@ -1868,131 +1878,6 @@ This process is then repeated a number of times and returns a converged solution
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The step between points on trajectories to visualize to downsample trajectory density.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div>
-<div class="section" id="path-handler">
-<h3>Path Handler<a class="headerlink" href="#path-handler" title="Permalink to this heading"></a></h3>
-<dl class="field-list">
-<dt class="field-odd">transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.1</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Time tolerance for data transformations with TF (s).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">prune_distance</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>1.5</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Distance ahead of nearest point on path to robot to prune path to (m). This distance should be at least as great as the furthest distance of interest by a critic (i.e. for maximum velocity projection forward, threshold to consider).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">max_robot_pose_search_dist</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>Costmap size / 2</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Max integrated distance ahead of robot pose to search for nearest path point in case of path looping.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">enforce_path_inversion</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If true, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner’s requested inversion point. In addition, these cusping points will also be treated by the critics as local goals that the robot will attempt to reach. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">inversion_xy_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.2</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Cartesian proximity (m) to path inversion point to be considered “achieved” to pass on the rest of the path after path inversion.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">inversion_yaw_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.4</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Angular proximity (radians) to path inversion point to be considered “achieved” to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.</p>
 </dd>
 </dl>
 </dd>
@@ -3221,8 +3106,6 @@ Dynamic and kinematic constraints are not required to be checked as trajectories
 <span class="w">      </span><span class="nt">ay_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
 <span class="w">      </span><span class="nt">az_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.5</span>
 <span class="w">      </span><span class="nt">iteration_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">      </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.7</span>
-<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">      </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span>
 <span class="w">      </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DiffDrive&quot;</span>

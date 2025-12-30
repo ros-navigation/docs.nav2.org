@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#edge-scorers">Edge Scorers</a></li>
@@ -1167,6 +1168,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#performance-impact">Performance Impact</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#mppi">MPPI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1320,17 +1330,20 @@ inactive state.</p></td>
 should clean up resources which are created for the controller.</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>setPlan()</p></td>
-<td><p>Method is called when the global plan is updated. Ideally this method should perform
-operations that transform the global plan and store it.</p></td>
+<tr class="row-even"><td><p>newPathReceived()</p></td>
+<td><p>Method is called when the global plan is updated. Ideally this method should only
+perform minimal work, such as extracting global information that may be of interest
+(e.g. reset internal states when new path received).</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-odd"><td><p>computeVelocityCommands()</p></td>
 <td><p>Method is called when a new velocity command is demanded by the controller server
 in-order for the robot to follow the global path. This method returns a
 <cite>geometry_msgs::msg::TwistStamped</cite> which represents the velocity command for the
-robot to drive.  This method passes 3 parameters: reference to the current robot
-pose, its current velocity, and a pointer to the <cite>nav2_core::GoalChecker</cite>.</p></td>
+robot to drive.  This method passes 5 parameters: reference to the current robot
+pose, its current velocity, a pointer to the <cite>nav2_core::GoalChecker</cite>, the
+transformed_global_plan output by the path handler plugin, and the last pose of the
+global plan.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>cancel()</p></td>
@@ -1350,7 +1363,7 @@ behavior untouched.</p></td>
 </tr>
 </tbody>
 </table>
-<p>In this tutorial, we will use the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::setPlan</span></code> and
+<p>In this tutorial, we will use the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::newPathReceived</span></code> and
 <code class="docutils literal notranslate"><span class="pre">PurePursuitController::computeVelocityCommands</span></code>.</p>
 <p>In controllers, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must set member variables from ROS parameters and perform any initialization required.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::configure</span><span class="p">(</span>
@@ -1396,24 +1409,29 @@ For example, our example controller is mapped to the name <code class="docutils 
 we used <code class="docutils literal notranslate"><span class="pre">FollowPath.desired_linear_vel</span></code>. In other words, <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> is used as a namespace for plugin-specific parameters.
 We will see more on this when we discuss the parameters file (or params file).</p>
 <p>The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.</p>
-<p>In <code class="docutils literal notranslate"><span class="pre">setPlan()</span></code> method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into
-the frame of the robot and then store this transformed global path for later use.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::setPlan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="c1">// Transform global path into the robot&#39;s frame</span>
-<span class="w">  </span><span class="n">global_plan_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformGlobalPlan</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <p>The computation for the desired velocity happens in the <code class="docutils literal notranslate"><span class="pre">computeVelocityCommands()</span></code> method. It is used to calculate the desired velocity command given the current velocity and pose.
 The third argument - is a pointer to the <code class="docutils literal notranslate"><span class="pre">nav2_core::GoalChecker</span></code>, that checks whether a goal has been reached. In our example, this won’t be used.
+The fourth argument - is the global plan that has already been transformed into the local costmap frame and pruned to only the relevant portion within the costmap bounds. In our example, we will transform this local plan from costmap global frame to robot base frame. This is the path that pure pursuit will track.
+The fifth argument - is the last pose of the global plan. In our example, this won’t be used.
 In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">PurePursuitController::computeVelocityCommands</span><span class="p">(</span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span>
-<span class="w">  </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">GoalChecker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cm">/*goal_checker*/</span><span class="p">)</span>
+<span class="w">  </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">GoalChecker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cm">/*goal_checker*/</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">transformed_global_plan</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="cm">/*global_goal*/</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">  </span><span class="c1">// Transform the plan from costmap&#39;s global frame to robot base frame</span>
+<span class="w">  </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="n">transformed_plan</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">nav2_util</span><span class="o">::</span><span class="n">transformPathInTargetFrame</span><span class="p">(</span>
+<span class="w">      </span><span class="n">transformed_global_plan</span><span class="p">,</span><span class="w"> </span><span class="n">transformed_plan</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">tf_</span><span class="p">,</span>
+<span class="w">      </span><span class="n">costmap_ros_</span><span class="o">-&gt;</span><span class="n">getBaseFrameID</span><span class="p">(),</span><span class="w"> </span><span class="n">costmap_ros_</span><span class="o">-&gt;</span><span class="n">getTransformTolerance</span><span class="p">()))</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">ControllerTFError</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;Unable to transform plan pose into local frame&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
 <span class="w">  </span><span class="c1">// Find the first pose which is at a distance greater than the specified lookahead distance</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">goal_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span>
 <span class="w">    </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>

@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#edge-scorers">Edge Scorers</a></li>
@@ -1165,6 +1166,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#mppi">MPPI</a></li>
 </ul>
 </li>
 </ul>
@@ -1769,8 +1779,36 @@ to make progress towards a goal</p></td>
 </tbody>
 </table>
 </div>
+<div class="section" id="path-handlers">
+<h2>Path Handlers<a class="headerlink" href="#path-handlers" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 26%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Creator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#feasiblepathhandler">FeasiblePathHandler</a></p></td>
+<td><p>Maurice Alexander
+Purnawan</p></td>
+<td><p>A plugin that transforms global
+plan to the local costmap frame,
+prunes it to the relevant portion
+within the costmap bounds, and
+handles in-place rotation and
+cusp pruning.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="behavior-tree-nodes">
-<h2>Behavior Tree Nodes<a class="headerlink" href="#behavior-tree-nodes" title="Permalink to this heading"></a></h2>
+<span id="feasiblepathhandler"></span><h2>Behavior Tree Nodes<a class="headerlink" href="#behavior-tree-nodes" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 42%" />
@@ -1876,109 +1914,116 @@ smoother id</p></td>
 topic input, otherwises uses a default
 progress checker id</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp">Navigate Through Poses</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/path_handler_selector_node.cpp">Path Handler Selector</a></p></td>
+<td><p>Maurice Alexander
+Purnawan</p></td>
+<td><p>Selects the path handler based on a
+topic input, otherwises uses a default
+path handler id</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp">Navigate Through Poses</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>BT Node for other BehaviorTree.CPP BTs
 to call Nav2’s NavThroughPoses action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp">Remove Passed Goals</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp">Remove Passed Goals</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Removes goal poses passed or within a
 tolerance for culling old viapoints from
 path re-planning</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp">Remove In Collision Goals</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp">Remove In Collision Goals</a></p></td>
 <td><p>Tony Najjar</p></td>
 <td><p>Removes goal poses that have a footprint
 or point cost above a threshold.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Computes a path through a set of poses
 rather than a single end goal pose
 using the planner plugin specified</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp">Compute Route</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp">Compute Route</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Computes a Route through a navigation
 graph and returns both a dense path and
 set of sparse route nodes and edges.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp">Compute And Track Route</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp">Compute And Track Route</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Computes a Route as above, but also
 actively tracks progress and triggers
 route contextual semantic operations.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels Nav2 controller server</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp">Cancel BackUp Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp">Cancel BackUp Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels backup behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp">Cancel Spin Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp">Cancel Spin Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels spin behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp">Cancel Wait Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp">Cancel Wait Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels wait behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp">Cancel Route Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp">Cancel Route Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Cancels ComputeAndTrackRoute action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels drive on heading behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels assisted teleop behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Cancels compute complete coverage</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls coverage planner server</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp">Get Pose From Path Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp">Get Pose From Path Action</a></p></td>
 <td><p>Marc Morcos</p></td>
 <td><p>Extracts a pose from a path</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp">Dock Robot Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp">Dock Robot Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls dock robot action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp">Undock Robot Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp">Undock Robot Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls undock robot action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp">Concatenate Paths Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp">Concatenate Paths Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Concatenates 2 paths together</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp">Get Current Pose Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp">Get Current Pose Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Gets current pose to the blackboard</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp">Append Goal Pose To Goals Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp">Append Goal Pose To Goals Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Appends a goal pose to a goals vector</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp">Extract Route Nodes To Goals Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp">Extract Route Nodes To Goals Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Converts Route Nodes to Goals</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp">Get Next Few Goals Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp">Get Next Few Goals Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Obtains the next N goals in a goal vector</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp">Toggle Collision Monitor Service</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp">Toggle Collision Monitor Service</a></p></td>
 <td><p>David Grbac</p></td>
 <td><p>Calls toggle collision monitor service</p></td>
 </tr>

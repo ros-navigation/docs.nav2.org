@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#edge-scorers">Edge Scorers</a></li>
@@ -1167,6 +1168,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#performance-impact">Performance Impact</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#mppi">MPPI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1259,28 +1269,8 @@
 <div class="section" id="graceful-controller-parameters">
 <h2>Graceful Controller Parameters<a class="headerlink" href="#graceful-controller-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
-<dt class="field-odd">transform_tolerance</dt>
+<dt class="field-odd">max_lookahead</dt>
 <dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.1</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The TF transform tolerance (s).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">max_lookahead</dt>
-<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1299,8 +1289,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_lookahead</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_lookahead</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1316,26 +1306,6 @@
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">max_robot_pose_search_dist</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>Local costmap max extent (max(width, height) / 2)</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, it will use the maximum distance possible to search every point on the path for the nearest path point.</p>
 </dd>
 </dl>
 </dd>
@@ -1704,7 +1674,6 @@
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_graceful_controller::GracefulController</span>
-<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">min_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">max_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">initial_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

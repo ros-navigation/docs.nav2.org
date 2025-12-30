@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#edge-scorers">Edge Scorers</a></li>
@@ -1165,6 +1166,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mppi">MPPI</a></li>
 </ul>
 </li>
 </ul>
@@ -1793,6 +1803,127 @@ You can enable this by building with <code class="docutils literal notranslate">
 </tbody>
 </table>
 <p><em>Note: This table should be populated with data from issue #5784 comment. Composed CPU is for all Nav2 processes combined.</em></p>
+</div>
+</div>
+<div class="section" id="centralize-path-handler-logic-in-controller-server">
+<h2>Centralize Path Handler logic in Controller Server<a class="headerlink" href="#centralize-path-handler-logic-in-controller-server" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5446">PR #5446</a> centralizes
+path handling logic inside the controller server. Previously, each controller
+plugin implemented its own version of this logic.</p>
+<p>With this change, users can now configure a path handler in the controller server:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">PathHandler</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::FeasiblePathHandler&quot;</span>
+<span class="w">  </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">  </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">enforce_path_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">  </span><span class="nt">inversion_xy_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+<span class="w">  </span><span class="nt">inversion_yaw_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<span class="w">  </span><span class="nt">minimum_rotation_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
+<span class="w">  </span><span class="nt">reject_unit_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</pre></div>
+</div>
+<p>For more details, refer to the <em>Path Handler</em> section in the Controller Server
+documentation.</p>
+<p>This update resolves the issue where <em>Navigate Through Poses</em> could terminate
+prematurely when passing near intermediate goal poses. We also introduce the following API changes as part of this fix.</p>
+<div class="section" id="goalchecker">
+<h3>GoalChecker<a class="headerlink" href="#goalchecker" title="Permalink to this heading"></a></h3>
+<p>Previously:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isGoalReached</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">query_pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isGoalReached</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">query_pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">transformed_global_plan</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>A new argument is added: the <strong>transformed and pruned global plan</strong> from the path handler.</p>
+</div>
+<div class="section" id="controller-plugins">
+<h3>Controller Plugins<a class="headerlink" href="#controller-plugins" title="Permalink to this heading"></a></h3>
+<p>Previously:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPlan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">newPathReceived</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">raw_global_path</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This callback should now only perform lightweight tasks (e.g. resetting internal
+state). The controller will be provided the processed plan during computeVelocityCommands().</p>
+<p>Previously:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">computeVelocityCommands</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span>
+<span class="w">  </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">GoalChecker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_checker</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">computeVelocityCommands</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span>
+<span class="w">  </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">GoalChecker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_checker</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">transformed_global_plan</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">global_goal</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Two new arguments are provided:</p>
+<ul class="simple">
+<li><p>the <strong>transformed and pruned global plan</strong> from the path handler.</p></li>
+<li><p>The last pose from the global plan.</p></li>
+</ul>
+<p>Moreover, several parameters have also been added to / removed from individual controller plugin configurations as part of centralizing path-handling logic in the controller server.</p>
+</div>
+<div class="section" id="dwb">
+<h3>DWB<a class="headerlink" href="#dwb" title="Permalink to this heading"></a></h3>
+<p><strong>Removed parameters</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prune_plan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shorten_transformed_plan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prune_distance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forward_prune_distance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transform_tolerance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">publish_global_plan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">publish_transformed_plan</span></code></p></li>
+</ul>
+<p><strong>Added parameters</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path_length_tolerance</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="rpp">
+<h3>RPP<a class="headerlink" href="#rpp" title="Permalink to this heading"></a></h3>
+<p><strong>Removed parameters</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">transform_tolerance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_robot_pose_search_dist</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="graceful">
+<h3>Graceful<a class="headerlink" href="#graceful" title="Permalink to this heading"></a></h3>
+<p><strong>Removed parameters</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">transform_tolerance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_robot_pose_search_dist</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="mppi">
+<h3>MPPI<a class="headerlink" href="#mppi" title="Permalink to this heading"></a></h3>
+<p><strong>Removed parameters</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">transform_tolerance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prune_distance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_robot_pose_search_dist</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enforce_path_inversion</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inversion_xy_tolerance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inversion_yaw_tolerance</span></code></p></li>
+</ul>
 </div>
 </div>
 </div>

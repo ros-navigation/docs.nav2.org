@@ -30,50 +30,6 @@ Parameters
   Description
     Namespaces to load critics in.
 
-:``<dwb plugin>``.prune_plan:
-
-  ==== =======
-  Type Default
-  ---- -------
-  bool true
-  ==== =======
-
-  Description
-    Whether to prune the path of old, passed points.
-
-:``<dwb plugin>``.shorten_transformed_plan:
-
-  ==== =======
-  Type Default
-  ---- -------
-  bool true
-  ==== =======
-
-  Description
-    Determines whether we will pass the full plan on to the critics.
-
-:``<dwb plugin>``.prune_distance:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 2.0
-  ====== =======
-
-  Description
-    Distance (m) to prune backward until.
-
-:``<dwb plugin>``.forward_prune_distance:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 2.0
-  ====== =======
-
-  Description
-    Distance (m) to prune forward until. If set to ``-1``, it will search the full path for the closest point, in the case of no replanning.
-
 :``<dwb plugin>``.debug_trajectory_details:
 
   ==== =======
@@ -106,17 +62,6 @@ Parameters
 
   Description
     Goal checker plugin name.
-
-:``<dwb plugin>``.transform_tolerance:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.1
-  ============== =============================
-
-  Description
-    TF transform tolerance (s).
 
 :``<dwb plugin>``.short_circuit_trajectory_evaluation:
 

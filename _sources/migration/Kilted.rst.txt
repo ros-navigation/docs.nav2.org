@@ -590,3 +590,145 @@ The following table shows the performance impact of changing the bond heartbeat 
 +------------------+----------------+------------------+
 
 *Note: This table should be populated with data from issue #5784 comment. Composed CPU is for all Nav2 processes combined.*
+
+Centralize Path Handler logic in Controller Server
+--------------------------------------------------
+
+`PR #5446 <https://github.com/ros-navigation/navigation2/pull/5446>`_ centralizes
+path handling logic inside the controller server. Previously, each controller
+plugin implemented its own version of this logic.
+
+With this change, users can now configure a path handler in the controller server:
+
+.. code-block:: yaml
+
+  PathHandler:
+    plugin: "nav2_controller::FeasiblePathHandler"
+    prune_distance: 2.0
+    enforce_path_inversion: True
+    enforce_path_rotation: False
+    inversion_xy_tolerance: 0.2
+    inversion_yaw_tolerance: 0.4
+    minimum_rotation_angle: 0.785
+    reject_unit_path: False
+
+
+For more details, refer to the *Path Handler* section in the Controller Server
+documentation.
+
+This update resolves the issue where *Navigate Through Poses* could terminate
+prematurely when passing near intermediate goal poses. We also introduce the following API changes as part of this fix.
+
+GoalChecker
+^^^^^^^^^^^^
+
+Previously:
+
+.. code-block:: c++
+
+  virtual bool isGoalReached(
+    const geometry_msgs::msg::Pose & query_pose,
+    const geometry_msgs::msg::Pose & goal_pose,
+    const geometry_msgs::msg::Twist & velocity) = 0;
+
+Now:
+
+.. code-block:: c++
+
+  virtual bool isGoalReached(
+    const geometry_msgs::msg::Pose & query_pose,
+    const geometry_msgs::msg::Pose & goal_pose,
+    const geometry_msgs::msg::Twist & velocity,
+    const nav_msgs::msg::Path & transformed_global_plan) = 0;
+
+A new argument is added: the **transformed and pruned global plan** from the path handler.
+
+Controller Plugins
+^^^^^^^^^^^^^^^^^^
+
+Previously:
+
+.. code-block:: c++
+
+  virtual void setPlan(const nav_msgs::msg::Path & path) = 0;
+
+Now:
+
+.. code-block:: c++
+
+  virtual void newPathReceived(const nav_msgs::msg::Path & raw_global_path) = 0;
+
+This callback should now only perform lightweight tasks (e.g. resetting internal
+state). The controller will be provided the processed plan during computeVelocityCommands().
+
+Previously:
+
+.. code-block:: c++
+
+  virtual geometry_msgs::msg::TwistStamped computeVelocityCommands(
+    const geometry_msgs::msg::PoseStamped & pose,
+    const geometry_msgs::msg::Twist & velocity,
+    nav2_core::GoalChecker * goal_checker) = 0;
+
+Now:
+
+.. code-block:: c++
+
+  virtual geometry_msgs::msg::TwistStamped computeVelocityCommands(
+    const geometry_msgs::msg::PoseStamped & pose,
+    const geometry_msgs::msg::Twist & velocity,
+    nav2_core::GoalChecker * goal_checker,
+    const nav_msgs::msg::Path & transformed_global_plan,
+    const geometry_msgs::msg::PoseStamped & global_goal) = 0;
+
+Two new arguments are provided:
+
+- the **transformed and pruned global plan** from the path handler.
+- The last pose from the global plan.
+
+Moreover, several parameters have also been added to / removed from individual controller plugin configurations as part of centralizing path-handling logic in the controller server.
+
+DWB
+^^^
+
+**Removed parameters**
+
+- ``prune_plan``
+- ``shorten_transformed_plan``
+- ``prune_distance``
+- ``forward_prune_distance``
+- ``transform_tolerance``
+- ``publish_global_plan``
+- ``publish_transformed_plan``
+
+**Added parameters**
+
+- ``path_length_tolerance``
+
+RPP
+^^^
+
+**Removed parameters**
+
+- ``transform_tolerance``
+- ``max_robot_pose_search_dist``
+
+Graceful
+^^^^^^^^
+
+**Removed parameters**
+
+- ``transform_tolerance``
+- ``max_robot_pose_search_dist``
+
+MPPI
+^^^^
+
+**Removed parameters**
+
+- ``transform_tolerance``
+- ``prune_distance``
+- ``max_robot_pose_search_dist``
+- ``enforce_path_inversion``
+- ``inversion_xy_tolerance``
+- ``inversion_yaw_tolerance``

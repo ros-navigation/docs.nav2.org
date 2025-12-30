@@ -341,6 +341,22 @@ Progress Checkers
 .. _SimpleProgressChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
 .. _PoseProgressChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
 
+Path Handlers
+=============
+
++---------------------------------+------------------------+----------------------------------+
+|         Plugin Name             |         Creator        |       Description                |
++=================================+========================+==================================+
+| `FeasiblePathHandler`_          | Maurice Alexander      | A plugin that transforms global  |
+|                                 | Purnawan               | plan to the local costmap frame, |
+|                                 |                        | prunes it to the relevant portion|
+|                                 |                        | within the costmap bounds, and   |
+|                                 |                        | handles in-place rotation and    |
+|                                 |                        | cusp pruning.                    |
++---------------------------------+------------------------+----------------------------------+
+
+.. _FeasiblePathHandler:
+
 
 Behavior Tree Nodes
 ===================
@@ -399,6 +415,10 @@ Behavior Tree Nodes
 | `Progress Checker Selector`_                | Steve Macenski      | Selects the progress checker based on a  |
 |                                             |                     | topic input, otherwises uses a default   |
 |                                             |                     | progress checker id                      |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Path Handler Selector`_                    | Maurice Alexander   | Selects the path handler based on a      |
+|                                             | Purnawan            | topic input, otherwises uses a default   |
+|                                             |                     | path handler id                          |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Navigate Through Poses`_                   | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
 |                                             |                     | to call Nav2's NavThroughPoses action    |
@@ -480,6 +500,7 @@ Behavior Tree Nodes
 .. _Goal Checker Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
 .. _Smoother Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
 .. _Progress Checker Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
+.. _Path Handler Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/path_handler_selector_node.cpp
 .. _Navigate Through Poses: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 .. _Remove Passed Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Remove In Collision Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp

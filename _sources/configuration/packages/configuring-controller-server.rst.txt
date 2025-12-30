@@ -132,6 +132,31 @@ Parameters
             goal_checker:
               plugin: "nav2_controller::SimpleGoalChecker"
 
+:path_handler_plugins:
+
+  ============== ================
+  Type           Default
+  -------------- ----------------
+  vector<string> ["PathHandler"]
+  ============== ================
+
+  Description
+    Mapped name for path handler plugin for processing path from the planner. When the number of the plugins is more than 2, each :code:`FollowPath` action needs to specify the path handler plugin name with its :code:`path_handler_id` field.
+
+  Note
+    The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        controller_server:
+          ros__parameters:
+            path_handler_plugins: ["PathHandler"]
+            path_handler:
+              plugin: "nav2_controller::FeasiblePathHandler"
+
+
 :min_x_velocity_threshold:
 
   ============== =============================
@@ -282,11 +307,12 @@ Provided Plugins
   nav2_controller-plugins/simple_goal_checker.rst
   nav2_controller-plugins/stopped_goal_checker.rst
   nav2_controller-plugins/position_goal_checker.rst
+  nav2_controller-plugins/feasible_path_handler.rst
 
 Default Plugins
 ***************
 
-When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
+When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin`, :code:`path_handler_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
 
   ================== =====================================================
   Namespace          Plugin
@@ -294,6 +320,8 @@ When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin` or :code:
   "progress_checker" "nav2_controller::SimpleProgressChecker"
   ------------------ -----------------------------------------------------
   "goal_checker"     "nav2_controller::SimpleGoalChecker"
+  ------------------ -----------------------------------------------------
+  "path_handler"     "nav2_controller::FeasiblePathHandler"
   ------------------ -----------------------------------------------------
   "FollowPath"       "dwb_core::DWBLocalPlanner"
   ================== =====================================================
@@ -314,6 +342,7 @@ Example
         odom_duration: 0.3
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
+        path_handler_plguins: ["PathHandler"]
         controller_plugins: ["FollowPath"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
@@ -323,6 +352,16 @@ Example
           plugin: "nav2_controller::SimpleGoalChecker"
           xy_goal_tolerance: 0.25
           yaw_goal_tolerance: 0.25
+          path_length_tolerance: 1.0
           stateful: True
+        PathHandler:
+          plugin: "nav2_controller::FeasiblePathHandler"
+          prune_distance: 2.0
+          enforce_path_inversion: True
+          enforce_path_rotation: False
+          inversion_xy_tolerance: 0.2
+          inversion_yaw_tolerance: 0.4
+          minimum_rotation_angle: 0.785
+          reject_unit_path: False
         FollowPath:
           plugin: "dwb_core::DWBLocalPlanner"

@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#edge-scorers">Edge Scorers</a></li>
@@ -1167,6 +1168,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#performance-impact">Performance Impact</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#mppi">MPPI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1430,8 +1440,38 @@ It also hosts the local costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_x_velocity_threshold</dt>
+<dt class="field-even">path_handler_plugins</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[“PathHandler”]</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>Description</dt><dd><p>Mapped name for path handler plugin for processing path from the planner. When the number of the plugins is more than 2, each <code class="code docutils literal notranslate"><span class="pre">FollowPath</span></code> action needs to specify the path handler plugin name with its <code class="code docutils literal notranslate"><span class="pre">path_handler_id</span></code> field.</p>
+</dd>
+<dt>Note</dt><dd><p>The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<p>Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path_handler_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PathHandler&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">path_handler</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::FeasiblePathHandler&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">min_x_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1451,8 +1491,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_y_velocity_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_y_velocity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1472,8 +1512,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0. For non-holono
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_theta_velocity_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_theta_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1493,8 +1533,8 @@ Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">failure_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">failure_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1514,8 +1554,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">speed_limit_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">speed_limit_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1534,8 +1574,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">odom_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1554,8 +1594,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">odom_duration</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">odom_duration</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1574,8 +1614,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">enable_stamped_cmd_vel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1596,8 +1636,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bond_heartbeat_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bond_heartbeat_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1616,8 +1656,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">introspection_mode</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">introspection_mode</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1636,8 +1676,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-even">allow_parameter_qos_overrides</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1656,8 +1696,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">search_window</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">search_window</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1690,12 +1730,13 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/position_goal_checker.html">PositionGoalChecker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/feasible_path_handler.html">FeasiblePathHandler</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="default-plugins">
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this heading"></a></h2>
-<p>When the <code class="code docutils literal notranslate"><span class="pre">progress_checker_plugins</span></code>, <code class="code docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> or <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameters are not overridden, the following default plugins are loaded:</p>
+<p>When the <code class="code docutils literal notranslate"><span class="pre">progress_checker_plugins</span></code>, <code class="code docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code>, <code class="code docutils literal notranslate"><span class="pre">path_handler_plugin</span></code> or <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameters are not overridden, the following default plugins are loaded:</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -1712,7 +1753,10 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <tr class="row-odd"><td><p>“goal_checker”</p></td>
 <td><p>“nav2_controller::SimpleGoalChecker”</p></td>
 </tr>
-<tr class="row-even"><td><p>“FollowPath”</p></td>
+<tr class="row-even"><td><p>“path_handler”</p></td>
+<td><p>“nav2_controller::FeasiblePathHandler”</p></td>
+</tr>
+<tr class="row-odd"><td><p>“FollowPath”</p></td>
 <td><p>“dwb_core::DWBLocalPlanner”</p></td>
 </tr>
 </tbody>
@@ -1733,6 +1777,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <span class="w">    </span><span class="nt">odom_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;progress_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># progress_checker_plugin: &quot;progress_checker&quot; For Humble and older</span>
 <span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;goal_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># goal_checker_plugin: &quot;goal_checker&quot; For Galactic and older</span>
+<span class="w">    </span><span class="nt">path_handler_plguins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PathHandler&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
@@ -1742,7 +1787,17 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span>
 <span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">      </span><span class="nt">path_length_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">PathHandler</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::FeasiblePathHandler&quot;</span>
+<span class="w">      </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">      </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">enforce_path_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">      </span><span class="nt">inversion_xy_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+<span class="w">      </span><span class="nt">inversion_yaw_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<span class="w">      </span><span class="nt">minimum_rotation_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
+<span class="w">      </span><span class="nt">reject_unit_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
 </pre></div>

@@ -902,6 +902,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../plugins/index.html#path-handlers">Path Handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../plugins/index.html#route-plugins">Route Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../plugins/index.html#edge-scorers">Edge Scorers</a></li>
@@ -1167,6 +1168,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#performance-impact">Performance Impact</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../migration/Kilted.html#mppi">MPPI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1339,8 +1349,28 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">server_name</dt>
+<dt class="field-odd">path_handler_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Mapped name of the path handler plugin type to use, e.g. FeasiblePathHandler.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">server_name</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1359,8 +1389,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-even">server_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">server_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1428,7 +1458,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;FollowPath</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="w"> </span><span class="na">goal_checker_id=</span><span class="s">&quot;precise_goal_checker&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;FollowPath&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{follow_path_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{follow_path_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;FollowPath</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="w"> </span><span class="na">goal_checker_id=</span><span class="s">&quot;precise_goal_checker&quot;</span><span class="w"> </span><span class="na">path_handler_id=</span><span class="s">&quot;PathHandler&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;FollowPath&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{follow_path_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{follow_path_error_msg}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
