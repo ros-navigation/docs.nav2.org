@@ -493,6 +493,104 @@ In `PR #5516 <https://github.com/ros-navigation/navigation2/pull/5516>`_, we add
 This allows users of ``rmw_zenoh_cpp`` to run the tests without needing to start a Zenoh router in a separate terminal.
 You can enable this by building with ``--cmake-args -DUSE_ISOLATED_TESTS=ON``.
 
+RoundRobin wrap_around Parameter
+--------------------------------
+
+`PR #5308 <https://github.com/ros-navigation/navigation2/pull/5308>`_ adds a new ``wrap_around`` parameter to the RoundRobin behavior tree control node.
+
+This parameter controls whether the RoundRobin node wraps around to its first child after the last one fails:
+
+- ``wrap_around=false`` (default): Node returns FAILURE instead of wrapping to first child
+- ``wrap_around=true``: Node wraps around to the first child and continues round-robin behavior
+
+**Breaking Change**: The default behavior has changed. Previously, RoundRobin would always wrap around. Now it defaults to ``wrap_around=false``, which means existing behavior trees will use the new non-wrap-around behavior unless explicitly configured.
+
+This change addresses issues where RoundRobin index can become misaligned with RecoveryNode retry counter when used in recovery sequences, ensuring each recovery action is performed once and only once.
+
+.. code-block:: xml
+
+    <!-- New default behavior (no wrap-around) -->
+    <RoundRobin wrap_around="false">
+        <Action_A/>
+        <Action_B/>
+        <Action_C/>
+    </RoundRobin>
+
+    <!-- Previous behavior (wrap-around) -->
+    <RoundRobin wrap_around="true">
+        <Action_A/>
+        <Action_B/>
+        <Action_C/>
+    </RoundRobin>
+
+For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+
+Configurable Inscribed Obstacle Cost Value for Costmap Conversion
+-----------------------------------------------------------------
+
+In `PR #5781 <https://github.com/ros-navigation/navigation2/pull/5781>`_, a new parameter inscribed_obstacle_cost_value is added to fix the issue where Costmap2DPublisher maps INSCRIBED_INFLATED_OBSTACLE (253) to value 99 in OccupancyGrid, but StaticLayer incorrectly converts it back to 251 instead of 253.
+
+Default value:
+
+- inscribed_obstacle_cost_value: 99
+
+Updated Nav2 RViz Panel
+-----------------------
+
+In `PR #5774 <https://github.com/ros-navigation/navigation2/pull/5774>`_, the Nav2 panel (``nav2_rviz_plugins``) has been redesigned to provide comprehensive control over navigation requests and unify goal management tools.
+
+Key Improvements:
+
+- **Dynamic Behavior Tree (BT) Selection**: Added a selector to specify a custom Behavior Tree XML file. This enables modifying navigation logic at runtime (e.g., specific recovery behaviors) for both ``NavigateToPose`` and ``NavigateThroughPoses`` requests.
+- **Manual Coordinate Entry**: Enables precise input of coordinates (X, Y, Theta) and frame_id via numeric fields, complementing the visual tool.
+
+The UI workflow is now organized into two primary navigation modes:
+
+1. **Single-Goal Navigation** (``NavigateToPose``) Designed for individual targets. The goal can be defined using the standard "Nav2 Goal" tool (clicking on the map) or by manually entering precise coordinates directly in the panel.
+
+2. **Multiple-Goal Navigation** (``NavigateThroughPoses``, ``Waypoint Following`` ) Designed for executing sequences of poses. This mode utilizes a pose accumulation mode to build and manage a list of goals before execution:
+
+  - List Building: Poses can be added via a hybrid approach: using the "Nav2 Goal" tool, manually entering coordinates, or loading a YAML file.
+
+  - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
+
+  - Execution: Once the list is defined, navigation can be executed via ``NavigateThroughPoses`` or ``Waypoint Following`` actions.
+
+.. image:: images/nav2_new_rviz_panel.gif
+  :width: 800
+  :alt: Multiple-Goal Navigation in Nav2 RViz Panel
+  :align: center
+
+GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
+
+Bond Heartbeat Period Default Value Change
+------------------------------------------
+
+In L-turtle, the default value for ``bond_heartbeat_period`` parameter has been increased from ``0.1`` to ``0.25`` seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.
+
+**Migration note**: If you have explicitly set ``bond_heartbeat_period`` to ``0.1`` in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to ``0.25`` if you want to be explicit about the value. This value should now also be set in the lifecycle manager node as well.
+
+Performance Impact
+^^^^^^^^^^^^^^^^^^
+
+The following table shows the performance impact of changing the bond heartbeat period from 0.1s to 0.25s:
+
++------------------+----------------+------------------+
+| Bond Period (s)  | Composed CPU   | Single-Proc. CPU |
++==================+================+==================+
+| 0.1              | 140%           | 13%              |
++------------------+----------------+------------------+
+| 0.2              | 110%           | 10%              |
++------------------+----------------+------------------+
+| 0.25             | 100%           | 9%               |
++------------------+----------------+------------------+
+| 0.5              | 85%            | 8%               |
++------------------+----------------+------------------+
+| 1.0              | 80%            | 8%               |
++------------------+----------------+------------------+
+
+*Note: This table should be populated with data from issue #5784 comment. Composed CPU is for all Nav2 processes combined.*
+
 Centralize Path Handler logic in Controller Server
 --------------------------------------------------
 
