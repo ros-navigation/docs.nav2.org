@@ -1872,6 +1872,46 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.downsample_obstacle_heuristic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Advanced feature: This allows a user to disable downsampling of the obstacle heuristic’s costmap representation to search at the costmap’s full-resolution. This will come at increased up-front costs while searching for the 2D approximate route to the goal in exchange for less search iterations and a slightly more smooth path. With <code class="docutils literal notranslate"><span class="pre">smooth_path</span></code> on, this increased smoothness is noticeable but not massively different. When combined with all of the advanced features however, it can contribute to a better overall plan in exchange for some compute time. This scales with map size and complexity of the path plan requested. For simpler maps / paths, this may actually improve performance due to low up-front search times and lower iterations.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.use_quadratic_cost_penalty</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Advanced feature: This allows a user to specify a quadratic traversal and heuristic cost computation (e.g. <code class="docutils literal notranslate"><span class="pre">cost</span> <span class="pre">*</span> <span class="pre">cost</span></code>) rather than linear. This will speed up the planner since the optimal channel for feasible search is deeper and prunes search branches more aggressively. This will also create overall much smoother paths since search will not attempt to refine itself to stay in the center of wide aisleways or open spaces to reduce low finite costs. However, the smoothness and less sensitivity to cost also makes it come somewhat closer to obstacles. Broadly speaking the change and non-straight penalties can be disabled when this feature is in use. The cost penalty and inflation layer parameters may need to be adjusted when enabling this parameter to create optimal performance.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">allow_parameter_qos_overrides</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
@@ -1911,6 +1951,8 @@
 <span class="w">      </span><span class="nt">analytic_expansion_max_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w">  </span><span class="c1"># For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting</span>
 <span class="w">      </span><span class="nt">analytic_expansion_max_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200.0</span><span class="w">  </span><span class="c1"># The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal</span>
 <span class="w">      </span><span class="nt">analytic_expansion_max_cost_override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1">#  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)</span>
+<span class="w">      </span><span class="nt">downsample_obstacle_heuristic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">   </span><span class="c1"># Downsample the obstacle map dynamic programming distance expansion heuristic to speed up search at the cost of some path quality</span>
+<span class="w">      </span><span class="nt">use_quadratic_cost_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># Use quadratic cost penalty for traversal and heuristic cost computations rather than linear</span>
 <span class="w">      </span><span class="nt">reverse_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">                </span><span class="c1"># Penalty to apply if motion is reversing, must be =&gt; 1</span>
 <span class="w">      </span><span class="nt">change_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w">                </span><span class="c1"># Penalty to apply if motion is changing directions (L to R), must be &gt;= 0</span>
 <span class="w">      </span><span class="nt">non_straight_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.05</span><span class="w">          </span><span class="c1"># Penalty to apply if motion is non-straight, must be =&gt; 1</span>
