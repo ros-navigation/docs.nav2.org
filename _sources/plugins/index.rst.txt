@@ -479,6 +479,10 @@ Behavior Tree Nodes
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Toggle Collision Monitor Service`_         | David Grbac         | Calls toggle collision monitor service   |
 +---------------------------------------------+---------------------+------------------------------------------+
+| `Follow Object`_                            | Alberto Tudela      | Dynamically follows an object            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Follow Object`_                     | Alberto Tudela      | Cancels follow object action             |
++---------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
@@ -525,6 +529,8 @@ Behavior Tree Nodes
 .. _Extract Route Nodes To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
 .. _Get Next Few Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
 .. _Toggle Collision Monitor Service: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp
+.. _Follow Object: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_action.cpp
+.. _Cancel Follow Object: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_cancel_node.cpp
 
 
 +------------------------------------+--------------------+------------------------+
