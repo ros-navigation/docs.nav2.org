@@ -350,6 +350,28 @@ Parameters
   Description
     Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are > 24. Otherwise, leave as 1 (fine search).
 
+:``<name>``.downsample_obstacle_heuristic:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   true
+  ====== =======
+
+  Description
+    Advanced feature: This allows a user to disable downsampling of the obstacle heuristic's costmap representation to search at the costmap's full-resolution. This will come at increased up-front costs while searching for the 2D approximate route to the goal in exchange for less search iterations and a slightly more smooth path. With ``smooth_path`` on, this increased smoothness is noticeable but not massively different. When combined with all of the advanced features however, it can contribute to a better overall plan in exchange for some compute time. This scales with map size and complexity of the path plan requested. For simpler maps / paths, this may actually improve performance due to low up-front search times and lower iterations.
+
+:``<name>``.use_quadratic_cost_penalty:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+    Advanced feature: This allows a user to specify a quadratic traversal and heuristic cost computation (e.g. ``cost * cost``) rather than linear. This will speed up the planner since the optimal channel for feasible search is deeper and prunes search branches more aggressively. This will also create overall much smoother paths since search will not attempt to refine itself to stay in the center of wide aisleways or open spaces to reduce low finite costs. However, the smoothness and less sensitivity to cost also makes it come somewhat closer to obstacles. Broadly speaking the change and non-straight penalties can be disabled when this feature is in use. The cost penalty and inflation layer parameters may need to be adjusted when enabling this parameter to create optimal performance.
+
 :allow_parameter_qos_overrides:
 
   ============== =============================
@@ -380,6 +402,8 @@ Example
         analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
         analytic_expansion_max_cost: 200.0  # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
         analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
+        downsample_obstacle_heuristic: true   # Downsample the obstacle map dynamic programming distance expansion heuristic to speed up search at the cost of some path quality
+        use_quadratic_cost_penalty: false   # Use quadratic cost penalty for traversal and heuristic cost computations rather than linear
         reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
         change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
         non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
