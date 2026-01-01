@@ -160,17 +160,17 @@ The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`
 
 .. rst-class:: content-collapse
 
-Using Pre-built nav2_docker Containers  
-======================================
+Using Pre-built nav2_docker Images  
+==================================
   
-For contributors who want to get started quickly, Nav2 provides pre-built Docker containers through the `nav2_docker <https://github.com/ros-navigation/nav2_docker>`_ repository. These containers are available for all active ROS 2 distributions and come in two variants:  
+For contributors who want to get started quickly, Nav2 provides pre-built Docker images through the `nav2_docker <https://github.com/ros-navigation/nav2_docker>`_ repository. These images are available for all active ROS 2 distributions and come in two variants:  
   
 * **Nightly images**: Built from the latest Nav2 branch for each distribution
 * **Release images**: Built from the latest officially released Nav2 version  
   
 Supported distributions include Humble, Jazzy, Kilted, and Rolling.
   
-To use a pre-built nav2_docker container for development:  
+To use a pre-built nav2_docker image for development:  
   
 .. code-block:: bash  
   
