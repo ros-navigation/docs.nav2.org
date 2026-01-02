@@ -75,6 +75,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#released-distribution-binaries">Released Distribution Binaries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rolling-development-source">Rolling Development Source</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docker-container-images">Docker Container Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-pre-built-nav2-docker-images">Using Pre-built nav2_docker Images</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-doxygen">Generate Doxygen</a></li>
@@ -1410,6 +1411,24 @@ docker<span class="w"> </span>build<span class="w"> </span>--tag<span class="w">
 <p>The images cached from above are used for Nav2 CI, but can also be used with Nav2 <a class="reference internal" href="../devcontainer_docs/index.html#devcontainers"><span class="std std-ref">Dev Containers</span></a>!</p>
 </div>
 </div>
+<div class="content-collapse section" id="using-pre-built-nav2-docker-images">
+<h3>Using Pre-built nav2_docker Images<a class="headerlink" href="#using-pre-built-nav2-docker-images" title="Permalink to this heading"></a></h3>
+<p>For contributors who want to get started quickly, Nav2 provides pre-built Docker images through the <a class="reference external" href="https://github.com/ros-navigation/nav2_docker">nav2_docker</a> repository. These images are available for all active ROS 2 distributions and come in two variants:</p>
+<ul class="simple">
+<li><p><strong>Nightly images</strong>: Built from the latest Nav2 branch for each distribution</p></li>
+<li><p><strong>Release images</strong>: Built from the latest officially released Nav2 version</p></li>
+</ul>
+<p>Supported distributions include Humble, Jazzy, Kilted, and Rolling.</p>
+<p>To use a pre-built nav2_docker image for development:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pull a release image (example: Jazzy 1.3.1)</span>
+docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/ros-navigation/nav2_docker:jazzy-1.3.1
+
+<span class="c1"># Or pull a nightly image for the latest features</span>
+docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/ros-navigation/nav2_docker:rolling-nightly
+</pre></div>
+</div>
+<p>You can then use these images directly for development or as base images for your own custom deployments by specifying them in your Dockerfile.</p>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="generate-doxygen">
@@ -1435,7 +1454,7 @@ The documentation entrypoint in a browser is index.html.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Open Navigation LLC.</p>
+    <p>&#169; Copyright 2026, Open Navigation LLC.</p>
   </div>
 
    
