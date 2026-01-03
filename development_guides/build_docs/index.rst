@@ -158,6 +158,30 @@ The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`
 .. tip::
   The images cached from above are used for Nav2 CI, but can also be used with Nav2 :ref:`devcontainers`!
 
+.. rst-class:: content-collapse
+
+Using Pre-built nav2_docker Images
+==================================
+
+For contributors who want to get started quickly, Nav2 provides pre-built Docker images through the `nav2_docker <https://github.com/ros-navigation/nav2_docker>`_ repository. These images are available for all active ROS 2 distributions and come in two variants:
+
+* **Nightly images**: Built from the latest Nav2 branch for each distribution
+* **Release images**: Built from the latest officially released Nav2 version
+
+Supported distributions include Humble, Jazzy, Kilted, and Rolling.
+
+To use a pre-built nav2_docker image for development:
+
+.. code-block:: bash
+
+  # Pull a release image (example: Jazzy 1.3.1)
+  docker pull ghcr.io/ros-navigation/nav2_docker:jazzy-1.3.1
+
+  # Or pull a nightly image for the latest features
+  docker pull ghcr.io/ros-navigation/nav2_docker:rolling-nightly
+
+You can then use these images directly for development or as base images for your own custom deployments by specifying them in your Dockerfile.
+
 !!!!
 
 Generate Doxygen

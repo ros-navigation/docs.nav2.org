@@ -37,7 +37,7 @@ Input Ports
   ============== ==========
   Type           Default
   -------------- ----------
-  unsigned int   253
+  unsigned int   254
   ============== ==========
 
   Description

@@ -64,14 +64,17 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 | cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method | Yes                    |
 |                           | should clean up resources which are created for the controller.                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| setPlan()                 | Method is called when the global plan is updated. Ideally this method should perform  | Yes                    |
-|                           | operations that transform the global plan and store it.                               |                        |
+| newPathReceived()         | Method is called when the global plan is updated. Ideally this method should only     | Yes                    |
+|                           | perform minimal work, such as extracting global information that may be of interest   |                        |
+|                           | (e.g. reset internal states when new path received).                                  |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
 |                           | in-order for the robot to follow the global path. This method returns a               |                        |
 |                           | `geometry_msgs\:\:msg\:\:TwistStamped` which represents the velocity command for the  |                        |
-|                           | robot to drive.  This method passes 3 parameters: reference to the current robot      |                        |
-|                           | pose, its current velocity, and a pointer to the `nav2_core::GoalChecker`.            |                        |
+|                           | robot to drive.  This method passes 5 parameters: reference to the current robot      |                        |
+|                           | pose, its current velocity, a pointer to the `nav2_core::GoalChecker`, the            |                        |
+|                           | transformed_global_plan output by the path handler plugin, and the last pose of the   |                        |
+|                           | global plan.                                                                          |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cancel()                  | Method is called when the controller server receives a cancel request. If this method | No                     |
 |                           | is unimplemented, the controller will immediately stop when receiving a cancel        |                        |
@@ -85,7 +88,7 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | behavior untouched.                                                                   |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 
-In this tutorial, we will use the methods ``PurePursuitController::configure``, ``PurePursuitController::setPlan`` and
+In this tutorial, we will use the methods ``PurePursuitController::configure``, ``PurePursuitController::newPathReceived`` and
 ``PurePursuitController::computeVelocityCommands``.
 
 In controllers, ``configure()`` method must set member variables from ROS parameters and perform any initialization required.
@@ -136,19 +139,10 @@ We will see more on this when we discuss the parameters file (or params file).
 
 The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
 
-In ``setPlan()`` method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into
-the frame of the robot and then store this transformed global path for later use.
-
-.. code-block:: c++
-
-  void PurePursuitController::setPlan(const nav_msgs::msg::Path & path)
-  {
-    // Transform global path into the robot's frame
-    global_plan_ = transformGlobalPlan(path);
-  }
-
 The computation for the desired velocity happens in the ``computeVelocityCommands()`` method. It is used to calculate the desired velocity command given the current velocity and pose.
 The third argument - is a pointer to the ``nav2_core::GoalChecker``, that checks whether a goal has been reached. In our example, this won't be used.
+The fourth argument - is the global plan that has already been transformed into the local costmap frame and pruned to only the relevant portion within the costmap bounds. In our example, we will transform this local plan from costmap global frame to robot base frame. This is the path that pure pursuit will track.
+The fifth argument - is the last pose of the global plan. In our example, this won't be used.
 In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.
 
@@ -157,8 +151,20 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
   geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
     const geometry_msgs::msg::PoseStamped & pose,
     const geometry_msgs::msg::Twist & velocity,
-    nav2_core::GoalChecker * /*goal_checker*/)
+    nav2_core::GoalChecker * /*goal_checker*/,
+    const nav_msgs::msg::Path & transformed_global_plan,
+    const geometry_msgs::msg::PoseStamped & /*global_goal*/)
   {
+    // Transform the plan from costmap's global frame to robot base frame
+    nav_msgs::msg::Path transformed_plan;
+    if (!nav2_util::transformPathInTargetFrame(
+        transformed_global_plan, transformed_plan, *tf_,
+        costmap_ros_->getBaseFrameID(), costmap_ros_->getTransformTolerance()))
+    {
+      throw nav2_core::ControllerTFError(
+      "Unable to transform plan pose into local frame");
+    }
+
     // Find the first pose which is at a distance greater than the specified lookahead distance
     auto goal_pose = std::find_if(
       global_plan_.poses.begin(), global_plan_.poses.end(),
