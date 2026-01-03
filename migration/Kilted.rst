@@ -566,7 +566,7 @@ GIF above shows how multiple-goal navigation is configured mixing visual goal se
 Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller
 ---------------------------------------------------------------------------
 
-In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities.
+In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities. See the Configuration Guide for the new parameters associated with this feature.
 
 - Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, Proceedings of the 19th International Conference on Intelligent Autonomous Systems, Genoa, Italy, 2025.
 
