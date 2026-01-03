@@ -479,7 +479,6 @@ Example
         use_rotate_to_heading: true
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
-        max_robot_pose_search_dist: 10.0
         min_distance_to_obstacle: 0.0
         stateful: true
         use_dynamic_window: false

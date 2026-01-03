@@ -122,7 +122,7 @@ Controllers
 |                                |                       | holonomic robots.                  | Differential          |
 +--------------------------------+-----------------------+------------------------------------+-----------------------+
 | `Regulated Pure Pursuit`_      | Steve Macenski        | A service / industrial robot       | **Ackermann**, Legged,|
-|                                | Fumiya Ohnishi        | variation on the pure pursuit      | Differential          |
+|                                |                       | variation on the pure pursuit      | Differential          |
 |                                |                       | algorithm with adaptive features.  |                       |
 +--------------------------------+-----------------------+------------------------------------+-----------------------+
 | `MPPI Controller`_             | Steve Macenski        | A predictive MPC controller with   | Differential, Omni,   |

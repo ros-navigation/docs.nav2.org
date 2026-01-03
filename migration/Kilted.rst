@@ -570,6 +570,8 @@ In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an opt
 
 - Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, Proceedings of the 19th International Conference on Intelligent Autonomous Systems, Genoa, Italy, 2025.
 
+The following parameters are updated for this feature.
+
 :max_linear_vel (renamed):
 
   ============== ===========================
@@ -584,6 +586,7 @@ In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an opt
 
 **Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing `cmd_vel`.
 Therefore, the velocity smoother parameters `max_velocity`, `min_velocity`, `max_accel`, and `max_decel` must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
+
 Bond Heartbeat Period Default Value Change
 ------------------------------------------
 
