@@ -169,12 +169,41 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 - ``robot_sdf`` : The filepath to the robot's gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.
 - ``x_pose``, ``y_pose``, ``z_pose``, ``roll``, ``pitch``, ``yaw`` : Parameters to set the initial position of the robot in the simulation.
 
+.. _performance_ros2:
+
 Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS
 =================================================================================
 
 In Nav2, we strongly recommend setting `use_composition` to true, as it enables node composition, reduces process overhead, and generally improves system efficiency. However, whether to enable intra-process communication and which RMW implementation to use depends on your specific application.
 
-In December 2025, we conducted experiments evaluating the performance impact of enabling intra-process communication. In short, we found that enabling IPC can increase CPU usage for certain RMW implementations. For more details, please refer to this post:
+
+The following table summarizes CPU usage results for different RMW implementations and intra-process communication (IPC) settings, measured on the TurtleBot4 simulation (`ros2 launch nav2_bringup tb4_simulation_launch.py`). Baseline measurements correspond to the latest `rolling` commit at the time of testing (December 2025).
+
++-------------+-----------------------------------------------+--------------+
+| Middleware  | Configuration                                 | CPU Usage (%)|
++=============+===============================================+==============+
+| Zenoh       | Baseline                                      | 4.5%         |
++-------------+-----------------------------------------------+--------------+
+| Zenoh       | IPC enabled (SharedPtr)                       | 6.0%         |
++-------------+-----------------------------------------------+--------------+
+| Zenoh       | IPC + ConstSharedPtr                          | 5.8%         |
++-------------+-----------------------------------------------+--------------+
+| CycloneDDS  | Baseline                                      | 18.3%        |
++-------------+-----------------------------------------------+--------------+
+| CycloneDDS  | IPC enabled (SharedPtr)                       | 17.8%        |
++-------------+-----------------------------------------------+--------------+
+| CycloneDDS  | IPC + ConstSharedPtr                          | 16.1%        |
++-------------+-----------------------------------------------+--------------+
+| FastDDS     | Baseline                                      | 6.8%         |
++-------------+-----------------------------------------------+--------------+
+| FastDDS     | IPC enabled (SharedPtr)                       | 7.8%         |
++-------------+-----------------------------------------------+--------------+
+| FastDDS     | IPC + ConstSharedPtr                          | 7.8%         |
++-------------+-----------------------------------------------+--------------+
+
+As shown in the table, enabling intra-process communication leads to increased CPU usage for FastDDS and Zenoh, while CycloneDDS shows a reduction in CPU usage.
+
+For more details, please refer to this post:
 https://discourse.openrobotics.org/t/performance-characteristics-subscription-callback-signatures-rmw-implementation-intra-process-communication-ipc/
 
 Regarding QoS, we provide the `allow_parameter_qos_overrides` parameter, which allows you to customize QoS settings if needed.
