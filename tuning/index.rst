@@ -146,7 +146,9 @@ Note: When the costmap filters can be paired with the ``VectorObject`` server to
 Symmetric Yaw Tolerance
 =======================
 
-For robots that can drive equally well forward and backward, you can set `symmetric_yaw_tolerance: true` to allow the robot to reach goals without unnecessary 180° rotations. This is especially useful for symmetric robots (e.g., differential drive robots with sensors on both ends).
+For robots that can drive equally well forward and backward, you can set `symmetric_yaw_tolerance: true` to allow the robot to reach goals without unnecessary 180° rotations. This is especially useful for symmetric robots (e.g., differential drive robots with sensors on both ends) whereas you do not care which orientation it ends in for the controller algorithm to decide.
+
+If you wish to control which orientation it ends in using a symmetric robot, check out `Bidirectional navigation with Nav2 <https://vimeo.com/879000809>`_ from ROSCon 2023 for setting up and tuning a bidirectional robot using Nav2. It highlights how to tune controllers, planners, and various other settings to obtain fully unbiased navigation with a platform with no traditional 'front'.
 
 - ``SimpleGoalChecker``:  Accepts the goal as reached if the robot is within tolerance of either the goal orientation or the goal orientation + 180°.
 - ``GoalAngleCritic (MPPI Controller)``: Scores trajectories based on the minimum angular distance to either the goal orientation or the flipped orientation.
