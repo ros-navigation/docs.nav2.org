@@ -151,7 +151,6 @@ For robots that can drive equally well forward and backward, you can set `symmet
 - ``SimpleGoalChecker``:  Accepts the goal as reached if the robot is within tolerance of either the goal orientation or the goal orientation + 180°.
 - ``GoalAngleCritic (MPPI Controller)``: Scores trajectories based on the minimum angular distance to either the goal orientation or the flipped orientation.
 
-We also **highly recommend** watching this ROSCon 2023 talk for more context: https://vimeo.com/879000809
 
 Nav2 Launch Options
 ===================
