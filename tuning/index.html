@@ -858,6 +858,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#controller-plugin-selection">Controller Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#costmap2d-plugins">Costmap2D Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#symmetric-yaw-tolerance">Symmetric Yaw Tolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nav2-launch-options">Nav2 Launch Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
@@ -1178,6 +1179,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#mppi">MPPI</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
 </ul>
 </li>
 </ul>
@@ -1402,11 +1404,22 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code>: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PluginContainerLayer</span></code>: Combines the costmap layers specified within this plugin, resulting in an internal costmap that is a product of the costmap layers specified under this layer. This would allow different isolated combinations of costmap layers within the same parent costmap, such as applying a different inflation layers to static layers and obstacle layers</p></li>
 </ul>
-<p>In addition, costmap filters:
-- <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code>: Marks keepout, higher weighted, or lower weighted zones in the costmap
-- <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: Reduces or increases robot speeds based on position
-- <code class="docutils literal notranslate"><span class="pre">BinaryFilter</span></code>: Enables or disables a binary topic when in particular zones</p>
+<p>In addition, costmap filters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code>: Marks keepout, higher weighted, or lower weighted zones in the costmap</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: Reduces or increases robot speeds based on position</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BinaryFilter</span></code>: Enables or disables a binary topic when in particular zones</p></li>
+</ul>
 <p>Note: When the costmap filters can be paired with the <code class="docutils literal notranslate"><span class="pre">VectorObject</span></code> server to use vectorized zones rather than map rastered zones sharing the same software.</p>
+</div>
+<div class="section" id="symmetric-yaw-tolerance">
+<h2>Symmetric Yaw Tolerance<a class="headerlink" href="#symmetric-yaw-tolerance" title="Permalink to this heading"></a></h2>
+<p>For robots that can drive equally well forward and backward, you can set <cite>symmetric_yaw_tolerance: true</cite> to allow the robot to reach goals without unnecessary 180° rotations. This is especially useful for symmetric robots (e.g., differential drive robots with sensors on both ends) whereas you do not care which orientation it ends in for the controller algorithm to decide.</p>
+<p>If you wish to control which orientation it ends in using a symmetric robot, check out <a class="reference external" href="https://vimeo.com/879000809">Bidirectional navigation with Nav2</a> from ROSCon 2023 for setting up and tuning a bidirectional robot using Nav2. It highlights how to tune controllers, planners, and various other settings to obtain fully unbiased navigation with a platform with no traditional ‘front’.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SimpleGoalChecker</span></code>:  Accepts the goal as reached if the robot is within tolerance of either the goal orientation or the goal orientation + 180°.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GoalAngleCritic</span> <span class="pre">(MPPI</span> <span class="pre">Controller)</span></code>: Scores trajectories based on the minimum angular distance to either the goal orientation or the flipped orientation.</p></li>
+</ul>
 </div>
 <div class="section" id="nav2-launch-options">
 <h2>Nav2 Launch Options<a class="headerlink" href="#nav2-launch-options" title="Permalink to this heading"></a></h2>

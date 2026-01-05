@@ -858,6 +858,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#controller-plugin-selection">Controller Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#costmap2d-plugins">Costmap2D Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#symmetric-yaw-tolerance">Symmetric Yaw Tolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#nav2-launch-options">Nav2 Launch Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
@@ -1178,6 +1179,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#mppi">MPPI</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
 </ul>
 </li>
 </ul>
@@ -2084,6 +2086,26 @@ Dynamic and kinematic constraints are not required to be checked as trajectories
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Minimal distance (m) between robot and goal above which angle goal cost considered.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">symmetric_yaw_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Enable symmetric goal orientation acceptance. When enabled, the critic prefers trajectories that approach the goal at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. MPPI decides). When enabled, the critic uses the minimum distance to either goal orientation, reducing the cost penalty for approaching from the backward direction. See <a class="reference internal" href="../../tuning/index.html#tuning"><span class="std std-ref">Tuning Guide</span></a> for detailed information.</p>
 </dd>
 </dl>
 </dd>

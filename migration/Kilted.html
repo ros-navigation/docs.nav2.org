@@ -858,6 +858,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#controller-plugin-selection">Controller Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#costmap2d-plugins">Costmap2D Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#symmetric-yaw-tolerance">Symmetric Yaw Tolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#nav2-launch-options">Nav2 Launch Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
@@ -1178,6 +1179,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#mppi">MPPI</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
 </ul>
 </li>
 </ul>
@@ -1926,6 +1928,10 @@ state). The controller will be provided the processed plan during computeVelocit
 <li><p><code class="docutils literal notranslate"><span class="pre">inversion_yaw_tolerance</span></code></p></li>
 </ul>
 </div>
+</div>
+<div class="section" id="symmetric-yaw-tolerance-for-goal-checking-and-navigation">
+<h2>Symmetric Yaw Tolerance for Goal Checking and Navigation<a class="headerlink" href="#symmetric-yaw-tolerance-for-goal-checking-and-navigation" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5833">PR #5833</a> introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.</p>
 </div>
 </div>
 
