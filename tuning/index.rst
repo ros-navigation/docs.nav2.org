@@ -136,11 +136,22 @@ Costmap2D has a number of plugins that you can use (including the availability f
 - ``PluginContainerLayer``: Combines the costmap layers specified within this plugin, resulting in an internal costmap that is a product of the costmap layers specified under this layer. This would allow different isolated combinations of costmap layers within the same parent costmap, such as applying a different inflation layers to static layers and obstacle layers
 
 In addition, costmap filters:
+
 - ``KeepoutFilter``: Marks keepout, higher weighted, or lower weighted zones in the costmap
 - ``SpeedFilter``: Reduces or increases robot speeds based on position
 - ``BinaryFilter``: Enables or disables a binary topic when in particular zones
 
 Note: When the costmap filters can be paired with the ``VectorObject`` server to use vectorized zones rather than map rastered zones sharing the same software.
+
+Symmetric Yaw Tolerance
+=======================
+
+For robots that can drive equally well forward and backward, you can set `symmetric_yaw_tolerance: true` to allow the robot to reach goals without unnecessary 180° rotations. This is especially useful for symmetric robots (e.g., differential drive robots with sensors on both ends) whereas you do not care which orientation it ends in for the controller algorithm to decide.
+
+If you wish to control which orientation it ends in using a symmetric robot, check out `Bidirectional navigation with Nav2 <https://vimeo.com/879000809>`_ from ROSCon 2023 for setting up and tuning a bidirectional robot using Nav2. It highlights how to tune controllers, planners, and various other settings to obtain fully unbiased navigation with a platform with no traditional 'front'.
+
+- ``SimpleGoalChecker``:  Accepts the goal as reached if the robot is within tolerance of either the goal orientation or the goal orientation + 180°.
+- ``GoalAngleCritic (MPPI Controller)``: Scores trajectories based on the minimum angular distance to either the goal orientation or the flipped orientation.
 
 
 Nav2 Launch Options
