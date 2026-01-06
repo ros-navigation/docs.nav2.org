@@ -860,6 +860,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#costmap2d-plugins">Costmap2D Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#symmetric-yaw-tolerance">Symmetric Yaw Tolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nav2-launch-options">Nav2 Launch Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos">Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
 </li>
@@ -1180,6 +1181,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
 </ul>
 </li>
 </ul>
@@ -1432,6 +1434,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">params_file</span></code> : The main navigation configuration file. Defaults to <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">params/</span></code> directory.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">autostart</span></code> : Whether to autostart the navigation system’s lifecycle management system. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to transition up the Nav2 stack on creation to the activated state, ready for use.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">use_composition</span></code> : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> to use single process Nav2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_intra_process_comms</span></code> : Whether to use ROS 2’s intra-process communication for message passing between nodes. Default <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">use_respawn</span></code> : Whether to allow server that crash to automatically respawn. When also configured with the lifecycle manager, the manager will transition systems back up if already activated and went down due to a crash. Only works in non-composed bringup since all of the nodes are in the same process / container otherwise.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> : Whether to set all the nodes to use simulation time, needed in simulation. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> for simulation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rviz_config_file</span></code> : The filepath to the rviz configuration file to use. Defaults to the <code class="docutils literal notranslate"><span class="pre">rviz/</span></code> directory’s file.</p></li>
@@ -1444,6 +1447,67 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">robot_sdf</span></code> : The filepath to the robot’s gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">y_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">z_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">roll</span></code>, <code class="docutils literal notranslate"><span class="pre">pitch</span></code>, <code class="docutils literal notranslate"><span class="pre">yaw</span></code> : Parameters to set the initial position of the robot in the simulation.</p></li>
 </ul>
+</div>
+<div class="section" id="performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos">
+<span id="performance-ros2"></span><h2>Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS<a class="headerlink" href="#performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos" title="Permalink to this heading"></a></h2>
+<p>In Nav2, we strongly recommend setting <cite>use_composition</cite> to true, as it enables node composition, reduces process overhead, and generally improves system efficiency. However, whether to enable intra-process communication and which RMW implementation to use depends on your specific application.</p>
+<p>The following table summarizes CPU usage results for different RMW implementations and intra-process communication (IPC) settings, measured on the TurtleBot4 simulation (<cite>ros2 launch nav2_bringup tb4_simulation_launch.py</cite>). Baseline measurements correspond to the latest <cite>rolling</cite> commit at the time of testing (December 2025).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 64%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Middleware</p></th>
+<th class="head"><p>Configuration</p></th>
+<th class="head"><p>CPU Usage (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Zenoh</p></td>
+<td><p>Baseline</p></td>
+<td><p>4.5%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zenoh</p></td>
+<td><p>IPC enabled (SharedPtr)</p></td>
+<td><p>6.0%</p></td>
+</tr>
+<tr class="row-even"><td><p>Zenoh</p></td>
+<td><p>IPC + ConstSharedPtr</p></td>
+<td><p>5.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>CycloneDDS</p></td>
+<td><p>Baseline</p></td>
+<td><p>18.3%</p></td>
+</tr>
+<tr class="row-even"><td><p>CycloneDDS</p></td>
+<td><p>IPC enabled (SharedPtr)</p></td>
+<td><p>17.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>CycloneDDS</p></td>
+<td><p>IPC + ConstSharedPtr</p></td>
+<td><p>16.1%</p></td>
+</tr>
+<tr class="row-even"><td><p>FastDDS</p></td>
+<td><p>Baseline</p></td>
+<td><p>6.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>FastDDS</p></td>
+<td><p>IPC enabled (SharedPtr)</p></td>
+<td><p>7.8%</p></td>
+</tr>
+<tr class="row-even"><td><p>FastDDS</p></td>
+<td><p>IPC + ConstSharedPtr</p></td>
+<td><p>7.8%</p></td>
+</tr>
+</tbody>
+</table>
+<p>As shown in the table, enabling intra-process communication leads to increased CPU usage for FastDDS and Zenoh, while CycloneDDS shows a reduction in CPU usage.</p>
+<p>For more details, please refer to this post:
+<a class="reference external" href="https://discourse.openrobotics.org/t/performance-characteristics-subscription-callback-signatures-rmw-implementation-intra-process-communication-ipc/">https://discourse.openrobotics.org/t/performance-characteristics-subscription-callback-signatures-rmw-implementation-intra-process-communication-ipc/</a></p>
+<p>Regarding QoS, we provide the <cite>allow_parameter_qos_overrides</cite> parameter, which allows you to customize QoS settings if needed.</p>
+<p>If you have additional findings, please feel free to open a PR to share them, we would be happy to include that information here!</p>
 </div>
 <div class="section" id="other-pages-we-d-love-to-offer">
 <h2>Other Pages We’d Love To Offer<a class="headerlink" href="#other-pages-we-d-love-to-offer" title="Permalink to this heading"></a></h2>

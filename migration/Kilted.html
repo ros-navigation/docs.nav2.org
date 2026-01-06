@@ -860,6 +860,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#costmap2d-plugins">Costmap2D Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#symmetric-yaw-tolerance">Symmetric Yaw Tolerance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#nav2-launch-options">Nav2 Launch Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos">Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
 </li>
@@ -1180,6 +1181,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
 </ul>
 </li>
 </ul>
@@ -1932,6 +1934,11 @@ state). The controller will be provided the processed plan during computeVelocit
 <div class="section" id="symmetric-yaw-tolerance-for-goal-checking-and-navigation">
 <h2>Symmetric Yaw Tolerance for Goal Checking and Navigation<a class="headerlink" href="#symmetric-yaw-tolerance-for-goal-checking-and-navigation" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5833">PR #5833</a> introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.</p>
+</div>
+<div class="section" id="option-to-enable-intra-process-communication-in-nav2">
+<h2>Option to enable Intra-process Communication in Nav2<a class="headerlink" href="#option-to-enable-intra-process-communication-in-nav2" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5804">PR 5804</a>, an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing <cite>use_intra_process_comms</cite> parameter as true while launching Nav2 nodes.</p>
+<p>It is currently disabled by default. Please refer to the <a class="reference internal" href="../tuning/index.html#performance-ros2"><span class="std std-ref">Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS</span></a> and the <a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch">TB3/TB4 examples in the Nav2 stack</a> for reference.</p>
 </div>
 </div>
 
