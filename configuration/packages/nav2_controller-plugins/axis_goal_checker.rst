@@ -60,39 +60,3 @@ Parameters
     Description
         Whether to allow overshooting past the goal along the path direction. When false (default), uses ``fabs(projected_distance) < along_path_tolerance`` for symmetric tolerance. When true, uses ``projected_distance < along_path_tolerance``, allowing the robot to be any distance past the goal but still requiring it to be within tolerance if before the goal.
 
-Example Configuration
-*********************
-
-.. code-block:: yaml
-
-    controller_server:
-      ros__parameters:
-        goal_checker_plugins: ["goal_checker"]
-        goal_checker:
-          plugin: "nav2_controller::AxisGoalChecker"
-          along_path_tolerance: 0.20
-          cross_track_tolerance: 0.15
-          path_length_tolerance: 1.0
-          is_overshoot_valid: false
-
-How It Works
-************
-
-The AxisGoalChecker algorithm:
-
-1. Extracts the last two poses from the path: ``before_goal_pose`` (second-to-last) and ``goal_pose`` (last)
-2. Calculates the path direction (``end_of_path_yaw``) from these two points
-3. Computes the angle from the robot to the goal (``robot_to_goal_yaw``)
-4. Projects the robot-to-goal distance onto the path direction to get:
-   
-   - ``projected_distance_to_goal``: distance along the path axis (using ``cos(projection_angle)``)
-   - ``ortho_projected_distance_to_goal``: distance perpendicular to the path axis (using ``sin(projection_angle)``)
-
-5. Checks if both projections are within their respective tolerances
-
-This approach allows the robot to reach the goal from various angles while maintaining alignment with the final path segment, making it ideal for applications requiring precise approach directions (e.g., docking, pallet pickup, or narrow corridor navigation).
-
-Fallback Behavior
-*****************
-
-If the path contains only a single pose (no ``before_goal_pose`` available), the goal checker reverts to a simple Euclidean distance check where both ``along_path_tolerance`` and ``cross_track_tolerance`` must be satisfied.
