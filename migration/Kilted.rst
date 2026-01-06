@@ -733,6 +733,11 @@ MPPI
 - ``inversion_xy_tolerance``
 - ``inversion_yaw_tolerance``
 
+Symmetric Yaw Tolerance for Goal Checking and Navigation
+--------------------------------------------------------
+
+`PR #5833 <https://github.com/ros-navigation/navigation2/pull/5833>`_ introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.
+
 Option to enable Intra-process Communication in Nav2
 ----------------------------------------------------
 
