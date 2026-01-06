@@ -737,3 +737,10 @@ Symmetric Yaw Tolerance for Goal Checking and Navigation
 --------------------------------------------------------
 
 `PR #5833 <https://github.com/ros-navigation/navigation2/pull/5833>`_ introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.
+
+Option to enable Intra-process Communication in Nav2
+----------------------------------------------------
+
+In `PR 5804 <https://github.com/ros-navigation/navigation2/pull/5804>`_, an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing `use_intra_process_comms` parameter as true while launching Nav2 nodes.
+
+It is currently disabled by default. Please refer to the :ref:`performance_ros2` and the `TB3/TB4 examples in the Nav2 stack <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch>`_ for reference.
