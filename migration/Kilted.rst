@@ -737,3 +737,19 @@ Symmetric Yaw Tolerance for Goal Checking and Navigation
 --------------------------------------------------------
 
 `PR #5833 <https://github.com/ros-navigation/navigation2/pull/5833>`_ introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.
+
+New AxisGoalChecker Plugin
+---------------------------
+
+A new goal checker plugin, ``AxisGoalChecker``, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, ``AxisGoalChecker`` projects the robot's position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (``along_path_tolerance``) and perpendicular to it (``cross_track_tolerance``).
+
+Key parameters:
+
+- ``along_path_tolerance``: Tolerance along the path direction (default: 0.25m)
+- ``cross_track_tolerance``: Tolerance perpendicular to the path (default: 0.25m)
+- ``path_length_tolerance``: Maximum remaining path length to consider for goal checking (default: 1.0m)
+- ``is_overshoot_valid``: When true, allows the robot to overshoot past the goal by any distance along the path while still being within tolerance (default: false)
+
+This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
+
+See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details.
