@@ -59,4 +59,3 @@ Parameters
 
     Description
         Whether to allow overshooting past the goal along the path direction. When false (default), uses ``fabs(projected_distance) < along_path_tolerance`` for symmetric tolerance. When true, uses ``projected_distance < along_path_tolerance``, allowing the robot to be any distance past the goal but still requiring it to be within tolerance if before the goal.
-
