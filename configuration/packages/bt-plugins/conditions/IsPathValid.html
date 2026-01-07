@@ -1269,9 +1269,10 @@
              
   <div class="section" id="ispathvalid">
 <span id="bt-is-path-valid-condition"></span><h1>IsPathValid<a class="headerlink" href="#ispathvalid" title="Permalink to this heading"></a></h1>
-<p>Checks to see if the global path is valid. If there is a
+<p>Checks to see if the global path is valid. If there is an
 obstacle along the path, the condition returns FAILURE, otherwise
-it returns SUCCESS.</p>
+it returns SUCCESS. Optionally checks specific costmap layers and
+can use a custom footprint for validation.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
@@ -1355,11 +1356,125 @@ it returns SUCCESS.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">layer_name</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Name of the specific costmap layer to check against.
+If empty, checks against the full costmap.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">footprint</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Custom footprint specification as a bracketed array of arrays,
+e.g., “[[x1,y1],[x2,y2],…]”. If empty, uses the robot’s
+configured footprint.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">check_full_path</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to check all poses in the path (true) or stop at the
+first invalid pose (false). When true, all collision poses
+are reported.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="output-ports">
+<h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">collision_poses</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 86%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Vector of poses in the path that are in collision or invalid.
+Empty if the path is valid.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsPathValid</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">max_cost=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">consider_unknown_as_obstacle=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsPathValid</span>
+<span class="w">  </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span>
+<span class="w">  </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span>
+<span class="w">  </span><span class="na">max_cost=</span><span class="s">&quot;100&quot;</span>
+<span class="w">  </span><span class="na">consider_unknown_as_obstacle=</span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="na">layer_name=</span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="na">footprint=</span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="na">check_full_path=</span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="na">collision_poses=</span><span class="s">&quot;{collision_poses}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>With custom footprint:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsPathValid</span>
+<span class="w">  </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span>
+<span class="w">  </span><span class="na">footprint=</span><span class="s">&quot;[[0.5,0.5],[0.5,-0.5],[-0.5,-0.5],[-0.5,0.5]]&quot;</span>
+<span class="w">  </span><span class="na">collision_poses=</span><span class="s">&quot;{collision_poses}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Checking a specific costmap layer:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsPathValid</span>
+<span class="w">  </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span>
+<span class="w">  </span><span class="na">layer_name=</span><span class="s">&quot;obstacle_layer&quot;</span>
+<span class="w">  </span><span class="na">check_full_path=</span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="na">collision_poses=</span><span class="s">&quot;{collision_poses}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
