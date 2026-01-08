@@ -113,10 +113,21 @@ Output Ports
   Description
         Follow path error message. See ``FollowPath`` action for the enumerated set of error code definitions.
 
+:tracking_feedback:
+
+  ================================ =======
+  Type                             Default
+  -------------------------------- -------
+  nav2_msgs::msg::TrackingFeedback N/A
+  ================================ =======
+  Description
+        Tracking feedback message from the controller server, including cross track error, current path index, remaining path length, etc.
+
+
 
 Example
 -------
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" path_handler_id="PathHandler" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+    <FollowPath path="{path}" controller_id="FollowPath" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
