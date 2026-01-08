@@ -1182,6 +1182,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -1939,6 +1940,19 @@ state). The controller will be provided the processed plan during computeVelocit
 <h2>Option to enable Intra-process Communication in Nav2<a class="headerlink" href="#option-to-enable-intra-process-communication-in-nav2" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5804">PR 5804</a>, an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing <cite>use_intra_process_comms</cite> parameter as true while launching Nav2 nodes.</p>
 <p>It is currently disabled by default. Please refer to the <a class="reference internal" href="../tuning/index.html#performance-ros2"><span class="std std-ref">Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS</span></a> and the <a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch">TB3/TB4 examples in the Nav2 stack</a> for reference.</p>
+</div>
+<div class="section" id="new-axisgoalchecker-plugin">
+<h2>New AxisGoalChecker Plugin<a class="headerlink" href="#new-axisgoalchecker-plugin" title="Permalink to this heading"></a></h2>
+<p>A new goal checker plugin, <code class="docutils literal notranslate"><span class="pre">AxisGoalChecker</span></code>, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, <code class="docutils literal notranslate"><span class="pre">AxisGoalChecker</span></code> projects the robot’s position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (<code class="docutils literal notranslate"><span class="pre">along_path_tolerance</span></code>) and perpendicular to it (<code class="docutils literal notranslate"><span class="pre">cross_track_tolerance</span></code>).</p>
+<p>Key parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">along_path_tolerance</span></code>: Tolerance along the path direction (default: 0.25m)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cross_track_tolerance</span></code>: Tolerance perpendicular to the path (default: 0.25m)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path_length_tolerance</span></code>: Maximum remaining path length to consider for goal checking (default: 1.0m)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_overshoot_valid</span></code>: When true, allows the robot to overshoot past the goal by any distance along the path while still being within tolerance (default: false)</p></li>
+</ul>
+<p>This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.</p>
+<p>See <a class="reference internal" href="../configuration/packages/nav2_controller-plugins/axis_goal_checker.html#configuring-nav2-controller-axis-goal-checker-plugin"><span class="std std-ref">AxisGoalChecker</span></a> for full configuration details.</p>
 </div>
 </div>
 

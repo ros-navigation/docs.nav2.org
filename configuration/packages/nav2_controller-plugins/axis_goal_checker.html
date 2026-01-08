@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vector Object Server &mdash; Nav2 1.0.0 documentation</title>
+  <title>AxisGoalChecker &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Planner Server" href="../configuring-planner-server.html" />
-    <link rel="prev" title="Costmap Filter Info Server" href="configuring-costmap-filter-info-server.html" />
+    <link rel="next" title="SimpleGoalChecker" href="simple_goal_checker.html" />
+    <link rel="prev" title="PoseProgressChecker" href="pose_progress_checker.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -692,9 +692,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuring-collision-monitor.html#provided-nodes">Provided Nodes</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../configuring-controller-server.html#parameters">Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
@@ -718,11 +718,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuring-lifecycle.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-map-server.html">Map Server</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="configuring-map-server.html">Map Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-map-saver.html">Map Saver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-costmap-filter-info-server.html">Costmap Filter Info Server</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Vector Object Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-map-server.html">Map Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-map-server.html">Map Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-map-saver.html">Map Saver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-costmap-filter-info-server.html">Costmap Filter Info Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-vector-object-server.html">Vector Object Server</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-planner-server.html">Planner Server</a><ul>
@@ -1258,8 +1258,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Configuration Guide</a></li>
-          <li class="breadcrumb-item"><a href="../configuring-map-server.html">Map Server</a></li>
-      <li class="breadcrumb-item active">Vector Object Server</li>
+          <li class="breadcrumb-item"><a href="../configuring-controller-server.html">Controller Server</a></li>
+      <li class="breadcrumb-item active">AxisGoalChecker</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1268,181 +1268,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="vector-object-server">
-<span id="configuring-vector-object-server"></span><h1>Vector Object Server<a class="headerlink" href="#vector-object-server" title="Permalink to this heading"></a></h1>
-<p>The Vector Object Server implements a server that puts vector objects (such as polygons and circles) on OccupancyGrid raster map. The output raster map is being published by Vector Object server, and it could be used anywhere in the Nav2 stack or outside it.</p>
-<p>The main application of Vector Object server is to output raster maps of polygon objects or regions with existing costmaps of environment, targeting for robot navigation purposes (for example for dynamic obstacles simulation/highlighting, sensors noise removal, black-out areas on maps, synthetic testing purposes, and much more).
-Rather than rastering vector objects each iteration or at run-time, it is done one-time on startup, and served to costmap layers or other consumers improving performance.
-A typical setup model for this is a Nav2 stack with Costmap Filters enabled, running in conjunction with a Vector Object server, which produces vectorised OccupancyGrid maps as input masks for the Costmap Filters:</p>
-<a class="reference internal image-reference" href="../../../_images/vo_design.png"><img alt="../../../_images/vo_design.png" class="align-center" src="../../../_images/vo_design.png" style="width: 1000px;" /></a>
-<p>These vector shapes could be added by using ROS input parameters as well as being handled by the following service calls: <code class="docutils literal notranslate"><span class="pre">AddShapes.srv</span></code> which adds new shapes or modifies existing ones, <code class="docutils literal notranslate"><span class="pre">RemoveShapes.srv</span></code> which removes any or all shapes from the map <code class="docutils literal notranslate"><span class="pre">GetShapes.srv</span></code> which returns all shapes on the map.</p>
-<p>Each vector shape is being handled by its <code class="docutils literal notranslate"><span class="pre">unique_identifier_msgs/UUID</span></code>. Developers can choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a <code class="docutils literal notranslate"><span class="pre">GetShapes.srv</span></code> request and getting the response with all shapes’ UUIDs and their properties.</p>
-<p>The Vector Object server places shapes on the map. Each vector object has its own value in the range from <code class="docutils literal notranslate"><span class="pre">{-1},</span> <span class="pre">[0..100]</span></code>, which matches the OccupancyGrid values. Vector objects can be overlapped with each other by using one of the global overlapping rules: (a) <strong>sequential overlapping</strong> in the same order as vector objects arrived on the server, or (b) taking the <strong>maximum / minimum value</strong> from all vector objects and the map background (if it is known).</p>
-<p>This page describes all the configuration parameters of the Vector Object server. For more information on how to navigate with your own Vector Object server, please refer to the <a class="reference internal" href="../../../tutorials/docs/navigation2_with_vector_objects.html#navigation2-with-vector-objects"><span class="std std-ref">Navigating with Vector Objects</span></a> tutorial.</p>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p>The following vector shapes are currently supported for placing on a map:</p>
-<ul>
-<li><p>Polygons</p></li>
-<li><p>Circles</p></li>
-</ul>
-</li>
-<li><p>Polygons can be filled with any value or drawn as a polygonal chain, if it is not supposed to be a closed shape:</p></li>
-</ul>
-<a class="reference internal image-reference" href="../../../_images/polygon_closed.png"><img alt="../../../_images/polygon_closed.png" class="align-center" src="../../../_images/polygon_closed.png" style="width: 400px; height: 200px;" /></a>
-<ul class="simple">
-<li><p>Circles can be filled with any value or drawn without any fill (only the circle boundary is placed on the map):</p></li>
-</ul>
-<a class="reference internal image-reference" href="../../../_images/circle_fill.png"><img alt="../../../_images/circle_fill.png" class="align-center" src="../../../_images/circle_fill.png" style="width: 400px; height: 200px;" /></a>
-<ul class="simple">
-<li><p>Vector shapes could be set once during the Vector Object server startup as ROS-parameters, and added/modified/removed over the time using the following service calls:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">AddShapes.srv</span></code>: adds new shapes or modifies existing ones</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RemoveShapes.srv</span></code>: removes any or all shapes from the map</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GetShapes.srv</span></code>: gets all shapes and their properties</p></li>
-</ul>
-</li>
-<li><p>Vector shapes are being identified by their UUID (<code class="docutils literal notranslate"><span class="pre">unique_identifier_msgs/UUID</span></code>), which is generated automatically for a new shape, or could be given manually by the developer.</p></li>
-<li><p>Vector shapes can be placed in any frame:</p>
-<ul>
-<li><p>If at least one of the shapes is set in a different frame than the map, a dynamic update model will be enabled: this shape can move over the time, output map will be published dynamically with a given rate.</p></li>
-<li><p>If all shapes are set in the same frame as map, map will be published/updated once: at startup of Vector Object server and on each call of <code class="docutils literal notranslate"><span class="pre">AddShapes.srv</span></code> or <code class="docutils literal notranslate"><span class="pre">RemoveShapes.srv</span></code> to change the shape.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="covered-use-cases">
-<h2>Covered use-cases<a class="headerlink" href="#covered-use-cases" title="Permalink to this heading"></a></h2>
-<p>Using Vector Object server publishing an output map as input mask to <a class="reference internal" href="../../../migration/Foxy.html#costmap-filters"><span class="std std-ref">Costmap Filters</span></a> allows the following example use-cases using polygon, vector representations of areas rather than rastered masks:</p>
-<ul class="simple">
-<li><p>No-access zone</p></li>
-<li><p>Speed-restriction areas</p></li>
-<li><p>Virtual obstacles on costmap</p></li>
-<li><p>Geofence / outer boundary and inner virtual obstacles</p></li>
-<li><p>Robot footprint (or any other moving objects) replacement</p></li>
-<li><p>Hiding some areas from costmap</p></li>
-<li><p>Sensors noise removal</p></li>
-<li><p>Dynamic objects simulation/highlighting</p></li>
-<li><p>Other testing purposes</p></li>
-</ul>
-</div>
+  <div class="section" id="axisgoalchecker">
+<span id="configuring-nav2-controller-axis-goal-checker-plugin"></span><h1>AxisGoalChecker<a class="headerlink" href="#axisgoalchecker" title="Permalink to this heading"></a></h1>
+<p>Checks whether the robot has reached the goal pose by projecting the robot’s position onto the path direction defined by the last segment of the path. This goal checker uses the last two poses of the path (<code class="docutils literal notranslate"><span class="pre">before_goal_pose</span></code> and <code class="docutils literal notranslate"><span class="pre">goal_pose</span></code>) to determine the path direction and then checks if the robot is within tolerance along that axis.</p>
+<p>Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (<code class="docutils literal notranslate"><span class="pre">along_path_tolerance</span></code>) and perpendicular to it (<code class="docutils literal notranslate"><span class="pre">cross_track_tolerance</span></code>). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.</p>
+<img alt="AxisGoalChecker Illustration" class="align-center" src="../../../_images/axis_goal_checker.png" />
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>goal_checker_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
 <dl class="field-list">
-<dt class="field-odd">map_topic</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.along_path_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“vo_map”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Output topic, publishing an OccupancyGrid map with vector objects put on it.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">global_frame_id</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“map”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>The name of the coordinate frame where the map is being published at.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">resolution</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>0.05</p></td>
+<td><p>0.25</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Output map resolution in meters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">default_value</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>-1 (unknown)</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Default OccupancyGrid value to fill the background of output map with.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">overlay_type</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>0</p></td>
-</tr>
-</tbody>
-</table>
-<dl>
-<dt>Description:</dt><dd><p>How one vector object to be overlaid with other and the map.
-The following values are supported:</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>0 (<code class="docutils literal notranslate"><span class="pre">OVERLAY_SEQ</span></code>): Vector objects are superimposed in the order in which they have arrived.</p></li>
-<li><p>1 (<code class="docutils literal notranslate"><span class="pre">OVERLAY_MAX</span></code>): Maximum value from vector objects and map is being chosen.</p></li>
-<li><p>2 (<code class="docutils literal notranslate"><span class="pre">OVERLAY_MIN</span></code>): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.</p></li>
-</ul>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Tolerance for the projected distance along the path direction (m). This checks how far ahead or behind the goal the robot is when projected onto the path axis.</p>
+</dd>
+</dl>
 </div></blockquote>
 </dd>
-</dl>
-</dd>
-<dt class="field-even">update_frequency</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.cross_track_tolerance</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Tolerance for the perpendicular distance from the path direction (m). This checks how far to the left or right of the path axis the robot is.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.path_length_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
@@ -1453,287 +1336,36 @@ The following values are supported:</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Output map update frequency (when dynamic update model is switched-on).</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Maximum path length to consider for goal checking (m). If the remaining path length exceeds this value, the goal check is skipped. This prevents premature goal acceptance when far from the goal.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd>
-<dt class="field-odd">transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.1</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Transform tolerance for the case when any of the shapes are placed in different than map’s frame.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">shapes</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.is_overshoot_valid</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
-<td><p>{}</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>List of vector objects (polygons and circles). Empty by-default.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="section" id="shapes-parameters">
-<h3>Shapes parameters<a class="headerlink" href="#shapes-parameters" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code> - is the corresponding shape name string selected for this vector object.</p>
-<dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.type</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Type of vector object shape. Available values are <code class="docutils literal notranslate"><span class="pre">polygon</span></code> and <code class="docutils literal notranslate"><span class="pre">circle</span></code>. Causes an error, if not specialized.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.uuid</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>UUID of the shape specified in <code class="docutils literal notranslate"><span class="pre">12345678-9abc-def0-1234-56789abcdef0</span></code> format. Parameter is optional and could be skipped: if not specialized, Vector Object server will automatically generate a new one for the shape.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.frame_id</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Frame ID of the given shape. Empty value is being treated as map’s global frame.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.value</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>100 (occupied)</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Shape’s value to be put on map with.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="section" id="parameters-applicable-for-polygons-only">
-<h4>Parameters applicable for polygons only<a class="headerlink" href="#parameters-applicable-for-polygons-only" title="Permalink to this heading"></a></h4>
-<dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.points</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>vector&lt;double&gt;</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Polygon vertices, listed in <code class="docutils literal notranslate"><span class="pre">[p1.x,</span> <span class="pre">p1.y,</span> <span class="pre">p2.x,</span> <span class="pre">p2.y,</span> <span class="pre">p3.x,</span> <span class="pre">p3.y,</span> <span class="pre">...]</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">[0.5,</span> <span class="pre">0.5,</span> <span class="pre">0.5,</span> <span class="pre">-0.5,</span> <span class="pre">-0.5,</span> <span class="pre">-0.5,</span> <span class="pre">-0.5,</span> <span class="pre">0.5]</span></code> for the square). Minimum 3 points for a triangle polygon. Causes an error, if not specialized incorrectly (less than 6 or odd number of items in the vector) or not specialized.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.closed</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>bool</p></td>
-<td><p>true</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Whether the polygon is closed (and filled), or drawn as polygonal chain otherwise.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Whether to allow overshooting past the goal along the path direction. When false (default), uses <code class="docutils literal notranslate"><span class="pre">fabs(projected_distance)</span> <span class="pre">&lt;</span> <span class="pre">along_path_tolerance</span></code> for symmetric tolerance. When true, uses <code class="docutils literal notranslate"><span class="pre">projected_distance</span> <span class="pre">&lt;</span> <span class="pre">along_path_tolerance</span></code>, allowing the robot to be any distance past the goal but still requiring it to be within tolerance if before the goal.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd>
 </dl>
-</div>
-<div class="section" id="parameters-applicable-for-circles-only">
-<h4>Parameters applicable for circles only<a class="headerlink" href="#parameters-applicable-for-circles-only" title="Permalink to this heading"></a></h4>
-<dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.center</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>vector&lt;double&gt;</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Center of the circle, listed in <code class="docutils literal notranslate"><span class="pre">{center.x,</span> <span class="pre">center.y}</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">{0.2,</span> <span class="pre">0.3}</span></code>). Should contain exactly 2 items: X and Y coordinate of the circle’s center in a given frame. Otherwise, causes an error.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.radius</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Circle radius. Causes an error, if less than zero or not specialized.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;shape_name&gt;</span></code>.fill</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>true</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Whether the circle to be filled with a given value, or drawn only circle’s border otherwise.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<p>Here is an example of configuration YAML for the Vector Object server:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vector_object_server</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">map_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vo_map&quot;</span>
-<span class="w">    </span><span class="nt">global_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
-<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
-<span class="w">    </span><span class="nt">default_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
-<span class="w">    </span><span class="nt">overlay_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="w">    </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
-<span class="w">    </span><span class="nt">shapes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;Poly&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;CircleA&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;CircleB&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">Poly</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
-<span class="w">      </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
-<span class="w">      </span><span class="nt">closed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
-<span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">CircleA</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;circle&quot;</span>
-<span class="w">      </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
-<span class="w">      </span><span class="nt">fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">      </span><span class="nt">center</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.0</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-<span class="w">      </span><span class="nt">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7b3f3d7d-135c-4b6c-aca1-7a84d1050505&quot;</span>
-<span class="w">    </span><span class="nt">CircleB</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;circle&quot;</span>
-<span class="w">      </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
-<span class="w">      </span><span class="nt">fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
-<span class="w">      </span><span class="nt">center</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.5</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span>
-</pre></div>
-</div>
-<p>For this, Vector Object server will produce the following map:</p>
-<a class="reference internal image-reference" href="../../../_images/vo_config_map.png"><img alt="../../../_images/vo_config_map.png" class="align-center" src="../../../_images/vo_config_map.png" style="width: 636px; height: 638px;" /></a>
 </div>
 </div>
 

@@ -744,3 +744,19 @@ Option to enable Intra-process Communication in Nav2
 In `PR 5804 <https://github.com/ros-navigation/navigation2/pull/5804>`_, an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing `use_intra_process_comms` parameter as true while launching Nav2 nodes.
 
 It is currently disabled by default. Please refer to the :ref:`performance_ros2` and the `TB3/TB4 examples in the Nav2 stack <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch>`_ for reference.
+
+New AxisGoalChecker Plugin
+--------------------------
+
+A new goal checker plugin, ``AxisGoalChecker``, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, ``AxisGoalChecker`` projects the robot's position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (``along_path_tolerance``) and perpendicular to it (``cross_track_tolerance``).
+
+Key parameters:
+
+- ``along_path_tolerance``: Tolerance along the path direction (default: 0.25m)
+- ``cross_track_tolerance``: Tolerance perpendicular to the path (default: 0.25m)
+- ``path_length_tolerance``: Maximum remaining path length to consider for goal checking (default: 1.0m)
+- ``is_overshoot_valid``: When true, allows the robot to overshoot past the goal by any distance along the path while still being within tolerance (default: false)
+
+This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
+
+See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details.
