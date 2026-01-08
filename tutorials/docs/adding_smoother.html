@@ -1329,6 +1329,11 @@ You should also have a copy of the <code class="docutils literal notranslate"><s
 <span class="nt">&lt;/Sequence&gt;</span>
 </pre></div>
 </div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When using this sequence inside a <code class="docutils literal notranslate"><span class="pre">PipelineSequence</span></code> node, it is recommended to remap the smoothed path to a different blackboard variable (e.g. <code class="docutils literal notranslate"><span class="pre">smoothed_path=&quot;{smoothed_path}&quot;</span></code>).</p>
+<p>This is because the <code class="docutils literal notranslate"><span class="pre">PipelineSequence</span></code> re-ticks all previous children when any child returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. If <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, the <code class="docutils literal notranslate"><span class="pre">PipelineSequence</span></code> will re-tick <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code>, which will try to overwrite the <code class="docutils literal notranslate"><span class="pre">path</span></code> variable used by <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>.</p>
+</div>
 <p>If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Sequence</span><span class="w"> </span><span class="na">name=</span><span class="w"> </span><span class="s">&quot;TryToResolveSmootherErrorCodes&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;WouldASmootherRecoveryHelp</span><span class="w"> </span><span class="na">error_code=</span><span class="s">&quot;{smoother_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{smoother_error_msg}&quot;</span><span class="nt">&gt;</span>
