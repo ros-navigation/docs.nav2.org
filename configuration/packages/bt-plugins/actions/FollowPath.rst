@@ -120,6 +120,7 @@ Output Ports
   -------------------------------- -------
   nav2_msgs::msg::TrackingFeedback N/A
   ================================ =======
+
   Description
         Tracking feedback message from the controller server, including cross track error, current path index, remaining path length, etc.
 
