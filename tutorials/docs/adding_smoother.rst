@@ -83,6 +83,11 @@ This line calls the planner server and return a path to the ``path`` blackboard 
       <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
     </Sequence>
 
+.. hint::
+  When using this sequence inside a ``PipelineSequence`` node, it is recommended to remap the smoothed path to a different blackboard variable (e.g. ``smoothed_path="{smoothed_path}"``).
+
+  This is because the ``PipelineSequence`` re-ticks all previous children when any child returns ``RUNNING``. If ``FollowPath`` returns ``RUNNING``, the ``PipelineSequence`` will re-tick ``ComputePathToPose``, which will try to overwrite the ``path`` variable used by ``FollowPath``.
+
 If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:
 
 .. code-block:: xml
