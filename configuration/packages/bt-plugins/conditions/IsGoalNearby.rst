@@ -55,7 +55,7 @@ Input Ports
   ====== =======
 
   Description
-    Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to a negative value (default), the entire path is searched every time. Setting this to a positive value (e.g., 1.0-2.0 meters) can improve performance when the path is updated frequently.
+    Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to a negative value (default), the entire path is searched every time. Setting this to a positive value (e.g., 1.0-2.0 meters) can improve performance when this BT node is ticked frequently to address looping or crossed paths (when present).
 
 :global_frame:
 
