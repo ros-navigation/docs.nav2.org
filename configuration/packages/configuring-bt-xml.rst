@@ -80,6 +80,7 @@ Condition Plugins
   bt-plugins/conditions/GoalUpdated.rst
   bt-plugins/conditions/GlobalUpdatedGoal.rst
   bt-plugins/conditions/InitialPoseReceived.rst
+  bt-plugins/conditions/IsGoalNearby.rst
   bt-plugins/conditions/IsStuck.rst
   bt-plugins/conditions/IsStopped.rst
   bt-plugins/conditions/TimeExpired.rst
