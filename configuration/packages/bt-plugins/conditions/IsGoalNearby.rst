@@ -40,7 +40,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 3.0
+  double 1.0
   ====== =======
 
   Description
@@ -84,4 +84,4 @@ Example
 
 .. code-block:: xml
 
-  <IsGoalNearby path="{path}" proximity_threshold="3.0" />
+  <IsGoalNearby path="{path}" proximity_threshold="1.0" />
