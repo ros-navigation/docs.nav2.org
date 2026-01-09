@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InitialPoseReceived &mdash; Nav2 1.0.0 documentation</title>
+  <title>IsGoalNearby &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="IsGoalNearby" href="IsGoalNearby.html" />
-    <link rel="prev" title="GlobalUpdatedGoal" href="GlobalUpdatedGoal.html" />
+    <link rel="next" title="IsStuck" href="IsStuck.html" />
+    <link rel="prev" title="InitialPoseReceived" href="InitialPoseReceived.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -1259,7 +1259,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">InitialPoseReceived</li>
+      <li class="breadcrumb-item active">IsGoalNearby</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1268,41 +1268,135 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="initialposereceived">
-<span id="bt-initial-pose-received-condition"></span><h1>InitialPoseReceived<a class="headerlink" href="#initialposereceived" title="Permalink to this heading"></a></h1>
-<p>Node that returns success when the initial pose is sent to AMCL via <cite>/initial_pose`</cite>.</p>
+  <div class="section" id="isgoalnearby">
+<span id="bt-is-goal-nearby-condition"></span><h1>IsGoalNearby<a class="headerlink" href="#isgoalnearby" title="Permalink to this heading"></a></h1>
+<p>Checks if the robot is near the goal by computing the remaining path length from the robot’s current position to the goal. Returns SUCCESS when the remaining path length is less than the proximity threshold, otherwise returns FAILURE.</p>
+<div class="section" id="parameter">
+<h2>Parameter<a class="headerlink" href="#parameter" title="Permalink to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><p>Defined and declared in <a class="reference internal" href="../../configuring-bt-navigator.html#configuring-bt-navigator"><span class="std std-ref">Behavior-Tree Navigator</span></a>.</p>
+</dd>
+</dl>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bt_navigator</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># other bt_navigator parameters</span>
+<span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
-<dt class="field-odd">initial_pose_received</dt>
+<dt class="field-odd">path</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
+<col style="width: 84%" />
+<col style="width: 16%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>“{initial_pose_received}”</p></td>
+<tr class="row-even"><td><p>nav_msgs::msg::Path</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><dl class="simple">
-<dt>Success if the value in the port is true. Takes in a blackboard variable,</dt><dd><p>“{initial_pose_received}” if not specified.</p>
+<dt>Description</dt><dd><p>The planned path to evaluate.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">proximity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The remaining path length (in meters) considered as “nearby”. When the remaining distance along the path is less than this threshold, the condition returns SUCCESS.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to a negative value (default), the entire path is searched every time. Setting this to a positive value (e.g., 1.0-2.0 meters) can improve performance when this BT node is ticked frequently to address looping or crossed paths (when present).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">global_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“map”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The global reference frame.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">robot_base_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“base_link”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Robot base frame.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-</dd>
-</dl>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;InitialPoseReceived/&gt;</span>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsGoalNearby</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">proximity_threshold=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
