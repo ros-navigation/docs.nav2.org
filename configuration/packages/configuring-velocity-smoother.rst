@@ -170,14 +170,7 @@ Velocity Smoother Parameters
   ============== =============================
 
   Description
-    Whether to interpolate the timestamps of the smoothed `geometery_msgs:msg::TwistStamped` cmd_vel message.
-
-    Default is ``false`` for backwards compatibility.
-
-    When ``true``, the timestamps of the sent cmd_vel message follow the rule:
-    ``cmd_vel_timestamp = cmd_vel_timestamp_of_last_received_command + (timestamp_now - timestamp_at_last_received_command)``
-
-    Note: This parameter only appears in Jazzy! Smoothing the timestamps is part of the default behavior in newer-than-jazzy distros.
+    Whether to interpolate the timestamps of the smoothed `geometery_msgs:msg::TwistStamped` cmd_vel message after the last command velocity received. Only available in Jazzy as a backport of the now-default behavior in Lyrical and newer. Default is ``false`` for backwards compatibility.
 
 :bond_heartbeat_period:
 
