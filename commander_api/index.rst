@@ -14,7 +14,7 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
 
 .. code-block:: python3
 
-  from nav2_simple_commander.robot_navigator import BasicNavigator
+  from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
   import rclpy
 
   rclpy.init()
