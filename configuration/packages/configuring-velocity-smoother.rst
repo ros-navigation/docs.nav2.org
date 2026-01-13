@@ -176,7 +176,7 @@ Velocity Smoother Parameters
 
     When ``true``, the timestamps of the sent cmd_vel message follow the rule:
     ``cmd_vel_timestamp = cmd_vel_timestamp_of_last_received_command + (timestamp_now - timestamp_at_last_received_command)``
-    
+
     Note: This parameter only appears in Jazzy! Smoothing the timestamps is part of the default behavior in newer-than-jazzy distros.
 
 :bond_heartbeat_period:
