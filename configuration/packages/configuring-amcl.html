@@ -1754,8 +1754,32 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">recovery_alpha_fast</dt>
+<dt class="field-odd">random_seed</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>-1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Seed for the particle filter RNG.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">random_seed</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>: seed the RNG with the provided value (repeatable runs).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_seed</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> (default): seed the RNG from time (preserves historical behavior).</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">recovery_alpha_fast</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1774,8 +1798,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">recovery_alpha_slow</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">recovery_alpha_slow</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1794,8 +1818,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">resample_interval</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">resample_interval</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1814,8 +1838,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">robot_model_type</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">robot_model_type</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
 <col style="width: 72%" />
@@ -1836,8 +1860,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">save_pose_rate</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">save_pose_rate</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1856,8 +1880,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">sigma_hit</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">sigma_hit</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1876,8 +1900,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">tf_broadcast</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">tf_broadcast</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1896,8 +1920,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1916,8 +1940,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">introspection_mode</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">introspection_mode</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1936,8 +1960,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">update_min_a</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">update_min_a</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1956,8 +1980,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">update_min_d</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">update_min_d</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1976,8 +2000,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">z_hit</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">z_hit</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1996,8 +2020,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">z_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">z_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2016,8 +2040,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">z_rand</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">z_rand</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2036,8 +2060,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">z_short</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">z_short</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2056,8 +2080,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">always_reset_initial_pose</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">always_reset_initial_pose</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2076,8 +2100,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">scan_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">scan_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2096,8 +2120,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">map_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">map_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2116,8 +2140,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">first_map_only</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">first_map_only</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2136,8 +2160,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bond_heartbeat_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bond_heartbeat_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2156,8 +2180,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2205,6 +2229,7 @@
 <span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
 <span class="w">    </span><span class="nt">pf_err</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
 <span class="w">    </span><span class="nt">pf_z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.99</span>
+<span class="w">    </span><span class="nt">random_seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 <span class="w">    </span><span class="nt">recovery_alpha_fast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 <span class="w">    </span><span class="nt">recovery_alpha_slow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 <span class="w">    </span><span class="nt">resample_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
