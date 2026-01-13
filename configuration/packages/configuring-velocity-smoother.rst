@@ -161,6 +161,24 @@ Velocity Smoother Parameters
     True uses TwistStamped, false uses Twist.
     Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
+:stamp_smoothed_velocity_with_smoothing_time:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to interpolate the timestamps of the smoothed `geometery_msgs:msg::TwistStamped` cmd_vel message.
+
+    Default is ``false`` for backwards compatibility.
+
+    When ``true``, the timestamps of the sent cmd_vel message follow the rule:
+    ``cmd_vel_timestamp = cmd_vel_timestamp_of_last_received_command + (timestamp_now - timestamp_at_last_received_command)``
+    
+    Note: This parameter only appears in Jazzy! Smoothing the timestamps is part of the default behavior in newer-than-jazzy distros.
+
 :bond_heartbeat_period:
 
   ============== =============================
@@ -202,3 +220,4 @@ Example
       odom_duration: 0.1
       use_realtime_priority: false
       enable_stamped_cmd_vel: false
+      stamp_smoothed_velocity_with_smoothing_time: false  # ONLY IN JAZZY
