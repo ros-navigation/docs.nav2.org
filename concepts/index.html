@@ -1306,7 +1306,7 @@ By the launch system, or the supplied lifecycle manager, the nodes need to be tr
 After, it is possible to activate the node by transitioning through the activating stage.</p>
 <p>This state will allow the node to process information and be fully setup to run.
 The configuration stage, triggering the <code class="docutils literal notranslate"><span class="pre">on_configure()</span></code> method, will setup all parameters, ROS networking interfaces, and for safety systems, all dynamically allocated memory.
-The activation stage, triggering the <code class="docutils literal notranslate"><span class="pre">on_activate()</span></code> method, will active the ROS networking interfaces and set any states in the program to start processing information.</p>
+The activation stage, triggering the <code class="docutils literal notranslate"><span class="pre">on_activate()</span></code> method, will activate the ROS networking interfaces and set any states in the program to start processing information.</p>
 <p>To shutdown, we transition into deactivating, cleaning up, shutting down and end in the finalized state.
 The networking interfaces are deactivated and stop processing, deallocate memory, exit cleanly, in those stages, respectively.</p>
 <p>The lifecycle node framework is used extensively through out this project and all servers utilize it.
