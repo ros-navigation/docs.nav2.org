@@ -1730,8 +1730,28 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.enable_groot_monitoring</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.tracking_feedback_blackboard_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“tracking_feedback”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Blackboard variable to get the tracking feedback from the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> feedback. Should match port names of BT XML file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.enable_groot_monitoring</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1750,8 +1770,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.groot_server_port</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.groot_server_port</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1767,6 +1787,26 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.search_window</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>How far (in meters) along the path the searching algorithm will look for the closest point.</p>
 </dd>
 </dl>
 </dd>
@@ -1815,8 +1855,28 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.waypoint_statuses_blackboard_id</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.tracking_feedback_blackboard_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“tracking_feedback”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Blackboard variable to get the tracking feedback from the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> feedback. Should match port names of BT XML file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.waypoint_statuses_blackboard_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
 <col style="width: 76%" />
@@ -1835,8 +1895,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.enable_groot_monitoring</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.enable_groot_monitoring</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1855,8 +1915,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.groot_server_port</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.groot_server_port</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1872,6 +1932,26 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.search_window</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>How far (in meters) along the path the searching algorithm will look for the closest point.</p>
 </dd>
 </dl>
 </dd>
@@ -1900,10 +1980,12 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_bt_navigator::NavigateToPoseNavigator&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">      </span><span class="nt">enable_groot_monitoring</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">groot_server_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1667</span>
+<span class="w">      </span><span class="nt">search_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">    </span><span class="nt">navigate_through_poses</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_bt_navigator::NavigateThroughPosesNavigator&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">      </span><span class="nt">enable_groot_monitoring</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">groot_server_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1669</span>
+<span class="w">      </span><span class="nt">search_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">    </span><span class="nt">plugin_lib_names</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_compute_path_to_pose_action_bt_node</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_follow_path_action_bt_node</span>
