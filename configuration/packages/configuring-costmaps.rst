@@ -123,17 +123,6 @@ Costmap2D ROS Parameters
   Description
     The height of map, allows to avoid rviz visualization flickering at -0.008
 
-:observation_sources:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         ""
-  ============== =======
-
-  Description
-    List of sources of sensors as a string, to be used if not specified in plugin specific configurations. Ex. "static_layer stvl_layer"
-
 :origin_x:
 
   ============== =======
