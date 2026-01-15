@@ -563,6 +563,30 @@ The UI workflow is now organized into two primary navigation modes:
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
 
+Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller
+---------------------------------------------------------------------------
+
+In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities. See the Configuration Guide for the new parameters associated with this feature.
+
+- Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, Proceedings of the 19th International Conference on Intelligent Autonomous Systems, Genoa, Italy, 2025.
+
+The following parameters are updated for this feature.
+
+:max_linear_vel (renamed):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.5
+  ============== ===========================
+
+  Description
+    The maximum linear velocity (m/s) to use.  **Previously named `desired_linear_vel`**
+
+
+**Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing `cmd_vel`.
+Therefore, the velocity smoother parameters `max_velocity`, `min_velocity`, `max_accel`, and `max_decel` must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
+
 Bond Heartbeat Period Default Value Change
 ------------------------------------------
 
