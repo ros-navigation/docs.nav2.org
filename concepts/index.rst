@@ -52,7 +52,7 @@ After, it is possible to activate the node by transitioning through the activati
 
 This state will allow the node to process information and be fully setup to run.
 The configuration stage, triggering the ``on_configure()`` method, will setup all parameters, ROS networking interfaces, and for safety systems, all dynamically allocated memory.
-The activation stage, triggering the ``on_activate()`` method, will active the ROS networking interfaces and set any states in the program to start processing information.
+The activation stage, triggering the ``on_activate()`` method, will activate the ROS networking interfaces and set any states in the program to start processing information.
 
 To shutdown, we transition into deactivating, cleaning up, shutting down and end in the finalized state.
 The networking interfaces are deactivated and stop processing, deallocate memory, exit cleanly, in those stages, respectively.
