@@ -75,8 +75,8 @@ Example
 
     planner_server:
       ros__parameters:
-        planner_plugins: ['GridBased']
-        GridBased:
+        planner_plugins: ['grid_based']
+        grid_based:
           plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
           use_astar: True
           allow_unknown: True

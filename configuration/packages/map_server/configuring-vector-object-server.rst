@@ -293,14 +293,14 @@ Here is an example of configuration YAML for the Vector Object server:
         overlay_type: 0
         update_frequency: 1.0
         transform_tolerance: 0.1
-        shapes: ["Poly", "CircleA", "CircleB"]
-        Poly:
+        shapes: ["poly", "circle_a", "circle_b"]
+        poly:
           type: "polygon"
           frame_id: "map"
           closed: True
           value: 100
           points: [0.3, 0.3, 0.3, -0.3, 0.0, -0.3, 0.0, 0.3]
-        CircleA:
+        circle_a:
           type: "circle"
           frame_id: "map"
           fill: True
@@ -308,7 +308,7 @@ Here is an example of configuration YAML for the Vector Object server:
           center: [3.0, 3.0]
           radius: 0.5
           uuid: "7b3f3d7d-135c-4b6c-aca1-7a84d1050505"
-        CircleB:
+        circle_b:
           type: "circle"
           frame_id: "map"
           fill: False

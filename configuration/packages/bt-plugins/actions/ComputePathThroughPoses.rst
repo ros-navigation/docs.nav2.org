@@ -41,7 +41,7 @@ Input Ports
   ============== =======
 
   Description
-      Mapped name to the planner plugin type to use, e.g. GridBased.
+      Mapped name to the planner plugin type to use, e.g. grid_based.
 
 :server_name:
 
@@ -118,4 +118,4 @@ Example
 
 .. code-block:: xml
 
-  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="ComputePathThroughPoses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="grid_based" server_name="compute_path_through_poses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>

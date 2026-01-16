@@ -84,6 +84,6 @@ Example
 
 .. code-block:: xml
 
-  <NavigateToPose goal="{goal}" server_name="NavigateToPose" server_timeout="10"
+  <NavigateToPose goal="{goal}" server_name="navigate_to_pose" server_timeout="10"
                   error_code_id="{navigate_to_pose_error_code}" error_msg="{navigate_to_pose_error_msg}"
                   behavior_tree="NavigateThroughPosesWReplanningAndRecovery"/>

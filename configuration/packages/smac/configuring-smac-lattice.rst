@@ -389,9 +389,9 @@ Example
 
   planner_server:
     ros__parameters:
-      planner_plugins: ["GridBased"]
+      planner_plugins: ["grid_based"]
 
-      GridBased:
+      grid_based:
         plugin: "nav2_smac_planner::SmacPlannerLattice" # In Iron and older versions, "/" was used instead of "::"
         allow_unknown: true                 # Allow traveling in unknown space
         tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.

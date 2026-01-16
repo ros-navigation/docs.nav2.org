@@ -84,6 +84,6 @@ Example
 
 .. code-block:: xml
 
-  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10"
+  <NavigateThroughPoses goals="{goals}" server_name="navigate_through_poses" server_timeout="10"
                         error_code_id="{navigate_through_poses_error_code}" error_msg="{navigate_through_poses_error_msg}"
                         behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>

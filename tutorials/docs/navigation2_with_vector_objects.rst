@@ -45,14 +45,14 @@ For demonstration purposes, let's specify two obstacle shapes: triangle polygon 
 
 .. code-block:: yaml
 
-        shapes: ["Poly", "Circle"]
-        Poly:
+        shapes: ["poly", "circle"]
+        poly:
           type: "polygon"
           frame_id: "map"
           closed: True
           value: 100
           points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
-        Circle:
+        circle:
           type: "circle"
           frame_id: "map"
           fill: True
@@ -88,14 +88,14 @@ The complete ``vector_object_server_params.yaml`` YAML-file for the demonstratio
         overlay_type: 0
         update_frequency: 1.0
         transform_tolerance: 0.1
-        shapes: ["Poly", "Circle"]
-        Poly:
+        shapes: ["poly", "circle"]
+        poly:
           type: "polygon"
           frame_id: "map"
           closed: True
           value: 100
           points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
-        Circle:
+        circle:
           type: "circle"
           frame_id: "map"
           fill: True

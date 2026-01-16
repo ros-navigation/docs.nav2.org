@@ -215,12 +215,12 @@ Select this BT XML file in your specific navigation request in ``NavigateToPose`
         <PipelineSequence name="NavigateWithReplanning">
           <RateController hz="1.0">
             <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-              <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
               <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
             </RecoveryNode>
           </RateController>
           <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="FollowPath"/>
+            <FollowPath path="{path}" controller_id="follow_path"/>
             <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
           </RecoveryNode>
         </PipelineSequence>
