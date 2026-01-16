@@ -261,7 +261,7 @@ Server Parameters
   ============== ========================
   Type           Default
   -------------- ------------------------
-  string         "GeoJsonGraphFileLoader"
+  string         "geo_json_graph_file_loader"
   ============== ========================
 
   Description
@@ -283,7 +283,7 @@ Server Parameters
   ============== ========================================
   Type           Default
   -------------- ----------------------------------------
-  vector<string> ["DistanceScorer", "DynamicEdgesScorer"]
+  vector<string> ["distance_scorer", "dynamic_edges_scorer"]
   ============== ========================================
 
   Description
@@ -294,7 +294,7 @@ Server Parameters
   ============== ========================================
   Type           Default
   -------------- ----------------------------------------
-  vector<string> ["AdjustSpeedLimit", "ReroutingService"]
+  vector<string> ["adjust_speed_limit", "rerouting_service"]
   ============== ========================================
 
   Description
@@ -815,20 +815,20 @@ Example
         smoothing_corners: true                       # Whether to smooth corners formed by adjacent edges or not
         smoothing_radius: 1.0                         # Radius of corner to fit into the corner
 
-        graph_file_loader: "GeoJsonGraphFileLoader"   # Name of default file loader
+        graph_file_loader: "geo_json_graph_file_loader"   # Name of default file loader
           plugin: nav2_route::GeoJsonGraphFileLoader  # file loader plugin to use
         graph_filepath: ""                            # file path to graph to use
 
-        edge_cost_functions: ["DistanceScorer", "DynamicEdgesScorer"]  # Edge scoring cost functions to use
-        DistanceScorer:
+        edge_cost_functions: ["distance_scorer", "dynamic_edges_scorer"]  # Edge scoring cost functions to use
+        distance_scorer:
           plugin: "nav2_route::DistanceScorer"
-        DynamicEdgesScorer:
+        dynamic_edges_scorer:
           plugin: "nav2_route::DynamicEdgesScorer"
 
-        operations: ["AdjustSpeedLimit", "ReroutingService"] # Route operations plugins to use
-        AdjustSpeedLimit:
+        operations: ["adjust_speed_limit", "rerouting_service"] # Route operations plugins to use
+        adjust_speed_limit:
           plugin: "nav2_route::AdjustSpeedLimit"
-        ReroutingService:
+        rerouting_service:
           plugin: "nav2_route::ReroutingService"
 
         tracker_update_rate: 50.0                     # Rate at which to check the status of path tracking

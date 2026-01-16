@@ -36,4 +36,4 @@ Example
 
 .. code-block:: xml
 
-  <CancelControl server_name="FollowPath" server_timeout="10"/>
+  <CancelControl server_name="follow_path" server_timeout="10"/>

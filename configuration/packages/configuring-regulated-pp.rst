@@ -357,7 +357,7 @@ Example
       min_theta_velocity_threshold: 0.001
       progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
       goal_checker_plugins: ["goal_checker"]
-      controller_plugins: ["FollowPath"]
+      controller_plugins: ["follow_path"]
 
       progress_checker:
         plugin: "nav2_controller::SimpleProgressChecker"
@@ -368,7 +368,7 @@ Example
         xy_goal_tolerance: 0.25
         yaw_goal_tolerance: 0.25
         stateful: True
-      FollowPath:
+      follow_path:
         plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
         desired_linear_vel: 0.5
         lookahead_dist: 0.6

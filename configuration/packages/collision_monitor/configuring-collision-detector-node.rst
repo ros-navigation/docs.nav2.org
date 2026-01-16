@@ -362,8 +362,8 @@ Here is an example of configuration YAML for the Collision Detector.
         transform_tolerance: 0.5
         source_timeout: 5.0
         base_shift_correction: True
-        polygons: ["PolygonFront"]
-        PolygonFront:
+        polygons: ["polygon_front"]
+        polygon_front:
           type: "polygon"
           points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
           action_type: "none"

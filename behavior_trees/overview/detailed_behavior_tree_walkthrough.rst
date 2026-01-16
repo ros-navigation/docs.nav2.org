@@ -47,12 +47,15 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
 
 .. code-block:: xml
 
-    <root BTCPP_format="4" main_tree_to_execute="MainTree">
-        <BehaviorTree ID="MainTree">
+    <root BTCPP_format="4" main_tree_to_execute="NavigateToPoseWReplanningAndRecovery">
+        <BehaviorTree ID="NavigateToPoseWReplanningAndRecovery">
             <RecoveryNode number_of_retries="6" name="NavigateRecovery">
                 <PipelineSequence name="NavigateWithReplanning">
-                    <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
-                    <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
+                    <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
+                    <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
+                    <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="path_handler" topic_name="path_handler_selector"/>
+                    <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+                    <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
                     <RateController hz="1.0">
                         <RecoveryNode number_of_retries="1" name="ComputePathToPose">
                             <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
@@ -79,8 +82,8 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                         <GoalUpdated/>
                         <RoundRobin name="RecoveryActions">
                             <Sequence name="ClearingActions">
-                            <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-                            <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
                             </Sequence>
                             <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
                             <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
@@ -129,7 +132,7 @@ This happens until the ``number_of_retries`` for the parent ``RecoveryNode`` is 
 Navigation Subtree
 ======================
 
-Now that we have gone over the control flow between the ``Navigation`` subtree and the ``Recovery`` subtree, let's focus on the Navigation subtree.
+Now that we have gone over the control flow between the ``Navigation`` subtree and the ``Recovery`` subtree, let's focus on the ``Navigation`` subtree.
 
 |
 
@@ -142,26 +145,33 @@ The XML of this subtree is as follows:
 
 .. code-block:: xml
 
-    <PipelineSequence name="NavigateWithReplanning">
-        <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
-        <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
-        <RateController hz="1.0">
-            <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-                <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-                <Sequence>
-                    <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
-                    <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-                </Sequence>
-            </RecoveryNode>
-        </RateController>
-        <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
-            <Sequence>
-                <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-                <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-            </Sequence>
-        </RecoveryNode>
-    </PipelineSequence>
+    <root BTCPP_format="4" main_tree_to_execute="NavigateToPoseWReplanningAndRecovery">
+        <BehaviorTree ID="NavigateToPoseWReplanningAndRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+                <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
+                <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
+                <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="path_handler" topic_name="path_handler_selector"/>
+                <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+                <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+                <RateController hz="1.0">
+                    <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+                        <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                        <Sequence>
+                            <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+                            <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                        </Sequence>
+                    </RecoveryNode>
+                </RateController>
+                <RecoveryNode number_of_retries="1" name="FollowPath">
+                    <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+                    <Sequence>
+                        <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                        <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+                    </Sequence>
+                </RecoveryNode>
+            </PipelineSequence>
+        </BehaviorTree>
+    </root>
 
 This subtree has two primary actions ``ComputePathToPose`` and ``FollowPath``.
 If either of these two actions fail, they will attempt to clear the failure contextually.
@@ -231,24 +241,28 @@ And the XML snippet:
 
 .. code-block:: xml
 
-    <Sequence>
-        <Fallback>
-            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-            <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
-        </Fallback>
-        <ReactiveFallback name="RecoveryFallback">
-            <GoalUpdated/>
-            <RoundRobin name="RecoveryActions">
-                <Sequence name="ClearingActions">
-                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-                </Sequence>
-                <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-                <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-                <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
-            </RoundRobin>
-        </ReactiveFallback>
-    </Sequence>
+    <root BTCPP_format="4" main_tree_to_execute="NavigateToPoseWReplanningAndRecovery">
+        <BehaviorTree ID="NavigateToPoseWReplanningAndRecovery">
+            <Sequence>
+                <Fallback>
+                    <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                    <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+                </Fallback>
+                <ReactiveFallback name="RecoveryFallback">
+                    <GoalUpdated/>
+                    <RoundRobin name="RecoveryActions">
+                        <Sequence name="ClearingActions">
+                            <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                            <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                        </Sequence>
+                        <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+                        <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+                        <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+                    </RoundRobin>
+                </ReactiveFallback>
+            </Sequence>
+        </BehaviorTree>
+    </root>
 
 At the top level, a ``Sequence`` ensures the following steps are executed in order:
 

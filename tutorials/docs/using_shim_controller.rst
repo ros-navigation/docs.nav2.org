@@ -52,7 +52,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
         min_theta_velocity_threshold: 0.001
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"]
-        controller_plugins: ["FollowPath"]
+        controller_plugins: ["follow_path"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
           required_movement_radius: 0.5
@@ -62,7 +62,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
           xy_goal_tolerance: 0.25
           yaw_goal_tolerance: 0.25
           stateful: True
-        FollowPath:
+        follow_path:
           plugin: "nav2_rotation_shim_controller::RotationShimController"
           angular_dist_threshold: 0.785
           forward_sampling_distance: 0.5
@@ -91,8 +91,8 @@ There is one more remaining parameter of the ``RotationShimController`` not ment
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
-        controller_plugins: ["FollowPath"]
-        FollowPath:
+        controller_plugins: ["follow_path"]
+        follow_path:
           plugin: "nav2_rotation_shim_controller::RotationShimController"
           primary_controller: "dwb_core::DWBLocalPlanner"
           angular_dist_threshold: 0.785

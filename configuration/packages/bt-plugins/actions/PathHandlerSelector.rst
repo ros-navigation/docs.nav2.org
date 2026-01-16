@@ -55,4 +55,4 @@ Example
 
 .. code-block:: xml
 
-  <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="PathHandler" topic_name="path_handler_selector"/>
+  <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="path_handler" topic_name="path_handler_selector"/>

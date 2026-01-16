@@ -55,4 +55,4 @@ Example
 
 .. code-block:: xml
 
-  <SmootherSelector selected_smoother="{selected_smoother}" default_smoother="SimpleSmoother" topic_name="smoother_selector"/>
+  <SmootherSelector selected_smoother="{selected_smoother}" default_smoother="simple_smoother" topic_name="smoother_selector"/>

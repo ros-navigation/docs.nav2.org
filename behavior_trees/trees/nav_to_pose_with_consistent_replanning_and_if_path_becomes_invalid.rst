@@ -26,20 +26,23 @@ Next, the recovery subtree will attempt the following recoveries: costmap cleari
 After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
 If it continues to fail, the next recovery in the recovery subtree is ticked.
 
-While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, and ``GoalCheckerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``GridBased`` and ``FollowPath``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
+While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, and ``GoalCheckerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``grid_based`` and ``follow_path``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
 
 .. code-block:: xml
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
+  <root BTCPP_format="4" main_tree_to_execute="NavToPoseWithConsistentReplanningAndIfPathBecomesInvalid">
+    <BehaviorTree ID="NavToPoseWithConsistentReplanningAndIfPathBecomesInvalid">
       <RecoveryNode number_of_retries="6" name="NavigateRecovery">
-        <PipelineSequence>
-          <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
-          <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
-          <RateController hz="1.0" name="RateControllerComputePathToPose">
-            <RecoveryNode number_of_retries="1" name="RecoveryComputePathToPose">
-              <Fallback name="FallbackComputePathToPose">
-                <ReactiveSequence name="CheckIfNewPathNeeded">
+        <PipelineSequence name="NavigateWithReplanning">
+          <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+          <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+          <RateController hz="2.0">
+            <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+              <Fallback>
+                <ReactiveSequence>
+                  <Inverter>
+                    <PathExpiringTimer seconds="10" path="{path}"/>
+                  </Inverter>
                   <Inverter>
                     <GlobalUpdatedGoal/>
                   </Inverter>
@@ -50,12 +53,12 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
               <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
             </RecoveryNode>
           </RateController>
-          <RecoveryNode number_of_retries="1" name="RecoveryFollowPath">
+          <RecoveryNode number_of_retries="1" name="FollowPath">
             <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
             <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
           </RecoveryNode>
         </PipelineSequence>
-        <ReactiveFallback name="FallbackRecoveries">
+        <ReactiveFallback name="RecoveryFallback">
           <GoalUpdated/>
           <RoundRobin name="RecoveryActions">
             <Sequence name="ClearingActions">
@@ -63,8 +66,8 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
               <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
             <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-            <Wait name="WaitRecovery" wait_duration="5.0"/>
-            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.05" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+            <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
           </RoundRobin>
         </ReactiveFallback>
       </RecoveryNode>

@@ -104,7 +104,7 @@ Example
 *******
 .. code-block:: yaml
 
-  PathHandler:
+  path_handler:
       plugin: "nav2_controller::FeasiblePathHandler"
       prune_distance: 2.0
       enforce_path_inversion: True

@@ -117,12 +117,12 @@ They also host the environmental representation used by the algorithm plugins to
 
 The planner, smoother and controller servers will be configured at runtime with the names (aliases) and types of algorithms to use.
 These types are the pluginlib names that have been registered and the names are the aliases for the task.
-An example would be the DWB controller used with name ``FollowPath``, as it follows a reference path.
-In this case, then all parameters for DWB would be placed in that namespace, e.g. ``FollowPath.<param>``.
+An example would be the DWB controller used with name ``follow_path``, as it follows a reference path.
+In this case, then all parameters for DWB would be placed in that namespace, e.g. ``follow_path.<param>``.
 
 These three servers then expose an action interface corresponding to their task.
 When the behavior tree ticks the corresponding BT node, it will call the action server to process its task.
-The action server callback inside the server will call the chosen algorithm by its name (e.g. ``FollowPath``) that maps to a specific algorithm.
+The action server callback inside the server will call the chosen algorithm by its name (e.g. ``follow_path``) that maps to a specific algorithm.
 This allows a user to abstract the algorithm used in the behavior tree to classes of algorithms.
 For instance, you can have ``N`` plugin controllers to follow paths, dock with charger, avoid dynamic obstacles, or interface with a tool.
 Having all of these plugins in the same server allows the user to make use of a single environmental representation object, which is costly to duplicate.
