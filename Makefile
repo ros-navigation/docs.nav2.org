@@ -17,6 +17,7 @@ BUILDDIR      = _build
 DOC_TAG      ?= development
 RELEASE      ?= latest
 PUBLISHDIR    = /tmp/navigation2
+SUPPORTED_VERSIONS = master
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -34,6 +35,31 @@ help:
 
 html:
 	$(Q)$(SPHINXBUILD) -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS) $(O)
+
+multiversion:
+	@(\
+	if ! git diff-index --quiet HEAD --; then \
+		git stash push -q -m "multiversion build temporary stash"; \
+		echo "Changes stashed"; \
+	fi; \
+	)
+	@(\
+	original_branch=$$(git symbolic-ref --short HEAD); \
+	echo "Building documentation for supported versions: $(SUPPORTED_VERSIONS)"; \
+	for version in $(SUPPORTED_VERSIONS); do \
+		echo "Building $$version..."; \
+		git checkout -q $$version && \
+		$(SPHINXBUILD) -b html $(SPHINXOPTS) . $(BUILDDIR)/html/$$version || exit 1; \
+	done; \
+	git checkout -q $$original_branch; \
+	echo "<html><head><meta http-equiv=\"refresh\" content=\"0; url=master/index.html\" /></head></html>" > $(BUILDDIR)/html/index.html \
+	)
+	@(\
+	if git stash list | grep -q "multiversion build temporary stash"; then \
+		git stash pop -q; \
+		echo "Changes restored from stash"; \
+	fi \
+	)
 
 # Autobuild the docs on changes
 

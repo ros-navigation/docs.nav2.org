@@ -39,6 +39,7 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinx.ext.graphviz',
     'sphinxcontrib.plantuml',
+    'sphinx_multiversion',
 ]
 
 myst_enable_extensions = ['colon_fence']
@@ -124,7 +125,7 @@ else:
         'canonical_url': '',
         'analytics_id': 'G-EVD5Z6G6NH',
         'logo_only': False,
-        'display_version': True,
+        'display_version': False,
         'prev_next_buttons_location': 'None',
         # Toc options
         'collapse_navigation': False,
