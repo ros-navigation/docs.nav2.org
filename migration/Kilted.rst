@@ -5,6 +5,142 @@ Kilted to L-turtle
 
 Moving from ROS 2 Kilted to L-Turtle, a number of stability improvements were added that we will not specifically address here.
 
+Changed parameter naming style
+------------------------------
+
+`PR #5793 <https://github.com/ros-navigation/navigation2/pull/5793>`_
+updates the naming style for a group of parameters from ``PascalCase`` to ``snake_case``.
+The changes concern the names of parameters (IDs) that are associated with plugins and other components,
+which are described in the tables below.
+
+Parameter files
+^^^^^^^^^^^^^^^
+
+To make it easier to find names that need to be changed, the table below shows the server names,
+along with the corresponding parameters associated with updated names, including at least one example of such an updated name.
+
++----------------------+---------------------------+----------------------------------------------------------+
+| Server name          | Parameter where IDs       |  Example                                                 |
+|                      | are defined               |                                                          |
++======================+===========================+==========================================================+
+|**Plugin related**                                                                                           |
++----------------------+---------------------------+----------------------------------------------------------+
+| controller_server    | controller_plugins        | `FollowPath` -> `follow_path`                            |
++----------------------+---------------------------+----------------------------------------------------------+
+| controller_server    | path_handler_plugins      | `PathHandler` -> `path_handler`                          |
++----------------------+---------------------------+----------------------------------------------------------+
+| planner_server       | planner_plugins           | `GridBased` -> `grid_based`                              |
++----------------------+---------------------------+----------------------------------------------------------+
+| smoother_server      | smoother_plugins          | `SimpleSmoother` -> `simple_smoother`                    |
++----------------------+---------------------------+----------------------------------------------------------+
+| route_server         | operations                | `AdjustSpeedLimit` -> `adjust_speed_limit`               |
++----------------------+---------------------------+----------------------------------------------------------+
+| route_server         | edge_cost_functions       | `DistanceScorer` -> `distance_scorer`                    |
++----------------------+---------------------------+----------------------------------------------------------+
+| route_server         | graph_file_loader         | `GeoJsonGraphFileLoader` -> `geo_json_graph_file_loader` |
++----------------------+---------------------------+----------------------------------------------------------+
+|**Non-plugin related**                                                                                       |
++----------------------+---------------------------+----------------------------------------------------------+
+| collision_monitor    | polygons                  | `FootprintApproach` -> `footprint_approach`              |
++----------------------+---------------------------+----------------------------------------------------------+
+| collision_detector   | polygons                  | `PolygonFront` -> `polygon_front`                        |
++----------------------+---------------------------+----------------------------------------------------------+
+| vector_object_server | shapes                    | `Circle` -> `circle`                                     |
++----------------------+---------------------------+----------------------------------------------------------+
+
+Examples from updated YAML configuration files:
+
+.. code-block:: yaml
+
+  controller_server:
+    ros__parameters:
+      controller_plugins: ["follow_path"]
+      follow_path:
+        plugin: "nav2_mppi_controller::MPPIController"
+
+.. code-block:: yaml
+
+  collision_monitor:
+    ros__parameters:
+      polygons: ["footprint_approach"]
+      footprint_approach:
+        type: "polygon"
+
+An example of a complete configuration can be found in
+`nav2_params.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/params/nav2_params.yaml>`_ file.
+
+BT configuration
+^^^^^^^^^^^^^^^^
+
+The behavior tree XML configuration files may require updating the following names related to input ports used in BT Action Nodes:
+
++-------------------------+--------------------------+----------------------------------------+
+| BT Action Node ID       | Input port               | Example                                |
++=========================+==========================+========================================+
+| FollowPath              | controller_id            | `FollowPath` -> `follow_path`          |
++-------------------------+--------------------------+----------------------------------------+
+| FollowPath              | path_handler_id          | `PathHandler` -> `path_handler`        |
++-------------------------+--------------------------+----------------------------------------+
+| FollowPath              | goal_checker_id          | `GoalChecker` -> `goal_checker`        |
++-------------------------+--------------------------+----------------------------------------+
+| FollowPath              | progress_checker_id      | `ProgressChecker` -> `progress_checker`|
++-------------------------+--------------------------+----------------------------------------+
+| ComputePathToPose       | planner_id               | `GridBased` -> `grid_based`            |
++-------------------------+--------------------------+----------------------------------------+
+| ComputePathThroughPoses | planner_id               | `GridBased` -> `grid_based`            |
++-------------------------+--------------------------+----------------------------------------+
+| SmoothPath              | smoother_id              | `RouteSmoother` -> `route_smoother`    |
++-------------------------+--------------------------+----------------------------------------+
+| ControllerSelector      | default_controller       | `FollowPath` -> `follow_path`          |
++-------------------------+--------------------------+----------------------------------------+
+| GoalCheckerSelector     | default_goal_checker     | `GoalChecker` -> `goal_checker`        |
++-------------------------+--------------------------+----------------------------------------+
+| ProgressCheckerSelector | default_progress_checker | `ProgressChecker` -> `progress_checker`|
++-------------------------+--------------------------+----------------------------------------+
+| PlannerSelector         | planner_id               | `GridBased` -> `grid_based`            |
++-------------------------+--------------------------+----------------------------------------+
+| PathHandlerSelector     | default_path_handler     | `PathHandler` -> `path_handler`        |
++-------------------------+--------------------------+----------------------------------------+
+| SmootherSelector        | default_smoother         | `SimpleSmoother` -> `simple_smoother`  |
++-------------------------+--------------------------+----------------------------------------+
+
+An example for updated XML configuration file:
+
+.. code-block:: xml
+
+  ...
+  <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+  <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+  ...
+
+The full configuration can be found in
+`navigate_to_pose_w_replanning_and_recovery.xml
+<https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml>`_
+(default behavior tree).
+
+Additionally, some BT Action Nodes have new default values in the `nav2_tree_nodes.xml
+<https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml>`_ file used for Groot:
+
++------------+--------------------+
+| Action ID  | Default input port |
++============+====================+
+| SmoothPath | smooth_path        |
++------------+--------------------+
+| FollowPath | follow_path        |
++------------+--------------------+
+
+.. code-block:: xml
+
+    <Action ID="SmoothPath">
+      <input_port name="smoother_id" default="smooth_path"/>
+      ...
+    </Action>
+
+    <Action ID="FollowPath">
+      <input_port name="controller_id" default="follow_path"/>
+      ...
+    </Action>
+
 New Nav2 ROS Common & Nav2 Lifecycle Node
 -----------------------------------------
 
