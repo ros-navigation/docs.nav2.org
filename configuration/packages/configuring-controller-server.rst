@@ -63,7 +63,7 @@ Parameters
   ============== ==============
   Type           Default
   -------------- --------------
-  vector<string> ['FollowPath']
+  vector<string> ['follow_path']
   ============== ==============
 
   Description
@@ -78,8 +78,8 @@ Parameters
 
         controller_server:
           ros__parameters:
-            controller_plugins: ["FollowPath"]
-            FollowPath:
+            controller_plugins: ["follow_path"]
+            follow_path:
               plugin: "dwb_core::DWBLocalPlanner"
     ..
 
@@ -117,7 +117,7 @@ Parameters
   ============== ================
 
   Description
-    Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each :code:`FollowPath` action needs to specify the goal checker plugin name with its :code:`goal_checker_id` field.
+    Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each :code:`follow_path` action needs to specify the goal checker plugin name with its :code:`goal_checker_id` field.
 
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -137,11 +137,11 @@ Parameters
   ============== ================
   Type           Default
   -------------- ----------------
-  vector<string> ["PathHandler"]
+  vector<string> ["path_handler"]
   ============== ================
 
   Description
-    Mapped name for path handler plugin for processing path from the planner. When the number of the plugins is more than 2, each :code:`FollowPath` action needs to specify the path handler plugin name with its :code:`path_handler_id` field.
+    Mapped name for path handler plugin for processing path from the planner. When the number of the plugins is more than 2, each :code:`follow_path` action needs to specify the path handler plugin name with its :code:`path_handler_id` field.
 
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -152,7 +152,7 @@ Parameters
 
         controller_server:
           ros__parameters:
-            path_handler_plugins: ["PathHandler"]
+            path_handler_plugins: ["path_handler"]
             path_handler:
               plugin: "nav2_controller::FeasiblePathHandler"
 
@@ -324,7 +324,7 @@ When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin`, :code:`p
   ------------------ -----------------------------------------------------
   "path_handler"     "nav2_controller::FeasiblePathHandler"
   ------------------ -----------------------------------------------------
-  "FollowPath"       "dwb_core::DWBLocalPlanner"
+  "follow_path"       "dwb_core::DWBLocalPlanner"
   ================== =====================================================
 
 Example
@@ -343,8 +343,8 @@ Example
         odom_duration: 0.3
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
-        path_handler_plguins: ["PathHandler"]
-        controller_plugins: ["FollowPath"]
+        path_handler_plguins: ["path_handler"]
+        controller_plugins: ["follow_path"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
           required_movement_radius: 0.5
@@ -355,7 +355,7 @@ Example
           yaw_goal_tolerance: 0.25
           path_length_tolerance: 1.0
           stateful: True
-        PathHandler:
+        path_handler:
           plugin: "nav2_controller::FeasiblePathHandler"
           prune_distance: 2.0
           enforce_path_inversion: True
@@ -364,5 +364,5 @@ Example
           inversion_yaw_tolerance: 0.4
           minimum_rotation_angle: 0.785
           reject_unit_path: False
-        FollowPath:
+        follow_path:
           plugin: "dwb_core::DWBLocalPlanner"

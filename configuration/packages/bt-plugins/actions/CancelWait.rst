@@ -36,4 +36,4 @@ Example
 
 .. code-block:: xml
 
-  <CancelWait server_name="Wait" server_timeout="10"/>
+  <CancelWait server_name="wait" server_timeout="10"/>

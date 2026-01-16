@@ -115,8 +115,8 @@ Example
   planner_server:
     ros__parameters:
       expected_planner_frequency: 20.0
-      planner_plugins: ["GridBased"]
-      GridBased:
+      planner_plugins: ["grid_based"]
+      grid_based:
         plugin: "nav2_theta_star_planner::ThetaStarPlanner" # In Iron and older versions, "/" was used instead of "::"
         how_many_corners: 8
         w_euc_cost: 1.0

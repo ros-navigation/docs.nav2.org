@@ -29,7 +29,7 @@ Input Ports
   ====== =======
 
   Description
-        Mapped name of the controller plugin type to use, e.g. FollowPath.
+        Mapped name of the controller plugin type to use, e.g. follow_path.
 
 :goal_checker_id:
 
@@ -40,7 +40,7 @@ Input Ports
   ====== =======
 
   Description
-        Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
+        Mapped name of the goal checker plugin type to use, e.g. simple_goal_checker.
 
 :progress_checker_id:
 
@@ -51,7 +51,7 @@ Input Ports
   ====== =======
 
   Description
-      Mapped name of the progress checker plugin type to use, e.g. SimpleProgressChecker.
+      Mapped name of the progress checker plugin type to use, e.g. simple_progress_checker.
 
 :path_handler_id:
 
@@ -62,7 +62,7 @@ Input Ports
   ====== =======
 
   Description
-      Mapped name of the path handler plugin type to use, e.g. FeasiblePathHandler.
+      Mapped name of the path handler plugin type to use, e.g. feasible_path_handler.
 
 :server_name:
 
@@ -131,4 +131,4 @@ Example
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" path_handler_id="PathHandler" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
+    <FollowPath path="{path}" controller_id="follow_path" goal_checker_id="precise_goal_checker" path_handler_id="path_handler" server_name="follow_path" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>

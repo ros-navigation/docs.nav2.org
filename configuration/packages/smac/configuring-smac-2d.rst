@@ -208,9 +208,9 @@ Example
 
   planner_server:
     ros__parameters:
-      planner_plugins: ["GridBased"]
+      planner_plugins: ["grid_based"]
 
-      GridBased:
+      grid_based:
         plugin: "nav2_smac_planner::SmacPlanner2D" # In Iron and older versions, "/" was used instead of "::"
         tolerance: 0.125                      # tolerance for planning if unable to reach exact pose, in meters
         downsample_costmap: false             # whether or not to downsample the map

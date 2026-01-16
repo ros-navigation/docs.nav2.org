@@ -65,7 +65,7 @@ Example
         min_theta_velocity_threshold: 0.001
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"]
-        controller_plugins: ["FollowPath"]
+        controller_plugins: ["follow_path"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
           required_movement_radius: 0.5
@@ -76,7 +76,7 @@ Example
           yaw_goal_tolerance: 0.25
           stateful: True
         # DWB controller parameters
-        FollowPath:
+        follow_path:
           plugin: "dwb_core::DWBLocalPlanner"
           debug_trajectory_details: True
           min_vel_x: 0.0

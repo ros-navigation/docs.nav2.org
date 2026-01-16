@@ -133,8 +133,8 @@ In controllers, ``configure()`` method must set member variables from ROS parame
 Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameter ``desired_linear_vel`` which is specific to our controller.
 Nav2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
 Now, if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet.
-For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel`` parameter, which is specific to "FollowPath”,
-we used ``FollowPath.desired_linear_vel``. In other words, ``FollowPath`` is used as a namespace for plugin-specific parameters.
+For example, our example controller is mapped to the name ``follow_path`` and to retrieve the ``desired_linear_vel`` parameter, which is specific to "follow_path",
+we used ``follow_path.desired_linear_vel``. In other words, ``follow_path`` is used as a namespace for plugin-specific parameters.
 We will see more on this when we discuss the parameters file (or params file).
 
 The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
@@ -281,9 +281,9 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
   controller_server:
     ros__parameters:
-      controller_plugins: ["FollowPath"]
+      controller_plugins: ["follow_path"]
 
-      FollowPath:
+      follow_path:
         plugin: "nav2_pure_pursuit_controller::PurePursuitController" # In Iron and older versions, "/" was used instead of "::"
         debug_trajectory_details: True
         desired_linear_vel: 0.2
@@ -291,7 +291,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         max_angular_vel: 1.0
         transform_tolerance: 1.0
 
-In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller::PurePursuitController`` controller to its id ``FollowPath``.
+In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller::PurePursuitController`` controller to its id ``follow_path``.
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run Pure Pursuit Controller plugin

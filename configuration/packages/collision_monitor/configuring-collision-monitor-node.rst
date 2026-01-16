@@ -721,8 +721,8 @@ Here is an example of configuration YAML for the Collision Monitor.
         stop_pub_timeout: 2.0
         enable_stamped_cmd_vel: True  # False for Jazzy or older
         use_realtime_priority: false
-        polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
-        PolygonStop:
+        polygons: ["polygon_stop", "polygon_slow", "footprint_approach"]
+        polygon_stop:
           type: "circle"
           radius: 0.3
           action_type: "stop"
@@ -730,7 +730,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           visualize: True
           polygon_pub_topic: "polygon_stop"
           enabled: True
-        PolygonSlow:
+        polygon_slow:
           type: "polygon"
           points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
           action_type: "slowdown"
@@ -739,7 +739,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
           enabled: True
-        PolygonLimit:
+        polygon_limit:
           type: "polygon"
           points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
           action_type: "limit"
@@ -749,7 +749,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           visualize: True
           polygon_pub_topic: "polygon_limit"
           enabled: True
-        FootprintApproach:
+        footprint_approach:
           type: "polygon"
           action_type: "approach"
           footprint_topic: "/local_costmap/published_footprint"
@@ -758,7 +758,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           min_points: 6  # max_points: 5 for Humble
           visualize: False
           enabled: True
-        VelocityPolygonStop:
+        velocity_polygon_stop:
           type: "velocity_polygon"
           action_type: "stop"
           min_points: 6

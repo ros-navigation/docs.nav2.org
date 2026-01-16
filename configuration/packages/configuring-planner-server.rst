@@ -19,7 +19,7 @@ Parameters
   ============== ==============
   Type           Default
   -------------- --------------
-  vector<string> ['GridBased']
+  vector<string> ['grid_based']
   ============== ==============
 
   Description
@@ -34,8 +34,8 @@ Parameters
 
         planner_server:
           ros__parameters:
-            planner_plugins: ["GridBased"]
-            GridBased:
+            planner_plugins: ["grid_based"]
+            grid_based:
               plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
     ..
 
@@ -113,7 +113,7 @@ When the :code:`planner_plugins` parameter is not overridden, the following defa
   ================= =====================================================
   Namespace         Plugin
   ----------------- -----------------------------------------------------
-  "GridBased"       "nav2_navfn_planner::NavfnPlanner"
+  "grid_based"       "nav2_navfn_planner::NavfnPlanner"
   ================= =====================================================
 
 Example
@@ -126,6 +126,6 @@ Example
         expected_planner_frequency: 20.0
         costmap_update_timeout: 1.0
         introspection_mode: "disabled"
-        planner_plugins: ['GridBased']
-        GridBased:
+        planner_plugins: ['grid_based']
+        grid_based:
           plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"

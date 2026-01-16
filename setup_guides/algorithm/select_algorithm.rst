@@ -64,11 +64,11 @@ Example Configuration
 
     planner_server:
       ros__parameters:
-        planner_plugins: ['GridBased']
-        GridBased:
+        planner_plugins: ['grid_based']
+        grid_based:
           plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
 
-An example configuration of the planner server is shown above. The ``planner_plugins`` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in ``planner_plugins`` (``GridBased`` in our example), we specify the type of plugin to be loaded in the ``plugin`` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the `Configuration Guide <https://docs.nav2.org/configuration/index.html>`_ for more details.
+An example configuration of the planner server is shown above. The ``planner_plugins`` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in ``planner_plugins`` (``grid_based`` in our example), we specify the type of plugin to be loaded in the ``plugin`` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the `Configuration Guide <https://docs.nav2.org/configuration/index.html>`_ for more details.
 
 Controller Server
 =================
@@ -109,11 +109,11 @@ Example Configuration
 
     controller_server:
       ros__parameters:
-        controller_plugins: ["FollowPath"]
-        FollowPath:
+        controller_plugins: ["follow_path"]
+        follow_path:
            plugin: "dwb_core::DWBLocalPlanner"
 
-Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the ``controller_plugins`` parameter. Similar to the planner server, each namespace defined in the ``controller_plugins`` (``FollowPath`` in our example) must define the type of plugin it will use in the ``plugin`` parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the `Configuration Guide <https://docs.nav2.org/configuration/index.html>`_ for more details.
+Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the ``controller_plugins`` parameter. Similar to the planner server, each namespace defined in the ``controller_plugins`` (``follow_path`` in our example) must define the type of plugin it will use in the ``plugin`` parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the `Configuration Guide <https://docs.nav2.org/configuration/index.html>`_ for more details.
 
 .. note::
    The planner and controller servers, along with the other servers of Nav2, are launched in ROS 2 through lifecycle nodes. Lifecycle nodes allow for easier bringup and teardown of the servers. Lifecycle node management will be discussed in the next tutorial.

@@ -36,4 +36,4 @@ Example
 
 .. code-block:: xml
 
-  <CancelBackUp server_name="BackUp" server_timeout="10"/>
+  <CancelBackUp server_name="backup" server_timeout="10"/>

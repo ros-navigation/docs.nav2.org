@@ -72,14 +72,14 @@ A given behavior tree will have a line:
 
 .. code-block:: xml
 
-  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+  <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
 
 This line calls the planner server and return a path to the ``path`` blackboard variable in the behavior tree. We are going to replace that line with the following to compute the path, smooth the path, and finally replace the ``path`` blackboard variable with the new smoothed path that the system will now interact with:
 
 .. code-block:: xml
 
     <Sequence name="ComputeAndSmoothPath">
-      <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+      <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
       <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
     </Sequence>
 

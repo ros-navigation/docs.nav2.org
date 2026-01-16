@@ -162,5 +162,5 @@ Example
 
 .. code-block:: xml
 
-  <ComputeRoute start="{start}" goal="{goal}" use_poses="{true}" use_start="{true}" path="{path}" server_name="ComputeRoute" server_timeout="10"
+  <ComputeRoute start="{start}" goal="{goal}" use_poses="{true}" use_start="{true}" path="{path}" server_name="compute_route" server_timeout="10"
                      error_code_id="{compute_route_error_code}" error_msg="{compute_route_error_msg}"/>

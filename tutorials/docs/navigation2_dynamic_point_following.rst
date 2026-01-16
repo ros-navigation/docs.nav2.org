@@ -155,9 +155,9 @@ Let's start from this simple behavior tree. This behavior tree replans a new pat
     <BehaviorTree ID="MainTree">
       <PipelineSequence name="NavigateWithReplanning">
         <RateController hz="1.0">
-          <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
         </RateController>
-        <FollowPath path="{path}" controller_id="FollowPath"/>
+        <FollowPath path="{path}" controller_id="follow_path"/>
       </PipelineSequence>
     </BehaviorTree>
   </root>
@@ -170,10 +170,10 @@ First, let's make this behavior run until there's a failure. For this purpose, w
     <BehaviorTree ID="MainTree">
       <PipelineSequence name="NavigateWithReplanning">
         <RateController hz="1.0">
-          <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
         </RateController>
         <KeepRunningUntilFailure>
-          <FollowPath path="{path}" controller_id="FollowPath"/>
+          <FollowPath path="{path}" controller_id="follow_path"/>
         </KeepRunningUntilFailure>
       </PipelineSequence>
     </BehaviorTree>
@@ -188,11 +188,11 @@ We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic 
       <PipelineSequence name="NavigateWithReplanning">
         <RateController hz="1.0">
           <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-            <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="GridBased"/>
+            <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="grid_based"/>
           </GoalUpdater>
         </RateController>
         <KeepRunningUntilFailure>
-          <FollowPath path="{path}" controller_id="FollowPath"/>
+          <FollowPath path="{path}" controller_id="follow_path"/>
         </KeepRunningUntilFailure>
       </PipelineSequence>
     </BehaviorTree>
@@ -208,13 +208,13 @@ To stay at a certain distance from the target, we will use the action node ``Tru
         <RateController hz="1.0">
           <Sequence>
             <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-              <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="GridBased"/>
+              <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="grid_based"/>
             </GoalUpdater>
            <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
           </Sequence>
         </RateController>
         <KeepRunningUntilFailure>
-          <FollowPath path="{truncated_path}" controller_id="FollowPath"/>
+          <FollowPath path="{truncated_path}" controller_id="follow_path"/>
         </KeepRunningUntilFailure>
       </PipelineSequence>
     </BehaviorTree>
