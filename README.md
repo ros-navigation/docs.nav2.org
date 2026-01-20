@@ -33,7 +33,7 @@ pip3 install -r requirements.txt
 ### Build the Docs
 Build the docs locally with `make html` and you'll find the built docs entry point in `_build/html/index.html`.
 
-To automate the build process, you can use a [sphinx-autobuild](https://github.com/sphinx-doc/sphinx-autobuild) package.  
+To automate the build process, you can use a [sphinx-autobuild](https://github.com/sphinx-doc/sphinx-autobuild) package. \
 Run this command from the virtual environment to build the documentation and start a server:
 
 ```bash
@@ -41,7 +41,7 @@ sphinx-autobuild . ./_build/html
 ```
 For more options for the command, see the documentation linked above.
 
-Now you can access the page using the local address: http://127.0.0.1:8000.  
+Now you can access the page using the local address: http://127.0.0.1:8000. \
 After saving any changes, the documentation will be automatically rebuilt and displayed.
 
 Any images, diagrams, or videos are subject to their own copyrights, trademarks, and licenses.
