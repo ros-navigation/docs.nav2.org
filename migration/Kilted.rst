@@ -74,35 +74,35 @@ BT configuration
 
 The behavior tree XML configuration files may require updating the following names related to input ports used in BT Action Nodes:
 
-+-------------------------+--------------------------+----------------------------------------+
-| BT Action Node ID       | Input port               | Example                                |
-+=========================+==========================+========================================+
-| FollowPath              | controller_id            | `FollowPath` -> `follow_path`          |
-+-------------------------+--------------------------+----------------------------------------+
-| FollowPath              | path_handler_id          | `PathHandler` -> `path_handler`        |
-+-------------------------+--------------------------+----------------------------------------+
-| FollowPath              | goal_checker_id          | `GoalChecker` -> `goal_checker`        |
-+-------------------------+--------------------------+----------------------------------------+
-| FollowPath              | progress_checker_id      | `ProgressChecker` -> `progress_checker`|
-+-------------------------+--------------------------+----------------------------------------+
-| ComputePathToPose       | planner_id               | `GridBased` -> `grid_based`            |
-+-------------------------+--------------------------+----------------------------------------+
-| ComputePathThroughPoses | planner_id               | `GridBased` -> `grid_based`            |
-+-------------------------+--------------------------+----------------------------------------+
-| SmoothPath              | smoother_id              | `RouteSmoother` -> `route_smoother`    |
-+-------------------------+--------------------------+----------------------------------------+
-| ControllerSelector      | default_controller       | `FollowPath` -> `follow_path`          |
-+-------------------------+--------------------------+----------------------------------------+
-| GoalCheckerSelector     | default_goal_checker     | `GoalChecker` -> `goal_checker`        |
-+-------------------------+--------------------------+----------------------------------------+
-| ProgressCheckerSelector | default_progress_checker | `ProgressChecker` -> `progress_checker`|
-+-------------------------+--------------------------+----------------------------------------+
-| PlannerSelector         | planner_id               | `GridBased` -> `grid_based`            |
-+-------------------------+--------------------------+----------------------------------------+
-| PathHandlerSelector     | default_path_handler     | `PathHandler` -> `path_handler`        |
-+-------------------------+--------------------------+----------------------------------------+
-| SmootherSelector        | default_smoother         | `SimpleSmoother` -> `simple_smoother`  |
-+-------------------------+--------------------------+----------------------------------------+
++-------------------------+--------------------------+-----------------------------------------+
+| BT Action Node ID       | Input port               | Example                                 |
++=========================+==========================+=========================================+
+| FollowPath              | controller_id            | `FollowPath` -> `follow_path`           |
++-------------------------+--------------------------+-----------------------------------------+
+| FollowPath              | path_handler_id          | `PathHandler` -> `path_handler`         |
++-------------------------+--------------------------+-----------------------------------------+
+| FollowPath              | goal_checker_id          | `GoalChecker` -> `goal_checker`         |
++-------------------------+--------------------------+-----------------------------------------+
+| FollowPath              | progress_checker_id      | `ProgressChecker` -> `progress_checker` |
++-------------------------+--------------------------+-----------------------------------------+
+| ComputePathToPose       | planner_id               | `GridBased` -> `grid_based`             |
++-------------------------+--------------------------+-----------------------------------------+
+| ComputePathThroughPoses | planner_id               | `GridBased` -> `grid_based`             |
++-------------------------+--------------------------+-----------------------------------------+
+| SmoothPath              | smoother_id              | `RouteSmoother` -> `route_smoother`     |
++-------------------------+--------------------------+-----------------------------------------+
+| ControllerSelector      | default_controller       | `FollowPath` -> `follow_path`           |
++-------------------------+--------------------------+-----------------------------------------+
+| GoalCheckerSelector     | default_goal_checker     | `GoalChecker` -> `goal_checker`         |
++-------------------------+--------------------------+-----------------------------------------+
+| ProgressCheckerSelector | default_progress_checker | `ProgressChecker` -> `progress_checker` |
++-------------------------+--------------------------+-----------------------------------------+
+| PlannerSelector         | planner_id               | `GridBased` -> `grid_based`             |
++-------------------------+--------------------------+-----------------------------------------+
+| PathHandlerSelector     | default_path_handler     | `PathHandler` -> `path_handler`         |
++-------------------------+--------------------------+-----------------------------------------+
+| SmootherSelector        | default_smoother         | `SimpleSmoother` -> `simple_smoother`   |
++-------------------------+--------------------------+-----------------------------------------+
 
 An example for updated XML configuration file:
 
