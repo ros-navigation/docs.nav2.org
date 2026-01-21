@@ -12,13 +12,22 @@ It regulates the linear velocities by curvature of the path to help reduce overs
 It also better follows paths than any other variation currently available of Pure Pursuit.
 It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
 It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
-It also considers the robot’s velocity and acceleration constraints during velocity command computation using `Dynamic Window Pure Pursuit <https://github.com/Decwest/nav2_dynamic_window_pure_pursuit_controller/blob/main/algorithm.md>`_ algorithm.
+It also implements the Dynamic Window Pure Pursuit algorithm, which computes optimal velocity commands for path tracking while explicitly considering velocity and acceleration constraints.
+
+Videos comparing Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Regulated Pure Pursuit (RPP), and Dynamic Window Pure Pursuit (DWPP) are available at the links below.
+
+- Simulation results: https://youtu.be/fIKk4Q_rvLM
+- Real-robot experiment results: https://youtu.be/H6r3x1AhsjM
 
 See the package's ``README`` for more complete information.
 
 If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 
 - S. Macenski, S. Singh, F. Martin, J. Gines, `Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_. Autonomous Robots, 2023.
+
+If you use the Dynamic Window Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
+
+- F. Ohnishi, M. Takahashi, `Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <TODO>`_. arxiv, 2026.
 
 Regulated Pure Pursuit Parameters
 *********************************

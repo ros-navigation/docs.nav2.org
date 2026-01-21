@@ -570,6 +570,11 @@ In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an opt
 
 - Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, Proceedings of the 19th International Conference on Intelligent Autonomous Systems, Genoa, Italy, 2025.
 
+.. image:: images/dwpp_comparison.gif
+  :width: 800
+  :alt: Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants
+  :align: center
+
 The following parameters are updated for this feature.
 
 :max_linear_vel (renamed):
