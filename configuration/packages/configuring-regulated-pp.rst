@@ -14,10 +14,21 @@ It also has heuristics to slow in proximity to other obstacles so that you can s
 It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
 It also implements the Dynamic Window Pure Pursuit algorithm, which computes optimal velocity commands for path tracking while explicitly considering velocity and acceleration constraints.
 
-Videos comparing Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Regulated Pure Pursuit (RPP), and Dynamic Window Pure Pursuit (DWPP) are available at the links below.
+The following videos compare Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Regulated Pure Pursuit (RPP), and Dynamic Window Pure Pursuit (DWPP).
 
-- Simulation results: https://youtu.be/fIKk4Q_rvLM
-- Real-robot experiment results: https://youtu.be/H6r3x1AhsjM
+.. raw:: html
+
+   <div style="text-align: center; width: 100%;">
+      <div style="display: inline-block; margin: 10px; vertical-align: top;">
+         <iframe width="450" height="300" src="https://www.youtube.com/embed/fIKk4Q_rvLM?si=Tt0JabQmQZNtYdK1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <p style="text-align: center; font-weight: bold; margin-top: 5px;">Simulation results</p>
+      </div>
+
+      <div style="display: inline-block; margin: 10px; vertical-align: top;">
+         <iframe width="450" height="300" src="https://www.youtube.com/embed/H6r3x1AhsjM?si=9tMY9qKYjDY1Pwzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <p style="text-align: center; font-weight: bold; margin-top: 5px;">Real-robot experiment</p>
+      </div>
+   </div>
 
 See the package's ``README`` for more complete information.
 
@@ -27,7 +38,7 @@ If you use the Regulated Pure Pursuit Controller algorithm or software from this
 
 If you use the Dynamic Window Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 
-- F. Ohnishi, M. Takahashi, `Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <TODO>`_. arxiv, 2026.
+- F. Ohnishi, M. Takahashi, `DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <https://arxiv.org/abs/2601.15006>`_. arXiv:2601.15006., 2026.
 
 Regulated Pure Pursuit Parameters
 *********************************
