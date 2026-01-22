@@ -1771,8 +1771,9 @@ You can enable this by building with <code class="docutils literal notranslate">
 <h2>Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller<a class="headerlink" href="#add-dynamic-window-pure-pursuit-option-to-regulated-pure-pursuit-controller" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5783">PR #5783</a>, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities. See the Configuration Guide for the new parameters associated with this feature.</p>
 <ul class="simple">
-<li><p>Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, Proceedings of the 19th International Conference on Intelligent Autonomous Systems, Genoa, Italy, 2025.</p></li>
+<li><p>Fumiya Ohnishi and Masaki Takahashi, <a class="reference external" href="https://arxiv.org/abs/2601.15006">DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints</a>. arXiv:2601.15006., 2026.</p></li>
 </ul>
+<a class="reference internal image-reference" href="../_images/dwpp_comparison.gif"><img alt="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" class="align-center" src="../_images/dwpp_comparison.gif" style="width: 800px;" /></a>
 <p>The following parameters are updated for this feature.</p>
 <dl class="field-list">
 <dt class="field-odd">max_linear_vel (renamed)</dt>
