@@ -12,13 +12,33 @@ It regulates the linear velocities by curvature of the path to help reduce overs
 It also better follows paths than any other variation currently available of Pure Pursuit.
 It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
 It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
-It also considers the robot’s velocity and acceleration constraints during velocity command computation using `Dynamic Window Pure Pursuit <https://github.com/Decwest/nav2_dynamic_window_pure_pursuit_controller/blob/main/algorithm.md>`_ algorithm.
+It also implements the Dynamic Window Pure Pursuit algorithm, which computes optimal velocity commands for path tracking while explicitly considering velocity and acceleration constraints.
+
+The following videos compare Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Regulated Pure Pursuit (RPP), and Dynamic Window Pure Pursuit (DWPP).
+
+.. raw:: html
+
+   <div style="text-align: center; width: 100%;">
+      <div style="display: inline-block; margin: 10px; vertical-align: top;">
+         <iframe width="450" height="300" src="https://www.youtube.com/embed/fIKk4Q_rvLM?si=Tt0JabQmQZNtYdK1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <p style="text-align: center; font-weight: bold; margin-top: 5px;">Simulation results</p>
+      </div>
+
+      <div style="display: inline-block; margin: 10px; vertical-align: top;">
+         <iframe width="450" height="300" src="https://www.youtube.com/embed/H6r3x1AhsjM?si=9tMY9qKYjDY1Pwzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <p style="text-align: center; font-weight: bold; margin-top: 5px;">Real-robot experiment</p>
+      </div>
+   </div>
 
 See the package's ``README`` for more complete information.
 
 If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 
 - S. Macenski, S. Singh, F. Martin, J. Gines, `Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_. Autonomous Robots, 2023.
+
+If you use the Dynamic Window Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
+
+- F. Ohnishi, M. Takahashi, `DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <https://arxiv.org/abs/2601.15006>`_. arXiv:2601.15006., 2026.
 
 Regulated Pure Pursuit Parameters
 *********************************
