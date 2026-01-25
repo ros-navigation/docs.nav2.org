@@ -50,21 +50,43 @@ along with the corresponding parameters associated with updated names, including
 
 Examples from updated YAML configuration files:
 
-.. code-block:: yaml
+.. tabs::
 
-  controller_server:
-    ros__parameters:
-      controller_plugins: ["follow_path"]
-      follow_path:
-        plugin: "nav2_mppi_controller::MPPIController"
+  .. group-tab:: Lyrical
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-  collision_monitor:
-    ros__parameters:
-      polygons: ["footprint_approach"]
-      footprint_approach:
-        type: "polygon"
+      controller_server:
+        ros__parameters:
+          controller_plugins: ["follow_path"]
+          follow_path:
+            plugin: "nav2_mppi_controller::MPPIController"
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
+          polygons: ["footprint_approach"]
+          footprint_approach:
+            type: "polygon"
+
+  .. group-tab:: Kilted
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_plugins: ["FollowPath"]
+          FollowPath:
+            plugin: "nav2_mppi_controller::MPPIController"
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
+          polygons: ["FootprintApproach"]
+          FootprintApproach:
+            type: "polygon"
 
 An example of a complete configuration can be found in
 `nav2_params.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/params/nav2_params.yaml>`_ file.
@@ -106,12 +128,25 @@ The behavior tree XML configuration files may require updating the following nam
 
 An example for updated XML configuration file:
 
-.. code-block:: xml
+.. tabs::
 
-  ...
-  <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
-  <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
-  ...
+  .. group-tab:: Lyrical
+
+    .. code-block:: xml
+
+      ...
+      <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+      <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+      ...
+
+  .. group-tab:: Kilted
+
+    .. code-block:: xml
+
+      ...
+      <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
+      <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
+      ...
 
 The full configuration can be found in
 `navigate_to_pose_w_replanning_and_recovery.xml
@@ -129,17 +164,35 @@ Additionally, some BT Action Nodes have new default values in the `nav2_tree_nod
 | FollowPath | follow_path        |
 +------------+--------------------+
 
-.. code-block:: xml
+.. tabs::
 
-    <Action ID="SmoothPath">
-      <input_port name="smoother_id" default="smooth_path"/>
-      ...
-    </Action>
+  .. group-tab:: Lyrical
 
-    <Action ID="FollowPath">
-      <input_port name="controller_id" default="follow_path"/>
-      ...
-    </Action>
+    .. code-block:: xml
+
+      <Action ID="SmoothPath">
+        <input_port name="smoother_id" default="smooth_path"/>
+        ...
+      </Action>
+
+      <Action ID="FollowPath">
+        <input_port name="controller_id" default="follow_path"/>
+        ...
+      </Action>
+
+  .. group-tab:: Kilted
+
+    .. code-block:: xml
+
+      <Action ID="SmoothPath">
+        <input_port name="smoother_id" default="SmoothPath"/>
+        ...
+      </Action>
+
+      <Action ID="FollowPath">
+        <input_port name="controller_id" default="FollowPath"/>
+        ...
+      </Action>
 
 New Nav2 ROS Common & Nav2 Lifecycle Node
 -----------------------------------------
