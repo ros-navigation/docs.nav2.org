@@ -1,7 +1,7 @@
 .. _bt_smoother_selector_node:
 
 SmootherSelector
-==================
+================
 
 It is used to select the Smoother that will be used by the Smoother server. It subscribes to the ``smoother_selector`` topic to receive command messages with the name of the Smoother to be used. It is commonly used before of the FollowPathAction. If none is provided on the topic, the ``default_smoother`` is used.
 
@@ -53,6 +53,16 @@ Output Ports
 Example
 -------
 
-.. code-block:: xml
+.. tabs::
 
-  <SmootherSelector selected_smoother="{selected_smoother}" default_smoother="simple_smoother" topic_name="smoother_selector"/>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <SmootherSelector selected_smoother="{selected_smoother}" default_smoother="simple_smoother" topic_name="smoother_selector"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <SmootherSelector selected_smoother="{selected_smoother}" default_smoother="SimpleSmoother" topic_name="smoother_selector"/>

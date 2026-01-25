@@ -42,10 +42,14 @@ This controller is a *shim* because it is placed between the primary controller 
 
 As such, its configuration looks very similar to that of any other plugin. In the code block below, you can see that we've added the ``RotationShimController`` as the plugin for path tracking in the controller server. You can see that we've also configured it below with its internal parameters, ``angular_dist_threshold`` through ``max_angular_accel``.
 
-.. code-block:: yaml
+.. tabs::
 
-    controller_server:
-      ros__parameters:
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
         controller_frequency: 20.0
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
@@ -70,6 +74,36 @@ As such, its configuration looks very similar to that of any other plugin. In th
           max_angular_accel: 3.2
           simulate_ahead_time: 1.0
 
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+        controller_frequency: 20.0
+        min_x_velocity_threshold: 0.001
+        min_y_velocity_threshold: 0.5
+        min_theta_velocity_threshold: 0.001
+        progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+        goal_checker_plugins: ["goal_checker"]
+        controller_plugins: ["FollowPath"]
+        progress_checker:
+          plugin: "nav2_controller::SimpleProgressChecker"
+          required_movement_radius: 0.5
+          movement_time_allowance: 10.0
+        goal_checker:
+          plugin: "nav2_controller::SimpleGoalChecker"
+          xy_goal_tolerance: 0.25
+          yaw_goal_tolerance: 0.25
+          stateful: True
+        FollowPath:
+          plugin: "nav2_rotation_shim_controller::RotationShimController"
+          angular_dist_threshold: 0.785
+          forward_sampling_distance: 0.5
+          rotate_to_heading_angular_vel: 1.8
+          max_angular_accel: 3.2
+          simulate_ahead_time: 1.0
+
 The Rotation Shim Controller is very simple and only has a couple of parameters to dictate the conditions it should be enacted.
 
 - ``angular_dist_threshold``: The angular distance (in radians) apart from the robot's current heading and the approximated path heading to trigger the rotation behavior. Once the robot is within this threshold, control is handed over to the primary controller plugin.
@@ -83,28 +117,57 @@ Configuring Primary Controller
 
 There is one more remaining parameter of the ``RotationShimController`` not mentioned above, the ``primary_controller``. This is the type of controller that your application would like to use as the primary modus operandi. It will share the same name and yaml namespace as the shim plugin. You can observe this below with the primary controller set the ``DWB`` (with the progress and goal checkers removed for brevity).
 
-.. code-block:: yaml
+.. tabs::
 
-    controller_server:
-      ros__parameters:
-        controller_frequency: 20.0
-        min_x_velocity_threshold: 0.001
-        min_y_velocity_threshold: 0.5
-        min_theta_velocity_threshold: 0.001
-        controller_plugins: ["follow_path"]
-        follow_path:
-          plugin: "nav2_rotation_shim_controller::RotationShimController"
-          primary_controller: "dwb_core::DWBLocalPlanner"
-          angular_dist_threshold: 0.785
-          forward_sampling_distance: 0.5
-          rotate_to_heading_angular_vel: 1.8
-          max_angular_accel: 3.2
-          simulate_ahead_time: 1.0
+  .. group-tab:: Lyrical and newer
 
-          # DWB parameters
-          ...
-          ...
-          ...
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_frequency: 20.0
+          min_x_velocity_threshold: 0.001
+          min_y_velocity_threshold: 0.5
+          min_theta_velocity_threshold: 0.001
+          controller_plugins: ["follow_path"]
+          follow_path:
+            plugin: "nav2_rotation_shim_controller::RotationShimController"
+            primary_controller: "dwb_core::DWBLocalPlanner"
+            angular_dist_threshold: 0.785
+            forward_sampling_distance: 0.5
+            rotate_to_heading_angular_vel: 1.8
+            max_angular_accel: 3.2
+            simulate_ahead_time: 1.0
+
+            # DWB parameters
+            ...
+            ...
+            ...
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_frequency: 20.0
+          min_x_velocity_threshold: 0.001
+          min_y_velocity_threshold: 0.5
+          min_theta_velocity_threshold: 0.001
+          controller_plugins: ["FollowPath"]
+          FollowPath:
+            plugin: "nav2_rotation_shim_controller::RotationShimController"
+            primary_controller: "dwb_core::DWBLocalPlanner"
+            angular_dist_threshold: 0.785
+            forward_sampling_distance: 0.5
+            rotate_to_heading_angular_vel: 1.8
+            max_angular_accel: 3.2
+            simulate_ahead_time: 1.0
+
+            # DWB parameters
+            ...
+            ...
+            ...
 
 An important note is that **within the same yaml namespace**, you may also include any ``primary_controller`` specific parameters required for a robot. Thusly, after ``max_angular_accel``, you can include any of ``DWB``'s parameters for your platform.
 

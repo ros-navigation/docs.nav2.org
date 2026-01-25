@@ -282,39 +282,79 @@ Example
 
 Here is an example of configuration YAML for the Vector Object server:
 
-.. code-block:: yaml
+.. tabs::
 
-    vector_object_server:
-      ros__parameters:
-        map_topic: "vo_map"
-        global_frame_id: "map"
-        resolution: 0.05
-        default_value: -1
-        overlay_type: 0
-        update_frequency: 1.0
-        transform_tolerance: 0.1
-        shapes: ["poly", "circle_a", "circle_b"]
-        poly:
-          type: "polygon"
-          frame_id: "map"
-          closed: True
-          value: 100
-          points: [0.3, 0.3, 0.3, -0.3, 0.0, -0.3, 0.0, 0.3]
-        circle_a:
-          type: "circle"
-          frame_id: "map"
-          fill: True
-          value: 10
-          center: [3.0, 3.0]
-          radius: 0.5
-          uuid: "7b3f3d7d-135c-4b6c-aca1-7a84d1050505"
-        circle_b:
-          type: "circle"
-          frame_id: "map"
-          fill: False
-          value: 90
-          center: [3.5, 3.5]
-          radius: 1.5
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      vector_object_server:
+        ros__parameters:
+          map_topic: "vo_map"
+          global_frame_id: "map"
+          resolution: 0.05
+          default_value: -1
+          overlay_type: 0
+          update_frequency: 1.0
+          transform_tolerance: 0.1
+          shapes: ["poly", "circle_a", "circle_b"]
+          poly:
+            type: "polygon"
+            frame_id: "map"
+            closed: True
+            value: 100
+            points: [0.3, 0.3, 0.3, -0.3, 0.0, -0.3, 0.0, 0.3]
+          circle_a:
+            type: "circle"
+            frame_id: "map"
+            fill: True
+            value: 10
+            center: [3.0, 3.0]
+            radius: 0.5
+            uuid: "7b3f3d7d-135c-4b6c-aca1-7a84d1050505"
+          circle_b:
+            type: "circle"
+            frame_id: "map"
+            fill: False
+            value: 90
+            center: [3.5, 3.5]
+            radius: 1.5
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      vector_object_server:
+        ros__parameters:
+          map_topic: "vo_map"
+          global_frame_id: "map"
+          resolution: 0.05
+          default_value: -1
+          overlay_type: 0
+          update_frequency: 1.0
+          transform_tolerance: 0.1
+          shapes: ["Poly", "CircleA", "CircleB"]
+          Poly:
+            type: "polygon"
+            frame_id: "map"
+            closed: True
+            value: 100
+            points: [0.3, 0.3, 0.3, -0.3, 0.0, -0.3, 0.0, 0.3]
+          CircleA:
+            type: "circle"
+            frame_id: "map"
+            fill: True
+            value: 10
+            center: [3.0, 3.0]
+            radius: 0.5
+            uuid: "7b3f3d7d-135c-4b6c-aca1-7a84d1050505"
+          CircleB:
+            type: "circle"
+            frame_id: "map"
+            fill: False
+            value: 90
+            center: [3.5, 3.5]
+            radius: 1.5
 
 For this, Vector Object server will produce the following map:
 

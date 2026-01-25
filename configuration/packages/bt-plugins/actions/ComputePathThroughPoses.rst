@@ -10,61 +10,124 @@ The server address can be remapped using the ``server_name`` input port.
 
 Input Ports
 -----------
-:start:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A
-  ===================================== =======
+.. tabs::
 
-  Description
-      Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+  .. group-tab:: Lyrical and newer
 
-:goals:
+    :start:
 
-  ==================== =======
-  Type                 Default
-  -------------------- -------
-  nav_msgs::msg::Goals   N/A
-  ==================== =======
+      ===================================== =======
+      Type                                  Default
+      ------------------------------------- -------
+      geometry_msgs::msg::PoseStamped         N/A
+      ===================================== =======
 
-  Description
-      Goal poses. Takes in a blackboard variable, e.g. "{goals}".
+      Description
+          Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
 
-:planner_id:
+    :goals:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      ==================== =======
+      Type                 Default
+      -------------------- -------
+      nav_msgs::msg::Goals   N/A
+      ==================== =======
 
-  Description
-      Mapped name to the planner plugin type to use, e.g. grid_based.
+      Description
+          Goal poses. Takes in a blackboard variable, e.g. "{goals}".
 
-:server_name:
+    :planner_id:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
 
-  Description
-      Action server name.
+      Description
+          Mapped name to the planner plugin type to use, e.g. grid_based.
+
+    :server_name:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Action server name.
 
 
-:server_timeout:
+    :server_timeout:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         10
-  ============== =======
+      ============== =======
+      Type           Default
+      -------------- -------
+      double         10
+      ============== =======
 
-  Description
-      Action server timeout (ms).
+      Description
+          Action server timeout (ms).
+
+  .. group-tab:: Kilted and older
+
+    :start:
+
+      ===================================== =======
+      Type                                  Default
+      ------------------------------------- -------
+      geometry_msgs::msg::PoseStamped         N/A
+      ===================================== =======
+
+      Description
+          Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+
+    :goals:
+
+      ==================== =======
+      Type                 Default
+      -------------------- -------
+      nav_msgs::msg::Goals   N/A
+      ==================== =======
+
+      Description
+          Goal poses. Takes in a blackboard variable, e.g. "{goals}".
+
+    :planner_id:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Mapped name to the planner plugin type to use, e.g. GridBased.
+
+    :server_name:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Action server name.
+
+
+    :server_timeout:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      double         10
+      ============== =======
+
+      Description
+          Action server timeout (ms).
 
 Output Ports
 ------------
@@ -116,6 +179,16 @@ Output Ports
 Example
 -------
 
-.. code-block:: xml
+.. tabs::
 
-  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="grid_based" server_name="compute_path_through_poses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="grid_based" server_name="compute_path_through_poses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="compute_path_through_poses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>

@@ -705,112 +705,228 @@ Here is an example illustrating the common configurations for holonomic robots t
 
 Here is an example of configuration YAML for the Collision Monitor.
 
-.. code-block:: yaml
+.. tabs::
 
-    collision_monitor:
-      ros__parameters:
-        enabled: True
-        base_frame_id: "base_footprint"
-        odom_frame_id: "odom"
-        cmd_vel_in_topic: "cmd_vel_smoothed"
-        cmd_vel_out_topic: "cmd_vel"
-        state_topic: "collision_monitor_state"
-        transform_tolerance: 0.5
-        source_timeout: 5.0
-        base_shift_correction: True
-        stop_pub_timeout: 2.0
-        enable_stamped_cmd_vel: True  # False for Jazzy or older
-        use_realtime_priority: false
-        polygons: ["polygon_stop", "polygon_slow", "footprint_approach"]
-        polygon_stop:
-          type: "circle"
-          radius: 0.3
-          action_type: "stop"
-          min_points: 4  # max_points: 3 for Humble
-          visualize: True
-          polygon_pub_topic: "polygon_stop"
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
           enabled: True
-        polygon_slow:
-          type: "polygon"
-          points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
-          action_type: "slowdown"
-          min_points: 4  # max_points: 3 for Humble
-          slowdown_ratio: 0.3
-          visualize: True
-          polygon_pub_topic: "polygon_slowdown"
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          cmd_vel_in_topic: "cmd_vel_smoothed"
+          cmd_vel_out_topic: "cmd_vel"
+          state_topic: "collision_monitor_state"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          base_shift_correction: True
+          stop_pub_timeout: 2.0
+          enable_stamped_cmd_vel: True  # False for Jazzy or older
+          use_realtime_priority: false
+          polygons: ["polygon_stop", "polygon_slow", "footprint_approach"]
+          polygon_stop:
+            type: "circle"
+            radius: 0.3
+            action_type: "stop"
+            min_points: 4  # max_points: 3 for Humble
+            visualize: True
+            polygon_pub_topic: "polygon_stop"
+            enabled: True
+          polygon_slow:
+            type: "polygon"
+            points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
+            action_type: "slowdown"
+            min_points: 4  # max_points: 3 for Humble
+            slowdown_ratio: 0.3
+            visualize: True
+            polygon_pub_topic: "polygon_slowdown"
+            enabled: True
+          polygon_limit:
+            type: "polygon"
+            points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
+            action_type: "limit"
+            min_points: 4  # max_points: 3 for Humble
+            linear_limit: 0.4
+            angular_limit: 0.5
+            visualize: True
+            polygon_pub_topic: "polygon_limit"
+            enabled: True
+          footprint_approach:
+            type: "polygon"
+            action_type: "approach"
+            footprint_topic: "/local_costmap/published_footprint"
+            time_before_collision: 2.0
+            simulation_time_step: 0.02
+            min_points: 6  # max_points: 5 for Humble
+            visualize: False
+            enabled: True
+          velocity_polygon_stop:
+            type: "velocity_polygon"
+            action_type: "stop"
+            min_points: 6
+            visualize: True
+            enabled: True
+            polygon_pub_topic: "velocity_polygon_stop"
+            velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+            holonomic: false
+            rotation:
+              points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+              linear_min: 0.0
+              linear_max: 0.05
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_forward:
+              points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+              linear_min: 0.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_backward:
+              points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+              linear_min: -1.0
+              linear_max: 0.0
+              theta_min: -1.0
+              theta_max: 1.0
+            # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+            # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+            # is not covered by any of the other sub-polygons
+            stopped:
+              points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+              linear_min: -1.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+          observation_sources: ["scan", "pointcloud"]
+          scan:
+            source_timeout: 0.2
+            type: "scan"
+            topic: "/scan"
+            enabled: True
+          pointcloud:
+            type: "pointcloud"
+            topic: "/intel_realsense_r200_depth/points"
+            transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
+            min_height: 0.1
+            max_height: 0.5
+            min_range: 0.2
+            enabled: True
+          # costmap:
+          #   type: "costmap"   # relative, respects namespaces
+          #   topic: "local_costmap/costmap"
+          #   cost_threshold: 254
+          #   enabled: True
+          #   treat_unknown_as_obstacle: True
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
           enabled: True
-        polygon_limit:
-          type: "polygon"
-          points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
-          action_type: "limit"
-          min_points: 4  # max_points: 3 for Humble
-          linear_limit: 0.4
-          angular_limit: 0.5
-          visualize: True
-          polygon_pub_topic: "polygon_limit"
-          enabled: True
-        footprint_approach:
-          type: "polygon"
-          action_type: "approach"
-          footprint_topic: "/local_costmap/published_footprint"
-          time_before_collision: 2.0
-          simulation_time_step: 0.02
-          min_points: 6  # max_points: 5 for Humble
-          visualize: False
-          enabled: True
-        velocity_polygon_stop:
-          type: "velocity_polygon"
-          action_type: "stop"
-          min_points: 6
-          visualize: True
-          enabled: True
-          polygon_pub_topic: "velocity_polygon_stop"
-          velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
-          holonomic: false
-          rotation:
-            points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
-            linear_min: 0.0
-            linear_max: 0.05
-            theta_min: -1.0
-            theta_max: 1.0
-          translation_forward:
-            points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
-            linear_min: 0.0
-            linear_max: 1.0
-            theta_min: -1.0
-            theta_max: 1.0
-          translation_backward:
-            points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
-            linear_min: -1.0
-            linear_max: 0.0
-            theta_min: -1.0
-            theta_max: 1.0
-          # This is the last polygon to be checked, it should cover the entire range of robot's velocities
-          # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
-          # is not covered by any of the other sub-polygons
-          stopped:
-            points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
-            linear_min: -1.0
-            linear_max: 1.0
-            theta_min: -1.0
-            theta_max: 1.0
-        observation_sources: ["scan", "pointcloud"]
-        scan:
-          source_timeout: 0.2
-          type: "scan"
-          topic: "/scan"
-          enabled: True
-        pointcloud:
-          type: "pointcloud"
-          topic: "/intel_realsense_r200_depth/points"
-          transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
-          min_height: 0.1
-          max_height: 0.5
-          min_range: 0.2
-          enabled: True
-        # costmap:
-        #   type: "costmap"   # relative, respects namespaces
-        #   topic: "local_costmap/costmap"
-        #   cost_threshold: 254
-        #   enabled: True
-        #   treat_unknown_as_obstacle: True
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          cmd_vel_in_topic: "cmd_vel_smoothed"
+          cmd_vel_out_topic: "cmd_vel"
+          state_topic: "collision_monitor_state"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          base_shift_correction: True
+          stop_pub_timeout: 2.0
+          enable_stamped_cmd_vel: True  # False for Jazzy or older
+          use_realtime_priority: false
+          polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
+          PolygonStop:
+            type: "circle"
+            radius: 0.3
+            action_type: "stop"
+            min_points: 4  # max_points: 3 for Humble
+            visualize: True
+            polygon_pub_topic: "polygon_stop"
+            enabled: True
+          PolygonSlow:
+            type: "polygon"
+            points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
+            action_type: "slowdown"
+            min_points: 4  # max_points: 3 for Humble
+            slowdown_ratio: 0.3
+            visualize: True
+            polygon_pub_topic: "polygon_slowdown"
+            enabled: True
+          PolygonLimit:
+            type: "polygon"
+            points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
+            action_type: "limit"
+            min_points: 4  # max_points: 3 for Humble
+            linear_limit: 0.4
+            angular_limit: 0.5
+            visualize: True
+            polygon_pub_topic: "polygon_limit"
+            enabled: True
+          FootprintApproach:
+            type: "polygon"
+            action_type: "approach"
+            footprint_topic: "/local_costmap/published_footprint"
+            time_before_collision: 2.0
+            simulation_time_step: 0.02
+            min_points: 6  # max_points: 5 for Humble
+            visualize: False
+            enabled: True
+          VelocityPolygonStop:
+            type: "velocity_polygon"
+            action_type: "stop"
+            min_points: 6
+            visualize: True
+            enabled: True
+            polygon_pub_topic: "velocity_polygon_stop"
+            velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+            holonomic: false
+            rotation:
+              points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+              linear_min: 0.0
+              linear_max: 0.05
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_forward:
+              points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+              linear_min: 0.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_backward:
+              points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+              linear_min: -1.0
+              linear_max: 0.0
+              theta_min: -1.0
+              theta_max: 1.0
+            # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+            # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+            # is not covered by any of the other sub-polygons
+            stopped:
+              points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+              linear_min: -1.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+          observation_sources: ["scan", "pointcloud"]
+          scan:
+            source_timeout: 0.2
+            type: "scan"
+            topic: "/scan"
+            enabled: True
+          pointcloud:
+            type: "pointcloud"
+            topic: "/intel_realsense_r200_depth/points"
+            transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
+            min_height: 0.1
+            max_height: 0.5
+            min_range: 0.2
+            enabled: True
+          # costmap:
+          #   type: "costmap"   # relative, respects namespaces
+          #   topic: "local_costmap/costmap"
+          #   cost_threshold: 254
+          #   enabled: True
+          #   treat_unknown_as_obstacle: True

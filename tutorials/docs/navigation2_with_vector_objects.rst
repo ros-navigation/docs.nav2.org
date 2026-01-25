@@ -43,22 +43,45 @@ Vector Object server has its own ``vector_object_server.launch.py`` launch-file 
 In this tutorial, we are focusing on the application how to utilize the simple setup allowing to add virtual obstacles on costmaps.
 For demonstration purposes, let's specify two obstacle shapes: triangle polygon and circle filled with "occupied" value, in order to prevent the robot to go through them. The YAML-part for polygon and circle will look as follows:
 
-.. code-block:: yaml
+.. tabs::
 
-        shapes: ["poly", "circle"]
-        poly:
-          type: "polygon"
-          frame_id: "map"
-          closed: True
-          value: 100
-          points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
-        circle:
-          type: "circle"
-          frame_id: "map"
-          fill: True
-          value: 100
-          center: [1.5, 0.5]
-          radius: 0.7
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      shapes: ["poly", "circle"]
+      poly:
+        type: "polygon"
+        frame_id: "map"
+        closed: True
+        value: 100
+        points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
+      circle:
+        type: "circle"
+        frame_id: "map"
+        fill: True
+        value: 100
+        center: [1.5, 0.5]
+        radius: 0.7
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      shapes: ["Poly", "Circle"]
+      Poly:
+        type: "polygon"
+        frame_id: "map"
+        closed: True
+        value: 100
+        points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
+      Circle:
+        type: "circle"
+        frame_id: "map"
+        fill: True
+        value: 100
+        center: [1.5, 0.5]
+        radius: 0.7
 
 Where the triangle polygon is specified by ``{0.3, 0.5}, {-0.4, 1.2}, {-0.4, -0.2}`` 3-point shape and the circle has ``{1.5, 0.5}`` coordinate of its center with ``0.7`` meter radius in the ``map`` frame.
 ``closed`` true-value for the polygon and ``fill`` for the circle mean that both shapes to be filled the with specified ``value``.
@@ -77,38 +100,78 @@ Costmap Filter Info message is being published by Costmap Filter Info server, wh
 
 The complete ``vector_object_server_params.yaml`` YAML-file for the demonstration looks as follows:
 
-.. code-block:: yaml
+.. tabs::
 
-    vector_object_server:
-      ros__parameters:
-        map_topic: "vo_map"
-        global_frame_id: "map"
-        resolution: 0.05
-        default_value: -1
-        overlay_type: 0
-        update_frequency: 1.0
-        transform_tolerance: 0.1
-        shapes: ["poly", "circle"]
-        poly:
-          type: "polygon"
-          frame_id: "map"
-          closed: True
-          value: 100
-          points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
-        circle:
-          type: "circle"
-          frame_id: "map"
-          fill: True
-          value: 100
-          center: [1.5, 0.5]
-          radius: 0.7
-    costmap_filter_info_server:
-      ros__parameters:
-        type: 0
-        filter_info_topic: "vo_costmap_filter_info"
-        mask_topic: "vo_map"
-        base: 0.0
-        multiplier: 1.0
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      vector_object_server:
+        ros__parameters:
+          map_topic: "vo_map"
+          global_frame_id: "map"
+          resolution: 0.05
+          default_value: -1
+          overlay_type: 0
+          update_frequency: 1.0
+          transform_tolerance: 0.1
+          shapes: ["poly", "circle"]
+          poly:
+            type: "polygon"
+            frame_id: "map"
+            closed: True
+            value: 100
+            points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
+          circle:
+            type: "circle"
+            frame_id: "map"
+            fill: True
+            value: 100
+            center: [1.5, 0.5]
+            radius: 0.7
+      costmap_filter_info_server:
+        ros__parameters:
+          type: 0
+          filter_info_topic: "vo_costmap_filter_info"
+          mask_topic: "vo_map"
+          base: 0.0
+          multiplier: 1.0
+
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      vector_object_server:
+        ros__parameters:
+          map_topic: "vo_map"
+          global_frame_id: "map"
+          resolution: 0.05
+          default_value: -1
+          overlay_type: 0
+          update_frequency: 1.0
+          transform_tolerance: 0.1
+          shapes: ["Poly", "Circle"]
+          Poly:
+            type: "polygon"
+            frame_id: "map"
+            closed: True
+            value: 100
+            points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
+          Circle:
+            type: "circle"
+            frame_id: "map"
+            fill: True
+            value: 100
+            center: [1.5, 0.5]
+            radius: 0.7
+      costmap_filter_info_server:
+        ros__parameters:
+          type: 0
+          filter_info_topic: "vo_costmap_filter_info"
+          mask_topic: "vo_map"
+          base: 0.0
+          multiplier: 1.0
 
 More detailed information about each Vector Object server parameter and its operating principle could be found on :ref:`configuring_vector_object_server` configuration guide page. Costmap Filter Info server parameters description could be found at :ref:`configuring_costmap_filter_info_server` page.
 

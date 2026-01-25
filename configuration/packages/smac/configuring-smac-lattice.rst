@@ -385,42 +385,89 @@ Parameters
 
 Example
 *******
-.. code-block:: yaml
 
-  planner_server:
-    ros__parameters:
-      planner_plugins: ["grid_based"]
+.. tabs::
 
-      grid_based:
-        plugin: "nav2_smac_planner::SmacPlannerLattice" # In Iron and older versions, "/" was used instead of "::"
-        allow_unknown: true                 # Allow traveling in unknown space
-        tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
-        max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
-        max_on_approach_iterations: 1000    # Maximum number of iterations after within tolerances to continue to try to find exact solution
-        max_planning_time: 5.0              # Max time in s for planner to plan, smooth
-        analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
-        analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
-        analytic_expansion_max_cost: 200.0  # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
-        analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
-        downsample_obstacle_heuristic: true   # Downsample the obstacle map dynamic programming distance expansion heuristic to speed up search at the cost of some path quality
-        use_quadratic_cost_penalty: false   # Use quadratic cost penalty for traversal and heuristic cost computations rather than linear
-        reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
-        change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
-        non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
-        cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
-        rotation_penalty: 5.0               # Penalty to apply to in-place rotations, if minimum control set contains them
-        retrospective_penalty: 0.015
-        lattice_filepath: ""                # The filepath to the state lattice graph
-        lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
-        cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
-        allow_reverse_expansion: false      # If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
-        coarse_search_resolution: 1         # Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.
-        goal_heading_mode: "DEFAULT"        # DEFAULT, BIDIRECTIONAL, ALL_DIRECTION
-        smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
-        smoother:
-          max_iterations: 1000
-          w_smooth: 0.3
-          w_data: 0.2
-          tolerance: 1.0e-10
-          do_refinement: true
-          refinement_num: 2
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          planner_plugins: ["grid_based"]
+
+          grid_based:
+            plugin: "nav2_smac_planner::SmacPlannerLattice" # In Iron and older versions, "/" was used instead of "::"
+            allow_unknown: true                 # Allow traveling in unknown space
+            tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
+            max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+            max_on_approach_iterations: 1000    # Maximum number of iterations after within tolerances to continue to try to find exact solution
+            max_planning_time: 5.0              # Max time in s for planner to plan, smooth
+            analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
+            analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
+            analytic_expansion_max_cost: 200.0  # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
+            analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
+            downsample_obstacle_heuristic: true   # Downsample the obstacle map dynamic programming distance expansion heuristic to speed up search at the cost of some path quality
+            use_quadratic_cost_penalty: false   # Use quadratic cost penalty for traversal and heuristic cost computations rather than linear
+            reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
+            change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
+            non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
+            cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
+            rotation_penalty: 5.0               # Penalty to apply to in-place rotations, if minimum control set contains them
+            retrospective_penalty: 0.015
+            lattice_filepath: ""                # The filepath to the state lattice graph
+            lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
+            cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+            allow_reverse_expansion: false      # If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
+            coarse_search_resolution: 1         # Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.
+            goal_heading_mode: "DEFAULT"        # DEFAULT, BIDIRECTIONAL, ALL_DIRECTION
+            smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
+            smoother:
+              max_iterations: 1000
+              w_smooth: 0.3
+              w_data: 0.2
+              tolerance: 1.0e-10
+              do_refinement: true
+              refinement_num: 2
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          planner_plugins: ["GridBased"]
+
+          GridBased:
+            plugin: "nav2_smac_planner::SmacPlannerLattice" # In Iron and older versions, "/" was used instead of "::"
+            allow_unknown: true                 # Allow traveling in unknown space
+            tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
+            max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+            max_on_approach_iterations: 1000    # Maximum number of iterations after within tolerances to continue to try to find exact solution
+            max_planning_time: 5.0              # Max time in s for planner to plan, smooth
+            analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
+            analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
+            analytic_expansion_max_cost: 200.0  # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
+            analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
+            downsample_obstacle_heuristic: true   # Downsample the obstacle map dynamic programming distance expansion heuristic to speed up search at the cost of some path quality
+            use_quadratic_cost_penalty: false   # Use quadratic cost penalty for traversal and heuristic cost computations rather than linear
+            reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
+            change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
+            non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
+            cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
+            rotation_penalty: 5.0               # Penalty to apply to in-place rotations, if minimum control set contains them
+            retrospective_penalty: 0.015
+            lattice_filepath: ""                # The filepath to the state lattice graph
+            lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
+            cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+            allow_reverse_expansion: false      # If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
+            coarse_search_resolution: 1         # Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.
+            goal_heading_mode: "DEFAULT"        # DEFAULT, BIDIRECTIONAL, ALL_DIRECTION
+            smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
+            smoother:
+              max_iterations: 1000
+              w_smooth: 0.3
+              w_data: 0.2
+              tolerance: 1.0e-10
+              do_refinement: true
+              refinement_num: 2

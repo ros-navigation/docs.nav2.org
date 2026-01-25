@@ -102,14 +102,33 @@ Parameters
 
 Example
 *******
-.. code-block:: yaml
 
-  path_handler:
-      plugin: "nav2_controller::FeasiblePathHandler"
-      prune_distance: 2.0
-      enforce_path_inversion: True
-      enforce_path_rotation: False
-      inversion_xy_tolerance: 0.2
-      inversion_yaw_tolerance: 0.4
-      minimum_rotation_angle: 0.785
-      reject_unit_path: False
+.. tabs::
+
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      path_handler:
+        plugin: "nav2_controller::FeasiblePathHandler"
+        prune_distance: 2.0
+        enforce_path_inversion: True
+        enforce_path_rotation: False
+        inversion_xy_tolerance: 0.2
+        inversion_yaw_tolerance: 0.4
+        minimum_rotation_angle: 0.785
+        reject_unit_path: False
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      PathHandler:
+        plugin: "nav2_controller::FeasiblePathHandler"
+        prune_distance: 2.0
+        enforce_path_inversion: True
+        enforce_path_rotation: False
+        inversion_xy_tolerance: 0.2
+        inversion_yaw_tolerance: 0.4
+        minimum_rotation_angle: 0.785
+        reject_unit_path: False

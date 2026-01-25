@@ -34,57 +34,119 @@ Next, the recovery subtree will tick the costmap clearing operations, spinning, 
 After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
 If it continues to fail, the next recovery in the recovery subtree is ticked.
 
-While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, ``GoalCheckerSelector``, ``ProgressCheckerSelector``, and ``PathHandlerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``grid_based`` and ``follow_path``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
+.. tabs::
 
-.. code-block:: xml
+  .. group-tab:: Lyrical and newer
 
-  <root BTCPP_format="4" main_tree_to_execute="NavigateThroughPosesWReplanningAndRecovery">
-    <BehaviorTree ID="NavigateThroughPosesWReplanningAndRecovery">
-      <RecoveryNode number_of_retries="6" name="NavigateRecovery">
-        <PipelineSequence name="NavigateWithReplanning">
-          <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
-          <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
-          <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="path_handler" topic_name="path_handler_selector"/>
-          <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
-          <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
-          <RateController hz="0.333">
-            <RecoveryNode number_of_retries="1" name="ComputePathThroughPoses">
-              <ReactiveSequence>
-                <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
-                <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-              </ReactiveSequence>
-              <Sequence>
-                <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
-                <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-              </Sequence>
-            </RecoveryNode>
-          </RateController>
-          <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" goal_checker_id="{selected_goal_checker}" progress_checker_id="{selected_progress_checker}" path_handler_id="{selected_path_handler}"/>
+    While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, ``GoalCheckerSelector``, ``ProgressCheckerSelector``, and ``PathHandlerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``grid_based`` and ``follow_path``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic.
+    It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
+
+    .. code-block:: xml
+
+      <root BTCPP_format="4" main_tree_to_execute="NavigateThroughPosesWReplanningAndRecovery">
+        <BehaviorTree ID="NavigateThroughPosesWReplanningAndRecovery">
+          <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+              <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
+              <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
+              <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="path_handler" topic_name="path_handler_selector"/>
+              <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+              <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+              <RateController hz="0.333">
+                <RecoveryNode number_of_retries="1" name="ComputePathThroughPoses">
+                  <ReactiveSequence>
+                    <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
+                    <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                  </ReactiveSequence>
+                  <Sequence>
+                    <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+                    <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                  </Sequence>
+                </RecoveryNode>
+              </RateController>
+              <RecoveryNode number_of_retries="1" name="FollowPath">
+                <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" goal_checker_id="{selected_goal_checker}" progress_checker_id="{selected_progress_checker}" path_handler_id="{selected_path_handler}"/>
+                <Sequence>
+                  <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+                </Sequence>
+              </RecoveryNode>
+            </PipelineSequence>
             <Sequence>
-              <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-              <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+              <Fallback>
+                <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+              </Fallback>
+              <ReactiveFallback name="RecoveryFallback">
+                <GoalUpdated/>
+                <RoundRobin name="RecoveryActions">
+                  <Sequence name="ClearingActions">
+                    <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                    <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                  </Sequence>
+                  <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+                  <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+                  <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+                </RoundRobin>
+              </ReactiveFallback>
             </Sequence>
           </RecoveryNode>
-        </PipelineSequence>
-        <Sequence>
-          <Fallback>
-            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-            <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
-          </Fallback>
-          <ReactiveFallback name="RecoveryFallback">
-            <GoalUpdated/>
-            <RoundRobin name="RecoveryActions">
-              <Sequence name="ClearingActions">
-                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-              </Sequence>
-              <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-              <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-              <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
-            </RoundRobin>
-          </ReactiveFallback>
-        </Sequence>
-      </RecoveryNode>
-    </BehaviorTree>
-  </root>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, ``GoalCheckerSelector``, and ``ProgressCheckerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``GridBased`` and ``FollowPath``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic.
+    It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
+
+    .. code-block:: xml
+
+      <root BTCPP_format="4" main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+              <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
+              <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
+              <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
+              <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
+              <RateController hz="0.333">
+                <RecoveryNode number_of_retries="1" name="ComputePathThroughPoses">
+                  <ReactiveSequence>
+                    <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
+                    <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                  </ReactiveSequence>
+                  <Sequence>
+                    <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+                    <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                  </Sequence>
+                </RecoveryNode>
+              </RateController>
+              <RecoveryNode number_of_retries="1" name="FollowPath">
+                <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" goal_checker_id="{selected_goal_checker}" progress_checker_id="{selected_progress_checker}"/>
+                <Sequence>
+                  <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+                </Sequence>
+              </RecoveryNode>
+            </PipelineSequence>
+            <Sequence>
+              <Fallback>
+                <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+              </Fallback>
+              <ReactiveFallback name="RecoveryFallback">
+                <GoalUpdated/>
+                <RoundRobin name="RecoveryActions">
+                  <Sequence name="ClearingActions">
+                    <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                    <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                  </Sequence>
+                  <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+                  <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+                  <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+                </RoundRobin>
+              </ReactiveFallback>
+            </Sequence>
+          </RecoveryNode>
+        </BehaviorTree>
+      </root>

@@ -53,6 +53,16 @@ Output Ports
 Example
 -------
 
-.. code-block:: xml
+.. tabs::
 
-  <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>

@@ -207,35 +207,71 @@ For example, the ``navigate_w_replanning_and_recovery.xml`` file is shown below.
 
 Select this BT XML file in your specific navigation request in ``NavigateToPose`` or as the default behavior tree in the BT Navigator's configuration yaml file.
 
-.. code-block:: xml
+.. tabs::
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
-      <RecoveryNode number_of_retries="6" name="NavigateRecovery">
-        <PipelineSequence name="NavigateWithReplanning">
-          <RateController hz="1.0">
-            <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-              <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
-              <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-            </RecoveryNode>
-          </RateController>
-          <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="follow_path"/>
-            <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+              <RateController hz="1.0">
+                <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+                  <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
+                  <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                </RecoveryNode>
+              </RateController>
+              <RecoveryNode number_of_retries="1" name="FollowPath">
+                <FollowPath path="{path}" controller_id="follow_path"/>
+                <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+              </RecoveryNode>
+            </PipelineSequence>
+            <ReactiveFallback name="RecoveryFallback">
+              <GoalUpdated/>
+              <SequenceWithMemory name="RecoveryActions">
+                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                <Spin spin_dist="1.57"/>
+                <Wait wait_duration="5"/>
+              </SequenceWithMemory>
+            </ReactiveFallback>
           </RecoveryNode>
-        </PipelineSequence>
-        <ReactiveFallback name="RecoveryFallback">
-          <GoalUpdated/>
-          <SequenceWithMemory name="RecoveryActions">
-            <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-            <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-            <Spin spin_dist="1.57"/>
-            <Wait wait_duration="5"/>
-          </SequenceWithMemory>
-        </ReactiveFallback>
-      </RecoveryNode>
-    </BehaviorTree>
-  </root>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+              <RateController hz="1.0">
+                <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+                  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+                  <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                </RecoveryNode>
+              </RateController>
+              <RecoveryNode number_of_retries="1" name="FollowPath">
+                <FollowPath path="{path}" controller_id="FollowPath"/>
+                <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+              </RecoveryNode>
+            </PipelineSequence>
+            <ReactiveFallback name="RecoveryFallback">
+              <GoalUpdated/>
+              <SequenceWithMemory name="RecoveryActions">
+                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                <Spin spin_dist="1.57"/>
+                <Wait wait_duration="5"/>
+              </SequenceWithMemory>
+            </ReactiveFallback>
+          </RecoveryNode>
+        </BehaviorTree>
+      </root>
 
 Using custom types for Input/Output ports
 =========================================

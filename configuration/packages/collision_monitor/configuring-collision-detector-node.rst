@@ -353,33 +353,70 @@ Example
 
 Here is an example of configuration YAML for the Collision Detector.
 
-.. code-block:: yaml
+.. tabs::
 
-    collision_detector:
-      ros__parameters:
-        base_frame_id: "base_footprint"
-        odom_frame_id: "odom"
-        transform_tolerance: 0.5
-        source_timeout: 5.0
-        base_shift_correction: True
-        polygons: ["polygon_front"]
-        polygon_front:
-          type: "polygon"
-          points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
-          action_type: "none"
-          min_points: 4
-          visualize: True
-          polygon_pub_topic: "polygon_front"
-        observation_sources: ["scan"]
-        scan:
-          source_timeout: 0.2
-          type: "scan"
-          topic: "scan"
-          enabled: True
-        pointcloud:
-          type: "pointcloud"
-          topic: "/intel_realsense_r200_depth/points"
-          transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
-          min_height: 0.1
-          max_height: 0.5
-          enabled: True
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      collision_detector:
+        ros__parameters:
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          base_shift_correction: True
+          polygons: ["polygon_front"]
+          polygon_front:
+            type: "polygon"
+            points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+            action_type: "none"
+            min_points: 4
+            visualize: True
+            polygon_pub_topic: "polygon_front"
+          observation_sources: ["scan"]
+          scan:
+            source_timeout: 0.2
+            type: "scan"
+            topic: "scan"
+            enabled: True
+          pointcloud:
+            type: "pointcloud"
+            topic: "/intel_realsense_r200_depth/points"
+            transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
+            min_height: 0.1
+            max_height: 0.5
+            enabled: True
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      collision_detector:
+        ros__parameters:
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          base_shift_correction: True
+          polygons: ["PolygonFront"]
+          PolygonFront:
+            type: "polygon"
+            points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+            action_type: "none"
+            min_points: 4
+            visualize: True
+            polygon_pub_topic: "polygon_front"
+          observation_sources: ["scan"]
+          scan:
+            source_timeout: 0.2
+            type: "scan"
+            topic: "scan"
+            enabled: True
+          pointcloud:
+            type: "pointcloud"
+            topic: "/intel_realsense_r200_depth/points"
+            transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
+            min_height: 0.1
+            max_height: 0.5
+            enabled: True

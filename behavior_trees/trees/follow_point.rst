@@ -18,24 +18,52 @@ After the new path to the dynamic point is computed and truncated, it is again p
 However, note that it is under a ``KeepRunningUntilFailure`` decorator node ensuring the controller continues to execute until a failure mode.
 This behavior tree will execute infinitely in time until the navigation request is preempted or cancelled.
 
-.. code-block:: xml
+.. tabs::
 
-  <root BTCPP_format="4" main_tree_to_execute="FollowPoint">
-    <BehaviorTree ID="FollowPoint">
-      <PipelineSequence name="NavigateWithReplanning">
-        <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
-        <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
-        <RateController hz="1.0">
-          <Sequence>
-            <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-              <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-            </GoalUpdater>
-          <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
-          </Sequence>
-        </RateController>
-        <KeepRunningUntilFailure>
-          <FollowPath path="{truncated_path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
-        </KeepRunningUntilFailure>
-      </PipelineSequence>
-    </BehaviorTree>
-  </root>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root BTCPP_format="4" main_tree_to_execute="FollowPoint">
+        <BehaviorTree ID="FollowPoint">
+          <PipelineSequence name="NavigateWithReplanning">
+            <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+            <PlannerSelector selected_planner="{selected_planner}" default_planner="grid_based" topic_name="planner_selector"/>
+            <RateController hz="1.0">
+              <Sequence>
+                <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
+                  <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                </GoalUpdater>
+              <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
+              </Sequence>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{truncated_path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root BTCPP_format="4" main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
+            <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
+            <RateController hz="1.0">
+              <Sequence>
+                <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
+                  <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                </GoalUpdater>
+              <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
+              </Sequence>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{truncated_path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>

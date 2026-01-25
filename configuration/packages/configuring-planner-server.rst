@@ -14,118 +14,246 @@ It also hosts the global costmap.
 Parameters
 **********
 
-:planner_plugins:
+.. tabs::
 
-  ============== ==============
-  Type           Default
-  -------------- --------------
-  vector<string> ['grid_based']
-  ============== ==============
+  .. group-tab:: Lyrical and newer
 
-  Description
-    List of Mapped plugin names for parameters and processing requests.
+    :planner_plugins:
 
-  Note
-    Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+      ============== ==============
+      Type           Default
+      -------------- --------------
+      vector<string> ['grid_based']
+      ============== ==============
 
-    Example:
+      Description
+        List of Mapped plugin names for parameters and processing requests.
 
-    .. code-block:: yaml
+      Note
+        Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
 
-        planner_server:
-          ros__parameters:
-            planner_plugins: ["grid_based"]
-            grid_based:
-              plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
-    ..
+        Example:
 
-:allow_partial_planning:
+        .. code-block:: yaml
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  bool           false
-  ============== ========
+            planner_server:
+              ros__parameters:
+                planner_plugins: ["grid_based"]
+                grid_based:
+                  plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
+        ..
 
-  Description
-    Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.
+    :allow_partial_planning:
 
-:expected_planner_frequency:
+      ============== ========
+      Type           Default
+      -------------- --------
+      bool           false
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double         20.0
-  ============== ========
+      Description
+        Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.
 
-  Description
-    Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
+    :expected_planner_frequency:
 
-:bond_heartbeat_period:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         20.0
+      ============== ========
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.25
-  ============== =============================
+      Description
+        Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
 
-  Description
-    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+    :bond_heartbeat_period:
 
-:costmap_update_timeout:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.25
+      ============== =============================
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double         1.0
-  ============== ========
+      Description
+        The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
-  Description
-    The timeout value (seconds) for the costmap to be fully updated before a planning request.
+    :costmap_update_timeout:
 
-:introspection_mode:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         1.0
+      ============== ========
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "disabled"
-  ============== =============================
+      Description
+        The timeout value (seconds) for the costmap to be fully updated before a planning request.
 
-  Description
-    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+    :introspection_mode:
 
-:allow_parameter_qos_overrides:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "disabled"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
-  Description
-    Whether to allow QoS profiles to be overwritten with parameterized values.
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
+
+  .. group-tab:: Kilted and older
+
+    :planner_plugins:
+
+      ============== ==============
+      Type           Default
+      -------------- --------------
+      vector<string> ['GridBased']
+      ============== ==============
+
+      Description
+        List of Mapped plugin names for parameters and processing requests.
+
+      Note
+        Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+        Example:
+
+        .. code-block:: yaml
+
+            planner_server:
+              ros__parameters:
+                planner_plugins: ["GridBased"]
+                GridBased:
+                  plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
+        ..
+
+    :allow_partial_planning:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      bool           false
+      ============== ========
+
+      Description
+        Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.
+
+    :expected_planner_frequency:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         20.0
+      ============== ========
+
+      Description
+        Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
+
+    :bond_heartbeat_period:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.25
+      ============== =============================
+
+      Description
+        The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+    :costmap_update_timeout:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         1.0
+      ============== ========
+
+      Description
+        The timeout value (seconds) for the costmap to be fully updated before a planning request.
+
+    :introspection_mode:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "disabled"
+      ============== =============================
+
+      Description
+        The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Default Plugins
 ***************
 
 When the :code:`planner_plugins` parameter is not overridden, the following default plugins are loaded:
 
-  ================= =====================================================
-  Namespace         Plugin
-  ----------------- -----------------------------------------------------
-  "grid_based"       "nav2_navfn_planner::NavfnPlanner"
-  ================= =====================================================
+.. tabs::
+
+  .. group-tab:: Lyrical and newer
+
+    ================= =====================================================
+    Namespace         Plugin
+    ----------------- -----------------------------------------------------
+    "grid_based"       "nav2_navfn_planner::NavfnPlanner"
+    ================= =====================================================
+
+  .. group-tab:: Kilted and older
+
+    ================= =====================================================
+    Namespace         Plugin
+    ----------------- -----------------------------------------------------
+    "GridBased"       "nav2_navfn_planner::NavfnPlanner"
+    ================= =====================================================
 
 Example
 *******
-.. code-block:: yaml
 
-    planner_server:
-      ros__parameters:
-        allow_partial_planning: false
-        expected_planner_frequency: 20.0
-        costmap_update_timeout: 1.0
-        introspection_mode: "disabled"
-        planner_plugins: ['grid_based']
-        grid_based:
-          plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
+.. tabs::
+
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          allow_partial_planning: false
+          expected_planner_frequency: 20.0
+          costmap_update_timeout: 1.0
+          introspection_mode: "disabled"
+          planner_plugins: ['grid_based']
+          grid_based:
+            plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          allow_partial_planning: false
+          expected_planner_frequency: 20.0
+          costmap_update_timeout: 1.0
+          introspection_mode: "disabled"
+          planner_plugins: ['GridBased']
+          GridBased:
+            plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"

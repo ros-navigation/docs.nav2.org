@@ -35,26 +35,51 @@ For the demonstration, two shapes will be created - an inner stop and a larger s
 
 If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to ``30%`` from its value.
 For the cases when obstacles are dangerously close to the robot, inner stop zone will work.
-For this setup, the following lines should be added into ``collision_monitor_params.yaml`` parameters file. Stop box is named as ``polygon_stop`` and slowdown bounding box - as ``polygon_slow``:
+For this setup, the following lines should be added into ``collision_monitor_params.yaml`` parameters file. Stop box is named as ``polygon_stop`` and slowdown bounding box - as ``polygon_slow`` (``PolygonStop`` and ``PolygonSlow``, respectively, in Kilted and older):
 
-.. code-block:: yaml
+.. tabs::
 
-    polygons: ["polygon_stop", "polygon_slow"]
-    polygon_stop:
-      type: "polygon"
-      points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
-      action_type: "stop"
-      min_points: 4  # max_points: 3 for Humble
-      visualize: True
-      polygon_pub_topic: "polygon_stop"
-    polygon_slow:
-      type: "polygon"
-      points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
-      action_type: "slowdown"
-      min_points: 4  # max_points: 3 for Humble
-      slowdown_ratio: 0.3
-      visualize: True
-      polygon_pub_topic: "polygon_slowdown"
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+        polygons: ["polygon_stop", "polygon_slow"]
+        polygon_stop:
+          type: "polygon"
+          points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+          action_type: "stop"
+          min_points: 4  # max_points: 3 for Humble
+          visualize: True
+          polygon_pub_topic: "polygon_stop"
+        polygon_slow:
+          type: "polygon"
+          points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
+          action_type: "slowdown"
+          min_points: 4  # max_points: 3 for Humble
+          slowdown_ratio: 0.3
+          visualize: True
+          polygon_pub_topic: "polygon_slowdown"
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      polygons: ["PolygonStop", "PolygonSlow"]
+      PolygonStop:
+        type: "polygon"
+        points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+        action_type: "stop"
+        min_points: 4  # max_points: 3 for Humble
+        visualize: True
+        polygon_pub_topic: "polygon_stop"
+      PolygonSlow:
+        type: "polygon"
+        points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
+        action_type: "slowdown"
+        min_points: 4  # max_points: 3 for Humble
+        slowdown_ratio: 0.3
+        visualize: True
+        polygon_pub_topic: "polygon_slowdown"
 
 .. note::
   The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let's focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the :ref:`configuring_collision_monitor` configuration guide.
@@ -75,39 +100,79 @@ In current demonstration, it is used laser scanner (though ``PointCloud2`` and R
 Set topic names, frame ID-s and timeouts to work correctly with a default Nav2 setup.
 The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file in this case will look as follows:
 
-.. code-block:: yaml
+.. tabs::
 
-    collision_monitor:
-      ros__parameters:
-        enabled: True
-        base_frame_id: "base_footprint"
-        odom_frame_id: "odom"
-        cmd_vel_in_topic: "cmd_vel_smoothed"
-        cmd_vel_out_topic: "cmd_vel"
-        transform_tolerance: 0.5
-        source_timeout: 5.0
-        stop_pub_timeout: 2.0
-        enable_stamped_cmd_vel: True # False for Jazzy or older by default
-        polygons: ["polygon_stop", "polygon_slow"]
-        polygon_stop:
-          type: "polygon"
-          points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
-          action_type: "stop"
-          min_points: 4  # max_points: 3 for Humble
-          visualize: True
-          polygon_pub_topic: "polygon_stop"
-        polygon_slow:
-          type: "polygon"
-          points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
-          action_type: "slowdown"
-          min_points: 4  # max_points: 3 for Humble
-          slowdown_ratio: 0.3
-          visualize: True
-          polygon_pub_topic: "polygon_slowdown"
-        observation_sources: ["scan"]
-        scan:
-          type: "scan"
-          topic: "scan"
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
+          enabled: True
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          cmd_vel_in_topic: "cmd_vel_smoothed"
+          cmd_vel_out_topic: "cmd_vel"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          stop_pub_timeout: 2.0
+          enable_stamped_cmd_vel: True # False for Jazzy or older by default
+          polygons: ["polygon_stop", "polygon_slow"]
+          polygon_stop:
+            type: "polygon"
+            points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+            action_type: "stop"
+            min_points: 4  # max_points: 3 for Humble
+            visualize: True
+            polygon_pub_topic: "polygon_stop"
+          polygon_slow:
+            type: "polygon"
+            points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
+            action_type: "slowdown"
+            min_points: 4  # max_points: 3 for Humble
+            slowdown_ratio: 0.3
+            visualize: True
+            polygon_pub_topic: "polygon_slowdown"
+          observation_sources: ["scan"]
+          scan:
+            type: "scan"
+            topic: "scan"
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
+          enabled: True
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          cmd_vel_in_topic: "cmd_vel_smoothed"
+          cmd_vel_out_topic: "cmd_vel"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          stop_pub_timeout: 2.0
+          enable_stamped_cmd_vel: True # False for Jazzy or older by default
+          polygons: ["PolygonStop", "PolygonSlow"]
+          PolygonStop:
+            type: "polygon"
+            points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+            action_type: "stop"
+            min_points: 4  # max_points: 3 for Humble
+            visualize: True
+            polygon_pub_topic: "polygon_stop"
+          PolygonSlow:
+            type: "polygon"
+            points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
+            action_type: "slowdown"
+            min_points: 4  # max_points: 3 for Humble
+            slowdown_ratio: 0.3
+            visualize: True
+            polygon_pub_topic: "polygon_slowdown"
+          observation_sources: ["scan"]
+          scan:
+            type: "scan"
+            topic: "scan"
 
 Configuring Collision Monitor with velocity_polygon
 ===================================================
@@ -115,7 +180,7 @@ Configuring Collision Monitor with velocity_polygon
 .. image:: images/Collision_Monitor/dexory_velocity_polygon.gif
   :width: 800px
 
-For this part of tutorial, we will set up the Collision Monitor with ``velocity_polygon`` type for a ``stop`` action. ``velocity_polygon`` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
+For this part of tutorial, we will set up the Collision Monitor with ``velocity_polygon`` (``VelocityPolygon`` in Kilted and older versions from here on) type for a ``stop`` action. ``velocity_polygon`` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
 
 In general, here are the steps to configure the Collision Monitor with ``velocity_polygon`` type:
 
@@ -129,45 +194,91 @@ In this example, we will consider a **non-holonomic** robot with linear velocity
 
 Below is the example configuration using 4 sub-polygons to cover the full range of the robot's velocity limits:
 
-.. code-block:: yaml
+.. tabs::
 
-    polygons: ["velocity_polygon_stop"]
-    velocity_polygon_stop:
-      type: "velocity_polygon"
-      action_type: "stop"
-      min_points: 6
-      visualize: True
-      enabled: True
-      polygon_pub_topic: "velocity_polygon_stop"
-      velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
-      holonomic: false
-      rotation:
-        points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
-        linear_min: 0.0
-        linear_max: 0.05
-        theta_min: -1.0
-        theta_max: 1.0
-      translation_forward:
-        points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
-        linear_min: 0.0
-        linear_max: 1.0
-        theta_min: -1.0
-        theta_max: 1.0
-      translation_backward:
-        points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
-        linear_min: -1.0
-        linear_max: 0.0
-        theta_min: -1.0
-        theta_max: 1.0
-      # This is the last polygon to be checked, it should cover the entire range of robot's velocities
-      # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
-      # is not covered by any of the other sub-polygons
-      stopped:
-        points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
-        linear_min: -1.0
-        linear_max: 1.0
-        theta_min: -1.0
-        theta_max: 1.0
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+        polygons: ["velocity_polygon_stop"]
+        velocity_polygon_stop:
+          type: "velocity_polygon"
+          action_type: "stop"
+          min_points: 6
+          visualize: True
+          enabled: True
+          polygon_pub_topic: "velocity_polygon_stop"
+          velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+          holonomic: false
+          rotation:
+            points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+            linear_min: 0.0
+            linear_max: 0.05
+            theta_min: -1.0
+            theta_max: 1.0
+          translation_forward:
+            points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+            linear_min: 0.0
+            linear_max: 1.0
+            theta_min: -1.0
+            theta_max: 1.0
+          translation_backward:
+            points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+            linear_min: -1.0
+            linear_max: 0.0
+            theta_min: -1.0
+            theta_max: 1.0
+          # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+          # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+          # is not covered by any of the other sub-polygons
+          stopped:
+            points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+            linear_min: -1.0
+            linear_max: 1.0
+            theta_min: -1.0
+            theta_max: 1.0
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      polygons: ["VelocityPolygonStop"]
+      VelocityPolygonStop:
+        type: "velocity_polygon"
+        action_type: "stop"
+        min_points: 6
+        visualize: True
+        enabled: True
+        polygon_pub_topic: "velocity_polygon_stop"
+        velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+        holonomic: false
+        rotation:
+          points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+          linear_min: 0.0
+          linear_max: 0.05
+          theta_min: -1.0
+          theta_max: 1.0
+        translation_forward:
+          points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+          linear_min: 0.0
+          linear_max: 1.0
+          theta_min: -1.0
+          theta_max: 1.0
+        translation_backward:
+          points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+          linear_min: -1.0
+          linear_max: 0.0
+          theta_min: -1.0
+          theta_max: 1.0
+        # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+        # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+        # is not covered by any of the other sub-polygons
+        stopped:
+          points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+          linear_min: -1.0
+          linear_max: 1.0
+          theta_min: -1.0
+          theta_max: 1.0
 
 .. note::
   It is recommended to include a ``stopped`` sub polygon as the last entry in the ``velocity_polygons`` list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
@@ -241,7 +352,7 @@ In parallel console, launch Collision Monitor node by using its launch-file:
 
   ros2 launch nav2_collision_monitor collision_monitor_node.launch.py
 
-Since both ``polygon_stop`` and ``polygon_slow`` polygons will have their own publishers, they could be added to visualization as shown at the picture below:
+Since both ``polygon_stop`` and ``polygon_slow`` (``PolygonStop`` and ``PolygonSlow``, respectively, in Kilted and older) polygons will have their own publishers, they could be added to visualization as shown at the picture below:
 
 .. image:: images/Collision_Monitor/polygons_visualization.png
   :width: 800px

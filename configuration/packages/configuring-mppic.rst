@@ -1060,118 +1060,236 @@ This critic penalizes velocities that fall below the deadband threshold, helping
 
 Example
 *******
-.. code-block:: yaml
 
-    controller_server:
-      ros__parameters:
-        controller_frequency: 30.0
-        controller_plugins: ["follow_path"]
-        follow_path:
-          plugin: "nav2_mppi_controller::MPPIController"
-          time_steps: 56
-          model_dt: 0.05
-          batch_size: 2000
-          vx_std: 0.2
-          vy_std: 0.2
-          wz_std: 0.4
-          vx_max: 0.5
-          vx_min: -0.35
-          vy_max: 0.5
-          wz_max: 1.9
-          ax_max: 3.0
-          ax_min: -3.0
-          ay_min: -3.0
-          ay_max: 3.0
-          az_max: 3.5
-          iteration_count: 1
-          temperature: 0.3
-          gamma: 0.015
-          motion_model: "DiffDrive"
-          visualize: false
-          reset_period: 1.0 # (only in Humble)
-          regenerate_noises: false
-          TrajectoryVisualizer:
-            trajectory_step: 5
-            time_step: 3
-          TrajectoryValidator:
-            plugin: "mppi::DefaultOptimalTrajectoryValidator"
-            collision_lookahead_time: 2.0
-            consider_footprint: false
-          AckermannConstraints:
-            min_turning_r: 0.2
-          critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
-          ConstraintCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 4.0
-          GoalCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 5.0
-            threshold_to_consider: 1.4
-          GoalAngleCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 3.0
-            threshold_to_consider: 0.5
-          PreferForwardCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 5.0
-            threshold_to_consider: 0.5
-          # ObstaclesCritic:
-          #   enabled: true
-          #   cost_power: 1
-          #   repulsion_weight: 1.5
-          #   critical_weight: 20.0
-          #   consider_footprint: false
-          #   collision_cost: 10000.0
-          #   collision_margin_distance: 0.1
-          #   near_goal_distance: 0.5
-          #   inflation_radius: 0.55 # (only in Humble)
-          #   cost_scaling_factor: 10.0 # (only in Humble)
-          CostCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 3.81
-            critical_cost: 300.0
-            consider_footprint: true
-            collision_cost: 1000000.0
-            near_goal_distance: 1.0
-            trajectory_point_step: 2
-          PathAlignCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 14.0
-            max_path_occupancy_ratio: 0.05
-            trajectory_point_step: 4
-            threshold_to_consider: 0.5
-            offset_from_furthest: 20
-            use_path_orientations: false
-          PathFollowCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 5.0
-            offset_from_furthest: 5
-            threshold_to_consider: 1.4
-          PathAngleCritic:
-            enabled: true
-            cost_power: 1
-            cost_weight: 2.0
-            offset_from_furthest: 4
-            threshold_to_consider: 0.5
-            max_angle_to_furthest: 1.0
-            mode: 0
-          # VelocityDeadbandCritic:
-          #   enabled: true
-          #   cost_power: 1
-          #   cost_weight: 35.0
-          #   deadband_velocities: [0.05, 0.05, 0.05]
-          # TwirlingCritic:
-          #   enabled: true
-          #   twirling_cost_power: 1
-          #   twirling_cost_weight: 10.0
+.. tabs::
 
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_frequency: 30.0
+          controller_plugins: ["follow_path"]
+          follow_path:
+            plugin: "nav2_mppi_controller::MPPIController"
+            time_steps: 56
+            model_dt: 0.05
+            batch_size: 2000
+            vx_std: 0.2
+            vy_std: 0.2
+            wz_std: 0.4
+            vx_max: 0.5
+            vx_min: -0.35
+            vy_max: 0.5
+            wz_max: 1.9
+            ax_max: 3.0
+            ax_min: -3.0
+            ay_min: -3.0
+            ay_max: 3.0
+            az_max: 3.5
+            iteration_count: 1
+            temperature: 0.3
+            gamma: 0.015
+            motion_model: "DiffDrive"
+            visualize: false
+            reset_period: 1.0 # (only in Humble)
+            regenerate_noises: false
+            TrajectoryVisualizer:
+              trajectory_step: 5
+              time_step: 3
+            TrajectoryValidator:
+              plugin: "mppi::DefaultOptimalTrajectoryValidator"
+              collision_lookahead_time: 2.0
+              consider_footprint: false
+            AckermannConstraints:
+              min_turning_r: 0.2
+            critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
+            ConstraintCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 4.0
+            GoalCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 5.0
+              threshold_to_consider: 1.4
+            GoalAngleCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 3.0
+              threshold_to_consider: 0.5
+            PreferForwardCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 5.0
+              threshold_to_consider: 0.5
+            # ObstaclesCritic:
+            #   enabled: true
+            #   cost_power: 1
+            #   repulsion_weight: 1.5
+            #   critical_weight: 20.0
+            #   consider_footprint: false
+            #   collision_cost: 10000.0
+            #   collision_margin_distance: 0.1
+            #   near_goal_distance: 0.5
+            #   inflation_radius: 0.55 # (only in Humble)
+            #   cost_scaling_factor: 10.0 # (only in Humble)
+            CostCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 3.81
+              critical_cost: 300.0
+              consider_footprint: true
+              collision_cost: 1000000.0
+              near_goal_distance: 1.0
+              trajectory_point_step: 2
+            PathAlignCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 14.0
+              max_path_occupancy_ratio: 0.05
+              trajectory_point_step: 4
+              threshold_to_consider: 0.5
+              offset_from_furthest: 20
+              use_path_orientations: false
+            PathFollowCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 5.0
+              offset_from_furthest: 5
+              threshold_to_consider: 1.4
+            PathAngleCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 2.0
+              offset_from_furthest: 4
+              threshold_to_consider: 0.5
+              max_angle_to_furthest: 1.0
+              mode: 0
+            # VelocityDeadbandCritic:
+            #   enabled: true
+            #   cost_power: 1
+            #   cost_weight: 35.0
+            #   deadband_velocities: [0.05, 0.05, 0.05]
+            # TwirlingCritic:
+            #   enabled: true
+            #   twirling_cost_power: 1
+            #   twirling_cost_weight: 10.0
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_frequency: 30.0
+          controller_plugins: ["FollowPath"]
+          FollowPath:
+            plugin: "nav2_mppi_controller::MPPIController"
+            time_steps: 56
+            model_dt: 0.05
+            batch_size: 2000
+            vx_std: 0.2
+            vy_std: 0.2
+            wz_std: 0.4
+            vx_max: 0.5
+            vx_min: -0.35
+            vy_max: 0.5
+            wz_max: 1.9
+            ax_max: 3.0
+            ax_min: -3.0
+            ay_min: -3.0
+            ay_max: 3.0
+            az_max: 3.5
+            iteration_count: 1
+            temperature: 0.3
+            gamma: 0.015
+            motion_model: "DiffDrive"
+            visualize: false
+            reset_period: 1.0 # (only in Humble)
+            regenerate_noises: false
+            TrajectoryVisualizer:
+              trajectory_step: 5
+              time_step: 3
+            TrajectoryValidator:
+              plugin: "mppi::DefaultOptimalTrajectoryValidator"
+              collision_lookahead_time: 2.0
+              consider_footprint: false
+            AckermannConstraints:
+              min_turning_r: 0.2
+            critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
+            ConstraintCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 4.0
+            GoalCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 5.0
+              threshold_to_consider: 1.4
+            GoalAngleCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 3.0
+              threshold_to_consider: 0.5
+            PreferForwardCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 5.0
+              threshold_to_consider: 0.5
+            # ObstaclesCritic:
+            #   enabled: true
+            #   cost_power: 1
+            #   repulsion_weight: 1.5
+            #   critical_weight: 20.0
+            #   consider_footprint: false
+            #   collision_cost: 10000.0
+            #   collision_margin_distance: 0.1
+            #   near_goal_distance: 0.5
+            #   inflation_radius: 0.55 # (only in Humble)
+            #   cost_scaling_factor: 10.0 # (only in Humble)
+            CostCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 3.81
+              critical_cost: 300.0
+              consider_footprint: true
+              collision_cost: 1000000.0
+              near_goal_distance: 1.0
+              trajectory_point_step: 2
+            PathAlignCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 14.0
+              max_path_occupancy_ratio: 0.05
+              trajectory_point_step: 4
+              threshold_to_consider: 0.5
+              offset_from_furthest: 20
+              use_path_orientations: false
+            PathFollowCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 5.0
+              offset_from_furthest: 5
+              threshold_to_consider: 1.4
+            PathAngleCritic:
+              enabled: true
+              cost_power: 1
+              cost_weight: 2.0
+              offset_from_furthest: 4
+              threshold_to_consider: 0.5
+              max_angle_to_furthest: 1.0
+              mode: 0
+            # VelocityDeadbandCritic:
+            #   enabled: true
+            #   cost_power: 1
+            #   cost_weight: 35.0
+            #   deadband_velocities: [0.05, 0.05, 0.05]
+            # TwirlingCritic:
+            #   enabled: true
+            #   twirling_cost_power: 1
+            #   twirling_cost_weight: 10.0
 
 Notes to Users
 **************
@@ -1203,6 +1321,6 @@ There also exists a relationship between the costmap configurations and the Obst
 
 Thus, care should be taken to select weights of the obstacle critic in conjunction with the costmap inflation radius and scale so that a robot does not have such issues. How I (Steve, your friendly neighborhood navigator) tuned this was to first create the appropriate obstacle critic behavior desirable in conjunction with the inflation layer parameters. Its worth noting that the Obstacle critic converts the cost into a distance from obstacles, so the nature of the distribution of costs in the inflation isn't overly significant. However, the inflation radius and the scale will define the cost at the end of the distribution where free-space meets the lowest cost value within the radius. So testing for quality behavior when going over that threshold should be considered.
 
-As you increase or decrease your weights on the Obstacle, you may notice the aforementioned behaviors (e.g. won't overcome free to non-free threshold). To overcome them, increase the follow_path critic cost to increase the desire for the trajectory planner to continue moving towards the goal. Make sure to not overshoot this though, keep them balanced. A desirable outcome is smooth motion roughly in the center of spaces without significant close interactions with obstacles. It shouldn't be perfectly following a path yet nor should the output velocity be wobbling jaggedly.
+As you increase or decrease your weights on the Obstacle, you may notice the aforementioned behaviors (e.g. won't overcome free to non-free threshold). To overcome them, increase the ``follow_path`` critic cost (``FollowPath`` in Kilted and older) to increase the desire for the trajectory planner to continue moving towards the goal. Make sure to not overshoot this though, keep them balanced. A desirable outcome is smooth motion roughly in the center of spaces without significant close interactions with obstacles. It shouldn't be perfectly following a path yet nor should the output velocity be wobbling jaggedly.
 
 Once you have your obstacle avoidance behavior tuned and matched with an appropriate path following penalty, tune the Path Align critic to align with the path. If you design exact-path-alignment behavior, its possible to skip the obstacle critic step as highly tuning the system to follow the path will give it less ability to deviate to avoid obstacles (though it'll slow and stop). Tuning the critic weight for the Obstacle critic high will do the job to avoid near-collisions but the repulsion weight is largely unnecessary to you. For others wanting more dynamic behavior, it *can* be beneficial to slowly lower the weight on the obstacle critic to give the path alignment critic some more room to work. If your path was generated with a cost-aware planner (like all provided by Nav2) and providing paths sufficiently far from obstacles for your satisfaction, the impact of a slightly reduced Obstacle critic with a Path Alignment critic will do you well. Not over-weighting the path align critic will allow the robot to  deviate from the path to get around dynamic obstacles in the scene or other obstacles not previous considered during path planning. It is subjective as to the best behavior for your application, but it has been shown that MPPI can be an exact path tracker and/or avoid dynamic obstacles very fluidly and everywhere in between. The defaults provided are in the generally right regime for a balanced initial trade-off.

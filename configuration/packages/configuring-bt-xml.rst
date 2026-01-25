@@ -129,41 +129,86 @@ Example
 This Behavior Tree replans the global path periodically at 1 Hz and it also has
 recovery actions.
 
-.. code-block:: xml
+.. tabs::
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
-      <RecoveryNode number_of_retries="6" name="NavigateRecovery">
-        <PipelineSequence name="NavigateWithReplanning">
-          <RateController hz="1.0">
-            <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-              <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
-              <ReactiveFallback name="ComputePathToPoseRecoveryFallback">
-                <GoalUpdated/>
-                <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-              </ReactiveFallback>
-            </RecoveryNode>
-          </RateController>
-          <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="follow_path"/>
-            <ReactiveFallback name="FollowPathRecoveryFallback">
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+              <RateController hz="1.0">
+                <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+                  <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
+                  <ReactiveFallback name="ComputePathToPoseRecoveryFallback">
+                    <GoalUpdated/>
+                    <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                  </ReactiveFallback>
+                </RecoveryNode>
+              </RateController>
+              <RecoveryNode number_of_retries="1" name="FollowPath">
+                <FollowPath path="{path}" controller_id="follow_path"/>
+                <ReactiveFallback name="FollowPathRecoveryFallback">
+                  <GoalUpdated/>
+                  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+                </ReactiveFallback>
+              </RecoveryNode>
+            </PipelineSequence>
+            <ReactiveFallback name="RecoveryFallback">
               <GoalUpdated/>
-              <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+              <RoundRobin name="RecoveryActions">
+                <Sequence name="ClearingActions">
+                  <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                  <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                </Sequence>
+                <Spin spin_dist="1.57"/>
+                <Wait wait_duration="5"/>
+                <BackUp backup_dist="0.15" backup_speed="0.025"/>
+              </RoundRobin>
             </ReactiveFallback>
           </RecoveryNode>
-        </PipelineSequence>
-        <ReactiveFallback name="RecoveryFallback">
-          <GoalUpdated/>
-          <RoundRobin name="RecoveryActions">
-            <Sequence name="ClearingActions">
-              <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-              <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-            </Sequence>
-            <Spin spin_dist="1.57"/>
-            <Wait wait_duration="5"/>
-            <BackUp backup_dist="0.15" backup_speed="0.025"/>
-          </RoundRobin>
-        </ReactiveFallback>
-      </RecoveryNode>
-    </BehaviorTree>
-  </root>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+            <PipelineSequence name="NavigateWithReplanning">
+              <RateController hz="1.0">
+                <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+                  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+                  <ReactiveFallback name="ComputePathToPoseRecoveryFallback">
+                    <GoalUpdated/>
+                    <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+                  </ReactiveFallback>
+                </RecoveryNode>
+              </RateController>
+              <RecoveryNode number_of_retries="1" name="FollowPath">
+                <FollowPath path="{path}" controller_id="FollowPath"/>
+                <ReactiveFallback name="FollowPathRecoveryFallback">
+                  <GoalUpdated/>
+                  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+                </ReactiveFallback>
+              </RecoveryNode>
+            </PipelineSequence>
+            <ReactiveFallback name="RecoveryFallback">
+              <GoalUpdated/>
+              <RoundRobin name="RecoveryActions">
+                <Sequence name="ClearingActions">
+                  <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                  <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                </Sequence>
+                <Spin spin_dist="1.57"/>
+                <Wait wait_duration="5"/>
+                <BackUp backup_dist="0.15" backup_speed="0.025"/>
+              </RoundRobin>
+            </ReactiveFallback>
+          </RecoveryNode>
+        </BehaviorTree>
+      </root>

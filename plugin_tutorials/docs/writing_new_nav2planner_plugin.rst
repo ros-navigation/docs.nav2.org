@@ -80,7 +80,7 @@ In planners, ``configure()`` method must set member variables from ROS parameter
   nav2_util::declare_parameter_if_not_declared(node_, name_ + ".interpolation_resolution", rclcpp::ParameterValue(0.1));
   node_->get_parameter(name_ + ".interpolation_resolution", interpolation_resolution_);
 
-Here, ``name_ + ".interpolation_resolution"`` is fetching the ROS parameters ``interpolation_resolution`` which is specific to our planner. Nav2 allows the loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name. Now if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. For example, our example planner is mapped to the name "grid_based" and to retrieve the ``interpolation_resolution`` parameter which is specific to "grid_based", we used ``grid_based.interpolation_resolution``. In other words, ``grid_based`` is used as a namespace for plugin-specific parameters. We will see more on this when we discuss the parameters file (or params file).
+Here, ``name_ + ".interpolation_resolution"`` is fetching the ROS parameters ``interpolation_resolution`` which is specific to our planner. Nav2 allows the loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name. Now if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. For example, our example planner is mapped to the name ``grid_based`` (``GridBased`` in Kilted and older versions from here on) and to retrieve the ``interpolation_resolution`` parameter which is specific to "grid_based", we used ``grid_based.interpolation_resolution``. In other words, ``grid_based`` is used as a namespace for plugin-specific parameters. We will see more on this when we discuss the parameters file (or params file).
 
 In ``createPlan()`` method, we need to create a path from the given start to goal poses. The ``StraightLine::createPlan()`` is called using start pose and goal pose to solve the global path planning problem. Upon succeeding, it converts the path to the ``nav_msgs::msg::Path`` and returns to the planner server. Below annotation shows the implementation of this method.
 
@@ -207,29 +207,57 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
 
   For Galactic or later, ``plugin_names`` and ``plugin_types`` have been replaced with a single ``plugins`` string vector for plugin names. The types are now defined in the ``plugin_name`` namespace in the ``plugin:`` field (e.g. ``plugin: MyPlugin::Plugin``). Inline comments in the code blocks will help guide you through this.
 
-.. code-block:: text
+.. tabs::
 
-  planner_server:
-    ros__parameters:
-      plugins: ["grid_based"]
-      grid_based:
-        plugin: "nav2_navfn_planner::NavfnPlanner" # For Foxy and later. In Iron and older versions, "/" was used instead of "::"
-        tolerance: 2.0
-        use_astar: false
-        allow_unknown: true
+  .. group-tab:: Lyrical and newer
 
-with
+    .. code-block:: yaml
 
-.. code-block:: text
+      planner_server:
+        ros__parameters:
+          plugins: ["grid_based"]
+          grid_based:
+            plugin: "nav2_navfn_planner::NavfnPlanner" # For Foxy and later. In Iron and older versions, "/" was used instead of "::"
+            tolerance: 2.0
+            use_astar: false
+            allow_unknown: true
 
-  planner_server:
-    ros__parameters:
-      plugins: ["grid_based"]
-      grid_based:
-        plugin: "nav2_straightline_planner::StraightLine"
-        interpolation_resolution: 0.1
+    with
 
-In the above snippet, you can observe the mapping of our ``nav2_straightline_planner::StraightLine`` planner to its id ``grid_based``. To pass plugin-specific parameters, we have used ``<plugin_id>.<plugin_specific_parameter>``.
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          plugins: ["grid_based"]
+          grid_based:
+            plugin: "nav2_straightline_planner::StraightLine"
+            interpolation_resolution: 0.1
+
+  .. group-tab:: Kilted and older
+
+      .. code-block:: yaml
+
+        planner_server:
+          ros__parameters:
+            plugins: ["GridBased"]
+            GridBased:
+              plugin: "nav2_navfn_planner::NavfnPlanner" # For Foxy and later. In Iron and older versions, "/" was used instead of "::"
+              tolerance: 2.0
+              use_astar: false
+              allow_unknown: true
+
+      with
+
+      .. code-block:: yaml
+
+        planner_server:
+          ros__parameters:
+            plugins: ["GridBased"]
+            GridBased:
+              plugin: "nav2_straightline_planner::StraightLine"
+              interpolation_resolution: 0.1
+
+In the above snippet, you can observe the mapping of our ``nav2_straightline_planner::StraightLine`` planner to its id ``grid_based`` (``GridBased`` in Kilted and older). To pass plugin-specific parameters, we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run StraightLine plugin
 ---------------------------

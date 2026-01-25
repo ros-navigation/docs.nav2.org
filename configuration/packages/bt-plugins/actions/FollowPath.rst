@@ -9,84 +9,167 @@ The server address can be remapped using the ``server_name`` input port.
 Input Ports
 -----------
 
-:path:
+.. tabs::
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+  .. group-tab:: Lyrical and newer
 
-  Description
-        Takes in a blackboard variable containing the path to follow, eg. "{path}".
+    :path:
 
-:controller_id:
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+      Description
+            Takes in a blackboard variable containing the path to follow, eg. "{path}".
 
-  Description
-        Mapped name of the controller plugin type to use, e.g. follow_path.
+    :controller_id:
 
-:goal_checker_id:
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+      Description
+            Mapped name of the controller plugin type to use, e.g. follow_path.
 
-  Description
-        Mapped name of the goal checker plugin type to use, e.g. simple_goal_checker.
+    :goal_checker_id:
 
-:progress_checker_id:
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+      Description
+            Mapped name of the goal checker plugin type to use, e.g. simple_goal_checker.
 
-  Description
-      Mapped name of the progress checker plugin type to use, e.g. simple_progress_checker.
+    :progress_checker_id:
 
-:path_handler_id:
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+      Description
+          Mapped name of the progress checker plugin type to use, e.g. simple_progress_checker.
 
-  Description
-      Mapped name of the path handler plugin type to use, e.g. feasible_path_handler.
+    :path_handler_id:
 
-:server_name:
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+      Description
+          Mapped name of the path handler plugin type to use, e.g. feasible_path_handler.
 
-  Description
-        Action server name.
+    :server_name:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+            Action server name.
 
 
-:server_timeout:
+    :server_timeout:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         10
-  ============== =======
+      ============== =======
+      Type           Default
+      -------------- -------
+      double         10
+      ============== =======
 
-  Description
-        Action server timeout (ms).
+      Description
+            Action server timeout (ms).
 
+  .. group-tab:: Kilted and older
+
+    :path:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+            Takes in a blackboard variable containing the path to follow, eg. "{path}".
+
+    :controller_id:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+            Mapped name of the controller plugin type to use, e.g. FollowPath.
+
+    :goal_checker_id:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+            Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
+
+    :progress_checker_id:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+          Mapped name of the progress checker plugin type to use, e.g. SimpleProgressChecker.
+
+    :path_handler_id:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+          Mapped name of the path handler plugin type to use, e.g. FeasiblePathHandler.
+
+    :server_name:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+            Action server name.
+
+
+    :server_timeout:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      double         10
+      ============== =======
+
+      Description
+            Action server timeout (ms).
 
 Output Ports
 ------------
@@ -129,6 +212,16 @@ Output Ports
 Example
 -------
 
-.. code-block:: xml
+.. tabs::
 
-    <FollowPath path="{path}" controller_id="follow_path" goal_checker_id="precise_goal_checker" path_handler_id="path_handler" server_name="follow_path" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <FollowPath path="{path}" controller_id="follow_path" goal_checker_id="precise_goal_checker" path_handler_id="path_handler" server_name="follow_path" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" path_handler_id="PathHandler" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>

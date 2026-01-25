@@ -254,36 +254,77 @@ Smoother Server Parameters
 
 Example
 *******
-.. code-block:: yaml
 
-  smoother_server:
-    ros__parameters:
-      smoother_plugins: ["smooth_path"]
+.. tabs::
 
-      smooth_path:
-        plugin: "nav2_constrained_smoother/ConstrainedSmoother"
-        reversing_enabled: true       # whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned
-        path_downsampling_factor: 3   # every n-th node of the path is taken. Useful for speed-up
-        path_upsampling_factor: 1     # 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
-        keep_start_orientation: true  # whether to prevent the start orientation from being smoothed
-        keep_goal_orientation: true   # whether to prevent the gpal orientation from being smoothed
-        minimum_turning_radius: 0.40  # minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
-        w_curve: 30.0                 # weight to enforce minimum_turning_radius
-        w_dist: 0.0                   # weight to bind path to original as optional replacement for cost weight
-        w_smooth: 2000000.0           # weight to maximize smoothness of path
-        w_cost: 0.015                 # weight to steer robot away from collision and cost
+  .. group-tab:: Lyrical and newer
 
-        # Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)
-        w_cost_cusp_multiplier: 3.0   # option to use higher weight during forward/reverse direction change which is often accompanied with dangerous rotations
-        cusp_zone_length: 2.5         # length of the section around cusp in which nodes use w_cost_cusp_multiplier (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)
+    .. code-block:: yaml
 
-        # Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...]
-        # IMPORTANT: Requires much higher number of iterations to actually improve the path. Uncomment only if you really need it (highly elongated/asymmetric robots)
-        # cost_check_points: [-0.185, 0.0, 1.0]
+      smoother_server:
+        ros__parameters:
+          smoother_plugins: ["smooth_path"]
 
-        optimizer:
-          max_iterations: 70            # max iterations of smoother
-          debug_optimizer: false        # print debug info
-          gradient_tol: 5e3
-          fn_tol: 1.0e-15
-          param_tol: 1.0e-20
+          smooth_path:
+            plugin: "nav2_constrained_smoother/ConstrainedSmoother"
+            reversing_enabled: true       # whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned
+            path_downsampling_factor: 3   # every n-th node of the path is taken. Useful for speed-up
+            path_upsampling_factor: 1     # 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
+            keep_start_orientation: true  # whether to prevent the start orientation from being smoothed
+            keep_goal_orientation: true   # whether to prevent the gpal orientation from being smoothed
+            minimum_turning_radius: 0.40  # minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
+            w_curve: 30.0                 # weight to enforce minimum_turning_radius
+            w_dist: 0.0                   # weight to bind path to original as optional replacement for cost weight
+            w_smooth: 2000000.0           # weight to maximize smoothness of path
+            w_cost: 0.015                 # weight to steer robot away from collision and cost
+
+            # Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)
+            w_cost_cusp_multiplier: 3.0   # option to use higher weight during forward/reverse direction change which is often accompanied with dangerous rotations
+            cusp_zone_length: 2.5         # length of the section around cusp in which nodes use w_cost_cusp_multiplier (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)
+
+            # Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...]
+            # IMPORTANT: Requires much higher number of iterations to actually improve the path. Uncomment only if you really need it (highly elongated/asymmetric robots)
+            # cost_check_points: [-0.185, 0.0, 1.0]
+
+            optimizer:
+              max_iterations: 70            # max iterations of smoother
+              debug_optimizer: false        # print debug info
+              gradient_tol: 5e3
+              fn_tol: 1.0e-15
+              param_tol: 1.0e-20
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      smoother_server:
+        ros__parameters:
+          smoother_plugins: ["SmoothPath"]
+
+          SmoothPath:
+            plugin: "nav2_constrained_smoother/ConstrainedSmoother"
+            reversing_enabled: true       # whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned
+            path_downsampling_factor: 3   # every n-th node of the path is taken. Useful for speed-up
+            path_upsampling_factor: 1     # 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
+            keep_start_orientation: true  # whether to prevent the start orientation from being smoothed
+            keep_goal_orientation: true   # whether to prevent the gpal orientation from being smoothed
+            minimum_turning_radius: 0.40  # minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
+            w_curve: 30.0                 # weight to enforce minimum_turning_radius
+            w_dist: 0.0                   # weight to bind path to original as optional replacement for cost weight
+            w_smooth: 2000000.0           # weight to maximize smoothness of path
+            w_cost: 0.015                 # weight to steer robot away from collision and cost
+
+            # Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)
+            w_cost_cusp_multiplier: 3.0   # option to use higher weight during forward/reverse direction change which is often accompanied with dangerous rotations
+            cusp_zone_length: 2.5         # length of the section around cusp in which nodes use w_cost_cusp_multiplier (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)
+
+            # Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...]
+            # IMPORTANT: Requires much higher number of iterations to actually improve the path. Uncomment only if you really need it (highly elongated/asymmetric robots)
+            # cost_check_points: [-0.185, 0.0, 1.0]
+
+            optimizer:
+              max_iterations: 70            # max iterations of smoother
+              debug_optimizer: false        # print debug info
+              gradient_tol: 5e3
+              fn_tol: 1.0e-15
+              param_tol: 1.0e-20

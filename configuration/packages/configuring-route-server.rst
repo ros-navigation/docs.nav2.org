@@ -35,303 +35,607 @@ See the package's README file for additional information such as performance met
 Server Parameters
 *****************
 
-:base_frame:
+.. tabs::
 
-  ============== ==============
-  Type           Default
-  -------------- --------------
-  string         "base_link"
-  ============== ==============
+  .. group-tab:: Lyrical and newer
 
-  Description
-    The base frame of the robot to use to obtain the robot's pose from when not using the ``use_start`` request parameter.
+    :base_frame:
 
-:route_frame:
+      ============== ==============
+      Type           Default
+      -------------- --------------
+      string         "base_link"
+      ============== ==============
 
-  ============== ==============
-  Type           Default
-  -------------- --------------
-  string         "map"
-  ============== ==============
+      Description
+        The base frame of the robot to use to obtain the robot's pose from when not using the ``use_start`` request parameter.
 
-  Description
-    The frame of the route graph to plan within. If values in the graph file are not w.r.t. this frame, they will be automatically transformed.
+    :route_frame:
 
+      ============== ==============
+      Type           Default
+      -------------- --------------
+      string         "map"
+      ============== ==============
 
-:path_density:
+      Description
+        The frame of the route graph to plan within. If values in the graph file are not w.r.t. this frame, they will be automatically transformed.
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double         0.05
-  ============== ========
 
-  Description
-    The density of path-points in the output route, if using the ``nav_msgs/Path`` route rather than the collection of nodes and edges. This is used to upsample the route into a path that may be followed.
+    :path_density:
 
-:max_iterations:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         0.05
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  int            0
-  ============== ========
+      Description
+        The density of path-points in the output route, if using the ``nav_msgs/Path`` route rather than the collection of nodes and edges. This is used to upsample the route into a path that may be followed.
 
-  Description
-    The maximum number of planning iterations to perform. If 0, the maximum number of iterations is used.
+    :max_iterations:
 
-:max_planning_time:
+      ============== ========
+      Type           Default
+      -------------- --------
+      int            0
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double          2.0
-  ============== ========
+      Description
+        The maximum number of planning iterations to perform. If 0, the maximum number of iterations is used.
 
-  Description
-    The maximum planning time to use.
+    :max_planning_time:
 
-:smooth_corners:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double          2.0
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  bool           false
-  ============== ========
+      Description
+        The maximum planning time to use.
 
-  Description
-    Whether to smooth corners formed between subsequent edges after a route has been found
+    :smooth_corners:
 
-:smoothing_radius:
+      ============== ========
+      Type           Default
+      -------------- --------
+      bool           false
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double          1.0
-  ============== ========
+      Description
+        Whether to smooth corners formed between subsequent edges after a route has been found
 
-  Description
-    Radius to fit to corners formed by edges if corner smoothing is enabled
+    :smoothing_radius:
 
-:costmap_topic:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double          1.0
+      ============== ========
 
-  ============== ============================
-  Type           Default
-  -------------- ----------------------------
-  string         'global_costmap/costmap_raw'
-  ============== ============================
+      Description
+        Radius to fit to corners formed by edges if corner smoothing is enabled
 
-  Description
-    The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
+    :costmap_topic:
 
-:tracker_update_rate:
+      ============== ============================
+      Type           Default
+      -------------- ----------------------------
+      string         'global_costmap/costmap_raw'
+      ============== ============================
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double         50.0
-  ============== ========
+      Description
+        The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
 
-  Description
-    The update rate of the tracker (when using ``ComputeAndTrackRoute`` action) to check the status of path tracking and execute route operations.
+    :tracker_update_rate:
 
-:aggregate_blocked_ids:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         50.0
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  bool           false
-  ============== ========
+      Description
+        The update rate of the tracker (when using ``ComputeAndTrackRoute`` action) to check the status of path tracking and execute route operations.
 
-  Description
-    Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently marked blocked IDs.
+    :aggregate_blocked_ids:
 
-:boundary_radius_to_achieve_node:
+      ============== ========
+      Type           Default
+      -------------- --------
+      bool           false
+      ============== ========
 
-  ============== ========
-  Type           Default
-  -------------- --------
-  double         1.0
-  ============== ========
+      Description
+        Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently marked blocked IDs.
 
-  Description
-    The radius at a boundary condition (start, goal) to mark the node achieved by the tracker when using ``ComputeAndTrackRoute``. Note that this is not the same as the goal tolerance, as the route or path follower (controller) will continue to run until its goal tolerance is met.
+    :boundary_radius_to_achieve_node:
 
-:radius_to_achieve_node:
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         1.0
+      ============== ========
 
-  ============== ==========
-  Type           Default
-  -------------- ----------
-  double         1.0
-  ============== ==========
+      Description
+        The radius at a boundary condition (start, goal) to mark the node achieved by the tracker when using ``ComputeAndTrackRoute``. Note that this is not the same as the goal tolerance, as the route or path follower (controller) will continue to run until its goal tolerance is met.
 
-  Description
-    The radius for non-boundary conditions to mark the node as achieved once within tolerance of, when using ``ComputeAndTrackRoute``. Note that this is a radius to consider achievable, however a refinement process takes place to most accurately identify when a node is reached. The radius is the trigger to start this process. Set this generously based on path tracking tolerances.
+    :radius_to_achieve_node:
 
-:max_prune_dist_from_edge:
+      ============== ==========
+      Type           Default
+      -------------- ----------
+      double         1.0
+      ============== ==========
 
-  ============== ==========
-  Type           Default
-  -------------- ----------
-  double         8.0
-  ============== ==========
+      Description
+        The radius for non-boundary conditions to mark the node as achieved once within tolerance of, when using ``ComputeAndTrackRoute``. Note that this is a radius to consider achievable, however a refinement process takes place to most accurately identify when a node is reached. The radius is the trigger to start this process. Set this generously based on path tracking tolerances.
 
-  Description
-    Maximum distance from an edge to consider pruning it as in-progress (i.e. if we're to far away from an edge, it is nonsensical to prune it).
+    :max_prune_dist_from_edge:
 
-:min_prune_dist_from_goal:
+      ============== ==========
+      Type           Default
+      -------------- ----------
+      double         8.0
+      ============== ==========
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  double         0.15
-  ============== ===============
+      Description
+        Maximum distance from an edge to consider pruning it as in-progress (i.e. if we're to far away from an edge, it is nonsensical to prune it).
 
-  Description
-    Minimum distance from the goal node away from the request's goal pose (if using ``use_poses``) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
+    :min_prune_dist_from_goal:
 
-:min_prune_dist_from_start:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      double         0.15
+      ============== ===============
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  double         0.1
-  ============== ===============
+      Description
+        Minimum distance from the goal node away from the request's goal pose (if using ``use_poses``) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
 
-  Description
-    Minimum distance from the start node away from the start pose (if using ``use_poses``) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.
+    :min_prune_dist_from_start:
 
-:prune_goal:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      double         0.1
+      ============== ===============
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  bool           true
-  ============== ===============
+      Description
+        Minimum distance from the start node away from the start pose (if using ``use_poses``) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.
 
-  Description
-    Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only ``use_poses``).
+    :prune_goal:
 
-:enable_nn_search:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      bool           true
+      ============== ===============
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  bool           true
-  ============== ===============
+      Description
+        Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only ``use_poses``).
 
-  Description
-    Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
+    :enable_nn_search:
 
-:max_nn_search_iterations:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      bool           true
+      ============== ===============
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  int            10000
-  ============== ===============
+      Description
+        Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
 
-  Description
-    The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.
+    :max_nn_search_iterations:
 
-:num_nearest_nodes:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      int            10000
+      ============== ===============
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  int            5
-  ============== ===============
+      Description
+        The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.
 
-  Description
-    The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.
+    :num_nearest_nodes:
 
-:graph_filepath:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      int            5
+      ============== ===============
 
-  ============== ===============
-  Type           Default
-  -------------- ---------------
-  string         ""
-  ============== ===============
+      Description
+        The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.
 
-  Description
-    The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server's set graph service later.
+    :graph_filepath:
 
-:graph_file_loader:
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      string         ""
+      ============== ===============
 
-  ============== ========================
-  Type           Default
-  -------------- ------------------------
-  string         "geo_json_graph_file_loader"
-  ============== ========================
+      Description
+        The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server's set graph service later.
 
-  Description
-    The name of the graph file loader plugin to use.
+    :graph_file_loader:
 
-:graph_file_loader.plugin:
+      ============== ========================
+      Type           Default
+      -------------- ------------------------
+      string         "geo_json_graph_file_loader"
+      ============== ========================
 
-  ============== ====================================
-  Type           Default
-  -------------- ------------------------------------
-  string         "nav2_route::GeoJsonGraphFileLoader"
-  ============== ====================================
+      Description
+        The name of the graph file loader plugin to use.
 
-  Description
-    The graph loading plugin to use. By default, we use ``geojson``.
+    :graph_file_loader.plugin:
 
-:edge_cost_functions:
+      ============== ====================================
+      Type           Default
+      -------------- ------------------------------------
+      string         "nav2_route::GeoJsonGraphFileLoader"
+      ============== ====================================
 
-  ============== ========================================
-  Type           Default
-  -------------- ----------------------------------------
-  vector<string> ["distance_scorer", "dynamic_edges_scorer"]
-  ============== ========================================
+      Description
+        The graph loading plugin to use. By default, we use ``geojson``.
 
-  Description
-    Which edge cost functions should be used for planning purposes to score the edges. By default, we optimize for minimum distance while providing a service cost function to set arbitrary costs or mark edge as closed from a service.
+    :edge_cost_functions:
 
-:operations:
+      ============== ========================================
+      Type           Default
+      -------------- ----------------------------------------
+      vector<string> ["distance_scorer", "dynamic_edges_scorer"]
+      ============== ========================================
 
-  ============== ========================================
-  Type           Default
-  -------------- ----------------------------------------
-  vector<string> ["adjust_speed_limit", "rerouting_service"]
-  ============== ========================================
+      Description
+        Which edge cost functions should be used for planning purposes to score the edges. By default, we optimize for minimum distance while providing a service cost function to set arbitrary costs or mark edge as closed from a service.
 
-  Description
-    The route operation plugins to use for ``ComputeAndTrackRoute``. By default, we have a speed limit adjuster and a ROS service request rerouting operation.
+    :operations:
 
-:<name>.plugin:
+      ============== ========================================
+      Type           Default
+      -------------- ----------------------------------------
+      vector<string> ["adjust_speed_limit", "rerouting_service"]
+      ============== ========================================
 
-  ============== ============
-  Type           Default
-  -------------- ------------
-  string         ""
-  ============== ============
+      Description
+        The route operation plugins to use for ``ComputeAndTrackRoute``. By default, we have a speed limit adjuster and a ROS service request rerouting operation.
 
-  Description
-    The plugin to load under that name. The ``edge_cost_functions.<name>`` namespaces is also where plugin-specific parameters are defined.
+    :<name>.plugin:
 
-:introspection_mode:
+      ============== ============
+      Type           Default
+      -------------- ------------
+      string         ""
+      ============== ============
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "disabled"
-  ============== =============================
+      Description
+        The plugin to load under that name. The ``edge_cost_functions.<name>`` namespaces is also where plugin-specific parameters are defined.
 
-  Description
-    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+    :introspection_mode:
 
-:allow_parameter_qos_overrides:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "disabled"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
-  Description
-    Whether to allow QoS profiles to be overwritten with parameterized values.
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
+
+  .. group-tab:: Kilted and older
+
+    :base_frame:
+
+      ============== ==============
+      Type           Default
+      -------------- --------------
+      string         "base_link"
+      ============== ==============
+
+      Description
+        The base frame of the robot to use to obtain the robot's pose from when not using the ``use_start`` request parameter.
+
+    :route_frame:
+
+      ============== ==============
+      Type           Default
+      -------------- --------------
+      string         "map"
+      ============== ==============
+
+      Description
+        The frame of the route graph to plan within. If values in the graph file are not w.r.t. this frame, they will be automatically transformed.
+
+
+    :path_density:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         0.05
+      ============== ========
+
+      Description
+        The density of path-points in the output route, if using the ``nav_msgs/Path`` route rather than the collection of nodes and edges. This is used to upsample the route into a path that may be followed.
+
+    :max_iterations:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      int            0
+      ============== ========
+
+      Description
+        The maximum number of planning iterations to perform. If 0, the maximum number of iterations is used.
+
+    :max_planning_time:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double          2.0
+      ============== ========
+
+      Description
+        The maximum planning time to use.
+
+    :smooth_corners:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      bool           false
+      ============== ========
+
+      Description
+        Whether to smooth corners formed between subsequent edges after a route has been found
+
+    :smoothing_radius:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double          1.0
+      ============== ========
+
+      Description
+        Radius to fit to corners formed by edges if corner smoothing is enabled
+
+    :costmap_topic:
+
+      ============== ============================
+      Type           Default
+      -------------- ----------------------------
+      string         'global_costmap/costmap_raw'
+      ============== ============================
+
+      Description
+        The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
+
+    :tracker_update_rate:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         50.0
+      ============== ========
+
+      Description
+        The update rate of the tracker (when using ``ComputeAndTrackRoute`` action) to check the status of path tracking and execute route operations.
+
+    :aggregate_blocked_ids:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      bool           false
+      ============== ========
+
+      Description
+        Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently marked blocked IDs.
+
+    :boundary_radius_to_achieve_node:
+
+      ============== ========
+      Type           Default
+      -------------- --------
+      double         1.0
+      ============== ========
+
+      Description
+        The radius at a boundary condition (start, goal) to mark the node achieved by the tracker when using ``ComputeAndTrackRoute``. Note that this is not the same as the goal tolerance, as the route or path follower (controller) will continue to run until its goal tolerance is met.
+
+    :radius_to_achieve_node:
+
+      ============== ==========
+      Type           Default
+      -------------- ----------
+      double         1.0
+      ============== ==========
+
+      Description
+        The radius for non-boundary conditions to mark the node as achieved once within tolerance of, when using ``ComputeAndTrackRoute``. Note that this is a radius to consider achievable, however a refinement process takes place to most accurately identify when a node is reached. The radius is the trigger to start this process. Set this generously based on path tracking tolerances.
+
+    :max_prune_dist_from_edge:
+
+      ============== ==========
+      Type           Default
+      -------------- ----------
+      double         8.0
+      ============== ==========
+
+      Description
+        Maximum distance from an edge to consider pruning it as in-progress (i.e. if we're to far away from an edge, it is nonsensical to prune it).
+
+    :min_prune_dist_from_goal:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      double         0.15
+      ============== ===============
+
+      Description
+        Minimum distance from the goal node away from the request's goal pose (if using ``use_poses``) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
+
+    :min_prune_dist_from_start:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      double         0.1
+      ============== ===============
+
+      Description
+        Minimum distance from the start node away from the start pose (if using ``use_poses``) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.
+
+    :prune_goal:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      bool           true
+      ============== ===============
+
+      Description
+        Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only ``use_poses``).
+
+    :enable_nn_search:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      bool           true
+      ============== ===============
+
+      Description
+        Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
+
+    :max_nn_search_iterations:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      int            10000
+      ============== ===============
+
+      Description
+        The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.
+
+    :num_nearest_nodes:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      int            5
+      ============== ===============
+
+      Description
+        The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.
+
+    :graph_filepath:
+
+      ============== ===============
+      Type           Default
+      -------------- ---------------
+      string         ""
+      ============== ===============
+
+      Description
+        The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server's set graph service later.
+
+    :graph_file_loader:
+
+      ============== ========================
+      Type           Default
+      -------------- ------------------------
+      string         "GeoJsonGraphFileLoader"
+      ============== ========================
+
+      Description
+        The name of the graph file loader plugin to use.
+
+    :graph_file_loader.plugin:
+
+      ============== ====================================
+      Type           Default
+      -------------- ------------------------------------
+      string         "nav2_route::GeoJsonGraphFileLoader"
+      ============== ====================================
+
+      Description
+        The graph loading plugin to use. By default, we use ``geojson``.
+
+    :edge_cost_functions:
+
+      ============== ========================================
+      Type           Default
+      -------------- ----------------------------------------
+      vector<string> ["DistanceScorer", "DynamicEdgesScorer"]
+      ============== ========================================
+
+      Description
+        Which edge cost functions should be used for planning purposes to score the edges. By default, we optimize for minimum distance while providing a service cost function to set arbitrary costs or mark edge as closed from a service.
+
+    :operations:
+
+      ============== ========================================
+      Type           Default
+      -------------- ----------------------------------------
+      vector<string> ["AdjustSpeedLimit", "ReroutingService"]
+      ============== ========================================
+
+      Description
+        The route operation plugins to use for ``ComputeAndTrackRoute``. By default, we have a speed limit adjuster and a ROS service request rerouting operation.
+
+    :<name>.plugin:
+
+      ============== ============
+      Type           Default
+      -------------- ------------
+      string         ""
+      ============== ============
+
+      Description
+        The plugin to load under that name. The ``edge_cost_functions.<name>`` namespaces is also where plugin-specific parameters are defined.
+
+    :introspection_mode:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "disabled"
+      ============== =============================
+
+      Description
+        The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Edge Scorer Parameters
 **********************
@@ -802,45 +1106,90 @@ It uses a `std_srvs/Trigger` interface and is a demonstration of the `RouteOpera
 
 Example
 *******
-.. code-block:: yaml
 
-    route_server:
-      ros__parameters:
+.. tabs::
 
-        base_frame: "base_link"                       # Robot's base frame
-        route_frame: "map"                            # Global reference frame
-        path_density: 0.05                            # Density of points for generating the dense nav_msgs/Path from route (m)
-        max_iterations: 0                             # Maximum number of search iterations, if 0, uses maximum possible
-        max_planning_time: 2.0                        # Maximum planning time (seconds)
-        smoothing_corners: true                       # Whether to smooth corners formed by adjacent edges or not
-        smoothing_radius: 1.0                         # Radius of corner to fit into the corner
+  .. group-tab:: Lyrical and newer
 
-        graph_file_loader: "geo_json_graph_file_loader"   # Name of default file loader
-          plugin: nav2_route::GeoJsonGraphFileLoader  # file loader plugin to use
-        graph_filepath: ""                            # file path to graph to use
+    .. code-block:: yaml
 
-        edge_cost_functions: ["distance_scorer", "dynamic_edges_scorer"]  # Edge scoring cost functions to use
-        distance_scorer:
-          plugin: "nav2_route::DistanceScorer"
-        dynamic_edges_scorer:
-          plugin: "nav2_route::DynamicEdgesScorer"
+      route_server:
+        ros__parameters:
 
-        operations: ["adjust_speed_limit", "rerouting_service"] # Route operations plugins to use
-        adjust_speed_limit:
-          plugin: "nav2_route::AdjustSpeedLimit"
-        rerouting_service:
-          plugin: "nav2_route::ReroutingService"
+          base_frame: "base_link"                       # Robot's base frame
+          route_frame: "map"                            # Global reference frame
+          path_density: 0.05                            # Density of points for generating the dense nav_msgs/Path from route (m)
+          max_iterations: 0                             # Maximum number of search iterations, if 0, uses maximum possible
+          max_planning_time: 2.0                        # Maximum planning time (seconds)
+          smoothing_corners: true                       # Whether to smooth corners formed by adjacent edges or not
+          smoothing_radius: 1.0                         # Radius of corner to fit into the corner
 
-        tracker_update_rate: 50.0                     # Rate at which to check the status of path tracking
-        aggregate_blocked_ids: false                  # Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently blocked IDs.
-        boundary_radius_to_achieve_node: 1.0          # Radius (m) near boundary nodes (e.g. start/end) to enable evaluation of achievement metric
-        radius_to_achieve_node: 2.0                   # Radius (m) near route nodes as preliminary condition for evaluation of achievement metric
+          graph_file_loader: "geo_json_graph_file_loader"   # Name of default file loader
+            plugin: nav2_route::GeoJsonGraphFileLoader  # file loader plugin to use
+          graph_filepath: ""                            # file path to graph to use
 
-        max_prune_dist_from_edge: 8.0                       # Max distance from an edge to consider pruning it as in-progress (e.g. if we're too far away from the edge, its nonsensical to prune it)
-        min_prune_dist_from_goal: 0.15                      # Min distance from goal node away from goal pose to consider goal node pruning as considering it as being passed (in case goal pose is very close to a goal node, but not exact)
-        min_prune_dist_from_start: 0.10                     # Min distance from start node away from start pose to consider start node pruning as considering it as being passed (in case start pose is very close to a start node, but not exact)
-        prune_goal: true                              # Whether pruning the goal nodes from the route due to being past the goal pose requested is possible (pose requests only)
+          edge_cost_functions: ["distance_scorer", "dynamic_edges_scorer"]  # Edge scoring cost functions to use
+          distance_scorer:
+            plugin: "nav2_route::DistanceScorer"
+          dynamic_edges_scorer:
+            plugin: "nav2_route::DynamicEdgesScorer"
 
+          operations: ["adjust_speed_limit", "rerouting_service"] # Route operations plugins to use
+          adjust_speed_limit:
+            plugin: "nav2_route::AdjustSpeedLimit"
+          rerouting_service:
+            plugin: "nav2_route::ReroutingService"
+
+          tracker_update_rate: 50.0                     # Rate at which to check the status of path tracking
+          aggregate_blocked_ids: false                  # Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently blocked IDs.
+          boundary_radius_to_achieve_node: 1.0          # Radius (m) near boundary nodes (e.g. start/end) to enable evaluation of achievement metric
+          radius_to_achieve_node: 2.0                   # Radius (m) near route nodes as preliminary condition for evaluation of achievement metric
+
+          max_prune_dist_from_edge: 8.0                       # Max distance from an edge to consider pruning it as in-progress (e.g. if we're too far away from the edge, its nonsensical to prune it)
+          min_prune_dist_from_goal: 0.15                      # Min distance from goal node away from goal pose to consider goal node pruning as considering it as being passed (in case goal pose is very close to a goal node, but not exact)
+          min_prune_dist_from_start: 0.10                     # Min distance from start node away from start pose to consider start node pruning as considering it as being passed (in case start pose is very close to a start node, but not exact)
+          prune_goal: true                              # Whether pruning the goal nodes from the route due to being past the goal pose requested is possible (pose requests only)
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      route_server:
+        ros__parameters:
+
+          base_frame: "base_link"                       # Robot's base frame
+          route_frame: "map"                            # Global reference frame
+          path_density: 0.05                            # Density of points for generating the dense nav_msgs/Path from route (m)
+          max_iterations: 0                             # Maximum number of search iterations, if 0, uses maximum possible
+          max_planning_time: 2.0                        # Maximum planning time (seconds)
+          smoothing_corners: true                       # Whether to smooth corners formed by adjacent edges or not
+          smoothing_radius: 1.0                         # Radius of corner to fit into the corner
+
+          graph_file_loader: "GeoJsonGraphFileLoader"   # Name of default file loader
+            plugin: nav2_route::GeoJsonGraphFileLoader  # file loader plugin to use
+          graph_filepath: ""                            # file path to graph to use
+
+          edge_cost_functions: ["DistanceScorer", "DynamicEdgesScorer"]  # Edge scoring cost functions to use
+          DistanceScorer:
+            plugin: "nav2_route::DistanceScorer"
+          DynamicEdgesScorer:
+            plugin: "nav2_route::DynamicEdgesScorer"
+
+          operations: ["AdjustSpeedLimit", "ReroutingService"] # Route operations plugins to use
+          AdjustSpeedLimit:
+            plugin: "nav2_route::AdjustSpeedLimit"
+          ReroutingService:
+            plugin: "nav2_route::ReroutingService"
+
+          tracker_update_rate: 50.0                     # Rate at which to check the status of path tracking
+          aggregate_blocked_ids: false                  # Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently blocked IDs.
+          boundary_radius_to_achieve_node: 1.0          # Radius (m) near boundary nodes (e.g. start/end) to enable evaluation of achievement metric
+          radius_to_achieve_node: 2.0                   # Radius (m) near route nodes as preliminary condition for evaluation of achievement metric
+
+          max_prune_dist_from_edge: 8.0                       # Max distance from an edge to consider pruning it as in-progress (e.g. if we're too far away from the edge, its nonsensical to prune it)
+          min_prune_dist_from_goal: 0.15                      # Min distance from goal node away from goal pose to consider goal node pruning as considering it as being passed (in case goal pose is very close to a goal node, but not exact)
+          min_prune_dist_from_start: 0.10                     # Min distance from start node away from start pose to consider start node pruning as considering it as being passed (in case start pose is very close to a start node, but not exact)
+          prune_goal: true                              # Whether pruning the goal nodes from the route due to being past the goal pose requested is possible (pose requests only)
 
 Configuring the Nav2 Route Server Demo
 **************************************

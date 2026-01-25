@@ -52,7 +52,16 @@ Output Ports
 
 Example
 -------
+.. tabs::
 
-.. code-block:: xml
+  .. group-tab:: Lyrical and newer
 
-  <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+    .. code-block:: xml
+
+      <ControllerSelector selected_controller="{selected_controller}" default_controller="follow_path" topic_name="controller_selector"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>

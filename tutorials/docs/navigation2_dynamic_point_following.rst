@@ -149,76 +149,165 @@ ComputePathToPose Tutorial Steps
 
 Let's start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:
 
-.. code-block:: xml
+.. tabs::
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
-      <PipelineSequence name="NavigateWithReplanning">
-        <RateController hz="1.0">
-          <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
-        </RateController>
-        <FollowPath path="{path}" controller_id="follow_path"/>
-      </PipelineSequence>
-    </BehaviorTree>
-  </root>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
+            </RateController>
+            <FollowPath path="{path}" controller_id="follow_path"/>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+            </RateController>
+            <FollowPath path="{path}" controller_id="FollowPath"/>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
 
 First, let's make this behavior run until there's a failure. For this purpose, we will use the ``KeepRunningUntilFailure`` control node.
 
-.. code-block:: xml
+.. tabs::
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
-      <PipelineSequence name="NavigateWithReplanning">
-        <RateController hz="1.0">
-          <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
-        </RateController>
-        <KeepRunningUntilFailure>
-          <FollowPath path="{path}" controller_id="follow_path"/>
-        </KeepRunningUntilFailure>
-      </PipelineSequence>
-    </BehaviorTree>
-  </root>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based"/>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{path}" controller_id="follow_path"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{path}" controller_id="FollowPath"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
 
 We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic object pose we're trying to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It sets the new goal as ``updated_goal`` if a new goal on that topic is received.
 
-.. code-block:: xml
+.. tabs::
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
-      <PipelineSequence name="NavigateWithReplanning">
-        <RateController hz="1.0">
-          <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-            <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="grid_based"/>
-          </GoalUpdater>
-        </RateController>
-        <KeepRunningUntilFailure>
-          <FollowPath path="{path}" controller_id="follow_path"/>
-        </KeepRunningUntilFailure>
-      </PipelineSequence>
-    </BehaviorTree>
-  </root>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
+                <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="grid_based"/>
+              </GoalUpdater>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{path}" controller_id="follow_path"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
+                <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="GridBased"/>
+              </GoalUpdater>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{path}" controller_id="FollowPath"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
 
 To stay at a certain distance from the target, we will use the action node ``TruncatePath``. This node modifies a path making it shorter so we don't try to navigate into the object of interest. We can set up the desired distance to the goal using the input port ``distance``.
 
-.. code-block:: xml
+.. tabs::
 
-  <root main_tree_to_execute="MainTree">
-    <BehaviorTree ID="MainTree">
-      <PipelineSequence name="NavigateWithReplanning">
-        <RateController hz="1.0">
-          <Sequence>
-            <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
-              <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="grid_based"/>
-            </GoalUpdater>
-           <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
-          </Sequence>
-        </RateController>
-        <KeepRunningUntilFailure>
-          <FollowPath path="{truncated_path}" controller_id="follow_path"/>
-        </KeepRunningUntilFailure>
-      </PipelineSequence>
-    </BehaviorTree>
-  </root>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <Sequence>
+                <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
+                  <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="grid_based"/>
+                </GoalUpdater>
+              <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
+              </Sequence>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{truncated_path}" controller_id="follow_path"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+          <PipelineSequence name="NavigateWithReplanning">
+            <RateController hz="1.0">
+              <Sequence>
+                <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
+                  <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="GridBased"/>
+                </GoalUpdater>
+              <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
+              </Sequence>
+            </RateController>
+            <KeepRunningUntilFailure>
+              <FollowPath path="{truncated_path}" controller_id="FollowPath"/>
+            </KeepRunningUntilFailure>
+          </PipelineSequence>
+        </BehaviorTree>
+      </root>
 
 Now, you may save this behavior tree and use it in our navigation task.
 

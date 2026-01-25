@@ -225,41 +225,87 @@ Graceful Controller Parameters
 
 Example
 *******
-.. code-block:: yaml
 
-  controller_server:
-    ros__parameters:
-      controller_frequency: 20.0
-      min_x_velocity_threshold: 0.001
-      min_y_velocity_threshold: 0.5
-      min_theta_velocity_threshold: 0.001
-      progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
-      goal_checker_plugins: ["goal_checker"]
-      controller_plugins: ["follow_path"]
+.. tabs::
 
-      progress_checker:
-        plugin: "nav2_controller::SimpleProgressChecker"
-        required_movement_radius: 0.5
-        movement_time_allowance: 10.0
-      goal_checker:
-        plugin: "nav2_controller::SimpleGoalChecker"
-        xy_goal_tolerance: 0.25
-        yaw_goal_tolerance: 0.25
-        stateful: True
-      follow_path:
-        plugin: nav2_graceful_controller::GracefulController
-        min_lookahead: 0.25
-        max_lookahead: 1.0
-        initial_rotation: true
-        initial_rotation_threshold: 0.75
-        prefer_final_rotation: true
-        allow_backward: false
-        k_phi: 2.0
-        k_delta: 1.0
-        beta: 0.4
-        lambda: 2.0
-        v_linear_min: 0.1
-        v_linear_max: 0.5
-        v_angular_max: 5.0
-        v_angular_min_in_place: 0.25
-        slowdown_radius: 1.5
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_frequency: 20.0
+          min_x_velocity_threshold: 0.001
+          min_y_velocity_threshold: 0.5
+          min_theta_velocity_threshold: 0.001
+          progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+          goal_checker_plugins: ["goal_checker"]
+          controller_plugins: ["follow_path"]
+
+          progress_checker:
+            plugin: "nav2_controller::SimpleProgressChecker"
+            required_movement_radius: 0.5
+            movement_time_allowance: 10.0
+          goal_checker:
+            plugin: "nav2_controller::SimpleGoalChecker"
+            xy_goal_tolerance: 0.25
+            yaw_goal_tolerance: 0.25
+            stateful: True
+          follow_path:
+            plugin: nav2_graceful_controller::GracefulController
+            min_lookahead: 0.25
+            max_lookahead: 1.0
+            initial_rotation: true
+            initial_rotation_threshold: 0.75
+            prefer_final_rotation: true
+            allow_backward: false
+            k_phi: 2.0
+            k_delta: 1.0
+            beta: 0.4
+            lambda: 2.0
+            v_linear_min: 0.1
+            v_linear_max: 0.5
+            v_angular_max: 5.0
+            v_angular_min_in_place: 0.25
+            slowdown_radius: 1.5
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      controller_server:
+        ros__parameters:
+          controller_frequency: 20.0
+          min_x_velocity_threshold: 0.001
+          min_y_velocity_threshold: 0.5
+          min_theta_velocity_threshold: 0.001
+          progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+          goal_checker_plugins: ["goal_checker"]
+          controller_plugins: ["FollowPath"]
+
+          progress_checker:
+            plugin: "nav2_controller::SimpleProgressChecker"
+            required_movement_radius: 0.5
+            movement_time_allowance: 10.0
+          goal_checker:
+            plugin: "nav2_controller::SimpleGoalChecker"
+            xy_goal_tolerance: 0.25
+            yaw_goal_tolerance: 0.25
+            stateful: True
+          FollowPath:
+            plugin: nav2_graceful_controller::GracefulController
+            min_lookahead: 0.25
+            max_lookahead: 1.0
+            initial_rotation: true
+            initial_rotation_threshold: 0.75
+            prefer_final_rotation: true
+            allow_backward: false
+            k_phi: 2.0
+            k_delta: 1.0
+            beta: 0.4
+            lambda: 2.0
+            v_linear_min: 0.1
+            v_linear_max: 0.5
+            v_angular_max: 5.0
+            v_angular_min_in_place: 0.25
+            slowdown_radius: 1.5

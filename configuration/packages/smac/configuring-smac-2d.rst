@@ -204,25 +204,55 @@ Parameters
 
 Example
 *******
-.. code-block:: yaml
 
-  planner_server:
-    ros__parameters:
-      planner_plugins: ["grid_based"]
+.. tabs::
 
-      grid_based:
-        plugin: "nav2_smac_planner::SmacPlanner2D" # In Iron and older versions, "/" was used instead of "::"
-        tolerance: 0.125                      # tolerance for planning if unable to reach exact pose, in meters
-        downsample_costmap: false             # whether or not to downsample the map
-        downsampling_factor: 1                # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
-        allow_unknown: true                   # allow traveling in unknown space
-        max_iterations: 1000000               # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
-        max_on_approach_iterations: 1000      # maximum number of iterations to attempt to reach goal once in tolerance
-        max_planning_time: 2.0                # max time in s for planner to plan, smooth
-        cost_travel_multiplier: 2.0           # Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
-        use_final_approach_orientation: false # Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)
-        smoother:
-          max_iterations: 1000
-          w_smooth: 0.3
-          w_data: 0.2
-          tolerance: 1.0e-10
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          planner_plugins: ["grid_based"]
+
+          grid_based:
+            plugin: "nav2_smac_planner::SmacPlanner2D" # In Iron and older versions, "/" was used instead of "::"
+            tolerance: 0.125                      # tolerance for planning if unable to reach exact pose, in meters
+            downsample_costmap: false             # whether or not to downsample the map
+            downsampling_factor: 1                # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
+            allow_unknown: true                   # allow traveling in unknown space
+            max_iterations: 1000000               # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+            max_on_approach_iterations: 1000      # maximum number of iterations to attempt to reach goal once in tolerance
+            max_planning_time: 2.0                # max time in s for planner to plan, smooth
+            cost_travel_multiplier: 2.0           # Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
+            use_final_approach_orientation: false # Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)
+            smoother:
+              max_iterations: 1000
+              w_smooth: 0.3
+              w_data: 0.2
+              tolerance: 1.0e-10
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          planner_plugins: ["GridBased"]
+
+          GridBased:
+            plugin: "nav2_smac_planner::SmacPlanner2D" # In Iron and older versions, "/" was used instead of "::"
+            tolerance: 0.125                      # tolerance for planning if unable to reach exact pose, in meters
+            downsample_costmap: false             # whether or not to downsample the map
+            downsampling_factor: 1                # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
+            allow_unknown: true                   # allow traveling in unknown space
+            max_iterations: 1000000               # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+            max_on_approach_iterations: 1000      # maximum number of iterations to attempt to reach goal once in tolerance
+            max_planning_time: 2.0                # max time in s for planner to plan, smooth
+            cost_travel_multiplier: 2.0           # Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
+            use_final_approach_orientation: false # Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)
+            smoother:
+              max_iterations: 1000
+              w_smooth: 0.3
+              w_data: 0.2
+              tolerance: 1.0e-10

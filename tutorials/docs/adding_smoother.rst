@@ -70,18 +70,41 @@ Note: If you use only a single type of smoothing algorithm, there is no need to 
 
 A given behavior tree will have a line:
 
-.. code-block:: xml
+.. tabs::
 
-  <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+      <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
 
 This line calls the planner server and return a path to the ``path`` blackboard variable in the behavior tree. We are going to replace that line with the following to compute the path, smooth the path, and finally replace the ``path`` blackboard variable with the new smoothed path that the system will now interact with:
 
-.. code-block:: xml
+.. tabs::
 
-    <Sequence name="ComputeAndSmoothPath">
-      <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-      <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
-    </Sequence>
+  .. group-tab:: Lyrical and newer
+
+    .. code-block:: xml
+
+        <Sequence name="ComputeAndSmoothPath">
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="grid_based" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+          <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
+        </Sequence>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <Sequence name="ComputeAndSmoothPath">
+        <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+        <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
+      </Sequence>
 
 .. hint::
   When using this sequence inside a ``PipelineSequence`` node, it is recommended to remap the smoothed path to a different blackboard variable (e.g. ``smoothed_path="{smoothed_path}"``).
