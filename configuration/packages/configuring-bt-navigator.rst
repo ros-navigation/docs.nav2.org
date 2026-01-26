@@ -112,7 +112,7 @@ Parameters
   Description
     Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
-  
+
 :default_halt_timeout:
 
   ==== =======
