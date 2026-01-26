@@ -112,6 +112,18 @@ Parameters
   Description
     Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
+  
+:default_halt_timeout:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  50
+  ==== =======
+
+  Description
+    Default timeout (in seconds) for BT action node cancellation requests during node halt.
+    This value will be overwritten for a BT node if the input port "halt_timeout" is provided.
 
 :wait_for_service_timeout:
 
@@ -406,6 +418,8 @@ Example
         robot_base_frame: base_link
         transform_tolerance: 0.1
         filter_duration: 0.3
+        default_server_timeout: 20
+        default_halt_timeout: 50
         introspection_mode: "disabled"
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
