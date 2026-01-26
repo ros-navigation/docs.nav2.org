@@ -1184,6 +1184,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
 </ul>
 </li>
 </ul>
@@ -1444,8 +1445,29 @@ This value will be overwritten for a BT node if the input port “server_timeout
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">wait_for_service_timeout</dt>
+<dt class="field-odd">default_cancel_timeout</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>50</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Default timeout (in seconds) for BT action node cancellation requests during node halt.
+This value will be overwritten for a BT node if the input port “cancel_timeout” is provided.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">wait_for_service_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1465,8 +1487,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">introspection_mode</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">introspection_mode</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1485,8 +1507,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1508,8 +1530,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">global_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">global_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 43%" />
 <col style="width: 57%" />
@@ -1528,8 +1550,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">robot_base_frame</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">robot_base_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1548,8 +1570,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">odom_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">odom_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1568,8 +1590,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">error_code_name_prefixes</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">error_code_name_prefixes</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1602,8 +1624,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">error_code_names</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">error_code_names</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1626,8 +1648,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1646,8 +1668,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">allow_parameter_qos_overrides</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1666,8 +1688,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bt_search_directories</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bt_search_directories</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
@@ -1966,6 +1988,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 <span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
 <span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">    </span><span class="nt">filter_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="w">    </span><span class="nt">default_server_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">    </span><span class="nt">default_cancel_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
 <span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 <span class="w">    </span><span class="nt">default_nav_to_pose_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml</span>
 <span class="w">    </span><span class="nt">default_nav_through_poses_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml</span>

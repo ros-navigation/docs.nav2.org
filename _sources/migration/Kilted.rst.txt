@@ -789,3 +789,10 @@ Key parameters:
 This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
 
 See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details.
+
+New default_cancel_timeout parameter in bt_navigator
+----------------------------------------------------
+
+In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
+
+The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.

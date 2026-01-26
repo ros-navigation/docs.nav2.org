@@ -1184,6 +1184,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
 </ul>
 </li>
 </ul>
@@ -1987,6 +1988,11 @@ state). The controller will be provided the processed plan during computeVelocit
 </ul>
 <p>This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.</p>
 <p>See <a class="reference internal" href="../configuration/packages/nav2_controller-plugins/axis_goal_checker.html#configuring-nav2-controller-axis-goal-checker-plugin"><span class="std std-ref">AxisGoalChecker</span></a> for full configuration details.</p>
+</div>
+<div class="section" id="new-default-cancel-timeout-parameter-in-bt-navigator">
+<h2>New default_cancel_timeout parameter in bt_navigator<a class="headerlink" href="#new-default-cancel-timeout-parameter-in-bt-navigator" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5895">PR 5895</a>, a new <cite>default_cancel_timeout</cite> parameter was introduced to address timeout issues during action cancellation, such as <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">get</span> <span class="pre">result</span> <span class="pre">for</span> <span class="pre">follow_path</span> <span class="pre">in</span> <span class="pre">node</span> <span class="pre">halt!</span></code>.</p>
+<p>The default value is set to <cite>50</cite> milliseconds, and should be adjusted based on the planning time and overall system performance.</p>
 </div>
 </div>
 
