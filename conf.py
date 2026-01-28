@@ -36,6 +36,7 @@ extensions = [
     'breathe',
     'myst_parser',
     'sphinx_copybutton',
+    'sphinx_tabs.tabs',
     'sphinx.ext.extlinks',
     'sphinx.ext.graphviz',
     'sphinxcontrib.plantuml',
