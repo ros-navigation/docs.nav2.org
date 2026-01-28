@@ -43,407 +43,736 @@ If you use the Dynamic Window Pure Pursuit Controller algorithm or software from
 Regulated Pure Pursuit Parameters
 *********************************
 
-:max_linear_vel:
+.. tabs::
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.5
-  ============== ===========================
+  .. group-tab:: Lyrical and newer
 
-  Description
-    The maximum linear velocity (m/s) to use.  Previously `desired_linear_vel`
+    :max_linear_vel:
 
-:min_linear_vel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -0.5
-  ============== ===========================
+      Description
+        The maximum linear velocity (m/s) to use.
 
-  Description
-    The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
+    :min_linear_vel:
 
-:max_angular_vel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -0.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         2.5
-  ============== ===========================
+      Description
+        The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
 
-  Description
-    The maximum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
+    :max_angular_vel:
 
-:min_angular_vel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         2.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -2.5
-  ============== ===========================
+      Description
+        The maximum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
 
-  Description
-    The minimum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
+    :min_angular_vel:
 
-:max_linear_accel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -2.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         2.5
-  ============== ===========================
+      Description
+        The minimum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
 
-  Description
-    The maximum linear acceleration (m/s^2) used when `use_dynamic_window` is `true`.
+    :max_linear_accel:
 
-:max_linear_decel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         2.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -2.5
-  ============== ===========================
+      Description
+        The maximum linear acceleration (m/s^2) used when `use_dynamic_window` is `true`.
 
-  Description
-    The maximum linear deceleration (m/s^2) used when `use_dynamic_window` is `true`.
+    :max_linear_decel:
 
-:max_angular_accel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -2.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         3.2
-  ============== ===========================
+      Description
+        The maximum linear deceleration (m/s^2) used when `use_dynamic_window` is `true`.
 
-  Description
-    The maximum angular acceleration (rad/s^2) to use.
+    :max_angular_accel:
 
-:max_angular_decel:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.2
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -3.2
-  ============== ===========================
+      Description
+        The maximum angular acceleration (rad/s^2) to use.
 
-  Description
-    The maximum angular deceleration (rad/s^2) used when `use_dynamic_window` is `true`.
+    :max_angular_decel:
 
-:lookahead_dist:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -3.2
+      ============== ===========================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.6
-  ============== =============================
+      Description
+        The maximum angular deceleration (rad/s^2) used when `use_dynamic_window` is `true`.
 
-  Description
-    The lookahead distance (m) to use to find the lookahead point when ``use_velocity_scaled_lookahead_dist`` is ``false``.
+    :lookahead_dist:
 
-:min_lookahead_dist:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.3
-  ============== =============================
+      Description
+        The lookahead distance (m) to use to find the lookahead point when ``use_velocity_scaled_lookahead_dist`` is ``false``.
 
-  Description
-    The minimum lookahead distance (m) threshold when ``use_velocity_scaled_lookahead_dist`` is ``true``.
+    :min_lookahead_dist:
 
-:max_lookahead_dist:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.3
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.9
-  ============== =============================
+      Description
+        The minimum lookahead distance (m) threshold when ``use_velocity_scaled_lookahead_dist`` is ``true``.
 
-  Description
-    The maximum lookahead distance (m) threshold when ``use_velocity_scaled_lookahead_dist`` is ``true``.
+    :max_lookahead_dist:
 
-:lookahead_time:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.9
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.5
-  ============== =============================
+      Description
+        The maximum lookahead distance (m) threshold when ``use_velocity_scaled_lookahead_dist`` is ``true``.
 
-  Description
-    The time (s) to project the velocity by when ``use_velocity_scaled_lookahead_dist`` is ``true``. Also known as the lookahead gain.
+    :lookahead_time:
 
-:rotate_to_heading_angular_vel:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.5
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.8
-  ============== =============================
+      Description
+        The time (s) to project the velocity by when ``use_velocity_scaled_lookahead_dist`` is ``true``. Also known as the lookahead gain.
 
-  Description
-    If ``use_rotate_to_heading`` is ``true``, this is the angular velocity to use.
+    :rotate_to_heading_angular_vel:
 
-:use_velocity_scaled_lookahead_dist:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.8
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      Description
+        If ``use_rotate_to_heading`` is ``true``, this is the angular velocity to use.
 
-  Description
-    Whether to use the velocity scaled lookahead distances or constant ``lookahead_distance``.
+    :use_velocity_scaled_lookahead_dist:
 
-:min_approach_linear_velocity:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.05
-  ============== =============================
+      Description
+        Whether to use the velocity scaled lookahead distances or constant ``lookahead_distance``.
 
-  Description
-    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``.
+    :min_approach_linear_velocity:
 
-:approach_velocity_scaling_dist:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.6
-  ============== =============================
+      Description
+        The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``.
 
-  Description
-    The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width.
+    :approach_velocity_scaling_dist:
 
-:use_collision_detection:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width.
 
-  Description
-    Whether to enable collision detection.
+    :use_collision_detection:
 
-:max_allowed_time_to_collision_up_to_carrot:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.0
-  ============== =============================
+      Description
+        Whether to enable collision detection.
 
-  Description
-    The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
+    :max_allowed_time_to_collision_up_to_carrot:
 
-:use_regulated_linear_velocity_scaling:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
 
-  Description
-    Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).
+    :use_regulated_linear_velocity_scaling:
 
-:use_cost_regulated_linear_velocity_scaling:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).
 
-  Description
-    Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).
+    :use_cost_regulated_linear_velocity_scaling:
 
-:cost_scaling_dist:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.6
-  ============== =============================
+      Description
+        Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).
 
-  Description
-    The minimum distance from an obstacle to trigger the scaling of linear velocity, if ``use_cost_regulated_linear_velocity_scaling`` is enabled. The value set should be smaller or equal to the ``inflation_radius`` set in the inflation layer of costmap, since inflation is used to compute the distance from obstacles.
+    :cost_scaling_dist:
 
-:cost_scaling_gain:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.0
-  ============== =============================
+      Description
+        The minimum distance from an obstacle to trigger the scaling of linear velocity, if ``use_cost_regulated_linear_velocity_scaling`` is enabled. The value set should be smaller or equal to the ``inflation_radius`` set in the inflation layer of costmap, since inflation is used to compute the distance from obstacles.
 
-  Description
-    A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within ``cost_scaling_dist``. Lower value reduces speed more quickly.
+    :cost_scaling_gain:
 
-:regulated_linear_scaling_min_radius:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.90
-  ============== =============================
+      Description
+        A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within ``cost_scaling_dist``. Lower value reduces speed more quickly.
 
-  Description
-    The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``true``. Remember, sharper turns have smaller radii.
+    :regulated_linear_scaling_min_radius:
 
-:regulated_linear_scaling_min_speed:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.90
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.25
-  ============== =============================
+      Description
+        The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``true``. Remember, sharper turns have smaller radii.
 
-  Description
-    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``.
+    :regulated_linear_scaling_min_speed:
 
-:use_fixed_curvature_lookahead:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.25
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      Description
+        The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``.
 
-  Description
-    Whether to use a fixed lookahead distance to compute curvature from. Since a lookahead distance may be set to vary on velocity, it can introduce a reference cycle that can be problematic for large lookahead distances.
+    :use_fixed_curvature_lookahead:
 
-:curvature_lookahead_dist:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.6
-  ============== =============================
+      Description
+        Whether to use a fixed lookahead distance to compute curvature from. Since a lookahead distance may be set to vary on velocity, it can introduce a reference cycle that can be problematic for large lookahead distances.
 
-  Description
-    Distance to look ahead on the path to detect curvature.
+    :curvature_lookahead_dist:
 
-:use_rotate_to_heading:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        Distance to look ahead on the path to detect curvature.
 
-  Description
-    Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
+    :use_rotate_to_heading:
 
-    Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-:allow_reversing:
+      Description
+        Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+        Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
 
-  Description
-    Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the :ref:`configuring_smac_planner` to know more.
+    :allow_reversing:
 
-:rotate_to_heading_min_angle:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.785
-  ============== =============================
+      Description
+        Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the :ref:`configuring_smac_planner` to know more.
 
-  Description
-    The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if ``use_rotate_to_heading`` is ``true``.
+    :rotate_to_heading_min_angle:
 
-:use_cancel_deceleration:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.785
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      Description
+        The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if ``use_rotate_to_heading`` is ``true``.
 
-  Description
-    Whether to use deceleration when the goal is canceled.
+    :use_cancel_deceleration:
 
-:cancel_deceleration:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         3.2
-  ============== =============================
+      Description
+        Whether to use deceleration when the goal is canceled.
 
-  Description
-    Linear deceleration (m/s/s) to apply when the goal is canceled.
+    :cancel_deceleration:
 
-:interpolate_curvature_after_goal:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         3.2
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      Description
+        Linear deceleration (m/s/s) to apply when the goal is canceled.
 
-  Description
-    Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the ``/curvature_lookahead_point`` topic similarly to ``/lookahead_point``
+    :interpolate_curvature_after_goal:
 
-    Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-:stateful:
+      Description
+        Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the ``/curvature_lookahead_point`` topic similarly to ``/lookahead_point``
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+        Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
 
-  Description
-    Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
+    :stateful:
 
-:allow_parameter_qos_overrides:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
 
-  Description
-    Whether to allow QoS profiles to be overwritten with parameterized values.
+    :allow_parameter_qos_overrides:
 
-:min_distance_to_obstacle:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         -1.0
-  ============== =============================
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
 
-  Description
-    The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
+    :min_distance_to_obstacle:
 
-:use_dynamic_window:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         -1.0
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      Description
+        The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
 
-  Description
-    Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.
-    Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
+    :use_dynamic_window:
 
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.
+        Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
+
+
+  .. group-tab:: Kilted and older
+
+    :desired_linear_vel:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.5
+      ============== ===========================
+
+      Description
+        The desired maximum linear velocity (m/s) to use.
+
+    :lookahead_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
+
+      Description
+        The lookahead distance (m) to use to find the lookahead point when ``use_velocity_scaled_lookahead_dist`` is ``false``.
+
+    :min_lookahead_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.3
+      ============== =============================
+
+      Description
+        The minimum lookahead distance (m) threshold when ``use_velocity_scaled_lookahead_dist`` is ``true``.
+
+    :max_lookahead_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.9
+      ============== =============================
+
+      Description
+        The maximum lookahead distance (m) threshold when ``use_velocity_scaled_lookahead_dist`` is ``true``.
+
+    :lookahead_time:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.5
+      ============== =============================
+
+      Description
+        The time (s) to project the velocity by when ``use_velocity_scaled_lookahead_dist`` is ``true``. Also known as the lookahead gain.
+
+    :rotate_to_heading_angular_vel:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.8
+      ============== =============================
+
+      Description
+        If ``use_rotate_to_heading`` is ``true``, this is the angular velocity to use.
+
+    :use_velocity_scaled_lookahead_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        Whether to use the velocity scaled lookahead distances or constant ``lookahead_distance``.
+
+    :min_approach_linear_velocity:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
+
+      Description
+        The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``.
+
+    :approach_velocity_scaling_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
+
+      Description
+        The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width.
+
+    :use_collision_detection:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to enable collision detection.
+
+    :max_allowed_time_to_collision_up_to_carrot:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
+
+      Description
+        The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
+
+    :use_regulated_linear_velocity_scaling:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).
+
+    :use_cost_regulated_linear_velocity_scaling:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).
+
+    :cost_scaling_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
+
+      Description
+        The minimum distance from an obstacle to trigger the scaling of linear velocity, if ``use_cost_regulated_linear_velocity_scaling`` is enabled. The value set should be smaller or equal to the ``inflation_radius`` set in the inflation layer of costmap, since inflation is used to compute the distance from obstacles.
+
+    :cost_scaling_gain:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
+
+      Description
+        A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within ``cost_scaling_dist``. Lower value reduces speed more quickly.
+
+    :regulated_linear_scaling_min_radius:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.90
+      ============== =============================
+
+      Description
+        The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``true``. Remember, sharper turns have smaller radii.
+
+    :regulated_linear_scaling_min_speed:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.25
+      ============== =============================
+
+      Description
+        The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``.
+
+    :use_fixed_curvature_lookahead:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        Whether to use a fixed lookahead distance to compute curvature from. Since a lookahead distance may be set to vary on velocity, it can introduce a reference cycle that can be problematic for large lookahead distances.
+
+    :curvature_lookahead_dist:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.6
+      ============== =============================
+
+      Description
+        Distance to look ahead on the path to detect curvature.
+
+    :use_rotate_to_heading:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
+
+        Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
+
+    :allow_reversing:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the :ref:`configuring_smac_planner` to know more.
+
+    :rotate_to_heading_min_angle:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.785
+      ============== =============================
+
+      Description
+        The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if ``use_rotate_to_heading`` is ``true``.
+
+    :max_angular_accel:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.2
+      ============== ===========================
+
+      Description
+        The maximum angular acceleration (rad/s^2) to use.
+
+    :use_cancel_deceleration:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        Whether to use deceleration when the goal is canceled.
+
+    :cancel_deceleration:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         3.2
+      ============== =============================
+
+      Description
+        Linear deceleration (m/s/s) to apply when the goal is canceled.
+
+    :interpolate_curvature_after_goal:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the ``/curvature_lookahead_point`` topic similarly to ``/lookahead_point``
+
+        Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
+
+    :stateful:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
+
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
+
+    :min_distance_to_obstacle:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         -1.0
+      ============== =============================
+
+      Description
+        The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
 
 Example
 *******
@@ -533,14 +862,7 @@ Example
             stateful: True
           FollowPath:
             plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-            max_linear_vel: 0.5
-            min_linear_vel: -0.5
-            max_angular_vel: 2.5
-            min_angular_vel: -2.5
-            max_linear_accel: 2.5
-            max_linear_decel: -2.5
-            max_angular_accel: 3.2
-            max_angular_decel: -3.2
+            desired_linear_vel: 0.5
             lookahead_dist: 0.6
             min_lookahead_dist: 0.3
             max_lookahead_dist: 0.9
@@ -562,6 +884,5 @@ Example
             use_rotate_to_heading: true
             allow_reversing: false
             rotate_to_heading_min_angle: 0.785
-            min_distance_to_obstacle: 0.0
+            max_angular_accel: 3.2
             stateful: true
-            use_dynamic_window: false

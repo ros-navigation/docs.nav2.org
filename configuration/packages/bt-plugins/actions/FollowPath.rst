@@ -137,17 +137,6 @@ Input Ports
       Description
           Mapped name of the progress checker plugin type to use, e.g. SimpleProgressChecker.
 
-    :path_handler_id:
-
-      ====== =======
-      Type   Default
-      ------ -------
-      string N/A
-      ====== =======
-
-      Description
-          Mapped name of the path handler plugin type to use, e.g. FeasiblePathHandler.
-
     :server_name:
 
       ====== =======
@@ -174,39 +163,66 @@ Input Ports
 Output Ports
 ------------
 
-:error_code_id:
+.. tabs::
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  uint16          N/A
-  ============== =======
+  .. group-tab:: Lyrical and newer
 
-  Description
-        Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
+    :error_code_id:
 
-:error_msg:
+      ============== =======
+      Type           Default
+      -------------- -------
+      uint16          N/A
+      ============== =======
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      Description
+            Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
 
-  Description
-        Follow path error message. See ``FollowPath`` action for the enumerated set of error code definitions.
+    :error_msg:
 
-:tracking_feedback:
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
 
-  ================================ =======
-  Type                             Default
-  -------------------------------- -------
-  nav2_msgs::msg::TrackingFeedback N/A
-  ================================ =======
+      Description
+            Follow path error message. See ``FollowPath`` action for the enumerated set of error code definitions.
 
-  Description
-        Tracking feedback message from the controller server, including cross track error, current path index, remaining path length, etc.
+    :tracking_feedback:
 
+      ================================ =======
+      Type                             Default
+      -------------------------------- -------
+      nav2_msgs::msg::TrackingFeedback N/A
+      ================================ =======
+
+      Description
+            Tracking feedback message from the controller server, including cross track error, current path index, remaining path length, etc.
+
+  .. group-tab:: Kilted and older
+
+    :error_code_id:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      uint16          N/A
+      ============== =======
+
+      Description
+            Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
+
+    :error_msg:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+            Follow path error message. See ``FollowPath`` action for the enumerated set of error code definitions.
 
 
 Example
@@ -224,4 +240,4 @@ Example
 
     .. code-block:: xml
 
-      <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" path_handler_id="PathHandler" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
+      <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="follow_path" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>

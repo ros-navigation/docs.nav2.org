@@ -95,6 +95,9 @@ Input Ports
       Description
           Goal poses. Takes in a blackboard variable, e.g. "{goals}".
 
+      Note
+          In Jazzy and older versions, the ``geometry_msgs::msg::PoseStamped[]`` type is used.
+
     :planner_id:
 
       ============== =======

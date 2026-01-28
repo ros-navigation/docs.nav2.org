@@ -30,126 +30,256 @@ See the package's ``README`` for more complete information.
 Rotation Shim Controller Parameters
 ***********************************
 
-:angular_dist_threshold:
+.. tabs::
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.785
-  ============== ===========================
+  .. group-tab:: Lyrical and newer
 
-  Description
-    Maximum angular distance, in radians, away from the path heading to trigger rotation
+    :angular_dist_threshold:
 
-:angular_disengage_threshold:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.785
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.3925
-  ============== ===========================
+      Description
+        Maximum angular distance, in radians, away from the path heading to trigger rotation
 
-  Description
-    New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the ``angular_dist_threshold`` instead. This allows for better alignment before passing to the child controller when engaged.
+    :angular_disengage_threshold:
 
-:forward_sampling_distance:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.3925
+      ============== ===========================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.5
-  ============== =============================
+      Description
+        New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the ``angular_dist_threshold`` instead. This allows for better alignment before passing to the child controller when engaged.
 
-  Description
-    Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler's prune distance.
+    :forward_sampling_distance:
 
-:rotate_to_heading_angular_vel:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.5
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.8
-  ============== =============================
+      Description
+        Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler's prune distance.
 
-  Description
-    Angular rotational velocity, in rad/s, to rotate to the path heading
+    :rotate_to_heading_angular_vel:
 
-:primary_controller:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.8
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         N/A
-  ============== =============================
+      Description
+        Angular rotational velocity, in rad/s, to rotate to the path heading.
 
-  Description
-    Internal controller plugin to use for actual control behavior after rotating to heading
+    :primary_controller:
 
-:max_angular_accel:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      N/A            N/A
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         3.2
-  ============== =============================
+      Description
+        Namespace for internal controller plugin to use for actual control behavior after rotating to heading.
 
-  Description
-    Maximum angular acceleration for rotation to heading (rad/s/s)
+      Note
+        Use ``plugin:`` to specify the internal controller type and other controller parameters within this namespace. An example is given below.
 
-:simulate_ahead_time:
+    :max_angular_accel:
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.0
-  ============== =============================
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         3.2
+      ============== =============================
 
-  Description
-    Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.
+      Description
+        Maximum angular acceleration for rotation to heading (rad/s/s)
 
-:rotate_to_goal_heading:
+    :simulate_ahead_time:
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
 
-  Description
-    If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
+      Description
+        Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.
 
-:rotate_to_heading_once:
+    :rotate_to_goal_heading:
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  Description
-    If true, the rotationShimController will only rotate to heading once on a new goal, not each time a path is set.
+      Description
+        If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
 
-:closed_loop:
+    :rotate_to_heading_once:
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  Description
-    If false, the rotationShimController will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately and the robot's controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot's current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
+      Description
+        If true, the rotationShimController will only rotate to heading once on a new goal, not each time a path is set.
 
-:use_path_orientations:
+    :closed_loop:
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  Description
-    If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path points. Use for for feasible planners like the Smac Planner which generate feasible paths with orientations for forward and reverse motion.
+      Description
+        If false, the rotationShimController will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately and the robot's controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot's current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
+
+    :use_path_orientations:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path points. Use for for feasible planners like the Smac Planner which generate feasible paths with orientations for forward and reverse motion.
+
+  .. group-tab:: Kilted and older
+
+    :angular_dist_threshold:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.785
+      ============== ===========================
+
+      Description
+        Maximum angular distance, in radians, away from the path heading to trigger rotation
+
+    :angular_disengage_threshold:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.3925
+      ============== ===========================
+
+      Description
+        New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the ``angular_dist_threshold`` instead. This allows for better alignment before passing to the child controller when engaged.
+
+    :forward_sampling_distance:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.5
+      ============== =============================
+
+      Description
+        Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler's prune distance.
+
+    :rotate_to_heading_angular_vel:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.8
+      ============== =============================
+
+      Description
+        Angular rotational velocity, in rad/s, to rotate to the path heading
+
+    :primary_controller:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         N/A
+      ============== =============================
+
+      Description
+        Internal controller plugin to use for actual control behavior after rotating to heading
+
+    :max_angular_accel:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         3.2
+      ============== =============================
+
+      Description
+        Maximum angular acceleration for rotation to heading (rad/s/s)
+
+    :simulate_ahead_time:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
+
+      Description
+        Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.
+
+    :rotate_to_goal_heading:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
+
+    :rotate_to_heading_once:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description
+        If true, the rotationShimController will only rotate to heading once on a new goal, not each time a path is set.
+
+    :closed_loop:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        If false, the rotationShimController will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately and the robot's controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot's current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
+
+    :use_path_orientations:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path points. Use for for feasible planners like the Smac Planner which generate feasible paths with orientations for forward and reverse motion.
 
 Example
 *******
@@ -219,6 +349,7 @@ Example
             stateful: True
           FollowPath:
             plugin: "nav2_rotation_shim_controller::RotationShimController"
+            primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
             angular_dist_threshold: 0.785
             forward_sampling_distance: 0.5
             angular_disengage_threshold: 0.3925
@@ -228,6 +359,4 @@ Example
             rotate_to_goal_heading: false
 
             # Primary controller params can be placed here below
-            primary_controller:
-              plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-              # ...
+            # ...
