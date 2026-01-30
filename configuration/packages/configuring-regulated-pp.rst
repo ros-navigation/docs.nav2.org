@@ -243,7 +243,7 @@ Regulated Pure Pursuit Parameters
       ============== =============================
 
       Description
-        The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
+        The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``.
 
     :use_regulated_linear_velocity_scaling:
 
@@ -789,7 +789,7 @@ Example
           min_x_velocity_threshold: 0.001
           min_y_velocity_threshold: 0.5
           min_theta_velocity_threshold: 0.001
-          progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+          progress_checker_plugins: ["progress_checker"]
           goal_checker_plugins: ["goal_checker"]
           controller_plugins: ["follow_path"]
 

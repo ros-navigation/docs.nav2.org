@@ -48,14 +48,14 @@ For this setup, the following lines should be added into ``collision_monitor_par
           type: "polygon"
           points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
           action_type: "stop"
-          min_points: 4  # max_points: 3 for Humble
+          min_points: 4
           visualize: True
           polygon_pub_topic: "polygon_stop"
         polygon_slow:
           type: "polygon"
           points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
           action_type: "slowdown"
-          min_points: 4  # max_points: 3 for Humble
+          min_points: 4
           slowdown_ratio: 0.3
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
@@ -116,20 +116,20 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
           transform_tolerance: 0.5
           source_timeout: 5.0
           stop_pub_timeout: 2.0
-          enable_stamped_cmd_vel: True # False for Jazzy or older by default
+          enable_stamped_cmd_vel: True
           polygons: ["polygon_stop", "polygon_slow"]
           polygon_stop:
             type: "polygon"
             points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
             action_type: "stop"
-            min_points: 4  # max_points: 3 for Humble
+            min_points: 4
             visualize: True
             polygon_pub_topic: "polygon_stop"
           polygon_slow:
             type: "polygon"
             points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
             action_type: "slowdown"
-            min_points: 4  # max_points: 3 for Humble
+            min_points: 4
             slowdown_ratio: 0.3
             visualize: True
             polygon_pub_topic: "polygon_slowdown"

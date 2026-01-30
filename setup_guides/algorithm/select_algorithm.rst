@@ -70,7 +70,7 @@ Example Configuration
           ros__parameters:
             planner_plugins: ['grid_based']
             grid_based:
-              plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
+              plugin: 'nav2_navfn_planner::NavfnPlanner'
 
   .. group-tab:: Kilted and older
 

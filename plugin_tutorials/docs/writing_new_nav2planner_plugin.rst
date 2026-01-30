@@ -217,7 +217,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
         ros__parameters:
           plugins: ["grid_based"]
           grid_based:
-            plugin: "nav2_navfn_planner::NavfnPlanner" # For Foxy and later. In Iron and older versions, "/" was used instead of "::"
+            plugin: "nav2_navfn_planner::NavfnPlanner"
             tolerance: 2.0
             use_astar: false
             allow_unknown: true
