@@ -45,7 +45,7 @@ For demonstration purposes, let's specify two obstacle shapes: triangle polygon 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 
@@ -102,7 +102,7 @@ The complete ``vector_object_server_params.yaml`` YAML-file for the demonstratio
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

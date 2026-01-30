@@ -16,7 +16,7 @@ Parameters
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     :planner_plugins:
 
@@ -198,7 +198,7 @@ When the :code:`planner_plugins` parameter is not overridden, the following defa
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     ================= =====================================================
     Namespace         Plugin
@@ -219,7 +219,7 @@ Example
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

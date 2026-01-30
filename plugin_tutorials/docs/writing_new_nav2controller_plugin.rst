@@ -279,7 +279,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

@@ -36,7 +36,7 @@ If it continues to fail, the next recovery in the recovery subtree is ticked.
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, ``GoalCheckerSelector``, ``ProgressCheckerSelector``, and ``PathHandlerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``grid_based`` and ``follow_path``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic.
     It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.

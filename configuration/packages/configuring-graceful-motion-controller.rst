@@ -228,7 +228,7 @@ Example
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

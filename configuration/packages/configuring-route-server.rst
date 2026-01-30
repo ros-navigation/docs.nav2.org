@@ -37,7 +37,7 @@ Server Parameters
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     :base_frame:
 
@@ -1109,7 +1109,7 @@ Example
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

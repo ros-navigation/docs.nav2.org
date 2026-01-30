@@ -11,7 +11,7 @@ Parameters
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     ``<nav2_controller plugin>``: nav2_controller plugin name defined in the **path_handler_plugin_id** parameter in :ref:`configuring_controller_server`.
 
@@ -109,7 +109,7 @@ Example
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

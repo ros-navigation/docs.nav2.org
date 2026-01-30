@@ -31,7 +31,7 @@ It may be instead advisable to create different subtree contexts using condition
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

@@ -38,7 +38,7 @@ This behavior tree replans the global path periodically at 1 Hz and it also has 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. image:: ../images/walkthrough/lyrical/overall_bt.png
       :align: center
@@ -52,7 +52,7 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 
@@ -159,7 +159,7 @@ This can be represented in the following way:
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. image:: ../images/walkthrough/lyrical/overall_bt_w_breakdown.png
       :align: center
@@ -198,7 +198,7 @@ Now that we have gone over the control flow between the ``Navigation`` subtree a
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. image:: ../images/walkthrough/lyrical/navigation_subtree.png
       :align: center
@@ -212,7 +212,7 @@ The XML of this subtree is as follows:
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

@@ -209,7 +209,7 @@ Select this BT XML file in your specific navigation request in ``NavigateToPose`
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

@@ -72,7 +72,7 @@ A given behavior tree will have a line:
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 
@@ -88,7 +88,7 @@ This line calls the planner server and return a path to the ``path`` blackboard 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

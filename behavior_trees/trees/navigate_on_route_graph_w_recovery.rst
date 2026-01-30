@@ -21,7 +21,7 @@ For a detailed description of the role of the selector nodes, recovery behaviors
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

@@ -20,7 +20,7 @@ This behavior tree will execute infinitely in time until the navigation request 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

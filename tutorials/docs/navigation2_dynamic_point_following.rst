@@ -151,7 +151,7 @@ Let's start from this simple behavior tree. This behavior tree replans a new pat
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 
@@ -185,7 +185,7 @@ First, let's make this behavior run until there's a failure. For this purpose, w
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 
@@ -223,7 +223,7 @@ We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 
@@ -265,7 +265,7 @@ To stay at a certain distance from the target, we will use the action node ``Tru
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

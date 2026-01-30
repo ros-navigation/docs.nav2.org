@@ -284,7 +284,7 @@ Here is an example of configuration YAML for the Vector Object server:
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

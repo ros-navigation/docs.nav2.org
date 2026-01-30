@@ -32,7 +32,7 @@ Rotation Shim Controller Parameters
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     :angular_dist_threshold:
 
@@ -286,7 +286,7 @@ Example
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

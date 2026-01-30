@@ -44,7 +44,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 
@@ -117,7 +117,7 @@ Configuring Primary Controller
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     There is one more remaining parameter of the ``RotationShimController`` not mentioned above, the ``primary_controller``. This is the type of controller that your application would like to use as the primary modus operandi. This requires an additional namespace within the parent namespace for the shim plugin. You can observe this below, where the ``primary_controller`` is placed in the ``follow_path`` namespace and uses the ``DWB`` as an example (with the progress and goal checkers removed for brevity).
 

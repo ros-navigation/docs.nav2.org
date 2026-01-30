@@ -14,7 +14,7 @@ This is a primitive experiment to measure odometric accuracy and can be used and
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

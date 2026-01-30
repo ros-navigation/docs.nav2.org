@@ -15,7 +15,7 @@ If there is no significantly longer path, the monitor node goes into the ``Follo
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. image:: ../images/walkthrough/lyrical/patience_and_recovery.png
 
@@ -46,7 +46,7 @@ In conclusion, this particular BT would serve, both as an example and ready-to-u
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: xml
 

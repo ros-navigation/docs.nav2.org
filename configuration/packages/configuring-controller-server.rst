@@ -16,7 +16,7 @@ Parameters
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     :controller_frequency:
 
@@ -566,7 +566,7 @@ Default Plugins
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin`, :code:`path_handler_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
 
@@ -601,7 +601,7 @@ Example
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 

@@ -39,7 +39,7 @@ For this setup, the following lines should be added into ``collision_monitor_par
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 
@@ -102,7 +102,7 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 
@@ -196,7 +196,7 @@ Below is the example configuration using 4 sub-polygons to cover the full range 
 
 .. tabs::
 
-  .. group-tab:: Lyrical and newer
+  .. group-tab:: Rolling
 
     .. code-block:: yaml
 
