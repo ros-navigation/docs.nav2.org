@@ -827,3 +827,7 @@ If you want to use this condition node in your behavior trees:
 1. Ensure your controller publishes ``tracking_feedback`` messages
 2. Add the condition node to your BT XML with appropriate error bounds
 3. The node differentiates between left/right errors, allowing asymmetric tolerance
+
+**Explanation for behavior tree**
+
+Given behavior tree in default settings checking tracking error(deviation from path) on both sides with given max tolerance of 0.05 and working on 3Hz frequency.
