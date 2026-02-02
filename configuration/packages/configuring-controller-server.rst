@@ -344,6 +344,23 @@ Parameters
       Description
         Whether to publish a zero velocity command on goal exit. This is useful for stopping the robot when a goal terminates.
 
+    :action_server_result_timeout:
+
+      ====== ======= =======
+      Type   Default Unit
+      ------ ------- -------
+      double 10.0    seconds
+      ====== ======= =======
+
+      Description
+        The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
+        15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
+        some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline.
+        This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
+
+      Note
+        Used in Jazzy.
+
     :controller_plugins:
 
       ============== ==============
@@ -517,7 +534,7 @@ Parameters
       ============== =============================
       Type           Default
       -------------- -----------------------------
-      double         0.25
+      double         0.1
       ============== =============================
 
       Description
@@ -533,17 +550,6 @@ Parameters
 
       Description
         The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
-    :allow_parameter_qos_overrides:
-
-      ============== =============================
-      Type           Default
-      -------------- -----------------------------
-      bool           true
-      ============== =============================
-
-      Description
-        Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Provided Plugins
 ****************
@@ -615,9 +621,10 @@ Example
           search_window: 2.0
           odom_topic: "odom"
           odom_duration: 0.3
+          bond_heartbeat_period: 0.25
           progress_checker_plugins: ["progress_checker"]
           goal_checker_plugins: ["goal_checker"]
-          path_handler_plguins: ["path_handler"]
+          path_handler_plugins: ["path_handler"]
           controller_plugins: ["follow_path"]
           progress_checker:
             plugin: "nav2_controller::SimpleProgressChecker"
@@ -655,6 +662,8 @@ Example
           failure_tolerance: 0.3
           odom_topic: "odom"
           odom_duration: 0.3
+          bond_heartbeat_period: 0.1
+          action_server_result_timeout: 10.0 # Used in Jazzy only
           progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
           goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
           controller_plugins: ["FollowPath"]
@@ -666,7 +675,6 @@ Example
             plugin: "nav2_controller::SimpleGoalChecker"
             xy_goal_tolerance: 0.25
             yaw_goal_tolerance: 0.25
-            path_length_tolerance: 1.0
             stateful: True
           FollowPath:
             plugin: "dwb_core::DWBLocalPlanner"

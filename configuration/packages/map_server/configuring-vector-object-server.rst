@@ -74,208 +74,224 @@ Using Vector Object server publishing an output map as input mask to :ref:`Costm
 Parameters
 ==========
 
-:map_topic:
+.. tabs::
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "vo_map"
-  ============== =============================
+  .. group-tab:: Rolling
 
-  Description:
-    Output topic, publishing an OccupancyGrid map with vector objects put on it.
+    :map_topic:
 
-:global_frame_id:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "vo_map"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "map"
-  ============== =============================
+      Description:
+        Output topic, publishing an OccupancyGrid map with vector objects put on it.
 
-  Description:
-    The name of the coordinate frame where the map is being published at.
+    :global_frame_id:
 
-:resolution:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "map"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.05
-  ============== =============================
+      Description:
+        The name of the coordinate frame where the map is being published at.
 
-  Description:
-    Output map resolution in meters.
+    :resolution:
 
-:default_value:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  int            -1 (unknown)
-  ============== =============================
+      Description:
+        Output map resolution in meters.
 
-  Description:
-    Default OccupancyGrid value to fill the background of output map with.
+    :default_value:
 
-:overlay_type:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      int            -1 (unknown)
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  int            0
-  ============== =============================
+      Description:
+        Default OccupancyGrid value to fill the background of output map with.
 
-  Description:
-    How one vector object to be overlaid with other and the map.
-    The following values are supported:
+    :overlay_type:
 
-     - 0 (``OVERLAY_SEQ``): Vector objects are superimposed in the order in which they have arrived.
-     - 1 (``OVERLAY_MAX``): Maximum value from vector objects and map is being chosen.
-     - 2 (``OVERLAY_MIN``): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      int            0
+      ============== =============================
 
-:update_frequency:
+      Description:
+        How one vector object to be overlaid with other and the map.
+        The following values are supported:
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         1.0
-  ============== =============================
+        - 0 (``OVERLAY_SEQ``): Vector objects are superimposed in the order in which they have arrived.
+        - 1 (``OVERLAY_MAX``): Maximum value from vector objects and map is being chosen.
+        - 2 (``OVERLAY_MIN``): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.
 
-  Description:
-    Output map update frequency (when dynamic update model is switched-on).
+    :update_frequency:
 
-:transform_tolerance:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         1.0
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.1
-  ============== =============================
+      Description:
+        Output map update frequency (when dynamic update model is switched-on).
 
-  Description:
-    Transform tolerance for the case when any of the shapes are placed in different than map's frame.
+    :transform_tolerance:
 
-:shapes:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  vector<string> {}
-  ============== =============================
+      Description:
+        Transform tolerance for the case when any of the shapes are placed in different than map's frame.
 
-  Description:
-    List of vector objects (polygons and circles). Empty by-default.
+    :shapes:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      vector<string> {}
+      ============== =============================
+
+      Description:
+        List of vector objects (polygons and circles). Empty by-default.
 
 Shapes parameters
 -----------------
 
-``<shape_name>`` - is the corresponding shape name string selected for this vector object.
+.. tabs::
 
-:``<shape_name>``.type:
+  .. group-tab:: Rolling
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         N/A
-  ============== =============================
+    ``<shape_name>`` - is the corresponding shape name string selected for this vector object.
 
-  Description:
-    Type of vector object shape. Available values are ``polygon`` and ``circle``. Causes an error, if not specialized.
+    :``<shape_name>``.type:
 
-:``<shape_name>``.uuid:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         N/A
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         N/A
-  ============== =============================
+      Description:
+        Type of vector object shape. Available values are ``polygon`` and ``circle``. Causes an error, if not specialized.
 
-  Description:
-    UUID of the shape specified in ``12345678-9abc-def0-1234-56789abcdef0`` format. Parameter is optional and could be skipped: if not specialized, Vector Object server will automatically generate a new one for the shape.
+    :``<shape_name>``.uuid:
 
-:``<shape_name>``.frame_id:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         N/A
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         ""
-  ============== =============================
+      Description:
+        UUID of the shape specified in ``12345678-9abc-def0-1234-56789abcdef0`` format. Parameter is optional and could be skipped: if not specialized, Vector Object server will automatically generate a new one for the shape.
 
-  Description:
-    Frame ID of the given shape. Empty value is being treated as map's global frame.
+    :``<shape_name>``.frame_id:
 
-:``<shape_name>``.value:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         ""
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  int            100 (occupied)
-  ============== =============================
+      Description:
+        Frame ID of the given shape. Empty value is being treated as map's global frame.
 
-  Description:
-    Shape's value to be put on map with.
+    :``<shape_name>``.value:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      int            100 (occupied)
+      ============== =============================
+
+      Description:
+        Shape's value to be put on map with.
 
 Parameters applicable for polygons only
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:``<shape_name>``.points:
+.. tabs::
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  vector<double> N/A
-  ============== =============================
+  .. group-tab:: Rolling
 
-  Description:
-    Polygon vertices, listed in ``[p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...]`` format (e.g. ``[0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]`` for the square). Minimum 3 points for a triangle polygon. Causes an error, if not specialized incorrectly (less than 6 or odd number of items in the vector) or not specialized.
+    :``<shape_name>``.points:
 
-:``<shape_name>``.closed:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      vector<double> N/A
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description:
+        Polygon vertices, listed in ``[p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...]`` format (e.g. ``[0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]`` for the square). Minimum 3 points for a triangle polygon. Causes an error, if not specialized incorrectly (less than 6 or odd number of items in the vector) or not specialized.
 
-  Description:
-    Whether the polygon is closed (and filled), or drawn as polygonal chain otherwise.
+    :``<shape_name>``.closed:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description:
+        Whether the polygon is closed (and filled), or drawn as polygonal chain otherwise.
 
 Parameters applicable for circles only
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:``<shape_name>``.center:
+.. tabs::
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  vector<double> N/A
-  ============== =============================
+  .. group-tab:: Rolling
 
-  Description:
-    Center of the circle, listed in ``{center.x, center.y}`` format (e.g. ``{0.2, 0.3}``). Should contain exactly 2 items: X and Y coordinate of the circle's center in a given frame. Otherwise, causes an error.
+    :``<shape_name>``.center:
 
-:``<shape_name>``.radius:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      vector<double> N/A
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         N/A
-  ============== =============================
+      Description:
+        Center of the circle, listed in ``{center.x, center.y}`` format (e.g. ``{0.2, 0.3}``). Should contain exactly 2 items: X and Y coordinate of the circle's center in a given frame. Otherwise, causes an error.
 
-  Description:
-    Circle radius. Causes an error, if less than zero or not specialized.
+    :``<shape_name>``.radius:
 
-:``<shape_name>``.fill:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         N/A
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description:
+        Circle radius. Causes an error, if less than zero or not specialized.
 
-  Description:
-    Whether the circle to be filled with a given value, or drawn only circle's border otherwise.
+    :``<shape_name>``.fill:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description:
+        Whether the circle to be filled with a given value, or drawn only circle's border otherwise.
 
 Example
 =======
@@ -313,42 +329,6 @@ Here is an example of configuration YAML for the Vector Object server:
             radius: 0.5
             uuid: "7b3f3d7d-135c-4b6c-aca1-7a84d1050505"
           circle_b:
-            type: "circle"
-            frame_id: "map"
-            fill: False
-            value: 90
-            center: [3.5, 3.5]
-            radius: 1.5
-
-  .. group-tab:: Kilted and older
-
-    .. code-block:: yaml
-
-      vector_object_server:
-        ros__parameters:
-          map_topic: "vo_map"
-          global_frame_id: "map"
-          resolution: 0.05
-          default_value: -1
-          overlay_type: 0
-          update_frequency: 1.0
-          transform_tolerance: 0.1
-          shapes: ["Poly", "CircleA", "CircleB"]
-          Poly:
-            type: "polygon"
-            frame_id: "map"
-            closed: True
-            value: 100
-            points: [0.3, 0.3, 0.3, -0.3, 0.0, -0.3, 0.0, 0.3]
-          CircleA:
-            type: "circle"
-            frame_id: "map"
-            fill: True
-            value: 10
-            center: [3.0, 3.0]
-            radius: 0.5
-            uuid: "7b3f3d7d-135c-4b6c-aca1-7a84d1050505"
-          CircleB:
             type: "circle"
             frame_id: "map"
             fill: False

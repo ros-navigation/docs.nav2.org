@@ -218,135 +218,242 @@ Polygons parameters
 Observation sources parameters
 ==============================
 
-``<source name>`` is the corresponding data source name ID selected for this type.
+.. tabs::
 
-:``<source name>``.type:
+  .. group-tab:: Rolling
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "scan"
-  ============== =============================
+    ``<source name>`` is the corresponding data source name ID selected for this type.
 
-  Description:
-    Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
+    :``<source name>``.type:
 
-:``<source name>``.transport_type:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "raw"
-  ============== =============================
+      Description:
+        Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
 
-  Description:
-    For ``pointcloud`` data, specify the transport plugin to use:
+    :``<source name>``.transport_type:
 
-  * raw: No compression. Default; highest bandwidth usage.
-  * draco: Lossy compression via Google.
-  * zlib: Lossless compression via Zlib compression.
-  * zstd: Lossless compression via Zstd compression.
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "raw"
+      ============== =============================
 
-  See the `known transports <https://github.com/ros-perception/point_cloud_transport_plugins>`_ for more details.
+      Description:
+        For ``pointcloud`` data, specify the transport plugin to use:
 
-:``<source name>``.topic:
+      * raw: No compression. Default; highest bandwidth usage.
+      * draco: Lossy compression via Google.
+      * zlib: Lossless compression via Zlib compression.
+      * zstd: Lossless compression via Zstd compression.
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "scan"
-  ============== =============================
+      See the `known transports <https://github.com/ros-perception/point_cloud_transport_plugins>`_ for more details.
 
-  Description:
-    Topic to listen the source data from.
+    :``<source name>``.topic:
 
-:``<source name>``.min_height:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.05
-  ============== =============================
+      Description:
+        Topic to listen the source data from.
 
-  Description:
-    Minimum height the PointCloud projection to 2D space started from. Applicable for ``pointcloud`` type.
+    :``<source name>``.min_height:
 
-:``<source name>``.max_height:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.5
-  ============== =============================
+      Description:
+        Minimum height the PointCloud projection to 2D space started from. Applicable for ``pointcloud`` type.
 
-  Description:
-    Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
+    :``<source name>``.max_height:
 
-:``<source name>``.obstacles_angle:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.5
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         PI / 180 (1 degree)
-  ============== =============================
+      Description:
+        Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
 
-  Description:
-    Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
+    :``<source name>``.obstacles_angle:
 
-:``<source name>``.sampling_distance:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         PI / 180 (1 degree)
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.1
-  ============== =============================
+      Description:
+        Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
 
-  Description:
-    Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
+    :``<source name>``.sampling_distance:
 
-:``<source name>``.enabled:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           True
-  ============== =============================
+      Description:
+        Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
 
-  Description:
-    Whether to use this source for collision detection. (Can be dynamically set)
+    :``<source name>``.enabled:
 
-:``<source name>``.source_timeout:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           True
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         (node parameter ``source_timeout`` value)
-  ============== =============================
+      Description:
+        Whether to use this source for collision detection. (Can be dynamically set)
 
-  Description:
-    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. Overrides node parameter for each source individually, if desired.
+    :``<source name>``.source_timeout:
 
-:bond_heartbeat_period:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         (node parameter ``source_timeout`` value)
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.25
-  ============== =============================
+      Description:
+        Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. Overrides node parameter for each source individually, if desired.
 
-  Description
-    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+    :bond_heartbeat_period:
 
-:allow_parameter_qos_overrides:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.25
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
-  Description
-    Whether to allow QoS profiles to be overwritten with parameterized values.
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
+
+  .. group-tab:: Kilted and older
+
+    ``<source name>`` is the corresponding data source name ID selected for this type.
+
+    :``<source name>``.type:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
+
+      Description:
+        Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
+
+    :``<source name>``.topic:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
+
+      Description:
+        Topic to listen the source data from.
+
+    :``<source name>``.min_height:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
+
+      Description:
+        Minimum height the PointCloud projection to 2D space started from. Applicable for ``pointcloud`` type.
+
+    :``<source name>``.max_height:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.5
+      ============== =============================
+
+      Description:
+        Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
+
+    :``<source name>``.obstacles_angle:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         PI / 180 (1 degree)
+      ============== =============================
+
+      Description:
+        Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
+
+    :``<source name>``.sampling_distance:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
+
+      Description:
+        Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
+
+    :``<source name>``.enabled:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           True
+      ============== =============================
+
+      Description:
+        Whether to use this source for collision detection. (Can be dynamically set)
+
+    :``<source name>``.source_timeout:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         (node parameter ``source_timeout`` value)
+      ============== =============================
+
+      Description:
+        Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. Overrides node parameter for each source individually, if desired.
+
+    :bond_heartbeat_period:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
+
+      Description
+        The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 Example
 *******
@@ -366,6 +473,7 @@ Here is an example of configuration YAML for the Collision Detector.
           transform_tolerance: 0.5
           source_timeout: 5.0
           base_shift_correction: True
+          bond_heartbeat_period: 0.25
           polygons: ["polygon_front"]
           polygon_front:
             type: "polygon"
@@ -399,6 +507,7 @@ Here is an example of configuration YAML for the Collision Detector.
           transform_tolerance: 0.5
           source_timeout: 5.0
           base_shift_correction: True
+          bond_heartbeat_period: 0.1
           polygons: ["PolygonFront"]
           PolygonFront:
             type: "polygon"
@@ -416,7 +525,6 @@ Here is an example of configuration YAML for the Collision Detector.
           pointcloud:
             type: "pointcloud"
             topic: "/intel_realsense_r200_depth/points"
-            transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
             min_height: 0.1
             max_height: 0.5
             enabled: True

@@ -30,313 +30,605 @@ See the package's ``README`` for more complete information.
 MPPI Parameters
 ***************
 
-:motion_model:
+.. tabs::
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  string         "DiffDrive"
-  ============== ===========================
+  .. group-tab:: Rolling
 
-  Description
-    The desired motion model to use for trajectory planning. Options are ``DiffDrive``, ``Omni``, or ``Ackermann``. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
+    :motion_model:
 
-:critics:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      string         "DiffDrive"
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  string vector  N/A
-  ============== ===========================
+      Description
+        The desired motion model to use for trajectory planning. Options are ``DiffDrive``, ``Omni``, or ``Ackermann``. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
 
-  Description
-    A vector of critic plugin functions to use, without ``mppi::critic::`` namespace which will be automatically added on loading.
+    :critics:
 
-:iteration_count:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      string vector  N/A
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  int            1
-  ============== ===========================
+      Description
+        A vector of critic plugin functions to use, without ``mppi::critic::`` namespace which will be automatically added on loading.
 
-  Description
-    Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.
+    :iteration_count:
 
-:batch_size:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  int            1000
-  ============== ===========================
+      Description
+        Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.
 
-  Description
-    Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 @ 50 Hz or 2000 @ 30 Hz seems to produce good results.
+    :batch_size:
 
-:time_steps:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1000
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  int            56
-  ============== ===========================
+      Description
+        Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 @ 50 Hz or 2000 @ 30 Hz seems to produce good results.
 
-  Description
-    Number of time steps (points) in candidate trajectories
+    :time_steps:
 
-:model_dt:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            56
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.05
-  ============== ===========================
+      Description
+        Number of time steps (points) in candidate trajectories
 
-  Description
-    Length of each time step's ``dt`` timestep, in seconds. ``time_steps * model_dt`` is the prediction horizon.
+    :model_dt:
 
-:vx_std:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.05
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.2
-  ============== ===========================
+      Description
+        Length of each time step's ``dt`` timestep, in seconds. ``time_steps * model_dt`` is the prediction horizon.
 
-  Description
-    Sampling standard deviation for Vx
+    :vx_std:
 
-:vy_std:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.2
-  ============== ===========================
+      Description
+        Sampling standard deviation for Vx
 
-  Description
-    Sampling standard deviation for Vy
+    :vy_std:
 
-:wz_std:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.2
-  ============== ===========================
+      Description
+        Sampling standard deviation for Vy
 
-  Description
-    Sampling standard deviation for Wz (angular velocity)
+    :wz_std:
 
-:vx_max:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.5
-  ============== ===========================
+      Description
+        Sampling standard deviation for Wz (angular velocity)
 
-  Description
-    Target maximum forward velocity (m/s).
+    :vx_max:
 
-:vy_max:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.5
-  ============== ===========================
+      Description
+        Target maximum forward velocity (m/s).
 
-  Description
-    Target maximum lateral velocity, if using ``Omni`` motion model (m/s).
+    :vy_max:
 
-:vx_min:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -0.35
-  ============== ===========================
+      Description
+        Target maximum lateral velocity, if using ``Omni`` motion model (m/s).
 
-  Description
-    Maximum reverse velocity (m/s).
+    :vx_min:
 
-:wz_max:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -0.35
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         1.9
-  ============== ===========================
+      Description
+        Maximum reverse velocity (m/s).
 
-  Description
-    Maximum rotational velocity (rad/s).
+    :wz_max:
 
-:ax_max:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         1.9
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         3.0
-  ============== ===========================
+      Description
+        Maximum rotational velocity (rad/s).
 
-  Description
-    Maximum forward acceleration (m/s^2).
+    :ax_max:
 
-:ay_min:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.0
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -3.0
-  ============== ===========================
+      Description
+        Maximum forward acceleration (m/s^2).
 
-  Description
-    Minimum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
+    :ay_min:
 
-:ay_max:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -3.0
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         3.0
-  ============== ===========================
+      Description
+        Minimum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
 
-  Description
-    Maximum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
+    :ay_max:
 
-:ax_min:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.0
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         -3.0
-  ============== ===========================
+      Description
+        Maximum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
 
-  Description
-    Maximum deceleration along the X-axis (m/s^2).
+    :ax_min:
 
-:az_max:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -3.0
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         3.5
-  ============== ===========================
+      Description
+        Maximum deceleration along the X-axis (m/s^2).
 
-  Description
-    Maximum angular acceleration (rad/s^2).
+    :az_max:
 
-:temperature:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.3
-  ============== ===========================
+      Description
+        Maximum angular acceleration (rad/s^2).
 
-  Description
-    Selectiveness of trajectories by their costs (The closer this value to 0, the "more" we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
+    :temperature:
 
-:gamma:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.3
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.015
-  ============== ===========================
+      Description
+        Selectiveness of trajectories by their costs (The closer this value to 0, the "more" we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
 
-  Description
-    A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
+    :gamma:
 
-:visualize:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.015
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      Description
+        A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
 
-  Description
-    Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+    :visualize:
 
-:publish_optimal_trajectory:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      Description
+        Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
 
-  Description
-    Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.
+    :publish_optimal_trajectory:
 
-:retry_attempt_limit:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  int            1
-  ============== ===========================
+      Description
+        Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.
 
-  Description
-    Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
+    :retry_attempt_limit:
 
-:reset_period:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double            1.0
-  ============== ===========================
+      Description
+        Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
 
-  Description
-    Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
+    :regenerate_noises:
 
-:regenerate_noises:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      Description
+        Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
 
-  Description
-    Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
+    :publish_critics_stats:
 
-:publish_critics_stats:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      Description
+        Whether to publish statistics about each critic's performance. When enabled, publishes a ``nav2_msgs::msg::CriticsStats`` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
 
-  Description
-    Whether to publish statistics about each critic's performance. When enabled, publishes a ``nav2_msgs::msg::CriticsStats`` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
+    :open_loop:
 
-:open_loop:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      Description
+        Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
 
-  Description
-    Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
+    :TrajectoryValidator.plugin:
 
-:TrajectoryValidator.plugin:
+      ============== =========================================
+      Type           Default
+      -------------- -----------------------------------------
+      string         "mppi::DefaultOptimalTrajectoryValidator"
+      ============== =========================================
 
-  ============== =========================================
-  Type           Default
-  -------------- -----------------------------------------
-  string         "mppi::DefaultOptimalTrajectoryValidator"
-  ============== =========================================
+      Description
+        The plugin to use for validating final optimal trajectories.
 
-  Description
-    The plugin to use for validating final optimal trajectories.
+  .. group-tab:: Kilted and older
+
+    :motion_model:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      string         "DiffDrive"
+      ============== ===========================
+
+      Description
+        The desired motion model to use for trajectory planning. Options are ``DiffDrive``, ``Omni``, or ``Ackermann``. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
+
+    :critics:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      string vector  N/A
+      ============== ===========================
+
+      Description
+        A vector of critic plugin functions to use, without ``mppi::critic::`` namespace which will be automatically added on loading.
+
+    :iteration_count:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1
+      ============== ===========================
+
+      Description
+        Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.
+
+    :batch_size:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1000
+      ============== ===========================
+
+      Description
+        Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 @ 50 Hz or 2000 @ 30 Hz seems to produce good results.
+
+    :time_steps:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            56
+      ============== ===========================
+
+      Description
+        Number of time steps (points) in candidate trajectories
+
+    :model_dt:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.05
+      ============== ===========================
+
+      Description
+        Length of each time step's ``dt`` timestep, in seconds. ``time_steps * model_dt`` is the prediction horizon.
+
+    :vx_std:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
+
+      Description
+        Sampling standard deviation for Vx
+
+    :vy_std:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
+
+      Description
+        Sampling standard deviation for Vy
+
+    :wz_std:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
+
+      Description
+        Sampling standard deviation for Wz (angular velocity)
+
+    :vx_max:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.5
+      ============== ===========================
+
+      Description
+        Target maximum forward velocity (m/s).
+
+    :vy_max:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.5
+      ============== ===========================
+
+      Description
+        Target maximum lateral velocity, if using ``Omni`` motion model (m/s).
+
+    :vx_min:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -0.35
+      ============== ===========================
+
+      Description
+        Maximum reverse velocity (m/s).
+
+    :wz_max:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         1.9
+      ============== ===========================
+
+      Description
+        Maximum rotational velocity (rad/s).
+
+    :ax_max:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.0
+      ============== ===========================
+
+      Description
+        Maximum forward acceleration (m/s^2).
+
+    :ay_min:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -3.0
+      ============== ===========================
+
+      Description
+        Minimum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
+
+    :ay_max:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.0
+      ============== ===========================
+
+      Description
+        Maximum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
+
+    :ax_min:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         -3.0
+      ============== ===========================
+
+      Description
+        Maximum deceleration along the X-axis (m/s^2).
+
+    :az_max:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         3.5
+      ============== ===========================
+
+      Description
+        Maximum angular acceleration (rad/s^2).
+
+    :temperature:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.3
+      ============== ===========================
+
+      Description
+        Selectiveness of trajectories by their costs (The closer this value to 0, the "more" we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
+
+    :gamma:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.015
+      ============== ===========================
+
+      Description
+        A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
+
+    :visualize:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+
+    :publish_optimal_trajectory:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.
+
+    :retry_attempt_limit:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1
+      ============== ===========================
+
+      Description
+        Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
+
+    :reset_period:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double            1.0
+      ============== ===========================
+
+      Description
+        Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
+
+    :regenerate_noises:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
+
+    :publish_critics_stats:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        Whether to publish statistics about each critic's performance. When enabled, publishes a ``nav2_msgs::msg::CriticsStats`` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
+
+    :TrajectoryValidator.plugin:
+
+      ============== =========================================
+      Type           Default
+      -------------- -----------------------------------------
+      string         "mppi::DefaultOptimalTrajectoryValidator"
+      ============== =========================================
+
+      Description
+        The plugin to use for validating final optimal trajectories.
 
 Trajectory Visualization
 ------------------------
@@ -362,6 +654,79 @@ Trajectory Visualization
 
   Description
     The step between points on trajectories to visualize to downsample trajectory density.
+
+.. tabs::
+
+  .. group-tab:: Kilted and older
+
+    None
+      Previously, these parameters belonged to the internal Path Handler.
+
+    :transform_tolerance:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.1
+      ============== ===========================
+
+      Description
+        Time tolerance for data transformations with TF (s).
+
+    :prune_distance:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         1.5
+      ============== ===========================
+
+      Description
+        Distance ahead of nearest point on path to robot to prune path to (m). This distance should be at least as great as the furthest distance of interest by a critic (i.e. for maximum velocity projection forward, threshold to consider).
+
+    :max_robot_pose_search_dist:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         Costmap size / 2
+      ============== ===========================
+
+      Description
+        Max integrated distance ahead of robot pose to search for nearest path point in case of path looping.
+
+    :enforce_path_inversion:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        If true, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner's requested inversion point. In addition, these cusping points will also be treated by the critics as local goals that the robot will attempt to reach. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.
+
+    :inversion_xy_tolerance:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.2
+      ============== ===========================
+
+      Description
+        Cartesian proximity (m) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion.
+
+    :inversion_yaw_tolerance:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.4
+      ============== ===========================
+
+      Description
+        Angular proximity (radians) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.
 
 :allow_parameter_qos_overrides:
 
@@ -534,117 +899,213 @@ This critic incentivizes navigating spatially towards the goal when in reasonabl
 Obstacles Critic
 ----------------
 
-This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using distances from obstacles.
+.. tabs::
 
-:critical_weight:
+  .. group-tab:: Rolling
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         20.0
-  ============== ===========================
+    This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using distances from obstacles.
 
-  Description
-    Weight to apply to critic for near collisions closer than ``collision_margin_distance`` to prevent near collisions **only** as a method of virtually inflating the footprint. This should not be used to generally influence obstacle avoidance away from critical collisions.
+    :critical_weight:
 
-:repulsion_weight:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         20.0
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         1.5
-  ============== ===========================
+      Description
+        Weight to apply to critic for near collisions closer than ``collision_margin_distance`` to prevent near collisions **only** as a method of virtually inflating the footprint. This should not be used to generally influence obstacle avoidance away from critical collisions.
 
-  Description
-    Weight to apply to critic for generally preferring routes in lower cost space. This is separated from the critical term to allow for fine tuning of obstacle behaviors with path alignment for dynamic scenes without impacting actions which may directly lead to near-collisions. This is applied within the ``inflation_radius`` distance from obstacles.
+    :repulsion_weight:
 
-:cost_power:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         1.5
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  int            1
-  ============== ===========================
+      Description
+        Weight to apply to critic for generally preferring routes in lower cost space. This is separated from the critical term to allow for fine tuning of obstacle behaviors with path alignment for dynamic scenes without impacting actions which may directly lead to near-collisions. This is applied within the ``inflation_radius`` distance from obstacles (Inflation Layer parameter).
 
-  Description
-    Power order to apply to term.
+    :cost_power:
 
-:consider_footprint:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
+      Description
+        Power order to apply to term.
 
-  Description
-    Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
+    :consider_footprint:
 
-:collision_cost:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         100000.0
-  ============== ===========================
+      Description
+        Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
 
-  Description
-    Cost to apply to a true collision in a trajectory.
+    :collision_cost:
 
-:collision_margin_distance:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         100000.0
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.10
-  ============== ===========================
+      Description
+        Cost to apply to a true collision in a trajectory.
 
-  Description
-    Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
+    :collision_margin_distance:
 
-:near_goal_distance:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.10
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.50
-  ============== ===========================
+      Description
+        Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
 
-  Description
-    Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
+    :near_goal_distance:
 
-:cost_scaling_factor:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.50
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         10.0
-  ============== ===========================
+      Description
+        Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
 
-  Description
-    Exponential decay factor across inflation radius. This should be the same as for your inflation layer (Humble only)
+    :inflation_layer_name:
 
-:inflation_radius:
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      string         ""
+      ============== ===========================
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.55
-  ============== ===========================
+      Description
+        Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
 
-  Description
-    Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
+  .. group-tab:: Kilted and older
 
-:inflation_layer_name:
+    This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using distances from obstacles.
 
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  string         ""
-  ============== ===========================
+    :critical_weight:
 
-  Description
-    Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         20.0
+      ============== ===========================
+
+      Description
+        Weight to apply to critic for near collisions closer than ``collision_margin_distance`` to prevent near collisions **only** as a method of virtually inflating the footprint. This should not be used to generally influence obstacle avoidance away from critical collisions.
+
+    :repulsion_weight:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         1.5
+      ============== ===========================
+
+      Description
+        Weight to apply to critic for generally preferring routes in lower cost space. This is separated from the critical term to allow for fine tuning of obstacle behaviors with path alignment for dynamic scenes without impacting actions which may directly lead to near-collisions. This is applied within the ``inflation_radius`` distance from obstacles.
+
+    :cost_power:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      int            1
+      ============== ===========================
+
+      Description
+        Power order to apply to term.
+
+    :consider_footprint:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      bool           false
+      ============== ===========================
+
+      Description
+        Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
+
+    :collision_cost:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         100000.0
+      ============== ===========================
+
+      Description
+        Cost to apply to a true collision in a trajectory.
+
+    :collision_margin_distance:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.10
+      ============== ===========================
+
+      Description
+        Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
+
+    :near_goal_distance:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.50
+      ============== ===========================
+
+      Description
+        Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
+
+    :cost_scaling_factor:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         10.0
+      ============== ===========================
+
+      Description
+        Exponential decay factor across inflation radius. This should be the same as for your inflation layer (Humble only)
+
+    :inflation_radius:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      double         0.55
+      ============== ===========================
+
+      Description
+        Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
+
+    :inflation_layer_name:
+
+      ============== ===========================
+      Type           Default
+      -------------- ---------------------------
+      string         ""
+      ============== ===========================
+
+      Description
+        Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
 
 
 Cost Critic
@@ -1093,8 +1554,8 @@ Example
             gamma: 0.015
             motion_model: "DiffDrive"
             visualize: false
-            reset_period: 1.0 # (only in Humble)
             regenerate_noises: false
+            open_loop: false
             TrajectoryVisualizer:
               trajectory_step: 5
               time_step: 3
@@ -1133,8 +1594,6 @@ Example
             #   collision_cost: 10000.0
             #   collision_margin_distance: 0.1
             #   near_goal_distance: 0.5
-            #   inflation_radius: 0.55 # (only in Humble)
-            #   cost_scaling_factor: 10.0 # (only in Humble)
             CostCritic:
               enabled: true
               cost_power: 1
@@ -1203,6 +1662,8 @@ Example
             ay_max: 3.0
             az_max: 3.5
             iteration_count: 1
+            prune_distance: 1.7
+            transform_tolerance: 0.1
             temperature: 0.3
             gamma: 0.015
             motion_model: "DiffDrive"
@@ -1301,7 +1762,7 @@ The ``model_dt`` parameter generally should be set to the duration of your contr
 
 Visualization of the trajectories using ``visualize`` uses compute resources to back out trajectories for visualization and therefore slows compute time. It is not suggested that this parameter is set to ``true`` during a deployed use, but is a useful debug instrument while tuning the system, but use sparingly. Visualizing 2000 batches @ 56 points at 30 hz is *a lot*.
 
-The most common parameters you might want to start off changing are the velocity profiles (``vx_max``, ``vx_min``, ``wz_max``, and ``vy_max`` if holonomic) and the ``motion_model`` to correspond to your vehicle. Its wise to consider the ``prune_distance`` of the path plan in proportion to your maximum velocity and prediction horizon. The only deeper parameter that will likely need to be adjusted for your particular settings is the Obstacle critics' ``repulsion_weight`` since the tuning of this is proprtional to your inflation layer's radius. Higher radii should correspond to reduced ``repulsion_weight`` due to the penalty formation (e.g. ``inflation_radius - min_dist_to_obstacle``). If this penalty is too high, the robot will slow significantly when entering cost-space from non-cost space or jitter in narrow corridors. It is noteworthy, but likely not necessary to be changed, that the Obstacle critic may use the full footprint information if ``consider_footprint = true``, though comes at an increased compute cost.
+The most common parameters you might want to start off changing are the velocity profiles (``vx_max``, ``vx_min``, ``wz_max``, and ``vy_max`` if holonomic) and the ``motion_model`` to correspond to your vehicle. Its wise to consider the ``prune_distance`` (used in Kilted and older) of the path plan in proportion to your maximum velocity and prediction horizon. The only deeper parameter that will likely need to be adjusted for your particular settings is the Obstacle critics' ``repulsion_weight`` since the tuning of this is proprtional to your inflation layer's radius. Higher radii should correspond to reduced ``repulsion_weight`` due to the penalty formation (e.g. ``inflation_radius - min_dist_to_obstacle``). If this penalty is too high, the robot will slow significantly when entering cost-space from non-cost space or jitter in narrow corridors. It is noteworthy, but likely not necessary to be changed, that the Obstacle critic may use the full footprint information if ``consider_footprint = true``, though comes at an increased compute cost.
 
 Otherwise, the parameters have been closely pre-tuned by your friendly neighborhood navigator to give you a decent starting point that hopefully you only need to retune for your specific desired behavior lightly (if at all). Varying costmap parameters or maximum speeds are the actions which require the most attention, as described below:
 

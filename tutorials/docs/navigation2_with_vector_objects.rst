@@ -64,25 +64,6 @@ For demonstration purposes, let's specify two obstacle shapes: triangle polygon 
         center: [1.5, 0.5]
         radius: 0.7
 
-  .. group-tab:: Kilted and older
-
-    .. code-block:: yaml
-
-      shapes: ["Poly", "Circle"]
-      Poly:
-        type: "polygon"
-        frame_id: "map"
-        closed: True
-        value: 100
-        points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
-      Circle:
-        type: "circle"
-        frame_id: "map"
-        fill: True
-        value: 100
-        center: [1.5, 0.5]
-        radius: 0.7
-
 Where the triangle polygon is specified by ``{0.3, 0.5}, {-0.4, 1.2}, {-0.4, -0.2}`` 3-point shape and the circle has ``{1.5, 0.5}`` coordinate of its center with ``0.7`` meter radius in the ``map`` frame.
 ``closed`` true-value for the polygon and ``fill`` for the circle mean that both shapes to be filled the with specified ``value``.
 This value is equal to ``100`` which means "occupied" in OccupancyGrid format.
@@ -137,42 +118,6 @@ The complete ``vector_object_server_params.yaml`` YAML-file for the demonstratio
           base: 0.0
           multiplier: 1.0
 
-
-  .. group-tab:: Kilted and older
-
-    .. code-block:: yaml
-
-      vector_object_server:
-        ros__parameters:
-          map_topic: "vo_map"
-          global_frame_id: "map"
-          resolution: 0.05
-          default_value: -1
-          overlay_type: 0
-          update_frequency: 1.0
-          transform_tolerance: 0.1
-          shapes: ["Poly", "Circle"]
-          Poly:
-            type: "polygon"
-            frame_id: "map"
-            closed: True
-            value: 100
-            points: [0.3, 0.5, -0.4, 1.2, -0.4, -0.2]
-          Circle:
-            type: "circle"
-            frame_id: "map"
-            fill: True
-            value: 100
-            center: [1.5, 0.5]
-            radius: 0.7
-      costmap_filter_info_server:
-        ros__parameters:
-          type: 0
-          filter_info_topic: "vo_costmap_filter_info"
-          mask_topic: "vo_map"
-          base: 0.0
-          multiplier: 1.0
-
 More detailed information about each Vector Object server parameter and its operating principle could be found on :ref:`configuring_vector_object_server` configuration guide page. Costmap Filter Info server parameters description could be found at :ref:`configuring_costmap_filter_info_server` page.
 
 After Vector Objects and Costmap Filters Info servers were configured, launch them by command from below.
@@ -189,17 +134,21 @@ Vector Object server puts shapes to OccupacyGrid map and publishes it in a topic
 Enabling of Keeput Filter in Nav2 stack principles are similar as written in :ref:`navigation2_with_keepout_filter` tutorial.
 Since vector objects are being enabled in global costmaps, Keepout Filter called as "vector_object_layer", should be added to the global costmap section of the ``nav2_params.yaml`` standard Nav2 configuration as follows:
 
-.. code-block:: yaml
+.. tabs::
 
-    global_costmap:
-      ros__parameters:
-        plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
-        filters: ["keepout_filter", "speed_filter", "vector_object_layer"]
-        ...
-        vector_object_layer:
-          plugin: "nav2_costmap_2d::KeepoutFilter"
-          enabled: True
-          filter_info_topic: "vo_costmap_filter_info"
+  .. group-tab:: Rolling
+
+    .. code-block:: yaml
+
+        global_costmap:
+          ros__parameters:
+            plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+            filters: ["keepout_filter", "speed_filter", "vector_object_layer"]
+            ...
+            vector_object_layer:
+              plugin: "nav2_costmap_2d::KeepoutFilter"
+              enabled: True
+              filter_info_topic: "vo_costmap_filter_info"
 
 Demo Execution
 ==============

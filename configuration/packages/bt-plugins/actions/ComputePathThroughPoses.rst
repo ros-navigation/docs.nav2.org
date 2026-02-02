@@ -135,49 +135,88 @@ Input Ports
 Output Ports
 ------------
 
-:path:
+.. tabs::
 
-  ========================== =======
-  Type                       Default
-  -------------------------- -------
-  nav_msgs::msg::Path         N/A
-  ========================== =======
+  .. group-tab:: Rolling
 
-  Description
-      Path created by action server. Takes in a blackboard variable, e.g. "{path}".
+    :path:
 
-:last_reached_index:
+      ========================== =======
+      Type                       Default
+      -------------------------- -------
+      nav_msgs::msg::Path         N/A
+      ========================== =======
 
-  ========================== =======
-  Type                       Default
-  -------------------------- -------
-  int16                       -1
-  ========================== =======
+      Description
+          Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
-  Description
-      In the case of a partial plan, index of the last reached pose from the goals list. Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS if a full plan through all the goals was possible.
+    :last_reached_index:
 
-:error_code_id:
+      ========================== =======
+      Type                       Default
+      -------------------------- -------
+      int16                       -1
+      ========================== =======
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  uint16          N/A
-  ============== =======
+      Description
+          In the case of a partial plan, index of the last reached pose from the goals list. Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS if a full plan through all the goals was possible.
 
-  Description
-      Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+    :error_code_id:
 
-:error_msg:
+      ============== =======
+      Type           Default
+      -------------- -------
+      uint16          N/A
+      ============== =======
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      Description
+          Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
 
-  Description
-      Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+    :error_msg:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+
+  .. group-tab:: Kilted and older
+
+    :path:
+
+      ========================== =======
+      Type                       Default
+      -------------------------- -------
+      nav_msgs::msg::Path         N/A
+      ========================== =======
+
+      Description
+          Path created by action server. Takes in a blackboard variable, e.g. "{path}".
+
+    :error_code_id:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      uint16          N/A
+      ============== =======
+
+      Description
+          Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+
+    :error_msg:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
 
 Example
 -------
