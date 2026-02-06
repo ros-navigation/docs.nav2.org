@@ -563,6 +563,35 @@ The UI workflow is now organized into two primary navigation modes:
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
 
+Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller
+---------------------------------------------------------------------------
+
+In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities. See the Configuration Guide for the new parameters associated with this feature.
+
+- Fumiya Ohnishi and Masaki Takahashi, `DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <https://arxiv.org/abs/2601.15006>`_. arXiv:2601.15006., 2026.
+
+.. image:: images/dwpp_comparison.gif
+  :width: 800
+  :alt: Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants
+  :align: center
+
+The following parameters are updated for this feature.
+
+:max_linear_vel (renamed):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.5
+  ============== ===========================
+
+  Description
+    The maximum linear velocity (m/s) to use.  **Previously named `desired_linear_vel`**
+
+
+**Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing `cmd_vel`.
+Therefore, the velocity smoother parameters `max_velocity`, `min_velocity`, `max_accel`, and `max_decel` must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
+
 Bond Heartbeat Period Default Value Change
 ------------------------------------------
 
@@ -737,3 +766,33 @@ Symmetric Yaw Tolerance for Goal Checking and Navigation
 --------------------------------------------------------
 
 `PR #5833 <https://github.com/ros-navigation/navigation2/pull/5833>`_ introduces the symmetric yaw tolerance feature for goal checking and navigation, allowing symmetric robots to reach goals without unnecessary 180° rotations.
+
+Option to enable Intra-process Communication in Nav2
+----------------------------------------------------
+
+In `PR 5804 <https://github.com/ros-navigation/navigation2/pull/5804>`_, an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing `use_intra_process_comms` parameter as true while launching Nav2 nodes.
+
+It is currently disabled by default. Please refer to the :ref:`performance_ros2` and the `TB3/TB4 examples in the Nav2 stack <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch>`_ for reference.
+
+New AxisGoalChecker Plugin
+--------------------------
+
+A new goal checker plugin, ``AxisGoalChecker``, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, ``AxisGoalChecker`` projects the robot's position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (``along_path_tolerance``) and perpendicular to it (``cross_track_tolerance``).
+
+Key parameters:
+
+- ``along_path_tolerance``: Tolerance along the path direction (default: 0.25m)
+- ``cross_track_tolerance``: Tolerance perpendicular to the path (default: 0.25m)
+- ``path_length_tolerance``: Maximum remaining path length to consider for goal checking (default: 1.0m)
+- ``is_overshoot_valid``: When true, allows the robot to overshoot past the goal by any distance along the path while still being within tolerance (default: false)
+
+This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
+
+See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details.
+
+New default_cancel_timeout parameter in bt_navigator
+----------------------------------------------------
+
+In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
+
+The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.

@@ -13,7 +13,7 @@ Lyrical Roadmap
 ***************
 
 +--------------------------------+------------------------+
-| Controller Server and Plugin   |  Large                 |
+| Controller Server and Plugin   |  Large (In Progress)   |
 | factor for centralized path    |                        |
 | handling and crosstrack error  |                        |
 | estimation and enforcement.    |                        |
@@ -40,6 +40,20 @@ Lyrical Roadmap
 +--------------------------------+------------------------+
 | Use PointCloud Transport for   |  Medium (DONE)         |
 | all pointcloud subscriptions   |                        |
++--------------------------------+------------------------+
+| Update and refine behavior     |  Medium                |
+| trees for more intelligent     |                        |
+| behavior                       |                        |
++--------------------------------+------------------------+
+| Fix for statics in Smac        |  Medium                |
+| Planner to allow for multiple  |                        |
+| instances in a server not to   |                        |
+| conflict                       |                        |
++--------------------------------+------------------------+
+| Create initial prototype of    |  Large                 |
+| a framework for environmental  |                        |
+| modeling, sensor processing,   |                        |
+| and external model integration |                        |
 +--------------------------------+------------------------+
 
 .. _Continued Route Server: https://github.com/ros-navigation/navigation2/issues/5082

@@ -12,6 +12,23 @@ It regulates the linear velocities by curvature of the path to help reduce overs
 It also better follows paths than any other variation currently available of Pure Pursuit.
 It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
 It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
+It also implements the Dynamic Window Pure Pursuit algorithm, which computes optimal velocity commands for path tracking while explicitly considering velocity and acceleration constraints.
+
+The following videos compare Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Regulated Pure Pursuit (RPP), and Dynamic Window Pure Pursuit (DWPP).
+
+.. raw:: html
+
+   <div style="text-align: center; width: 100%;">
+      <div style="display: inline-block; margin: 10px; vertical-align: top;">
+         <iframe width="450" height="300" src="https://www.youtube.com/embed/fIKk4Q_rvLM?si=Tt0JabQmQZNtYdK1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <p style="text-align: center; font-weight: bold; margin-top: 5px;">Simulation results</p>
+      </div>
+
+      <div style="display: inline-block; margin: 10px; vertical-align: top;">
+         <iframe width="450" height="300" src="https://www.youtube.com/embed/H6r3x1AhsjM?si=9tMY9qKYjDY1Pwzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <p style="text-align: center; font-weight: bold; margin-top: 5px;">Real-robot experiment</p>
+      </div>
+   </div>
 
 See the package's ``README`` for more complete information.
 
@@ -19,10 +36,14 @@ If you use the Regulated Pure Pursuit Controller algorithm or software from this
 
 - S. Macenski, S. Singh, F. Martin, J. Gines, `Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_. Autonomous Robots, 2023.
 
+If you use the Dynamic Window Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
+
+- F. Ohnishi, M. Takahashi, `DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <https://arxiv.org/abs/2601.15006>`_. arXiv:2601.15006., 2026.
+
 Regulated Pure Pursuit Parameters
 *********************************
 
-:desired_linear_vel:
+:max_linear_vel:
 
   ============== ===========================
   Type           Default
@@ -31,7 +52,84 @@ Regulated Pure Pursuit Parameters
   ============== ===========================
 
   Description
-    The desired maximum linear velocity (m/s) to use.
+    The maximum linear velocity (m/s) to use.  Previously `desired_linear_vel`
+
+:min_linear_vel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -0.5
+  ============== ===========================
+
+  Description
+    The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
+
+:max_angular_vel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.5
+  ============== ===========================
+
+  Description
+    The maximum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
+
+:min_angular_vel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -2.5
+  ============== ===========================
+
+  Description
+    The minimum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
+
+:max_linear_accel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.5
+  ============== ===========================
+
+  Description
+    The maximum linear acceleration (m/s^2) used when `use_dynamic_window` is `true`.
+
+:max_linear_decel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -2.5
+  ============== ===========================
+
+  Description
+    The maximum linear deceleration (m/s^2) used when `use_dynamic_window` is `true`.
+
+:max_angular_accel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         3.2
+  ============== ===========================
+
+  Description
+    The maximum angular acceleration (rad/s^2) to use.
+
+:max_angular_decel:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -3.2
+  ============== ===========================
+
+  Description
+    The maximum angular deceleration (rad/s^2) used when `use_dynamic_window` is `true`.
 
 :lookahead_dist:
 
@@ -266,17 +364,6 @@ Regulated Pure Pursuit Parameters
   Description
     The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if ``use_rotate_to_heading`` is ``true``.
 
-:max_angular_accel:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         3.2
-  ============== =============================
-
-  Description
-    Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
-
 :use_cancel_deceleration:
 
   ============== =============================
@@ -345,6 +432,19 @@ Regulated Pure Pursuit Parameters
   Description
     The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
 
+:use_dynamic_window:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.
+    Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
+
+
 Example
 *******
 .. code-block:: yaml
@@ -370,7 +470,14 @@ Example
         stateful: True
       FollowPath:
         plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-        desired_linear_vel: 0.5
+        max_linear_vel: 0.5
+        min_linear_vel: -0.5
+        max_angular_vel: 2.5
+        min_angular_vel: -2.5
+        max_linear_accel: 2.5
+        max_linear_decel: -2.5
+        max_angular_accel: 3.2
+        max_angular_decel: -3.2
         lookahead_dist: 0.6
         min_lookahead_dist: 0.3
         max_lookahead_dist: 0.9
@@ -392,6 +499,6 @@ Example
         use_rotate_to_heading: true
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
-        max_angular_accel: 3.2
         min_distance_to_obstacle: 0.0
         stateful: true
+        use_dynamic_window: false
