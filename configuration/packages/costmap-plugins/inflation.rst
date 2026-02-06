@@ -64,3 +64,16 @@ This layer places an exponential decay functions around obstacles to increase co
 
   Description
     Whether to inflate unknown cells.
+
+:``<inflation layer>``.num_threads:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  -1
+  ==== =======
+
+  Description
+    Number of threads to use for inflation computation when OpenMP is enabled.
+    Set to ``-1`` for auto-detection (uses half of available CPU cores), or specify a positive integer for explicit thread count.
+    Ignored if OpenMP support is not available.
