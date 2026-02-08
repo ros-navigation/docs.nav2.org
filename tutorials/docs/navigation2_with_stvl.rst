@@ -59,11 +59,11 @@ Follow the same process as in :ref:`getting_started` for installing and setting 
 
 STVL can be installed in ROS 2 via the ROS Build Farm:
 
-- ``sudo apt install ros-<ros2-distro>-spatio-temporal-voxel-layer``
+- ``sudo apt install ros-$ROS_DISTRO-spatio-temporal-voxel-layer``
 
 It can also be built from source by cloning the repository into your Navigation2 workspace:
 
-- ``git clone -b <ros2-distro>-devel git@github.com:stevemacenski/spatio_temporal_voxel_layer``
+- ``git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/spatio_temporal_voxel_layer``
 
 1- Modify Navigation2 Parameter
 -------------------------------
