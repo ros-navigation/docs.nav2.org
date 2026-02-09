@@ -79,6 +79,19 @@ This layer places an exponential decay functions around obstacles to increase co
     Set to ``-1`` for auto-detection (uses half of available CPU cores), or specify a positive integer for explicit thread count.
     Ignored if OpenMP support is not available.
 
+Building with OpenMP
+--------------------
+
+OpenMP parallelization is disabled by default. To enable it, pass the ``ENABLE_OPENMP`` CMake option when building:
+
+.. code-block:: bash
+
+    # Build with OpenMP enabled
+    colcon build --packages-select nav2_costmap_2d --cmake-args -DENABLE_OPENMP=ON
+
+    # Build with OpenMP disabled (default)
+    colcon build --packages-select nav2_costmap_2d --cmake-args -DENABLE_OPENMP=OFF
+
 Performance Benchmarks
 ----------------------
 
@@ -86,10 +99,10 @@ Performance Benchmarks
 
 **Robot Hardware:** 16 cores × 5000 MHz
 
-+---------------------+----------+------------------+------------------+
-| Configuration       | Time     | Throughput       | vs Legacy        |
-+=====================+==========+==================+==================+
-| OpenMP disabled     | 48.9 ms  | 81.8 M cells/s   | 2.1× faster      |
-+---------------------+----------+------------------+------------------+
-| OpenMP enabled      | 9.11 ms  | 468.9 M cells/s  | 11.5× faster     |
-+---------------------+----------+------------------+------------------+
++---------------------+----------+------------------+---------------------------+
+| Configuration       | Time     | Throughput       | vs Legacy Inflation Layer |
++=====================+==========+==================+===========================+
+| OpenMP disabled     | 48.9 ms  | 81.8 M cells/s   | 2.1× faster               |
++---------------------+----------+------------------+---------------------------+
+| OpenMP enabled      | 9.11 ms  | 468.9 M cells/s  | 11.5× faster              |
++---------------------+----------+------------------+---------------------------+
