@@ -1409,7 +1409,7 @@ ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<sp
 <div class="section" id="launching-slam-toolbox">
 <h4>Launching slam_toolbox<a class="headerlink" href="#launching-slam-toolbox" title="Permalink to this heading"></a></h4>
 <p>To be able to launch <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code>, make sure that you have installed the <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> package by executing the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-slam-toolbox
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-slam-toolbox
 </pre></div>
 </div>
 <p>We will launch the <code class="docutils literal notranslate"><span class="pre">async_slam_toolbox_node</span></code> of <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> using the package’s built-in launch files. Open a new terminal and then execute the following lines:</p>
@@ -1429,8 +1429,8 @@ ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<sp
 <div class="section" id="launching-nav2">
 <h4>Launching Nav2<a class="headerlink" href="#launching-nav2" title="Permalink to this heading"></a></h4>
 <p>First, Make sure you have installed the Nav2 packages by executing the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-navigation2
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-nav2-bringup
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-navigation2
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-bringup
 </pre></div>
 </div>
 <p>We will now launch Nav2 using the <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>’s built-in launch file, <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code> . Open a new terminal and execute the following:</p>

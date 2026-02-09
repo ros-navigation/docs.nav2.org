@@ -1316,14 +1316,18 @@ The ROSCon talk for STVL can be found <a class="reference external" href="https:
 </div>
 <div class="section" id="install-stvl">
 <h3>1- Install STVL<a class="headerlink" href="#install-stvl" title="Permalink to this heading"></a></h3>
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
 <p>STVL can be installed in ROS 2 via the ROS Build Farm:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-spatio-temporal-voxel-layer</span></code></p></li>
-</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-spatio-temporal-voxel-layer
+</pre></div>
+</div>
 <p>It can also be built from source by cloning the repository into your Navigation2 workspace:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">&lt;ros2-distro&gt;-devel</span> <span class="pre">git&#64;github.com:stevemacenski/spatio_temporal_voxel_layer</span></code></p></li>
-</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span><span class="nv">$ROS_DISTRO</span>-devel<span class="w"> </span>git@github.com:stevemacenski/spatio_temporal_voxel_layer
+</pre></div>
+</div>
 </div>
 <div class="section" id="modify-navigation2-parameter">
 <h3>1- Modify Navigation2 Parameter<a class="headerlink" href="#modify-navigation2-parameter" title="Permalink to this heading"></a></h3>

@@ -1291,14 +1291,18 @@ This tutorial applies to both simulated and physical robots, but will be complet
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>You must install Navigation2, Turtlebot3, and SLAM Toolbox.
 If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
 <p>SLAM Toolbox can be installed via:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-slam-toolbox</span></code></p>
-</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-slam-toolbox
+</pre></div>
+</div>
 <p>or from built from source in your workspace with:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">&lt;ros2-distro&gt;-devel</span> <span class="pre">git&#64;github.com:stevemacenski/slam_toolbox.git</span></code></p>
-</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span><span class="nv">$ROS_DISTRO</span>-devel<span class="w"> </span>git@github.com:stevemacenski/slam_toolbox.git
+</pre></div>
+</div>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
@@ -1306,7 +1310,12 @@ If you don’t have them installed, please follow <a class="reference internal" 
 <h3>0- Launch Robot Interfaces<a class="headerlink" href="#launch-robot-interfaces" title="Permalink to this heading"></a></h3>
 <p>For this tutorial, we will use the turtlebot3.
 The turtlebot3 software can be installed via the following or on the <a class="reference external" href="https://github.com/ROBOTIS-GIT/turtlebot3">turtlebot3 repository</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-msgs<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-bringup
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the Turtlebot3 packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3-msgs<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3-bringup
 </pre></div>
 </div>
 <p>If you have another robot, replace with your robot specific interfaces.

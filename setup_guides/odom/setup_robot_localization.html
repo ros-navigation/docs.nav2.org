@@ -1292,8 +1292,12 @@
 <div class="section" id="configuring-robot-localization">
 <h2>Configuring Robot Localization<a class="headerlink" href="#configuring-robot-localization" title="Permalink to this heading"></a></h2>
 <p>Let us now configure the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package to use an Extended Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) to fuse odometry information and publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform.</p>
-<p>First, install the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package using your machines package manager or by executing the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-robot-localization
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-robot-localization
 </pre></div>
 </div>
 <p>Next, we specify the parameters of the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> using a YAML file. Create a directory named <code class="docutils literal notranslate"><span class="pre">config</span></code> at the root of your project and create a file named <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code>. Copy the following lines of code into your <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code> file.</p>

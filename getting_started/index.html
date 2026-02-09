@@ -1292,9 +1292,14 @@ continue working with this robot beyond the minimal example provided here.</p>
 Thus, for Jazzy and newer, the installation packages and instructions are slightly different to pull in the appropriate packages.</p>
 <ol class="arabic">
 <li><p>Install the <a class="reference external" href="https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html">ROS 2 binary packages</a>  as described in the official docs</p></li>
+<li><p>Source your ROS 2 installation to set up the environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+</li>
 <li><p>Install the Nav2 packages using your operating system’s package manager:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-navigation2
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-nav2-bringup
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-navigation2
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-bringup
 </pre></div>
 </div>
 </li>
@@ -1302,13 +1307,13 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </ol>
 <p>For <strong>Jazzy and newer</strong>, install the Turtlebot 3 &amp; 4 packages for Gazebo Modern. It should be automatically installed with <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-nav2-minimal-tb*
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-minimal-tb*
 </pre></div>
 </div>
 </div></blockquote>
 <p>For <strong>Iron and older</strong>, install Turtlebot 3 packages for gazebo classic:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-gazebo
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3-gazebo
 </pre></div>
 </div>
 </div></blockquote>
@@ -1320,7 +1325,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <li><p>Set key environment variables, some of which are only required for Iron and older:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
 <span class="nb">export</span><span class="w"> </span><span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>waffle<span class="w">  </span><span class="c1"># Iron and older only with Gazebo Classic</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">GAZEBO_MODEL_PATH</span><span class="o">=</span><span class="nv">$GAZEBO_MODEL_PATH</span>:/opt/ros/&lt;ros2-distro&gt;/share/turtlebot3_gazebo/models<span class="w"> </span><span class="c1"># Iron and older only with Gazebo Classic</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GAZEBO_MODEL_PATH</span><span class="o">=</span><span class="nv">$GAZEBO_MODEL_PATH</span>:/opt/ros/<span class="nv">$ROS_DISTRO</span>/share/turtlebot3_gazebo/models<span class="w"> </span><span class="c1"># Iron and older only with Gazebo Classic</span>
 </pre></div>
 </div>
 </li>

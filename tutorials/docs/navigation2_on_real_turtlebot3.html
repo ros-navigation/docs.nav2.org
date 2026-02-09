@@ -1295,7 +1295,12 @@ It depends on your experience with ROS, robots, and what computer system you hav
 <p>You must install Nav2, Turtlebot3.
 If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
 <p>The turtlebot3 software can be installed via the following or on the <a class="reference external" href="https://github.com/ROBOTIS-GIT/turtlebot3">turtlebot3 repository</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-msgs<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-bringup
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the Turtlebot3 packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3-msgs<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3-bringup
 </pre></div>
 </div>
 </div>

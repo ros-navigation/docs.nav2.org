@@ -1336,7 +1336,12 @@ geometry_msgs/TwistWithCovariance<span class="w"> </span>twist
 <div class="section" id="setup-and-prerequisites">
 <h3>Setup and Prerequisites<a class="headerlink" href="#setup-and-prerequisites" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="http://gazebosim.org/">Gazebo</a> is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the <a class="reference external" href="https://gazebosim.org/docs/latest/ros_installation/">Gazebo Installation Documentation</a>.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-ros-gz
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the ROS-Gazebo integration package:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-ros-gz
 </pre></div>
 </div>
 </div>

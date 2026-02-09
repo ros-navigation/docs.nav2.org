@@ -1299,8 +1299,13 @@
 <h2>Setting Up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this heading"></a></h2>
 <p>In this guide, we are assuming that you are already familiar with ROS 2 and how to setup your development environment, so we’ll breeze through the steps in this section.</p>
 <p>Let’s begin by installing some additional ROS 2 packages that we will be using during this tutorial.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-joint-state-publisher-gui
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-xacro
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the required packages:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-joint-state-publisher-gui
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-xacro
 </pre></div>
 </div>
 <p>Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we’ll be calling it <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>

@@ -1284,7 +1284,12 @@
 <h2>About SDF<a class="headerlink" href="#about-sdf" title="Permalink to this heading"></a></h2>
 <p>SDF is a file format for simulators, like Gazebo, that describes the simulator environment, models (including its links, connections, and physics simulator metadata), and appropriate plugins. The SDF that we will make is for modern Gazebo, but there are other simulator options such as Open3D Engine or Isaac Sim.</p>
 <p>We can also use our SDF with the robot_state_publisher using the following package. You will see how to do this in the tutorial below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-sdformat-urdf
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the sdformat-urdf package:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-sdformat-urdf
 </pre></div>
 </div>
 <p>This package contains a C++ library and urdf_parser_plugin for converting SDFormat XML into URDF C++ structures. Installing it allows one to use SDFormat XML instead of URDF XML as a robot description.</p>

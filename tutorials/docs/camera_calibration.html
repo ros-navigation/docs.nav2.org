@@ -1285,16 +1285,20 @@
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
-<p>1- Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake using operating system’s package manager:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-camera-calibration-parsers</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-camera-info-manager</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-launch-testing-ament-cmake</span></code></p>
-</div></blockquote>
-<p>2- Image Pipeline need to be built from source in your workspace with:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">&lt;ros2-distro&gt;</span> <span class="pre">git&#64;github.com:ros-perception/image_pipeline.git</span></code></p>
-</div></blockquote>
+<p>1- First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>2- Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-camera-calibration-parsers
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-camera-info-manager
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-launch-testing-ament-cmake
+</pre></div>
+</div>
+<p>3- Image Pipeline need to be built from source in your workspace with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span><span class="nv">$ROS_DISTRO</span><span class="w"> </span>git@github.com:ros-perception/image_pipeline.git
+</pre></div>
+</div>
 <p><strong>Also, make sure you have the following:</strong></p>
 <blockquote>
 <div><ul class="simple">

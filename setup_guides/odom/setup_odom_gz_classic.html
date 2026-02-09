@@ -1336,8 +1336,12 @@ geometry_msgs/TwistWithCovariance<span class="w"> </span>twist
 <div class="section" id="setup-and-prerequisites">
 <h3>Setup and Prerequisites<a class="headerlink" href="#setup-and-prerequisites" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="http://classic.gazebosim.org/">Gazebo</a> is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the <a class="reference external" href="http://classic.gazebosim.org/tutorials?cat=install">Gazebo Installation Documentation</a>.</p>
-<p>We also need to install the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_pkgs</span></code> package to simulate odometry and control the robot with ROS 2 in Gazebo:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-gazebo-ros-pkgs
+<p>First, source your ROS 2 installation to set the environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
+</pre></div>
+</div>
+<p>Then install the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_pkgs</span></code> package to simulate odometry and control the robot with ROS 2 in Gazebo:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-gazebo-ros-pkgs
 </pre></div>
 </div>
 <p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://classic.gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">given here</a>.</p>
