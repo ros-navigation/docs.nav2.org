@@ -51,10 +51,10 @@ Costmap Layers
 |                                |                        | occupancy information into       |
 |                                |                        | costmap                          |
 +--------------------------------+------------------------+----------------------------------+
-| `Inflation Layer`       _      | Tony Najjar            | Inflates lethal obstacles in     |
+| `Inflation Layer`_             | Tony Najjar            | Inflates lethal obstacles in     |
 |                                |                        | costmap with exponential decay   |
 |                                |                        | (with the option to use OpenMP   |
-|                                |                        | for parallelization) ____________|
+|                                |                        | for parallelization)             |
 +--------------------------------+------------------------+----------------------------------+
 | `Legacy Inflation Layer`_      | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
 |                                |                        | costmap with exponential decay   |
