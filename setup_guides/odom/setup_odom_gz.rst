@@ -79,6 +79,14 @@ Setup and Prerequisites
 
 `Gazebo <http://gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <https://gazebosim.org/docs/latest/ros_installation/>`_.
 
+First, source your ROS 2 installation to set the environment variables:
+
+.. code-block:: shell
+
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the ROS-Gazebo integration package:
+
 .. code-block:: shell
 
   sudo apt install ros-$ROS_DISTRO-ros-gz

@@ -25,13 +25,23 @@ Requirements
 You must install Navigation2, Turtlebot3, and SLAM Toolbox.
 If you don't have them installed, please follow :ref:`getting_started`.
 
+First, source your ROS 2 installation to set the environment variables:
+
+.. code-block:: bash
+
+  source /opt/ros/<ros2-distro>/setup.bash
+
 SLAM Toolbox can be installed via:
 
-  ``sudo apt install ros-$ROS_DISTRO-slam-toolbox``
+.. code-block:: bash
+
+  sudo apt install ros-$ROS_DISTRO-slam-toolbox
 
 or from built from source in your workspace with:
 
-  ``git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/slam_toolbox.git``
+.. code-block:: bash
+
+  git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/slam_toolbox.git
 
 
 Tutorial Steps
@@ -42,6 +52,14 @@ Tutorial Steps
 
 For this tutorial, we will use the turtlebot3.
 The turtlebot3 software can be installed via the following or on the `turtlebot3 repository <https://github.com/ROBOTIS-GIT/turtlebot3>`_:
+
+First, source your ROS 2 installation to set the environment variables:
+
+.. code-block:: bash
+
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the Turtlebot3 packages:
 
 .. code-block:: bash
 

@@ -31,6 +31,14 @@ In this guide, we are assuming that you are already familiar with ROS 2 and how 
 
 Let's begin by installing some additional ROS 2 packages that we will be using during this tutorial.
 
+First, source your ROS 2 installation to set the environment variables:
+
+.. code-block:: shell
+
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the required packages:
+
 .. code-block:: shell
 
   sudo apt install ros-$ROS_DISTRO-joint-state-publisher-gui

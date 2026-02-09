@@ -77,7 +77,13 @@ Setup and Prerequisites
 
 `Gazebo <http://classic.gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <http://classic.gazebosim.org/tutorials?cat=install>`_.
 
-We also need to install the ``gazebo_ros_pkgs`` package to simulate odometry and control the robot with ROS 2 in Gazebo:
+First, source your ROS 2 installation to set the environment variables:
+
+.. code-block:: shell
+
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the ``gazebo_ros_pkgs`` package to simulate odometry and control the robot with ROS 2 in Gazebo:
 
 .. code-block:: shell
 
