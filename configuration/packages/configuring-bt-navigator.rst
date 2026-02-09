@@ -110,7 +110,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+    Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
 
 :default_cancel_timeout:
@@ -122,7 +122,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout (in seconds) for BT action node cancellation requests during node halt.
+    Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
     This value will be overwritten for a BT node if the input port "cancel_timeout" is provided.
 
 :wait_for_service_timeout:
@@ -134,7 +134,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
+    Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
 :introspection_mode:
@@ -257,7 +257,7 @@ Parameters
   ============== ==================================================
 
   Description
-    List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.
+    List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.
 
 NavigateToPose Parameters
 *************************
