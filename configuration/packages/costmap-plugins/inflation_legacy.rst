@@ -64,32 +64,3 @@ This layer places an exponential decay functions around obstacles to increase co
 
   Description
     Whether to inflate unknown cells.
-
-
-:``<inflation layer>``.num_threads:
-
-  ==== =======
-  Type Default
-  ---- -------
-  int  -1
-  ==== =======
-
-  Description
-    Number of threads to use for inflation computation when OpenMP is enabled.
-    Set to ``-1`` for auto-detection (uses half of available CPU cores), or specify a positive integer for explicit thread count.
-    Ignored if OpenMP support is not available.
-
-Performance Benchmarks
-----------------------
-
-**Test Configuration:** 2000×2000 Grid (4M cells, 50% occupancy, 2m inflation radius)
-
-**Robot Hardware:** 16 cores × 5000 MHz
-
-+---------------------+----------+------------------+------------------+
-| Configuration       | Time     | Throughput       | vs Legacy        |
-+=====================+==========+==================+==================+
-| OpenMP disabled     | 48.9 ms  | 81.8 M cells/s   | 2.1× faster      |
-+---------------------+----------+------------------+------------------+
-| OpenMP enabled      | 9.11 ms  | 468.9 M cells/s  | 11.5× faster     |
-+---------------------+----------+------------------+------------------+
