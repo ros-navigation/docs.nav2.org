@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Setting Up Transformations" href="transformation/setup_transforms.html" />
+    <link rel="next" title="Setup Guide for Gazebo" href="gazebo.html" />
     <link rel="prev" title="Navigation Concepts" href="../concepts/index.html" />
 
 <link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
@@ -145,7 +145,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">First-Time Robot Setup Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gazebo.html">Setup Guide for Gazebo</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
@@ -208,6 +208,9 @@
 <li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gazebo_classic.html">Setup Guide for Gazebo Classic</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
@@ -1288,48 +1291,42 @@
 <li><p>Lifecycle node management for easy bringup of other related sensors or nodes</p></li>
 </ul>
 <p>There are tutorials below for the Gazebo Classic simulator and the Gazebo simulator. Gazebo Classic is used with ROS 2 Humble and previous ROS distributions, while Gazebo (Gazebo Harmonic or newer) is used with ROS 2 Jazzy or newer.</p>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading"></a></h2>
-<div style="display: flex; gap: 20px;">
-
-<div style="flex: 1; padding: 10px; border-right: 1px solid #ccc;">
-
-<h3 style="text-align: center;">Gazebo</h3><div class="toctree-wrapper compound">
+<p>Choose the appropriate guide based on your ROS 2 distribution:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+  <div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdf/setup_sdf.html">Setting Up The SDF - Gazebo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="odom/setup_odom_gz.html">Setting Up Odometry - Gazebo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/setup_sensors_gz.html">Setting Up Sensors - Gazebo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gazebo.html">Setup Guide for Gazebo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdf/setup_sdf.html">Setting Up The SDF - Gazebo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odom/setup_odom_gz.html">Setting Up Odometry - Gazebo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors/setup_sensors_gz.html">Setting Up Sensors - Gazebo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-
-<div style="flex: 1; padding: 10px;">
-
-<h3 style="text-align: center;">Gazebo Classic</h3><div class="toctree-wrapper compound">
+<div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="odom/setup_odom_gz_classic.html">Setting Up Odometry - Gazebo Classic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/setup_sensors_gz_classic.html">Setting Up Sensors - Gazebo Classic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gazebo_classic.html">Setup Guide for Gazebo Classic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odom/setup_odom_gz_classic.html">Setting Up Odometry - Gazebo Classic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors/setup_sensors_gz_classic.html">Setting Up Sensors - Gazebo Classic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a></li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
-</div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the <a class="reference internal" href="../configuration/index.html#configuration"><span class="std std-ref">Configuration Guide</span></a> section.</p>
-</div>
-</div>
-</div>
+  </div>
+</div></div>
 
 
            </div>

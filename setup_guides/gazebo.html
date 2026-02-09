@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Guide for Gazebo &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting Up Transformations" href="transformation/setup_transforms.html" />
+    <link rel="prev" title="First-Time Robot Setup Guide" href="index.html" />
+
+<link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
+
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Nav2
+              <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/index.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/index.html#navigating">Navigating</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development_guides/index.html">Development Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development_guides/build_docs/index.html">Build and Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/build_docs/index.html#install">Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/index.html#for-iron-and-older">For Iron and Older</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/index.html#for-jazzy-and-newer">For Jazzy and Newer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/build_docs/index.html#build">Build</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/index.html#docker-container-images">Docker Container Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/index.html#using-pre-built-nav2-docker-images">Using Pre-built nav2_docker Images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/build_docs/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/build_docs/index.html#help">Help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html">Dev Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/devcontainer_docs/devcontainer_guide.html">Dev Container Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/devcontainer_docs/devcontainer_guide.html#creating-dev-containers">Creating Dev Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/devcontainer_docs/devcontainer_guide.html#using-dev-containers">Using Dev Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#what-why-how">What, Why, How?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#what-is-a-dev-container">What is a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#why-use-a-dev-container">Why use a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#how-do-dev-containers-work">How do Dev Containers work?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/devcontainer_docs/index.html#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development_guides/involvement_docs/index.html">Getting Involved</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/involvement_docs/index.html#id1">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/involvement_docs/index.html#process">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/involvement_docs/index.html#licensing">Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_guides/involvement_docs/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Navigation Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#ros-2">ROS 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#action-server">Action Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#lifecycle-nodes-and-bond">Lifecycle Nodes and Bond</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#behavior-trees">Behavior Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#navigation-servers">Navigation Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planner-controller-smoother-route-and-behavior-servers">Planner, Controller, Smoother, Route, and Behavior Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planners">Planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#controllers">Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#behaviors">Behaviors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#smoothers">Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#route">Route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#robot-footprints">Robot Footprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#waypoint-following">Waypoint Following</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#state-estimation">State Estimation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#standards">Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#global-positioning-localization-and-slam">Global Positioning: Localization and SLAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#odometry">Odometry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#environmental-representation">Environmental Representation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#other-forms">Other Forms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#nav2-academic-overview">Nav2 Academic Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">First-Time Robot Setup Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setup Guide for Gazebo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#writing-the-urdf">Writing the URDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#visualization-using-rviz">Visualization using RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#adding-physical-properties">Adding Physical Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdf/setup_sdf.html">Setting Up The SDF - Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdf/setup_sdf.html#about-sdf">About SDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdf/setup_sdf.html#writing-the-sdf">Writing the SDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdf/setup_sdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdf/setup_sdf.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="odom/setup_odom_gz.html">Setting Up Odometry - Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz.html#odometry-introduction">Odometry Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz.html#setting-up-odometry-on-your-robot">Setting Up Odometry on your Robot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz.html#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System using Gazebo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_robot_localization.html#configuring-robot-localization">Configuring Robot Localization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_robot_localization.html#launch-and-build-files">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_robot_localization.html#build-run-and-verification">Build, Run and Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/setup_sensors_gz.html">Setting Up Sensors - Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sensors/setup_sensors_gz.html#sensor-introduction">Sensor Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/setup_sensors_gz.html#simulating-sensors-using-gazebo">Simulating Sensors using Gazebo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/setup_sensors_gz.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sensors/mapping_localization.html#costmap-2d">Costmap 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/mapping_localization.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#footprint-introduction">Footprint Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#configuring-the-robot-s-footprint">Configuring the Robot’s Footprint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#visualizing-footprint-in-rviz">Visualizing Footprint in RViz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#planner-and-controller-servers">Planner and Controller Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#selecting-the-algorithm-plugins">Selecting the Algorithm Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gazebo_classic.html">Setup Guide for Gazebo Classic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transformation/setup_transforms.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#writing-the-urdf">Writing the URDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#visualization-using-rviz">Visualization using RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#adding-physical-properties">Adding Physical Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="urdf/setup_urdf.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="odom/setup_odom_gz_classic.html">Setting Up Odometry - Gazebo Classic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz_classic.html#odometry-introduction">Odometry Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz_classic.html#setting-up-odometry-on-your-robot">Setting Up Odometry on your Robot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz_classic.html#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System using Gazebo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_odom_gz_classic.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_robot_localization.html#configuring-robot-localization">Configuring Robot Localization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_robot_localization.html#launch-and-build-files">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odom/setup_robot_localization.html#build-run-and-verification">Build, Run and Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/setup_sensors_gz_classic.html">Setting Up Sensors - Gazebo Classic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sensors/setup_sensors_gz_classic.html#sensor-introduction">Sensor Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/setup_sensors_gz_classic.html#simulating-sensors-using-gazebo-classic">Simulating Sensors using Gazebo Classic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/setup_sensors_gz_classic.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sensors/mapping_localization.html#costmap-2d">Costmap 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/mapping_localization.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#footprint-introduction">Footprint Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#configuring-the-robot-s-footprint">Configuring the Robot’s Footprint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#visualizing-footprint-in-rviz">Visualizing Footprint in RViz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="footprint/setup_footprint.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#planner-and-controller-servers">Planner and Controller Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#selecting-the-algorithm-plugins">Selecting the Algorithm Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about/robots.html">Robots Using</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about/robots.html#research-robots">Research Robots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about/roscon.html">ROSCon Talks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about/roscon.html#nav2-developer-talks">Nav2 Developer Talks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/roscon.html#community-s-talks">Community’s Talks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">General Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html">Navigating while Mapping (SLAM)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html">Using an External Costmap Plugin (STVL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#setup">0- Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html">Navigating using GPS Localization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#gps-localization-overview">GPS Localization Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#setup-gazebo-world">0- Setup Gazebo World</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#setup-gps-localization-system">1- Setup GPS Localization system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#setup-navigation-system">2- Setup Navigation system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#interactive-gps-waypoint-follower">3-  Interactive GPS Waypoint Follower</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#logged-gps-waypoint-follower-waypoint-logging">4-  Logged GPS Waypoint Follower &amp; Waypoint Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html">Lidar-Free, Vision-Based Navigation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.html">Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#concepts">Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#nvidia-technologies">NVIDIA Technologies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#nvidia-jetson-setup">0. NVIDIA Jetson Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#jetpack">Jetpack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#nova-init">Nova Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#power-modes">Power Modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#compatible-cameras">Compatible Cameras</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#initial-setup">1. Initial Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#tooling-setup">Tooling Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#demonstration-setup">Demonstration Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#software-workflow-walkthrough">2. Software &amp; Workflow Walkthrough</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#initial-environment-mapping">3. Initial Environment Mapping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#data-collection">Data Collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#data-processing">Data Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#final-results">Final results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#navigation-testing">4. Navigation Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#conclusions-extensions">5. Conclusions &amp; Extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#resources">Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_isaac_perceptor.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_groot.html">Groot Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#table-of-contents">Table of Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/groot.html">Groot - Interacting with Behavior Trees</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/groot2.html">Groot2 - Interacting with Behavior Trees</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/integrating_vio.html">Using VIO to Augment Robot Odometry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#setting-up-zed-ros">Setting Up ZED ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#fusing-vio-into-local-state-estimate">Fusing VIO Into Local State Estimate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#testing-it-out">Testing it Out!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#using-following-server">Using Following Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#following-server-overview">Following Server Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#following-server-tutorial-steps">Following Server Tutorial Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#using-computepathtopose-and-followpath">Using ComputePathToPose and FollowPath</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#computepathtopose-overview">ComputePathToPose Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#computepathtopose-tutorial-steps">ComputePathToPose Tutorial Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_docking.html">Using Docking Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#chargingdock-plugins">ChargingDock Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#dock-database">Dock Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#configuring-docking-server">Configuring Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#adding-docking-server-to-launch">Adding Docking Server to Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#docking-action-api">Docking Action API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#putting-it-all-together">Putting It All Together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html">Using Rotation Shim Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#what-is-the-rotation-shim-controller">What is the Rotation Shim Controller?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#configuring-rotation-shim-controller">Configuring Rotation Shim Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#configuring-primary-controller">Configuring Primary Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/adding_smoother.html">Adding a Smoother to a BT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_smoother.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_smoother.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_smoother.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/adding_smoother.html#familiarization-with-the-smoother-bt-node">0- Familiarization with the Smoother BT Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/adding_smoother.html#specifying-a-smoother-plugin">1- Specifying a Smoother Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/adding_smoother.html#modifying-your-bt-xml">2- Modifying your BT XML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html">Using Collision Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#composition">Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html">Filtering of Noise-Induced Obstacles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#enable-denoise-layer">1. Enable Denoise Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#run-nav2-stack">2. Run Nav2 stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#how-it-works">How it works</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/camera_calibration.html">Camera Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/camera_calibration.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/camera_calibration.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#from-large-project">From Large Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/get_profile.html">Profiling in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_profile.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_profile.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_profile.html#profile-from-a-node">Profile from a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_profile.html#profile-from-a-launch-file">Profile from a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_profile.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_profile.html#interpreting-results">Interpreting Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/docker_dev.html">Docker for Development: Zero to Hero</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#important-docker-commands">Important Docker Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#exploring-your-first-container">Exploring Your First Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#understanding-ros-docker-images">Understanding ROS Docker Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#for-docker-based-development">For Docker-Based Development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/docker_dev.html#building-a-development-image">Building a Development Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/docker_dev.html#visualizations-from-docker">Visualizations from Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#for-docker-based-deployment">For Docker-Based Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/docker_dev.html#appendix">Appendix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/docker_dev.html#nav2-development-image">Nav2 Development Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/docker_dev.html#nav2-deployment-image">Nav2 Deployment Image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/route_server_tools.html">Route Server Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/route_server_tools.html#provided-tools">Provided Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/route_server_tools/navigation2_route_tool.html">Using the Nav2 Route Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/route_server_tools/route_graph_generation_lif_editor.html">Route Graph Generation LIF Editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/route_server_tools/route_graph_generation.html">Route Graph Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/route_server_tools/swagger_generation.html">SWAGGER Route Graph Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/route_server_tools.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/route_server_tools.html#demonstration">Demonstration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html">Navigating with Vector Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#configuring-vector-object-server">Configuring Vector Object Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#demo-execution">Demo Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#working-with-vector-objects">Working with Vector Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/roscon_uk_2025_state_estimation.html">ROSCon UK 2025: State Estimation for Mobile Robotics Workshop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/roscon_uk_2025_state_estimation.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/roscon_uk_2025_state_estimation.html#workshop-content">Workshop Content</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html">Enhanced Safety for Nav2 using 3Laws Supervisor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#concepts">Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#obtain-a-license-key">0. Obtain a License Key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#installation">1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#initial-configuration-walkthrough">2. Initial Configuration Walkthrough</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#initializing-configuration-with-nav2">Initializing Configuration with Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#supervisor-configuration-general">Supervisor Configuration: General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#supervisor-configuration-robot-model">Supervisor Configuration: Robot Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#supervisor-configuration-localization">Supervisor Configuration: Localization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#supervisor-configuration-perception">Supervisor Configuration: Perception</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#supervisor-configuration-control">Supervisor Configuration: Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#supervisor-configuration-supervisor">Supervisor Configuration: Supervisor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#debugging">Debugging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#turtlebot4-supervisor-example">Turtlebot4 Supervisor Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#nav2-supervisor-configuration">3. Nav2-Supervisor Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#collision-monitor-integration">Collision Monitor Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#controller-configuration">Controller Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#launch-integration">Launch Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#nav2-turtlebot4-simulation-demonstration">4. Nav2 Turtlebot4 Simulation Demonstration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#hardware-demonstrations">5. Hardware Demonstrations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#narrow-doorways">Narrow Doorways</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_3laws_supervisor.html#resources">6. Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html">Writing a New Behavior Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#creating-a-new-behavior-plugin">1- Creating a new Behavior Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#exporting-the-behavior-plugin">2- Exporting the Behavior Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#run-behavior-plugin">4- Run Behavior Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#add-plugin-library-name-to-config">3- Add plugin library name to config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#using-custom-types-for-input-output-ports">Using custom types for Input/Output ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#visualize-the-content-of-the-blackboard-in-groot-2-pro">Visualize the content of the blackboard in Groot 2 (PRO)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html">Writing a New Controller Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html">Writing a New Costmap2D Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#write-a-new-costmap2d-plugin">1- Write a new Costmap2D plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#export-and-make-gradientlayer-plugin">2- Export and make GradientLayer plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#enable-the-plugin-in-costmap2d">3- Enable the plugin in Costmap2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#run-gradientlayer-plugin">4- Run GradientLayer plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-navigator-plugin">1- Create a new Navigator Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-plugin">4- Run plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html">Writing a New Planner Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#creating-a-new-planner-plugin">1- Creating a new Planner Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#run-straightline-plugin">4- Run StraightLine plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#core-servers">Core Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html">Behavior Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#behavior-server-parameters">Behavior Server Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#spin-behavior-parameters">Spin Behavior Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#backup-behavior-parameters">BackUp Behavior Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#driveonheading-behavior-parameters">DriveOnHeading Behavior Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#assistedteleop-behavior-parameters">AssistedTeleop Behavior Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#navigatetopose-parameters">NavigateToPose Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#navigatethroughposes-parameters">NavigateThroughPoses Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#action-plugins">Action Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#control-plugins">Control Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-collision-monitor.html">Collision Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-collision-monitor.html#provided-nodes">Provided Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#provided-plugins">Provided Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#plugin-parameters">Plugin Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html">Docking Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#simplechargingdock-parameters">SimpleChargingDock Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-lifecycle.html">Lifecycle Manager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-lifecycle.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-lifecycle.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-map-server.html">Map Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-map-saver.html">Map Saver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-costmap-filter-info-server.html">Costmap Filter Info Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html">Vector Object Server</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html">Planner Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html">Route Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#server-parameters">Server Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#edge-scorer-parameters">Edge Scorer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#route-operations-parameters">Route Operations Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#configuring-the-nav2-route-server-demo">Configuring the Nav2 Route Server Demo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html">Smoother Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html#smoother-server-parameters">Smoother Server Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-velocity-smoother.html">Velocity Smoother</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-velocity-smoother.html#velocity-smoother-parameters">Velocity Smoother Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-velocity-smoother.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html">Waypoint Follower</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugin">Default Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#planners-plugins">Planners Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-navfn.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-navfn.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-smac-planner.html">Smac Planner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-smac-planner.html#provided-plugins">Provided Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-smac-planner.html#description">Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-thetastar.html">Theta Star Planner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-thetastar.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-thetastar.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#controller-plugins">Controller Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html">DWB Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#controller">Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#plugins">Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html">Graceful Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#graceful-controller-parameters">Graceful Controller Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html">Model Predictive Path Integral Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#mppi-parameters">MPPI Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#notes-to-users">Notes to Users</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html">Rotation Shim Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#rotation-shim-controller-parameters">Rotation Shim Controller Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#smoother-plugins">Smoother Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-constrained-smoother.html">Constrained smoother</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-constrained-smoother.html#smoother-server-parameters">Smoother Server Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-constrained-smoother.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-savitzky-golay-smoother.html">Savitzky-Golay Smoother</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-savitzky-golay-smoother.html#savitzky-golay-smoother-parameters">Savitzky-Golay Smoother Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-savitzky-golay-smoother.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-simple-smoother.html">Simple Smoother</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-simple-smoother.html#simple-smoother-parameters">Simple Smoother Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-simple-smoother.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#others">Others</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-amcl.html">AMCL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-amcl.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-amcl.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html">Coverage Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-following-server.html">Following Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-following-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-following-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html">Loopback Simulator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tuning/index.html">Tuning Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#inflation-potential-fields">Inflation Potential Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#robot-footprint-vs-radius">Robot Footprint vs Radius</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#rotate-in-place-behavior">Rotate in Place Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#planner-plugin-selection">Planner Plugin Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#controller-plugin-selection">Controller Plugin Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#costmap2d-plugins">Costmap2D Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#symmetric-yaw-tolerance">Symmetric Yaw Tolerance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#nav2-launch-options">Nav2 Launch Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos">Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../behavior_trees/index.html">Nav2 Behavior Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html">Introduction To Nav2 Specific Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#action-nodes">Action Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#condition-nodes">Condition Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#decorator-nodes">Decorator Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-nonblockingsequence">Control: NonblockingSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-persistentsequence">Control: PersistentSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-pauseresumecontroller">Control: PauseResumeController</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#navigation-subtree">Navigation Subtree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#recovery-subtree">Recovery Subtree</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/navigate_on_route_graph_w_recovery.html">Navigate on Route Graph with Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/odometry_calibration.html">Odometry Calibration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#controllers">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#planners">Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#smoothers">Smoothers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behaviors">Behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#goal-checkers">Goal Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#path-handlers">Path Handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#route-plugins">Route Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#edge-scorers">Edge Scorers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#route-operations">Route Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#graph-file-parsers">Graph File Parsers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Dashing.html">Dashing to Eloquent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Dashing.html#new-packages">New Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Dashing.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Dashing.html#navigation2-architectural-changes">Navigation2 Architectural Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Eloquent.html">Eloquent to Foxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#server-updates">Server Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#followpoint-capability">FollowPoint Capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Foxy.html">Foxy to Galactic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-action-feedback-updates">NavigateToPose Action Feedback updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatethroughposes-and-computepaththroughposes-actions-added">NavigateThroughPoses and ComputePathThroughPoses Actions Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#groot-support">Groot Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#thetastarplanner">ThetaStarPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#ray-tracing-parameters">Ray Tracing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#recovery-action-changes">Recovery Action Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navfn-planner-parameters">NavFn Planner Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#removed-bt-xml-launch-configurations">Removed BT XML Launch Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#nav2-rviz-panel-action-feedback-information">Nav2 RViz Panel Action Feedback Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Galactic.html">Galactic to Humble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#simple-python-commander">Simple (Python) Commander</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#api-change-for-nav2-core">API Change for nav2_core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#including-new-rotation-shim-controller-plugin">Including new Rotation Shim Controller Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#recovery-behavior-timeout">Recovery Behavior Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#change-and-fix-behavior-of-dynamic-parameter-change-detection">Change and fix behavior of dynamic parameter change detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dynamic-parameters">Dynamic Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#added-smoother-task-server">Added Smoother Task Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#replanning-only-if-path-is-invalid">Replanning Only if Path is Invalid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dynamic-composition">Dynamic Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-cancel-node">BT Cancel Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-pathlongeronapproach-node">BT PathLongerOnApproach Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-truncatepathlocal-node">BT TruncatePathLocal Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#constrained-smoother">Constrained Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#recovery-to-behavior">Recovery To Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#new-nav2-velocity-smoother">New Nav2 Velocity Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#goal-checker-api-changed">Goal Checker API Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#added-assisted-teleop">Added Assisted Teleop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#recursive-refinement-of-smac-and-simple-smoothers">Recursive Refinement of Smac and Simple Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#simple-commander-python-api">Simple Commander Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#expanded-planner-benchmark-tests">Expanded Planner Benchmark Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#savitzky-golay-smoother">Savitzky-Golay Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smootherselector-bt-node">SmootherSelector BT Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#publish-costmap-layers">Publish Costmap Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#give-behavior-server-access-to-both-costmaps">Give Behavior Server Access to Both Costmaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#behavior-tree-uses-error-codes">Behavior Tree Uses Error Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#load-save-and-loop-waypoints-from-the-nav2-panel-in-rviz">Load, Save and Loop Waypoints from the Nav2 Panel in RViz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#more-stable-regulation-on-curves-for-long-lookahead-distances">More stable regulation on curves for long lookahead distances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#publish-collision-monitor-state">Publish Collision Monitor State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#renamed-ros-parameter-in-collision-monitor">Renamed ROS-parameter in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-safety-behavior-model-limit-in-collision-monitor">New safety behavior model “limit” in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#allow-multiple-goal-checkers-and-change-parameter-progress-checker-plugin-s-name-and-type">Allow multiple goal checkers and change parameter progress_checker_plugin(s) name and type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#behavior-server-error-codes">Behavior Server Error Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-denoise-costmap-layer-plugin">New Denoise Costmap Layer Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smacplannerhybrid-viz-expansions-parameter">SmacPlannerHybrid viz_expansions parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Iron.html">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#behaviortree-cpp-upgraded-to-version-4-5">BehaviorTree.CPP upgraded to version 4.5+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#added-twiststamped-option-for-commands">Added TwistStamped Option for Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#opennav-docking-project"><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#addition-of-new-mppi-cost-critic">Addition of new MPPI Cost Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#mppi-acceleration">MPPI Acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#move-error-code-enumerations">Move Error Code Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-on-approach-to-goal-shortcutting-solutions">Smac Planner On Approach to Goal Shortcutting Solutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#btactionserver-use-native-library-halttree">BtActionServer: use native library haltTree()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#global-frame-removed-from-2-bt-nodes">Global Frame Removed from 2 BT Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#mppi-controller-addition-of-acceleration-constraints">MPPI Controller: Addition of acceleration constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#clear-costamp-around-passed-pose">Clear Costamp Around Passed Pose</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#bt-nodes-changes">BT Nodes Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-disengagement-threshold">Rotation Shim Disengagement Threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-plugin-container-layer">New Plugin Container Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-nav-msgs-goals-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector&lt;PoseStamped&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#enable-goal-orientation-non-specificity">Enable goal orientation non-specificity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#service-introspection">Service introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-position-goal-checker">New Position Goal Checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#controller-server-frequency-removed-dynamic-parameter">Controller Server Frequency Removed Dynamic Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#default-bringup-supports-keepout-speed-zones-and-route-planning">Default bringup supports keepout, speed zones, and route planning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Kilted.html">Kilted to L-turtle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-nav2-ros-common-nav2-lifecycle-node">New Nav2 ROS Common &amp; Nav2 Lifecycle Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#plugin-migration">Plugin Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#service-client-migration">Service Client Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#service-server-migration">Service Server Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#action-server-migration">Action Server Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#action-client-migration">Action Client Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#dock-plugin-detector-control">Dock Plugin Detector Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#added-corner-smoothing-functionality-to-route-server">Added Corner Smoothing functionality to route_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#added-nonblockingsequence-control-node">Added NonblockingSequence Control Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#mppi-optimal-trajectory-validator-plugin">MPPI Optimal Trajectory Validator Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#added-persistentsequence-and-pauseresumecontroller-control-nodes">Added PersistentSequence and PauseResumeController Control Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#option-to-use-point-cloud-transport">Option to use point_cloud_transport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#configuration-guide">Configuration guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#performance-metrics">Performance Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#private-bt-navigator-s-blackboard-id-parameters">Private BT Navigator’s BlackBoard ID parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#add-behaviortree-subtrees-support">Add BehaviorTree SubTrees Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#toggle-collision-monitor-service-and-bt-plugin">Toggle collision monitor service and BT plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#following-server">Following Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#option-for-mppi-to-use-open-loop-mode">Option for MPPI to use open loop mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#partial-paths-from-planner-server">Partial paths from Planner Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#namespace-added-for-primary-controller-parameters-in-rotation-shim-controller">Namespace added for primary controller parameters in Rotation Shim Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-costmapsource-observation-type-for-collision-monitor-and-collisiondetector">New CostmapSource observation type for Collision Monitor and CollisionDetector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#options-to-build-with-isolated-tests">Options to build with isolated tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#roundrobin-wrap-around-parameter">RoundRobin wrap_around Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#configurable-inscribed-obstacle-cost-value-for-costmap-conversion">Configurable Inscribed Obstacle Cost Value for Costmap Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#updated-nav2-rviz-panel">Updated Nav2 RViz Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#add-dynamic-window-pure-pursuit-option-to-regulated-pure-pursuit-controller">Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#bond-heartbeat-period-default-value-change">Bond Heartbeat Period Default Value Change</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#performance-impact">Performance Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#centralize-path-handler-logic-in-controller-server">Centralize Path Handler logic in Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#goalchecker">GoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#controller-plugins">Controller Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#dwb">DWB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#rpp">RPP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#graceful">Graceful</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#mppi">MPPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#symmetric-yaw-tolerance-for-goal-checking-and-navigation">Symmetric Yaw Tolerance for Goal Checking and Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commander_api/index.html">Simple Commander API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#id1">Commander API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#costmap-api">Costmap API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#footprint-collision-checker-api">Footprint Collision Checker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#examples-and-demos">Examples and Demos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://api.nav2.org">API Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/roadmap.html">Roadmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#lyrical-roadmap">Lyrical Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#kilted-roadmap">Kilted Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#jazzy-roadmap">Jazzy Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#iron-roadmap">Iron Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#humble-roadmap">Humble Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About and Contact</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about/related_projects.html">Related Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/index.html#id1">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/index.html#contact">Contact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer_docs/index.html">Maintainer Docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../maintainer_docs/distribution_release.html">ROS Distribution Release Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#initial-freeze">0. Initial Freeze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#local-functional-testing">1. Local Functional Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#setup-nav2-docker-images">2. Setup Nav2 Docker Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#branch-off-distribution">2. Branch Off Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#mark-branch-as-protected">3. Mark Branch as Protected</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#setup-branch-ci">4. Setup Branch CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#update-auxiliary-projects">5. Update Auxiliary Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#run-bloom-release">6. Run Bloom Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#nav2-docker-build">7. Nav2 Docker Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#announcements">8. Announcements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html">ROS Distribution Sync Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#initial-setup">0. Initial Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#backporting-process">1. Backporting Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#testing">2. Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#open-a-pr">3. Open a PR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#bloom-release">4. Bloom Release</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nav2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+
+<span style="float: right;" >
+    <a class="github-button" href="https://github.com/ros-navigation/docs.nav2.org" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Edit ros-navigation/docs.nav2.org on GitHub" ">Edit</a>
+</span>
+
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">First-Time Robot Setup Guide</a></li>
+      <li class="breadcrumb-item active">Setup Guide for Gazebo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="setup-guide-for-gazebo">
+<span id="setup-guides-gazebo"></span><h1>Setup Guide for Gazebo<a class="headerlink" href="#setup-guide-for-gazebo" title="Permalink to this heading"></a></h1>
+<p>This guide covers setting up Navigation2 with the modern Gazebo simulator (Gazebo Harmonic or newer), used with ROS 2 Jazzy or newer.</p>
+<p>Follow these tutorials in order to set up your robot for Nav2:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="transformation/setup_transforms.html">Setting Up Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urdf/setup_urdf.html">Setting Up The URDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdf/setup_sdf.html">Setting Up The SDF - Gazebo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odom/setup_odom_gz.html">Setting Up Odometry - Gazebo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors/setup_sensors_gz.html">Setting Up Sensors - Gazebo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors/mapping_localization.html">Mapping and Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithm/select_algorithm.html">Setting Up Navigation Plugins</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the <a class="reference internal" href="../configuration/index.html#configuration"><span class="std std-ref">Configuration Guide</span></a> section.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Open Navigation LLC.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+
+
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script>
+
+<script type="text/javascript" src="../_static/tcs_theme.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+</body>
+</html>
