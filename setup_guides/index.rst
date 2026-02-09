@@ -25,8 +25,27 @@ There are tutorials below for the Gazebo Classic simulator and the Gazebo simula
 
 Choose the appropriate guide based on your ROS 2 distribution:
 
+.. raw:: html
+
+   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+     <div>
+
 .. toctree::
    :maxdepth: 2
 
    gazebo.rst
+
+.. raw:: html
+
+     </div>
+     <div>
+
+.. toctree::
+   :maxdepth: 2
+
    gazebo_classic.rst
+
+.. raw:: html
+
+     </div>
+   </div>
