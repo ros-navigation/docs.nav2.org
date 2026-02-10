@@ -122,7 +122,7 @@ Server Parameters
   ============== ========
 
   Description
-    Angle threshold (rad). If angle > threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error.
+    Angle threshold (rad). If angle > threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error. 2.9 rad is 166 deg, meaning it will not smooth for segments that are within 14 deg of straight anti-parallel.
 
 :costmap_topic:
 
