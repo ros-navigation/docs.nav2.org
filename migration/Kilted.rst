@@ -361,10 +361,12 @@ See also :ref:`configuring_bt_navigator`
 Add BehaviorTree SubTrees Support
 ---------------------------------
 
-The BehaviorTree engine now supports SubTrees in different files within directory(s) set through ``bt_search_directories`` parameter. This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
-The interface now supports passing the behavior tree file or ID as input to the `loadBehaviorTree` method of the BT action server.
-Each behavior tree is now strictly required to have its own unique ID, therefore the need to replace `MainTre` to a unique ID. For example, in `navigate_through_poses_w_replanning_and_recovery.xml
-` `MainTree` can be replaced with `NavigateThroughPosesWReplanningAndRecovery`.
+The BehaviorTree engine now supports loading SubTrees from multiple files.
+This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
+The .xml files should be located within directory(s) set through the ``bt_search_directories`` parameter.
+
+The interface also supports requesting the desired behavior tree as a filepath or as an ID.
+To use the ID or multiple SubTrees features, each behavior tree is required to have its own unique ID - replace `MainTree` with a unique ID.
 
 Option to have custom window size and poly order in Savitsky-Golay Smoother
 ---------------------------------------------------------------------------
