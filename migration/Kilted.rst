@@ -798,3 +798,38 @@ New default_cancel_timeout parameter in bt_navigator
 In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
 
 The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.
+
+New IsWithinPathTrackingBounds BT Condition Node
+-------------------------------------------------
+
+A new behavior tree condition node ``IsWithinPathTrackingBounds`` has been added to monitor real-time path tracking performance during navigation. This node subscribes to ``tracking_feedback`` messages (of type ``nav2_msgs::msg::TrackingFeedback``) published by controllers and checks if the robot's lateral tracking error stays within configured bounds.
+
+**Key Features:**
+
+* Monitors tracking error from controller feedback
+* Supports asymmetric bounds for left and right side errors
+* Returns SUCCESS when robot is within bounds, FAILURE otherwise
+* Useful for triggering recovery behaviors when path tracking degrades
+
+**Usage in Behavior Trees:**
+
+There is an implementation example on nav2_bt_navigator/behavior_trees/navigate_with_bounds_check.xml
+
+**Required Configuration:**
+
+Controllers must publish ``nav2_msgs::msg::TrackingFeedback`` messages on the ``tracking_feedback`` topic. The ``tracking_error`` field should contain the lateral deviation where:
+
+* Positive values = robot is left of the path
+* Negative values = robot is right of the path
+
+**Migration Notes:**
+
+If you want to use this condition node in your behavior trees:
+
+1. Ensure your controller publishes ``tracking_feedback`` messages
+2. Add the condition node to your BT XML with appropriate error bounds
+3. The node differentiates between left/right errors, allowing asymmetric tolerance
+
+**Explanation for behavior tree**
+
+Given behavior tree in default settings checking tracking error(deviation from path) on both sides with given max tolerance of 0.05 and working on 3Hz frequency.
