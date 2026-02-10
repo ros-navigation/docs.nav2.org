@@ -1443,7 +1443,7 @@ You can use substitution to specify file path like <code class="docutils literal
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+<dt>Description</dt><dd><p>Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
 This value will be overwritten for a BT node if the input port “server_timeout” is provided.</p>
 </dd>
 </dl>
@@ -1464,7 +1464,7 @@ This value will be overwritten for a BT node if the input port “server_timeout
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Default timeout (in seconds) for BT action node cancellation requests during node halt.
+<dt>Description</dt><dd><p>Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
 This value will be overwritten for a BT node if the input port “cancel_timeout” is provided.</p>
 </dd>
 </dl>
@@ -1485,7 +1485,7 @@ This value will be overwritten for a BT node if the input port “cancel_timeout
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. <code class="docutils literal notranslate"><span class="pre">wait_for_action_server(timeout)</span></code>).
+<dt>Description</dt><dd><p>Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. <code class="docutils literal notranslate"><span class="pre">wait_for_action_server(timeout)</span></code>).
 This value will be overwritten for a BT node if the input port “wait_for_service_timeout” is provided.</p>
 </dd>
 </dl>
@@ -1707,7 +1707,7 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.</p>
+<dt>Description</dt><dd><p>List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.</p>
 </dd>
 </dl>
 </dd>
