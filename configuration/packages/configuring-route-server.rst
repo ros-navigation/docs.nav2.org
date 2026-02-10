@@ -113,6 +113,17 @@ Server Parameters
   Description
     Radius to fit to corners formed by edges if corner smoothing is enabled
 
+:smoothing_angle_threshold:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double          2.9
+  ============== ========
+
+  Description
+    Angle threshold (rad). If angle > threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error.
+
 :costmap_topic:
 
   ============== ============================
