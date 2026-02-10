@@ -36,4 +36,4 @@ Example
 
 .. code-block:: xml
 
-  <CancelSpin server_name="Spin" server_timeout="10"/>
+  <CancelSpin server_name="spin" server_timeout="10"/>

@@ -10,112 +10,227 @@ The server address can be remapped using the ``server_name`` input port.
 
 Input Ports
 -----------
-:start:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A
-  ===================================== =======
+.. tabs::
 
-  Description
-      Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+  .. group-tab:: Rolling
 
-:goals:
+    :start:
 
-  ==================== =======
-  Type                 Default
-  -------------------- -------
-  nav_msgs::msg::Goals   N/A
-  ==================== =======
+      ===================================== =======
+      Type                                  Default
+      ------------------------------------- -------
+      geometry_msgs::msg::PoseStamped         N/A
+      ===================================== =======
 
-  Description
-      Goal poses. Takes in a blackboard variable, e.g. "{goals}".
+      Description
+          Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
 
-:planner_id:
+    :goals:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      ==================== =======
+      Type                 Default
+      -------------------- -------
+      nav_msgs::msg::Goals   N/A
+      ==================== =======
 
-  Description
-      Mapped name to the planner plugin type to use, e.g. GridBased.
+      Description
+          Goal poses. Takes in a blackboard variable, e.g. "{goals}".
 
-:server_name:
+    :planner_id:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
 
-  Description
-      Action server name.
+      Description
+          Mapped name to the planner plugin type to use, e.g. grid_based.
+
+    :server_name:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Action server name.
 
 
-:server_timeout:
+    :server_timeout:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         10
-  ============== =======
+      ============== =======
+      Type           Default
+      -------------- -------
+      double         10
+      ============== =======
 
-  Description
-      Action server timeout (ms).
+      Description
+          Action server timeout (ms).
+
+  .. group-tab:: Kilted and older
+
+    :start:
+
+      ===================================== =======
+      Type                                  Default
+      ------------------------------------- -------
+      geometry_msgs::msg::PoseStamped         N/A
+      ===================================== =======
+
+      Description
+          Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+
+    :goals:
+
+      ==================== =======
+      Type                 Default
+      -------------------- -------
+      nav_msgs::msg::Goals   N/A
+      ==================== =======
+
+      Description
+          Goal poses. Takes in a blackboard variable, e.g. "{goals}".
+
+      Note
+          In Jazzy and older versions, the ``geometry_msgs::msg::PoseStamped[]`` type is used.
+
+    :planner_id:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Mapped name to the planner plugin type to use, e.g. GridBased.
+
+    :server_name:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Action server name.
+
+
+    :server_timeout:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      double         10
+      ============== =======
+
+      Description
+          Action server timeout (ms).
 
 Output Ports
 ------------
 
-:path:
+.. tabs::
 
-  ========================== =======
-  Type                       Default
-  -------------------------- -------
-  nav_msgs::msg::Path         N/A
-  ========================== =======
+  .. group-tab:: Rolling
 
-  Description
-      Path created by action server. Takes in a blackboard variable, e.g. "{path}".
+    :path:
 
-:last_reached_index:
+      ========================== =======
+      Type                       Default
+      -------------------------- -------
+      nav_msgs::msg::Path         N/A
+      ========================== =======
 
-  ========================== =======
-  Type                       Default
-  -------------------------- -------
-  int16                       -1
-  ========================== =======
+      Description
+          Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
-  Description
-      In the case of a partial plan, index of the last reached pose from the goals list. Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS if a full plan through all the goals was possible.
+    :last_reached_index:
 
-:error_code_id:
+      ========================== =======
+      Type                       Default
+      -------------------------- -------
+      int16                       -1
+      ========================== =======
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  uint16          N/A
-  ============== =======
+      Description
+          In the case of a partial plan, index of the last reached pose from the goals list. Otherwise -1 which also corresponds to ComputePathThroughPosesResult::ALL_GOALS if a full plan through all the goals was possible.
 
-  Description
-      Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+    :error_code_id:
 
-:error_msg:
+      ============== =======
+      Type           Default
+      -------------- -------
+      uint16          N/A
+      ============== =======
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A
-  ============== =======
+      Description
+          Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
 
-  Description
-      Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+    :error_msg:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+
+  .. group-tab:: Kilted and older
+
+    :path:
+
+      ========================== =======
+      Type                       Default
+      -------------------------- -------
+      nav_msgs::msg::Path         N/A
+      ========================== =======
+
+      Description
+          Path created by action server. Takes in a blackboard variable, e.g. "{path}".
+
+    :error_code_id:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      uint16          N/A
+      ============== =======
+
+      Description
+          Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+
+    :error_msg:
+
+      ============== =======
+      Type           Default
+      -------------- -------
+      string         N/A
+      ============== =======
+
+      Description
+          Compute path through poses error message. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
 
 Example
 -------
 
-.. code-block:: xml
+.. tabs::
 
-  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="ComputePathThroughPoses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+  .. group-tab:: Rolling
+
+    .. code-block:: xml
+
+      <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="grid_based" server_name="compute_path_through_poses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: xml
+
+      <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="compute_path_through_poses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>

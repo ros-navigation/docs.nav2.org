@@ -12,47 +12,59 @@ Any publisher to this topic needs to be configured with some QoS defined as ``re
 Input Ports
 -----------
 
-:topic_name:
+.. tabs::
 
-  ====== =====================
-  Type   Default
-  ------ ---------------------
-  string path_handler_selector
-  ====== =====================
+  .. group-tab:: Rolling
 
-  Description
-      The name of the topic used to received select command messages. This is used to support multiple PathHandlerSelector nodes.
+    :topic_name:
 
-:default_path_handler:
+      ====== =====================
+      Type   Default
+      ------ ---------------------
+      string path_handler_selector
+      ====== =====================
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+      Description
+          The name of the topic used to received select command messages. This is used to support multiple PathHandlerSelector nodes.
 
-  Description
-      The default value for the selected PathHandler if no message is received from the input topic.
+    :default_path_handler:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+          The default value for the selected PathHandler if no message is received from the input topic.
 
 
 Output Ports
 ------------
 
-:selected_path_handler:
+.. tabs::
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A
-  ====== =======
+  .. group-tab:: Rolling
 
-  Description
-      The output selected PathHandler id. This selected_path_handler string is usually passed to the FollowPath behavior via the path_handler_id input port.
+    :selected_path_handler:
+
+      ====== =======
+      Type   Default
+      ------ -------
+      string N/A
+      ====== =======
+
+      Description
+          The output selected PathHandler id. This selected_path_handler string is usually passed to the FollowPath behavior via the path_handler_id input port.
 
 
 Example
 -------
 
-.. code-block:: xml
+.. tabs::
 
-  <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="PathHandler" topic_name="path_handler_selector"/>
+  .. group-tab:: Rolling
+
+    .. code-block:: xml
+
+      <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="path_handler" topic_name="path_handler_selector"/>

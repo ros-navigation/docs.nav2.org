@@ -517,183 +517,312 @@ All previous Polygon parameters apply, in addition to the following unique param
 Observation sources parameters
 ==============================
 
-``<source name>`` is the corresponding data source name ID selected for this type.
+.. tabs::
 
-:``<source name>``.type:
+  .. group-tab:: Rolling
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "scan"
-  ============== =============================
+    ``<source name>`` is the corresponding data source name ID selected for this type.
 
-  Description:
-    Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range``, ``polygon`` or ``costmap``.
+    :``<source name>``.type:
 
-:``<source name>``.transport_type:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "raw"
-  ============== =============================
+      Description:
+        Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range``, ``polygon`` or ``costmap``.
 
-  Description:
-    For ``pointcloud`` data, specify the transport plugin to use:
+    :``<source name>``.transport_type:
 
-  * raw: No compression. Default; highest bandwidth usage.
-  * draco: Lossy compression via Google.
-  * zlib: Lossless compression via Zlib compression.
-  * zstd: Lossless compression via Zstd compression.
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "raw"
+      ============== =============================
 
-  See the `known transports <https://github.com/ros-perception/point_cloud_transport_plugins>`_ for more details.
+      Description:
+        For ``pointcloud`` data, specify the transport plugin to use:
 
-:``<source name>``.topic:
+      * raw: No compression. Default; highest bandwidth usage.
+      * draco: Lossy compression via Google.
+      * zlib: Lossless compression via Zlib compression.
+      * zstd: Lossless compression via Zstd compression.
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "scan"
-  ============== =============================
+      See the `known transports <https://github.com/ros-perception/point_cloud_transport_plugins>`_ for more details.
 
-  Description:
-    Topic to listen the source data from.
+    :``<source name>``.topic:
 
-:``<source name>``.min_height:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.05
-  ============== =============================
+      Description:
+        Topic to listen the source data from.
 
-  Description:
-    Minimum height the PointCloud projection to 2D space started from. Applicable for ``pointcloud`` type.
+    :``<source name>``.min_height:
 
-:``<source name>``.max_height:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.5
-  ============== =============================
+      Description:
+        Minimum height the PointCloud projection to 2D space started from. Applicable for ``pointcloud`` type.
 
-  Description:
-    Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
+    :``<source name>``.max_height:
 
-:``<source name>``.use_global_height:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.5
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           false
-  ============== =============================
+      Description:
+        Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
 
-  Description:
-    Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for ``pointcloud`` type.
+    :``<source name>``.use_global_height:
 
-:``<source name>``.min_range:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.0
-  ============== =============================
+      Description:
+        Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for ``pointcloud`` type.
 
-  Description:
-    Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for ``pointcloud`` type.
+    :``<source name>``.min_range:
 
-:``<source name>``.obstacles_angle:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.0
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         PI / 180 (1 degree)
-  ============== =============================
+      Description:
+        Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for ``pointcloud`` type.
 
-  Description:
-    Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
+    :``<source name>``.obstacles_angle:
 
-:``<source name>``.sampling_distance:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         PI / 180 (1 degree)
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.1
-  ============== =============================
+      Description:
+        Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
 
-  Description:
-    Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
+    :``<source name>``.sampling_distance:
 
-:``<source name>``.enabled:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           True
-  ============== =============================
+      Description:
+        Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
 
-  Description:
-    Whether to use this source for collision monitoring. (Can be dynamically set)
+    :``<source name>``.enabled:
 
-:``<source name>``.source_timeout:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           True
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         (node parameter ``source_timeout`` value)
-  ============== =============================
+      Description:
+        Whether to use this source for collision monitoring. (Can be dynamically set)
 
-  Description:
-    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. Overrides node parameter for each source individually, if desired.
+    :``<source name>``.source_timeout:
 
-:``<source name>``.cost_threshold:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         (node parameter ``source_timeout`` value)
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  int            253
-  ============== =============================
+      Description:
+        Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. Overrides node parameter for each source individually, if desired.
 
-  Description:
-    For ``costmap`` sources only. Minimum cell cost (0–255) to be treated as an
-    obstacle. By default this matches inscribed/lethal cells (253–254) and ignores
-    lower-cost cells.
+    :``<source name>``.cost_threshold:
 
-:``<source name>``.treat_unknown_as_obstacle:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      int            253
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description:
+        For ``costmap`` sources only. Minimum cell cost (0–255) to be treated as an
+        obstacle. By default this matches inscribed/lethal cells (253–254) and ignores
+        lower-cost cells.
 
-  Description:
-    For ``costmap`` sources only. If ``true``, cells with cost ``255`` (``NO_INFORMATION``)
-    will also be turned into obstacle points. Set to ``false`` if your costmap has
-    large unknown areas you don’t want to trigger Collision Monitor.
+    :``<source name>``.treat_unknown_as_obstacle:
 
-:bond_heartbeat_period:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.25
-  ============== =============================
+      Description:
+        For ``costmap`` sources only. If ``true``, cells with cost ``255`` (``NO_INFORMATION``)
+        will also be turned into obstacle points. Set to ``false`` if your costmap has
+        large unknown areas you don’t want to trigger Collision Monitor.
 
-  Description
-    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+    :bond_heartbeat_period:
 
-:allow_parameter_qos_overrides:
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.25
+      ============== =============================
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
+      Description
+        The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
-  Description
-    Whether to allow QoS profiles to be overwritten with parameterized values.
+    :allow_parameter_qos_overrides:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           true
+      ============== =============================
+
+      Description
+        Whether to allow QoS profiles to be overwritten with parameterized values.
+
+  .. group-tab:: Kilted and older
+
+    ``<source name>`` is the corresponding data source name ID selected for this type.
+
+    :``<source name>``.type:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
+
+      Description:
+        Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
+
+    :``<source name>``.topic:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      string         "scan"
+      ============== =============================
+
+      Description:
+        Topic to listen the source data from.
+
+    :``<source name>``.min_height:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.05
+      ============== =============================
+
+      Description:
+        Minimum height the PointCloud projection to 2D space started from. Applicable for ``pointcloud`` type.
+
+    :``<source name>``.max_height:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.5
+      ============== =============================
+
+      Description:
+        Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
+
+    :``<source name>``.use_global_height:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           false
+      ============== =============================
+
+      Description:
+        Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for ``pointcloud`` type.
+
+    :``<source name>``.min_range:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.0
+      ============== =============================
+
+      Description:
+        Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for ``pointcloud`` type.
+
+    :``<source name>``.obstacles_angle:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         PI / 180 (1 degree)
+      ============== =============================
+
+      Description:
+        Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
+
+    :``<source name>``.sampling_distance:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
+
+      Description:
+        Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
+
+    :``<source name>``.enabled:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      bool           True
+      ============== =============================
+
+      Description:
+        Whether to use this source for collision monitoring. (Can be dynamically set)
+
+    :``<source name>``.source_timeout:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         (node parameter ``source_timeout`` value)
+      ============== =============================
+
+      Description:
+        Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. Overrides node parameter for each source individually, if desired.
+
+    :bond_heartbeat_period:
+
+      ============== =============================
+      Type           Default
+      -------------- -----------------------------
+      double         0.1
+      ============== =============================
+
+      Description
+        The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 Example
 *******
@@ -705,112 +834,223 @@ Here is an example illustrating the common configurations for holonomic robots t
 
 Here is an example of configuration YAML for the Collision Monitor.
 
-.. code-block:: yaml
+.. tabs::
 
-    collision_monitor:
-      ros__parameters:
-        enabled: True
-        base_frame_id: "base_footprint"
-        odom_frame_id: "odom"
-        cmd_vel_in_topic: "cmd_vel_smoothed"
-        cmd_vel_out_topic: "cmd_vel"
-        state_topic: "collision_monitor_state"
-        transform_tolerance: 0.5
-        source_timeout: 5.0
-        base_shift_correction: True
-        stop_pub_timeout: 2.0
-        enable_stamped_cmd_vel: True  # False for Jazzy or older
-        use_realtime_priority: false
-        polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
-        PolygonStop:
-          type: "circle"
-          radius: 0.3
-          action_type: "stop"
-          min_points: 4  # max_points: 3 for Humble
-          visualize: True
-          polygon_pub_topic: "polygon_stop"
+  .. group-tab:: Rolling
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
           enabled: True
-        PolygonSlow:
-          type: "polygon"
-          points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
-          action_type: "slowdown"
-          min_points: 4  # max_points: 3 for Humble
-          slowdown_ratio: 0.3
-          visualize: True
-          polygon_pub_topic: "polygon_slowdown"
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          cmd_vel_in_topic: "cmd_vel_smoothed"
+          cmd_vel_out_topic: "cmd_vel"
+          state_topic: "collision_monitor_state"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          base_shift_correction: True
+          stop_pub_timeout: 2.0
+          enable_stamped_cmd_vel: True
+          use_realtime_priority: false
+          bond_heartbeat_period: 0.25
+          polygons: ["polygon_stop", "polygon_slow", "footprint_approach"]
+          polygon_stop:
+            type: "circle"
+            radius: 0.3
+            action_type: "stop"
+            min_points: 4
+            visualize: True
+            polygon_pub_topic: "polygon_stop"
+            enabled: True
+          polygon_slow:
+            type: "polygon"
+            points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
+            action_type: "slowdown"
+            min_points: 4
+            slowdown_ratio: 0.3
+            visualize: True
+            polygon_pub_topic: "polygon_slowdown"
+            enabled: True
+          polygon_limit:
+            type: "polygon"
+            points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
+            action_type: "limit"
+            min_points: 4
+            linear_limit: 0.4
+            angular_limit: 0.5
+            visualize: True
+            polygon_pub_topic: "polygon_limit"
+            enabled: True
+          footprint_approach:
+            type: "polygon"
+            action_type: "approach"
+            footprint_topic: "/local_costmap/published_footprint"
+            time_before_collision: 2.0
+            simulation_time_step: 0.02
+            min_points: 6
+            visualize: False
+            enabled: True
+          velocity_polygon_stop:
+            type: "velocity_polygon"
+            action_type: "stop"
+            min_points: 6
+            visualize: True
+            enabled: True
+            polygon_pub_topic: "velocity_polygon_stop"
+            velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+            holonomic: false
+            rotation:
+              points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+              linear_min: 0.0
+              linear_max: 0.05
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_forward:
+              points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+              linear_min: 0.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_backward:
+              points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+              linear_min: -1.0
+              linear_max: 0.0
+              theta_min: -1.0
+              theta_max: 1.0
+            # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+            # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+            # is not covered by any of the other sub-polygons
+            stopped:
+              points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+              linear_min: -1.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+          observation_sources: ["scan", "pointcloud"]
+          scan:
+            source_timeout: 0.2
+            type: "scan"
+            topic: "/scan"
+            enabled: True
+          pointcloud:
+            type: "pointcloud"
+            topic: "/intel_realsense_r200_depth/points"
+            transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
+            min_height: 0.1
+            max_height: 0.5
+            min_range: 0.2
+            enabled: True
+          # costmap:
+          #   type: "costmap"   # relative, respects namespaces
+          #   topic: "local_costmap/costmap"
+          #   cost_threshold: 254
+          #   enabled: True
+          #   treat_unknown_as_obstacle: True
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      collision_monitor:
+        ros__parameters:
           enabled: True
-        PolygonLimit:
-          type: "polygon"
-          points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
-          action_type: "limit"
-          min_points: 4  # max_points: 3 for Humble
-          linear_limit: 0.4
-          angular_limit: 0.5
-          visualize: True
-          polygon_pub_topic: "polygon_limit"
-          enabled: True
-        FootprintApproach:
-          type: "polygon"
-          action_type: "approach"
-          footprint_topic: "/local_costmap/published_footprint"
-          time_before_collision: 2.0
-          simulation_time_step: 0.02
-          min_points: 6  # max_points: 5 for Humble
-          visualize: False
-          enabled: True
-        VelocityPolygonStop:
-          type: "velocity_polygon"
-          action_type: "stop"
-          min_points: 6
-          visualize: True
-          enabled: True
-          polygon_pub_topic: "velocity_polygon_stop"
-          velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
-          holonomic: false
-          rotation:
-            points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
-            linear_min: 0.0
-            linear_max: 0.05
-            theta_min: -1.0
-            theta_max: 1.0
-          translation_forward:
-            points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
-            linear_min: 0.0
-            linear_max: 1.0
-            theta_min: -1.0
-            theta_max: 1.0
-          translation_backward:
-            points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
-            linear_min: -1.0
-            linear_max: 0.0
-            theta_min: -1.0
-            theta_max: 1.0
-          # This is the last polygon to be checked, it should cover the entire range of robot's velocities
-          # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
-          # is not covered by any of the other sub-polygons
-          stopped:
-            points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
-            linear_min: -1.0
-            linear_max: 1.0
-            theta_min: -1.0
-            theta_max: 1.0
-        observation_sources: ["scan", "pointcloud"]
-        scan:
-          source_timeout: 0.2
-          type: "scan"
-          topic: "/scan"
-          enabled: True
-        pointcloud:
-          type: "pointcloud"
-          topic: "/intel_realsense_r200_depth/points"
-          transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
-          min_height: 0.1
-          max_height: 0.5
-          min_range: 0.2
-          enabled: True
-        # costmap:
-        #   type: "costmap"   # relative, respects namespaces
-        #   topic: "local_costmap/costmap"
-        #   cost_threshold: 254
-        #   enabled: True
-        #   treat_unknown_as_obstacle: True
+          base_frame_id: "base_footprint"
+          odom_frame_id: "odom"
+          cmd_vel_in_topic: "cmd_vel_smoothed"
+          cmd_vel_out_topic: "cmd_vel"
+          state_topic: "collision_monitor_state"
+          transform_tolerance: 0.5
+          source_timeout: 5.0
+          base_shift_correction: True
+          stop_pub_timeout: 2.0
+          enable_stamped_cmd_vel: True  # False for Jazzy or older
+          use_realtime_priority: false
+          bond_heartbeat_period: 0.1
+          polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
+          PolygonStop:
+            type: "circle"
+            radius: 0.3
+            action_type: "stop"
+            min_points: 4  # max_points: 3 for Humble
+            visualize: True
+            polygon_pub_topic: "polygon_stop"
+            enabled: True
+          PolygonSlow:
+            type: "polygon"
+            points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
+            action_type: "slowdown"
+            min_points: 4  # max_points: 3 for Humble
+            slowdown_ratio: 0.3
+            visualize: True
+            polygon_pub_topic: "polygon_slowdown"
+            enabled: True
+          PolygonLimit:
+            type: "polygon"
+            points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
+            action_type: "limit"
+            min_points: 4  # max_points: 3 for Humble
+            linear_limit: 0.4
+            angular_limit: 0.5
+            visualize: True
+            polygon_pub_topic: "polygon_limit"
+            enabled: True
+          FootprintApproach:
+            type: "polygon"
+            action_type: "approach"
+            footprint_topic: "/local_costmap/published_footprint"
+            time_before_collision: 2.0
+            simulation_time_step: 0.02
+            min_points: 6  # max_points: 5 for Humble
+            visualize: False
+            enabled: True
+          VelocityPolygonStop:
+            type: "velocity_polygon"
+            action_type: "stop"
+            min_points: 6
+            visualize: True
+            enabled: True
+            polygon_pub_topic: "velocity_polygon_stop"
+            velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+            holonomic: false
+            rotation:
+              points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+              linear_min: 0.0
+              linear_max: 0.05
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_forward:
+              points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+              linear_min: 0.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+            translation_backward:
+              points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+              linear_min: -1.0
+              linear_max: 0.0
+              theta_min: -1.0
+              theta_max: 1.0
+            # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+            # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+            # is not covered by any of the other sub-polygons
+            stopped:
+              points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+              linear_min: -1.0
+              linear_max: 1.0
+              theta_min: -1.0
+              theta_max: 1.0
+          observation_sources: ["scan", "pointcloud"]
+          scan:
+            source_timeout: 0.2
+            type: "scan"
+            topic: "/scan"
+            enabled: True
+          pointcloud:
+            type: "pointcloud"
+            topic: "/intel_realsense_r200_depth/points"
+            min_height: 0.1
+            max_height: 0.5
+            min_range: 0.2
+            enabled: True

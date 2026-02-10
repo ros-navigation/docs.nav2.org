@@ -71,13 +71,31 @@ Parameters
 
 Example
 *******
-.. code-block:: yaml
 
-    planner_server:
-      ros__parameters:
-        planner_plugins: ['GridBased']
-        GridBased:
-          plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
-          use_astar: True
-          allow_unknown: True
-          tolerance: 1.0
+.. tabs::
+
+  .. group-tab:: Rolling
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          planner_plugins: ['grid_based']
+          grid_based:
+            plugin: 'nav2_navfn_planner::NavfnPlanner'
+            use_astar: True
+            allow_unknown: True
+            tolerance: 1.0
+
+  .. group-tab:: Kilted and older
+
+    .. code-block:: yaml
+
+      planner_server:
+        ros__parameters:
+          planner_plugins: ['GridBased']
+          GridBased:
+            plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
+            use_astar: True
+            allow_unknown: True
+            tolerance: 1.0
