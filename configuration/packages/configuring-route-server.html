@@ -1434,8 +1434,28 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">costmap_topic</dt>
+<dt class="field-even">smoothing_angle_threshold</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.9</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Angle threshold (rad). If angle &gt; threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error. 2.9 rad is 166 deg, meaning it will not smooth for segments that are within 14 deg of straight anti-parallel.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">costmap_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1454,8 +1474,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">tracker_update_rate</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">tracker_update_rate</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1474,8 +1494,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">aggregate_blocked_ids</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">aggregate_blocked_ids</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1494,8 +1514,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">boundary_radius_to_achieve_node</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">boundary_radius_to_achieve_node</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1514,8 +1534,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">radius_to_achieve_node</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">radius_to_achieve_node</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 58%" />
 <col style="width: 42%" />
@@ -1534,8 +1554,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_prune_dist_from_edge</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">max_prune_dist_from_edge</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 58%" />
 <col style="width: 42%" />
@@ -1554,8 +1574,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_prune_dist_from_goal</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_prune_dist_from_goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1574,8 +1594,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_prune_dist_from_start</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_prune_dist_from_start</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1594,8 +1614,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">prune_goal</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">prune_goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1614,8 +1634,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">enable_nn_search</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">enable_nn_search</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1634,8 +1654,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">max_nn_search_iterations</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">max_nn_search_iterations</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1654,8 +1674,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">num_nearest_nodes</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">num_nearest_nodes</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1674,8 +1694,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">graph_filepath</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">graph_filepath</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1694,8 +1714,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">graph_file_loader</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">graph_file_loader</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
 <col style="width: 63%" />
@@ -1714,8 +1734,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">graph_file_loader.plugin</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">graph_file_loader.plugin</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
 <col style="width: 72%" />
@@ -1734,8 +1754,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">edge_cost_functions</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">edge_cost_functions</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 26%" />
 <col style="width: 74%" />
@@ -1754,8 +1774,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">operations</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">operations</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 26%" />
 <col style="width: 74%" />
@@ -1774,8 +1794,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">&lt;name&gt;.plugin</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">&lt;name&gt;.plugin</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 54%" />
 <col style="width: 46%" />
@@ -1794,8 +1814,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-even">introspection_mode</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">introspection_mode</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1814,8 +1834,8 @@ There’s also a tutorial <a class="reference internal" href="../../tutorials/do
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
