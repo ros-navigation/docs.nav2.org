@@ -798,3 +798,11 @@ New default_cancel_timeout parameter in bt_navigator
 In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
 
 The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.
+
+Refactored Inflation layer powered by OpenMP
+--------------------------------------------
+
+`PR #5933 <https://github.com/ros-navigation/navigation2/pull/5933>`_ refactors the Inflation layer to leverage OpenMP for parallel processing, significantly improving performance in large maps.
+
+The new implementation replaces the previous queue-based cell iteration with a Felzenszwalb-Huttenlocher distance transform algorithm.
+When OpenMP is not available at compile time, the layer falls back to single-threaded operation.

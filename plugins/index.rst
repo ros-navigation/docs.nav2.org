@@ -51,7 +51,12 @@ Costmap Layers
 |                                |                        | occupancy information into       |
 |                                |                        | costmap                          |
 +--------------------------------+------------------------+----------------------------------+
-| `Inflation Layer`_             | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
+| `Inflation Layer`_             | Tony Najjar            | Inflates lethal obstacles in     |
+|                                |                        | costmap with exponential decay   |
+|                                |                        | (with the option to use OpenMP   |
+|                                |                        | for parallelization)             |
++--------------------------------+------------------------+----------------------------------+
+| `Legacy Inflation Layer`_      | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
 |                                |                        | costmap with exponential decay   |
 +--------------------------------+------------------------+----------------------------------+
 |  `Obstacle Layer`_             | Eitan Marder-Eppstein  | Maintains persistent 2D costmap  |
@@ -81,6 +86,7 @@ Costmap Layers
 .. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
 .. _Range Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 .. _Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
+.. _Legacy Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp
 .. _Obstacle Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
