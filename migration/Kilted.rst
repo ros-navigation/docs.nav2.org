@@ -363,11 +363,9 @@ Add BehaviorTree SubTrees Support
 
 The BehaviorTree engine now supports loading SubTrees from multiple files.
 This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
-
 The .xml files should be located within directory(s) set through the ``bt_search_directories`` parameter.
 
 The interface also supports requesting the desired behavior tree as a filepath or as an ID.
-
 To use the ID or multiple SubTrees features, each behavior tree is required to have its own unique ID - replace `MainTree` with a unique ID.
 
 Option to have custom window size and poly order in Savitsky-Golay Smoother
