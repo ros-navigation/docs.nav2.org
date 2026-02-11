@@ -1188,6 +1188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#option-to-enable-intra-process-communication-in-nav2">Option to enable Intra-process Communication in Nav2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-support-for-switching-between-smac-planners">Add support for switching between SMAC planners</a></li>
 </ul>
 </li>
 </ul>
@@ -1997,6 +1998,10 @@ state). The controller will be provided the processed plan during computeVelocit
 <h2>New default_cancel_timeout parameter in bt_navigator<a class="headerlink" href="#new-default-cancel-timeout-parameter-in-bt-navigator" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5895">PR 5895</a>, a new <cite>default_cancel_timeout</cite> parameter was introduced to address timeout issues during action cancellation, such as <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">get</span> <span class="pre">result</span> <span class="pre">for</span> <span class="pre">follow_path</span> <span class="pre">in</span> <span class="pre">node</span> <span class="pre">halt!</span></code>.</p>
 <p>The default value is set to <cite>50</cite> milliseconds, and should be adjusted based on the planning time and overall system performance.</p>
+</div>
+<div class="section" id="add-support-for-switching-between-smac-planners">
+<h2>Add support for switching between SMAC planners<a class="headerlink" href="#add-support-for-switching-between-smac-planners" title="Permalink to this heading"></a></h2>
+<p>Prior to <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5840">PR 5840</a>, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.</p>
 </div>
 </div>
 
