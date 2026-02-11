@@ -798,3 +798,8 @@ New default_cancel_timeout parameter in bt_navigator
 In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
 
 The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.
+
+Add support for switching between SMAC planners
+-----------------------------------------------
+
+Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
