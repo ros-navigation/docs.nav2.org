@@ -437,7 +437,6 @@ Example
             origin_z: 0.0
             z_resolution: 0.05
             z_voxels: 16
-            max_obstacle_height: 2.0
             unknown_threshold: 15
             mark_threshold: 0
             observation_sources: pointcloud
