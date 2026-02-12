@@ -1,6 +1,8 @@
 site_name: Nav2
 theme:
   name: material
+  logo: images/nav2_logo_48x48.png
+  favicon: images/nav2_logo_48x48.png
 
 plugins:
   - search
