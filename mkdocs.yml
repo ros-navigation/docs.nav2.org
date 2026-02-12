@@ -1,3 +1,11 @@
 site_name: Nav2
 theme:
   name: material
+
+plugins:
+  - search
+  - mike # All parameters: https://github.com/jimporter/mike#configuration
+
+extra:
+  version:
+    provider: mike
