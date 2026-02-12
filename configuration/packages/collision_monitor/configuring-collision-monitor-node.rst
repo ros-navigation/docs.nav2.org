@@ -457,7 +457,10 @@ All previous Polygon parameters apply, in addition to the following unique param
     ============== =============================
 
     Description:
-      Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified.
+      Minimum linear velocity for the sub-polygon. Causes an error, if not specified.
+
+      * **Non-holonomic:** This is the minimum signed velocity along the x-axis (allows negative values for reverse motion).
+      * **Holonomic:** This is the minimum magnitude of the resultant velocity, which must be ``>= 0.0``.
 
 :``<vel_poly>.<subpoly>``.linear_max:
 
@@ -468,7 +471,10 @@ All previous Polygon parameters apply, in addition to the following unique param
     ============== =============================
 
     Description:
-      Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.
+      Maximum linear velocity for the sub polygon. Causes an error, if not specified.
+
+      * **Non-holonomic:** This is the maximum signed velocity along the x-axis. (allows negative values for reverse motion).
+      * **Holonomic:** This is the maximum magnitude of the resultant velocity, which must be ``>= 0.0``.
 
 :``<vel_poly>.<subpoly>``.theta_min:
 
@@ -501,7 +507,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     ============== =============================
 
     Description:
-      Start angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
+      Start angle of the movement direction(for holonomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
 
 :``<vel_poly>.<subpoly>``.direction_end_angle:
 
@@ -512,7 +518,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     ============== =============================
 
     Description:
-      End angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
+      End angle of the movement direction(for holonomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
 
 Observation sources parameters
 ==============================
