@@ -3,6 +3,17 @@ theme:
   name: material
   logo: images/nav2_logo_48x48.png
   favicon: images/nav2_logo_48x48.png
+  palette:
+  # Palette for light mode
+  - scheme: default
+    toggle:
+      icon: material/lightbulb
+      name: Switch to dark mode
+  # Palette for dark mode
+  - scheme: slate
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to light mode
 
 plugins:
   - search
