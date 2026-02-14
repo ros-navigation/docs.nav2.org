@@ -1,8 +1,16 @@
 site_name: Nav2
+# site_url: https://docs.nav2.org/ # Uncomment after documentation release
+repo_url: https://github.com/ros-navigation/navigation2
+repo_name: ros-navigation/navigation2
+# repo_url: https://github.com/ros-navigation/docs.nav2.org
+# repo_name: ros-navigation/docs.nav2.org
+
 theme:
   name: material
   logo: images/nav2_logo_48x48.png
   favicon: images/nav2_logo_48x48.png
+  icon:
+    repo: fontawesome/brands/github
   palette:
   # Palette for light mode
   - scheme: default
