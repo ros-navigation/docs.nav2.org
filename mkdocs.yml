@@ -4,6 +4,7 @@ repo_url: https://github.com/ros-navigation/navigation2
 repo_name: ros-navigation/navigation2
 # repo_url: https://github.com/ros-navigation/docs.nav2.org
 # repo_name: ros-navigation/docs.nav2.org
+copyright: © Copyright 2026, Open Navigation LLC.
 
 theme:
   name: material
@@ -30,6 +31,11 @@ plugins:
 extra:
   version:
     provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ros-navigation/navigation2
+    - icon: fontawesome/brands/slack
+      link: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA
 
 extra_css: 
   - stylesheets/extra.css
