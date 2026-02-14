@@ -31,6 +31,7 @@ plugins:
 extra:
   version:
     provider: mike
+  scope: /
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ros-navigation/navigation2
