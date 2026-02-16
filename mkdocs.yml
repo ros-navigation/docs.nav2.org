@@ -40,3 +40,7 @@ extra:
 
 extra_css: 
   - stylesheets/extra.css
+
+nav:
+  - index.md
+  - Getting Started: getting_started/index.md 
