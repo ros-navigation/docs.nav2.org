@@ -116,4 +116,4 @@ You can pause (cancel) or reset the action through the Nav2 rviz plugin shown.
 
 Now watch the robot go!
 
-   <!-- ![Navigation2 with Turtlebot 3 Demo](images/navigation_with_recovery_behaviours.gif){ width="700px" alt="Navigation2 with Turtlebot 3 Demo" align="center" } -->
+![Navigation2 with Turtlebot 3 Demo](images/navigation_with_recovery_behaviours.gif){ width="700px" title="Navigation2 with Turtlebot 3 Demo" }
