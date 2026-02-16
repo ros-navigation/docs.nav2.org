@@ -37,15 +37,15 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
 
 For **Jazzy and newer**, install the Turtlebot 3 & 4 packages for Gazebo Modern. It should be automatically installed with `nav2_bringup`:
 
-    ```bash
-    sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb*
-    ```
+```bash
+sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb*
+```
 
 For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
 
-    ```bash
-    sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
-    ```
+```bash
+sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
+```
 
 ## Running the Example
 
