@@ -1434,10 +1434,121 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 <p>When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.</p>
 </div>
 <p><strong>For holomic robots:</strong></p>
-<p>For holomic robots, the <code class="docutils literal notranslate"><span class="pre">holonomic</span></code> property should be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. In this scenario, the <code class="docutils literal notranslate"><span class="pre">linear_min</span></code> and <code class="docutils literal notranslate"><span class="pre">linear_max</span></code> parameters should cover the robot’s resultant velocity limits, while the <code class="docutils literal notranslate"><span class="pre">theta_min</span></code> and <code class="docutils literal notranslate"><span class="pre">theta_max</span></code> parameters should cover the robot’s angular velocity limits. Additionally, there will be 2 more parameters, <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> and <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code>, to specify the resultant velocity direction. The covered direction will always span from <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> to <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code> in the <strong>counter-clockwise</strong> direction.</p>
+<p>For holomic robots, the <code class="docutils literal notranslate"><span class="pre">holonomic</span></code> property should be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. In this scenario, the <code class="docutils literal notranslate"><span class="pre">linear_min</span></code> and <code class="docutils literal notranslate"><span class="pre">linear_max</span></code> parameters should cover  the magnitude of the robot’s resultant velocity limits (using only non-negative values), while the <code class="docutils literal notranslate"><span class="pre">theta_min</span></code> and <code class="docutils literal notranslate"><span class="pre">theta_max</span></code> parameters should cover the robot’s angular velocity limits. Additionally, there will be 2 more parameters, <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> and <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code>, to specify the resultant velocity direction. The covered direction will always span from <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> to <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code> in the <strong>counter-clockwise</strong> direction.</p>
 <a class="reference internal image-reference" href="../../_images/holonomic_direction.png"><img alt="../../_images/holonomic_direction.png" src="../../_images/holonomic_direction.png" style="width: 365px;" /></a>
 <p>Below shows some common configurations for holonomic robots that cover multiple directions of the resultant velocity:</p>
 <a class="reference internal image-reference" href="../../_images/holonomic_examples1.png"><img alt="../../_images/holonomic_examples1.png" src="../../_images/holonomic_examples1.png" style="height: 2880px;" /></a>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collision_monitor</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_footprint&quot;</span>
+<span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+<span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_smoothed&quot;</span>
+<span class="w">    </span><span class="nt">cmd_vel_out_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav_vel&quot;</span>
+<span class="w">    </span><span class="nt">state_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;collision_monitor_state&quot;</span>
+<span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">base_shift_correction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">stop_pub_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">    </span><span class="nt">holonomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">       </span><span class="c1"># Set to true for holonomic robots</span>
+
+<span class="w">    </span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;VelocityPolygonSlow&quot;</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="nt">VelocityPolygonSlow</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;velocity_polygon&quot;</span>
+<span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slowdown&quot;</span>
+<span class="w">      </span><span class="nt">slowdown_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="nt">holonomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">velocity_polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="s">&quot;forward&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;forward_left&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;left&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backward_left&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;backward&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backward_right&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;right&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;forward_right&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;stopped&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">]</span>
+
+<span class="w">      </span><span class="nt">forward</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.6,</span><span class="nv"> </span><span class="s">0.4],</span><span class="nv"> </span><span class="s">[0.6,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">0.4]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.785</span><span class="w">   </span><span class="c1"># -0.25pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span><span class="w">      </span><span class="c1"># 0.25pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">forward_left</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.55,</span><span class="nv"> </span><span class="s">0.55],</span><span class="nv"> </span><span class="s">[0.55,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">0.55]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">      </span><span class="c1"># 0.0pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.571</span><span class="w">      </span><span class="c1"># 0.5pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">left</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.4,</span><span class="nv"> </span><span class="s">0.6],</span><span class="nv"> </span><span class="s">[0.4,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.4,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.4,</span><span class="nv"> </span><span class="s">0.6]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span><span class="w">     </span><span class="c1"># 0.25pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.356</span><span class="w">       </span><span class="c1"># 0.75pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">backward_left</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.3,</span><span class="nv"> </span><span class="s">0.55],</span><span class="nv"> </span><span class="s">[0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.55,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.55,</span><span class="nv"> </span><span class="s">0.55]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.1415</span><span class="w">   </span><span class="c1"># -pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.571</span><span class="w">      </span><span class="c1"># -0.5pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">backward</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.3,</span><span class="nv"> </span><span class="s">0.4],</span><span class="nv"> </span><span class="s">[0.3,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.6,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.6,</span><span class="nv"> </span><span class="s">0.4]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.356</span><span class="w">     </span><span class="c1"># 0.75pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2.356</span><span class="w">      </span><span class="c1"># -0.75pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">backward_right</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.3,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.3,</span><span class="nv"> </span><span class="s">-0.55],</span><span class="nv"> </span><span class="s">[-0.55,</span><span class="nv"> </span><span class="s">-0.55],</span><span class="nv"> </span><span class="s">[-0.55,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.571</span><span class="w">     </span><span class="c1"># 0.5pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.1415</span><span class="w">      </span><span class="c1"># pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">right</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.4,</span><span class="nv"> </span><span class="s">0.4],</span><span class="nv"> </span><span class="s">[0.4,</span><span class="nv"> </span><span class="s">-0.6],</span><span class="nv"> </span><span class="s">[-0.4,</span><span class="nv"> </span><span class="s">-0.6],</span><span class="nv"> </span><span class="s">[-0.4,</span><span class="nv"> </span><span class="s">0.4]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2.356</span><span class="w">    </span><span class="c1"># -0.75pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.785</span><span class="w">      </span><span class="c1"># -0.25pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="nt">forward_right</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.55,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.55,</span><span class="nv"> </span><span class="s">-0.55],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">-0.55],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.571</span><span class="w">   </span><span class="c1"># -0.5pi</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">        </span><span class="c1"># 0.0pi</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="w">      </span><span class="c1"># Stopped</span>
+<span class="w">      </span><span class="nt">stopped</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.4,</span><span class="nv"> </span><span class="s">0.4],</span><span class="nv"> </span><span class="s">[0.4,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.4,</span><span class="nv"> </span><span class="s">-0.4],</span><span class="nv"> </span><span class="s">[-0.4,</span><span class="nv"> </span><span class="s">0.4]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">direction_start_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.1415</span>
+<span class="w">        </span><span class="nt">direction_end_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.1415</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="preparing-nav2-stack">
 <h2>Preparing Nav2 stack<a class="headerlink" href="#preparing-nav2-stack" title="Permalink to this heading"></a></h2>

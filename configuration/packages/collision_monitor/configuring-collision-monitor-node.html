@@ -2023,7 +2023,11 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified.</p>
+<dt>Description:</dt><dd><p>Minimum linear velocity for the sub-polygon. Causes an error, if not specified.</p>
+<ul class="simple">
+<li><p><strong>Non-holonomic:</strong> This is the minimum signed velocity along the x-axis (allows negative values for reverse motion).</p></li>
+<li><p><strong>Holonomic:</strong> This is the minimum magnitude of the resultant velocity, which must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">0.0</span></code>.</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -2043,7 +2047,11 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.</p>
+<dt>Description:</dt><dd><p>Maximum linear velocity for the sub polygon. Causes an error, if not specified.</p>
+<ul class="simple">
+<li><p><strong>Non-holonomic:</strong> This is the maximum signed velocity along the x-axis. (allows negative values for reverse motion).</p></li>
+<li><p><strong>Holonomic:</strong> This is the maximum magnitude of the resultant velocity, which must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">0.0</span></code>.</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -2103,7 +2111,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Start angle of the movement direction(for holomic robot only). Refer to the <a class="reference internal" href="#example">Example</a> section for the common configurations. Applicable for <cite>holonomic</cite> mode only.</p>
+<dt>Description:</dt><dd><p>Start angle of the movement direction(for holonomic robot only). Refer to the <a class="reference internal" href="#example">Example</a> section for the common configurations. Applicable for <cite>holonomic</cite> mode only.</p>
 </dd>
 </dl>
 </dd>
@@ -2123,7 +2131,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>End angle of the movement direction(for holomic robot only). Refer to the <a class="reference internal" href="#example">Example</a> section for the common configurations. Applicable for <cite>holonomic</cite> mode only.</p>
+<dt>Description:</dt><dd><p>End angle of the movement direction(for holonomic robot only). Refer to the <a class="reference internal" href="#example">Example</a> section for the common configurations. Applicable for <cite>holonomic</cite> mode only.</p>
 </dd>
 </dl>
 </dd>
