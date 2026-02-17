@@ -1189,6 +1189,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#add-support-for-switching-between-smac-planners">Add support for switching between SMAC planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-bt-log-idle-transitions-parameter-in-bt-navigator">New bt_log_idle_transitions parameter in bt_navigator</a></li>
 </ul>
 </li>
 </ul>
@@ -1368,8 +1369,28 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">plugin_lib_names</dt>
+<dt class="field-odd">bt_log_idle_transitions</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to log idle (no state change) transitions in the behavior tree to the <code class="docutils literal notranslate"><span class="pre">/behavior_tree_log</span></code> topic and console output. When <code class="docutils literal notranslate"><span class="pre">false</span></code>, only state changes are logged, reducing topic and console noise. When <code class="docutils literal notranslate"><span class="pre">true</span></code> (default), all tick transitions including idle ones are published.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">plugin_lib_names</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 81%" />
@@ -1388,8 +1409,8 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bt_loop_duration</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bt_loop_duration</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1408,8 +1429,8 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">filter_duration</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">filter_duration</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1428,8 +1449,8 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-even">default_server_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">default_server_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1449,8 +1470,8 @@ This value will be overwritten for a BT node if the input port “server_timeout
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">default_cancel_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">default_cancel_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1470,8 +1491,8 @@ This value will be overwritten for a BT node if the input port “cancel_timeout
 </dd>
 </dl>
 </dd>
-<dt class="field-even">wait_for_service_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">wait_for_service_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1491,8 +1512,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">introspection_mode</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">introspection_mode</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1511,8 +1532,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1534,8 +1555,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">global_frame</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">global_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 43%" />
 <col style="width: 57%" />
@@ -1554,8 +1575,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">robot_base_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">robot_base_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1574,8 +1595,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">odom_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1594,8 +1615,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">error_code_name_prefixes</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">error_code_name_prefixes</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1628,8 +1649,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">error_code_names</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">error_code_names</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1652,8 +1673,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bond_heartbeat_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bond_heartbeat_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1672,8 +1693,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1692,8 +1713,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bt_search_directories</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bt_search_directories</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
@@ -1998,6 +2019,7 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 <span class="w">    </span><span class="nt">default_nav_to_pose_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml</span>
 <span class="w">    </span><span class="nt">default_nav_through_poses_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml</span>
 <span class="w">    </span><span class="nt">always_reload_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">bt_log_idle_transitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">goal_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goal</span>
 <span class="w">    </span><span class="nt">goals_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goals</span>
 <span class="w">    </span><span class="nt">path_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span>
