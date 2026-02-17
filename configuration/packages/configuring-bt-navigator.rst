@@ -77,7 +77,7 @@ Parameters
   ====== =======
 
   Description
-    Whether to log idle (no state change) transitions in the behavior tree to the ``/behavior_tree_log`` topic. When ``false``, only state changes are logged, reducing topic noise. When ``true`` (default), all tick transitions including idle ones are published.
+    Whether to log idle (no state change) transitions in the behavior tree to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. When ``true`` (default), all tick transitions including idle ones are published.
 
 :plugin_lib_names:
 

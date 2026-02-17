@@ -807,4 +807,4 @@ Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, s
 New bt_log_idle_transitions parameter in bt_navigator
 -----------------------------------------------------
 
-In `PR 5963 <https://github.com/ros-navigation/navigation2/pull/5963>`_, A new ``bt_log_idle_transitions`` parameter has been added to the BT navigator. When set to ``true`` (default), idle (no state change) transitions in the behavior tree are published to the ``/behavior_tree_log`` topic. When ``false``, only state changes are logged, reducing topic noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
+In `PR 5963 <https://github.com/ros-navigation/navigation2/pull/5963>`_, A new ``bt_log_idle_transitions`` parameter has been added to the BT navigator. When set to ``true`` (default), idle (no state change) transitions in the behavior tree are published to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
