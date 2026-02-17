@@ -790,9 +790,8 @@ Key parameters:
 
 This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
 
-See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details.
-
-New default_cancel_timeout parameter in bt_navigator
+See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details
+.New default_cancel_timeout parameter in bt_navigator
 ----------------------------------------------------
 
 In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
@@ -803,3 +802,8 @@ Add support for switching between SMAC planners
 -----------------------------------------------
 
 Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
+
+New bt_log_idle_transitions parameter in bt_navigator
+-----------------------------------------------------
+
+In `PR 5963 <https://github.com/ros-navigation/navigation2/pull/5963>`_, A new ``bt_log_idle_transitions`` parameter has been added to the BT navigator. When set to ``true`` (default), idle (no state change) transitions in the behavior tree are published to the ``/behavior_tree_log`` topic. When ``false``, only state changes are logged, reducing topic noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
