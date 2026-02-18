@@ -14,3 +14,36 @@
   --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
 }
+
+.md-main{
+  flex: 1 1 0;
+}
+
+.md-main__inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.md-main__inner.md-grid {
+  max-width: none;
+}
+
+.md-sidebar--primary {
+  margin-top: 1.5rem;
+}
+
+.md-sidebar-primary-border{
+  border-right: 1px solid #d5d3cdf8;
+  background-color:#f7f7f8;
+}
+
+.md-content{
+  margin-top: 1.5rem;
+  max-width: 40rem;
+}
+
+.md-sidebar--secondary{
+  margin-top: 1.5rem;
+}
