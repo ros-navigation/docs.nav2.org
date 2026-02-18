@@ -8,6 +8,7 @@ copyright: © Copyright 2026, Open Navigation LLC.
 
 theme:
   name: material
+  custom_dir: overrides
   logo: images/nav2_logo_48x48.png
   favicon: images/nav2_logo_48x48.png
   icon:
