@@ -61,10 +61,10 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                             <Fallback name="FallbackComputePathToPose">
                                 <ReactiveSequence name="CheckIfNewPathNeeded">
                                     <Inverter>
-                                    <GlobalUpdatedGoal/>
+                                        <GlobalUpdatedGoal/>
                                     </Inverter>
-                                    <IsGoalNearby path="{path}" proximity_threshold="1.0" max_robot_pose_search_dist="1.5"/>
-                                    <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="2.0" distance_backward="0.0" />
+                                    <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
+                                    <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
                                     <IsPathValid path="{remaining_path}"/>
                                 </ReactiveSequence>
                                 <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
@@ -170,8 +170,8 @@ The XML of this subtree is as follows:
                 <Inverter>
                   <GlobalUpdatedGoal/>
                 </Inverter>
-                <IsGoalNearby path="{path}" proximity_threshold="1.0" max_robot_pose_search_dist="1.5"/>
-                <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="2.0" distance_backward="0.0" />
+                <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
+                <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
                 <IsPathValid path="{remaining_path}"/>
               </ReactiveSequence>
               <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
