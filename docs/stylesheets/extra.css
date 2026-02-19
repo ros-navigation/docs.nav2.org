@@ -4,6 +4,8 @@
   --md-primary-fg-color:#47c7ef;
   --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
+  --md-sidebar-bg-color:#f5f5f5;
+  --md-sidebar-border-color:#dddddd;
 }
 
 /* Dark mode */
@@ -13,6 +15,8 @@
   --md-default-fg-color:#ffffff;
   --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
+  --md-sidebar-bg-color:#383835;
+  --md-sidebar-border-color:#535558;
 }
 
 .md-main{
@@ -35,8 +39,11 @@
 }
 
 .md-sidebar-primary-border{
-  border-right: 1px solid #d5d3cdf8;
-  background-color:#f7f7f8;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color:var(--md-sidebar-border-color);
+  --md-default-bg-color: var(--md-sidebar-bg-color);
+  background-color: var(--md-default-bg-color);
 }
 
 .md-content{
