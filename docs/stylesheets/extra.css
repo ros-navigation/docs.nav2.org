@@ -6,6 +6,7 @@
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
   --md-sidebar-bg-color:#f5f5f5;
   --md-sidebar-border-color:#dddddd;
+  --md-sidebar-typeset-a-color:#757575;
 }
 
 /* Dark mode */
@@ -17,6 +18,7 @@
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
   --md-sidebar-bg-color:#383835;
   --md-sidebar-border-color:#535558;
+  --md-sidebar-typeset-a-color:#9c9da0;
 }
 
 .md-main{
@@ -44,6 +46,7 @@
   border-right-color:var(--md-sidebar-border-color);
   --md-default-bg-color: var(--md-sidebar-bg-color);
   background-color: var(--md-default-bg-color);
+  --md-typeset-a-color:var(--md-sidebar-typeset-a-color);
 }
 
 .md-content{
