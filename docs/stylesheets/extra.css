@@ -19,6 +19,8 @@
   --md-sidebar-bg-color:#383835;
   --md-sidebar-border-color:#535558;
   --md-sidebar-typeset-a-color:#9c9da0;
+  --md-code-fg-color:#d8d8d8;
+  --md-code-bg-color:#383835;
 }
 
 .md-main{
@@ -71,4 +73,12 @@
 .md-header__button.md-logo img {
   height: 2.0rem;
   width: auto;
+}
+
+.md-code__nav {
+  background-color: var(--md-code-bg-color);
+}
+
+:hover > .md-code__nav {
+  background-color: var(--md-code-bg-color);
 }
