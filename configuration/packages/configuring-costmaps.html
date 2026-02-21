@@ -1945,6 +1945,7 @@ It is used in the planner and controller servers for creating the space to check
 <span class="w">      </span><span class="nt">footprint_padding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.03</span>
 <span class="w">      </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">publish_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
 <span class="w">      </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
 <span class="w">      </span><span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.22</span><span class="w"> </span><span class="c1"># radius set and used, so no footprint points</span>
@@ -1999,7 +2000,6 @@ It is used in the planner and controller servers for creating the space to check
 <span class="w">        </span><span class="nt">map_subscribe_transient_local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="nt">subscribe_to_updates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">        </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">inflation_layer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
