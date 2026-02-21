@@ -82,3 +82,19 @@
 :hover > .md-code__nav {
   background-color: var(--md-code-bg-color);
 }
+
+@media screen and (min-width: 960px) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    max-width: 700px;
+    float: none;
+    z-index: 1
+  }
+  
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__scrollwrap {
+    width: 100%
+  }
+}
