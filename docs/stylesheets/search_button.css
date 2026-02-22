@@ -30,6 +30,7 @@ after moving it from the header to the sidebar. */
     z-index: 4;
     pointer-events: auto;
     transition: none;
+    backdrop-filter: blur(5px);
   }
 
   [data-md-toggle="search"]:checked ~ .md-container .md-main .md-sidebar-primary-container .md-search__inner {
