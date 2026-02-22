@@ -94,3 +94,10 @@ after moving it from the header to the sidebar. */
     opacity: 1;
   }
 }
+
+/* Some overrides related to the new search button position */
+/* Keep color palette toggle unchanged */
+[data-md-toggle="search"]:checked ~ .md-header .md-header__option {
+  max-width: 100%;
+  opacity: 1;
+}
