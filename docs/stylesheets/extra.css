@@ -39,7 +39,7 @@
 }
 
 .md-sidebar--primary {
-  margin-top: 1.5rem;
+  margin-top: 0rem;
 }
 
 .md-sidebar-primary-container{
@@ -49,6 +49,8 @@
   --md-default-bg-color: var(--md-sidebar-bg-color);
   background-color: var(--md-default-bg-color);
   --md-typeset-a-color:var(--md-sidebar-typeset-a-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .md-content{
@@ -83,11 +85,25 @@
   background-color: var(--md-code-bg-color);
 }
 
+.md-sidebar-primary-container .md-search {
+  position: relative;
+  height: 2.5rem;
+}
+
 @media screen and (min-width: 960px) {
 
   .md-search__inner {
     transition: none;
-    width: 10rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 11rem;
+    max-width: 100%;
+  }
+
+  .md-search__form {
+    border-radius: 5px;
   }
 
   /* Background for search modal */
