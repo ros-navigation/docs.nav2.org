@@ -42,9 +42,10 @@ extra:
     - icon: fontawesome/brands/slack
       link: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA
 
-extra_css: 
+extra_css:
   - stylesheets/extra.css
   - stylesheets/search_button.css
+  - stylesheets/sidebar.css
 
 markdown_extensions:
   - admonition
