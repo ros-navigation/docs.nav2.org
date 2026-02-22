@@ -89,21 +89,9 @@
       {% include "partials/alternate.html" %}
     {% endif %}
 
-    <!-- Button to open search modal -->
-    {% if "material/search" in config.plugins %}
-      {% set search = config.plugins["material/search"] | attr("config") %}
-
-      <!-- Check if search is actually enabled - see https://t.ly/DT_0V -->
-      {% if search.enabled %}
-        <label class="md-header__button md-icon" for="__search">
-          {% set icon = config.theme.icon.search or "material/magnify" %}
-          {% include ".icons/" ~ icon ~ ".svg" %}
-        </label>
-
-        <!-- Search interface -->
-        {% include "partials/search.html" %}
-      {% endif %}
-    {% endif %}
+    <!-- Dummy button to open search modal -->
+    <!-- This is necessary for correct display after moving the origin search button to the sidebar -->
+    <div class="header-dummy-search" for="__search">
 
     <!-- Repository information -->
     {% if config.repo_url %}
