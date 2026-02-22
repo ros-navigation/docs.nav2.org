@@ -44,6 +44,7 @@ extra:
 
 extra_css: 
   - stylesheets/extra.css
+  - stylesheets/search_button.css
 
 markdown_extensions:
   - admonition
