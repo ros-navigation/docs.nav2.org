@@ -1373,14 +1373,18 @@ using one of the following update methods: <code class="docutils literal notrans
 <td><p>It may have any code to be executed during costmap reset.</p></td>
 <td><p>Yes</p></td>
 </tr>
+<tr class="row-even"><td><p>isClearable()</p></td>
+<td><p>Method is called to ask the plugin: should it be processed during
+clearing operations or not.</p></td>
+<td><p>Yes</p></td>
+</tr>
 </tbody>
 </table>
 <p>In our example these methods have the following functionality:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::onInitialize()</span></code> contains declaration of a ROS parameter with its default value:</p></li>
 </ol>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">declareParameter</span><span class="p">(</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span>
-<span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enabled_</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">-&gt;</span><span class="n">declare_or_get_parameter</span><span class="p">(</span><span class="n">name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>and sets <code class="docutils literal notranslate"><span class="pre">need_recalculation_</span></code> bounds recalculation indicator:</p>
@@ -1416,6 +1420,7 @@ using one of the following update methods: <code class="docutils literal notrans
 <ol class="arabic simple" start="4">
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::onFootprintChanged()</span></code> just resets <code class="docutils literal notranslate"><span class="pre">need_recalculation_</span></code> value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::reset()</span></code> method is dummy: it is not used in this example plugin. It remains there since pure virtual function <code class="docutils literal notranslate"><span class="pre">reset()</span></code> in parent <code class="docutils literal notranslate"><span class="pre">Layer</span></code> class required to be overridden.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::isClearable()</span></code> returns <code class="docutils literal notranslate"><span class="pre">false</span></code> since this plugin is not clearable.</p></li>
 </ol>
 </div>
 <div class="section" id="export-and-make-gradientlayer-plugin">
