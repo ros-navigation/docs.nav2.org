@@ -623,6 +623,10 @@ Behavior Tree Nodes
 |                                    |                    | near the goal based on |
 |                                    |                    | remaining path length. |
 +------------------------------------+--------------------+------------------------+
+| `Is Within Path Tracking Bounds    | Berkan Tali        | Checks if the robot is |
+| Condition`_                        |                    | within bounds for      |
+|                                    |                    | path tracking.         |
++------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
@@ -645,6 +649,7 @@ Behavior Tree Nodes
 .. _Are Poses Near Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 .. _Is Pose Occupied Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_pose_occupied_condition.cpp
 .. _Is Goal Nearby Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp
+.. _Is Within Path Tracking Bounds Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
