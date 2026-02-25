@@ -113,6 +113,10 @@ Once your environment is setup, clone the repo and build the workspace:
   colcon build \
     --symlink-install
 
+.. note::
+  Since rolling development source tracks the latest upstream ROS 2 branches, builds may occasionally fail due to ABI/API breaking changes being actively developed in ROS 2 core packages.
+  If you encounter build failures, consider using the :ref:`Released Distribution Binaries <build-instructions>` approach instead or submit the patch to Nav2.
+
 You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrations! It is safe
 to ignore the rosdep error of from the missing ``slam_toolbox`` key.
 
