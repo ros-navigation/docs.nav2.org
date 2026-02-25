@@ -1397,6 +1397,11 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 <span class="w">  </span>--symlink-install
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since rolling development source tracks the latest upstream ROS 2 branches, builds may occasionally fail due to ABI/API breaking changes being actively developed in ROS 2 core packages.
+If you encounter build failures, consider using the <a class="reference internal" href="#build-instructions"><span class="std std-ref">Released Distribution Binaries</span></a> approach instead or submit the patch to Nav2.</p>
+</div>
 <p>You can then <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/nav2_ws/install/setup.bash</span></code> to get ready for demonstrations! It is safe
 to ignore the rosdep error of from the missing <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> key.</p>
 <div class="admonition hint">
