@@ -50,7 +50,7 @@ Input Ports
     ==================================== ========
 
     Description
-      The feedback message from the controller server, which contains the current tracking error information.
+      Generally, the feedback message from the controller server, which contains the current tracking error information. Though, it may be populated by another source or topic if need be.
 
 Example
 -------
