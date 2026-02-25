@@ -1207,6 +1207,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#add-support-for-switching-between-smac-planners">Add support for switching between SMAC planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-log-idle-transitions-parameter-in-bt-navigator">New bt_log_idle_transitions parameter in bt_navigator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 </ul>
 </li>
 </ul>
@@ -2024,6 +2025,10 @@ state). The controller will be provided the processed plan during computeVelocit
 <div class="section" id="new-bt-log-idle-transitions-parameter-in-bt-navigator">
 <h2>New bt_log_idle_transitions parameter in bt_navigator<a class="headerlink" href="#new-bt-log-idle-transitions-parameter-in-bt-navigator" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5963">PR 5963</a>, A new <code class="docutils literal notranslate"><span class="pre">bt_log_idle_transitions</span></code> parameter has been added to the BT navigator. When set to <code class="docutils literal notranslate"><span class="pre">true</span></code> (default), idle (no state change) transitions in the behavior tree are published to the <code class="docutils literal notranslate"><span class="pre">/behavior_tree_log</span></code> topic and console output. When <code class="docutils literal notranslate"><span class="pre">false</span></code>, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.</p>
+</div>
+<div class="section" id="new-iswithinpathtrackingbounds-node">
+<h2>New IsWithinPathTrackingBounds Node<a class="headerlink" href="#new-iswithinpathtrackingbounds-node" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5983">PR 5983</a>, a new behavior tree node, <code class="docutils literal notranslate"><span class="pre">IsWithinPathTrackingBounds</span></code>, was added to check if the robot is within specified bounds of the path for tracking purposes. See the <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml">demo</a> for an example of how to use this node in a behavior tree.</p>
 </div>
 </div>
 

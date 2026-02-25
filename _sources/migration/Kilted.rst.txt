@@ -808,3 +808,8 @@ New bt_log_idle_transitions parameter in bt_navigator
 -----------------------------------------------------
 
 In `PR 5963 <https://github.com/ros-navigation/navigation2/pull/5963>`_, A new ``bt_log_idle_transitions`` parameter has been added to the BT navigator. When set to ``true`` (default), idle (no state change) transitions in the behavior tree are published to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
+
+New IsWithinPathTrackingBounds Node
+-----------------------------------
+
+In `PR 5983 <https://github.com/ros-navigation/navigation2/pull/5983>`_, a new behavior tree node, ``IsWithinPathTrackingBounds``, was added to check if the robot is within specified bounds of the path for tracking purposes. See the `demo <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml>`_ for an example of how to use this node in a behavior tree.
