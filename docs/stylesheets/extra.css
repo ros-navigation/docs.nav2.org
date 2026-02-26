@@ -45,3 +45,7 @@
 :hover > .md-code__nav {
   background-color: var(--md-code-bg-color);
 }
+
+:root  > * {
+  --search-form-bg-color: #00000042;
+}

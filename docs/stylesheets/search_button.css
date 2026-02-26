@@ -1,35 +1,71 @@
 /* Here are the overrides needed to display the search button 
 after moving it from the header to the sidebar. */
 
-.md-sidebar-primary-container .md-search {
+.md-search {
   position: relative;
-  height: 2.5rem;
+  height: 3.5rem;
 }
 
-@media screen and (min-width: 960px) {
-
-  .md-search__inner {
+.md-search__overlay {
     transition: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 11rem;
-    max-width: 100%;
   }
 
-  .md-search__form {
-    border-radius: 5px;
-  }
+.md-search__inner {
+  opacity: 1;
+  transition: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  width: 11rem;
+  height: auto;
+  max-width: 100%;
+}
 
-  [data-md-toggle="search"]:checked ~ .md-container .md-main .md-sidebar-primary-container {
+.md-search__form {
+  background-color: var(--search-form-bg-color);
+  border-radius: 5px;
+  height: 1.8rem;
+}
+
+.md-search__input{
+  color: inherit;
+  font-size: .8rem;
+  height: 100%;
+  width: 100%;
+
+  &::placeholder {
+    opacity: 0.5;
+    color: var(--md-default-fg-color);
+  }
+  
+  & + .md-search__icon {
+    opacity: 0.5;
+    color: var(--md-default-fg-color);
+  }
+}
+
+
+/* 960px = 60rem */
+@media screen and (min-width: 60rem) {
+
+  [data-md-toggle="search"]:checked ~ .md-container .md-sidebar-primary-container {
     
+    .md-sidebar--primary{
+      z-index: 4;
+    }
+
+    .md-search{
+      z-index: 2;
+    }
+
     /* Background for search modal */
     .md-search__overlay {
       width: 100vw;
       height: 100vh;
       opacity: 1;
-      z-index: 4;
+      z-index: 0;
       pointer-events: auto;
       transition: none;
       backdrop-filter: blur(5px);
@@ -44,7 +80,7 @@ after moving it from the header to the sidebar. */
       height: auto;
       float: none;
       opacity: 1;
-      z-index: 4;
+      z-index: 1;
     }
     
     /* [form] -> [[icon][input][options]]*/
@@ -69,9 +105,9 @@ after moving it from the header to the sidebar. */
           opacity: 0.7;
         }
       }
-      /* Hide "Search" placeholder */
+      /* Dim "Search" placeholder */
       &::placeholder {
-        opacity: 0;
+        opacity: 0.2;
       } 
     }
 
@@ -97,6 +133,113 @@ after moving it from the header to the sidebar. */
     }
   }
 }
+
+
+/* 959.75px = 59.984rem */
+@media screen and (max-width: 59.984rem) {
+
+  .md-header__button[for="__search"] {
+    display: none;
+  }
+
+  .md-search__icon{
+    &[for="__search"]{
+      top: .3rem;
+      svg:first-child {
+        display: block;
+      }
+      svg:last-child {
+        display: none;
+      }
+    }
+  }
+
+  [dir="ltr"] .md-search__inner {
+    left: 50%;
+  }
+
+  [dir="ltr"] .md-search__icon[for="__search"] {
+    left: 0.5rem;
+  }
+
+  [dir="ltr"] .md-search__input {
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+  }
+
+  /* To display toc above the search */
+  .md-nav__toggle:checked ~ .md-nav {
+    z-index: 2; 
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-container .md-main .md-sidebar-primary-container {
+
+    /* Full screen search modal */
+    .md-search__inner {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      z-index: 1;
+      overflow: hidden;
+      transform: none;
+      float: none;
+      transition: none;
+    }
+
+    /* [form] -> [[icon][input][options]]*/
+    .md-search__form {
+      height: 2.4rem;
+      background-color: var(--md-default-bg-color);
+      border-radius: 0;
+    }
+
+    .md-search__icon {
+      color: var(--md-default-fg-color--light);
+
+      &[for="__search"] {
+        top: 0.5rem;
+        left: 0.5rem;
+
+        /* Show back arrow, hide magnifying glass */
+        svg:first-child {
+          display: none;
+        }
+        svg:last-child {
+          display: block;
+        }
+      }
+    }
+
+    .md-search__input {
+      font-size: .9rem;
+
+      /* Override clear button -> x */
+      &:valid ~ .md-search__options {
+        & > .md-icon {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        & > .md-icon:hover {
+          opacity: 0.7;
+        }
+      }
+      /* Dim "Search" placeholder */
+      &::placeholder {
+        opacity: 0.2;
+      } 
+    }
+
+    .md-search__options {
+      top: 0.5rem;
+      & > .md-icon {
+        transform: none;
+      }
+    }
+  }
+}
+
 
 /* Some overrides related to the new search button position */
 /* Keep color palette toggle unchanged */

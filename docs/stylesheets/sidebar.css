@@ -22,8 +22,10 @@
   --md-default-bg-color: var(--md-sidebar-bg-color);
   background-color: var(--md-default-bg-color);
   --md-typeset-a-color: var(--md-sidebar-typeset-a-color);
-  display: flex;
-  flex-direction: column;
+}
+
+.md-sidebar--primary{
+  padding-top: 0;
 }
 
 .md-content{
@@ -33,4 +35,27 @@
 
 .md-sidebar--secondary{
   margin-top: 1.5rem;
+}
+
+
+/* 1219.75px = 76.2344rem */
+@media screen and (max-width: 76.2344rem) {
+
+  [dir="ltr"] .md-sidebar--primary {
+    left: 0 !important;
+    display: none;
+  }
+
+  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary {
+    transform: none !important;
+    width: 12.1rem;
+    display: block;
+  }
+
+  /* To uncheck only the search overlay and leave the sidebar active */
+  /* And use the search overlay instead */
+  [data-md-toggle="drawer"]:checked ~ [data-md-toggle="search"]:checked ~ .md-overlay {
+    pointer-events: none;
+    opacity: 0;
+  }
 }
