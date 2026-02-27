@@ -7,8 +7,8 @@ after moving it from the header to the sidebar. */
 }
 
 .md-search__overlay {
-    transition: none;
-  }
+  transition: none;
+}
 
 .md-search__inner {
   opacity: 1;
@@ -24,9 +24,17 @@ after moving it from the header to the sidebar. */
 }
 
 .md-search__form {
-  background-color: var(--search-form-bg-color);
-  border-radius: 5px;
+  border-radius: 7px;
   height: 1.8rem;
+  background-color: var(--search-form-bg-color);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--search-form-border-color);
+
+  &:hover{
+    background-color: var(--search-form-bg-hover-color);
+    border-color: var(--search-form-border-hover-color);
+  }
 }
 
 .md-search__input{
@@ -88,6 +96,7 @@ after moving it from the header to the sidebar. */
       height: 1.8rem;
       background-color: var(--md-default-bg-color);
       border-radius: 5px 5px 0 0;
+      border: 0;
     }
 
     .md-search__icon {
@@ -193,6 +202,7 @@ after moving it from the header to the sidebar. */
       height: 2.4rem;
       background-color: var(--md-default-bg-color);
       border-radius: 0;
+      border: 0;
     }
 
     .md-search__icon {

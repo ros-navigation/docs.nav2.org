@@ -7,6 +7,10 @@
   --md-sidebar-bg-color:#f5f5f5;
   --md-sidebar-border-color:#dddddd;
   --md-sidebar-typeset-a-color:#757575;
+  --search-form-bg-color: #e7e7e7;
+  --search-form-bg-hover-color: #e1e1e1;
+  --search-form-border-color: #ddd;
+  --search-form-border-hover-color: #d7d7d7;
 }
 
 /* Dark mode */
@@ -17,10 +21,14 @@
   --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
   --md-sidebar-bg-color:#383835;
-  --md-sidebar-border-color:#535558;
+  --md-sidebar-border-color:#52555a;
   --md-sidebar-typeset-a-color:#9c9da0;
   --md-code-fg-color:#d8d8d8;
   --md-code-bg-color:#383835;
+  --search-form-bg-color:#30302d;
+  --search-form-bg-hover-color:#2d2d29;
+  --search-form-border-color:#424242;
+  --search-form-border-hover-color:#424242;
 }
 
 .md-header__title {
@@ -47,6 +55,5 @@
 }
 
 :root  > * {
-  --search-form-bg-color: #00000042;
   --nav-sidebar-source-bg-color: #31b7f6;
 }
