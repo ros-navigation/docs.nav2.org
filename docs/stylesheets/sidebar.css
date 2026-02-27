@@ -41,6 +41,10 @@
 /* 1219.75px = 76.2344rem */
 @media screen and (max-width: 76.2344rem) {
 
+  .md-nav--primary .md-nav__title ~ .md-nav__list {
+    background-color: var(--md-sidebar-bg-color);
+  }
+
   [dir="ltr"] .md-sidebar--primary {
     left: 0 !important;
     display: none;
