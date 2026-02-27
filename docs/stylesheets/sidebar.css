@@ -59,3 +59,10 @@
     opacity: 0;
   }
 }
+
+
+@media screen and (max-width: 59.9844em) {
+  .md-nav__source {
+    background-color: var(--nav-sidebar-source-bg-color);
+  }
+}
