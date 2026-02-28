@@ -18,10 +18,10 @@
 .md-sidebar-primary-container{
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: var(--md-sidebar-border-color);
-  --md-default-bg-color: var(--md-sidebar-bg-color);
+  border-right-color: var(--sidebar-border-color);
+  --md-default-bg-color: var(--sidebar-bg-color);
   background-color: var(--md-default-bg-color);
-  --md-typeset-a-color: var(--md-sidebar-typeset-a-color);
+  --md-typeset-a-color: var(--sidebar-typeset-a-color);
 }
 
 .md-sidebar--primary{
@@ -42,7 +42,7 @@
 @media screen and (max-width: 76.2344rem) {
 
   .md-nav--primary .md-nav__title ~ .md-nav__list {
-    background-color: var(--md-sidebar-bg-color);
+    background-color: var(--sidebar-bg-color);
   }
 
   [dir="ltr"] .md-sidebar--primary {
