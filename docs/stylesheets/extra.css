@@ -58,3 +58,8 @@
 :root  > * {
   --nav-sidebar-source-bg-color: #31b7f6;
 }
+
+.md-typeset .admonition{
+  border-radius: 0.4rem;
+  font-size: .67rem;
+}
