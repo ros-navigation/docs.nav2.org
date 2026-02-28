@@ -12,6 +12,7 @@
   --search-form-bg-hover-color: #e1e1e1;
   --search-form-border-color: #ddd;
   --search-form-border-hover-color: #d7d7d7;
+  --code-border-color:#e5e5e5;
 }
 
 /* Dark mode */
@@ -30,6 +31,7 @@
   --search-form-bg-hover-color:#2d2d29;
   --search-form-border-color:#424242;
   --search-form-border-hover-color:#424242;
+  --code-border-color:#4b4b4b;
 }
 
 .md-header__title {
@@ -62,4 +64,11 @@
 .md-typeset .admonition{
   border-radius: 0.4rem;
   font-size: .67rem;
+}
+
+.md-typeset code {
+  border-radius: 0.3rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--code-border-color);
 }
