@@ -813,3 +813,14 @@ New IsWithinPathTrackingBounds Node
 -----------------------------------
 
 In `PR 5983 <https://github.com/ros-navigation/navigation2/pull/5983>`_, a new behavior tree node, ``IsWithinPathTrackingBounds``, was added to check if the robot is within specified bounds of the path for tracking purposes. See the `demo <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml>`_ for an example of how to use this node in a behavior tree.
+
+Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes
+------------------------------------------------------------------------------------
+
+In `PR 5991 <https://github.com/ros-navigation/navigation2/pull/5991>`_, the following nodes were moved from condition nodes to action nodes and renamed:
+
+- `IsStopped` is now `CheckStopStatus`
+- `IsPathValid` is now `ValidatePath`
+- `IsPoseOccupied` is now `CheckPoseOccupancy`
+
+This change was made because these behavior tree nodes may return RUNNING or require more time to complete, making them unsuitable for behavior tree that are expected to be ticked at 100 Hz.

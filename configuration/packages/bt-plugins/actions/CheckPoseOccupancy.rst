@@ -1,9 +1,9 @@
-.. _bt_is_pose_occupied_condition:
+.. _bt_check_pose_occupancy_action:
 
-IsPoseOccupied
-==============
+CheckPoseOccupancy
+==================
 
-Checks to see if the pose is occupied. If it is occupied, the condition returns SUCCESS, otherwise
+Checks to see if the pose is occupied. If it is occupied, it returns SUCCESS, otherwise
 it returns FAILURE.
 
 Input Ports
@@ -81,4 +81,4 @@ Example
 
 .. code-block:: xml
 
-    <IsPoseOccupied server_timeout="10" pose="{goal}"/>
+    <CheckPoseOccupancy server_timeout="10" pose="{goal}"/>
