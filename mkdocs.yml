@@ -11,6 +11,8 @@ theme:
   custom_dir: overrides
   logo: images/nav2_logo_48x48.png
   favicon: images/nav2_logo_48x48.png
+  font:
+    text: Inter
   icon:
     repo: fontawesome/brands/github
   palette:
