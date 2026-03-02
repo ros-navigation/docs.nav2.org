@@ -1,0 +1,25 @@
+<a id="configuring-dwb-path-dist"></a>
+
+# PathDistCritic
+
+Scores a trajectory based on how well it is aligned to the path provided by the global planner.
+
+## Parameters
+
+`<name>`: PathDistCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
+
+* **`<dwb plugin>`.`<name>`.aggregation_type:**
+  | Type   | Default   |
+  |--------|-----------|
+  | string | “last”    |
+  > Description
+  > : last, sum, or product combination methods.
+* **`<dwb plugin>`.`<name>`.scale:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |         1 |
+  > Description
+  > : Weighed scale for critic.
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

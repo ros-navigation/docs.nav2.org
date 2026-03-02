@@ -1,0 +1,77 @@
+<a id="bt-remove-in-collision-goals-action"></a>
+
+# RemoveInCollisionGoals
+
+Looks over the input port `goals` and removes any waypoint that has a point or footprint cost above a certain threshold.
+This may be used to cull goal points passed from `ComputePathThroughPoses` to avoid waiting indefinitely on occupied waypoints.
+
+## Input Ports
+
+* **service_name:**
+  | Type   | Default                                 |
+  |--------|-----------------------------------------|
+  | string | /global_costmap/get_cost_global_costmap |
+
+  Description
+  : costmap service name responsible for getting the cost.
+* **input_goals:**
+  | Type                 | Default   |
+  |----------------------|-----------|
+  | nav_msgs::msg::Goals | N/A       |
+
+  Description
+  : A vector of goals to check if in collision
+* **cost_threshold:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |       254 |
+
+  Description
+  : The cost threshold above which a waypoint is considered in collision and should be removed. If `use_footprint = false`, consider setting to 253 for occupied.
+* **use_footprint:**
+  | Type   | Default   |
+  |--------|-----------|
+  | bool   | true      |
+
+  Description
+  : Whether to use the footprint cost or the point cost.
+* **consider_unknown_as_obstacle:**
+  | Type   | Default   |
+  |--------|-----------|
+  | bool   | false     |
+
+  Description
+  : Whether to consider unknown cost (255) as obstacle.
+* **input_waypoint_statuses:**
+  | Type                                        | Default   |
+  |---------------------------------------------|-----------|
+  | std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+
+  Description
+  : Original waypoint_statuses to mark waypoint status from.
+
+## Output Ports
+
+* **output_goals:**
+  | Type                            | Default   |
+  |---------------------------------|-----------|
+  | geometry_msgs::msg::PoseStamped | N/A       |
+
+  Description
+  : A vector of goals containing only those that are not in collision.
+* **output_waypoint_statuses:**
+  | Type                                        | Default   |
+  |---------------------------------------------|-----------|
+  | std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+
+  Description
+  : Waypoint_statuses with in-collision waypoints marked.
+
+## Example
+
+```xml
+<RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}" />
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

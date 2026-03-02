@@ -1,0 +1,21 @@
+<a id="configuring-dwb-twirling"></a>
+
+# TwirlingCritic
+
+Prevents holonomic robots from spinning as they make their way to the goal.
+
+## Parameters
+
+`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+
+`<name>`: TwirlingCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
+
+* **`<dwb plugin>`.`<name>`.scale:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |         1 |
+  > Description
+  > : Weighed scale for critic.
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

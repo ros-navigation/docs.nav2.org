@@ -1,0 +1,31 @@
+<a id="configuring-nav2-controller-position-goal-checker-plugin"></a>
+
+# PositionGoalChecker
+
+Checks whether the robot has reached the goal pose.
+
+## Parameters
+
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+
+* **`<nav2_controller plugin>`.xy_goal_tolerance:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |      0.25 |
+  > Description
+  > : Tolerance to meet goal completion criteria (m).
+* **`<nav2_controller plugin>`.path_length_tolerance:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |         1 |
+  > Description
+  > : Tolerance to meet goal completion criteria (m).
+* **`<nav2_controller plugin>`.stateful:**
+  | Type   | Default   |
+  |--------|-----------|
+  | bool   | true      |
+  > Description
+  > : Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -1,119 +1,109 @@
+<a id="getting-started"></a>
+
 # Getting Started
 
-This document will take you through the process of installing the |PN| binaries
+This document will take you through the process of installing the Nav2 binaries
 and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 
-!!! note
+#### NOTE
+See the [Build and Install](../development_guides/build_docs/index.md#build-instructions) for other situations such as building from source or
+working with other types of robots.
 
-    See the [build-instructions]() for other situations such as building from source or
-    working with other types of robots.
-
-!!! warning
-
-    This is a simplified version of the Turtlebot 3 instructions. We highly
-    recommend you follow the [official Turtlebot 3 manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/) if you intend to
-    continue working with this robot beyond the minimal example provided here.
+#### WARNING
+This is a simplified version of the Turtlebot 3 instructions. We highly
+recommend you follow the [official Turtlebot 3 manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/) if you intend to
+continue working with this robot beyond the minimal example provided here.
 
 ## Installation
 
 Jazzy introduced the new Gazebo modern simulator, replacing Gazebo Classic.
 Thus, for Jazzy and newer, the installation packages and instructions are slightly different to pull in the appropriate packages.
 
-1. Install the [ROS 2 binary packages](https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html) as described in the official docs
+1. Install the [ROS 2 binary packages](https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html)  as described in the official docs
 2. Source your ROS 2 installation to set up the environment:
-
-    ```bash
-    source /opt/ros/<ros2-distro>/setup.bash
-    ```
-
-3. Install the |PN| packages using your operating system's package manager:
-
-    ```bash
-    sudo apt install ros-$ROS_DISTRO-navigation2
-    sudo apt install ros-$ROS_DISTRO-nav2-bringup
-    ```
-
+   ```bash
+   source /opt/ros/<ros2-distro>/setup.bash
+   ```
+3. Install the Nav2 packages using your operating system’s package manager:
+   ```bash
+   sudo apt install ros-$ROS_DISTRO-navigation2
+   sudo apt install ros-$ROS_DISTRO-nav2-bringup
+   ```
 4. Install the demo robot (Turtlebot) for gazebo:
 
 For **Jazzy and newer**, install the Turtlebot 3 & 4 packages for Gazebo Modern. It should be automatically installed with `nav2_bringup`:
 
-```bash
-sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb*
-```
+> ```bash
+> sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb*
+> ```
 
 For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
 
-```bash
-sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
-```
+> ```bash
+> sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
+> ```
 
 ## Running the Example
 
 1. Start a terminal in your GUI
 2. Set key environment variables, some of which are only required for Iron and older:
-
-    ```bash
-    source /opt/ros/<ros2-distro>/setup.bash
-    export TURTLEBOT3_MODEL=waffle  # Iron and older only with Gazebo Classic
-    export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/$ROS_DISTRO/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
-    ```
-
+   ```bash
+   source /opt/ros/<ros2-distro>/setup.bash
+   export TURTLEBOT3_MODEL=waffle  # Iron and older only with Gazebo Classic
+   export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/$ROS_DISTRO/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
+   ```
 3. In the same terminal, run:
+   ```bash
+   ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+   ```
 
-    ```bash
-    ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
-    ```
+   #### NOTE
+   `headless` defaults to true; if not set to false, gzclient (the 3d view) is not started.
 
-    !!! note
+   This launch file will launch Nav2 with the AMCL localizer in the
+   simulation world.
+   It will also launch the robot state publisher to provide transforms,
+   a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
 
-        `headless` defaults to true; if not set to false, gzclient (the 3d view) is not started.
-
-    This launch file will launch Nav2 with the AMCL localizer in the
-    simulation world.
-    It will also launch the robot state publisher to provide transforms,
-    a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
-
-    If everything has started correctly, you will see the RViz and Gazebo GUIs like
-    this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
-
-    <!-- ![RViz not started](/images/rviz/rviz-not-started.png){ width="45%" }
-    ![Gazebo Turtlebot](/images/gazebo/gazebo_turtlebot1.png){ width="46%" } -->
-
-4. If not autostarting, click the "Startup" button in the bottom left corner of RViz.
-    This will cause |PN| to change to the Active state. It should
-    change appearance to show the map.
-
-    <!-- ![Initial appearance of RViz transitioning to the Active state](/images/rviz/rviz_initial.png){ width="700px" align="center" alt="Initial appearance of RViz transitioning to the Active state" } -->
+   If everything has started correctly, you will see the RViz and Gazebo GUIs like
+   this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
+   ![image](images/rviz/rviz-not-started.png)![image](images/gazebo/gazebo_turtlebot1.png)
+4. If not autostarting, click the “Startup” button in the bottom left corner of RViz.
+   This will cause Nav2 to change to the Active state. It should
+   change appearance to show the map.
+   ![Initial appearance of RViz transitioning to the Active state](images/rviz/rviz_initial.png)
 
 ## Navigating
 
 After starting, the robot initially has no idea where it is. By default,
-|PN| waits for you to give it an approximate starting position. Take a look
+Nav2 waits for you to give it an approximate starting position. Take a look
 at where the robot is in the Gazebo world, and find that spot on the map. Set
-the initial pose by clicking the "2D Pose Estimate" button in RViz, and then
+the initial pose by clicking the “2D Pose Estimate” button in RViz, and then
 down clicking on the map in that location. You set the orientation by dragging
 forward from the down click.
 
 If you are using the defaults so far, the robot should look roughly like this.
 
-   <!-- ![Approximate starting location of Turtlebot](/images/rviz/rviz-set-initial-pose.png){ width="700px" align="center" alt="Approximate starting location of Turtlebot" } -->
+> ![Approximate starting location of Turtlebot](images/rviz/rviz-set-initial-pose.png)
 
-If you don't get the location exactly right, that's fine. |PN| will refine
-the position as it navigates. You can also, click the "2D Pose
-Estimate" button and try again, if you prefer.
+If you don’t get the location exactly right, that’s fine. Nav2 will refine
+the position as it navigates. You can also, click the “2D Pose
+Estimate” button and try again, if you prefer.
 
-Once you've set the initial pose, the transform tree will be complete and
-|PN| will be fully active and ready to go. You should see the robot and particle
+Once you’ve set the initial pose, the transform tree will be complete and
+Nav2 will be fully active and ready to go. You should see the robot and particle
 cloud now.
 
-   <!-- ![PN is ready. Transforms and Costmap show in RViz](/images/rviz/navstack-ready.png){ width="700px" align="center" alt="PN is ready. Transforms and Costmap show in RViz" } -->
+> ![|PN| is ready. Transforms and Costmap show in RViz.](images/rviz/navstack-ready.png)
 
-Next, click the "Navigaton2 Goal" button and choose a destination.
+Next, click the “Navigaton2 Goal” button and choose a destination.
 This will call the BT navigator to go to that goal through an action server.
 You can pause (cancel) or reset the action through the Nav2 rviz plugin shown.
 
-   <!-- ![Setting the goal pose in RViz](/images/rviz/navigate-to-pose.png){ width="700px" align="center" alt="Setting the goal pose in RViz" } -->
+> ![Setting the goal pose in RViz.](images/rviz/navigate-to-pose.png)
 
 Now watch the robot go!
 
-![Navigation2 with Turtlebot 3 Demo](images/navigation_with_recovery_behaviours.gif){ width="700px" title="Navigation2 with Turtlebot 3 Demo" }
+![Navigation2 with Turtlebot 3 Demo](getting_started/images/navigation_with_recovery_behaviours.gif)
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

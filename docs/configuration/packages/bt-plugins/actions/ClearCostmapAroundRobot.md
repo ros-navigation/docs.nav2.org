@@ -1,0 +1,38 @@
+<a id="bt-clear-entire-costmap-around-robot-action"></a>
+
+# ClearCostmapAroundRobot
+
+Action to call a costmap clearing around robot server.
+
+## Input Ports
+
+* **reset_distance:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |         1 |
+
+  Description
+  : side size of the square area centered on the robot that will be cleared on the costmap (the rest of the costmap won’t)
+* **service_name:**
+  | Type   | Default   |
+  |--------|-----------|
+  | string | N/A       |
+
+  Description
+  : costmap service name responsible for clearing the costmap.
+* **server_timeout:**
+  | Type   |   Default |
+  |--------|-----------|
+  | double |        10 |
+
+  Description
+  : Action server timeout (ms).
+
+## Example
+
+```xml
+<ClearCostmapAroundRobot name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_around_local_costmap"/>
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

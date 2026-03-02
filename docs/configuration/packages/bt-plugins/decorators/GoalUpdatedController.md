@@ -1,0 +1,33 @@
+<a id="bt-goal-updated-controller"></a>
+
+# GoalUpdatedController
+
+Checks if the global navigation goal, or a vector of goals, has changed in the blackboard. The node ticks its child if the goal was updated.
+
+## Input Ports
+
+* **goal:**
+  | Type                            | Default   |
+  |---------------------------------|-----------|
+  | geometry_msgs::msg::PoseStamped | “{goal}”  |
+
+  Description
+  : Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
+* **goals:**
+  | Type                 | Default   |
+  |----------------------|-----------|
+  | nav_msgs::msg::Goals | “{goals}” |
+
+  Description
+  : Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
+
+## Example
+
+```xml
+<GoalUpdatedController goal="{goal}" goals="{goals}">
+  <!--Add tree components here--->
+</GoalUpdatedController>
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

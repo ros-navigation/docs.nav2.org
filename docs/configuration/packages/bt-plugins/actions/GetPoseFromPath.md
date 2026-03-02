@@ -1,0 +1,41 @@
+<a id="bt-getposefrompath-action"></a>
+
+# GetPoseFromPath
+
+Gets a pose from a particular index on the path. Use `-1` to get the last pose, `-2` for second to last, and so on.
+
+## Input Ports
+
+* **path:**
+  | Type          | Default   |
+  |---------------|-----------|
+  | nav_msgs/Path | N/A       |
+
+  Description
+  : Path to extract pose from
+* **index:**
+  | Type   |   Default |
+  |--------|-----------|
+  | int    |         0 |
+
+  Description
+  : Index from path to use. Use `-1` to get the last pose, `-2` for second to last, and so on.
+
+### Output Ports
+
+* **pose:**
+  | Type                      | Default   |
+  |---------------------------|-----------|
+  | geometry_msgs/PoseStamped | N/A       |
+
+  Description
+  : Pose from path, with the Path’s set header.
+
+### Example
+
+```xml
+<GetPoseFromPath path="{path}" index="-1" pose="{goal}"/>
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -1,0 +1,73 @@
+<a id="configuring-savitzky-golay-filter-smoother"></a>
+
+# Savitzky-Golay Smoother
+
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother).
+
+The Savitzky-Golay Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique based on [Savitzky Golay Filters](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter). It uses a digital signal processing technique designed to reduce noise distorting a reference signal, in this case, a path.
+
+It is useful for all types of planners, but particularly in NavFn to remove tiny artifacts that can occur near the end of paths or Theta\* to slightly soften the transition between Line of Sight line segments **without** modifying the primary path. It is very fast (<< 1ms) so is a recommended default for planners that may result in slight discontinuities. However, it will not smooth out larger scale discontinuities, oscillations, or improve smoothness. For those, use one of the other provided smoother plugins. It also provides estimated orientation vectors of the path points after smoothing.
+
+This algorithm is deterministic and low-parameter. In the below image, some odd points from NavFn’s gradient descent are smoothed out by the smoother in the middle and end of a given path, while otherwise retaining the exact character of the path.
+
+![image](configuration/packages/images/savitzky-golay-example.png)
+
+## Savitzky-Golay Smoother Parameters
+
+* **window_size:**
+  | Type   |   Default |
+  |--------|-----------|
+  | int    |         7 |
+
+  Description
+  : Size of the smoothing window. Must be an odd integer, with a minimum value of 3
+* **poly_order:**
+  | Type   |   Default |
+  |--------|-----------|
+  | int    |         3 |
+
+  Description
+  : Order of the polynomial used to fit the samples in each smoothing window
+* **do_refinement:**
+  | Type   | Default   |
+  |--------|-----------|
+  | bool   | True      |
+
+  Description
+  : Whether to smooth the smoothed results `refinement_num` times to get an improved result.
+* **refinement_num:**
+  | Type   |   Default |
+  |--------|-----------|
+  | int    |         2 |
+
+  Description
+  : Number of times to recursively smooth a segment
+* **enforce_path_inversion:**
+  | Type   | Default   |
+  |--------|-----------|
+  | bool   | True      |
+
+  Description
+  : Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
+
+## Example
+
+```yaml
+smoother_server:
+  ros__parameters:
+    costmap_topic: global_costmap/costmap_raw
+    footprint_topic: global_costmap/published_footprint
+    robot_base_frame: base_link
+    transform_tolerance: 0.1
+    smoother_plugins: ["savitzky_golay_smoother"]
+    savitzky_golay_smoother:
+      plugin: "nav2_smoother::SavitzkyGolaySmoother"
+      window_size: 7
+      poly_order: 3
+      do_refinement: True
+      refinement_num: 2
+      enforce_path_inversion: True
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

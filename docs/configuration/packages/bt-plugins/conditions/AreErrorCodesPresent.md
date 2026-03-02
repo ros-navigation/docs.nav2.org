@@ -1,0 +1,41 @@
+<a id="bt-are-error-codes-present-condition"></a>
+
+# AreErrorCodesPresent
+
+Checks the if the provided error code matches any error code within a set.
+
+If the active error code is a match, the node returns `SUCCESS`. Otherwise, it returns `FAILURE`.
+
+## Input Ports
+
+* **error_code:**
+  | Type           | Default   |
+  |----------------|-----------|
+  | unsigned short | N/A       |
+
+  Description
+  : The active error code to compare against.
+* **error_codes_to_check:**
+  | Type                     | Default   |
+  |--------------------------|-----------|
+  | std::set<unsigned short> | N/A       |
+
+  Description
+  : The set of error codes you wish to compare against the active error code.
+
+## Example
+
+Error codes to check are defined in another port.
+
+```xml
+<AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="{error_codes_to_check}"/>
+```
+
+Error codes to check are defined to be 101, 107 and 119.
+
+```xml
+<AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="101;107;119"/>
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->

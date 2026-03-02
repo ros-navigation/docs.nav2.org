@@ -1,0 +1,57 @@
+<a id="bt-undock-robot-action"></a>
+
+# UndockRobot
+
+Invokes the UndockRobot ROS 2 action server, which is implemented by the docking server.
+
+It is used to undock the robot from a docking station.
+
+## Input Ports
+
+* **dock_type:**
+  | Type   | Default   |
+  |--------|-----------|
+  | string | N/A       |
+
+  Description
+  : The dock plugin type, if not previous instance used for docking.
+* **max_undocking_time:**
+  | Type   |   Default |
+  |--------|-----------|
+  | float  |        30 |
+
+  Description
+  : Maximum time to get back to the staging pose.
+
+### Output Ports
+
+* **success:**
+  | Type   | Default   |
+  |--------|-----------|
+  | bool   | true      |
+
+  Description
+  : If the action was successful.
+* **error_code_id:**
+  | Type   |   Default |
+  |--------|-----------|
+  | uint16 |         0 |
+
+  Description
+  : Dock robot error code. See `UndockRobot` action message for the enumerated set of error codes.
+* **error_msg:**
+  | Type   |   Default |
+  |--------|-----------|
+  | string |         0 |
+
+  Description
+  : Dock robot error message. See `UndockRobot` action message for the enumerated set of error codes.
+
+### Example
+
+```xml
+<UndockRobot dock_type="{dock_type}" error_code_id={undock_error_code} error_msg={undock_error_msg}/>
+```
+
+<!-- These are replacement strings for non-ASCII characters used within the project
+using the same name as the html entity names (e.g., &copy;) for that character -->
