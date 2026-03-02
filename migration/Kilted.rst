@@ -813,3 +813,15 @@ New IsWithinPathTrackingBounds Node
 -----------------------------------
 
 In `PR 5983 <https://github.com/ros-navigation/navigation2/pull/5983>`_, a new behavior tree node, ``IsWithinPathTrackingBounds``, was added to check if the robot is within specified bounds of the path for tracking purposes. See the `demo <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml>`_ for an example of how to use this node in a behavior tree.
+
+RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter
+---------------------------------------------------------------------------------------
+
+`PR #5677 <https://github.com/ros-navigation/navigation2/pull/5677>`_ resolves an issue where ``min_distance_to_obstacle`` was not properly enforced when ``use_velocity_scaled_lookahead_dist`` was enabled. Previously, collision checking was limited to the carrot distance, which at low speeds could be shorter than ``min_distance_to_obstacle``. For example, with ``min_lookahead_dist: 0.3``, ``min_distance_to_obstacle: 0.9``, and ``max_lookahead_dist: 1.5``, if the robot had not accelerated enough for the lookahead to reach 0.9m, obstacle checking would only cover up to the carrot position rather than the configured 0.9m. The collision checker now correctly extends the simulation distance to ``min_distance_to_obstacle`` (capped by ``max_lookahead_dist``) regardless of the current carrot distance.
+
+Additionally, warnings have been added to the parameter handler to alert users of configurations where ``min_distance_to_obstacle`` cannot be fully enforced:
+
+- When using ``use_velocity_scaled_lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``max_lookahead_dist``.
+- When using a constant ``lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``lookahead_dist``.
+
+A new parameter ``allow_obstacle_checking_beyond_goal`` (default: false) has also been added. By default, obstacle checking along the projected trajectory stops at the goal position (end of the path). When enabled, collision checking continues past the goal up to ``min_distance_to_obstacle``, regardless of the remaining path length. This parameter requires ``use_velocity_scaled_lookahead_dist`` to be enabled and ``min_distance_to_obstacle`` > 0.0.
