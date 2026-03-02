@@ -54,6 +54,11 @@ after moving it from the header to the sidebar. */
   }
 }
 
+/* Prevent background scrolling when search modal is active */
+html:has([data-md-toggle="search"]:checked) {
+  overflow: hidden;
+}
+
 
 /* 960px = 60rem */
 @media screen and (min-width: 60rem) {
