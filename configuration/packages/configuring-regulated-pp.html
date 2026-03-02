@@ -1208,6 +1208,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#add-support-for-switching-between-smac-planners">Add support for switching between SMAC planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-bt-log-idle-transitions-parameter-in-bt-navigator">New bt_log_idle_transitions parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1686,7 +1687,7 @@ It also implements the Dynamic Window Pure Pursuit algorithm, which computes opt
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The time (s) to project a velocity command forward to check for collisions when <code class="docutils literal notranslate"><span class="pre">use_collision_detection</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
+<dt>Description</dt><dd><p>The time (s) to forward-simulate the current velocity command to check for collisions when <code class="docutils literal notranslate"><span class="pre">use_collision_detection</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. At each simulation step, the robot’s footprint is projected forward by the costmap resolution. The simulation stops at whichever limit is reached first: this time limit or the carrot distance. If a collision is detected at any projected pose, the robot will stop. When <code class="docutils literal notranslate"><span class="pre">min_distance_to_obstacle</span></code> is set, this time limit may be automatically extended to ensure the minimum obstacle distance can be checked at the current velocity. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -2053,6 +2054,26 @@ Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Pa
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">allow_obstacle_checking_beyond_goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to continue obstacle checking past the goal position up to <code class="docutils literal notranslate"><span class="pre">min_distance_to_obstacle</span></code>. When enabled, obstacles located beyond the goal along the projected trajectory may prevent motion. This can be useful when the goal pose is close to obstacles or when a safety margin must be enforced beyond the final path pose. For example, in constrained environments, users may prefer to ensure that obstacle checking continues slightly past the goal to avoid approaching obstacles that lie immediately beyond it. Requires <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> to be enabled and <code class="docutils literal notranslate"><span class="pre">min_distance_to_obstacle</span></code> &gt; 0.0.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -2110,6 +2131,7 @@ Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Pa
 <span class="w">      </span><span class="nt">min_distance_to_obstacle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">use_dynamic_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">allow_obstacle_checking_beyond_goal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 </div>
