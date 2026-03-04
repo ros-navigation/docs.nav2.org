@@ -1209,6 +1209,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-bt-log-idle-transitions-parameter-in-bt-navigator">New bt_log_idle_transitions parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
 </ul>
 </li>
 </ul>
@@ -1368,35 +1369,42 @@ occupancy information into
 costmap</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp">Inflation Layer</a></p></td>
+<td><p>Tony Najjar</p></td>
+<td><p>Inflates lethal obstacles in
+costmap with exponential decay
+(with the option to use OpenMP
+for parallelization)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp">Legacy Inflation Layer</a></p></td>
 <td><p>Eitan Marder-Eppstein</p></td>
 <td><p>Inflates lethal obstacles in
 costmap with exponential decay</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></p></td>
 <td><p>Eitan Marder-Eppstein</p></td>
 <td><p>Maintains persistent 2D costmap
 from 2D laser scans with
 raycasting to clear free space</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/SteveMacenski/spatio_temporal_voxel_layer/">Spatio-Temporal Voxel Layer</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/SteveMacenski/spatio_temporal_voxel_layer/">Spatio-Temporal Voxel Layer</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Maintains temporal 3D sparse
 volumetric voxel grid with decay
 through sensor models</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/SteveMacenski/nonpersistent_voxel_layer">Non-Persistent Voxel Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/SteveMacenski/nonpersistent_voxel_layer">Non-Persistent Voxel Layer</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Maintains 3D occupancy grid
 consisting only of the most
 sets of measurements</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp">Denoise Layer</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp">Denoise Layer</a></p></td>
 <td><p>Andrey Ryzhikov</p></td>
 <td><p>Filters noise-induced
 standalone obstacles or small
 obstacles groups</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp">Plugin Container Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp">Plugin Container Layer</a></p></td>
 <td><p>Alexander Yuen</p></td>
 <td><p>Combines the different costmap
 layers specified under this

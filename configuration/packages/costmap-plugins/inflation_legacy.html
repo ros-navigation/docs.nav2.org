@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Map Server &mdash; Nav2 1.0.0 documentation</title>
+  <title>Legacy Inflation Layer Parameters &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Map Saver" href="configuring-map-saver.html" />
-    <link rel="prev" title="Map Server" href="../configuring-map-server.html" />
+    <link rel="next" title="Obstacle Layer Parameters" href="obstacle.html" />
+    <link rel="prev" title="Inflation Layer Parameters" href="inflation.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -719,10 +719,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuring-costmaps.html#default-plugins">Default Plugins</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
 </ul>
@@ -738,11 +738,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuring-lifecycle.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-map-server.html">Map Server</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Map Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-map-saver.html">Map Saver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-costmap-filter-info-server.html">Costmap Filter Info Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-vector-object-server.html">Vector Object Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-map-server.html">Map Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-map-server.html">Map Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-map-saver.html">Map Saver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-costmap-filter-info-server.html">Costmap Filter Info Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_server/configuring-vector-object-server.html">Vector Object Server</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-planner-server.html">Planner Server</a><ul>
@@ -1285,8 +1285,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Configuration Guide</a></li>
-          <li class="breadcrumb-item"><a href="../configuring-map-server.html">Map Server</a></li>
-      <li class="breadcrumb-item active">Map Server</li>
+          <li class="breadcrumb-item"><a href="../configuring-costmaps.html">Costmap 2D</a></li>
+      <li class="breadcrumb-item active">Legacy Inflation Layer Parameters</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1295,94 +1295,116 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="map-server">
-<span id="configuring-map-server-params"></span><h1>Map Server<a class="headerlink" href="#map-server" title="Permalink to this heading"></a></h1>
-<p>The Map Server implements the server for handling the map load requests for the stack and hosts a map topic.</p>
-<div class="section" id="map-server-parameters">
-<h2>Map Server Parameters<a class="headerlink" href="#map-server-parameters" title="Permalink to this heading"></a></h2>
-<dl class="field-list">
-<dt class="field-odd">yaml_filename</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Path to map yaml file. Note from Rolling + Iron-Turtle forward: This parameter can set either from the yaml file or using the launch configuration parameter <code class="docutils literal notranslate"><span class="pre">map</span></code>. If we set it on launch commandline / launch configuration default, we override the yaml default. If you would like the specify your map file in yaml, remove the launch default so it is not overridden in Nav2’s default launch files. Before Iron: <code class="docutils literal notranslate"><span class="pre">yaml_filename</span></code> must be set in the yaml (even if a bogus value) so that our launch scripts can overwrite it with launch values.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">topic_name</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“map”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Topic to publish loaded map to.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">frame_id</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“map”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Frame to publish loaded map in.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">introspection_mode</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“disabled”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+  <div class="section" id="legacy-inflation-layer-parameters">
+<h1>Legacy Inflation Layer Parameters<a class="headerlink" href="#legacy-inflation-layer-parameters" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This layer has been deprecated in favor of the refactored <a class="reference internal" href="inflation.html"><span class="doc">Inflation Layer</span></a>, which offers significantly improved performance (up to 11.5× faster with OpenMP enabled). Consider migrating to the new implementation.</p>
 </div>
+<p>This layer places an exponential decay functions around obstacles to increase cost to traverse near collision. It also places a lethal cost around obstacles within the robot’s fully inscribed radius - even if a robot is non-circular for optimized first-order collision checking.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code> is the corresponding plugin name selected for this type.</p>
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.enabled</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether it is enabled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflation_radius</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.55</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Radius to inflate costmap around lethal obstacles.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.cost_scaling_factor</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Exponential decay factor across inflation radius.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflate_unknown</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to inflate unknown cells as if lethal.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflate_around_unknown</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to inflate unknown cells.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 
 

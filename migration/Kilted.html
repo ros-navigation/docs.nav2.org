@@ -1209,6 +1209,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-log-idle-transitions-parameter-in-bt-navigator">New bt_log_idle_transitions parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
 </ul>
 </li>
 </ul>
@@ -2040,6 +2041,12 @@ state). The controller will be provided the processed plan during computeVelocit
 <li><p>When using a constant <code class="docutils literal notranslate"><span class="pre">lookahead_dist</span></code>, a warning is emitted if <code class="docutils literal notranslate"><span class="pre">min_distance_to_obstacle</span></code> exceeds <code class="docutils literal notranslate"><span class="pre">lookahead_dist</span></code>.</p></li>
 </ul>
 <p>A new parameter <code class="docutils literal notranslate"><span class="pre">allow_obstacle_checking_beyond_goal</span></code> (default: false) has also been added. By default, obstacle checking along the projected trajectory stops at the goal position (end of the path). When enabled, collision checking continues past the goal up to <code class="docutils literal notranslate"><span class="pre">min_distance_to_obstacle</span></code>, regardless of the remaining path length. This parameter requires <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> to be enabled and <code class="docutils literal notranslate"><span class="pre">min_distance_to_obstacle</span></code> &gt; 0.0.</p>
+</div>
+<div class="section" id="refactored-inflation-layer-powered-by-openmp">
+<h2>Refactored Inflation layer powered by OpenMP<a class="headerlink" href="#refactored-inflation-layer-powered-by-openmp" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5933">PR #5933</a> refactors the Inflation layer to leverage OpenMP for parallel processing, significantly improving performance in large maps.</p>
+<p>The new implementation replaces the previous queue-based cell iteration with a Felzenszwalb-Huttenlocher distance transform algorithm.
+When OpenMP is not available at compile time, the layer falls back to single-threaded operation.</p>
 </div>
 </div>
 
