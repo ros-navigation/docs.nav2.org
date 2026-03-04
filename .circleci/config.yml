@@ -1,0 +1,94 @@
+version: 2.1
+
+references:
+  on_checkout: &on_checkout
+    checkout:
+      path: .
+  setup_doc_dependencies: &setup_doc_dependencies
+    run:
+      name: Install Doc Dependencies
+      command: |
+        export DEBIAN_FRONTEND=noninteractive
+        apt update
+        apt install -y \
+          git \
+          openssh-server \
+          python3-pip
+        pip3 install -r requirements.txt
+  build_docs: &build_docs
+    run:
+      command: |
+        mkdocs build
+  store_built_docs: &store_built_docs
+    store_artifacts:
+      path: ./site
+      destination: build_site
+  publish_docs: &publish_docs
+    run:
+      command: |
+        TITLE=${CIRCLE_BRANCH^}
+        # Uncomment --push flag once SSH key fingerprint is added
+        mike deploy $CIRCLE_BRANCH --title=$TITLE # --push
+
+        # Set default version only once
+        if ! git cat-file -e origin/gh-pages:index.html; then
+          # Uncomment --push flag once SSH key fingerprint is added
+          mike set-default rolling # --push
+          echo "The default version is set to Rolling"
+        fi
+  store_published_docs: &store_published_docs
+    store_artifacts:
+      path: ./site
+      destination: publish_site
+  install_deployment_key: &install_deployment_key
+    add_ssh_keys:
+      fingerprints:
+        - "0" # add fingerprint
+
+commands:
+  install_doc_dependencies:
+    description: "Install documentation dependencies"
+    steps:
+      - *setup_doc_dependencies
+  build_docs:
+    description: "Build docs"
+    steps:
+      - *build_docs
+      - *store_built_docs
+  publish_docs_to_gh_pages_branch:
+    description: "Commit newly built docs to gh-pages branch"
+    steps:
+      - *publish_docs
+      - *store_published_docs
+
+executors:
+  docs_exec:
+    docker:
+      - image: ubuntu:focal
+    working_directory: /nav2_docs
+
+jobs:
+  docs_build:
+    executor: docs_exec
+    steps:
+      - *on_checkout
+      - install_doc_dependencies
+      - build_docs
+  docs_publish:
+    executor: docs_exec
+    steps:
+      - *on_checkout
+      - install_doc_dependencies
+      # - *install_deployment_key
+      - publish_docs_to_gh_pages_branch
+
+workflows:
+  build_and_publish_docs:
+    jobs:
+      - docs_build:
+          filters: |
+            pipeline.event.name == "pull_request"
+            and pipeline.event.action == "synchronize"
+      - docs_publish:
+          filters: |
+            pipeline.event.name == "push"
