@@ -30,7 +30,43 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+### Using Docker
+
+Build the Docker image (from this directory):
+
+```bash
+docker build -f Dockerfile --build-arg user=$(id -un) --build-arg uid=$(id -u) -t nav2_docs .
+```
+
+To build the documentation:
+
+```bash
+docker run --rm -v $(pwd):/docs nav2_docs make html
+```
+
+To run autobuild (watches for changes and rebuilds automatically):
+
+```bash
+docker run --init --rm -it -v $(pwd):/docs -p 8000:8000 nav2_docs make autobuild
+```
+
+Then browse to http://127.0.0.1:8000. Use Ctrl+C to stop (the `--init` flag enables proper signal handling).
+
+### Using VS Code Dev Container
+
+If you're using Visual Studio Code, you can use the dev container for an easy setup:
+
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open this folder in VS Code
+3. When prompted, click "Reopen in Container" (or use Command Palette: "Dev Containers: Reopen in Container")
+4. Once the container is built and running, use the integrated terminal to build the docs
+
+The dev container automatically sets up all dependencies. You can then use the build tasks or run commands directly:
+- Build once: `make html` or use the "Build" task (Ctrl+Shift+B)
+- Auto-rebuild: `make autobuild` or use the "Autobuild" task
+
 ### Build the Docs
+
 Build the docs locally with `make html` and you'll find the built docs entry point in `_build/html/index.html`.
 
 To automate the build process, you can use a [sphinx-autobuild](https://github.com/sphinx-doc/sphinx-autobuild) package. \

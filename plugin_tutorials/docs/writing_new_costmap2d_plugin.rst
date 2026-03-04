@@ -75,6 +75,9 @@ The basic class provides the set of virtual methods API for working with costmap
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | reset()              | It may have any code to be executed during costmap reset.                  | Yes                     |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
+| isClearable()        | Method is called to ask the plugin: should it be processed during          | Yes                     |
+|                      | clearing operations or not.                                                |                         |
++----------------------+----------------------------------------------------------------------------+-------------------------+
 
 In our example these methods have the following functionality:
 
@@ -82,8 +85,7 @@ In our example these methods have the following functionality:
 
 .. code-block:: c
 
-  declareParameter("enabled", rclcpp::ParameterValue(true));
-  node_->get_parameter(name_ + "." + "enabled", enabled_);
+  node->declare_or_get_parameter(name_ + "." + "enabled", true);
 
 and sets ``need_recalculation_`` bounds recalculation indicator:
 
@@ -124,6 +126,8 @@ These parameters are defined in plugin's header file.
 4. ``GradientLayer::onFootprintChanged()`` just resets ``need_recalculation_`` value.
 
 5. ``GradientLayer::reset()`` method is dummy: it is not used in this example plugin. It remains there since pure virtual function ``reset()`` in parent ``Layer`` class required to be overridden.
+
+6. ``GradientLayer::isClearable()`` returns ``false`` since this plugin is not clearable.
 
 2- Export and make GradientLayer plugin
 ---------------------------------------

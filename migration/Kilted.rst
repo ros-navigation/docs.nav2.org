@@ -361,10 +361,12 @@ See also :ref:`configuring_bt_navigator`
 Add BehaviorTree SubTrees Support
 ---------------------------------
 
-The BehaviorTree engine now supports SubTrees in different files within directory(s) set through ``bt_search_directories`` parameter. This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
-The interface now supports passing the behavior tree file or ID as input to the `loadBehaviorTree` method of the BT action server.
-Each behavior tree is now strictly required to have its own unique ID, therefore the need to replace `MainTre` to a unique ID. For example, in `navigate_through_poses_w_replanning_and_recovery.xml
-` `MainTree` can be replaced with `NavigateThroughPosesWReplanningAndRecovery`.
+The BehaviorTree engine now supports loading SubTrees from multiple files.
+This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
+The .xml files should be located within directory(s) set through the ``bt_search_directories`` parameter.
+
+The interface also supports requesting the desired behavior tree as a filepath or as an ID.
+To use the ID or multiple SubTrees features, each behavior tree is required to have its own unique ID - replace `MainTree` with a unique ID.
 
 Option to have custom window size and poly order in Savitsky-Golay Smoother
 ---------------------------------------------------------------------------
@@ -796,6 +798,33 @@ New default_cancel_timeout parameter in bt_navigator
 In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
 
 The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.
+
+Add support for switching between SMAC planners
+-----------------------------------------------
+
+Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
+
+New bt_log_idle_transitions parameter in bt_navigator
+-----------------------------------------------------
+
+In `PR 5963 <https://github.com/ros-navigation/navigation2/pull/5963>`_, A new ``bt_log_idle_transitions`` parameter has been added to the BT navigator. When set to ``true`` (default), idle (no state change) transitions in the behavior tree are published to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
+
+New IsWithinPathTrackingBounds Node
+-----------------------------------
+
+In `PR 5983 <https://github.com/ros-navigation/navigation2/pull/5983>`_, a new behavior tree node, ``IsWithinPathTrackingBounds``, was added to check if the robot is within specified bounds of the path for tracking purposes. See the `demo <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml>`_ for an example of how to use this node in a behavior tree.
+
+RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter
+---------------------------------------------------------------------------------------
+
+`PR #5677 <https://github.com/ros-navigation/navigation2/pull/5677>`_ resolves an issue where ``min_distance_to_obstacle`` was not properly enforced when ``use_velocity_scaled_lookahead_dist`` was enabled. Previously, collision checking was limited to the carrot distance, which at low speeds could be shorter than ``min_distance_to_obstacle``. For example, with ``min_lookahead_dist: 0.3``, ``min_distance_to_obstacle: 0.9``, and ``max_lookahead_dist: 1.5``, if the robot had not accelerated enough for the lookahead to reach 0.9m, obstacle checking would only cover up to the carrot position rather than the configured 0.9m. The collision checker now correctly extends the simulation distance to ``min_distance_to_obstacle`` (capped by ``max_lookahead_dist``) regardless of the current carrot distance.
+
+Additionally, warnings have been added to the parameter handler to alert users of configurations where ``min_distance_to_obstacle`` cannot be fully enforced:
+
+- When using ``use_velocity_scaled_lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``max_lookahead_dist``.
+- When using a constant ``lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``lookahead_dist``.
+
+A new parameter ``allow_obstacle_checking_beyond_goal`` (default: false) has also been added. By default, obstacle checking along the projected trajectory stops at the goal position (end of the path). When enabled, collision checking continues past the goal up to ``min_distance_to_obstacle``, regardless of the remaining path length. This parameter requires ``use_velocity_scaled_lookahead_dist`` to be enabled and ``min_distance_to_obstacle`` > 0.0.
 
 Refactored Inflation layer powered by OpenMP
 --------------------------------------------

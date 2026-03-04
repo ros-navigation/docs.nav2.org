@@ -405,6 +405,7 @@ Example
           footprint_padding: 0.03
           update_frequency: 1.0
           publish_frequency: 1.0
+          transform_tolerance: 0.1
           global_frame: map
           robot_base_frame: base_link
           robot_radius: 0.22 # radius set and used, so no footprint points
@@ -438,7 +439,6 @@ Example
             origin_z: 0.0
             z_resolution: 0.05
             z_voxels: 16
-            max_obstacle_height: 2.0
             unknown_threshold: 15
             mark_threshold: 0
             observation_sources: pointcloud
@@ -460,7 +460,6 @@ Example
             map_subscribe_transient_local: True
             enabled: true
             subscribe_to_updates: true
-            transform_tolerance: 0.1
           inflation_layer:
             plugin: "nav2_costmap_2d::InflationLayer"
             enabled: true

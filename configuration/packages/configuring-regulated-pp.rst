@@ -239,7 +239,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
+    The time (s) to forward-simulate the current velocity command to check for collisions when ``use_collision_detection`` is ``true``. At each simulation step, the robot's footprint is projected forward by the costmap resolution. The simulation stops at whichever limit is reached first: this time limit or the carrot distance. If a collision is detected at any projected pose, the robot will stop. When ``min_distance_to_obstacle`` is set, this time limit may be automatically extended to ensure the minimum obstacle distance can be checked at the current velocity. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
 
 :use_regulated_linear_velocity_scaling:
 
@@ -444,6 +444,17 @@ Regulated Pure Pursuit Parameters
     Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.
     Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
 
+:allow_obstacle_checking_beyond_goal:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to continue obstacle checking past the goal position up to ``min_distance_to_obstacle``. When enabled, obstacles located beyond the goal along the projected trajectory may prevent motion. This can be useful when the goal pose is close to obstacles or when a safety margin must be enforced beyond the final path pose. For example, in constrained environments, users may prefer to ensure that obstacle checking continues slightly past the goal to avoid approaching obstacles that lie immediately beyond it. Requires ``use_velocity_scaled_lookahead_dist`` to be enabled and ``min_distance_to_obstacle`` > 0.0.
+
 
 Example
 *******
@@ -502,3 +513,4 @@ Example
         min_distance_to_obstacle: 0.0
         stateful: true
         use_dynamic_window: false
+        allow_obstacle_checking_beyond_goal: false

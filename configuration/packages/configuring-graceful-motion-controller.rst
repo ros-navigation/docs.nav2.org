@@ -212,6 +212,61 @@ Graceful Controller Parameters
   Description
     Whether to use collision detection to avoid obstacles.
 
+:footprint_scaling_linear_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.5
+  ============== =============================
+
+  Description
+    The linear velocity threshold (m/s) below which footprint scaling is not applied. When the simulated velocity exceeds this value, the footprint is expanded proportionally to the ratio between the current velocity and ``v_linear_max``. If the trajectory is in collision at the current speed, the controller retries with reduced speeds down to this threshold in steps of ``footprint_scaling_step``.
+
+:footprint_scaling_factor:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.25
+  ============== =============================
+
+  Description
+    The maximum additional scaling factor applied to the robot footprint at ``v_linear_max``. A value of ``0.25`` means the footprint can be expanded up to 125% of its original size at maximum velocity. The actual scaling increases linearly with velocity above ``footprint_scaling_linear_vel``.
+
+:footprint_scaling_step:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The step size (m/s) for reducing the simulated velocity when a trajectory is in collision at the current speed. The controller iterates from ``v_linear_max`` down to ``footprint_scaling_linear_vel`` in steps of this size, attempting to find a collision-free trajectory at a lower speed with a smaller footprint.
+
+:obstacle_cost_margin:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  int            1
+  ============== =============================
+
+  Description
+    The cost margin below the maximum valid cost that is considered "close to obstacles." When the maximum cost along the final approach trajectory is within this margin of the maximum valid cost, the controller searches for a safer alternative approach angle using spiral curves. A higher value triggers the search more aggressively. Must be less than the maximum non-obstacle cost value.
+
+:final_rotation_search_step:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The angular step size (rad) used when searching for an alternative final approach angle that avoids obstacles. The controller sweeps through orientations in steps of this size to find a spiral curve approach that keeps the trajectory farther from obstacles using ``obstacle_cost_margin``. Smaller values provide finer search granularity at the cost of increased computation.
+
 :allow_parameter_qos_overrides:
 
   ============== =============================
@@ -263,3 +318,8 @@ Example
         v_angular_max: 5.0
         v_angular_min_in_place: 0.25
         slowdown_radius: 1.5
+        footprint_scaling_linear_vel: 0.5
+        footprint_scaling_factor: 0.25
+        footprint_scaling_step: 0.1
+        obstacle_cost_margin: 1
+        final_rotation_search_step: 0.1

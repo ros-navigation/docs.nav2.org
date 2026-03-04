@@ -6,8 +6,6 @@
     },
     "workspaceMount": "source=${localWorkspaceFolder},target=/docs,type=bind",
     "workspaceFolder": "/docs",
-    "onCreateCommand": ".devcontainer/on-create-command.sh",
-    "updateContentCommand": ".devcontainer/update-content-command.sh",
     "customizations": {
         "vscode": {
             "settings": {},

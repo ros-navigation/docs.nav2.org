@@ -14,7 +14,7 @@ By convention we name these by the style of algorithms that they are (e.g. not `
 In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
-In nominal execution, this will replan the path at every second and pass that path onto the controller, similar to the behavior tree in :ref:`behavior_trees`.
+In nominal execution, this will replan the path at every second if not close enough to goal and pass that path onto the controller, similar to the behavior tree in :ref:`behavior_trees`.
 However, this time, if the planner fails, it will trigger contextually aware recovery behaviors in its subtree, clearing the global costmap.
 Additional recovery behaviors can be added here for additional context-specific recoveries, such as trying another algorithm.
 
@@ -45,7 +45,17 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
           <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
           <RateController hz="1.0">
             <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-              <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+              <Fallback name="FallbackComputePathToPose">
+                <ReactiveSequence name="CheckIfNewPathNeeded">
+                  <Inverter>
+                    <GlobalUpdatedGoal/>
+                  </Inverter>
+                  <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
+                  <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
+                  <IsPathValid path="{remaining_path}"/>
+                </ReactiveSequence>
+                <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+              </Fallback>
               <Sequence>
                 <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
                 <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
@@ -53,7 +63,7 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
             </RecoveryNode>
           </RateController>
           <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+            <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
             <Sequence>
               <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
               <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>

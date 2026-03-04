@@ -45,7 +45,7 @@ Lyrical Roadmap
 | trees for more intelligent     |                        |
 | behavior                       |                        |
 +--------------------------------+------------------------+
-| Fix for statics in Smac        |  Medium                |
+| Fix for statics in Smac        |  Medium (DONE)         |
 | Planner to allow for multiple  |                        |
 | instances in a server not to   |                        |
 | conflict                       |                        |
