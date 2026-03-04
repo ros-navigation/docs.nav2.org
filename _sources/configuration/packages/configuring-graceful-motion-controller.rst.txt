@@ -265,7 +265,7 @@ Graceful Controller Parameters
   ============== =============================
 
   Description
-    The angular step size (rad) used when searching for an alternative final approach angle that avoids obstacles. The controller sweeps through orientations in steps of this size to find a spiral curve approach that keeps the trajectory farther from obstacles. Smaller values provide finer search granularity at the cost of increased computation.
+    The angular step size (rad) used when searching for an alternative final approach angle that avoids obstacles. The controller sweeps through orientations in steps of this size to find a spiral curve approach that keeps the trajectory farther from obstacles using ``obstacle_cost_margin``. Smaller values provide finer search granularity at the cost of increased computation.
 
 :allow_parameter_qos_overrides:
 
