@@ -825,3 +825,11 @@ Additionally, warnings have been added to the parameter handler to alert users o
 - When using a constant ``lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``lookahead_dist``.
 
 A new parameter ``allow_obstacle_checking_beyond_goal`` (default: false) has also been added. By default, obstacle checking along the projected trajectory stops at the goal position (end of the path). When enabled, collision checking continues past the goal up to ``min_distance_to_obstacle``, regardless of the remaining path length. This parameter requires ``use_velocity_scaled_lookahead_dist`` to be enabled and ``min_distance_to_obstacle`` > 0.0.
+
+Refactored Inflation layer powered by OpenMP
+--------------------------------------------
+
+`PR #5933 <https://github.com/ros-navigation/navigation2/pull/5933>`_ refactors the Inflation layer to leverage OpenMP for parallel processing, significantly improving performance in large maps.
+
+The new implementation replaces the previous queue-based cell iteration with a Felzenszwalb-Huttenlocher distance transform algorithm.
+When OpenMP is not available at compile time, the layer falls back to single-threaded operation.
