@@ -50,13 +50,13 @@ commands:
     description: "Install documentation dependencies"
     steps:
       - *setup_doc_dependencies
-  build_docs:
-    description: "Build docs"
+  build_and_store_docs:
+    description: "Build and store docs"
     steps:
       - *build_docs
       - *store_built_docs
-  publish_docs_to_gh_pages_branch:
-    description: "Commit newly built docs to gh-pages branch"
+  publish_and_store_docs:
+    description: "Commit newly built docs to gh-pages branch and store the build result"
     steps:
       - *publish_docs
       - *store_published_docs
@@ -73,14 +73,14 @@ jobs:
     steps:
       - *on_checkout
       - install_doc_dependencies
-      - build_docs
+      - build_and_store_docs
   docs_publish:
     executor: docs_exec
     steps:
       - *on_checkout
       - install_doc_dependencies
       # - *install_deployment_key
-      - publish_docs_to_gh_pages_branch
+      - publish_and_store_docs
 
 workflows:
   build_and_publish_docs:
