@@ -83,12 +83,19 @@ jobs:
       - publish_and_store_docs
 
 workflows:
-  build_and_publish_docs:
+  build_docs:
     jobs:
       - docs_build:
-          filters: |
-            pipeline.event.name == "pull_request"
-            and pipeline.event.action == "synchronize"
+          filters:
+            branches:
+              ignore:
+                - rolling
+                - jazzy
+  publish_docs:
+    jobs:
       - docs_publish:
-          filters: |
-            pipeline.event.name == "push"
+          filters:
+            branches:
+              only:                
+                - rolling
+                - jazzy
