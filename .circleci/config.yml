@@ -26,6 +26,10 @@ references:
   publish_docs: &publish_docs
     run:
       command: |
+        # Set up git configuration
+        git config user.name ci
+        git config user.email ci@noreply.com
+
         TITLE=${CIRCLE_BRANCH^}
         # Uncomment --push flag once SSH key fingerprint is added
         mike deploy $CIRCLE_BRANCH --title=$TITLE # --push
