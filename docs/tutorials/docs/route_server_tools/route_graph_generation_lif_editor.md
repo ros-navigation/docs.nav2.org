@@ -26,9 +26,9 @@ Click the **‘Edit’** button under the **‘Layout’** section in the left s
 #### NOTE
 You can also change the layout name after creating the layout.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/frame_name.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/frame_name.png){ width="710px" height="330px" }
+</figure>
 
 Click the **‘Edit’** button under the **‘Layout’** section in the left sidebar. In the popup, upload your floor plan image using the **‘Background Image’** section.
 After uploading the image, four input fields will appear. Set the image width and height in meters, and specify the origin coordinates (X, Y).
@@ -38,9 +38,9 @@ Click the **‘Save’** button to save and close the popup.
 #### NOTE
 If you don’t see the image, zoom out the map and check the origin position of your image.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/setup_coordinate_system.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/setup_coordinate_system.png){ width="710px" height="330px" }
+</figure>
 
 ### 2. Node Operations
 
@@ -54,17 +54,17 @@ Now you can add nodes to the map. There are two ways to do this:
 #### NOTE
 If the **‘Fast Create’** toggle is on, you cannot create nodes using the right sidebar (method 2). You must turn the toggle off first.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/add_node.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/add_node.png){ width="710px" height="330px" }
+</figure>
 
 #### Delete Node
 
 To delete a node, click on it (a glowing orange border will appear around the selected node), then click the **‘Delete’** button in the right sidebar.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/delete_node.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/delete_node.png){ width="710px" height="330px" }
+</figure>
 
 ### 3. Edge Operations
 
@@ -74,40 +74,42 @@ Now we can add edges to the map. There are two ways to create edges:
 
 1. Select a node, enter the target node ID in the **‘Connected Nodes’** input in the right sidebar, and select the node from the list. This will create an edge between the selected node and the target node.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/add_edge_normal.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/add_edge_normal.png){ width="710px" height="330px" }
+</figure>
 1. If the **‘Fast Create’** toggle is on, clicking on the map will automatically connect the new node to the previously selected node.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/add_edge_fast_create.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/add_edge_fast_create.png){ width="710px" height="330px" }
+</figure>
 
 #### Delete Edge
 
 To delete an edge, click on it (the edge color will change to orange), then click the **‘Delete’** button in the right sidebar.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/delete_edge.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/delete_edge.png){ width="710px" height="330px" }
+</figure>
 
 ### 4. Check GeoJSON
 
 Click the **‘ROS’** menu button on the top bar to view the generated GeoJSON.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/check_geojson.png)
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/check_geojson_1.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/check_geojson.png){ width="710px" height="330px" }
+</figure>
+
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/check_geojson_1.png){ width="710px" height="330px" }
+</figure>
 
 ### 5. Export to GeoJSON
 
 You are now ready to export the node and edge layers as GeoJSON files. Click the **‘Save’** button on the top bar and then select **‘Export ROS GeoJSON’**.
 
-<br/>
-![image](tutorials/docs/images/route_graph_generation_lif_editor/export_geojson.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation_lif_editor/export_geojson.png){ width="710px" height="330px" }
+</figure>
 
 ### 6. Congratulations
 

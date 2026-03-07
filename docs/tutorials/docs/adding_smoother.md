@@ -6,7 +6,9 @@
 - [Requirements]()
 - [Tutorial Steps]()
 
-![image](tutorials/docs/images/smoothing_path.png)
+<figure markdown="span">
+  ![](images/smoothing_path.png){ width="70%" }
+</figure>
 
 ## Overview
 

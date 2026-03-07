@@ -134,7 +134,9 @@ and calculate the cost of a Footprint in a given map.
 
 All of these can be found in the [package](https://github.com/ros-navigation/navigation2/tree/main/nav2_simple_commander).
 
-![Alternative text](commander_api/readme.gif)
+<figure markdown="span">
+  ![](readme.gif){ width="800" title="Alternative text" }
+</figure>
 
 The `nav2_simple_commander` has a few examples to highlight the API functions available to you as a user:
 

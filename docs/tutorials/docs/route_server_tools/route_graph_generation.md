@@ -25,9 +25,9 @@ Set the project coordinate reference system by selecting Project->Properties->CR
 The WGS 84/ Pseudo-Mercator is one of few coordinate systems that could be used.
 For more information about coordinate reference systems please review [https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html](https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/coordinate_reference_system.png)
-<br/>
+<figure markdown="span">
+  ![image](../images/route_graph_generation/coordinate_reference_system.png){ height="800" }
+</figure>
 
 ### 2- Setup Coordinate System
 
@@ -45,23 +45,23 @@ It is recommended to set the origin of your map to the lower left corner of the 
 To georeference image select Raster -> Georefencer. Set the Transformation Settings to Linear for Transformation
 type, WGS 84/ Pseudo-Mercator for Target SRS and set your desired path for the Output Raster.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/transformation_settings.png)
-<br/>
+<figure markdown="span">
+  ![image](../images/route_graph_generation/transformation_settings.png){ width="500" }
+</figure>
 
 Select the raster image you wish to georeference and place control point by selecting Add Point and clicking on the raster image.
 The control points can be modified by clicking on the control point table and typing in new values. Once you are satisfied with your control points, apply the transformation
 by selecting Start Transformation.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/georeferencer.png)
-<br/>
+<figure markdown="span">
+  ![image](../images/route_graph_generation/georeferencer.png){ width="800" }
+</figure>
 
 Close the window. Drag and drop the georeferenced raster file that was just created into the layers window. This should be a tiff file, by default.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/raster_layer.png)
-<br/>
+<figure markdown="span">
+  ![image](../images/route_graph_generation/raster_layer.png){ width="800" }
+</figure>
 
 To verify the transformation worked, move the mouse around the raster image and look at the coordinates being displayed at the bottom of the window.
 
@@ -72,33 +72,33 @@ Now that we have georeferenced the raster layer we can start placing nodes.
 Select Layer -> Create Layer -> New ShapeFile Layer. Set the shapefile layer setting to be
 nodes for the File name, Point for the Geometry type and WGS 84/ Pseudo-Mercator for the coordinate system. Press OK.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/node_layer.png)
-<br/>
+<figure markdown="span">
+  ![image](../images/route_graph_generation/node_layer.png){ width="700" }
+</figure>
 
 In order to have the id field auto increment, right click on the layer and select the Properties -> Attribute Form.
 Expand the Fields drop down menu and select id. Select the Expression Dialog icon which is across from Default value field.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/attribute_form.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation/attribute_form.png){ width="800" }
+</figure>
 
 Within the Expression Dialog select Import user expressions and import increment_node_id.json which exists in the scripts file with the nav2 route module. Expand User expressions and double click on increment_node_id.
 The expression should show up in the left window. Click OK to save the expression and exit the Expression Dialog. Then click Apply and OK and save and exit the Attributes Form.
 This will increment the node id by one every time a new node is added. The first node id will be zero.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/expression_dialog.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation/expression_dialog.png){ width="800" }
+</figure>
 
 Click on the node layer and then select Toggle Editing icon represented as a pencil to start editing the layer.
 To add points, select the Add Point Feature. Start adding nodes by clicking in the main window.
 Each time a node is added, a window will pop up with the auto incremented id. Press OK to continue placing points.
 Once complete, unselect ‘Toggle Editing’ and save changes.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/nodes.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation/nodes.png){ width="800" }
+</figure>
 
 #### NOTE
 By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
@@ -113,9 +113,9 @@ edges for the File name, LineString for the Geometry type and WGS 84/ Pseudo-Mer
 To auto increment the id field follow the same steps as above except replace increment_node_id.json with increment_edge_id.json.
 This will increment the edge id by one every time a new edge is added. The first edge id will be 10000.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/edge_layer.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation/edge_layer.png){ width="600" }
+</figure> 
 
 To see the directionality of the edges, right click on the edge layer and select Properties. Click Symbology -> Simple Line and change the Symbol layer type to Arrow.
 Click Ok. You should now be able to see arrows for each line string. Note that all edges in the route graph are directional, so if you want a bidirectional connection you should duplicate it in reverse.
@@ -126,9 +126,9 @@ To add edges, click on the Add Line Feature. Start adding edges by clicking twic
 The edge locations must exactly match up to the node locations, so if Snapping is not already enabled by default, enable it via Views->Toolbars->Snapping Toolbar and depress the Magnet icon.
 Once complete, unselect ‘Toggle Editing’ and save changes.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/edges.png)
-<br/>
+<figure markdown="span">
+  ![](../images/route_graph_generation/edges.png){ width="800" }
+</figure>
 
 ### 5- Associate Nodes With Edges
 
@@ -140,9 +140,9 @@ Execute the script. Load the new layer by checking the Load as new layer box and
 point. Then export the layer as a ShapeFile by right clicking on the layer selecting Export -> Save Feature As. Change the format to type to ESRI Shapefile, name the file, and verify that the
 coordinate reference system is WGS 84 /Pseudo-Mercator. Press OK.
 
-<br/>
-> ![image](tutorials/docs/images/route_graph_generation/db_manager.png)
-<br/>
+<figure markdown="span">
+  ![image](../images/route_graph_generation/db_manager.png){ width="800" }
+</figure>
 
 ### 6- Export To Geojson
 

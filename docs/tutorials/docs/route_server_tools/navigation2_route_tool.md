@@ -6,7 +6,9 @@
 - [Prerequisites]()
 - [Tutorial Steps]()
 
-![image](tutorials/docs/images/Navigation2_route_tool/route_tool_demo.gif)
+<figure markdown="span">
+  ![](../images/Navigation2_route_tool/route_tool_demo.gif){ width="90%" }
+</figure>
 
 ## Overview
 
@@ -32,7 +34,9 @@ This should open Rviz with the route tool panel on the left side and your occupa
 
 ### Loading a Route Graph
 
-![image](tutorials/docs/images/Navigation2_route_tool/route_load.gif)
+<figure markdown="span">
+  ![](../images/Navigation2_route_tool/route_load.gif){ width="90%" }
+</figure>
 
 To load in an existing route graph, click on the load button on the bottom left of the route tool panel.
 This will open up a file explorer so you can navigate to the existing geojson file you would like to load.
@@ -40,7 +44,9 @@ After clicking open, you should see the route graph overlaid with your occupancy
 
 ### Adding Nodes and Edges
 
-![image](tutorials/docs/images/Navigation2_route_tool/route_add.gif)
+<figure markdown="span">
+  ![](../images/Navigation2_route_tool/route_add.gif){ width="90%" }
+</figure>
 
 To add nodes and edges to your route graph, select the “Add” tab of the route tool panel.
 You can then add nodes by selecting the “Node” option and specifying coordinates for the new node.
@@ -50,7 +56,9 @@ For edges, follow the same process with the “Edge” option selected and speci
 
 ### Editing Nodes and Edges
 
-![image](tutorials/docs/images/Navigation2_route_tool/route_edit.gif)
+<figure markdown="span">
+  ![](../images/Navigation2_route_tool/route_edit.gif){ width="90%" }
+</figure>
 
 To edit an existing node or edge, select the “Edit” tab of the route tool panel.
 You can edit an existing node by selecting the “Node” option, entering the ID of the node you wish to edit, and specifying the new coordinates for the node.
@@ -61,7 +69,9 @@ Existing edges can be edited by selecting the “Edge” option, entering the ID
 
 ### Removing Nodes and Edges
 
-![image](tutorials/docs/images/Navigation2_route_tool/route_delete.gif)
+<figure markdown="span">
+  ![](../images/Navigation2_route_tool/route_delete.gif){ width="90%" }
+</figure>
 
 To remove an existing node or edge, select the “Remove” tab of the route tool panel.
 Select the “Node” option if you would like to remove a node and the “Edge” option if you would like to remove an edge.
@@ -71,7 +81,9 @@ You may need to toggle the visibility of the route graph in Rviz to see the chan
 
 ### Saving a Route Graph
 
-![image](tutorials/docs/images/Navigation2_route_tool/route_save.gif)
+<figure markdown="span">
+  ![](../images/Navigation2_route_tool/route_save.gif){ width="90%" }
+</figure>
 
 Once you are ready to save your route graph, click the “Save” button at the bottom right of the panel.
 This will then open a file explorer so you can specify where you would like to save your graph as a geojson file.

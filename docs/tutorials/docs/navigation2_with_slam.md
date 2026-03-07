@@ -97,7 +97,10 @@ ros2 topic pub /goal_pose geometry_msgs/PoseStamped "{header: {stamp: {sec: 0}, 
 You should see the map update live! To save this map to file:
 
 > `ros2 run nav2_map_server map_saver_cli -f ~/map`
-![Navigation2 with SLAM](tutorials/docs/images/Navigation2_with_SLAM/navigation2_with_slam.gif)
+
+<figure markdown="span">
+  ![](images/Navigation2_with_SLAM/navigation2_with_slam.gif){ width="700px" title="Navigation2 with SLAM" }
+</figure>
 
 ### 4- Getting Started Simplification
 

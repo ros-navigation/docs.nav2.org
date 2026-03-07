@@ -12,7 +12,9 @@
 
 This tutorial demonstrates how to use semantic segmentation in costmaps with stereo cameras, using a custom [semantic_segmentation_layer plugin](https://github.com/kiwicampus/semantic_segmentation_layer) and a pre-trained segmentation model that works on Gazebo’s Baylands world. It was written by Pedro Gonzalez at [robot.com](https://robot.com/).
 
-![image](tutorials/docs/images/Navigation2_with_segmentation/video.gif)
+<figure markdown="span">
+  ![](images/Navigation2_with_segmentation/video.gif){ width="90%" }
+</figure>
 
 ## Requirements
 
@@ -57,7 +59,9 @@ During training, the model learns to recognize patterns and features that distin
 As said above, a pre-trained model is included in this tutorial, so you can skip the training part and go directly to the integration with Nav2.
 However, if you want to train your own model, you can use the [Simple Segmentation Toolkit](https://github.com/pepisg/simple_segmentation_toolkit) to easily prototype one with SAM-based auto-labeling (no manual annotation required).
 
-![Example of semantic segmentation showing original image and segmented mask](tutorials/docs/images/Navigation2_with_segmentation/segmentation_example.png)
+<figure markdown="span">
+  ![](images/Navigation2_with_segmentation/segmentation_example.png){ width="600px" title="Example of semantic segmentation showing original image and segmented mask" }
+</figure>
 
 Once trained, the output of a semantic segmentation model is typically an image with the same size as the input, where each pixel holds the probability of that pixel belonging to each class.
 For instance, the model provided in this tutorial has 3 classes: sidewalk, grass, and background; hence its raw output is a 3-channel tensor, where each channel corresponds to the probability of the pixel belonging to that class.
@@ -91,7 +95,9 @@ ros2 launch semantic_segmentation_sim simulation_launch.py headless:=0
 
 You should see Gazebo launch with the TurtleBot 4 in the Baylands world.
 
-![Gazebo Baylands world](tutorials/docs/images/Navigation2_with_segmentation/gazebo_baylands.png)
+<figure markdown="span">
+  ![](images/Navigation2_with_segmentation/gazebo_baylands.png){ width="700px" title="Gazebo Baylands world" }
+</figure>
 
 ### 1- Setup Semantic Segmentation Inference Node
 
@@ -200,12 +206,16 @@ ros2 launch semantic_segmentation_sim segmentation_simulation_launch.py
 
 The Baylands simulation and rviz should appear. You should be able to send navigation goals via rviz and the robot should navigate the Baylands world, preferring sidewalks and avoiding grass:
 
-![image](tutorials/docs/images/Navigation2_with_segmentation/demo.gif)
+<figure markdown="span">
+  ![](images/Navigation2_with_segmentation/demo.gif){ width="90%" }
+</figure>
 
 To better see what the plugin is doing, you can enable the segmentation tile map visualization in rviz. This will show a pointcloud of the segmentation observations for each tile, colored by their confidence.
 Again, you can refer to the picture on the Layer’s [README](https://github.com/kiwicampus/semantic_segmentation_layer) for a visual explanation of how observations are accumulated on the costmap tiles and how that translates to the cost assigned to each tile.
 
-![image](tutorials/docs/images/Navigation2_with_segmentation/tile_map.gif)
+<figure markdown="span">
+  ![](images/Navigation2_with_segmentation/tile_map.gif){ width="90%" }
+</figure>
 
 **IMPORTANT NOTE:** For the sake of simplicity, this tutorial publishes a static transform between the `map` and `odom` frames. In a real-world application, you should have a proper localization system (e.g. GPS) to get the `map` => `odom` transform.
 

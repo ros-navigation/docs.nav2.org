@@ -600,6 +600,19 @@ The [route_example_launch.py](https://github.com/ros-navigation/navigation2/blob
 All the graphs files for the depot and warehouse environments are located in the [graphs](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs) directory under the `nav2_bringup` package.
 These are the current visualizations of the route graphs for the depot and warehouse environments:
 
-![image](configuration/packages/images/route_server/depot_graph.png)![image](configuration/packages/images/route_server/warehouse_graph.png)
+<figure markdown="span">
+  ![](images/route_server/depot_graph.png){ width="100%" }
+  <figcaption>
+    RViz visualization of the bidirectional route graph for the depot environment.
+  </figcaption>
+</figure>
+
+<figure markdown="span">
+  ![](images/route_server/warehouse_graph.png){ width="100%" }
+  <figcaption>
+    RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated.
+  </figcaption>
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

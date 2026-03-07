@@ -153,7 +153,9 @@ ros2 launch sam_bot_description display.launch.py
 
 Gazebo and RVIZ should launch. In the RVIZ window, you should see the model and TF frames of `sam_bot`:
 
-![image](setup_guides/odom/images/rviz.png)
+<figure markdown="span">
+  ![](images/rviz.png){ width="100%" }
+</figure>
 
 Next, let us verify that the `odometry/filtered`,  `accel/filtered`, and `/tf` topics are active in the system. Open a new terminal and execute:
 

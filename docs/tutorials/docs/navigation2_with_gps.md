@@ -45,7 +45,9 @@ GPS (Global Positioning System) or more broadly GNSS (Global Navigation Satellit
 
 Commonly GPS devices calculate their position using the [WGS84 standard](https://en.wikipedia.org/wiki/World_Geodetic_System), which defines a cartesian system with its origin on the earth’s center of mass, the `z` axis pointing north and the `x` axis pointing to the first meridian as the image below shows.
 
-![WGS84 reference frame](tutorials/docs/images/Gps_Navigation/WGS_84_reference_frame.svg)
+<figure markdown="span">
+  ![](images/Gps_Navigation/WGS_84_reference_frame.svg){ width="562px" title="WGS84 reference frame" }
+</figure>
 
 However, this reference system is impractical for describing the motion and representing the environment around objects in or close to the earth’s surface: Imagine your robot is located on a soccer field and you want it to move from one end to the other, your navigation task would look something like:
 
@@ -55,7 +57,9 @@ Addinally, if your robot has for instance a 2D lidar, you would have to transfor
 
 To cope with this, geodesy proposes several planar projection systems for localization with respect to the surface of the earth. One of them is the [UTM coordinate system](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system), which assumes earth is an ellipsoid and divides it in 60 zones, each of them spanning across 6 longitude degrees. A zone represents the projection of the ellipsoid’s surface over a secant cylinder parallel to its central meridian; each of them is then split into 20 latitude bands that span across 8 latitude degrees, which create local grid zones where positions are expressed using planar coordinates from the origin of the zone. The image below shows the grid zones spanning across South America.
 
-![UTM grid zones in South America](tutorials/docs/images/Gps_Navigation/South-America-UTM-zones.png)
+<figure markdown="span">
+  ![](images/Gps_Navigation/South-America-UTM-zones.png){ width="520px" title="UTM grid zones in South America" }
+</figure>
 
 [robot_localization](http://docs.ros.org/en/noetic/api/robot_localization/html/index.html) uses this projection system to transform GPS measurements in the WGS84 reference system to a cartesian system, which centered on the origin of the grid zone where the GPS is at. This is achieved through the [navsat_transform node](http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html). This node complies with the ENU convention in [REP 103](https://www.ros.org/reps/rep-0103.html), meaning that the `+x` axis of the `utm` coordinate system faces east, the `+y` faces north and the `+z` axis points up.
 
@@ -160,7 +164,9 @@ ros2 launch nav2_gps_waypoint_follower_demo gazebo_gps_world.launch.py
 
 A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo the topic `/gps/fix` to verify the robot is indeed producing GPS measurements
 
-![Turtlebot in the sonoma raceway](tutorials/docs/images/Gps_Navigation/gazebo_sonoma_raceway.png)
+<figure markdown="span">
+  ![](images/Gps_Navigation/gazebo_sonoma_raceway.png){ width="700px" title="Turtlebot in the sonoma raceway" }
+</figure>
 
 ### 1- Setup GPS Localization system
 
@@ -285,7 +291,9 @@ ros2 launch nav2_gps_waypoint_follower_demo mapviz.launch.py
 
 You should see the window below after properly setting the API key:
 
-![Turtlebot in the sonoma raceway](tutorials/docs/images/Gps_Navigation/mapviz_init.png)
+<figure markdown="span">
+  ![](images/Gps_Navigation/mapviz_init.png){ width="800px" title="Turtlebot in the sonoma raceway" }
+</figure>
 
 Finally run the teleop twist keyboard node to teleoperate the simulated Turtlebot:
 
@@ -300,7 +308,9 @@ When you have everything up and running, start teleoperating the Turtlebot and c
 
 The gif below shows what you should see:
 
-![image](tutorials/docs/images/Gps_Navigation/localization_check.gif)
+<figure markdown="span">
+  ![](images/Gps_Navigation/localization_check.gif){ width="800px" }
+</figure>
 
 Sensors in a real robot may be less accurate than Gazebo’s, especially GPSs and absolute heading measurements from IMUs. To mitigate this you can leverage robot_localization’s EKFs to complement sensor’s capabilities:
 
@@ -356,7 +366,9 @@ ros2 launch nav2_gps_waypoint_follower_demo gps_waypoint_follower.launch.py use_
 
 The gif below shows what you should see Nav2 navigating the robot autonomously!
 
-![image](tutorials/docs/images/Gps_Navigation/navigation_check.gif)
+<figure markdown="span">
+  ![](images/Gps_Navigation/navigation_check.gif){ width="800px" }
+</figure>
 
 ### 3-  Interactive GPS Waypoint Follower
 
@@ -370,7 +382,9 @@ ros2 run nav2_gps_waypoint_follower_demo interactive_waypoint_follower
 
 You can now click on the mapviz map the pose you want the robot to go. The gif below shows the robot navigating to the finish line going through some obstacles:
 
-![image](tutorials/docs/images/Gps_Navigation/interactive_wpf.gif)
+<figure markdown="span">
+  ![](images/Gps_Navigation/interactive_wpf.gif){ width="800px" }
+</figure>
 
 ### 4-  Logged GPS Waypoint Follower & Waypoint Logging
 
@@ -394,7 +408,9 @@ ros2 run nav2_gps_waypoint_follower_demo gps_waypoint_logger </path/to/yaml/file
 
 If you don’t provide a path to save your waypoints, they will be saved in your `home` folder by default with the name `gps_waypoints.yaml`. Once the node launches you should see a small GUI with a button to log waypoints, you may now move the robot around and click that button to record its position as the gif below shows:
 
-![image](tutorials/docs/images/Gps_Navigation/waypoint_logging.gif)
+<figure markdown="span">
+  ![](images/Gps_Navigation/waypoint_logging.gif){ width="800px" }
+</figure>
 
 After that you should get a `yaml` file in the location you specified with the format shown above; let’s now make the robot follow the logged waypoints. For this purpose we provide the [logged_waypoint_follower](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py) node, which takes in the path to the waypoints file as an argument and uses the `BasicNavigator` in `nav2_simple_commander` to send the logged goals to the `/follow_gps_waypoints` action server. If not provided, the node uses the [default waypoints](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml) in the `nav2_gps_waypoint_follower_demo` package.
 
@@ -406,7 +422,9 @@ ros2 run nav2_gps_waypoint_follower_demo logged_waypoint_follower </path/to/yaml
 
 You should now see the robot following the waypoints you previously logged:
 
-![image](tutorials/docs/images/Gps_Navigation/logged_waypoint_follower.gif)
+<figure markdown="span">
+  ![](images/Gps_Navigation/logged_waypoint_follower.gif){ width="800px" }
+</figure>
 
 ## Conclusion
 

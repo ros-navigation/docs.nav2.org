@@ -266,6 +266,9 @@ The Nav2 RViz Panel now displays the action feedback published by `nav2_msgs/Nav
 Users can find information like the estimated time of arrival, distance remaining to goal, time elapsed since navigation started, and number of recoveries performed during a navigation action directly through the RViz panel.
 This feature was introduced in this [pull request 2338](https://github.com/ros-navigation/navigation2/pull/2338).
 
-![Navigation feedback in RViz.](images/rviz/panel-feedback.gif)
+<figure markdown="span">
+  ![](/images/rviz/panel-feedback.gif){ width="600px" title="Navigation feedback in RViz." }
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

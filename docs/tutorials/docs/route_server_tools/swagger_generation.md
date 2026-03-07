@@ -34,7 +34,9 @@ The resolution should be set as the same as in your SLAM session that generated 
 The safety distance is the minimum distance away from any obstacle that the graph will be generated.
 When completed, the output should look similar to the following:
 
-![image](tutorials/docs/images/route_graph_generation_swagger/waypoint_graph.png)
+<figure markdown="span">
+  ![](../images/route_graph_generation_swagger/waypoint_graph.png){ width="530px" height="550px" }
+</figure>
 
 This process is performed by:
 

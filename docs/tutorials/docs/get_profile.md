@@ -119,10 +119,15 @@ kcachegrind callgrind.out.XXX
 
 This should open a window looking like below. The left side shows all of the calls and their relative percentages of compute time they and their children functions utilized.
 
-> ![image](tutorials/docs/images/kcachegrind.png)
+<figure markdown="span">
+  ![](images/kcachegrind.png){ width="700px" }
+</figure>
 
 If you select the top level entry on the left sidebar, then select “Call Graph” at the bottom of the right workspace, it should show you a call graph of where the compute time was spent as a graph of method calls. This can be exceptionally helpful to find the methods where the most time is spent.
 
-> ![image](tutorials/docs/images/call_graph.png)
+<figure markdown="span">
+  ![](images/call_graph.png){ width="700px" }
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

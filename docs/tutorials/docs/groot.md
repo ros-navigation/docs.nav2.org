@@ -18,13 +18,23 @@ Therefore, we must point Groot to our palette, or index of Nav2 / custom behavio
 4. Select Load tree option near the top left corner
 5. Browse the tree you want to visualize, then select OK. The Nav2 BTs exist in /path/to/navigation2/nav2_bt_navigator/behavior_trees/
 
-| ![image](tutorials/docs/images/Groot/groot_bt_editor.png)   | ![image](tutorials/docs/images/Groot/groot_with_nav2_custom_nodes.png)   |
-|-------------------------------------------------------------|--------------------------------------------------------------------------|
+<div markdown="span" style="display: flex; gap: 10px;">
+    <figure markdown="span" id="groot-bt-editor">
+        ![](images/Groot/groot_bt_editor.png){ width="400px" }
+        <figcaption>Figur 1: Default Editor View</figcaption>
+    </figure>
+    <figure markdown="span" id="groot-bt-editor-with-nodes">
+        ![](images/Groot/groot_with_nav2_custom_nodes.png){ width="397px" }
+        <figcaption>Figure 2: Editor with Custom Nodes loaded in blue</figcaption>
+    </figure>
+</div>
 
 If you select the default tree navigate_w_replanning_and_recovery.xml, then a Groot editor should look like [Figure 3](#groot-nav2-default-bt).
 
-| ![image](tutorials/docs/images/Groot/bt_w_replanning_and_recovery.png)   |
-|--------------------------------------------------------------------------|
+<figure markdown="span" id="groot-nav2-default-bt">
+    ![](images/Groot/bt_w_replanning_and_recovery.png)
+    <figcaption>Figure 3: Full Nav2 Default BehaviorTree</figcaption>
+</figure>
 
 #### NOTE
 If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2’s BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
@@ -45,8 +55,10 @@ This helps designers abstract away the implementation specifics of the nodes fro
 Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your palette.
 Implementing the node itself needs to be done separately from Groot, which is described in [Writing a New Behavior Tree Plugin](../../plugin_tutorials/docs/writing_new_bt_plugin.md#writing-new-nbt-plugin).
 
-| ![image](tutorials/docs/images/Groot/groot_create_custom_node.png)   |
-|----------------------------------------------------------------------|
+<figure markdown="span" id="groot-create-custom-node">
+    ![](images/Groot/groot_create_custom_node.png)
+    <figcaption>Figure 4: Create a new Custom Node</figcaption>
+</figure>
 
 Creating a new custom node can be started by clicking the orange marked icon in [Figure 4](#groot-create-custom-node), while Groot is in Editor mode.
 This should load a new window, similar to [Figure 5](#groot-interactive-node-creation).
@@ -55,8 +67,16 @@ It will ask you for standard information such as name (green box), type of node 
 
 After completing, select OK in [Figure 5](#groot-interactive-node-creation), the new custom node should appear in blue in the TreeNode Palette as in [Figure 6](#groot-export-new-node).
 
-| ![image](tutorials/docs/images/Groot/groot_interactive_node_creation.png)   | ![image](tutorials/docs/images/Groot/groot_export_new_node.png)   |
-|-----------------------------------------------------------------------------|-------------------------------------------------------------------|
+<div markdown="span" style="display: flex; gap: 10px; height: 350px">
+    <figure markdown="span" id="groot-interactive-node-creation" style="object-fit: fill;">
+        ![](images/Groot/groot_interactive_node_creation.png){ width="350px" }
+        <figcaption>Figure 5: UI to describing new Nodes</figcaption>
+    </figure>
+    <figure markdown="span" id="groot-export-new-node" style="object-fit: fill;">
+        ![](images/Groot/groot_export_new_node.png){ width="342px" }
+        <figcaption>Figure 6: Exporting the new Custom Node</figcaption>
+    </figure>
+</div>
 
 Before starting to create a new BT based on the new custom nodes, it is recommend to export the newly created nodes to save in case of Groot crashing.
 This can be performed with the icon highlighted in green from [Figure 6](#groot-export-new-node).

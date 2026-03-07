@@ -6,7 +6,10 @@ This behavior tree drives the robot in a CCW square three times using the DriveO
 The robot will traverse each side of the square at 0.2 (m/s) for 2 meters before making a 90 degree turn.
 This is a primitive experiment to measure odometric accuracy and can be used and repeated to tune parameters related to odometry to improve quality.
 
-![Alternative text](behavior_trees/trees/gifs/odometry_calibration.gif)
+<figure markdown="span">
+  ![](gifs/odometry_calibration.gif){ width="800" title="Alternative text" }
+</figure>
+
 ```xml
 <root main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">

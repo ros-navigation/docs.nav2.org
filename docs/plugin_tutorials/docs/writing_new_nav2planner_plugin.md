@@ -6,7 +6,9 @@
 - [Requirements]()
 - [Tutorial Steps]()
 
-![Animated gif with gradient demo](plugin_tutorials/docs/images/Writing_new_nav2planner_plugin/nav2_straightline_gif.gif)
+<figure markdown="span">
+  ![](images/Writing_new_nav2planner_plugin/nav2_straightline_gif.gif){ width="700px" title="Animated gif with gradient demo" }
+</figure>
 
 ## Overview
 

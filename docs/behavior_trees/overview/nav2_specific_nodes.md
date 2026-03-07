@@ -48,9 +48,10 @@ If at any point a child returns `FAILURE`, all children will be halted and the p
 
 To explain this further, here is an example BT that uses PipelineSequence.
 
-<br/>
-> ![image](behavior_trees/images/control_pipelineSequence.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_pipelineSequence.png)
+</figure>
+
 ```xml
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
@@ -66,24 +67,27 @@ To explain this further, here is an example BT that uses PipelineSequence.
 1. `Action_A`, `Action_B`, and `Action_C` are all `IDLE`.
 2. When the parent PipelineSequence is first ticked, let’s assume `Action_A` returns `RUNNING`. The parent node will now return `RUNNING` and no other nodes are ticked.
 
-<br/>
-> ![image](behavior_trees/images/control_pipelineSequence_RUNNING_IDLE_IDLE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_pipelineSequence_RUNNING_IDLE_IDLE.png)
+</figure>
+
 1. Now, let’s assume `Action_A` returns `SUCCESS`, `Action_B` will now get ticked and will return `RUNNING`. `Action_C` has not yet been ticked so will return `IDLE`.
 
-<br/>
-> ![image](behavior_trees/images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png)
+</figure>
+
 1. `Action_A` gets ticked again and returns `RUNNING`, and `Action_B` gets re-ticked and returns `SUCCESS` and therefore the BT goes on to tick `Action_C` for the first time. Let’s assume `Action_C` returns `RUNNING`. The retick-ing of `Action_A` is what makes PipelineSequence useful.
 
-<br/>
-> ![image](behavior_trees/images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png)
+</figure>
+
 1. All actions in the sequence will be re-ticked. Let’s assume `Action_A` still returns `RUNNING`, where as `Action_B` returns `SUCCESS` again, and `Action_C` now returns `SUCCESS` on this tick. The sequence is now complete, and therefore `Action_A` is halted, even though it was still `RUNNING`.
 
-<br/>
-> ![image](behavior_trees/images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png)
+</figure>
 
 Recall that if `Action_A`, `Action_B`, or `Action_C` returned `FAILURE` at any point of time, the parent would have returned `FAILURE` and halted any children as well.
 
@@ -101,9 +105,10 @@ If the first child returns `FAILURE`, the second child will be ticked. This loop
 This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the “main” behavior,
 and the second action will be something to be done in case of `FAILURE` of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.
 
-<br/>
-> ![image](behavior_trees/images/control_recovery_node.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_recovery_node.png)
+</figure>
+
 ```xml
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
@@ -127,9 +132,10 @@ If all children return `FAILURE` so will the parent RoundRobin.
 
 Here is an example BT we will use to walk through the concept.
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin.png)
+</figure>
+
 ```xml
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
@@ -144,41 +150,43 @@ Here is an example BT we will use to walk through the concept.
 
 1. All the nodes start at `IDLE`
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin_IDLE_IDLE_IDLE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin_IDLE_IDLE_IDLE.png)
+</figure>
 
 2. Upon tick of the parent node, the first child (`Action_A`) is ticked. Let’s assume on tick the child returns `RUNNING`.
 In this case, no other children are ticked and the parent node returns `RUNNING` as well.
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin_RUNNING_IDLE_IDLE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin_RUNNING_IDLE_IDLE.png)
+</figure>
 
 3. Upon the next tick, let’s assume that `Action_A` returns `FAILURE`.
 This means that `Action_B` will get ticked next, and `Action_C` remains unticked.
 Let’s assume `Action_B` returns `RUNNING` this time. That means the parent RoundRobin node will also return `RUNNING`.
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin_FAILURE_RUNNING_IDLE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin_FAILURE_RUNNING_IDLE.png)
+</figure>
 
 4. Upon this next tick,  let’s assume that `Action_B` returns `SUCCESS`. The parent RoundRobin will now halt all children and return `SUCCESS`.
 The parent node retains this state information, and will tick `Action_C` upon the next tick rather than start from `Action_A` like Step 2 did.
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin_FAILURE_SUCCESS_IDLE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin_FAILURE_SUCCESS_IDLE.png)
+</figure>
+
 1. On this tick, let’s assume `Action_C` returns `RUNNING`, and so does the parent RoundRobin. No other nodes are ticked.
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin_FAILURE_SUCCESS_RUNNING.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin_FAILURE_SUCCESS_RUNNING.png)
+</figure>
+
 1. On this last tick, let’s assume `Action_C` returns `FAILURE`. The parent will circle and tick `Action_A` again. `Action_A` returns `RUNNING` and so will the parent RoundRobin node. This pattern will continue indefinitely unless all children return `FAILURE`.
 
-<br/>
-> ![image](behavior_trees/images/control_round_robin_RUNNING_IDLE_FAILURE.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_round_robin_RUNNING_IDLE_FAILURE.png)
+</figure>
 
 For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide](../../configuration/packages/bt-plugins/controls/RoundRobin.html).
 
@@ -190,8 +198,10 @@ Note that even if a node returns `SUCCESS` in a previous tick, on the next tick,
 
 To explain this further, here is an example BT that uses NonblockingSequence.
 
-<br/>
-> ![image](behavior_trees/images/control_nonblockingSequence.png)
+<figure markdown="span">
+  ![](../images/control_nonblockingSequence.png)
+</figure>
+
 ```xml
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
@@ -207,24 +217,27 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 1. `Action_A`, `Action_B`, and `Action_C` are all `IDLE`.
 2. When the parent NonblockingSequence is first ticked, let’s assume `Action_A` returns `RUNNING`. Following this, `Action_B` will be ticked, and let’s assume it also returns `RUNNING`. Finally, `Action_C` will be ticked, and let’s assume it also returns `RUNNING`. With three `RUNNING` children, the NonblockingSequence will return `RUNNING`
 
-<br/>
-> ![image](behavior_trees/images/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png)
+</figure>
+
 1. On the next tick of the the parent NonblockingSequence, all actions in the sequence will be re-ticked. Let’s assume `Action_A` returns `SUCCESS`, and `Action_B` and `Action_C` still return `RUNNING`. In this configuration, the NonblockingSequence still returns `RUNNING`, as there are two nodes in the children that are `RUNNING`
 
-<br/>
-> ![image](behavior_trees/images/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png)
+</figure>
+
 1. Now, let’s assume on the next re-tick, `Action_A` and `Action_C`  return `SUCCESS`, and `Action_B` returns `RUNNING`. In this configuration, the NonblockingSequence still returns `RUNNING`, as there is still one child node that is `RUNNING`. Note that `ActionA` was re-ticked and again returned `SUCCESS` in this case, it did not skip due to previously returning SUCCESS\`.
 
-<br/>
-> ![image](behavior_trees/images/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png)
+</figure>
+
 1. Finally, Let’s assume `Action_A`, `Action_B`, and `Action_C`  all return `SUCCESS`. The sequence is now complete, and therefore `Action_A`, `Action_B`, and `Action_C` are all halted and NonblockingSequence returns `SUCCESS`.
 
-<br/>
-> ![image](behavior_trees/images/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png)
-<br/>
+<figure markdown="span">
+  ![](../images/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png)
+</figure>
 
 Recall that if `Action_A`, `Action_B`, or `Action_C` returned `FAILURE` at any point of time, the parent would have returned `FAILURE` and halted any children as well.
 

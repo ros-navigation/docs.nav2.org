@@ -2,7 +2,9 @@
 
 # Groot Tutorials
 
-![image](tutorials/docs/images/Groot/groot_start_menu.png)
+<figure markdown="span">
+  ![](images/Groot/groot_start_menu.png){ title="groot_startup_menu"}
+</figure>
 
 ## Overview
 

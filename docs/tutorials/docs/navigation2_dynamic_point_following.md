@@ -122,7 +122,9 @@ The requirements for this task are as follows:
 The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest,
 send the initial pose to the `NavigateToPose` action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:
 
-![image](tutorials/docs/images/navigation2_dynamic_point_following/main_diagram.png)
+<figure markdown="span">
+  ![](images/navigation2_dynamic_point_following/main_diagram.png){ width="80%" }
+</figure>
 
 ### ComputePathToPose Tutorial Steps
 

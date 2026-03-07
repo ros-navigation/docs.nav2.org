@@ -46,14 +46,15 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
 
 3- Make sure camera is publishing images over ROS. This can be tested by running:
 
-> `ros2 topic list`
+`ros2 topic list`
 
 4- This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:
 
-> `ros2 topic hz /camera/image_raw`
-<br/>
-> ![image](tutorials/docs/images/Camera_Calibration/ROS2_topic_hz.png)
-<br/>
+`ros2 topic hz /camera/image_raw`
+
+<figure markdown="span">
+  ![](images/Camera_Calibration/ROS2_topic_hz.png){ width="600" }
+</figure>
 
 5- Start the camera calibration node
 
@@ -101,9 +102,9 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
 This will open a calibration window which highlight the checkerboard.
 ```
 
-<br/>
-> ![image](tutorials/docs/images/Camera_Calibration/window1.png)
-<br/>
+<figure markdown="span">
+  ![](images/Camera_Calibration/window1.png){ width="600" }
+</figure>>
 
 6- In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
 
@@ -115,24 +116,27 @@ This will open a calibration window which highlight the checkerboard.
 >     ◦ Size bar - toward/away and tilt from the camera
 > • checkerboard filling the whole field of view
 > • checkerboard tilted to the left, right, top and bottom (Skew)
-<br/>
-> ![image](tutorials/docs/images/Camera_Calibration/calibration.jpg)
-<br/>
+
+<figure markdown="span">
+  ![](images/Camera_Calibration/calibration.jpg){ width="600" }
+</figure>
 
 7- As the checkerboard is moved around the 4 bars on the calibration sidebar increases in length. When all then the 4 bars are green and enough data is available for calibration the CALIBRATE button will light up. Click it to see the results. It takes around the minute for calibration to take place.
 
-<br/>
-> ![image](tutorials/docs/images/Camera_Calibration/greenbars.png)
-<br/>
+<figure markdown="span">
+  ![](images/Camera_Calibration/greenbars.png){ width="600" }
+</figure>
 
 8- After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
 
-<br/>
-> ![image](tutorials/docs/images/Camera_Calibration/calibration_complete.png)
-<br/>
-<br/>
-> ![image](tutorials/docs/images/Camera_Calibration/calibration_parameters.png)
-<br/>
+<figure markdown="span"> 
+  ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
+</figure>
+
+<figure markdown="span"> 
+  ![](images/Camera_Calibration/calibration_parameters.png){ width="600" }
+</figure>
+
 
 9-Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”
 

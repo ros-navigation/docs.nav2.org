@@ -53,12 +53,19 @@ extra_css:
 markdown_extensions:
   - admonition
   - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
+
+validation:
+  links:
+    absolute_links: relative_to_docs
+    anchors: warn
+    unrecognized_links: warn
 
 nav:
   - index.md

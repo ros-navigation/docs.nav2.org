@@ -88,7 +88,10 @@ Now, you should see a shadow of Turtlebot 3 robot model in the center of the plo
 Click on the Start button (Bottom Left) if you set the auto_start parameter to false.
 Then, the map should appear in RViz.
 
-![image](tutorials/docs/images/Navigation2_on_real_Turtlebot3/rviz_after_launch_view.png)![image](tutorials/docs/images/Navigation2_on_real_Turtlebot3/rviz_slam_map_view.png)
+<div markdown="span" style="display: flex; gap: 10px;">
+	![](images/Navigation2_on_real_Turtlebot3/rviz_after_launch_view.png){ height="auto" width="50%" }
+	![](images/Navigation2_on_real_Turtlebot3/rviz_slam_map_view.png){ height="auto" width="50%" }
+</div>
 
 ### 4- Initialize the Location of Turtlebot 3
 
@@ -98,7 +101,9 @@ Set the pose of the robot in RViz.
 Click on the 2D Pose Estimate button and point the location of the robot on the map.
 The direction of the green arrow is the orientation of Turtlebot.
 
-![Set initial pose in RViz](tutorials/docs/images/Navigation2_on_real_Turtlebot3/rviz_set_initial_pose.png)
+<figure markdown="span">
+  ![](images/Navigation2_on_real_Turtlebot3/rviz_set_initial_pose.png){ width="700px" title="Set initial pose in RViz" }
+</figure>
 
 Now, the 3D model of Turtlebot should move to that location.
 A small error in the estimated location is tolerable.
@@ -110,11 +115,15 @@ You can send Turtlebot 3 a goal position and a goal orientation by using the **N
 
 Note: Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
 
-![Send goal pose in RViz](tutorials/docs/images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png)
+<figure markdown="span">
+  ![](images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png){ width="700px" title="Send goal pose in RViz" }
+</figure>
 
 Once you define the target pose,  Nav2 will find a global path and start navigating the robot on the map.
 
-![Robot navigating in RViz](tutorials/docs/images/Navigation2_on_real_Turtlebot3/rviz_robot_navigating.png)
+<figure markdown="span">
+  ![](images/Navigation2_on_real_Turtlebot3/rviz_robot_navigating.png){ width="700px" title="Robot navigating in RViz" }
+</figure>
 
 Now, you can see that Turtlebot 3 moves towards the goal position in the room. See the video below.
 

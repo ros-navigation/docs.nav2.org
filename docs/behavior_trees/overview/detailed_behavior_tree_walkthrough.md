@@ -29,9 +29,9 @@ in great detail.
 The following section will describe in detail the concept of the main and default BT currently used in Nav2, `navigate_to_pose_w_replanning_and_recovery.xml`.
 This behavior tree replans the global path periodically at 1 Hz and it also has recovery actions.
 
-<br/>
-> ![image](behavior_trees/images/walkthrough/overall_bt.png)
-<br/>
+<figure markdown="span">
+  ![](../images/walkthrough/overall_bt.png)
+</figure>
 
 BTs are primarily defined in XML. The tree shown above is represented in XML as follows.
 
@@ -99,9 +99,9 @@ This is likely still a bit overwhelming, but this tree can be broken into two sm
 These smaller subtrees are the children of the top-most `RecoveryNode`. From this point forward the `NavigateWithReplanning` subtree will be referred to as the `Navigation` subtree, and the `RecoveryFallback` subtree will be known as the `Recovery` subtree.
 This can be represented in the following way:
 
-<br/>
-> ![image](behavior_trees/images/walkthrough/overall_bt_w_breakdown.png)
-<br/>
+<figure markdown="span">
+  ![](../images/walkthrough/overall_bt_w_breakdown.png)
+</figure>
 
 The `Navigation` subtree mainly involves actual navigation behavior:
 
@@ -128,9 +128,9 @@ This happens until the `number_of_retries` for the parent `RecoveryNode` is exce
 
 Now that we have gone over the control flow between the `Navigation` subtree and the `Recovery` subtree, let’s focus on the Navigation subtree.
 
-<br/>
-> ![image](behavior_trees/images/walkthrough/navigation_subtree.png)
-<br/>
+<figure markdown="span">
+  ![](../images/walkthrough/navigation_subtree.png)
+</figure>
 
 The XML of this subtree is as follows:
 
@@ -174,9 +174,9 @@ This subtree has two primary actions `ComputePathToPose` and `FollowPath`.
 If either of these two actions fail, they will attempt to clear the failure contextually.
 The crux of the tree can be represented with only one parent and two children nodes like this:
 
-<br/>
-> ![image](behavior_trees/images/walkthrough/navigation_subtree_bare.png)
-<br/>
+<figure markdown="span">
+  ![](../images/walkthrough/navigation_subtree_bare.png)
+</figure>
 
 The parent `PipelineSequence` node allows the `ComputePathToPose` to be ticked, and once that succeeds, `FollowPath` to be ticked.
 While the `FollowPath` subtree is being ticked, the `ComputePathToPose` subtree will be ticked as well. This allows for the path to be recomputed as the robot moves around.
@@ -188,9 +188,9 @@ Both the `ComputePathToPose` and the `FollowPath` follow the same general struct
 
 The below is the `ComputePathToPose` subtree:
 
-<br/>
-> ![image](behavior_trees/images/walkthrough/contextual_recoveries.png)
-<br/>
+<figure markdown="span">
+  ![](../images/walkthrough/contextual_recoveries.png)
+</figure>
 
 The parent `RecoveryNode` controls the flow between the action, and the contextual recovery subtree.
 The contextual recoveries for both `ComputePathToPose` and `FollowPath` involve checking if the recovery could help clear the error code and clearing the relevant costmap.
@@ -221,9 +221,9 @@ This subtree also utilizes the `PlannerSelector`, `ControllerSelector`, `GoalChe
 The `Recovery` subtree is the second big “half” of the Nav2 default `navigate_to_pose_w_replanning_and_recovery.xml` tree.
 In short, this subtree is triggered when the `Navigation` subtree returns `FAILURE` and controls the recoveries at the system level (in the case the contextual recoveries in the `Navigation` subtree were not sufficient).
 
-<br/>
-> ![image](behavior_trees/images/walkthrough/recovery_subtree.png)
-<br/>
+<figure markdown="span">
+  ![](../images/walkthrough/recovery_subtree.png)
+</figure>
 
 And the XML snippet:
 

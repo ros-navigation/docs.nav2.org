@@ -7,7 +7,7 @@
 - [Tutorial Steps]()
 - [How it works]()
 
-![image](tutorials/docs/images/Filtering_of_noise-induced_obstacles/title.png)
+![](images/Filtering_of_noise-induced_obstacles/title.png){ width="100%" }
 
 ## Overview
 
@@ -92,7 +92,9 @@ When parameter `minimal_group_size` = 2, the first algorithm turns on.
 It apply [erosion](https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html) function with kernel from image below (left if `group_connectivity_type` = 4 or right if `group_connectivity_type` = 8) to the costmap.
 White color of the kernel pixel means to use the value, black means to ignore it.
 
-![image](tutorials/docs/images/Filtering_of_noise-induced_obstacles/3x3_kernels.png)
+<figure markdown="span">
+  ![](images/Filtering_of_noise-induced_obstacles/3x3_kernels.png){ width="222px" }
+</figure>
 
 As a result of erosion function the neighbors image is created. Each possible position of the kernel on the costmap corresponds to one pixel of the neighbors image. The pixel value of this image is equal to the maximum of 4/8 costmap pixels corresponding to the white pixels of the mask.
 In other words, the pixel of the neighbors image is equal to the obstacle code if there is an obstacle nearby, the free space code in other case.
@@ -101,7 +103,9 @@ After that, obstacles corresponding to free space code on neighbors image are re
 This process is illustrated below. On the left side of the image is a costmap, on the right is a neighbors image. White pixels are free space, black pixels are obstacles, `group_connectivity_type` = 4.
 Obstacles marked at the end of the animation will be removed.
 
-![image](tutorials/docs/images/Filtering_of_noise-induced_obstacles/dilate.gif)
+<figure markdown="span">
+  ![](images/Filtering_of_noise-induced_obstacles/dilate.gif){ width="600px" }
+</figure>
 
 When parameter `minimal_group_size` > 2, the second algorithm is executed.
 This is a generalized solution that allows you to remove groups of adjacent obstacles if their total number is less than `minimal_group_size`.
@@ -115,6 +119,9 @@ Its execution time depends on the size of the processed map fragment (and not de
 This algorithm is illustrated in the animation below (`group_connectivity_type` = 8).
 Obstacles marked at the end of the animation will be removed (groups that size less 3).
 
-![image](tutorials/docs/images/Filtering_of_noise-induced_obstacles/connected_components.gif)
+<figure markdown="span">
+  ![](images/Filtering_of_noise-induced_obstacles/connected_components.gif){ width="600px" }
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

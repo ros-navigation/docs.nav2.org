@@ -6,7 +6,9 @@
 - [Requirements]()
 - [Tutorial Steps]()
 
-![Animated gif with gradient demo](plugin_tutorials/docs/images/Writing_new_Costmap2D_plugin/gradient_layer_preview.gif)
+<figure markdown="span">
+  ![](images/Writing_new_Costmap2D_plugin/gradient_layer_preview.gif){ width="700px" title="Animated gif with gradient demo" }
+</figure>
 
 ## Overview
 
@@ -86,7 +88,7 @@ for (int j = min_j; j < max_j; j++) {
 
 where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap’s value per each step:
 
-![image](plugin_tutorials/docs/images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
+![](images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
 
 These parameters are defined in plugin’s header file.
 
@@ -219,6 +221,9 @@ $ ros2 launch nav2_bringup tb3_simulation_launch.py
 
 Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on map as it was described in [Getting Started](../../getting_started/index.md#getting-started). Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by `GradientLayer::updateCosts()` costmap within its bounds and global path curved by gradient:
 
-![Image of gradient costmap used](plugin_tutorials/docs/images/Writing_new_Costmap2D_plugin/gradient_layer_run.png)
+<figure markdown="span">
+  ![](images/Writing_new_Costmap2D_plugin/gradient_layer_run.png){ width="700px" title="Image of gradient costmap used" }
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

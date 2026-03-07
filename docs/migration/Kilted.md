@@ -206,7 +206,7 @@ This is not longer required to be set.
 
 In [PR #5226](https://github.com/ros-navigation/navigation2/pull/5226) the ability to stitch two successive edges in `route_server` with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.
 
-![image](migration/images/smoothing.png)
+![](images/smoothing.png)
 
 New parameters include `smooth_corners` which enable or disable corner smoothing and `smoothing_radius` which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that’s longer than the edge lengths, then it will not add a corner arc.
 
@@ -514,7 +514,10 @@ The UI workflow is now organized into two primary navigation modes:
 > - List Building: Poses can be added via a hybrid approach: using the “Nav2 Goal” tool, manually entering coordinates, or loading a YAML file.
 > - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
 > - Execution: Once the list is defined, navigation can be executed via `NavigateThroughPoses` or `Waypoint Following` actions.
-![Multiple-Goal Navigation in Nav2 RViz Panel](migration/images/nav2_new_rviz_panel.gif)
+
+<figure markdown="span">
+  ![](images/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }
+</figure>
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
 
@@ -524,7 +527,9 @@ In [PR #5783](https://github.com/ros-navigation/navigation2/pull/5783), an optio
 
 - Fumiya Ohnishi and Masaki Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
 
-![Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants](migration/images/dwpp_comparison.gif)
+<figure markdown="span">
+  ![](images/dwpp_comparison.gif){ width="800" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" }
+</figure>
 
 The following parameters are updated for this feature.
 

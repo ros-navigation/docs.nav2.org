@@ -87,7 +87,9 @@ Common demonstrations show this with a particular human segmentation model, but 
 #### NOTE
 It may be necessary to regenerate these models in advance of doing any visual navigation or data collection/data fusion for visual navigation.  See Troubleshooting section for details on common error messages and their solutions.
 
-![image](tutorials/docs/images/perceptor/isaac_ros_nvblox_nodegraph.png)
+<figure markdown="span">
+  ![](images/perceptor/isaac_ros_nvblox_nodegraph.png)
+</figure>
 
 The NvBlox model is hosted inside of the Costmap2D package as a Costmap Layer Plugin used to update the occupancy grid model for use in planning and control.
 Future updates to Nav2 may make it possible to use 3D environmental models natively rather than reducing dimensionality for use-cases that require 3D collision checking like mobile manipulation and traversibility estimation.
@@ -254,7 +256,10 @@ Tips and Tricks:
 * Don’t drive for a long time in a straight line, weave and swerve.
 * There’s a technique to making a good VSLAM map, it might take you a few tries to get good results.
 
-![image](tutorials/docs/images/perceptor/mapping1.gif)![image](tutorials/docs/images/perceptor/mapping2.gif)
+<figure markdown="span">
+  ![](images/perceptor/mapping1.gif)
+  ![](images/perceptor/mapping2.gif)
+</figure>
 
 When ready, inside of the docker image from before, run the following and joystick your robot through the space:
 
@@ -275,7 +280,9 @@ More details on the available configs can be found here:
 
 Follow the guidelines outlined above and begin to drive the robot around the space. In the example above the `nova_carter_recorder` node will begin recording stereo images from the Hawk cameras integrated into the Nova Carter robot. Data will be stored in the `/mnt/nova_ssd/recordings` directory by default as a `rosbag2` (MCAP) file. See the full nova_carter_recorder tutorial at [https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nova/isaac_ros_nova_recorder/index.html](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nova/isaac_ros_nova_recorder/index.html) for details on other command-line arguments that will allow storage of the mapping run to Amazon S3, etc. When you have sufficiently mapped the area, remembering to do loop closures, hit `CTRL-C` in the terminal you launched the recording from.
 
-![image](tutorials/docs/images/perceptor/loop_closures_demo.gif)
+<figure markdown="span">
+  ![](images/perceptor/loop_closures_demo.gif)
+</figure>
 
 The loop closure technique for mapping the space.
 
@@ -378,7 +385,9 @@ free_thresh: 0.25
 
 Let’s take a look at the `occupancy_map.png` file itself:
 
-![image](tutorials/docs/images/perceptor/occupancy_map.png)
+<figure markdown="span">
+  ![](images/perceptor/occupancy_map.png)
+</figure>
 
 We’ll note that this lacks the typical fine detail we’re used to seeing from a LIDAR-generated occupancy grid map. This is an artifact of image data being converted to depth data and highlights the importance of using the loop-closure techniques mentioned above when recording the visual data. Despite appearances, this map is quite sufficient for visual navigation around the space. The occupancy map is really only one layer in the whole localization stack used by the robot during visual navigation. Isaac ROS Perceptor will also use the cuvslam_map, cuvgl_map and live image data from the cameras on the robot for localization against features in the mapped space.
 
@@ -386,7 +395,9 @@ We’ll note that this lacks the typical fine detail we’re used to seeing from
 
 Now that this initial setup is complete, we’re ready to start navigating using visual localization and collision avoidance!
 
-![image](tutorials/docs/images/perceptor/isaac_ros_perceptor_polymath_zoomed_out.png)
+<figure markdown="span">
+  ![](images/perceptor/isaac_ros_perceptor_polymath_zoomed_out.png)
+</figure>
 
 Simply run the main demonstration launch file and see it in action!
 
@@ -407,7 +418,9 @@ to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by 
 
 You should now see something like this in Foxglove Studio:
 
-![image](tutorials/docs/images/perceptor/isaac_ros_perceptor_nvblox_kitchen.png)
+<figure markdown="span">
+  ![](images/perceptor/isaac_ros_perceptor_nvblox_kitchen.png)
+</figure>
 
 And be able to now navigate as shown in the video below! A special thanks to Nav2 Sponsor [Polymath Robotics](https://www.polymathrobotics.com/) for allowing us to use their space over the holidays to perform these demonstrations.
 

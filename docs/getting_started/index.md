@@ -57,21 +57,27 @@ For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
    ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
    ```
 
-   #### NOTE
+    #### NOTE
    `headless` defaults to true; if not set to false, gzclient (the 3d view) is not started.
 
-   This launch file will launch Nav2 with the AMCL localizer in the
-   simulation world.
-   It will also launch the robot state publisher to provide transforms,
-   a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
+    This launch file will launch Nav2 with the AMCL localizer in the
+    simulation world.
+    It will also launch the robot state publisher to provide transforms,
+    a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
+ 
+    If everything has started correctly, you will see the RViz and Gazebo GUIs like
+    this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
 
-   If everything has started correctly, you will see the RViz and Gazebo GUIs like
-   this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
-   ![image](images/rviz/rviz-not-started.png)![image](images/gazebo/gazebo_turtlebot1.png)
+    <div markdown="span" style="display: flex; gap: 10px;">
+        ![](/images/rviz/rviz-not-started.png){ height="auto" width="50%" }
+        ![](/images/gazebo/gazebo_turtlebot1.png){ height="auto" width="50%" }
+    </div>
+
 4. If not autostarting, click the “Startup” button in the bottom left corner of RViz.
-   This will cause Nav2 to change to the Active state. It should
-   change appearance to show the map.
-   ![Initial appearance of RViz transitioning to the Active state](images/rviz/rviz_initial.png)
+   This will cause Nav2 to change to the Active state. It should change appearance to show the map.
+    <figure markdown="span">
+       ![](/images/rviz/rviz_initial.png){ width="700" title="Initial appearance of RViz transitioning to the Active state" }
+    </figure>
 
 ## Navigating
 
@@ -84,7 +90,9 @@ forward from the down click.
 
 If you are using the defaults so far, the robot should look roughly like this.
 
-> ![Approximate starting location of Turtlebot](images/rviz/rviz-set-initial-pose.png)
+<figure markdown="span">
+   ![](/images/rviz/rviz-set-initial-pose.png){ width="700" title="Approximate starting location of Turtlebot" }
+</figure>
 
 If you don’t get the location exactly right, that’s fine. Nav2 will refine
 the position as it navigates. You can also, click the “2D Pose
@@ -94,16 +102,23 @@ Once you’ve set the initial pose, the transform tree will be complete and
 Nav2 will be fully active and ready to go. You should see the robot and particle
 cloud now.
 
-> ![|PN| is ready. Transforms and Costmap show in RViz.](images/rviz/navstack-ready.png)
+<figure markdown="span">
+   ![](/images/rviz/navstack-ready.png){ width="700" title="Nav2 is ready. Transforms and Costmap show in RViz." }
+</figure>
 
 Next, click the “Navigaton2 Goal” button and choose a destination.
 This will call the BT navigator to go to that goal through an action server.
 You can pause (cancel) or reset the action through the Nav2 rviz plugin shown.
 
-> ![Setting the goal pose in RViz.](images/rviz/navigate-to-pose.png)
+<figure markdown="span">
+   ![](/images/rviz/navigate-to-pose.png){ width="700" title="Setting the goal pose in RViz." }
+</figure>
 
 Now watch the robot go!
 
-![Navigation2 with Turtlebot 3 Demo](getting_started/images/navigation_with_recovery_behaviours.gif)
+<figure markdown="span">
+   ![](images/navigation_with_recovery_behaviours.gif){ width="700" title="Navigation2 with Turtlebot 3 Demo" }
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

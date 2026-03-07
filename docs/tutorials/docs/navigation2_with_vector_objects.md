@@ -9,7 +9,7 @@
 - [Demo Execution]()
 - [Working with Vector Objects]()
 
-![image](tutorials/docs/images/Vector_Object_server/vector_objects_demo.gif)
+![](images/Vector_Object_server/vector_objects_demo.gif)
 
 ## Overview
 
@@ -151,11 +151,15 @@ The last lines mean that all three nodes: Vector Object server, Costmap Filter I
 
 Set the initial pose for the robot, and check that vector objects were appeared on global costmap:
 
-> ![image](tutorials/docs/images/Vector_Object_server/vector_objects_on_costmap.png)
+<figure markdown="span">
+  ![](images/Vector_Object_server/vector_objects_on_costmap.png){ width="860px" }
+</figure>
 
 As well as for the Keepout Filter, robot will consider vector objects as obstacles on costmaps and will avoid them:
 
-> ![image](tutorials/docs/images/Vector_Object_server/vector_objects_avoidance.png)
+<figure markdown="span">
+  ![](images/Vector_Object_server/vector_objects_avoidance.png){ width="860px" }
+</figure>
 
 ## Working with Vector Objects
 
@@ -191,7 +195,9 @@ ros2 service call /vector_object_server/add_shapes nav2_msgs/srv/AddShapes "poly
 
 The polygon shape in Vector Object server will be changed, `vo_map` will be updated and resulting costmap will look as follows - triangle obstacle was updated to bar:
 
-> ![image](tutorials/docs/images/Vector_Object_server/vector_objects_updated.png)
+<figure markdown="span">
+  ![](images/Vector_Object_server/vector_objects_updated.png)
+</figure>
 
 Finally, remove all shapes from map.
 To remove any existing shape, there is `RemoveShapes.srv` service supported. It has array of UUID-s to specify which shapes to remove or just `all_objects` option for the case if we want to remove all shapes at once. Let’s do the latter:
@@ -202,6 +208,9 @@ ros2 service call /vector_object_server/remove_shapes nav2_msgs/srv/RemoveShapes
 
 As a result, all vector shapes were disappeared from global costmap:
 
-> ![image](tutorials/docs/images/Vector_Object_server/vector_objects_removed.png)
+<figure markdown="span">
+  ![](images/Vector_Object_server/vector_objects_removed.png)
+</figure>
+
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

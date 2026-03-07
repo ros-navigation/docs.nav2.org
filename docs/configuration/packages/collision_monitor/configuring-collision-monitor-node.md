@@ -480,7 +480,7 @@ All previous Polygon parameters apply, in addition to the following unique param
 
 Here is an example illustrating the common configurations for holonomic robots that cover multiple directions of the resultant velocity:
 
-![image](configuration/packages/images/holonomic_examples.png)
+![](../images/holonomic_examples.png){ height="2880px" }
 
 Here is an example of configuration YAML for the Collision Monitor.
 

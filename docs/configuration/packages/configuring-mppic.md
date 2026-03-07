@@ -4,7 +4,9 @@
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller).
 
-![MPPI on Turtlebot3 demo](configuration/packages/images/mppi_demo.gif)
+<figure markdown="span">
+  ![](images/mppi_demo.gif){ width="600" title="MPPI on Turtlebot3 demo" }
+</figure>
 
 The MPPI Controller implements a [Model Predictive Path Integral Controller](https://ieeexplore.ieee.org/document/7487277).
 The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.
