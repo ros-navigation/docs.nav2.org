@@ -8,9 +8,9 @@ Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added t
 
 Since we migrated from version 3.8 to 4.5, users must upgrade their XML and source code accordingly.
 
-You can refer to [this page]([https://www.behaviortree.dev/docs/migration](https://www.behaviortree.dev/docs/migration)) for more details, but the main changes are:
+You can refer to [this page](https://www.behaviortree.dev/docs/migration) for more details, but the main changes are:
 
-- XML must be changed. This [python script can help]([https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/convert_v3_to_v4.py](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/convert_v3_to_v4.py)).
+- XML must be changed. This [python script can help](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/convert_v3_to_v4.py).
 - The syntax of SubTrees has changed; the one of SubTreePlus was adopted, instead.
 - If you created a custom **ControlNode** or **DecoratorNode**, you must handle the case when a child returns BT::NodeStatus::SKIPPED.
 
