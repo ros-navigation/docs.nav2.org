@@ -1,10 +1,10 @@
-.. _bt_is_path_valid_condition:
+.. _bt_validate_path_action:
 
-IsPathValid
-===========
+ValidatePath
+============
 
 Checks to see if the global path is valid. If there is an
-obstacle along the path, the condition returns FAILURE, otherwise
+obstacle along the path, it returns FAILURE, otherwise
 it returns SUCCESS. Optionally checks specific costmap layers and
 can use a custom footprint for validation.
 
@@ -114,7 +114,7 @@ Example
 
 .. code-block:: xml
 
-    <IsPathValid
+    <ValidatePath
       server_timeout="10"
       path="{path}"
       max_cost="100"
@@ -128,7 +128,7 @@ With custom footprint:
 
 .. code-block:: xml
 
-    <IsPathValid
+    <ValidatePath
       path="{path}"
       footprint="[[0.5,0.5],[0.5,-0.5],[-0.5,-0.5],[-0.5,0.5]]"
       collision_poses="{collision_poses}" />
@@ -137,7 +137,7 @@ Checking a specific costmap layer:
 
 .. code-block:: xml
 
-    <IsPathValid
+    <ValidatePath
       path="{path}"
       layer_name="obstacle_layer"
       check_full_path="true"

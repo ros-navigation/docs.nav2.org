@@ -1,7 +1,7 @@
-.. _bt_is_stopped_condition:
+.. _bt_check_stop_status_action:
 
-IsStopped
-=========
+CheckStopStatus
+===============
 
 BT node that tracks robot odometry and returns SUCCESS if robot is considered stopped for long enough,
 RUNNING if stopped but not for long enough and FAILURE otherwise
@@ -36,4 +36,4 @@ Example
 
 .. code-block:: xml
 
-    <IsStopped velocity_threshold="0.01" duration_stopped="1000"/>
+    <CheckStopStatus velocity_threshold="0.01" duration_stopped="1000"/>

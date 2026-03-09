@@ -833,3 +833,14 @@ Refactored Inflation layer powered by OpenMP
 
 The new implementation replaces the previous queue-based cell iteration with a Felzenszwalb-Huttenlocher distance transform algorithm.
 When OpenMP is not available at compile time, the layer falls back to single-threaded operation.
+
+Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes
+------------------------------------------------------------------------------------
+
+In `PR 5991 <https://github.com/ros-navigation/navigation2/pull/5991>`_, the following nodes were moved from condition nodes to action nodes and renamed:
+
+- `IsStopped` is now `CheckStopStatus`
+- `IsPathValid` is now `ValidatePath`
+- `IsPoseOccupied` is now `CheckPoseOccupancy`
+
+This change was made because these behavior tree nodes may return RUNNING or require more time to complete, making them unsuitable for behavior tree that are expected to be ticked at 100 Hz.
