@@ -20,9 +20,9 @@ in great detail.
 ## Prerequisites
 
 - Become familiar with the concept of a behavior tree before continuing with this walkthrough
-  > - Read the short explanation in [navigation concepts](../../concepts/index.html)
-  > - Read the general tutorial and guide (not Nav2 specific) on the [BehaviorTree CPP V4](https://www.behaviortree.dev/) website. Specifically, the “Basic Concepts” section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
-- Become familiar with the custom [Nav2 specific BT nodes](nav2_specific_nodes.html)
+    - Read the short explanation in [navigation concepts](/concepts/index.md)
+    - Read the general tutorial and guide (not Nav2 specific) on the [BehaviorTree CPP V4](https://www.behaviortree.dev/) website. Specifically, the “Basic Concepts” section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
+- Become familiar with the custom [Nav2 specific BT nodes](nav2_specific_nodes.md)
 
 ## Navigate To Pose With Replanning and Recovery
 

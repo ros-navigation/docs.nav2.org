@@ -9,7 +9,7 @@ Vocabulary can be a large point of confusion here when first starting out.
 
 There are quite a few custom Nav2 BT nodes that are provided to be used in the Nav2 specific fashion. Some commonly used Nav2 nodes will be described below.
 The full list of custom BT nodes can be found in the [nav2_behavior_tree plugins folder](https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins).
-The [configuration guide](../../configuration/packages/configuring-bt-xml.html) can also be quite useful.
+The [configuration guide](/configuration/packages/configuring-bt-xml.md) can also be quite useful.
 
 ## Action Nodes
 
@@ -91,7 +91,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 Recall that if `Action_A`, `Action_B`, or `Action_C` returned `FAILURE` at any point of time, the parent would have returned `FAILURE` and halted any children as well.
 
-For additional details regarding the `PipelineSequence` please see the [PipelineSequence configuration guide](../../configuration/packages/bt-plugins/controls/PipelineSequence.html).
+For additional details regarding the `PipelineSequence` please see the [PipelineSequence configuration guide](/configuration/packages/bt-plugins/controls/PipelineSequence.md).
 
 ## Control: Recovery
 
@@ -123,7 +123,7 @@ and the second action will be something to be done in case of `FAILURE` of the m
 In the above example, let’s assume `ComputePathToPose` fails. `ClearLocalCostmap` will be ticked in response, and return `SUCCESS`.
 Now that we have cleared the costmap, let’s say the robot is correctly able to compute the path and `ComputePathToPose` now returns `SUCCESS`. Then, the parent RecoveryNode will also return `SUCCESS` and the BT will be complete.
 
-For additional details regarding the `RecoveryNode` please see the [RecoveryNode configuration guide](../../configuration/packages/bt-plugins/controls/RecoveryNode.html).
+For additional details regarding the `RecoveryNode` please see the [RecoveryNode configuration guide](/configuration/packages/bt-plugins/controls/RecoveryNode.md).
 
 ## Control: RoundRobin
 
@@ -188,7 +188,7 @@ The parent node retains this state information, and will tick `Action_C` upon th
   ![](../images/control_round_robin_RUNNING_IDLE_FAILURE.png)
 </figure>
 
-For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide](../../configuration/packages/bt-plugins/controls/RoundRobin.html).
+For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide](/configuration/packages/bt-plugins/controls/RoundRobin.md).
 
 ## Control: NonblockingSequence
 
@@ -241,7 +241,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 Recall that if `Action_A`, `Action_B`, or `Action_C` returned `FAILURE` at any point of time, the parent would have returned `FAILURE` and halted any children as well.
 
-For additional details regarding the `NonblockingSequence` please see the [NonblockingSequence configuration guide](../../configuration/packages/bt-plugins/controls/NonblockingSequence.html).
+For additional details regarding the `NonblockingSequence` please see the [NonblockingSequence configuration guide](/configuration/packages/bt-plugins/controls/NonblockingSequence.md).
 
 ## Control: PersistentSequence
 

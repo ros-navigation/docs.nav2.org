@@ -214,7 +214,7 @@ New parameters include `smooth_corners` which enable or disable corner smoothing
 
 In [PR #5325](https://github.com/ros-navigation/navigation2/pull/5325) a new Nav2 specific behavior tree control node has been added. The new behavior tree control node, `NonblockingSequence`, allows every child node in the sequence to be ticked through even if one of the child node returns `RUNNING`. This is done to prevent long running child nodes from blocking the sequence.
 
-For additional details regarding the `NonblockingSequence` please see the [Nav2 specific node walkthrough](../behavior_trees/overview/nav2_specific_nodes.html) and [NonblockingSequence configuration guide](../configuration/packages/bt-plugins/controls/NonblockingSequence.html).
+For additional details regarding the `NonblockingSequence` please see the [Nav2 specific node walkthrough](/behavior_trees/overview/nav2_specific_nodes.md) and [NonblockingSequence configuration guide](/configuration/packages/bt-plugins/controls/NonblockingSequence.md).
 
 ## MPPI Optimal Trajectory Validator Plugin
 
@@ -227,7 +227,7 @@ Note that kinematic and dynamic constraints are not required to be checked as th
 
 In [PR #5247](https://github.com/ros-navigation/navigation2/pull/5247) two new Nav2 specific behavior tree control nodes have been added.
 
-The [PauseResumeController](../configuration/packages/bt-plugins/controls/PauseResumeController.html) adds services to pause and resume execution of the tree. Related to this, the [PersistentSequence](../configuration/packages/bt-plugins/controls/PersistentSequence.html) control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
+The [PauseResumeController](/configuration/packages/bt-plugins/controls/PauseResumeController.md) adds services to pause and resume execution of the tree. Related to this, the [PersistentSequence](/configuration/packages/bt-plugins/controls/PersistentSequence.md) control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
 
 ## Option to use point_cloud_transport
 
@@ -487,7 +487,7 @@ This change addresses issues where RoundRobin index can become misaligned with R
 </RoundRobin>
 ```
 
-For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide](../configuration/packages/bt-plugins/controls/RoundRobin.html).
+For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide](/configuration/packages/bt-plugins/controls/RoundRobin.md).
 
 ## Configurable Inscribed Obstacle Cost Value for Costmap Conversion
 

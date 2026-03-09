@@ -176,7 +176,7 @@ Default value:
 
 ## Option to disable zero velocity publishing on goal exit
 
-In [PR #4675](https://github.com/ros-navigation/navigation2/pull/4675) a `publish_zero_velocity` parameter was introduced for the [Controller server](/configuration/packages/configuring-controller-server.html#controller-server) in order to disable zero velocity publishing on goal exit.
+In [PR #4675](https://github.com/ros-navigation/navigation2/pull/4675) a `publish_zero_velocity` parameter was introduced for the [Controller server](/configuration/packages/configuring-controller-server.md) in order to disable zero velocity publishing on goal exit.
 
 Default value:
 
@@ -189,7 +189,7 @@ Previous behavior rotated until the `angular_dist_threshold`, now it can rotate 
 
 ## Added optional collision checking for the Docking Server
 
-In [PR #4752](https://github.com/ros-navigation/navigation2/pull/4752) an optional collision checking feature was added to the [Docking server](/configuration/packages/configuring-docking-server.html#docking-server) to check for collisions between the robot and the dock.
+In [PR #4752](https://github.com/ros-navigation/navigation2/pull/4752) an optional collision checking feature was added to the [Docking server](/configuration/packages/configuring-docking-server.md) to check for collisions between the robot and the dock.
 
 Default value:
 
