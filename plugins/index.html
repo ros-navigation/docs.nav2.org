@@ -1210,6 +1210,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -2075,6 +2076,22 @@ route contextual semantic operations.</p></td>
 <td><p>Alberto Tudela</p></td>
 <td><p>Cancels follow object action</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp">Validate Path</a></p></td>
+<td><p>Joshua Wallace</p></td>
+<td><p>Checks if a path is valid by making
+sure there are no LETHAL obstacles along
+the path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_stop_status_action.cpp">Check Stop Status</a></p></td>
+<td><p>Tony Najjar</p></td>
+<td><p>Checks if robot is
+stopped for a duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp">Check Pose Occupancy</a></p></td>
+<td><p>Maurice Alexander
+Purnawan</p></td>
+<td><p>Checks if a pose is occupied.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="docutils align-default">
@@ -2117,12 +2134,7 @@ has been set</p></td>
 making progress or
 stuck</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp">Is Stopped Condition</a></p></td>
-<td><p>Tony Najjar</p></td>
-<td><p>Checks if robot is
-stopped for a duration</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp">Transform Available Condition</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp">Transform Available Condition</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Checks if a TF
 transformation is
@@ -2131,31 +2143,23 @@ succeeds returns
 success for subsequent
 calls.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp">Distance Traveled Condition</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp">Distance Traveled Condition</a></p></td>
 <td><p>Sarthak Mittal</p></td>
 <td><p>Checks is robot has
 traveled a given
 distance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp">Time Expired Condition</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp">Time Expired Condition</a></p></td>
 <td><p>Sarthak Mittal</p></td>
 <td><p>Checks if a given
 time period has
 passed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp">Is Battery Low Condition</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp">Is Battery Low Condition</a></p></td>
 <td><p>Sarthak Mittal</p></td>
 <td><p>Checks if battery
 percentage is below
 a specified value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp">Is Path Valid Condition</a></p></td>
-<td><p>Joshua Wallace</p></td>
-<td><p>Checks if a path is
-valid by making sure
-there are no LETHAL
-obstacles along the
-path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp">Path Expiring Timer</a></p></td>
 <td><p>Joshua Wallace</p></td>
@@ -2208,19 +2212,13 @@ is charging.</p></td>
 <td><p>Checks if 2 poses are
 nearby to each other.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_pose_occupied_condition.cpp">Is Pose Occupied Condition</a></p></td>
-<td><p>Maurice Alexander
-Purnawan</p></td>
-<td><p>Checks if a pose is
-occupied.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp">Is Goal Nearby Condition</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp">Is Goal Nearby Condition</a></p></td>
 <td><p>Jakub Chudziński</p></td>
 <td><p>Checks if the robot is
 near the goal based on
 remaining path length.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp">Is Within Path Tracking Bounds
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp">Is Within Path Tracking Bounds
 Condition</a></p></td>
 <td><p>Berkan Tali</p></td>
 <td><p>Checks if the robot is

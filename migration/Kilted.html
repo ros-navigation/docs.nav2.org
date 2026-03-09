@@ -1210,6 +1210,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -2047,6 +2048,16 @@ state). The controller will be provided the processed plan during computeVelocit
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5933">PR #5933</a> refactors the Inflation layer to leverage OpenMP for parallel processing, significantly improving performance in large maps.</p>
 <p>The new implementation replaces the previous queue-based cell iteration with a Felzenszwalb-Huttenlocher distance transform algorithm.
 When OpenMP is not available at compile time, the layer falls back to single-threaded operation.</p>
+</div>
+<div class="section" id="move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">
+<h2>Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes<a class="headerlink" href="#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5991">PR 5991</a>, the following nodes were moved from condition nodes to action nodes and renamed:</p>
+<ul class="simple">
+<li><p><cite>IsStopped</cite> is now <cite>CheckStopStatus</cite></p></li>
+<li><p><cite>IsPathValid</cite> is now <cite>ValidatePath</cite></p></li>
+<li><p><cite>IsPoseOccupied</cite> is now <cite>CheckPoseOccupancy</cite></p></li>
+</ul>
+<p>This change was made because these behavior tree nodes may return RUNNING or require more time to complete, making them unsuitable for behavior tree that are expected to be ticked at 100 Hz.</p>
 </div>
 </div>
 

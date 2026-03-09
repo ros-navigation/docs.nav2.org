@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IsStopped &mdash; Nav2 1.0.0 documentation</title>
+  <title>CheckStopStatus &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="TimeExpired" href="TimeExpired.html" />
-    <link rel="prev" title="IsStuck" href="IsStuck.html" />
+    <link rel="next" title="GoalReached" href="../conditions/GoalReached.html" />
+    <link rel="prev" title="CheckPoseOccupancy" href="CheckPoseOccupancy.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -701,8 +701,8 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -1210,6 +1210,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -1286,7 +1287,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">IsStopped</li>
+      <li class="breadcrumb-item active">CheckStopStatus</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1295,8 +1296,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="isstopped">
-<span id="bt-is-stopped-condition"></span><h1>IsStopped<a class="headerlink" href="#isstopped" title="Permalink to this heading"></a></h1>
+  <div class="section" id="checkstopstatus">
+<span id="bt-check-stop-status-action"></span><h1>CheckStopStatus<a class="headerlink" href="#checkstopstatus" title="Permalink to this heading"></a></h1>
 <p>BT node that tracks robot odometry and returns SUCCESS if robot is considered stopped for long enough,
 RUNNING if stopped but not for long enough and FAILURE otherwise</p>
 <div class="section" id="input-port">
@@ -1346,7 +1347,7 @@ RUNNING if stopped but not for long enough and FAILURE otherwise</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsStopped</span><span class="w"> </span><span class="na">velocity_threshold=</span><span class="s">&quot;0.01&quot;</span><span class="w"> </span><span class="na">duration_stopped=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;CheckStopStatus</span><span class="w"> </span><span class="na">velocity_threshold=</span><span class="s">&quot;0.01&quot;</span><span class="w"> </span><span class="na">duration_stopped=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

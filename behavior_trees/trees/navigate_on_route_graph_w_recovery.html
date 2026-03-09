@@ -1210,6 +1210,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -1299,7 +1300,7 @@
 <p>This behavior tree implements a different style of navigation than the other versions in this section.
 Rather than using a freespace planner <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> to plan a complete path to the goal, this behavior tree instead uses the Route Server to find a route to the goal through a pre-defined navigation graph.
 This can be useful for navigating in large-scale environments where real-time planning in freespace for a long distance is not computationally feasible, where a map of the entire space is not possible to plan within, or where deterministic behavior and limited navigation zones/lanes/routes are demanded.</p>
-<p>This tree computes a route through the environment using the <code class="docutils literal notranslate"><span class="pre">ComputeRoute</span></code> node which is executed on initialization and when either the goal is updated due to preemption (<code class="docutils literal notranslate"><span class="pre">GlobalUpdatedGoal</span></code>) or the current route path is invalid due to collision (<code class="docutils literal notranslate"><span class="pre">isPathValid</span></code>).
+<p>This tree computes a route through the environment using the <code class="docutils literal notranslate"><span class="pre">ComputeRoute</span></code> node which is executed on initialization and when either the goal is updated due to preemption (<code class="docutils literal notranslate"><span class="pre">GlobalUpdatedGoal</span></code>) or the current route path is invalid due to collision (<code class="docutils literal notranslate"><span class="pre">ValidatePath</span></code>).
 After which, if the robot’s starting pose is too far from the first route node in the graph solution, it will use freespace planning to connect the robot’s current pose to the first node in the route.
 This is called the <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">mile</span></code> and is computed using the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> node.
 This may be removed if navigation only on the graph is required and you know that the robot will always be located on or near the graph.</p>
@@ -1322,7 +1323,7 @@ The compute path, including the first and last mile paths are then smoothed in t
 <span class="w">                  </span><span class="nt">&lt;Inverter&gt;</span>
 <span class="w">                    </span><span class="nt">&lt;GlobalUpdatedGoal/&gt;</span>
 <span class="w">                  </span><span class="nt">&lt;/Inverter&gt;</span>
-<span class="w">                  </span><span class="nt">&lt;IsPathValid</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="nt">/&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Base it on the complete connected &#39;path&#39;, not simply the &#39;route_path&#39; --&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ValidatePath</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="nt">/&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Base it on the complete connected &#39;path&#39;, not simply the &#39;route_path&#39; --&gt;</span>
 <span class="w">                </span><span class="nt">&lt;/ReactiveSequence&gt;</span>
 <span class="w">                </span><span class="nt">&lt;Sequence</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ComputeAndSmoothRoute&quot;</span><span class="nt">&gt;</span>
 <span class="w">                  </span><span class="cm">&lt;!-- Compute the route --&gt;</span>
