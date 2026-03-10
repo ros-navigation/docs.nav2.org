@@ -163,10 +163,10 @@ The zones around the robot and the data sources are the same as for the Collisio
   Description:
   : For `pointcloud` data, specify the transport plugin to use:
 
-  * raw: No compression. Default; highest bandwidth usage.
-  * draco: Lossy compression via Google.
-  * zlib: Lossless compression via Zlib compression.
-  * zstd: Lossless compression via Zstd compression.
+    - raw: No compression. Default; highest bandwidth usage.
+    - draco: Lossy compression via Google.
+    - zlib: Lossless compression via Zlib compression.
+    - zstd: Lossless compression via Zstd compression.
 
   See the [known transports](https://github.com/ros-perception/point_cloud_transport_plugins) for more details.
 * **`<source name>`.topic:**

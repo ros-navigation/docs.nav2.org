@@ -200,18 +200,19 @@ Consider changing the `number_of_retries` parameter in the parent `RecoveryNode`
 The only differences in the BT subtree of `ComputePathToPose` and `FollowPath` are outlined below:
 
 - The action node in the subtree:
-  : - The `ComputePathToPose` subtree centers around the `ComputePathToPose` action.
+    - The `ComputePathToPose` subtree centers around the `ComputePathToPose` action.
     - The `FollowPath` subtree centers around the `FollowPath` action.
 - The use of conditional flow control (`Fallback`):
-  : - The `ComputePathToPose` subtree incorporates logic to handle the robot’s behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary “looping” behaviors.
-      To prevent this, the subtree uses a `ReactiveSequence` with the `IsGoalNearby` node. If the robot is within a specified proximity threshold and the current path remains valid (i.e., no new obstacles), the subtree will skip the re-planning request. This allows the robot to smoothly transition into its final approach using its current path without unnecessary re-planning.
+    - The `ComputePathToPose` subtree incorporates logic to handle the robot’s behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary “looping” behaviors.
+    To prevent this, the subtree uses a `ReactiveSequence` with the `IsGoalNearby` node. If the robot is within a specified proximity threshold and the current path remains valid (i.e., no new obstacles), the subtree will skip the re-planning request. This allows the robot to smoothly transition into its final approach using its current path without unnecessary re-planning.
     - The `FollowPath` subtree, by contrast, does not typically use this conditional gating. Once a path is available, the controller is invoked directly to produce velocity commands.
 - The `RateController` that decorates the `ComputePathToPose` subtree
-  : The `RateController` decorates the `ComputePathToPose` subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz.
-    This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz). Consider changing this frequency to something higher or lower depending on the application and the computational cost of
-    calculating the path. There are other decorators that can be used instead of the `RateController`. Consider using the `SpeedController` or `DistanceController` decorators if appropriate.
+    : The `RateController` decorates the `ComputePathToPose` subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz.
+    This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz). 
+    Consider changing this frequency to something higher or lower depending on the application and the computational cost of calculating the path. There are other decorators that can be used instead of the `RateController`. Consider using the `SpeedController` or `DistanceController` decorators if appropriate.
+
 - The costmap that is being cleared within the contextual recovery:
-  : - The `ComputePathToPose` subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner
+    - The `ComputePathToPose` subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner
     - The `FollowPath` subtree clears the local costmap. The local costmap is the relevant costmap in the context of the controller
 
 This subtree also utilizes the `PlannerSelector`, `ControllerSelector`, `GoalCheckerSelector`, `ProgressCheckerSelector`, and `PathHandlerSelector` nodes. These nodes offer flexibility for applications that need to adjust navigation behavior on the fly.

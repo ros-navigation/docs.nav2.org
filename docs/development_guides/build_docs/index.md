@@ -31,12 +31,12 @@ sudo apt install \
 
 There are a few ways to build Nav2 using:
 
-* Released Distribution Binaries
-  * Build Nav2 using readily installable binary dependencies
-* Rolling Development Source
-  * Build Nav2 using custom or latest source dependencies
-* Docker Container Images
-  * Build Nav2 using cached images and templated Dockerfiles
+- Released Distribution Binaries
+    - Build Nav2 using readily installable binary dependencies
+- Rolling Development Source
+    - Build Nav2 using custom or latest source dependencies
+- Docker Container Images
+    - Build Nav2 using cached images and templated Dockerfiles
 
 !!! tip
 

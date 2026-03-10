@@ -124,10 +124,12 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
 
   Relative topics will be relative to the node’s parent namespace.
   For example, if you specify topic: scan in the voxel_layer of a local_costmap and you launch your bringup with a tb4 namespace:
-  * User chosen namespace is tb4.
-  * User chosen topic is scan.
-  * Topic will be remapped to /tb4/scan without local_costmap.
-  * Use global topic /scan if you do not wish the node namespace to apply.
+
+    - User chosen namespace is tb4.
+    - User chosen topic is scan.
+    - Topic will be remapped to /tb4/scan without local_costmap.
+    - Use global topic /scan if you do not wish the node namespace to apply.
+
 * **`<voxel layer>.<data source>`.sensor_frame:**
   | Type   | Default   |
   |--------|-----------|
@@ -164,10 +166,10 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
   Description
   : For `PointCloud2` data, specify the transport plugin to use:
 
-  * raw: No compression. Default; highest bandwidth usage.
-  * draco: Lossy compression via Google.
-  * zlib: Lossless compression via Zlib compression.
-  * zstd: Lossless compression via Zstd compression.
+    - raw: No compression. Default; highest bandwidth usage.
+    - draco: Lossy compression via Google.
+    - zlib: Lossless compression via Zlib compression.
+    - zstd: Lossless compression via Zstd compression.
 
   See the [known transports](https://github.com/ros-perception/point_cloud_transport_plugins) for more details.
 * **`<voxel layer>.<data source>`.min_obstacle_height:**

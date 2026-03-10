@@ -23,8 +23,8 @@ This page describes all the configuration parameters of the Vector Object server
 ## Features
 
 - The following vector shapes are currently supported for placing on a map:
-  - Polygons
-  - Circles
+    - Polygons
+    - Circles
 - Polygons can be filled with any value or drawn as a polygonal chain, if it is not supposed to be a closed shape:
 
 <figure markdown="span">
@@ -38,13 +38,13 @@ This page describes all the configuration parameters of the Vector Object server
 </figure>
 
 - Vector shapes could be set once during the Vector Object server startup as ROS-parameters, and added/modified/removed over the time using the following service calls:
-  - `AddShapes.srv`: adds new shapes or modifies existing ones
-  - `RemoveShapes.srv`: removes any or all shapes from the map
-  - `GetShapes.srv`: gets all shapes and their properties
+    - `AddShapes.srv`: adds new shapes or modifies existing ones
+    - `RemoveShapes.srv`: removes any or all shapes from the map
+    - `GetShapes.srv`: gets all shapes and their properties
 - Vector shapes are being identified by their UUID (`unique_identifier_msgs/UUID`), which is generated automatically for a new shape, or could be given manually by the developer.
 - Vector shapes can be placed in any frame:
-  - If at least one of the shapes is set in a different frame than the map, a dynamic update model will be enabled: this shape can move over the time, output map will be published dynamically with a given rate.
-  - If all shapes are set in the same frame as map, map will be published/updated once: at startup of Vector Object server and on each call of `AddShapes.srv` or `RemoveShapes.srv` to change the shape.
+    - If at least one of the shapes is set in a different frame than the map, a dynamic update model will be enabled: this shape can move over the time, output map will be published dynamically with a given rate.
+    - If all shapes are set in the same frame as map, map will be published/updated once: at startup of Vector Object server and on each call of `AddShapes.srv` or `RemoveShapes.srv` to change the shape.
 
 ## Covered use-cases
 
@@ -98,9 +98,11 @@ Using Vector Object server publishing an output map as input mask to [Costmap Fi
   Description:
   : How one vector object to be overlaid with other and the map.
     The following values are supported:
-      - 0 (`OVERLAY_SEQ`): Vector objects are superimposed in the order in which they have arrived.
-      - 1 (`OVERLAY_MAX`): Maximum value from vector objects and map is being chosen.
-      - 2 (`OVERLAY_MIN`): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.
+
+        - 0 (`OVERLAY_SEQ`): Vector objects are superimposed in the order in which they have arrived.
+        - 1 (`OVERLAY_MAX`): Maximum value from vector objects and map is being chosen.
+        - 2 (`OVERLAY_MIN`): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.
+
 * **update_frequency:**
   | Type   |   Default |
   |--------|-----------|

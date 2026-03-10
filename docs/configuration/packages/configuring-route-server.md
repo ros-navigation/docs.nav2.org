@@ -591,11 +591,11 @@ The Nav2 Route Server demo is a simulation of a Turtlebot4 robot navigating thro
 The [route_example_launch.py](https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py)  file is used to launch the demo, and can be configured in place with the following parameters:
 
 - `MAP_TYPE`:
-  : - Set to either `depot` or `warehouse` to choose the environment.
+    - Set to either `depot` or `warehouse` to choose the environment.
 - `MAP_POSES_DICT`:
-  : - A dictionary containing the Gazebo spawn poses for the robot in the depot and warehouse environments.
+    - A dictionary containing the Gazebo spawn poses for the robot in the depot and warehouse environments.
 - `ROUTE_POSES_DICT`:
-  : - A dictionary containing the start and goal poses for the robot in the depot and warehouse environments.
+    - A dictionary containing the start and goal poses for the robot in the depot and warehouse environments.
 
 All the graphs files for the depot and warehouse environments are located in the [graphs](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs) directory under the `nav2_bringup` package.
 These are the current visualizations of the route graphs for the depot and warehouse environments:
