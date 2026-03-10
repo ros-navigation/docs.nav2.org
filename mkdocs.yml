@@ -70,6 +70,9 @@ validation:
     omitted_files: warn
     absolute_links: warn
 
+exclude_docs: |
+  axis_goal_checker_illustration.py
+
 not_in_nav: |
   2021summerOfCode
 
