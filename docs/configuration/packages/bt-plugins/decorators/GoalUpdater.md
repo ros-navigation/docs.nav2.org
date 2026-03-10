@@ -51,8 +51,9 @@ A custom control node, which updates the goal(s) pose(s). It subscribes to a top
   | Type           | Default   |
   |----------------|-----------|
   | nav_msgs/Goals | N/A       |
-  > Description
-  > : The resulting updated goals. If no goals received by subscription, it will be the input_goals
+    
+    Description
+    : The resulting updated goals. If no goals received by subscription, it will be the input_goals
 
 ## Example
 

@@ -9,7 +9,7 @@ It is important to know that in June 2021 and December 2021, the package receive
 
 ## Provided Plugins
 
-> The plugins listed below are inside the `nav2_smac_planner` package. See the pages for individual configuration information.
+The plugins listed below are inside the `nav2_smac_planner` package. See the pages for individual configuration information.
 
 * [Smac 2D Planner](smac/configuring-smac-2d.md)
 * [Smac Hybrid-A\* Planner](smac/configuring-smac-hybrid.md)

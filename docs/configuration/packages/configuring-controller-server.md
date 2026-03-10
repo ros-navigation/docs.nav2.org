@@ -207,7 +207,7 @@ It also hosts the local costmap.
 
 ## Provided Plugins
 
-> The plugins listed below are inside the `nav2_controller` namespace.
+The plugins listed below are inside the `nav2_controller` namespace.
 
 * [SimpleProgressChecker](nav2_controller-plugins/simple_progress_checker.md)
 * [PoseProgressChecker](nav2_controller-plugins/pose_progress_checker.md)
@@ -221,12 +221,12 @@ It also hosts the local costmap.
 
 When the `progress_checker_plugins`, `goal_checker_plugin`, `path_handler_plugin` or `controller_plugins` parameters are not overridden, the following default plugins are loaded:
 
-> | Namespace          | Plugin                                   |
-> |--------------------|------------------------------------------|
-> | “progress_checker” | “nav2_controller::SimpleProgressChecker” |
-> | “goal_checker”     | “nav2_controller::SimpleGoalChecker”     |
-> | “path_handler”     | “nav2_controller::FeasiblePathHandler”   |
-> | “FollowPath”       | “dwb_core::DWBLocalPlanner”              |
+| Namespace          | Plugin                                   |
+|--------------------|------------------------------------------|
+| “progress_checker” | “nav2_controller::SimpleProgressChecker” |
+| “goal_checker”     | “nav2_controller::SimpleGoalChecker”     |
+| “path_handler”     | “nav2_controller::FeasiblePathHandler”   |
+| “FollowPath”       | “dwb_core::DWBLocalPlanner”              |
 
 ## Example
 

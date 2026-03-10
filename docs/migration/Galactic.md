@@ -8,36 +8,37 @@ Moving from ROS 2 Galactic to Humble, a number of stability improvements were ad
 
 The Smac Planner was significantly improved, of both the 2D and Hybrid-A\* implementations, making the paths better, faster, and of higher quality.
 
-> - Collision checker rejects collisions faster and queries the costmap for coordinates less often
-> - Zero-copy collision checking object
-> - precompute collision checking footprint orientations so no need for trig at runtime
-> - Only checking full SE2 footprint when the robot is in the possibly inscribed zones
-> - Computing the possibly inscribed zones, or the cost over which some part of the footprint may be in collision with a boundary to check the full footprint. Else, check center cost since promised to not be in a potential collision state
-> - Renaming Hybrid-A\* planner to SmacPlannerHybrid
-> - Precomputing the Reedshepp and Dubin paths offline so at runtime its just a lookup table
-> - Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra’s path using Differential A\* search taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
-> - Improvements to the analytic expansion algorithm to remove the possibility of loops at the end of paths, whenever possible to remove
-> - Improving analytic expansions to provide maximum path length to prevent skirting close to obstacles
-> - 2D A\* travel cost and heuristic improvements to speed up planning times and also increase the path quality significantly
-> - Replaced smoother with a bespoke gradient descent implementation
-> - Abstract out common utilities of planners into a utils file
-> - tuned cost functions
-> - precomputed obstacle heuristic using dynamic programming to expand only the minimum number of nodes
-> - A caching heuristic setting to enable 25hz planning rates using cached obstacle heuristic values when the goal remains the same
-> - Leveraging the symmetry in the dubin and reeds-sheep space to reduce cache size by 50% to increase the window size available for heuristic lookup.
-> - Precompute primitives at all orientation bins
-> - SmacPlanner2D parameters are now all reconfigurable
-> - Both Hybrid-A\* and State Lattice planners are now fully admissible
-> - Hybrid-A\* and State Lattice have had their parameterization for path smoothing re-added.
-> - The smoother now enables kinematically feasible boundary conditions.
-> - State Lattice supports turning in place primitive types
-> - Retrospective penalty added to speed up the planner, making it prioritize later search branches before earlier ones, which have negligible chance to improve path in vast majority of situations
+- Collision checker rejects collisions faster and queries the costmap for coordinates less often
+- Zero-copy collision checking object
+- precompute collision checking footprint orientations so no need for trig at runtime
+- Only checking full SE2 footprint when the robot is in the possibly inscribed zones
+- Computing the possibly inscribed zones, or the cost over which some part of the footprint may be in collision with a boundary to check the full footprint. Else, check center cost since promised to not be in a potential collision state
+- Renaming Hybrid-A\* planner to SmacPlannerHybrid
+- Precomputing the Reedshepp and Dubin paths offline so at runtime its just a lookup table
+- Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra’s path using Differential A\* search taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
+- Improvements to the analytic expansion algorithm to remove the possibility of loops at the end of paths, whenever possible to remove
+- Improving analytic expansions to provide maximum path length to prevent skirting close to obstacles
+- 2D A\* travel cost and heuristic improvements to speed up planning times and also increase the path quality significantly
+- Replaced smoother with a bespoke gradient descent implementation
+- Abstract out common utilities of planners into a utils file
+- tuned cost functions
+- precomputed obstacle heuristic using dynamic programming to expand only the minimum number of nodes
+- A caching heuristic setting to enable 25hz planning rates using cached obstacle heuristic values when the goal remains the same
+- Leveraging the symmetry in the dubin and reeds-sheep space to reduce cache size by 50% to increase the window size available for heuristic lookup.
+- Precompute primitives at all orientation bins
+- SmacPlanner2D parameters are now all reconfigurable
+- Both Hybrid-A\* and State Lattice planners are now fully admissible
+- Hybrid-A\* and State Lattice have had their parameterization for path smoothing re-added.
+- The smoother now enables kinematically feasible boundary conditions.
+- State Lattice supports turning in place primitive types
+- Retrospective penalty added to speed up the planner, making it prioritize later search branches before earlier ones, which have negligible chance to improve path in vast majority of situations
 
 The tl;dr of these improvements is:
-: - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
-  - Paths are of significantly higher quality via improved smoothers and a novel heuristic that steers the robot towards the center of aisleways implicitly. This makes smoother paths that are also further from obstacles whenever possible.
-  - Using caching or downsampler parameterizations, can easily achieve path planning with sub-50ms in nearly any sized space.
-  - Smoother is now able to do more refinements and can create kinematically feasible boundary conditions, even while reversing.
+
+- Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
+- Paths are of significantly higher quality via improved smoothers and a novel heuristic that steers the robot towards the center of aisleways implicitly. This makes smoother paths that are also further from obstacles whenever possible.
+- Using caching or downsampler parameterizations, can easily achieve path planning with sub-50ms in nearly any sized space.
+- Smoother is now able to do more refinements and can create kinematically feasible boundary conditions, even while reversing.
 
 Additional improvements were made to include a `analytic_expansion_max_length` parameter such that analytic expansions are limited in their potential length. If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
 
@@ -90,19 +91,20 @@ In order for nav2 to make the best use of ROS 2, we need minimize the number of 
 
 This functionality has been discussed in [the ticket #816](https://github.com/ros-navigation/navigation2/issues/816), and carried out in
 
-> - Remove `client_node_` in `class WaypointFollower` : [PR2441](https://github.com/ros-navigation/navigation2/pull/2441)
-> - Remove `rclcpp_node_` in `class MapSaver` : [PR2454](https://github.com/ros-navigation/navigation2/pull/2454)
-> - Remove `bond_client_node_` in `class LifecycleManager` : [PR2456](https://github.com/ros-navigation/navigation2/pull/2456)
-> - Remove `node_` in `class LifecycleManagerClient` : [PR2469](https://github.com/ros-navigation/navigation2/pull/2469)
-> - Remove `rclcpp_node_` in `class ControllerServer` : [PR2459](https://github.com/ros-navigation/navigation2/pull/2459), [PR2479](https://github.com/ros-navigation/navigation2/pull/2479)
-> - Remove `rclcpp_node_` in `class PlannerServer` : [PR2459](https://github.com/ros-navigation/navigation2/pull/2459), [PR2480](https://github.com/ros-navigation/navigation2/pull/2480)
-> - Remove `rclcpp_node_` in `class AmclNode` : [PR2483](https://github.com/ros-navigation/navigation2/pull/2483)
-> - Remove `rclcpp_node_` and `clinet_node_` in `class Costmap2DROS` : [PR2489](https://github.com/ros-navigation/navigation2/pull/2489)
-> - Remove `rclcpp_node_` in `class LifecycleNode` : [PR2993](https://github.com/ros-navigation/navigation2/pull/2993)
+- Remove `client_node_` in `class WaypointFollower` : [PR2441](https://github.com/ros-navigation/navigation2/pull/2441)
+- Remove `rclcpp_node_` in `class MapSaver` : [PR2454](https://github.com/ros-navigation/navigation2/pull/2454)
+- Remove `bond_client_node_` in `class LifecycleManager` : [PR2456](https://github.com/ros-navigation/navigation2/pull/2456)
+- Remove `node_` in `class LifecycleManagerClient` : [PR2469](https://github.com/ros-navigation/navigation2/pull/2469)
+- Remove `rclcpp_node_` in `class ControllerServer` : [PR2459](https://github.com/ros-navigation/navigation2/pull/2459), [PR2479](https://github.com/ros-navigation/navigation2/pull/2479)
+- Remove `rclcpp_node_` in `class PlannerServer` : [PR2459](https://github.com/ros-navigation/navigation2/pull/2459), [PR2480](https://github.com/ros-navigation/navigation2/pull/2480)
+- Remove `rclcpp_node_` in `class AmclNode` : [PR2483](https://github.com/ros-navigation/navigation2/pull/2483)
+- Remove `rclcpp_node_` and `clinet_node_` in `class Costmap2DROS` : [PR2489](https://github.com/ros-navigation/navigation2/pull/2489)
+- Remove `rclcpp_node_` in `class LifecycleNode` : [PR2993](https://github.com/ros-navigation/navigation2/pull/2993)
 
 some APIs are changed in these PRs:
-: - [PR2489](https://github.com/ros-navigation/navigation2/pull/2489) removes arguments `client_node`, `rclcpp_node` and adds argument `callback_group` in the initialize function of class `nav2_costmap_2d::Layer`. `callback_group` is used to replace `rclcpp_node`.
-  - [PR2993](https://github.com/ros-navigation/navigation2/pull/2993) removes argument `use_rclcpp_node `` in the constructor of class ``nav2_util::LifecycleNode`.
+
+- [PR2489](https://github.com/ros-navigation/navigation2/pull/2489) removes arguments `client_node`, `rclcpp_node` and adds argument `callback_group` in the initialize function of class `nav2_costmap_2d::Layer`. `callback_group` is used to replace `rclcpp_node`.
+- [PR2993](https://github.com/ros-navigation/navigation2/pull/2993) removes argument `use_rclcpp_node `` in the constructor of class ``nav2_util::LifecycleNode`.
 
 ## API Change for nav2_core
 
@@ -146,8 +148,8 @@ The Rotation Shim Controller is suitable for:
 [This PR 2473](https://github.com/ros-navigation/navigation2/pull/2473) deletes the pkg `nav2_gazebo_spawner` inside nav2_bringup directory. Instead of `nav2_gazebo_spawner` the Node [spawn_entity.py](https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py) of `gazebo_ros` is recommended to spawn the robot in gazebo.
 Note that
 
-> * gazebo should be started with both `libgazebo_ros_init.so` and `libgazebo_ros_factory.so` to work correctly.
-> * spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument `<remapping>/tf:=tf</remapping>`  `<remapping>/tf_static:=tf_static</remapping>` under ros2 tag in each plugin which publishes transforms in the SDF file. It is essential to differentiate the tf’s of the different robot.
+- gazebo should be started with both `libgazebo_ros_init.so` and `libgazebo_ros_factory.so` to work correctly.
+- spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument `<remapping>/tf:=tf</remapping>`  `<remapping>/tf_static:=tf_static</remapping>` under ros2 tag in each plugin which publishes transforms in the SDF file. It is essential to differentiate the tf’s of the different robot.
 
 ## Recovery Behavior Timeout
 
@@ -232,10 +234,10 @@ So, what I propose here is to remove live monitoring of the BT from Nav2. **We c
 
 Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by `psutil` :
 
-> | CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB   |   cpu(%) |   memory(%) |
-> |----------------------------------------------------------|----------|-------------|
-> | normal multiple processes                                |       44 |        0.76 |
-> | dynamic composition (use `component_container_isolated`) |       38 |        0.23 |
+| CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB   |   cpu(%) |   memory(%) |
+|----------------------------------------------------------|----------|-------------|
+| normal multiple processes                                |       44 |        0.76 |
+| dynamic composition (use `component_container_isolated`) |       38 |        0.23 |
 
 The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.
 

@@ -34,13 +34,13 @@ speed_limit = filter_mask_data * multiplier + base;
 
 where:
 
-> - `filter_mask_data` - is an `OccupancyGrid` value of the corresponding cell on mask where maximum speed should be restricted.
-> - `base` and `multiplier` are coefficients taken from `nav2_msgs/CostmapFilterInfo` messages published by Costmap Filter Info Server (see in next chapter below).
+- `filter_mask_data` - is an `OccupancyGrid` value of the corresponding cell on mask where maximum speed should be restricted.
+- `base` and `multiplier` are coefficients taken from `nav2_msgs/CostmapFilterInfo` messages published by Costmap Filter Info Server (see in next chapter below).
 
 The decoded `speed_limit` value may have one of two meanings:
 
-> - Speed limit expressed in a percent from maximum robot speed.
-> - Speed limit expressed in absolute values (e.g. in `m/s`).
+- Speed limit expressed in a percent from maximum robot speed.
+- Speed limit expressed in absolute values (e.g. in `m/s`).
 
 The meaning used by Speed Filter is being read from `nav2_msgs/CostmapFilterInfo` messages.
 In this tutorial we will use the first type of speed restriction expressed in a percent from maximum robot speed.
@@ -329,9 +329,9 @@ speed_costmap_filter_info_server:
 
 Note, that:
 
-> - For Speed Filter setting speed restrictions in a percent from maximum speed, the `type` of costmap filter should be set to `1`. All possible costmap filter types could be found at [Map Server](../../configuration/packages/configuring-map-server.md#configuring-map-server) page.
-> - Filter mask topic name should be the equal for `mask_topic` parameter of Costmap Filter Info Publisher Server and `topic_name` parameter of Map Server.
-> - As was described in a previous chapter, `base` and `multiplier` should be set to `100.0` and `-1.0` accordingly for the purposes of this tutorial example.
+- For Speed Filter setting speed restrictions in a percent from maximum speed, the `type` of costmap filter should be set to `1`. All possible costmap filter types could be found at [Map Server](../../configuration/packages/configuring-map-server.md#configuring-map-server) page.
+- Filter mask topic name should be the equal for `mask_topic` parameter of Costmap Filter Info Publisher Server and `topic_name` parameter of Map Server.
+- As was described in a previous chapter, `base` and `multiplier` should be set to `100.0` and `-1.0` accordingly for the purposes of this tutorial example.
 
 ### 3. Enable Speed Filter
 

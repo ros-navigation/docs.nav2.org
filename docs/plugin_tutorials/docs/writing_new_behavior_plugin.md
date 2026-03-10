@@ -129,11 +129,12 @@ It is good practice to place these lines at the end of the file but technically,
 
 1. Next step would be to create plugin’s description file in the root directory of the package. For example, `behavior_plugin.xml` file in our tutorial package. This file contains following information
 
-> - `library path`: Plugin’s library name and it’s location.
-> - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
-> - `class type`: Type of class.
-> - `base class`: Name of the base class.
-> - `description`: Description of the plugin.
+    - `library path`: Plugin’s library name and it’s location.
+    - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
+    - `class type`: Type of class.
+    - `base class`: Name of the base class.
+    - `description`: Description of the plugin.
+
 ```xml
 <library path="nav2_sms_behavior_plugin">
   <class type="nav2_sms_behavior::SendSms" base_class_type="nav2_core::Behavior">

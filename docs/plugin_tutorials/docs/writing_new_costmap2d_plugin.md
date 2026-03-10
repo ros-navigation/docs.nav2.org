@@ -113,11 +113,12 @@ This part is usually placed at the end of cpp-file where the plugin class was wr
 
 1. Plugin’s information should be stored to the plugin’s description file. This is done by using separate XML (in our example `gradient_plugins.xml`) in the plugin’s package. This file contains information about:
 
-> - `path`: Path and name of library where plugin is placed.
-> - `name`: Plugin type referenced in `plugin_types` parameter (see next section for more details). It could be whatever you want.
-> - `type`: Plugin class with namespace taken from the source code.
-> - `basic_class_type`: Basic parent class from which plugin class was derived.
-> - `description`: Plugin description in a text form.
+    - `path`: Path and name of library where plugin is placed.
+    - `name`: Plugin type referenced in `plugin_types` parameter (see next section for more details). It could be whatever you want.
+    - `type`: Plugin class with namespace taken from the source code.
+    - `basic_class_type`: Basic parent class from which plugin class was derived.
+    - `description`: Plugin description in a text form.
+
 ```xml
 <library path="nav2_gradient_costmap_plugin_core">
   <class type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">

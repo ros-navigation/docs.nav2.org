@@ -240,11 +240,11 @@ It is used in the planner and controller servers for creating the space to check
 
 When the `plugins` parameter is not overridden, the following default plugins are loaded:
 
-> | Namespace         | Plugin                            |
-> |-------------------|-----------------------------------|
-> | “static_layer”    | “nav2_costmap_2d::StaticLayer”    |
-> | “obstacle_layer”  | “nav2_costmap_2d::ObstacleLayer”  |
-> | “inflation_layer” | “nav2_costmap_2d::InflationLayer” |
+| Namespace         | Plugin                            |
+|-------------------|-----------------------------------|
+| “static_layer”    | “nav2_costmap_2d::StaticLayer”    |
+| “obstacle_layer”  | “nav2_costmap_2d::ObstacleLayer”  |
+| “inflation_layer” | “nav2_costmap_2d::InflationLayer” |
 
 ## Plugin Parameters
 

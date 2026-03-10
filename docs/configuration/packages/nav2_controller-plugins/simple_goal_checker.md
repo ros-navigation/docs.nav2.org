@@ -12,32 +12,32 @@ Checks whether the robot has reached the goal pose.
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Tolerance to meet goal completion criteria (m).
+    Description
+    : Tolerance to meet goal completion criteria (m).
 * **`<nav2_controller plugin>`.yaw_goal_tolerance:**
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Tolerance to meet goal completion criteria (rad).
+    Description
+    : Tolerance to meet goal completion criteria (rad).
 * **`<nav2_controller plugin>`.path_length_tolerance:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Tolerance to meet goal completion criteria (m).
+    Description
+    : Tolerance to meet goal completion criteria (m).
 * **`<nav2_controller plugin>`.stateful:**
   | Type   | Default   |
   |--------|-----------|
   | bool   | true      |
-  > Description
-  > : Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
+    Description
+    : Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
 * **`<nav2_controller plugin>`.symmetric_yaw_tolerance:**
   | Type   | Default   |
   |--------|-----------|
   | bool   | false     |
-  > Description
-  > : Enable symmetric goal orientation acceptance. When enabled, the robot accepts the goal as reached when oriented at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. controller algorithm decides). See [Tuning Guide](../../../tuning/index.md#tuning) for detailed information.
+    Description
+    : Enable symmetric goal orientation acceptance. When enabled, the robot accepts the goal as reached when oriented at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. controller algorithm decides). See [Tuning Guide](../../../tuning/index.md#tuning) for detailed information.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

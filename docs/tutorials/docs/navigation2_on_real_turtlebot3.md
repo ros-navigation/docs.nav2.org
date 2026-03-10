@@ -52,7 +52,7 @@ Run the following commands first whenever you open a new terminal during this tu
 
 You will need to launch your robot’s interface, for example:
 
-> `ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False`
+`ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False`
 
 ### 2- Launch Nav2
 
@@ -63,8 +63,8 @@ In case you are interested, there is a use case tutorial which shows how to use 
 
 Required files:
 
-> - `your-map.map`
-> - `your-map.yaml`
+- `your-map.map`
+- `your-map.yaml`
 
 `<your_map>.yaml` is the configuration file for the map we want to provide Nav2.
 In this case, it has the map resolution value, threshold values for obstacles and free spaces, and a map file location.
@@ -82,7 +82,7 @@ Note: Don’t forget to change **/path/to/your-map.yaml** to the actual path to 
 
 Launch RVIZ with a pre-defined configuration file.
 
-> `ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz`
+`ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz`
 
 Now, you should see a shadow of Turtlebot 3 robot model in the center of the plot in Rviz.
 Click on the Start button (Bottom Left) if you set the auto_start parameter to false.

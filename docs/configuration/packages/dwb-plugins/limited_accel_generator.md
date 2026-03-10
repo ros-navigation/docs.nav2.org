@@ -10,8 +10,9 @@
   | Type   |   Default |
   |--------|-----------|
   | double |       1.7 |
-  > Description
-  > : Time to simulate ahead by (s).
+    
+    Description
+    : Time to simulate ahead by (s).
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

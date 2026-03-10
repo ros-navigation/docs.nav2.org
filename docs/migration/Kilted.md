@@ -285,21 +285,20 @@ behavior trees were moved into the respective navigators. They now have to be sp
 
 These parameters are:
 
-> - NavigateToPose:
+- NavigateToPose:
+    - `<navigate_to_pose_name>.goal_blackboard_id`
+    - `<navigate_to_pose_name>.path_blackboard_id`
 
-> > - `<navigate_to_pose_name>.goal_blackboard_id`
-> > - `<navigate_to_pose_name>.path_blackboard_id`
-> - NavigateThroughPoses:
+- NavigateThroughPoses:
+    - `<navigate_through_poses_name>.goals_blackboard_id`
+    - `<navigate_through_poses_name>.path_blackboard_id`
+    - `<navigate_through_poses_name>.waypoint_statuses_blackboard_id`
 
-> > - `<navigate_through_poses_name>.goals_blackboard_id`
-> > - `<navigate_through_poses_name>.path_blackboard_id`
-> > - `<navigate_through_poses_name>.waypoint_statuses_blackboard_id`
-> - CoverageNavigator:
-
-> > - `<coverage_navigator_name>.path_blackboard_id`
-> > - `<coverage_navigator_name>.field_file_blackboard_id`
-> > - `<coverage_navigator_name>.field_polygon_blackboard_id`
-> > - `<coverage_navigator_name>.polygon_frame_blackboard_id`
+- CoverageNavigator:
+    - `<coverage_navigator_name>.path_blackboard_id`
+    - `<coverage_navigator_name>.field_file_blackboard_id`
+    - `<coverage_navigator_name>.field_polygon_blackboard_id`
+    - `<coverage_navigator_name>.polygon_frame_blackboard_id`
 
 Example:
 
@@ -510,10 +509,9 @@ The UI workflow is now organized into two primary navigation modes:
 
 1. **Single-Goal Navigation** (`NavigateToPose`) Designed for individual targets. The goal can be defined using the standard “Nav2 Goal” tool (clicking on the map) or by manually entering precise coordinates directly in the panel.
 2. **Multiple-Goal Navigation** (`NavigateThroughPoses`, `Waypoint Following` ) Designed for executing sequences of poses. This mode utilizes a pose accumulation mode to build and manage a list of goals before execution:
-
-> - List Building: Poses can be added via a hybrid approach: using the “Nav2 Goal” tool, manually entering coordinates, or loading a YAML file.
-> - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
-> - Execution: Once the list is defined, navigation can be executed via `NavigateThroughPoses` or `Waypoint Following` actions.
+    - List Building: Poses can be added via a hybrid approach: using the “Nav2 Goal” tool, manually entering coordinates, or loading a YAML file.
+    - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
+    - Execution: Once the list is defined, navigation can be executed via `NavigateThroughPoses` or `Waypoint Following` actions.
 
 <figure markdown="span">
   ![](images/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }

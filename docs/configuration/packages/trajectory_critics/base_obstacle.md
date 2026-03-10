@@ -15,14 +15,14 @@ To use this properly, you must use the inflation layer in costmap to expand obst
   | Type   | Default   |
   |--------|-----------|
   | bool   | false     |
-  > Description
-  > : Whether to allow for scores to be summed up.
+    Description
+    : Whether to allow for scores to be summed up.
 * **`<dwb plugin>`.`<name>`.scale:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Weighed scale for critic.
+    Description
+    : Weighed scale for critic.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -12,14 +12,14 @@ Scores a trajectory based on how well it is aligned to the path provided by the 
   | Type   | Default   |
   |--------|-----------|
   | string | “last”    |
-  > Description
-  > : last, sum, or product combination methods.
+    Description
+    : last, sum, or product combination methods.
 * **`<dwb plugin>`.`<name>`.scale:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Weighed scale for critic.
+    Description
+    : Weighed scale for critic.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

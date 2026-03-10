@@ -14,38 +14,38 @@ Only allows the robot to rotate to the goal orientation when it is sufficiently 
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Tolerance to meet goal completion criteria (m).
+    Description
+    : Tolerance to meet goal completion criteria (m).
 * **`<dwb plugin>`.path_length_tolerance:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Tolerance to meet goal completion criteria (m).
+    Description
+    : Tolerance to meet goal completion criteria (m).
 * **`<dwb plugin>`.trans_stopped_velocity:**
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Velocity below is considered to be stopped at tolerance met (rad/s).
+    Description
+    : Velocity below is considered to be stopped at tolerance met (rad/s).
 * **`<dwb plugin>`.`<name>`.slowing_factor:**
   | Type   |   Default |
   |--------|-----------|
   | double |         5 |
-  > Description
-  > : Factor to slow robot motion by while rotating to goal.
+    Description
+    : Factor to slow robot motion by while rotating to goal.
 * **`<dwb plugin>`.`<name>`.lookahead_time:**
   | Type   |   Default |
   |--------|-----------|
   | double |        -1 |
-  > Description
-  > : If > 0, amount of time to look forward for a collision for..
+    Description
+    : If > 0, amount of time to look forward for a collision for..
 * **`<dwb plugin>`.`<name>`.scale:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Weighed scale for critic.
+    Description
+    : Weighed scale for critic.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

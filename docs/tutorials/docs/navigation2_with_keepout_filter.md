@@ -314,9 +314,9 @@ keepout_costmap_filter_info_server:
 
 Note, that:
 
-> - For Keepout Filter the `type` of costmap filter should be set to `0`.
-> - Filter mask topic name should be the equal for `mask_topic` parameter of Costmap Filter Info Publisher Server and `topic_name` parameter of Map Server.
-> - According to the Costmap Filters design, `OccupancyGrid` values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though `base` and `multiplier` coefficients are not used in Keepout Filter, they should be set to `0.0` and `1.0` accordingly in order to explicitly show that we have one-to-one conversion from `OccupancyGrid` values -> to a filter value space.
+- For Keepout Filter the `type` of costmap filter should be set to `0`.
+- Filter mask topic name should be the equal for `mask_topic` parameter of Costmap Filter Info Publisher Server and `topic_name` parameter of Map Server.
+- According to the Costmap Filters design, `OccupancyGrid` values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though `base` and `multiplier` coefficients are not used in Keepout Filter, they should be set to `0.0` and `1.0` accordingly in order to explicitly show that we have one-to-one conversion from `OccupancyGrid` values -> to a filter value space.
 
 ### 3. Enable Keepout Filter
 

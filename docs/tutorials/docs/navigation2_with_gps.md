@@ -22,15 +22,15 @@ This tutorial shows how to set up a localization system using a GPS sensor(s) as
 
 It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally you will have to install robot_localization and mapviz:
 
-> ```bash
-> source /opt/ros/<ros2-distro>/setup.bash
-> sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb3*
-> sudo apt install ros-$ROS_DISTRO-robot-localization
-> sudo apt install ros-$ROS_DISTRO-mapviz
-> sudo apt install ros-$ROS_DISTRO-mapviz-plugins
-> sudo apt install ros-$ROS_DISTRO-tile-map
-> sudo apt install ros-$ROS_DISTRO-teleop-twist-keyboard
-> ```
+```bash
+source /opt/ros/<ros2-distro>/setup.bash
+sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb3*
+sudo apt install ros-$ROS_DISTRO-robot-localization
+sudo apt install ros-$ROS_DISTRO-mapviz
+sudo apt install ros-$ROS_DISTRO-mapviz-plugins
+sudo apt install ros-$ROS_DISTRO-tile-map
+sudo apt install ros-$ROS_DISTRO-teleop-twist-keyboard
+```
 
 If some of the packages are not available by apt install, go to the respective projects and build from source.
 
@@ -51,7 +51,7 @@ Commonly GPS devices calculate their position using the [WGS84 standard](https:/
 
 However, this reference system is impractical for describing the motion and representing the environment around objects in or close to the earth’s surface: Imagine your robot is located on a soccer field and you want it to move from one end to the other, your navigation task would look something like:
 
-> “go from X=4789.413km, Y=177.511km z=4194.292km to X=4789.475km, Y=177.553km z=4194.22km”
+“go from X=4789.413km, Y=177.511km z=4194.292km to X=4789.475km, Y=177.553km z=4194.22km”
 
 Addinally, if your robot has for instance a 2D lidar, you would have to transform its data to this reference system as well. It would make much more sense to create a local reference system where you could tell your robot “go 100 meters forward” and your sensor data could populate your environment representation accordingly, right?
 

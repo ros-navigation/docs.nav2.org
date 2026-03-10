@@ -98,9 +98,9 @@ Using Vector Object server publishing an output map as input mask to [Costmap Fi
   Description:
   : How one vector object to be overlaid with other and the map.
     The following values are supported:
-    > - 0 (`OVERLAY_SEQ`): Vector objects are superimposed in the order in which they have arrived.
-    > - 1 (`OVERLAY_MAX`): Maximum value from vector objects and map is being chosen.
-    > - 2 (`OVERLAY_MIN`): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.
+      - 0 (`OVERLAY_SEQ`): Vector objects are superimposed in the order in which they have arrived.
+      - 1 (`OVERLAY_MAX`): Maximum value from vector objects and map is being chosen.
+      - 2 (`OVERLAY_MIN`): Minimum value from vector objects and map is being chosen. Unknown OccupancyGrid value is always being overrode, when it is possible.
 * **update_frequency:**
   | Type   |   Default |
   |--------|-----------|

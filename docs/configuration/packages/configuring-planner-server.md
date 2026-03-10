@@ -76,9 +76,9 @@ It also hosts the global costmap.
 
 When the `planner_plugins` parameter is not overridden, the following default plugins are loaded:
 
-> | Namespace   | Plugin                             |
-> |-------------|------------------------------------|
-> | “GridBased” | “nav2_navfn_planner::NavfnPlanner” |
+| Namespace   | Plugin                             |
+|-------------|------------------------------------|
+| “GridBased” | “nav2_navfn_planner::NavfnPlanner” |
 
 ## Example
 

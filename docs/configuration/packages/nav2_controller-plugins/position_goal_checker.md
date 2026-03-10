@@ -12,20 +12,20 @@ Checks whether the robot has reached the goal pose.
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Tolerance to meet goal completion criteria (m).
+    Description
+    : Tolerance to meet goal completion criteria (m).
 * **`<nav2_controller plugin>`.path_length_tolerance:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Tolerance to meet goal completion criteria (m).
+    Description
+    : Tolerance to meet goal completion criteria (m).
 * **`<nav2_controller plugin>`.stateful:**
   | Type   | Default   |
   |--------|-----------|
   | bool   | true      |
-  > Description
-  > : Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
+    Description
+    : Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

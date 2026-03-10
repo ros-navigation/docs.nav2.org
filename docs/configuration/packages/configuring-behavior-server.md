@@ -116,12 +116,12 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 
 When the `behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 
-> | Namespace          | Plugin                           |
-> |--------------------|----------------------------------|
-> | “spin”             | “nav2_behaviors::Spin”           |
-> | “backup”           | “nav2_behaviors::BackUp”         |
-> | “drive_on_heading” | “nav2_behaviors::DriveOnHeading” |
-> | “wait”             | “nav2_behaviors::Wait”           |
+| Namespace          | Plugin                           |
+|--------------------|----------------------------------|
+| “spin”             | “nav2_behaviors::Spin”           |
+| “backup”           | “nav2_behaviors::BackUp”         |
+| “drive_on_heading” | “nav2_behaviors::DriveOnHeading” |
+| “wait”             | “nav2_behaviors::Wait”           |
 
 ## Spin Behavior Parameters
 

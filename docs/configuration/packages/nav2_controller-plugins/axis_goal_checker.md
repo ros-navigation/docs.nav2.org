@@ -18,26 +18,26 @@ Unlike simple distance-based goal checkers, the AxisGoalChecker allows independe
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Tolerance for the projected distance along the path direction (m). This checks how far ahead or behind the goal the robot is when projected onto the path axis.
+    Description
+    : Tolerance for the projected distance along the path direction (m). This checks how far ahead or behind the goal the robot is when projected onto the path axis.
 * **`<nav2_controller plugin>`.cross_track_tolerance:**
   | Type   |   Default |
   |--------|-----------|
   | double |      0.25 |
-  > Description
-  > : Tolerance for the perpendicular distance from the path direction (m). This checks how far to the left or right of the path axis the robot is.
+    Description
+    : Tolerance for the perpendicular distance from the path direction (m). This checks how far to the left or right of the path axis the robot is.
 * **`<nav2_controller plugin>`.path_length_tolerance:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Maximum path length to consider for goal checking (m). If the remaining path length exceeds this value, the goal check is skipped. This prevents premature goal acceptance when far from the goal.
+    Description
+    : Maximum path length to consider for goal checking (m). If the remaining path length exceeds this value, the goal check is skipped. This prevents premature goal acceptance when far from the goal.
 * **`<nav2_controller plugin>`.is_overshoot_valid:**
   | Type   | Default   |
   |--------|-----------|
   | bool   | false     |
-  > Description
-  > : Whether to allow overshooting past the goal along the path direction. When false (default), uses `fabs(projected_distance) < along_path_tolerance` for symmetric tolerance. When true, uses `projected_distance < along_path_tolerance`, allowing the robot to be any distance past the goal but still requiring it to be within tolerance if before the goal.
+    Description
+    : Whether to allow overshooting past the goal along the path direction. When false (default), uses `fabs(projected_distance) < along_path_tolerance` for symmetric tolerance. When true, uses `projected_distance < along_path_tolerance`, allowing the robot to be any distance past the goal but still requiring it to be within tolerance if before the goal.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

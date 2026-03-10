@@ -78,7 +78,7 @@ If a waypoint is not achievable, the `stop_on_failure` parameter will determine 
 
 ## Provided Plugins
 
-> The plugins listed below are inside the `nav2_waypoint_follower` namespace.
+The plugins listed below are inside the `nav2_waypoint_follower` namespace.
 
 * [WaitAtWaypoint](nav2_waypoint_follower-plugins/wait_at_waypoint.md)
 * [PhotoAtWaypoint](nav2_waypoint_follower-plugins/photo_at_waypoint.md)
@@ -86,9 +86,9 @@ If a waypoint is not achievable, the `stop_on_failure` parameter will determine 
 
 ## Default Plugin
 
-> | Namespace          | Plugin                                   |
-> |--------------------|------------------------------------------|
-> | “wait_at_waypoint” | “nav2_waypoint_follower::WaitAtWaypoint” |
+| Namespace          | Plugin                                   |
+|--------------------|------------------------------------------|
+| “wait_at_waypoint” | “nav2_waypoint_follower::WaitAtWaypoint” |
 
 ## Example
 

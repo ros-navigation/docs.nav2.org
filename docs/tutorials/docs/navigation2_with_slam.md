@@ -68,14 +68,14 @@ Run the following commands first whenever you open a new terminal during this tu
 
 Launch your robot’s interface and robot state publisher, for example:
 
-> `ros2 launch turtlebot3_bringup robot.launch.py`
+`ros2 launch turtlebot3_bringup robot.launch.py`
 
 ### 1- Launch Navigation2
 
 Launch Navigation without nav2_amcl and nav2_map_server.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map->odom transform.
 
-> `ros2 launch nav2_bringup navigation_launch.py`
+`ros2 launch nav2_bringup navigation_launch.py`
 
 ### 2- Launch SLAM
 
@@ -84,7 +84,7 @@ Make sure it provides the map->odom transform and /map topic.
 Run Rviz and add the topics you want to visualize such as /map, /tf, /laserscan etc.
 For this tutorial, we will use [SLAM Toolbox](https://github.com/SteveMacenski/slam_toolbox).
 
-> `ros2 launch slam_toolbox online_async_launch.py`
+`ros2 launch slam_toolbox online_async_launch.py`
 
 ### 3- Working with SLAM
 
@@ -96,7 +96,7 @@ ros2 topic pub /goal_pose geometry_msgs/PoseStamped "{header: {stamp: {sec: 0}, 
 
 You should see the map update live! To save this map to file:
 
-> `ros2 run nav2_map_server map_saver_cli -f ~/map`
+`ros2 run nav2_map_server map_saver_cli -f ~/map`
 
 <figure markdown="span">
   ![](images/Navigation2_with_SLAM/navigation2_with_slam.gif){ width="700px" title="Navigation2 with SLAM" }

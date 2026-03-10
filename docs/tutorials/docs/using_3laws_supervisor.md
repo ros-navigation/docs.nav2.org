@@ -144,10 +144,10 @@ In the future, this will be integrated directly into the Supervisor control pane
 
 These are the options for the shared parameter extractor.
 
-> * `--verbose -v` Enable verbose logging.
-> * `--files` A space separated list of file paths to Nav2 parameter files to extract.
-> * `--output` File path to output the extracted shared configurations.
-> * `--deconfliction` Strategy for handling duplicate possible values for shared configurations (options: ‘first’ to use the first value, ‘last’ to use the last value, and ‘prompt’ to prompt you to select the value you’d like to use).
+- `--verbose -v` Enable verbose logging.
+- `--files` A space separated list of file paths to Nav2 parameter files to extract.
+- `--output` File path to output the extracted shared configurations.
+- `--deconfliction` Strategy for handling duplicate possible values for shared configurations (options: ‘first’ to use the first value, ‘last’ to use the last value, and ‘prompt’ to prompt you to select the value you’d like to use).
 
 For example:
 

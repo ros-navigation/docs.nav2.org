@@ -14,20 +14,20 @@ Scores a trajectory based on how well aligned the trajectory is with the goal po
   | Type   |   Default |
   |--------|-----------|
   | double |     0.325 |
-  > Description
-  > : Point in front of robot to look ahead to compute angular change from.
+    Description
+    : Point in front of robot to look ahead to compute angular change from.
 * **`<dwb plugin>`.`<name>`.aggregation_type:**
   | Type   | Default   |
   |--------|-----------|
   | string | “last”    |
-  > Description
-  > : last, sum, or product combination methods.
+    Description
+    : last, sum, or product combination methods.
 * **`<dwb plugin>`.`<name>`.scale:**
   | Type   |   Default |
   |--------|-----------|
   | double |         1 |
-  > Description
-  > : Weighed scale for critic.
+    Description
+    : Weighed scale for critic.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

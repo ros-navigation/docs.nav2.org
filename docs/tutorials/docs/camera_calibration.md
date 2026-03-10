@@ -34,9 +34,9 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
 
 **Also, make sure you have the following:**
 
-> • A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 20mm squares. **Calibration uses the interior vertex points of the checkerboard, so an “8x10” board uses the interior vertex parameter “7x9” as in the example below.** The checkerboard with set dimensions can be downloaded from [here](https://calib.io/pages/camera-calibration-pattern-generator).
-> • A well-lit area clear of obstructions and other check board patterns
-> • A monocular camera publishing images over ROS
+- A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 20mm squares. **Calibration uses the interior vertex points of the checkerboard, so an “8x10” board uses the interior vertex parameter “7x9” as in the example below.** The checkerboard with set dimensions can be downloaded from [here](https://calib.io/pages/camera-calibration-pattern-generator).
+- A well-lit area clear of obstructions and other check board patterns
+- A monocular camera publishing images over ROS
 
 ## Tutorial Steps
 
@@ -58,7 +58,8 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
 
 5- Start the camera calibration node
 
-> `ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera`
+`ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera`
+
 ```default
   Camera Name:
 
@@ -108,14 +109,12 @@ This will open a calibration window which highlight the checkerboard.
 
 6- In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
 
-> • checkerboard on the camera’s left, right, top and bottom of field of view
->   : ◦ X bar - left/right in field of view
->     <br/>
->     ◦ Y bar - top/bottom in field of view
->     <br/>
->     ◦ Size bar - toward/away and tilt from the camera
-> • checkerboard filling the whole field of view
-> • checkerboard tilted to the left, right, top and bottom (Skew)
+- checkerboard on the camera’s left, right, top and bottom of field of view
+    - X bar - left/right in field of view
+    - Y bar - top/bottom in field of view
+    - Size bar - toward/away and tilt from the camera
+- checkerboard filling the whole field of view
+- checkerboard tilted to the left, right, top and bottom (Skew)
 
 <figure markdown="span">
   ![](images/Camera_Calibration/calibration.jpg){ width="600" }
@@ -141,7 +140,8 @@ This will open a calibration window which highlight the checkerboard.
 9-Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”
 
 10-To use the the calibration file unzip the calibration.tar.gz
-: `tar -xvf calibration.tar.gz`
+
+`tar -xvf calibration.tar.gz`
 
 11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
 
