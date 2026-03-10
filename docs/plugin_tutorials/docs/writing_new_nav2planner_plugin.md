@@ -176,8 +176,9 @@ Next, we’ll use this plugin.
 
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below to replace following params
 
-#### NOTE
-For Galactic or later, `plugin_names` and `plugin_types` have been replaced with a single `plugins` string vector for plugin names. The types are now defined in the `plugin_name` namespace in the `plugin:` field (e.g. `plugin: MyPlugin::Plugin`). Inline comments in the code blocks will help guide you through this.
+!!! note
+
+    For Galactic or later, `plugin_names` and `plugin_types` have been replaced with a single `plugins` string vector for plugin names. The types are now defined in the `plugin_name` namespace in the `plugin:` field (e.g. `plugin: MyPlugin::Plugin`). Inline comments in the code blocks will help guide you through this.
 
 ```text
 planner_server:

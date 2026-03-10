@@ -23,8 +23,9 @@ This is an online web-based tool, so no installation is required. You can use it
 
 Click the **‘Edit’** button under the **‘Layout’** section in the left sidebar. This will open a new popup where you can edit the layout name. Click the **‘Save’** button to save it.
 
-#### NOTE
-You can also change the layout name after creating the layout.
+!!! note
+
+    You can also change the layout name after creating the layout.
 
 <figure markdown="span">
   ![](../images/route_graph_generation_lif_editor/frame_name.png){ width="710px" height="330px" }
@@ -35,8 +36,9 @@ After uploading the image, four input fields will appear. Set the image width an
 The origin is the bottom-left corner of the image.
 Click the **‘Save’** button to save and close the popup.
 
-#### NOTE
-If you don’t see the image, zoom out the map and check the origin position of your image.
+!!! note
+
+    If you don’t see the image, zoom out the map and check the origin position of your image.
 
 <figure markdown="span">
   ![](../images/route_graph_generation_lif_editor/setup_coordinate_system.png){ width="710px" height="330px" }
@@ -51,8 +53,9 @@ Now you can add nodes to the map. There are two ways to do this:
 1. Click directly on the map to add a node. This will create a node automatically. If you want to change its properties, click on the node and edit its information in the right sidebar.
 2. Click the **‘Node’** button under the **‘Create Item’** section in the left sidebar. This will display the **‘Create Node’** section in the right sidebar. Fill in the node details and click **‘Save’** to create the node.
 
-#### NOTE
-If the **‘Fast Create’** toggle is on, you cannot create nodes using the right sidebar (method 2). You must turn the toggle off first.
+!!! note
+
+    If the **‘Fast Create‘** toggle is on, you cannot create nodes using the right sidebar (method 2). You must turn the toggle off first.
 
 <figure markdown="span">
   ![](../images/route_graph_generation_lif_editor/add_node.png){ width="710px" height="330px" }

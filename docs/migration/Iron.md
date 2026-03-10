@@ -236,8 +236,9 @@ In the GIF, it can be seen that there are two controller_ids namely, FollowPath 
 
 In this case, the FollowPath is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
 
-#### ATTENTION
-If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
+!!! warning "Attention"
+
+    If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
 
 ## RPP new optional `interpolate_curvature_after_goal` behavior and fix conflict between `use_rotate_to_heading` and `allow_reversing`
 

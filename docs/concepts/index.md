@@ -234,11 +234,9 @@ There is an action server named `/follow_gps_waypoints` within `nav2_waypoint_fo
 Within the navigation project, there are 2 major transformations that need to be provided, according to community standards.
 The `map` to `odom` transform is provided by a positioning system (localization, mapping, SLAM) and `odom` to `base_link` by an odometry system.
 
-#### NOTE
-There is **no** requirement on using a LIDAR on your robot to use the navigation system. There is no requirement to use lidar-based collision avoidance,
-localization, or SLAM. However, we do provide instructions and support tried and true implementations of these things using lidars.
-You can be equally as successful using a vision or depth based positioning system and using other sensors for collision avoidance.
-The only requirement is that you follow the standards below with your choice of implementation.
+!!! note
+
+    There is **no** requirement on using a LIDAR on your robot to use the navigation system. There is no requirement to use lidar-based collision avoidance, localization, or SLAM. However, we do provide instructions and support tried and true implementations of these things using lidars. You can be equally as successful using a vision or depth based positioning system and using other sensors for collision avoidance. The only requirement is that you follow the standards below with your choice of implementation.
 
 ### Standards
 

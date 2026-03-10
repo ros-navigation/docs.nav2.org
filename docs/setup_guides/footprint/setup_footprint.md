@@ -10,8 +10,9 @@ The footprint outlines the robot’s 2D shape when projected to the ground and i
 
 The footprint is set up using the `footprint` or `robot_radius` parameter of the global and local costmaps which we tackled in the previous tutorials ([Setting Up Sensors Guide](../sensors/setup_sensors_gz.md#setup-sensors-gz)). The value defined in the `footprint` parameter is an ordered vector of 2-D points defining the robot’s footprint with the `base_link` frame as the origin. The first and last points in the vector are joined into the last line segment to close the footprint’s shape. As an alternative, you may also use the `robot_radius` parameter wherein circular footprint is automatically generated and centered at `base_link`.  In cases both the `footprint` and `robot_radius` parameters have been defined in the configuration, the `footprint` is used.
 
-#### SEE ALSO
-A section in the previous guide, [Configuring nav2_costmap_2d](../sensors/mapping_localization.md#configuring-nav2-costmap-2d), explains how to configure basic costmap parameters. Please refer to that guide for more details on costmap configuration.
+!!! info "See also"
+
+    A section in the previous guide, [Configuring nav2_costmap_2d](../sensors/mapping_localization.md#configuring-nav2-costmap-2d), explains how to configure basic costmap parameters. Please refer to that guide for more details on costmap configuration.
 
 For the global costmap footprint, the decision to choose between the `robot_radius` (circular) or `footprint` (polygon) parameter depends on the robot, its environment, and the path planning algorithm you will use. Even if you are working with a non-circular robot, there may be situations where a circular footprint is acceptable. For example, path planning algorithms like [NavFn](https://docs.nav2.org/configuration/packages/configuring-navfn.html) assume that the robot is circular since it only checks for collision per grid cell, so it will not be necessary to outline the robot’s exact shape for its footprint. On the other hand, algorithms such as [Smac Planner’s Hybrid-A\*](https://docs.nav2.org/configuration/packages/configuring-smac-planner.html) perform collision checking on the robot’s polygon-shaped footprint if possible and necessary. Hence, it might be useful to use a polygon-shaped footprint. Another example is having a small RC car sized robot roaming a warehouse. This robot is so small it won’t need to make confined maneuvers – thusly approximating it with the largest cross-sectional radius is a good time-saving optimization.
 
@@ -23,13 +24,15 @@ Note that this can also be adjusted over time using the costmap’s `~/footprint
 
 In this section, we will configure the footprint of `sam_bot` such that `footprint` (polygon) is used for the local costmap and `robot_radius` (circular) is used for the global costmap. We will utilize the default configuration file of Nav2 with a modified footprint parameter for the global and local costmaps.
 
-#### NOTE
-The complete source code for `sam_bot` can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository.
+!!! note
+
+    The complete source code for `sam_bot` can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository.
 
 Under the `config` directory, create a new file named  `nav2_params.yaml`. Next, copy the contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml) and paste them into the newly created file. The contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml) are copied from the default configuration file of Nav2 but with changes in the `footprint` and  `robot_radius` parameters to match the shape of `sam_bot`.
 
-#### SEE ALSO
-The default configuration file for Nav2 can be found in the official [Navigation2 repository](https://github.com/ros-navigation/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml).
+!!! info "See also"
+
+    The default configuration file for Nav2 can be found in the official [Navigation2 repository](https://github.com/ros-navigation/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml).
 
 Below is the code snippet from `nav2_params.yaml` defining the local costmap footprint. In this configuration file, the `footprint` parameter of the local costmap has already been set with a rectangular-shaped footprint. This box is centered at the `base_link` frame of `sam_bot`.
 

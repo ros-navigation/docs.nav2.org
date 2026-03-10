@@ -16,8 +16,9 @@ Lifecycle nodes contain state machine transitions that enable deterministic beha
 
 The primary states of a Lifecycle node are `Unconfigured`, `Inactive`, `Active`, and `Finalized`. A Lifecycle node starts in an `Unconfigured` state after being instantiated. The Lifecycle Manager transitions a node from `Unconfigured` to `Inactive` by implementing the `Configurating` transition. The `Configurating` transition sets up all configuration parameters and prepares any required setup such as memory allocation and the setup of the static publication and subscription topics. A node in the `Inactive` state is allowed to reconfigure its parameters but cannot perform any processing. From the `Inactive` state, the Lifecycle Manager implements the `Activating` transition state to transition the node from `Inactive` to `Active`, which is the main state. A node in the `Active` state is allowed to perform any processing operation. In case a node crashes, the Lifecycle Manager shuts down the system to prevent any critical failures. On shutdown, the necessary cleanup operations are performed and the nodes are transitioned to the `Finalized` state via `Deactivating`, `CleaningUp`, and `ShuttingDown` transition states.
 
-#### SEE ALSO
-For more information on Lifecycle management, see the article on [Managed Nodes](https://design.ros2.org/articles/node_lifecycle.html).
+!!! info "See also"
+
+    For more information on Lifecycle management, see the article on [Managed Nodes](https://design.ros2.org/articles/node_lifecycle.html).
 
 You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node `sensor_driver`, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a `sensor_driver` node in your launch file and adding it to the list of nodes to be activated by the `lifecycle_manager` before navigation, as shown in the example below.
 
@@ -53,43 +54,47 @@ In the snippet above, the nodes to be handled by the Lifecycle Manager are set u
 
 Two other parameters of the Lifecycle Manager are `autostart` and `bond_timeout`. Set `autostart` to `true` if you want to set the transition nodes to the `Active` state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The `bond_timeout` sets the waiting time to decide when to transition down all of the nodes if a node is not responding.
 
-#### NOTE
-More information on Lifecycle Manager parameters can be found in the [Configuration Guide of Lifecycle Manager](https://docs.nav2.org/configuration/packages/configuring-lifecycle.html)
+!!! note
+
+    More information on Lifecycle Manager parameters can be found in the [Configuration Guide of Lifecycle Manager](https://docs.nav2.org/configuration/packages/configuring-lifecycle.html)
 
 ## Composition
 
 Composition is the second key component nav2 task servers that was introduced to reduce the memory and CPU resources by putting multiple nodes in a single process. In Nav2, Composition can be used to compose all Nav2 nodes in a single process instead of launching them separately. This is useful for deployment on embedded systems where developers need to optimize resource usage.
 
-#### SEE ALSO
-More information on Composition can be found [here](https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html).
+!!! info "See also"
+
+    More information on Composition can be found [here](https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html).
 
 In the following section, we give an example on how to add a new Nav2 server, which we notionally call the `route_server`, to our system.
 
 We make use of the launch files to compose different servers into a single process. The process is established by the `ComposableNodeContainer` container that is populated with composition nodes via `ComposableNode`. This container can then be launched and used just like any other Nav2 node.
 
 1. Add a new `ComposableNode()` instance in your launch file pointing to the component container of your choice.
-   > ```python
-   > container = ComposableNodeContainer(
-   >     name='my_container',
-   >     namespace='',
-   >     package='rclcpp_components',
-   >     executable='component_container',
-   >     composable_node_descriptions=[
-   >         ComposableNode(
-   >             package='nav2_route_server',
-   >             plugin='nav2_route_server::RouteServer',
-   >             name='nav2_route_server'),
-   >     ],
-   >     output='screen',
-   > )
-   > ```
+    ```python
+    container = ComposableNodeContainer(
+        name='my_container',
+        namespace='',
+        package='rclcpp_components',
+        executable='component_container',
+        composable_node_descriptions=[
+            ComposableNode(
+                package='nav2_route_server',
+                plugin='nav2_route_server::RouteServer',
+                name='nav2_route_server'),
+        ],
+        output='screen',
+    )
+    ```
 
-   > #### SEE ALSO
-   > See example in composition demo’s [composition_demo.launch.py](https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py).
+    !!! info "See also"
+
+        See example in composition demo’s [composition_demo.launch.py](https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py).
+
 2. Add the package containing the server to your `package.xml` file.
-   > ```xml
-   > <exec_depend>nav2_route_server</exec_depend>
-   > ```
+    ```xml
+    <exec_depend>nav2_route_server</exec_depend>
+    ```
 
 ## Error codes
 

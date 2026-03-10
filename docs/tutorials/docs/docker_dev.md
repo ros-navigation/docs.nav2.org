@@ -254,8 +254,9 @@ REPOSITORY   TAG                    IMAGE ID       CREATED        SIZE
 osrf/ros     rolling-desktop-full   7cd0c5068235   6 days ago     3.86GB
 ```
 
-#### NOTE
-If errors are seen *Failed to create Shared Memory Manager* or similar, use the `--shm-size=100mb` command to increase the shared memory buffer size in the container.
+!!! note
+
+    If errors are seen *Failed to create Shared Memory Manager* or similar, use the `--shm-size=100mb` command to increase the shared memory buffer size in the container.
 
 ## Understanding ROS Docker Images
 

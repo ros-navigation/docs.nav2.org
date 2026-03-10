@@ -2,13 +2,15 @@
 
 # Setting Up The URDF
 
-#### NOTE
-Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot’s structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
+!!! note
+
+    Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot’s structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
 
 For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
-#### SEE ALSO
-The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+!!! info "See also"
+
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## URDF and the Robot State Publisher
 
@@ -20,8 +22,9 @@ The Unified Robot Description Format (URDF) is an XML file that represents a rob
 
 Another major feature of URDF is that it also supports Xacro (XML Macros) to help you create a shorter and readable XML to help in defining complex robots. We can use these macros to eliminate the need for repeating blocks of XML in our URDF. Xacro is also useful in defining configuration constants which can be reused throughout the URDF.
 
-#### SEE ALSO
-If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official [URDF Documentation](http://wiki.ros.org/urdf) and [Robot State Publisher Documentation](http://wiki.ros.org/robot_state_publisher)
+!!! info "See also"
+
+    If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official [URDF Documentation](http://wiki.ros.org/urdf) and [Robot State Publisher Documentation](http://wiki.ros.org/robot_state_publisher)
 
 ## Setting Up the Environment
 
@@ -50,8 +53,9 @@ ros2 pkg create --build-type ament_cmake sam_bot_description
 
 ## Writing the URDF
 
-#### SEE ALSO
-This section aims to provide you with a beginner-friendly introduction to building URDFs for your robot. If you would like to learn more about URDF and XAcro, we suggest for you to have a look at the official [URDF Documentation](http://wiki.ros.org/urdf)
+!!! info "See also"
+
+    This section aims to provide you with a beginner-friendly introduction to building URDFs for your robot. If you would like to learn more about URDF and XAcro, we suggest for you to have a look at the official [URDF Documentation](http://wiki.ros.org/urdf)
 
 Now that we have our project workspace set up, let’s dive straight into writing the URDF. Below is an image of the robot we will be trying to build.
 
@@ -70,8 +74,9 @@ To get started, create a file named `sam_bot_description.urdf` under `src/descri
 </robot>
 ```
 
-#### NOTE
-The following code snippets should be placed within the `<robot>` tags. We suggest to add them in the same order as introduced in this tutorial. We have also included some line numbers to give you a rough idea on where to input the code. This may differ from the actual file you are writing depending on your usage of whitespaces. Also note that the line numbers assume that you are putting in code as they appear in this guide.
+!!! note
+
+    The following code snippets should be placed within the `<robot>` tags. We suggest to add them in the same order as introduced in this tutorial. We have also included some line numbers to give you a rough idea on where to input the code. This may differ from the actual file you are writing depending on your usage of whitespaces. Also note that the line numbers assume that you are putting in code as they appear in this guide.
 
 Next, let us define some constants using XAcro properties that will be reused throughout the URDF.
 
@@ -184,8 +189,9 @@ And that’s it! We have built a URDF for a simple differential drive robot. In 
 
 ## Build and Launch
 
-#### SEE ALSO
-The launch files from this tutorial were adapted from the official [URDF Tutorials for ROS 2](https://github.com/ros/urdf_tutorial/tree/ros2)
+!!! info "See also"
+
+    The launch files from this tutorial were adapted from the official [URDF Tutorials for ROS 2](https://github.com/ros/urdf_tutorial/tree/ros2)
 
 Let’s start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your `package.xml` (preferably after the `<buildtool_depend>` tag)
 
@@ -250,8 +256,9 @@ def generate_launch_description():
     ])
 ```
 
-#### SEE ALSO
-For more information regarding the launch system in ROS 2, you can have a look at the official [ROS 2 Launch System Documentation](https://docs.ros.org/en/rolling/Tutorials/Launch-system.html)
+!!! info "See also"
+
+    For more information regarding the launch system in ROS 2, you can have a look at the official [ROS 2 Launch System Documentation](https://docs.ros.org/en/rolling/Tutorials/Launch-system.html)
 
 To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named `rviz` in the root of your project and a file named `config.rviz` under it. Place the following as the contents of `config.rviz`
 
@@ -358,8 +365,9 @@ You may have noticed that another window was launched - this is a GUI for the jo
 
 ![](images/base-bot_4.png)
 
-#### NOTE
-We won’t be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official [Joint State Publisher Documentation](http://wiki.ros.org/joint_state_publisher).
+!!! note
+
+    We won’t be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official [Joint State Publisher Documentation](http://wiki.ros.org/joint_state_publisher).
 
 At this point, you may already decide to stop with this tutorial since we have already achieved our objective of creating a URDF for a simple differential drive robot. The robot state publisher is now publishing the transforms derived from the URDF. These transforms can now be used by other packages (such as Nav2) to get information regarding the shape and structure of your robot. However, to properly use this URDF in a simulation, we need physical properties so that the robot reacts to physical environments like a real robot would. The visualization fields are only for visualization, not collision, so your robot will drive straight through obstacles. We’ll get into adding these properties in our URDF in the next section.
 
@@ -439,8 +447,9 @@ Lastly, let us add the similar properties to our spherical caster wheels. Includ
     <xacro:sphere_inertia m="0.5" r="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
 ```
 
-#### NOTE
-We did not add any inertial or collision properties to our `base_footprint` link since this is a virtual and non-physical link.
+!!! note
+
+    We did not add any inertial or collision properties to our `base_footprint` link since this is a virtual and non-physical link.
 
 Build your project and then launch RViz using the same commands in the previous section.
 

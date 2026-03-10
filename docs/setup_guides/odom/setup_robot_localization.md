@@ -8,13 +8,15 @@ A usual robot setup consists of at least the wheel encoders and IMU as its odome
 
 Fused sensor data is published by the `robot_localization` package through the `odometry/filtered` and the `accel/filtered` topics, if enabled in its configuration. In addition, it can also publish the `odom` => `base_link` transform on the `/tf` topic. Do note that if you followed [Setting Up Odometry - Gazebo](setup_odom_gz.md#setup-odom-gz), you will need to remove the /tf bridge in `bridge_config.yaml` to get the transforms from `ekf_node` instead of Gazebo.
 
-#### SEE ALSO
-More details on `robot_localization` can be found in the official [Robot Localization Documentation](http://docs.ros.org/en/noetic/api/robot_localization/html/index.html).
+!!! info "See also"
+
+    More details on `robot_localization` can be found in the official [Robot Localization Documentation](http://docs.ros.org/en/noetic/api/robot_localization/html/index.html).
 
 If your robot is only able to provide one odometry source, the use of `robot_localization` would have minimal effects aside from smoothing. In this case, an alternative approach is to publish transforms through a tf2 broadcaster in your single source of odometry node. Nevertheless, you can still opt to use `robot_localization` to publish the transforms and some smoothing properties may still be observed in the output.
 
-#### SEE ALSO
-For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster [(C++)](https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html)  [(Python)](https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Py.html).
+!!! info "See also"
+
+    For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster [(C++)](https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html)  [(Python)](https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Py.html).
 
 For the rest of this section, we will show how to use `robot_localization` to fuse the sensors of `sam_bot`. It will use the `sensor_msgs/Imu` messages published on `/demo/Imu` and the `nav_msgs/Odometry` message published on `/demo/odom` and then it will publish data on `odometry/filtered`,  `accel/filtered`, and `/tf` topics.
 
@@ -92,8 +94,9 @@ To add a sensor input to the `ekf_filter_node`, add the next number in the seque
 
 To understand how `robot_localization` is configured and understand the reasoning behind the config have a look at [Configuring robot_localization](http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html).
 
-#### SEE ALSO
-For more advice on configuration of input data to `robot_localization`, see [Preparing Your Data for Use with robot_localization](http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry), and [Configuring robot_localization](http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html).
+!!! info "See also"
+
+    For more advice on configuration of input data to `robot_localization`, see [Preparing Your Data for Use with robot_localization](http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry), and [Configuring robot_localization](http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html).
 
 ## Launch and Build Files
 

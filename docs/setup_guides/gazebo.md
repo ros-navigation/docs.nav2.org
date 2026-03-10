@@ -16,8 +16,9 @@ Follow these tutorials in order to set up your robot for Nav2:
 * [Setting Up the Robot’s Footprint](footprint/setup_footprint.md)
 * [Setting Up Navigation Plugins](algorithm/select_algorithm.md)
 
-#### NOTE
-These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the [Configuration Guide](../configuration/index.md#configuration) section.
+!!! note
+
+    These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the [Configuration Guide](../configuration/index.md#configuration) section.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

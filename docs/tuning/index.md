@@ -61,8 +61,9 @@ If you are using a non-circular robot with very limited compute, it may be worth
 
 Since the planning problem is primarily driven by the robot type, the table accurately summarizes the advice to users by the maintainers. Within the circular robot regime, the choice of planning algorithm is dependent on application and desirable behavior. NavFn will typically make broad, sweeping curves; Theta\* prefers straight lines and supports them at any angle; and Smac 2D is essentially a classical A\* algorithm with cost-aware penalties.
 
-#### NOTE
-These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the [Writing a New Planner Plugin](../plugin_tutorials/docs/writing_new_nav2planner_plugin.md#writing-new-nav2planner-plugin) tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
+!!! note
+
+    These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the [Writing a New Planner Plugin](../plugin_tutorials/docs/writing_new_nav2planner_plugin.md#writing-new-nav2planner-plugin) tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
 
 ## Controller Plugin Selection
 
@@ -90,8 +91,9 @@ The Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to
 
 Finally, Vector Pursuit is another good path tracking solution and just like RPP, is paired with a kinematically feasible planner. It is a bit more advanced than RPP in the sense it also takes path heading into account. Vector Pursuit can handle complex paths at high speeds, but it is still a simple geometric controller thus requiring low computation resources.
 
-#### NOTE
-These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the [Writing a New Controller Plugin](../plugin_tutorials/docs/writing_new_nav2controller_plugin.md#writing-new-nav2controller-plugin) tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
+!!! note
+
+    These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the [Writing a New Controller Plugin](../plugin_tutorials/docs/writing_new_nav2controller_plugin.md#writing-new-nav2controller-plugin) tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
 
 ## Caching Obstacle Heuristic in Smac Planners
 

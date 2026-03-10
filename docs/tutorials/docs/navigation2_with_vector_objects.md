@@ -20,8 +20,9 @@ In this tutorial, the added vector objects will be treated as obstacles in costm
 To do this, we need to prepare the Nav2 stack with the Keepout Filter enabled, along with the Vector Object server which publishes an `OccupancyGrid` map with the rasterized vector objects as an input mask for the Keepout Filter.
 Other use cases use similar principles and could be easily adapted after finishing this tutorial.
 
-#### NOTE
-Using with Keepout Filter is a good choice for adding virtual obstacles or removing some areas from costmaps. However, the Vector Object server is not restricted to this application. It can be paired with different Costmap Filters for other use cases or even other applications entirely. For example, to represent polygonal speed restriction areas, a polygon-defined room where the camera is to be turned off using the Binary Filter, or using custom spatial / polygon applications.
+!!! note
+
+    Using with Keepout Filter is a good choice for adding virtual obstacles or removing some areas from costmaps. However, the Vector Object server is not restricted to this application. It can be paired with different Costmap Filters for other use cases or even other applications entirely. For example, to represent polygonal speed restriction areas, a polygon-defined room where the camera is to be turned off using the Binary Filter, or using custom spatial / polygon applications.
 
 ## Requirements
 
@@ -57,11 +58,13 @@ Where the triangle polygon is specified by `{0.3, 0.5}, {-0.4, 1.2}, {-0.4, -0.2
 `closed` true-value for the polygon and `fill` for the circle mean that both shapes to be filled the with specified `value`.
 This value is equal to `100` which means “occupied” in OccupancyGrid format.
 
-#### NOTE
-The frame for vector objects were specified the same as map’s global frame. It was chosen for the simplicity to have static objects on map. However, it is possible to specify the shape in any frame different from global map’s one. For this case, Vector Object server will use dynamic output map processing & publishing, suitable for moving objects.
+!!! note
 
-#### NOTE
-Each shape is being addressed by UUID, which could be specified manually in a string format. In the demonstration, it was skipped to specify UUID of the shapes in the parameters, so Vector Object server will automatically generate a new one for each shape. The list of UUID could be obtained later by calling `GetShapes.srv` service.
+    The frame for vector objects were specified the same as map’s global frame. It was chosen for the simplicity to have static objects on map. However, it is possible to specify the shape in any frame different from global map’s one. For this case, Vector Object server will use dynamic output map processing & publishing, suitable for moving objects.
+
+!!! note
+
+    Each shape is being addressed by UUID, which could be specified manually in a string format. In the demonstration, it was skipped to specify UUID of the shapes in the parameters, so Vector Object server will automatically generate a new one for each shape. The list of UUID could be obtained later by calling `GetShapes.srv` service.
 
 Costmap Filters require `CostmapFilterInfo.msg` message to be published along with filter mask (rasterized map with vector shapes).
 Costmap Filter Info message is being published by Costmap Filter Info server, which is also launched by the `vector_object_server.launch.py` script.

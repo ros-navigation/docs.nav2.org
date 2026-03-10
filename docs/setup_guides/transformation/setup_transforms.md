@@ -11,8 +11,9 @@ For this tutorial, we will first provide a brief introduction to transforms in R
 
 ## Transforms Introduction
 
-#### NOTE
-This section of this guide has been adapted from the [Setting Up You Robot using tf](http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF) tutorial in the ROS (1) Navigation documentation.
+!!! note
+
+    This section of this guide has been adapted from the [Setting Up You Robot using tf](http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF) tutorial in the ROS (1) Navigation documentation.
 
 Many ROS packages require the transform tree of a robot to be published using the TF2 ROS package. A transformation tree defines the relations between different coordinate systems, in terms of translation, rotation, and relative motion. To make this more concrete, let us apply an example of a simple robot that has a mobile base with a single laser sensor mounted on top of it.
 
@@ -44,8 +45,9 @@ With this transform tree set up, converting the laser scan received in the `base
 
 ## Static Transform Publisher Demo
 
-#### WARNING
-If you are new to ROS 2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official [ROS 2 Installation Documentation](https://docs.ros.org/en/rolling/Installation.html)
+!!! warning
+
+    If you are new to ROS 2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official [ROS 2 Installation Documentation](https://docs.ros.org/en/rolling/Installation.html)
 
 Now let’s try publishing a very simple transform using the static_transform_publisher tool provided by TF2. We will be publishing a transformation from the link `base_link` to the link `base_laser` with a translation of (x: 0.1m, y: 0.0m, z: 0.2m). Note that we will be building the transform from the diagram earlier in this tutorial.
 
@@ -71,8 +73,9 @@ At time 0.0
 
 And that’s it for this short demo - we were able to successfully publish a transform from `base_link` to `base_laser` using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see TF2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the [Setting Up The URDF](../urdf/setup_urdf.md#urdf-handson) tutorial.
 
-#### SEE ALSO
-If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official [TF2 Documentation](https://wiki.ros.org/tf2/Tutorials)
+!!! info "See also"
+
+    If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official [TF2 Documentation](https://wiki.ros.org/tf2/Tutorials)
 
 ## Transforms in Navigation2
 
@@ -91,8 +94,9 @@ Now let’s move on to some specifics for the Navigation2 package to function co
 2. `odom` => `base_link`
 3. `base_link` => `base_laser` (sensor base frames)
 
-#### NOTE
-The `base_laser` coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, base_laser2, lidar_link etc.), then a transformation back to `base_link` for each one is required.
+!!! note
+
+    The `base_laser` coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, base_laser2, lidar_link etc.), then a transformation back to `base_link` for each one is required.
 
 The first transform `map` => `odom` is usually provided by a different ROS package dealing with localization and mapping such as AMCL. This transform updates live in use so we don’t set static values for this in our robot’s TF tree. Further detail about how to set this up may be pretty complex, so we highly suggest to have a look at the documentation of the mapping or localization package you are using for your platform. All ROS compliant SLAM and localization packages will provide you with this transformation automatically on launch.
 
@@ -100,8 +104,9 @@ The `odom` => `base_link` is usually published by our odometry system using sens
 
 All other statically defined transforms (e.g. `base_link` => `base_laser`, `base_link` => `wheels`, `wheels` => `IMU`, etc) is what we will be talking about for the rest of this guide. This transformation tree is used by Nav2 to properly relate the information from sensors or other frame of interest to the rest of the robot. The transformation between these two coordinate frames is usually provided to Nav2 through the Robot State Publisher and the Universal Robot Descriptor File (URDF). In cases where there are more sensor coordinate frames on your platform, then a transform tree from `base_link` to each sensor coordinate frame needs to be published.
 
-#### SEE ALSO
-For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in [Navigation Concepts](../../concepts/index.md#concepts).
+!!! info "See also"
+
+    For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in [Navigation Concepts](../../concepts/index.md#concepts).
 
 ## Conclusion
 

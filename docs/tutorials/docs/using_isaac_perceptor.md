@@ -10,9 +10,9 @@ This tutorial will guide you through the fundamental concepts behind vision-base
 
 Whether you’re developing for resource-constrained embedded systems or exploring alternatives to expensive sensor suites, this walk-through provides a complete introduction to deploying advanced autonomous navigation with only vision-based perception using a NVIDIA Nova reference platform, including stereo cameras and Jetson AGX Orin.
 
-#### NOTE
-While vision-based solutions offer powerful and efficient capabilities they can face challenges in certain environments. Scenarios involving glass surfaces, featureless corridors, thin obstacles, sudden movements, vibrations, or prolonged stillness under changing lighting conditions may impact performance.
-It’s important to thoughtfully evaluate whether a visual navigation approach aligns with the specific demands and conditions of your application to ensure the best results.
+!!! note
+
+    While vision-based solutions offer powerful and efficient capabilities they can face challenges in certain environments. Scenarios involving glass surfaces, featureless corridors, thin obstacles, sudden movements, vibrations, or prolonged stillness under changing lighting conditions may impact performance. It’s important to thoughtfully evaluate whether a visual navigation approach aligns with the specific demands and conditions of your application to ensure the best results.
 
 <div style="width:100%;max-width:960px;margin:0 auto;">
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?autoplay=1&mute=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -68,8 +68,9 @@ This is key for good performance of a vision-based solution and many sensors are
 The disparity is then estimated using Isaac’s `isaac_ros_ess`, which computes a GPU accelerated, deep-learning based stereo disparity image.
 Finally, `isaac_ros_stereo_image_proc` converts the disparity image into a Depth Image used for later 3D reconstruction.
 
-#### NOTE
-`isaac_ros_stereo_image_proc` may also compute a `PointCloud2` as well if an application calls for pointcloud rather than depth image format.
+!!! note
+
+    `isaac_ros_stereo_image_proc` may also compute a `PointCloud2` as well if an application calls for pointcloud rather than depth image format.
 
 **Data Fusion**:
 
@@ -84,8 +85,9 @@ It can also accept an optional semantic segmentation mask to detect people, robo
 These dynamic obstacles are then later re-inserted at the end of the update to avoid artifacts in environmental updates related to dynamic obstacles without the need of expensive clearing logic.
 Common demonstrations show this with a particular human segmentation model, but any model may be used trained to segment out any number of object classes.
 
-#### NOTE
-It may be necessary to regenerate these models in advance of doing any visual navigation or data collection/data fusion for visual navigation.  See Troubleshooting section for details on common error messages and their solutions.
+!!! note
+
+    It may be necessary to regenerate these models in advance of doing any visual navigation or data collection/data fusion for visual navigation.  See Troubleshooting section for details on common error messages and their solutions.
 
 <figure markdown="span">
   ![](images/perceptor/isaac_ros_nvblox_nodegraph.png)
@@ -125,8 +127,9 @@ The current version at the time of writing is Jetpack 6.2 with Isaac 3.2.
 If the Jetson is currently running Jetpack 6.0 or higher, [please use this guide to upgrade using apt to Jetpack 6.2](https://docs.nvidia.com/jetson/jetpack/install-setup/index.html#upgrade-jetpack).
 Otherwise, the [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager) is required to upgrade, either as a docker image or debian to run on a developer computer.
 
-#### NOTE
-Be sure to have the Jetson’s USB-C port used for bootloading accessible if upgrading using the SDK Manager. Use the IP addresses of this wired connection, not over a local WAN.
+!!! note
+
+    Be sure to have the Jetson’s USB-C port used for bootloading accessible if upgrading using the SDK Manager. Use the IP addresses of this wired connection, not over a local WAN.
 
 ### Nova Init
 
@@ -188,8 +191,9 @@ If one is not available or you are using a large(>1TB) internal drive change the
 
 This sets an environmental variable `ISAAC_ROS_WS` which is used to mount the workspace to the Isaac ROS containers and in other Isaac workflows, so it is important to always have that set.
 
-#### NOTE
-The NVIDIA Jetson Orin and Jetson Xavier family system have an M.2 Key-M(AKA 2280) slot which provides support for an onboard NVME SSD drive. The NVIDIA SDKManager install tool has configuration options to flash a Jetpack image to this drive, providing high-capacity storage at PCIe speeds without the need for an external drive or MicroSD card.
+!!! note
+
+    The NVIDIA Jetson Orin and Jetson Xavier family system have an M.2 Key-M(AKA 2280) slot which provides support for an onboard NVME SSD drive. The NVIDIA SDKManager install tool has configuration options to flash a Jetpack image to this drive, providing high-capacity storage at PCIe speeds without the need for an external drive or MicroSD card.
 
 Make sure the rosbag for mapping and the output occupancy grid map directories are mounted to the docker container. You can add them in ${ISAAC_ROS_WS}/src/isaac_ros_common/scripts/.isaac_ros_dev-dockerargs then restart the container:
 
@@ -271,12 +275,13 @@ ros2 launch isaac_ros_nova_recorder nova_recorder.launch.py \
 
 This will launch the `isaac_ros_nova_recorder` node, which wraps `isaac_ros_data_recorder`, and a teleop node from the `nova_carter_bringup` package.  You can also launch the recording from the provided convenience script in the host environment: `./scripts/run_docker_nova_recorder.sh`
 
-#### NOTE
-The `config` parameter is used to specify the set of sensors to use during mapping. The `nova-carter_hawk-4_imu` config uses only the 4 stereo cameras in the front of the Nova Carter robot, plus the onboard IMU. If you do not have the Hawk cameras or wish to use other sensors, you can check out the other configs under `/etc/nova`. Using additional sensors will result in a larger `rosbag2` recording and could result in a significantly longer post-processing time.
+!!! note
 
-More details on the available configs can be found here:
+    The `config` parameter is used to specify the set of sensors to use during mapping. The `nova-carter_hawk-4_imu` config uses only the 4 stereo cameras in the front of the Nova Carter robot, plus the onboard IMU. If you do not have the Hawk cameras or wish to use other sensors, you can check out the other configs under `/etc/nova`. Using additional sensors will result in a larger `rosbag2` recording and could result in a significantly longer post-processing time.
 
-[https://nvidia-isaac-ros.github.io/v/release-3.1/repositories_and_packages/isaac_ros_nova/isaac_ros_data_recorder/index.html#try-more-examples](https://nvidia-isaac-ros.github.io/v/release-3.1/repositories_and_packages/isaac_ros_nova/isaac_ros_data_recorder/index.html#try-more-examples)
+    More details on the available configs can be found here:
+
+    [https://nvidia-isaac-ros.github.io/v/release-3.1/repositories_and_packages/isaac_ros_nova/isaac_ros_data_recorder/index.html#try-more-examples](https://nvidia-isaac-ros.github.io/v/release-3.1/repositories_and_packages/isaac_ros_nova/isaac_ros_data_recorder/index.html#try-more-examples)
 
 Follow the guidelines outlined above and begin to drive the robot around the space. In the example above the `nova_carter_recorder` node will begin recording stereo images from the Hawk cameras integrated into the Nova Carter robot. Data will be stored in the `/mnt/nova_ssd/recordings` directory by default as a `rosbag2` (MCAP) file. See the full nova_carter_recorder tutorial at [https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nova/isaac_ros_nova_recorder/index.html](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nova/isaac_ros_nova_recorder/index.html) for details on other command-line arguments that will allow storage of the mapping run to Amazon S3, etc. When you have sufficiently mapped the area, remembering to do loop closures, hit `CTRL-C` in the terminal you launched the recording from.
 
@@ -320,13 +325,14 @@ ros2 run isaac_mapping_ros create_map_offline.py --sensor_data_bag=/mnt/nova_ssd
     --print_mode all --steps_to_run edex,cuvslam,cuvgl
 ```
 
-#### WARNING
-Starting with version 4.1.0 of the `isaac-ros-ess` code, the plugin architecture was changed to allow for custom plugins. This means you need to explicitly provide the path to the plugins for the models you’ve installed, even if they are the default ones provided by NVIDIA.
-For the `dnn_stereo_disparity` models, installed as part of the `isaac-ros-ess-install-models` package, this looks like:
+!!! warning
 
-`export LD_LIBRARY_PATH="/workspaces/isaac_ros-dev/ros_ws/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64/:$LD_LIBRARY_PATH"`
+    Starting with version 4.1.0 of the `isaac-ros-ess` code, the plugin architecture was changed to allow for custom plugins. This means you need to explicitly provide the path to the plugins for the models you’ve installed, even if they are the default ones provided by NVIDIA.
+    For the `dnn_stereo_disparity` models, installed as part of the `isaac-ros-ess-install-models` package, this looks like:
 
-Not setting this will cause the depth and occupancy_map generation steps to fail.
+    `export LD_LIBRARY_PATH="/workspaces/isaac_ros-dev/ros_ws/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64/:$LD_LIBRARY_PATH"`
+
+    Not setting this will cause the depth and occupancy_map generation steps to fail.
 
 When finished, you should see something like the output below:
 
@@ -405,16 +411,17 @@ Simply run the main demonstration launch file and see it in action!
 ros2 launch opennav_visual_nav_demo visual_nav_demo_launch.py
 ```
 
-#### NOTE
-This wraps the larger command:
+!!! note
 
-`ros2 launch nova_carter_bringup perceptor.launch.py use_foxglove_whitelist:=false stereo_camera_configuration:=front_left_right_configuration disable_vgl:=False vslam_load_map_folder_path:=$vslam_dir vgl_map_dir:=$vgl_dir occupancy_map_yaml_file:=$occupancy_map_path vslam_enable_slam:=True`
+    This wraps the larger command:
 
-Running this will require the user to attach to the container from a separate terminal and run:
+    `ros2 launch nova_carter_bringup perceptor.launch.py use_foxglove_whitelist:=false stereo_camera_configuration:=front_left_right_configuration disable_vgl:=False vslam_load_map_folder_path:=$vslam_dir vgl_map_dir:=$vgl_dir occupancy_map_yaml_file:=$occupancy_map_path vslam_enable_slam:=True`
 
-`ros2 launch nav2_bringup navigation_launch.py`
+    Running this will require the user to attach to the container from a separate terminal and run:
 
-to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default.
+    `ros2 launch nav2_bringup navigation_launch.py`
+
+    to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default.
 
 You should now see something like this in Foxglove Studio:
 

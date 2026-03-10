@@ -83,8 +83,9 @@ If you do not currently have a way to detect your dock, dock detection can be do
 Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
 The defaults support this out of the box, see `nova_carter_docking` for an example.
 
-#### NOTE
-It is important to note that you should provide detected dock poses, battery status information for charging, and motor controller efforts for the highest quality and reliable docking for production use.
+!!! note
+
+    It is important to note that you should provide detected dock poses, battery status information for charging, and motor controller efforts for the highest quality and reliable docking for production use.
 
 ## Dock Database
 
@@ -232,8 +233,9 @@ docking_server = Node(
 )
 ```
 
-#### NOTE
-The Docking Server is also a composible node like others in Nav2, so you may also launch it within the Nav2 process using `LoadComposableNodes/ComposableNode`.
+!!! note
+
+    The Docking Server is also a composible node like others in Nav2, so you may also launch it within the Nav2 process using `LoadComposableNodes/ComposableNode`.
 
 ## Docking Action API
 

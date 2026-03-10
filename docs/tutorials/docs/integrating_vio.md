@@ -26,8 +26,9 @@ Throughout this tutorial, we will be using the [Stereolabs](https://www.stereola
   </div>
 </h1>
 
-#### NOTE
-While we use the Stereolabs SDK and ZED X camera, this tutorial may be broadly used with other solutions. However, we recommend this option as an optimized solution that is tightly-coupling to the camera hardware and Jetson compute architecture for high performance and fast out-of-the-box results. It is Open Navigation’s experience that it can take months of testing of open-source VIO solutions and attempting to fix time synchronization issues with Stereo camera ROS drivers to achieve results of practical quality. This is very conveniently a one stop shop integrated solution.
+!!! note
+
+    While we use the Stereolabs SDK and ZED X camera, this tutorial may be broadly used with other solutions. However, we recommend this option as an optimized solution that is tightly-coupling to the camera hardware and Jetson compute architecture for high performance and fast out-of-the-box results. It is Open Navigation’s experience that it can take months of testing of open-source VIO solutions and attempting to fix time synchronization issues with Stereo camera ROS drivers to achieve results of practical quality. This is very conveniently a one stop shop integrated solution.
 
 ## Setting Up the ZED X Camera
 
@@ -91,8 +92,9 @@ Optionally, remap the zed `odom` topic to a topic that isn’t reserved or commo
 remappings=[('odom', 'camera_odom')]
 ```
 
-#### NOTE
-The ZED driver will publish two pose tracking topics, `pose` and `odom`. Pose is the full V-SLAM pose with loop closures (or not, if `area_memory: false`). The odom topic contains the actual VIO that we’d like to use, which publishes at frame capture rate. The Pose topic may publish at irregular frequencies depending on loop-closures. Thus, we’d like to use `odom` for this local fusion.
+!!! note
+
+    The ZED driver will publish two pose tracking topics, `pose` and `odom`. Pose is the full V-SLAM pose with loop closures (or not, if `area_memory: false`). The odom topic contains the actual VIO that we’d like to use, which publishes at frame capture rate. The Pose topic may publish at irregular frequencies depending on loop-closures. Thus, we’d like to use `odom` for this local fusion.
 
 ## Fusing VIO Into Local State Estimate
 
@@ -114,8 +116,9 @@ odom1_relative: true
 odom1_queue_size: 2
 ```
 
-#### NOTE
-We’re fusing in Roll, Pitch, and Yaw. If operating your EKF or ZED in 2D modes, then set the Roll and Pitch fields to `false`. If you believe jumps in your VIO may occur, consider using `odom1_pose_rejection_threshold` which sets a threshold to reject updates if sufficiently outlandish relative to recent updates. In this case, setting differential to true may also be helpful so that single bogus updates don’t move the entire coordinate system.
+!!! note
+
+    We’re fusing in Roll, Pitch, and Yaw. If operating your EKF or ZED in 2D modes, then set the Roll and Pitch fields to `false`. If you believe jumps in your VIO may occur, consider using `odom1_pose_rejection_threshold` which sets a threshold to reject updates if sufficiently outlandish relative to recent updates. In this case, setting differential to true may also be helpful so that single bogus updates don’t move the entire coordinate system.
 
 Make sure to evaluate your EKF’s `frequency`, `two_d_mode`, `publish_tf`, and key frames to be appropriate for your application. We generally want to publish TF and have 2D mode on when navigating in flat indoor environments only.
 
@@ -133,8 +136,9 @@ In the below example, we’re fusing the Stereolabs SDK’s Pose Tracking VIO so
 
 The Visual-Inertial Odometry’s error over these datasets is 4.1% over the 70m path. Typically for ‘good’ odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for ‘great’ odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to an acceptable level!
 
-#### NOTE
-Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions… yeah… lets go with that*.
+!!! note
+
+    Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions… yeah… lets go with that*.
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

@@ -21,9 +21,10 @@ Follow [https://www.qgis.org/en/site/forusers/download.html](https://www.qgis.or
 Open QGIS and create a new project by selecting Project->New. Save your project by selecting, Project -> Save As.
 Set the project coordinate reference system by selecting Project->Properties->CRS. Set the coordinate system to WGS 84 / Pseudo-Mercator and click OK.
 
-#### NOTE
-The WGS 84/ Pseudo-Mercator is one of few coordinate systems that could be used.
-For more information about coordinate reference systems please review [https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html](https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
+!!! note
+
+    The WGS 84/ Pseudo-Mercator is one of few coordinate systems that could be used.
+    For more information about coordinate reference systems please review [https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html](https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
 
 <figure markdown="span">
   ![image](../images/route_graph_generation/coordinate_reference_system.png){ height="800" }
@@ -100,11 +101,9 @@ Once complete, unselect ‘Toggle Editing’ and save changes.
   ![](../images/route_graph_generation/nodes.png){ width="800" }
 </figure>
 
-#### NOTE
-By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
-or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwritten by the user
-though the pop window after node placement or though the Attribute Table. To delete features in a layer right click on the layer and select Open Attribute Table.
-Click on Target Multi Edit Mode, select the features to delete, and click on the trash can icon.
+!!! note
+
+    By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwritten by the user though the pop window after node placement or though the Attribute Table. To delete features in a layer right click on the layer and select Open Attribute Table. Click on Target Multi Edit Mode, select the features to delete, and click on the trash can icon.
 
 ### 4- Add Edges
 

@@ -50,11 +50,13 @@ PolygonSlow:
   polygon_pub_topic: "polygon_slowdown"
 ```
 
-#### NOTE
-The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the [Collision Monitor](../../configuration/packages/configuring-collision-monitor.md#configuring-collision-monitor) configuration guide.
+!!! note
 
-#### NOTE
-Both polygon shapes in the tutorial were set statically. However, there is an ability to dynamically adjust them over time using topic messages containing vertices points for polygons or footprints. For more information, please refer to the configuration guide.
+    The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the [Collision Monitor](../../configuration/packages/configuring-collision-monitor.md#configuring-collision-monitor) configuration guide.
+
+!!! note
+
+    Both polygon shapes in the tutorial were set statically. However, there is an ability to dynamically adjust them over time using topic messages containing vertices points for polygons or footprints. For more information, please refer to the configuration guide.
 
 For the working configuration, at least one data source should be added.
 In current demonstration, it is used laser scanner (though `PointCloud2` and Range/Sonar/IR sensors are also possible), which is described by the following lines for Collision Monitor node:
@@ -161,11 +163,13 @@ VelocityPolygonStop:
     theta_max: 1.0
 ```
 
-#### NOTE
-It is recommended to include a `stopped` sub polygon as the last entry in the `velocity_polygons` list to cover the entire range of the robot’s velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
+!!! note
 
-#### NOTE
-When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.
+    It is recommended to include a `stopped` sub polygon as the last entry in the `velocity_polygons` list to cover the entire range of the robot’s velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
+
+!!! note
+
+    When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.
 
 **For holomic robots:**
 
@@ -323,8 +327,9 @@ ComposableNode(
 
 If you have changed Collision Monitor’s default `cmd_vel_in_topic` and `cmd_vel_out_topic` configuration, make sure Velocity Smoother’s default output topic `cmd_vel_smoothed` should match to the input velocity `cmd_vel_in_topic` parameter value of the Collision Monitor node, and the output velocity `cmd_vel_out_topic` parameter value should be actual `cmd_vel` to fit the replacement.
 
-#### NOTE
-As the Collision Monitor acts as a safety node, it must be the last link in the velocity message post-processing chain, making it the node that publishes to the `cmd_vel` topic. It could be placed after smoothed velocity, as in our demonstration, or after non-smoothed velocity from Controller Server, e.g. if Velocity Smoother was not enabled in the system, or going after any other module in custom configuration producing the end-velocity. Therefore, in any custom Nav2 launch configuration, the last node publishing to the `cmd_vel` topic, should be remapped to publish to the Collision Monitor input topic configured by `cmd_vel_in_topic` ROS-parameter (`cmd_vel_smoothed` by default).
+!!! note
+
+    As the Collision Monitor acts as a safety node, it must be the last link in the velocity message post-processing chain, making it the node that publishes to the `cmd_vel` topic. It could be placed after smoothed velocity, as in our demonstration, or after non-smoothed velocity from Controller Server, e.g. if Velocity Smoother was not enabled in the system, or going after any other module in custom configuration producing the end-velocity. Therefore, in any custom Nav2 launch configuration, the last node publishing to the `cmd_vel` topic, should be remapped to publish to the Collision Monitor input topic configured by `cmd_vel_in_topic` ROS-parameter (`cmd_vel_smoothed` by default).
 
 ## Demo Execution
 

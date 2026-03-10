@@ -33,8 +33,9 @@ You can also check/uncheck the Nodes visualization part in the preferences to be
   ![](images/Groot2/groot_preferences.png){ width="80%" }
 </figure>
 
-#### NOTE
-If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2’s BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
+!!! note
+
+    If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2’s BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
 
 ## Edit Behavior Trees
 

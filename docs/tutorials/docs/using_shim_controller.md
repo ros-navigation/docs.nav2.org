@@ -28,8 +28,9 @@ The `RotationShimController` is most suitable for:
 - Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.
 - Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A\* and State Lattice will start search from the robot’s actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints).
 
-#### NOTE
-Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See [Navigation Plugins](../../plugins/index.md#plugins) for a full list of current controller plugins.
+!!! note
+
+    Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See [Navigation Plugins](../../plugins/index.md#plugins) for a full list of current controller plugins.
 
 ## Configuring Rotation Shim Controller
 

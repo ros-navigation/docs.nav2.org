@@ -14,15 +14,17 @@ The controller server generates the appropriate control efforts needed for a rob
 
 As mentioned before, the planner and controller servers host a map of one or multiple plugins wherein a certain plugin will be used for a certain environment, scenario, or task. For instance, the controller server can have a plugin for following a path when in long corridors to stay in the middle of the aisle, and then another plugin for avoiding dynamic obstacles in a crowded place. Selecting which planning algorithm to execute based on the robot’s task can be done through the behavior tree of your navigation system or application server.
 
-#### SEE ALSO
-For a more in-depth discussion on Navigation Servers, we suggest to have a look at the [Navigation Servers](https://docs.nav2.org/concepts/index.html#navigation-servers) section under the Navigation Concepts category.
+!!! info "See also"
+
+    For a more in-depth discussion on Navigation Servers, we suggest to have a look at the [Navigation Servers](https://docs.nav2.org/concepts/index.html#navigation-servers) section under the Navigation Concepts category.
 
 ## Selecting the Algorithm Plugins
 
 In this section, we discuss some of the available algorithm plugins for the planner and controller servers. We also discuss the purpose of each algorithm, and for which type of robot they are recommended to be used. Lastly, we show some sample yaml configuration that specifies the plugin to be used for each server.
 
-#### NOTE
-The algorithm plugins you can use are not limited to the ones mentioned in this section. You may create custom plugins as well and new plugins are added to Nav2 regularly. For tutorials on how to write your own plugins, please see [Writing a New Planner Plugin](https://docs.nav2.org/plugin_tutorials/docs/writing_new_nav2planner_plugin.html)  and [Writing a New Controller Plugin](https://docs.nav2.org/plugin_tutorials/docs/writing_new_nav2controller_plugin.html). The list of all available Nav2 plugins and their descriptions can be found in [Navigation Plugins Section](https://docs.nav2.org/plugins/index.html).
+!!! note
+
+    The algorithm plugins you can use are not limited to the ones mentioned in this section. You may create custom plugins as well and new plugins are added to Nav2 regularly. For tutorials on how to write your own plugins, please see [Writing a New Planner Plugin](https://docs.nav2.org/plugin_tutorials/docs/writing_new_nav2planner_plugin.html)  and [Writing a New Controller Plugin](https://docs.nav2.org/plugin_tutorials/docs/writing_new_nav2controller_plugin.html). The list of all available Nav2 plugins and their descriptions can be found in [Navigation Plugins Section](https://docs.nav2.org/plugins/index.html).
 
 ### Planner Server
 
@@ -94,8 +96,9 @@ controller_server:
 
 Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the `controller_plugins` parameter. Similar to the planner server, each namespace defined in the `controller_plugins` (`FollowPath` in our example) must define the type of plugin it will use in the `plugin` parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the [Configuration Guide](https://docs.nav2.org/configuration/index.html) for more details.
 
-#### NOTE
-The planner and controller servers, along with the other servers of Nav2, are launched in ROS 2 through lifecycle nodes. Lifecycle nodes allow for easier bringup and teardown of the servers. Lifecycle node management will be discussed in the next tutorial.
+!!! note
+
+    The planner and controller servers, along with the other servers of Nav2, are launched in ROS 2 through lifecycle nodes. Lifecycle nodes allow for easier bringup and teardown of the servers. Lifecycle node management will be discussed in the next tutorial.
 
 ## Conclusion
 

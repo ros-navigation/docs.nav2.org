@@ -59,19 +59,21 @@ local_costmap:
         enabled: True
 ```
 
-#### NOTE
-The key to success in filtering noise is to understand its type and choose the right `DenoiseLayer` parameters.
-The default parameters are focused on fast removal of standalone obstacles.
-More formally, an obstacle is discarded if there are no obstacles among the adjacent eight cells.
-This should be sufficient in typical cases.
+!!! note
 
-If some sensor generates intercorrelated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
-To configure the `DenoiseLayer` to such cases and understand how it works, refer to the section [How it works]().
+    The key to success in filtering noise is to understand its type and choose the right `DenoiseLayer` parameters.
+    The default parameters are focused on fast removal of standalone obstacles.
+    More formally, an obstacle is discarded if there are no obstacles among the adjacent eight cells.
+    This should be sufficient in typical cases.
 
-#### WARNING
-Use this plugin to filter the global costmap with caution. It introduces potential performance issues.
-For example in case of typically-high-range lidars (20+ meters) update window can be massive making processing time unacceptably long.
-It is worth taking this into account as an application designer.
+    If some sensor generates intercorrelated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
+    To configure the `DenoiseLayer` to such cases and understand how it works, refer to the section [How it works]().
+
+!!! warning
+
+    Use this plugin to filter the global costmap with caution. It introduces potential performance issues.
+    For example in case of typically-high-range lidars (20+ meters) update window can be massive making processing time unacceptably long.
+    It is worth taking this into account as an application designer.
 
 ### 2. Run Nav2 stack
 

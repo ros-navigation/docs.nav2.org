@@ -49,10 +49,11 @@ If this merges without issue, you may proceed.
 If not, we either must resolve the conflicts or roll back the commit.
 We may need to roll it back if the merge conflict is too complex or it relies on a cascading chain of other commits that could not be included due to their dependency on commits that were unable to be backported.
 
-#### NOTE
-Some commits may already have been backported by Mergify.
-Use the git logs for the `<distro>` branch to check if the commit has already been backported.
-If it has been, it can be skipped.
+!!! note
+
+    Some commits may already have been backported by Mergify.
+    Use the git logs for the `<distro>` branch to check if the commit has already been backported.
+    If it has been, it can be skipped.
 
 Once all commits to the present are evaluated, we can proceed to the next step.
 

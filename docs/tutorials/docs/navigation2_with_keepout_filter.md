@@ -42,8 +42,9 @@ The incoming mask file is being read by the Map Server and converted into `Occup
 
 where `free_thresh` and `occupied_thresh` thresholds are expressed in percentage of maximum lightness/darkness level (`255`). Map mode and thresholds are placed in YAML metadata file (see below) as `mode`, `free_thresh` and `occupied_thresh` fields.
 
-#### NOTE
-There is another parameter in a YAML metadata file called `negate`. By default it is set to `false`. When it is set to `true`, blacker pixels will be considered as free, whiter pixels - as occupied. In this case we should count color lightness instead of darkness for `trinary` and `scale` modes. `negate` has no effect on `raw` mode.
+!!! note
+
+    There is another parameter in a YAML metadata file called `negate`. By default it is set to `false`. When it is set to `true`, blacker pixels will be considered as free, whiter pixels - as occupied. In this case we should count color lightness instead of darkness for `trinary` and `scale` modes. `negate` has no effect on `raw` mode.
 
 For Keepout Filter `OccupancyGrid` value is proportional to the passibility of area corresponding to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. `KeepoutFilter` can also act as a “weighted areas layer” by setting the `OccupancyGrid` to something between `[1-99]` non-occupied values. Robot is allowed to move in these areas, however its presence there would be “undesirable” there (the higher the value, the sooner planners will try to get the robot out of this area).
 
@@ -65,11 +66,13 @@ image: depot_keepout.pgm
 
 Since filter mask image was created as a copy of main map, other fields of YAML-file do not need to be changed. Save `depot_keepout.yaml` and new filter mask is ready to use.
 
-#### NOTE
-World map itself and filter mask could have different sizes, origin and resolution which might be useful e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times (like annotating a keepout zone for same shape rooms in the hotel). For this case, you need to correct `resolution` and `origin` fields in YAML as well so that the filter mask is correctly laid on top of the original map.
+!!! note
 
-#### NOTE
-Another important note is that since Costmap2D does not support orientation, the last third “yaw” component of the `origin` vector should be equal to zero. For example: `origin: [1.25, -5.18, 0.0]`.
+    World map itself and filter mask could have different sizes, origin and resolution which might be useful e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times (like annotating a keepout zone for same shape rooms in the hotel). For this case, you need to correct `resolution` and `origin` fields in YAML as well so that the filter mask is correctly laid on top of the original map.
+
+!!! note
+
+    Another important note is that since Costmap2D does not support orientation, the last third “yaw” component of the `origin` vector should be equal to zero. For example: `origin: [1.25, -5.18, 0.0]`.
 
 ### 2. Configure Costmap Filter Info Publisher Server
 
@@ -354,8 +357,9 @@ local_costmap:
         filter_info_topic: "keepout_costmap_filter_info""
 ```
 
-#### NOTE
-All costmap filters should be enabled through a `filters` parameter – though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the inflation layer.
+!!! note
+
+    All costmap filters should be enabled through a `filters` parameter – though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the inflation layer.
 
 ### 4. Run Nav2 stack
 
@@ -369,8 +373,9 @@ And check that filter is working properly as in the pictures below
 
 ![](images/Navigation2_with_Keepout_Filter/keepout_global.png){ height="400px" }
 
-#### NOTE
-For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)
+!!! note
+
+    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

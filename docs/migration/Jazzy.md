@@ -115,8 +115,9 @@ Here we can see the working demo of the plugin:
 
 ![](images/docking_panel.gif)
 
-#### ATTENTION
-If the docking server is unavailable, then the combo box of the dock type will be empty.
+!!! warning "Attention"
+
+    If the docking server is unavailable, then the combo box of the dock type will be empty.
 
 ## BT Nodes Changes
 
@@ -143,8 +144,9 @@ Working demo of the tool:
 
 ![](images/rviz_costmap_cost_tool.gif)
 
-#### ATTENTION
-If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.
+!!! warning "Attention"
+
+    If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.
 
 ## Fix flickering visualization
 
@@ -428,8 +430,9 @@ In [PR #5065](https://github.com/ros-navigation/navigation2/pull/5065) , BT navi
 
 Because live monitoring of Behavior Tree with more than 20 nodes and visualizing the content of the blackboard is a PRO (paid) feature of Groot 2. This feature is disabled by default.
 
-#### NOTE
-Currently, there is a known bug that crashes Groot 2 when visualizing vectors and related types (e.g., `Goals` and `Path`) contained in the blackboard. Efforts are underway to resolve this issue. For updates, please refer to the following links: [Groot2 issue #55](https://github.com/BehaviorTree/Groot2/issues/55) and [BehaviorTree PR #958](https://github.com/BehaviorTree/BehaviorTree.CPP/pull/958).
+!!! note
+
+    Currently, there is a known bug that crashes Groot 2 when visualizing vectors and related types (e.g., `Goals` and `Path`) contained in the blackboard. Efforts are underway to resolve this issue. For updates, please refer to the following links: [Groot2 issue #55](https://github.com/BehaviorTree/Groot2/issues/55) and [BehaviorTree PR #958](https://github.com/BehaviorTree/BehaviorTree.CPP/pull/958).
 
 ## Docking backwards as plugin parameter
 

@@ -6,11 +6,11 @@ Both the `slam_toolbox` and `nav2_amcl` use information from the laser scan sens
 
 In-depth discussions on the complete configuration parameters will not be a scope of our tutorials since they can be pretty complex. Instead, we recommend you to have a look at their official documentation in the links below.
 
-#### SEE ALSO
-For the complete list of configuration parameters of `slam_toolbox`, see the [Github repository of slam_toolbox](https://github.com/SteveMacenski/slam_toolbox#readme).
-<br/>
-For the complete list of configuration parameters and example configuration of `nav2_amcl`, see the [AMCL Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-amcl.html).
-<br/>
+!!! info "See also"
+
+    For the complete list of configuration parameters of `slam_toolbox`, see the [Github repository of slam_toolbox](https://github.com/SteveMacenski/slam_toolbox#readme).
+
+    For the complete list of configuration parameters and example configuration of `nav2_amcl`, see the [AMCL Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-amcl.html).
 
 You can also refer to the [(SLAM) Navigating While Mapping guide](https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html) for the tutorial on how to use Nav2 with SLAM. You can verify that `slam_toolbox` and `nav2_amcl` have been correctly setup by visualizing the map and the robot’s pose in RViz, similar to what was shown in the previous section.
 
@@ -131,8 +131,9 @@ For the voxel layer (lines 51-66), we set the `publish_voxel_map` parameter to `
 
 Note that the we are not using a range layer for our configuration but it may be useful for your own robot setup. For the range layer, its basic parameters are the `topics`, `input_sensor_type`, and `clear_on_max_reading` parameters. The range topics to subscribe to are defined in the `topics` parameter. The `input_sensor_type` is set to either `ALL`, `VARIABLE`, or `FIXED`. The `clear_on_max_reading` is a boolean parameter that sets whether to clear the sensor readings on max range.  Have a look at the configuration guide in the link below in case you need to set it up.
 
-#### SEE ALSO
-For more information on `nav2_costmap_2d` and the complete list of layer plugin parameters, see the [Costmap 2D Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-costmaps.html).
+!!! info "See also"
+
+    For more information on `nav2_costmap_2d` and the complete list of layer plugin parameters, see the [Costmap 2D Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-costmaps.html).
 
 ### Build, Run and Verification
 
@@ -207,12 +208,13 @@ Note that the parameters of the `nav2_costmap_2d` that we discussed in the previ
 
 After we have properly set up and launched Nav2, the `/global_costmap` and `/local_costmap` topics should now be active.
 
-#### NOTE
-To make the costmaps show up, run the 3 commands in this order
+!!! note
 
-1. Launching Description Nodes, RViz and Gazebo - wait a bit for everything to launch
-2. Launching slam_toolbox - in logs wait for “Registering sensor”
-3. Launching Nav2 - in logs wait for “Creating bond timer”
+    To make the costmaps show up, run the 3 commands in this order:
+
+    1. Launching Description Nodes, RViz and Gazebo - wait a bit for everything to launch
+    2. Launching slam_toolbox - in logs wait for “Registering sensor”
+    3. Launching Nav2 - in logs wait for “Creating bond timer”
 
 #### Visualizing Costmaps in RViz
 

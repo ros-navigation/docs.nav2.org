@@ -185,10 +185,11 @@ Alternatively, if you server of interest is being launched in these files direct
 - Launch the parent launch file in a terminal
 - Launch the server’s node in another terminal following the instructions in [From a Node]().
 
-#### NOTE
-Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using `--ros-args` you can give it the path to the new parameters file, remaps, or names. See [this ROS 2 tutorial](https://docs.ros.org/en/rolling/Guides/Node-arguments.html) for the commandline arguments required.
+!!! note
 
-We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be `--ros-args -r __node:=<node_name> --params-file /absolute/path/to/params.yaml` (as a template).
+    Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using `--ros-args` you can give it the path to the new parameters file, remaps, or names. See [this ROS 2 tutorial](https://docs.ros.org/en/rolling/Guides/Node-arguments.html) for the commandline arguments required.
+
+    We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be `--ros-args -r __node:=<node_name> --params-file /absolute/path/to/params.yaml` (as a template).
 
 Once your server crashes, you’ll see a prompt like below in the specific server’s terminal. At this point you can now get a backtrace.
 
@@ -213,8 +214,9 @@ To debug directly from the nav2 bringup launch files you may want to do the foll
 - Recompile the package of interest with `-g` flag for debug symbols.
 - Launch normally with `ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False`. A separate xterm window will open with the process of interest running in gdb.
 
-#### NOTE
-Turning off composition has serious performance impacts. If this is important to you please follow “From Large Project”.
+!!! note
+
+    Turning off composition has serious performance impacts. If this is important to you please follow “From Large Project”.
 
 Once your server crashes, you’ll see a prompt like below in the xterm window. At this point you can now get a backtrace.
 

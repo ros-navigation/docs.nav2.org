@@ -110,8 +110,9 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 
 ## Default Plugins
 
-#### NOTE
-In Iron and older versions, “/” was used instead of “::”.
+!!! note
+
+    In Iron and older versions, “/” was used instead of “::”.
 
 When the `behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 

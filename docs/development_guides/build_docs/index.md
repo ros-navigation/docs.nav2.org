@@ -38,20 +38,26 @@ There are a few ways to build Nav2 using:
 * Docker Container Images
   * Build Nav2 using cached images and templated Dockerfiles
 
+!!! tip
+
+    For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using [Dev Containers](../devcontainer_docs/index.md)!
+
 ### Released Distribution Binaries
 
 To build Nav2, you’ll first need to build or install ROS 2 and related development tools, including: `colcon`, `rosdep` and `vcstool`.
 
-#### SEE ALSO
-For more information on building or installing ROS 2 distros, see the official documentation:
+!!! info "See also"
 
-* [ROS 2 Installation](https://docs.ros.org/en/rolling/Installation.html)
-* [Install development tools and ROS tools](https://docs.ros.org/en/rolling/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools)
+    For more information on building or installing ROS 2 distros, see the official documentation:
+
+    - [ROS 2 Installation](https://docs.ros.org/en/rolling/Installation.html)
+    - [Install development tools and ROS tools](https://docs.ros.org/en/rolling/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools)
 
 Once your environment is setup, clone the repo, install all dependencies, and build the workspace:
 
-#### ATTENTION
-The branch naming schema for Nav2 is organized by ROS distro, while the default branch for Rolling is `main`.
+!!! warning "Attention"
+
+    The branch naming schema for Nav2 is organized by ROS distro, while the default branch for Rolling is `main`.
 
 ```bash
 source /opt/ros/<distro>/setup.bash
@@ -66,18 +72,20 @@ colcon build \
 
 You can then `source ~/nav2_ws/install/setup.bash` to get ready for demonstrations!
 
-#### HINT
-For more examples on building Nav2 from released distribution binaries, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile).
+!!! tip "Hint"
+
+    For more examples on building Nav2 from released distribution binaries, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile).
 
 ### Rolling Development Source
 
 Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
 Nav2 does not currently release binaries on rolling, so it must be build from source.
 
-#### SEE ALSO
-For more information on building ROS 2 from source, see the official documentation:
+!!! info "See also"
 
-* [ROS 2 Building from source](https://docs.ros.org/en/rolling/Installation.html#building-from-source)
+    For more information on building ROS 2 from source, see the official documentation:
+
+    - [ROS 2 Building from source](https://docs.ros.org/en/rolling/Installation.html#building-from-source)
 
 Once your environment is setup, clone the repo and build the workspace:
 
@@ -93,34 +101,36 @@ colcon build \
   --symlink-install
 ```
 
-#### NOTE
-Since rolling development source tracks the latest upstream ROS 2 branches, builds may occasionally fail due to ABI/API breaking changes being actively developed in ROS 2 core packages.
-If you encounter build failures, consider using the [Released Distribution Binaries](#build-instructions) approach instead or submit the patch to Nav2.
+!!! note
+
+    Since rolling development source tracks the latest upstream ROS 2 branches, builds may occasionally fail due to ABI/API breaking changes being actively developed in ROS 2 core packages. If you encounter build failures, consider using the [Released Distribution Binaries](#build-instructions) approach instead or submit the patch to Nav2.
 
 You can then `source ~/nav2_ws/install/setup.bash` to get ready for demonstrations! It is safe
 to ignore the rosdep error of from the missing `slam_toolbox` key.
 
-#### HINT
-If you are using `rmw_zenoh_cpp` and want to run tests without a Zenoh router,
-you can enable isolated tests by building with:
+!!! tip "Hint"
 
-```bash
-colcon build --symlink-install \
-  --cmake-args -DUSE_ISOLATED_TESTS=ON
-```
+    If you are using `rmw_zenoh_cpp` and want to run tests without a Zenoh router, you can enable isolated tests by building with:
 
-#### HINT
-For more examples on building Nav2 from rolling development source, checkout [source.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile).
+    ```bash
+    colcon build --symlink-install \
+    --cmake-args -DUSE_ISOLATED_TESTS=ON
+    ```
+
+!!! tip "Hint"
+
+    For more examples on building Nav2 from rolling development source, checkout [source.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile).
 
 ### Docker Container Images
 
 Building Nav2 using Docker container images provides a repeatable and reproducible environment to automate and self document the entire setup process. Instead of manually invoking the development tools as documented above, you can leverage the project’s Dockerfiles to build and install Nav2 for various distributions.
 
-#### SEE ALSO
-For more information on installing Docker or leaning about Dockerfiles, see the official documentation:
+!!! info "See also"
 
-* [Docker Engine](https://docs.docker.com/engine/install)
-* [Dockerfile reference](https://docs.docker.com/engine/reference/builder)
+    For more information on installing Docker or leaning about Dockerfiles, see the official documentation:
+
+    - [Docker Engine](https://docs.docker.com/engine/install)
+    - [Dockerfile reference](https://docs.docker.com/engine/reference/builder)
 
 Once your system is setup, you can build the Nav2 Dockerfile from the root of the repo:
 
@@ -135,6 +145,10 @@ docker build --tag navigation2:$ROS_DISTRO \
 ```
 
 The [docker build](https://docs.docker.com/engine/reference/commandline/build/) command above creates a tagged image using the Dockerfile from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of [colcon mixins](https://github.com/colcon/colcon-mixin-repository) to configure the workspace build. Check the `ARG` directives in the Dockerfile to discover all build-time variables available. The command also specifies an [external cache source](https://docs.docker.com/engine/reference/commandline/build/#cache-from) to pull the latest cached image from Nav2’s [Container Registry](https://github.com/ros-navigation/navigation2/pkgs/container/navigation2) to speed up the build process.
+
+!!! tip
+
+    The images cached from above are used for Nav2 CI, but can also be used with Nav2 [Dev Containers](../devcontainer_docs/index.md)!
 
 ### Using Pre-built nav2_docker Images
 

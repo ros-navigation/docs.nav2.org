@@ -14,8 +14,9 @@ Examples of commonly used sensors are lidar, radar, RGB camera, depth camera, IM
 
 Aside from the `sensor_msgs` package, there are also the `radar_msgs` and `vision_msgs` standard interfaces you should be aware of.  The `radar_msgs` defines the messages for radar-specific sensors while the `vision_msgs` package defines the messages used in computer vision such as object detection, segmentation, and other machine learning models. Messages supported by this package are `vision_msgs/Classification2D`, `vision_msgs/Classification3D`, `vision_msgs/Detection2D`, and `vision_msgs/Detection3D`, to name a few.
 
-#### SEE ALSO
-For more information, see the API documentation of [sensor_msgs](http://wiki.ros.org/sensor_msgs), [radar_msgs](http://wiki.ros.org/radar_msgs), and [vision_msgs](http://wiki.ros.org/vision_msgs).
+!!! info "See also"
+
+    For more information, see the API documentation of [sensor_msgs](http://wiki.ros.org/sensor_msgs), [radar_msgs](http://wiki.ros.org/radar_msgs), and [vision_msgs](http://wiki.ros.org/vision_msgs).
 
 Your physical robot’s sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the `sensor_msgs` package. The `sensor_msgs` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as `sam_bot`, Gazebo has sensor plugins which also publish their information following the `sensor_msgs` package.
 
@@ -23,8 +24,9 @@ Your physical robot’s sensors probably have ROS drivers written for them (e.g.
 
 In this subsection, we discuss some of the common types of `sensor_msgs` you might encounter when setting up Nav2. We will provide a brief description for each sensor, an image of it being simulated in Gazebo and the corresponding visualization of the sensor readings in RViz.
 
-#### NOTE
-There are other types of `sensor_msgs` aside from the ones listed below.  The complete list of messages and their definitions can be found in the [sensor_msgs documentation](http://wiki.ros.org/sensor_msgs).
+!!! note
+
+    There are other types of `sensor_msgs` aside from the ones listed below.  The complete list of messages and their definitions can be found in the [sensor_msgs documentation](http://wiki.ros.org/sensor_msgs).
 
 #### sensor_msgs/LaserScan
 

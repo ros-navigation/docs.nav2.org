@@ -27,10 +27,9 @@ To learn more about Supervisor Pro, [please contact 3Laws Robotics](https://3law
   ![](images/3laws_supervisor/graphics/3LawsStack.svg){ title="3Laws Robotics Stack" }
 </figure>
 
-#### NOTE
-Disclosure: This tutorial is sponsored by 3Laws Robotics in partnership with Open Navigation.
-The contents of this tutorial and demonstrations were written and performed by the Open Navigation team.
-The opinions and thoughts shared are honest reflections of our independent assessment.
+!!! note
+
+    Disclosure: This tutorial is sponsored by 3Laws Robotics in partnership with Open Navigation. The contents of this tutorial and demonstrations were written and performed by the Open Navigation team. The opinions and thoughts shared are honest reflections of our independent assessment.
 
 ## Concepts
 
@@ -63,10 +62,11 @@ It is also very good for teleoperation tasks either joysticking locally or via r
   ![](images/3laws_supervisor/graphics/Nav2Diagram_3laws.png){ title="Nav2 and 3Laws Supervisor Integration Diagram" }
 </figure>
 
-#### NOTE
-Supervisor should be paired with some global replanning and/or obstacle-avoiding trajectory planner is so that the Supervisor is not at odds with the trajectory planner, making it unable to route around obstacles and instead stops the robot. For example, if using Pure Pursuit to follow the path accurately with no global replanning, as the Supervisor deviates from the path, the algorithm will attempt to steer the robot back on the path into the obstacle. In such a case, the command’s velocity ‘intent’ to move forward along the path is now replaced with driving into the obstacle to correct for the tracking error, creating a conflict with the Supervisor’s attempt to avoid the obstacle. Thus, some kind of global replanning to avoid obstacles and/or use of a collision-avoiding trajectory planner like MPPI or DWB is recommended.
+!!! note
 
-This, however, is not an issue with teleoperations since the teleoperation command will not adjust to track a path.
+    Supervisor should be paired with some global replanning and/or obstacle-avoiding trajectory planner is so that the Supervisor is not at odds with the trajectory planner, making it unable to route around obstacles and instead stops the robot. For example, if using Pure Pursuit to follow the path accurately with no global replanning, as the Supervisor deviates from the path, the algorithm will attempt to steer the robot back on the path into the obstacle. In such a case, the command’s velocity ‘intent’ to move forward along the path is now replaced with driving into the obstacle to correct for the tracking error, creating a conflict with the Supervisor’s attempt to avoid the obstacle. Thus, some kind of global replanning to avoid obstacles and/or use of a collision-avoiding trajectory planner like MPPI or DWB is recommended.
+
+    This, however, is not an issue with teleoperations since the teleoperation command will not adjust to track a path.
 
 If you wish to learn more about the technology behind the Supervisor, checkout the [3Laws Knowledge Base](https://docs.3laws.io/en/latest/sources/knowledge.html) page.
 
@@ -116,16 +116,17 @@ ros2 launch lll_supervisor supervisor.launch.py  # If you want it to run automat
 bash
 ```
 
-#### NOTE
-When launching Supervisor for the first time (whether inside a docker container or not), you may see the error below. It is indicating that the Supervisor ROS node has not been configured yet and thus cannot start. As we’re going to configure it next, this is fine and the backend control panel is still running. After configuration if using Docker, the container would need to be restarted to run the Supervisor node with the newly set configuration.
+!!! note
 
-```bash
-[supervisor-1] [2025-07-23 17:44:48.878] [error] bad file: /home/3laws/.3laws/config/supervisor.yaml
-[supervisor-1] [2025-07-23 17:44:48.913] [critical] Exception thrown during 3laws Supervisor initialization
-[supervisor-1] [2025-07-23 17:44:48.913] [info] Stopping 3laws Supervisor...
-[supervisor-1] [2025-07-23 17:44:48.913] [info] 3laws Supervisor stopped!
-[ERROR] [supervisor-1]: process has died [pid 56, exit code 1, cmd '/opt/ros/humble/lib/lll_supervisor/supervisor --ros-args --disable-stdout-logs --ros-args --params-file /tmp/launch_params_g1f3o7xg'].
-```
+    When launching Supervisor for the first time (whether inside a docker container or not), you may see the error below. It is indicating that the Supervisor ROS node has not been configured yet and thus cannot start. As we’re going to configure it next, this is fine and the backend control panel is still running. After configuration if using Docker, the container would need to be restarted to run the Supervisor node with the newly set configuration.
+
+    ```bash
+    [supervisor-1] [2025-07-23 17:44:48.878] [error] bad file: /home/3laws/.3laws/config/supervisor.yaml
+    [supervisor-1] [2025-07-23 17:44:48.913] [critical] Exception thrown during 3laws Supervisor initialization
+    [supervisor-1] [2025-07-23 17:44:48.913] [info] Stopping 3laws Supervisor...
+    [supervisor-1] [2025-07-23 17:44:48.913] [info] 3laws Supervisor stopped!
+    [ERROR] [supervisor-1]: process has died [pid 56, exit code 1, cmd '/opt/ros/humble/lib/lll_supervisor/supervisor --ros-args --disable-stdout-logs --ros-args --params-file /tmp/launch_params_g1f3o7xg'].
+    ```
 
 <figure markdown="span">
   ![](images/3laws_supervisor/graphics/page1.png){ title="Supervisor Control Panel Page 1" }
@@ -179,8 +180,9 @@ There are additional advanced settings that may be configured, including:
 * Re-timestamping incoming messages to add a current timestamp when a message is received without a properly implemented timestamp.
 * Parameters related to port remapping for the supervisor and control panel. It is not recommended to change these unless you have a specific need to do so.
 
-#### NOTE
-For safest operations, re-timestamping messages should be disabled and all messages in a system should be validated to be properly timestamped. For getting started, restamping all incoming messages would be OK if you are not confident in your system’s timestamping or wish to use simulation time.
+!!! note
+
+    For safest operations, re-timestamping messages should be disabled and all messages in a system should be validated to be properly timestamped. For getting started, restamping all incoming messages would be OK if you are not confident in your system’s timestamping or wish to use simulation time.
 
 Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration and hit “Next” to proceed to the next page.
 
@@ -312,8 +314,9 @@ Thus, change the Motion planning output signal to `/cmd_vel_smoothed` for consum
 If you do not wish to use the Nav2 Collision Monitor and the Supervisor, you may replace `cmd_vel_supervised` simply with `/cmd_vel`.
 Select the Create Mask button and create a mask with `vx_cmd=0` & `wz_cmd=2`.
 
-#### NOTE
-Pro Tip: If you set up your robot system to continuously publish Zeros on the Nav2 output, Supervisor can continue to avoid collisions while its stopped based on obstacles coming near it!
+!!! note
+
+    Pro Tip: If you set up your robot system to continuously publish Zeros on the Nav2 output, Supervisor can continue to avoid collisions while its stopped based on obstacles coming near it!
 
 Update the signal rate to be the same as the Nav2 controller update rate.
 Similar to the localization parameters, the mask does not need to be modified if using standard `geometry_msgs/TwistStamped` messages.

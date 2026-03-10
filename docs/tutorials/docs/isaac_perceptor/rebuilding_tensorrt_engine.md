@@ -20,12 +20,13 @@ Error Code 6: API Usage Error (The engine plan file is not compatible with this 
 
 Rebuild engines inside the container using `trtexec` compiled against the container’s TensorRT version with “full” runtime optimization.
 
-#### NOTE
-We will see why “full” is important later, although sneak-peek: it has to do with resolving the error message:
+!!! note
 
-```default
-Error Code 4: API Usage Error (Cannot deserialize engine with lean runtime...
-```
+    We will see why “full” is important later, although sneak-peek: it has to do with resolving the error message:
+
+    ```default
+    Error Code 4: API Usage Error (Cannot deserialize engine with lean runtime...
+    ```
 
 ## Step-by-Step Resolution
 

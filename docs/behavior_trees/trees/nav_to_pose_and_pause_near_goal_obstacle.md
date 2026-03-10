@@ -1,7 +1,8 @@
 # Navigate To Pose and Pause Near Goal-Obstacle
 
-#### NOTE
-As a prerequisite, we encourage the users to go through the [Behavior Tree documentation](https://behaviortree.github.io/BehaviorTree.CPP/), which explains about different behaviors nodes used in these trees such as `ReactiveSequence`, `SequenceWithMemory` and `RetryUntilSuccessful`.
+!!! note
+
+    As a prerequisite, we encourage the users to go through the [Behavior Tree documentation](https://behaviortree.github.io/BehaviorTree.CPP/), which explains about different behaviors nodes used in these trees such as `ReactiveSequence`, `SequenceWithMemory` and `RetryUntilSuccessful`.
 
 This behavior tree is a soft extension to the [Navigate To Pose](nav_to_pose_recovery.md#behavior-tree-nav-to-pose).
 Apart from the functionalities of [Navigate To Pose](nav_to_pose_recovery.md#behavior-tree-nav-to-pose), this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacles) close to the goal by pausing the robot’s navigation and wait for a user-specified time to check if the obstacle has cleared.

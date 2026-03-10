@@ -4,8 +4,9 @@
 
 For this guide, we will be creating the SDF (Simulation Description Format) file for a simple differential drive robot to give you hands-on experience on building an SDF file for Gazebo simulation.
 
-#### SEE ALSO
-The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+!!! info "See also"
+
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## About SDF
 
@@ -27,8 +28,9 @@ sudo apt install ros-$ROS_DISTRO-sdformat-urdf
 
 This package contains a C++ library and urdf_parser_plugin for converting SDFormat XML into URDF C++ structures. Installing it allows one to use SDFormat XML instead of URDF XML as a robot description.
 
-#### SEE ALSO
-If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official [SDFormat Website](http://sdformat.org/) and the [sdformat_urdf GitHub repository](https://github.com/ros/sdformat_urdf/tree/rolling/sdformat_urdf)
+!!! info "See also"
+
+    If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official [SDFormat Website](http://sdformat.org/) and the [sdformat_urdf GitHub repository](https://github.com/ros/sdformat_urdf/tree/rolling/sdformat_urdf)
 
 ## Writing the SDF
 
@@ -237,8 +239,9 @@ source install/setup.bash
 ros2 launch sam_bot_description display.launch.py
 ```
 
-#### NOTE
-You may get a warning like `[kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia. As a workaround, you can add an extra dummy link to your URDF.` This warning can be safely ignored as it is just a quirk of the conversion from SDF to URDF.
+!!! note
+
+    You may get a warning like `[kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia. As a workaround, you can add an extra dummy link to your URDF.` This warning can be safely ignored as it is just a quirk of the conversion from SDF to URDF.
 
 <figure markdown="span">
   ![](../urdf/images/base-bot_3.png)

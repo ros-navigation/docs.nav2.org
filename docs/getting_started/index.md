@@ -5,14 +5,13 @@
 This document will take you through the process of installing the Nav2 binaries
 and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 
-#### NOTE
-See the [Build and Install](../development_guides/build_docs/index.md#build-instructions) for other situations such as building from source or
-working with other types of robots.
+!!! note
 
-#### WARNING
-This is a simplified version of the Turtlebot 3 instructions. We highly
-recommend you follow the [official Turtlebot 3 manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/) if you intend to
-continue working with this robot beyond the minimal example provided here.
+    See the [Build and Install](../development_guides/build_docs/index.md#build-instructions) for other situations such as building from source or working with other types of robots.
+
+!!! warning
+
+    This is a simplified version of the Turtlebot 3 instructions. We highly recommend you follow the [official Turtlebot 3 manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/) if you intend to continue working with this robot beyond the minimal example provided here.
 
 ## Installation
 
@@ -57,8 +56,9 @@ For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
    ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
    ```
 
-    #### NOTE
-   `headless` defaults to true; if not set to false, gzclient (the 3d view) is not started.
+    !!! note
+
+        `headless` defaults to true; if not set to false, gzclient (the 3d view) is not started.
 
     This launch file will launch Nav2 with the AMCL localizer in the
     simulation world.

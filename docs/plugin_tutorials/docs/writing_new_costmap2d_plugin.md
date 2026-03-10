@@ -160,8 +160,9 @@ nav2_gradient_costmap_plugin:
 
 At the next step it is required to tell Costmap2D about new plugin. For that the plugin should be added to `plugin_names` and `plugin_types` lists in `nav2_params.yaml` optionally for `local_costmap`/`global_costmap` in order to be enabled in run-time for Controller/Planner Server. `plugin_names` list contains the names of plugin objects. These names could be anything you want. `plugin_types` contains types of listed in `plugin_names` objects. These types should correspond to `name` field of plugin class specified in plugin description XML-file.
 
-#### NOTE
-For Galactic or later, `plugin_names` and `plugin_types` have been replaced with a single `plugins` string vector for plugin names. The types are now defined in the `plugin_name` namespace in the `plugin:` field (e.g. `plugin: MyPlugin::Plugin`). Inline comments in the code blocks will help guide you through this.
+!!! note
+
+    For Galactic or later, `plugin_names` and `plugin_types` have been replaced with a single `plugins` string vector for plugin names. The types are now defined in the `plugin_name` namespace in the `plugin:` field (e.g. `plugin: MyPlugin::Plugin`). Inline comments in the code blocks will help guide you through this.
 
 For example:
 
@@ -208,8 +209,9 @@ gradient_layer_2:
   ...
 ```
 
-#### NOTE
-The order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
+!!! note
+
+    The order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
 
 ### 4- Run GradientLayer plugin
 

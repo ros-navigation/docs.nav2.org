@@ -55,10 +55,9 @@ The data may be obtained from different data sources:
 - IR/Sonars (`sensor_msgs::msg::Range` messages)
 - Costmap (`nav2_msgs::msg::Costmap` messages)
 
-#### WARNING
-**⚠️ when using CostmapSource**
-Collision Monitor normally **bypasses the costmap** to minimize reaction latency using fresh sensor data.
-Use at your own caution or when using external costmap sources from derived sources.
+!!! warning
+
+    **⚠️ when using CostmapSource** Collision Monitor normally **bypasses the costmap** to minimize reaction latency using fresh sensor data. Use at your own caution or when using external costmap sources from derived sources.
 
 ## Parameters
 

@@ -4,9 +4,10 @@
 
 This is the instructions for releasing a new Nav2 version for a ROS distribution release.
 
-#### NOTE
-We require `osrf/ros:<distro>-desktop-full` images to exist for a distribution before this process may be completed.
-This usually means we wait until the release date to perform Nav2’s release and have it included in the first distribution sync.
+!!! note
+
+    We require `osrf/ros:<distro>-desktop-full` images to exist for a distribution before this process may be completed. 
+    This usually means we wait until the release date to perform Nav2’s release and have it included in the first distribution sync.
 
 ## 0. Initial Freeze
 

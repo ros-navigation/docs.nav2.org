@@ -6,8 +6,9 @@ Next, we will show how to setup odometry with two different cases.
 In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders.
 In the second case, we will build a demo that simulates a functioning odometry system on `sam_bot` (the robot that we built in the previous section) using Gazebo.
 
-#### SEE ALSO
-The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/humble/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+!!! info "See also"
+
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/humble/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## Odometry Introduction
 
@@ -54,8 +55,9 @@ The `right_wheel_est_vel` and `left_wheel_est_vel` are the estimated velocities 
 
 An alternative to manually publishing this information that we recommend is through the `ros2_control` framework. The `ros2_control` framework contains various packages for real-time control of robots in ROS 2. For wheel encoders, `ros2_control` has a `diff_drive_controller` (differential drive controller) under the `ros2_controller` package. The `diff_drive_controller` takes in the `geometry_msgs/Twist` messages published on `cmd_vel` topic, computes odometry information, and publishes `nav_msgs/Odometry` messages on `odom` topic. Other packages that deal with different kind of sensors are also available in `ros2_control`.
 
-#### SEE ALSO
-For more information, see the [ros2_control documentation](https://ros-controls.github.io/control.ros.org/) and the [Github repository of diff_drive_controller](https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/).
+!!! info "See also"
+
+    For more information, see the [ros2_control documentation](https://ros-controls.github.io/control.ros.org/) and the [Github repository of diff_drive_controller](https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/).
 
 For other types of sensors such as IMU, VIO, etc, their respective ROS drivers should have documentation on how publish the odometry information. Keep in mind that Nav2 requires the `nav_msgs/Odometry` message and `odom` => `base_link` transforms to be published and this should be your goal when setting up your odometry system.
 
@@ -63,8 +65,9 @@ For other types of sensors such as IMU, VIO, etc, their respective ROS drivers s
 
 In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/humble/sam_bot_description/).
 
-#### NOTE
-If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth `odom` => `base_link` transformation.
+!!! note
+
+    If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth `odom` => `base_link` transformation.
 
 As an overview for this section, we will first setup Gazebo and the necessary packages required to make it work with ROS 2. Next, we will be adding Gazebo plugins, which simulate an IMU sensor and a differential drive odometry system, in order to publish `sensor_msgs/Imu` and `nav_msgs/Odometry` messages respectively. Lastly, we will spawn `sam_bot` in a Gazebo environment and verify the published `sensor_msgs/Imu` and `nav_msgs/Odometry` messages over ROS 2.
 
@@ -88,8 +91,9 @@ You can test if you have successfully set up your ROS 2 and Gazebo environments 
 
 Note that we described `sam_bot` using URDF. However, Gazebo uses [Simulation Description Format (SDF)](http://sdformat.org/) to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an `<inertia>` element within each `<link>` element. This requirement is already satisfied in the URDF file of `sam_bot`, so it can already be used in Gazebo.
 
-#### SEE ALSO
-For more information on how to use URDF in Gazebo, see [Tutorial: Using a URDF in Gazebo](http://classic.gazebosim.org/tutorials/?tut=ros_urdf).
+!!! info "See also"
+
+    For more information on how to use URDF in Gazebo, see [Tutorial: Using a URDF in Gazebo](http://classic.gazebosim.org/tutorials/?tut=ros_urdf).
 
 ### Adding Gazebo Plugins to a URDF
 
