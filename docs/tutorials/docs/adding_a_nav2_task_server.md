@@ -56,7 +56,7 @@ Two other parameters of the Lifecycle Manager are `autostart` and `bond_timeout`
 
 !!! note
 
-    More information on Lifecycle Manager parameters can be found in the [Configuration Guide of Lifecycle Manager](https://docs.nav2.org/configuration/packages/configuring-lifecycle.html)
+    More information on Lifecycle Manager parameters can be found in the [Configuration Guide of Lifecycle Manager](/configuration/packages/configuring-lifecycle.md)
 
 ## Composition
 

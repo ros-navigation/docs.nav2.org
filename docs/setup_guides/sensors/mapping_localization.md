@@ -10,9 +10,9 @@ In-depth discussions on the complete configuration parameters will not be a scop
 
     For the complete list of configuration parameters of `slam_toolbox`, see the [Github repository of slam_toolbox](https://github.com/SteveMacenski/slam_toolbox#readme).
 
-    For the complete list of configuration parameters and example configuration of `nav2_amcl`, see the [AMCL Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-amcl.html).
+    For the complete list of configuration parameters and example configuration of `nav2_amcl`, see the [AMCL Configuration Guide](/configuration/packages/configuring-amcl.md).
 
-You can also refer to the [(SLAM) Navigating While Mapping guide](https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html) for the tutorial on how to use Nav2 with SLAM. You can verify that `slam_toolbox` and `nav2_amcl` have been correctly setup by visualizing the map and the robot’s pose in RViz, similar to what was shown in the previous section.
+You can also refer to the [(SLAM) Navigating While Mapping guide](/tutorials/docs/navigation2_with_slam.md) for the tutorial on how to use Nav2 with SLAM. You can verify that `slam_toolbox` and `nav2_amcl` have been correctly setup by visualizing the map and the robot’s pose in RViz, similar to what was shown in the previous section.
 
 ## Costmap 2D
 
@@ -133,7 +133,7 @@ Note that the we are not using a range layer for our configuration but it may be
 
 !!! info "See also"
 
-    For more information on `nav2_costmap_2d` and the complete list of layer plugin parameters, see the [Costmap 2D Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-costmaps.html).
+    For more information on `nav2_costmap_2d` and the complete list of layer plugin parameters, see the [Costmap 2D Configuration Guide](/configuration/packages/configuring-costmaps.md).
 
 ### Build, Run and Verification
 

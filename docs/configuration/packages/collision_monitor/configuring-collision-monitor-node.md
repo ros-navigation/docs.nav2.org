@@ -69,7 +69,7 @@ The data may be obtained from different data sources:
   Description:
   : Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then.
     Please note that is not a dynamic parameter, there’s `/toggle` service interface
-    and [BT Node](https://docs.nav2.org/configuration/packages/bt-plugins/actions/ToggleCollisionMonitor.html) to update this state later at runtime.
+    and [BT Node](../bt-plugins/actions/ToggleCollisionMonitor.md) to update this state later at runtime.
 * **base_frame_id:**
   | Type   | Default          |
   |--------|------------------|

@@ -56,7 +56,7 @@ This represents the sensor readings from RGB or depth camera, corresponding to R
 
 To give you a better grasp of how to set up sensors on a simulated robot, we will build up on our previous tutorials and attach sensors to our simulated robot `sam_bot`. Similar to the previous tutorial where we used Gazebo plugins to add odometry sensors to `sam_bot`, we will be using the Gazebo plugins to simulate a lidar sensor and a depth camera on `sam_bot`. If you are working with a real robot, most of these steps are still required for setting up your URDF frames and it will not hurt to also add in the gazebo plugins for later use.
 
-To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the [Setup and Prerequisites](https://docs.nav2.org/setup_guides/odom/setup_odom_gz_classic.html#setup-and-prerequisites) of the previous tutorial to setup Gazebo.
+To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the [Setup and Prerequisites](/setup_guides/odom/setup_odom_gz_classic.md#setup-and-prerequisites) of the previous tutorial to setup Gazebo.
 
 ### Adding Gazebo Plugins to a URDF
 

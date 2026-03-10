@@ -60,7 +60,7 @@ In order to run the demonstration in the warehouse map, you can set the `MAP_TYP
   <figcaption>Turtlebot4 moving from the 0th node to the 61th node in the warehouse map.</figcaption>
 </figure>
 
-For more information on how to configure the start and goal nodes, or the supported maps, please refer to the [Configuration Guide](https://docs.nav2.org/configuration/packages/configuring-route-server.html) page.
+For more information on how to configure the start and goal nodes, or the supported maps, please refer to the [Configuration Guide](/configuration/packages/configuring-route-server.md) page.
 
 <!-- These are replacement strings for non-ASCII characters used within the project
 using the same name as the html entity names (e.g., &copy;) for that character -->

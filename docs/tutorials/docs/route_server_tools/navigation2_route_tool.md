@@ -20,7 +20,7 @@ By the end of this tutorial, you should feel comfortable creating and modifying 
 ## Prerequisites
 
 Prior to using the route tool, you will need to create an occupancy grid map using the slam_toolbox package.
-Follow [this tutorial](https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html) for instructions on how to generate and save an occupancy grid map.
+Follow [this tutorial](/tutorials/docs/navigation2_with_slam.md) for instructions on how to generate and save an occupancy grid map.
 
 ## Tutorial Steps
 
