@@ -66,6 +66,12 @@ validation:
     absolute_links: relative_to_docs
     anchors: warn
     unrecognized_links: warn
+  nav:
+    omitted_files: warn
+    absolute_links: warn
+
+not_in_nav: |
+  2021summerOfCode
 
 nav:
   - index.md
