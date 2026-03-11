@@ -26,6 +26,3 @@ In nav2, the RecoveryNode is included in Behavior Trees to implement recovery ac
     <!--Add tree components here--->
 </RecoveryNode>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -103,6 +103,3 @@ Shown above is a sample basic configuration of the controller server. The list o
 ## Conclusion
 
 In this tutorial, we have discussed the roles and configuration of Nav2’s planner and controller servers. To summarize, these servers host a map of one or more algorithm plugins which are selected depending on your robot’s structure and surroundings. We also described a few of the available plugins for the planner and controller servers to help you identify which plugins are suitable for your robot. Lastly, we also provided some simple configuration examples to show how these plugins are instantiated on the servers. You can refer to the configuration guide of the algorithm plugin you will select for more details on its configuration parameters.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

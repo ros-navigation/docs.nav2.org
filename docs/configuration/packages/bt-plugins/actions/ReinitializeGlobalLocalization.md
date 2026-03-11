@@ -26,6 +26,3 @@ Used to trigger global relocalization using AMCL in case of severe delocalizatio
 ```xml
 <ReinitializeGlobalLocalization service_name="reinitialize_global_localization"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

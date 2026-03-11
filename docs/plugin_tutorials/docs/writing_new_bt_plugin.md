@@ -286,6 +286,3 @@ For more information on custom type conversion, you can refer to the [json_utils
 !!! note
 
     All custom types used in Nav2 are already registered in the json_utils.hpp file. You can use them directly without the need to register them again.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

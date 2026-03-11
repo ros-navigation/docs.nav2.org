@@ -126,6 +126,3 @@ Once you define the target pose,  Nav2 will find a global path and start navigat
 </figure>
 
 Now, you can see that Turtlebot 3 moves towards the goal position in the room. See the video below.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

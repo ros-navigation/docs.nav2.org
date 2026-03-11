@@ -121,6 +121,3 @@ By making a contribution to this project, I certify that:
     consistent with this project or the open source license(s)
     involved.
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

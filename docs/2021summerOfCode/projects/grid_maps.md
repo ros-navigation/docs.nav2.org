@@ -38,6 +38,3 @@ This will involve porting code from ROS 1 to ROS 2, analyzing uses of the enviro
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
 - No other CLA’s are required.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

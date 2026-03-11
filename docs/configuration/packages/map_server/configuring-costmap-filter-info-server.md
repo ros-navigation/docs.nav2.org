@@ -87,6 +87,3 @@ costmap_filter_info_server:
     base: 0.0
     multiplier: 0.25
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

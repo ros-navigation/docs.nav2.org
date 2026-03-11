@@ -433,6 +433,3 @@ This tutorial discussed the usage of a GPS sensor for global localization using 
 The tutorial should be a good starting point for setting up autonomous navigation using Nav2 on an outdoors robot, however users should keep in mind that GPS is just a means for providing global localization to the stack, and that all cartesian tools in Nav2 are still available for going past the GPS waypoint follower and building custom autonomy applications according to each use case.
 
 Happy outdoors navigating!
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

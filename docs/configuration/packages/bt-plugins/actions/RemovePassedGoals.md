@@ -58,6 +58,3 @@ This is used to cull goal points that have been passed from `ComputePathThroughP
 ```xml
 <RemovePassedGoals radius="0.6" input_goals="{goals}" output_goals="{goals}" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

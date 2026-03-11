@@ -470,6 +470,3 @@ For now, we will have to stop here since we will need to set up a lot more compo
 And that’s it. In this tutorial, you have successfully created a URDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your URDF to publish the robot’s transforms. We have also used RViz to visualize our robot to verify whether our URDF is correct. Lastly, we have added in some physical properties to our URDF in order to prepare it for simulation.
 
 Feel free to use this tutorial as a template for your own robot. Remember that your main goal is to publish the correct transforms from your base_link up to your sensor_frames. Once these have been setup, then you may proceed to our other setup guides.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

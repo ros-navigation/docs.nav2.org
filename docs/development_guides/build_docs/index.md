@@ -184,6 +184,3 @@ The documentation entrypoint in a browser is index.html.
 ## Help
 
 [Build Troubleshooting Guide](build_troubleshooting_guide.md#build-troubleshooting-guide)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

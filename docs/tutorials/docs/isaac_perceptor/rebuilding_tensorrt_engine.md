@@ -114,6 +114,3 @@ If Perceptor reads in the new .engine files successfully, you should see output 
 ```
 
 As the .engine models are used by multiple nodes, such as `dnn_stereo_disparity` and `nvblox`, a successful Perceptor run will result in a LOT of console output, but eventually quiet down and stay running.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

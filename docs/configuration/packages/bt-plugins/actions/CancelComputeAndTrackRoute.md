@@ -26,6 +26,3 @@ Used to cancel the compute and track route action that is part of the behavior s
 ```xml
 <CancelComputeAndTrackRoute server_name="compute_and_track_route" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

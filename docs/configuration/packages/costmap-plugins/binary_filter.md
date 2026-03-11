@@ -74,6 +74,3 @@ global_costmap:
       binary_state_topic: "/binary_state"
       flip_threshold: 50.0
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

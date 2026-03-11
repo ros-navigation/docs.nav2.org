@@ -80,6 +80,3 @@ This costmap layer implements a plugin that processes sonar, IR, or other 1-D se
 
   Description
   : Input sensor type is either ALL (automatic selection), VARIABLE (min range != max range), or FIXED (min range == max range).
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

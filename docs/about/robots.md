@@ -39,5 +39,3 @@ Click on the images below for a link to the drivers or navigation configurations
 
 | [![Waratah from Monash Nova Rocer](images/waratah.png){ width="340" style="object-fit:contain" title="Waratah from Monash Nova Rocer" }](https://www.novarover.space/)   | [![walking](images/walking.png){ width="340" style="object-fit:contain" title="walking" }](https://www.aztrobotics.com/walking-y2.html)   | [![Coming Soon](images/soon.png){ width="340" style="object-fit:contain" title="Coming Soon" }](https://www.youtube.com/watch?v=oHg5SJYRHA0)   |
 |-----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -235,6 +235,3 @@ For tutorials on creating your own plugins, please see [Writing a New Costmap2D 
 ### Graph File Parsers
 
 Currently, only `geojson` parsing is supported.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

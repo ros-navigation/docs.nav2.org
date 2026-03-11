@@ -40,6 +40,3 @@ Checks if the robot is within determined tracking error bounds during path follo
 ```xml
 <IsWithinPathTrackingBounds max_error_left="0.5" max_error_right="0.5" max_error_heading="3.14" tracking_feedback="{tracking_feedback}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -102,6 +102,3 @@ For a detailed description of the role of the selector nodes, recovery behaviors
   </BehaviorTree>
 </root>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

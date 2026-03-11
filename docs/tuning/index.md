@@ -190,6 +190,3 @@ If you have additional findings, please feel free to open a PR to share them, we
 ## Other Pages We’d Love To Offer
 
 If you are willing to chip in, some ideas are in [https://github.com/ros-navigation/docs.nav2.org/issues/204](https://github.com/ros-navigation/docs.nav2.org/issues/204), but we’d be open to anything you think would be insightful!
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

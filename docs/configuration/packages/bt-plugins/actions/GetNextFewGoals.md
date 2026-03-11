@@ -36,6 +36,3 @@ Extracts only the next `N` goals from a list of goals to send to a later task th
 ```xml
 <GetNextFewGoals num_goals="3" input_goals="{goal_poses}" output_goals="{planning_goals}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

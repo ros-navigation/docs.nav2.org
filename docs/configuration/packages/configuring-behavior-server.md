@@ -329,6 +329,3 @@ behavior_server:
     rotational_acc_lim: 3.2
     enable_stamped_cmd_vel: true  # default false in Jazzy or older
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

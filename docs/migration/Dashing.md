@@ -51,6 +51,3 @@ Prior to Eloquent, there were no ROS 2 action servers and clients available.
 Navigation2, rather, used an interface we called Tasks.
 Eloquent now contains actions and a simple action server interface was created and is used now throughout the stack.
 Tasks were removed.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

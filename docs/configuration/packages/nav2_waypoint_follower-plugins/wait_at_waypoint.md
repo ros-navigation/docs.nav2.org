@@ -22,6 +22,3 @@ Lets robot to pause for a specified amount of time after reaching each waypoints
 
   Description
   : Amount of time in milliseconds, for robot to sleep/wait after each waypoint is reached. If zero, robot will directly continue to next waypoint.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

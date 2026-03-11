@@ -14,6 +14,3 @@ The nodes listed below are inside the `nav2_collision_monitor` package. See the 
 
 * [Collision Monitor Node](collision_monitor/configuring-collision-monitor-node.md)
 * [Collision Detector Node](collision_monitor/configuring-collision-detector-node.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

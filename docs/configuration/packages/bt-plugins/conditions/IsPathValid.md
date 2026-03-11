@@ -107,6 +107,3 @@ Checking a specific costmap layer:
   check_full_path="true"
   collision_poses="{collision_poses}" />
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

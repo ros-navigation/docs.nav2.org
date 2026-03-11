@@ -48,6 +48,3 @@
   | bool   | false     |
     Description
     : Whether to limit velocity command in trajectory using sampled velocity instead of the commanded velocity.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -175,6 +175,3 @@ error_code_name_prefixes:
 ## Conclusion
 
 In this section of the guide, we have discussed Lifecycle Nodes, Composition and Error Codes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle Nodes, Composition and Error Codes to your newly created nodes/servers with Nav2. These three concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

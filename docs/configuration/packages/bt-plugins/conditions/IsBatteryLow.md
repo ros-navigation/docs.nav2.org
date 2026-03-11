@@ -35,6 +35,3 @@ Returns SUCCESS when battery percentage/voltage is lower than the specified valu
 ```xml
 <IsBatteryLow min_battery="0.5" battery_topic="/battery_status" is_voltage="false"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

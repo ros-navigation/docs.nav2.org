@@ -206,6 +206,3 @@ More information about `Denoise Layer` plugin and how it works could be found [h
 ## SmacPlannerHybrid viz_expansions parameter
 
 [PR #3577](https://github.com/ros-navigation/navigation2/pull/3577) adds a new parameter for visualising SmacPlannerHybrid expansions for debug purpose.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

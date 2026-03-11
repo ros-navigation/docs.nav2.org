@@ -27,6 +27,3 @@ The timer will reset if the path gets updated.
 ```xml
 <PathExpiringTimer seconds="15" path="{path}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

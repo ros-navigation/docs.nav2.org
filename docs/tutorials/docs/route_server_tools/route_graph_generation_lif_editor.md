@@ -121,6 +121,3 @@ Click the **‘Save’** button on the top bar and select **‘Export LIF’**.
 To edit, reopen the LIF file in the VDA LIF Editor and make your changes. You can also re-export the LIF file as GeoJSON.
 
 **Happy Routing!**
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

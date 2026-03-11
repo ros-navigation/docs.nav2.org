@@ -26,6 +26,3 @@ Used to cancel the spin action that is part of the behavior server. The server a
 ```xml
 <CancelSpin server_name="Spin" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

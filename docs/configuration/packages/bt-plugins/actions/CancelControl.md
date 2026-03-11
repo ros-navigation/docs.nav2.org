@@ -26,6 +26,3 @@ Used to cancel the goals given to the controllers’ action server. The server a
 ```xml
 <CancelControl server_name="FollowPath" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

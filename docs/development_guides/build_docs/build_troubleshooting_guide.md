@@ -20,6 +20,3 @@ Still can’t solve it? Let us know about your issue. [Open a ticket](https://gi
 ## Reporting Issue
 
 - If you run into any issues when building Navigation2, you can use the search tool in the issues tab on [GitHub](https://github.com/ros-navigation/navigation2/issues) and always feel free to [open a ticket](https://github.com/ros-navigation/navigation2/issues/new).
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

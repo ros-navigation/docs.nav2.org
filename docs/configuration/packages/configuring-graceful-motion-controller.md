@@ -184,6 +184,3 @@ controller_server:
       v_angular_min_in_place: 0.25
       slowdown_radius: 1.5
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

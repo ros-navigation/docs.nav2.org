@@ -52,6 +52,3 @@ It is used to undock the robot from a docking station.
 ```xml
 <UndockRobot dock_type="{dock_type}" error_code_id={undock_error_code} error_msg={undock_error_msg}/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

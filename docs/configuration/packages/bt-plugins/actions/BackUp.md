@@ -76,6 +76,3 @@ This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors m
 <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"
         error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

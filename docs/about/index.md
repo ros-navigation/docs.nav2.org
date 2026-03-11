@@ -51,6 +51,3 @@ If your inquiry relates to configuration support or private feature development,
 independent consultants or contractors that know this project well.
 
 Check out the Navigation 2 [Slack](https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA) community.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

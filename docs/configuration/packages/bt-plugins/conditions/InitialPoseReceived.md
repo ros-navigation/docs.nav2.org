@@ -20,6 +20,3 @@ Node that returns success when the initial pose is sent to AMCL via /initial_pos
 ```xml
 <InitialPoseReceived/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

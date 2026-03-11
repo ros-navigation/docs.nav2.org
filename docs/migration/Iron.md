@@ -334,6 +334,3 @@ The following is an example of how to use ClearCostmapAroundPose in a behavior t
   </RecoveryNode>
 </RateController>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

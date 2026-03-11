@@ -156,6 +156,3 @@ planner_server:
         w_data: 0.2
         tolerance: 1.0e-10
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

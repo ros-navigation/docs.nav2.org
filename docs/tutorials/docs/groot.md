@@ -95,6 +95,3 @@ You can see more examples in [Nav2’s BT Node Palette XML](https://github.com/r
     </TreeNodesModel>
 </root>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -37,6 +37,3 @@ May be useful to add in the final task goal pose to a list of goals extracted fr
 ```xml
 <AppendGoalPoseToGoals goal_pose="{goal}" input_goals="{goal_poses}" output_goals="{goal_poses}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

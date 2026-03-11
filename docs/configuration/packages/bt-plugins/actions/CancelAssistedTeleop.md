@@ -26,6 +26,3 @@ Used to cancel the AssistedTeleop action that is part of the behavior server. Th
 ```xml
 <CancelAssistedTeleop server_name="assisted_teleop" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

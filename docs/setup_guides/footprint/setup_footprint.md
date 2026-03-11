@@ -110,6 +110,3 @@ Set the fixed frame in RViz to `map` and you should see the circular footprint o
 In this guide, we have shown how to configure a circular and polygon-shaped footprint for your robot. This footprint is important since it plays a major role in Nav2’s pathfinding algorithms function.
 
 As a demo, we have configured the costmap footprint parameters of  `sam_bot`. We set the local costmap to use a polygon-shaped footprint following `sam_bot`’s shape while we set the the global costmap to use a circular footprint. Lastly, we visualized and confirmed the footprints of the local and global costmaps in RViz.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

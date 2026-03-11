@@ -12,5 +12,3 @@ This is a community maintained list of related repositories and projects to Navi
 | [navigation2_dynamic](https://github.com/ros-navigation/navigation2_dynamic)     | Steve Macenski | Tools, algorithms, and<br/>capabilities for working with<br/>dynamic obstacles in ROS 2      |
 | [robot_localization](https://github.com/cra-ros-pkg/robot_localization)          | Tom Moore      | State estimation software for<br/>ROS 2 used for odometry fusion<br/>and GPS transformations |
 | [slam_toolbox](https://github.com/SteveMacenski/slam_toolbox)                    | Steve Macenski | Default 2D SLAM library                                                                      |
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

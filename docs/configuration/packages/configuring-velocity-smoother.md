@@ -147,6 +147,3 @@ velocity_smoother:
     enable_stamped_cmd_vel: false
     stamp_smoothed_velocity_with_smoothing_time: false  # ONLY IN JAZZY
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

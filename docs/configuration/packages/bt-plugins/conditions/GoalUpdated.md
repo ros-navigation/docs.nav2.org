@@ -27,6 +27,3 @@ Returns failure if the goal is the same, if it changes, it returns success.
 ```xml
 <GoalUpdated/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

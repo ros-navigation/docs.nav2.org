@@ -38,6 +38,3 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 ```xml
 <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="precise_progress_checker" topic_name="progress_checker_selector"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

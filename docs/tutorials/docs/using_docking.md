@@ -369,6 +369,3 @@ If you wish to call `DockRobot` from inside your Nav2 BT, you must roughly pre-s
 However, you can always call `UndockRobot` from any behavior tree!
 
 Happy docking!
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

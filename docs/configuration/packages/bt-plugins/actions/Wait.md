@@ -52,6 +52,3 @@ This action is used in nav2 Behavior Trees as a recovery behavior.
 <Wait wait_duration="1.0" server_name="wait_server" server_timeout="10"
       error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

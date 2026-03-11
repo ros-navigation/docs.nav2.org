@@ -57,6 +57,3 @@ The [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav
 <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"
                 error_code_id="{assisted_teleop_error_code}" error_msg="{assisted_teleop_error_msg}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

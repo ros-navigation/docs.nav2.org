@@ -592,6 +592,3 @@ collision_monitor:
     #   enabled: True
     #   treat_unknown_as_obstacle: True
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

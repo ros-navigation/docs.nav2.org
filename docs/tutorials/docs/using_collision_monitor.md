@@ -354,5 +354,3 @@ Set the initial pose and then put Nav2 goal on map.
 The robot will start its movement, slowing down while running near the obstacles, and stopping in close proximity to them:
 
 ![](images/Collision_Monitor/collision.png){ width="800px" }
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

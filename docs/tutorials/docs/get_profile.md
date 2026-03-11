@@ -128,6 +128,3 @@ If you select the top level entry on the left sidebar, then select “Call Graph
 <figure markdown="span">
   ![](images/call_graph.png){ width="700px" }
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

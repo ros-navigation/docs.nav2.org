@@ -201,6 +201,3 @@ smoother_server:
         fn_tol: 1.0e-15
         param_tol: 1.0e-20
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

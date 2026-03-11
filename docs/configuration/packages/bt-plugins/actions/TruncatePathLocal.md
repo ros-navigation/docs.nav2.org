@@ -78,6 +78,3 @@ A custom control node, which modifies a path making it shorter. It removes parts
 ```xml
 <TruncatePathLocal input_path="{path}" output_path="{path_local}" distance_forward="3.5" distance_backward="2.0" robot_frame="base_link"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

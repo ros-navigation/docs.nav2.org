@@ -310,6 +310,3 @@ When the ON_PAUSE and ON_RESUME branches fail, the controller will return failur
     </RetryUntilSuccessful>
 </PauseResumeController>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

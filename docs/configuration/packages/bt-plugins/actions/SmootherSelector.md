@@ -38,6 +38,3 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 ```xml
 <SmootherSelector selected_smoother="{selected_smoother}" default_smoother="SimpleSmoother" topic_name="smoother_selector"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

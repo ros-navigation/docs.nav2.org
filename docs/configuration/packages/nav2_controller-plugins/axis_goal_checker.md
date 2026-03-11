@@ -38,6 +38,3 @@ Unlike simple distance-based goal checkers, the AxisGoalChecker allows independe
   | bool   | false     |
     Description
     : Whether to allow overshooting past the goal along the path direction. When false (default), uses `fabs(projected_distance) < along_path_tolerance` for symmetric tolerance. When true, uses `projected_distance < along_path_tolerance`, allowing the robot to be any distance past the goal but still requiring it to be within tolerance if before the goal.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

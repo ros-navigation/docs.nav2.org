@@ -36,6 +36,3 @@ Gets a pose from a particular index on the path. Use `-1` to get the last pose, 
 ```xml
 <GetPoseFromPath path="{path}" index="-1" pose="{goal}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

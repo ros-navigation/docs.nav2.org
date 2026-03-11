@@ -109,5 +109,3 @@ controller_server:
     <iframe width="708" height="400" src="https://www.youtube.com/embed/t-g2CBGByEw?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

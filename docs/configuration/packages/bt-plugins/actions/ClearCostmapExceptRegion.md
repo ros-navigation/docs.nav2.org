@@ -33,6 +33,3 @@ Action to call a costmap clearing except region server.
 ```xml
 <ClearCostmapExceptRegion name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_except_local_costmap"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

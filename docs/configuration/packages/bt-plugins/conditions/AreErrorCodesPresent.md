@@ -36,6 +36,3 @@ Error codes to check are defined to be 101, 107 and 119.
 ```xml
 <AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="101;107;119"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -144,6 +144,3 @@ This will open a calibration window which highlight the checkerboard.
 `tar -xvf calibration.tar.gz`
 
 11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

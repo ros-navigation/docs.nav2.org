@@ -327,6 +327,3 @@ $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_p
 Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on the map as it was described in [Getting Started](../../getting_started/index.md#getting-started).
 The robot will localize on the map and then click on the “Nav2 goal” and click on the pose where you want your robot to navigate to.
 After that navigator will take over with the behavior tree XML file behavior definition provided to it.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

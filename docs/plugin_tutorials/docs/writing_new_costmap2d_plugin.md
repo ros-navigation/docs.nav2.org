@@ -227,6 +227,3 @@ Then goto RViz and click on the “2D Pose Estimate” button at the top and poi
 <figure markdown="span">
   ![](images/Writing_new_Costmap2D_plugin/gradient_layer_run.png){ width="700px" title="Image of gradient costmap used" }
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

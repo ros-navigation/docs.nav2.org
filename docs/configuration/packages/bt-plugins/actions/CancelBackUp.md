@@ -26,6 +26,3 @@ Used to cancel the backup action that is part of the behavior server. The server
 ```xml
 <CancelBackUp server_name="BackUp" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

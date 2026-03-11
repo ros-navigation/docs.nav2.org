@@ -40,6 +40,3 @@ Checks if two poses are nearby. If the input poses are in different frames, it w
 ```xml
 <ArePosesNear ref_pose="{init_pose}" target_pose="{goal_pose}" tolerance="0.10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

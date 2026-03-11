@@ -33,6 +33,3 @@ Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor o
 ```xml
 <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -25,6 +25,3 @@ used to adjust the rate at which the `ComputePathToPose` and `GoalReached` nodes
     <!--Add tree components here--->
 </RateController>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

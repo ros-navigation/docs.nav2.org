@@ -214,6 +214,3 @@ $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_p
 ```
 
 Then goto RViz and click on the “2D Pose Estimate” button at the top and point to the location on map as it was described in [Getting Started](../../getting_started/index.md#getting-started). Robot will localize on the map and then click on “Navigation2 goal” and click on the pose where you want your planner to consider a goal pose. After that planner will plan the path and robot will start moving towards the goal.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

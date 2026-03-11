@@ -48,6 +48,3 @@ This tree contains:
 - No use of other types of planners, like complete coverage (where useful)
 
 All of this, and more, can be set and configured for your customized navigation logic in Nav2.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

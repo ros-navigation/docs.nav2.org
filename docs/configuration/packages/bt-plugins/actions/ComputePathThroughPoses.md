@@ -79,6 +79,3 @@ The server address can be remapped using the `server_name` input port.
 ```xml
 <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="ComputePathThroughPoses" server_timeout="10" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

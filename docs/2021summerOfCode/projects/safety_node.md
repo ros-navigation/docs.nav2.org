@@ -44,6 +44,3 @@ This will be an excellent chance to make mobile robots and Nav2 users significan
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
 - No other CLA’s are required.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

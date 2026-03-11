@@ -72,6 +72,3 @@ This may be used to cull goal points passed from `ComputePathThroughPoses` to av
 ```xml
 <RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}" />
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

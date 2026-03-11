@@ -29,6 +29,3 @@ Nav2 Tutorials
 * [Navigating with Vector Objects](docs/navigation2_with_vector_objects.md)
 * [ROSCon UK 2025: State Estimation for Mobile Robotics Workshop](docs/roscon_uk_2025_state_estimation.md)
 * [Enhanced Safety for Nav2 using 3Laws Supervisor](docs/using_3laws_supervisor.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

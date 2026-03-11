@@ -115,6 +115,3 @@ In this tutorial, we have discussed about the concept of transforms and how they
 In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on [Setting Up The URDF](../urdf/setup_urdf.md#urdf-handson).
 
 Lastly, we also discussed the three published transform requirements of Nav2 and the necessary REPs to keep in mind when setting them up.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

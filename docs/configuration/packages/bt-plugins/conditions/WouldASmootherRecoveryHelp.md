@@ -21,6 +21,3 @@ If the active error code is a match, the node returns `SUCCESS`. Otherwise, it r
 ```xml
 <WouldASmootherRecoveryHelp error_code="{smoother_error_code}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -28,6 +28,3 @@ Checks if the global navigation goal, or a vector of goals, has changed in the b
   <!--Add tree components here--->
 </GoalUpdatedController>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -48,6 +48,3 @@ the best navigation performance.
 * [Coverage Server](packages/configuring-coverage-server.md)
 * [Following Server](packages/configuring-following-server.md)
 * [Loopback Simulator](packages/configuring-loopback-sim.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

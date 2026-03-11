@@ -80,6 +80,3 @@ PathHandler:
     minimum_rotation_angle: 0.785
     reject_unit_path: False
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

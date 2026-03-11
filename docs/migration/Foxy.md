@@ -269,6 +269,3 @@ This feature was introduced in this [pull request 2338](https://github.com/ros-n
 <figure markdown="span">
   ![](/images/rviz/panel-feedback.gif){ width="600px" title="Navigation feedback in RViz." }
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

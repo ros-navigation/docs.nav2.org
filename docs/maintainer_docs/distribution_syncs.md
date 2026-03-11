@@ -89,6 +89,3 @@ Let CI run and merge once passes for a second independent validation of compilat
 Once the PR is merged, we can release the changes to the distribution.
 Create a release of the same version as the `package.xml` files targeting the `<distro>` branch.
 Then, follow [Steve’s Bloom Release Guide](https://gist.github.com/SteveMacenski/1c321d1c9edca096ae4d763d8327c2ee) to perform the bloom release.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

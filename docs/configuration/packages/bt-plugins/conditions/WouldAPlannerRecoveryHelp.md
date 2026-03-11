@@ -21,6 +21,3 @@ If the active error code is a match, the node returns `SUCCESS`. Otherwise, it r
 ```xml
 <WouldAPlannerRecoveryHelp error_code="{compute_path_to_pose_error_code}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

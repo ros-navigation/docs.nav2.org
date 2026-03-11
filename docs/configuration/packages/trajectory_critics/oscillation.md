@@ -40,6 +40,3 @@ Prevents the robot from just moving backwards and forwards.
   | double |         1 |
     Description
     : Weighed scale for critic.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

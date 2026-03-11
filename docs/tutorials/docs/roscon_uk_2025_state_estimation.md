@@ -55,6 +55,3 @@ Both approaches have their strengths.
 The workshop provides practical experience with both methods, enabling you to choose the right approach for your specific robotics application.
 
 Check out the full workshop materials in the repository: [https://github.com/locusrobotics/roscon-uk-2025-se-workshop](https://github.com/locusrobotics/roscon-uk-2025-se-workshop)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

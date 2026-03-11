@@ -225,6 +225,3 @@ At time 9.842000000
 ### Conclusion
 
 In this guide we have discussed how multiple odometry sensors can be used to provide a filtered and smoothed odometry using `robot_localization`. We have also checked if the `odom` => `base_link` transform is being published correctly by `robot_localization`.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

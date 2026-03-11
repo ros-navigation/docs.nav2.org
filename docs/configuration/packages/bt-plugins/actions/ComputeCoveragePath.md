@@ -96,6 +96,3 @@ This server can take in both cartesian and GPS coordinates and is implemented us
 ```
 
 Note: the blackboard IDs for the path, error code, and more may be adjusted, but need to match the corresponding parameters in the `CoverageNavigator` plugin to set on the blackboard for use from the action server.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

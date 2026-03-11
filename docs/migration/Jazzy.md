@@ -498,6 +498,3 @@ This allows users to visualize the route server in action and test the new featu
   ![](/configuration/packages/images/route_server/warehouse_graph.png){ width="100%" }
   <figcaption>RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated. Speed zones are marked in grey with proportional opacity of 0.8 to match the speed limit.</figcaption>
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -93,6 +93,3 @@ Check out related projects to Nav2:
 - [Robot Localization](https://github.com/cra-ros-pkg/robot_localization)
 - [SLAM Toolbox](https://github.com/SteveMacenski/slam_toolbox)
 - [Fuse](https://github.com/locusrobotics/fuse)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

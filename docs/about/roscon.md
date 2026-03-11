@@ -24,6 +24,3 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 - [ROSCon 2022: BehaviorTree.CPP 4.0. What is new and roadmap](https://vimeo.com/showcase/9954564/video/767160437)
 - [ROSCon 2024: Mobile Robotics Scale-up Leveraging ROS](https://vimeo.com/1024971160)
 - [ROSCon 2024: Radar Tracks for Path Planning in the presence of Dynamic Obstacles](https://vimeo.com/1024971565)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

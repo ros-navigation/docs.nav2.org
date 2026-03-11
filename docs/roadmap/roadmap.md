@@ -67,5 +67,3 @@ For a full list of important completed changes in the project, see the Migration
 | [Complete First Time Guide](https://github.com/ros-navigation/navigation2/issues/1589)                   | Medium (DONE)  |
 | [Rotation Shim Controller](https://github.com/ros-navigation/navigation2/pull/2718)                      | Small (DONE)   |
 | [Dynamic Composition](https://github.com/ros-navigation/navigation2/issues/2147)                         | Medium (DONE)  |
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -41,6 +41,3 @@ This layer places an exponential decay functions around obstacles to increase co
 
   Description
   : Whether to inflate unknown cells.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -30,6 +30,3 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 ```xml
 <ExtractRouteNodesAsGoals route="{route}" goals="{route_goals}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

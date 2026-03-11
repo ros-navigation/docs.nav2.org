@@ -36,6 +36,3 @@ A custom control node, which modifies a path making it shorter. It removes parts
 ```xml
 <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

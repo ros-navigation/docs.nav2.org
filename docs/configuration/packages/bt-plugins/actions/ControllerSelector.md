@@ -38,6 +38,3 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 ```xml
 <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

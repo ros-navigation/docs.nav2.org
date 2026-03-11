@@ -87,6 +87,3 @@ planner_server:
       w_euc_cost: 1.0
       w_traversal_cost: 2.0
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

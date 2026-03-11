@@ -738,6 +738,3 @@ In [PR 5963](https://github.com/ros-navigation/navigation2/pull/5963), A new `bt
 ## New IsWithinPathTrackingBounds Node
 
 In [PR 5983](https://github.com/ros-navigation/navigation2/pull/5983), a new behavior tree node, `IsWithinPathTrackingBounds`, was added to check if the robot is within specified bounds of the path for tracking purposes. See the [demo](https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml) for an example of how to use this node in a behavior tree.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

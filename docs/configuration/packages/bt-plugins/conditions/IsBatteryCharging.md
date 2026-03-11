@@ -20,6 +20,3 @@ Returns SUCCESS in that case, FAILURE otherwise.
 ```xml
 <IsBatteryCharging battery_topic="/battery_status"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

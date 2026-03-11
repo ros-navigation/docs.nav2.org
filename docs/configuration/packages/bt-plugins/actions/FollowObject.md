@@ -65,6 +65,3 @@ The server address can be remapped using the `server_name` input port.
 ```xml
 <FollowObject name="FollowPerson" pose_topic="/person_pose" max_duration="0.0"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

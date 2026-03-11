@@ -251,6 +251,3 @@ In a new terminal run:
 ```bash
 $ ros2 action send_goal "send_sms" nav2_sms_behavior/action/SendSms "{message : Hello!! Navigation2 World }"
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

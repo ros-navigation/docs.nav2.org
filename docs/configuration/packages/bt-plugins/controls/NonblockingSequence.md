@@ -11,6 +11,3 @@ Ticks all child nodes until they all return SUCCESS. If any of the child nodes r
     <!--Add tree components here--->
 </NonblockingSequence>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

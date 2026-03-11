@@ -26,6 +26,3 @@ Used to cancel the goals given to the follow object action server. The server ad
 ```xml
 <CancelFollowObject server_name="follow_object" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

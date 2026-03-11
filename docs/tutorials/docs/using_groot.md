@@ -33,6 +33,3 @@ There are tutorials available for both Groot and Groot2, with Groot2 being the n
 
 * [Groot - Interacting with Behavior Trees](groot.md)
 * [Groot2 - Interacting with Behavior Trees](groot2.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

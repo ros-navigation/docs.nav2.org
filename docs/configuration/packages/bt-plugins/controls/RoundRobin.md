@@ -21,6 +21,3 @@ Custom control flow node used to create a round-robin behavior for children BT n
     <!--Add tree components here--->
 </RoundRobin>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

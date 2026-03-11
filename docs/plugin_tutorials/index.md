@@ -10,6 +10,3 @@ Navigation2 Tutorials
 * [Writing a New Costmap2D Plugin](docs/writing_new_costmap2d_plugin.md)
 * [Writing a New Navigator Plugin](docs/writing_new_navigator_plugin.md)
 * [Writing a New Planner Plugin](docs/writing_new_nav2planner_plugin.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

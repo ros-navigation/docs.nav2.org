@@ -226,6 +226,3 @@ This tutorial demonstrated how to integrate semantic segmentation with Nav2 for 
 To go further, you can train your own model using the [Simple Segmentation Toolkit](https://github.com/pepisg/simple_segmentation_toolkit), and tune the costmap parameters to your own application.
 
 Happy terrain-aware navigating!
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

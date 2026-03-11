@@ -155,6 +155,3 @@ edit the layers and repeat the process from step 5 to regenerate the graph. If y
 node and edge layer. Then select Vertex Tool(all Layers) and toggle on Topological Editing. Repeat the process from step 5 to regenerate the graph.
 
 Happy Routing!
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

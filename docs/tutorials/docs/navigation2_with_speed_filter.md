@@ -389,6 +389,3 @@ Set the goal behind the speed restriction areas and check that the filter is wor
 !!! note
 
     For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

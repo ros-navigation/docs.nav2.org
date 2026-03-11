@@ -582,6 +582,3 @@ Something to note here is that we are using `TwistStamped` messages here as thos
 ## Conclusion
 
 In this guide, we have discussed the messages and transforms that are expected by Nav2 from the odometry system. We have seen how to set up an odometry system and how to verify the published messages.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

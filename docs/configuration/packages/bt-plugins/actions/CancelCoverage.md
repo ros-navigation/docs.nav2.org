@@ -26,6 +26,3 @@ Used to cancel the goals given to the complete coverage action server. The serve
 ```xml
 <CancelCoverage server_name="compute_complete_coverage" server_timeout="10"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

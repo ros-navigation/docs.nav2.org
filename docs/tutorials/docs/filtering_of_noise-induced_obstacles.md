@@ -124,6 +124,3 @@ Obstacles marked at the end of the animation will be removed (groups that size l
 <figure markdown="span">
   ![](images/Filtering_of_noise-induced_obstacles/connected_components.gif){ width="600px" }
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

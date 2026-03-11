@@ -75,6 +75,3 @@ It performs a linear translation by a given distance. The nav2_behaviors module 
 <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"
                 error_code_id="{drive_on_heading_error_code}" error_msg="{drive_on_heading_error_msg}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

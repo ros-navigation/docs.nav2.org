@@ -38,6 +38,3 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 ```xml
 <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="precise_goal_checker" topic_name="goal_checker_selector"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

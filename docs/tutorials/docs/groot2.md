@@ -88,6 +88,3 @@ To do this, you can either use the Export Project button shown in the image belo
 </div>
 
 Your behavior tree has been successfully exported! You can reload it the next time you open Groot2.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

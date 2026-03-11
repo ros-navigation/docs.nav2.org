@@ -14,6 +14,3 @@ stops all children and returns FAILURE overall.
     <!--Add tree components here--->
 </PipelineSequence>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

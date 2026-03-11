@@ -119,6 +119,3 @@ Now watch the robot go!
 <figure markdown="span">
    ![](images/navigation_with_recovery_behaviours.gif){ width="700" title="Navigation2 with Turtlebot 3 Demo" }
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

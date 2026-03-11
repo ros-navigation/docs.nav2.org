@@ -41,6 +41,3 @@
 
   Description
   : How long for the marker to remain.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

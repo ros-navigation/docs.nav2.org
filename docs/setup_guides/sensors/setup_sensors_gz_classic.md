@@ -290,6 +290,3 @@ You should also see the `sensor_msgs/PointCloud2`, as shown below.
 ## Conclusion
 
 In this section of our robot setup guide, we had a discussion on the common types of sensor messages in Nav2 which standardize the message formats for different sensor vendors. We also discussed how to add sensors to a simulated robot using Gazebo and how to verify that the sensors are working correctly through RViz.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

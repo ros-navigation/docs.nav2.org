@@ -565,6 +565,3 @@ root@carter-v24-nav2:/opt/ros/humble/lib/isaac_mapping_ros#
 ```
 
 These are covered extensively in the NVIdia tutorial [https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorial_mapping_and_localization.html#creating-maps](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorial_mapping_and_localization.html#creating-maps)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

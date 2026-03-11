@@ -242,6 +242,3 @@ For this, Vector Object server will produce the following map:
 <figure markdown="span">
   ![](images/vector_object_server/vo_config_map.png){ width="636px" height="638px" }
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

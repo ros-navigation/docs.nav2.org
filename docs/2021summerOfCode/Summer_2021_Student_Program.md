@@ -27,6 +27,3 @@ Have fun and we look forward to working with you this summer!
 * [6. Semantic Integration](projects/semantics.md)
 * [7. Reduce ROS 2 Nodes and Determinism](projects/spinners.md)
 * [8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration](projects/twist_n_config.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

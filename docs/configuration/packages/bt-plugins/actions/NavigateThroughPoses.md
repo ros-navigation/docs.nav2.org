@@ -59,6 +59,3 @@ Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by th
                       error_code_id="{navigate_through_poses_error_code}" error_msg="{navigate_through_poses_error_msg}"
                       behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

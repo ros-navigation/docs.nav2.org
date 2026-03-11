@@ -254,6 +254,3 @@ Then set the `fixed frame` in RViz to `odom` and you should now see the voxels i
 
 In this section of our robot setup guide, we have discussed the importance of sensor information for different tasks associated with Nav2. More specifically, tasks such as mapping (SLAM), localization (AMCL), and perception (costmap) tasks.
 Then, we set up a basic configuration for the `nav2_costmap_2d` package using different layers to produce a global and local costmap. We then verify our work by visualizing these costmaps in RViz.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

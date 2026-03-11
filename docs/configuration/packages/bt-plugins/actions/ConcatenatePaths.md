@@ -37,6 +37,3 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 ```xml
 <ConcatenatePaths input_path1="{main_path}" input_path2="{last_mile_path}" output_path="{path}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

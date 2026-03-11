@@ -45,6 +45,3 @@ index and time stamp. The leading digit in file name implies the waypoint index 
 
   Description
   : Whether to allow QoS profiles to be overwritten with parameterized values.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -214,6 +214,3 @@ As a result, all vector shapes were disappeared from global costmap:
 <figure markdown="span">
   ![](images/Vector_Object_server/vector_objects_removed.png)
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

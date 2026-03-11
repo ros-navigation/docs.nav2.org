@@ -300,6 +300,3 @@ The extra argument is a costmap_ros pointer. This is used to check if the goal i
 ## Added Assisted Teleop
 
 [PR 2904](https://github.com/ros-navigation/navigation2/pull/2904) adds a new behavior for assisted teleop along with two new BT nodes AssistedTeleop and CancelAssistedTeleop.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

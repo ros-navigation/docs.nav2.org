@@ -88,6 +88,3 @@ You may need to toggle the visibility of the route graph in Rviz to see the chan
 Once you are ready to save your route graph, click the “Save” button at the bottom right of the panel.
 This will then open a file explorer so you can specify where you would like to save your graph as a geojson file.
 After entering in a filepath and clicking “Save”, your route graph should be ready for use with the Nav2 route server!
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

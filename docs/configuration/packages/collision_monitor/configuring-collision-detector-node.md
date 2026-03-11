@@ -267,6 +267,3 @@ collision_detector:
       max_height: 0.5
       enabled: True
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

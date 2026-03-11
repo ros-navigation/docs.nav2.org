@@ -10,6 +10,3 @@ The Map server package implements various components for handling grid maps, inc
 * [Map Saver](map_server/configuring-map-saver.md)
 * [Costmap Filter Info Server](map_server/configuring-costmap-filter-info-server.md)
 * [Vector Object Server](map_server/configuring-vector-object-server.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

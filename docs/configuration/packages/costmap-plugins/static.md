@@ -58,6 +58,3 @@ This implements a costmap layer taking in a map from either SLAM or `map_server`
     - User chosen topic is map.
     - Topic will be remapped to /tb4/map without global_costmap.
     - Use global topic /map if you do not wish the node namespace to apply.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

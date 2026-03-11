@@ -12,6 +12,3 @@ Navigation2 guides for migration between distributions.
 * [Iron to Jazzy](Iron.md)
 * [Jazzy to Kilted](Jazzy.md)
 * [Kilted to L-turtle](Kilted.md)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

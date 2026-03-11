@@ -59,6 +59,3 @@ Invokes the NavigateToPose ROS 2 action server, which is implemented by the [bt_
                 error_code_id="{navigate_to_pose_error_code}" error_msg="{navigate_to_pose_error_msg}"
                 behavior_tree="NavigateThroughPosesWReplanningAndRecovery"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

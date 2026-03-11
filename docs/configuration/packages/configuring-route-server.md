@@ -613,6 +613,3 @@ These are the current visualizations of the route graphs for the depot and wareh
     RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated.
   </figcaption>
 </figure>
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

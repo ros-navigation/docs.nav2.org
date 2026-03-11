@@ -173,6 +173,3 @@ coverage_server:
     default_swath_type: "LENGTH"
     default_turn_point_distance: 0.1
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

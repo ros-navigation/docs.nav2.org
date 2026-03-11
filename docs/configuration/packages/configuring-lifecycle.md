@@ -81,6 +81,3 @@ lifecycle_manager:
     bond_heartbeat_period: 0.25
     introspection_mode: "disabled"
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

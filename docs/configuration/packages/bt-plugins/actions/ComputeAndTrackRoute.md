@@ -94,6 +94,3 @@ The server address can be remapped using the `server_name` input port.
 <ComputeAndTrackRoute start="{start}" goal="{goal}" use_poses="{true}" use_start="{true}" server_name="ComputeAndTrackRoute" server_timeout="10"
                    error_code_id="{compute_route_error_code}" error_msg="{compute_route_error_msg}"/>
 ```
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

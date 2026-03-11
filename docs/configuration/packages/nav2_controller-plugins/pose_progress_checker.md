@@ -29,6 +29,3 @@ Checks whether the robot has made progress based on translation and rotation.
 
   Description
   : Maximum amount of time a robot has to move the minimum radius or the mnimum angle (s).
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

@@ -19,6 +19,3 @@ This section includes guides for developing Nav2, e.g. how to build from source,
     - [Process](involvement_docs/index.md#process)
     - [Licensing](involvement_docs/index.md#licensing)
     - [Developer Certification of Origin (DCO)](involvement_docs/index.md#developer-certification-of-origin-dco)
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

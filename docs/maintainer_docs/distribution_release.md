@@ -149,6 +149,3 @@ Gifs, videos, and images are always welcome to be included in the announcements!
 
 Identify tickets to address or PRs to merge for the next distribution.
 Make a call for contributions on the roadmap items, these strategic items, or other `good-first-issues`.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

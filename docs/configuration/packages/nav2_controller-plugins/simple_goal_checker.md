@@ -38,6 +38,3 @@ Checks whether the robot has reached the goal pose.
   | bool   | false     |
     Description
     : Enable symmetric goal orientation acceptance. When enabled, the robot accepts the goal as reached when oriented at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. controller algorithm decides). See [Tuning Guide](../../../tuning/index.md#tuning) for detailed information.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->

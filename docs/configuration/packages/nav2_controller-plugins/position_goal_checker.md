@@ -26,6 +26,3 @@ Checks whether the robot has reached the goal pose.
   | bool   | true      |
     Description
     : Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
-
-<!-- These are replacement strings for non-ASCII characters used within the project
-using the same name as the html entity names (e.g., &copy;) for that character -->
