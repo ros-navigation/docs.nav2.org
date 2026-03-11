@@ -323,38 +323,38 @@ There are three main possible setups for the global costmap:
 
 1. **Rolling** (Used in the tutorial): Outdoors environments can get quite big, to a degree that it may not be practical to represent them on a single costmap. For that reason in this tutorial we use a rolling global costmap that is big enough for fitting successive pairs of waypoints. In this case you may or may not choose to use a static layer, however if you do make sure to fix the `datum` of the navsat_transform so GPS coordinates always have the same cartesian representation on your map.
 
-```yaml
-global_costmap:
-  global_costmap:
-    ros__parameters:
-      ...
-      rolling_window: True
-      width: 50
-      height: 50
-```
+    ```yaml
+    global_costmap:
+    global_costmap:
+        ros__parameters:
+        ...
+        rolling_window: True
+        width: 50
+        height: 50
+    ```
 
-1. **Size and position from static map**: You may also choose to keep Nav2 default setup and have the global costmap be sized and positioned according to a pre-built map by adding a static layer and using `map_server`. In this case you also need to make sure there’s consistency in your `datum` and the origin of the map.
+2. **Size and position from static map**: You may also choose to keep Nav2 default setup and have the global costmap be sized and positioned according to a pre-built map by adding a static layer and using `map_server`. In this case you also need to make sure there’s consistency in your `datum` and the origin of the map.
 
-```yaml
-global_costmap:
-  global_costmap:
-    ros__parameters:
-      ...
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
-```
+    ```yaml
+    global_costmap:
+    global_costmap:
+        ros__parameters:
+        ...
+        plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+    ```
 
-1. **Static position and size**: Finally, depending on your application you may still choose to use a fixed global costmap if you have a restricted operating environment you know beforehand, just remember to make it fit all the potential locations the robot may visit. In this case you need to set the size and origin position in the parameters:
+3. **Static position and size**: Finally, depending on your application you may still choose to use a fixed global costmap if you have a restricted operating environment you know beforehand, just remember to make it fit all the potential locations the robot may visit. In this case you need to set the size and origin position in the parameters:
 
-```yaml
-global_costmap:
-  global_costmap:
-    ros__parameters:
-      ...
-      width: 50
-      height: 50
-      origin_x: 25.0
-      origin_y: 25.0
-```
+    ```yaml
+    global_costmap:
+    global_costmap:
+        ros__parameters:
+        ...
+        width: 50
+        height: 50
+        origin_x: 25.0
+        origin_y: 25.0
+    ```
 
 We provide a [Nav2 params file](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/nav2_no_map_params.yaml) with the rolling costmap setup and a [launch](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/gps_waypoint_follower.launch.py) file to put it all together. Remember that the GPS setup of robot_localization was just a means for setting up the global localization system, however Nav2 is still a cartesian navigation stack and you may still use all its cartesian tools. To confirm that everything is working, launch the provided file (this launches gazebo and RL as well so close them if you have them running from the previous steps) and use rviz to send a goal to the robot:
 

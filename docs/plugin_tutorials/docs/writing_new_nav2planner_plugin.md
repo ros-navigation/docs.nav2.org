@@ -116,16 +116,16 @@ Coming back to our tutorial, class `nav2_straightline_planner::StraightLine` is 
 
 1. To export the planner, we need to provide two lines
 
-```c++
-#include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(nav2_straightline_planner::StraightLine, nav2_core::GlobalPlanner)
-```
+    ```c++
+    #include "pluginlib/class_list_macros.hpp"
+    PLUGINLIB_EXPORT_CLASS(nav2_straightline_planner::StraightLine, nav2_core::GlobalPlanner)
+    ```
 
-Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS` which does all the work of exporting.
+    Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS` which does all the work of exporting.
 
-It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
+    It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-1. Next step would be to create plugin’s description file in the root directory of the package. For example, `global_planner_plugin.xml` file in our tutorial package. This file contains the following information
+2. Next step would be to create plugin’s description file in the root directory of the package. For example, `global_planner_plugin.xml` file in our tutorial package. This file contains the following information
 
     - `library path`: Plugin’s library name and its location.
     - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
@@ -133,41 +133,41 @@ It is good practice to place these lines at the end of the file, but technically
     - `base class`: Name of the base class.
     - `description`: Description of the plugin.
 
-```xml
-<library path="nav2_straightline_planner_plugin">
-  <class type="nav2_straightline_planner::StraightLine" base_class_type="nav2_core::GlobalPlanner">
-    <description>This is an example plugin which produces straight path.</description>
-  </class>
-</library>
-```
+    ```xml
+    <library path="nav2_straightline_planner_plugin">
+    <class type="nav2_straightline_planner::StraightLine" base_class_type="nav2_core::GlobalPlanner">
+        <description>This is an example plugin which produces straight path.</description>
+    </class>
+    </library>
+    ```
 
-1. Next step would be to export plugin using `CMakeLists.txt` by using cmake function `pluginlib_export_plugin_description_file()`. This function installs plugin description file to `share` directory and sets ament indexes to make it discoverable.
+3. Next step would be to export plugin using `CMakeLists.txt` by using cmake function `pluginlib_export_plugin_description_file()`. This function installs plugin description file to `share` directory and sets ament indexes to make it discoverable.
 
-```text
-pluginlib_export_plugin_description_file(nav2_core global_planner_plugin.xml)
-```
+    ```text
+    pluginlib_export_plugin_description_file(nav2_core global_planner_plugin.xml)
+    ```
 
-1. Plugin description file should also be added to `package.xml`
+4. Plugin description file should also be added to `package.xml`
 
-```xml
-<export>
-  <build_type>ament_cmake</build_type>
-  <nav2_core plugin="${prefix}/global_planner_plugin.xml" />
-</export>
-```
+    ```xml
+    <export>
+        <build_type>ament_cmake</build_type>
+        <nav2_core plugin="${prefix}/global_planner_plugin.xml" />
+    </export>
+    ```
 
-1. Compile and it should be registered. You can verify that it has been successfully registered by running:
+5. Compile and it should be registered. You can verify that it has been successfully registered by running:
 
-```shell
-$ ros2 plugin list
-```
+    ```shell
+    $ ros2 plugin list
+    ```
 
-You should see an output similar to below:
+    You should see an output similar to below:
 
-```shell
-nav2_straightline_planner:
-      Plugin(name='nav2_straightline_planner::StraightLine', type='nav2_straightline_planner::StraightLine', base='nav2_core::GlobalPlanner')
-```
+    ```shell
+    nav2_straightline_planner:
+        Plugin(name='nav2_straightline_planner::StraightLine', type='nav2_straightline_planner::StraightLine', base='nav2_core::GlobalPlanner')
+    ```
 
 Next, we’ll use this plugin.
 

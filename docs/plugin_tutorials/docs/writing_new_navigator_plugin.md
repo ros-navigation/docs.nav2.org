@@ -232,60 +232,60 @@ Coming to our tutorial, class `nav2_bt_navigator::NavigateToPoseNavigator` is lo
 
 1. To export the controller, we need to provide two lines
 
-```c++
-#include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(nav2_bt_navigator::NavigateToPoseNavigator, nav2_core::NavigatorBase)
-```
+    ```c++
+    #include "pluginlib/class_list_macros.hpp"
+    PLUGINLIB_EXPORT_CLASS(nav2_bt_navigator::NavigateToPoseNavigator, nav2_core::NavigatorBase)
+    ```
 
-Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS`, which does all the work of exporting.
+    Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS`, which does all the work of exporting.
 
-It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
+    It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-1. The next step would be to create the plugin’s description file in the root directory of the package. For example, `navigator_plugin.xml` file in our tutorial package. This file contains the following information
+2. The next step would be to create the plugin’s description file in the root directory of the package. For example, `navigator_plugin.xml` file in our tutorial package. This file contains the following information
 
-- `library path`: Plugin’s library name and it’s location.
-- `class name`: Name of the class (optional). If not set, it will default to the `class type`.
-- `class type`: Type of class.
-- `base class`: Name of the base class.
-- `description`: Description of the plugin.
+    - `library path`: Plugin’s library name and it’s location.
+    - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
+    - `class type`: Type of class.
+    - `base class`: Name of the base class.
+    - `description`: Description of the plugin.
 
-```xml
-<library path="nav2_bt_navigator">
-  <class type="nav2_bt_navigator::NavigateToPoseNavigator" base_class_type="nav2_core::NavigatorBase">
-    <description>
-      This is pure point-to-point navigation
-    </description>
-  </class>
-</library>
-```
+    ```xml
+    <library path="nav2_bt_navigator">
+    <class type="nav2_bt_navigator::NavigateToPoseNavigator" base_class_type="nav2_core::NavigatorBase">
+        <description>
+        This is pure point-to-point navigation
+        </description>
+    </class>
+    </library>
+    ```
 
-1. Next step would be to export plugin using `CMakeLists.txt` by using CMake function `pluginlib_export_plugin_description_file()`. This function installs the plugin description file to `share` directory and sets ament indexes to make it discoverable.
+3. Next step would be to export plugin using `CMakeLists.txt` by using CMake function `pluginlib_export_plugin_description_file()`. This function installs the plugin description file to `share` directory and sets ament indexes to make it discoverable.
 
-```text
-pluginlib_export_plugin_description_file(nav2_core navigator_plugin.xml)
-```
+    ```text
+    pluginlib_export_plugin_description_file(nav2_core navigator_plugin.xml)
+    ```
 
-1. The plugin description file should also be added to `package.xml`
+4. The plugin description file should also be added to `package.xml`
 
-```xml
-<export>
-  <build_type>ament_cmake</build_type>
-  <nav2_core plugin="${prefix}/navigator_plugin.xml" />
-</export>
-```
+    ```xml
+    <export>
+        <build_type>ament_cmake</build_type>
+        <nav2_core plugin="${prefix}/navigator_plugin.xml" />
+    </export>
+    ```
 
-1. Compile, and it should be registered. You can verify that it has been successfully registered by running:
+5. Compile, and it should be registered. You can verify that it has been successfully registered by running:
 
-```shell
-$ ros2 plugin list
-```
+    ```shell
+    $ ros2 plugin list
+    ```
 
-You should see an output similar to below:
+    You should see an output similar to below:
 
-```shell
-nav2_bt_navigator:
-      Plugin(name='nav2_bt_navigator::NavigateToPoseNavigator', type='nav2_bt_navigator::NavigateToPoseNavigator', base='nav2_core::NavigatorBase')
-```
+    ```shell
+    nav2_bt_navigator:
+        Plugin(name='nav2_bt_navigator::NavigateToPoseNavigator', type='nav2_bt_navigator::NavigateToPoseNavigator', base='nav2_core::NavigatorBase')
+    ```
 
 Next, we’ll use this plugin.
 

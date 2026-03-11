@@ -51,48 +51,49 @@ In our example these methods have the following functionality:
 
 1. `GradientLayer::onInitialize()` contains declaration of a ROS parameter with its default value:
 
-```c
-node->declare_or_get_parameter(name_ + "." + "enabled", true);
-```
+    ```c
+    node->declare_or_get_parameter(name_ + "." + "enabled", true);
+    ```
 
-and sets `need_recalculation_` bounds recalculation indicator:
+    and sets `need_recalculation_` bounds recalculation indicator:
 
-```c
-need_recalculation_ = false;
-```
+    ```c
+    need_recalculation_ = false;
+    ```
 
-1. `GradientLayer::updateBounds()` re-calculates window bounds if `need_recalculation_` is `true` and updates them regardless of `need_recalculation_` value.
-2. `GradientLayer::updateCosts()` - in this method the gradient is writing directly to the resulting costmap `master_grid` without merging with previous layers. This is equal to working with internal `costmap_` and then calling `updateWithTrueOverwrite()` method. Here is the gradient making algorithm for master costmap:
+2. `GradientLayer::updateBounds()` re-calculates window bounds if `need_recalculation_` is `true` and updates them regardless of `need_recalculation_` value.
 
-```c
-int gradient_index;
-for (int j = min_j; j < max_j; j++) {
-  // Reset gradient_index each time when reaching the end of re-calculated window
-  // by OY axis.
-  gradient_index = 0;
-  for (int i = min_i; i < max_i; i++) {
-    int index = master_grid.getIndex(i, j);
-    // setting the gradient cost
-    unsigned char cost = (LETHAL_OBSTACLE - gradient_index*GRADIENT_FACTOR)%255;
-    if (gradient_index <= GRADIENT_SIZE) {
-      gradient_index++;
-    } else {
-      gradient_index = 0;
+3. `GradientLayer::updateCosts()` - in this method the gradient is writing directly to the resulting costmap `master_grid` without merging with previous layers. This is equal to working with internal `costmap_` and then calling `updateWithTrueOverwrite()` method. Here is the gradient making algorithm for master costmap:
+
+    ```c
+    int gradient_index;
+    for (int j = min_j; j < max_j; j++) {
+        // Reset gradient_index each time when reaching the end of re-calculated window
+        // by OY axis.
+        gradient_index = 0;
+        for (int i = min_i; i < max_i; i++) {
+            int index = master_grid.getIndex(i, j);
+            // setting the gradient cost
+            unsigned char cost = (LETHAL_OBSTACLE - gradient_index*GRADIENT_FACTOR)%255;
+            if (gradient_index <= GRADIENT_SIZE) {
+            gradient_index++;
+            } else {
+            gradient_index = 0;
+            }
+            master_array[index] = cost;
+        }
     }
-    master_array[index] = cost;
-  }
-}
-```
+    ```
 
-where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap’s value per each step:
+    where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap’s value per each step:
 
-![](images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
+    ![](images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
 
-These parameters are defined in plugin’s header file.
+    These parameters are defined in plugin’s header file.
 
-1. `GradientLayer::onFootprintChanged()` just resets `need_recalculation_` value.
-2. `GradientLayer::reset()` method is dummy: it is not used in this example plugin. It remains there since pure virtual function `reset()` in parent `Layer` class required to be overridden.
-3. `GradientLayer::isClearable()` returns `false` since this plugin is not clearable.
+4. `GradientLayer::onFootprintChanged()` just resets `need_recalculation_` value.
+5. `GradientLayer::reset()` method is dummy: it is not used in this example plugin. It remains there since pure virtual function `reset()` in parent `Layer` class required to be overridden.
+6. `GradientLayer::isClearable()` returns `false` since this plugin is not clearable.
 
 ### 2- Export and make GradientLayer plugin
 
@@ -102,14 +103,14 @@ In our example the `nav2_gradient_costmap_plugin::GradientLayer` plugin’s clas
 
 1. Plugin’s class should be registered with a basic type of loaded class. For this there is a special macro `PLUGINLIB_EXPORT_CLASS` should be added to any source-file composing the plugin library:
 
-```text
-#include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap_2d::Layer)
-```
+    ```text
+    #include "pluginlib/class_list_macros.hpp"
+    PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap_2d::Layer)
+    ```
 
-This part is usually placed at the end of cpp-file where the plugin class was written (in our example `gradient_layer.cpp`). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.
+    This part is usually placed at the end of cpp-file where the plugin class was written (in our example `gradient_layer.cpp`). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.
 
-1. Plugin’s information should be stored to the plugin’s description file. This is done by using separate XML (in our example `gradient_plugins.xml`) in the plugin’s package. This file contains information about:
+2. Plugin’s information should be stored to the plugin’s description file. This is done by using separate XML (in our example `gradient_plugins.xml`) in the plugin’s package. This file contains information about:
 
     - `path`: Path and name of library where plugin is placed.
     - `name`: Plugin type referenced in `plugin_types` parameter (see next section for more details). It could be whatever you want.
@@ -117,13 +118,13 @@ This part is usually placed at the end of cpp-file where the plugin class was wr
     - `basic_class_type`: Basic parent class from which plugin class was derived.
     - `description`: Plugin description in a text form.
 
-```xml
-<library path="nav2_gradient_costmap_plugin_core">
-  <class type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">
-    <description>This is an example plugin which puts repeating costs gradients to costmap</description>
-  </class>
-</library>
-```
+    ```xml
+    <library path="nav2_gradient_costmap_plugin_core">
+    <class type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">
+        <description>This is an example plugin which puts repeating costs gradients to costmap</description>
+    </class>
+    </library>
+    ```
 
 The export of plugin is performed by including `pluginlib_export_plugin_description_file()` cmake-function into `CMakeLists.txt`. This function installs plugin description file into `share` directory and sets ament indexes for plugin description XML to be discoverable as a plugin of selected type:
 
