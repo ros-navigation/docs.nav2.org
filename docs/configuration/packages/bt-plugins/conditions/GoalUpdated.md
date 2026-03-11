@@ -1,5 +1,3 @@
-<a id="goal-updated-condition"></a>
-
 # GoalUpdated
 
 Checks if the global navigation goal, or a vector of goals, has changed in the blackboard.

@@ -1,5 +1,3 @@
-<a id="robots"></a>
-
 # Robots Using
 
 It’s always helpful (and fun!) to have a list of robots using or ship with our work.

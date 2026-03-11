@@ -1,5 +1,3 @@
-<a id="configuring-bt-navigator"></a>
-
 # Behavior-Tree Navigator
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator).
@@ -8,7 +6,7 @@ The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose,
 It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility
 in the navigation task and provide a way to easily specify complex robot behaviors, including recovery.
 
-Consider checking out the [Groot Tutorials](../../tutorials/docs/using_groot.md#using-groot) tutorial for using Groot to visualize and modify behavior trees.
+Consider checking out the [Groot Tutorials](../../tutorials/docs/using_groot.md#groot-tutorials) tutorial for using Groot to visualize and modify behavior trees.
 
 Make sure to review all parameters for non-default navigator plugins not discussed on this page (e.g. `CoverageNavigator` or custom additions).
 
@@ -28,7 +26,7 @@ Make sure to review all parameters for non-default navigator plugins not discuss
   | string | N/A       |
 
   Description
-  : Path to the default behavior tree XML description for `NavigateToPose`, see [Behavior Tree XML Nodes](configuring-bt-xml.md#configuring-behavior-tree-xml) for details on this file.
+  : Path to the default behavior tree XML description for `NavigateToPose`, see [Behavior Tree XML Nodes](configuring-bt-xml.md#behavior-tree-xml-nodes) for details on this file.
     This parameter used to be `default_bt_xml_filename` pre-Galactic.
     You can use substitution to specify file path like `$(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml`. However, if left empty, the default behavior tree XML will be loaded from the `nav2_bt_navigator` package.
 * **default_nav_through_poses_bt_xml:**
@@ -37,7 +35,7 @@ Make sure to review all parameters for non-default navigator plugins not discuss
   | string | N/A       |
 
   Description
-  : Path to the default behavior tree XML description for `NavigateThroughPoses`, see [Behavior Tree XML Nodes](configuring-bt-xml.md#configuring-behavior-tree-xml) for details on this file. New to Galactic after `NavigateThroughPoses` was added.
+  : Path to the default behavior tree XML description for `NavigateThroughPoses`, see [Behavior Tree XML Nodes](configuring-bt-xml.md#behavior-tree-xml-nodes) for details on this file. New to Galactic after `NavigateThroughPoses` was added.
     You can use substitution to specify file path like `$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml`. However, if left empty, the default behavior tree XML will be loaded from the `nav2_bt_navigator` package.
 * **always_reload_bt_xml:**
   | Type   | Default   |

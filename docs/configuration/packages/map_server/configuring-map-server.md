@@ -1,5 +1,3 @@
-<a id="configuring-map-server-params"></a>
-
 # Map Server
 
 The Map Server implements the server for handling the map load requests for the stack and hosts a map topic.

@@ -1,5 +1,3 @@
-<a id="bt-is-stuck-condition"></a>
-
 # IsStuck
 
 Determines if the robot is not progressing towards the goal.

@@ -1,12 +1,10 @@
-<a id="configuring-nav2-controller-position-goal-checker-plugin"></a>
-
 # PositionGoalChecker
 
 Checks whether the robot has reached the goal pose.
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 * **`<nav2_controller plugin>`.xy_goal_tolerance:**
   | Type   |   Default |

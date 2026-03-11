@@ -1,12 +1,10 @@
-<a id="configuring-behavior-tree-xml"></a>
-
 # Behavior Tree XML Nodes
 
 The [nav2_behavior_tree](https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree) package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
 
 Check this [introduction](https://www.behaviortree.dev/docs/learn-the-basics/BT_basics) to learn how behavior trees work and the difference between actions, conditions, controls and decorators.
 
-Consider checking out the [Groot Tutorials](../../tutorials/docs/using_groot.md#using-groot) tutorial for using Groot to visualize and modify behavior trees.
+Consider checking out the [Groot Tutorials](../../tutorials/docs/using_groot.md#groot-tutorials) tutorial for using Groot to visualize and modify behavior trees.
 
 ## Action Plugins
 

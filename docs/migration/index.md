@@ -1,5 +1,3 @@
-<a id="migration"></a>
-
 # Migration Guides
 
 Navigation2 guides for migration between distributions.

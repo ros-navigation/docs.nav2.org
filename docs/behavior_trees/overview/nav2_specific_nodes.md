@@ -1,5 +1,3 @@
-<a id="nav2-specific-nodes"></a>
-
 # Introduction To Nav2 Specific Nodes
 
 !!! warning

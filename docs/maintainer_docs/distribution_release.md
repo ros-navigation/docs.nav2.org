@@ -1,5 +1,3 @@
-<a id="distribution-release-docs"></a>
-
 # ROS Distribution Release Process
 
 This is the instructions for releasing a new Nav2 version for a ROS distribution release.

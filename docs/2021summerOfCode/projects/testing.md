@@ -1,5 +1,3 @@
-<a id="testing"></a>
-
 # 2. Advanced Navigation Testing Framework
 
 **Task description**

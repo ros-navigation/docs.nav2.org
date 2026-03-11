@@ -1,5 +1,3 @@
-<a id="bt-goal-reached-condition"></a>
-
 # GoalReached
 
 Checks the distance to the goal, if the distance to goal is less than the pre-defined threshold, the tree returns SUCCESS, otherwise it returns FAILURE.
@@ -7,7 +5,7 @@ Checks the distance to the goal, if the distance to goal is less than the pre-de
 ## Parameter
 
 * **transform_tolerance:**
-  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#configuring-bt-navigator).
+  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
 * **goal_reached_tol:**
   | Type   |   Default |
   |--------|-----------|

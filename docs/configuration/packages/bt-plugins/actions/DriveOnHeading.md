@@ -1,5 +1,3 @@
-<a id="bt-driveonheading-action"></a>
-
 # DriveOnHeading
 
 Invokes the DriveOnHeading ROS 2 action server, which causes the robot to drive on the current heading by a specific displacement.

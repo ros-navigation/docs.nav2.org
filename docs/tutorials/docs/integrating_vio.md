@@ -1,5 +1,3 @@
-<a id="integrating-vio"></a>
-
 # Using VIO to Augment Robot Odometry
 
 - [Overview]()
@@ -100,7 +98,7 @@ remappings=[('odom', 'camera_odom')]
 
 Now that we have the ZED ROS 2 drivers set up to publish our VIO to a topic and leave our TF tree to the fusion algorithm and Robot State Publisher (e.g. URDF), we’re finally ready to fuse in VIO into our broader state estimate using the `robot_localization` package.
 
-This package is a generalized EKF and UKF solution to state estimation of potentially many different topics, publishing at different rates, of different types. If you’re unfamiliar with `robot_localization` checkout our [First-Time Robot Setup Guide](../../setup_guides/index.md#setup-guides)’s Odometry page for basic information and the [package’s extensive documentation](http://docs.ros.org/en/noetic/api/robot_localization/html/index.html).
+This package is a generalized EKF and UKF solution to state estimation of potentially many different topics, publishing at different rates, of different types. If you’re unfamiliar with `robot_localization` checkout our [First-Time Robot Setup Guide](../../setup_guides/index.md#first-time-robot-setup-guide)’s Odometry page for basic information and the [package’s extensive documentation](http://docs.ros.org/en/noetic/api/robot_localization/html/index.html).
 
 Most users at this point already have a `robot_localization` configuration file in their robot systems to fuse existing sensors together, such as wheel odometry (even poor) and robot IMUs. We’ll be adding a new odom field, `odom1`, to our configuration to fuse in VIO’s position and orientation into our filter. If this is your first odometry field, use `odom0` and you can base your file on [ekf.yaml](https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml).
 

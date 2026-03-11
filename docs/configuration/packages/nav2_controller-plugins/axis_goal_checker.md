@@ -1,5 +1,3 @@
-<a id="configuring-nav2-controller-axis-goal-checker-plugin"></a>
-
 # AxisGoalChecker
 
 Checks whether the robot has reached the goal pose by projecting the robot’s position onto the path direction defined by the last segment of the path. This goal checker uses the last two poses of the path (`before_goal_pose` and `goal_pose`) to determine the path direction and then checks if the robot is within tolerance along that axis.
@@ -12,7 +10,7 @@ Unlike simple distance-based goal checkers, the AxisGoalChecker allows independe
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 * **`<nav2_controller plugin>`.along_path_tolerance:**
   | Type   |   Default |

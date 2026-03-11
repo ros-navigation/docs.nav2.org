@@ -1,5 +1,3 @@
-<a id="configuring-smac-2d-planner"></a>
-
 # Smac 2D Planner
 
 <figure markdown="span">

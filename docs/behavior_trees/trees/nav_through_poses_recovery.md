@@ -1,5 +1,3 @@
-<a id="behavior-tree-nav-through-poses"></a>
-
 # Navigate Through Poses
 
 This behavior tree implements a navigation behavior from a starting point, through many intermediary hard pose constraints, to a final goal in freespace.
@@ -12,7 +10,7 @@ By convention we name these by the style of algorithms that they are (e.g. not `
 In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
-In nominal execution, this will replan the path at every 3 seconds if not close enough to goal and pass that path onto the controller, similar to the behavior tree in [Nav2 Behavior Trees](../index.md#behavior-trees).
+In nominal execution, this will replan the path at every 3 seconds if not close enough to goal and pass that path onto the controller, similar to the behavior tree in [Nav2 Behavior Trees](../index.md#nav2-behavior-trees).
 The planner though is now `ComputePathThroughPoses` taking a vector, `goals`, rather than a single pose `goal` to plan to.
 The `RemovePassedGoals` node is used to cull out `goals` that the robot has passed on its path.
 In this case, it is set to remove a pose from the poses when the robot is within `0.5` of the goal and it is the next goal in the list.

@@ -1,5 +1,3 @@
-<a id="documentation-home"></a>
-
 # Nav2
 
 <h1 align="center">
@@ -31,7 +29,7 @@ Nav2 is a production-grade and high-quality navigation framework trusted by 100+
 It provides perception, planning, control, localization, visualization, and much more to build highly reliable autonomous systems.
 This will compute an environmental model from sensor and semantic data, dynamically path plan, compute velocities for motors, avoid obstacles, and structure higher-level robot behaviors.
 To learn more about this project, such as related projects, robots using, ROS1 comparison, and maintainers, see [About and Contact](about/index.md#about).
-To learn more about navigation and ROS concepts, see [Navigation Concepts](concepts/index.md#concepts).
+To learn more about navigation and ROS concepts, see [Navigation Concepts](concepts/index.md#navigation-concepts).
 
 Nav2 uses behavior trees to create customized and intelligent navigation behavior via orchestrating many independent modular servers.
 A task server can be used to compute a path, control effort, behavior, or any other navigation
@@ -74,7 +72,7 @@ It has tools to:
 </figure>
 
 We also provide a set of starting plugins to get you going.
-A list of all plugins can be found on [Navigation Plugins](plugins/index.md#plugins) - but they include algorithms for the spanning cross section of common behaviors and robot platform types.
+A list of all plugins can be found on [Navigation Plugins](plugins/index.md#navigation-plugins) - but they include algorithms for the spanning cross section of common behaviors and robot platform types.
 
 ## Distributions
 

@@ -1,5 +1,3 @@
-<a id="shim-tutorial"></a>
-
 # Using Rotation Shim Controller
 
 - [Overview]()
@@ -30,7 +28,7 @@ The `RotationShimController` is most suitable for:
 
 !!! note
 
-    Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See [Navigation Plugins](../../plugins/index.md#plugins) for a full list of current controller plugins.
+    Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See [Navigation Plugins](../../plugins/index.md#navigation-plugins) for a full list of current controller plugins.
 
 ## Configuring Rotation Shim Controller
 

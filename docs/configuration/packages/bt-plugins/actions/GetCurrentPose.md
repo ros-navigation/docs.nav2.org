@@ -1,5 +1,3 @@
-<a id="bt-get-current-pose-action"></a>
-
 # GetCurrentPose
 
 Obtains the current pose from TF and places it on the blackboard for other nodes to use.

@@ -1,5 +1,3 @@
-<a id="navigation2-on-real-turtlebot3"></a>
-
 # Navigating with a Physical Turtlebot 3
 
 - [Overview]()
@@ -59,7 +57,7 @@ You will need to launch your robot’s interface, for example:
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
 In case you are interested, there is a use case tutorial which shows how to use Nav2 with SLAM.
-[Navigating while Mapping (SLAM)](navigation2_with_slam.md#navigation2-with-slam).
+[Navigating while Mapping (SLAM)](navigation2_with_slam.md#navigating-while-mapping-slam).
 
 Required files:
 

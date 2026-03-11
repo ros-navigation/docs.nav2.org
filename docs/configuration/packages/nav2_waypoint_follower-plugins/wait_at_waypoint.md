@@ -1,12 +1,10 @@
-<a id="configuring-nav2-waypoint-follower-wait-at-waypoint-plugin"></a>
-
 # WaitAtWaypoint
 
 Lets robot to pause for a specified amount of time after reaching each waypoints.
 
 ## Parameters
 
-`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#configuring-waypoint-follower).
+`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#waypoint-follower).
 
 * **`<nav2_waypoint_follower plugin>`.enabled:**
   | Type   | Default   |

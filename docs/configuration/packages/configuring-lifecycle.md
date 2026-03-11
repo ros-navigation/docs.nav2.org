@@ -1,5 +1,3 @@
-<a id="configuring-lifecycle-manager"></a>
-
 # Lifecycle Manager
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_lifecycle_manager).

@@ -1,5 +1,3 @@
-<a id="writing-new-nbt-plugin"></a>
-
 # Writing a New Behavior Tree Plugin
 
 - [Overview]()

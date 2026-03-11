@@ -1,5 +1,3 @@
-<a id="plugin-tutorials"></a>
-
 # Plugin Tutorials
 
 Navigation2 Tutorials

@@ -1,5 +1,3 @@
-<a id="configuring-regulated-pure-puruit"></a>
-
 # Regulated Pure Pursuit
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller).
@@ -234,7 +232,7 @@ If you use the Dynamic Window Pure Pursuit Controller algorithm or software from
   | bool   | false     |
 
   Description
-  : Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner](configuring-smac-planner.md#configuring-smac-planner) to know more.
+  : Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner](configuring-smac-planner.md#smac-planner) to know more.
 * **rotate_to_heading_min_angle:**
   | Type   |   Default |
   |--------|-----------|

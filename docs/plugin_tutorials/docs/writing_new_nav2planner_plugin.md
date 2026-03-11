@@ -1,5 +1,3 @@
-<a id="writing-new-nav2planner-plugin"></a>
-
 # Writing a New Planner Plugin
 
 - [Overview]()

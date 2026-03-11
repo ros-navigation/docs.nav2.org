@@ -1,5 +1,3 @@
-<a id="spinners"></a>
-
 # 7. Reduce ROS 2 Nodes and Determinism
 
 **Task description**

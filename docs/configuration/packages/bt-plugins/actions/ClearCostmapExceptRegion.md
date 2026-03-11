@@ -1,5 +1,3 @@
-<a id="bt-clear-costmap-except-region-action"></a>
-
 # ClearCostmapExceptRegion
 
 Action to call a costmap clearing except region server.

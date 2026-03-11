@@ -1,5 +1,3 @@
-<a id="bt-compute-route-action"></a>
-
 # ComputeRoute
 
 Invokes the ComputeRoute ROS 2 action server, which is implemented by the [nav2_route](https://github.com/ros-navigation/navigation2/tree/main/nav2_route) module.

@@ -1,5 +1,3 @@
-<a id="binary-filter"></a>
-
 # Binary Filter Parameters
 
 Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal.
@@ -25,7 +23,7 @@ Filter space value is being calculated as: `Fv = base + multiplier * mask_value`
   | string | N/A       |
 
   Description
-  : Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#configuring-map-server) configuration page.
+  : Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#map-server) configuration page.
 * **`<filter name>`.transform_tolerance:**
   | Type   |   Default |
   |--------|-----------|

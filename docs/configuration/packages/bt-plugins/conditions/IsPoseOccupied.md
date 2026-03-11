@@ -1,5 +1,3 @@
-<a id="bt-is-pose-occupied-condition"></a>
-
 # IsPoseOccupied
 
 Checks to see if the pose is occupied. If it is occupied, the condition returns SUCCESS, otherwise

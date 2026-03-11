@@ -1,5 +1,3 @@
-<a id="bt-smooth-action"></a>
-
 # SmoothPath
 
 Invokes the SmoothPath action API in the smoother server to smooth a given path plan.

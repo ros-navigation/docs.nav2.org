@@ -1,5 +1,3 @@
-<a id="citations"></a>
-
 # Citations
 
 If you use the navigation framework, an algorithm from this repository, or ideas from it

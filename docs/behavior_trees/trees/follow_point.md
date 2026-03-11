@@ -1,12 +1,10 @@
-<a id="behavior-tree-follow-point"></a>
-
 # Follow Dynamic Point
 
 This behavior tree implements a navigation behavior from a starting point, attempting to follow a dynamic point over time.
 This “dynamic point” could be a person, another robot, a virtual carrot, anything.
 The only requirement is that the pose you’d like to follow is published to the topic outlined in the `GoalUpdater` BT node.
 
-In this tree, we replan at 1 hz just as we did in [Navigate To Pose](nav_to_pose_recovery.md#behavior-tree-nav-to-pose) using the `ComputePathToPose` node.
+In this tree, we replan at 1 hz just as we did in [Navigate To Pose](nav_to_pose_recovery.md#navigate-to-pose) using the `ComputePathToPose` node.
 However, this time when we replan, we update the `goal` based on the newest information in on the updated goal topic.
 After we plan a path to this dynamic point, we use the `TruncatePath` node to remove path points from the end of the path near the dynamic point.
 This behavior tree node is useful so that the robot always remains at least `distance` away from the obstacle, even if it stops.

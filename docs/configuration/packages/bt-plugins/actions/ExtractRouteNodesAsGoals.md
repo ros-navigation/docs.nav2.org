@@ -1,5 +1,3 @@
-<a id="bt-extract-route-nodes-as-goals-action"></a>
-
 # ExtractRouteNodesAsGoals
 
 Concatenates two paths into a single path, in order such that the output is `input_path1 + input_path2`.

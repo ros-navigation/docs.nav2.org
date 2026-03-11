@@ -1,5 +1,3 @@
-<a id="configuring-mppic"></a>
-
 # Model Predictive Path Integral Controller
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller).
@@ -326,7 +324,7 @@ This critic incentivizes navigating to achieve the angle of the goal posewhen in
   | bool   | false     |
 
   Description
-  : Enable symmetric goal orientation acceptance. When enabled, the critic prefers trajectories that approach the goal at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. MPPI decides). When enabled, the critic uses the minimum distance to either goal orientation, reducing the cost penalty for approaching from the backward direction. See [Tuning Guide](../../tuning/index.md#tuning) for detailed information.
+  : Enable symmetric goal orientation acceptance. When enabled, the critic prefers trajectories that approach the goal at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. MPPI decides). When enabled, the critic uses the minimum distance to either goal orientation, reducing the cost penalty for approaching from the backward direction. See [Tuning Guide](../../tuning/index.md#tuning-guide) for detailed information.
 
 ### Goal Critic
 

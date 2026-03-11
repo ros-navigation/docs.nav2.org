@@ -1,5 +1,3 @@
-<a id="bt-is-stopped-condition"></a>
-
 # IsStopped
 
 BT node that tracks robot odometry and returns SUCCESS if robot is considered stopped for long enough,

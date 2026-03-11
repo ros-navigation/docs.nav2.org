@@ -1,5 +1,3 @@
-<a id="safety-node"></a>
-
 # 5. Navigation Safety Node
 
 **Task description**

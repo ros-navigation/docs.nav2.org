@@ -1,5 +1,3 @@
-<a id="navigation2-with-gps"></a>
-
 # Navigating using GPS Localization
 
 - [Overview]()

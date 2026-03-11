@@ -1,5 +1,3 @@
-<a id="jazzy-migration"></a>
-
 # Jazzy to Kilted
 
 Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added that we will not specifically address here.
@@ -15,7 +13,7 @@ It is also useful for outdoor navigation in locations like urban centers on road
 
 It also includes a tracking feature that will track the route’s progression and provide live feedback on its status as well as trigger contextual operations at various nodes and edge events (change speed, turn on light, etc).
 
-See [Route Server](../configuration/packages/configuring-route-server.md#configuring-croute-server) for additional configuration information, the tutorials on generating graphs and using it, and example graphs in `nav2_bringup` and `nav2_route`.
+See [Route Server](../configuration/packages/configuring-route-server.md#route-server) for additional configuration information, the tutorials on generating graphs and using it, and example graphs in `nav2_bringup` and `nav2_route`.
 
 ## BehaviorTree error_msg
 
@@ -438,7 +436,7 @@ Because live monitoring of Behavior Tree with more than 20 nodes and visualizing
 
 In [PR #5079](https://github.com/ros-navigation/navigation2/pull/5079), the `dock_backwards` boolean parameter has been moved from the docking server to the dock plugin as the string parameter `dock_direction`. This allows the user to have multiple dock plugins with different directions in the same docking server. Default value is `forward` but may also be set as `backward`.
 
-See [Docking Server](../configuration/packages/configuring-docking-server.md#configuring-docking-server) for more information.
+See [Docking Server](../configuration/packages/configuring-docking-server.md#docking-server) for more information.
 
 ## New Position Goal Checker
 
@@ -454,7 +452,7 @@ Default value:
 
 - false
 
-See [Docking Server](../configuration/packages/configuring-docking-server.md#configuring-docking-server) for more information.
+See [Docking Server](../configuration/packages/configuring-docking-server.md#docking-server) for more information.
 
 Here we can see the working demo of the feature:
 

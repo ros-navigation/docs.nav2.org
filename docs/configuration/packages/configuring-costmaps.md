@@ -1,5 +1,3 @@
-<a id="configuring-cosmaps"></a>
-
 # Costmap 2D
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d).

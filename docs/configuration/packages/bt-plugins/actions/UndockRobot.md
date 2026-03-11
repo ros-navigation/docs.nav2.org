@@ -1,5 +1,3 @@
-<a id="bt-undock-robot-action"></a>
-
 # UndockRobot
 
 Invokes the UndockRobot ROS 2 action server, which is implemented by the docking server.

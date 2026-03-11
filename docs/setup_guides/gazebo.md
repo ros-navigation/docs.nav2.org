@@ -1,5 +1,3 @@
-<a id="setup-guides-gazebo"></a>
-
 # Setup Guide for Gazebo
 
 This guide covers setting up Navigation2 with the modern Gazebo simulator (Gazebo Harmonic or newer), used with ROS 2 Jazzy or newer.
@@ -18,4 +16,4 @@ Follow these tutorials in order to set up your robot for Nav2:
 
 !!! note
 
-    These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the [Configuration Guide](../configuration/index.md#configuration) section.
+    These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the [Configuration Guide](../configuration/index.md#configuration-guide) section.

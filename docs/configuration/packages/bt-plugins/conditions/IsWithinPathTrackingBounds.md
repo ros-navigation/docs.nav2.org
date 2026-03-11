@@ -1,5 +1,3 @@
-<a id="bt-is-within-path-tracking-bounds-condition"></a>
-
 # IsWithinPathTrackingBounds
 
 Checks if the robot is within determined tracking error bounds during path following.

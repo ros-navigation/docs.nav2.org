@@ -1,5 +1,3 @@
-<a id="assisted-teleop"></a>
-
 # 3. Assisted Teleop
 
 **Task description**

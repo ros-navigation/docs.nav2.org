@@ -1,5 +1,3 @@
-<a id="bt-toggle-colllsion-monitor-service"></a>
-
 # ToggleCollisionMonitor
 
 Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor on (enabled) and off (disabled).

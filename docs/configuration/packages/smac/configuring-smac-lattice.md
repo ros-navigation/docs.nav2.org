@@ -1,5 +1,3 @@
-<a id="configuring-smac-lattice-planner"></a>
-
 # Smac State Lattice Planner
 
 <figure markdown="span">

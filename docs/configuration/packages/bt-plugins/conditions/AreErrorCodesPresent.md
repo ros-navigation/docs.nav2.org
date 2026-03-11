@@ -1,5 +1,3 @@
-<a id="bt-are-error-codes-present-condition"></a>
-
 # AreErrorCodesPresent
 
 Checks the if the provided error code matches any error code within a set.

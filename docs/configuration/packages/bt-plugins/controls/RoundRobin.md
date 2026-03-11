@@ -1,5 +1,3 @@
-<a id="bt-round-robin-control"></a>
-
 # RoundRobin
 
 Custom control flow node used to create a round-robin behavior for children BT nodes.

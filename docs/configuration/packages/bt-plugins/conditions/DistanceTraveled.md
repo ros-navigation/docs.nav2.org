@@ -1,5 +1,3 @@
-<a id="bt-distance-traveled-condition"></a>
-
 # DistanceTraveled
 
 Node that returns success when a configurable distance has been traveled.
@@ -7,7 +5,7 @@ Node that returns success when a configurable distance has been traveled.
 ## Parameters
 
 * **transform_tolerance:**
-  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#configuring-bt-navigator).
+  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
 
 ### Example
 

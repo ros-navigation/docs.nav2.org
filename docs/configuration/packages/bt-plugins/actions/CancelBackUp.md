@@ -1,5 +1,3 @@
-<a id="bt-cancel-backup"></a>
-
 # CancelBackUp
 
 Used to cancel the backup action that is part of the behavior server. The server address can be remapped using the `server_name` input port.

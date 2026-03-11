@@ -1,5 +1,3 @@
-<a id="bt-pause-resume-controller-control"></a>
-
 # PauseResumeController
 
 Controlled through service calls to pause and resume the execution of the tree.

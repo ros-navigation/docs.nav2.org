@@ -1,5 +1,3 @@
-<a id="configuring-collision-monitor-node"></a>
-
 # Collision Monitor Node
 
 The Collision Monitor is a node providing an additional level of robot safety.
@@ -12,7 +10,7 @@ As such, this does not provide hard real-time safety certifications, but uses th
 This is a useful and integral part of large heavy industrial robots, or robots moving with high velocities, around people or other dynamic agents (e.g. other robots) as a safety mechanism for high-response emergency stopping.
 The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot’s perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.
 
-See the package’s `README` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the [Using Collision Monitor](../../../tutorials/docs/using_collision_monitor.md#collision-monitor-tutorial) tutorial.
+See the package’s `README` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the [Using Collision Monitor](../../../tutorials/docs/using_collision_monitor.md#using-collision-monitor) tutorial.
 
 Also, the practical demonstration of Collision Monitor abilities presented at 6th ROS Developers Day 2023, could be found below:
 

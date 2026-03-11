@@ -1,5 +1,3 @@
-<a id="bt-assisted-teleop-action"></a>
-
 # AssistedTeleop
 
 Invokes the AssistedTeleop ROS 2 action server, which filters teleop twist commands to prevent

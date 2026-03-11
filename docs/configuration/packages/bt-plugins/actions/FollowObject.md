@@ -1,5 +1,3 @@
-<a id="bt-follow-object-action"></a>
-
 # FollowObject
 
 Invokes the FollowObject ROS 2 action server, it will dynamically follow an object while maintaining a defined distance.

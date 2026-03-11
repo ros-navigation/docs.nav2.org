@@ -1,5 +1,3 @@
-<a id="about"></a>
-
 # About and Contact
 
 ## About
@@ -11,7 +9,7 @@ This project has been used by researchers, educators, and industry for over 10 y
 There are very few projects that have lasted as long or were as successful as ROS (1) Navigation.
 We would like to thank David Lu!! and Mike Ferguson for their tireless over the span of a decade to keep the Nav Stack alive and well.
 Without their hard work, this project would not have been able to happen.
-For a list of robots using Navigation2, see [Robots Using](robots.md#robots).
+For a list of robots using Navigation2, see [Robots Using](robots.md#robots-using).
 
 Aslas, as time moves on, so must we.
 ROS (1) had a great run and those of us that build projects using it will remember it fondly(ish).

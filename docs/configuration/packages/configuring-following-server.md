@@ -1,5 +1,3 @@
-<a id="configuring-following-server"></a>
-
 # Following Server
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_following/opennav_following).

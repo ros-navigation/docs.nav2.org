@@ -1,5 +1,3 @@
-<a id="tutorials"></a>
-
 # General Tutorials
 
 Nav2 Tutorials

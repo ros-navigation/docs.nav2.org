@@ -1,5 +1,3 @@
-<a id="eloquent-migration"></a>
-
 # Eloquent to Foxy
 
 Moving from ROS 2 Eloquent to Foxy, a number of stability improvements were added that we will not specifically address here.
@@ -70,7 +68,7 @@ All plugins will be expected to look up parameters in the namespace of its given
 Many new behavior tree nodes were added.
 These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
 The default behavior trees have been upgraded to stop the recovery behaviours and trigger a replanning when the navigation goal is preempted.
-See `nav2_behavior_tree` for a full listing, or [Navigation Plugins](../plugins/index.md#plugins) for the current list of behavior tree plugins and their descriptions.
+See `nav2_behavior_tree` for a full listing, or [Navigation Plugins](../plugins/index.md#navigation-plugins) for the current list of behavior tree plugins and their descriptions.
 These plugins are set as default in the `nav2_bt_navigator` but may be overridden by the `bt_plugins` parameter to include your specific plugins.
 
 Original GitHub tickets:

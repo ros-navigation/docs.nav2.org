@@ -1,5 +1,3 @@
-<a id="configuring-dwb-path-dist"></a>
-
 # PathDistCritic
 
 Scores a trajectory based on how well it is aligned to the path provided by the global planner.

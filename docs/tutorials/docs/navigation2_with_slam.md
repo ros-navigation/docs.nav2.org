@@ -1,5 +1,3 @@
-<a id="navigation2-with-slam"></a>
-
 # Navigating while Mapping (SLAM)
 
 - [Overview]()

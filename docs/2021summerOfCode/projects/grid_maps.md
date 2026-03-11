@@ -1,5 +1,3 @@
-<a id="grid-maps"></a>
-
 # 3. Port Grid Maps to ROS 2 and Environmental Model
 
 **Task description**

@@ -1,5 +1,3 @@
-<a id="distribution-sync-docs"></a>
-
 # ROS Distribution Sync Process
 
 This is the instructions for updating a Nav2 version in a ROS distribution sync.

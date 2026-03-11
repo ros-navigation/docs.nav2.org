@@ -1,5 +1,3 @@
-<a id="behavior-tree-odometry-calibration"></a>
-
 # Odometry Calibration
 
 This behavior tree drives the robot in a CCW square three times using the DriveOnHeading and Spin behaviors.

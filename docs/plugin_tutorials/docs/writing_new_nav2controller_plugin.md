@@ -1,5 +1,3 @@
-<a id="writing-new-nav2controller-plugin"></a>
-
 # Writing a New Controller Plugin
 
 - [Overview]()

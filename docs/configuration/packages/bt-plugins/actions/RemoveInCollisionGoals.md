@@ -1,5 +1,3 @@
-<a id="bt-remove-in-collision-goals-action"></a>
-
 # RemoveInCollisionGoals
 
 Looks over the input port `goals` and removes any waypoint that has a point or footprint cost above a certain threshold.

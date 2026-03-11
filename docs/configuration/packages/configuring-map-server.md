@@ -1,5 +1,3 @@
-<a id="configuring-map-server"></a>
-
 # Map Server
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server).

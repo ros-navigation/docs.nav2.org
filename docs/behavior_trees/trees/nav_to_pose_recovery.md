@@ -1,8 +1,6 @@
-<a id="behavior-tree-nav-to-pose"></a>
-
 # Navigate To Pose
 
-This behavior tree implements a significantly more mature version of the behavior tree on [Nav2 Behavior Trees](../index.md#behavior-trees).
+This behavior tree implements a significantly more mature version of the behavior tree on [Nav2 Behavior Trees](../index.md#nav2-behavior-trees).
 It navigates from a starting point to a single point goal in freespace.
 It contains both use of custom recovery behaviors in specific sub-contexts as well as a global recovery subtree for system-level failures.
 It also provides the opportunity for users to retry tasks multiple times before returning a failed state.
@@ -13,7 +11,7 @@ By convention we name these by the style of algorithms that they are (e.g. not `
 In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
-In nominal execution, this will replan the path at every second if not close enough to goal and pass that path onto the controller, similar to the behavior tree in [Nav2 Behavior Trees](../index.md#behavior-trees).
+In nominal execution, this will replan the path at every second if not close enough to goal and pass that path onto the controller, similar to the behavior tree in [Nav2 Behavior Trees](../index.md#nav2-behavior-trees).
 However, this time, if the planner fails, it will trigger contextually aware recovery behaviors in its subtree, clearing the global costmap.
 Additional recovery behaviors can be added here for additional context-specific recoveries, such as trying another algorithm.
 

@@ -1,5 +1,3 @@
-<a id="bt-clear-entire-costmap-action"></a>
-
 # ClearEntireCostmap
 
 Action to call a costmap clearing server.

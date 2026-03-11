@@ -1,5 +1,3 @@
-<a id="configuring-simple-smoother"></a>
-
 # Simple Smoother
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother).

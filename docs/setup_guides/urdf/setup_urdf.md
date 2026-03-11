@@ -1,5 +1,3 @@
-<a id="urdf-handson"></a>
-
 # Setting Up The URDF
 
 !!! note

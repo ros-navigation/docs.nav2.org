@@ -1,5 +1,3 @@
-<a id="bt-rate-controller"></a>
-
 # RateController
 
 A node that throttles the tick rate for its child.

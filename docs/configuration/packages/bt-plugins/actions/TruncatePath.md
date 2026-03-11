@@ -1,5 +1,3 @@
-<a id="bt-truncate-path"></a>
-
 # TruncatePath
 
 A custom control node, which modifies a path making it shorter. It removes parts of the path closer than a distance to the goal pose. The resulting last pose of the path orientates the robot to the original goal pose.

@@ -22,8 +22,6 @@ The costmap implementation consists of multiple layers, each of which has a cert
 
 The layers are integrated into the costmap through a plugin interface and then inflated using a user-specified [inflation radius](http://wiki.ros.org/costmap_2d/hydro/inflation), if the inflation layer is enabled. For a deeper discussion on costmap concepts, you can have a look at the [ROS1 costmap_2D documentation](http://wiki.ros.org/costmap_2d). Note that the `nav2_costmap_2d` package is mostly a straightforward ROS2 port of the ROS1 navigation stack version with minor changes required for ROS2 support and some new layer plugins.
 
-<a id="configuring-nav2-costmap-2d"></a>
-
 ### Configuring nav2_costmap_2d
 
 In this subsection, we will show an example configuration of `nav2_costmap_2d` such that it uses the information provided by the lidar sensor of `sam_bot`. We will show an example configuration that uses static layer, obstacle layer, voxel layer, and inflation layer. We set both the obstacle and voxel layer to use the `LaserScan` messages published  to the `/scan` topic by the lidar sensor. We also set some of the basic parameters to define how the detected obstacles are reflected in the costmap. Note that this configuration is to be included in the configuration file of Nav2.

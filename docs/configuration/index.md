@@ -1,5 +1,3 @@
-<a id="configuration"></a>
-
 # Configuration Guide
 
 This guide provides a process through which the user can adjust the tunable parameters to obtain

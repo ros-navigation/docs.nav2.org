@@ -1,5 +1,3 @@
-<a id="configuring-croute-server"></a>
-
 # Route Server
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_route).
@@ -11,7 +9,7 @@ In this case, the planner will generate feasible paths with localized environmen
 The graph itself has very few rules associated with it, but may be generated manually or automatically via AI, geometric, or probabilistic techniques.
 See [Route Graph Generation](../../tutorials/docs/route_server_tools/route_graph_generation.md#route-graph-generation) and [Route Graph Generation LIF Editor](../../tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md#route-graph-generation-lif-editor) for a tutorial about how to generate a graph using QGIS, Rviz2 and/or LIF for structured environment applications.
 You can also use sampling or procedural generation techniques to create a graph for less structured environments, for example using [NVIDIA’s SWAGGER project](https://github.com/nvidia-isaac/SWAGGER) which can generate a graph from a map image and provides utilities to convert into geojson for easy integration with Nav2 Route.
-There’s also a tutorial [SWAGGER Route Graph Generation](../../tutorials/docs/route_server_tools/swagger_generation.md#route-graph-generation-swagger) to help with that process as well.
+There’s also a tutorial [SWAGGER Route Graph Generation](../../tutorials/docs/route_server_tools/swagger_generation.md#swagger-route-graph-generation) to help with that process as well.
 
 There are also several locations for customization using plugins:
 \* Edge Scorer: Enables custom scoring functions for edges based on arbitrary user-defined semantic information and the chosen optimization criteria(s).

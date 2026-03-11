@@ -1,5 +1,3 @@
-<a id="bt-compute-coverage-path-action"></a>
-
 # ComputeCoveragePath
 
 Invokes the ComputeCoveragePath ROS 2 action server, which is implemented by the [opennav_coverage](https://github.com/open-navigation/opennav_coverage) server module.

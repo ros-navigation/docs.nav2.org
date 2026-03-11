@@ -1,5 +1,3 @@
-<a id="route-graph-generation-lif-editor"></a>
-
 # Route Graph Generation LIF Editor
 
 - [Overview]()

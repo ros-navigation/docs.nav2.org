@@ -1,5 +1,3 @@
-<a id="configuring-behavior-server"></a>
-
 # Behavior Server
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors).

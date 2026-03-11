@@ -1,5 +1,3 @@
-<a id="create-plugins"></a>
-
 # 2. Create New Planner and Controller Plugins
 
 **Task description**

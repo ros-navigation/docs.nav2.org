@@ -1,5 +1,3 @@
-<a id="bt-truncate-path-local"></a>
-
 # TruncatePathLocal
 
 A custom control node, which modifies a path making it shorter. It removes parts of the path which are more distant than specified forward/backward distance around robot

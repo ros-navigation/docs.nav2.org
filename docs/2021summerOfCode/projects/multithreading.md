@@ -1,5 +1,3 @@
-<a id="multhrreading"></a>
-
 # 4. Navigation MultiThreading
 
 **Task description**

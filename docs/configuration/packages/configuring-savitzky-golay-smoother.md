@@ -1,5 +1,3 @@
-<a id="configuring-savitzky-golay-filter-smoother"></a>
-
 # Savitzky-Golay Smoother
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother).

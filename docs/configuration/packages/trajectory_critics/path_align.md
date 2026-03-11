@@ -1,5 +1,3 @@
-<a id="configuring-dwb-path-align"></a>
-
 # PathAlignCritic
 
 Scores a trajectory based on how well it is aligned to the path provided by the global planner.

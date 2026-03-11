@@ -1,10 +1,8 @@
-<a id="configuring-dwb-stand-traj-gen-plugin"></a>
-
 # StandardTrajectoryGenerator
 
 ## Parameters
 
-`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 * **`<dwb plugin>`.sim_time:**
   | Type   |   Default |

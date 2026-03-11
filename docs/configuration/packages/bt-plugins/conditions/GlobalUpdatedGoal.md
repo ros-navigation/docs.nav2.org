@@ -1,5 +1,3 @@
-<a id="bt-global-updated-goal-condition"></a>
-
 # GlobalUpdatedGoal
 
 Checks if the global navigation goal has changed in the blackboard.

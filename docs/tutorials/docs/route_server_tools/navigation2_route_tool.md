@@ -1,5 +1,3 @@
-<a id="navigation2-route-tool"></a>
-
 # Using the Nav2 Route Tool
 
 - [Overview]()

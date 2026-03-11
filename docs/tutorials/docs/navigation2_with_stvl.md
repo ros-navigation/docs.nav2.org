@@ -1,5 +1,3 @@
-<a id="stvl"></a>
-
 # Using an External Costmap Plugin (STVL)
 
 - [Overview]()

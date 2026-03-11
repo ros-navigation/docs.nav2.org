@@ -1,5 +1,3 @@
-<a id="galactic-migration"></a>
-
 # Galactic to Humble
 
 Moving from ROS 2 Galactic to Humble, a number of stability improvements were added that we will not specifically address here.
@@ -290,7 +288,7 @@ That PR also enables the lifecycle manager to check if a system goes down due to
 
 ## New Nav2 Velocity Smoother
 
-[PR 2964](https://github.com/ros-navigation/navigation2/pull/2964) introduces the `nav2_velocity_smoother` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See [Velocity Smoother](../configuration/packages/configuring-velocity-smoother.md#configuring-velocity-smoother) for more details. It is not included in the default bringup batteries included from `nav2_bringup`.
+[PR 2964](https://github.com/ros-navigation/navigation2/pull/2964) introduces the `nav2_velocity_smoother` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See [Velocity Smoother](../configuration/packages/configuring-velocity-smoother.md#velocity-smoother) for more details. It is not included in the default bringup batteries included from `nav2_bringup`.
 
 ## Goal Checker API Changed
 

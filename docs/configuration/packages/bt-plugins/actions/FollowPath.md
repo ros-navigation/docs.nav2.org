@@ -1,5 +1,3 @@
-<a id="bt-follow-path-action"></a>
-
 # FollowPath
 
 Invokes the FollowPath ROS 2 action server, which is implemented by the controller plugin modules loaded.

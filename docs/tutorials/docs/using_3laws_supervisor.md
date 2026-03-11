@@ -1,5 +1,3 @@
-<a id="navigation2-with-3laws-supervisor"></a>
-
 # Enhanced Safety for Nav2 using 3Laws Supervisor
 
 <div style="width:100%;max-width:960px;margin:0 auto;">

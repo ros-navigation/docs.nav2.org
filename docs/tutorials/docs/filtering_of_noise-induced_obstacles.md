@@ -1,5 +1,3 @@
-<a id="filtering-of-noise-induced-obstacles"></a>
-
 # Filtering of Noise-Induced Obstacles
 
 - [Overview]()
@@ -16,7 +14,7 @@ This tutorial shows how to configure filtering of false obstacles caused by nois
 
 ## Requirements
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-instructions).
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
 
 ## Tutorial Steps
 
@@ -26,7 +24,7 @@ Denoise Layer is Costmap2D plugin. You can enable the `DenoiseLayer` plugin in C
 
 - `plugin`: type of plugin. In our case `nav2_costmap_2d::DenoiseLayer`.
 
-Full list of parameters supported by `DenoiseLayer` are listed at [Denoise Layer Parameters](../../configuration/packages/costmap-plugins/denoise.md#denoise) page.
+Full list of parameters supported by `DenoiseLayer` are listed at [Denoise Layer Parameters](../../configuration/packages/costmap-plugins/denoise.md#denoise-layer-parameters) page.
 
 It is important to note that `DenoiseLayer` typically should be placed before the inflation layer.
 This is required to prevent inflation from noise-induced obstacles.

@@ -1,5 +1,3 @@
-<a id="bt-remove-passed-goals-action"></a>
-
 # RemovePassedGoals
 
 Looks over the input port `goals` and removes any point that the robot is in close proximity to or has recently passed.

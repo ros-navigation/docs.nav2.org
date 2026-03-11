@@ -1,5 +1,3 @@
-<a id="create-moveit-analog"></a>
-
 # 1. Create a Configuration Assistant (Analog to MoveIt)
 
 **Task description**

@@ -1,5 +1,3 @@
-<a id="bt-time-expired-condition"></a>
-
 # TimeExpired
 
 Node that returns success when a time duration has passed

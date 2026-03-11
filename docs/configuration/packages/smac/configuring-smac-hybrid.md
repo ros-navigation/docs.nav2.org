@@ -1,5 +1,3 @@
-<a id="configuring-smac-hybrid-planner"></a>
-
 # Smac Hybrid-A\* Planner
 
 <figure markdown="span">

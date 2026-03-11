@@ -1,5 +1,3 @@
-<a id="bt-are-poses-near-action"></a>
-
 # ArePosesNear
 
 Checks if two poses are nearby. If the input poses are in different frames, it will automatically transform both to the global frame.

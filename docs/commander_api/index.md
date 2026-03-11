@@ -1,5 +1,3 @@
-<a id="commander-api"></a>
-
 # Simple Commander API
 
 ## Overview

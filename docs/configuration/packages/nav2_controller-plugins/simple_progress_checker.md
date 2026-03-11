@@ -1,12 +1,10 @@
-<a id="configuring-nav2-controller-simple-progress-checker-plugin"></a>
-
 # SimpleProgressChecker
 
 Checks whether the robot has made positional progress.
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **progress_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **progress_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 * **`<nav2_controller plugin>`.required_movement_radius:**
   | Type   |   Default |

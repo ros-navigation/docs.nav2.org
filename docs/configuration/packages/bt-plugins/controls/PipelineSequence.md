@@ -1,5 +1,3 @@
-<a id="bt-pipe-line-sequence-control"></a>
-
 # PipelineSequence
 
 Ticks the first child till it succeeds, then ticks the first and second children till the second one succeeds.

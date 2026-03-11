@@ -1,5 +1,3 @@
-<a id="bt-initial-pose-received-condition"></a>
-
 # InitialPoseReceived
 
 Node that returns success when the initial pose is sent to AMCL via /initial_pose\`.

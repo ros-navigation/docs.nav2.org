@@ -1,5 +1,3 @@
-<a id="navigation2-with-semantic-segmentation"></a>
-
 # Navigating with Semantic Segmentation
 
 - [Overview]()

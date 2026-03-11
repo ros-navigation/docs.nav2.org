@@ -1,5 +1,3 @@
-<a id="roscon-uk-2025-state-estimation"></a>
-
 # ROSCon UK 2025: State Estimation for Mobile Robotics Workshop
 
 - [Overview]()

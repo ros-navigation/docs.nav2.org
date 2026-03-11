@@ -1,5 +1,3 @@
-<a id="contribute"></a>
-
 # Getting Involved
 
 As an open-source project, we welcome and encourage the community to
@@ -71,8 +69,6 @@ doing work on behalf of a company.
 
 If for some reason Apache 2.0 or BSD licenses are not appropriate for your work, please get in contact with a project maintainer and discuss your concerns or requirements.
 We may consider special exceptions for exceptional work, within reason (we will not accept any licenses that makes it unsuitable for commercial use).
-
-<a id="dco"></a>
 
 ## Developer Certification of Origin (DCO)
 

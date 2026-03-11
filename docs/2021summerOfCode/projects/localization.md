@@ -1,5 +1,3 @@
-<a id="localization"></a>
-
 # 6. 2D/3D Localization Improvements
 
 **Task description**

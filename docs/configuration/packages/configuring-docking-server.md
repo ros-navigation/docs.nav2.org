@@ -1,5 +1,3 @@
-<a id="configuring-docking-server"></a>
-
 # Docking Server
 
 Source code on [Github](https://github.com/open-navigation/opennav_docking).

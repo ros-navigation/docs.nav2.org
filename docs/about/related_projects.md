@@ -1,5 +1,3 @@
-<a id="related-projects"></a>
-
 # Related Projects
 
 This is a community maintained list of related repositories and projects to Navigation2.

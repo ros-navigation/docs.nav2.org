@@ -1,5 +1,3 @@
-<a id="kilted-migration"></a>
-
 # Kilted to L-turtle
 
 Moving from ROS 2 Kilted to L-Turtle, a number of stability improvements were added that we will not specifically address here.
@@ -200,7 +198,7 @@ This is not longer required to be set.
 
 - Custom dock plugins must implement the new hooks (return `true` if nothing extra is required).
 - `Simple(Non)ChargingDock` gained `detector_service_name`, `detector_service_timeout`, and `subscribe_toggle` parameters so a detector service can be triggered only while detections are needed.
-- See [Docking Server](../configuration/packages/configuring-docking-server.md#configuring-docking-server) for the updated parameter reference and YAML example.
+- See [Docking Server](../configuration/packages/configuring-docking-server.md#docking-server) for the updated parameter reference and YAML example.
 
 ## Added Corner Smoothing functionality to route_server
 
@@ -265,7 +263,7 @@ collision_monitor:
       transport_type: "raw"  # Change this to your compressed format (zlib, draco, zstd)
 ```
 
-See transport_type in [Collision Monitor Node](../configuration/packages/collision_monitor/configuring-collision-monitor-node.md#configuring-collision-monitor-node) for more information.
+See transport_type in [Collision Monitor Node](../configuration/packages/collision_monitor/configuring-collision-monitor-node.md#collision-monitor-node) for more information.
 
 ### Performance Metrics
 
@@ -330,7 +328,7 @@ bt_navigator:
       polygon_frame_blackboard_id: "polygon_frame_id"
 ```
 
-See also [Behavior-Tree Navigator](../configuration/packages/configuring-bt-navigator.md#configuring-bt-navigator)
+See also [Behavior-Tree Navigator](../configuration/packages/configuring-bt-navigator.md#behavior-tree-navigator)
 
 ## Add BehaviorTree SubTrees Support
 
@@ -360,8 +358,8 @@ This allows to cover such use-cases as:
 adding virtual obstacles on maps, dynamic objects simulation/highlighting, hiding some areas or sticking-out robot parts, sensors noise removal, blacking-out areas on maps, adding keep-out or maximum speed restricted areas on vector basis, synthetic testing purposes, and much more.
 
 To run Vector Object server a new `vector_object_server.launch.py` launch-file is being supplied.
-[Navigating with Vector Objects](../tutorials/docs/navigation2_with_vector_objects.md#navigation2-with-vector-objects) tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
-The information about Vector Object server parameters set-up could be found at [Vector Object Server](../configuration/packages/map_server/configuring-vector-object-server.md#configuring-vector-object-server) configuration guide.
+[Navigating with Vector Objects](../tutorials/docs/navigation2_with_vector_objects.md#navigating-with-vector-objects) tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
+The information about Vector Object server parameters set-up could be found at [Vector Object Server](../configuration/packages/map_server/configuring-vector-object-server.md#vector-object-server) configuration guide.
 
 ## Toggle collision monitor service and BT plugin
 
@@ -398,9 +396,9 @@ An example usage in a Behavior Tree XML file:
 The Following Server implements a server for following dynamic objects or specific reference frames.
 This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.
 
-The information about Following Server parameters set-up could be found at [Following Server](../configuration/packages/configuring-following-server.md#configuring-following-server) configuration guide.
+The information about Following Server parameters set-up could be found at [Following Server](../configuration/packages/configuring-following-server.md#following-server) configuration guide.
 
-The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see [Dynamic Object Following](../tutorials/docs/navigation2_dynamic_point_following.md#navigation2-dynamic-point-following).
+The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see [Dynamic Object Following](../tutorials/docs/navigation2_dynamic_point_following.md#dynamic-object-following).
 
 ## Option for MPPI to use open loop mode
 
@@ -704,7 +702,7 @@ Moreover, several parameters have also been added to / removed from individual c
 
 In [PR 5804](https://github.com/ros-navigation/navigation2/pull/5804), an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing use_intra_process_comms parameter as true while launching Nav2 nodes.
 
-It is currently disabled by default. Please refer to the [Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS](../tuning/index.md#performance-ros2) and the [TB3/TB4 examples in the Nav2 stack](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch) for reference.
+It is currently disabled by default. Please refer to the [Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS](../tuning/index.md#performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos) and the [TB3/TB4 examples in the Nav2 stack](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch) for reference.
 
 ## New AxisGoalChecker Plugin
 
@@ -719,7 +717,7 @@ Key parameters:
 
 This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
 
-See [AxisGoalChecker](../configuration/packages/nav2_controller-plugins/axis_goal_checker.md#configuring-nav2-controller-axis-goal-checker-plugin) for full configuration details.
+See [AxisGoalChecker](../configuration/packages/nav2_controller-plugins/axis_goal_checker.md#axisgoalchecker) for full configuration details.
 
 ## New default_cancel_timeout parameter in bt_navigator
 

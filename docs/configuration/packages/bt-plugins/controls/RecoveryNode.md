@@ -1,5 +1,3 @@
-<a id="bt-recovery-node-control"></a>
-
 # RecoveryNode
 
 The RecoveryNode is a control flow node with two children.

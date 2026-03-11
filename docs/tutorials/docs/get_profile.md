@@ -1,5 +1,3 @@
-<a id="get-profile"></a>
-
 # Profiling in ROS 2 / Nav2
 
 - [Overview]()

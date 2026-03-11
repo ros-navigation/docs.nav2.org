@@ -1,5 +1,3 @@
-<a id="bt-cancel-control"></a>
-
 # CancelControl
 
 Used to cancel the goals given to the controllers’ action server. The server address can be remapped using the `server_name` input port.

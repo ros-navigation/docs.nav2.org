@@ -1,5 +1,3 @@
-<a id="bt-concatenate-paths-action"></a>
-
 # ConcatenatePaths
 
 Concatenates two paths into a single path, in order such that the output is `input_path1 + input_path2`.

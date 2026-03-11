@@ -1,5 +1,3 @@
-<a id="setup-odom-gz"></a>
-
 # Setting Up Odometry - Gazebo
 
 In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2.

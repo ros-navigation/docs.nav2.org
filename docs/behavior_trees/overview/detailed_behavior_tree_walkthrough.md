@@ -1,5 +1,3 @@
-<a id="detailed-behavior-tree-walkthrough"></a>
-
 # Detailed Behavior Tree Walkthrough
 
 - [Overview]()

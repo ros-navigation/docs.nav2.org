@@ -1,5 +1,3 @@
-<a id="bt-cancel-spin"></a>
-
 # CancelSpin
 
 Used to cancel the spin action that is part of the behavior server. The server address can be remapped using the `server_name` input port.

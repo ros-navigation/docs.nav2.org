@@ -1,5 +1,3 @@
-<a id="writing-new-behavior-plugin"></a>
-
 # Writing a New Behavior Plugin
 
 - [Overview]()

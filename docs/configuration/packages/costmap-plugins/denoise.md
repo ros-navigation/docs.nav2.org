@@ -1,5 +1,3 @@
-<a id="denoise"></a>
-
 # Denoise Layer Parameters
 
 This layer attempts to remove simple noise that may exist in a costmap’s layers due to sensor noise or discrete raycasting errors.

@@ -1,5 +1,3 @@
-<a id="bt-is-path-valid-condition"></a>
-
 # IsPathValid
 
 Checks to see if the global path is valid. If there is an

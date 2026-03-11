@@ -1,5 +1,3 @@
-<a id="configuring-nav2-waypoint-follower-photo-at-waypoint-plugin"></a>
-
 # PhotoAtWaypoint
 
 Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory. The name for taken photos are determined by
@@ -8,7 +6,7 @@ index and time stamp. The leading digit in file name implies the waypoint index 
 
 ## Parameters
 
-`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#configuring-waypoint-follower).
+`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#waypoint-follower).
 
 * **`<nav2_waypoint_follower plugin>`.enabled:**
   | Type   | Default   |

@@ -1,5 +1,3 @@
-<a id="camera-calibration"></a>
-
 # Camera Calibration
 
 - [Overview]()

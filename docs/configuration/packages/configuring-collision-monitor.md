@@ -1,5 +1,3 @@
-<a id="configuring-collision-monitor"></a>
-
 # Collision Monitor
 
 Source code and `README` with design, explanations, and metrics can be found on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_collision_monitor).

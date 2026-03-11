@@ -1,5 +1,3 @@
-<a id="bt-speed-controller"></a>
-
 # SpeedController
 
 A node that controls the tick rate for its child based on current robot speed.

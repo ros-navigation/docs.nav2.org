@@ -1,5 +1,3 @@
-<a id="bt-would-a-route-recovery-help-condition"></a>
-
 # WouldARouteRecoveryHelp
 
 Checks if the active route server error code is UNKNOWN, NO_VALID_ROUTE, or TIMEOUT.

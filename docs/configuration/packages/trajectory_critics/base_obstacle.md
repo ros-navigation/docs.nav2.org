@@ -1,5 +1,3 @@
-<a id="configuring-dwb-base-obstacle"></a>
-
 # BaseObstacleCritic
 
 Scores a trajectory based on where the path passes over the costmap.
@@ -7,7 +5,7 @@ To use this properly, you must use the inflation layer in costmap to expand obst
 
 ## Parameters
 
-`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 `<name>`: BaseObstacleCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
 

@@ -1,5 +1,3 @@
-<a id="rebranding"></a>
-
 # 5. Navigation Branding and Website
 
 **Task description**

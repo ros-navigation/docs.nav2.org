@@ -1,5 +1,3 @@
-<a id="bt-wait-action"></a>
-
 # Wait
 
 Invokes the Wait ROS 2 action server, which is implemented by the [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors) module.

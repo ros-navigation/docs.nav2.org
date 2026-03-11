@@ -1,5 +1,3 @@
-<a id="bt-get-next-few-goals-action"></a>
-
 # GetNextFewGoals
 
 Extracts only the next `N` goals from a list of goals to send to a later task that only needs localized future knowledge.

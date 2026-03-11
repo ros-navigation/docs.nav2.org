@@ -1,5 +1,3 @@
-<a id="bt-cancel-wait"></a>
-
 # CancelWait
 
 Used to cancel the wait action that is part of the behavior server. The server address can be remapped using the `server_name` input port.

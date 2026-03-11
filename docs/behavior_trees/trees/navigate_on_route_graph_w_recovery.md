@@ -1,5 +1,3 @@
-<a id="behavior-tree-navigate-on-route-graph-w-recovery"></a>
-
 # Navigate on Route Graph with Recovery
 
 This behavior tree implements a different style of navigation than the other versions in this section.

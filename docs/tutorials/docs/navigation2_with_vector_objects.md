@@ -1,5 +1,3 @@
-<a id="navigation2-with-vector-objects"></a>
-
 # Navigating with Vector Objects
 
 - [Overview]()
@@ -27,8 +25,8 @@ Other use cases use similar principles and could be easily adapted after finishi
 ## Requirements
 
 It is assumed ROS 2 and Nav2 dependent packages are installed or built locally.
-Please follow the instructions in [Build and Install](../../development_guides/build_docs/index.md#build-instructions).
-For the best understanding how Keepout Filter works (which is the part of current configuration), it is also recommended to pass through the [Navigating with Keepout Zones](navigation2_with_keepout_filter.md#navigation2-with-keepout-filter) tutorial.
+Please follow the instructions in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
+For the best understanding how Keepout Filter works (which is the part of current configuration), it is also recommended to pass through the [Navigating with Keepout Zones](navigation2_with_keepout_filter.md#navigating-with-keepout-zones) tutorial.
 
 ## Configuring Vector Object Server
 
@@ -104,7 +102,7 @@ costmap_filter_info_server:
     multiplier: 1.0
 ```
 
-More detailed information about each Vector Object server parameter and its operating principle could be found on [Vector Object Server](../../configuration/packages/map_server/configuring-vector-object-server.md#configuring-vector-object-server) configuration guide page. Costmap Filter Info server parameters description could be found at [Costmap Filter Info Server](../../configuration/packages/map_server/configuring-costmap-filter-info-server.md#configuring-costmap-filter-info-server) page.
+More detailed information about each Vector Object server parameter and its operating principle could be found on [Vector Object Server](../../configuration/packages/map_server/configuring-vector-object-server.md#vector-object-server) configuration guide page. Costmap Filter Info server parameters description could be found at [Costmap Filter Info Server](../../configuration/packages/map_server/configuring-costmap-filter-info-server.md#costmap-filter-info-server) page.
 
 After Vector Objects and Costmap Filters Info servers were configured, launch them by command from below.
 Robot should bypass vector obstacles. For the demonstration purposes it is enough to avoid path planning through them.
@@ -116,7 +114,7 @@ ros2 launch nav2_map_server vector_object_server.launch.py
 ## Preparing Nav2 stack
 
 Vector Object server puts shapes to OccupacyGrid map and publishes it in a topic, which is used as an input mask for enabled in Nav2 Keepout Filter.
-Enabling of Keeput Filter in Nav2 stack principles are similar as written in [Navigating with Keepout Zones](navigation2_with_keepout_filter.md#navigation2-with-keepout-filter) tutorial.
+Enabling of Keeput Filter in Nav2 stack principles are similar as written in [Navigating with Keepout Zones](navigation2_with_keepout_filter.md#navigating-with-keepout-zones) tutorial.
 Since vector objects are being enabled in global costmaps, Keepout Filter called as “vector_object_layer”, should be added to the global costmap section of the `nav2_params.yaml` standard Nav2 configuration as follows:
 
 ```yaml

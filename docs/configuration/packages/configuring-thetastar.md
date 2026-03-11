@@ -1,5 +1,3 @@
-<a id="configuring-theta-star-planner"></a>
-
 # Theta Star Planner
 
 <!-- The source code and README with design, explanations, metrics and usage tips can be found on Github_. -->

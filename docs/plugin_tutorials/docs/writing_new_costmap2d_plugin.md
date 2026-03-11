@@ -1,5 +1,3 @@
-<a id="writing-new-costmap2d-plugin"></a>
-
 # Writing a New Costmap2D Plugin
 
 - [Overview]()
@@ -18,7 +16,7 @@ Before starting the tutorial, please check this [video](https://vimeo.com/106994
 
 ## Requirements
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-instructions).
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
 
 ## Tutorial Steps
 

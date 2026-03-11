@@ -1,5 +1,3 @@
-<a id="bt-clear-costmap-around-pose-action"></a>
-
 # ClearCostmapAroundPose
 
 Action to call a costmap clearing around a given pose server.

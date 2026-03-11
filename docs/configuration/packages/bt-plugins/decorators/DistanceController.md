@@ -1,5 +1,3 @@
-<a id="bt-distance-controller"></a>
-
 # DistanceController
 
 A node that controls the tick rate for its child based on the distance traveled.

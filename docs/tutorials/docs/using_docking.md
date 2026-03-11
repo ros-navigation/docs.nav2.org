@@ -1,5 +1,3 @@
-<a id="docking-tutorial"></a>
-
 # Using Docking Server
 
 - [Overview]()
@@ -41,7 +39,7 @@ You can find how to dock your Nova Carter robot using Nav2 and this work in the 
 ## Requirements
 
 It is assumed ROS2 and Nav2 dependent packages are installed or built locally - including `opennav_docking`.
-Please make sure that Nav2 project is also built locally, see [Build and Install](../../development_guides/build_docs/index.md#build-instructions) for reference.
+Please make sure that Nav2 project is also built locally, see [Build and Install](../../development_guides/build_docs/index.md#build-and-install) for reference.
 
 See `opennav_docking` README for complete concept explanations, parameters, and APIs.
 
@@ -156,7 +154,7 @@ The dock poses in the map can be annotated using your favorite map editing tools
 
 Now that we have both a plugin for interacting with a dock and specified the locations of docks in your map, we’re ready to configure the docking server.
 For this example, we’re going to use the Nvidia-Segway Nova Carter Robot and you can find the source code of this demo in the `nova_carter_docking` package.
-For a full list of parameters and their descriptions, check out the [Docking Server](../../configuration/packages/configuring-docking-server.md#configuring-docking-server).
+For a full list of parameters and their descriptions, check out the [Docking Server](../../configuration/packages/configuring-docking-server.md#docking-server).
 
 Below is an example configuration used by the Nova Carter robot.
 Notable is the setting of the `fixed_frame` to `odom`, not `map` in order to decouple localization error from the docking procedure.

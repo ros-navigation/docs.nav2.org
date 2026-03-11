@@ -1,5 +1,3 @@
-<a id="bt-would-a-smoother-recovery-help-condition"></a>
-
 # WouldASmootherRecoveryHelp
 
 Checks if the active smoother server error code is UNKNOWN, TIMEOUT, FAILED_TO_SMOOTH_PATH, or SMOOTHED_PATH_IN_COLLISION.

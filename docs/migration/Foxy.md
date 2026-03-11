@@ -1,5 +1,3 @@
-<a id="foxy-migration"></a>
-
 # Foxy to Galactic
 
 Moving from ROS 2 Foxy to Galactic, a number of stability improvements were added that we will not specifically address here.
@@ -15,7 +13,7 @@ The NavigateToPose action feedback has two improvements:
 
 The NavigateToPose input port has been changed to PoseStamped instead of Point and Quaternion.
 
-See [NavigateToPose](../configuration/packages/bt-plugins/actions/NavigateToPose.md#bt-navigate-to-pose-action) for more information.
+See [NavigateToPose](../configuration/packages/bt-plugins/actions/NavigateToPose.md#navigatetopose) for more information.
 
 ## NavigateThroughPoses and ComputePathThroughPoses Actions Added
 
@@ -29,7 +27,7 @@ If you wish to stop at each goal pose, consider using the waypoint follower inst
 
 The `start` input port has been added to optionally allow the request of a path from `start` to `goal`  instead of from the current position of the robot to `goal`.
 
-See [ComputePathToPose](../configuration/packages/bt-plugins/actions/ComputePathToPose.md#bt-compute-path-to-pose-action) for more information.
+See [ComputePathToPose](../configuration/packages/bt-plugins/actions/ComputePathToPose.md#computepathtopose) for more information.
 
 ## ComputePathToPose Action Interface Changes
 
@@ -121,11 +119,9 @@ Original GitHub tickets:
 - [PhotoAtWaypoint](https://github.com/ros-navigation/navigation2/pull/2041)
 - [InputAtWaypoint](https://github.com/ros-navigation/navigation2/pull/2049)
 
-<a id="costmap-filters"></a>
-
 ## Costmap Filters
 
-A new concept interacting with spatial-dependent objects called “Costmap Filters” appeared in Galactic (more information about this concept could be found at [Navigation Concepts](../concepts/index.md#concepts) page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavior.
+A new concept interacting with spatial-dependent objects called “Costmap Filters” appeared in Galactic (more information about this concept could be found at [Navigation Concepts](../concepts/index.md#navigation-concepts) page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavior.
 
 Architecturally, costmap filters consists from `CostmapFilter` class which is a basic class incorporating much common of its inherited filter plugins:
 
@@ -136,7 +132,7 @@ Architecturally, costmap filters consists from `CostmapFilter` class which is a 
 Each costmap filter subscribes to filter info topic (publishing by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info)) having all necessary information for loaded costmap filter and filter mask topic.
 `SpeedFilter` additionally publishes maximum speed restricting [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) targeted for a Controller to enforce robot won’t exceed given limit.
 
-High-level design of this concept could be found [here](https://github.com/ros-navigation/navigation2/tree/main/doc/design/CostmapFilters_design.pdf). The functionality of costmap filters is being discussed in [the ticket #1263](https://github.com/ros-navigation/navigation2/issues/1263) and carried out by [PR #1882](https://github.com/ros-navigation/navigation2/pull/1882). The following tutorials: [Navigating with Keepout Zones](../tutorials/docs/navigation2_with_keepout_filter.md#navigation2-with-keepout-filter) and [Navigating with Speed Limits](../tutorials/docs/navigation2_with_speed_filter.md#navigation2-with-speed-filter) will help to easily get involved with `KeepoutFilter` and `SpeedFilter` functionalities.
+High-level design of this concept could be found [here](https://github.com/ros-navigation/navigation2/tree/main/doc/design/CostmapFilters_design.pdf). The functionality of costmap filters is being discussed in [the ticket #1263](https://github.com/ros-navigation/navigation2/issues/1263) and carried out by [PR #1882](https://github.com/ros-navigation/navigation2/pull/1882). The following tutorials: [Navigating with Keepout Zones](../tutorials/docs/navigation2_with_keepout_filter.md#navigating-with-keepout-zones) and [Navigating with Speed Limits](../tutorials/docs/navigation2_with_speed_filter.md#navigating-with-speed-limits) will help to easily get involved with `KeepoutFilter` and `SpeedFilter` functionalities.
 
 ## SmacPlanner
 
@@ -218,12 +214,12 @@ The NavFn Planner has now its 3 parameters reconfigurable at runtime (`tolerance
 
 ## New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
 
-The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services `(local_or_global)_costmap/clear_except_(local_or_global)_costmap` and `clear_around_(local_or_global)_costmap` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a `reset_distance` input port. See [ClearCostmapExceptRegion](../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.md#bt-clear-costmap-except-region-action) and [ClearCostmapAroundRobot](../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.md#bt-clear-entire-costmap-around-robot-action) for more.  The changes were introduced in this [pull request 2204](https://github.com/ros-navigation/navigation2/pull/2204).
+The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services `(local_or_global)_costmap/clear_except_(local_or_global)_costmap` and `clear_around_(local_or_global)_costmap` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a `reset_distance` input port. See [ClearCostmapExceptRegion](../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.md#clearcostmapexceptregion) and [ClearCostmapAroundRobot](../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.md#clearcostmaparoundrobot) for more.  The changes were introduced in this [pull request 2204](https://github.com/ros-navigation/navigation2/pull/2204).
 
 ## New Behavior Tree Nodes
 
 A new behavior tree node was added and dynamically loadable at run-time using behavior tree cpp v3.
-See `nav2_behavior_tree` for a full listing, or [Navigation Plugins](../plugins/index.md#plugins) for the current list of behavior tree plugins and their descriptions.
+See `nav2_behavior_tree` for a full listing, or [Navigation Plugins](../plugins/index.md#navigation-plugins) for the current list of behavior tree plugins and their descriptions.
 These plugins are set as default in the `nav2_bt_navigator` but may be overridden by the `bt_plugins` parameter to include your specific plugins.
 
 Original GitHub tickets:
@@ -250,7 +246,7 @@ These changes were introduced in [pull request 2263](https://github.com/ros-navi
 
 ## ControllerServer New Parameter failure_tolerance
 
-A new parameter `failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to `controller_patience` in ROS(1) Nav. See [Controller Server](../configuration/packages/configuring-controller-server.md#configuring-controller-server) for description.
+A new parameter `failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to `controller_patience` in ROS(1) Nav. See [Controller Server](../configuration/packages/configuring-controller-server.md#controller-server) for description.
 This change was introduced in this [pull request 2264](https://github.com/ros-navigation/navigation2/pull/2264).
 
 ## Removed BT XML Launch Configurations

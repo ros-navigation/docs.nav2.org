@@ -1,12 +1,10 @@
-<a id="configuring-nav2-waypoint-follower-input-at-waypoint-plugin"></a>
-
 # InputAtWaypoint
 
 Lets robot to wait for external input, with timeout, at a waypoint.
 
 ## Parameters
 
-`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#configuring-waypoint-follower).
+`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#waypoint-follower).
 
 * **`<nav2_waypoint_follower plugin>`.enabled:**
   | Type   | Default   |

@@ -1,12 +1,10 @@
-<a id="configuring-nav2-controller-stopped-goal-checker-plugin"></a>
-
 # StoppedGoalChecker
 
 Checks whether the robot has reached the goal pose and come to a stop.
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 * **`<nav2_controller plugin>`.trans_stopped_velocity:**
   | Type   |   Default |
@@ -49,4 +47,4 @@ Checks whether the robot has reached the goal pose and come to a stop.
   |--------|-----------|
   | bool   | false     |
     Description
-    : Enable symmetric goal orientation acceptance. When enabled, the robot accepts the goal as reached when oriented at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. controller algorithm decides). See [Tuning Guide](../../../tuning/index.md#tuning) for detailed information.
+    : Enable symmetric goal orientation acceptance. When enabled, the robot accepts the goal as reached when oriented at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. controller algorithm decides). See [Tuning Guide](../../../tuning/index.md#tuning-guide) for detailed information.

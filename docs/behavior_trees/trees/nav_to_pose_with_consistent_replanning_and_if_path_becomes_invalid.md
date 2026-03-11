@@ -1,8 +1,6 @@
-<a id="behavior-tree-nav-to-pose-and-replan-if-path-invalid"></a>
-
 # Navigate To Pose With Consistent Replanning And If Path Becomes Invalid
 
-This behavior tree implements a significantly more mature version of the behavior tree on [Nav2 Behavior Trees](../index.md#behavior-trees).
+This behavior tree implements a significantly more mature version of the behavior tree on [Nav2 Behavior Trees](../index.md#nav2-behavior-trees).
 It navigates from a starting point to a single point goal in freespace.
 It contains both use of custom recoveries in specific sub-contexts as well as a global recovery subtree for system-level failures.
 It also provides the opportunity for users to retry tasks multiple times before returning a failed state.

@@ -1,5 +1,3 @@
-<a id="bt-goal-updater"></a>
-
 # GoalUpdater
 
 A custom control node, which updates the goal(s) pose(s). It subscribes to a topic in which it can receive (an) updated goal(s) pose(s) to use instead of the one(s) commanded in action. It is useful for dynamic object following tasks.

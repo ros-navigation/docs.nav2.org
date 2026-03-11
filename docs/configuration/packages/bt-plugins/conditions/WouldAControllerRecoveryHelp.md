@@ -1,5 +1,3 @@
-<a id="bt-would-a-controller-recovery-help-condition"></a>
-
 # WouldAControllerRecoveryHelp
 
 Checks if the active controller server error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS, or NO_VALID_CONTROL.

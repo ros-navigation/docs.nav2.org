@@ -1,5 +1,3 @@
-<a id="configuring-controller-server"></a>
-
 # Controller Server
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_controller).
@@ -152,7 +150,7 @@ It also hosts the local costmap.
   | string | “speed_limit” |
 
   Description
-  : Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters](costmap-plugins/speed_filter.md#speed-filter) configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
+  : Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters](costmap-plugins/speed_filter.md#speed-filter-parameters) configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
 * **odom_topic:**
   | Type   | Default   |
   |--------|-----------|

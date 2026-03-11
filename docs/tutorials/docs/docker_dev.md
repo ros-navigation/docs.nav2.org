@@ -1,5 +1,3 @@
-<a id="docker-development"></a>
-
 # Docker for Development: Zero to Hero
 
 - [Overview]()

@@ -1,5 +1,3 @@
-<a id="navigation2-with-keepout-filter"></a>
-
 # Navigating with Keepout Zones
 
 - [Overview]()
@@ -18,13 +16,13 @@ This tutorial shows how to simply utilize keep-out/safety zones where robots can
 
 ## Requirements
 
-It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-instructions).
+It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
 
 ## Tutorial Steps
 
 ### 1. Prepare filter mask
 
-As was written in [Navigation Concepts](../../concepts/index.md#concepts), any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
+As was written in [Navigation Concepts](../../concepts/index.md#navigation-concepts), any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
 
 Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a `Nav2` repository to a new `depot_keepout.pgm` file.
 
@@ -295,7 +293,7 @@ def generate_launch_description() -> LaunchDescription:
     return ld
 ```
 
-where the `params_file` variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at [Map Server](../../configuration/packages/configuring-map-server.md#configuring-map-server) page. Please, refer to it for more information. The example of `params_file` could be found below:
+where the `params_file` variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at [Map Server](../../configuration/packages/configuring-map-server.md#map-server) page. Please, refer to it for more information. The example of `params_file` could be found below:
 
 ```yaml
 keepout_filter_mask_server:
@@ -325,7 +323,7 @@ Costmap Filters are Costamp2D plugins. You can enable the `KeepoutFilter` plugin
 - `plugin`: type of plugin. In our case `nav2_costmap_2d::KeepoutFilter`.
 - `filter_info_topic`: filter info topic name. This need to be equal to `filter_info_topic` parameter of Costmap Filter Info Publisher Server from the chapter above.
 
-Full list of parameters supported by `KeepoutFilter` are listed at [Keepout Filter Parameters](../../configuration/packages/costmap-plugins/keepout_filter.md#keepout-filter) page.
+Full list of parameters supported by `KeepoutFilter` are listed at [Keepout Filter Parameters](../../configuration/packages/costmap-plugins/keepout_filter.md#keepout-filter-parameters) page.
 
 It is important to note that enabling `KeepoutFilter` for `global_costmap` only will cause the path planner to build plans bypassing keepout zones. Enabling `KeepoutFilter` for `local_costmap` only will cause the robot to not enter keepout zones, but the path may still go through them. So, the best practice is to enable `KeepoutFilter` for global and local costmaps simultaneously by adding it both in `global_costmap` and `local_costmap` in `nav2_params.yaml`. However it does not always have to be true. In some cases keepout zones don’t have to be the same for global and local costmaps, e.g. if the robot doesn’t allowed to intentionally go inside keepout zones, but if its there, the robot can drive in and out really quick if it clips an edge or corner. For this case, there is not need to use extra resources of the local costmap copy.
 

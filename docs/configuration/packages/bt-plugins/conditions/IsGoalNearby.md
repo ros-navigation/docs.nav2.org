@@ -1,5 +1,3 @@
-<a id="bt-is-goal-nearby-condition"></a>
-
 # IsGoalNearby
 
 Checks if the robot is near the goal by computing the remaining path length from the robot’s current position to the goal. Returns SUCCESS when the remaining path length is less than the proximity threshold, otherwise returns FAILURE.
@@ -7,7 +5,7 @@ Checks if the robot is near the goal by computing the remaining path length from
 ## Parameter
 
 * **transform_tolerance:**
-  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#configuring-bt-navigator).
+  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
 
 ### Example
 

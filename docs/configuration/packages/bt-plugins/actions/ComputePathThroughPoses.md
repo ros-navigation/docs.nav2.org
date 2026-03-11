@@ -1,5 +1,3 @@
-<a id="bt-compute-path-through-poses-action"></a>
-
 # ComputePathThroughPoses
 
 Invokes the ComputePathThroughPoses ROS 2 action server, which is implemented by the [nav2_planner](https://github.com/ros-navigation/navigation2/tree/main/nav2_planner) module.

@@ -1,5 +1,3 @@
-<a id="bt-goal-updated-controller"></a>
-
 # GoalUpdatedController
 
 Checks if the global navigation goal, or a vector of goals, has changed in the blackboard. The node ticks its child if the goal was updated.

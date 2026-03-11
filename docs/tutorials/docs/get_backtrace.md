@@ -1,5 +1,3 @@
-<a id="get-backtrace"></a>
-
 # Get Backtrace in ROS 2 / Nav2
 
 - [Overview]()

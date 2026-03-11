@@ -1,12 +1,10 @@
-<a id="configuring-dwb-goal-align"></a>
-
 # GoalAlignCritic
 
 Scores a trajectory based on how well aligned the trajectory is with the goal pose.
 
 ## Parameters
 
-`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#configuring-controller-server).
+`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
 `<name>`: GoalAlignCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
 

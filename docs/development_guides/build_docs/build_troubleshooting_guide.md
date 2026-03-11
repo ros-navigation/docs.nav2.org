@@ -1,5 +1,3 @@
-<a id="build-troubleshooting-guide"></a>
-
 # Build Troubleshooting Guide
 
 ## Common Nav2 Dependencies Build Failures

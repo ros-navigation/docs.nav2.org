@@ -1,5 +1,3 @@
-<a id="navigation2-dynamic-point-following"></a>
-
 # Dynamic Object Following
 
 Nav2 provides two different approaches for dynamic object following tasks:

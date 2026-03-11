@@ -1,5 +1,3 @@
-<a id="configuring-coverage-server"></a>
-
 # Coverage Server
 
 Source code on [Github](https://github.com/open-navigation/opennav_coverage).

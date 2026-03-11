@@ -1,5 +1,3 @@
-<a id="setup-guides"></a>
-
 # First-Time Robot Setup Guide
 
 This section is a collection of guides that aims to provide readers a good resource for setting up Nav2. The objectives for this section are as follows:

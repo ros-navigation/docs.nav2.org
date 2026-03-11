@@ -1,5 +1,3 @@
-<a id="summer-2021-student-program"></a>
-
 # Projects for 2021 Summer Student Program
 
 The [Summer 2021 Student Program](https://summer.iscas.ac.cn/help/en/student/) is upon us!

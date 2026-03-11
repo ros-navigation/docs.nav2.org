@@ -1,5 +1,3 @@
-<a id="setup-transforms"></a>
-
 # Setting Up Transformations
 
 In this guide, we will be looking at the necessary transforms required by Nav2. These transforms allow Nav2 to interpret information coming in from various sources, such as sensors and odometry, by transforming them to the coordinate frames for use. Below is what a full transform tree for a robot looks like but we’ll start with something much more simpler.
@@ -71,7 +69,7 @@ At time 0.0
 - Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
 ```
 
-And that’s it for this short demo - we were able to successfully publish a transform from `base_link` to `base_laser` using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see TF2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the [Setting Up The URDF](../urdf/setup_urdf.md#urdf-handson) tutorial.
+And that’s it for this short demo - we were able to successfully publish a transform from `base_link` to `base_laser` using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see TF2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the [Setting Up The URDF](../urdf/setup_urdf.md#setting-up-the-urdf) tutorial.
 
 !!! info "See also"
 
@@ -106,12 +104,12 @@ All other statically defined transforms (e.g. `base_link` => `base_laser`, `base
 
 !!! info "See also"
 
-    For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in [Navigation Concepts](../../concepts/index.md#concepts).
+    For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in [Navigation Concepts](../../concepts/index.md#navigation-concepts).
 
 ## Conclusion
 
 In this tutorial, we have discussed about the concept of transforms and how they are used in Nav2.
 
-In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on [Setting Up The URDF](../urdf/setup_urdf.md#urdf-handson).
+In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on [Setting Up The URDF](../urdf/setup_urdf.md#setting-up-the-urdf).
 
 Lastly, we also discussed the three published transform requirements of Nav2 and the necessary REPs to keep in mind when setting them up.

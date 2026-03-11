@@ -1,5 +1,3 @@
-<a id="bt-append-goal-pose-to-goals-action"></a>
-
 # AppendGoalPoseToGoals
 
 Appends a goal `PoseStamped` to the end of a `goals` vector.

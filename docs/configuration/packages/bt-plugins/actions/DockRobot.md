@@ -1,5 +1,3 @@
-<a id="bt-dock-robot-action"></a>
-
 # DockRobot
 
 Invokes the DockRobot ROS 2 action server, which is implemented by the docking server.

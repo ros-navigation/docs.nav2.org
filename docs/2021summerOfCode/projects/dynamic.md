@@ -1,5 +1,3 @@
-<a id="dynamic"></a>
-
 # 1. Navigation Dynamic Obstacle Integration
 
 **Task description**

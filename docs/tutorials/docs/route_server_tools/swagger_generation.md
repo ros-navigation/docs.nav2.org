@@ -1,5 +1,3 @@
-<a id="route-graph-generation-swagger"></a>
-
 # SWAGGER Route Graph Generation
 
 - [Overview]()

@@ -1,5 +1,3 @@
-<a id="configuring-navfn"></a>
-
 # NavFn Planner
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_navfn_planner).

@@ -1,5 +1,3 @@
-<a id="semantics"></a>
-
 # 6. Semantic Integration
 
 **Task description**

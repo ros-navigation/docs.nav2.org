@@ -1,5 +1,3 @@
-<a id="writing-new-nav2navigator-plugin"></a>
-
 # Writing a New Navigator Plugin
 
 - [Overview]()

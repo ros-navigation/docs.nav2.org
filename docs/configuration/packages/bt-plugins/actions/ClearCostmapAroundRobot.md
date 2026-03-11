@@ -1,5 +1,3 @@
-<a id="bt-clear-entire-costmap-around-robot-action"></a>
-
 # ClearCostmapAroundRobot
 
 Action to call a costmap clearing around robot server.

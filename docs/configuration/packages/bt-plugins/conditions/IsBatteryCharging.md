@@ -1,5 +1,3 @@
-<a id="bt-is-battery-charging-condition"></a>
-
 # IsBatteryCharging
 
 Checks if the battery is charging by subscribing to a `sensor_msgs/BatteryState` topic and checking if the power_supply_status is `POWER_SUPPLY_STATUS_CHARGING`.

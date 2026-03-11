@@ -1,5 +1,3 @@
-<a id="navigation2-with-speed-filter"></a>
-
 # Navigating with Speed Limits
 
 - [Overview]()
@@ -18,13 +16,13 @@ This tutorial shows how to simply utilize Speed Filter which is designed to limi
 
 ## Requirements
 
-It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built locally. Please make sure that the Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-instructions).
+It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built locally. Please make sure that the Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
 
 ## Tutorial Steps
 
 ### 1. Prepare filter mask
 
-As was written in [Navigation Concepts](../../concepts/index.md#concepts), any Costmap Filter (including Speed Filter) is reading the data marked in a filter mask file. All information about filter masks, their types, detailed structure and how to make a new one is written in a [Navigating with Keepout Zones](navigation2_with_keepout_filter.md#navigation2-with-keepout-filter) tutorial at `1. Prepare filter masks` chapter. The principal of drawing the filter mask for Speed Filter is the same as for Keepout Filter (to annotate a map with the requested zones), except that `OccupancyGrid` mask values have another meaning: these values are encoded speed limits for the areas corresponding to the cell on map.
+As was written in [Navigation Concepts](../../concepts/index.md#navigation-concepts), any Costmap Filter (including Speed Filter) is reading the data marked in a filter mask file. All information about filter masks, their types, detailed structure and how to make a new one is written in a [Navigating with Keepout Zones](navigation2_with_keepout_filter.md#navigating-with-keepout-zones) tutorial at `1. Prepare filter masks` chapter. The principal of drawing the filter mask for Speed Filter is the same as for Keepout Filter (to annotate a map with the requested zones), except that `OccupancyGrid` mask values have another meaning: these values are encoded speed limits for the areas corresponding to the cell on map.
 
 Let’s look, how it is being decoded. As we know, `OccupancyGrid` values are belonging to the `[0..100]` range. For Speed Filter `0` value means no speed limit in the area corresponding zero-cell on mask. Values from `[1..100]` range are being linearly converted into a speed limit value by the following formula:
 
@@ -310,7 +308,7 @@ def generate_launch_description() -> LaunchDescription:
     return ld
 ```
 
-where the `params_file` variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at [Map Server](../../configuration/packages/configuring-map-server.md#configuring-map-server) page. Please, refer to it for more information. The example of `params_file` could be found below:
+where the `params_file` variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at [Map Server](../../configuration/packages/configuring-map-server.md#map-server) page. Please, refer to it for more information. The example of `params_file` could be found below:
 
 ```yaml
 speed_filter_mask_server:
@@ -329,7 +327,7 @@ speed_costmap_filter_info_server:
 
 Note, that:
 
-- For Speed Filter setting speed restrictions in a percent from maximum speed, the `type` of costmap filter should be set to `1`. All possible costmap filter types could be found at [Map Server](../../configuration/packages/configuring-map-server.md#configuring-map-server) page.
+- For Speed Filter setting speed restrictions in a percent from maximum speed, the `type` of costmap filter should be set to `1`. All possible costmap filter types could be found at [Map Server](../../configuration/packages/configuring-map-server.md#map-server) page.
 - Filter mask topic name should be the equal for `mask_topic` parameter of Costmap Filter Info Publisher Server and `topic_name` parameter of Map Server.
 - As was described in a previous chapter, `base` and `multiplier` should be set to `100.0` and `-1.0` accordingly for the purposes of this tutorial example.
 
@@ -341,7 +339,7 @@ Costmap Filters are Costmap2D plugins. You can enable the `SpeedFilter` plugin i
 - `filter_info_topic`: filter info topic name. This needs to be equal to `filter_info_topic` parameter of Costmap Filter Info Publisher Server from the chapter above.
 - `speed_limit_topic`: name of topic to publish speed limit to.
 
-Full list of parameters supported by `SpeedFilter` are listed at the [Speed Filter Parameters](../../configuration/packages/costmap-plugins/speed_filter.md#speed-filter) page.
+Full list of parameters supported by `SpeedFilter` are listed at the [Speed Filter Parameters](../../configuration/packages/costmap-plugins/speed_filter.md#speed-filter-parameters) page.
 
 You can place the plugin either in the `global_costmap` section in `nav2_params.yaml` to have speed restriction mask applied to global costmap or in the `local_costmap` to apply speed mask to the local costmap. However, `SpeedFilter` plugin should never be enabled simultaneously for global and local costmaps. Otherwise, it can lead to unwanted multiple “speed restriction” - “no restriction” message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.
 

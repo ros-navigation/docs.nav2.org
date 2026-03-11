@@ -1,5 +1,3 @@
-<a id="bt-path-expiring-timer-condition"></a>
-
 # PathExpiringTimer
 
 Checks if the timer has expired. Returns success if the timer has expired, otherwise it returns failure.

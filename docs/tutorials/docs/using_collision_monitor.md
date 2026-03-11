@@ -1,5 +1,3 @@
-<a id="collision-monitor-tutorial"></a>
-
 # Using Collision Monitor
 
 - [Overview]()
@@ -18,7 +16,7 @@ This tutorial shows how to use a Collision Monitor with Nav2 stack. Based on thi
 ## Requirements
 
 It is assumed ROS2 and Nav2 dependent packages are installed or built locally.
-Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-instructions).
+Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
 
 ## Configuring Collision Monitor
 
@@ -52,7 +50,7 @@ PolygonSlow:
 
 !!! note
 
-    The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the [Collision Monitor](../../configuration/packages/configuring-collision-monitor.md#configuring-collision-monitor) configuration guide.
+    The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the [Collision Monitor](../../configuration/packages/configuring-collision-monitor.md#collision-monitor) configuration guide.
 
 !!! note
 

@@ -1,5 +1,3 @@
-<a id="behavior-trees"></a>
-
 # Nav2 Behavior Trees
 
 * [Introduction To Nav2 Specific Nodes](overview/nav2_specific_nodes.md)

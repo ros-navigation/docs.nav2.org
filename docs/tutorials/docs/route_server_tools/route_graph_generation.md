@@ -1,5 +1,3 @@
-<a id="route-graph-generation"></a>
-
 # Route Graph Generation
 
 - [Overview]()
