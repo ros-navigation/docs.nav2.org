@@ -6,7 +6,7 @@ references:
       path: .
   setup_doc_dependencies: &setup_doc_dependencies
     run:
-      name: Install Doc Dependencies
+      name: Install documentation dependencies
       command: |
         export DEBIAN_FRONTEND=noninteractive
         apt update
@@ -17,6 +17,7 @@ references:
         pip3 install -r requirements.txt
   build_docs: &build_docs
     run:
+      name: Build documentation
       command: |
         mkdocs build
   store_built_docs: &store_built_docs
@@ -25,6 +26,7 @@ references:
       destination: build_site
   publish_docs: &publish_docs
     run:
+      name: Deploy documentation
       command: |
         # Set up git configuration
         git config user.name ci
