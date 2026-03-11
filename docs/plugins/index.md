@@ -108,9 +108,7 @@ For tutorials on creating your own plugins, please see [Writing a New Costmap2D 
 
 | Plugin Name             | Creator                        | Description                                                                                                                                                                                       |
 |-------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [FeasiblePathHandler]() | Maurice Alexander<br/>Purnawan | A plugin that transforms global<br/>plan to the local costmap frame,<br/>prunes it to the relevant portion<br/>within the costmap bounds, and<br/>handles in-place rotation and<br/>cusp pruning. |
-
-<a id="feasiblepathhandler"></a>
+| [FeasiblePathHandler](https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/feasible_path_handler.cpp) | Maurice Alexander<br/>Purnawan | A plugin that transforms global<br/>plan to the local costmap frame,<br/>prunes it to the relevant portion<br/>within the costmap bounds, and<br/>handles in-place rotation and<br/>cusp pruning. |
 
 ## Behavior Tree Nodes
 
