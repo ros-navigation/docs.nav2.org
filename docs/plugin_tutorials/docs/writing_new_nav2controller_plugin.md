@@ -27,7 +27,7 @@ You can find the source code matching this tutorial [here](https://github.com/ro
 
 ## Tutorial Steps
 
-### 1- Create a new Controller Plugin
+### 1. Create a new Controller Plugin
 
 We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in [navigation_tutorials](https://github.com/ros-navigation/navigation2_tutorials) repository
 as the `nav2_pure_pursuit_controller`. This package can be considered as a reference for writing your own controller plugin.
@@ -163,7 +163,7 @@ geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
 
 The remaining methods are not used, but it’s mandatory to override them. As per the rules, we did override all but left them empty.
 
-### 2- Exporting the controller plugin
+### 2. Exporting the controller plugin
 
 Now that we have created our custom controller, we need to export our controller plugin so that it will be visible to the controller server.
 Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load them. In ROS 2, exporting and loading
@@ -231,7 +231,7 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
 
 Next, we’ll use this plugin.
 
-### 3- Pass the plugin name through the params file
+### 3. Pass the plugin name through the params file
 
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below
 
@@ -252,7 +252,7 @@ controller_server:
 In the above snippet, you can observe the mapping of our `nav2_pure_pursuit_controller::PurePursuitController` controller to its id `FollowPath`.
 To pass plugin-specific parameters we have used `<plugin_id>.<plugin_specific_parameter>`.
 
-### 4- Run Pure Pursuit Controller plugin
+### 4. Run Pure Pursuit Controller plugin
 
 Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at [Getting Started](../../getting_started/index.md#getting-started). Below is a shortcut command for that:
 

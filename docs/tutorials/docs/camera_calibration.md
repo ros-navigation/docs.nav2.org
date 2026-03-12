@@ -10,13 +10,13 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 ## Requirements
 
-1- First, source your ROS 2 installation to set the environment variables:
+1. First, source your ROS 2 installation to set the environment variables:
 
 ```shell
 source /opt/ros/<ros2-distro>/setup.bash
 ```
 
-2- Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake:
+2. Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake:
 
 ```shell
 sudo apt install ros-$ROS_DISTRO-camera-calibration-parsers
@@ -24,7 +24,7 @@ sudo apt install ros-$ROS_DISTRO-camera-info-manager
 sudo apt install ros-$ROS_DISTRO-launch-testing-ament-cmake
 ```
 
-3- Image Pipeline need to be built from source in your workspace with:
+3. Image Pipeline need to be built from source in your workspace with:
 
 ```shell
 git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
@@ -38,15 +38,15 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
 
 ## Tutorial Steps
 
-1- Start a terminal in your GUI
+1. Start a terminal in your GUI
 
-2- Launch the ROS driver for your specific camera.
+2. Launch the ROS driver for your specific camera.
 
-3- Make sure camera is publishing images over ROS. This can be tested by running:
+3. Make sure camera is publishing images over ROS. This can be tested by running:
 
 `ros2 topic list`
 
-4- This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:
+4. This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:
 
 `ros2 topic hz /camera/image_raw`
 
@@ -54,7 +54,7 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
   ![](images/Camera_Calibration/ROS2_topic_hz.png){ width="600" }
 </figure>
 
-5- Start the camera calibration node
+5. Start the camera calibration node
 
 `ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera`
 
@@ -105,7 +105,7 @@ This will open a calibration window which highlight the checkerboard.
   ![](images/Camera_Calibration/window1.png){ width="600" }
 </figure>>
 
-6- In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
+6. In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
 
 - checkerboard on the camera’s left, right, top and bottom of field of view
     - X bar - left/right in field of view
@@ -118,13 +118,13 @@ This will open a calibration window which highlight the checkerboard.
   ![](images/Camera_Calibration/calibration.jpg){ width="600" }
 </figure>
 
-7- As the checkerboard is moved around the 4 bars on the calibration sidebar increases in length. When all then the 4 bars are green and enough data is available for calibration the CALIBRATE button will light up. Click it to see the results. It takes around the minute for calibration to take place.
+7. As the checkerboard is moved around the 4 bars on the calibration sidebar increases in length. When all then the 4 bars are green and enough data is available for calibration the CALIBRATE button will light up. Click it to see the results. It takes around the minute for calibration to take place.
 
 <figure markdown="span">
   ![](images/Camera_Calibration/greenbars.png){ width="600" }
 </figure>
 
-8- After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
+8. After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
 
 <figure markdown="span"> 
   ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
@@ -135,10 +135,10 @@ This will open a calibration window which highlight the checkerboard.
 </figure>
 
 
-9-Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”
+9. Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”
 
-10-To use the the calibration file unzip the calibration.tar.gz
+10. To use the the calibration file unzip the calibration.tar.gz
 
 `tar -xvf calibration.tar.gz`
 
-11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
+11. In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.

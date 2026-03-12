@@ -40,11 +40,11 @@ The ROSCon talk for STVL can be found [in this video](https://vimeo.com/29269957
 
 ## Tutorial Steps
 
-### 0- Setup
+### 0. Setup
 
 Follow the same process as in [Getting Started](../../getting_started/index.md#getting-started) for installing and setting up a robot for hardware testing or simulation, as applicable. Ensure ROS 2, Navigation2, and Gazebo are installed.
 
-### 1- Install STVL
+### 1. Install STVL
 
 First, source your ROS 2 installation to set the environment variables:
 
@@ -64,7 +64,7 @@ It can also be built from source by cloning the repository into your Navigation2
 git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/spatio_temporal_voxel_layer
 ```
 
-### 1- Modify Navigation2 Parameter
+### 2. Modify Navigation2 Parameter
 
 STVL is an optional plugin, like all plugins, in Costmap2D. Costmap Plugins in Navigation2 are loaded in the `plugin_names` and `plugin_types` variables inside of their respective costmaps.
 For example, the following will load the static and obstacle layer plugins into the name `static_layer` and `obstacle_layer`, respectively:
@@ -138,12 +138,12 @@ Make sure to change both the local and global costmaps.
 
 Note: Pluginlib plugins for other Navigation2 servers such as planning, behavior, and control can be set in this same way.
 
-### 2- Launch Navigation2
+### 3. Launch Navigation2
 
 Follow the same process as in [Getting Started](../../getting_started/index.md#getting-started) to launch a simulated robot in gazebo with Navigation2.
 Navigation2 is now using STVL as its 3D sensing costmap layer.
 
-### 3-  RVIZ
+### 4.  RVIZ
 
 With RViz open and `publish_voxel_map: true`, you can visualize the underlying data structure’s 3D grid using the `{local, global}_costmap/voxel_grid` topics.
 Note: It is recommended in RViz to set the `PointCloud2` Size to your voxel size and the style to `Boxes` with a neutral color for best visualization.

@@ -71,7 +71,7 @@ For that reason, both the class and the confidence are important inputs for deci
 
 ## Tutorial Steps
 
-### 0- Setup Simulation Environment
+### 0. Setup Simulation Environment
 
 To navigate using semantic segmentation, we first need to set up a simulation environment with a robot equipped with a camera sensor. For this tutorial, we will use the Baylands outdoor world in Gazebo with a TurtleBot 4 robot.
 Everything is already set up in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory, so clone the repo and build it if you haven’t already:
@@ -97,7 +97,7 @@ You should see Gazebo launch with the TurtleBot 4 in the Baylands world.
   ![](images/Navigation2_with_segmentation/gazebo_baylands.png){ width="700px" title="Gazebo Baylands world" }
 </figure>
 
-### 1- Setup Semantic Segmentation Inference Node
+### 1. Setup Semantic Segmentation Inference Node
 
 The semantic segmentation node performs real-time inference on camera images using an ONNX model. It subscribes to camera images, runs inference, and publishes segmentation masks, confidence maps, and label information.
 To run the semantic segmentation node, you need to install the dependencies from the [requirements.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/master/nav2_semantic_segmentation_demo/semantic_segmentation_node/requirements.txt) file in the semantic_segmentation_node package:
@@ -147,7 +147,7 @@ ros2 topic echo /segmentation/label_info --once
 
 You should see the label information message with the classes defined in your ontology.
 
-### 2- Configure Nav2 with Semantic Segmentation Layer
+### 2. Configure Nav2 with Semantic Segmentation Layer
 
 Now we need to configure Nav2 to use the semantic segmentation layer in its costmaps. This involves adding the layer plugin to both the global and local costmaps and configuring the cost assignment for different segmentation classes. Key parameters include:
 
@@ -194,7 +194,7 @@ local_costmap:
 
 The tutorial provides a pre-configured [nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/master/nav2_semantic_segmentation_demo/semantic_segmentation_sim/config/nav2_params.yaml) file in the semantic_segmentation_sim package. You can use it to configure the Nav2 costmaps for your own application.
 
-### 3- Run everything together
+### 3. Run everything together
 
 The tutorial provides a complete launch file that launches the simulation, the semantic segmentation node, and the Nav2 navigation stack. To run it, simply launch the [segmentation_simulation_launch.py](https://github.com/ros-navigation/navigation2_tutorials/blob/master/nav2_semantic_segmentation_demo/semantic_segmentation_sim/launch/segmentation_simulation_launch.py) file:
 

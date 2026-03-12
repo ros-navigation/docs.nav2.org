@@ -21,7 +21,7 @@ This tutorial shows how to create your own planner plugin.
 
 ## Tutorial Steps
 
-### 1- Creating a new Planner Plugin
+### 1. Creating a new Planner Plugin
 
 We will create a simple straight-line planner.
 The annotated code in this tutorial can be found in [navigation_tutorials](https://github.com/ros-navigation/navigation2_tutorials) repository as the `nav2_straightline_planner`.
@@ -108,7 +108,7 @@ return global_path;
 
 The remaining methods are not used but it’s mandatory to override them. As per the rules, we did override all but left them blank.
 
-### 2- Exporting the planner plugin
+### 2. Exporting the planner plugin
 
 Now that we have created our custom planner, we need to export our planner plugin so that it will be visible to the planner server. Plugins are loaded at runtime and if they are not visible, then our planner server won’t be able to load it. In ROS 2, exporting and loading plugins is handled by `pluginlib`.
 
@@ -171,7 +171,7 @@ Coming back to our tutorial, class `nav2_straightline_planner::StraightLine` is 
 
 Next, we’ll use this plugin.
 
-### 3- Pass the plugin name through params file
+### 3. Pass the plugin name through params file
 
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below to replace following params
 
@@ -203,7 +203,7 @@ planner_server:
 
 In the above snippet, you can observe the mapping of our `nav2_straightline_planner::StraightLine` planner to its id `GridBased`. To pass plugin-specific parameters, we have used `<plugin_id>.<plugin_specific_parameter>`.
 
-### 4- Run StraightLine plugin
+### 4. Run StraightLine plugin
 
 Run Turtlebot3 simulation with enabled navigation2. Detailed instruction how to make it are written at [Getting Started](../../getting_started/index.md#getting-started). Below is shortcut command for that:
 

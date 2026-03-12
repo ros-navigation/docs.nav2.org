@@ -20,7 +20,7 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 
 ## Tutorial Steps
 
-### 1- Creating a new BT Plugin
+### 1. Creating a new BT Plugin
 
 We will create a simple BT plugin node to perform an action on another server.
 For this example, we’re going to analyze the simplest behavior tree action node in the `nav2_behavior_tree` package, the `wait` node.
@@ -120,7 +120,7 @@ The remaining methods are not used and are not mandatory to override them.
 Only some BT node plugins will require overriding `on_wait_for_result()` to check for preemption or check a timeout.
 The success, aborted, and cancelled methods will default to `SUCCESS`, `FAILURE`, `SUCCESS` respectively, if not overridden.
 
-### 2- Exporting the planner plugin
+### 2. Exporting the planner plugin
 
 Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
 Plugins are loaded at runtime, and if they are not visible, then our BT Navigator server won’t be able to load them or use them.
@@ -152,7 +152,7 @@ An example can be seen below, where the `Wait` BT XML node specifies a non-varia
 <Wait wait_duration="5"/>
 ```
 
-### 3- Add plugin library name to config
+### 3. Add plugin library name to config
 
 In order for the BT Navigator node to discover the plugin we’ve just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.
 
@@ -169,7 +169,7 @@ bt_navigator:
     - nav2_wait_action_bt_node    # our new plugin
 ```
 
-### 4- Run Your Custom plugin
+### 4. Run Your Custom plugin
 
 Now you can use a behavior tree with your custom BT node.
 For example, the `navigate_w_replanning_and_recovery.xml` file is shown below.

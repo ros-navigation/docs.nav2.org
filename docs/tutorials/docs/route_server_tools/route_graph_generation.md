@@ -14,7 +14,7 @@ Follow [https://www.qgis.org/en/site/forusers/download.html](https://www.qgis.or
 
 ## Tutorial Steps
 
-### 1- Create New QGIS Project
+### 1. Create New QGIS Project
 
 Open QGIS and create a new project by selecting Project->New. Save your project by selecting, Project -> Save As.
 Set the project coordinate reference system by selecting Project->Properties->CRS. Set the coordinate system to WGS 84 / Pseudo-Mercator and click OK.
@@ -28,7 +28,7 @@ Set the project coordinate reference system by selecting Project->Properties->CR
   ![image](../images/route_graph_generation/coordinate_reference_system.png){ height="800" }
 </figure>
 
-### 2- Setup Coordinate System
+### 2. Setup Coordinate System
 
 By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
 To correctly set the origin and the resolution we will georeference the raster image.
@@ -64,7 +64,7 @@ Close the window. Drag and drop the georeferenced raster file that was just crea
 
 To verify the transformation worked, move the mouse around the raster image and look at the coordinates being displayed at the bottom of the window.
 
-### 3- Add Nodes
+### 3. Add Nodes
 
 Now that we have georeferenced the raster layer we can start placing nodes.
 
@@ -103,7 +103,7 @@ Once complete, unselect ‘Toggle Editing’ and save changes.
 
     By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwritten by the user though the pop window after node placement or though the Attribute Table. To delete features in a layer right click on the layer and select Open Attribute Table. Click on Target Multi Edit Mode, select the features to delete, and click on the trash can icon.
 
-### 4- Add Edges
+### 4. Add Edges
 
 Now an edge layer can be created. Select Layer -> Create Layer -> New ShapeFile Layer. Set the shapefile layer setting to be
 edges for the File name, LineString for the Geometry type and WGS 84/ Pseudo-Mercator for the coordinate system. Press OK.
@@ -127,7 +127,7 @@ Once complete, unselect ‘Toggle Editing’ and save changes.
   ![](../images/route_graph_generation/edges.png){ width="800" }
 </figure>
 
-### 5- Associate Nodes With Edges
+### 5. Associate Nodes With Edges
 
 Now that we have our node and edge layers, we can associate node IDs with edge IDs.
 Select Database -> DB manager. Expand Virtual layers and expand Project layers. Open up
@@ -141,12 +141,12 @@ coordinate reference system is WGS 84 /Pseudo-Mercator. Press OK.
   ![image](../images/route_graph_generation/db_manager.png){ width="800" }
 </figure>
 
-### 6- Export To Geojson
+### 6. Export To Geojson
 
 We are now ready to export the node and edge layer as geojson files. Execute export_shapefiles.py <prefix_of_file> <path_to_edges_shapefile> <path_to_nodes_shapefile>
 within the scripts directory located in the nav2_route module. This script converts the nodes and edges shape file into a geojson file.
 
-### 7- Congratulations
+### 7. Congratulations
 
 Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph,
 edit the layers and repeat the process from step 5 to regenerate the graph. If you wish to adjust the graph, make sure Editing is toggled on for the

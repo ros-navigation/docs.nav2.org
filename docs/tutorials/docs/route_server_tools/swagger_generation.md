@@ -14,7 +14,7 @@ Follow [https://github.com/nvidia-isaac/SWAGGER/](https://github.com/nvidia-isaa
 
 ## Tutorial Steps
 
-### 1- Generate SWAGGER Graph
+### 1. Generate SWAGGER Graph
 
 The first step is to generate a swagger graph from a raster image of the map.
 This can be done by running the `generate_graph.py` script located in the `scripts`.
@@ -44,7 +44,7 @@ This process is performed by:
 * Placing nodes in the center areas of the map to fill space.
 * Connecting edges to skeleton, center, and boundary nodes and pruning those which do not add value.
 
-### 2- Convert to GeoJSON
+### 2. Convert to GeoJSON
 
 To work with this graph in Nav2 Route, we need to convert this to a format the Nav2 Route Server can interpret.
 The SWAGGER graph format is a GML file, which is not directly usable by Nav2 Route.
@@ -59,12 +59,12 @@ python integrations/nav2/tools/gml_to_geojson.py <path_to_graph.gml>
 The output will be a `graph.geojson` file in the same directory as the input GML file.
 This conversion populates the GeoJSON with the key information about the graph and ensures that each edge are bidirectional for navigation purposes.
 
-### 3- Use with Nav2 Route!
+### 3. Use with Nav2 Route!
 
 At this point, this file is now ready to use with the Nav2 Route Server.
 This can be passed onto your application using the `nav2_bringup`’s `graph` CLI parameter or found by your custom launch or Nav2 configuration files.
 
-### 4- Demonstration
+### 4. Demonstration
 
 For demonstration, we’re going to use the Large Warehouse map provided by SWAGGER.
 This map can be found in the `maps` directory of the SWAGGER repository.

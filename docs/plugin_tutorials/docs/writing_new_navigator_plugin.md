@@ -21,7 +21,7 @@ It may be beneficial to write your own Navigator if you have a custom action mes
 
 ## Tutorial Steps
 
-### 1- Create a new Navigator Plugin
+### 1. Create a new Navigator Plugin
 
 We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in [Nav2’s BT Navigator package](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator) as the `NavigateToPoseNavigator`. This package can be considered as a reference for writing your own plugin.
 
@@ -222,7 +222,7 @@ void NavigateToPoseNavigator::onLoop()
 }
 ```
 
-### 2- Exporting the navigator plugin
+### 2. Exporting the navigator plugin
 
 Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server.
 Plugins are loaded at runtime, and if they are not visible, then our server won’t be able to load it. In ROS 2, exporting and loading
@@ -289,7 +289,7 @@ Coming to our tutorial, class `nav2_bt_navigator::NavigateToPoseNavigator` is lo
 
 Next, we’ll use this plugin.
 
-### 3- Pass the plugin name through the params file
+### 3. Pass the plugin name through the params file
 
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below
 
@@ -314,7 +314,7 @@ bt_navigator:
 In the above snippet, you can observe the mapping of our `nav2_bt_navigator::NavigateToPoseNavigator` plugin to its id `navigate_to_pose`.
 To pass plugin-specific parameters we have used `<plugin_id>.<plugin_specific_parameter>`.
 
-### 4- Run plugin
+### 4. Run plugin
 
 Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at [Getting Started](../../getting_started/index.md#getting-started). Below is a shortcut command for that:
 

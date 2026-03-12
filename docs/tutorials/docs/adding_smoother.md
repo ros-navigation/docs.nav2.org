@@ -22,13 +22,13 @@ You should also have a copy of the `nav2_params.yaml` file for your system to ed
 
 ## Tutorial Steps
 
-### 0- Familiarization with the Smoother BT Node
+### 0. Familiarization with the Smoother BT Node
 
 The [SmoothPath](../../configuration/packages/bt-plugins/actions/Smooth.md#smoothpath) BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be separately interacted with via other servers and client library languages.
 
 Please see the BT node’s configuration page to familiarize yourself with all aspects, but the core ports to note are the `unsmoothed_path` input port and the `smoothed_path` output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server’s action API.
 
-### 1- Specifying a Smoother Plugin
+### 1. Specifying a Smoother Plugin
 
 In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use.
 
@@ -52,7 +52,7 @@ smoother_server:
       plugin: "nav2_smoother::SavitzkyGolaySmoother"
 ```
 
-### 2- Modifying your BT XML
+### 2. Modifying your BT XML
 
 Now that you have selected and configured the smoother server for your given plugin(s), it is time to use those smoother(s) in your behavior tree for navigation behavior. While there are many places / ways to use this in a BT, what is shown below is probably the most likely situation you would want to use the smoother in (to smooth a path returned by the path planner and then using that smoothed path for path tracking).
 

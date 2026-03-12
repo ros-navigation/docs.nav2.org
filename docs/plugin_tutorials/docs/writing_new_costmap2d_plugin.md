@@ -20,7 +20,7 @@ It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built 
 
 ## Tutorial Steps
 
-### 1- Write a new Costmap2D plugin
+### 1. Write a new Costmap2D plugin
 
 For a demonstration, this example will create a costmap plugin that puts repeating cost gradients in the costmap.
 The annotated code for this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials) repository as the `nav2_gradient_costmap_plugin` ROS 2-package.
@@ -95,7 +95,7 @@ In our example these methods have the following functionality:
 5. `GradientLayer::reset()` method is dummy: it is not used in this example plugin. It remains there since pure virtual function `reset()` in parent `Layer` class required to be overridden.
 6. `GradientLayer::isClearable()` returns `false` since this plugin is not clearable.
 
-### 2- Export and make GradientLayer plugin
+### 2. Export and make GradientLayer plugin
 
 The written plugin will be loaded at runtime as its basic parent class and then will be called by plugin handling modules (for costmap2d by `LayeredCostmap`). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.
 
@@ -156,7 +156,7 @@ nav2_gradient_costmap_plugin:
       Plugin(name='nav2_gradient_costmap_plugin::GradientLayer', type='nav2_gradient_costmap_plugin::GradientLayer', base='nav2_costmap_2d::Layer')
 ```
 
-### 3- Enable the plugin in Costmap2D
+### 3. Enable the plugin in Costmap2D
 
 At the next step it is required to tell Costmap2D about new plugin. For that the plugin should be added to `plugin_names` and `plugin_types` lists in `nav2_params.yaml` optionally for `local_costmap`/`global_costmap` in order to be enabled in run-time for Controller/Planner Server. `plugin_names` list contains the names of plugin objects. These names could be anything you want. `plugin_types` contains types of listed in `plugin_names` objects. These types should correspond to `name` field of plugin class specified in plugin description XML-file.
 
@@ -213,7 +213,7 @@ gradient_layer_2:
 
     The order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
 
-### 4- Run GradientLayer plugin
+### 4. Run GradientLayer plugin
 
 Run Turtlebot3 simulation with enabled Nav2. Detailed instructions how to make it are written at [Getting Started](../../getting_started/index.md#getting-started). Below is shortcut command for that:
 

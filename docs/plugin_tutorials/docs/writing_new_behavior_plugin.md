@@ -22,7 +22,7 @@ This allows for massive flexibility in the behavior server enabling any behavior
 
 ## Tutorial Steps
 
-### 1- Creating a new Behavior Plugin
+### 1. Creating a new Behavior Plugin
 
 We will create a simple send sms behavior.
 It will use Twilio to send a message via SMS to a remote operations center.
@@ -108,7 +108,7 @@ ResultStatus SendSms::onCycleUpdate()
 
 The remaining methods are not used and are not mandatory to override them.
 
-### 2- Exporting the Behavior Plugin
+### 2. Exporting the Behavior Plugin
 
 Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won’t be able to load it. In ROS 2, exporting and loading plugins is handled by `pluginlib`.
 
@@ -171,7 +171,7 @@ Coming to our tutorial, class `nav2_sms_behavior::SendSms` is loaded dynamically
 
 Next, we’ll use this plugin.
 
-### 3- Pass the plugin name through params file
+### 3. Pass the plugin name through params file
 
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below to replace following params
 
@@ -236,7 +236,7 @@ recoveries_server:  # Galactic and earlier
 In the above snippet, you can observe that we add the SMS behavior under the `send_sms` ROS 2 action server name.
 We also tell the behavior server that the `send_sms` is of type `SendSms` and give it our parameters for your Twilio account.
 
-### 4- Run Behavior Plugin
+### 4. Run Behavior Plugin
 
 Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at [Getting Started](../../getting_started/index.md#getting-started). Below is shortcut command for that:
 
