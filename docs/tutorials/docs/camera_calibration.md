@@ -12,23 +12,23 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 1. First, source your ROS 2 installation to set the environment variables:
 
-```shell
-source /opt/ros/<ros2-distro>/setup.bash
-```
+    ```shell
+    source /opt/ros/<ros2-distro>/setup.bash
+    ```
 
 2. Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake:
 
-```shell
-sudo apt install ros-$ROS_DISTRO-camera-calibration-parsers
-sudo apt install ros-$ROS_DISTRO-camera-info-manager
-sudo apt install ros-$ROS_DISTRO-launch-testing-ament-cmake
-```
+    ```shell
+    sudo apt install ros-$ROS_DISTRO-camera-calibration-parsers
+    sudo apt install ros-$ROS_DISTRO-camera-info-manager
+    sudo apt install ros-$ROS_DISTRO-launch-testing-ament-cmake
+    ```
 
 3. Image Pipeline need to be built from source in your workspace with:
 
-```shell
-git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
-```
+    ```shell
+    git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
+    ```
 
 **Also, make sure you have the following:**
 
@@ -44,101 +44,101 @@ git clone -b $ROS_DISTRO git@github.com:ros-perception/image_pipeline.git
 
 3. Make sure camera is publishing images over ROS. This can be tested by running:
 
-`ros2 topic list`
+    `ros2 topic list`
 
 4. This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:
 
-`ros2 topic hz /camera/image_raw`
+    `ros2 topic hz /camera/image_raw`
 
-<figure markdown="span">
-  ![](images/Camera_Calibration/ROS2_topic_hz.png){ width="600" }
-</figure>
+    <figure markdown="span">
+        ![](images/Camera_Calibration/ROS2_topic_hz.png){ width="600" }
+    </figure>
 
 5. Start the camera calibration node
 
-`ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera`
+    `ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera`
 
-```default
-  Camera Name:
+    ```default
+    Camera Name:
 
-  -c, --camera_name
-          name of the camera to appear in the calibration file
+    -c, --camera_name
+            name of the camera to appear in the calibration file
 
 
-  Chessboard Options:
+    Chessboard Options:
 
-  You must specify one or more chessboards as pairs of --size and--square options.
+    You must specify one or more chessboards as pairs of --size and--square options.
 
-    -p PATTERN, --pattern=PATTERN
-                      calibration pattern to detect - 'chessboard','circles', 'acircles','charuco'
-    -s SIZE, --size=SIZE
-                      chessboard size as NxM, counting interior corners (e.g. a standard chessboard is 7x7)
-    -q SQUARE, --square=SQUARE
-                      chessboard square size in meters
+        -p PATTERN, --pattern=PATTERN
+                        calibration pattern to detect - 'chessboard','circles', 'acircles','charuco'
+        -s SIZE, --size=SIZE
+                        chessboard size as NxM, counting interior corners (e.g. a standard chessboard is 7x7)
+        -q SQUARE, --square=SQUARE
+                        chessboard square size in meters
 
-  ROS Communication Options:
+    ROS Communication Options:
 
-   --approximate=APPROXIMATE
-                      allow specified slop (in seconds) when pairing images from unsynchronized stereo cameras
-   --no-service-check
-                      disable check for set_camera_info services at startup
+    --approximate=APPROXIMATE
+                        allow specified slop (in seconds) when pairing images from unsynchronized stereo cameras
+    --no-service-check
+                        disable check for set_camera_info services at startup
 
-  Calibration Optimizer Options:
+    Calibration Optimizer Options:
 
-   --fix-principal-point
-                      fix the principal point at the image center
-   --fix-aspect-ratio
-                      enforce focal lengths (fx, fy) are equal
-   --zero-tangent-dist
-                      set tangential distortion coefficients (p1, p2) to
-                      zero
-   -k NUM_COEFFS, --k-coefficients=NUM_COEFFS
-                      number of radial distortion coefficients to use (up to
-                      6, default 2)
-   --disable_calib_cb_fast_check
-                      uses the CALIB_CB_FAST_CHECK flag for findChessboardCorners
+    --fix-principal-point
+                        fix the principal point at the image center
+    --fix-aspect-ratio
+                        enforce focal lengths (fx, fy) are equal
+    --zero-tangent-dist
+                        set tangential distortion coefficients (p1, p2) to
+                        zero
+    -k NUM_COEFFS, --k-coefficients=NUM_COEFFS
+                        number of radial distortion coefficients to use (up to
+                        6, default 2)
+    --disable_calib_cb_fast_check
+                        uses the CALIB_CB_FAST_CHECK flag for findChessboardCorners
 
-This will open a calibration window which highlight the checkerboard.
-```
+    This will open a calibration window which highlight the checkerboard.
+    ```
 
-<figure markdown="span">
-  ![](images/Camera_Calibration/window1.png){ width="600" }
-</figure>>
+    <figure markdown="span">
+        ![](images/Camera_Calibration/window1.png){ width="600" }
+    </figure>
 
 6. In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
 
-- checkerboard on the camera’s left, right, top and bottom of field of view
-    - X bar - left/right in field of view
-    - Y bar - top/bottom in field of view
-    - Size bar - toward/away and tilt from the camera
-- checkerboard filling the whole field of view
-- checkerboard tilted to the left, right, top and bottom (Skew)
+    - checkerboard on the camera’s left, right, top and bottom of field of view
+        - X bar - left/right in field of view
+        - Y bar - top/bottom in field of view
+        - Size bar - toward/away and tilt from the camera
+    - checkerboard filling the whole field of view
+    - checkerboard tilted to the left, right, top and bottom (Skew)
 
-<figure markdown="span">
-  ![](images/Camera_Calibration/calibration.jpg){ width="600" }
-</figure>
+    <figure markdown="span">
+        ![](images/Camera_Calibration/calibration.jpg){ width="600" }
+    </figure>
 
 7. As the checkerboard is moved around the 4 bars on the calibration sidebar increases in length. When all then the 4 bars are green and enough data is available for calibration the CALIBRATE button will light up. Click it to see the results. It takes around the minute for calibration to take place.
 
-<figure markdown="span">
-  ![](images/Camera_Calibration/greenbars.png){ width="600" }
-</figure>
+    <figure markdown="span">
+        ![](images/Camera_Calibration/greenbars.png){ width="600" }
+    </figure>
 
 8. After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
 
-<figure markdown="span"> 
-  ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
-</figure>
+    <figure markdown="span"> 
+        ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
+    </figure>
 
-<figure markdown="span"> 
-  ![](images/Camera_Calibration/calibration_parameters.png){ width="600" }
-</figure>
+    <figure markdown="span"> 
+        ![](images/Camera_Calibration/calibration_parameters.png){ width="600" }
+    </figure>
 
 
 9. Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”
 
 10. To use the the calibration file unzip the calibration.tar.gz
 
-`tar -xvf calibration.tar.gz`
+    `tar -xvf calibration.tar.gz`
 
 11. In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
