@@ -1,10 +1,10 @@
 {% extends "sphinx_rtd_theme/layout.html" %}
 
-{% block header %}
+{% block body %}
 <div style="background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
             color: white; padding: 10px 20px; text-align: center;
-            position: sticky; top: 0; z-index: 1000;
-            font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: -20px -20px 20px -20px;">
   <span style="margin-right: 15px;">
     <strong>Partner with Nav2:</strong> sponsorship opportunities &amp; professional services available.
   </span>
@@ -15,6 +15,7 @@
     Learn More
   </a>
 </div>
+{{ super() }}
 {% endblock %}
 
 {% block extrahead %}
