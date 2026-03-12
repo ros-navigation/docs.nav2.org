@@ -1,5 +1,22 @@
 {% extends "sphinx_rtd_theme/layout.html" %}
 
+{% block header %}
+<div style="background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+            color: white; padding: 10px 20px; text-align: center;
+            position: sticky; top: 0; z-index: 1000;
+            font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <span style="margin-right: 15px;">
+    <strong>Partner with Nav2:</strong> sponsorship opportunities &amp; professional services available.
+  </span>
+  <a href="https://opennav.org" target="_blank" rel="noopener"
+     style="background: #27ae60; color: white; padding: 6px 16px;
+            border-radius: 4px; text-decoration: none; font-weight: bold;
+            font-size: 13px;">
+    Learn More
+  </a>
+</div>
+{% endblock %}
+
 {% block extrahead %}
 
 <link rel="stylesheet" href="{{ pathto('_static/tcs_theme.css', 1) }}" type="text/css" />
