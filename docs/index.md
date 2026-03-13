@@ -1,13 +1,18 @@
 # Nav2
 
-<h1 align="center">
-  <div>
-    <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/OklxMhdDfe0?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/CYaN43TJANc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-    </div>
-  </div>
-</h1>
+<style>
+.video-frame {
+  flex: 1 1 300px;
+  min-width: 250px;
+  aspect-ratio: 16/9;
+  max-width: 100%;
+}
+</style>
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <iframe class="video-frame" src="https://www.youtube.com/embed/OklxMhdDfe0?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  <iframe class="video-frame" src="https://www.youtube.com/embed/CYaN43TJANc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+</div>
 
 ## Our Sponsors
 
