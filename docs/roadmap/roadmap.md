@@ -7,8 +7,9 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Lyrical Roadmap
 
-| Controller Server and Plugin<br/>factor for centralized path<br/>handling and crosstrack error<br/>estimation and enforcement.    | Large (In Progress)   |
+| Description                                                                                                                       | Size (Status)         |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| Controller Server and Plugin<br/>factor for centralized path<br/>handling and crosstrack error<br/>estimation and enforcement.    | Large (In Progress)   |
 | Massive refactor of `rclcpp`<br/>types to `nav2` types for<br/>ROS API abstraction                                                | Large (in progress)   |
 | Improve dynamic feasibility<br/>on approach to goal on all<br/>control and behavior plugins                                       | Medium (DONE)         |
 | Introduce Vector Object Server<br/>to augment Costmap Filters<br/>with polygons rather than<br/>annotated masks                   | Medium  (DONE)        |
@@ -23,15 +24,17 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Kilted Roadmap
 
-| Release of Route server                                   | Large (DONE)   |
+| Description                                               | Size (Status)  |
 |-----------------------------------------------------------|----------------|
+| Release of Route server                                   | Large (DONE)   |
 | Allow non-orientation sp. for<br/>smac planner goals      | Medium (DONE)  |
 | Allow docking server to operate<br/>forward and backwards | Medium (DONE)  |
 
 ## Jazzy Roadmap
 
-| [Smac Planner Improvements][]                               | Large (DONE)         |
+| Description                                                 | Size (Status)        |
 |-------------------------------------------------------------|----------------------|
+| [Smac Planner Improvements][]                               | Large (DONE)         |
 | Get CI Green Again                                          | Small (DONE)         |
 | Various MPPI Improvements                                   | Medium (DONE)        |
 | [Fuse Migration][]                                          | Medium  (incomplete) |
@@ -50,7 +53,7 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Iron Roadmap
 
-| Plugin Name                   | Size                |
+| Plugin Name                   | Size (Status)       |
 |-------------------------------|---------------------|
 | [Pluginize Navigators][]      | Medium  (DONE)      |
 | [MPPI Controller][]           | Very Large (DONE)   |
@@ -66,7 +69,7 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Humble Roadmap
 
-| Plugin Name                                     | Size           |
+| Plugin Name                                     | Size (Status)  |
 |-------------------------------------------------|----------------|
 | [Nav2 1 Node Per Server][]                      | Medium  (DONE) |
 | [Smac Lattice Planner][]                        | Large (DONE)   |
