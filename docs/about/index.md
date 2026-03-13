@@ -25,20 +25,29 @@ If you or your organization are interested in sponsoring Navigation or any work 
 
 Our current leadership team includes:
 
-| Name           | Organization    | GitHub ID                                         | Current Role     |
-|----------------|-----------------|---------------------------------------------------|------------------|
-| Steve Macenski | Open Navigation | [SteveMacenski](https://github.com/SteveMacenski) | Project Lead     |
-| Ruffin White   | UC San Diego    | [ruffsl](https://github.com/ruffsl)               | CI Wizard        |
-| Joshua Wallace | Locus Robotics  | [JoshuaWallace](https://github.com/jwallace42)    | Main Contributor |
+| Name           | Organization    | GitHub ID           | Current Role      |
+|----------------|-----------------|---------------------|-------------------|
+| Steve Macenski | Open Navigation | [SteveMacenski][]   | Project Lead      |
+| Ruffin White   | UC San Diego    | [ruffsl][]          | CI Wizard         |
+| Joshua Wallace | Locus Robotics  | [JoshuaWallace][]   | Main Contributor  |
+
+[SteveMacenski]: https://github.com/SteveMacenski
+[ruffsl]: https://github.com/ruffsl
+[JoshuaWallace]: https://github.com/jwallace42
 
 Our former leadership team includes:
 
-| Name              | Organization      | GitHub ID                                               | Role                |
-|-------------------|-------------------|---------------------------------------------------------|---------------------|
-| Matt Hansen       | Intel Corporation | [mkhansen](https://github.com/mkhansen-intel)           | Former Project Lead |
-| Brian Wilcox      | Intel Corporation | [bpwilcox](https://github.com/bpwilcox)                 | Former Maintainer   |
-| Carl Delsey       | Intel Corporation | [crdelsey](https://github.com/crdelsey)                 | Maintainer          |
-| Alexey Merzlyakov | Samsung Research  | [AlexeyMerzlyakov](https://github.com/AlexeyMerzlyakov) | Maintainer          |
+| Name              | Organization      | GitHub ID            | Role                |
+|-------------------|-------------------|----------------------|---------------------|
+| Matt Hansen       | Intel Corporation | [mkhansen][]         | Former Project Lead |
+| Brian Wilcox      | Intel Corporation | [bpwilcox][]         | Former Maintainer   |
+| Carl Delsey       | Intel Corporation | [crdelsey][]         | Maintainer          |
+| Alexey Merzlyakov | Samsung Research  | [AlexeyMerzlyakov][] | Maintainer          |
+
+[mkhansen]: https://github.com/mkhansen-intel
+[bpwilcox]: https://github.com/bpwilcox
+[crdelsey]: https://github.com/crdelsey
+[AlexeyMerzlyakov]: https://github.com/AlexeyMerzlyakov
 
 ## Contact
 
@@ -48,4 +57,6 @@ If your inquiry relates to bugs or open-source feature requests, consider postin
 If your inquiry relates to configuration support or private feature development, reach out and we may be able to connect you with
 independent consultants or contractors that know this project well.
 
-Check out the Navigation 2 [Slack](https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA) community.
+Check out the Navigation 2 [Slack][] community.
+
+[Slack]: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA

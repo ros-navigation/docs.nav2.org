@@ -101,26 +101,33 @@ Your nav2 task server may also wish to return a ‘error_code’ and ‘error_ms
 It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535.
 The table below shows the current servers along with the expected error code structure.
 
-| Server Name                                                                                                                                | Reserved              | RANGE       |
-|--------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-------------|
-| …                                                                                                                                          | NONE=0, UNKNOWN=1     | 2-99        |
-| [Controller Server](https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/src/controller_server.cpp)                     | NONE=0, UNKNOWN=100   | 101-199     |
-| [Planner Server](https://github.com/ros-navigation/navigation2/blob/main/nav2_planner/src/planner_server.cpp) (compute_path_to_pose)       | NONE=0, UNKNOWN=200   | 201-299     |
-| [Planner Server](https://github.com/ros-navigation/navigation2/blob/main/nav2_planner/src/planner_server.cpp) (compute_path_through_poses) | NONE=0, UNKNOWN=300   | 301-399     |
-| …                                                                                                                                          | …                     |             |
-| [Smoother Server](https://github.com/ros-navigation/navigation2/blob/main/nav2_smoother/src/nav2_smoother.cpp)                             | NONE=0, UNKNOWN=500   | 501-599     |
-| [Waypoint Follower Server](https://github.com/ros-navigation/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp)       | NONE=0, UNKNOWN=600   | 601-699     |
-| [Behavior Server](https://github.com/ros-navigation/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp)                          | NONE=0                | 701-799     |
-| Coverage Server                                                                                                                            | NONE=0, UNKNOWN=800   | 801-899     |
-| …                                                                                                                                          | …                     |             |
-| Last Nav2 Server                                                                                                                           | NONE=0, UNKNOWN=8900  | 8901-8999   |
-| …                                                                                                                                          | …                     |             |
-| [Navigator](https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/) - (nav_to_pose)                                    | NONE=0, UNKNOWN=9000  | 9001-9099   |
-| [Navigator](https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/) - (nav_thru_poses)                                 | NONE=0, UNKNOWN=9100  | 9101-9199   |
-| [Navigator](https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/) - Last Navigator                                   | NONE=0, UNKNOWN=9900  | 9901-9999   |
-| …                                                                                                                                          | …                     |             |
-| First External Server                                                                                                                      | NONE=0, UNKNOWN=10000 | 10001-10099 |
-| …                                                                                                                                          | …                     |             |
+| Server Name                                       | Reserved              | RANGE       |
+|---------------------------------------------------|-----------------------|-------------|
+| ...                                               | NONE=0, UNKNOWN=1     | 2-99        |
+| [Controller Server][]                             | NONE=0, UNKNOWN=100   | 101-199     |
+| [Planner Server][] (compute_path_to_pose)         | NONE=0, UNKNOWN=200   | 201-299     |
+| [Planner Server][] (compute_path_through_poses)   | NONE=0, UNKNOWN=300   | 301-399     |
+| ...                                               | ...                   |             |
+| [Smoother Server][]                               | NONE=0, UNKNOWN=500   | 501-599     |
+| [Waypoint Follower Server][]                      | NONE=0, UNKNOWN=600   | 601-699     |
+| [Behavior Server][]                               | NONE=0                | 701-799     |
+| Coverage Server                                   | NONE=0, UNKNOWN=800   | 801-899     |
+| ...                                               | ...                   |             |
+| Last Nav2 Server                                  | NONE=0, UNKNOWN=8900  | 8901-8999   |
+| ...                                               | ...                   |             |
+| [Navigator][] - (nav_to_pose)                     | NONE=0, UNKNOWN=9000  | 9001-9099   |
+| [Navigator][] - (nav_thru_poses)                  | NONE=0, UNKNOWN=9100  | 9101-9199   |
+| [Navigator][] - Last Navigator                    | NONE=0, UNKNOWN=9900  | 9901-9999   |
+| ...                                               | ...                   |             |
+| First External Server                             | NONE=0, UNKNOWN=10000 | 10001-10099 |
+| ...                                               | ...                   |             |
+
+[Controller Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/src/controller_server.cpp
+[Planner Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_planner/src/planner_server.cpp
+[Smoother Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_smoother/src/nav2_smoother.cpp
+[Waypoint Follower Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp
+[Behavior Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp
+[Navigator]: https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/
 
 Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to `error_code` and the error message field to `error_msg`.
 
