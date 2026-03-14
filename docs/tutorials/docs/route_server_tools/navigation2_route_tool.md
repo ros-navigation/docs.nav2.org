@@ -1,9 +1,5 @@
 # Using the Nav2 Route Tool
 
-- [Overview]()
-- [Prerequisites]()
-- [Tutorial Steps]()
-
 <figure markdown="span">
   ![](../images/Navigation2_route_tool/route_tool_demo.gif){ width="90%" }
 </figure>

@@ -1,9 +1,5 @@
 # Writing a New Behavior Plugin
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 ## Overview
 
 This tutorial shows how to create you own Behavior Plugin.

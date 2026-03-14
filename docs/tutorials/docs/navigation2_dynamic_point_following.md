@@ -7,9 +7,6 @@ Nav2 provides two different approaches for dynamic object following tasks:
 
 ## Using Following Server
 
-- [Following Server Overview]()
-- [Following Server Tutorial Steps]()
-
 ### Following Server Overview
 
 The Following server is a specialized server in Nav2 designed to handle dynamic object following tasks. It dynamically follows an object while maintaining a defined distance specified by the `desired_distance` parameter. The server abstracts away the complexities of tracking and following moving objects, allowing users to focus on higher-level navigation goals.
@@ -86,9 +83,6 @@ The following video demonstrates the Following Server functionality in a real-wo
 ---
 
 ## Using ComputePathToPose and FollowPath
-
-- [ComputePathToPose Overview]()
-- [ComputePathToPose Tutorial Steps]()
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

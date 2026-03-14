@@ -1,11 +1,5 @@
 # Using VIO to Augment Robot Odometry
 
-- [Overview]()
-- [Setting Up the ZED X Camera]()
-- [Setting Up ZED ROS]()
-- [Fusing VIO Into Local State Estimate]()
-- [Fusing VSLAM Into Global State Estimate]()
-
 ## Overview
 
 This tutorial highlights how to setup Visual-Inerial Odometry (VIO) into a Nav2 and ROS 2 based robotics system to augment robot odometry.

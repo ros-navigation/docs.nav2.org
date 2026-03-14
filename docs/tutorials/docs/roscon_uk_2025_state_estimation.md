@@ -1,8 +1,5 @@
 # ROSCon UK 2025: State Estimation for Mobile Robotics Workshop
 
-- [Overview]()
-- [Workshop Content]()
-
 ## Overview
 
 This tutorial provides comprehensive hands-on experience with state estimation techniques for mobile robotics, presented as a workshop at ROSCon UK 2025.

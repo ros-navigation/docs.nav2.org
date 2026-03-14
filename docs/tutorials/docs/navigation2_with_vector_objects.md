@@ -1,12 +1,5 @@
 # Navigating with Vector Objects
 
-- [Overview]()
-- [Requirements]()
-- [Configuring Vector Object Server]()
-- [Preparing Nav2 stack]()
-- [Demo Execution]()
-- [Working with Vector Objects]()
-
 ![](images/Vector_Object_server/vector_objects_demo.gif)
 
 ## Overview

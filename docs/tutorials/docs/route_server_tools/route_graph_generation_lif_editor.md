@@ -1,9 +1,5 @@
 # Route Graph Generation LIF Editor
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 ## Overview
 
 A route can also be created using the **VDA LIF Editor**, a web-based open-source tool. This project was developed to present floor plans in a standardized format defined by the VDA. With the VDA LIF Editor, you can generate both GeoJSON and LIF formats simultaneously.

@@ -1,11 +1,5 @@
 # Detailed Behavior Tree Walkthrough
 
-- [Overview]()
-- [Prerequisites]()
-- [Navigate To Pose With Replanning and Recovery]()
-- [Navigation Subtree]()
-- [Recovery Subtree]()
-
 ## Overview
 
 This document serves as a reference guide to the main behavior tree (BT) used in Nav2.

@@ -1,11 +1,5 @@
 # Profiling in ROS 2 / Nav2
 
-- [Overview]()
-- [Preliminaries]()
-- [Profile from a Node]()
-- [Profile from a Launch File]()
-- [From Nav2 Bringup]()
-
 ## Overview
 
 This document explains one method for profiling applications in ROS 2 / Nav2. The aim of profiling is to generate files that can be analyzed to see where compute time and resources are spent during the execution of a program. This can be useful to determine where the bottlenecks in your program exist and where things might be able to be improved.

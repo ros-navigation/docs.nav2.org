@@ -1,9 +1,5 @@
 # Groot - Interacting with Behavior Trees
 
-- [Visualize Behavior Trees]()
-- [Edit Behavior Trees]()
-- [Adding A Custom Node]()
-
 ## Visualize Behavior Trees
 
 To display a Behavior Tree like that in [Figure 3](#groot-nav2-default-bt), we will first start the Groot executable.

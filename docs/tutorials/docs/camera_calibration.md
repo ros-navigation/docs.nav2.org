@@ -1,9 +1,5 @@
 # Camera Calibration
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 ## Overview
 
 This tutorial shows how to obtain calibration parameters for monocular camera.

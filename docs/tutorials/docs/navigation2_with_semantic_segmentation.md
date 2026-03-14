@@ -1,11 +1,5 @@
 # Navigating with Semantic Segmentation
 
-- [Overview]()
-- [Requirements]()
-- [Semantic Segmentation Overview]()
-- [Tutorial Steps]()
-- [Conclusion]()
-
 ## Overview
 
 This tutorial demonstrates how to use semantic segmentation in costmaps with stereo cameras, using a custom [semantic_segmentation_layer plugin](https://github.com/kiwicampus/semantic_segmentation_layer) and a pre-trained segmentation model that works on Gazebo’s Baylands world. It was written by Pedro Gonzalez at [robot.com](https://robot.com/).

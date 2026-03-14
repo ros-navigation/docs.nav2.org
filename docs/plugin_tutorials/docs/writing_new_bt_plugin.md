@@ -1,11 +1,5 @@
 # Writing a New Behavior Tree Plugin
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-- [Using custom types for Input/Output ports]()
-- [Visualize the content of the blackboard in Groot 2 (PRO)]()
-
 ## Overview
 
 This tutorial shows how to create your own behavior tree (BT) plugin.

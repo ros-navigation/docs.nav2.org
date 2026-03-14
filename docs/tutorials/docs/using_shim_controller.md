@@ -1,11 +1,5 @@
 # Using Rotation Shim Controller
 
-- [Overview]()
-- [What is the Rotation Shim Controller?]()
-- [Configuring Rotation Shim Controller]()
-- [Configuring Primary Controller]()
-- [Demo Execution]()
-
 ## Overview
 
 This tutorial will discuss how to set up your robot to use the `RotationShimController` to help create intuitive, rotate-in-place, behavior for your robot while starting out to track a path. The goal of this tutorial is to explain to the reader the value of the controller, how to configure it, how to configure the primary controller with it, and finally an example of it in use.

@@ -1,12 +1,5 @@
 # Get Backtrace in ROS 2 / Nav2
 
-- [Overview]()
-- [Preliminaries]()
-- [From a Node]()
-- [From a Launch File]()
-- [From Nav2 Bringup]()
-- [Automatic backtrace on crash]()
-
 ## Overview
 
 This document explains one set of methods for getting backtraces for ROS 2 and Nav2.

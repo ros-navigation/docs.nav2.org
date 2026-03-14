@@ -1,9 +1,5 @@
 # SWAGGER Route Graph Generation
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 ## Overview
 
 This tutorial walks a user through generating a graph for the nav2 route server using [NVIDIA’s SWAGGER](https://github.com/nvidia-isaac/SWAGGER).

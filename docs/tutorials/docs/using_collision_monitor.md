@@ -1,12 +1,5 @@
 # Using Collision Monitor
 
-- [Overview]()
-- [Requirements]()
-- [Preparing Nav2 stack]()
-- [Configuring Collision Monitor]()
-- [Configuring Collision Monitor with VelocityPolygon]()
-- [Demo Execution]()
-
 ![](images/Collision_Monitor/collision_monitor.gif){ width="800px" }
 
 ## Overview

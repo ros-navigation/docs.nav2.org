@@ -1,9 +1,5 @@
 # Navigating while Mapping (SLAM)
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 ## Overview
 
 This document explains how to use Nav2 with SLAM.

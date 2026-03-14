@@ -1,9 +1,5 @@
 # Writing a New Navigator Plugin
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 ## Overview
 
 This tutorial shows how to create your own behavior-tree navigator [plugin](https://index.ros.org/p/pluginlib/) based on the `nav2_core::BehaviorTreeNavigator` base class.

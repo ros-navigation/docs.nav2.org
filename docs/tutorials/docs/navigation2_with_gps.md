@@ -1,11 +1,5 @@
 # Navigating using GPS Localization
 
-- [Overview]()
-- [Requirements]()
-- [GPS Localization Overview]()
-- [Tutorial Steps]()
-- [Conclusion]()
-
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
     <iframe width="708" height="400" src="https://www.youtube.com/embed/R_5HW1TUDQk?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>

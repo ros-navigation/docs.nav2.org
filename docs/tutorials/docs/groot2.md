@@ -1,9 +1,5 @@
 # Groot2 - Interacting with Behavior Trees
 
-- [Visualize Behavior Trees]()
-- [Edit Behavior Trees]()
-- [Adding A Custom Node]()
-
 ## Visualize Behavior Trees
 
 To display the default editor view, we will first start the Groot2 executable.

@@ -1,9 +1,5 @@
 # Writing a New Costmap2D Plugin
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-
 <figure markdown="span">
   ![](images/Writing_new_Costmap2D_plugin/gradient_layer_preview.gif){ width="700px" title="Animated gif with gradient demo" }
 </figure>

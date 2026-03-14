@@ -1,15 +1,5 @@
 # Docker for Development: Zero to Hero
 
-- [Overview]()
-- [Preliminaries]()
-- [Important Docker Commands]()
-- [Exploring Your First Container]()
-- [Understanding ROS Docker Images]()
-- [For Docker-Based Development]()
-- [For Docker-Based Deployment]()
-- [Conclusion]()
-- [Appendix]()
-
 ## Overview
 
 This tutorial is a hands on walkthrough from your first Docker usage to commands and processes you can use for development of ROS 2 applications using Docker.

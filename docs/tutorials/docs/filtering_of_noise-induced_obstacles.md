@@ -1,10 +1,5 @@
 # Filtering of Noise-Induced Obstacles
 
-- [Overview]()
-- [Requirements]()
-- [Tutorial Steps]()
-- [How it works]()
-
 ![](images/Filtering_of_noise-induced_obstacles/title.png){ width="100%" }
 
 ## Overview
