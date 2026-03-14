@@ -60,7 +60,7 @@ local_costmap:
     This should be sufficient in typical cases.
 
     If some sensor generates intercorrelated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
-    To configure the `DenoiseLayer` to such cases and understand how it works, refer to the section [How it works]().
+    To configure the `DenoiseLayer` to such cases and understand how it works, refer to the section [How it works](#how-it-works).
 
 !!! warning
 

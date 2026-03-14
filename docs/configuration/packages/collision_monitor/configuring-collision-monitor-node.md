@@ -343,14 +343,14 @@ All previous Polygon parameters apply, in addition to the following unique param
   | double | -PI       |
 
   Description:
-  : Start angle of the movement direction(for holonomic robot only). Refer to the [Example]() section for the common configurations. Applicable for holonomic mode only.
+  : Start angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for holonomic mode only.
 * **`<vel_poly>.<subpoly>`.direction_end_angle:**
   | Type   | Default   |
   |--------|-----------|
   | double | PI        |
 
   Description:
-  : End angle of the movement direction(for holonomic robot only). Refer to the [Example]() section for the common configurations. Applicable for holonomic mode only.
+  : End angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for holonomic mode only.
 
 ### Observation sources parameters
 

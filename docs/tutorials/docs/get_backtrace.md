@@ -167,14 +167,14 @@ If your server of interest is being launched from a nested launch file (e.g. an 
 - Comment out the launch file inclusion from the parent launch file
 - Recompile the package of interest with `-g` flag for debug symbols
 - Launch the parent launch file in a terminal
-- Launch the server’s launch file in another terminal following the instructions in [From a Launch File]().
+- Launch the server’s launch file in another terminal following the instructions in [From a Launch File](#from-a-launch-file).
 
 Alternatively, if you server of interest is being launched in these files directly (e.g. you see a `Node`, `LifecycleNode`, or inside a `ComponentContainer`), you will need to separate this from the others:
 
 - Comment out the node’s inclusion from the parent launch file
 - Recompile the package of interest with `-g` flag for debug symbols
 - Launch the parent launch file in a terminal
-- Launch the server’s node in another terminal following the instructions in [From a Node]().
+- Launch the server’s node in another terminal following the instructions in [From a Node](#from-a-node).
 
 !!! note
 
