@@ -12,9 +12,10 @@ You can also use sampling or procedural generation techniques to create a graph 
 There’s also a tutorial [SWAGGER Route Graph Generation](../../tutorials/docs/route_server_tools/swagger_generation.md#swagger-route-graph-generation) to help with that process as well.
 
 There are also several locations for customization using plugins:
-\* Edge Scorer: Enables custom scoring functions for edges based on arbitrary user-defined semantic information and the chosen optimization criteria(s).
-\* Route Operation: Execute a user-defined action when entering or leaving a route edge or achieving a node, including use of node and edge semantic information,
-\* Route Graph Parser: Parse graph files using the chosen format (e.g. geoJSON, OpenStreetMap, etc.) and convert them into the internal graph representation.
+
+- Edge Scorer: Enables custom scoring functions for edges based on arbitrary user-defined semantic information and the chosen optimization criteria(s).
+- Route Operation: Execute a user-defined action when entering or leaving a route edge or achieving a node, including use of node and edge semantic information,
+- Route Graph Parser: Parse graph files using the chosen format (e.g. geoJSON, OpenStreetMap, etc.) and convert them into the internal graph representation.
 
 See the package’s README file for additional information such as performance metrics, design, advice, and graph formatting.
 
