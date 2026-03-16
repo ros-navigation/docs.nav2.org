@@ -4,51 +4,61 @@ Invokes the NavigateToPose ROS 2 action server, which is implemented by the [bt_
 
 ## Input Ports
 
-* **goal:**
-  | Type        | Default   |
-  |-------------|-----------|
-  | PoseStamped | N/A       |
+### **`goal`**
 
-  Description
-  : Takes in a blackboard variable containing the goal, eg. “{goal}”.
-* **server_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type        | Default   |
+|-------------|-----------|
+| PoseStamped | N/A       |
 
-  Description
-  : Action server name.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+Description
+:   Takes in a blackboard variable containing the goal, eg. “{goal}”.
 
-  Description
-  : Action server timeout (ms).
-* **behavior_tree:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`server_name`**
 
-  Description
-  : Behavior tree absolute path or ID. If none is specified, NavigateToPose action server uses a default behavior tree.
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   Action server name.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Action server timeout (ms).
+
+### **`behavior_tree`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   Behavior tree absolute path or ID. If none is specified, NavigateToPose action server uses a default behavior tree.
 
 ## Output Ports
 
-* **error_code_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | uint16 | N/A       |
+### **`error_code_id`**
 
-  Description
-  : The lowest error code in the list of the error_code_names_prefixes + \_error_code suffix parameter.
-* **error_msg:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type   | Default   |
+|--------|-----------|
+| uint16 | N/A       |
 
-  Description
-  : The error messages associated with the lowest error code in the list of the error_code_name_prefixes + \_error_code parameter.
+Description
+:   The lowest error code in the list of the error_code_names_prefixes + \_error_code suffix parameter.
+
+### **`error_msg`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   The error messages associated with the lowest error code in the list of the error_code_name_prefixes + \_error_code parameter.
 
 ## Example
 

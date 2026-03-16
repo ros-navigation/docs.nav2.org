@@ -5,13 +5,14 @@ Returns SUCCESS in that case, FAILURE otherwise.
 
 ## Input Ports
 
-* **battery_topic:**
-  | Type   | Default           |
-  |--------|-------------------|
-  | string | “/battery_status” |
+### **`battery_topic`**
 
-  Description
-  : Topic for battery info.
+| Type   | Default           |
+|--------|-------------------|
+| string | “/battery_status” |
+
+Description
+:   Topic for battery info.
 
 ## Example
 

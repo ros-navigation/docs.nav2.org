@@ -14,41 +14,50 @@ This algorithm is deterministic and low-parameter. In the below image, some odd 
 
 ## Savitzky-Golay Smoother Parameters
 
-* **window_size:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         7 |
+### **`window_size`**
 
-  Description
-  : Size of the smoothing window. Must be an odd integer, with a minimum value of 3
-* **poly_order:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         3 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         7 |
 
-  Description
-  : Order of the polynomial used to fit the samples in each smoothing window
-* **do_refinement:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+Description
+:   Size of the smoothing window. Must be an odd integer, with a minimum value of 3
 
-  Description
-  : Whether to smooth the smoothed results `refinement_num` times to get an improved result.
-* **refinement_num:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         2 |
+### **`poly_order`**
 
-  Description
-  : Number of times to recursively smooth a segment
-* **enforce_path_inversion:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+| Type   |   Default |
+|--------|-----------|
+| int    |         3 |
 
-  Description
-  : Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
+Description
+:   Order of the polynomial used to fit the samples in each smoothing window
+
+### **`do_refinement`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
+
+Description
+:   Whether to smooth the smoothed results `refinement_num` times to get an improved result.
+
+### **`refinement_num`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         2 |
+
+Description
+:   Number of times to recursively smooth a segment
+
+### **`enforce_path_inversion`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
+
+Description
+:   Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
 
 ## Example
 

@@ -5,23 +5,25 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 
 ## Input Ports
 
-* **route:**
-  | Type            | Default   |
-  |-----------------|-----------|
-  | nav2_msgs/Route | N/A       |
+### **`route`**
 
-  Description
-  : Route to convert its `nodes` into Goals.
+| Type            | Default   |
+|-----------------|-----------|
+| nav2_msgs/Route | N/A       |
+
+Description
+:   Route to convert its `nodes` into Goals.
 
 ## Output Ports
 
-* **goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+### **`goals`**
 
-  Description
-  : Goals comparing the route’s `nodes`.
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
+
+Description
+:   Goals comparing the route’s `nodes`.
 
 ## Example
 

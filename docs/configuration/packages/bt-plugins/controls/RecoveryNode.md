@@ -9,18 +9,19 @@ In nav2, the RecoveryNode is included in Behavior Trees to implement recovery ac
 
 ## Input Ports
 
-* **number_of_retries:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+### **`number_of_retries`**
 
-  Description
-  : Number of retries.
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Number of retries.
 
 ## Example
 
 ```xml
 <RecoveryNode number_of_retries="1">
-    <!--Add tree components here--->
+    <!--Add tree components here-->
 </RecoveryNode>
 ```

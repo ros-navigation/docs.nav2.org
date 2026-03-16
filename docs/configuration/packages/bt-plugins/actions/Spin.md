@@ -6,65 +6,79 @@ This action is used in nav2 Behavior Trees as a recovery behavior.
 
 ## Input Ports
 
-* **spin_dist:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      1.57 |
+### **`spin_dist`**
 
-  Description
-  : Spin distance (radians).
-* **time_allowance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+| Type   | Default  |
+|--------|----------|
+| double | 1.57     |
 
-  Description
-  : Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
-* **server_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+Description
+:   Spin distance (radians).
 
-  Description
-  : Action server name.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+### **`time_allowance`**
 
-  Description
-  : Action server timeout (ms).
-* **is_recovery:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
 
-  Description
-  : True if the action is being used as a recovery.
-* **disable_collision_checks:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
-  Description
-  : Disable collision checking.
+### **`server_name`**
+
+| Type   | Default |
+|--------|---------|
+| string | N/A     |
+
+Description
+:   Action server name.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Action server timeout (ms).
+
+### **`is_recovery`**
+
+| Type | Default |
+|------|---------|
+| bool | true    |
+
+Description
+:   True if the action is being used as a recovery.
+
+### **`disable_collision_checks`**
+
+| Type | Default |
+|------|---------|
+| bool | false   |
+
+Description
+:   Disable collision checking.
 
 ## Output Ports
 
-* **error_code_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | uint16 | N/A       |
+### **`error_code_id`**
 
-  Description
-  : Spin error code. See `Spin` action message for the enumerated set of error codes.
-* **error_msg:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type    | Default |
+|---------|---------|
+| uint16  | N/A     |
 
-  Description
-  : Spin error message. See `Spin` action message for the enumerated set of error codes.
+Description
+:   Spin error code. See `Spin` action message for the enumerated set of error codes.
+
+### **`error_msg`**
+
+| Type   | Default |
+|--------|---------|
+| string | N/A     |
+
+Description
+:   Spin error message. See `Spin` action message for the enumerated set of error codes.
 
 ## Example
 

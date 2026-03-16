@@ -6,6 +6,6 @@ This node triggers its child only once and returns FAILURE for every succeeding 
 
 ```xml
 <SingleTrigger>
-  <!--Add tree components here--->
+  <!--Add tree components here-->
 </SingleTrigger>
 ```

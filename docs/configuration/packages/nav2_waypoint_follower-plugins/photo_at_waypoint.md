@@ -8,38 +8,47 @@ index and time stamp. The leading digit in file name implies the waypoint index 
 
 `<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#waypoint-follower).
 
-* **`<nav2_waypoint_follower plugin>`.enabled:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`<nav2_waypoint_follower plugin>.enabled`**
 
-  Description
-  : Whether waypoint_task_executor plugin is enabled.
-* **`<nav2_waypoint_follower plugin>`.camera_image_topic_name:**
-  | Type   | Default                   |
-  |--------|---------------------------|
-  | string | “/camera/color/image_raw” |
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
 
-  Description
-  : Camera image topic name to subscribe
-* **`<nav2_waypoint_follower plugin>`.save_images_dir:**
-  | Type   | Default                |
-  |--------|------------------------|
-  | string | “/tmp/waypoint_images” |
+Description
+:   Whether waypoint_task_executor plugin is enabled.
 
-  Description
-  : Path to directory to save taken photos at waypoint arrivals.
-* **`<nav2_waypoint_follower plugin>`.image_format:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “png”     |
+### **`<nav2_waypoint_follower plugin>.camera_image_topic_name`**
 
-  Description
-  : Desired image format.
-* **allow_parameter_qos_overrides:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+| Type   | Default                   |
+|--------|---------------------------|
+| string | “/camera/color/image_raw” |
 
-  Description
-  : Whether to allow QoS profiles to be overwritten with parameterized values.
+Description
+:   Camera image topic name to subscribe
+
+### **`<nav2_waypoint_follower plugin>.save_images_dir`**
+
+| Type   | Default                |
+|--------|------------------------|
+| string | “/tmp/waypoint_images” |
+
+Description
+:   Path to directory to save taken photos at waypoint arrivals.
+
+### **`<nav2_waypoint_follower plugin>.image_format`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “png”     |
+
+Description
+:   Desired image format.
+
+### **`allow_parameter_qos_overrides`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to allow QoS profiles to be overwritten with parameterized values.

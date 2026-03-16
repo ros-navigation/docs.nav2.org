@@ -5,20 +5,23 @@ RUNNING if stopped but not for long enough and FAILURE otherwise
 
 ## Input Port
 
-* **velocity_threshold:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.01 |
+### **`velocity_threshold`**
 
-  Description
-  : Velocity threshold below which robot is considered stopped
-* **duration_stopped:**
-  | Type     |   Default |
-  |----------|-----------|
-  | int (ms) |      1000 |
+| Type   |   Default |
+|--------|-----------|
+| double |      0.01 |
 
-  Description
-  : Duration (ms) the velocity must remain below the threshold
+Description
+:   Velocity threshold below which robot is considered stopped
+
+### **`duration_stopped`**
+
+| Type     |   Default |
+|----------|-----------|
+| int (ms) |      1000 |
+
+Description
+:   Duration (ms) the velocity must remain below the threshold
 
 ## Example
 

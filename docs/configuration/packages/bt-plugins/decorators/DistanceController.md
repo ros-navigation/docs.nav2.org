@@ -7,32 +7,37 @@ stack, the `DistanceController` is used to adjust the rate at which the `Compute
 
 ## Input Ports
 
-* **distance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`distance`**
 
-  Description
-  : The distance travelled to trigger an action such as planning a path (m).
-* **global_frame:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “map”     |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Reference frame.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+Description
+:   The distance travelled to trigger an action such as planning a path (m).
 
-  Description
-  : Robot base frame.
+### **`global_frame`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “map”     |
+
+Description
+:   Reference frame.
+
+### **`robot_base_frame`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
 
 ## Example
 
 ```xml
 <DistanceController distance="0.5" global_frame="map" robot_base_frame="base_link">
-  <!--Add tree components here--->
+  <!--Add tree components here-->
 </DistanceController>
 ```

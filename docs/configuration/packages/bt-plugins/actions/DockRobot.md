@@ -6,81 +6,99 @@ It is used to dock the robot to a docking station.
 
 ## Input Ports
 
-* **use_dock_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`use_dock_id`**
 
-  Description
-  : Whether to use the dock’s ID or dock pose fields.
-* **dock_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
 
-  Description
-  : Dock ID or name to use.
-* **dock_pose:**
-  | Type                      | Default   |
-  |---------------------------|-----------|
-  | geometry_msgs/PoseStamped | N/A       |
+Description
+:   Whether to use the dock’s ID or dock pose fields.
 
-  Description
-  : The dock pose, if not using dock id.
-* **dock_type:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`dock_id`**
 
-  Description
-  : The dock plugin type, if using dock pose.
-* **max_staging_time:**
-  | Type   |   Default |
-  |--------|-----------|
-  | float  |      1000 |
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
 
-  Description
-  : Maximum time to navigate to the staging pose.
-* **navigate_to_staging_pose:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   Dock ID or name to use.
 
-  Description
-  : Whether to autonomously navigate to staging pose.
+### **`dock_pose`**
 
-### Output Ports
+| Type                      | Default   |
+|---------------------------|-----------|
+| geometry_msgs/PoseStamped | N/A       |
 
-* **success:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   The dock pose, if not using dock id.
 
-  Description
-  : If the action was successful.
-* **error_code_id:**
-  | Type   |   Default |
-  |--------|-----------|
-  | uint16 |         0 |
+### **`dock_type`**
 
-  Description
-  : Dock robot error code. See `DockRobot` action message for the enumerated set of error codes.
-* **error_msg:**
-  | Type   |   Default |
-  |--------|-----------|
-  | string |         0 |
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
 
-  Description
-  : Dock robot error message. See `DockRobot` action message for the enumerated set of error codes.
-* **num_retries:**
-  | Type   |   Default |
-  |--------|-----------|
-  | uint16 |         0 |
+Description
+:   The dock plugin type, if using dock pose.
 
-  Description
-  : The number of retries executed.
+### **`max_staging_time`**
 
-### Example
+| Type   |   Default |
+|--------|-----------|
+| float  |    1000.0 |
+
+Description
+:   Maximum time to navigate to the staging pose.
+
+### **`navigate_to_staging_pose`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to autonomously navigate to staging pose.
+
+## Output Ports
+
+### **`success`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   If the action was successful.
+
+### **`error_code_id`**
+
+| Type   |   Default |
+|--------|-----------|
+| uint16 |         0 |
+
+Description
+:   Dock robot error code. See `DockRobot` action message for the enumerated set of error codes.
+
+### **`error_msg`**
+
+| Type   |   Default |
+|--------|-----------|
+| string |         0 |
+
+Description
+:   Dock robot error message. See `DockRobot` action message for the enumerated set of error codes.
+
+### **`num_retries`**
+
+| Type   |   Default |
+|--------|-----------|
+| uint16 |         0 |
+
+Description
+:   The number of retries executed.
+
+## Example
 
 ```xml
 <DockRobot dock_id="{dock_id}" error_code_id="{dock_error_code}" error_msg="{dock_error_msg}"/>

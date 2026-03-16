@@ -6,30 +6,34 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ## Input Ports
 
-* **topic_name:**
-  | Type   | Default               |
-  |--------|-----------------------|
-  | string | goal_checker_selector |
+### **`topic_name`**
 
-  Description
-  : The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes.
-* **default_goal_checker:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type   | Default               |
+|--------|-----------------------|
+| string | goal_checker_selector |
 
-  Description
-  : The default value for the selected GoalChecker if no message is received from the input topic.
+Description
+:   The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes.
+
+### **`default_goal_checker`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   The default value for the selected GoalChecker if no message is received from the input topic.
 
 ## Output Ports
 
-* **selected_goal_checker:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`selected_goal_checker`**
 
-  Description
-  : The output selected GoalChecker id. This selected_goal_checker string is usually passed to the FollowPath behavior via the goal_checker_id input port.
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   The output selected GoalChecker id. This selected_goal_checker string is usually passed to the FollowPath behavior via the goal_checker_id input port.
 
 ## Example
 

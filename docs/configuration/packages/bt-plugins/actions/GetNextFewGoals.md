@@ -4,30 +4,34 @@ Extracts only the next `N` goals from a list of goals to send to a later task th
 
 ## Input Ports
 
-* **num_goals:**
-  | Type   | Default   |
-  |--------|-----------|
-  | int    | N/A       |
+### **`num_goals`**
 
-  Description
-  : How many of the goals to take from the input goals.
-* **input_goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+| Type   | Default   |
+|--------|-----------|
+| int    | N/A       |
 
-  Description
-  : Input goals list.
+Description
+:   How many of the goals to take from the input goals.
+
+### **`input_goals`**
+
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
+
+Description
+:   Input goals list.
 
 ## Output Ports
 
-* **output_goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+### **`output_goals`**
 
-  Description
-  : The output pruned goals list.
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
+
+Description
+:   The output pruned goals list.
 
 ## Example
 

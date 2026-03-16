@@ -5,65 +5,79 @@ This may be used to cull goal points passed from `ComputePathThroughPoses` to av
 
 ## Input Ports
 
-* **service_name:**
-  | Type   | Default                                 |
-  |--------|-----------------------------------------|
-  | string | /global_costmap/get_cost_global_costmap |
+### **`service_name`**
 
-  Description
-  : costmap service name responsible for getting the cost.
-* **input_goals:**
-  | Type                 | Default   |
-  |----------------------|-----------|
-  | nav_msgs::msg::Goals | N/A       |
+| Type   | Default                                 |
+|--------|-----------------------------------------|
+| string | /global_costmap/get_cost_global_costmap |
 
-  Description
-  : A vector of goals to check if in collision
-* **cost_threshold:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       254 |
+Description
+:   costmap service name responsible for getting the cost.
 
-  Description
-  : The cost threshold above which a waypoint is considered in collision and should be removed. If `use_footprint = false`, consider setting to 253 for occupied.
-* **use_footprint:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`input_goals`**
 
-  Description
-  : Whether to use the footprint cost or the point cost.
-* **consider_unknown_as_obstacle:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+| Type                 | Default   |
+|----------------------|-----------|
+| nav_msgs::msg::Goals | N/A       |
 
-  Description
-  : Whether to consider unknown cost (255) as obstacle.
-* **input_waypoint_statuses:**
-  | Type                                        | Default   |
-  |---------------------------------------------|-----------|
-  | std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+Description
+:   A vector of goals to check if in collision
 
-  Description
-  : Original waypoint_statuses to mark waypoint status from.
+### **`cost_threshold`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |     254.0 |
+
+Description
+:   The cost threshold above which a waypoint is considered in collision and should be removed. If `use_footprint = false`, consider setting to 253 for occupied.
+
+### **`use_footprint`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to use the footprint cost or the point cost.
+
+### **`consider_unknown_as_obstacle`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to consider unknown cost (255) as obstacle.
+
+### **`input_waypoint_statuses`**
+
+| Type                                        | Default   |
+|---------------------------------------------|-----------|
+| std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+
+Description
+:   Original waypoint_statuses to mark waypoint status from.
 
 ## Output Ports
 
-* **output_goals:**
-  | Type                            | Default   |
-  |---------------------------------|-----------|
-  | geometry_msgs::msg::PoseStamped | N/A       |
+### **`output_goals`**
 
-  Description
-  : A vector of goals containing only those that are not in collision.
-* **output_waypoint_statuses:**
-  | Type                                        | Default   |
-  |---------------------------------------------|-----------|
-  | std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+| Type                            | Default   |
+|---------------------------------|-----------|
+| geometry_msgs::msg::PoseStamped | N/A       |
 
-  Description
-  : Waypoint_statuses with in-collision waypoints marked.
+Description
+:   A vector of goals containing only those that are not in collision.
+
+### **`output_waypoint_statuses`**
+
+| Type                                        | Default   |
+|---------------------------------------------|-----------|
+| std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+
+Description
+:   Waypoint_statuses with in-collision waypoints marked.
 
 ## Example
 

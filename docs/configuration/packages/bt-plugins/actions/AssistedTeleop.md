@@ -6,50 +6,61 @@ The [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav
 
 ## Input Ports
 
-* **is_recovery:**
-  | Type   | Default   |
-  |--------|-----------|
-  | double | false     |
+### **`is_recovery`**
 
-  Description
-  : If true increment the recovery counter.
-* **time_allowance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+| Type   | Default   |
+|--------|-----------|
+| double | false     |
 
-  Description
-  : Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
-* **server_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+Description
+:   If true increment the recovery counter.
 
-  Description
-  : Action server name.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+### **`time_allowance`**
 
-  Description
-  : Action server timeout (ms).
-* **error_code_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | uint16 | N/A       |
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
 
-  Description
-  : Assisted teleop error code. See `AssistedTeleop` action message for the enumerated set of error codes.
-* **error_msg:**
-  | Type   | Default   |
-  |--------|-----------|
-  | uint16 | N/A       |
+Description
+:   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
-  Description
-  : Assisted teleop error message. See `AssistedTeleop` action message for the enumerated set of error codes.
+### **`server_name`**
 
-### Example
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   Action server name.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Action server timeout (ms).
+
+### **`error_code_id`**
+
+| Type   | Default   |
+|--------|-----------|
+| uint16 | N/A       |
+
+Description
+:   Assisted teleop error code. See `AssistedTeleop` action message for the enumerated set of error codes.
+
+### **`error_msg`**
+
+| Type   | Default   |
+|--------|-----------|
+| uint16 | N/A       |
+
+Description
+:   Assisted teleop error message. See `AssistedTeleop` action message for the enumerated set of error codes.
+
+## Example
 
 ```xml
 <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"

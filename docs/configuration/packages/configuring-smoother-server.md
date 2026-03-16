@@ -7,45 +7,54 @@ The server exposes an action interface for smoothing with multiple smoothers tha
 
 ## Smoother Server Parameters
 
-* **costmap_topic:**
-  | Type   | Default                      |
-  |--------|------------------------------|
-  | string | “global_costmap/costmap_raw” |
+### **`costmap_topic`**
 
-  Description
-  : Raw costmap topic for collision checking.
-* **footprint_topic:**
-  | Type   | Default                              |
-  |--------|--------------------------------------|
-  | string | “global_costmap/published_footprint” |
+| Type   | Default                      |
+|--------|------------------------------|
+| string | “global_costmap/costmap_raw” |
 
-  Description
-  : Topic for footprint in the costmap frame.
-* **transform_tolerance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+Description
+:   Raw costmap topic for collision checking.
 
-  Description
-  : TF transform tolerance.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+### **`footprint_topic`**
 
-  Description
-  : Robot base frame.
-* **smoother_plugins:**
-  | Type           | Default                           |
-  |----------------|-----------------------------------|
-  | vector<string> | {“nav2_smoother::SimpleSmoother”} |
+| Type   | Default                              |
+|--------|--------------------------------------|
+| string | “global_costmap/published_footprint” |
 
-  Description
-  : List of plugin names to use, also matches action server names.
+Description
+:   Topic for footprint in the costmap frame.
 
-  Note
-  : Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    <br/>
+### **`transform_tolerance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
+
+Description
+:   TF transform tolerance.
+
+### **`robot_base_frame`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
+
+### **`smoother_plugins`**
+
+| Type           | Default                           |
+|----------------|-----------------------------------|
+| vector<string> | {“nav2_smoother::SimpleSmoother”} |
+
+Description
+:   List of plugin names to use, also matches action server names.
+
+Note
+:   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+
     Example:
     ```yaml
     smoother_server:
@@ -56,27 +65,33 @@ The server exposes an action interface for smoothing with multiple smoothers tha
         simple_smoother:
           plugin: "nav2_smoother::SimpleSmoother"
     ```
-* **introspection_mode:**
-  | Type   | Default    |
-  |--------|------------|
-  | string | “disabled” |
 
-  Description
-  : The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
-* **bond_heartbeat_period:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.25 |
+### **`introspection_mode`**
 
-  Description
-  : The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
-* **allow_parameter_qos_overrides:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+| Type   | Default    |
+|--------|------------|
+| string | “disabled” |
 
-  Description
-  : Whether to allow QoS profiles to be overwritten with parameterized values.
+Description
+:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+
+### **`bond_heartbeat_period`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      0.25 |
+
+Description
+:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+### **`allow_parameter_qos_overrides`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ## Example
 

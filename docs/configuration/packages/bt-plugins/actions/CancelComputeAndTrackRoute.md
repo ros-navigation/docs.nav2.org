@@ -4,20 +4,23 @@ Used to cancel the compute and track route action that is part of the behavior s
 
 ## Input Ports
 
-* **service_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`service_name`**
 
-  Description
-  : Service name, if not using default of `compute_and_track_route` due to remapping.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
 
-  Description
-  : Server timeout (ms).
+Description
+:   Service name, if not using default of `compute_and_track_route` due to remapping.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Server timeout (ms).
 
 ## Example
 

@@ -5,51 +5,61 @@ This is used to cull goal points that have been passed from `ComputePathThroughP
 
 ## Input Ports
 
-* **radius:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+### **`radius`**
 
-  Description
-  : The radius (m) in proximity to the viapoint for the BT node to remove from the list as having passed.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
 
-  Description
-  : Robot base frame.
-* **input_goals:**
-  | Type                 | Default   |
-  |----------------------|-----------|
-  | nav_msgs::msg::Goals | N/A       |
+Description
+:   The radius (m) in proximity to the viapoint for the BT node to remove from the list as having passed.
 
-  Description
-  : A vector of goals to check if it passed any in the current iteration.
-* **input_waypoint_statuses:**
-  | Type                                        | Default   |
-  |---------------------------------------------|-----------|
-  | std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+### **`robot_base_frame`**
 
-  Description
-  : Original waypoint_statuses to mark waypoint status from.
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
+
+### **`input_goals`**
+
+| Type                 | Default   |
+|----------------------|-----------|
+| nav_msgs::msg::Goals | N/A       |
+
+Description
+:   A vector of goals to check if it passed any in the current iteration.
+
+### **`input_waypoint_statuses`**
+
+| Type                                        | Default   |
+|---------------------------------------------|-----------|
+| std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+
+Description
+:   Original waypoint_statuses to mark waypoint status from.
 
 ## Output Ports
 
-* **output_goals:**
-  | Type                 | Default   |
-  |----------------------|-----------|
-  | nav_msgs::msg::Goals | N/A       |
+### **`output_goals`**
 
-  Description
-  : A vector of goals with goals removed in proximity to the robot
-* **output_waypoint_statuses:**
-  | Type                                        | Default   |
-  |---------------------------------------------|-----------|
-  | std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+| Type                 | Default   |
+|----------------------|-----------|
+| nav_msgs::msg::Goals | N/A       |
 
-  Description
-  : Waypoint_statuses with passed waypoints marked.
+Description
+:   A vector of goals with goals removed in proximity to the robot
+
+### **`output_waypoint_statuses`**
+
+| Type                                        | Default   |
+|---------------------------------------------|-----------|
+| std::vector<nav2_msgs::msg::WaypointStatus> | N/A       |
+
+Description
+:   Waypoint_statuses with passed waypoints marked.
 
 ## Example
 

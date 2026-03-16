@@ -9,6 +9,6 @@ stops all children and returns FAILURE overall.
 
 ```xml
 <PipelineSequence>
-    <!--Add tree components here--->
+    <!--Add tree components here-->
 </PipelineSequence>
 ```

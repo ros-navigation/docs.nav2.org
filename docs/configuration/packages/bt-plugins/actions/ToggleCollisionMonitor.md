@@ -4,27 +4,32 @@ Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor o
 
 ## Input Ports
 
-* **enable:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`enable`**
 
-  Description
-  : Whether to enable or disable the collision monitor.
-* **service_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
 
-  Description
-  : Service name.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+Description
+:   Whether to enable or disable the collision monitor.
 
-  Description
-  : Server timeout (ms).
+### **`service_name`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   Service name.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Server timeout (ms).
 
 ## Example
 

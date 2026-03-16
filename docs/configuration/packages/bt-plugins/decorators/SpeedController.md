@@ -7,53 +7,64 @@ stack, the `SpeedController` is used to adjust the rate at which the `ComputePat
 
 ## Input Ports
 
-* **min_rate:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+### **`min_rate`**
 
-  Description
-  : The minimum rate at which child node can be ticked (hz).
-* **max_rate:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
 
-  Description
-  : The maximum rate at which child node can be ticked (hz).
-* **min_speed:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+Description
+:   The minimum rate at which child node can be ticked (hz).
 
-  Description
-  : The minimum robot speed below which the child node is ticked at minimum rate (m/s).
-* **max_speed:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+### **`max_rate`**
 
-  Description
-  : The maximum robot speed above which the child node is ticked at maximum rate (m/s).
-* **goal:**
-  | Type                            | Default   |
-  |---------------------------------|-----------|
-  | geometry_msgs::msg::PoseStamped | “{goal}”  |
+| Type   |   Default |
+|--------|-----------|
+| double |         1.0 |
 
-  Description
-  : Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
-* **goals:**
-  | Type                 | Default   |
-  |----------------------|-----------|
-  | nav_msgs::msg::Goals | “{goals}” |
+Description
+:   The maximum rate at which child node can be ticked (hz).
 
-  Description
-  : Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
+### **`min_speed`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |         0.0 |
+
+Description
+:   The minimum robot speed below which the child node is ticked at minimum rate (m/s).
+
+### **`max_speed`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   The maximum robot speed above which the child node is ticked at maximum rate (m/s).
+
+### **`goal`**
+
+| Type                            | Default   |
+|---------------------------------|-----------|
+| geometry_msgs::msg::PoseStamped | “{goal}”  |
+
+Description
+:   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
+
+### **`goals`**
+
+| Type                 | Default   |
+|----------------------|-----------|
+| nav_msgs::msg::Goals | “{goals}” |
+
+Description
+:   Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
 
 ## Example
 
 ```xml
 <SpeedController min_rate="0.1" max_rate="1.0" min_speed="0.0" max_speed="0.5" filter_duration="0.3">
-  <!--Add tree components here--->
+  <!--Add tree components here-->
 </SpeedController>
 ```

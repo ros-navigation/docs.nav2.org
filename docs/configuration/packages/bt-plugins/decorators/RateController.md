@@ -8,18 +8,19 @@ used to adjust the rate at which the `ComputePathToPose` and `GoalReached` nodes
 
 ## Input Ports
 
-* **hz:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+### **`hz`**
 
-  Description
-  : Rate to throttle an action or a group of actions.
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Rate to throttle an action or a group of actions.
 
 ## Example
 
 ```xml
 <RateController hz="1.0">
-    <!--Add tree components here--->
+    <!--Add tree components here-->
 </RateController>
 ```

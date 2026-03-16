@@ -4,10 +4,11 @@ Node that returns success when a configurable distance has been traveled.
 
 ## Parameters
 
-* **transform_tolerance:**
+### **`transform_tolerance`**
+
   Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
 
-### Example
+## Example
 
 ```yaml
 bt_navigator:
@@ -18,27 +19,32 @@ bt_navigator:
 
 ## Input Ports
 
-* **distance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`distance`**
 
-  Description
-  : The distance that must travel before returning success (m).
-* **global_frame:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “map”     |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Reference frame.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+Description
+:   The distance that must travel before returning success (m).
 
-  Description
-  : Robot base frame.
+### **`global_frame`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “map”     |
+
+Description
+:   Reference frame.
+
+### **`robot_base_frame`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
 
 ## Example
 

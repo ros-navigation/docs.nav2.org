@@ -4,25 +4,28 @@ Checks if the global navigation goal, or a vector of goals, has changed in the b
 
 ## Input Ports
 
-* **goal:**
-  | Type                            | Default   |
-  |---------------------------------|-----------|
-  | geometry_msgs::msg::PoseStamped | “{goal}”  |
+### **`goal`**
 
-  Description
-  : Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
-* **goals:**
-  | Type                 | Default   |
-  |----------------------|-----------|
-  | nav_msgs::msg::Goals | “{goals}” |
+| Type                            | Default   |
+|---------------------------------|-----------|
+| geometry_msgs::msg::PoseStamped | “{goal}”  |
 
-  Description
-  : Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
+Description
+:   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
+
+### **`goals`**
+
+| Type                 | Default   |
+|----------------------|-----------|
+| nav_msgs::msg::Goals | “{goals}” |
+
+Description
+:   Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
 
 ## Example
 
 ```xml
 <GoalUpdatedController goal="{goal}" goals="{goals}">
-  <!--Add tree components here--->
+  <!--Add tree components here-->
 </GoalUpdatedController>
 ```

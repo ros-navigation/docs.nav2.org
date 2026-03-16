@@ -4,101 +4,128 @@
 
 `<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
 
-* **`<dwb plugin>`.max_vel_theta:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`<dwb plugin>.max_vel_theta`**
 
-  Description
-  : Maximum angular velocity (rad/s).
-* **`<dwb plugin>`.min_speed_xy:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
 
-  Description
-  : Minimum translational speed (m/s).
-* **`<dwb plugin>`.max_speed_xy:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+Description
+:   Maximum angular velocity (rad/s).
 
-  Description
-  : Maximum translational speed (m/s).
-* **`<dwb plugin>`.min_speed_theta:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`<dwb plugin>.min_speed_xy`**
 
-  Description
-  : Minimum angular speed (rad/s).
-* **`<dwb plugin>`.min_vel_x:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
 
-  Description
-  : Minimum velocity X (m/s).
-* **`<dwb plugin>`.min_vel_y:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+Description
+:   Minimum translational speed (m/s).
 
-  Description
-  : Minimum velocity Y (m/s).
-* **`<dwb plugin>`.max_vel_x:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`<dwb plugin>.max_speed_xy`**
 
-  Description
-  : Maximum velocity X (m/s).
-* **`<dwb plugin>`.max_vel_y:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
 
-  Description
-  : Maximum velocity Y (m/s).
-* **`<dwb plugin>`.acc_lim_x:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+Description
+:   Maximum translational speed (m/s).
 
-  Description
-  : Maximum acceleration X (m/s^2).
-* **`<dwb plugin>`.acc_lim_y:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`<dwb plugin>.min_speed_theta`**
 
-  Description
-  : Maximum acceleration Y (m/s^2).
-* **`<dwb plugin>`.acc_lim_theta:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
 
-  Description
-  : Maximum acceleration rotation (rad/s^2).
-* **`<dwb plugin>`.decel_lim_x:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+Description
+:   Minimum angular speed (rad/s).
 
-  Description
-  : Maximum deceleration X (m/s^2).
-* **`<dwb plugin>`.decel_lim_y:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`<dwb plugin>.min_vel_x`**
 
-  Description
-  : Maximum deceleration Y (m/s^2).
-* **`<dwb plugin>`.decel_lim_theta:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
 
-  Description
-  : Maximum deceleration rotation (rad/s^2).
+Description
+:   Minimum velocity X (m/s).
+
+### **`<dwb plugin>.min_vel_y`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Minimum velocity Y (m/s).
+
+### **`<dwb plugin>.max_vel_x`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum velocity X (m/s).
+
+### **`<dwb plugin>.max_vel_y`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum velocity Y (m/s).
+
+### **`<dwb plugin>.acc_lim_x`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum acceleration X (m/s^2).
+
+### **`<dwb plugin>.acc_lim_y`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum acceleration Y (m/s^2).
+
+### **`<dwb plugin>.acc_lim_theta`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum acceleration rotation (rad/s^2).
+
+### **`<dwb plugin>.decel_lim_x`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum deceleration X (m/s^2).
+
+### **`<dwb plugin>.decel_lim_y`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum deceleration Y (m/s^2).
+
+### **`<dwb plugin>.decel_lim_theta`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Maximum deceleration rotation (rad/s^2).

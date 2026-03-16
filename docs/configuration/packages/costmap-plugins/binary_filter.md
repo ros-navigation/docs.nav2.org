@@ -10,48 +10,59 @@ Filter space value is being calculated as: `Fv = base + multiplier * mask_value`
 
 <filter name>: is the corresponding plugin name selected for this type.
 
-* **`<filter name>`.enabled:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+### **`<filter name>.enabled`**
 
-  Description
-  : Whether it is enabled.
-* **`<filter name>`.filter_info_topic:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
 
-  Description
-  : Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#map-server) configuration page.
-* **`<filter name>`.transform_tolerance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+Description
+:   Whether it is enabled.
 
-  Description
-  : Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
-* **`<filter name>`.default_state:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+### **`<filter name>.filter_info_topic`**
 
-  Description
-  : Default state of binary filter.
-* **`<filter name>`.binary_state_topic:**
-  | Type   | Default        |
-  |--------|----------------|
-  | string | “binary_state” |
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
 
-  Description
-  : Topic of `std_msgs::msg::Bool` type to publish binary filter state to.
-* **`<filter name>`.flip_threshold:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        50 |
+Description
+:   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#map-server) configuration page.
+
+### **`<filter name>.transform_tolerance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
+
+Description
+:   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
+
+### **`<filter name>.default_state`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Default state of binary filter.
+
+### **`<filter name>.binary_state_topic`**
+
+| Type   | Default        |
+|--------|----------------|
+| string | “binary_state” |
+
+Description
+:   Topic of `std_msgs::msg::Bool` type to publish binary filter state to.
+
+### **`<filter name>.flip_threshold`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      50.0 |
 
   Descrioption
-  : Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.
+:   Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.
 
 ## Example
 

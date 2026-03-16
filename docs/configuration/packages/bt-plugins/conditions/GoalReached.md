@@ -4,17 +4,20 @@ Checks the distance to the goal, if the distance to goal is less than the pre-de
 
 ## Parameter
 
-* **transform_tolerance:**
+### **`transform_tolerance`**
+
   Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
-* **goal_reached_tol:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.25 |
 
-  Description
-  : Tolerance of accepting pose as the goal (m).
+### **`goal_reached_tol`**
 
-### Example
+| Type   |   Default |
+|--------|-----------|
+| double |      0.25 |
+
+Description
+:   Tolerance of accepting pose as the goal (m).
+
+## Example
 
 ```yaml
 bt_navigator:
@@ -26,23 +29,26 @@ bt_navigator:
 
 ## Input Ports
 
-* **goal:**
-  | Type                            | Default   |
-  |---------------------------------|-----------|
-  | geometry_msgs::msg::PoseStamped | N/A       |
+### **`goal`**
 
-  Description
-  : Destination to check. Takes in a blackboard variable, e.g. “{goal}”.
+| Type                            | Default   |
+|---------------------------------|-----------|
+| geometry_msgs::msg::PoseStamped | N/A       |
+
+Description
+:   Destination to check. Takes in a blackboard variable, e.g. “{goal}”.
     The global reference frame is taken from the goal’s header frame_id field.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
 
-  Description
-  : Robot base frame.
+### **`robot_base_frame`**
 
-### Example
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
+
+## Example
 
 ```xml
 <GoalReached goal="{goal}" robot_base_frame="base_link"/>

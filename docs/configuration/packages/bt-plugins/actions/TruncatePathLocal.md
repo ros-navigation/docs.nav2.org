@@ -4,72 +4,88 @@ A custom control node, which modifies a path making it shorter. It removes parts
 
 ## Input Ports
 
-* **input_path:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+### **`input_path`**
 
-  Description
-  : The original path to be truncated.
-* **distance_forward:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         8 |
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
 
-  Description
-  : The trimming distance in forward direction. Set to -1 to search full path forward.
-* **distance_backward:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         4 |
+Description
+:   The original path to be truncated.
 
-  Description
-  : The trimming distance in backward direction.
-* **robot_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+### **`distance_forward`**
 
-  Description
-  : Robot base frame id.
-* **transform_tolerance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.2 |
+| Type   |   Default |
+|--------|-----------|
+| double |       8.0 |
 
-  Description
-  : Robot pose lookup tolerance.
-* **pose:**
-  | Type                      | Default   |
-  |---------------------------|-----------|
-  | geometry_msgs/PoseStamped | N/A       |
+Description
+:   The trimming distance in forward direction. Set to -1 to search full path forward.
 
-  Description
-  : Manually specified pose to be used alternatively to current robot pose.
-* **angular_distance_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`distance_backward`**
 
-  Description
-  : Weight of angular distance relative to positional distance when finding which path pose is closest to robot. Not applicable on paths without orientations assigned.
-* **max_robot_pose_search_dist:**
-  | Type   | Default   |
-  |--------|-----------|
-  | double | infinity  |
+| Type   |   Default |
+|--------|-----------|
+| double |       4.0 |
 
-  Description
-  : Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to infinity (default), whole path is searched every time.
+Description
+:   The trimming distance in backward direction.
+
+### **`robot_frame`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame id.
+
+### **`transform_tolerance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.2 |
+
+Description
+:   Robot pose lookup tolerance.
+
+### **`pose`**
+
+| Type                      | Default   |
+|---------------------------|-----------|
+| geometry_msgs/PoseStamped | N/A       |
+
+Description
+:   Manually specified pose to be used alternatively to current robot pose.
+
+### **`angular_distance_weight`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Weight of angular distance relative to positional distance when finding which path pose is closest to robot. Not applicable on paths without orientations assigned.
+
+### **`max_robot_pose_search_dist`**
+
+| Type   | Default   |
+|--------|-----------|
+| double | infinity  |
+
+Description
+:   Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to infinity (default), whole path is searched every time.
 
 ## Output Ports
 
-* **output_path:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+### **`output_path`**
 
-  Description
-  : The resulting truncated path.
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
+
+Description
+:   The resulting truncated path.
 
 ## Example
 

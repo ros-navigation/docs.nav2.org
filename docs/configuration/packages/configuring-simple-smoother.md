@@ -8,55 +8,68 @@ It is recommended this is paired ONLY with infeasible (e.g. 2D) planners, since 
 
 ## Simple Smoother Parameters
 
-* **tolerance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     1e-10 |
+### **`tolerance`**
 
-  Description
-  : Change in parameter values across path to terminate smoothing
-* **do_refinement:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+| Type   |   Default |
+|--------|-----------|
+| double |     1e-10 |
 
-  Description
-  : Whether to smooth the smoothed path recursively to refine the quality further
-* **refinement_num:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         2 |
+Description
+:   Change in parameter values across path to terminate smoothing
 
-  Description
-  : Number of times to recursively attempt to smooth, must be `>= 1`.
-* **max_its:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |      1000 |
+### **`do_refinement`**
 
-  Description
-  : Maximum number of iterations to attempt smoothing before termination
-* **w_data:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.2 |
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
 
-  Description
-  : Weight to apply to path data given (bounds it)
-* **w_smooth:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.3 |
+Description
+:   Whether to smooth the smoothed path recursively to refine the quality further
 
-  Description
-  : Weight to apply to smooth the path (smooths it)
-* **enforce_path_inversion:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+### **`refinement_num`**
 
-  Description
-  : Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
+| Type   |   Default |
+|--------|-----------|
+| int    |         2 |
+
+Description
+:   Number of times to recursively attempt to smooth, must be `>= 1`.
+
+### **`max_its`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |      1000 |
+
+Description
+:   Maximum number of iterations to attempt smoothing before termination
+
+### **`w_data`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.2 |
+
+Description
+:   Weight to apply to path data given (bounds it)
+
+### **`w_smooth`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.3 |
+
+Description
+:   Weight to apply to smooth the path (smooths it)
+
+### **`enforce_path_inversion`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
+
+Description
+:   Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
 
 ## Example
 

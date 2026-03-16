@@ -5,20 +5,23 @@ Returns failure if the goal is the same, if it changes, it returns success.
 
 ## Input Ports
 
-* **goal:**
-  | Type                            | Default   |
-  |---------------------------------|-----------|
-  | geometry_msgs::msg::PoseStamped | “{goal}”  |
+### **`goal`**
 
-  Description
-  : Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
-* **goals:**
-  | Type                 | Default   |
-  |----------------------|-----------|
-  | nav_msgs::msg::Goals | “{goals}” |
+| Type                            | Default   |
+|---------------------------------|-----------|
+| geometry_msgs::msg::PoseStamped | “{goal}”  |
 
-  Description
-  : Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
+Description
+:   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.
+
+### **`goals`**
+
+| Type                 | Default   |
+|----------------------|-----------|
+| nav_msgs::msg::Goals | “{goals}” |
+
+Description
+:   Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.
 
 ## Example
 

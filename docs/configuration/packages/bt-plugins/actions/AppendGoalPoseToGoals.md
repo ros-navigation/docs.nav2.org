@@ -5,30 +5,34 @@ May be useful to add in the final task goal pose to a list of goals extracted fr
 
 ## Input Ports
 
-* **goal_pose:**
-  | Type                      | Default   |
-  |---------------------------|-----------|
-  | geometry_msgs/PoseStamped | N/A       |
+### **`goal_pose`**
 
-  Description
-  : Goal pose to append to the `goals` vector.
-* **input_goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+| Type                      | Default   |
+|---------------------------|-----------|
+| geometry_msgs/PoseStamped | N/A       |
 
-  Description
-  : Input goals vector to append to.
+Description
+:   Goal pose to append to the `goals` vector.
+
+### **`input_goals`**
+
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
+
+Description
+:   Input goals vector to append to.
 
 ## Output Ports
 
-* **output_goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+### **`output_goals`**
 
-  Description
-  : Output goals vector appended to.
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
+
+Description
+:   Output goals vector appended to.
 
 ## Example
 

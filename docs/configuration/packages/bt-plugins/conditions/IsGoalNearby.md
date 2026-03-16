@@ -4,10 +4,11 @@ Checks if the robot is near the goal by computing the remaining path length from
 
 ## Parameter
 
-* **transform_tolerance:**
+### **`transform_tolerance`**
+
   Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
 
-### Example
+## Example
 
 ```yaml
 bt_navigator:
@@ -18,43 +19,52 @@ bt_navigator:
 
 ## Input Ports
 
-* **path:**
-  | Type                | Default   |
-  |---------------------|-----------|
-  | nav_msgs::msg::Path | N/A       |
+### **`path`**
 
-  Description
-  : The planned path to evaluate.
-* **proximity_threshold:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+| Type                | Default   |
+|---------------------|-----------|
+| nav_msgs::msg::Path | N/A       |
 
-  Description
-  : The remaining path length (in meters) considered as “nearby”. When the remaining distance along the path is less than this threshold, the condition returns SUCCESS.
-* **max_robot_pose_search_dist:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        -1 |
+Description
+:   The planned path to evaluate.
 
-  Description
-  : Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to a negative value (default), the entire path is searched every time. Setting this to a positive value (e.g., 1.0-2.0 meters) can improve performance when this BT node is ticked frequently to address looping or crossed paths (when present).
-* **global_frame:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “map”     |
+### **`proximity_threshold`**
 
-  Description
-  : The global reference frame.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+| Type   |   Default |
+|--------|-----------|
+| double |         1.0 |
 
-  Description
-  : Robot base frame.
+Description
+:   The remaining path length (in meters) considered as “nearby”. When the remaining distance along the path is less than this threshold, the condition returns SUCCESS.
 
-### Example
+### **`max_robot_pose_search_dist`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |        -1.0 |
+
+Description
+:   Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to a negative value (default), the entire path is searched every time. Setting this to a positive value (e.g., 1.0-2.0 meters) can improve performance when this BT node is ticked frequently to address looping or crossed paths (when present).
+
+### **`global_frame`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “map”     |
+
+Description
+:   The global reference frame.
+
+### **`robot_base_frame`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
+
+## Example
 
 ```xml
 <IsGoalNearby path="{path}" proximity_threshold="1.0" />

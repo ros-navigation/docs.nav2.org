@@ -8,67 +8,81 @@ This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors m
 
 ## Input Ports
 
-* **backup_dist:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     -0.15 |
+### **`backup_dist`**
 
-  Description
-  : Total distance to backup (m).
-* **backup_speed:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     0.025 |
+| Type   |   Default |
+|--------|-----------|
+| double |     -0.15 |
 
-  Description
-  : Backup speed (m/s).
-* **time_allowance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+Description
+:   Total distance to backup (m).
 
-  Description
-  : Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
-* **server_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`backup_speed`**
 
-  Description
-  : Action server name.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+| Type   |   Default |
+|--------|-----------|
+| double |     0.025 |
 
-  Description
-  : Action server timeout (ms).
-* **disable_collision_checks:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Backup speed (m/s).
 
-  Description
-  : Disable collision checking.
+### **`time_allowance`**
 
-### Output Ports
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
 
-* **error_code_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | uint16 | N/A       |
+Description
+:   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
-  Description
-  : Backup error code. See `BackUp` action message for the enumerated set of error codes.
-* **error_msg:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`server_name`**
 
-  Description
-  : Backup error message. See `BackUp` action message for the enumerated set of error codes.
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
 
-### Example
+Description
+:   Action server name.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Action server timeout (ms).
+
+### **`disable_collision_checks`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Disable collision checking.
+
+## Output Ports
+
+### **`error_code_id`**
+
+| Type   | Default   |
+|--------|-----------|
+| uint16 | N/A       |
+
+Description
+:   Backup error code. See `BackUp` action message for the enumerated set of error codes.
+
+### **`error_msg`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   Backup error message. See `BackUp` action message for the enumerated set of error codes.
+
+## Example
 
 ```xml
 <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"

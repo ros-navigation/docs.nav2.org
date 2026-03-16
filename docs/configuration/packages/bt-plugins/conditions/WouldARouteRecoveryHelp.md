@@ -6,13 +6,14 @@ If the active error code is a match, the node returns `SUCCESS`. Otherwise, it r
 
 ## Input Port
 
-* **error_code:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | unsigned short | N/A       |
+### **`error_code`**
 
-  Description
-  : The active error code to compare against. This should match the route server error code.
+| Type           | Default   |
+|----------------|-----------|
+| unsigned short | N/A       |
+
+Description
+:   The active error code to compare against. This should match the route server error code.
 
 ## Example
 

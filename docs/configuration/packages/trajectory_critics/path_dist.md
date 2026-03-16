@@ -6,15 +6,20 @@ Scores a trajectory based on how well it is aligned to the path provided by the 
 
 `<name>`: PathDistCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
 
-* **`<dwb plugin>`.`<name>`.aggregation_type:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “last”    |
-    Description
-    : last, sum, or product combination methods.
-* **`<dwb plugin>`.`<name>`.scale:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
-    Description
-    : Weighed scale for critic.
+### **`<dwb plugin>.<name>.aggregation_type`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “last”    |
+
+Description
+:   last, sum, or product combination methods.
+
+### **`<dwb plugin>.<name>.scale`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   Weighed scale for critic.

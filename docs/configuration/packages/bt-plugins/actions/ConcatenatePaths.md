@@ -5,30 +5,34 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 
 ## Input Ports
 
-* **input_path1:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+### **`input_path1`**
 
-  Description
-  : First path to concatenate.
-* **input_path2:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
 
-  Description
-  : Second path to concatenate.
+Description
+:   First path to concatenate.
+
+### **`input_path2`**
+
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
+
+Description
+:   Second path to concatenate.
 
 ## Output Ports
 
-* **input_path2:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+### **`input_path2`**
 
-  Description
-  : Output concatenated path.
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
+
+Description
+:   Output concatenated path.
 
 ## Example
 

@@ -9,60 +9,73 @@ If a waypoint is not achievable, the `stop_on_failure` parameter will determine 
 
 ## Parameters
 
-* **stop_on_failure:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`stop_on_failure`**
 
-  Description
-  : Whether to fail action task if a single waypoint fails. If false, will continue to next waypoint.
-* **loop_rate:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |        20 |
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
 
-  Description
-  : Rate to check for results from current navigation task.
-* **global_frame_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | ‘map’     |
+Description
+:   Whether to fail action task if a single waypoint fails. If false, will continue to next waypoint.
 
-  Description
-  : The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
+### **`loop_rate`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |        20 |
+
+Description
+:   Rate to check for results from current navigation task.
+
+### **`global_frame_id`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | ‘map’     |
+
+Description
+:   The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
     convert GPS waypoints to this frame.
-* **introspection_mode:**
-  | Type   | Default    |
-  |--------|------------|
-  | string | “disabled” |
 
-  Description
-  : The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
-* **bond_heartbeat_period:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.25 |
+### **`introspection_mode`**
 
-  Description
-  : The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
-* **allow_parameter_qos_overrides:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+| Type   | Default    |
+|--------|------------|
+| string | “disabled” |
 
-  Description
-  : Whether to allow QoS profiles to be overwritten with parameterized values.
-* **waypoint_task_executor_plugin:**
-  | Type   | Default            |
-  |--------|--------------------|
-  | string | ‘wait_at_waypoint’ |
+Description
+:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
 
-  Description
-  : A plugin to define tasks to be executed when robot arrives to a waypoint.
+### **`bond_heartbeat_period`**
 
-  Note
-  : The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    <br/>
+| Type   |   Default |
+|--------|-----------|
+| double |      0.25 |
+
+Description
+:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+### **`allow_parameter_qos_overrides`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to allow QoS profiles to be overwritten with parameterized values.
+
+### **`waypoint_task_executor_plugin`**
+
+| Type   | Default            |
+|--------|--------------------|
+| string | ‘wait_at_waypoint’ |
+
+Description
+:   A plugin to define tasks to be executed when robot arrives to a waypoint.
+
+Note
+:   The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+
     Example:
     ```yaml
     waypoint_follower:

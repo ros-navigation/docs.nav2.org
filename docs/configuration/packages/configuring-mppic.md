@@ -22,683 +22,842 @@ See the package’s `README` for more complete information.
 
 ## MPPI Parameters
 
-* **motion_model:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “DiffDrive” |
+### **`motion_model`**
 
-  Description
-  : The desired motion model to use for trajectory planning. Options are `DiffDrive`, `Omni`, or `Ackermann`. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
-* **critics:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | string vector | N/A       |
+| Type   | Default     |
+|--------|-------------|
+| string | “DiffDrive” |
 
-  Description
-  : A vector of critic plugin functions to use, without `mppi::critic::` namespace which will be automatically added on loading.
-* **iteration_count:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+Description
+:   The desired motion model to use for trajectory planning. Options are `DiffDrive`, `Omni`, or `Ackermann`. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
 
-  Description
-  : Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.
-* **batch_size:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |      1000 |
+### **`critics`**
 
-  Description
-  : Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 @ 50 Hz or 2000 @ 30 Hz seems to produce good results.
-* **time_steps:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |        56 |
+| Type          | Default   |
+|---------------|-----------|
+| string vector | N/A       |
 
-  Description
-  : Number of time steps (points) in candidate trajectories
-* **model_dt:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.05 |
+Description
+:   A vector of critic plugin functions to use, without `mppi::critic::` namespace which will be automatically added on loading.
 
-  Description
-  : Length of each time step’s `dt` timestep, in seconds. `time_steps * model_dt` is the prediction horizon.
-* **vx_std:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.2 |
+### **`iteration_count`**
 
-  Description
-  : Sampling standard deviation for Vx
-* **vy_std:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.2 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-  Description
-  : Sampling standard deviation for Vy
-* **wz_std:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.2 |
+Description
+:   Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.
 
-  Description
-  : Sampling standard deviation for Wz (angular velocity)
-* **vx_max:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+### **`batch_size`**
 
-  Description
-  : Target maximum forward velocity (m/s).
-* **vy_max:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+| Type   |   Default |
+|--------|-----------|
+| int    |      1000 |
 
-  Description
-  : Target maximum lateral velocity, if using `Omni` motion model (m/s).
-* **vx_min:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     -0.35 |
+Description
+:   Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 @ 50 Hz or 2000 @ 30 Hz seems to produce good results.
 
-  Description
-  : Maximum reverse velocity (m/s).
-* **wz_max:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       1.9 |
+### **`time_steps`**
 
-  Description
-  : Maximum rotational velocity (rad/s).
-* **ax_max:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         3 |
+| Type   |   Default |
+|--------|-----------|
+| int    |        56 |
 
-  Description
-  : Maximum forward acceleration (m/s^2).
-* **ay_min:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        -3 |
+Description
+:   Number of time steps (points) in candidate trajectories
 
-  Description
-  : Minimum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
-* **ay_max:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         3 |
+### **`model_dt`**
 
-  Description
-  : Maximum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
-* **ax_min:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        -3 |
+| Type   |   Default |
+|--------|-----------|
+| double |      0.05 |
 
-  Description
-  : Maximum deceleration along the X-axis (m/s^2).
-* **az_max:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       3.5 |
+Description
+:   Length of each time step’s `dt` timestep, in seconds. `time_steps * model_dt` is the prediction horizon.
 
-  Description
-  : Maximum angular acceleration (rad/s^2).
-* **temperature:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.3 |
+### **`vx_std`**
 
-  Description
-  : Selectiveness of trajectories by their costs (The closer this value to 0, the “more” we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
-* **gamma:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     0.015 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.2 |
 
-  Description
-  : A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won’t need to be changed from the default. See Section 3D-2 in “Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving” for detailed information.
-* **visualize:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Sampling standard deviation for Vx
 
-  Description
-  : Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
-* **publish_optimal_trajectory:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+### **`vy_std`**
 
-  Description
-  : Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.
-* **retry_attempt_limit:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.2 |
 
-  Description
-  : Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
-* **reset_period:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+Description
+:   Sampling standard deviation for Vy
 
-  Description
-  : Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
-* **regenerate_noises:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+### **`wz_std`**
 
-  Description
-  : Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
-* **publish_critics_stats:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.2 |
 
-  Description
-  : Whether to publish statistics about each critic’s performance. When enabled, publishes a `nav2_msgs::msg::CriticsStats` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
-* **open_loop:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Sampling standard deviation for Wz (angular velocity)
 
-  Description
-  : Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
-* **TrajectoryValidator.plugin:**
-  | Type   | Default                                   |
-  |--------|-------------------------------------------|
-  | string | “mppi::DefaultOptimalTrajectoryValidator” |
+### **`vx_max`**
 
-  Description
-  : The plugin to use for validating final optimal trajectories.
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
 
-### Trajectory Visualization
+Description
+:   Target maximum forward velocity (m/s).
 
-* **trajectory_step:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         5 |
+### **`vy_max`**
 
-  Description
-  : The step between trajectories to visualize to downsample candidate trajectory pool.
-* **time_step:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         3 |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
 
-  Description
-  : The step between points on trajectories to visualize to downsample trajectory density.
-* **allow_parameter_qos_overrides:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   Target maximum lateral velocity, if using `Omni` motion model (m/s).
 
-  Description
-  : Whether to allow QoS profiles to be overwritten with parameterized values.
+### **`vx_min`**
 
-### Ackermann Motion Model
+| Type   |   Default |
+|--------|-----------|
+| double |     -0.35 |
 
-* **min_turning_r:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.2 |
+Description
+:   Maximum reverse velocity (m/s).
 
-  Description
-  : The minimum turning radius possible for the vehicle platform (m).
+### **`wz_max`**
 
-### Default Optimal Trajectory Validator
+| Type   |   Default |
+|--------|-----------|
+| double |       1.9 |
+
+Description
+:   Maximum rotational velocity (rad/s).
+
+### **`ax_max`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       3.0 |
+
+Description
+:   Maximum forward acceleration (m/s^2).
+
+### **`ay_min`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      -3.0 |
+
+Description
+:   Minimum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
+
+### **`ay_max`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       3.0 |
+
+Description
+:   Maximum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
+
+### **`ax_min`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      -3.0 |
+
+Description
+:   Maximum deceleration along the X-axis (m/s^2).
+
+### **`az_max`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       3.5 |
+
+Description
+:   Maximum angular acceleration (rad/s^2).
+
+### **`temperature`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.3 |
+
+Description
+:   Selectiveness of trajectories by their costs (The closer this value to 0, the “more” we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
+
+### **`gamma`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |     0.015 |
+
+Description
+:   A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won’t need to be changed from the default. See Section 3D-2 in “Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving” for detailed information.
+
+### **`visualize`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+
+### **`publish_optimal_trajectory`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.
+
+### **`retry_attempt_limit`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
+
+### **`reset_period`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
+
+### **`regenerate_noises`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
+
+### **`publish_critics_stats`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to publish statistics about each critic’s performance. When enabled, publishes a `nav2_msgs::msg::CriticsStats` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
+
+### **`open_loop`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
+
+### **`TrajectoryValidator.plugin`**
+
+| Type   | Default                                   |
+|--------|-------------------------------------------|
+| string | “mppi::DefaultOptimalTrajectoryValidator” |
+
+Description
+:   The plugin to use for validating final optimal trajectories.
+
+## Trajectory Visualization
+
+### **`trajectory_step`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         5 |
+
+Description
+:   The step between trajectories to visualize to downsample candidate trajectory pool.
+
+### **`time_step`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         3 |
+
+Description
+:   The step between points on trajectories to visualize to downsample trajectory density.
+
+### **`allow_parameter_qos_overrides`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to allow QoS profiles to be overwritten with parameterized values.
+
+## Ackermann Motion Model
+
+### **`min_turning_r`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.2 |
+
+Description
+:   The minimum turning radius possible for the vehicle platform (m).
+
+## Default Optimal Trajectory Validator
 
 This validator checks the final optimal trajectory for validity and does not collide with obstacles.
 Additional validator plugins can be created to support different features like constraints on the maximum deviation from a path, collision margin, progress being made, etc.
 Dynamic and kinematic constraints are not required to be checked as trajectories are guaranteed to be within the constraints of the motion model.
 
-* **collision_lookahead_time:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         2 |
+### **`collision_lookahead_time`**
 
-  Description
-  : The time in seconds to look ahead for potential collisions when validating the trajectory.
-* **consider_footprint:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+| Type   |   Default |
+|--------|-----------|
+| double |       2.0 |
 
-  Description
-  : Whether to consider the robot’s footprint when validating the trajectory. Else, will use the center point cost of a circular robot
+Description
+:   The time in seconds to look ahead for potential collisions when validating the trajectory.
 
-### Constraint Critic
+### **`consider_footprint`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to consider the robot’s footprint when validating the trajectory. Else, will use the center point cost of a circular robot
+
+## Constraint Critic
 
 This critic penalizes trajectories that have components outside of the set dynamic or kinematic constraints
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         4 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       4.0 |
 
-  Description
-  : Power order to apply to term.
+Description
+:   Weight to apply to critic term.
 
-### Goal Angle Critic
+### **`cost_power`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Power order to apply to term.
+
+## Goal Angle Critic
 
 This critic incentivizes navigating to achieve the angle of the goal posewhen in reasonable proximity to goal
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         3 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       3.0 |
 
-  Description
-  : Power order to apply to term.
-* **threshold_to_consider:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : Minimal distance (m) between robot and goal above which angle goal cost considered.
-* **symmetric_yaw_tolerance:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+### **`cost_power`**
 
-  Description
-  : Enable symmetric goal orientation acceptance. When enabled, the critic prefers trajectories that approach the goal at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. MPPI decides). When enabled, the critic uses the minimum distance to either goal orientation, reducing the cost penalty for approaching from the backward direction. See [Tuning Guide](../../tuning/index.md#tuning-guide) for detailed information.
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-### Goal Critic
+Description
+:   Power order to apply to term.
+
+### **`threshold_to_consider`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   Minimal distance (m) between robot and goal above which angle goal cost considered.
+
+### **`symmetric_yaw_tolerance`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Enable symmetric goal orientation acceptance. When enabled, the critic prefers trajectories that approach the goal at either the goal orientation or the goal orientation + 180°. This is useful for symmetric robots (e.g., differential drives with sensors on both ends) that can navigate equally well in forward and backward directions and does not care which direction it ends in (i.e. MPPI decides). When enabled, the critic uses the minimum distance to either goal orientation, reducing the cost penalty for approaching from the backward direction. See [Tuning Guide](../../tuning/index.md#tuning-guide) for detailed information.
+
+## Goal Critic
 
 This critic incentivizes navigating spatially towards the goal when in reasonable proximity to goal
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         5 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       5.0 |
 
-  Description
-  : Power order to apply to term.
-* **threshold_to_consider:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       1.4 |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : Minimal distance (m) between robot and goal above which goal distance cost considered. It is wise to start with this as being the same as your prediction horizon to have a clean hand-off with the path follower critic.
+### **`cost_power`**
 
-### Obstacles Critic
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Power order to apply to term.
+
+### **`threshold_to_consider`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.4 |
+
+Description
+:   Minimal distance (m) between robot and goal above which goal distance cost considered. It is wise to start with this as being the same as your prediction horizon to have a clean hand-off with the path follower critic.
+
+## Obstacles Critic
 
 This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using distances from obstacles.
 
-* **critical_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        20 |
+### **`critical_weight`**
 
-  Description
-  : Weight to apply to critic for near collisions closer than `collision_margin_distance` to prevent near collisions **only** as a method of virtually inflating the footprint. This should not be used to generally influence obstacle avoidance away from critical collisions.
-* **repulsion_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       1.5 |
+| Type   |   Default |
+|--------|-----------|
+| double |      20.0 |
 
-  Description
-  : Weight to apply to critic for generally preferring routes in lower cost space. This is separated from the critical term to allow for fine tuning of obstacle behaviors with path alignment for dynamic scenes without impacting actions which may directly lead to near-collisions. This is applied within the `inflation_radius` distance from obstacles.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+Description
+:   Weight to apply to critic for near collisions closer than `collision_margin_distance` to prevent near collisions **only** as a method of virtually inflating the footprint. This should not be used to generally influence obstacle avoidance away from critical collisions.
 
-  Description
-  : Power order to apply to term.
-* **consider_footprint:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+### **`repulsion_weight`**
 
-  Description
-  : Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
-* **collision_cost:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |    100000 |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.5 |
 
-  Description
-  : Cost to apply to a true collision in a trajectory.
-* **collision_margin_distance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+Description
+:   Weight to apply to critic for generally preferring routes in lower cost space. This is separated from the critical term to allow for fine tuning of obstacle behaviors with path alignment for dynamic scenes without impacting actions which may directly lead to near-collisions. This is applied within the `inflation_radius` distance from obstacles.
 
-  Description
-  : Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
-* **near_goal_distance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+### **`cost_power`**
 
-  Description
-  : Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
-* **cost_scaling_factor:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-  Description
-  : Exponential decay factor across inflation radius. This should be the same as for your inflation layer (Humble only)
-* **inflation_radius:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.55 |
+Description
+:   Power order to apply to term.
 
-  Description
-  : Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
-* **inflation_layer_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “”        |
+### **`consider_footprint`**
 
-  Description
-  : Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
 
-### Cost Critic
+Description
+:   Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
+
+### **`collision_cost`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |  100000.0 |
+
+Description
+:   Cost to apply to a true collision in a trajectory.
+
+### **`collision_margin_distance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
+
+Description
+:   Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
+
+### **`near_goal_distance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
+
+### **`cost_scaling_factor`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Exponential decay factor across inflation radius. This should be the same as for your inflation layer (Humble only)
+
+### **`inflation_radius`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      0.55 |
+
+Description
+:   Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
+
+### **`inflation_layer_name`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “”        |
+
+Description
+:   Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
+
+## Cost Critic
 
 This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using the costmap values.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      3.81 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |      3.81 |
 
-  Description
-  : Power order to apply to term.
-* **consider_footprint:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Weight to apply to critic.
 
-  Description
-  : Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
-* **collision_cost:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     1e+06 |
+### **`cost_power`**
 
-  Description
-  : Cost to apply to a true collision in a trajectory.
-* **near_collision_cost:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |       253 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-  Description
-  : Costmap cost value to set a maximum proximity for avoidance.
-* **critical_cost:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       300 |
+Description
+:   Power order to apply to term.
 
-  Description
-  : Cost to apply to a pose with a cost higher than the near_collision_cost.
-* **near_goal_distance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+### **`consider_footprint`**
 
-  Description
-  : Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
-* **inflation_layer_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “”        |
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
 
-  Description
-  : Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
-* **trajectory_point_step:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         2 |
+Description
+:   Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
 
-  Description
-  : The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
+### **`collision_cost`**
 
-### Path Align Critic
+| Type   |   Default |
+|--------|-----------|
+| double |     1e+06 |
+
+Description
+:   Cost to apply to a true collision in a trajectory.
+
+### **`near_collision_cost`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |       253 |
+
+Description
+:   Costmap cost value to set a maximum proximity for avoidance.
+
+### **`critical_cost`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |     300.0 |
+
+Description
+:   Cost to apply to a pose with a cost higher than the near_collision_cost.
+
+### **`near_goal_distance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
+
+### **`inflation_layer_name`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “”        |
+
+Description
+:   Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
+
+### **`trajectory_point_step`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         2 |
+
+Description
+:   The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
+
+## Path Align Critic
 
 This critic incentivizes aligning with the global path, if relevant. It does not implement path following behavior.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
 
-  Description
-  : Power order to apply to term.
-* **threshold_to_consider:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : Distance (m) between robot and goal to **stop** considering path alignment and allow goal critics to take over.
-* **offset_from_furthest:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |        20 |
+### **`cost_power`**
 
-  Description
-  : Checks that the candidate trajectories are sufficiently far along their way tracking the path to apply the alignment critic. This ensures that path alignment is only considered when actually tracking the path, preventing awkward initialization motions preventing the robot from leaving the path to achieve the appropriate heading.
-* **max_path_occupancy_ratio:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.07 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-  Description
-  : Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path’s intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
-* **use_path_orientations:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Power order to apply to term.
 
-  Description
-  : Whether to consider path’s orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.
-* **trajectory_point_step:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         4 |
+### **`threshold_to_consider`**
 
-  Description
-  : The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
 
-### Path Angle Critic
+Description
+:   Distance (m) between robot and goal to **stop** considering path alignment and allow goal critics to take over.
+
+### **`offset_from_furthest`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |        20 |
+
+Description
+:   Checks that the candidate trajectories are sufficiently far along their way tracking the path to apply the alignment critic. This ensures that path alignment is only considered when actually tracking the path, preventing awkward initialization motions preventing the robot from leaving the path to achieve the appropriate heading.
+
+### **`max_path_occupancy_ratio`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      0.07 |
+
+Description
+:   Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path’s intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
+
+### **`use_path_orientations`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to consider path’s orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.
+
+### **`trajectory_point_step`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         4 |
+
+Description
+:   The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
+
+## Path Angle Critic
 
 This critic penalizes trajectories at a high relative angle to the path. This helps the robot make sharp turns when necessary due to large accumulated angular errors.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       2.2 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       2.2 |
 
-  Description
-  : Power order to apply to term.
-* **threshold_to_consider:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : Distance (m) between robot and goal to **stop** considering path angles and allow goal critics to take over.
-* **offset_from_furthest:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |        20 |
+### **`cost_power`**
 
-  Description
-  : Number of path points after furthest one any trajectory achieves to compute path angle relative to.
-* **max_angle_to_furthest:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |  0.785398 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-  Description
-  : Angular distance (rad) between robot and goal above which path angle cost starts being considered
-* **mode:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         0 |
+Description
+:   Power order to apply to term.
 
-  Description
-  : Enum type for mode of operations for the path angle critic depending on path input types and behavioral desires. 0: Forward Preference, penalizes high path angles relative to the robot’s orientation to incentivize turning towards the path. 1: No directional preference, penalizes high path angles relative to the robot’s orientation or mirrored orientation (e.g. reverse), which ever is less, when a particular direction of travel is not preferable. 2: Consider feasible path orientation, when using a feasible path whereas the path points have orientation information (e.g. Smac Planners), consider the path’s requested direction of travel to penalize path angles such that the robot will follow the path in the requested direction.
+### **`threshold_to_consider`**
 
-### Path Follow Critic
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   Distance (m) between robot and goal to **stop** considering path angles and allow goal critics to take over.
+
+### **`offset_from_furthest`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |        20 |
+
+Description
+:   Number of path points after furthest one any trajectory achieves to compute path angle relative to.
+
+### **`max_angle_to_furthest`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |  0.785398 |
+
+Description
+:   Angular distance (rad) between robot and goal above which path angle cost starts being considered
+
+### **`mode`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         0 |
+
+Description
+:   Enum type for mode of operations for the path angle critic depending on path input types and behavioral desires. 0: Forward Preference, penalizes high path angles relative to the robot’s orientation to incentivize turning towards the path. 1: No directional preference, penalizes high path angles relative to the robot’s orientation or mirrored orientation (e.g. reverse), which ever is less, when a particular direction of travel is not preferable. 2: Consider feasible path orientation, when using a feasible path whereas the path points have orientation information (e.g. Smac Planners), consider the path’s requested direction of travel to penalize path angles such that the robot will follow the path in the requested direction.
+
+## Path Follow Critic
 
 This critic incentivizes making progress along the path. This is what drives the robot forward along the path.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         5 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       5.0 |
 
-  Description
-  : Power order to apply to term.
-* **threshold_to_consider:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       1.4 |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : Distance (m) between robot and goal to **stop** considering path following and allow goal critics to take over. It is wise to start with this as being the same as your prediction horizon to have a clean hand-off with the goal critic.
-* **offset_from_furthest:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         6 |
+### **`cost_power`**
 
-  Description
-  : Number of path points after furthest one any trajectory achieves to drive path tracking relative to.
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
 
-### Prefer Forward Critic
+Description
+:   Power order to apply to term.
+
+### **`threshold_to_consider`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.4 |
+
+Description
+:   Distance (m) between robot and goal to **stop** considering path following and allow goal critics to take over. It is wise to start with this as being the same as your prediction horizon to have a clean hand-off with the goal critic.
+
+### **`offset_from_furthest`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         6 |
+
+Description
+:   Number of path points after furthest one any trajectory achieves to drive path tracking relative to.
+
+## Prefer Forward Critic
 
 This critic incentivizes moving in the forward direction, rather than reversing.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         5 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       5.0 |
 
-  Description
-  : Power order to apply to term.
-* **threshold_to_consider:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : Distance (m) between robot and goal to **stop** considering preferring forward and allow goal critics to take over.
+### **`cost_power`**
 
-### Twirling Critic
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Power order to apply to term.
+
+### **`threshold_to_consider`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   Distance (m) between robot and goal to **stop** considering preferring forward and allow goal critics to take over.
+
+## Twirling Critic
 
 This critic penalizes unnecessary ‘twisting’ with holonomic vehicles. It adds a constraint on the rotation angle to keep it consistent.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
 
-  Description
-  : Power order to apply to term.
+Description
+:   Weight to apply to critic term.
 
-### Velocity Deadband Critic
+### **`cost_power`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Power order to apply to term.
+
+## Velocity Deadband Critic
 
 This critic penalizes velocities that fall below the deadband threshold, helping to mitigate hardware limitations on certain platforms.
 
-* **cost_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        35 |
+### **`cost_weight`**
 
-  Description
-  : Weight to apply to critic term.
-* **cost_power:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |      35.0 |
 
-  Description
-  : Power order to apply to term.
-* **deadband_velocities:**
-  | Type            | Default            |
-  |-----------------|--------------------|
-  | array of double | [0.05, 0.05, 0.05] |
+Description
+:   Weight to apply to critic term.
 
-  Description
-  : The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.
+### **`cost_power`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Power order to apply to term.
+
+### **`deadband_velocities`**
+
+| Type            | Default            |
+|-----------------|--------------------|
+| array of double | [0.05, 0.05, 0.05] |
+
+Description
+:   The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.
 
 ## Example
 
@@ -815,7 +974,7 @@ controller_server:
 
 ## Notes to Users
 
-### General Words of Wisdom
+## General Words of Wisdom
 
 The `model_dt` parameter generally should be set to the duration of your control frequency. So if your control frequency is 20hz, this should be `0.05`. However, you may also set it lower **but not larger**.
 
@@ -825,7 +984,7 @@ The most common parameters you might want to start off changing are the velocity
 
 Otherwise, the parameters have been closely pre-tuned by your friendly neighborhood navigator to give you a decent starting point that hopefully you only need to retune for your specific desired behavior lightly (if at all). Varying costmap parameters or maximum speeds are the actions which require the most attention, as described below:
 
-### Prediction Horizon, Costmap Sizing, and Offsets
+## Prediction Horizon, Costmap Sizing, and Offsets
 
 As this is a predictive planner, there is some relationship between maximum speed, prediction times, std sampling, and costmap size that users should keep in mind while tuning for their application. If a controller server costmap is set to 3.0m in size, that means that with the robot in the center, there is 1.5m of information on either side of the robot. When your prediction horizon (`time_steps * model_dt`) at maximum speed (`vx_max`) is larger than this, then your robot will be artificially limited in its maximum speeds and behavior by the costmap limitation. For example, if you predict forward 3 seconds (60 steps @ 0.05s per step) at 0.5m/s maximum speed, the **minimum** required costmap radius is 1.5m - or 3m total width. The faster the robot is set to go, the higher the velocity sampling standard deviations should be in order to effectively explore the velocity space.
 
@@ -833,7 +992,7 @@ The same applies to the Path Follow and Align offsets from furthest. In the same
 
 The Path Follow critic cannot drive velocities greater than the projectable distance of that velocity on the available path on the rolling costmap. The Path Align critic offset_from_furthest represents the number of path points a trajectory passes through while tracking the path. If this is set either absurdly low (e.g. 5) it can trigger when a robot is simply trying to start path tracking causing some suboptimal behaviors and local minima while starting a task. If it is set absurdly high (e.g. 50) relative to the path resolution and costmap size, then the critic may never trigger or only do so when at full-speed. A balance here is wise. A selection of this value to be ~30% of the maximum velocity distance projected is good (e.g. if a planner produces points every 2.5cm, 60 can fit on the 1.5m local costmap radius. If the max speed is 0.5m/s with a 3s prediction time, then 20 points represents 33% of the maximum speed projected over the prediction horizon onto the path). When in doubt, `prediction_horizon_s * max_speed / path_resolution / 3.0` is a good baseline.
 
-### Obstacle, Inflation Layer, and Path Following
+## Obstacle, Inflation Layer, and Path Following
 
 There also exists a relationship between the costmap configurations and the Obstacle critic configurations. If the Obstacle critic is not well tuned with the costmap parameters (inflation radius, scale) it can cause the robot to wobble significantly as it attempts to take finitely lower-cost trajectories with a slightly lower cost in exchange for jerky motion. It may also perform awkward maneuvers when in free-space to try to maximize time in a small pocket of 0-cost over a more natural motion which involves moving into some low-costed region. Finally, it may generally refuse to go into costed space at all when starting in a free 0-cost space if the gain is set disproportionately higher than the Path Follow scoring to encourage the robot to move along the path. This is due to the critic cost of staying in free space becoming more attractive than entering even lightly costed space in exchange for progression along the task.
 

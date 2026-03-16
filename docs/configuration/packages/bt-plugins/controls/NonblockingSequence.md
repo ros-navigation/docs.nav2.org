@@ -6,6 +6,6 @@ Ticks all child nodes until they all return SUCCESS. If any of the child nodes r
 
 ```xml
 <NonblockingSequence>
-    <!--Add tree components here--->
+    <!--Add tree components here-->
 </NonblockingSequence>
 ```

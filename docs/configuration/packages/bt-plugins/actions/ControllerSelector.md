@@ -6,30 +6,34 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ## Input Ports
 
-* **topic_name:**
-  | Type   | Default             |
-  |--------|---------------------|
-  | string | controller_selector |
+### **`topic_name`**
 
-  Description
-  : The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.
-* **default_controller:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+| Type   | Default             |
+|--------|---------------------|
+| string | controller_selector |
 
-  Description
-  : The default value for the selected Controller if no message is received from the input topic.
+Description
+:   The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.
+
+### **`default_controller`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   The default value for the selected Controller if no message is received from the input topic.
 
 ## Output Ports
 
-* **selected_controller:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`selected_controller`**
 
-  Description
-  : The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.
 
 ## Example
 

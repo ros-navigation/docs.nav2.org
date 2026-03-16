@@ -6,27 +6,32 @@ Returns SUCCESS when battery percentage/voltage is lower than the specified valu
 
 ## Input Ports
 
-* **min_battery:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`min_battery`**
 
-  Description
-  : Min battery percentage or voltage before triggering.
-* **battery_topic:**
-  | Type   | Default           |
-  |--------|-------------------|
-  | string | “/battery_status” |
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
 
-  Description
-  : Topic for battery info.
-* **is_voltage:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Min battery percentage or voltage before triggering.
 
-  Description
-  : If true voltage will be used to check for low battery.
+### **`battery_topic`**
+
+| Type   | Default           |
+|--------|-------------------|
+| string | “/battery_status” |
+
+Description
+:   Topic for battery info.
+
+### **`is_voltage`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   If true voltage will be used to check for low battery.
 
 ## Example
 

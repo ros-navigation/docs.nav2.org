@@ -8,9 +8,11 @@ Prevents holonomic robots from spinning as they make their way to the goal.
 
 `<name>`: TwirlingCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
 
-* **`<dwb plugin>`.`<name>`.scale:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
-    Description
-    : Weighed scale for critic.
+### **`<dwb plugin>.<name>.scale`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   Weighed scale for critic.

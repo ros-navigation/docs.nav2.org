@@ -4,30 +4,34 @@ A custom control node, which modifies a path making it shorter. It removes parts
 
 ## Input Ports
 
-* **input_path:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+### **`input_path`**
 
-  Description
-  : The original path to be truncated.
-* **distance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
 
-  Description
-  : The distance to the original goal for truncating the path.
+Description
+:   The original path to be truncated.
+
+### **`distance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   The distance to the original goal for truncating the path.
 
 ## Output Ports
 
-* **output_path:**
-  | Type          | Default   |
-  |---------------|-----------|
-  | nav_msgs/Path | N/A       |
+### **`output_path`**
 
-  Description
-  : The resulting truncated path.
+| Type          | Default   |
+|---------------|-----------|
+| nav_msgs/Path | N/A       |
+
+Description
+:   The resulting truncated path.
 
 ## Example
 

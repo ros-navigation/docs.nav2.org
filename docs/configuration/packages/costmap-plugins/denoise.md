@@ -4,38 +4,45 @@ This layer attempts to remove simple noise that may exist in a costmap’s layer
 
 `<denoise layer>` is the corresponding plugin name selected for this type.
 
-* **`<denoise layer>`.enabled:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+### **`<denoise layer>.enabled`**
 
-  Description
-  : Whether it is enabled.
-* **`<denoise layer>`.minimal_group_size:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         2 |
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
 
-  Description
-  : The minimum number of adjacent obstacles that should not be discarded as noise.
+Description
+:   Whether it is enabled.
+
+### **`<denoise layer>.minimal_group_size`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         2 |
+
+Description
+:   The minimum number of adjacent obstacles that should not be discarded as noise.
+
     If 1 or less, all obstacles will be kept.
-    <br/>
+    <br>
     If 2, standalone obstacles (without neighbors in adjacent cells) will be removed.
-    <br/>
+    <br>
     If N, obstacles groups smaller than N will be removed.
-    <br/>
-* **`<denoise layer>`.group_connectivity_type:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         8 |
+    <br>
 
-  Description
-  : Obstacles connectivity type (is the way in which obstacles relate to their neighbors).
+### **`<denoise layer>.group_connectivity_type`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         8 |
+
+Description
+:   Obstacles connectivity type (is the way in which obstacles relate to their neighbors).
     Must be 4 or 8.
+
     4 - adjacent obstacles are connected horizontally and vertically.
-    <br/>
+    <br>
     8 - adjacent obstacles are connected horizontally, vertically and diagonally.
-    <br/>
+    <br>
 
 ## Example
 

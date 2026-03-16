@@ -5,20 +5,23 @@ The timer will reset if the path gets updated.
 
 ## Input Ports
 
-* **seconds:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`seconds`**
 
-  Description
-  : Time to check if expired.
-* **path:**
-  | Type                | Default   |
-  |---------------------|-----------|
-  | nav_msgs::msg::Path | N/A       |
+| Type   |   Default |
+|--------|-----------|
+| double |         1.0 |
 
-  Description
-  : Check if path has been updated to enable timer reset.
+Description
+:   Time to check if expired.
+
+### **`path`**
+
+| Type                | Default   |
+|---------------------|-----------|
+| nav_msgs::msg::Path | N/A       |
+
+Description
+:   Check if path has been updated to enable timer reset.
 
 ## Example
 

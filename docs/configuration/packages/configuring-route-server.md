@@ -26,425 +26,523 @@ See the package’s README file for additional information such as performance m
 
 ## Server Parameters
 
-* **base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+### **`base_frame`**
 
-  Description
-  : The base frame of the robot to use to obtain the robot’s pose from when not using the `use_start` request parameter.
-* **route_frame:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “map”     |
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
 
-  Description
-  : The frame of the route graph to plan within. If values in the graph file are not w.r.t. this frame, they will be automatically transformed.
-* **path_density:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.05 |
+Description
+:   The base frame of the robot to use to obtain the robot’s pose from when not using the `use_start` request parameter.
 
-  Description
-  : The density of path-points in the output route, if using the `nav_msgs/Path` route rather than the collection of nodes and edges. This is used to upsample the route into a path that may be followed.
-* **max_iterations:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         0 |
+### **`route_frame`**
 
-  Description
-  : The maximum number of planning iterations to perform. If 0, the maximum number of iterations is used.
-* **max_planning_time:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         2 |
+| Type   | Default   |
+|--------|-----------|
+| string | “map”     |
 
-  Description
-  : The maximum planning time to use.
-* **smooth_corners:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   The frame of the route graph to plan within. If values in the graph file are not w.r.t. this frame, they will be automatically transformed.
 
-  Description
-  : Whether to smooth corners formed between subsequent edges after a route has been found
-* **smoothing_radius:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`path_density`**
 
-  Description
-  : Radius to fit to corners formed by edges if corner smoothing is enabled
-* **smoothing_angle_threshold:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       2.9 |
+| Type   |   Default |
+|--------|-----------|
+| double |      0.05 |
 
-  Description
-  : Angle threshold (rad). If angle > threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error. 2.9 rad is 166 deg, meaning it will not smooth for segments that are within 14 deg of straight anti-parallel.
-* **costmap_topic:**
-  | Type   | Default                      |
-  |--------|------------------------------|
-  | string | ‘global_costmap/costmap_raw’ |
+Description
+:   The density of path-points in the output route, if using the `nav_msgs/Path` route rather than the collection of nodes and edges. This is used to upsample the route into a path that may be followed.
 
-  Description
-  : The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
-* **tracker_update_rate:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        50 |
+### **`max_iterations`**
 
-  Description
-  : The update rate of the tracker (when using `ComputeAndTrackRoute` action) to check the status of path tracking and execute route operations.
-* **aggregate_blocked_ids:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+| Type   |   Default |
+|--------|-----------|
+| int    |         0 |
 
-  Description
-  : Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently marked blocked IDs.
-* **boundary_radius_to_achieve_node:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+Description
+:   The maximum number of planning iterations to perform. If 0, the maximum number of iterations is used.
 
-  Description
-  : The radius at a boundary condition (start, goal) to mark the node achieved by the tracker when using `ComputeAndTrackRoute`. Note that this is not the same as the goal tolerance, as the route or path follower (controller) will continue to run until its goal tolerance is met.
-* **radius_to_achieve_node:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`max_planning_time`**
 
-  Description
-  : The radius for non-boundary conditions to mark the node as achieved once within tolerance of, when using `ComputeAndTrackRoute`. Note that this is a radius to consider achievable, however a refinement process takes place to most accurately identify when a node is reached. The radius is the trigger to start this process. Set this generously based on path tracking tolerances.
-* **max_prune_dist_from_edge:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         8 |
+| Type   |   Default |
+|--------|-----------|
+| double |       2.0 |
 
-  Description
-  : Maximum distance from an edge to consider pruning it as in-progress (i.e. if we’re to far away from an edge, it is nonsensical to prune it).
-* **min_prune_dist_from_goal:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.15 |
+Description
+:   The maximum planning time to use.
 
-  Description
-  : Minimum distance from the goal node away from the request’s goal pose (if using `use_poses`) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
-* **min_prune_dist_from_start:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+### **`smooth_corners`**
 
-  Description
-  : Minimum distance from the start node away from the start pose (if using `use_poses`) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.
-* **prune_goal:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
 
-  Description
-  : Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only `use_poses`).
-* **enable_nn_search:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   Whether to smooth corners formed between subsequent edges after a route has been found
 
-  Description
-  : Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
-* **max_nn_search_iterations:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |     10000 |
+### **`smoothing_radius`**
 
-  Description
-  : The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.
-* **num_nearest_nodes:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         5 |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.
-* **graph_filepath:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “”        |
+Description
+:   Radius to fit to corners formed by edges if corner smoothing is enabled
 
-  Description
-  : The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server’s set graph service later.
-* **graph_file_loader:**
-  | Type   | Default                  |
-  |--------|--------------------------|
-  | string | “GeoJsonGraphFileLoader” |
+### **`smoothing_angle_threshold`**
 
-  Description
-  : The name of the graph file loader plugin to use.
-* **graph_file_loader.plugin:**
-  | Type   | Default                              |
-  |--------|--------------------------------------|
-  | string | “nav2_route::GeoJsonGraphFileLoader” |
+| Type   |   Default |
+|--------|-----------|
+| double |       2.9 |
 
-  Description
-  : The graph loading plugin to use. By default, we use `geojson`.
-* **edge_cost_functions:**
-  | Type           | Default                                  |
-  |----------------|------------------------------------------|
-  | vector<string> | [“DistanceScorer”, “DynamicEdgesScorer”] |
+Description
+:   Angle threshold (rad). If angle > threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error. 2.9 rad is 166 deg, meaning it will not smooth for segments that are within 14 deg of straight anti-parallel.
 
-  Description
-  : Which edge cost functions should be used for planning purposes to score the edges. By default, we optimize for minimum distance while providing a service cost function to set arbitrary costs or mark edge as closed from a service.
-* **operations:**
-  | Type           | Default                                  |
-  |----------------|------------------------------------------|
-  | vector<string> | [“AdjustSpeedLimit”, “ReroutingService”] |
+### **`costmap_topic`**
 
-  Description
-  : The route operation plugins to use for `ComputeAndTrackRoute`. By default, we have a speed limit adjuster and a ROS service request rerouting operation.
-* **<name>.plugin:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “”        |
+| Type   | Default                      |
+|--------|------------------------------|
+| string | ‘global_costmap/costmap_raw’ |
 
-  Description
-  : The plugin to load under that name. The `edge_cost_functions.<name>` namespaces is also where plugin-specific parameters are defined.
-* **introspection_mode:**
-  | Type   | Default    |
-  |--------|------------|
-  | string | “disabled” |
+Description
+:   The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
 
-  Description
-  : The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
-* **allow_parameter_qos_overrides:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`tracker_update_rate`**
 
-  Description
-  : Whether to allow QoS profiles to be overwritten with parameterized values.
+| Type   |   Default |
+|--------|-----------|
+| double |      50.0 |
+
+Description
+:   The update rate of the tracker (when using `ComputeAndTrackRoute` action) to check the status of path tracking and execute route operations.
+
+### **`aggregate_blocked_ids`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to aggregate the blocked IDs reported by route operations over the lifespan of the navigation request or only use the currently marked blocked IDs.
+
+### **`boundary_radius_to_achieve_node`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   The radius at a boundary condition (start, goal) to mark the node achieved by the tracker when using `ComputeAndTrackRoute`. Note that this is not the same as the goal tolerance, as the route or path follower (controller) will continue to run until its goal tolerance is met.
+
+### **`radius_to_achieve_node`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   The radius for non-boundary conditions to mark the node as achieved once within tolerance of, when using `ComputeAndTrackRoute`. Note that this is a radius to consider achievable, however a refinement process takes place to most accurately identify when a node is reached. The radius is the trigger to start this process. Set this generously based on path tracking tolerances.
+
+### **`max_prune_dist_from_edge`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       8.0 |
+
+Description
+:   Maximum distance from an edge to consider pruning it as in-progress (i.e. if we’re to far away from an edge, it is nonsensical to prune it).
+
+### **`min_prune_dist_from_goal`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      0.15 |
+
+Description
+:   Minimum distance from the goal node away from the request’s goal pose (if using `use_poses`) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
+
+### **`min_prune_dist_from_start`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
+
+Description
+:   Minimum distance from the start node away from the start pose (if using `use_poses`) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.
+
+### **`prune_goal`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only `use_poses`).
+
+### **`enable_nn_search`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
+
+### **`max_nn_search_iterations`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |     10000 |
+
+Description
+:   The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.
+
+### **`num_nearest_nodes`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         5 |
+
+Description
+:   The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.
+
+### **`graph_filepath`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “”        |
+
+Description
+:   The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server’s set graph service later.
+
+### **`graph_file_loader`**
+
+| Type   | Default                  |
+|--------|--------------------------|
+| string | “GeoJsonGraphFileLoader” |
+
+Description
+:   The name of the graph file loader plugin to use.
+
+### **`graph_file_loader.plugin`**
+
+| Type   | Default                              |
+|--------|--------------------------------------|
+| string | “nav2_route::GeoJsonGraphFileLoader” |
+
+Description
+:   The graph loading plugin to use. By default, we use `geojson`.
+
+### **`edge_cost_functions`**
+
+| Type           | Default                                  |
+|----------------|------------------------------------------|
+| vector<string> | [“DistanceScorer”, “DynamicEdgesScorer”] |
+
+Description
+:   Which edge cost functions should be used for planning purposes to score the edges. By default, we optimize for minimum distance while providing a service cost function to set arbitrary costs or mark edge as closed from a service.
+
+### **`operations`**
+
+| Type           | Default                                  |
+|----------------|------------------------------------------|
+| vector<string> | [“AdjustSpeedLimit”, “ReroutingService”] |
+
+Description
+:   The route operation plugins to use for `ComputeAndTrackRoute`. By default, we have a speed limit adjuster and a ROS service request rerouting operation.
+
+### **`<name>.plugin`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “”        |
+
+Description
+:   The plugin to load under that name. The `edge_cost_functions.<name>` namespaces is also where plugin-specific parameters are defined.
+
+### **`introspection_mode`**
+
+| Type   | Default    |
+|--------|------------|
+| string | “disabled” |
+
+Description
+:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+
+### **`allow_parameter_qos_overrides`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ## Edge Scorer Parameters
 
-### CostmapScorer
+## CostmapScorer
 
 This edge scoring plugin will score based on the cost of the costmap over the edge.
 
-* **weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **costmap_topic:**
-  | Type   | Default                    |
-  |--------|----------------------------|
-  | string | global_costmap/costmap_raw |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Costmap topic to use for scoring.
-* **max_cost:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       253 |
+Description
+:   Relative edge scoring weighting.
 
-  Description
-  : Maximum cost to consider an route blocked (253.0)
-* **use_maximum:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+### **`costmap_topic`**
 
-  Description
-  : Whether to score based on single maximum or average
-* **invalid_on_collision:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+| Type   | Default                    |
+|--------|----------------------------|
+| string | global_costmap/costmap_raw |
 
-  Description
-  : Whether to consider collision status as a terminal condition
-* **invalid_off_map:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   Costmap topic to use for scoring.
 
-  Description
-  : Whether to consider route going off the map invalid
-* **check_resolution:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+### **`max_cost`**
 
-  Description
-  : Resolution to check costs at (1 = costmap resolution, 2 = 2x costmap resolution, etc)
+| Type   |   Default |
+|--------|-----------|
+| double |     253.0 |
 
-### DistanceScorer
+Description
+:   Maximum cost to consider an route blocked (253.0)
+
+### **`use_maximum`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to score based on single maximum or average
+
+### **`invalid_on_collision`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to consider collision status as a terminal condition
+
+### **`invalid_off_map`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to consider route going off the map invalid
+
+### **`check_resolution`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   Resolution to check costs at (1 = costmap resolution, 2 = 2x costmap resolution, etc)
+
+## DistanceScorer
 
 This edge scoring plugin will score based on the length of the edge.
 If a `speed_tag` is provided, that is used to scale by the time to traverse.
 This must be a percentage, if using absolute speed limits, see the `TimeScorer` plugin below.
 
-* **weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **speed_tag:**
-  | Type   | Default       |
-  |--------|---------------|
-  | string | “speed_limit” |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Graph metadata key to look for percentage speed limits (speed_limit).
+Description
+:   Relative edge scoring weighting.
 
-### TimeScorer
+### **`speed_tag`**
+
+| Type   | Default       |
+|--------|---------------|
+| string | “speed_limit” |
+
+Description
+:   Graph metadata key to look for percentage speed limits (speed_limit).
+
+## TimeScorer
 
 This edge scoring plugin will score based on the time to traverse the length of the edge.
 This will use the distance of the edge weighted in proportion to the absolute speed limits of the robot over an edge.
 If none is set in the graph, a parameterized maximum speed will be used.
 If an actual, measured time of a previous traversal is in the edge’s metadata, this will be used.
 
-* **weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **speed_tag:**
-  | Type   | Default           |
-  |--------|-------------------|
-  | string | “abs_speed_limit” |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Graph metadata key to look for absolute speed limits.
-* **time_tag:**
-  | Type   | Default          |
-  |--------|------------------|
-  | string | “abs_time_taken” |
+Description
+:   Relative edge scoring weighting.
 
-  Description
-  : Graph metadata key to look for abs traversal times.
-* **max_vel:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+### **`speed_tag`**
 
-  Description
-  : Maximum velocity to use if speed limit or time taken is not set.
+| Type   | Default           |
+|--------|-------------------|
+| string | “abs_speed_limit” |
 
-### PenaltyScorer
+Description
+:   Graph metadata key to look for absolute speed limits.
+
+### **`time_tag`**
+
+| Type   | Default          |
+|--------|------------------|
+| string | “abs_time_taken” |
+
+Description
+:   Graph metadata key to look for abs traversal times.
+
+### **`max_vel`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   Maximum velocity to use if speed limit or time taken is not set.
+
+## PenaltyScorer
 
 This edge scoring plugin will score based on a statically set penalty in the graph file for a particular edge.
 This can be based on application known logic to weight preferences of navigation tactics in a space.
 
-* **weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **penalty_tag:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “penalty” |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Graph metadata key to look for penalty value.
+Description
+:   Relative edge scoring weighting.
 
-### SemanticScorer
+### **`penalty_tag`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | “penalty” |
+
+Description
+:   Graph metadata key to look for penalty value.
+
+## SemanticScorer
 
 This edge scoring plugin will score based on semantic information provided in the graph file.
 It can either check for the edge’s semantic class via a parameterized key’s value **or** search all key names to match known semantic classes to apply weight (e.g. class: highway or highway: <some other application info>).
 
-* **weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **semantic_classes:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | vector<string> | []        |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : The list of semantic classes in your graph that you would like to score based off of.
-* **<for each class>:**
-  | Type   | Default   |
-  |--------|-----------|
-  | double | N/A       |
+Description
+:   Relative edge scoring weighting.
 
-  Description
-  : The cost to assign to this semantic class. For example: `highway: 8.4`.
-* **semantic_key:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | class     |
+### **`semantic_classes`**
 
-  Description
-  : The key to search for edge’s semantic data with the edge’s metadata. If empty string, will look at key names instead.
+| Type           | Default   |
+|----------------|-----------|
+| vector<string> | []        |
 
-### StartPoseOrientationScorer
+Description
+:   The list of semantic classes in your graph that you would like to score based off of.
+
+### **`<for each class>`**
+
+| Type   | Default   |
+|--------|-----------|
+| double | N/A       |
+
+Description
+:   The cost to assign to this semantic class. For example: `highway: 8.4`.
+
+### **`semantic_key`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | class     |
+
+Description
+:   The key to search for edge’s semantic data with the edge’s metadata. If empty string, will look at key names instead.
+
+## StartPoseOrientationScorer
 
 This edge scoring plugin will score an edge starting at the start node (vector from start->goal) based on its angular proximity to the starting pose’s orientation.
 This will either score a weighted-angular distance or reject traversals that are outside of a set threshold to force the route to go down a particular direction (i.e. direction robot is already facing).
 
-* **orientation_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`orientation_weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **use_orientation_threshold:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Whether to use the orientation threshold for binary validity of traversal or weighted-angular distance scoring.
-* **orientation_tolerance:**
-  | Type   | Default   |
-  |--------|-----------|
-  | double | PI/2      |
+Description
+:   Relative edge scoring weighting.
 
-  Description
-  : The angular threshold to reject edges’ angles if greater than this w.r.t. starting pose, when `use_orientation_threshold: true`.
+### **`use_orientation_threshold`**
 
-### GoalPoseOrientationScorer
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to use the orientation threshold for binary validity of traversal or weighted-angular distance scoring.
+
+### **`orientation_tolerance`**
+
+| Type   | Default   |
+|--------|-----------|
+| double | PI/2      |
+
+Description
+:   The angular threshold to reject edges’ angles if greater than this w.r.t. starting pose, when `use_orientation_threshold: true`.
+
+## GoalPoseOrientationScorer
 
 This edge scoring plugin will score a an edge with terminus of the goal node (vector from start->goal) based on its angular proximity to the goal pose’s orientation.
 This will either score a weighted-angular distance or reject traversals that are outside of a set threshold to force the route to go down a particular direction (i.e. direction robot wants to be facing).
 
-* **orientation_weight:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`orientation_weight`**
 
-  Description
-  : Relative edge scoring weighting.
-* **use_orientation_threshold:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : Whether to use the orientation threshold for binary validity of traversal or weighted-angular distance scoring.
-* **orientation_tolerance:**
-  | Type   | Default   |
-  |--------|-----------|
-  | double | PI/2      |
+Description
+:   Relative edge scoring weighting.
 
-  Description
-  : The angular threshold to reject edges’ angles if greater than this w.r.t. goal pose, when `use_orientation_threshold: true`.
+### **`use_orientation_threshold`**
 
-### DynamicEdgesScorer
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Whether to use the orientation threshold for binary validity of traversal or weighted-angular distance scoring.
+
+### **`orientation_tolerance`**
+
+| Type   | Default   |
+|--------|-----------|
+| double | PI/2      |
+
+Description
+:   The angular threshold to reject edges’ angles if greater than this w.r.t. goal pose, when `use_orientation_threshold: true`.
+
+## DynamicEdgesScorer
 
 This edge scoring plugin will score based on the requested values from a 3rd party application via a service interface.
 It can set dynamically any cost for any edge and also be used to close and reopen particular edges if they are blocked, in use by other robots locking out its shared use by other robots, higher cost due to overlap with other platforms in service, increased cost due to fleet manager analytics that this space is underperforming throughput, or otherwise temporarily non-traversable.
@@ -454,90 +552,105 @@ It has no parameters.
 
 ## Route Operations Parameters
 
-### AdjustSpeedLimit
+## AdjustSpeedLimit
 
 This route operation will check the graph at each state change (e.g. node passed) if the new edge entered contains speed limit restrictions. If so, it will publish those to the speed limit topic to be received by the controller server.
 
-* **speed_limit_topic:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | speed_limit |
+### **`speed_limit_topic`**
 
-  Description
-  : The topic to publish new speed limits to.
-* **speed_tag:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | speed_limit |
+| Type   | Default     |
+|--------|-------------|
+| string | speed_limit |
 
-  Description
-  : The graph’s semantic metadata key to look for speed limits under.
+Description
+:   The topic to publish new speed limits to.
 
-### CollisionMonitor
+### **`speed_tag`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | speed_limit |
+
+Description
+:   The graph’s semantic metadata key to look for speed limits under.
+
+## CollisionMonitor
 
 This route operation will evaluate a future-looking portion of the route for validity w.r.t. collision in the costmap.
 If it is blocked, it sets the edge blocked as blocked for rerouting around the blocked edge or fail the action based on `reroute_on_collision`.
 
-* **costmap_topic:**
-  | Type   | Default                      |
-  |--------|------------------------------|
-  | string | “global_costmap/costmap_raw” |
+### **`costmap_topic`**
 
-  Description
-  : The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server’s costmap topic, then it will be shared here as well without duplicate subscriptions.
-* **rate:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+| Type   | Default                      |
+|--------|------------------------------|
+| string | “global_costmap/costmap_raw” |
 
-  Description
-  : The rate to collision at, rather than the tracker’s update rate since this is an expensive operation.
-* **max_cost:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       253 |
+Description
+:   The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server’s costmap topic, then it will be shared here as well without duplicate subscriptions.
 
-  Description
-  : The cost at or above which is considered invalid.
-* **max_collision_dist:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         5 |
+### **`rate`**
 
-  Description
-  : The distance (meters) ahead of the robot’s position on the route to collision check during.
-* **check_resolution:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         1 |
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
 
-  Description
-  : The resolution to check at in terms of multiples of the costmap’s resolution (1 = 1 cell, 2 = every 2 cells, and so on). This reduces the computational complexity for long-range routes.
-* **reroute_on_collision:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   The rate to collision at, rather than the tracker’s update rate since this is an expensive operation.
 
-  Description
-  : Whether to reroute on collision or exit the tracking task as a failure when future collision is detected.
+### **`max_cost`**
 
-### TimeMarker
+| Type   |   Default |
+|--------|-----------|
+| double |     253.0 |
+
+Description
+:   The cost at or above which is considered invalid.
+
+### **`max_collision_dist`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       5.0 |
+
+Description
+:   The distance (meters) ahead of the robot’s position on the route to collision check during.
+
+### **`check_resolution`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |         1 |
+
+Description
+:   The resolution to check at in terms of multiples of the costmap’s resolution (1 = 1 cell, 2 = every 2 cells, and so on). This reduces the computational complexity for long-range routes.
+
+### **`reroute_on_collision`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
+
+Description
+:   Whether to reroute on collision or exit the tracking task as a failure when future collision is detected.
+
+## TimeMarker
 
 This route operation will track times taken to traverse particular edges to write times to for later improved navigation time estimation in edge scoring.
 
-* **time_tag:**
-  | Type   | Default        |
-  |--------|----------------|
-  | string | abs_time_taken |
+### **`time_tag`**
 
-  Description
-  : Metadata tag to write the time taken to within an edge. Is used with the `TimeScorer` to give an improved experiential estimate of traversal times.
+| Type   | Default        |
+|--------|----------------|
+| string | abs_time_taken |
 
-### ReroutingService
+Description
+:   Metadata tag to write the time taken to within an edge. Is used with the `TimeScorer` to give an improved experiential estimate of traversal times.
+
+## ReroutingService
 
 This route operation will receive service requests from a 3rd party application to cause a rerouting request.
 
-### TriggerEvent
+## TriggerEvent
 
 This route operation will trigger an external service when a graph node or edge contains a route operation of this name.
 It uses a std_srvs/Trigger interface and is a demonstration of the RouteOperationClient<SrvT> base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).

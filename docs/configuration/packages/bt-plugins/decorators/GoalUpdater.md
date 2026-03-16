@@ -4,59 +4,69 @@ A custom control node, which updates the goal(s) pose(s). It subscribes to a top
 
 ## Parameters
 
-* **goal_updater_topic:**
-  | Type   | Default       |
-  |--------|---------------|
-  | string | “goal_update” |
+### **`goal_updater_topic`**
 
-  Description
-  : The topic to receive the updated goal pose
-* **goals_updater_topic:**
-  | Type   | Default        |
-  |--------|----------------|
-  | string | “goals_update” |
+| Type   | Default       |
+|--------|---------------|
+| string | “goal_update” |
 
-  Description
-  : The topic to receive the updated goals poses
+Description
+:   The topic to receive the updated goal pose
+
+### **`goals_updater_topic`**
+
+| Type   | Default        |
+|--------|----------------|
+| string | “goals_update” |
+
+Description
+:   The topic to receive the updated goals poses
 
 ## Input Ports
 
-* **input_goal:**
-  | Type                      | Default   |
-  |---------------------------|-----------|
-  | geometry_msgs/PoseStamped | N/A       |
+### **`input_goal`**
 
-  Description
-  : The original goal pose
-* **input_goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+| Type                      | Default   |
+|---------------------------|-----------|
+| geometry_msgs/PoseStamped | N/A       |
 
-  Description
-  : The original goals poses
+Description
+:   The original goal pose
+
+### **`input_goals`**
+
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
+
+Description
+:   The original goals poses
 
 ## Output Ports
 
-* **output_goal:**
-  | Type                      | Default   |
-  |---------------------------|-----------|
-  | geometry_msgs/PoseStamped | N/A       |
+### **`output_goal`**
 
-  Description
-  : The resulting updated goal. If no goal received by subscription, it will be the input_goal
-* **output_goals:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | nav_msgs/Goals | N/A       |
+| Type                      | Default   |
+|---------------------------|-----------|
+| geometry_msgs/PoseStamped | N/A       |
+
+Description
+:   The resulting updated goal. If no goal received by subscription, it will be the input_goal
+
+### **`output_goals`**
+
+| Type           | Default   |
+|----------------|-----------|
+| nav_msgs/Goals | N/A       |
     
-    Description
-    : The resulting updated goals. If no goals received by subscription, it will be the input_goals
+
+Description
+:   The resulting updated goals. If no goals received by subscription, it will be the input_goals
 
 ## Example
 
 ```xml
 <GoalUpdater input_goal="{goal}" input_goals="{goals}" output_goal="{goal}" output_goals="{goals}">
-  <!--Add tree components here--->
+  <!--Add tree components here-->
 </GoalUpdater>
 ```

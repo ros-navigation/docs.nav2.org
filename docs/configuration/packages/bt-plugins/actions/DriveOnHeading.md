@@ -3,71 +3,83 @@
 Invokes the DriveOnHeading ROS 2 action server, which causes the robot to drive on the current heading by a specific displacement.
 It performs a linear translation by a given distance. The nav2_behaviors module implements the DriveOnHeading action server.
 
-<!-- nav2_behaviors_: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors -->
-
 ## Input Ports
 
-* **dist_to_travel:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.15 |
+### **`dist_to_travel`**
 
-  Description
-  : Distance to travel (m).
-* **speed:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |     0.025 |
+| Type   |   Default |
+|--------|-----------|
+| double |      0.15 |
 
-  Description
-  : Speed at which to travel (m/s).
-* **time_allowance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+Description
+:   Distance to travel (m).
 
-  Description
-  : Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
-* **server_name:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`speed`**
 
-  Description
-  : Action server name.
-* **server_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        10 |
+| Type   |   Default |
+|--------|-----------|
+| double |     0.025 |
 
-  Description
-  : Action server timeout (ms).
-* **disable_collision_checks:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | false     |
+Description
+:   Speed at which to travel (m/s).
 
-  Description
-  : Disable collision checking.
+### **`time_allowance`**
 
-### Output Ports
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
 
-* **error_code_id:**
-  | Type   | Default   |
-  |--------|-----------|
-  | uint16 | N/A       |
+Description
+:   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
-  Description
-  : Drive on heading error code. See `DriveOnHeading` action message for the enumerated set of error codes.
-* **error_msg:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | N/A       |
+### **`server_name`**
 
-  Description
-  : Drive on heading error message. See `DriveOnHeading` action message for the enumerated set of error codes.
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
 
-### Example
+Description
+:   Action server name.
+
+### **`server_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      10.0 |
+
+Description
+:   Action server timeout (ms).
+
+### **`disable_collision_checks`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | false     |
+
+Description
+:   Disable collision checking.
+
+## Output Ports
+
+### **`error_code_id`**
+
+| Type   | Default   |
+|--------|-----------|
+| uint16 | N/A       |
+
+Description
+:   Drive on heading error code. See `DriveOnHeading` action message for the enumerated set of error codes.
+
+### **`error_msg`**
+
+| Type   | Default   |
+|--------|-----------|
+| string | N/A       |
+
+Description
+:   Drive on heading error message. See `DriveOnHeading` action message for the enumerated set of error codes.
+
+## Example
 
 ```xml
 <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"

@@ -7,199 +7,252 @@ It is used in the planner and controller servers for creating the space to check
 
 ## Costmap2D ROS Parameters
 
-* **always_send_full_costmap:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | False     |
+### **`always_send_full_costmap`**
 
-  Description
-  : Whether to send full costmap every update, rather than updates.
-* **introspection_mode:**
-  | Type   | Default    |
-  |--------|------------|
-  | string | “disabled” |
+| Type   | Default   |
+|--------|-----------|
+| bool   | False     |
 
-  Description
-  : The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
-* **allow_parameter_qos_overrides:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | true      |
+Description
+:   Whether to send full costmap every update, rather than updates.
 
-  Description
-  : Whether to allow QoS profiles to be overwritten with parameterized values.
-* **footprint_padding:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |      0.01 |
+### **`introspection_mode`**
 
-  Description
-  : Amount to pad footprint (m).
-* **footprint:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | vector<double> | “[]”      |
+| Type   | Default    |
+|--------|------------|
+| string | “disabled” |
 
-  Description
-  : Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”. Note that this can also be adjusted over time using the costmap’s `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. If this parameter is set, `isPathValid` will do full collision checking.
-* **global_frame:**
-  | Type   | Default   |
-  |--------|-----------|
-  | string | “map”     |
+Description
+:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
 
-  Description
-  : Reference frame.
-* **height:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         5 |
+### **`allow_parameter_qos_overrides`**
 
-  Description
-  : Height of costmap (m).
-* **width:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |         5 |
+| Type   | Default   |
+|--------|-----------|
+| bool   | true      |
 
-  Description
-  : Width of costmap (m).
-* **lethal_cost_threshold:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |       100 |
+Description
+:   Whether to allow QoS profiles to be overwritten with parameterized values.
 
-  Description
-  : Minimum cost of an occupancy grid map to be considered a lethal obstacle.
-* **map_vis_z:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+### **`footprint_padding`**
 
-  Description
-  : The height of map, allows to avoid rviz visualization flickering at -0.008
-* **origin_x:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+| Type   |   Default |
+|--------|-----------|
+| double |      0.01 |
 
-  Description
-  : X origin of the costmap relative to width (m).
-* **origin_y:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         0 |
+Description
+:   Amount to pad footprint (m).
 
-  Description
-  : Y origin of the costmap relative to height (m).
-* **publish_frequency:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         1 |
+### **`footprint`**
 
-  Description
-  : Frequency to publish costmap to topic.
-* **resolution:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+| Type           | Default   |
+|----------------|-----------|
+| vector<double> | “[]”      |
 
-  Description
-  : Resolution of 1 pixel of the costmap, in meters.
-* **robot_base_frame:**
-  | Type   | Default     |
-  |--------|-------------|
-  | string | “base_link” |
+Description
+:   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”. Note that this can also be adjusted over time using the costmap’s `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. If this parameter is set, `isPathValid` will do full collision checking.
 
-  Description
-  : Robot base frame.
-* **robot_radius:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.1 |
+### **`global_frame`**
 
-  Description
-  : Robot radius to use, if footprint coordinates not provided. If this parameter is set, `isPathValid` will do circular collision checking.
-* **subscribe_to_stamped_footprint:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | False     |
+| Type   | Default   |
+|--------|-----------|
+| string | “map”     |
 
-  Description
-  : If true, the costmap will subscribe to PolygonStamped footprint messages instead of Polygon messages. This allows the footprint to include timestamp and frame information, which can be useful for applications that need temporally-aware footprint data.
-* **rolling_window:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | False     |
+Description
+:   Reference frame.
 
-  Description
-  : Whether costmap should roll with robot base frame.
-* **track_unknown_space:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | False     |
+### **`height`**
 
-  Description
-  : If false, treats unknown space as free space, else as unknown space.
-* **transform_tolerance:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.3 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         5 |
 
-  Description
-  : TF transform tolerance.
-* **initial_transform_timeout:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |        60 |
+Description
+:   Height of costmap (m).
 
-  Description
-  : Time to wait for the transform from robot base frame to global frame to become available. If exceeded, the  configuration stage is aborted.
-* **trinary_costmap:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | True      |
+### **`width`**
 
-  Description
-  : If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.
-* **unknown_cost_value:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |       255 |
+| Type   |   Default |
+|--------|-----------|
+| int    |         5 |
 
-  Description
-  : Cost of unknown space if tracking it.
-* **inscribed_obstacle_cost_value:**
-  | Type   |   Default |
-  |--------|-----------|
-  | int    |        99 |
+Description
+:   Width of costmap (m).
 
-  Description
-  : The OccupancyGrid values that represents `INSCRIBED_INFLATED_OBSTACLE` during costmap conversion operations.
-* **update_frequency:**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |         5 |
+### **`lethal_cost_threshold`**
 
-  Description
-  : Costmap update frequency.
-* **use_maximum:**
-  | Type   | Default   |
-  |--------|-----------|
-  | bool   | False     |
+| Type   |   Default |
+|--------|-----------|
+| int    |       100 |
 
-  Description
-  : whether when combining costmaps to use the maximum cost or override.
-* **plugins:**
-  | Type           | Default                                               |
-  |----------------|-------------------------------------------------------|
-  | vector<string> | {“static_layer”, “obstacle_layer”, “inflation_layer”} |
+Description
+:   Minimum cost of an occupancy grid map to be considered a lethal obstacle.
 
-  Description
-  : List of mapped plugin names for parameter namespaces and names.
+### **`map_vis_z`**
 
-  Note
-  : Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    <br/>
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   The height of map, allows to avoid rviz visualization flickering at -0.008
+
+### **`origin_x`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   X origin of the costmap relative to width (m).
+
+### **`origin_y`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.0 |
+
+Description
+:   Y origin of the costmap relative to height (m).
+
+### **`publish_frequency`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       1.0 |
+
+Description
+:   Frequency to publish costmap to topic.
+
+### **`resolution`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
+
+Description
+:   Resolution of 1 pixel of the costmap, in meters.
+
+### **`robot_base_frame`**
+
+| Type   | Default     |
+|--------|-------------|
+| string | “base_link” |
+
+Description
+:   Robot base frame.
+
+### **`robot_radius`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.1 |
+
+Description
+:   Robot radius to use, if footprint coordinates not provided. If this parameter is set, `isPathValid` will do circular collision checking.
+
+### **`subscribe_to_stamped_footprint`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | False     |
+
+Description
+:   If true, the costmap will subscribe to PolygonStamped footprint messages instead of Polygon messages. This allows the footprint to include timestamp and frame information, which can be useful for applications that need temporally-aware footprint data.
+
+### **`rolling_window`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | False     |
+
+Description
+:   Whether costmap should roll with robot base frame.
+
+### **`track_unknown_space`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | False     |
+
+Description
+:   If false, treats unknown space as free space, else as unknown space.
+
+### **`transform_tolerance`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       0.3 |
+
+Description
+:   TF transform tolerance.
+
+### **`initial_transform_timeout`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |      60.0 |
+
+Description
+:   Time to wait for the transform from robot base frame to global frame to become available. If exceeded, the  configuration stage is aborted.
+
+### **`trinary_costmap`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | True      |
+
+Description
+:   If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.
+
+### **`unknown_cost_value`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |       255 |
+
+Description
+:   Cost of unknown space if tracking it.
+
+### **`inscribed_obstacle_cost_value`**
+
+| Type   |   Default |
+|--------|-----------|
+| int    |        99 |
+
+Description
+:   The OccupancyGrid values that represents `INSCRIBED_INFLATED_OBSTACLE` during costmap conversion operations.
+
+### **`update_frequency`**
+
+| Type   |   Default |
+|--------|-----------|
+| double |       5.0 |
+
+Description
+:   Costmap update frequency.
+
+### **`use_maximum`**
+
+| Type   | Default   |
+|--------|-----------|
+| bool   | False     |
+
+Description
+:   Whether when combining costmaps to use the maximum cost or override.
+
+### **`plugins`**
+
+| Type           | Default                                               |
+|----------------|-------------------------------------------------------|
+| vector<string> | {“static_layer”, “obstacle_layer”, “inflation_layer”} |
+
+Description
+:   List of mapped plugin names for parameter namespaces and names.
+
+Note
+:   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+
     Example:
     ```yaml
     local_costmap:
@@ -212,17 +265,19 @@ It is used in the planner and controller servers for creating the space to check
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
     ```
-* **filters:**
-  | Type           | Default   |
-  |----------------|-----------|
-  | vector<string> | {}        |
 
-  Description
-  : List of mapped costmap filter names for parameter namespaces and names.
+### **`filters`**
 
-  Note
-  : Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a `plugin` parameter defining the type of filter plugin to be loaded in the namespace.
-    <br/>
+| Type           | Default   |
+|----------------|-----------|
+| vector<string> | {}        |
+
+Description
+:   List of mapped costmap filter names for parameter namespaces and names.
+
+Note
+:   Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a `plugin` parameter defining the type of filter plugin to be loaded in the namespace.
+
     Example:
     ```yaml
     local_costmap:
