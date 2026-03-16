@@ -27,11 +27,11 @@ See the package’s `README` for more complete information.
 
 If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 
-- 1. Macenski, S. Singh, F. Martin, J. Gines, [Regulated Pure Pursuit for Robot Path Tracking](https://arxiv.org/abs/2305.20026). Autonomous Robots, 2023.
+- S. Macenski, S. Singh, F. Martin, J. Gines, [Regulated Pure Pursuit for Robot Path Tracking](https://arxiv.org/abs/2305.20026). Autonomous Robots, 2023.
 
 If you use the Dynamic Window Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 
-- 1. Ohnishi, M. Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
+- F. Ohnishi, M. Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
 
 ## Regulated Pure Pursuit Parameters
 

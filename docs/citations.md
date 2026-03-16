@@ -4,7 +4,7 @@ If you use the navigation framework, an algorithm from this repository, or ideas
 please cite this work in your papers!
 
 S. Macenski, F. Martín, R. White, J. Clavero.
-[\*\*The Marathon 2: A Navigation System\*\*](https://arxiv.org/abs/2003.00368/).
+[**The Marathon 2: A Navigation System**](https://arxiv.org/abs/2003.00368/).
 **IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020.**
 
 IROS 2020 talk on Nav2 Marathon Experiments:
@@ -14,6 +14,7 @@ IROS 2020 talk on Nav2 Marathon Experiments:
     <iframe width="708" height="400" src="https://www.youtube.com/embed/QB7lOKp3ZDQ?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>
+
 ```bash
 @InProceedings{macenski2020marathon2,
 author = {Macenski, Steven and Martin, Francisco and White, Ruffin and Ginés Clavero, Jonatan},
@@ -26,7 +27,7 @@ year = {2020}
 If you use any of the algorithms in Nav2 or the analysis of the algorithms in your work, please cite this work in your papers!
 
 S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
-[\*\*From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2\*\*](https://arxiv.org/pdf/2307.15236.pdf),
+[**From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2**](https://arxiv.org/pdf/2307.15236.pdf),
 **Robotics and Autonomous Systems, 2023**
 
 ```bash
@@ -41,7 +42,7 @@ S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
 Smac Planner (Hybrid A\*, State Lattice, 2D):
 
 S. Macenski, M. Booker, J. Wallace,
-[\*\*Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics\*\*](https://arxiv.org/abs/2401.13078),
+[**Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics**](https://arxiv.org/abs/2401.13078),
 
 ```bash
 @article{macenski2024smac,
@@ -55,7 +56,7 @@ S. Macenski, M. Booker, J. Wallace,
 Regulated Pure Pursuit Controller:
 
 S. Macenski, S. Singh, F. Martin, J. Gines,
-[\*\*Regulated Pure Pursuit for Robot Path Tracking\*\*](https://arxiv.org/abs/2305.20026),
+[**Regulated Pure Pursuit for Robot Path Tracking**](https://arxiv.org/abs/2305.20026),
 **Autonomous Robots, 2023.**
 
 ```bash
@@ -70,7 +71,7 @@ S. Macenski, S. Singh, F. Martin, J. Gines,
 VSLAM and formal comparisons for service robot needs:
 
 A. Merzlyakov, S. Macenski.
-[\*\*A Comparison of Modern General-Purpose Visual SLAM Approaches\*\*](https://arxiv.org/abs/2107.07589).
+[**A Comparison of Modern General-Purpose Visual SLAM Approaches**](https://arxiv.org/abs/2107.07589).
 **IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021.**
 
 ```bash
