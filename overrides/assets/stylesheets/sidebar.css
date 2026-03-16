@@ -30,11 +30,13 @@
 
 .md-content{
   margin-top: 1.5rem;
+  margin-left: 4.9rem;
   max-width: 40rem;
 }
 
 .md-sidebar--secondary{
   margin-top: 1.5rem;
+  width: 17rem;
 }
 
 
