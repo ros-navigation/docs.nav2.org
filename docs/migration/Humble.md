@@ -10,7 +10,7 @@ See [Writing a New Navigator Plugin](../plugin_tutorials/docs/writing_new_naviga
 
 ## Added Collision Monitor
 
-[PR 2982](https://github.com/ros-navigation/navigation2/pull/2982) adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc…). See [Collision Monitor](../configuration/packages/configuring-collision-monitor.md#collision-monitor) for more details. It is not included in the default bringup batteries included from `nav2_bringup`.
+[PR 2982](https://github.com/ros-navigation/navigation2/pull/2982) adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc...). See [Collision Monitor](../configuration/packages/configuring-collision-monitor.md#collision-monitor) for more details. It is not included in the default bringup batteries included from `nav2_bringup`.
 
 ## Removed use_sim_time from yaml
 

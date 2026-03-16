@@ -95,7 +95,7 @@ If you then attempt to run this image as a container (the instance of the image)
 sudo docker run osrf/ros:rolling-desktop-full
 ```
 
-You should see that it runs for a second then exits the terminal. Yay! It works! But… that’s not very useful, now is it?
+You should see that it runs for a second then exits the terminal. Yay! It works! But... that’s not very useful, now is it?
 Our `ENTRYPOINT` for the ROS 2 Docker images only sources the ROS 2 installation and so the program returns as completed.
 If we want to get into the container to do something useful for ourselves in that environment, we need to open an interactive terminal session with the container.
 This is easy to do with the `-it` flags:
@@ -129,8 +129,8 @@ If you want to see a full list of containers, including exited containers, you c
 ```bash
 steve@reese:~$ sudo docker ps -a
 CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS                          PORTS     NAMES
-7ec0e0b7487f   osrf/ros:rolling-desktop-full   "/ros_entrypoint.sh …"   5 minutes ago   Exited (0) About a minute ago             strange_tesla
-9ccd97ac14f9   osrf/ros:rolling-desktop-full   "/ros_entrypoint.sh …"   7 minutes ago   Exited (0) 7 minutes ago                  zen_perlman
+7ec0e0b7487f   osrf/ros:rolling-desktop-full   "/ros_entrypoint.sh ..."   5 minutes ago   Exited (0) About a minute ago             strange_tesla
+9ccd97ac14f9   osrf/ros:rolling-desktop-full   "/ros_entrypoint.sh ..."   7 minutes ago   Exited (0) 7 minutes ago                  zen_perlman
 ```
 
 You can see that our container exited successfully. If we now run our docker image again, you should see it back listed without `-a`.

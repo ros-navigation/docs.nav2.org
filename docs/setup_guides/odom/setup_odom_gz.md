@@ -316,7 +316,7 @@ bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
 
 Create a `world` directory in your package and add [this code](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/world/my_world.sdf) to a new file named `my_world.sdf`:
 
-We also have to add the `world` directory to our `CMakeLists.txt` file. Open [CMakeLists.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/CMakeLists.txt) and append the `world` directory inside the install(DIRECTORY…), as shown in the snippet below.
+We also have to add the `world` directory to our `CMakeLists.txt` file. Open [CMakeLists.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/CMakeLists.txt) and append the `world` directory inside the install(DIRECTORY...), as shown in the snippet below.
 
 ```cmake
 install(

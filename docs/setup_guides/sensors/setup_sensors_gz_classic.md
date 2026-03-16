@@ -225,7 +225,7 @@ Lastly, add the world path in the `launch.actions.ExecuteProcess(cmd=['gazebo',.
 launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', world_path], output='screen'),
 ```
 
-We also have to add the `world` directory to our `CMakeLists.txt` file. Open [CmakeLists.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/humble/sam_bot_description/CMakeLists.txt) and append the `world` directory inside the install(DIRECTORY…), as shown in the snippet below.
+We also have to add the `world` directory to our `CMakeLists.txt` file. Open [CmakeLists.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/humble/sam_bot_description/CMakeLists.txt) and append the `world` directory inside the install(DIRECTORY...), as shown in the snippet below.
 
 ```shell
 install(

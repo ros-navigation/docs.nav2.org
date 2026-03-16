@@ -87,7 +87,7 @@ Description
 | vector<string> | N/A       |
 
 Description
-:   List of data sources (laser scanners, pointclouds, etc…). Causes an error, if not specialized.
+:   List of data sources (laser scanners, pointclouds, etc...). Causes an error, if not specialized.
 
 ## Polygons parameters
 

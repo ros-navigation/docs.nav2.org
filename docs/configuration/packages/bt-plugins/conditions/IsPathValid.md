@@ -61,7 +61,7 @@ Description
 
 Description
 :   Custom footprint specification as a bracketed array of arrays,
-    e.g., “[[x1,y1],[x2,y2],…]”. If empty, uses the robot’s
+    e.g., “[[x1,y1],[x2,y2],...]”. If empty, uses the robot’s
     configured footprint.
 
 ### **`check_full_path`**

@@ -130,7 +130,7 @@ The Visual-Inertial Odometry’s error over these datasets is 4.1% over the 70m 
 
 !!! note
 
-    Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions… yeah… lets go with that*.
+    Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions... yeah... lets go with that*.
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

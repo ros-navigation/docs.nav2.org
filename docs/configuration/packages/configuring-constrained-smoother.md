@@ -42,7 +42,7 @@ Description
 | int    |         1 |
 
 Description
-:   Upsampling factor for refining. 0 - path remains downsampled (see `path_downsampling_factor`), 1 - path is upsampled back to original granularity using cubic bezier, 2… - more upsampling
+:   Upsampling factor for refining. 0 - path remains downsampled (see `path_downsampling_factor`), 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
 
 ### **`keep_start_orientation`**
 
@@ -136,7 +136,7 @@ Description
 | array of double | []        |
 
 Description
-:   Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, …].
+:   Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...].
 
     IMPORTANT: Requires much higher number of optimizer iterations to actually improve the path. Use only if you really need it (highly elongated/asymmetric robots)
 
