@@ -17,11 +17,11 @@ For general ROS questions, please use [ROS Answers](https://answers.ros.org/).
 
 Have fun and we look forward to working with you this summer!
 
-* [1. Navigation Dynamic Obstacle Integration](projects/dynamic.md)
-* [2. Advanced Navigation Testing Framework](projects/testing.md)
-* [3. Assisted Teleop](projects/assisted_teleop.md)
-* [4. Navigation MultiThreading](projects/multithreading.md)
-* [5. Navigation Safety Node](projects/safety_node.md)
-* [6. Semantic Integration](projects/semantics.md)
-* [7. Reduce ROS 2 Nodes and Determinism](projects/spinners.md)
-* [8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration](projects/twist_n_config.md)
+- [1. Navigation Dynamic Obstacle Integration](projects/dynamic.md)
+- [2. Advanced Navigation Testing Framework](projects/testing.md)
+- [3. Assisted Teleop](projects/assisted_teleop.md)
+- [4. Navigation MultiThreading](projects/multithreading.md)
+- [5. Navigation Safety Node](projects/safety_node.md)
+- [6. Semantic Integration](projects/semantics.md)
+- [7. Reduce ROS 2 Nodes and Determinism](projects/spinners.md)
+- [8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration](projects/twist_n_config.md)

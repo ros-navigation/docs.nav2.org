@@ -10,5 +10,5 @@ The Collision Detector works similarly to the Collision Monitor, but does not af
 
 The nodes listed below are inside the `nav2_collision_monitor` package. See the pages for individual configuration information.
 
-* [Collision Monitor Node](collision_monitor/configuring-collision-monitor-node.md)
-* [Collision Detector Node](collision_monitor/configuring-collision-detector-node.md)
+- [Collision Monitor Node](collision_monitor/configuring-collision-monitor-node.md)
+- [Collision Detector Node](collision_monitor/configuring-collision-detector-node.md)

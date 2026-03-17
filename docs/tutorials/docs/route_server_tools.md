@@ -17,10 +17,10 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 
 ## Provided Tools
 
-* [Using the Nav2 Route Tool](route_server_tools/navigation2_route_tool.md)
-* [Route Graph Generation LIF Editor](route_server_tools/route_graph_generation_lif_editor.md)
-* [Route Graph Generation](route_server_tools/route_graph_generation.md)
-* [SWAGGER Route Graph Generation](route_server_tools/swagger_generation.md)
+- [Using the Nav2 Route Tool](route_server_tools/navigation2_route_tool.md)
+- [Route Graph Generation LIF Editor](route_server_tools/route_graph_generation_lif_editor.md)
+- [Route Graph Generation](route_server_tools/route_graph_generation.md)
+- [SWAGGER Route Graph Generation](route_server_tools/swagger_generation.md)
 
 ## Description
 

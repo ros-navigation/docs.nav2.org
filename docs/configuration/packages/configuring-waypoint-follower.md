@@ -91,9 +91,9 @@ Note
 
 The plugins listed below are inside the `nav2_waypoint_follower` namespace.
 
-* [WaitAtWaypoint](nav2_waypoint_follower-plugins/wait_at_waypoint.md)
-* [PhotoAtWaypoint](nav2_waypoint_follower-plugins/photo_at_waypoint.md)
-* [InputAtWaypoint](nav2_waypoint_follower-plugins/input_at_waypoint.md)
+- [WaitAtWaypoint](nav2_waypoint_follower-plugins/wait_at_waypoint.md)
+- [PhotoAtWaypoint](nav2_waypoint_follower-plugins/photo_at_waypoint.md)
+- [InputAtWaypoint](nav2_waypoint_follower-plugins/input_at_waypoint.md)
 
 ## Default Plugin
 

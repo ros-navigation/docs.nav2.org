@@ -377,8 +377,9 @@ Description
 
 Description
 :   Minimum linear velocity for the sub-polygon. Causes an error, if not specified.
-    * **Non-holonomic:** This is the minimum signed velocity along the x-axis (allows negative values for reverse motion).
-    * **Holonomic:** This is the minimum magnitude of the resultant velocity, which must be `>= 0.0`.
+
+    - **Non-holonomic:** This is the minimum signed velocity along the x-axis (allows negative values for reverse motion).
+    - **Holonomic:** This is the minimum magnitude of the resultant velocity, which must be `>= 0.0`.
 
 ### **`<vel_poly>.<subpoly>.linear_max`**
 
@@ -388,8 +389,9 @@ Description
 
 Description
 :   Maximum linear velocity for the sub polygon. Causes an error, if not specified.
-    * **Non-holonomic:** This is the maximum signed velocity along the x-axis. (allows negative values for reverse motion).
-    * **Holonomic:** This is the maximum magnitude of the resultant velocity, which must be `>= 0.0`.
+
+    - **Non-holonomic:** This is the maximum signed velocity along the x-axis. (allows negative values for reverse motion).
+    - **Holonomic:** This is the maximum magnitude of the resultant velocity, which must be `>= 0.0`.
 
 ### **`<vel_poly>.<subpoly>.theta_min`**
 

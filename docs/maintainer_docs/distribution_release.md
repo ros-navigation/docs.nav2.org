@@ -40,10 +40,10 @@ This will obtain the testing docker image from `ros_oci_images`, open a containe
 
 Next, run each major Nav2 launch file and navigate the robot around.
 
-* `ros2 launch nav2_bringup tb3_simulation_launch.py`
-* `ros2 launch nav2_bringup tb4_simulation_launch.py`
-* `ros2 launch nav2_bringup tb3_loopback_sim_launch.py`
-* `ros2 launch nav2_bringup tb4_loopback_sim_launch.py`
+- `ros2 launch nav2_bringup tb3_simulation_launch.py`
+- `ros2 launch nav2_bringup tb4_simulation_launch.py`
+- `ros2 launch nav2_bringup tb3_loopback_sim_launch.py`
+- `ros2 launch nav2_bringup tb4_loopback_sim_launch.py`
 
 Ensure that you see all the data, costmap, footprint, path planning, control and other topics visible.
 Send Navigate To Pose, Navigate Through Poses goals and cancel goals periodically.
@@ -87,18 +87,18 @@ The nightly and release jobs should now exist for the new distribution and retur
 
 Go to the Repo Settings -> Branches. Create a branch protection rule for the new branch that matches the last.
 
-* Request a PR before merging -> Require approvals & override for infra-admins.
-* Restrict who can push branches that match this rule.
+- Request a PR before merging -> Require approvals & override for infra-admins.
+- Restrict who can push branches that match this rule.
 
 ## 4. Setup Branch CI
 
 The final change to the branch is to setup CI so PRs targeting it can be successfully built.
 In the new distribution branch, update the files for CI ([Humble Example](https://github.com/ros-navigation/navigation2/commit/4eb4ee01967a3b881c05d962ffd856c668b2e4c0)).
 
-* Update `.circleci/config.yml` to use the new distribution image (replace `ghcr.io/ros-navigation/navigation2:main`).
-* Update `.devcontainer/devcontainer.json` to `cacheFrom` the new distribution image (replace `ghcr.io/ros-navigation/navigation2:main`).
-* Update `Dockerfile` to use the new distribution’s image rather than `rolling`.
-* Update `tools/distro.Dockerfile` to use the new distribution’s image rather than `rolling` in 3x places.
+- Update `.circleci/config.yml` to use the new distribution image (replace `ghcr.io/ros-navigation/navigation2:main`).
+- Update `.devcontainer/devcontainer.json` to `cacheFrom` the new distribution image (replace `ghcr.io/ros-navigation/navigation2:main`).
+- Update `Dockerfile` to use the new distribution’s image rather than `rolling`.
+- Update `tools/distro.Dockerfile` to use the new distribution’s image rather than `rolling` in 3x places.
 
 Then, retrigger the Update CI Image workflow in Nav2’s GitHub Actions tab, it should now also be successful.
 Open a dummy PR against the new distribution branch and ensure that it builds successfully.
@@ -108,15 +108,15 @@ Open a dummy PR against the new distribution branch and ensure that it builds su
 Nav2 has a number of auxiliary projects that also need to be updated for a new distribution.
 These include:
 
-* `nav2_minimal_turtlebot_simulation`
-* `navigation2_tutorials`
+- `nav2_minimal_turtlebot_simulation`
+- `navigation2_tutorials`
 
 For each:
 
-* Update the package.xml for a new distribution version
-* Create a new branch from `main` for the distribution
-* Update CI on the new branch to use this new distribution image
-* Review and update the readme as needed
+- Update the package.xml for a new distribution version
+- Create a new branch from `main` for the distribution
+- Update CI on the new branch to use this new distribution image
+- Review and update the readme as needed
 
 ## 6. Run Bloom Release
 

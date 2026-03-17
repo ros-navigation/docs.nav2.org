@@ -199,9 +199,9 @@ Default value:
 
 In [PR #4715](https://github.com/ros-navigation/navigation2/pull/4715) multirobot bringup and the use of namespaces were overhauled to be compatible out of the box with ROS namespaces and remove custom logic, specifically:
 
-* The `use_namespace` parameter has been removed from `nav2_bringup` launch files. The `namespace` parameter will now always be used and default to `/` for “global namespace”.
-* There is now a single rviz config file for both normal and namespaced robots. Topics have been changed to a relative path (i.e. `/map` -> `map`) and the rviz `namespace` will be added automatically.
-* There is now a single `nav2_params.yaml` config file for both single and multirobot bringup. All the topics have been changed to relative (i.e. `/scan` -> `scan`).
+- The `use_namespace` parameter has been removed from `nav2_bringup` launch files. The `namespace` parameter will now always be used and default to `/` for “global namespace”.
+- There is now a single rviz config file for both normal and namespaced robots. Topics have been changed to a relative path (i.e. `/map` -> `map`) and the rviz `namespace` will be added automatically.
+- There is now a single `nav2_params.yaml` config file for both single and multirobot bringup. All the topics have been changed to relative (i.e. `/scan` -> `scan`).
 
 Note that some plugins / nodes might have their own local namespace. This is the case for `CostmapLayer` which will be in a `/ns/[layer_name]` namespace. For these, a new function `joinWithParentNamespace` has been added to make sure joining relative paths results in `/ns/topic_name` rather than `/ns/[layer_name]/topic_name`.
 
@@ -209,10 +209,10 @@ If your use case doesn’t require multiple robots, keeping absolute paths in yo
 
 For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
 
-* User chosen namespace is `tb4`.
-* User chosen topic is `scan`.
-* Topic will be remapped to `/tb4/scan` without `local_costmap`.
-* Use global topic `/scan` if you do not wish the node namespace to apply
+- User chosen namespace is `tb4`.
+- User chosen topic is `scan`.
+- Topic will be remapped to `/tb4/scan` without `local_costmap`.
+- Use global topic `/scan` if you do not wish the node namespace to apply
 
 ## Removed global map_topic from Costmap node
 
@@ -275,10 +275,10 @@ In [PR #4781](https://github.com/ros-navigation/navigation2/pull/4781) a costmap
 
 In [PR #4795](https://github.com/ros-navigation/navigation2/pull/4795) the `nav2_graceful_controller` was updated to iteratively select motion targets. This is a large refactor which significantly improves the performance of the controller. The `motion_target_dist` parameter has been replaced by `min_lookahead` and `max_lookahead` parameters. Additional changes include:
 
-* Improved defaults for `k_phi`, `k_delta`, `beta` parameters of the underlying control law.
-* Automatic creation of orientations for the plan if they are missing.
-* Addition of `v_angular_min_in_place` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
-* `final_rotation` has been renamed `prefer_final_rotation` and the behavior has changed slightly.
+- Improved defaults for `k_phi`, `k_delta`, `beta` parameters of the underlying control law.
+- Automatic creation of orientations for the plan if they are missing.
+- Addition of `v_angular_min_in_place` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
+- `final_rotation` has been renamed `prefer_final_rotation` and the behavior has changed slightly.
 
 ## Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file
 

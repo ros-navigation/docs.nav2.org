@@ -25,7 +25,7 @@ Applying these technologies to a non-Nova design is possible using the general c
 
 ## Additional Resources
 
-* [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter](isaac_perceptor/rebuilding_tensorrt_engine.md)
+- [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter](isaac_perceptor/rebuilding_tensorrt_engine.md)
 
 ## Concepts
 
@@ -41,10 +41,10 @@ In Nav2, that is commonly the Costmap package, but could be height maps, voxel g
 Thus, for Visual Navigation, there are two major areas which need adjustment from Lidar and Depth-based navigation into Vision-based navigation: Perception and Localization.
 We must replace the existing solutions for the following with Vision-based systems:
 
-* **Data Acquisition**: Compute disparity information and derived results from stereo camera information
-* **Data Fusion**: Combine multiple camera feeds into an environmental model for use in planning and control
-* **Mapping**: Creating a globally-consistent view of the environment using camera data
-* **Localization**: Using a globally-consistent view of the environment to later localize the robot within during task execution
+- **Data Acquisition**: Compute disparity information and derived results from stereo camera information
+- **Data Fusion**: Combine multiple camera feeds into an environmental model for use in planning and control
+- **Mapping**: Creating a globally-consistent view of the environment using camera data
+- **Localization**: Using a globally-consistent view of the environment to later localize the robot within during task execution
 
 Currently, these are solved in Lidar-based solutions using Costmap2D, a SLAM library like [SLAM Toolbox](https://github.com/SteveMacenski/slam_toolbox) or Cartographer, and a global localizer like AMCL.
 
@@ -231,9 +231,9 @@ Please reference this package for more information.
 
 To adapt to another platform, make a new `my_robot_nav` package which:
 
-* Launches the robot hardware drivers for accepting commands, bringing up sensors, providing transformation tree, etc
-* Launches Isaac Perceptor, usually via `isaac_ros_perceptor_bringup` package’s `perceptor_general.launch.py` or `perceptor_rgbd.launch.py`
-* Launches Nav2 with the appropriate configurations (i.e. removed AMCL for cuVSLAM, Costmap configurations for NvBlox)
+- Launches the robot hardware drivers for accepting commands, bringing up sensors, providing transformation tree, etc
+- Launches Isaac Perceptor, usually via `isaac_ros_perceptor_bringup` package’s `perceptor_general.launch.py` or `perceptor_rgbd.launch.py`
+- Launches Nav2 with the appropriate configurations (i.e. removed AMCL for cuVSLAM, Costmap configurations for NvBlox)
 
 Use these launch files to replace `nova_carter_bringup/launch/navigation.launch.py` used in this package.
 
@@ -251,12 +251,12 @@ When working in realistically large spaces, this cannot be done on the Jetson in
 
 Tips and Tricks:
 
-* Start datasets with 10 seconds at the starting pose before moving the robot so it may be used in the future for localization testing
-* Teleop the robot into a clear space before starting recording, ensure it is not docked and the cameras are not obstructed by a wall, furniture, etc. This ensures the starting data will contain features that can be processed later.
-* For each 5x5m area, drive for around 1 minute
-* Drive in closed loops and make sure to capture data at more than one angle (i.e. drive in different directions to obtain different viewpoints)
-* Don’t drive for a long time in a straight line, weave and swerve.
-* There’s a technique to making a good VSLAM map, it might take you a few tries to get good results.
+- Start datasets with 10 seconds at the starting pose before moving the robot so it may be used in the future for localization testing
+- Teleop the robot into a clear space before starting recording, ensure it is not docked and the cameras are not obstructed by a wall, furniture, etc. This ensures the starting data will contain features that can be processed later.
+- For each 5x5m area, drive for around 1 minute
+- Drive in closed loops and make sure to capture data at more than one angle (i.e. drive in different directions to obtain different viewpoints)
+- Don’t drive for a long time in a straight line, weave and swerve.
+- There’s a technique to making a good VSLAM map, it might take you a few tries to get good results.
 
 <figure markdown="span">
   ![](images/perceptor/mapping1.gif)
@@ -438,37 +438,37 @@ And be able to now navigate as shown in the video below! A special thanks to Nav
 In this tutorial, we showed how Nav2 can be used without lidar or depth cameras to conduct vision-only navigation leveraging NVIDA’s technologies (Jetson, Isaac ROS, Isaac Perceptor, Nova reference platform).
 To leverage even more vision features during Visual Navigation, you can also use the Isaac SDK, ZED SDK, or other AI technologies to leverage the GPU for:
 
-* Object detection or semantic segmentation: `isaac-ros-peoplenet` and `isaac-ros-peoplesemsegnet` for person recognition and semantic segmentation of people from mapped spaces.
-* Ground or freespace segmentation
-* Explore other VSLAM, VIO, or 3D Mapping technologies
+- Object detection or semantic segmentation: `isaac-ros-peoplenet` and `isaac-ros-peoplesemsegnet` for person recognition and semantic segmentation of people from mapped spaces.
+- Ground or freespace segmentation
+- Explore other VSLAM, VIO, or 3D Mapping technologies
 
 ### Resources
 
 More detailed information can be found in the following documentation:
 
-* [Isaac ROS Visual SLAM](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_visual_slam/isaac_ros_visual_slam/index.html)
-* [Isaac ROS NvBlox](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nvblox/index.html)
-* [Isaac ROS Visual GLobal Localization](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_mapping_and_localization/isaac_ros_visual_global_localization/index.html)
-* [Disparity Mapping & Image Fusion with Isaac ROS DNN ESS](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_dnn_stereo_depth/index.html)
-* [Isaac ROS Stereo Image Proc](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_image_pipeline/isaac_ros_stereo_image_proc/index.html)
-* [Isaac Perceptor Docs](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/index.html)
-* [Isaac ROS Mapping](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_mapping_and_localization/isaac_mapping_ros/index.html)
-* [Nvidia TensorRT - CUDA Accelerated TensorFlow](https://developer.nvidia.com/tensorrt)
+- [Isaac ROS Visual SLAM](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_visual_slam/isaac_ros_visual_slam/index.html)
+- [Isaac ROS NvBlox](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nvblox/index.html)
+- [Isaac ROS Visual GLobal Localization](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_mapping_and_localization/isaac_ros_visual_global_localization/index.html)
+- [Disparity Mapping & Image Fusion with Isaac ROS DNN ESS](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_dnn_stereo_depth/index.html)
+- [Isaac ROS Stereo Image Proc](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_image_pipeline/isaac_ros_stereo_image_proc/index.html)
+- [Isaac Perceptor Docs](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/index.html)
+- [Isaac ROS Mapping](https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_mapping_and_localization/isaac_mapping_ros/index.html)
+- [Nvidia TensorRT - CUDA Accelerated TensorFlow](https://developer.nvidia.com/tensorrt)
 
 Related GitHub repositories can be found here:
 
-* [https://github.com/NVIDIA-ISAAC-ROS/nova_carter](https://github.com/NVIDIA-ISAAC-ROS/nova_carter)
-* [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_mapping_and_localization](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_mapping_and_localization)
-* [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/tree/main](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/tree/main)
-* [https://github.com/NVIDIA-ISAAC-ROS/isaac_perceptor/tree/main/isaac_ros_perceptor_bringup](https://github.com/NVIDIA-ISAAC-ROS/isaac_perceptor/tree/main/isaac_ros_perceptor_bringup)
-* [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nova](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nova)
-* [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox)
+- [https://github.com/NVIDIA-ISAAC-ROS/nova_carter](https://github.com/NVIDIA-ISAAC-ROS/nova_carter)
+- [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_mapping_and_localization](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_mapping_and_localization)
+- [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/tree/main](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/tree/main)
+- [https://github.com/NVIDIA-ISAAC-ROS/isaac_perceptor/tree/main/isaac_ros_perceptor_bringup](https://github.com/NVIDIA-ISAAC-ROS/isaac_perceptor/tree/main/isaac_ros_perceptor_bringup)
+- [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nova](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nova)
+- [https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox)
 
 More demonstrations can be found here:
 
-* [Tutorial: Mapping and Localization with Isaac Perceptor](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorial_mapping_and_localization.html)
-* [Tutorial: Camera-based 3D Perception with Isaac Perceptor on the Nova Carter](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorials_on_carter/demo_perceptor.html)
-* [Tutorial: Autonomous Navigation with Isaac Perceptor and Nav2 on the Nova Carter](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorials_on_carter/demo_navigation.html)
+- [Tutorial: Mapping and Localization with Isaac Perceptor](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorial_mapping_and_localization.html)
+- [Tutorial: Camera-based 3D Perception with Isaac Perceptor on the Nova Carter](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorials_on_carter/demo_perceptor.html)
+- [Tutorial: Autonomous Navigation with Isaac Perceptor and Nav2 on the Nova Carter](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_perceptor/tutorials_on_carter/demo_navigation.html)
 
 ### Troubleshooting
 

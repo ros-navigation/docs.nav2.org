@@ -30,10 +30,10 @@ In most cases, these are very similar to the previous `rclcpp` version.
 If a previous `nav2_util` version existed, the APIs should be largely the same, except now they should be constructed using the `create_*` factory rather than manually to make use of the abstracted configuration settings and advanced features to come.
 Where changed, it is typically to move the QoS profile specification to the end of the arguments, which is now optional and defaults to the nav2::qos::StandardTopicQoS profile (reliable, volitile, queue depth of 10).
 
-* nav2_util::LifecycleNode is now nav2::LifecycleNode, which is largely the same except for the factories and a couple of internal implementation details.
-* The Service Client, Service Server, and Simple Action Server were also moved to the nav2:: namespace, but they should not be accessed directly. Use the create_\* factories from the nav2::LifecycleNode, such as create_action_server or create_action_client.
-* There are now nav2::qos profiles for QoS to be used in the codebase for homologation and later easier changing: nav2::qos::StandardTopicQoS nav2::qos::LatchedPublisherQoS, nav2::qos::LatchedSubscriberQoS and nav2::qos::SensorDataQoS. These should be used rather than rclcpp profiles.
-* The APIs for create_\* are very similar to the default ones, but slightly different to move the now optional QoS profile specification below required information. When this is not specified the StandardTopicQoS is used (reliable, queue size 10). Only override this if you want another QoS type. Avoid use of SystemDefaultsQoS.
+- nav2_util::LifecycleNode is now nav2::LifecycleNode, which is largely the same except for the factories and a couple of internal implementation details.
+- The Service Client, Service Server, and Simple Action Server were also moved to the nav2:: namespace, but they should not be accessed directly. Use the create_\* factories from the nav2::LifecycleNode, such as create_action_server or create_action_client.
+- There are now nav2::qos profiles for QoS to be used in the codebase for homologation and later easier changing: nav2::qos::StandardTopicQoS nav2::qos::LatchedPublisherQoS, nav2::qos::LatchedSubscriberQoS and nav2::qos::SensorDataQoS. These should be used rather than rclcpp profiles.
+- The APIs for create_\* are very similar to the default ones, but slightly different to move the now optional QoS profile specification below required information. When this is not specified the StandardTopicQoS is used (reliable, queue size 10). Only override this if you want another QoS type. Avoid use of SystemDefaultsQoS.
 
 ### Plugin Migration
 

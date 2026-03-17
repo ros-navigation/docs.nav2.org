@@ -34,11 +34,11 @@ When completed, the output should look similar to the following:
 
 This process is performed by:
 
-* Convolving the rastered image by the safety distance to create a safety mask.
-* Skeletonizing the safety mask to create a skeleton of the map.
-* Adding boundary nodes around the convolved obstacles.
-* Placing nodes in the center areas of the map to fill space.
-* Connecting edges to skeleton, center, and boundary nodes and pruning those which do not add value.
+- Convolving the rastered image by the safety distance to create a safety mask.
+- Skeletonizing the safety mask to create a skeleton of the map.
+- Adding boundary nodes around the convolved obstacles.
+- Placing nodes in the center areas of the map to fill space.
+- Connecting edges to skeleton, center, and boundary nodes and pruning those which do not add value.
 
 ### 2. Convert to GeoJSON
 

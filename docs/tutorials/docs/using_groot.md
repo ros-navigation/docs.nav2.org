@@ -29,5 +29,5 @@ There are tutorials available for both Groot and Groot2, with Groot2 being the n
 
 ## Table of Contents
 
-* [Groot - Interacting with Behavior Trees](groot.md)
-* [Groot2 - Interacting with Behavior Trees](groot2.md)
+- [Groot - Interacting with Behavior Trees](groot.md)
+- [Groot2 - Interacting with Behavior Trees](groot2.md)

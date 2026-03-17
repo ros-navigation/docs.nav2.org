@@ -258,7 +258,7 @@ ros2 launch nav2_gps_waypoint_follower_demo dual_ekf_navsat.launch.py
 
 On a different terminal launch mapviz using the pre-built [config file](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/gps_wpf_demo.mvc) in the repo. There are multiple options to visualize satalite map on with mapviz:
 
-* Stadiamaps: This would require an api key, see [Get a stadiamap Api key](https://docs.stadiamaps.com/static-maps/) . Modify the config file as follows:
+- Stadiamaps: This would require an api key, see [Get a stadiamap Api key](https://docs.stadiamaps.com/static-maps/) . Modify the config file as follows:
 
 ```yaml
 - type: mapviz_plugins/tile_map
@@ -275,7 +275,7 @@ On a different terminal launch mapviz using the pre-built [config file](https://
     source: Stadia (alidade_satellite)
 ```
 
-* For those interested in locally hosted map see [Local tile_map imagery](https://swri-robotics.github.io/mapviz/guides/local_tile_map_imagery/)
+- For those interested in locally hosted map see [Local tile_map imagery](https://swri-robotics.github.io/mapviz/guides/local_tile_map_imagery/)
 
 ```bash
 ros2 launch nav2_gps_waypoint_follower_demo mapviz.launch.py

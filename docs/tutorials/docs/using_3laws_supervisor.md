@@ -166,17 +166,17 @@ Now that we have the parameters extracted from the Nav2 configuration, we can co
 
 On the landing page shown above:
 
-* Input your license key in the “License Key” field. When one is inputted, it should automatically validate and show the license status in the GUI
-* Name the robot this configuration belongs to, whether a specific robot or a model of robot depending on the granularity of your configuration settings
-* Select the ROS TF world frame to be `map` if not already set
+- Input your license key in the “License Key” field. When one is inputted, it should automatically validate and show the license status in the GUI
+- Name the robot this configuration belongs to, whether a specific robot or a model of robot depending on the granularity of your configuration settings
+- Select the ROS TF world frame to be `map` if not already set
 
 Then, expand the Advanced Settings section and configure the `Project to SE2` toggle to enabled if your robot operates in a 2D plane (i.e. most ground robots and nearly all indoor robots). If you work outdoors on 3D terrain, you may disable this to allow the Supervisor to operate in 3D.
 
 There are additional advanced settings that may be configured, including:
 
-* Supervisor process niceness, to set the relative user-space priority of the Supervisor process. This is not the same as real-time scheduler priority.
-* Re-timestamping incoming messages to add a current timestamp when a message is received without a properly implemented timestamp.
-* Parameters related to port remapping for the supervisor and control panel. It is not recommended to change these unless you have a specific need to do so.
+- Supervisor process niceness, to set the relative user-space priority of the Supervisor process. This is not the same as real-time scheduler priority.
+- Re-timestamping incoming messages to add a current timestamp when a message is received without a properly implemented timestamp.
+- Parameters related to port remapping for the supervisor and control panel. It is not recommended to change these unless you have a specific need to do so.
 
 !!! note
 
@@ -202,13 +202,13 @@ Ackermann steering support is planned for a future release.
 Next, select the robot shape you wish to use for the Supervisor’s collision avoidance calculations.
 The Supervisor supports a variety of shapes, including:
 
-* Sphere
-* Box
-* Capsule
-* Point
-* Cone
-* Cylinder
-* Mesh files
+- Sphere
+- Box
+- Capsule
+- Point
+- Cone
+- Cylinder
+- Mesh files
 
 For circular robots projected to 2D, `Sphere` and `Cylinder` are identical and will be projected to a circle in 2D.
 For square or rectangular robots, use `Box`.
@@ -285,7 +285,7 @@ If you did not set this up previously, go back now and do so. It will now be ava
 If providing a set of pre-localized obstacles for collision advoidance, toggle on the Obstacles Map and provide the topic name for the map.
 This currently supports obstacles provided in the form of:
 
-* `lll_msgs/ObstacleArray`
+- `lll_msgs/ObstacleArray`
 
 Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration and hit “Next” to proceed to the next page.
 
@@ -366,17 +366,17 @@ This tutorial shows an integration demonstration of the Supervisor with Nav2 for
 A fully configured Supervisor configuration can be found in the [tb4_supervisor.yaml](https://github.com/open-navigation/opennav_3laws_demonstration/blob/main/lll_nav2_warehouse_demo/config/tb4_supervisor.yaml) file.
 This was created using the steps above:
 
-* The Nav2 configuration in `nav2_bringup/params/nav2_params.yaml` was used to extract the shared parameters.
-* The robot name is set as the robot computer’s hostname.
-* The world name is verified as `map` and advanced settings projected to SE2 is enabled.
-* The model is verified as differential drive with a Capsule collision shape of radius 0.22m and height of 0.7m.
-* The base frame is verified as `base_link` and additional frames are added for `rplidar_link` and `oakd_link` for processing sensor data.
-* Using the direct velocity model, we verified the velocity limits as -0.35 - 0.5 m/s for linear and -1.9 - 1.9 rad/s for angular.
-* Localization uses the `/odom` topic, verify this is correct.
-* Perception is pre-populated with the `/scan` topic for 2D lidar. We need to add in the additional scan sensor metadata. In this case, it has 336 rays, -3.14 to 3.14 radian angles, and a range of 20 meters. These were obtained from the `/scan` topic from simulation. In advanced settings, the *Accept laserscan with wrong size* is enabled as this is a cheap lidar that can provide a different number of rays each iteration.
-* In the Supervisor section, the motion planning topic was set to `/cmd_vel_smoothed` and the Supervisor output signal to `/cmd_vel_supervised`.
-* We set the Supervisor’s settings to Aggressiveness 1.5, Conservativeness 0.01, Pointiness 0.0, and Evasion Aggressiveness: 500.
-* A collision distance threshold of 0.25 meters is set for a good sized buffer.
+- The Nav2 configuration in `nav2_bringup/params/nav2_params.yaml` was used to extract the shared parameters.
+- The robot name is set as the robot computer’s hostname.
+- The world name is verified as `map` and advanced settings projected to SE2 is enabled.
+- The model is verified as differential drive with a Capsule collision shape of radius 0.22m and height of 0.7m.
+- The base frame is verified as `base_link` and additional frames are added for `rplidar_link` and `oakd_link` for processing sensor data.
+- Using the direct velocity model, we verified the velocity limits as -0.35 - 0.5 m/s for linear and -1.9 - 1.9 rad/s for angular.
+- Localization uses the `/odom` topic, verify this is correct.
+- Perception is pre-populated with the `/scan` topic for 2D lidar. We need to add in the additional scan sensor metadata. In this case, it has 336 rays, -3.14 to 3.14 radian angles, and a range of 20 meters. These were obtained from the `/scan` topic from simulation. In advanced settings, the *Accept laserscan with wrong size* is enabled as this is a cheap lidar that can provide a different number of rays each iteration.
+- In the Supervisor section, the motion planning topic was set to `/cmd_vel_smoothed` and the Supervisor output signal to `/cmd_vel_supervised`.
+- We set the Supervisor’s settings to Aggressiveness 1.5, Conservativeness 0.01, Pointiness 0.0, and Evasion Aggressiveness: 500.
+- A collision distance threshold of 0.25 meters is set for a good sized buffer.
 
 ## 3. Nav2-Supervisor Configuration
 
@@ -536,22 +536,22 @@ The video below demonstrates the Supervisor enabling a robot to navigate through
 
 As shown in the demonstration, the Supervisor’s ability to handle narrow passages makes it particularly valuable for:
 
-* Indoor navigation in office and warehouse environments with standard doorways
-* Robots with large footprints or minimal clearance margins
-* Teleoperations in tight spaces where remote operators may have difficulty judging clearances
-* Reducing the need for extensive controller parameter tuning for specific environmental features
+- Indoor navigation in office and warehouse environments with standard doorways
+- Robots with large footprints or minimal clearance margins
+- Teleoperations in tight spaces where remote operators may have difficulty judging clearances
+- Reducing the need for extensive controller parameter tuning for specific environmental features
 
 ## 6. Resources
 
 More detailed information can be found in the following documentation:
 
-* [https://3laws.io/](https://3laws.io/)
-* [https://docs.3laws.io/en/latest/](https://docs.3laws.io/en/latest/)
+- [https://3laws.io/](https://3laws.io/)
+- [https://docs.3laws.io/en/latest/](https://docs.3laws.io/en/latest/)
 
 Related GitHub repositories can be found here:
 
-* [https://github.com/open-navigation/opennav_3laws_demonstration](https://github.com/open-navigation/opennav_3laws_demonstration)
-* [https://github.com/3LawsRobotics/3laws-demos/tree/master](https://github.com/3LawsRobotics/3laws-demos/tree/master)
+- [https://github.com/open-navigation/opennav_3laws_demonstration](https://github.com/open-navigation/opennav_3laws_demonstration)
+- [https://github.com/3LawsRobotics/3laws-demos/tree/master](https://github.com/3LawsRobotics/3laws-demos/tree/master)
 
 And we have one more fun video (it didn’t fit anywhere else naturally, but is worth a gander)!
 

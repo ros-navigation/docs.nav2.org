@@ -13,20 +13,20 @@ The [configuration guide](/configuration/packages/configuring-bt-xml.md) can als
 
 ## Action Nodes
 
-* ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)
-* FollowPath - FollowPath Action Server Client (Controller Interface)
-* Spin, Wait, Backup - Behaviors Action Server Client
-* ClearCostmapService - ClearCostmapService Server Clients
+- ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)
+- FollowPath - FollowPath Action Server Client (Controller Interface)
+- Spin, Wait, Backup - Behaviors Action Server Client
+- ClearCostmapService - ClearCostmapService Server Clients
 
 Upon completion, these action nodes will return `SUCCESS` if the action server believes the action has been completed correctly, `RUNNING` when still running, and will return `FAILURE` otherwise. Note that in the above list,
 the ClearCostmapService action node is *not* an action server client, but a service client.
 
 ## Condition Nodes
 
-* GoalUpdated - Checks if the goal on the goal topic has been updated
-* GoalReached - Checks if the goal has been reached
-* InitialPoseReceived - Checks to see if a pose on the `initial_pose` topic has been received
-* isBatteryLow - Checks to see if the battery is low by listening on the battery topic
+- GoalUpdated - Checks if the goal on the goal topic has been updated
+- GoalReached - Checks if the goal has been reached
+- InitialPoseReceived - Checks to see if a pose on the `initial_pose` topic has been received
+- isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 
 The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return `SUCCESS` if the condition is true and `FAILURE` otherwise.
 The key condition that is used in the default Nav2 BT is `GoalUpdated` which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as “If the goal has been updated, then we must replan”.
@@ -34,11 +34,11 @@ Condition nodes are typically paired with ReactiveFallback nodes.
 
 ## Decorator Nodes
 
-* Distance Controller - Will tick children nodes every time the robot has traveled a certain distance
-* Rate Controller - Controls the ticking of its child node at a constant frequency. The tick rate is an exposed port
-* Goal Updater - Will update the goal of children nodes via ports on the BT
-* Single Trigger - Will only tick its child node once, and will return `FAILURE` for all subsequent ticks
-* Speed Controller - Controls the ticking of its child node at a rate proportional to the robot’s speed
+- Distance Controller - Will tick children nodes every time the robot has traveled a certain distance
+- Rate Controller - Controls the ticking of its child node at a constant frequency. The tick rate is an exposed port
+- Goal Updater - Will update the goal of children nodes via ports on the BT
+- Single Trigger - Will only tick its child node once, and will return `FAILURE` for all subsequent ticks
+- Speed Controller - Controls the ticking of its child node at a rate proportional to the robot’s speed
 
 ## Control: PipelineSequence
 
@@ -98,9 +98,9 @@ For additional details regarding the `PipelineSequence` please see the [Pipeline
 The Recovery control node has only two children and returns `SUCCESS` if and only if the first child returns `SUCCESS`.
 If the first child returns `FAILURE`, the second child will be ticked. This loop will continue until either:
 
-* The first child returns `SUCCESS` (which results in `SUCCESS` of the parent node)
-* The second child returns `FAILURE` (which results in `FAILURE` of the parent node)
-* The `number_of_retries` input parameter is violated
+- The first child returns `SUCCESS` (which results in `SUCCESS` of the parent node)
+- The second child returns `FAILURE` (which results in `FAILURE` of the parent node)
+- The `number_of_retries` input parameter is violated
 
 This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the “main” behavior,
 and the second action will be something to be done in case of `FAILURE` of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.

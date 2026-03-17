@@ -248,13 +248,13 @@ Description
 
 The plugins listed below are inside the `nav2_controller` namespace.
 
-* [SimpleProgressChecker](nav2_controller-plugins/simple_progress_checker.md)
-* [PoseProgressChecker](nav2_controller-plugins/pose_progress_checker.md)
-* [AxisGoalChecker](nav2_controller-plugins/axis_goal_checker.md)
-* [SimpleGoalChecker](nav2_controller-plugins/simple_goal_checker.md)
-* [StoppedGoalChecker](nav2_controller-plugins/stopped_goal_checker.md)
-* [PositionGoalChecker](nav2_controller-plugins/position_goal_checker.md)
-* [FeasiblePathHandler](nav2_controller-plugins/feasible_path_handler.md)
+- [SimpleProgressChecker](nav2_controller-plugins/simple_progress_checker.md)
+- [PoseProgressChecker](nav2_controller-plugins/pose_progress_checker.md)
+- [AxisGoalChecker](nav2_controller-plugins/axis_goal_checker.md)
+- [SimpleGoalChecker](nav2_controller-plugins/simple_goal_checker.md)
+- [StoppedGoalChecker](nav2_controller-plugins/stopped_goal_checker.md)
+- [PositionGoalChecker](nav2_controller-plugins/position_goal_checker.md)
+- [FeasiblePathHandler](nav2_controller-plugins/feasible_path_handler.md)
 
 ## Default Plugins
 

@@ -8,32 +8,32 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 ## Controller
 
-* [DWB Controller](dwb-params/controller.md)
-* [XYTheta Iterator](dwb-params/iterator.md)
-* [Kinematic Parameters](dwb-params/kinematic.md)
-* [Publisher](dwb-params/visualization.md)
+- [DWB Controller](dwb-params/controller.md)
+- [XYTheta Iterator](dwb-params/iterator.md)
+- [Kinematic Parameters](dwb-params/kinematic.md)
+- [Publisher](dwb-params/visualization.md)
 
 ## Plugins
 
 The plugins listed below are inside the `dwb_plugins` namespace.
 
-* [LimitedAccelGenerator](dwb-plugins/limited_accel_generator.md)
-* [StandardTrajectoryGenerator](dwb-plugins/standard_traj_generator.md)
+- [LimitedAccelGenerator](dwb-plugins/limited_accel_generator.md)
+- [StandardTrajectoryGenerator](dwb-plugins/standard_traj_generator.md)
 
 ## Trajectory Critics
 
 The trajectory critics listed below are inside the `dwb_critics` namespace.
 
-* [BaseObstacleCritic](trajectory_critics/base_obstacle.md)
-* [GoalAlignCritic](trajectory_critics/goal_align.md)
-* [GoalDistCritic](trajectory_critics/goal_dist.md)
-* [ObstacleFootprintCritic](trajectory_critics/obstacle_footprint.md)
-* [OscillationCritic](trajectory_critics/oscillation.md)
-* [PathAlignCritic](trajectory_critics/path_align.md)
-* [PathDistCritic](trajectory_critics/path_dist.md)
-* [PreferForwardCritic](trajectory_critics/prefer_forward.md)
-* [RotateToGoalCritic](trajectory_critics/rotate_to_goal.md)
-* [TwirlingCritic](trajectory_critics/twirling.md)
+- [BaseObstacleCritic](trajectory_critics/base_obstacle.md)
+- [GoalAlignCritic](trajectory_critics/goal_align.md)
+- [GoalDistCritic](trajectory_critics/goal_dist.md)
+- [ObstacleFootprintCritic](trajectory_critics/obstacle_footprint.md)
+- [OscillationCritic](trajectory_critics/oscillation.md)
+- [PathAlignCritic](trajectory_critics/path_align.md)
+- [PathDistCritic](trajectory_critics/path_dist.md)
+- [PreferForwardCritic](trajectory_critics/prefer_forward.md)
+- [RotateToGoalCritic](trajectory_critics/rotate_to_goal.md)
+- [TwirlingCritic](trajectory_critics/twirling.md)
 
 ## Example
 
