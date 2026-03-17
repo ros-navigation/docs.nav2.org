@@ -96,6 +96,11 @@ nav:
       - Dev Container Guide: development_guides/devcontainer_docs/devcontainer_guide.md
     - Navigation Concepts: 
       - concepts/index.md
+      - ROS 2: concepts/ros2.md
+      - Behavior Trees: concepts/behavior_trees.md
+      - Navigation Servers: concepts/navigation_servers.md
+      - State Estimation: concepts/state_estimation.md
+      - Environmental Representation: concepts/environmental_representation.md
     - Nav2 Behavior Trees:
       - behavior_trees/index.md
       - Introduction To Nav2 Specific Nodes: behavior_trees/overview/nav2_specific_nodes.md
