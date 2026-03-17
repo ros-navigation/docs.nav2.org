@@ -59,6 +59,8 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - def_list
+  - toc:
+      permalink: true
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
