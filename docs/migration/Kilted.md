@@ -529,13 +529,14 @@ In [PR #5783](https://github.com/ros-navigation/navigation2/pull/5783), an optio
 
 The following parameters are updated for this feature.
 
-* **max_linear_vel (renamed):**
-  | Type   |   Default |
-  |--------|-----------|
-  | double |       0.5 |
+**`max_linear_vel` (renamed):**
 
-  Description
-  : The maximum linear velocity (m/s) to use.  **Previously named \`desired_linear_vel\`**
+| Type   |   Default |
+|--------|-----------|
+| double |       0.5 |
+
+Description
+:   The maximum linear velocity (m/s) to use.  **Previously named \`desired_linear_vel\`**
 
 **Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing cmd_vel.
 Therefore, the velocity smoother parameters max_velocity, min_velocity, max_accel, and max_decel must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
