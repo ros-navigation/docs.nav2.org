@@ -32,6 +32,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.path
     - navigation.indexes
+    - navigation.top # back-to-top button
 
 plugins:
   - search
