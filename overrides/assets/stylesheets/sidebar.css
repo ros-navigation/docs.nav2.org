@@ -47,6 +47,11 @@
     background-color: var(--sidebar-bg-color);
   }
 
+  .md-sidebar--secondary{
+    /* Set default value */
+    width: 12.1rem; 
+  }
+
   [dir="ltr"] .md-sidebar--primary {
     left: 0 !important;
     display: none;
@@ -67,8 +72,14 @@
 }
 
 
+/* 959.75px = 59.984rem */
 @media screen and (max-width: 59.9844em) {
+
   .md-nav__source {
     background-color: var(--nav-sidebar-source-bg-color);
+  }
+
+  .md-content{
+    margin-left: 1rem;
   }
 }
