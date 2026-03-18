@@ -122,7 +122,7 @@ nav:
     - First-Time Robot Setup Guide:
       - configuration/setup_guides/index.md
       - Setup Guide for Gazebo:
-        - configuration/setup_guides/gazebo.md
+        - configuration/setup_guides/gazebo/index.md
         - Setting Up Transformations: configuration/setup_guides/transformation/setup_transforms.md
         - Setting Up The URDF: configuration/setup_guides/urdf/setup_urdf.md
         - Setting Up The SDF - Gazebo: configuration/setup_guides/sdf/setup_sdf.md
@@ -133,7 +133,7 @@ nav:
         - Setting Up the Robot's Footprint: configuration/setup_guides/footprint/setup_footprint.md
         - Setting Up Navigation Plugins: configuration/setup_guides/algorithm/select_algorithm.md
       - Setup Guide for Gazebo Classic:
-        - configuration/setup_guides/gazebo_classic.md
+        - configuration/setup_guides/gazebo_classic/index.md
         - Setting Up Transformations: configuration/setup_guides/transformation/setup_transforms.md
         - Setting Up The URDF: configuration/setup_guides/urdf/setup_urdf.md
         - Setting Up Odometry - Gazebo Classic: configuration/setup_guides/odom/setup_odom_gz_classic.md
@@ -147,8 +147,8 @@ nav:
       - Core Servers:
         - Behavior Server: configuration/configuration_guide/packages/configuring-behavior-server.md
         - Behavior-Tree Navigator: configuration/configuration_guide/packages/configuring-bt-navigator.md
-        - Behavior Tree XML Nodes: 
-          - configuration/configuration_guide/packages/configuring-bt-xml.md
+        - Behavior Tree XML Nodes:
+          - configuration/configuration_guide/packages/bt-plugins/index.md
           - Action Plugins:
             - Wait: configuration/configuration_guide/packages/bt-plugins/actions/Wait.md
             - Spin: configuration/configuration_guide/packages/bt-plugins/actions/Spin.md
@@ -237,37 +237,37 @@ nav:
             - SingleTrigger: configuration/configuration_guide/packages/bt-plugins/decorators/SingleTrigger.md
             - GoalUpdatedController: configuration/configuration_guide/packages/bt-plugins/decorators/GoalUpdatedController.md
         - Collision Monitor:
-          - configuration/configuration_guide/packages/configuring-collision-monitor.md
+          - configuration/configuration_guide/packages/collision_monitor/index.md
           - Collision Monitor Node: configuration/configuration_guide/packages/collision_monitor/configuring-collision-monitor-node.md
           - Collision Detector Node: configuration/configuration_guide/packages/collision_monitor/configuring-collision-detector-node.md
-        - Controller Server: 
-          - configuration/configuration_guide/packages/configuring-controller-server.md
+        - Controller Server:
+          - configuration/configuration_guide/packages/controller_server/index.md
           - Provided Plugins:
-            - SimpleProgressChecker: configuration/configuration_guide/packages/nav2_controller-plugins/simple_progress_checker.md
-            - PoseProgressChecker: configuration/configuration_guide/packages/nav2_controller-plugins/pose_progress_checker.md
-            - AxisGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/axis_goal_checker.md
-            - SimpleGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/simple_goal_checker.md
-            - StoppedGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/stopped_goal_checker.md
-            - PositionGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/position_goal_checker.md
-            - FeasiblePathHandler: configuration/configuration_guide/packages/nav2_controller-plugins/feasible_path_handler.md
+            - SimpleProgressChecker: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/simple_progress_checker.md
+            - PoseProgressChecker: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/pose_progress_checker.md
+            - AxisGoalChecker: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/axis_goal_checker.md
+            - SimpleGoalChecker: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/simple_goal_checker.md
+            - StoppedGoalChecker: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/stopped_goal_checker.md
+            - PositionGoalChecker: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/position_goal_checker.md
+            - FeasiblePathHandler: configuration/configuration_guide/packages/controller_server/nav2_controller-plugins/feasible_path_handler.md
         - Costmap 2D:
-          - configuration/configuration_guide/packages/configuring-costmaps.md
+          - configuration/configuration_guide/packages/costmap_2d/index.md
           - Plugin Parameters:
-            - Static Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/static.md
-            - Inflation Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/inflation.md
-            - Obstacle Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/obstacle.md
-            - Voxel Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/voxel.md
-            - Range Sensor Parameters: configuration/configuration_guide/packages/costmap-plugins/range.md
-            - Denoise Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/denoise.md
-            - Plugin Container Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/plugin_container.md
+            - Static Layer Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/static.md
+            - Inflation Layer Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/inflation.md
+            - Obstacle Layer Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/obstacle.md
+            - Voxel Layer Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/voxel.md
+            - Range Sensor Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/range.md
+            - Denoise Layer Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/denoise.md
+            - Plugin Container Layer Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/plugin_container.md
           - Costmap Filters Parameters:
-            - Keepout Filter Parameters: configuration/configuration_guide/packages/costmap-plugins/keepout_filter.md
-            - Speed Filter Parameters: configuration/configuration_guide/packages/costmap-plugins/speed_filter.md
-            - Binary Filter Parameters: configuration/configuration_guide/packages/costmap-plugins/binary_filter.md
+            - Keepout Filter Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/keepout_filter.md
+            - Speed Filter Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/speed_filter.md
+            - Binary Filter Parameters: configuration/configuration_guide/packages/costmap_2d/costmap-plugins/binary_filter.md
         - Docking Server: configuration/configuration_guide/packages/configuring-docking-server.md
         - Lifecycle Manager: configuration/configuration_guide/packages/configuring-lifecycle.md
         - Map Server:
-          - configuration/configuration_guide/packages/configuring-map-server.md
+          - configuration/configuration_guide/packages/map_server/index.md
           - Map Server: configuration/configuration_guide/packages/map_server/configuring-map-server.md
           - Map Saver: configuration/configuration_guide/packages/map_server/configuring-map-saver.md
           - Costmap Filter Info Server: configuration/configuration_guide/packages/map_server/configuring-costmap-filter-info-server.md
@@ -277,41 +277,41 @@ nav:
         - Smoother Server: configuration/configuration_guide/packages/configuring-smoother-server.md
         - Velocity Smoother: configuration/configuration_guide/packages/configuring-velocity-smoother.md
         - Waypoint Follower:
-          - configuration/configuration_guide/packages/configuring-waypoint-follower.md
+          - configuration/configuration_guide/packages/waypoint_follower/index.md
           - Provided Plugins:
-            - WaitAtWaypoint: configuration/configuration_guide/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.md
-            - PhotoAtWaypoint: configuration/configuration_guide/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.md
-            - InputAtWaypoint: configuration/configuration_guide/packages/nav2_waypoint_follower-plugins/input_at_waypoint.md
+            - WaitAtWaypoint: configuration/configuration_guide/packages/waypoint_follower/nav2_waypoint_follower-plugins/wait_at_waypoint.md
+            - PhotoAtWaypoint: configuration/configuration_guide/packages/waypoint_follower/nav2_waypoint_follower-plugins/photo_at_waypoint.md
+            - InputAtWaypoint: configuration/configuration_guide/packages/waypoint_follower/nav2_waypoint_follower-plugins/input_at_waypoint.md
       - Planner Plugins:
         - NavFn Planner: configuration/configuration_guide/packages/configuring-navfn.md
         - Smac Planner:
-          - configuration/configuration_guide/packages/configuring-smac-planner.md
+          - configuration/configuration_guide/packages/smac/index.md
           - Smac 2D Planner: configuration/configuration_guide/packages/smac/configuring-smac-2d.md
           - Smac Hybrid-A* Planner: configuration/configuration_guide/packages/smac/configuring-smac-hybrid.md
           - Smac State Lattice Planner: configuration/configuration_guide/packages/smac/configuring-smac-lattice.md
         - Theta Star Planner: configuration/configuration_guide/packages/configuring-thetastar.md
       - Controller Plugins:
         - DWB Controller:
-          - configuration/configuration_guide/packages/configuring-dwb-controller.md
+          - configuration/configuration_guide/packages/dwb_controller/index.md
           - Controller:
-            - DWB Controller: configuration/configuration_guide/packages/dwb-params/controller.md
-            - XYTheta Iterator: configuration/configuration_guide/packages/dwb-params/iterator.md
-            - Kinematic Parameters: configuration/configuration_guide/packages/dwb-params/kinematic.md
-            - Publisher: configuration/configuration_guide/packages/dwb-params/visualization.md
+            - DWB Controller: configuration/configuration_guide/packages/dwb_controller/dwb-params/controller.md
+            - XYTheta Iterator: configuration/configuration_guide/packages/dwb_controller/dwb-params/iterator.md
+            - Kinematic Parameters: configuration/configuration_guide/packages/dwb_controller/dwb-params/kinematic.md
+            - Publisher: configuration/configuration_guide/packages/dwb_controller/dwb-params/visualization.md
           - Plugins:
-            - LimitedAccelGenerator: configuration/configuration_guide/packages/dwb-plugins/limited_accel_generator.md
-            - StandardTrajectoryGenerator: configuration/configuration_guide/packages/dwb-plugins/standard_traj_generator.md
+            - LimitedAccelGenerator: configuration/configuration_guide/packages/dwb_controller/dwb-plugins/limited_accel_generator.md
+            - StandardTrajectoryGenerator: configuration/configuration_guide/packages/dwb_controller/dwb-plugins/standard_traj_generator.md
           - Trajectory Critics:
-            - BaseObstacleCritic: configuration/configuration_guide/packages/trajectory_critics/base_obstacle.md
-            - GoalAlignCritic: configuration/configuration_guide/packages/trajectory_critics/goal_align.md
-            - GoalDistCritic: configuration/configuration_guide/packages/trajectory_critics/goal_dist.md
-            - ObstacleFootprintCritic: configuration/configuration_guide/packages/trajectory_critics/obstacle_footprint.md
-            - OscillationCritic: configuration/configuration_guide/packages/trajectory_critics/oscillation.md
-            - PathAlignCritic: configuration/configuration_guide/packages/trajectory_critics/path_align.md
-            - PathDistCritic: configuration/configuration_guide/packages/trajectory_critics/path_dist.md
-            - PreferForwardCritic: configuration/configuration_guide/packages/trajectory_critics/prefer_forward.md
-            - RotateToGoalCritic: configuration/configuration_guide/packages/trajectory_critics/rotate_to_goal.md
-            - TwirlingCritic: configuration/configuration_guide/packages/trajectory_critics/twirling.md
+            - BaseObstacleCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/base_obstacle.md
+            - GoalAlignCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/goal_align.md
+            - GoalDistCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/goal_dist.md
+            - ObstacleFootprintCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/obstacle_footprint.md
+            - OscillationCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/oscillation.md
+            - PathAlignCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/path_align.md
+            - PathDistCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/path_dist.md
+            - PreferForwardCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/prefer_forward.md
+            - RotateToGoalCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/rotate_to_goal.md
+            - TwirlingCritic: configuration/configuration_guide/packages/dwb_controller/trajectory_critics/twirling.md
         - Graceful Controller: configuration/configuration_guide/packages/configuring-graceful-motion-controller.md
         - Model Predictive Path Integral Controller: configuration/configuration_guide/packages/configuring-mppic.md
         - Regulated Pure Pursuit: configuration/configuration_guide/packages/configuring-regulated-pp.md
@@ -357,13 +357,13 @@ nav:
       - Using an External Costmap Plugin (STVL): tutorials/general_tutorials/docs/navigation2_with_stvl.md
       - Navigating using GPS Localization: tutorials/general_tutorials/docs/navigation2_with_gps.md
       - Lidar-Free, Vision-Based Navigation:
-        - tutorials/general_tutorials/docs/using_isaac_perceptor.md
+        - tutorials/general_tutorials/docs/isaac_perceptor/index.md
         - Rebuilding TensorRT Engine: tutorials/general_tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.md
       - Navigating with Semantic Segmentation: tutorials/general_tutorials/docs/navigation2_with_semantic_segmentation.md
       - Groot Tutorials:
-        - tutorials/general_tutorials/docs/using_groot.md
-        - Groot - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot.md
-        - Groot2 - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot2.md
+        - tutorials/general_tutorials/docs/groot_tutorials/index.md
+        - Groot - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot.md
+        - Groot2 - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot2.md
       - Using VIO to Augment Robot Odometry: tutorials/general_tutorials/docs/integrating_vio.md
       - Dynamic Object Following: tutorials/general_tutorials/docs/navigation2_dynamic_point_following.md
       - Navigating with Keepout Zones: tutorials/general_tutorials/docs/navigation2_with_keepout_filter.md
@@ -379,7 +379,7 @@ nav:
       - Profiling in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_profile.md
       - Docker for Development - Zero to Hero: tutorials/general_tutorials/docs/docker_dev.md
       - Route Server Tools:
-        - tutorials/general_tutorials/docs/route_server_tools.md
+        - tutorials/general_tutorials/docs/route_server_tools/index.md
         - Using the Nav2 Route Tool: tutorials/general_tutorials/docs/route_server_tools/navigation2_route_tool.md
         - Route Graph Generation LIF Editor: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md
         - Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation.md
