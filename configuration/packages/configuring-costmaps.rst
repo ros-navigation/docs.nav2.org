@@ -22,7 +22,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Whether to send full costmap every update, rather than updates.
+      Whether to send the full costmap on every update instead of only incremental updates.
 
 :introspection_mode:
 
@@ -156,6 +156,7 @@ Costmap2D ROS Parameters
   Description
     Frequency (Hz) at which the costmap is published to a topic.
     Higher values provide more frequent updates for visualization and debugging but increase bandwidth usage.
+
 :resolution:
 
   ============== =======
@@ -299,7 +300,9 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    whether when combining costmaps to use the maximum cost or override.
+    Whether to use the maximum cost when combining multiple costmap layers.
+    If true, the highest cost is preserved, ensuring obstacles are not overwritten.
+    If false, newer layers may override previous cost values.
 
 :plugins:
 
