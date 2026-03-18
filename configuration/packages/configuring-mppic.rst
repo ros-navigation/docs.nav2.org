@@ -259,7 +259,18 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+    Whether to publish debugging trajectories for visualization and critic statistics. When enabled, candidate trajectories are colored by cost (green to red gradient, magenta for collisions) and a ``nav2_msgs::msg::CriticsStats`` message is published on the ``~/critics_stats`` topic. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+
+:critic_index_to_visualize:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            0
+  ============== ===========================
+
+  Description
+    Selects which critic to visualize when ``visualize`` is true. ``0`` shows the total cost across all critics, ``1..N`` selects an individual critic by index (in the order listed in the ``critics`` parameter).
 
 :publish_optimal_trajectory:
 
@@ -304,17 +315,6 @@ MPPI Parameters
 
   Description
     Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
-
-:publish_critics_stats:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  bool           false
-  ============== ===========================
-
-  Description
-    Whether to publish statistics about each critic's performance. When enabled, publishes a ``nav2_msgs::msg::CriticsStats`` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
 
 :open_loop:
 
@@ -1087,6 +1087,7 @@ Example
           gamma: 0.015
           motion_model: "DiffDrive"
           visualize: false
+          critic_index_to_visualize: 0
           reset_period: 1.0 # (only in Humble)
           regenerate_noises: false
           TrajectoryVisualizer:
