@@ -116,6 +116,29 @@ nav:
   - Configuration:
     - Navigation Plugins: 
       - plugins/index.md
+    - First-Time Robot Setup Guide:
+      - setup_guides/index.md
+      - Setup Guide for Gazebo:
+        - setup_guides/gazebo.md
+        - Setting Up Transformations: setup_guides/transformation/setup_transforms.md
+        - Setting Up The URDF: setup_guides/urdf/setup_urdf.md
+        - Setting Up The SDF - Gazebo: setup_guides/sdf/setup_sdf.md
+        - Setting Up Odometry - Gazebo: setup_guides/odom/setup_odom_gz.md
+        - Smoothing Odometry using Robot Localization: setup_guides/odom/setup_robot_localization.md
+        - Setting Up Sensors - Gazebo: setup_guides/sensors/setup_sensors_gz.md
+        - Mapping and Localization: setup_guides/sensors/mapping_localization.md
+        - Setting Up the Robot's Footprint: setup_guides/footprint/setup_footprint.md
+        - Setting Up Navigation Plugins: setup_guides/algorithm/select_algorithm.md
+      - Setup Guide for Gazebo Classic:
+        - setup_guides/gazebo_classic.md
+        - Setting Up Transformations: setup_guides/transformation/setup_transforms.md
+        - Setting Up The URDF: setup_guides/urdf/setup_urdf.md
+        - Setting Up Odometry - Gazebo Classic: setup_guides/odom/setup_odom_gz_classic.md
+        - Smoothing Odometry using Robot Localization: setup_guides/odom/setup_robot_localization.md
+        - Setting Up Sensors - Gazebo Classic: setup_guides/sensors/setup_sensors_gz_classic.md
+        - Mapping and Localization: setup_guides/sensors/mapping_localization.md
+        - Setting Up the Robot's Footprint: setup_guides/footprint/setup_footprint.md
+        - Setting Up Navigation Plugins: setup_guides/algorithm/select_algorithm.md
     - Configuration Guide:
       - configuration/index.md
       - Core Servers:
@@ -315,29 +338,6 @@ nav:
       - Kilted to L-turtle: migration/Kilted.md
     - API Docs: https://api.nav2.org/
   - Tutorials: 
-    - First-Time Robot Setup Guide:
-      - setup_guides/index.md
-      - Setup Guide for Gazebo:
-        - setup_guides/gazebo.md
-        - Setting Up Transformations: setup_guides/transformation/setup_transforms.md
-        - Setting Up The URDF: setup_guides/urdf/setup_urdf.md
-        - Setting Up The SDF - Gazebo: setup_guides/sdf/setup_sdf.md
-        - Setting Up Odometry - Gazebo: setup_guides/odom/setup_odom_gz.md
-        - Smoothing Odometry using Robot Localization: setup_guides/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo: setup_guides/sensors/setup_sensors_gz.md
-        - Mapping and Localization: setup_guides/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: setup_guides/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: setup_guides/algorithm/select_algorithm.md
-      - Setup Guide for Gazebo Classic: 
-        - setup_guides/gazebo_classic.md
-        - Setting Up Transformations: setup_guides/transformation/setup_transforms.md
-        - Setting Up The URDF: setup_guides/urdf/setup_urdf.md
-        - Setting Up Odometry - Gazebo Classic: setup_guides/odom/setup_odom_gz_classic.md
-        - Smoothing Odometry using Robot Localization: setup_guides/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo Classic: setup_guides/sensors/setup_sensors_gz_classic.md
-        - Mapping and Localization: setup_guides/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: setup_guides/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: setup_guides/algorithm/select_algorithm.md
     - Plugin Tutorials:
       - plugin_tutorials/index.md
       - Writing a New Behavior Plugin: plugin_tutorials/docs/writing_new_behavior_plugin.md
