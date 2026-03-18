@@ -258,6 +258,22 @@ Configuration guide
 
 If your sensor already publishes compressed streams (e.g., `Seterolabs ZED X Cameras <https://www.stereolabs.com/docs/ros2/dds_and_network_tuning#use-compressed-topics>`_), you can enable this option in the costmap layers that ingest pointcloud sensor streams (i.e. obstacle, voxel) and in the collision monitor as well.
 
+Collision Monitor debounce parameters
+-------------------------------------
+
+`PR #6006 <https://github.com/ros-navigation/navigation2/pull/6006>`_ adds temporal debounce controls for polygon trigger behavior in Collision Monitor and Collision Detector:
+
+- ``<polygon_name>.trigger_consecutive_points``
+- ``<polygon_name>.release_consecutive_points``
+
+A value of ``1/1`` preserves single-cycle trigger/release behavior.
+In practice, values greater than ``1`` can reduce sensor noise flicker while remaining responsive.
+
+See:
+
+- :ref:`configuring_collision_monitor_node`
+- :ref:`configuring_collision_detector_node`
+
 Example costmap layer configuration:
 
 .. code-block:: yaml
