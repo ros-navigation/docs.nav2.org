@@ -121,7 +121,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    The height of map, allows to avoid rviz visualization flickering at -0.008
+    The height of the map used for visualization, helping to avoid RViz flickering issues (e.g., at -0.008).
 
 :origin_x:
 
@@ -169,6 +169,7 @@ Costmap2D ROS Parameters
     Resolution of each cell (pixel) in the costmap, in meters.
     Smaller values increase map accuracy and obstacle detail but require more computation.
     Larger values reduce computational load but may miss fine obstacles.
+
 :robot_base_frame:
 
   ============== ===========
@@ -214,6 +215,7 @@ Costmap2D ROS Parameters
     If true, the costmap moves with the robot, maintaining a local view centered around it.
     This is typically used for local costmaps.
     If false, the costmap remains fixed in the global frame.
+
 :track_unknown_space:
 
   ============== =======
