@@ -860,4 +860,3 @@ See:
 
 - :ref:`configuring_collision_monitor_node`
 - :ref:`configuring_collision_detector_node`
-
