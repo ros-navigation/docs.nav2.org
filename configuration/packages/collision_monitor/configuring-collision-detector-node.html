@@ -1211,6 +1211,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#collision-monitor-debounce-parameters">Collision Monitor debounce parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -1594,6 +1595,49 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </table>
 <dl class="simple">
 <dt>Description:</dt><dd><p>Minimum number of data readings within a zone to trigger the action. Former <code class="docutils literal notranslate"><span class="pre">max_points</span></code> parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). <code class="docutils literal notranslate"><span class="pre">min_points</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">max_points</span> <span class="pre">+</span> <span class="pre">1</span></code> value.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.trigger_consecutive_points</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Number of consecutive processing cycles with <code class="docutils literal notranslate"><span class="pre">points_inside</span> <span class="pre">&gt;=</span> <span class="pre">min_points</span></code> required to enter the triggered state.
+A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> means trigger in a single processing cycle.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.release_consecutive_points</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Number of consecutive processing cycles with <code class="docutils literal notranslate"><span class="pre">points_inside</span> <span class="pre">&lt;</span> <span class="pre">min_points</span></code> required to leave the triggered state.
+A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> means release in a single processing cycle.
+In practice, values greater than <code class="docutils literal notranslate"><span class="pre">1</span></code> can reduce sensor noise flicker while remaining responsive.</p>
 </dd>
 </dl>
 </dd>
