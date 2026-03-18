@@ -844,3 +844,19 @@ In `PR 5991 <https://github.com/ros-navigation/navigation2/pull/5991>`_, the fol
 - `IsPoseOccupied` is now `CheckPoseOccupancy`
 
 This change was made because these behavior tree nodes may return RUNNING or require more time to complete, making them unsuitable for behavior tree that are expected to be ticked at 100 Hz.
+
+Collision Monitor debounce parameters
+-------------------------------------
+
+`PR #6006 <https://github.com/ros-navigation/navigation2/pull/6006>`_ adds temporal debounce controls for polygon trigger behavior in Collision Monitor and Collision Detector:
+
+- ``<polygon_name>.trigger_consecutive_points``
+- ``<polygon_name>.release_consecutive_points``
+
+A value of ``1/1`` preserves single-cycle trigger/release behavior.
+In practice, values greater than ``1`` can reduce sensor noise flicker while remaining responsive.
+
+See:
+
+- :ref:`configuring_collision_monitor_node`
+- :ref:`configuring_collision_detector_node`
