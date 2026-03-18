@@ -86,6 +86,7 @@ not_in_nav: |
 nav:
   - Home: index.md
   - Getting Started:
+    - getting_started/index.md
     - Quickstart: getting_started/quickstart.md
     - Build and Install:
       - getting_started/build_docs/index.md
@@ -113,6 +114,7 @@ nav:
       - Odometry Calibration: getting_started/behavior_trees/trees/odometry_calibration.md
     - ROSCon Talks: getting_started/roscon.md
   - Configuration:
+    - configuration/index.md
     - Navigation Plugins:
       - configuration/plugins/index.md
     - First-Time Robot Setup Guide:
@@ -336,7 +338,8 @@ nav:
       - Jazzy to Kilted: configuration/migration/Jazzy.md
       - Kilted to L-turtle: configuration/migration/Kilted.md
     - API Docs: https://api.nav2.org/
-  - Tutorials: 
+  - Tutorials:
+    - tutorials/index.md
     - Plugin Tutorials:
       - tutorials/plugin_tutorials/index.md
       - Writing a New Behavior Plugin: tutorials/plugin_tutorials/docs/writing_new_behavior_plugin.md
@@ -383,6 +386,7 @@ nav:
       - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/general_tutorials/docs/roscon_uk_2025_state_estimation.md
       - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
   - Community:
+    - community/index.md
     - Getting Involved:
       - community/involvement_docs/index.md
     - Maintainer Docs:
