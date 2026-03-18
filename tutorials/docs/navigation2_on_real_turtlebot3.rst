@@ -32,9 +32,17 @@ If you don't have them installed, please follow :ref:`getting_started`.
 
 The turtlebot3 software can be installed via the following or on the `turtlebot3 repository <https://github.com/ROBOTIS-GIT/turtlebot3>`_:
 
+First, source your ROS 2 installation to set the environment variables:
+
 .. code-block:: bash
 
-  sudo apt install ros-<ros2-distro>-turtlebot3 ros-<ros2-distro>-turtlebot3-msgs ros-<ros2-distro>-turtlebot3-bringup
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the Turtlebot3 packages:
+
+.. code-block:: bash
+
+  sudo apt install ros-$ROS_DISTRO-turtlebot3 ros-$ROS_DISTRO-turtlebot3-msgs ros-$ROS_DISTRO-turtlebot3-bringup
 
 Tutorial Steps
 ==============

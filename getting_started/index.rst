@@ -24,27 +24,33 @@ Jazzy introduced the new Gazebo modern simulator, replacing Gazebo Classic.
 Thus, for Jazzy and newer, the installation packages and instructions are slightly different to pull in the appropriate packages.
 
 1. Install the `ROS 2 binary packages <https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html>`_  as described in the official docs
-2. Install the |PN| packages using your operating system's package manager:
+2. Source your ROS 2 installation to set up the environment:
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-navigation2
-      sudo apt install ros-<ros2-distro>-nav2-bringup
+      source /opt/ros/<ros2-distro>/setup.bash
 
-3. Install the demo robot (Turtlebot) for gazebo:
+3. Install the |PN| packages using your operating system's package manager:
+
+   .. code-block:: bash
+
+      sudo apt install ros-$ROS_DISTRO-navigation2
+      sudo apt install ros-$ROS_DISTRO-nav2-bringup
+
+4. Install the demo robot (Turtlebot) for gazebo:
 
 For **Jazzy and newer**, install the Turtlebot 3 & 4 packages for Gazebo Modern. It should be automatically installed with ``nav2_bringup``:
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-nav2-minimal-tb*
+      sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb*
 
 
 For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-turtlebot3-gazebo
+      sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
 
 Running the Example
 *******************
@@ -56,7 +62,7 @@ Running the Example
 
       source /opt/ros/<ros2-distro>/setup.bash
       export TURTLEBOT3_MODEL=waffle  # Iron and older only with Gazebo Classic
-      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/<ros2-distro>/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
+      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/$ROS_DISTRO/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
 
 3. In the same terminal, run:
 

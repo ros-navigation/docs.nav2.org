@@ -51,7 +51,12 @@ Costmap Layers
 |                                |                        | occupancy information into       |
 |                                |                        | costmap                          |
 +--------------------------------+------------------------+----------------------------------+
-| `Inflation Layer`_             | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
+| `Inflation Layer`_             | Tony Najjar            | Inflates lethal obstacles in     |
+|                                |                        | costmap with exponential decay   |
+|                                |                        | (with the option to use OpenMP   |
+|                                |                        | for parallelization)             |
++--------------------------------+------------------------+----------------------------------+
+| `Legacy Inflation Layer`_      | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
 |                                |                        | costmap with exponential decay   |
 +--------------------------------+------------------------+----------------------------------+
 |  `Obstacle Layer`_             | Eitan Marder-Eppstein  | Maintains persistent 2D costmap  |
@@ -81,6 +86,7 @@ Costmap Layers
 .. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
 .. _Range Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 .. _Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
+.. _Legacy Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp
 .. _Obstacle Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
@@ -483,6 +489,16 @@ Behavior Tree Nodes
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Follow Object`_                     | Alberto Tudela      | Cancels follow object action             |
 +---------------------------------------------+---------------------+------------------------------------------+
+| `Validate Path`_                            | Joshua Wallace      | Checks if a path is valid by making      |
+|                                             |                     | sure there are no LETHAL obstacles along |
+|                                             |                     | the path.                                |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Check Stop Status`_                        | Tony Najjar         | Checks if robot is                       |
+|                                             |                     | stopped for a duration                   |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Check Pose Occupancy`_                     | Maurice Alexander   | Checks if a pose is occupied.            |
+|                                             | Purnawan            |                                          |
++---------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
@@ -531,7 +547,9 @@ Behavior Tree Nodes
 .. _Toggle Collision Monitor Service: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp
 .. _Follow Object: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_action.cpp
 .. _Cancel Follow Object: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_cancel_node.cpp
-
+.. _Validate Path: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
+.. _Check Stop Status: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_stop_status_action.cpp
+.. _Check Pose Occupancy: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp
 
 +------------------------------------+--------------------+------------------------+
 | Condition Plugin Name              |         Creator    |       Description      |
@@ -553,9 +571,6 @@ Behavior Tree Nodes
 |                                    |                    | making progress or     |
 |                                    |                    | stuck                  |
 +------------------------------------+--------------------+------------------------+
-| `Is Stopped Condition`_            |  Tony Najjar       | Checks if robot is     |
-|                                    |                    | stopped for a duration |
-+------------------------------------+--------------------+------------------------+
 | `Transform Available Condition`_   |  Steve Macenski    | Checks if a TF         |
 |                                    |                    | transformation is      |
 |                                    |                    | available. When        |
@@ -574,12 +589,6 @@ Behavior Tree Nodes
 | `Is Battery Low Condition`_        |  Sarthak Mittal    | Checks if battery      |
 |                                    |                    | percentage is below    |
 |                                    |                    | a specified value.     |
-+------------------------------------+--------------------+------------------------+
-| `Is Path Valid Condition`_         |  Joshua Wallace    | Checks if a path is    |
-|                                    |                    | valid by making sure   |
-|                                    |                    | there are no LETHAL    |
-|                                    |                    | obstacles along the    |
-|                                    |                    | path.                  |
 +------------------------------------+--------------------+------------------------+
 | `Path Expiring Timer`_             |  Joshua Wallace    | Checks if the timer has|
 |                                    |                    | expired. The timer is  |
@@ -616,12 +625,13 @@ Behavior Tree Nodes
 | `Are Poses Near Condition`_        |  Steve Macenski    | Checks if 2 poses are  |
 |                                    |                    | nearby to each other.  |
 +------------------------------------+--------------------+------------------------+
-| `Is Pose Occupied Condition`_      | Maurice Alexander  | Checks if a pose is    |
-|                                    | Purnawan           | occupied.              |
-+------------------------------------+--------------------+------------------------+
 | `Is Goal Nearby Condition`_        | Jakub Chudziński   | Checks if the robot is |
 |                                    |                    | near the goal based on |
 |                                    |                    | remaining path length. |
++------------------------------------+--------------------+------------------------+
+| `Is Within Path Tracking Bounds    | Berkan Tali        | Checks if the robot is |
+| Condition`_                        |                    | within bounds for      |
+|                                    |                    | path tracking.         |
 +------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
@@ -629,12 +639,10 @@ Behavior Tree Nodes
 .. _Global Updated Goal Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
-.. _Is Stopped Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp
 .. _Transform Available Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 .. _Distance Traveled Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 .. _Is Battery Low Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
-.. _Is Path Valid Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 .. _Path Expiring Timer: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 .. _Are Error Codes Present: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
 .. _Would A Controller Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp
@@ -643,8 +651,8 @@ Behavior Tree Nodes
 .. _Would A Route Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_route_recovery_help_condition.cpp
 .. _Is Battery Charging Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 .. _Are Poses Near Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
-.. _Is Pose Occupied Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_pose_occupied_condition.cpp
 .. _Is Goal Nearby Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp
+.. _Is Within Path Tracking Bounds Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |

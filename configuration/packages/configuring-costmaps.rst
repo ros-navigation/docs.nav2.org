@@ -22,7 +22,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Whether to send full costmap every update, rather than updates.
+      Whether to send the full costmap on every update instead of only incremental updates.
 
 :introspection_mode:
 
@@ -121,7 +121,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    The height of map, allows to avoid rviz visualization flickering at -0.008
+    The height of the map used for visualization, helping to avoid RViz flickering issues (e.g., at -0.008).
 
 :origin_x:
 
@@ -154,7 +154,8 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Frequency to publish costmap to topic.
+    Frequency (Hz) at which the costmap is published to a topic.
+    Higher values provide more frequent updates for visualization and debugging but increase bandwidth usage.
 
 :resolution:
 
@@ -165,7 +166,9 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Resolution of 1 pixel of the costmap, in meters.
+    Resolution of each cell (pixel) in the costmap, in meters.
+    Smaller values increase map accuracy and obstacle detail but require more computation.
+    Larger values reduce computational load but may miss fine obstacles.
 
 :robot_base_frame:
 
@@ -209,7 +212,9 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Whether costmap should roll with robot base frame.
+    If true, the costmap moves with the robot, maintaining a local view centered around it.
+    This is typically used for local costmaps.
+    If false, the costmap remains fixed in the global frame.
 
 :track_unknown_space:
 
@@ -297,7 +302,9 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    whether when combining costmaps to use the maximum cost or override.
+    Whether to use the maximum cost when combining multiple costmap layers.
+    If true, the highest cost is preserved, ensuring obstacles are not overwritten.
+    If false, newer layers may override previous cost values.
 
 :plugins:
 
@@ -378,6 +385,7 @@ Plugin Parameters
 
   costmap-plugins/static.rst
   costmap-plugins/inflation.rst
+  costmap-plugins/inflation_legacy.rst
   costmap-plugins/obstacle.rst
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst
@@ -404,6 +412,7 @@ Example
           footprint_padding: 0.03
           update_frequency: 1.0
           publish_frequency: 1.0
+          transform_tolerance: 0.1
           global_frame: map
           robot_base_frame: base_link
           robot_radius: 0.22 # radius set and used, so no footprint points
@@ -437,7 +446,6 @@ Example
             origin_z: 0.0
             z_resolution: 0.05
             z_voxels: 16
-            max_obstacle_height: 2.0
             unknown_threshold: 15
             mark_threshold: 0
             observation_sources: pointcloud
@@ -459,7 +467,6 @@ Example
             map_subscribe_transient_local: True
             enabled: true
             subscribe_to_updates: true
-            transform_tolerance: 0.1
           inflation_layer:
             plugin: "nav2_costmap_2d::InflationLayer"
             enabled: true

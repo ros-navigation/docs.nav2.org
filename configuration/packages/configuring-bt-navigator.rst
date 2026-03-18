@@ -68,6 +68,17 @@ Parameters
   Description
     Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
 
+:bt_log_idle_transitions:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   true
+  ====== =======
+
+  Description
+    Whether to log idle (no state change) transitions in the behavior tree to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. When ``true`` (default), all tick transitions including idle ones are published.
+
 :plugin_lib_names:
 
   ============== ==========================================================
@@ -110,7 +121,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+    Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
 
 :default_cancel_timeout:
@@ -122,7 +133,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout (in seconds) for BT action node cancellation requests during node halt.
+    Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
     This value will be overwritten for a BT node if the input port "cancel_timeout" is provided.
 
 :wait_for_service_timeout:
@@ -134,7 +145,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
+    Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
 :introspection_mode:
@@ -257,7 +268,7 @@ Parameters
   ============== ==================================================
 
   Description
-    List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.
+    List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.
 
 NavigateToPose Parameters
 *************************
@@ -424,6 +435,7 @@ Example
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
         always_reload_bt_xml: false
+        bt_log_idle_transitions: true
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path

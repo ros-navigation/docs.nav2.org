@@ -64,17 +64,6 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
   Description
     QoS settings for map topic.
 
-:``<static layer>``.transform_tolerance:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 0.0
-  ====== =======
-
-  Description
-    TF tolerance.
-
 :``<static layer>``.map_topic:
 
   ====== =======

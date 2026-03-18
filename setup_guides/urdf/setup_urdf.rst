@@ -31,10 +31,18 @@ In this guide, we are assuming that you are already familiar with ROS 2 and how 
 
 Let's begin by installing some additional ROS 2 packages that we will be using during this tutorial.
 
+First, source your ROS 2 installation to set the environment variables:
+
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-joint-state-publisher-gui
-  sudo apt install ros-<ros2-distro>-xacro
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the required packages:
+
+.. code-block:: shell
+
+  sudo apt install ros-$ROS_DISTRO-joint-state-publisher-gui
+  sudo apt install ros-$ROS_DISTRO-xacro
 
 Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
 
