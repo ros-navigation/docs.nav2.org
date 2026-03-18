@@ -1,3 +1,5 @@
+# Keep site_name empty; the header title displays alongside the logo
+# The tab title is overridden in the htmltitle block of overrides/main.html
 site_name: ""
 # site_url: https://docs.nav2.org/ # Uncomment after documentation release
 repo_url: https://github.com/ros-navigation/navigation2

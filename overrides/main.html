@@ -22,6 +22,22 @@
 
 {% extends "base.html" %}
 
+<!-- Site title -->
+{% block htmltitle %}
+
+  <!-- Using Nav2 title instead of config.site_name -->
+  <!-- site_name is intentionally empty, since the page title displays in the header alongside the logo -->
+  {% if page.meta and page.meta.title %}
+    <title>{{ page.meta.title }} - Nav2</title>
+  {% elif page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} - Nav2</title>
+  {% else %}
+    <title>Nav2</title>
+  {% endif %}
+
+{% endblock %}
+
+
 {% block site_nav %}
 
   {% if nav %}
