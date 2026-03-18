@@ -154,8 +154,8 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Frequency to publish costmap to topic.
-
+    Frequency (Hz) at which the costmap is published to a topic.
+    Higher values provide more frequent updates for visualization and debugging but increase bandwidth usage.
 :resolution:
 
   ============== =======
@@ -165,8 +165,9 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Resolution of 1 pixel of the costmap, in meters.
-
+    Resolution of each cell (pixel) in the costmap, in meters.
+    Smaller values increase map accuracy and obstacle detail but require more computation.
+    Larger values reduce computational load but may miss fine obstacles.
 :robot_base_frame:
 
   ============== ===========
@@ -209,8 +210,9 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Whether costmap should roll with robot base frame.
-
+    If true, the costmap moves with the robot, maintaining a local view centered around it.
+    This is typically used for local costmaps.
+    If false, the costmap remains fixed in the global frame.
 :track_unknown_space:
 
   ============== =======
