@@ -86,316 +86,312 @@ not_in_nav: |
 nav:
   - Home: index.md
   - Getting Started:
-    - Quickstart: 
-      - getting_started/index.md
+    - Quickstart: getting_started/quickstart.md
     - Build and Install:
-      - development_guides/build_docs/index.md
-      - Build Troubleshooting Guide: development_guides/build_docs/build_troubleshooting_guide.md
+      - getting_started/build_docs/index.md
+      - Build Troubleshooting Guide: getting_started/build_docs/build_troubleshooting_guide.md
     - Dev Container:
-      - development_guides/devcontainer_docs/index.md
-      - Dev Container Guide: development_guides/devcontainer_docs/devcontainer_guide.md
-    - Navigation Concepts: 
-      - concepts/index.md
-      - ROS 2: concepts/ros2.md
-      - Behavior Trees: concepts/behavior_trees.md
-      - Navigation Servers: concepts/navigation_servers.md
-      - State Estimation: concepts/state_estimation.md
-      - Environmental Representation: concepts/environmental_representation.md
+      - getting_started/devcontainer_docs/index.md
+      - Dev Container Guide: getting_started/devcontainer_docs/devcontainer_guide.md
+    - Navigation Concepts:
+      - getting_started/concepts/index.md
+      - ROS 2: getting_started/concepts/ros2.md
+      - Behavior Trees: getting_started/concepts/behavior_trees.md
+      - Navigation Servers: getting_started/concepts/navigation_servers.md
+      - State Estimation: getting_started/concepts/state_estimation.md
+      - Environmental Representation: getting_started/concepts/environmental_representation.md
     - Nav2 Behavior Trees:
-      - behavior_trees/index.md
-      - Introduction To Nav2 Specific Nodes: behavior_trees/overview/nav2_specific_nodes.md
-      - Detailed Behavior Tree Walkthrough: behavior_trees/overview/detailed_behavior_tree_walkthrough.md
-      - Navigate To Pose: behavior_trees/trees/nav_to_pose_recovery.md
-      - Navigate Through Poses: behavior_trees/trees/nav_through_poses_recovery.md
-      - Navigate To Pose and Pause Near Goal-Obstacle: behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.md
-      - Navigate To Pose With Consistent Replanning And If Path Becomes Invalid: behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.md
-      - Navigate on Route Graph with Recovery: behavior_trees/trees/navigate_on_route_graph_w_recovery.md
-      - Follow Dynamic Point: behavior_trees/trees/follow_point.md
-      - Odometry Calibration: behavior_trees/trees/odometry_calibration.md
-    - ROSCon Talks: about/roscon.md
+      - getting_started/behavior_trees/index.md
+      - Introduction To Nav2 Specific Nodes: getting_started/behavior_trees/overview/nav2_specific_nodes.md
+      - Detailed Behavior Tree Walkthrough: getting_started/behavior_trees/overview/detailed_behavior_tree_walkthrough.md
+      - Navigate To Pose: getting_started/behavior_trees/trees/nav_to_pose_recovery.md
+      - Navigate Through Poses: getting_started/behavior_trees/trees/nav_through_poses_recovery.md
+      - Navigate To Pose and Pause Near Goal-Obstacle: getting_started/behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.md
+      - Navigate To Pose With Consistent Replanning And If Path Becomes Invalid: getting_started/behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.md
+      - Navigate on Route Graph with Recovery: getting_started/behavior_trees/trees/navigate_on_route_graph_w_recovery.md
+      - Follow Dynamic Point: getting_started/behavior_trees/trees/follow_point.md
+      - Odometry Calibration: getting_started/behavior_trees/trees/odometry_calibration.md
+    - ROSCon Talks: getting_started/roscon.md
   - Configuration:
-    - Navigation Plugins: 
-      - plugins/index.md
+    - Navigation Plugins:
+      - configuration/plugins/index.md
     - First-Time Robot Setup Guide:
-      - setup_guides/index.md
+      - configuration/setup_guides/index.md
       - Setup Guide for Gazebo:
-        - setup_guides/gazebo.md
-        - Setting Up Transformations: setup_guides/transformation/setup_transforms.md
-        - Setting Up The URDF: setup_guides/urdf/setup_urdf.md
-        - Setting Up The SDF - Gazebo: setup_guides/sdf/setup_sdf.md
-        - Setting Up Odometry - Gazebo: setup_guides/odom/setup_odom_gz.md
-        - Smoothing Odometry using Robot Localization: setup_guides/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo: setup_guides/sensors/setup_sensors_gz.md
-        - Mapping and Localization: setup_guides/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: setup_guides/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: setup_guides/algorithm/select_algorithm.md
+        - configuration/setup_guides/gazebo.md
+        - Setting Up Transformations: configuration/setup_guides/transformation/setup_transforms.md
+        - Setting Up The URDF: configuration/setup_guides/urdf/setup_urdf.md
+        - Setting Up The SDF - Gazebo: configuration/setup_guides/sdf/setup_sdf.md
+        - Setting Up Odometry - Gazebo: configuration/setup_guides/odom/setup_odom_gz.md
+        - Smoothing Odometry using Robot Localization: configuration/setup_guides/odom/setup_robot_localization.md
+        - Setting Up Sensors - Gazebo: configuration/setup_guides/sensors/setup_sensors_gz.md
+        - Mapping and Localization: configuration/setup_guides/sensors/mapping_localization.md
+        - Setting Up the Robot's Footprint: configuration/setup_guides/footprint/setup_footprint.md
+        - Setting Up Navigation Plugins: configuration/setup_guides/algorithm/select_algorithm.md
       - Setup Guide for Gazebo Classic:
-        - setup_guides/gazebo_classic.md
-        - Setting Up Transformations: setup_guides/transformation/setup_transforms.md
-        - Setting Up The URDF: setup_guides/urdf/setup_urdf.md
-        - Setting Up Odometry - Gazebo Classic: setup_guides/odom/setup_odom_gz_classic.md
-        - Smoothing Odometry using Robot Localization: setup_guides/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo Classic: setup_guides/sensors/setup_sensors_gz_classic.md
-        - Mapping and Localization: setup_guides/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: setup_guides/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: setup_guides/algorithm/select_algorithm.md
+        - configuration/setup_guides/gazebo_classic.md
+        - Setting Up Transformations: configuration/setup_guides/transformation/setup_transforms.md
+        - Setting Up The URDF: configuration/setup_guides/urdf/setup_urdf.md
+        - Setting Up Odometry - Gazebo Classic: configuration/setup_guides/odom/setup_odom_gz_classic.md
+        - Smoothing Odometry using Robot Localization: configuration/setup_guides/odom/setup_robot_localization.md
+        - Setting Up Sensors - Gazebo Classic: configuration/setup_guides/sensors/setup_sensors_gz_classic.md
+        - Mapping and Localization: configuration/setup_guides/sensors/mapping_localization.md
+        - Setting Up the Robot's Footprint: configuration/setup_guides/footprint/setup_footprint.md
+        - Setting Up Navigation Plugins: configuration/setup_guides/algorithm/select_algorithm.md
     - Configuration Guide:
-      - configuration/index.md
+      - configuration/configuration_guide/index.md
       - Core Servers:
-        - Behavior Server: configuration/packages/configuring-behavior-server.md
-        - Behavior-Tree Navigator: configuration/packages/configuring-bt-navigator.md
+        - Behavior Server: configuration/configuration_guide/packages/configuring-behavior-server.md
+        - Behavior-Tree Navigator: configuration/configuration_guide/packages/configuring-bt-navigator.md
         - Behavior Tree XML Nodes: 
-          - configuration/packages/configuring-bt-xml.md
+          - configuration/configuration_guide/packages/configuring-bt-xml.md
           - Action Plugins:
-            - Wait: configuration/packages/bt-plugins/actions/Wait.md
-            - Spin: configuration/packages/bt-plugins/actions/Spin.md
-            - BackUp: configuration/packages/bt-plugins/actions/BackUp.md
-            - DriveOnHeading: configuration/packages/bt-plugins/actions/DriveOnHeading.md
-            - AssistedTeleop: configuration/packages/bt-plugins/actions/AssistedTeleop.md
-            - ComputePathToPose: configuration/packages/bt-plugins/actions/ComputePathToPose.md
-            - ComputeRoute: configuration/packages/bt-plugins/actions/ComputeRoute.md
-            - ComputeAndTrackRoute: configuration/packages/bt-plugins/actions/ComputeAndTrackRoute.md
-            - FollowPath: configuration/packages/bt-plugins/actions/FollowPath.md
-            - NavigateToPose: configuration/packages/bt-plugins/actions/NavigateToPose.md
-            - ClearEntireCostmap: configuration/packages/bt-plugins/actions/ClearEntireCostmap.md
-            - ClearCostmapExceptRegion: configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.md
-            - ClearCostmapAroundRobot: configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.md
-            - ClearCostmapAroundPose: configuration/packages/bt-plugins/actions/ClearCostmapAroundPose.md
-            - ReinitializeGlobalLocalization: configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.md
-            - TruncatePath: configuration/packages/bt-plugins/actions/TruncatePath.md
-            - TruncatePathLocal: configuration/packages/bt-plugins/actions/TruncatePathLocal.md
-            - PlannerSelector: configuration/packages/bt-plugins/actions/PlannerSelector.md
-            - ControllerSelector: configuration/packages/bt-plugins/actions/ControllerSelector.md
-            - SmootherSelector: configuration/packages/bt-plugins/actions/SmootherSelector.md
-            - GoalCheckerSelector: configuration/packages/bt-plugins/actions/GoalCheckerSelector.md
-            - ProgressCheckerSelector: configuration/packages/bt-plugins/actions/ProgressCheckerSelector.md
-            - PathHandlerSelector: configuration/packages/bt-plugins/actions/PathHandlerSelector.md
-            - NavigateThroughPoses: configuration/packages/bt-plugins/actions/NavigateThroughPoses.md
-            - ComputePathThroughPoses: configuration/packages/bt-plugins/actions/ComputePathThroughPoses.md
-            - ComputeCoveragePath: configuration/packages/bt-plugins/actions/ComputeCoveragePath.md
-            - CancelCoverage: configuration/packages/bt-plugins/actions/CancelCoverage.md
-            - RemovePassedGoals: configuration/packages/bt-plugins/actions/RemovePassedGoals.md
-            - RemoveInCollisionGoals: configuration/packages/bt-plugins/actions/RemoveInCollisionGoals.md
-            - CancelControl: configuration/packages/bt-plugins/actions/CancelControl.md
-            - CancelBackUp: configuration/packages/bt-plugins/actions/CancelBackUp.md
-            - CancelSpin: configuration/packages/bt-plugins/actions/CancelSpin.md
-            - CancelWait: configuration/packages/bt-plugins/actions/CancelWait.md
-            - CancelDriveOnHeading: configuration/packages/bt-plugins/actions/CancelDriveOnHeading.md
-            - CancelAssistedTeleop: configuration/packages/bt-plugins/actions/CancelAssistedTeleop.md
-            - CancelComputeAndTrackRoute: configuration/packages/bt-plugins/actions/CancelComputeAndTrackRoute.md
-            - SmoothPath: configuration/packages/bt-plugins/actions/Smooth.md
-            - GetPoseFromPath: configuration/packages/bt-plugins/actions/GetPoseFromPath.md
-            - DockRobot: configuration/packages/bt-plugins/actions/DockRobot.md
-            - UndockRobot: configuration/packages/bt-plugins/actions/UndockRobot.md
-            - ConcatenatePaths: configuration/packages/bt-plugins/actions/ConcatenatePaths.md
-            - GetCurrentPose: configuration/packages/bt-plugins/actions/GetCurrentPose.md
-            - AppendGoalPoseToGoals: configuration/packages/bt-plugins/actions/AppendGoalPoseToGoals.md
-            - ExtractRouteNodesAsGoals: configuration/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.md
-            - GetNextFewGoals: configuration/packages/bt-plugins/actions/GetNextFewGoals.md
-            - ToggleCollisionMonitor: configuration/packages/bt-plugins/actions/ToggleCollisionMonitor.md
-            - FollowObject: configuration/packages/bt-plugins/actions/FollowObject.md
-            - CancelFollowObject: configuration/packages/bt-plugins/actions/CancelFollowObject.md
+            - Wait: configuration/configuration_guide/packages/bt-plugins/actions/Wait.md
+            - Spin: configuration/configuration_guide/packages/bt-plugins/actions/Spin.md
+            - BackUp: configuration/configuration_guide/packages/bt-plugins/actions/BackUp.md
+            - DriveOnHeading: configuration/configuration_guide/packages/bt-plugins/actions/DriveOnHeading.md
+            - AssistedTeleop: configuration/configuration_guide/packages/bt-plugins/actions/AssistedTeleop.md
+            - ComputePathToPose: configuration/configuration_guide/packages/bt-plugins/actions/ComputePathToPose.md
+            - ComputeRoute: configuration/configuration_guide/packages/bt-plugins/actions/ComputeRoute.md
+            - ComputeAndTrackRoute: configuration/configuration_guide/packages/bt-plugins/actions/ComputeAndTrackRoute.md
+            - FollowPath: configuration/configuration_guide/packages/bt-plugins/actions/FollowPath.md
+            - NavigateToPose: configuration/configuration_guide/packages/bt-plugins/actions/NavigateToPose.md
+            - ClearEntireCostmap: configuration/configuration_guide/packages/bt-plugins/actions/ClearEntireCostmap.md
+            - ClearCostmapExceptRegion: configuration/configuration_guide/packages/bt-plugins/actions/ClearCostmapExceptRegion.md
+            - ClearCostmapAroundRobot: configuration/configuration_guide/packages/bt-plugins/actions/ClearCostmapAroundRobot.md
+            - ClearCostmapAroundPose: configuration/configuration_guide/packages/bt-plugins/actions/ClearCostmapAroundPose.md
+            - ReinitializeGlobalLocalization: configuration/configuration_guide/packages/bt-plugins/actions/ReinitializeGlobalLocalization.md
+            - TruncatePath: configuration/configuration_guide/packages/bt-plugins/actions/TruncatePath.md
+            - TruncatePathLocal: configuration/configuration_guide/packages/bt-plugins/actions/TruncatePathLocal.md
+            - PlannerSelector: configuration/configuration_guide/packages/bt-plugins/actions/PlannerSelector.md
+            - ControllerSelector: configuration/configuration_guide/packages/bt-plugins/actions/ControllerSelector.md
+            - SmootherSelector: configuration/configuration_guide/packages/bt-plugins/actions/SmootherSelector.md
+            - GoalCheckerSelector: configuration/configuration_guide/packages/bt-plugins/actions/GoalCheckerSelector.md
+            - ProgressCheckerSelector: configuration/configuration_guide/packages/bt-plugins/actions/ProgressCheckerSelector.md
+            - PathHandlerSelector: configuration/configuration_guide/packages/bt-plugins/actions/PathHandlerSelector.md
+            - NavigateThroughPoses: configuration/configuration_guide/packages/bt-plugins/actions/NavigateThroughPoses.md
+            - ComputePathThroughPoses: configuration/configuration_guide/packages/bt-plugins/actions/ComputePathThroughPoses.md
+            - ComputeCoveragePath: configuration/configuration_guide/packages/bt-plugins/actions/ComputeCoveragePath.md
+            - CancelCoverage: configuration/configuration_guide/packages/bt-plugins/actions/CancelCoverage.md
+            - RemovePassedGoals: configuration/configuration_guide/packages/bt-plugins/actions/RemovePassedGoals.md
+            - RemoveInCollisionGoals: configuration/configuration_guide/packages/bt-plugins/actions/RemoveInCollisionGoals.md
+            - CancelControl: configuration/configuration_guide/packages/bt-plugins/actions/CancelControl.md
+            - CancelBackUp: configuration/configuration_guide/packages/bt-plugins/actions/CancelBackUp.md
+            - CancelSpin: configuration/configuration_guide/packages/bt-plugins/actions/CancelSpin.md
+            - CancelWait: configuration/configuration_guide/packages/bt-plugins/actions/CancelWait.md
+            - CancelDriveOnHeading: configuration/configuration_guide/packages/bt-plugins/actions/CancelDriveOnHeading.md
+            - CancelAssistedTeleop: configuration/configuration_guide/packages/bt-plugins/actions/CancelAssistedTeleop.md
+            - CancelComputeAndTrackRoute: configuration/configuration_guide/packages/bt-plugins/actions/CancelComputeAndTrackRoute.md
+            - SmoothPath: configuration/configuration_guide/packages/bt-plugins/actions/Smooth.md
+            - GetPoseFromPath: configuration/configuration_guide/packages/bt-plugins/actions/GetPoseFromPath.md
+            - DockRobot: configuration/configuration_guide/packages/bt-plugins/actions/DockRobot.md
+            - UndockRobot: configuration/configuration_guide/packages/bt-plugins/actions/UndockRobot.md
+            - ConcatenatePaths: configuration/configuration_guide/packages/bt-plugins/actions/ConcatenatePaths.md
+            - GetCurrentPose: configuration/configuration_guide/packages/bt-plugins/actions/GetCurrentPose.md
+            - AppendGoalPoseToGoals: configuration/configuration_guide/packages/bt-plugins/actions/AppendGoalPoseToGoals.md
+            - ExtractRouteNodesAsGoals: configuration/configuration_guide/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.md
+            - GetNextFewGoals: configuration/configuration_guide/packages/bt-plugins/actions/GetNextFewGoals.md
+            - ToggleCollisionMonitor: configuration/configuration_guide/packages/bt-plugins/actions/ToggleCollisionMonitor.md
+            - FollowObject: configuration/configuration_guide/packages/bt-plugins/actions/FollowObject.md
+            - CancelFollowObject: configuration/configuration_guide/packages/bt-plugins/actions/CancelFollowObject.md
           - Condition Plugins:
-            - GoalReached: configuration/packages/bt-plugins/conditions/GoalReached.md
-            - TransformAvailable: configuration/packages/bt-plugins/conditions/TransformAvailable.md
-            - DistanceTraveled: configuration/packages/bt-plugins/conditions/DistanceTraveled.md
-            - GoalUpdated: configuration/packages/bt-plugins/conditions/GoalUpdated.md
-            - GlobalUpdatedGoal: configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.md
-            - InitialPoseReceived: configuration/packages/bt-plugins/conditions/InitialPoseReceived.md
-            - IsGoalNearby: configuration/packages/bt-plugins/conditions/IsGoalNearby.md
-            - IsStuck: configuration/packages/bt-plugins/conditions/IsStuck.md
-            - IsStopped: configuration/packages/bt-plugins/conditions/IsStopped.md
-            - TimeExpired: configuration/packages/bt-plugins/conditions/TimeExpired.md
-            - IsBatteryLow: configuration/packages/bt-plugins/conditions/IsBatteryLow.md
-            - IsPathValid: configuration/packages/bt-plugins/conditions/IsPathValid.md
-            - IsPoseOccupied: configuration/packages/bt-plugins/conditions/IsPoseOccupied.md
-            - IsWithinPathTrackingBounds: configuration/packages/bt-plugins/conditions/IsWithinPathTrackingBounds.md
-            - PathExpiringTimer: configuration/packages/bt-plugins/conditions/PathExpiringTimer.md
-            - AreErrorCodesPresent: configuration/packages/bt-plugins/conditions/AreErrorCodesPresent.md
-            - WouldAControllerRecoveryHelp: configuration/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.md
-            - WouldAPlannerRecoveryHelp: configuration/packages/bt-plugins/conditions/WouldAPlannerRecoveryHelp.md
-            - WouldASmootherRecoveryHelp: configuration/packages/bt-plugins/conditions/WouldASmootherRecoveryHelp.md
-            - WouldARouteRecoveryHelp: configuration/packages/bt-plugins/conditions/WouldARouteRecoveryHelp.md
-            - IsBatteryCharging: configuration/packages/bt-plugins/conditions/IsBatteryCharging.md
-            - ArePosesNear: configuration/packages/bt-plugins/conditions/ArePosesNear.md
+            - GoalReached: configuration/configuration_guide/packages/bt-plugins/conditions/GoalReached.md
+            - TransformAvailable: configuration/configuration_guide/packages/bt-plugins/conditions/TransformAvailable.md
+            - DistanceTraveled: configuration/configuration_guide/packages/bt-plugins/conditions/DistanceTraveled.md
+            - GoalUpdated: configuration/configuration_guide/packages/bt-plugins/conditions/GoalUpdated.md
+            - GlobalUpdatedGoal: configuration/configuration_guide/packages/bt-plugins/conditions/GlobalUpdatedGoal.md
+            - InitialPoseReceived: configuration/configuration_guide/packages/bt-plugins/conditions/InitialPoseReceived.md
+            - IsGoalNearby: configuration/configuration_guide/packages/bt-plugins/conditions/IsGoalNearby.md
+            - IsStuck: configuration/configuration_guide/packages/bt-plugins/conditions/IsStuck.md
+            - IsStopped: configuration/configuration_guide/packages/bt-plugins/conditions/IsStopped.md
+            - TimeExpired: configuration/configuration_guide/packages/bt-plugins/conditions/TimeExpired.md
+            - IsBatteryLow: configuration/configuration_guide/packages/bt-plugins/conditions/IsBatteryLow.md
+            - IsPathValid: configuration/configuration_guide/packages/bt-plugins/conditions/IsPathValid.md
+            - IsPoseOccupied: configuration/configuration_guide/packages/bt-plugins/conditions/IsPoseOccupied.md
+            - IsWithinPathTrackingBounds: configuration/configuration_guide/packages/bt-plugins/conditions/IsWithinPathTrackingBounds.md
+            - PathExpiringTimer: configuration/configuration_guide/packages/bt-plugins/conditions/PathExpiringTimer.md
+            - AreErrorCodesPresent: configuration/configuration_guide/packages/bt-plugins/conditions/AreErrorCodesPresent.md
+            - WouldAControllerRecoveryHelp: configuration/configuration_guide/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.md
+            - WouldAPlannerRecoveryHelp: configuration/configuration_guide/packages/bt-plugins/conditions/WouldAPlannerRecoveryHelp.md
+            - WouldASmootherRecoveryHelp: configuration/configuration_guide/packages/bt-plugins/conditions/WouldASmootherRecoveryHelp.md
+            - WouldARouteRecoveryHelp: configuration/configuration_guide/packages/bt-plugins/conditions/WouldARouteRecoveryHelp.md
+            - IsBatteryCharging: configuration/configuration_guide/packages/bt-plugins/conditions/IsBatteryCharging.md
+            - ArePosesNear: configuration/configuration_guide/packages/bt-plugins/conditions/ArePosesNear.md
           - Control Plugins:
-            - PipelineSequence: configuration/packages/bt-plugins/controls/PipelineSequence.md
-            - RoundRobin: configuration/packages/bt-plugins/controls/RoundRobin.md
-            - RecoveryNode: configuration/packages/bt-plugins/controls/RecoveryNode.md
-            - NonblockingSequence: configuration/packages/bt-plugins/controls/NonblockingSequence.md
-            - PersistentSequence: configuration/packages/bt-plugins/controls/PersistentSequence.md
-            - PauseResumeController: configuration/packages/bt-plugins/controls/PauseResumeController.md
+            - PipelineSequence: configuration/configuration_guide/packages/bt-plugins/controls/PipelineSequence.md
+            - RoundRobin: configuration/configuration_guide/packages/bt-plugins/controls/RoundRobin.md
+            - RecoveryNode: configuration/configuration_guide/packages/bt-plugins/controls/RecoveryNode.md
+            - NonblockingSequence: configuration/configuration_guide/packages/bt-plugins/controls/NonblockingSequence.md
+            - PersistentSequence: configuration/configuration_guide/packages/bt-plugins/controls/PersistentSequence.md
+            - PauseResumeController: configuration/configuration_guide/packages/bt-plugins/controls/PauseResumeController.md
           - Decorator Plugins:
-            - RateController: configuration/packages/bt-plugins/decorators/RateController.md
-            - DistanceController: configuration/packages/bt-plugins/decorators/DistanceController.md
-            - SpeedController: configuration/packages/bt-plugins/decorators/SpeedController.md
-            - GoalUpdater: configuration/packages/bt-plugins/decorators/GoalUpdater.md
-            - PathLongerOnApproach: configuration/packages/bt-plugins/decorators/PathLongerOnApproach.md
-            - SingleTrigger: configuration/packages/bt-plugins/decorators/SingleTrigger.md
-            - GoalUpdatedController: configuration/packages/bt-plugins/decorators/GoalUpdatedController.md
+            - RateController: configuration/configuration_guide/packages/bt-plugins/decorators/RateController.md
+            - DistanceController: configuration/configuration_guide/packages/bt-plugins/decorators/DistanceController.md
+            - SpeedController: configuration/configuration_guide/packages/bt-plugins/decorators/SpeedController.md
+            - GoalUpdater: configuration/configuration_guide/packages/bt-plugins/decorators/GoalUpdater.md
+            - PathLongerOnApproach: configuration/configuration_guide/packages/bt-plugins/decorators/PathLongerOnApproach.md
+            - SingleTrigger: configuration/configuration_guide/packages/bt-plugins/decorators/SingleTrigger.md
+            - GoalUpdatedController: configuration/configuration_guide/packages/bt-plugins/decorators/GoalUpdatedController.md
         - Collision Monitor:
-          - configuration/packages/configuring-collision-monitor.md
-          - Collision Monitor Node: configuration/packages/collision_monitor/configuring-collision-monitor-node.md
-          - Collision Detector Node: configuration/packages/collision_monitor/configuring-collision-detector-node.md
+          - configuration/configuration_guide/packages/configuring-collision-monitor.md
+          - Collision Monitor Node: configuration/configuration_guide/packages/collision_monitor/configuring-collision-monitor-node.md
+          - Collision Detector Node: configuration/configuration_guide/packages/collision_monitor/configuring-collision-detector-node.md
         - Controller Server: 
-          - configuration/packages/configuring-controller-server.md
+          - configuration/configuration_guide/packages/configuring-controller-server.md
           - Provided Plugins:
-            - SimpleProgressChecker: configuration/packages/nav2_controller-plugins/simple_progress_checker.md
-            - PoseProgressChecker: configuration/packages/nav2_controller-plugins/pose_progress_checker.md
-            - AxisGoalChecker: configuration/packages/nav2_controller-plugins/axis_goal_checker.md
-            - SimpleGoalChecker: configuration/packages/nav2_controller-plugins/simple_goal_checker.md
-            - StoppedGoalChecker: configuration/packages/nav2_controller-plugins/stopped_goal_checker.md
-            - PositionGoalChecker: configuration/packages/nav2_controller-plugins/position_goal_checker.md
-            - FeasiblePathHandler: configuration/packages/nav2_controller-plugins/feasible_path_handler.md
+            - SimpleProgressChecker: configuration/configuration_guide/packages/nav2_controller-plugins/simple_progress_checker.md
+            - PoseProgressChecker: configuration/configuration_guide/packages/nav2_controller-plugins/pose_progress_checker.md
+            - AxisGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/axis_goal_checker.md
+            - SimpleGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/simple_goal_checker.md
+            - StoppedGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/stopped_goal_checker.md
+            - PositionGoalChecker: configuration/configuration_guide/packages/nav2_controller-plugins/position_goal_checker.md
+            - FeasiblePathHandler: configuration/configuration_guide/packages/nav2_controller-plugins/feasible_path_handler.md
         - Costmap 2D:
-          - configuration/packages/configuring-costmaps.md
+          - configuration/configuration_guide/packages/configuring-costmaps.md
           - Plugin Parameters:
-            - Static Layer Parameters: configuration/packages/costmap-plugins/static.md
-            - Inflation Layer Parameters: configuration/packages/costmap-plugins/inflation.md
-            - Obstacle Layer Parameters: configuration/packages/costmap-plugins/obstacle.md
-            - Voxel Layer Parameters: configuration/packages/costmap-plugins/voxel.md
-            - Range Sensor Parameters: configuration/packages/costmap-plugins/range.md
-            - Denoise Layer Parameters: configuration/packages/costmap-plugins/denoise.md
-            - Plugin Container Layer Parameters: configuration/packages/costmap-plugins/plugin_container.md
+            - Static Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/static.md
+            - Inflation Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/inflation.md
+            - Obstacle Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/obstacle.md
+            - Voxel Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/voxel.md
+            - Range Sensor Parameters: configuration/configuration_guide/packages/costmap-plugins/range.md
+            - Denoise Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/denoise.md
+            - Plugin Container Layer Parameters: configuration/configuration_guide/packages/costmap-plugins/plugin_container.md
           - Costmap Filters Parameters:
-            - Keepout Filter Parameters: configuration/packages/costmap-plugins/keepout_filter.md
-            - Speed Filter Parameters: configuration/packages/costmap-plugins/speed_filter.md
-            - Binary Filter Parameters: configuration/packages/costmap-plugins/binary_filter.md
-        - Docking Server: configuration/packages/configuring-docking-server.md
-        - Lifecycle Manager: configuration/packages/configuring-lifecycle.md
+            - Keepout Filter Parameters: configuration/configuration_guide/packages/costmap-plugins/keepout_filter.md
+            - Speed Filter Parameters: configuration/configuration_guide/packages/costmap-plugins/speed_filter.md
+            - Binary Filter Parameters: configuration/configuration_guide/packages/costmap-plugins/binary_filter.md
+        - Docking Server: configuration/configuration_guide/packages/configuring-docking-server.md
+        - Lifecycle Manager: configuration/configuration_guide/packages/configuring-lifecycle.md
         - Map Server:
-          - configuration/packages/configuring-map-server.md
-          - Map Server: configuration/packages/map_server/configuring-map-server.md
-          - Map Saver: configuration/packages/map_server/configuring-map-saver.md
-          - Costmap Filter Info Server: configuration/packages/map_server/configuring-costmap-filter-info-server.md
-          - Vector Object Server: configuration/packages/map_server/configuring-vector-object-server.md
-        - Planner Server: configuration/packages/configuring-planner-server.md
-        - Route Server: configuration/packages/configuring-route-server.md
-        - Smoother Server: configuration/packages/configuring-smoother-server.md
-        - Velocity Smoother: configuration/packages/configuring-velocity-smoother.md
+          - configuration/configuration_guide/packages/configuring-map-server.md
+          - Map Server: configuration/configuration_guide/packages/map_server/configuring-map-server.md
+          - Map Saver: configuration/configuration_guide/packages/map_server/configuring-map-saver.md
+          - Costmap Filter Info Server: configuration/configuration_guide/packages/map_server/configuring-costmap-filter-info-server.md
+          - Vector Object Server: configuration/configuration_guide/packages/map_server/configuring-vector-object-server.md
+        - Planner Server: configuration/configuration_guide/packages/configuring-planner-server.md
+        - Route Server: configuration/configuration_guide/packages/configuring-route-server.md
+        - Smoother Server: configuration/configuration_guide/packages/configuring-smoother-server.md
+        - Velocity Smoother: configuration/configuration_guide/packages/configuring-velocity-smoother.md
         - Waypoint Follower:
-          - configuration/packages/configuring-waypoint-follower.md
+          - configuration/configuration_guide/packages/configuring-waypoint-follower.md
           - Provided Plugins:
-            - WaitAtWaypoint: configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.md
-            - PhotoAtWaypoint: configuration/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.md
-            - InputAtWaypoint: configuration/packages/nav2_waypoint_follower-plugins/input_at_waypoint.md
+            - WaitAtWaypoint: configuration/configuration_guide/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.md
+            - PhotoAtWaypoint: configuration/configuration_guide/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.md
+            - InputAtWaypoint: configuration/configuration_guide/packages/nav2_waypoint_follower-plugins/input_at_waypoint.md
       - Planner Plugins:
-        - NavFn Planner: configuration/packages/configuring-navfn.md
+        - NavFn Planner: configuration/configuration_guide/packages/configuring-navfn.md
         - Smac Planner:
-          - configuration/packages/configuring-smac-planner.md
-          - Smac 2D Planner: configuration/packages/smac/configuring-smac-2d.md
-          - Smac Hybrid-A* Planner: configuration/packages/smac/configuring-smac-hybrid.md
-          - Smac State Lattice Planner: configuration/packages/smac/configuring-smac-lattice.md
-        - Theta Star Planner: configuration/packages/configuring-thetastar.md
+          - configuration/configuration_guide/packages/configuring-smac-planner.md
+          - Smac 2D Planner: configuration/configuration_guide/packages/smac/configuring-smac-2d.md
+          - Smac Hybrid-A* Planner: configuration/configuration_guide/packages/smac/configuring-smac-hybrid.md
+          - Smac State Lattice Planner: configuration/configuration_guide/packages/smac/configuring-smac-lattice.md
+        - Theta Star Planner: configuration/configuration_guide/packages/configuring-thetastar.md
       - Controller Plugins:
         - DWB Controller:
-          - configuration/packages/configuring-dwb-controller.md
+          - configuration/configuration_guide/packages/configuring-dwb-controller.md
           - Controller:
-            - DWB Controller: configuration/packages/dwb-params/controller.md
-            - XYTheta Iterator: configuration/packages/dwb-params/iterator.md
-            - Kinematic Parameters: configuration/packages/dwb-params/kinematic.md
-            - Publisher: configuration/packages/dwb-params/visualization.md
+            - DWB Controller: configuration/configuration_guide/packages/dwb-params/controller.md
+            - XYTheta Iterator: configuration/configuration_guide/packages/dwb-params/iterator.md
+            - Kinematic Parameters: configuration/configuration_guide/packages/dwb-params/kinematic.md
+            - Publisher: configuration/configuration_guide/packages/dwb-params/visualization.md
           - Plugins:
-            - LimitedAccelGenerator: configuration/packages/dwb-plugins/limited_accel_generator.md
-            - StandardTrajectoryGenerator: configuration/packages/dwb-plugins/standard_traj_generator.md
+            - LimitedAccelGenerator: configuration/configuration_guide/packages/dwb-plugins/limited_accel_generator.md
+            - StandardTrajectoryGenerator: configuration/configuration_guide/packages/dwb-plugins/standard_traj_generator.md
           - Trajectory Critics:
-            - BaseObstacleCritic: configuration/packages/trajectory_critics/base_obstacle.md
-            - GoalAlignCritic: configuration/packages/trajectory_critics/goal_align.md
-            - GoalDistCritic: configuration/packages/trajectory_critics/goal_dist.md
-            - ObstacleFootprintCritic: configuration/packages/trajectory_critics/obstacle_footprint.md
-            - OscillationCritic: configuration/packages/trajectory_critics/oscillation.md
-            - PathAlignCritic: configuration/packages/trajectory_critics/path_align.md
-            - PathDistCritic: configuration/packages/trajectory_critics/path_dist.md
-            - PreferForwardCritic: configuration/packages/trajectory_critics/prefer_forward.md
-            - RotateToGoalCritic: configuration/packages/trajectory_critics/rotate_to_goal.md
-            - TwirlingCritic: configuration/packages/trajectory_critics/twirling.md
-        - Graceful Controller: configuration/packages/configuring-graceful-motion-controller.md
-        - Model Predictive Path Integral Controller: configuration/packages/configuring-mppic.md
-        - Regulated Pure Pursuit: configuration/packages/configuring-regulated-pp.md
-        - Rotation Shim Controller: configuration/packages/configuring-rotation-shim-controller.md
+            - BaseObstacleCritic: configuration/configuration_guide/packages/trajectory_critics/base_obstacle.md
+            - GoalAlignCritic: configuration/configuration_guide/packages/trajectory_critics/goal_align.md
+            - GoalDistCritic: configuration/configuration_guide/packages/trajectory_critics/goal_dist.md
+            - ObstacleFootprintCritic: configuration/configuration_guide/packages/trajectory_critics/obstacle_footprint.md
+            - OscillationCritic: configuration/configuration_guide/packages/trajectory_critics/oscillation.md
+            - PathAlignCritic: configuration/configuration_guide/packages/trajectory_critics/path_align.md
+            - PathDistCritic: configuration/configuration_guide/packages/trajectory_critics/path_dist.md
+            - PreferForwardCritic: configuration/configuration_guide/packages/trajectory_critics/prefer_forward.md
+            - RotateToGoalCritic: configuration/configuration_guide/packages/trajectory_critics/rotate_to_goal.md
+            - TwirlingCritic: configuration/configuration_guide/packages/trajectory_critics/twirling.md
+        - Graceful Controller: configuration/configuration_guide/packages/configuring-graceful-motion-controller.md
+        - Model Predictive Path Integral Controller: configuration/configuration_guide/packages/configuring-mppic.md
+        - Regulated Pure Pursuit: configuration/configuration_guide/packages/configuring-regulated-pp.md
+        - Rotation Shim Controller: configuration/configuration_guide/packages/configuring-rotation-shim-controller.md
       - Smoother Plugins:
-        - Constrained Smoother: configuration/packages/configuring-constrained-smoother.md
-        - Savitzky-Golay Smoother: configuration/packages/configuring-savitzky-golay-smoother.md
-        - Simple Smoother: configuration/packages/configuring-simple-smoother.md
+        - Constrained Smoother: configuration/configuration_guide/packages/configuring-constrained-smoother.md
+        - Savitzky-Golay Smoother: configuration/configuration_guide/packages/configuring-savitzky-golay-smoother.md
+        - Simple Smoother: configuration/configuration_guide/packages/configuring-simple-smoother.md
       - Others:
-        - AMCL: configuration/packages/configuring-amcl.md
-        - Coverage Server: configuration/packages/configuring-coverage-server.md
-        - Following Server: configuration/packages/configuring-following-server.md
-        - Loopback Simulator: configuration/packages/configuring-loopback-sim.md
+        - AMCL: configuration/configuration_guide/packages/configuring-amcl.md
+        - Coverage Server: configuration/configuration_guide/packages/configuring-coverage-server.md
+        - Following Server: configuration/configuration_guide/packages/configuring-following-server.md
+        - Loopback Simulator: configuration/configuration_guide/packages/configuring-loopback-sim.md
     - Tuning Guide: 
-      - tuning/index.md
+      - configuration/tuning/index.md
     - Simple Commander API: 
-      - commander_api/index.md
+      - configuration/commander_api/index.md
     - Migration Guides:
-      - migration/index.md
-      - Dashing to Eloquent: migration/Dashing.md
-      - Eloquent to Foxy: migration/Eloquent.md
-      - Foxy to Galactic: migration/Foxy.md
-      - Galactic to Humble: migration/Galactic.md
-      - Humble to Iron: migration/Humble.md
-      - Iron to Jazzy: migration/Iron.md
-      - Jazzy to Kilted: migration/Jazzy.md
-      - Kilted to L-turtle: migration/Kilted.md
+      - configuration/migration/index.md
+      - Dashing to Eloquent: configuration/migration/Dashing.md
+      - Eloquent to Foxy: configuration/migration/Eloquent.md
+      - Foxy to Galactic: configuration/migration/Foxy.md
+      - Galactic to Humble: configuration/migration/Galactic.md
+      - Humble to Iron: configuration/migration/Humble.md
+      - Iron to Jazzy: configuration/migration/Iron.md
+      - Jazzy to Kilted: configuration/migration/Jazzy.md
+      - Kilted to L-turtle: configuration/migration/Kilted.md
     - API Docs: https://api.nav2.org/
   - Tutorials: 
     - Plugin Tutorials:
-      - plugin_tutorials/index.md
-      - Writing a New Behavior Plugin: plugin_tutorials/docs/writing_new_behavior_plugin.md
-      - Writing a New Behavior Tree Plugin: plugin_tutorials/docs/writing_new_bt_plugin.md
-      - Writing a New Controller Plugin: plugin_tutorials/docs/writing_new_nav2controller_plugin.md
-      - Writing a New Costmap2D Plugin: plugin_tutorials/docs/writing_new_costmap2d_plugin.md
-      - Writing a New Navigator Plugin: plugin_tutorials/docs/writing_new_navigator_plugin.md
-      - Writing a New Planner Plugin: plugin_tutorials/docs/writing_new_nav2planner_plugin.md
+      - tutorials/plugin_tutorials/index.md
+      - Writing a New Behavior Plugin: tutorials/plugin_tutorials/docs/writing_new_behavior_plugin.md
+      - Writing a New Behavior Tree Plugin: tutorials/plugin_tutorials/docs/writing_new_bt_plugin.md
+      - Writing a New Controller Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2controller_plugin.md
+      - Writing a New Costmap2D Plugin: tutorials/plugin_tutorials/docs/writing_new_costmap2d_plugin.md
+      - Writing a New Navigator Plugin: tutorials/plugin_tutorials/docs/writing_new_navigator_plugin.md
+      - Writing a New Planner Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2planner_plugin.md
     - General Tutorials:
-      - tutorials/index.md
-      - Navigating with a Physical Turtlebot 3: tutorials/docs/navigation2_on_real_turtlebot3.md
-      - Navigating while Mapping (SLAM): tutorials/docs/navigation2_with_slam.md
-      - Using an External Costmap Plugin (STVL): tutorials/docs/navigation2_with_stvl.md
-      - Navigating using GPS Localization: tutorials/docs/navigation2_with_gps.md
+      - tutorials/general_tutorials/index.md
+      - Navigating with a Physical Turtlebot 3: tutorials/general_tutorials/docs/navigation2_on_real_turtlebot3.md
+      - Navigating while Mapping (SLAM): tutorials/general_tutorials/docs/navigation2_with_slam.md
+      - Using an External Costmap Plugin (STVL): tutorials/general_tutorials/docs/navigation2_with_stvl.md
+      - Navigating using GPS Localization: tutorials/general_tutorials/docs/navigation2_with_gps.md
       - Lidar-Free, Vision-Based Navigation:
-        - tutorials/docs/using_isaac_perceptor.md
-        - Rebuilding TensorRT Engine: tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.md
-      - Navigating with Semantic Segmentation: tutorials/docs/navigation2_with_semantic_segmentation.md
+        - tutorials/general_tutorials/docs/using_isaac_perceptor.md
+        - Rebuilding TensorRT Engine: tutorials/general_tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.md
+      - Navigating with Semantic Segmentation: tutorials/general_tutorials/docs/navigation2_with_semantic_segmentation.md
       - Groot Tutorials:
-        - tutorials/docs/using_groot.md
-        - Groot - Interacting with Behavior Trees: tutorials/docs/groot.md
-        - Groot2 - Interacting with Behavior Trees: tutorials/docs/groot2.md
-      - Using VIO to Augment Robot Odometry: tutorials/docs/integrating_vio.md
-      - Dynamic Object Following: tutorials/docs/navigation2_dynamic_point_following.md
-      - Navigating with Keepout Zones: tutorials/docs/navigation2_with_keepout_filter.md
-      - Navigating with Speed Limits: tutorials/docs/navigation2_with_speed_filter.md
-      - Using Docking Server: tutorials/docs/using_docking.md
-      - Using Rotation Shim Controller: tutorials/docs/using_shim_controller.md
-      - Adding a Smoother to a BT: tutorials/docs/adding_smoother.md
-      - Using Collision Monitor: tutorials/docs/using_collision_monitor.md
-      - Adding a New Nav2 Task Server: tutorials/docs/adding_a_nav2_task_server.md
-      - Filtering of Noise-Induced Obstacles: tutorials/docs/filtering_of_noise-induced_obstacles.md
-      - Camera Calibration: tutorials/docs/camera_calibration.md
-      - Get Backtrace in ROS 2 / Nav2: tutorials/docs/get_backtrace.md
-      - Profiling in ROS 2 / Nav2: tutorials/docs/get_profile.md
-      - Docker for Development - Zero to Hero: tutorials/docs/docker_dev.md
+        - tutorials/general_tutorials/docs/using_groot.md
+        - Groot - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot.md
+        - Groot2 - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot2.md
+      - Using VIO to Augment Robot Odometry: tutorials/general_tutorials/docs/integrating_vio.md
+      - Dynamic Object Following: tutorials/general_tutorials/docs/navigation2_dynamic_point_following.md
+      - Navigating with Keepout Zones: tutorials/general_tutorials/docs/navigation2_with_keepout_filter.md
+      - Navigating with Speed Limits: tutorials/general_tutorials/docs/navigation2_with_speed_filter.md
+      - Using Docking Server: tutorials/general_tutorials/docs/using_docking.md
+      - Using Rotation Shim Controller: tutorials/general_tutorials/docs/using_shim_controller.md
+      - Adding a Smoother to a BT: tutorials/general_tutorials/docs/adding_smoother.md
+      - Using Collision Monitor: tutorials/general_tutorials/docs/using_collision_monitor.md
+      - Adding a New Nav2 Task Server: tutorials/general_tutorials/docs/adding_a_nav2_task_server.md
+      - Filtering of Noise-Induced Obstacles: tutorials/general_tutorials/docs/filtering_of_noise-induced_obstacles.md
+      - Camera Calibration: tutorials/general_tutorials/docs/camera_calibration.md
+      - Get Backtrace in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_backtrace.md
+      - Profiling in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_profile.md
+      - Docker for Development - Zero to Hero: tutorials/general_tutorials/docs/docker_dev.md
       - Route Server Tools:
-        - tutorials/docs/route_server_tools.md
-        - Using the Nav2 Route Tool: tutorials/docs/route_server_tools/navigation2_route_tool.md
-        - Route Graph Generation LIF Editor: tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md
-        - Route Graph Generation: tutorials/docs/route_server_tools/route_graph_generation.md
-        - SWAGGER Route Graph Generation: tutorials/docs/route_server_tools/swagger_generation.md
-      - Navigating with Vector Objects: tutorials/docs/navigation2_with_vector_objects.md
-      - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/docs/roscon_uk_2025_state_estimation.md
-      - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/docs/using_3laws_supervisor.md
+        - tutorials/general_tutorials/docs/route_server_tools.md
+        - Using the Nav2 Route Tool: tutorials/general_tutorials/docs/route_server_tools/navigation2_route_tool.md
+        - Route Graph Generation LIF Editor: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md
+        - Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation.md
+        - SWAGGER Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/swagger_generation.md
+      - Navigating with Vector Objects: tutorials/general_tutorials/docs/navigation2_with_vector_objects.md
+      - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/general_tutorials/docs/roscon_uk_2025_state_estimation.md
+      - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
   - Community:
-    - Getting Involved: 
-      - development_guides/involvement_docs/index.md
+    - Getting Involved:
+      - community/involvement_docs/index.md
     - Maintainer Docs:
-      - maintainer_docs/index.md
-      - ROS Distribution Release Process: maintainer_docs/distribution_release.md
-      - ROS Distribution Sync Process: maintainer_docs/distribution_syncs.md
-    - Roadmaps: roadmap/roadmap.md  
+      - community/maintainer_docs/index.md
+      - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
+      - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
+    - Roadmaps: community/roadmap/roadmap.md  
   - About and Contact:
     - about/index.md
     - Robots Using: about/robots.md
     - Related Projects: about/related_projects.md
-    - Citations: citations.md
-
-  # - Development Guides:
-  #   - development_guides/index.md
+    - Citations: about/citations.md
