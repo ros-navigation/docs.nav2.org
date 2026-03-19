@@ -86,7 +86,13 @@ not_in_nav: |
   2021summerOfCode
 
 nav:
-  - Home: index.md
+  - Home: 
+    - index.md
+    - Getting Started: getting_started/index.md
+    - Configuration: configuration/index.md
+    - Tutorials: tutorials/index.md
+    - Community: community/index.md
+    - About and Contact: about/index.md
   - Getting Started:
     - getting_started/index.md
     - Quickstart: getting_started/quickstart.md
