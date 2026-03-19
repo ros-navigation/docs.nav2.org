@@ -860,3 +860,11 @@ See:
 
 - :ref:`configuring_collision_monitor_node`
 - :ref:`configuring_collision_detector_node`
+
+MPPI per-critic trajectory cost visualization
+---------------------------------------------
+
+`PR #6036 <https://github.com/ros-navigation/navigation2/pull/6036>`_ enhances MPPI trajectory visualization with per-critic cost coloring.
+When ``visualize`` is enabled, candidate trajectories are now rendered as cost-colored lines using a green-to-yellow-to-red gradient, with collision trajectories shown in magenta.
+A new ``critic_index_to_visualize`` parameter (default ``0``) selects which critic's costs to display: ``0`` shows the total cost across all critics, while ``1..N`` selects an individual critic by index.
+The ``publish_critics_stats`` parameter has been removed; critic statistics (``~/critics_stats`` topic) are now published automatically when ``visualize`` is enabled.

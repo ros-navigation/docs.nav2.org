@@ -1212,6 +1212,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-debounce-parameters">Collision Monitor debounce parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-per-critic-trajectory-cost-visualization">MPPI per-critic trajectory cost visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -2074,6 +2075,13 @@ In practice, values greater than <code class="docutils literal notranslate"><spa
 <li><p><a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-monitor-node.html#configuring-collision-monitor-node"><span class="std std-ref">Collision Monitor Node</span></a></p></li>
 <li><p><a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-detector-node.html#configuring-collision-detector-node"><span class="std std-ref">Collision Detector Node</span></a></p></li>
 </ul>
+</div>
+<div class="section" id="mppi-per-critic-trajectory-cost-visualization">
+<h2>MPPI per-critic trajectory cost visualization<a class="headerlink" href="#mppi-per-critic-trajectory-cost-visualization" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6036">PR #6036</a> enhances MPPI trajectory visualization with per-critic cost coloring.
+When <code class="docutils literal notranslate"><span class="pre">visualize</span></code> is enabled, candidate trajectories are now rendered as cost-colored lines using a green-to-yellow-to-red gradient, with collision trajectories shown in magenta.
+A new <code class="docutils literal notranslate"><span class="pre">critic_index_to_visualize</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">0</span></code>) selects which critic’s costs to display: <code class="docutils literal notranslate"><span class="pre">0</span></code> shows the total cost across all critics, while <code class="docutils literal notranslate"><span class="pre">1..N</span></code> selects an individual critic by index.
+The <code class="docutils literal notranslate"><span class="pre">publish_critics_stats</span></code> parameter has been removed; critic statistics (<code class="docutils literal notranslate"><span class="pre">~/critics_stats</span></code> topic) are now published automatically when <code class="docutils literal notranslate"><span class="pre">visualize</span></code> is enabled.</p>
 </div>
 </div>
 

@@ -1212,6 +1212,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#refactored-inflation-layer-powered-by-openmp">Refactored Inflation layer powered by OpenMP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#collision-monitor-debounce-parameters">Collision Monitor debounce parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#mppi-per-critic-trajectory-cost-visualization">MPPI per-critic trajectory cost visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -1728,12 +1729,32 @@ This process is then repeated a number of times and returns a converged solution
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).</p>
+<dt>Description</dt><dd><p>Whether to publish debugging trajectories for visualization and critic statistics. When enabled, candidate trajectories are colored by cost (green to red gradient, magenta for collisions) and a <code class="docutils literal notranslate"><span class="pre">nav2_msgs::msg::CriticsStats</span></code> message is published on the <code class="docutils literal notranslate"><span class="pre">~/critics_stats</span></code> topic. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">publish_optimal_trajectory</dt>
+<dt class="field-even">critic_index_to_visualize</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Selects which critic to visualize the color-scheme of when <code class="docutils literal notranslate"><span class="pre">visualize</span></code> is true publishing Marker messages for visualization in rviz. <code class="docutils literal notranslate"><span class="pre">0</span></code> shows the total cost across all critics, <code class="docutils literal notranslate"><span class="pre">1..N</span></code> selects an individual critic by index (in the order listed in the <code class="docutils literal notranslate"><span class="pre">critics</span></code> parameter).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">publish_optimal_trajectory</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1752,8 +1773,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">retry_attempt_limit</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">retry_attempt_limit</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1772,8 +1793,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">reset_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">reset_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1792,27 +1813,7 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">regenerate_noises</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">publish_critics_stats</dt>
+<dt class="field-even">regenerate_noises</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
@@ -1828,7 +1829,7 @@ This process is then repeated a number of times and returns a converged solution
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Whether to publish statistics about each critic’s performance. When enabled, publishes a <code class="docutils literal notranslate"><span class="pre">nav2_msgs::msg::CriticsStats</span></code> message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.</p>
+<dt>Description</dt><dd><p>Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.</p>
 </dd>
 </dl>
 </dd>
@@ -3165,6 +3166,7 @@ Dynamic and kinematic constraints are not required to be checked as trajectories
 <span class="w">      </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span>
 <span class="w">      </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DiffDrive&quot;</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">critic_index_to_visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">      </span><span class="nt">reset_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"> </span><span class="c1"># (only in Humble)</span>
 <span class="w">      </span><span class="nt">regenerate_noises</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">TrajectoryVisualizer</span><span class="p">:</span>
