@@ -10,9 +10,9 @@ Checks the distance to the goal, if the distance to goal is less than the pre-de
 
 ### **`goal_reached_tol`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   Tolerance of accepting pose as the goal (m).
@@ -31,9 +31,9 @@ bt_navigator:
 
 ### **`goal`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | N/A       |
+| Type                              | Default |
+|-----------------------------------|---------|
+| `geometry_msgs::msg::PoseStamped` | N/A     |
 
 Description
 :   Destination to check. Takes in a blackboard variable, e.g. “{goal}”.
@@ -41,9 +41,9 @@ Description
 
 ### **`robot_base_frame`**
 
-| Type   | Default     |
-|--------|-------------|
-| string | “base_link” |
+| Type     | Default     |
+|----------|-------------|
+| `string` | “base_link” |
 
 Description
 :   Robot base frame.

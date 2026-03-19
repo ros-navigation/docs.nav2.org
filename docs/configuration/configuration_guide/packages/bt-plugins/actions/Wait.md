@@ -7,27 +7,27 @@ This action is used in nav2 Behavior Trees as a recovery behavior.
 
 ### **`wait_duration`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Wait time (s).
 
 ### **`server_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Action server name.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).
@@ -36,18 +36,18 @@ Description
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Wait error code. See `Wait` action message for the enumerated set of error codes.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Wait error message. See `Wait` action message for the enumerated set of error codes.

@@ -8,18 +8,18 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ### **`topic_name`**
 
-| Type   | Default           |
-|--------|-------------------|
-| string | smoother_selector |
+| Type     | Default           |
+|----------|-------------------|
+| `string` | smoother_selector |
 
 Description
 :   The name of the topic used to received select command messages. This is used to support multiple SmootherSelector nodes.
 
 ### **`default_smoother`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The default value for the selected Smoother if no message is received from the input topic.
@@ -28,9 +28,9 @@ Description
 
 ### **`selected_smoother`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The output selected Smoother id.

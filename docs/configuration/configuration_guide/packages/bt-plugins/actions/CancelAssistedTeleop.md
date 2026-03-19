@@ -6,18 +6,18 @@ Used to cancel the AssistedTeleop action that is part of the behavior server. Th
 
 ### **`service_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Service name, if not using default of `assisted_teleop` due to remapping.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Server timeout (ms).

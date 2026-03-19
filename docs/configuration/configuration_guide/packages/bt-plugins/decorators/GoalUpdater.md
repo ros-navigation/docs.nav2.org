@@ -6,18 +6,18 @@ A custom control node, which updates the goal(s) pose(s). It subscribes to a top
 
 ### **`goal_updater_topic`**
 
-| Type   | Default       |
-|--------|---------------|
-| string | “goal_update” |
+| Type     | Default       |
+|----------|---------------|
+| `string` | “goal_update” |
 
 Description
 :   The topic to receive the updated goal pose
 
 ### **`goals_updater_topic`**
 
-| Type   | Default        |
-|--------|----------------|
-| string | “goals_update” |
+| Type     | Default        |
+|----------|----------------|
+| `string` | “goals_update” |
 
 Description
 :   The topic to receive the updated goals poses
@@ -26,18 +26,18 @@ Description
 
 ### **`input_goal`**
 
-| Type                      | Default   |
-|---------------------------|-----------|
-| geometry_msgs/PoseStamped | N/A       |
+| Type                        | Default |
+|-----------------------------|---------|
+| `geometry_msgs/PoseStamped` | N/A     |
 
 Description
 :   The original goal pose
 
 ### **`input_goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `nav_msgs/Goals` | N/A     |
 
 Description
 :   The original goals poses
@@ -46,18 +46,18 @@ Description
 
 ### **`output_goal`**
 
-| Type                      | Default   |
-|---------------------------|-----------|
-| geometry_msgs/PoseStamped | N/A       |
+| Type                        | Default |
+|-----------------------------|---------|
+| `geometry_msgs/PoseStamped` | N/A     |
 
 Description
 :   The resulting updated goal. If no goal received by subscription, it will be the input_goal
 
 ### **`output_goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type           | Default |
+|----------------|---------|
+| nav_msgs/Goals | N/A     |
     
 
 Description

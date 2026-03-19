@@ -8,9 +8,9 @@ If the active error code is a match, the node returns `SUCCESS`. Otherwise, it r
 
 ### **`error_code`**
 
-| Type           | Default   |
-|----------------|-----------|
-| unsigned short | N/A       |
+| Type           | Default |
+|----------------|---------|
+| unsigned short | N/A     |
 
 Description
 :   The active error code to compare against. This should match the route server error code.

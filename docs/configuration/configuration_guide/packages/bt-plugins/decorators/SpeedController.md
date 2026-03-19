@@ -9,45 +9,45 @@ stack, the `SpeedController` is used to adjust the rate at which the `ComputePat
 
 ### **`min_rate`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.1 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.1     |
 
 Description
 :   The minimum rate at which child node can be ticked (hz).
 
 ### **`max_rate`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |         1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   The maximum rate at which child node can be ticked (hz).
 
 ### **`min_speed`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |         0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   The minimum robot speed below which the child node is ticked at minimum rate (m/s).
 
 ### **`max_speed`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.5     |
 
 Description
 :   The maximum robot speed above which the child node is ticked at maximum rate (m/s).
 
 ### **`goal`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | “{goal}”  |
+| Type                              | Default  |
+|-----------------------------------|----------|
+| `geometry_msgs::msg::PoseStamped` | “{goal}” |
 
 Description
 :   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.

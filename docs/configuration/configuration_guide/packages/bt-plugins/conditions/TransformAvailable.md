@@ -6,18 +6,18 @@ Checks if a TF transform is available. Returns failure if it cannot be found. On
 
 ### **`child`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “”        |
+| Type     | Default |
+|----------|---------|
+| `string` | “”      |
 
 Description
 :   Child frame for transform.
 
 ### **`parent`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “”        |
+| Type     | Default |
+|----------|---------|
+| `string` | “”      |
 
 Description
 :   Parent frame for transform.

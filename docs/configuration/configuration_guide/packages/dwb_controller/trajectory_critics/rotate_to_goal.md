@@ -10,54 +10,54 @@ Only allows the robot to rotate to the goal orientation when it is sufficiently 
 
 ### **`<dwb plugin>.xy_goal_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   Tolerance to meet goal completion criteria (m).
 
 ### **`<dwb plugin>.path_length_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Tolerance to meet goal completion criteria (m).
 
 ### **`<dwb plugin>.trans_stopped_velocity`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   Velocity below is considered to be stopped at tolerance met (rad/s).
 
 ### **`<dwb plugin>.<name>.slowing_factor`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       5.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 5.0     |
 
 Description
 :   Factor to slow robot motion by while rotating to goal.
 
 ### **`<dwb plugin>.<name>.lookahead_time`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      -1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | -1.0    |
 
 Description
 :   If > 0, amount of time to look forward for a collision for..
 
 ### **`<dwb plugin>.<name>.scale`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Weighed scale for critic.

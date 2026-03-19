@@ -6,9 +6,9 @@ Custom control flow node used to create a round-robin behavior for children BT n
 
 ### **`wrap_around`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Controls wrap-around behavior. When `false`, the node returns FAILURE instead of wrapping to the first child after all children have been attempted. When `true`, the node wraps around to the first child and continues the round-robin behavior.

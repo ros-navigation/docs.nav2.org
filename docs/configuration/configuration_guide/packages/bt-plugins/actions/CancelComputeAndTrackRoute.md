@@ -6,18 +6,18 @@ Used to cancel the compute and track route action that is part of the behavior s
 
 ### **`service_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Service name, if not using default of `compute_and_track_route` due to remapping.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Server timeout (ms).

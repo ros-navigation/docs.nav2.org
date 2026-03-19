@@ -8,18 +8,18 @@ Lets robot to pause for a specified amount of time after reaching each waypoints
 
 ### **`<nav2_waypoint_follower plugin>.enabled`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether waypoint_task_executor plugin is enabled.
 
 ### **`<nav2_waypoint_follower plugin>.waypoint_pause_duration`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         0 |
+| Type  | Default |
+|-------|---------|
+| `int` | 0       |
 
 Description
 :   Amount of time in milliseconds, for robot to sleep/wait after each waypoint is reached. If zero, robot will directly continue to next waypoint.

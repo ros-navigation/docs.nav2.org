@@ -62,45 +62,45 @@ Using Vector Object server publishing an output map as input mask to [Costmap Fi
 
 ### **`map_topic`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “vo_map”  |
+| Type     | Default  |
+|----------|----------|
+| `string` | “vo_map” |
 
 Description
 :   Output topic, publishing an OccupancyGrid map with vector objects put on it.
 
 ### **`global_frame_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “map”     |
+| Type     | Default |
+|----------|---------|
+| `string` | “map”   |
 
 Description
 :   The name of the coordinate frame where the map is being published at.
 
 ### **`resolution`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.05 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.05    |
 
 Description
 :   Output map resolution in meters.
 
 ### **`default_value`**
 
-| Type   | Default      |
-|--------|--------------|
-| int    | -1 (unknown) |
+| Type  | Default      |
+|-------|--------------|
+| `int` | -1 (unknown) |
 
 Description
 :   Default OccupancyGrid value to fill the background of output map with.
 
 ### **`overlay_type`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         0 |
+| Type  | Default |
+|-------|---------|
+| `int` | 0       |
 
 Description
 :   How one vector object to be overlaid with other and the map.
@@ -112,27 +112,27 @@ Description
 
 ### **`update_frequency`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |         1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Output map update frequency (when dynamic update model is switched-on).
 
 ### **`transform_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.1 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.1     |
 
 Description
 :   Transform tolerance for the case when any of the shapes are placed in different than map’s frame.
 
 ### **`shapes`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<string> | {}        |
+| Type             | Default |
+|------------------|---------|
+| `vector<string>` | {}      |
 
 Description
 :   List of vector objects (polygons and circles). Empty by-default.
@@ -143,36 +143,36 @@ Description
 
 ### **`<shape_name>.type`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Type of vector object shape. Available values are `polygon` and `circle`. Causes an error, if not specialized.
 
 ### **`<shape_name>.uuid`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   UUID of the shape specified in `12345678-9abc-def0-1234-56789abcdef0` format. Parameter is optional and could be skipped: if not specialized, Vector Object server will automatically generate a new one for the shape.
 
 ### **`<shape_name>.frame_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “”        |
+| Type     | Default |
+|----------|---------|
+| `string` | “”      |
 
 Description
 :   Frame ID of the given shape. Empty value is being treated as map’s global frame.
 
 ### **`<shape_name>.value`**
 
-| Type   | Default        |
-|--------|----------------|
-| int    | 100 (occupied) |
+| Type  | Default        |
+|-------|----------------|
+| `int` | 100 (occupied) |
 
 Description
 :   Shape’s value to be put on map with.
@@ -181,18 +181,18 @@ Description
 
 ### **`<shape_name>.points`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<double> | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `vector<double>` | N/A     |
 
 Description
 :   Polygon vertices, listed in `[p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...]` format (e.g. `[0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]` for the square). Minimum 3 points for a triangle polygon. Causes an error, if not specialized incorrectly (less than 6 or odd number of items in the vector) or not specialized.
 
 ### **`<shape_name>.closed`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether the polygon is closed (and filled), or drawn as polygonal chain otherwise.
@@ -201,27 +201,27 @@ Description
 
 ### **`<shape_name>.center`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<double> | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `vector<double>` | N/A     |
 
 Description
 :   Center of the circle, listed in `{center.x, center.y}` format (e.g. `{0.2, 0.3}`). Should contain exactly 2 items: X and Y coordinate of the circle’s center in a given frame. Otherwise, causes an error.
 
 ### **`<shape_name>.radius`**
 
-| Type   | Default   |
-|--------|-----------|
-| double | N/A       |
+| Type     | Default |
+|----------|---------|
+| `double` | N/A     |
 
 Description
 :   Circle radius. Causes an error, if less than zero or not specialized.
 
 ### **`<shape_name>.fill`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether the circle to be filled with a given value, or drawn only circle’s border otherwise.

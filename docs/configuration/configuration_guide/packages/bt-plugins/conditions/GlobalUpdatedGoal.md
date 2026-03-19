@@ -10,9 +10,9 @@ such that it will update on any “global” change to the goal.
 
 ### **`goal`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | “{goal}”  |
+| Type                              | Default  |
+|-----------------------------------|----------|
+| `geometry_msgs::msg::PoseStamped` | “{goal}” |
 
 Description
 :   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.

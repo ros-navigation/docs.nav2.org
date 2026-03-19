@@ -9,27 +9,27 @@ stack, the `DistanceController` is used to adjust the rate at which the `Compute
 
 ### **`distance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   The distance travelled to trigger an action such as planning a path (m).
 
 ### **`global_frame`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “map”     |
+| Type     | Default |
+|----------|---------|
+| `string` | “map”   |
 
 Description
 :   Reference frame.
 
 ### **`robot_base_frame`**
 
-| Type   | Default     |
-|--------|-------------|
-| string | “base_link” |
+| Type     | Default     |
+|----------|-------------|
+| `string` | “base_link” |
 
 Description
 :   Robot base frame.

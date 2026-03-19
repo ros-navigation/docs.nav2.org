@@ -7,9 +7,9 @@ Returns failure if the goal is the same, if it changes, it returns success.
 
 ### **`goal`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | “{goal}”  |
+| Type                              | Default  |
+|-----------------------------------|----------|
+| `geometry_msgs::msg::PoseStamped` | “{goal}” |
 
 Description
 :   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.

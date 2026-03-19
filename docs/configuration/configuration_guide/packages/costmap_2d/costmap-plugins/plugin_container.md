@@ -8,18 +8,18 @@ This implements a costmap layer which combines costmap layers within a submap, w
 
 ### **`<plugin container layer>.enabled`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   Whether it is enabled.
 
 ### **`<plugin container layer>.plugins`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<string> | {}        |
+| Type             | Default |
+|------------------|---------|
+| `vector<string>` | {}      |
 
 Description
 :   List of mapped costmap layer names for parameter namespaces and names.

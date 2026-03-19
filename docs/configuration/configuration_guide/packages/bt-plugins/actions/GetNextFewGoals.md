@@ -6,18 +6,18 @@ Extracts only the next `N` goals from a list of goals to send to a later task th
 
 ### **`num_goals`**
 
-| Type   | Default   |
-|--------|-----------|
-| int    | N/A       |
+| Type  | Default |
+|-------|---------|
+| `int` | N/A     |
 
 Description
 :   How many of the goals to take from the input goals.
 
 ### **`input_goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `nav_msgs/Goals` | N/A     |
 
 Description
 :   Input goals list.
@@ -26,9 +26,9 @@ Description
 
 ### **`output_goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `nav_msgs/Goals` | N/A     |
 
 Description
 :   The output pruned goals list.

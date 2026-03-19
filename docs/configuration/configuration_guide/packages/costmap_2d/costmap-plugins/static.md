@@ -6,27 +6,27 @@ This implements a costmap layer taking in a map from either SLAM or `map_server`
 
 ### **`<static layer>.enabled`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   Whether it is enabled.
 
 ### **`<static layer>.footprint_clearing_enabled`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Clear any occupied cells under robot footprint.
 
 ### **`<static layer>.restore_cleared_footprint`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   Restore map after clearing the area the footprint occupied.
@@ -34,27 +34,27 @@ Description
 
 ### **`<static layer>.subscribe_to_updates`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Subscribe to static map updates after receiving first.
 
 ### **`<static layer>.map_subscribe_transient_local`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   QoS settings for map topic.
 
 ### **`<static layer>.map_topic`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “map”     |
+| Type     | Default |
+|----------|---------|
+| `string` | “map”   |
 
 Description
 :   Map topic to subscribe to.

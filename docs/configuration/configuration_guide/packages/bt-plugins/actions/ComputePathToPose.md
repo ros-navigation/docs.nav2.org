@@ -7,54 +7,54 @@ The server address can be remapped using the `server_name` input port.
 
 ### **`start`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | N/A       |
+| Type                              | Default |
+|-----------------------------------|---------|
+| `geometry_msgs::msg::PoseStamped` | N/A     |
 
 Description
 :   Start pose. Optional. Used as the planner start pose instead of the current robot pose, if `use_start` is not false (i.e. not provided or set to true). Takes in a blackboard variable, e.g. “{start}”.
 
 ### **`use_start`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | N/A       |
+| Type                              | Default |
+|-----------------------------------|---------|
+| `geometry_msgs::msg::PoseStamped` | N/A     |
 
 Description
 :   Optional. For using or not using (i.e. ignoring) the provided start pose `start`. Takes in a blackboard variable, e.g. “{use_start}”.
 
 ### **`goal`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | N/A       |
+| Type                              | Default |
+|-----------------------------------|---------|
+| `geometry_msgs::msg::PoseStamped` | N/A     |
 
 Description
 :   Goal pose. Takes in a blackboard variable, e.g. “{goal}”.
 
 ### **`planner_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Mapped name to the planner plugin type to use, e.g. GridBased.
 
 ### **`server_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Action server name.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).
@@ -63,27 +63,27 @@ Description
 
 ### **`path`**
 
-| Type                | Default   |
-|---------------------|-----------|
-| nav_msgs::msg::Path | N/A       |
+| Type                  | Default |
+|-----------------------|---------|
+| `nav_msgs::msg::Path` | N/A     |
 
 Description
 :   Path created by action server. Takes in a blackboard variable, e.g. “{path}”.
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Compute path to pose error code. See `ComputePathToPose` action message for the enumerated set of error codes.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Compute path to pose error message. See `ComputePathToPose` action message for the enumerated set of error codes.

@@ -6,18 +6,18 @@ Action to call a costmap clearing server.
 
 ### **`service_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   costmap service name responsible for clearing the costmap.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).

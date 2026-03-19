@@ -8,18 +8,18 @@ Scores a trajectory based on how well it is aligned to the path provided by the 
 
 ### **`<dwb plugin>.<name>.aggregation_type`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “last”    |
+| Type     | Default |
+|----------|---------|
+| `string` | “last”  |
 
 Description
 :   last, sum, or product combination methods.
 
 ### **`<dwb plugin>.<name>.scale`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Weighed scale for critic.

@@ -8,7 +8,7 @@ Node that returns success when the initial pose is sent to AMCL via `/initial_po
 
 | Type   | Default                   |
 |--------|---------------------------|
-| bool   | “{initial_pose_received}” |
+| `bool` | “{initial_pose_received}” |
 
 Description
 :   Success if the value in the port is true. Takes in a blackboard variable,

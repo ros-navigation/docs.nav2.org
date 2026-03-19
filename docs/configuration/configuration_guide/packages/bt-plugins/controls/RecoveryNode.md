@@ -11,9 +11,9 @@ In nav2, the RecoveryNode is included in Behavior Trees to implement recovery ac
 
 ### **`number_of_retries`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         1 |
+| Type  | Default |
+|-------|---------|
+| `int` | 1       |
 
 Description
 :   Number of retries.

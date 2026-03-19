@@ -12,27 +12,27 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
 ### **`<filter name>.enabled`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   Whether it is enabled.
 
 ### **`<filter name>.filter_info_topic`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#map-server) configuration page.
 
 ### **`<filter name>.speed_limit_topic`**
 
-| Type   | Default       |
-|--------|---------------|
-| string | “speed_limit” |
+| Type     | Default       |
+|----------|---------------|
+| `string` | “speed_limit” |
 
 Description
 :   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) have the following fields’ meaning:
@@ -46,9 +46,9 @@ Note
 
 ### **`<filter name>.transform_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.1 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.1     |
 
 Description
 :   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.

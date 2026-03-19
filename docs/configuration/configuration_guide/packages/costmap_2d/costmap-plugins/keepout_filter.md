@@ -8,45 +8,45 @@ Note: As Costmap Filters does not have the inflation layer applied to them (sinc
 
 ### **`<filter name>.enabled`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   Whether it is enabled.
 
 ### **`<filter name>.filter_info_topic`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#map-server) configuration page.
 
 ### **`<filter name>.override_lethal_cost`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   When true, check if the robot is in a lethal keepout zone, if so, replaces those lethal costs with lethal_override_cost.
 
 ### **`<filter name>.lethal_override_cost`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |     252.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 252.0   |
 
 Description
 :   The cost value written into those cells instead of lethal cost when override is active. Default sets cost very high to incentivize leaving the area as soon as possible.
 
 ### **`<filter name>.transform_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.1 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.1     |
 
 Description
 :   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.

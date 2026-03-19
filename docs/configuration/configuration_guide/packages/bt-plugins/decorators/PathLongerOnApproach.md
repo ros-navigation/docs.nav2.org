@@ -6,27 +6,27 @@ This node checks if the newly generated global path is significantly larger than
 
 ### **`path`**
 
-| Type                | Default   |
-|---------------------|-----------|
-| nav_msgs::msg::Path | N/A       |
+| Type                  | Default |
+|-----------------------|---------|
+| `nav_msgs::msg::Path` | N/A     |
 
 Description
 :   Path created by action server. Takes in a blackboard variable, e.g. “{path}”.
 
 ### **`prox_len`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       3.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 3.0     |
 
 Description
 :   Proximity length (m) for the path to be longer on approach.
 
 ### **`length_factor`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       2.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 2.0     |
 
 Description
 :   Length multiplication factor to check if the path is significantly longer.

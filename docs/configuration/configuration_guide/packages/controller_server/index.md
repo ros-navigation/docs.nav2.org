@@ -10,45 +10,45 @@ It also hosts the local costmap.
 
 ### **`controller_frequency`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      20.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 20.0    |
 
 Description
 :   Frequency to run controller (Hz).
 
 ### **`costmap_update_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.3 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.3     |
 
 Description
 :   The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.
 
 ### **`use_realtime_priority`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
 
 ### **`publish_zero_velocity`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to publish a zero velocity command on goal exit. This is useful for stopping the robot when a goal terminates.
 
 ### **`controller_plugins`**
 
-| Type           | Default        |
-|----------------|----------------|
-| vector<string> | [‘FollowPath’] |
+| Type             | Default        |
+|------------------|----------------|
+| `vector<string>` | ['FollowPath'] |
 
 Description
 :   List of mapped names for controller plugins for processing requests and parameters.
@@ -67,9 +67,9 @@ Note
 
 ### **`progress_checker_plugins`**
 
-| Type           | Default              |
-|----------------|----------------------|
-| vector<string> | [“progress_checker”] |
+| Type             | Default              |
+|------------------|----------------------|
+| `vector<string>` | [“progress_checker”] |
 
 Description
 :   Mapped name for progress checker plugin for checking progress made by robot. Formerly `progress_checker_plugin` for Humble and older with a single string plugin.
@@ -88,9 +88,9 @@ Note
 
 ### **`goal_checker_plugins`**
 
-| Type           | Default          |
-|----------------|------------------|
-| vector<string> | [“goal_checker”] |
+| Type             | Default          |
+|------------------|------------------|
+| `vector<string>` | [“goal_checker”] |
 
 Description
 :   Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each `FollowPath` action needs to specify the goal checker plugin name with its `goal_checker_id` field.
@@ -109,9 +109,9 @@ Note
 
 ### **`path_handler_plugins`**
 
-| Type           | Default         |
-|----------------|-----------------|
-| vector<string> | [“PathHandler”] |
+| Type             | Default         |
+|------------------|-----------------|
+| `vector<string>` | [“PathHandler”] |
 
 Description
 :   Mapped name for path handler plugin for processing path from the planner. When the number of the plugins is more than 2, each `FollowPath` action needs to specify the path handler plugin name with its `path_handler_id` field.
@@ -130,9 +130,9 @@ Note
 
 ### **`min_x_velocity_threshold`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |    0.0001 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0001  |
 
 Description
 :   The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
@@ -140,9 +140,9 @@ Description
 
 ### **`min_y_velocity_threshold`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |    0.0001 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0001  |
 
 Description
 :   The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
@@ -150,9 +150,9 @@ Description
 
 ### **`min_theta_velocity_threshold`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |    0.0001 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0001  |
 
 Description
 :   The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
@@ -160,9 +160,9 @@ Description
 
 ### **`failure_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   The maximum duration in seconds the called controller plugin can fail (i.e. the `computeVelocityCommands` function of the plugin throwing an exception) before the `nav2_msgs::action::FollowPath` action fails.
@@ -170,36 +170,36 @@ Description
 
 ### **`speed_limit_topic`**
 
-| Type   | Default       |
-|--------|---------------|
-| string | “speed_limit” |
+| Type     | Default       |
+|----------|---------------|
+| `string` | “speed_limit” |
 
 Description
 :   Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters](costmap-plugins/speed_filter.md#speed-filter-parameters) configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
 
 ### **`odom_topic`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “odom”    |
+| Type     | Default |
+|----------|---------|
+| `string` | “odom”  |
 
 Description
 :   Topic to get instantaneous measurement of speed from.
 
 ### **`odom_duration`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.3 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.3     |
 
 Description
 :   Time (s) to buffer odometry commands to estimate the robot speed.
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
@@ -210,36 +210,36 @@ Note
 
 ### **`bond_heartbeat_period`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`introspection_mode`**
 
-| Type   | Default    |
-|--------|------------|
-| string | “disabled” |
+| Type     | Default    |
+|----------|------------|
+| `string` | “disabled” |
 
 Description
 :   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`search_window`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       2.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 2.0     |
 
 Description
 :   How far (in meters) along the path the searching algorithm will look for the closest point.

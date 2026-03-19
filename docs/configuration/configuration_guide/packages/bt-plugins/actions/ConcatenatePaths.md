@@ -7,18 +7,18 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 
 ### **`input_path1`**
 
-| Type          | Default   |
-|---------------|-----------|
-| nav_msgs/Path | N/A       |
+| Type            | Default |
+|-----------------|---------|
+| `nav_msgs/Path` | N/A     |
 
 Description
 :   First path to concatenate.
 
 ### **`input_path2`**
 
-| Type          | Default   |
-|---------------|-----------|
-| nav_msgs/Path | N/A       |
+| Type            | Default |
+|-----------------|---------|
+| `nav_msgs/Path` | N/A     |
 
 Description
 :   Second path to concatenate.
@@ -27,9 +27,9 @@ Description
 
 ### **`input_path2`**
 
-| Type          | Default   |
-|---------------|-----------|
-| nav_msgs/Path | N/A       |
+| Type            | Default |
+|-----------------|---------|
+| `nav_msgs/Path` | N/A     |
 
 Description
 :   Output concatenated path.

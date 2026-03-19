@@ -10,9 +10,9 @@ It also hosts the global costmap.
 
 ### **`planner_plugins`**
 
-| Type           | Default       |
-|----------------|---------------|
-| vector<string> | [‘GridBased’] |
+| Type             | Default       |
+|------------------|---------------|
+| `vector<string>` | [‘GridBased’] |
 
 Description
 :   List of Mapped plugin names for parameters and processing requests.
@@ -31,54 +31,54 @@ Note
 
 ### **`allow_partial_planning`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Allows planner server to output partial paths in the presence of obstacles when planning through poses. Otherwise planner fails and aborts the plan request in such a case by default.
 
 ### **`expected_planner_frequency`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      20.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 20.0    |
 
 Description
 :   Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
 
 ### **`bond_heartbeat_period`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`costmap_update_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   The timeout value (seconds) for the costmap to be fully updated before a planning request.
 
 ### **`introspection_mode`**
 
-| Type   | Default    |
-|--------|------------|
-| string | “disabled” |
+| Type     | Default    |
+|----------|------------|
+| `string` | “disabled” |
 
 Description
 :   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.

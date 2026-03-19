@@ -7,27 +7,27 @@ it returns FAILURE.
 
 ### **`pose`**
 
-| Type                      | Default   |
-|---------------------------|-----------|
-| geometry_msgs/PoseStamped | N/A       |
+| Type                        | Default |
+|-----------------------------|---------|
+| `geometry_msgs/PoseStamped` | N/A     |
 
 Description
 :   Pose to check if it is occupied.
 
 ### **`service_name`**
 
-| Type   | Default                                 |
-|--------|-----------------------------------------|
-| string | /global_costmap/get_cost_global_costmap |
+| Type     | Default                                 |
+|----------|-----------------------------------------|
+| `string` | /global_costmap/get_cost_global_costmap |
 
 Description
 :   costmap service name responsible for getting the cost.
 
 ### **`cost_threshold`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |     254.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 254.0   |
 
 Description
 :   The cost threshold above which a waypoint is considered in collision and should be removed. 
@@ -35,27 +35,27 @@ Description
 
 ### **`use_footprint`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to use the footprint cost or the point cost.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      20.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 20.0    |
 
 Description
 :   Service response timeout (ms).
 
 ### **`consider_unknown_as_obstacle`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to consider unknown cost (255) as obstacle.

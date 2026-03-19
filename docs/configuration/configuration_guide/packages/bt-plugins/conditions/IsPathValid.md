@@ -9,45 +9,45 @@ can use a custom footprint for validation.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      20.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 20.0    |
 
 Description
 :   Service response timeout (ms).
 
 ### **`path`**
 
-| Type                | Default   |
-|---------------------|-----------|
-| nav_msgs::msg::Path | N/A       |
+| Type                  | Default |
+|-----------------------|---------|
+| `nav_msgs::msg::Path` | N/A     |
 
 Description
 :   The global path to check for validity.
 
 ### **`max_cost`**
 
-| Type         |   Default |
-|--------------|-----------|
-| unsigned int |       254 |
+| Type         | Default |
+|--------------|---------|
+| unsigned int | 254     |
 
 Description
 :   The maximum allowable cost for the path to be considered valid.
 
 ### **`consider_unknown_as_obstacle`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to consider unknown cost (255) as obstacle.
 
 ### **`layer_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “”        |
+| Type     | Default |
+|----------|---------|
+| `string` | “”      |
 
 Description
 :   Name of the specific costmap layer to check against.
@@ -55,9 +55,9 @@ Description
 
 ### **`footprint`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “”        |
+| Type     | Default |
+|----------|---------|
+| `string` | “”      |
 
 Description
 :   Custom footprint specification as a bracketed array of arrays,
@@ -66,9 +66,9 @@ Description
 
 ### **`check_full_path`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to check all poses in the path (true) or stop at the
@@ -79,9 +79,9 @@ Description
 
 ### **`collision_poses`**
 
-| Type                                         | Default   |
-|----------------------------------------------|-----------|
-| std::vector<geometry_msgs::msg::PoseStamped> | N/A       |
+| Type                                           | Default |
+|------------------------------------------------|---------|
+| `std::vector<geometry_msgs::msg::PoseStamped>` | N/A     |
 
 Description
 :   Vector of poses in the path that are in collision or invalid.

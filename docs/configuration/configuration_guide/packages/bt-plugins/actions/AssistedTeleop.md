@@ -8,54 +8,54 @@ The [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav
 
 ### **`is_recovery`**
 
-| Type   | Default   |
-|--------|-----------|
-| double | false     |
+| Type     | Default |
+|----------|---------|
+| `double` | false   |
 
 Description
 :   If true increment the recovery counter.
 
 ### **`time_allowance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 ### **`server_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Action server name.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Assisted teleop error code. See `AssistedTeleop` action message for the enumerated set of error codes.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Assisted teleop error message. See `AssistedTeleop` action message for the enumerated set of error codes.

@@ -6,27 +6,27 @@ Action to call a costmap clearing around robot server.
 
 ### **`reset_distance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   side size of the square area centered on the robot that will be cleared on the costmap (the rest of the costmap won’t)
 
 ### **`service_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   costmap service name responsible for clearing the costmap.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).

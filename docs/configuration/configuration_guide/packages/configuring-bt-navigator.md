@@ -14,9 +14,9 @@ Make sure to review all parameters for non-default navigator plugins not discuss
 
 ### **`navigators`**
 
-| Type           | Default                                        |
-|----------------|------------------------------------------------|
-| vector<string> | {‘navigate_to_pose’, ‘navigate_through_poses’} |
+| Type             | Default                                        |
+|------------------|------------------------------------------------|
+| `vector<string>` | {'navigate_to_pose', 'navigate_through_poses'} |
 
 Description
 :   New to Iron: Plugins for navigator types implementing the `nav2_core::BehaviorTreeNavigator` interface.
@@ -24,9 +24,9 @@ Description
 
 ### **`default_nav_to_pose_bt_xml`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Path to the default behavior tree XML description for `NavigateToPose`, 
@@ -36,9 +36,9 @@ Description
 
 ### **`default_nav_through_poses_bt_xml`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Path to the default behavior tree XML description for `NavigateThroughPoses`, 
@@ -47,18 +47,18 @@ Description
 
 ### **`always_reload_bt_xml`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
 
 ### **`bt_log_idle_transitions`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to log idle (no state change) transitions in the behavior tree to the `/behavior_tree_log` topic and console output. 
@@ -66,36 +66,36 @@ Description
 
 ### **`plugin_lib_names`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<string> | [“”]      |
+| Type             | Default |
+|------------------|---------|
+| `vector<string>` | [""]    |
 
 Description
 :   List of behavior tree node shared libraries. All Nav2 BT libraries are automatically included for you, so this only needs to include your new custom plugins (new to Jazzy).
 
 ### **`bt_loop_duration`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |        10 |
+| Type  | Default |
+|-------|---------|
+| `int` | 10      |
 
 Description
 :   Duration (in milliseconds) for each iteration of BT execution.
 
 ### **`filter_duration`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.3 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.3     |
 
 Description
 :   Duration (secs) over which robot velocity should be smoothed.
 
 ### **`default_server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |        20 |
+| Type  | Default |
+|-------|---------|
+| `int` | 20      |
 
 Description
 :   Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
@@ -103,9 +103,9 @@ Description
 
 ### **`default_cancel_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |        50 |
+| Type  | Default |
+|-------|---------|
+| `int` | 50      |
 
 Description
 :   Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
@@ -113,9 +113,9 @@ Description
 
 ### **`wait_for_service_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |      1000 |
+| Type  | Default |
+|-------|---------|
+| `int` | 1000    |
 
 Description
 :   Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. `wait_for_action_server(timeout)`).
@@ -123,90 +123,90 @@ Description
 
 ### **`introspection_mode`**
 
-| Type   | Default    |
-|--------|------------|
-| string | “disabled” |
+| Type     | Default    |
+|----------|------------|
+| `string` | “disabled” |
 
 Description
 :   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
 
 ### **`transform_tolerance`**
 
-| Type   |   Default | Unit    |
-|--------|-----------|---------|
-| double |       0.1 | seconds |
+| Type     | Default | Unit    |
+|----------|---------|---------|
+| `double` | 0.1     | seconds |
 
 Description
 :   TF transform tolerance.
 
 ### **`global_frame`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | map       |
+| Type     | Default |
+|----------|---------|
+| `string` | map     |
 
 Description
 :   Reference frame.
 
 ### **`robot_base_frame`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | base_link |
+| Type     | Default   |
+|----------|-----------|
+| `string` | base_link |
 
 Description
 :   Robot base frame.
 
 ### **`odom_topic`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | odom      |
+| Type     | Default |
+|----------|---------|
+| `string` | odom    |
 
 Description
 :   Topic on which odometry is published
 
 ### **`error_code_name_prefixes`**
 
-| Type           | Default                                                                                                                                                                                                                                    |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| vector<string> | [“assisted_teleop”,<br> “backup”,<br>  “compute_path”,<br>  “dock_robot”,<br>  “drive_on_heading”,<br>  “follow_path”,<br>  “nav_thru_poses”,<br>  “nav_to_pose”,<br>  “spin”,<br>  “route”,<br>  “undock_robot”,<br>  “wait”] |
+| Type             | Default                                                                                                                                                                                                                        |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `vector<string>` | ["assisted_teleop",<br> "backup",<br>  "compute_path",<br>  "dock_robot",<br>  "drive_on_heading",<br>  "follow_path",<br>  "nav_thru_poses",<br>  "nav_to_pose",<br>  "spin",<br>  "route",<br>  "undock_robot",<br>  "wait"] |
 
 Description
 :   For Kilted and newer: List of of error code name prefixes to be appended with `_error_code` and `_error_msg` and searched for during aborted navigator error processing.
 
 ### **`error_code_names`**
 
-| Type           | Default                                                     |
-|----------------|-------------------------------------------------------------|
-| vector<string> | [“compute_path_error_code”,<br> “follow_path_error_code”] |
+| Type             | Default                                                   |
+|------------------|-----------------------------------------------------------|
+| `vector<string>` | ["compute_path_error_code",<br> "follow_path_error_code"] |
 
 Description
 :   For Jazzy and older: List of of error codes to compare.
 
 ### **`bond_heartbeat_period`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`bt_search_directories`**
 
-| Type           | Default                                            |
-|----------------|----------------------------------------------------|
-| vector<string> | $(find-pkg-share nav2_bt_navigator)/behavior_trees |
+| Type             | Default                                            |
+|------------------|----------------------------------------------------|
+| `vector<string>` | $(find-pkg-share nav2_bt_navigator)/behavior_trees |
 
 Description
 :   List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.
@@ -215,54 +215,54 @@ Description
 
 ### **`<navigate_to_pose_name>.goal_blackboard_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “goal”    |
+| Type     | Default |
+|----------|---------|
+| `string` | “goal”  |
 
 Description
 :   Blackboard variable to use to supply the goal to the behavior tree for `NavigateToPose`. Should match ports of BT XML file.
 
 ### **`<navigate_to_pose_name>.path_blackboard_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “path”    |
+| Type     | Default |
+|----------|---------|
+| `string` | “path”  |
 
 Description
 :   Blackboard variable to get the path from the behavior tree for `NavigateToPose` feedback. Should match port names of BT XML file.
 
 ### **`<navigate_to_pose_name>.tracking_feedback_blackboard_id`**
 
-| Type   | Default             |
-|--------|---------------------|
-| string | “tracking_feedback” |
+| Type     | Default             |
+|----------|---------------------|
+| `string` | “tracking_feedback” |
 
 Description
 :   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateToPose` feedback. Should match port names of BT XML file.
 
 ### **`<navigate_to_pose_name>.enable_groot_monitoring`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Whether to enable Groot2 monitoring for this navigator.
 
 ### **`<navigate_to_pose_name>.groot_server_port`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |      1667 |
+| Type  | Default |
+|-------|---------|
+| `int` | 1667    |
 
 Description
 :   The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
 
 ### **`<navigate_to_pose_name>.search_window`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       2.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 2.0     |
 
 Description
 :   How far (in meters) along the path the searching algorithm will look for the closest point.
@@ -271,63 +271,63 @@ Description
 
 ### **`<navigate_through_poses>.goals_blackboard_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “goals”   |
+| Type     | Default |
+|----------|---------|
+| `string` | “goals” |
 
 Description
 :   Blackboard variable to use to supply the goals to the behavior tree for `NavigateThroughPoses`. Should match ports of BT XML file.
 
 ### **`<navigate_through_poses>.path_blackboard_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “path”    |
+| Type     | Default |
+|----------|---------|
+| `string` | “path”  |
 
 Description
 :   Blackboard variable to get the path from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
 
 ### **`<navigate_through_poses>.tracking_feedback_blackboard_id`**
 
-| Type   | Default             |
-|--------|---------------------|
-| string | “tracking_feedback” |
+| Type     | Default             |
+|----------|---------------------|
+| `string` | “tracking_feedback” |
 
 Description
 :   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
 
 ### **`<navigate_through_poses>.waypoint_statuses_blackboard_id`**
 
-| Type   | Default             |
-|--------|---------------------|
-| string | “waypoint_statuses” |
+| Type     | Default             |
+|----------|---------------------|
+| `string` | “waypoint_statuses” |
 
 Description
 :   Blackboard variable to get the statuses of waypoints from the behavior tree for `NavigateThroughPoses` feedback/result. Should match ports of BT XML file.
 
 ### **`<navigate_through_poses>.enable_groot_monitoring`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Whether to enable Groot2 monitoring for this navigator.
 
 ### **`<navigate_through_poses>.groot_server_port`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |      1669 |
+| Type  | Default |
+|-------|---------|
+| `int` | 1669    |
 
 Description
 :   The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
 
 ### **`<navigate_through_poses>.search_window`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       2.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 2.0     |
 
 Description
 :   How far (in meters) along the path the searching algorithm will look for the closest point.

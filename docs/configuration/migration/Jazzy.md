@@ -295,7 +295,7 @@ IncludeLaunchDescription(
 )
 ```
 
-## ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector<PoseStamped>
+## ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use `nav_msgs/Goals` instead of `vector<PoseStamped>`
 
 In [PR #269](https://github.com/ros2/common_interfaces/pull/269) a new message type Goals was introduced to the nav_msgs package.
 In [PR #4980](https://github.com/ros-navigation/navigation2/pull/4980), all collections of PoseStamped has been migrated to use the nav_msgs::msg::Goals message. Most notably, NavigateThroughPoses.action and ComputePathThroughPoses.action have been updated to use nav_msgs/Goals.

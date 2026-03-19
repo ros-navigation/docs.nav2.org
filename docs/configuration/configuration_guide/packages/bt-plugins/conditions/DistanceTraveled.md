@@ -21,27 +21,27 @@ bt_navigator:
 
 ### **`distance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   The distance that must travel before returning success (m).
 
 ### **`global_frame`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “map”     |
+| Type     | Default |
+|----------|---------|
+| `string` | “map”   |
 
 Description
 :   Reference frame.
 
 ### **`robot_base_frame`**
 
-| Type   | Default     |
-|--------|-------------|
-| string | “base_link” |
+| Type     | Default     |
+|----------|-------------|
+| `string` | “base_link” |
 
 Description
 :   Robot base frame.

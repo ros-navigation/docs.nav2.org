@@ -8,18 +8,18 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ### **`topic_name`**
 
-| Type   | Default             |
-|--------|---------------------|
-| string | controller_selector |
+| Type     | Default             |
+|----------|---------------------|
+| `string` | controller_selector |
 
 Description
 :   The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.
 
 ### **`default_controller`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The default value for the selected Controller if no message is received from the input topic.
@@ -28,9 +28,9 @@ Description
 
 ### **`selected_controller`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.

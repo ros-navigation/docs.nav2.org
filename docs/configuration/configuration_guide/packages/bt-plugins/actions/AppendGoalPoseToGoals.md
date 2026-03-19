@@ -7,18 +7,18 @@ May be useful to add in the final task goal pose to a list of goals extracted fr
 
 ### **`goal_pose`**
 
-| Type                      | Default   |
-|---------------------------|-----------|
-| geometry_msgs/PoseStamped | N/A       |
+| Type                        | Default |
+|-----------------------------|---------|
+| `geometry_msgs/PoseStamped` | N/A     |
 
 Description
 :   Goal pose to append to the `goals` vector.
 
 ### **`input_goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `nav_msgs/Goals` | N/A     |
 
 Description
 :   Input goals vector to append to.
@@ -27,9 +27,9 @@ Description
 
 ### **`output_goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `nav_msgs/Goals` | N/A     |
 
 Description
 :   Output goals vector appended to.

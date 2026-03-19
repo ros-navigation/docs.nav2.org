@@ -7,9 +7,9 @@ Returns SUCCESS in that case, FAILURE otherwise.
 
 ### **`battery_topic`**
 
-| Type   | Default           |
-|--------|-------------------|
-| string | “/battery_status” |
+| Type     | Default           |
+|----------|-------------------|
+| `string` | “/battery_status” |
 
 Description
 :   Topic for battery info.

@@ -37,243 +37,243 @@ If you use the Dynamic Window Pure Pursuit Controller algorithm or software from
 
 ### **`max_linear_vel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.5     |
 
 Description
 :   The maximum linear velocity (m/s) to use.  Previously desired_linear_vel
 
 ### **`min_linear_vel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      -0.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | -0.5    |
 
 Description
 :   The minimum linear velocity (m/s) used when use_dynamic_window is true.
 
 ### **`max_angular_vel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       2.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | 2.5     |
 
 Description
 :   The maximum angular velocity (rad/s) used when use_dynamic_window is true.
 
 ### **`min_angular_vel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      -2.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | -2.5    |
 
 Description
 :   The minimum angular velocity (rad/s) used when use_dynamic_window is true.
 
 ### **`max_linear_accel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       2.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | 2.5     |
 
 Description
 :   The maximum linear acceleration (m/s^2) used when use_dynamic_window is true.
 
 ### **`max_linear_decel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      -2.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | -2.5    |
 
 Description
 :   The maximum linear deceleration (m/s^2) used when use_dynamic_window is true.
 
 ### **`max_angular_accel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       3.2 |
+| Type     | Default |
+|----------|---------|
+| `double` | 3.2     |
 
 Description
 :   The maximum angular acceleration (rad/s^2) to use.
 
 ### **`max_angular_decel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      -3.2 |
+| Type     | Default |
+|----------|---------|
+| `double` | -3.2    |
 
 Description
 :   The maximum angular deceleration (rad/s^2) used when use_dynamic_window is true.
 
 ### **`lookahead_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.6 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.6     |
 
 Description
 :   The lookahead distance (m) to use to find the lookahead point when `use_velocity_scaled_lookahead_dist` is `false`.
 
 ### **`min_lookahead_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.3 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.3     |
 
 Description
 :   The minimum lookahead distance (m) threshold when `use_velocity_scaled_lookahead_dist` is `true`.
 
 ### **`max_lookahead_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.9 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.9     |
 
 Description
 :   The maximum lookahead distance (m) threshold when `use_velocity_scaled_lookahead_dist` is `true`.
 
 ### **`lookahead_time`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.5 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.5     |
 
 Description
 :   The time (s) to project the velocity by when `use_velocity_scaled_lookahead_dist` is `true`. Also known as the lookahead gain.
 
 ### **`rotate_to_heading_angular_vel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.8 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.8     |
 
 Description
 :   If `use_rotate_to_heading` is `true`, this is the angular velocity to use.
 
 ### **`use_velocity_scaled_lookahead_dist`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to use the velocity scaled lookahead distances or constant `lookahead_distance`.
 
 ### **`min_approach_linear_velocity`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.05 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.05    |
 
 Description
 :   The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be `> 0.01`.
 
 ### **`approach_velocity_scaling_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.6 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.6     |
 
 Description
 :   The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width.
 
 ### **`use_collision_detection`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to enable collision detection.
 
 ### **`max_allowed_time_to_collision_up_to_carrot`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   The time (s) to project a velocity command forward to check for collisions when `use_collision_detection` is `true`. Pre-`Humble`, this was `max_allowed_time_to_collision`.
 
 ### **`use_regulated_linear_velocity_scaling`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).
 
 ### **`use_cost_regulated_linear_velocity_scaling`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).
 
 ### **`cost_scaling_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.6 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.6     |
 
 Description
 :   The minimum distance from an obstacle to trigger the scaling of linear velocity, if `use_cost_regulated_linear_velocity_scaling` is enabled. The value set should be smaller or equal to the `inflation_radius` set in the inflation layer of costmap, since inflation is used to compute the distance from obstacles.
 
 ### **`cost_scaling_gain`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within `cost_scaling_dist`. Lower value reduces speed more quickly.
 
 ### **`regulated_linear_scaling_min_radius`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.9 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.9     |
 
 Description
 :   The turning radius (m) for which the regulation features are triggered when `use_regulated_linear_velocity_scaling` is `true`. Remember, sharper turns have smaller radii.
 
 ### **`regulated_linear_scaling_min_speed`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be `> 0.1`.
 
 ### **`use_fixed_curvature_lookahead`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to use a fixed lookahead distance to compute curvature from. Since a lookahead distance may be set to vary on velocity, it can introduce a reference cycle that can be problematic for large lookahead distances.
 
 ### **`curvature_lookahead_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.6 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.6     |
 
 Description
 :   Distance to look ahead on the path to detect curvature.
 
 ### **`use_rotate_to_heading`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
@@ -283,45 +283,45 @@ Note
 
 ### **`allow_reversing`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner](configuring-smac-planner.md#smac-planner) to know more.
 
 ### **`rotate_to_heading_min_angle`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |     0.785 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.785   |
 
 Description
 :   The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if `use_rotate_to_heading` is `true`.
 
 ### **`use_cancel_deceleration`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to use deceleration when the goal is canceled.
 
 ### **`cancel_deceleration`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       3.2 |
+| Type     | Default |
+|----------|---------|
+| `double` | 3.2     |
 
 Description
 :   Linear deceleration (m/s/s) to apply when the goal is canceled.
 
 ### **`interpolate_curvature_after_goal`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the `/curvature_lookahead_point` topic similarly to `/lookahead_point`
@@ -331,36 +331,36 @@ Note
 
 ### **`stateful`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`min_distance_to_obstacle`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      -1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | -1.0    |
 
 Description
 :   The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
 
 ### **`use_dynamic_window`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.

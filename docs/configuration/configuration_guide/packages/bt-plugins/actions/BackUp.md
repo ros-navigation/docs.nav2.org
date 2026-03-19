@@ -10,54 +10,54 @@ This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors m
 
 ### **`backup_dist`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |     -0.15 |
+| Type     | Default |
+|----------|---------|
+| `double` | -0.15   |
 
 Description
 :   Total distance to backup (m).
 
 ### **`backup_speed`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |     0.025 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.025   |
 
 Description
 :   Backup speed (m/s).
 
 ### **`time_allowance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 ### **`server_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Action server name.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).
 
 ### **`disable_collision_checks`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Disable collision checking.
@@ -66,18 +66,18 @@ Description
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Backup error code. See `BackUp` action message for the enumerated set of error codes.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Backup error message. See `BackUp` action message for the enumerated set of error codes.

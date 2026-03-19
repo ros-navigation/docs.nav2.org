@@ -10,9 +10,9 @@ Prevents holonomic robots from spinning as they make their way to the goal.
 
 ### **`<dwb plugin>.<name>.scale`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Weighed scale for critic.

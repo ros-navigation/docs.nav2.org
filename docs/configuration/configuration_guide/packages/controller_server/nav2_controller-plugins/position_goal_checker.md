@@ -8,27 +8,27 @@ Checks whether the robot has reached the goal pose.
 
 ### **`<nav2_controller plugin>.xy_goal_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   Tolerance to meet goal completion criteria (m).
 
 ### **`<nav2_controller plugin>.path_length_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Tolerance to meet goal completion criteria (m).
 
 ### **`<nav2_controller plugin>.stateful`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.

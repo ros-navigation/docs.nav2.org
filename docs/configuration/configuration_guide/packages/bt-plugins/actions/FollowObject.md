@@ -7,45 +7,45 @@ The server address can be remapped using the `server_name` input port.
 
 ### **`pose_topic`**
 
-| Type   | Default      |
-|--------|--------------|
-| string | dynamic_pose |
+| Type     | Default      |
+|----------|--------------|
+| `string` | dynamic_pose |
 
 Description
 :   Topic to publish the pose of the object to follow.
 
 ### **`max_duration`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   The maximum duration to follow the object.
 
 ### **`tracked_frame`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Target frame to follow.
 
 ### **`server_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Action server name.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).
@@ -54,18 +54,18 @@ Description
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Follow object error code. See `FollowObject` action for the enumerated set of error code definitions.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Follow object error message. See `FollowObject` action for the enumerated set of error code definitions.

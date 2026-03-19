@@ -10,9 +10,9 @@ used to adjust the rate at which the `ComputePathToPose` and `GoalReached` nodes
 
 ### **`hz`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Rate to throttle an action or a group of actions.

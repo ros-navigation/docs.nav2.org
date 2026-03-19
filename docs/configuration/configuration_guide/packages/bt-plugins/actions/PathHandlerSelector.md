@@ -8,18 +8,18 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ### **`topic_name`**
 
-| Type   | Default               |
-|--------|-----------------------|
-| string | path_handler_selector |
+| Type     | Default               |
+|----------|-----------------------|
+| `string` | path_handler_selector |
 
 Description
 :   The name of the topic used to received select command messages. This is used to support multiple PathHandlerSelector nodes.
 
 ### **`default_path_handler`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The default value for the selected PathHandler if no message is received from the input topic.
@@ -28,9 +28,9 @@ Description
 
 ### **`selected_path_handler`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The output selected PathHandler id. This selected_path_handler string is usually passed to the FollowPath behavior via the path_handler_id input port.

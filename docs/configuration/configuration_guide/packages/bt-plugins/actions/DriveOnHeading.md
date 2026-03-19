@@ -7,54 +7,54 @@ It performs a linear translation by a given distance. The nav2_behaviors module 
 
 ### **`dist_to_travel`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.15 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.15    |
 
 Description
 :   Distance to travel (m).
 
 ### **`speed`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |     0.025 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.025   |
 
 Description
 :   Speed at which to travel (m/s).
 
 ### **`time_allowance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 ### **`server_name`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Action server name.
 
 ### **`server_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      10.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 10.0    |
 
 Description
 :   Action server timeout (ms).
 
 ### **`disable_collision_checks`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | false     |
+| Type   | Default |
+|--------|---------|
+| `bool` | false   |
 
 Description
 :   Disable collision checking.
@@ -63,18 +63,18 @@ Description
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Drive on heading error code. See `DriveOnHeading` action message for the enumerated set of error codes.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Drive on heading error message. See `DriveOnHeading` action message for the enumerated set of error codes.

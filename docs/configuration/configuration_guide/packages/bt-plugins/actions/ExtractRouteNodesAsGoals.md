@@ -7,9 +7,9 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 
 ### **`route`**
 
-| Type            | Default   |
-|-----------------|-----------|
-| nav2_msgs/Route | N/A       |
+| Type              | Default |
+|-------------------|---------|
+| `nav2_msgs/Route` | N/A     |
 
 Description
 :   Route to convert its `nodes` into Goals.
@@ -18,9 +18,9 @@ Description
 
 ### **`goals`**
 
-| Type           | Default   |
-|----------------|-----------|
-| nav_msgs/Goals | N/A       |
+| Type             | Default |
+|------------------|---------|
+| `nav_msgs/Goals` | N/A     |
 
 Description
 :   Goals comparing the route’s `nodes`.

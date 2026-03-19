@@ -6,9 +6,9 @@ Checks if the global navigation goal, or a vector of goals, has changed in the b
 
 ### **`goal`**
 
-| Type                            | Default   |
-|---------------------------------|-----------|
-| geometry_msgs::msg::PoseStamped | “{goal}”  |
+| Type                              | Default  |
+|-----------------------------------|----------|
+| `geometry_msgs::msg::PoseStamped` | “{goal}” |
 
 Description
 :   Destination to check. Takes in a blackboard variable, “{goal}” if not specified.

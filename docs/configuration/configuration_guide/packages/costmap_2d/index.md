@@ -9,243 +9,243 @@ It is used in the planner and controller servers for creating the space to check
 
 ### **`always_send_full_costmap`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Whether to send full costmap every update, rather than updates.
 
 ### **`introspection_mode`**
 
-| Type   | Default    |
-|--------|------------|
-| string | “disabled” |
+| Type     | Default    |
+|----------|------------|
+| `string` | “disabled” |
 
 Description
 :   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`footprint_padding`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.01 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.01    |
 
 Description
 :   Amount to pad footprint (m).
 
 ### **`footprint`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<double> | “[]”      |
+| Type             | Default |
+|------------------|---------|
+| `vector<double>` | “[]”    |
 
 Description
 :   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”. Note that this can also be adjusted over time using the costmap’s `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. If this parameter is set, `isPathValid` will do full collision checking.
 
 ### **`global_frame`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “map”     |
+| Type     | Default |
+|----------|---------|
+| `string` | “map”   |
 
 Description
 :   Reference frame.
 
 ### **`height`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         5 |
+| Type  | Default |
+|-------|---------|
+| `int` | 5       |
 
 Description
 :   Height of costmap (m).
 
 ### **`width`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         5 |
+| Type  | Default |
+|-------|---------|
+| `int` | 5       |
 
 Description
 :   Width of costmap (m).
 
 ### **`lethal_cost_threshold`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |       100 |
+| Type  | Default |
+|-------|---------|
+| `int` | 100     |
 
 Description
 :   Minimum cost of an occupancy grid map to be considered a lethal obstacle.
 
 ### **`map_vis_z`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   The height of map, allows to avoid rviz visualization flickering at -0.008
 
 ### **`origin_x`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   X origin of the costmap relative to width (m).
 
 ### **`origin_y`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   Y origin of the costmap relative to height (m).
 
 ### **`publish_frequency`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Frequency to publish costmap to topic.
 
 ### **`resolution`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.1 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.1     |
 
 Description
 :   Resolution of 1 pixel of the costmap, in meters.
 
 ### **`robot_base_frame`**
 
-| Type   | Default     |
-|--------|-------------|
-| string | “base_link” |
+| Type     | Default     |
+|----------|-------------|
+| `string` | “base_link” |
 
 Description
 :   Robot base frame.
 
 ### **`robot_radius`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.1 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.1     |
 
 Description
 :   Robot radius to use, if footprint coordinates not provided. If this parameter is set, `isPathValid` will do circular collision checking.
 
 ### **`subscribe_to_stamped_footprint`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   If true, the costmap will subscribe to PolygonStamped footprint messages instead of Polygon messages. This allows the footprint to include timestamp and frame information, which can be useful for applications that need temporally-aware footprint data.
 
 ### **`rolling_window`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Whether costmap should roll with robot base frame.
 
 ### **`track_unknown_space`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   If false, treats unknown space as free space, else as unknown space.
 
 ### **`transform_tolerance`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.3 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.3     |
 
 Description
 :   TF transform tolerance.
 
 ### **`initial_transform_timeout`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      60.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 60.0    |
 
 Description
 :   Time to wait for the transform from robot base frame to global frame to become available. If exceeded, the  configuration stage is aborted.
 
 ### **`trinary_costmap`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | True      |
+| Type   | Default |
+|--------|---------|
+| `bool` | True    |
 
 Description
 :   If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.
 
 ### **`unknown_cost_value`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |       255 |
+| Type  | Default |
+|-------|---------|
+| `int` | 255     |
 
 Description
 :   Cost of unknown space if tracking it.
 
 ### **`inscribed_obstacle_cost_value`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |        99 |
+| Type  | Default |
+|-------|---------|
+| `int` | 99      |
 
 Description
 :   The OccupancyGrid values that represents `INSCRIBED_INFLATED_OBSTACLE` during costmap conversion operations.
 
 ### **`update_frequency`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       5.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 5.0     |
 
 Description
 :   Costmap update frequency.
 
 ### **`use_maximum`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | False     |
+| Type   | Default |
+|--------|---------|
+| `bool` | False   |
 
 Description
 :   Whether when combining costmaps to use the maximum cost or override.
 
 ### **`plugins`**
 
-| Type           | Default                                               |
-|----------------|-------------------------------------------------------|
-| vector<string> | {“static_layer”, “obstacle_layer”, “inflation_layer”} |
+| Type             | Default                                               |
+|------------------|-------------------------------------------------------|
+| `vector<string>` | {“static_layer”, “obstacle_layer”, “inflation_layer”} |
 
 Description
 :   List of mapped plugin names for parameter namespaces and names.
@@ -268,9 +268,9 @@ Note
 
 ### **`filters`**
 
-| Type           | Default   |
-|----------------|-----------|
-| vector<string> | {}        |
+| Type             | Default |
+|------------------|---------|
+| `vector<string>` | {}      |
 
 Description
 :   List of mapped costmap filter names for parameter namespaces and names.

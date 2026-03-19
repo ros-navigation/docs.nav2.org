@@ -8,63 +8,63 @@ This server can take in both cartesian and GPS coordinates and is implemented us
 
 ### **`generate_headland`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether or not to generate a headland of the field or polygon to compute coverage of
 
 ### **`generate_route`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether or not to generate a route, e.g. an ordered set of swaths
 
 ### **`generate_path`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether or not to generate a path, e.g. adding path connectors to the ordered route
 
 ### **`file_field`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   The filepath to the field’s GML file to use, if not specifying the field via `polygons`
 
 ### **`file_field_id`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         0 |
+| Type  | Default |
+|-------|---------|
+| `int` | 0       |
 
 Description
 :   The ID of the field in the GML File to use, if multiple exist in the same file. This is the ordered number of the fields in the file.
 
 ### **`polygons`**
 
-| Type                                | Default   |
-|-------------------------------------|-----------|
-| vector<geometry_msgs::msg::Polygon> | N/A       |
+| Type                                  | Default |
+|---------------------------------------|---------|
+| `vector<geometry_msgs::msg::Polygon>` | N/A     |
 
 Description
 :   The polygons of the field, if not specifying via a GML file. The first polygon should be the outermost region, whereas additional polygons are voids.
 
 ### **`polygons_frame_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | “map”     |
+| Type     | Default |
+|----------|---------|
+| `string` | “map”   |
 
 Description
 :   The polygon’s frame ID, since the GML file provides the frame ID for its format, this is the frame ID for user-defined input `polygons`.
@@ -73,36 +73,36 @@ Description
 
 ### **`nav_path`**
 
-| Type                | Default   |
-|---------------------|-----------|
-| nav_msgs::msg::Path | N/A       |
+| Type                  | Default |
+|-----------------------|---------|
+| `nav_msgs::msg::Path` | N/A     |
 
 Description
 :   Path created by action server in the form of a navigation path. Takes in a blackboard variable, e.g. “{path}”.
 
 ### **`coverage_path`**
 
-| Type                   | Default   |
-|------------------------|-----------|
-| vector<PathComponents> | N/A       |
+| Type                     | Default |
+|--------------------------|---------|
+| `vector<PathComponents>` | N/A     |
 
 Description
 :   An ordered set of swaths and turns corresponding to the coverage path when its important to distinguish between turns and swaths for applications. A `opennav_coverage::utils::PathComponentsIterator` object is provided to help make this easy to use by iterating through the outputs’s path components to return you the next swath and turn one at a time.
 
 ### **`error_code_id`**
 
-| Type   | Default   |
-|--------|-----------|
-| uint16 | N/A       |
+| Type     | Default |
+|----------|---------|
+| `uint16` | N/A     |
 
 Description
 :   Compute coverage error code. See `ComputeCoveragePath` action message for the enumerated set of error codes.
 
 ### **`error_msg`**
 
-| Type   | Default   |
-|--------|-----------|
-| string | N/A       |
+| Type     | Default |
+|----------|---------|
+| `string` | N/A     |
 
 Description
 :   Compute coverage error message. See `ComputeCoveragePath` action message for the enumerated set of error codes.

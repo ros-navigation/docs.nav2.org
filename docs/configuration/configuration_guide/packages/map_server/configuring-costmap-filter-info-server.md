@@ -6,9 +6,9 @@ The costmap filter info server is responsible for providing information about th
 
 ### **`type`**
 
-| Type   |   Default |
-|--------|-----------|
-| int    |         0 |
+| Type  | Default |
+|-------|---------|
+| `int` | 0       |
 
 Description
 :   Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:
@@ -19,27 +19,27 @@ Description
 
 ### **`filter_info_topic`**
 
-| Type   | Default               |
-|--------|-----------------------|
-| string | “costmap_filter_info” |
+| Type     | Default               |
+|----------|-----------------------|
+| `string` | “costmap_filter_info” |
 
 Description
 :   Topic to publish costmap filter information to.
 
 ### **`mask_topic`**
 
-| Type   | Default       |
-|--------|---------------|
-| string | “filter_mask” |
+| Type     | Default       |
+|----------|---------------|
+| `string` | “filter_mask” |
 
 Description
 :   Topic to publish filter mask to. The value of this parameter should be in accordance with `topic_name` parameter of Map Server tuned to filter mask publishing.
 
 ### **`base`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |         0.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.0     |
 
 Description
 :   Base of `OccupancyGrid` mask value -> filter space value linear conversion which is being proceeded as:
@@ -47,9 +47,9 @@ Description
 
 ### **`multiplier`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |         1.0 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.0     |
 
 Description
 :   Multiplier of `OccupancyGrid` mask value -> filter space value linear conversion which is being proceeded as:
@@ -57,18 +57,18 @@ Description
 
 ### **`bond_heartbeat_period`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |      0.25 |
+| Type     | Default |
+|----------|---------|
+| `double` | 0.25    |
 
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default   |
-|--------|-----------|
-| bool   | true      |
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.

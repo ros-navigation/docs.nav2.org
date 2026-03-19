@@ -6,9 +6,9 @@
 
 ### **`<dwb plugin>.sim_time`**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       1.7 |
+| Type     | Default |
+|----------|---------|
+| `double` | 1.7     |
     
 
 Description
