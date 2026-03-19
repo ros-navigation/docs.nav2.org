@@ -270,7 +270,7 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    Selects which critic to visualize when ``visualize`` is true. ``0`` shows the total cost across all critics, ``1..N`` selects an individual critic by index (in the order listed in the ``critics`` parameter).
+    Selects which critic to visualize the color-scheme of when ``visualize`` is true publishing Marker messages for visualization in rviz. ``0`` shows the total cost across all critics, ``1..N`` selects an individual critic by index (in the order listed in the ``critics`` parameter).
 
 :publish_optimal_trajectory:
 
