@@ -1,4 +1,4 @@
-# Configuration
+# Configuration & Development 
 
 - [Navigation Plugins](plugins/index.md)
 - [First-Time Robot Setup Guide](setup_guides/index.md)
