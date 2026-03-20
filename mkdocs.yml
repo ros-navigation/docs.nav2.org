@@ -102,8 +102,8 @@ nav:
       - General Tutorials: tutorials/general_tutorials/index.md
     - Configuration & Development: 
       - configuration_and_development/index.md
-      - Navigation Plugins: configuration_and_development/plugins/index.md
       - First-Time Robot Setup Guide: configuration_and_development/setup_guides/index.md
+      - Navigation Plugins: configuration_and_development/plugins/index.md
       - Configuration Guide: configuration_and_development/configuration_guide/index.md
       - Tuning Guide: configuration_and_development/tuning/index.md
       - Simple Commander API: configuration_and_development/commander_api/index.md
@@ -196,8 +196,6 @@ nav:
       - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
   - Configuration & Development:
     - configuration_and_development/index.md
-    - Navigation Plugins:
-      - configuration_and_development/plugins/index.md
     - First-Time Robot Setup Guide:
       - configuration_and_development/setup_guides/index.md
       - Setup Guide for Gazebo:
@@ -221,6 +219,8 @@ nav:
         - Mapping and Localization: configuration_and_development/setup_guides/sensors/mapping_localization.md
         - Setting Up the Robot's Footprint: configuration_and_development/setup_guides/footprint/setup_footprint.md
         - Setting Up Navigation Plugins: configuration_and_development/setup_guides/algorithm/select_algorithm.md
+    - Navigation Plugins:
+      - configuration_and_development/plugins/index.md
     - Configuration Guide:
       - configuration_and_development/configuration_guide/index.md
       - Core Servers:
