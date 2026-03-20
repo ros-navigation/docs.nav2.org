@@ -27,6 +27,8 @@ Note that this class has itself a base class of `NavigatorBase`. This class is t
 
 The list of methods, their descriptions, and necessity are presented in the table below:
 
+<div class="center-table" markdown>
+
 | **Virtual method**     | **Method description**                                                                                                                                                                                                                                                                                                                                   | **Requires override?**   |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
 | getDefaultBTFilepath() | Method is called on initialization to retrieve the default BT filepath to use for<br/>navigation. This may be done via parameters, hardcoded logic, sentinel files, etc.                                                                                                                                                                                 | Yes                      |
@@ -39,6 +41,8 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 | onPreempt()            | Method is called when a new goal is requesting preemption over the existing<br/>goal currently being processed. If the new goal is viable, it should make all<br/>appropriate updates to the BT and blackboard such that this new request may<br/>immediately start being processed without hard cancellation of the initial task<br/>(e.g. preemption). | Yes                      |
 | goalCompleted()        | Method is called when a goal is completed to populate the action result object or<br/>do any additional checks required at the end of a task.                                                                                                                                                                                                            | Yes                      |
 | getName()              | Method is called to get the name of this navigator type                                                                                                                                                                                                                                                                                                  | Yes                      |
+
+</div>
 
 In the Navigate to Pose Navigator, `configure()` method must determine the blackboard parameter names where the goal and paths are being stored, as these are key values for processing feedback in `onLoop` and for the different behavior tree nodes to communicate this information between themselves. Additionally and uniquely to this navigator type, we also create a client to itself and a subscription to the `goal_pose` topic such that requests from the default configurations of Rviz2 using the *Goal Pose* tool will be processed.
 

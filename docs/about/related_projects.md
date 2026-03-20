@@ -2,6 +2,8 @@
 
 This is a community maintained list of related repositories and projects to Navigation2.
 
+<div class="center-table" markdown>
+
 | Name                       | Maintainer     | Description                                                                                  |
 |----------------------------|----------------|----------------------------------------------------------------------------------------------|
 | [Navigation2][]            | Steve Macenski | Main ROS 2 Navigation Stack                                                                  |
@@ -10,6 +12,8 @@ This is a community maintained list of related repositories and projects to Navi
 | [navigation2_dynamic][]    | Steve Macenski | Tools, algorithms, and<br>capabilities for working with<br>dynamic obstacles in ROS 2        |
 | [robot_localization][]     | Tom Moore      | State estimation software for<br>ROS 2 used for odometry fusion<br>and GPS transformations   |
 | [slam_toolbox][]           | Steve Macenski | Default 2D SLAM library                                                                      |
+
+</div>
 
 [Navigation2]: https://github.com/ros-navigation/navigation2
 [docs.nav2.org]: https://github.com/ros-navigation/docs.nav2.org

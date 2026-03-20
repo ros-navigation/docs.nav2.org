@@ -25,11 +25,15 @@ If you or your organization are interested in sponsoring Navigation or any work 
 
 Our current leadership team includes:
 
+<div class="center-table" markdown>
+
 | Name           | Organization    | GitHub ID           | Current Role      |
 |----------------|-----------------|---------------------|-------------------|
 | Steve Macenski | Open Navigation | [SteveMacenski][]   | Project Lead      |
 | Ruffin White   | UC San Diego    | [ruffsl][]          | CI Wizard         |
 | Joshua Wallace | Locus Robotics  | [JoshuaWallace][]   | Main Contributor  |
+
+</div>
 
 [SteveMacenski]: https://github.com/SteveMacenski
 [ruffsl]: https://github.com/ruffsl
@@ -37,12 +41,16 @@ Our current leadership team includes:
 
 Our former leadership team includes:
 
+<div class="center-table" markdown>
+
 | Name              | Organization      | GitHub ID            | Role                |
 |-------------------|-------------------|----------------------|---------------------|
 | Matt Hansen       | Intel Corporation | [mkhansen][]         | Former Project Lead |
 | Brian Wilcox      | Intel Corporation | [bpwilcox][]         | Former Maintainer   |
 | Carl Delsey       | Intel Corporation | [crdelsey][]         | Maintainer          |
 | Alexey Merzlyakov | Samsung Research  | [AlexeyMerzlyakov][] | Maintainer          |
+
+</div>
 
 [mkhansen]: https://github.com/mkhansen-intel
 [bpwilcox]: https://github.com/bpwilcox

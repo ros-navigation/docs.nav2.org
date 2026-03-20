@@ -16,17 +16,23 @@ For tutorials on creating your own plugins, please see
 
 ## Behavior-Tree Navigators
 
+<div class="center-table" markdown>
+
 | Plugin Name                       | Creator        | Description                                                           |
 |-----------------------------------|----------------|-----------------------------------------------------------------------|
 | [NavigateToPoseNavigator][]       | Steve Macenski | Point-to-point navigation via a<br>behavior tree action server        |
 | [NavigateThroughPosesNavigator][] | Steve Macenski | Point-through-points navigation<br>via a behavior tree action server  |
 | [CoverageNavigator][]             | Steve Macenski | Complete coverage navigation<br>(Cartesian or GPS) via a BTs          |
 
+</div>
+
 [NavigateToPoseNavigator]: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator/src/navigators
 [NavigateThroughPosesNavigator]: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator/src/navigators
 [CoverageNavigator]: https://github.com/open-navigation/opennav_coverage/tree/main/opennav_coverage_navigator
 
 ## Costmap Layers
+
+<div class="center-table" markdown>
 
 | Plugin Name                            | Creator               | Description                                                                                                                                                                |
 |----------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -40,6 +46,8 @@ For tutorials on creating your own plugins, please see
 | [Denoise Layer][]                      | Andrey Ryzhikov       | Filters noise-induced<br>standalone obstacles or small<br>obstacles groups                                                                                                 |
 | [Plugin Container Layer][]             | Alexander Yuen        | Combines the different costmap<br>layers specified under this<br>layer in order populate the same<br>costmap with different isolated<br>combinations of costmap layers     |
 
+</div>
+
 [Voxel Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
 [Range Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 [Static Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
@@ -52,17 +60,23 @@ For tutorials on creating your own plugins, please see
 
 ## Costmap Filters
 
+<div class="center-table" markdown>
+
 | Plugin Name          | Creator           | Description                                                        |
 |----------------------|-------------------|--------------------------------------------------------------------|
 | [Keepout Filter][]   | Alexey Merzlyakov | Maintains keep-out/safety zones<br>and preferred lanes for moving  |
 | [Speed Filter][]     | Alexey Merzlyakov | Limits maximum velocity of robot<br>in speed restriction areas     |
 | [Binary Filter][]    | Alexey Merzlyakov | Enables binary (boolean) mask<br>behavior to trigger actions       |
 
+</div>
+
 [Keepout Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
 [Speed Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
 [Binary Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
 
 ## Controllers
+
+<div class="center-table" markdown>
 
 | Plugin Name                               | Creator                             | Description                                                                                            | Drivetrain support                                           |
 |-------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
@@ -74,6 +88,8 @@ For tutorials on creating your own plugins, please see
 | [Graceful Controller][]                   | Alberto Tudela                      | A controller based on a<br>pose-following control law to<br>generate smooth trajectories.              | Differential, Omni,<br>Legged                                |
 | [Vector Pursuit Controller][]             | Black Coffee Robotics               | A controller based on the vector<br>pursuit algorithm useful for<br>high speed accurate path tracking. | Differential,<br>Ackermann, Legged                           |
 
+</div>
+
 [DWB Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller
 [TEB Controller]: https://github.com/rst-tu-dortmund/teb_local_planner
 [Regulated Pure Pursuit]: https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
@@ -84,6 +100,8 @@ For tutorials on creating your own plugins, please see
 
 ## Planners
 
+<div class="center-table" markdown>
+
 | Plugin Name                               | Creator                               | Description                                                                                                                                                                                                                                                          | Drivetrain support                                                                   |
 |-------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | [NavFn Planner][]                         | Eitan Marder-Eppstein & Kurt Konolige | A navigation function<br>using A\* or Dijkstras<br>expansion, assumes 2D<br>holonomic particle                                                                                                                                                                       | Differential,<br>Omnidirectional,<br>Legged                                          |
@@ -91,6 +109,8 @@ For tutorials on creating your own plugins, please see
 | [SmacPlanner2D][]                         | Steve Macenski                        | A 2D A\* implementation<br>Using either 4 or 8<br>connected neighborhoods<br>with smoother and<br>multi-resolution query                                                                                                                                             | Differential,<br>Omnidirectional,<br>Legged                                          |
 | [SmacPlannerLattice][]                    | Steve Macenski                        | An implementation of State<br>Lattice Planner using<br>pre-generated minimum control<br>sets for kinematically<br>feasible planning with any<br>type of vehicle imaginable.<br>Includes generator script for<br>Ackermann, diff, omni, and<br>legged robots.         | Differential,<br>Omnidirectional,<br>Ackermann,<br>Legged,<br>Arbitrary / Custom     |
 | [ThetaStarPlanner][]                      | Anshumaan Singh                       | An implementation of Theta\*<br>using either 4 or 8<br>connected neighborhoods,<br>assumes the robot as a<br>2D holonomic particle                                                                                                                                   | Differential,<br>Omnidirectional                                                     |
+
+</div>
 
 [NavFn Planner]: https://github.com/ros-navigation/navigation2/tree/main/nav2_navfn_planner
 [SmacPlannerHybrid]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
@@ -100,17 +120,23 @@ For tutorials on creating your own plugins, please see
 
 ## Smoothers
 
+<div class="center-table" markdown>
+
 | Plugin Name                          | Creator                          | Description                                                                                                                                                                               |
 |--------------------------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Simple Smoother][]                  | Steve Macenski                   | A simple path smoother for<br>infeasible (e.g. 2D)<br>planners                                                                                                                            |
 | [Constrained Smoother][]             | Matej Vargovcik & Steve Macenski | A path smoother using a<br>constraints problem solver<br>to optimize various criteria<br>such as smoothness or<br>distance from obstacles,<br>maintaining minimum turning<br>radius       |
 | [Savitzky-Golay Smoother][]          | Steve Macenski                   | A path smoother using a<br>Savitzky-Golay filter<br>to smooth the path via<br>digital signal processing<br>to remove noise from the<br>path.                                              |
 
+</div>
+
 [Simple Smoother]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
 [Constrained Smoother]: https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother
 [Savitzky-Golay Smoother]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
 
 ## Behaviors
+
+<div class="center-table" markdown>
 
 | Plugin Name                       | Creator               | Description                                                                                                                            |
 |-----------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
@@ -121,6 +147,8 @@ For tutorials on creating your own plugins, please see
 | [Drive On Heading][]              | Joshua Wallace        | Drive on heading behavior with<br>configurable distance to drive                                                                       |
 | [Assisted Teleop][]               | Joshua Wallace        | AssistedTeleop behavior that<br>scales teleop commands to<br>prevent collisions.                                                       |
 
+</div>
+
 [Clear Costmap]: https://github.com/ros-navigation/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
 [Spin]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
 [Back Up]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
@@ -130,11 +158,15 @@ For tutorials on creating your own plugins, please see
 
 ## Waypoint Task Executors
 
+<div class="center-table" markdown>
+
 | Plugin Name          | Creator        | Description                                                                           |
 |----------------------|----------------|---------------------------------------------------------------------------------------|
 | [WaitAtWaypoint][]   | Fetullah Atas  | A plugin to execute a wait<br>behavior  on<br>waypoint arrivals.                      |
 | [PhotoAtWaypoint][]  | Fetullah Atas  | A plugin to take and save photos<br>to specified directory on<br>waypoint arrivals.   |
 | [InputAtWaypoint][]  | Steve Macenski | A plugin to wait for user input<br>before moving onto the next<br>waypoint.           |
+
+</div>
 
 [WaitAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
 [PhotoAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
@@ -142,11 +174,15 @@ For tutorials on creating your own plugins, please see
 
 ## Goal Checkers
 
+<div class="center-table" markdown>
+
 | Plugin Name               | Creator        | Description                                                                                                                      |
 |---------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------|
 | [SimpleGoalChecker][]     | David Lu!!     | A plugin check whether robot<br>is within translational distance<br>and rotational distance of goal.                             |
 | [StoppedGoalChecker][]    | David Lu!!     | A plugin check whether robot<br>is within translational distance<br>, rotational distance of goal,<br>and velocity threshold.    |
 | [PositionGoalChecker][]   | Prabhav Saxena | A plugin check whether robot<br>is within translational distance<br>of goal, without requiring<br>rotational convergence.        |
+
+</div>
 
 [SimpleGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 [StoppedGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
@@ -154,23 +190,33 @@ For tutorials on creating your own plugins, please see
 
 ## Progress Checkers
 
+<div class="center-table" markdown>
+
 | Plugin Name                | Creator         | Description                                                                                                                                  |
 |----------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | [SimpleProgressChecker][]  | David Lu!!      | A plugin to check whether the<br>robot was able to move a minimum<br>distance in a given time to<br>make progress towards a goal             |
 | [PoseProgressChecker][]    | Guillaume Doisy | A plugin to check whether the<br>robot was able to move a minimum<br>distance or angle in a given time<br>to make progress towards a goal    |
+
+</div>
 
 [SimpleProgressChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
 [PoseProgressChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
 
 ## Path Handlers
 
+<div class="center-table" markdown>
+
 | Plugin Name             | Creator                        | Description                                                                                                                                                                                       |
 |-------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [FeasiblePathHandler][] | Maurice Alexander<br>Purnawan  | A plugin that transforms global<br>plan to the local costmap frame,<br>prunes it to the relevant portion<br>within the costmap bounds, and<br>handles in-place rotation and<br>cusp pruning.      |
 
+</div>
+
 [FeasiblePathHandler]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/feasible_path_handler.cpp
 
 ## Behavior Tree Nodes
+
+<div class="center-table" markdown>
 
 | Action Plugin Name                                                     | Creator                        | Description                                                                                                                |
 |------------------------------------------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -222,6 +268,8 @@ For tutorials on creating your own plugins, please see
 | [Follow Object][]                                                      | Alberto Tudela                 | Dynamically follows an object                                                                                              |
 | [Cancel Follow Object][]                                               | Alberto Tudela                 | Cancels follow object action                                                                                               |
 
+</div>
+
 [Back Up Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 [Drive On Heading Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
 [Assisted Teleop Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_action.cpp
@@ -270,6 +318,8 @@ For tutorials on creating your own plugins, please see
 [Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_action.cpp
 [Cancel Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_cancel_node.cpp
 
+<div class="center-table" markdown>
+
 | Condition Plugin Name                                              | Creator                        | Description                                                                                                        |
 |--------------------------------------------------------------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------|
 | [Goal Reached Condition][]                                         | Carl Delsey                    | Checks if goal is<br>reached within tol.                                                                           |
@@ -295,6 +345,8 @@ For tutorials on creating your own plugins, please see
 | [Is Goal Nearby Condition][]                                       | Jakub Chudziński               | Checks if the robot is<br>near the goal based on<br>remaining path length.                                         |
 | [Is Within Path Tracking Bounds Condition][]                       | Berkan Tali                    | Checks if the robot is<br>within bounds for<br>path tracking.                                                      |
 
+</div>
+
 [Goal Reached Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 [Goal Updated Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
 [Global Updated Goal Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
@@ -318,6 +370,8 @@ For tutorials on creating your own plugins, please see
 [Is Goal Nearby Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp
 [Is Within Path Tracking Bounds Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp
 
+<div class="center-table" markdown>
+
 | Decorator Plugin Name              | Creator              | Description                                                                                                                      |
 |------------------------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | [Rate Controller][]                | Michael Jeronimo     | Throttles child node to a given<br>rate                                                                                          |
@@ -328,6 +382,8 @@ For tutorials on creating your own plugins, please see
 | [PathLongerOnApproach][]           | Pradheep Padmanabhan | Triggers child nodes if the new<br>global path is significantly<br>larger than the old global path<br>on approach to the goal    |
 | [GoalUpdatedController][]          | Sophia Koffler       | Ticks child node if the goal<br>has been updated                                                                                 |
 
+</div>
+
 [Rate Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 [Distance Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
 [Speed Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
@@ -335,6 +391,8 @@ For tutorials on creating your own plugins, please see
 [Single Trigger]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
 [PathLongerOnApproach]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
 [GoalUpdatedController]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
+
+<div class="center-table" markdown>
 
 | Control Plugin Name               | Creator                | Description                                                                                                                                                                                                                                                     |
 |-----------------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -344,6 +402,8 @@ For tutorials on creating your own plugins, please see
 | [Nonblocking Sequence][]          | Alexander Yuen         | A variant of a sequence node that<br>will tick through the whole<br>sequence even if a child returns<br>running. On reticks of this<br>control node, successful children<br>will be ticked once again to<br>prevent a stale state from being<br>latched.        |
 | [Persistent Sequence][]           | Enjoy Robotics         | A variant of a sequence node that<br>exposes `current_child_idx` as<br>a bidirectional port.                                                                                                                                                                    |
 | [Pause Resume Controller][]       | Enjoy Robotics         | Controlled through service calls<br>to pause and resume the<br>execution of the tree.                                                                                                                                                                           |
+
+</div>
 
 [Pipeline Sequence]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 [Recovery]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
@@ -356,6 +416,8 @@ For tutorials on creating your own plugins, please see
 
 ### Edge Scorers
 
+<div class="center-table" markdown>
+
 | Plugin Name                | Creator        | Description                                                                                     |
 |----------------------------|----------------|-------------------------------------------------------------------------------------------------|
 | DistanceScorer             | Steve Macenski | Scores an edge’s length,<br>optionally scaled by relative<br>speed limits.                      |
@@ -366,7 +428,11 @@ For tutorials on creating your own plugins, please see
 | GoalPoseOrientationScorer  | Alex Yuen      | Scores based on the goal pose and<br>goal edge orientations.                                    |
 | DynamicEdgesScorer         | Steve Macenski | Scores based on a dynamically set<br>service cost and/or closure.                               |
 
+</div>
+
 ### Route Operations
+
+<div class="center-table" markdown>
 
 | Plugin Name      | Creator        | Description                                                                  |
 |------------------|----------------|------------------------------------------------------------------------------|
@@ -375,6 +441,8 @@ For tutorials on creating your own plugins, please see
 | TimeMarker       | Steve Macenski | Records the traversal time for an<br>edge in the edge’s metadata.            |
 | ReroutingService | Steve Macenski | Triggers a rereoute from an<br>external server.                              |
 | TriggerEvent     | Steve Macenski | Triggers an event based on a<br>configurable server name.                    |
+
+</div>
 
 ### Graph File Parsers
 

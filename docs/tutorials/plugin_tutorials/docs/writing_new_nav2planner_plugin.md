@@ -26,6 +26,8 @@ This package can be considered as a reference for writing planner plugin.
 Our example plugin inherits from the base class `nav2_core::GlobalPlanner`. The base class provides 5 pure virtual methods to implement a planner plugin. The plugin will be used by the planner server to compute trajectories.
 Let’s learn more about the methods needed to write a planner plugin.
 
+<div class="center-table" markdown>
+
 | **Virtual method**   | **Method description**                                                                                                                                                                                                                                                                                                                  | **Requires override?**   |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
 | configure()          | Method is called at when planner server enters on_configure state. Ideally<br/>this methods should perform declarations of ROS parameters and<br/>initialization of planner’s member variables. This method takes 4 input<br/>params: shared pointer to parent node, planner name, tf buffer pointer and<br/>shared pointer to costmap. | Yes                      |
@@ -33,6 +35,8 @@ Let’s learn more about the methods needed to write a planner plugin.
 | deactivate()         | Method is called when planner server enters on_deactivate state. Ideally<br/>this method should implement operations which are necessary before planner<br/>goes to an inactive state.                                                                                                                                                  | Yes                      |
 | cleanup()            | Method is called when planner server goes to on_cleanup state. Ideally this<br/>method should clean up resources which are created for the planner.                                                                                                                                                                                     | Yes                      |
 | createPlan()         | Method is called when planner server demands a global plan for specified<br/>start and goal pose. This method returns nav_msgs::msg::Path carrying<br/>global plan. This method takes 3 input params: start pose, goal pose and<br/>a function to check if the action has been canceled.                                                | Yes                      |
+
+</div>
 
 For this tutorial, we will be using methods `StraightLine::configure()` and `StraightLine::createPlan()` to create straight-line planner.
 

@@ -33,6 +33,8 @@ The base class from `nav2_core` provides 4 pure virtual methods to implement a B
 The plugin will be used by the behavior server to host the plugins, but each plugin will provide their own unique action server interface.
 Let’s learn more about the methods needed to write a Behavior Plugin **if you did not use the \`\`nav2_behaviors\`\` wrapper**.
 
+<div class="center-table" markdown>
+
 | **Virtual method**   | **Method description**                                                                                                                                                                                                                                                                                                                           | **Requires override?**   |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
 | configure()          | Method is called at when server enters on_configure state. Ideally<br/>this method should perform declarations of ROS parameters and<br/>initialization of behavior’s member variables. This method takes 4 input<br/>parameters: shared pointer to parent node, behavior name, tf buffer pointer<br/>and shared pointer to a collision checker. | Yes                      |
@@ -40,8 +42,12 @@ Let’s learn more about the methods needed to write a Behavior Plugin **if you 
 | deactivate()         | Method is called when behavior server enters on_deactivate state. Ideally<br/>this method should implement operations which are necessary before<br/>behavior goes to an inactive state.                                                                                                                                                         | Yes                      |
 | cleanup()            | Method is called when behavior server goes to on_cleanup state. Ideally<br/>this method should clean up resources which are created for the behavior.                                                                                                                                                                                            | Yes                      |
 
+</div>
+
 For the `nav2_behaviors` wrapper, which provides the ROS 2 action interface and boilerplate, we have 4 virtual methods to implement.
 This tutorial uses this wrapper so these are the main elements we will address.
+
+<div class="center-table" markdown>
 
 | **Virtual method**   | **Method description**                                                                                                                                                                                                      | **Requires override?**   |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
@@ -50,6 +56,8 @@ This tutorial uses this wrapper so these are the main elements we will address.
 | onConfigure()        | Method is called when behavior server enters on_configure state. Ideally<br/>this method should implement operations which are necessary before<br/>behavior goes to a configured state (get parameters, etc).              | No                       |
 | onCleanup()          | Method is called when behavior server goes to on_cleanup state. Ideally<br/>this method should clean up resources which are created for the behavior.                                                                       | No                       |
 | onActionCompletion() | Method is called when the action has completed. Ideally, this method should<br/>populate the action result.                                                                                                                 | No                       |
+
+</div>
 
 For this tutorial, we will be using methods `onRun()`, `onCycleUpdate()`, and `onConfigure()` to create the SMS behavior.
 `onConfigure()` will be skipped for brevity, but only declares parameters.

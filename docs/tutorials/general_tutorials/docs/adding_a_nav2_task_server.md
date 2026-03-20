@@ -101,6 +101,8 @@ Your nav2 task server may also wish to return a ‘error_code’ and ‘error_ms
 It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535.
 The table below shows the current servers along with the expected error code structure.
 
+<div class="center-table" markdown>
+
 | Server Name                                       | Reserved              | RANGE       |
 |---------------------------------------------------|-----------------------|-------------|
 | ...                                               | NONE=0, UNKNOWN=1     | 2-99        |
@@ -121,6 +123,8 @@ The table below shows the current servers along with the expected error code str
 | ...                                               | ...                   |             |
 | First External Server                             | NONE=0, UNKNOWN=10000 | 10001-10099 |
 | ...                                               | ...                   |             |
+
+</div>
 
 [Controller Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/src/controller_server.cpp
 [Planner Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_planner/src/planner_server.cpp

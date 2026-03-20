@@ -34,6 +34,8 @@ For BT action nodes that do *not* utilize ROS 2 action interfaces, use the `BT::
 The `BTActionNode` class provides 5 virtual methods to use, in addition to the information provided in the constructor.
 Let’s learn more about the methods needed to write a BT action plugin.
 
+<div class="center-table" markdown>
+
 | **method**           | **Method description**                                                                                                                                                                                                                                                              | **Required?**   |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
 | Constructor          | Constructor to indicate the corresponding XML tag name to that matches<br/>the plugin, the name of the action server to call using the plugin,<br/>and any BehaviorTree.CPP special configurations required.                                                                        | Yes             |
@@ -43,6 +45,8 @@ Let’s learn more about the methods needed to write a BT action plugin.
 | on_success()         | Method is called when the ROS 2 action server returns a successful result.<br/>Returns the value the BT node will report back to the tree.                                                                                                                                          | No              |
 | on_aborted()         | Method is called when the ROS 2 action server returns an aborted result.<br/>Returns the value the BT node will report back to the tree.                                                                                                                                            | No              |
 | on_cancelled()       | MMethod is called when the ROS 2 action server returns a cancelled result.<br/>Returns the value the BT node will report back to the tree.                                                                                                                                          | No              |
+
+</div>
 
 For this tutorial, we will only be using the `on_tick()` method.
 

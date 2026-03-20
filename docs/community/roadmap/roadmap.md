@@ -7,6 +7,8 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Lyrical Roadmap
 
+<div class="center-table" markdown>
+
 | Description                                                                                                                       | Size (Status)         |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | Controller Server and Plugin<br/>factor for centralized path<br/>handling and crosstrack error<br/>estimation and enforcement.    | Large (In Progress)   |
@@ -20,9 +22,13 @@ For a full list of important completed changes in the project, see the Migration
 | Fix for statics in Smac<br/>Planner to allow for multiple<br/>instances in a server not to<br/>conflict                           | Medium (DONE)         |
 | Create initial prototype of<br/>a framework for environmental<br/>modeling, sensor processing,<br/>and external model integration | Large                 |
 
+</div>
+
 [Continued Route Server]: https://github.com/ros-navigation/navigation2/issues/5082
 
 ## Kilted Roadmap
+
+<div class="center-table" markdown>
 
 | Description                                               | Size (Status)  |
 |-----------------------------------------------------------|----------------|
@@ -30,7 +36,11 @@ For a full list of important completed changes in the project, see the Migration
 | Allow non-orientation sp. for<br/>smac planner goals      | Medium (DONE)  |
 | Allow docking server to operate<br/>forward and backwards | Medium (DONE)  |
 
+</div>
+
 ## Jazzy Roadmap
+
+<div class="center-table" markdown>
 
 | Description                                                 | Size (Status)        |
 |-------------------------------------------------------------|----------------------|
@@ -46,12 +56,16 @@ For a full list of important completed changes in the project, see the Migration
 | Velocity-Scheduled Collision<br/>Monitor Polygons           | Medium (DONE)        |
 | Nav2 auto-docking capability                                | Medium (DONE)        |
 
+</div>
+
 [Smac Planner Improvements]: https://github.com/ros-navigation/navigation2/issues/3172
 [Fuse Migration]: https://github.com/ros-navigation/navigation2/issues/2598
 [Ignition Migration]: https://github.com/ros-navigation/navigation2/issues/2997
 [Route Graph Planner]: https://github.com/ros-navigation/navigation2/issues/2229
 
 ## Iron Roadmap
+
+<div class="center-table" markdown>
 
 | Plugin Name                   | Size (Status)       |
 |-------------------------------|---------------------|
@@ -62,12 +76,16 @@ For a full list of important completed changes in the project, see the Migration
 | [Velocity Smoother][]         | Medium (DONE)       |
 | ROS Time Respect Across Stack | Medium (incomplete) |
 
+</div>
+
 [Pluginize Navigators]: https://github.com/ros-navigation/navigation2/issues/3335
 [MPPI Controller]: https://github.com/ros-navigation/navigation2/pull/3350
 [Route Graph Planner]: https://github.com/ros-navigation/navigation2/issues/2229
 [Velocity Smoother]: https://github.com/ros-navigation/navigation2/pull/2964
 
 ## Humble Roadmap
+
+<div class="center-table" markdown>
 
 | Plugin Name                                     | Size (Status)  |
 |-------------------------------------------------|----------------|
@@ -80,6 +98,8 @@ For a full list of important completed changes in the project, see the Migration
 | [Complete First Time Guide][]                   | Medium (DONE)  |
 | [Rotation Shim Controller][]                    | Small (DONE)   |
 | [Dynamic Composition][]                         | Medium (DONE)  |
+
+</div>
 
 [Nav2 1 Node Per Server]: https://github.com/ros-navigation/navigation2/issues/816
 [Smac Lattice Planner]: https://github.com/ros-navigation/navigation2/issues/1710

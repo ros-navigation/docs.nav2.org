@@ -81,3 +81,8 @@
   border-style: solid;
   border-color: var(--code-border-color);
 }
+
+/* A custom class for wrapping tables that need to be centered */
+.center-table {
+  text-align: center;
+}
