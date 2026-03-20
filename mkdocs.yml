@@ -96,6 +96,10 @@ nav:
       - Navigation Concepts: getting_started/concepts/index.md
       - Nav2 Behavior Trees: getting_started/behavior_trees/index.md
       - ROSCon Talks: getting_started/roscon.md
+    - Tutorials:
+      - tutorials/index.md
+      - Plugin Tutorials: tutorials/plugin_tutorials/index.md
+      - General Tutorials: tutorials/general_tutorials/index.md
     - Configuration & Development: 
       - configuration_and_development/index.md
       - Navigation Plugins: configuration_and_development/plugins/index.md
@@ -105,10 +109,6 @@ nav:
       - Simple Commander API: configuration_and_development/commander_api/index.md
       - Migration Guides: configuration_and_development/migration/index.md
       - API Docs: https://api.nav2.org/
-    - Tutorials: 
-      - tutorials/index.md
-      - Plugin Tutorials: tutorials/plugin_tutorials/index.md
-      - General Tutorials: tutorials/general_tutorials/index.md
     - Community: 
       - community/index.md
       - Getting Involved: community/involvement_docs/index.md
@@ -147,6 +147,53 @@ nav:
       - Follow Dynamic Point: getting_started/behavior_trees/trees/follow_point.md
       - Odometry Calibration: getting_started/behavior_trees/trees/odometry_calibration.md
     - ROSCon Talks: getting_started/roscon.md
+  - Tutorials:
+    - tutorials/index.md
+    - Plugin Tutorials:
+      - tutorials/plugin_tutorials/index.md
+      - Writing a New Behavior Plugin: tutorials/plugin_tutorials/docs/writing_new_behavior_plugin.md
+      - Writing a New Behavior Tree Plugin: tutorials/plugin_tutorials/docs/writing_new_bt_plugin.md
+      - Writing a New Controller Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2controller_plugin.md
+      - Writing a New Costmap2D Plugin: tutorials/plugin_tutorials/docs/writing_new_costmap2d_plugin.md
+      - Writing a New Navigator Plugin: tutorials/plugin_tutorials/docs/writing_new_navigator_plugin.md
+      - Writing a New Planner Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2planner_plugin.md
+    - General Tutorials:
+      - tutorials/general_tutorials/index.md
+      - Navigating with a Physical Turtlebot 3: tutorials/general_tutorials/docs/navigation2_on_real_turtlebot3.md
+      - Navigating while Mapping (SLAM): tutorials/general_tutorials/docs/navigation2_with_slam.md
+      - Using an External Costmap Plugin (STVL): tutorials/general_tutorials/docs/navigation2_with_stvl.md
+      - Navigating using GPS Localization: tutorials/general_tutorials/docs/navigation2_with_gps.md
+      - Lidar-Free, Vision-Based Navigation:
+        - tutorials/general_tutorials/docs/isaac_perceptor/index.md
+        - Rebuilding TensorRT Engine: tutorials/general_tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.md
+      - Navigating with Semantic Segmentation: tutorials/general_tutorials/docs/navigation2_with_semantic_segmentation.md
+      - Groot Tutorials:
+        - tutorials/general_tutorials/docs/groot_tutorials/index.md
+        - Groot - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot.md
+        - Groot2 - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot2.md
+      - Using VIO to Augment Robot Odometry: tutorials/general_tutorials/docs/integrating_vio.md
+      - Dynamic Object Following: tutorials/general_tutorials/docs/navigation2_dynamic_point_following.md
+      - Navigating with Keepout Zones: tutorials/general_tutorials/docs/navigation2_with_keepout_filter.md
+      - Navigating with Speed Limits: tutorials/general_tutorials/docs/navigation2_with_speed_filter.md
+      - Using Docking Server: tutorials/general_tutorials/docs/using_docking.md
+      - Using Rotation Shim Controller: tutorials/general_tutorials/docs/using_shim_controller.md
+      - Adding a Smoother to a BT: tutorials/general_tutorials/docs/adding_smoother.md
+      - Using Collision Monitor: tutorials/general_tutorials/docs/using_collision_monitor.md
+      - Adding a New Nav2 Task Server: tutorials/general_tutorials/docs/adding_a_nav2_task_server.md
+      - Filtering of Noise-Induced Obstacles: tutorials/general_tutorials/docs/filtering_of_noise-induced_obstacles.md
+      - Camera Calibration: tutorials/general_tutorials/docs/camera_calibration.md
+      - Get Backtrace in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_backtrace.md
+      - Profiling in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_profile.md
+      - Docker for Development - Zero to Hero: tutorials/general_tutorials/docs/docker_dev.md
+      - Route Server Tools:
+        - tutorials/general_tutorials/docs/route_server_tools/index.md
+        - Using the Nav2 Route Tool: tutorials/general_tutorials/docs/route_server_tools/navigation2_route_tool.md
+        - Route Graph Generation LIF Editor: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md
+        - Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation.md
+        - SWAGGER Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/swagger_generation.md
+      - Navigating with Vector Objects: tutorials/general_tutorials/docs/navigation2_with_vector_objects.md
+      - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/general_tutorials/docs/roscon_uk_2025_state_estimation.md
+      - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
   - Configuration & Development:
     - configuration_and_development/index.md
     - Navigation Plugins:
@@ -372,53 +419,6 @@ nav:
       - Jazzy to Kilted: configuration_and_development/migration/Jazzy.md
       - Kilted to L-turtle: configuration_and_development/migration/Kilted.md
     - API Docs: https://api.nav2.org/
-  - Tutorials:
-    - tutorials/index.md
-    - Plugin Tutorials:
-      - tutorials/plugin_tutorials/index.md
-      - Writing a New Behavior Plugin: tutorials/plugin_tutorials/docs/writing_new_behavior_plugin.md
-      - Writing a New Behavior Tree Plugin: tutorials/plugin_tutorials/docs/writing_new_bt_plugin.md
-      - Writing a New Controller Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2controller_plugin.md
-      - Writing a New Costmap2D Plugin: tutorials/plugin_tutorials/docs/writing_new_costmap2d_plugin.md
-      - Writing a New Navigator Plugin: tutorials/plugin_tutorials/docs/writing_new_navigator_plugin.md
-      - Writing a New Planner Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2planner_plugin.md
-    - General Tutorials:
-      - tutorials/general_tutorials/index.md
-      - Navigating with a Physical Turtlebot 3: tutorials/general_tutorials/docs/navigation2_on_real_turtlebot3.md
-      - Navigating while Mapping (SLAM): tutorials/general_tutorials/docs/navigation2_with_slam.md
-      - Using an External Costmap Plugin (STVL): tutorials/general_tutorials/docs/navigation2_with_stvl.md
-      - Navigating using GPS Localization: tutorials/general_tutorials/docs/navigation2_with_gps.md
-      - Lidar-Free, Vision-Based Navigation:
-        - tutorials/general_tutorials/docs/isaac_perceptor/index.md
-        - Rebuilding TensorRT Engine: tutorials/general_tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.md
-      - Navigating with Semantic Segmentation: tutorials/general_tutorials/docs/navigation2_with_semantic_segmentation.md
-      - Groot Tutorials:
-        - tutorials/general_tutorials/docs/groot_tutorials/index.md
-        - Groot - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot.md
-        - Groot2 - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot2.md
-      - Using VIO to Augment Robot Odometry: tutorials/general_tutorials/docs/integrating_vio.md
-      - Dynamic Object Following: tutorials/general_tutorials/docs/navigation2_dynamic_point_following.md
-      - Navigating with Keepout Zones: tutorials/general_tutorials/docs/navigation2_with_keepout_filter.md
-      - Navigating with Speed Limits: tutorials/general_tutorials/docs/navigation2_with_speed_filter.md
-      - Using Docking Server: tutorials/general_tutorials/docs/using_docking.md
-      - Using Rotation Shim Controller: tutorials/general_tutorials/docs/using_shim_controller.md
-      - Adding a Smoother to a BT: tutorials/general_tutorials/docs/adding_smoother.md
-      - Using Collision Monitor: tutorials/general_tutorials/docs/using_collision_monitor.md
-      - Adding a New Nav2 Task Server: tutorials/general_tutorials/docs/adding_a_nav2_task_server.md
-      - Filtering of Noise-Induced Obstacles: tutorials/general_tutorials/docs/filtering_of_noise-induced_obstacles.md
-      - Camera Calibration: tutorials/general_tutorials/docs/camera_calibration.md
-      - Get Backtrace in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_backtrace.md
-      - Profiling in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_profile.md
-      - Docker for Development - Zero to Hero: tutorials/general_tutorials/docs/docker_dev.md
-      - Route Server Tools:
-        - tutorials/general_tutorials/docs/route_server_tools/index.md
-        - Using the Nav2 Route Tool: tutorials/general_tutorials/docs/route_server_tools/navigation2_route_tool.md
-        - Route Graph Generation LIF Editor: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md
-        - Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation.md
-        - SWAGGER Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/swagger_generation.md
-      - Navigating with Vector Objects: tutorials/general_tutorials/docs/navigation2_with_vector_objects.md
-      - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/general_tutorials/docs/roscon_uk_2025_state_estimation.md
-      - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
   - Community:
     - community/index.md
     - Getting Involved:
