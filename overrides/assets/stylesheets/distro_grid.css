@@ -1,0 +1,50 @@
+/* For "Distributions" cards in docs/index.md file */
+
+.distro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: center;
+}
+
+.distro-cell {
+  border: 1px solid var(--md-typeset-table-color);
+  border-radius: 0.4rem;
+  padding: 1rem;
+  background: var(--md-default-bg-color);
+}
+
+.distro-title {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.distro-badge {
+  margin-bottom: 0.8rem;
+  padding: 0.5rem 1.3rem;
+  border-radius: 1.5rem;
+  font-size: .8rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.distro-badge.dev {
+  background-color: #007bff;
+  color: white; 
+}
+
+.distro-badge.active {
+  background-color: #28a745;
+  color: white; 
+}
+
+.distro-badge.maintained {
+  background-color: #ffc107;
+  color: black; 
+}
+
+.distro-badge.eol {
+  background-color: #dc3545;
+  color: white; 
+}

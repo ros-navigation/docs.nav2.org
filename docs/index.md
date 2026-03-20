@@ -83,10 +83,39 @@ A list of all plugins can be found on [Navigation Plugins](plugins/index.md#navi
 
 Nav2 is available across multiple ROS 2 distributions with varying levels of support:
 
-| <div style="text-align: center;"><br/>  <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Rolling Ridley</span></div><br/>  <div style="margin-bottom: 20px;"><span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span></div><br/></div>![image](distro_graphics/rolling.png){ width="300px" }    | <div style="text-align: center;"><br/>  <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Kilted Kaiju</span></div><br/>  <div style="margin-bottom: 20px;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div><br/></div>![image](distro_graphics/kilted.png){ width="300px" }        |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <div style="text-align: center;"><br/>  <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Jazzy Jalisco</span></div><br/>  <div style="margin-bottom: 20px;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div><br/></div>![image](distro_graphics/Jazzy.png){ width="300px" }    | <div style="text-align: center;"><br/>  <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Iron Irwini</span></div><br/>  <div style="margin-bottom: 20px;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div><br/></div>![image](distro_graphics/iron.png){ width="300px" }              |
-| <div style="text-align: center;"><br/>  <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Humble Hawksbill</span></div><br/>  <div style="margin-bottom: 20px;"><span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span></div><br/></div>![image](distro_graphics/humble.png){ width="300px" }    | <div style="text-align: center;"><br/>  <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Galactic Geochelone</span></div><br/>  <div style="margin-bottom: 20px;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div><br/></div>![image](distro_graphics/galactic.png){ width="300px" }  |
+<!-- CSS files located in overrides/assets/stylesheets/distro_grid.css -->
+<div class="distro-grid">
+  <div class="distro-cell">
+    <div class="distro-title">Rolling Ridley</div>
+    <div class="distro-badge dev">Development</div>
+    <img src="distro_graphics/rolling.png" width="300px"/>
+  </div>
+  <div class="distro-cell">
+    <div class="distro-title">Kilted Kaiju</div>
+    <div class="distro-badge active">Active Support</div>
+    <img src="distro_graphics/kilted.png" width="300px"/>
+  </div>
+  <div class="distro-cell">
+    <div class="distro-title">Jazzy Jalisco</div>
+    <div class="distro-badge active">Active Support</div>
+    <img src="distro_graphics/Jazzy.png" width="300px"/>
+  </div>
+  <div class="distro-cell">
+    <div class="distro-title">Iron Irwini</div>
+    <div class="distro-badge eol">End of Life</div>
+    <img src="distro_graphics/iron.png" width="300px"/>
+  </div>
+  <div class="distro-cell">
+    <div class="distro-title">Humble Hawksbill</div>
+    <div class="distro-badge maintained">Maintained</div>
+    <img src="distro_graphics/humble.png" width="300px"/>
+  </div>
+  <div class="distro-cell">
+    <div class="distro-title">Galactic Geochelone</div>
+    <div class="distro-badge eol">End of Life</div>
+    <img src="distro_graphics/galactic.png" width="300px"/>
+  </div>
+</div>
 
 ## Related Projects
 
