@@ -19,6 +19,10 @@ Click on the images below for a link to the drivers or navigation configurations
 .robots-grid img {
   width: 340px;
 }
+.robots-grid a:hover img {
+  transform: scale(1.02);
+  transition: transform 0.1s;
+}
 </style>
 
 <div class="robots-grid" markdown>
