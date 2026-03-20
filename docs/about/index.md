@@ -1,4 +1,4 @@
-# About and Contact
+# About & Contact
 
 ## About
 

@@ -114,7 +114,7 @@ nav:
       - Getting Involved: community/involvement_docs/index.md
       - Maintainer Docs: community/maintainer_docs/index.md
       - Roadmaps: community/roadmap/roadmap.md
-    - About and Contact: 
+    - About & Contact: 
       - about/index.md
       - Robots Using: about/robots.md
       - Related Projects: about/related_projects.md
@@ -428,7 +428,7 @@ nav:
       - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
     - Roadmaps: community/roadmap/roadmap.md  
-  - About and Contact:
+  - About & Contact:
     - about/index.md
     - Robots Using: about/robots.md
     - Related Projects: about/related_projects.md
