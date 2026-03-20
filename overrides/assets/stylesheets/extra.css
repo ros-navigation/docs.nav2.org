@@ -53,6 +53,11 @@
   width: auto;
 }
 
+.md-tabs {
+  display: flex;
+  justify-content: center;
+}
+
 .md-code__nav {
   background-color: var(--md-code-bg-color);
 }
