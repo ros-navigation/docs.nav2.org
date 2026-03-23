@@ -1756,6 +1756,46 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
+<dt class="field-even">allow_navigator_preemption</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Controls whether a new navigation goal can preempt a currently active navigator. If set to false, if a navigator is already running and a new goal arrives for a different navigator, the new goal is rejected. If set to true, the new goal signals the active navigator to stop, waits for it to finish, then hands control over to the new navigator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">navigator_preemption_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>500</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Only relevant when <code class="docutils literal notranslate"><span class="pre">allow_navigator_preemption</span></code> is true. Sets the maximum time (in ms) to wait for the currently active navigator to stop. If the active navigator doesn’t finish within this timeout, the new goal is rejected.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="navigatetopose-parameters">
