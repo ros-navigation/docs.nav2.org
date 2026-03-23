@@ -804,6 +804,35 @@ Add support for switching between SMAC planners
 
 Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
 
+OMNI Analytic Expansion Support in SmacPlannerLattice
+-----------------------------------------------------
+
+`PR #5965 <https://github.com/ros-navigation/navigation2/pull/5965>`_ adds omnidirectional (OMNI) analytic expansion support to ``SmacPlannerLattice``.
+When a lattice primitives file specifies ``motion_model: "omni"`` in its metadata, the planner now automatically:
+
+- Uses ``SE2StateSpace`` (straight-line with linear heading interpolation) instead of Dubins/Reeds-Shepp for analytic expansion and distance heuristics
+- Skips turning-radius refinement in analytic path expansion (SE2 paths are radius-independent)
+- Configures the path smoother in holonomic mode
+- Disables ``allow_reverse_expansion`` with a warning (meaningless for omnidirectional robots)
+
+No parameter changes are required — the OMNI motion model is auto-detected from the lattice file metadata.
+
+Before:
+
+.. image:: images/smac_lattice_omni_before_1.png
+  :width: 418
+
+.. image:: images/smac_lattice_omni_before_2.png
+  :width: 418
+
+After:
+
+.. image:: images/smac_lattice_omni_after_1.png
+  :width: 418
+
+.. image:: images/smac_lattice_omni_after_2.png
+  :width: 418
+
 New bt_log_idle_transitions parameter in bt_navigator
 -----------------------------------------------------
 

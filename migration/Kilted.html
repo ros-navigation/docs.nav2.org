@@ -1206,6 +1206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-axisgoalchecker-plugin">New AxisGoalChecker Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-default-cancel-timeout-parameter-in-bt-navigator">New default_cancel_timeout parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#add-support-for-switching-between-smac-planners">Add support for switching between SMAC planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#omni-analytic-expansion-support-in-smacplannerlattice">OMNI Analytic Expansion Support in SmacPlannerLattice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-log-idle-transitions-parameter-in-bt-navigator">New bt_log_idle_transitions parameter in bt_navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-iswithinpathtrackingbounds-node">New IsWithinPathTrackingBounds Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rpp-min-distance-to-obstacle-fix-and-new-allow-obstacle-checking-beyond-goal-parameter">RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter</a></li>
@@ -2026,6 +2027,24 @@ state). The controller will be provided the processed plan during computeVelocit
 <div class="section" id="add-support-for-switching-between-smac-planners">
 <h2>Add support for switching between SMAC planners<a class="headerlink" href="#add-support-for-switching-between-smac-planners" title="Permalink to this heading"></a></h2>
 <p>Prior to <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5840">PR 5840</a>, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.</p>
+</div>
+<div class="section" id="omni-analytic-expansion-support-in-smacplannerlattice">
+<h2>OMNI Analytic Expansion Support in SmacPlannerLattice<a class="headerlink" href="#omni-analytic-expansion-support-in-smacplannerlattice" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5965">PR #5965</a> adds omnidirectional (OMNI) analytic expansion support to <code class="docutils literal notranslate"><span class="pre">SmacPlannerLattice</span></code>.
+When a lattice primitives file specifies <code class="docutils literal notranslate"><span class="pre">motion_model:</span> <span class="pre">&quot;omni&quot;</span></code> in its metadata, the planner now automatically:</p>
+<ul class="simple">
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">SE2StateSpace</span></code> (straight-line with linear heading interpolation) instead of Dubins/Reeds-Shepp for analytic expansion and distance heuristics</p></li>
+<li><p>Skips turning-radius refinement in analytic path expansion (SE2 paths are radius-independent)</p></li>
+<li><p>Configures the path smoother in holonomic mode</p></li>
+<li><p>Disables <code class="docutils literal notranslate"><span class="pre">allow_reverse_expansion</span></code> with a warning (meaningless for omnidirectional robots)</p></li>
+</ul>
+<p>No parameter changes are required — the OMNI motion model is auto-detected from the lattice file metadata.</p>
+<p>Before:</p>
+<a class="reference internal image-reference" href="../_images/smac_lattice_omni_before_1.png"><img alt="../_images/smac_lattice_omni_before_1.png" src="../_images/smac_lattice_omni_before_1.png" style="width: 418px;" /></a>
+<a class="reference internal image-reference" href="../_images/smac_lattice_omni_before_2.png"><img alt="../_images/smac_lattice_omni_before_2.png" src="../_images/smac_lattice_omni_before_2.png" style="width: 418px;" /></a>
+<p>After:</p>
+<a class="reference internal image-reference" href="../_images/smac_lattice_omni_after_1.png"><img alt="../_images/smac_lattice_omni_after_1.png" src="../_images/smac_lattice_omni_after_1.png" style="width: 418px;" /></a>
+<a class="reference internal image-reference" href="../_images/smac_lattice_omni_after_2.png"><img alt="../_images/smac_lattice_omni_after_2.png" src="../_images/smac_lattice_omni_after_2.png" style="width: 418px;" /></a>
 </div>
 <div class="section" id="new-bt-log-idle-transitions-parameter-in-bt-navigator">
 <h2>New bt_log_idle_transitions parameter in bt_navigator<a class="headerlink" href="#new-bt-log-idle-transitions-parameter-in-bt-navigator" title="Permalink to this heading"></a></h2>
