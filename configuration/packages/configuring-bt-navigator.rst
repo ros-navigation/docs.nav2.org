@@ -270,6 +270,28 @@ Parameters
   Description
     List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.
 
+:allow_navigator_preemption:
+
+  ============== ==================================================
+  Type           Default
+  -------------- --------------------------------------------------
+  bool           false
+  ============== ==================================================
+
+  Description
+    Controls whether a new navigation goal can preempt a currently active navigator. If set to false, if a navigator is already running and a new goal arrives for a different navigator, the new goal is rejected. If set to true, the new goal signals the active navigator to stop, waits for it to finish, then hands control over to the new navigator.
+
+:navigator_preemption_timeout:
+
+  ============== ==================================================
+  Type           Default
+  -------------- --------------------------------------------------
+  int            500
+  ============== ==================================================
+
+  Description
+    Only relevant when ``allow_navigator_preemption`` is true. Sets the maximum time (in ms) to wait for the currently active navigator to stop. If the active navigator doesn't finish within this timeout, the new goal is rejected.
+
 NavigateToPose Parameters
 *************************
 
