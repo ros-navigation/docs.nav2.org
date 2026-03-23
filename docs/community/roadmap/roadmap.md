@@ -7,56 +7,38 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Lyrical Roadmap
 
-<div class="center-table" markdown>
-
-| Description                                                                                                                       | Size (Status)         |
-|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Controller Server and Plugin<br/>factor for centralized path<br/>handling and crosstrack error<br/>estimation and enforcement.    | Large (In Progress)   |
-| Massive refactor of `rclcpp`<br/>types to `nav2` types for<br/>ROS API abstraction                                                | Large (in progress)   |
-| Improve dynamic feasibility<br/>on approach to goal on all<br/>control and behavior plugins                                       | Medium (DONE)         |
-| Introduce Vector Object Server<br/>to augment Costmap Filters<br/>with polygons rather than<br/>annotated masks                   | Medium  (DONE)        |
-| [Continued Route Server][]                                                                                                        | Medium                |
-| Add Pause and Resume feature<br/>to Nav2 behavior tree tasks                                                                      | Medium (DONE)         |
-| Use PointCloud Transport for<br/>all pointcloud subscriptions                                                                     | Medium (DONE)         |
-| Update and refine behavior<br/>trees for more intelligent<br/>behavior                                                            | Medium                |
-| Fix for statics in Smac<br/>Planner to allow for multiple<br/>instances in a server not to<br/>conflict                           | Medium (DONE)         |
-| Create initial prototype of<br/>a framework for environmental<br/>modeling, sensor processing,<br/>and external model integration | Large                 |
-
-</div>
+- [ ] (Large) (In Progress) - Controller Server and Plugin factor for centralized path handling and crosstrack error estimation and enforcement.
+- [ ] (Large) (In Progress) - Massive refactor of `rclcpp` types to `nav2` types for ROS API abstraction.
+- [x] (Medium) - Improve dynamic feasibility on approach to goal on all control and behavior plugins.
+- [x] (Medium) - Introduce Vector Object Server to augment Costmap Filters with polygons rather than annotated masks.
+- [ ] (Medium) - [Continued Route Server][]
+- [x] (Medium) - Add Pause and Resume feature to Nav2 behavior tree tasks.
+- [x] (Medium) - Use PointCloud Transport for all pointcloud subscriptions.
+- [ ] (Medium) - Update and refine behavior trees for more intelligent behavior.
+- [x] (Medium) - Fix for statics in Smac Planner to allow for multiple instances in a server not to conflict.
+- [ ] (Large) - Create initial prototype of a framework for environmental modeling, sensor processing, and external model integration.
 
 [Continued Route Server]: https://github.com/ros-navigation/navigation2/issues/5082
 
 ## Kilted Roadmap
 
-<div class="center-table" markdown>
-
-| Description                                               | Size (Status)  |
-|-----------------------------------------------------------|----------------|
-| Release of Route server                                   | Large (DONE)   |
-| Allow non-orientation sp. for<br/>smac planner goals      | Medium (DONE)  |
-| Allow docking server to operate<br/>forward and backwards | Medium (DONE)  |
-
-</div>
+- [x] (Large) - Release of Route server.
+- [x] (Medium) - Allow non-orientation sp. for smac planner goals.
+- [x] (Medium) - Allow docking server to operate forward and backwards.
 
 ## Jazzy Roadmap
 
-<div class="center-table" markdown>
-
-| Description                                                 | Size (Status)        |
-|-------------------------------------------------------------|----------------------|
-| [Smac Planner Improvements][]                               | Large (DONE)         |
-| Get CI Green Again                                          | Small (DONE)         |
-| Various MPPI Improvements                                   | Medium (DONE)        |
-| [Fuse Migration][]                                          | Medium  (incomplete) |
-| [Ignition Migration][]                                      | Medium (DONE)        |
-| [Route Graph Planner][]                                     | Large (in progress)  |
-| Provide Advanced Capabilities<br/>Tutorials (e.g. gps, vio) | Medium (DONE)        |
-| ROS Time Respect Across Stack                               | Medium (DONE)        |
-| TwistStamped Migration                                      | Medium (DONE)        |
-| Velocity-Scheduled Collision<br/>Monitor Polygons           | Medium (DONE)        |
-| Nav2 auto-docking capability                                | Medium (DONE)        |
-
-</div>
+- [x] (Large) - [Smac Planner Improvements][]
+- [x] (Small) - Get CI Green Again.
+- [x] (Medium) - Various MPPI Improvements.
+- [ ] (Medium) (Incomplete) - [Fuse Migration][]
+- [x] (Medium) - [Ignition Migration][]
+- [ ] (Large) (In Progress) - [Route Graph Planner][]
+- [x] (Medium) - Provide Advanced Capabilities Tutorials (e.g. gps, vio).
+- [x] (Medium) - ROS Time Respect Across Stack.
+- [x] (Medium) - TwistStamped Migration.
+- [x] (Medium) - Velocity-Scheduled Collision Monitor Polygons.
+- [x] (Medium) - Nav2 auto-docking capability.
 
 [Smac Planner Improvements]: https://github.com/ros-navigation/navigation2/issues/3172
 [Fuse Migration]: https://github.com/ros-navigation/navigation2/issues/2598
@@ -65,18 +47,12 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Iron Roadmap
 
-<div class="center-table" markdown>
-
-| Plugin Name                   | Size (Status)       |
-|-------------------------------|---------------------|
-| [Pluginize Navigators][]      | Medium  (DONE)      |
-| [MPPI Controller][]           | Very Large (DONE)   |
-| [Route Graph Planner][]       | Large (incomplete)  |
-| 90% unit test coverage        | Small  (DONE)       |
-| [Velocity Smoother][]         | Medium (DONE)       |
-| ROS Time Respect Across Stack | Medium (incomplete) |
-
-</div>
+- [x] (Medium) - [Pluginize Navigators][]
+- [x] (Very Large) - [MPPI Controller][]
+- [ ] (Large) (Incomplete) - [Route Graph Planner][]
+- [x] (Small) - 90% unit test coverage.
+- [x] (Medium) - [Velocity Smoother][]
+- [ ] (Medium) (Incomplete) - ROS Time Respect Across Stack.
 
 [Pluginize Navigators]: https://github.com/ros-navigation/navigation2/issues/3335
 [MPPI Controller]: https://github.com/ros-navigation/navigation2/pull/3350
@@ -85,21 +61,15 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Humble Roadmap
 
-<div class="center-table" markdown>
-
-| Plugin Name                                     | Size (Status)  |
-|-------------------------------------------------|----------------|
-| [Nav2 1 Node Per Server][]                      | Medium  (DONE) |
-| [Smac Lattice Planner][]                        | Large (DONE)   |
-| [Safety Collision Nodes][]                      | Medium (DONE)  |
-| [Fix Min Range Bug][]                           | Small  (DONE)  |
-| [Move Development from Master to Rolling][]     | Small (DONE)   |
-| Push Test Coverage to 88%                       | Medium (DONE)  |
-| [Complete First Time Guide][]                   | Medium (DONE)  |
-| [Rotation Shim Controller][]                    | Small (DONE)   |
-| [Dynamic Composition][]                         | Medium (DONE)  |
-
-</div>
+- [x] (Medium) - [Nav2 1 Node Per Server][]
+- [x] (Large) - [Smac Lattice Planner][]
+- [x] (Medium) - [Safety Collision Nodes][]
+- [x] (Small) - [Fix Min Range Bug][]
+- [x] (Small) - [Move Development from Master to Rolling][]
+- [x] (Medium) - Push Test Coverage to 88%.
+- [x] (Medium) - [Complete First Time Guide][]
+- [x] (Small) - [Rotation Shim Controller][]
+- [x] (Medium) - [Dynamic Composition][]
 
 [Nav2 1 Node Per Server]: https://github.com/ros-navigation/navigation2/issues/816
 [Smac Lattice Planner]: https://github.com/ros-navigation/navigation2/issues/1710
