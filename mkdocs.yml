@@ -39,6 +39,7 @@ theme:
 plugins:
   - search
   - mike # All parameters: https://github.com/jimporter/mike#configuration
+  - autorefs
 
 extra:
   version:

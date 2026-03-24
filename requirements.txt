@@ -2,4 +2,5 @@
 # Or use `mkdocs serve --livereload` instead.
 click<=8.2.1
 mike
+mkdocs-autorefs
 mkdocs-material==9.7.1
