@@ -9,9 +9,9 @@ It is important to know that in June 2021 and December 2021, the package receive
 
 The plugins listed below are inside the `nav2_smac_planner` package. See the pages for individual configuration information.
 
-* [Smac 2D Planner](smac/configuring-smac-2d.md)
-* [Smac Hybrid-A\* Planner](smac/configuring-smac-hybrid.md)
-* [Smac State Lattice Planner](smac/configuring-smac-lattice.md)
+- [Smac 2D Planner](smac/configuring-smac-2d.md)
+- [Smac Hybrid-A\* Planner](smac/configuring-smac-hybrid.md)
+- [Smac State Lattice Planner](smac/configuring-smac-lattice.md)
 
 ## Description
 
