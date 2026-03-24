@@ -1,5 +1,5 @@
 # Community
 
-- [Getting Involved](involvement_docs/index.md)
+- [Getting Involved](getting_involved/index.md)
 - [Maintainer Docs](maintainer_docs/index.md)
-- [Roadmaps](roadmap/roadmap.md)
+- [Roadmaps](roadmaps/index.md)

@@ -91,65 +91,67 @@ not_in_nav: |
 nav:
   - Home: 
     - index.md
-    - Getting Started: 
+    - Getting Started:
       - getting_started/index.md
-      - Quickstart: getting_started/quickstart.md
-      - Build and Install: getting_started/build_docs/index.md
-      - Dev Container: getting_started/devcontainer_docs/index.md
-      - Navigation Concepts: getting_started/concepts/index.md
-      - Nav2 Behavior Trees: getting_started/behavior_trees/index.md
-      - ROSCon Talks: getting_started/roscon.md
+      - Quickstart: getting_started/quickstart/index.md
+      - Build and Install: getting_started/build_and_install/index.md
+      - Dev Container: getting_started/dev_container/index.md
+      - Navigation Concepts: getting_started/navigation_concepts/index.md
+      - Nav2 Behavior Trees: getting_started/nav2_behavior_trees/index.md
+      - ROSCon Talks: getting_started/roscon_talks/index.md
     - Tutorials:
       - tutorials/index.md
       - Plugin Tutorials: tutorials/plugin_tutorials/index.md
       - General Tutorials: tutorials/general_tutorials/index.md
-    - Configuration & Development: 
+    - Configuration & Development:
       - configuration_and_development/index.md
-      - First-Time Robot Setup Guide: configuration_and_development/setup_guides/index.md
-      - Navigation Plugins: configuration_and_development/plugins/index.md
+      - First-Time Robot Setup Guide: configuration_and_development/first_time_robot_setup_guide/index.md
+      - Navigation Plugins: configuration_and_development/navigation_plugins/index.md
       - Configuration Guide: configuration_and_development/configuration_guide/index.md
-      - Tuning Guide: configuration_and_development/tuning/index.md
-      - Simple Commander API: configuration_and_development/commander_api/index.md
-      - Migration Guides: configuration_and_development/migration/index.md
+      - Tuning Guide: configuration_and_development/tuning_guide/index.md
+      - Simple Commander API: configuration_and_development/simple_commander_api/index.md
+      - Migration Guides: configuration_and_development/migration_guides/index.md
       - API Docs: https://api.nav2.org/
-    - Community: 
+    - Community:
       - community/index.md
-      - Getting Involved: community/involvement_docs/index.md
+      - Getting Involved: community/getting_involved/index.md
       - Maintainer Docs: community/maintainer_docs/index.md
-      - Roadmaps: community/roadmap/roadmap.md
-    - About & Contact: 
-      - about/index.md
-      - Robots Using: about/robots.md
-      - Related Projects: about/related_projects.md
-      - Citations: about/citations.md
+      - Roadmaps: community/roadmaps/index.md
+    - About & Contact:
+      - about_and_contact/index.md
+      - Robots Using: about_and_contact/robots_using.md
+      - Related Projects: about_and_contact/related_projects.md
+      - Citations: about_and_contact/citations.md
   - Getting Started:
     - getting_started/index.md
-    - Quickstart: getting_started/quickstart.md
+    - Quickstart:
+      - getting_started/quickstart/index.md
     - Build and Install:
-      - getting_started/build_docs/index.md
-      - Build Troubleshooting Guide: getting_started/build_docs/build_troubleshooting_guide.md
+      - getting_started/build_and_install/index.md
+      - Build Troubleshooting Guide: getting_started/build_and_install/build_troubleshooting_guide.md
     - Dev Container:
-      - getting_started/devcontainer_docs/index.md
-      - Dev Container Guide: getting_started/devcontainer_docs/devcontainer_guide.md
+      - getting_started/dev_container/index.md
+      - Dev Container Guide: getting_started/dev_container/devcontainer_guide.md
     - Navigation Concepts:
-      - getting_started/concepts/index.md
-      - ROS 2: getting_started/concepts/ros2.md
-      - Behavior Trees: getting_started/concepts/behavior_trees.md
-      - Navigation Servers: getting_started/concepts/navigation_servers.md
-      - State Estimation: getting_started/concepts/state_estimation.md
-      - Environmental Representation: getting_started/concepts/environmental_representation.md
+      - getting_started/navigation_concepts/index.md
+      - ROS 2: getting_started/navigation_concepts/ros2.md
+      - Behavior Trees: getting_started/navigation_concepts/behavior_trees.md
+      - Navigation Servers: getting_started/navigation_concepts/navigation_servers.md
+      - State Estimation: getting_started/navigation_concepts/state_estimation.md
+      - Environmental Representation: getting_started/navigation_concepts/environmental_representation.md
     - Nav2 Behavior Trees:
-      - getting_started/behavior_trees/index.md
-      - Introduction To Nav2 Specific Nodes: getting_started/behavior_trees/overview/nav2_specific_nodes.md
-      - Detailed Behavior Tree Walkthrough: getting_started/behavior_trees/overview/detailed_behavior_tree_walkthrough.md
-      - Navigate To Pose: getting_started/behavior_trees/trees/nav_to_pose_recovery.md
-      - Navigate Through Poses: getting_started/behavior_trees/trees/nav_through_poses_recovery.md
-      - Navigate To Pose and Pause Near Goal-Obstacle: getting_started/behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.md
-      - Navigate To Pose With Consistent Replanning And If Path Becomes Invalid: getting_started/behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.md
-      - Navigate on Route Graph with Recovery: getting_started/behavior_trees/trees/navigate_on_route_graph_w_recovery.md
-      - Follow Dynamic Point: getting_started/behavior_trees/trees/follow_point.md
-      - Odometry Calibration: getting_started/behavior_trees/trees/odometry_calibration.md
-    - ROSCon Talks: getting_started/roscon.md
+      - getting_started/nav2_behavior_trees/index.md
+      - Introduction To Nav2 Specific Nodes: getting_started/nav2_behavior_trees/overview/nav2_specific_nodes.md
+      - Detailed Behavior Tree Walkthrough: getting_started/nav2_behavior_trees/overview/detailed_behavior_tree_walkthrough.md
+      - Navigate To Pose: getting_started/nav2_behavior_trees/trees/nav_to_pose_recovery.md
+      - Navigate Through Poses: getting_started/nav2_behavior_trees/trees/nav_through_poses_recovery.md
+      - Navigate To Pose and Pause Near Goal-Obstacle: getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.md
+      - Navigate To Pose With Consistent Replanning And If Path Becomes Invalid: getting_started/nav2_behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.md
+      - Navigate on Route Graph with Recovery: getting_started/nav2_behavior_trees/trees/navigate_on_route_graph_w_recovery.md
+      - Follow Dynamic Point: getting_started/nav2_behavior_trees/trees/follow_point.md
+      - Odometry Calibration: getting_started/nav2_behavior_trees/trees/odometry_calibration.md
+    - ROSCon Talks: 
+      - getting_started/roscon_talks/index.md
   - Tutorials:
     - tutorials/index.md
     - Plugin Tutorials:
@@ -200,30 +202,30 @@ nav:
   - Configuration & Development:
     - configuration_and_development/index.md
     - First-Time Robot Setup Guide:
-      - configuration_and_development/setup_guides/index.md
+      - configuration_and_development/first_time_robot_setup_guide/index.md
       - Setup Guide for Gazebo:
-        - configuration_and_development/setup_guides/gazebo/index.md
-        - Setting Up Transformations: configuration_and_development/setup_guides/transformation/setup_transforms.md
-        - Setting Up The URDF: configuration_and_development/setup_guides/urdf/setup_urdf.md
-        - Setting Up The SDF - Gazebo: configuration_and_development/setup_guides/sdf/setup_sdf.md
-        - Setting Up Odometry - Gazebo: configuration_and_development/setup_guides/odom/setup_odom_gz.md
-        - Smoothing Odometry using Robot Localization: configuration_and_development/setup_guides/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo: configuration_and_development/setup_guides/sensors/setup_sensors_gz.md
-        - Mapping and Localization: configuration_and_development/setup_guides/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: configuration_and_development/setup_guides/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: configuration_and_development/setup_guides/algorithm/select_algorithm.md
+        - configuration_and_development/first_time_robot_setup_guide/gazebo/index.md
+        - Setting Up Transformations: configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms.md
+        - Setting Up The URDF: configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf.md
+        - Setting Up The SDF - Gazebo: configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf.md
+        - Setting Up Odometry - Gazebo: configuration_and_development/first_time_robot_setup_guide/odom/setup_odom_gz.md
+        - Smoothing Odometry using Robot Localization: configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization.md
+        - Setting Up Sensors - Gazebo: configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors_gz.md
+        - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
+        - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
+        - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
       - Setup Guide for Gazebo Classic:
-        - configuration_and_development/setup_guides/gazebo_classic/index.md
-        - Setting Up Transformations: configuration_and_development/setup_guides/transformation/setup_transforms.md
-        - Setting Up The URDF: configuration_and_development/setup_guides/urdf/setup_urdf.md
-        - Setting Up Odometry - Gazebo Classic: configuration_and_development/setup_guides/odom/setup_odom_gz_classic.md
-        - Smoothing Odometry using Robot Localization: configuration_and_development/setup_guides/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo Classic: configuration_and_development/setup_guides/sensors/setup_sensors_gz_classic.md
-        - Mapping and Localization: configuration_and_development/setup_guides/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: configuration_and_development/setup_guides/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: configuration_and_development/setup_guides/algorithm/select_algorithm.md
+        - configuration_and_development/first_time_robot_setup_guide/gazebo_classic/index.md
+        - Setting Up Transformations: configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms.md
+        - Setting Up The URDF: configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf.md
+        - Setting Up Odometry - Gazebo Classic: configuration_and_development/first_time_robot_setup_guide/odom/setup_odom_gz_classic.md
+        - Smoothing Odometry using Robot Localization: configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization.md
+        - Setting Up Sensors - Gazebo Classic: configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors_gz_classic.md
+        - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
+        - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
+        - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
     - Navigation Plugins:
-      - configuration_and_development/plugins/index.md
+      - configuration_and_development/navigation_plugins/index.md
     - Configuration Guide:
       - configuration_and_development/configuration_guide/index.md
       - Core Servers:
@@ -407,32 +409,33 @@ nav:
         - Coverage Server: configuration_and_development/configuration_guide/packages/configuring-coverage-server.md
         - Following Server: configuration_and_development/configuration_guide/packages/configuring-following-server.md
         - Loopback Simulator: configuration_and_development/configuration_guide/packages/configuring-loopback-sim.md
-    - Tuning Guide: 
-      - configuration_and_development/tuning/index.md
-    - Simple Commander API: 
-      - configuration_and_development/commander_api/index.md
+    - Tuning Guide:
+      - configuration_and_development/tuning_guide/index.md
+    - Simple Commander API:
+      - configuration_and_development/simple_commander_api/index.md
     - Migration Guides:
-      - configuration_and_development/migration/index.md
-      - Dashing to Eloquent: configuration_and_development/migration/Dashing.md
-      - Eloquent to Foxy: configuration_and_development/migration/Eloquent.md
-      - Foxy to Galactic: configuration_and_development/migration/Foxy.md
-      - Galactic to Humble: configuration_and_development/migration/Galactic.md
-      - Humble to Iron: configuration_and_development/migration/Humble.md
-      - Iron to Jazzy: configuration_and_development/migration/Iron.md
-      - Jazzy to Kilted: configuration_and_development/migration/Jazzy.md
-      - Kilted to L-turtle: configuration_and_development/migration/Kilted.md
+      - configuration_and_development/migration_guides/index.md
+      - Dashing to Eloquent: configuration_and_development/migration_guides/Dashing.md
+      - Eloquent to Foxy: configuration_and_development/migration_guides/Eloquent.md
+      - Foxy to Galactic: configuration_and_development/migration_guides/Foxy.md
+      - Galactic to Humble: configuration_and_development/migration_guides/Galactic.md
+      - Humble to Iron: configuration_and_development/migration_guides/Humble.md
+      - Iron to Jazzy: configuration_and_development/migration_guides/Iron.md
+      - Jazzy to Kilted: configuration_and_development/migration_guides/Jazzy.md
+      - Kilted to L-turtle: configuration_and_development/migration_guides/Kilted.md
     - API Docs: https://api.nav2.org/
   - Community:
     - community/index.md
     - Getting Involved:
-      - community/involvement_docs/index.md
+      - community/getting_involved/index.md
     - Maintainer Docs:
       - community/maintainer_docs/index.md
       - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
-    - Roadmaps: community/roadmap/roadmap.md  
+    - Roadmaps:
+      - community/roadmaps/index.md  
   - About & Contact:
-    - about/index.md
-    - Robots Using: about/robots.md
-    - Related Projects: about/related_projects.md
-    - Citations: about/citations.md
+    - about_and_contact/index.md
+    - Robots Using: about_and_contact/robots_using.md
+    - Related Projects: about_and_contact/related_projects.md
+    - Citations: about_and_contact/citations.md
