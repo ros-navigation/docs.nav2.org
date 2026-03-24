@@ -1,4 +1,4 @@
-# CancelComputeAndTrackRoute
+# CancelComputeAndTrackRoute { #cancel-compute-and-track-route }
 
 Used to cancel the compute and track route action that is part of the behavior server. The server address can be remapped using the `server_name` input port.
 

@@ -1,4 +1,4 @@
-# Dynamic Object Following
+# Dynamic Object Following { #dynamic-object-following }
 
 Nav2 provides two different approaches for dynamic object following tasks:
 

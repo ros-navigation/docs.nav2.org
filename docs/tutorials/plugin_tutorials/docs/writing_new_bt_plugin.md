@@ -1,4 +1,4 @@
-# Writing a New Behavior Tree Plugin
+# Writing a New Behavior Tree Plugin { #writing-a-new-behavior-tree-plugin }
 
 ## Overview
 

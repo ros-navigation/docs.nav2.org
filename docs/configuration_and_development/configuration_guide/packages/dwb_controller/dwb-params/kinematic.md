@@ -1,4 +1,4 @@
-# Kinematic Parameters
+# Kinematic Parameters { #kinematic-parameters }
 
 ## Parameters
 

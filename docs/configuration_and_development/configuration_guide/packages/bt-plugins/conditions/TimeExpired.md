@@ -1,4 +1,4 @@
-# TimeExpired
+# TimeExpired { #time-expired }
 
 Node that returns success when a time duration has passed
 

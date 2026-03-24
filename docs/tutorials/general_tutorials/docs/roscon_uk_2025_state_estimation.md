@@ -1,4 +1,4 @@
-# ROSCon UK 2025: State Estimation for Mobile Robotics Workshop
+# ROSCon UK 2025: State Estimation for Mobile Robotics Workshop { #roscon-uk-2025-state-estimation-for-mobile-robotics-workshop }
 
 ## Overview
 

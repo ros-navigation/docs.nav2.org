@@ -1,4 +1,4 @@
-# Denoise Layer Parameters
+# Denoise Layer Parameters { #denoise-layer-parameters }
 
 This layer attempts to remove simple noise that may exist in a costmap’s layers due to sensor noise or discrete raycasting errors.
 

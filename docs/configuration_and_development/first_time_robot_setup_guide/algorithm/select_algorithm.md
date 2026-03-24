@@ -1,4 +1,4 @@
-# Setting Up Navigation Plugins
+# Setting Up Navigation Plugins { #setting-up-navigation-plugins }
 
 In this part of the guide, we discuss how your robot can utilize different planner and controller algorithms to complete navigation tasks. We will discuss some of the available algorithm plugins you can use based on your robot type and environment.
 

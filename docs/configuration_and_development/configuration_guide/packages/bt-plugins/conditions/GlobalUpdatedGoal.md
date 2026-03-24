@@ -1,4 +1,4 @@
-# GlobalUpdatedGoal
+# GlobalUpdatedGoal { #global-updated-goal }
 
 Checks if the global navigation goal has changed in the blackboard.
 Returns failure if the goal is the same, if it changes, it returns success.

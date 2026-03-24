@@ -1,4 +1,4 @@
-# ClearCostmapAroundRobot
+# ClearCostmapAroundRobot { #clear-costmap-around-robot }
 
 Action to call a costmap clearing around robot server.
 

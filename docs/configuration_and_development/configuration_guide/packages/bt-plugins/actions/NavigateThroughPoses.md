@@ -1,4 +1,4 @@
-# NavigateThroughPoses
+# NavigateThroughPoses { #navigate-through-poses }
 
 Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by the [bt_navigator](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator) module.
 

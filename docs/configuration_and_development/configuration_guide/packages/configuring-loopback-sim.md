@@ -1,4 +1,4 @@
-# Loopback Simulator
+# Loopback Simulator { #loopback-simulator }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_loopback_sim).
 

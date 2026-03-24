@@ -1,4 +1,4 @@
-# 1. Navigation Dynamic Obstacle Integration
+# 1. Navigation Dynamic Obstacle Integration { #1-navigation-dynamic-obstacle-integration }
 
 **Task description**
 

@@ -1,4 +1,4 @@
-# Map Saver
+# Map Saver { #map-saver }
 
 The map saver server runs in the background and saves maps based on service requests. There exists a map saver CLI similar to ROS 1 as well for a single map save.
 

@@ -1,4 +1,4 @@
-# Costmap 2D
+# Costmap 2D { #costmap-2d }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d).
 

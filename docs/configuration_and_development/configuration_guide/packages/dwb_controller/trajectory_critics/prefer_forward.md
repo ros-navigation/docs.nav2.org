@@ -1,4 +1,4 @@
-# PreferForwardCritic
+# PreferForwardCritic { #prefer-forward-critic }
 
 Scores trajectories that move the robot forwards more highly.
 

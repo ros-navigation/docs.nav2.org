@@ -1,4 +1,4 @@
-# Detailed Behavior Tree Walkthrough
+# Detailed Behavior Tree Walkthrough { #detailed-behavior-tree-walkthrough }
 
 ## Overview
 

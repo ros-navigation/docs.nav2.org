@@ -1,4 +1,4 @@
-# Setup Guide for Gazebo Classic
+# Setup Guide for Gazebo Classic { #setup-guide-for-gazebo-classic }
 
 This guide covers setting up Navigation2 with Gazebo Classic simulator, used with ROS 2 Humble and previous ROS distributions.
 

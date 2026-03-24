@@ -1,4 +1,4 @@
-# Getting Involved
+# Getting Involved { #getting-involved }
 
 As an open-source project, we welcome and encourage the community to
 submit patches directly to the Nav2.  In our collaborative open

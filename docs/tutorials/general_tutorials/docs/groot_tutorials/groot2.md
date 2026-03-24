@@ -1,4 +1,4 @@
-# Groot2 - Interacting with Behavior Trees
+# Groot2 - Interacting with Behavior Trees { #groot2-interacting-with-behavior-trees }
 
 ## Visualize Behavior Trees
 

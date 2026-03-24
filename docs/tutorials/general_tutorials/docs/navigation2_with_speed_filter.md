@@ -1,4 +1,4 @@
-# Navigating with Speed Limits
+# Navigating with Speed Limits { #navigating-with-speed-limits }
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

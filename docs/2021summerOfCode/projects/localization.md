@@ -1,4 +1,4 @@
-# 6. 2D/3D Localization Improvements
+# 6. 2D/3D Localization Improvements { #6-2d-3d-localization-improvements }
 
 **Task description**
 

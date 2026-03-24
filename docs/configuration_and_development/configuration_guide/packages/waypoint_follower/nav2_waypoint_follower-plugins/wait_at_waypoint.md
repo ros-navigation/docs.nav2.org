@@ -1,4 +1,4 @@
-# WaitAtWaypoint
+# WaitAtWaypoint { #wait-at-waypoint }
 
 Lets robot to pause for a specified amount of time after reaching each waypoints.
 

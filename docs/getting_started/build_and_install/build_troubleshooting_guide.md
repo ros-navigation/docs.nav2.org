@@ -1,4 +1,4 @@
-# Build Troubleshooting Guide
+# Build Troubleshooting Guide { #build-troubleshooting-guide }
 
 ## Common Nav2 Dependencies Build Failures
 

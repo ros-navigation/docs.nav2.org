@@ -1,4 +1,4 @@
-# Theta Star Planner
+# Theta Star Planner { #theta-star-planner }
 
 <!-- The source code and README with design, explanations, metrics and usage tips can be found on Github_. -->
 <!-- .. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_theta_star_planner -->

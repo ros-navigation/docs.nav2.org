@@ -1,4 +1,4 @@
-# Tuning Guide
+# Tuning Guide { #tuning-guide }
 
 This guide is meant to assist users in tuning their navigation system. While [Configuration Guide](../configuration/index.md#configuration-guide) is the home of the list of parameters for all of Nav2, it doesn’t contain much *color* for how to tune a system using the most important of them. The aim of this guide is to give more advice in how to setup your system beyond a first time setup, which you can find at [First-Time Robot Setup Guide](../setup_guides/index.md#first-time-robot-setup-guide). This will by no means cover all of the parameters (so please, do review the configuration guides for the packages of interest), but will give some helpful hints and tips.
 

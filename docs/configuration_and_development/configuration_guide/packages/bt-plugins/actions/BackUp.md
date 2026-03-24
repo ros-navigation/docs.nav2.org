@@ -1,4 +1,4 @@
-# BackUp
+# BackUp { #back-up }
 
 Invokes the BackUp ROS 2 action server, which causes the robot to back up by a specific displacement.
 It performs an linear translation by a given distance.

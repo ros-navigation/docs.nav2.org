@@ -1,4 +1,4 @@
-# TwirlingCritic
+# TwirlingCritic { #twirling-critic }
 
 Prevents holonomic robots from spinning as they make their way to the goal.
 

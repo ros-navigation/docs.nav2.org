@@ -1,4 +1,4 @@
-# Writing a New Behavior Plugin
+# Writing a New Behavior Plugin { #writing-a-new-behavior-plugin }
 
 ## Overview
 

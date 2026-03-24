@@ -1,4 +1,4 @@
-# ClearEntireCostmap
+# ClearEntireCostmap { #clear-entire-costmap }
 
 Action to call a costmap clearing server.
 

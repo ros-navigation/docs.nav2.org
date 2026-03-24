@@ -1,4 +1,4 @@
-# Groot Tutorials
+# Groot Tutorials { #groot-tutorials }
 
 <figure markdown="span">
   ![](images/Groot/groot_start_menu.png){ title="groot_startup_menu"}

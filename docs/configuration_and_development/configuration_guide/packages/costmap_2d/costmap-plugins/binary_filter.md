@@ -1,4 +1,4 @@
-# Binary Filter Parameters
+# Binary Filter Parameters { #binary-filter-parameters }
 
 Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal.
 

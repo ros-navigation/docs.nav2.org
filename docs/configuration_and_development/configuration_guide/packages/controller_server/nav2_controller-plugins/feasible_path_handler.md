@@ -1,4 +1,4 @@
-# FeasiblePathHandler
+# FeasiblePathHandler { #feasible-path-handler }
 
 Transforms the global plan into the local costmap frame, prunes it to the relevant portion
 within the costmap bounds, and handles in-place rotation and cusp pruning.

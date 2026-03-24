@@ -1,4 +1,4 @@
-# SimpleProgressChecker
+# SimpleProgressChecker { #simple-progress-checker }
 
 Checks whether the robot has made positional progress.
 

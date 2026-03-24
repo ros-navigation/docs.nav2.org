@@ -1,4 +1,4 @@
-# Environmental Representation
+# Environmental Representation { #environmental-representation }
 
 The environmental representation is the way the robot perceives its environment.
 It also acts as the central localization for various algorithms and data sources to combine their information into a single space.

@@ -1,4 +1,4 @@
-# Regulated Pure Pursuit
+# Regulated Pure Pursuit { #regulated-pure-pursuit }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller).
 

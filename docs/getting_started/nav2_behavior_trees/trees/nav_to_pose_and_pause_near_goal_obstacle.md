@@ -1,4 +1,4 @@
-# Navigate To Pose and Pause Near Goal-Obstacle
+# Navigate To Pose and Pause Near Goal-Obstacle { #navigate-to-pose-and-pause-near-goal-obstacle }
 
 !!! note
 

@@ -1,4 +1,4 @@
-# Behavior Tree XML Nodes
+# Behavior Tree XML Nodes { #behavior-tree-xml-nodes }
 
 The [nav2_behavior_tree](https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree) package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
 

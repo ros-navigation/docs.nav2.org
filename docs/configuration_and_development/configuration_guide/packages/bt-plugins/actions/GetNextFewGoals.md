@@ -1,4 +1,4 @@
-# GetNextFewGoals
+# GetNextFewGoals { #get-next-few-goals }
 
 Extracts only the next `N` goals from a list of goals to send to a later task that only needs localized future knowledge.
 

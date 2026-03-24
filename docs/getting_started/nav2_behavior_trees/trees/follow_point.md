@@ -1,4 +1,4 @@
-# Follow Dynamic Point
+# Follow Dynamic Point { #follow-dynamic-point }
 
 This behavior tree implements a navigation behavior from a starting point, attempting to follow a dynamic point over time.
 This “dynamic point” could be a person, another robot, a virtual carrot, anything.

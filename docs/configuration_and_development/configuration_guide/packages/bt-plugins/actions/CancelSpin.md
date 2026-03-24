@@ -1,4 +1,4 @@
-# CancelSpin
+# CancelSpin { #cancel-spin }
 
 Used to cancel the spin action that is part of the behavior server. The server address can be remapped using the `server_name` input port.
 

@@ -1,4 +1,4 @@
-# Projects for 2021 Summer Student Program
+# Projects for 2021 Summer Student Program { #projects-for-2021-summer-student-program }
 
 The [Summer 2021 Student Program](https://summer.iscas.ac.cn/help/en/student/) is upon us!
 See below for the list of project proposals for students to review and apply for.

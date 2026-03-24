@@ -1,4 +1,4 @@
-# ROS Distribution Sync Process
+# ROS Distribution Sync Process { #ros-distribution-sync-process }
 
 This is the instructions for updating a Nav2 version in a ROS distribution sync.
 We do this by bulk cherry picking commits from the `main` branch after they’ve had time to soak and apply them to the branch we looking to sync with the newest features.

@@ -1,4 +1,4 @@
-# SWAGGER Route Graph Generation
+# SWAGGER Route Graph Generation { #swagger-route-graph-generation }
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# Static Layer Parameters
+# Static Layer Parameters { #static-layer-parameters }
 
 This implements a costmap layer taking in a map from either SLAM or `map_server` (or other) to place into the costmap. It resizes the costmap to its size and places the static obstacles on the planning space.
 

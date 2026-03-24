@@ -1,4 +1,4 @@
-# GoalAlignCritic
+# GoalAlignCritic { #goal-align-critic }
 
 Scores a trajectory based on how well aligned the trajectory is with the goal pose.
 

@@ -1,4 +1,4 @@
-# Navigating using GPS Localization
+# Navigating using GPS Localization { #navigating-using-gps-localization }
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

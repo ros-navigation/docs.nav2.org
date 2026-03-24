@@ -1,4 +1,4 @@
-# Writing a New Navigator Plugin
+# Writing a New Navigator Plugin { #writing-a-new-navigator-plugin }
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# Constrained smoother
+# Constrained smoother { #constrained-smoother }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother).
 

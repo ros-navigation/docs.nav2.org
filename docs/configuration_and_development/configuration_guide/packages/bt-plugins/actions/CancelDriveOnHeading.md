@@ -1,4 +1,4 @@
-# CancelDriveOnHeading
+# CancelDriveOnHeading { #cancel-drive-on-heading }
 
 Used to cancel the drive on heading action that is part of the behavior server. The server address can be remapped using the `server_name` input port.
 

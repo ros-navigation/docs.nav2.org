@@ -1,4 +1,4 @@
-# Behavior Trees
+# Behavior Trees { #behavior-trees }
 
 Behavior trees (BT) are becoming increasingly common in complex robotics tasks.
 They are a tree structure of tasks to be completed.

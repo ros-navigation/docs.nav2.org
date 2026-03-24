@@ -1,4 +1,4 @@
-# Setting Up Odometry - Gazebo Classic
+# Setting Up Odometry - Gazebo Classic { #setting-up-odometry-gazebo-classic }
 
 In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2.
 First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly.

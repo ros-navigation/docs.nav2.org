@@ -1,4 +1,4 @@
-# Rotation Shim Controller
+# Rotation Shim Controller { #rotation-shim-controller }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_rotation_shim_controller).
 

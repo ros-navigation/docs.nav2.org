@@ -1,4 +1,4 @@
-# RotateToGoalCritic
+# RotateToGoalCritic { #rotate-to-goal-critic }
 
 Only allows the robot to rotate to the goal orientation when it is sufficiently close to the goal location.
 

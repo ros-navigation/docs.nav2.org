@@ -1,4 +1,4 @@
-# 3. Port Grid Maps to ROS 2 and Environmental Model
+# 3. Port Grid Maps to ROS 2 and Environmental Model { #3-port-grid-maps-to-ros-2-and-environmental-model }
 
 **Task description**
 Grid Maps was created by ETH Zurich and later transferred to ANYbotics. It is a universal grid map library for mobile robotic mapping that can be used as the basis of environmental models and various forms of grid maps available in ROS 1. This library is one of the top downloaded ROS packages. Your task will be to work with the community and the mentor to port grid_maps metapackage from ROS 1 to ROS 2 and help develop the next generation environment model in ROS 2 to replace costmap_2d.

@@ -1,4 +1,4 @@
-# WouldASmootherRecoveryHelp
+# WouldASmootherRecoveryHelp { #would-a-smoother-recovery-help }
 
 Checks if the active smoother server error code is UNKNOWN, TIMEOUT, FAILED_TO_SMOOTH_PATH, or SMOOTHED_PATH_IN_COLLISION.
 

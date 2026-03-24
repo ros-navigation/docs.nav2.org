@@ -1,4 +1,4 @@
-# Navigation Concepts
+# Navigation Concepts { #navigation-concepts }
 
 This page is to help familiarize new roboticists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.
 

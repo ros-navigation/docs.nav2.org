@@ -1,4 +1,4 @@
-# 5. Navigation Branding and Website
+# 5. Navigation Branding and Website { #5-navigation-branding-and-website }
 
 **Task description**
 

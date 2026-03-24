@@ -1,4 +1,4 @@
-# Smoothing Odometry using Robot Localization
+# Smoothing Odometry using Robot Localization { #smoothing-odometry-using-robot-localization }
 
 In this tutorial, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the `robot_localization` package and we will also show how to publish the `odom` => `base_link` transform using `robot_localization`.
 

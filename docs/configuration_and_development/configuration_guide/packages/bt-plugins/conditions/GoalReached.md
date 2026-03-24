@@ -1,4 +1,4 @@
-# GoalReached
+# GoalReached { #goal-reached }
 
 Checks the distance to the goal, if the distance to goal is less than the pre-defined threshold, the tree returns SUCCESS, otherwise it returns FAILURE.
 

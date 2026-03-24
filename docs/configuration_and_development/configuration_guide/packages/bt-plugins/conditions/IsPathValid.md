@@ -1,4 +1,4 @@
-# IsPathValid
+# IsPathValid { #is-path-valid }
 
 Checks to see if the global path is valid. If there is an
 obstacle along the path, the condition returns FAILURE, otherwise

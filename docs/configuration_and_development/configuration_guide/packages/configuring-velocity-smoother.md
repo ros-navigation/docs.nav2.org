@@ -1,4 +1,4 @@
-# Velocity Smoother
+# Velocity Smoother { #velocity-smoother }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_velocity_smoother).
 

@@ -1,6 +1,6 @@
 <!-- range: -->
 
-# Range Sensor Parameters
+# Range Sensor Parameters { #range-sensor-parameters }
 
 This costmap layer implements a plugin that processes sonar, IR, or other 1-D sensors for collision avoidance.
 

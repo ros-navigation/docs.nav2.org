@@ -1,4 +1,4 @@
-# 5. Navigation Safety Node
+# 5. Navigation Safety Node { #5-navigation-safety-node }
 
 **Task description**
 

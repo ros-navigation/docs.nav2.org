@@ -1,4 +1,4 @@
-# Quickstart
+# Quickstart { #quickstart }
 
 This document will take you through the process of installing the Nav2 binaries
 and navigating a simulated Turtlebot 3 in the Gazebo simulator.

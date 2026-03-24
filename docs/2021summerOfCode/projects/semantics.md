@@ -1,4 +1,4 @@
-# 6. Semantic Integration
+# 6. Semantic Integration { #6-semantic-integration }
 
 **Task description**
 

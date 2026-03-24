@@ -1,4 +1,4 @@
-# GoalDistCritic
+# GoalDistCritic { #goal-dist-critic }
 
 Scores a trajectory based on how close the trajectory gets the robot to the goal pose.
 

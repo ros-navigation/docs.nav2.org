@@ -1,4 +1,4 @@
-# Keepout Filter Parameters
+# Keepout Filter Parameters { #keepout-filter-parameters }
 
 Keepout Filter - is a Costmap Filter that enforces robot to avoid keepout areas or stay on preferred lanes, by updating corresponding costmap layer using filter mask information.
 

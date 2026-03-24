@@ -1,4 +1,4 @@
-# CancelFollowObject
+# CancelFollowObject { #cancel-follow-object }
 
 Used to cancel the goals given to the follow object action server. The server address can be remapped using the `server_name` input port.
 

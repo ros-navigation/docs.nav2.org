@@ -1,4 +1,4 @@
-# Collision Monitor Node
+# Collision Monitor Node { #collision-monitor-node }
 
 The Collision Monitor is a node providing an additional level of robot safety.
 It performs several collision avoidance related tasks using incoming data from the sensors, bypassing the costmap and trajectory planners, to monitor for and prevent potential collisions at the emergency-stop level.

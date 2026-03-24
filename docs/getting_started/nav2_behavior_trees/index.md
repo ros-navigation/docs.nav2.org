@@ -1,4 +1,4 @@
-# Nav2 Behavior Trees
+# Nav2 Behavior Trees { #nav2-behavior-trees }
 
 - [Introduction To Nav2 Specific Nodes](overview/nav2_specific_nodes.md)
 - [Detailed Behavior Tree Walkthrough](overview/detailed_behavior_tree_walkthrough.md)

@@ -1,4 +1,4 @@
-# Navigate on Route Graph with Recovery
+# Navigate on Route Graph with Recovery { #navigate-on-route-graph-with-recovery }
 
 This behavior tree implements a different style of navigation than the other versions in this section.
 Rather than using a freespace planner `ComputePathToPose` to plan a complete path to the goal, this behavior tree instead uses the Route Server to find a route to the goal through a pre-defined navigation graph.

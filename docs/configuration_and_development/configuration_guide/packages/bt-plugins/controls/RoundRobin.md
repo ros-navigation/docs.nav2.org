@@ -1,4 +1,4 @@
-# RoundRobin
+# RoundRobin { #round-robin }
 
 Custom control flow node used to create a round-robin behavior for children BT nodes.
 

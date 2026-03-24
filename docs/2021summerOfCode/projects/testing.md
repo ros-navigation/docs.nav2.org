@@ -1,4 +1,4 @@
-# 2. Advanced Navigation Testing Framework
+# 2. Advanced Navigation Testing Framework { #2-advanced-navigation-testing-framework }
 
 **Task description**
 

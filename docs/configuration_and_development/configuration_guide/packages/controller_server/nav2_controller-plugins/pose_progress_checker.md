@@ -1,4 +1,4 @@
-# PoseProgressChecker
+# PoseProgressChecker { #pose-progress-checker }
 
 Checks whether the robot has made progress based on translation and rotation.
 

@@ -1,4 +1,4 @@
-# Migration Guides
+# Migration Guides { #migration-guides }
 
 Navigation2 guides for migration between distributions.
 

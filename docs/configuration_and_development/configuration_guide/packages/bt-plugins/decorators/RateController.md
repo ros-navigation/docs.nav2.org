@@ -1,4 +1,4 @@
-# RateController
+# RateController { #rate-controller }
 
 A node that throttles the tick rate for its child.
 The tick rate can be supplied to the node as a parameter.

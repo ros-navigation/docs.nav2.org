@@ -1,4 +1,4 @@
-# Using VIO to Augment Robot Odometry
+# Using VIO to Augment Robot Odometry { #using-vio-to-augment-robot-odometry }
 
 ## Overview
 

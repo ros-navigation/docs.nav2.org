@@ -1,4 +1,4 @@
-# ComputeAndTrackRoute
+# ComputeAndTrackRoute { #compute-and-track-route }
 
 Invokes the ComputeAndTrackRoute ROS 2 action server, which is implemented by the [nav2_route](https://github.com/ros-navigation/navigation2/tree/main/nav2_route) module.
 The server address can be remapped using the `server_name` input port.

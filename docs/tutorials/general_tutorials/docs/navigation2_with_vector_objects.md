@@ -1,4 +1,4 @@
-# Navigating with Vector Objects
+# Navigating with Vector Objects { #navigating-with-vector-objects }
 
 ![](images/Vector_Object_server/vector_objects_demo.gif)
 

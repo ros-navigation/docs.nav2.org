@@ -1,4 +1,4 @@
-# SimpleGoalChecker
+# SimpleGoalChecker { #simple-goal-checker }
 
 Checks whether the robot has reached the goal pose.
 

@@ -1,4 +1,4 @@
-# UndockRobot
+# UndockRobot { #undock-robot }
 
 Invokes the UndockRobot ROS 2 action server, which is implemented by the docking server.
 

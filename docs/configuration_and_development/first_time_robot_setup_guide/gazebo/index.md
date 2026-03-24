@@ -1,4 +1,4 @@
-# Setup Guide for Gazebo
+# Setup Guide for Gazebo { #setup-guide-for-gazebo }
 
 This guide covers setting up Navigation2 with the modern Gazebo simulator (Gazebo Harmonic or newer), used with ROS 2 Jazzy or newer.
 

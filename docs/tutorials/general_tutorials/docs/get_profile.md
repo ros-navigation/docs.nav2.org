@@ -1,4 +1,4 @@
-# Profiling in ROS 2 / Nav2
+# Profiling in ROS 2 / Nav2 { #profiling-in-ros-2-nav2 }
 
 ## Overview
 

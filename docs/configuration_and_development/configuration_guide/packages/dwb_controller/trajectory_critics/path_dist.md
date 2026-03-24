@@ -1,4 +1,4 @@
-# PathDistCritic
+# PathDistCritic { #path-dist-critic }
 
 Scores a trajectory based on how well it is aligned to the path provided by the global planner.
 

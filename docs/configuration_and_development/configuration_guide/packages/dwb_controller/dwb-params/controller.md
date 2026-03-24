@@ -1,4 +1,4 @@
-# DWB Controller
+# DWB Controller { #dwb-controller }
 
 ## Parameters
 

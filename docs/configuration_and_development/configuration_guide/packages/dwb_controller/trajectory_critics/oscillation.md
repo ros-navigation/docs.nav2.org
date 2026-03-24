@@ -1,4 +1,4 @@
-# OscillationCritic
+# OscillationCritic { #oscillation-critic }
 
 Prevents the robot from just moving backwards and forwards.
 

@@ -1,4 +1,4 @@
-# Navigating with Keepout Zones
+# Navigating with Keepout Zones { #navigating-with-keepout-zones }
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

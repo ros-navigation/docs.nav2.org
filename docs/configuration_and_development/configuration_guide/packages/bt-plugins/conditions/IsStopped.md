@@ -1,4 +1,4 @@
-# IsStopped
+# IsStopped { #is-stopped }
 
 BT node that tracks robot odometry and returns SUCCESS if robot is considered stopped for long enough,
 RUNNING if stopped but not for long enough and FAILURE otherwise

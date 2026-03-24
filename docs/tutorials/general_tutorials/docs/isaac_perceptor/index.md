@@ -1,4 +1,4 @@
-# Lidar-Free, Vision-Based Navigation
+# Lidar-Free, Vision-Based Navigation { #lidar-free-vision-based-navigation }
 
 In this tutorial, you’ll see how to use the NVIDIA Jetson, [Isaac ROS](https://developer.nvidia.com/isaac/ros), [Isaac Perceptor](https://developer.nvidia.com/isaac/perceptor), and [NVIDIA Nova](https://nvidia-isaac-ros.github.io/nova/index.html) technologies to implement Vision-based Navigation entirely without the use of LIDARs, active depth sensors, or other range-providing modalities.
 Instead, we’ll rely solely on passive stereo cameras as the extrinsic sensing source to achieve collision avoidance, localization, and mapping — a powerful and cost-effective alternative.

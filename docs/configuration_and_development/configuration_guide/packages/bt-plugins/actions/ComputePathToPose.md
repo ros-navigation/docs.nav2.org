@@ -1,4 +1,4 @@
-# ComputePathToPose
+# ComputePathToPose { #compute-path-to-pose }
 
 Invokes the ComputePathToPose ROS 2 action server, which is implemented by the [nav2_planner](https://github.com/ros-navigation/navigation2/tree/main/nav2_planner) module.
 The server address can be remapped using the `server_name` input port.

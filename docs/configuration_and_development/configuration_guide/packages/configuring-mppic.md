@@ -1,4 +1,4 @@
-# Model Predictive Path Integral Controller
+# Model Predictive Path Integral Controller { #model-predictive-path-integral-controller }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller).
 

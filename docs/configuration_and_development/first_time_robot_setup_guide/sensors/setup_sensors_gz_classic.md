@@ -1,4 +1,4 @@
-# Setting Up Sensors - Gazebo Classic
+# Setting Up Sensors - Gazebo Classic { #setting-up-sensors-gazebo-classic }
 
 In this guide, we will discuss the importance of the sensors in navigating a robot safely and how to set up the sensors with Nav2. In the first half of this tutorial, we will take a brief look at commonly used sensors and common sensor messages in Nav2. Next, we will add a basic sensor setup on our previously built simulated robot, `sam_bot`. Lastly, we will then verify the simulated sensor messages of `sam_bot` by visualizing them in RViz.
 

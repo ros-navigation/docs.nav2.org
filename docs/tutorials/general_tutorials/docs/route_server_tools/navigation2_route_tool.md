@@ -1,4 +1,4 @@
-# Using the Nav2 Route Tool
+# Using the Nav2 Route Tool { #using-the-nav2-route-tool }
 
 <figure markdown="span">
   ![](../images/Navigation2_route_tool/route_tool_demo.gif){ width="90%" }

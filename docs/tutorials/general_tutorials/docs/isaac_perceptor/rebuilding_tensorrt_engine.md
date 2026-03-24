@@ -1,4 +1,4 @@
-# Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter
+# Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter { #rebuilding-tensor-rt-engine-for-isaac-perceptor-on-nova-carter }
 
 This is a step-by-step guide for fixing Isaac Perceptor model (“Engine”) compatibility issues in the NVIDIA Isaac environment. While this has been developed (and tested) on the NVIDIA Nova Carter robot, this should work for Isaac Sim, etc. as well.
 

@@ -1,4 +1,4 @@
-# Simple Commander API
+# Simple Commander API { #simple-commander-api }
 
 ## Overview
 

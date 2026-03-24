@@ -1,4 +1,4 @@
-# XYTheta Iterator
+# XYTheta Iterator { #xytheta-iterator }
 
 ## Parameters
 

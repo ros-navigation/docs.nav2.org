@@ -1,4 +1,4 @@
-# PauseResumeController
+# PauseResumeController { #pause-resume-controller }
 
 Controlled through service calls to pause and resume the execution of the tree.
 It has one mandatory child for the RESUMED, and three optional for the PAUSED state, the ON_PAUSE event and the ON_RESUME event.

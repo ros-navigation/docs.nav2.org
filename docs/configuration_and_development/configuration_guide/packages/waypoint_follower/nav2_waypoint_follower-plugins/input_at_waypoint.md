@@ -1,4 +1,4 @@
-# InputAtWaypoint
+# InputAtWaypoint { #input-at-waypoint }
 
 Lets robot to wait for external input, with timeout, at a waypoint.
 

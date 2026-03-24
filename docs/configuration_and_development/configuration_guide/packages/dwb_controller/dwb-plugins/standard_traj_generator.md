@@ -1,4 +1,4 @@
-# StandardTrajectoryGenerator
+# StandardTrajectoryGenerator { #standard-trajectory-generator }
 
 ## Parameters
 

@@ -1,4 +1,4 @@
-# Eloquent to Foxy
+# Eloquent to Foxy { #eloquent-to-foxy }
 
 Moving from ROS 2 Eloquent to Foxy, a number of stability improvements were added that we will not specifically address here.
 We will specifically mention, however, the reduction in terminal noise.

@@ -1,4 +1,4 @@
-# State Estimation
+# State Estimation { #state-estimation }
 
 Within the navigation project, there are 2 major transformations that need to be provided, according to community standards.
 The `map` to `odom` transform is provided by a positioning system (localization, mapping, SLAM) and `odom` to `base_link` by an odometry system.

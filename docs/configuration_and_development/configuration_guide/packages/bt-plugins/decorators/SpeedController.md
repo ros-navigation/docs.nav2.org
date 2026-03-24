@@ -1,4 +1,4 @@
-# SpeedController
+# SpeedController { #speed-controller }
 
 A node that controls the tick rate for its child based on current robot speed.
 The maximum and minimum replanning rates can be supplied to the node as parameters along with maximum and minimum speed.

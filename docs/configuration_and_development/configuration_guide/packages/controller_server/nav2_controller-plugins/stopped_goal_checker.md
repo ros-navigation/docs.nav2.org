@@ -1,4 +1,4 @@
-# StoppedGoalChecker
+# StoppedGoalChecker { #stopped-goal-checker }
 
 Checks whether the robot has reached the goal pose and come to a stop.
 

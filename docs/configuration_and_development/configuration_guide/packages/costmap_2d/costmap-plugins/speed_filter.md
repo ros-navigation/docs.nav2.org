@@ -1,4 +1,4 @@
-# Speed Filter Parameters
+# Speed Filter Parameters { #speed-filter-parameters }
 
 Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. The areas where robot should slow down and values of maximum allowed velocities are encoded at filter mask. Filter mask published by Map Server, goes in a pair with filter info topic published by Costmap Filter Info Server. Speed Filter itself publishes a speed restricting messages which are targeted for a Controller in order to make the robot to not exceed the required velocity.
 

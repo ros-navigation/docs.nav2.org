@@ -1,4 +1,4 @@
-# ToggleCollisionMonitor
+# ToggleCollisionMonitor { #toggle-collision-monitor }
 
 Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor on (enabled) and off (disabled).
 

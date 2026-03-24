@@ -1,4 +1,4 @@
-# Vector Object Server
+# Vector Object Server { #vector-object-server }
 
 The Vector Object Server implements a server that puts vector objects (such as polygons and circles) on OccupancyGrid raster map. The output raster map is being published by Vector Object server, and it could be used anywhere in the Nav2 stack or outside it.
 

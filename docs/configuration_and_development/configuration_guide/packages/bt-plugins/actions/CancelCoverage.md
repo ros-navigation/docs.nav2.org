@@ -1,4 +1,4 @@
-# CancelCoverage
+# CancelCoverage { #cancel-coverage }
 
 Used to cancel the goals given to the complete coverage action server. The server address can be remapped using the `server_name` input port.
 

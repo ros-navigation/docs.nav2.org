@@ -1,4 +1,4 @@
-# DockRobot
+# DockRobot { #dock-robot }
 
 Invokes the DockRobot ROS 2 action server, which is implemented by the docking server.
 

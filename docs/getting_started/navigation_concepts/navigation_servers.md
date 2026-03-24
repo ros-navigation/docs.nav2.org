@@ -1,4 +1,4 @@
-# Navigation Servers
+# Navigation Servers { #navigation-servers }
 
 Planners and controllers are at the heart of a navigation task.
 Recoveries are used to get the robot out of a bad situation or attempt to deal with various forms of issues to make the system fault-tolerant.

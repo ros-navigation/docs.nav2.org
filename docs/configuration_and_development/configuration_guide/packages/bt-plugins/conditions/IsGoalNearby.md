@@ -1,4 +1,4 @@
-# IsGoalNearby
+# IsGoalNearby { #is-goal-nearby }
 
 Checks if the robot is near the goal by computing the remaining path length from the robot’s current position to the goal. Returns SUCCESS when the remaining path length is less than the proximity threshold, otherwise returns FAILURE.
 

@@ -1,4 +1,4 @@
-# Adding a Smoother to a BT
+# Adding a Smoother to a BT { #adding-a-smoother-to-a-bt }
 
 <figure markdown="span">
   ![](images/smoothing_path.png){ width="70%" }

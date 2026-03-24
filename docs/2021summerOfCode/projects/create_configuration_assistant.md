@@ -1,4 +1,4 @@
-# 1. Create a Configuration Assistant (Analog to MoveIt)
+# 1. Create a Configuration Assistant (Analog to MoveIt) { #1-create-a-configuration-assistant-analog-to-moveit }
 
 **Task description**
 

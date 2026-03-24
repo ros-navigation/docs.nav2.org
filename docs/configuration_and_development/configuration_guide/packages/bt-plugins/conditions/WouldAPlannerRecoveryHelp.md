@@ -1,4 +1,4 @@
-# WouldAPlannerRecoveryHelp
+# WouldAPlannerRecoveryHelp { #would-a-planner-recovery-help }
 
 Checks if the active planner server error code is UNKNOWN, NO_VALID_PATH, or TIMEOUT.
 

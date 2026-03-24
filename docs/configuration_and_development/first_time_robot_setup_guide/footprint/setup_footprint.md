@@ -1,4 +1,4 @@
-# Setting Up the Robot’s Footprint
+# Setting Up the Robot’s Footprint { #setting-up-the-robots-footprint }
 
 In this guide, we will discuss how to configure the footprint of your robot for the navigation algorithms used by Nav2. We will also show a sample footprint configuration on `sam_bot`, the simulated robot that we have been building in this series of setup guides. Lastly, we will also show the visualization of `sam_bot`’s footprint in RViz to ensure that we have set it up correctly.
 

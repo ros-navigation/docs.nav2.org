@@ -1,4 +1,4 @@
-# PipelineSequence
+# PipelineSequence { #pipeline-sequence }
 
 Ticks the first child till it succeeds, then ticks the first and second children till the second one succeeds.
 It then ticks the first, second, and third children until the third succeeds, and so on, and so on. If at any

@@ -1,4 +1,4 @@
-# DistanceController
+# DistanceController { #distance-controller }
 
 A node that controls the tick rate for its child based on the distance traveled.
 The distance to be traveled before replanning can be supplied to the node as a parameter.

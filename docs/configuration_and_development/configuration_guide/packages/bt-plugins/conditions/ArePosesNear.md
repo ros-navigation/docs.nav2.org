@@ -1,4 +1,4 @@
-# ArePosesNear
+# ArePosesNear { #are-poses-near }
 
 Checks if two poses are nearby. If the input poses are in different frames, it will automatically transform both to the global frame.
 

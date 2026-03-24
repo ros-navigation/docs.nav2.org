@@ -1,4 +1,4 @@
-# AreErrorCodesPresent
+# AreErrorCodesPresent { #are-error-codes-present }
 
 Checks the if the provided error code matches any error code within a set.
 

@@ -1,4 +1,4 @@
-# ClearCostmapExceptRegion
+# ClearCostmapExceptRegion { #clear-costmap-except-region }
 
 Action to call a costmap clearing except region server.
 

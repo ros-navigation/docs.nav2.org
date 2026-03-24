@@ -1,4 +1,4 @@
-# Plugin Tutorials
+# Plugin Tutorials { #plugin-tutorials }
 
 Navigation2 Tutorials
 

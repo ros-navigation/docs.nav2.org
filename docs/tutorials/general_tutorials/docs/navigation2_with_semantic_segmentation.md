@@ -1,4 +1,4 @@
-# Navigating with Semantic Segmentation
+# Navigating with Semantic Segmentation { #navigating-with-semantic-segmentation }
 
 ## Overview
 

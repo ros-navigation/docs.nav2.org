@@ -1,4 +1,4 @@
-# IsWithinPathTrackingBounds
+# IsWithinPathTrackingBounds { #is-within-path-tracking-bounds }
 
 Checks if the robot is within determined tracking error bounds during path following.
 

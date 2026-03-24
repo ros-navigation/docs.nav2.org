@@ -1,4 +1,4 @@
-# Odometry Calibration
+# Odometry Calibration { #odometry-calibration }
 
 This behavior tree drives the robot in a CCW square three times using the DriveOnHeading and Spin behaviors.
 The robot will traverse each side of the square at 0.2 (m/s) for 2 meters before making a 90 degree turn.

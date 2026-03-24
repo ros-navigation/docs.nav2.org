@@ -1,4 +1,4 @@
-# Collision Detector Node
+# Collision Detector Node { #collision-detector-node }
 
 The Collision Detector is a node similar to the Collision Monitor, so it is recommended to read the [Using Collision Monitor](../../../tutorials/docs/using_collision_monitor.md#using-collision-monitor) tutorial first.
 

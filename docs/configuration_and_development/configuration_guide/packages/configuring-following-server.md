@@ -1,4 +1,4 @@
-# Following Server
+# Following Server { #following-server }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_following/opennav_following).
 

@@ -1,4 +1,4 @@
-# Navigate To Pose With Consistent Replanning And If Path Becomes Invalid
+# Navigate To Pose With Consistent Replanning And If Path Becomes Invalid { #navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid }
 
 This behavior tree implements a significantly more mature version of the behavior tree on [Nav2 Behavior Trees](../index.md#nav2-behavior-trees).
 It navigates from a starting point to a single point goal in freespace.

@@ -1,4 +1,4 @@
-# Docking Server
+# Docking Server { #docking-server }
 
 Source code on [Github](https://github.com/open-navigation/opennav_docking).
 

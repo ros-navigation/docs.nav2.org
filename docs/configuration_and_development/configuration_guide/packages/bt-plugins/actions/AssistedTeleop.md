@@ -1,4 +1,4 @@
-# AssistedTeleop
+# AssistedTeleop { #assisted-teleop }
 
 Invokes the AssistedTeleop ROS 2 action server, which filters teleop twist commands to prevent
 collisions. This is used in nav2 Behavior Trees as a recovery behavior or a regular behavior.

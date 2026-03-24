@@ -1,4 +1,4 @@
-# 2. Create New Planner and Controller Plugins
+# 2. Create New Planner and Controller Plugins { #2-create-new-planner-and-controller-plugins }
 
 **Task description**
 

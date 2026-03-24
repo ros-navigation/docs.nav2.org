@@ -1,4 +1,4 @@
-# Citations
+# Citations { #citations }
 
 If you use the navigation framework, an algorithm from this repository, or ideas from it
 please cite this work in your papers!

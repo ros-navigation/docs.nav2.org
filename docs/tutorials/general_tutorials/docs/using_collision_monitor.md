@@ -1,4 +1,4 @@
-# Using Collision Monitor
+# Using Collision Monitor { #using-collision-monitor }
 
 ![](images/Collision_Monitor/collision_monitor.gif){ width="800px" }
 

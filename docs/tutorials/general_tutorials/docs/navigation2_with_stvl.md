@@ -1,4 +1,4 @@
-# Using an External Costmap Plugin (STVL)
+# Using an External Costmap Plugin (STVL) { #using-an-external-costmap-plugin-stvl }
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

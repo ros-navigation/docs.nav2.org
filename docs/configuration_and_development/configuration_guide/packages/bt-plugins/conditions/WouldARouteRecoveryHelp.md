@@ -1,4 +1,4 @@
-# WouldARouteRecoveryHelp
+# WouldARouteRecoveryHelp { #would-a-route-recovery-help }
 
 Checks if the active route server error code is UNKNOWN, NO_VALID_ROUTE, or TIMEOUT.
 

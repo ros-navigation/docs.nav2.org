@@ -1,4 +1,4 @@
-# Coverage Server
+# Coverage Server { #coverage-server }
 
 Source code on [Github](https://github.com/open-navigation/opennav_coverage).
 

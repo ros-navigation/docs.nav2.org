@@ -1,4 +1,4 @@
-# SmoothPath
+# SmoothPath { #smooth-path }
 
 Invokes the SmoothPath action API in the smoother server to smooth a given path plan.
 

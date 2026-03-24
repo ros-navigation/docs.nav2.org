@@ -1,4 +1,4 @@
-# Getting Started
+# Getting Started { #getting-started }
 
 - [Quickstart](quickstart/index.md)
 - [Build and Install](build_and_install/index.md)

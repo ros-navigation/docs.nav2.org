@@ -1,4 +1,4 @@
-# Behavior-Tree Navigator
+# Behavior-Tree Navigator { #behavior-tree-navigator }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator).
 

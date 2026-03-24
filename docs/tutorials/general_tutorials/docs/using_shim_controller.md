@@ -1,4 +1,4 @@
-# Using Rotation Shim Controller
+# Using Rotation Shim Controller { #using-rotation-shim-controller }
 
 ## Overview
 

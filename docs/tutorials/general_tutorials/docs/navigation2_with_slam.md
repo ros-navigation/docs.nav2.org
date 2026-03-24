@@ -1,4 +1,4 @@
-# Navigating while Mapping (SLAM)
+# Navigating while Mapping (SLAM) { #navigating-while-mapping-slam }
 
 ## Overview
 

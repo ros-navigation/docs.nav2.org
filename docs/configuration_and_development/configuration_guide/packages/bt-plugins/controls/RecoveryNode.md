@@ -1,4 +1,4 @@
-# RecoveryNode
+# RecoveryNode { #recovery-node }
 
 The RecoveryNode is a control flow node with two children.
 It returns SUCCESS if and only if the first child returns SUCCESS.

@@ -1,4 +1,4 @@
-# 7. Reduce ROS 2 Nodes and Determinism
+# 7. Reduce ROS 2 Nodes and Determinism { #7-reduce-ros-2-nodes-and-determinism }
 
 **Task description**
 

@@ -1,6 +1,6 @@
 <!-- plugin_container: -->
 
-# Plugin Container Layer Parameters
+# Plugin Container Layer Parameters { #plugin-container-layer-parameters }
 
 This implements a costmap layer which combines costmap layers within a submap, which can then be integrated with other submaps in the same parent costmap. An example would be the use of different inflation layers for different sensors, objects, or static layers
 

@@ -1,4 +1,4 @@
-# DistanceTraveled
+# DistanceTraveled { #distance-traveled }
 
 Node that returns success when a configurable distance has been traveled.
 

@@ -1,4 +1,4 @@
-# Navigation Plugins
+# Navigation Plugins { #navigation-plugins }
 
 There are a number of plugin interfaces for users to create their own custom applications or algorithms with.
 Namely, the costmap layer, planner, controller, behavior tree, and behavior plugins.
