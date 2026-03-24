@@ -58,7 +58,7 @@ For tutorials on creating your own plugins, please see
 [Denoise Layer]: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 [Plugin Container Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 
-## Costmap Filters
+## Costmap Filters { #navigation-plugins-costmap-filters }
 
 <div class="center-table" markdown>
 

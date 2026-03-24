@@ -1,4 +1,4 @@
-# Navigate To Pose { #navigate-to-pose }
+# Navigate To Pose { #nav2-bt-navigate-to-pose }
 
 This behavior tree implements a significantly more mature version of the behavior tree on [Nav2 Behavior Trees](../index.md#nav2-behavior-trees).
 It navigates from a starting point to a single point goal in freespace.

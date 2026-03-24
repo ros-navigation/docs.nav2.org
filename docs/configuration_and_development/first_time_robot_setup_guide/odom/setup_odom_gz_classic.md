@@ -71,7 +71,7 @@ In this section, we will be using Gazebo to simulate the odometry system of `sam
 
 As an overview for this section, we will first setup Gazebo and the necessary packages required to make it work with ROS 2. Next, we will be adding Gazebo plugins, which simulate an IMU sensor and a differential drive odometry system, in order to publish `sensor_msgs/Imu` and `nav_msgs/Odometry` messages respectively. Lastly, we will spawn `sam_bot` in a Gazebo environment and verify the published `sensor_msgs/Imu` and `nav_msgs/Odometry` messages over ROS 2.
 
-### Setup and Prerequisites
+### Setup and Prerequisites { #gazebo-classic-setup-and-prerequisites }
 
 [Gazebo](http://classic.gazebosim.org/) is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the [Gazebo Installation Documentation](http://classic.gazebosim.org/tutorials?cat=install).
 

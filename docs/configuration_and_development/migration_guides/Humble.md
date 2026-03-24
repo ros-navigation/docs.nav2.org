@@ -83,13 +83,13 @@ This pr also updates the waypoint follower server to throw exceptions on failure
 The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed.
 See [Adding a New Nav2 Task Server](../tutorials/docs/adding_a_nav2_task_server.md#adding-a-new-nav2-task-server) and the PR for additional information.
 
-## Costmap Filters
+## Costmap Filters { #humble-to-iron-costmap-filters }
 
 Costmap Filters now are have an ability to be enabled/disabled in run-time by calling `toggle_filter` service for appropriate filter ([PR #3229](https://github.com/ros-navigation/navigation2/pull/3229)).
 
 Added new binary flip filter, allowing e.g. to turn off camera in sensitive areas, turn on headlights/leds/other safety things or switch operating mode when robot is inside marked on mask areas ([PR #3228](https://github.com/ros-navigation/navigation2/pull/3228)).
 
-## Savitzky-Golay Smoother
+## Savitzky-Golay Smoother { #humble-to-iron-savitzky-golay-smoother }
 
 Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide [Savitzky-Golay Smoother](../configuration/packages/configuring-savitzky-golay-smoother.md#savitzky-golay-smoother) for more details.
 

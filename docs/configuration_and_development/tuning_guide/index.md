@@ -156,7 +156,7 @@ Within `nav2_bringup`, there is a main entryfile `tb3_simulation_launch.py`. Thi
 - `robot_sdf` : The filepath to the robot’s gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.
 - `x_pose`, `y_pose`, `z_pose`, `roll`, `pitch`, `yaw` : Parameters to set the initial position of the robot in the simulation.
 
-## Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS
+## Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS { #performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos }
 
 In Nav2, we strongly recommend setting use_composition to true, as it enables node composition, reduces process overhead, and generally improves system efficiency. However, whether to enable intra-process communication and which RMW implementation to use depends on your specific application.
 

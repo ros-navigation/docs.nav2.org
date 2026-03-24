@@ -610,7 +610,7 @@ Description
 Description
 :   The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
 
-## Path Align Critic
+## Path Align Critic { #mppi-path-align-critic }
 
 This critic incentivizes aligning with the global path, if relevant. It does not implement path following behavior.
 
@@ -775,7 +775,7 @@ Description
 Description
 :   Number of path points after furthest one any trajectory achieves to drive path tracking relative to.
 
-## Prefer Forward Critic
+## Prefer Forward Critic { #mppi-prefer-forward-critic }
 
 This critic incentivizes moving in the forward direction, rather than reversing.
 
@@ -806,7 +806,7 @@ Description
 Description
 :   Distance (m) between robot and goal to **stop** considering preferring forward and allow goal critics to take over.
 
-## Twirling Critic
+## Twirling Critic { #mppi-twirling-critic }
 
 This critic penalizes unnecessary ‘twisting’ with holonomic vehicles. It adds a constraint on the rotation angle to keep it consistent.
 

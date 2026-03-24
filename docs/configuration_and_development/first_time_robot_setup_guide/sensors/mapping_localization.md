@@ -14,7 +14,7 @@ In-depth discussions on the complete configuration parameters will not be a scop
 
 You can also refer to the [(SLAM) Navigating While Mapping guide](/tutorials/docs/navigation2_with_slam.md) for the tutorial on how to use Nav2 with SLAM. You can verify that `slam_toolbox` and `nav2_amcl` have been correctly setup by visualizing the map and the robot’s pose in RViz, similar to what was shown in the previous section.
 
-## Costmap 2D
+## Costmap 2D { #mapping-and-localization-costmap-2d }
 
 The costmap 2D package makes use of the sensor information to provide a representation of the robot’s environment in the form of an occupancy grid. The cells in the occupancy grid store cost values between 0-254 which denote a cost to travel through these zones. A cost of 0 means the cell is free while a cost of 254 means that the cell is lethally occupied. Values in between these extremes are used by navigation algorithms to steer your robot away from obstacles as a potential field. Costmaps in Nav2 are implemented through the `nav2_costmap_2d` package.
 

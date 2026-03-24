@@ -259,7 +259,7 @@ Obstacle clears and you can see the robot pass through the (could have been idea
 
 In the [PR 2753](https://github.com/ros-navigation/navigation2/pull/2753), a new Action BT node named `TruncatePathLocal` has been added to extract a bounded-length path section near robot to be used e.g. for collision checking or computationally expensive smoothers
 
-## Constrained Smoother
+## Constrained Smoother { #galactic-to-humble-constrained-smoother }
 
 In [the PR 2753](https://github.com/ros-navigation/navigation2/pull/2753), a new Smoother named `nav2_constrained_smoother::ConstrainedSmoother` has been added to optimize various path criteria such as smoothness or distance from obstacles, maintaining minimum turning radius
 

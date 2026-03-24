@@ -24,7 +24,7 @@ In this section, we discuss some of the available algorithm plugins for the plan
 
     The algorithm plugins you can use are not limited to the ones mentioned in this section. You may create custom plugins as well and new plugins are added to Nav2 regularly. For tutorials on how to write your own plugins, please see [Writing a New Planner Plugin](/plugin_tutorials/docs/writing_new_nav2planner_plugin.md)  and [Writing a New Controller Plugin](/plugin_tutorials/docs/writing_new_nav2controller_plugin.md). The list of all available Nav2 plugins and their descriptions can be found in [Navigation Plugins Section](/plugins/index.md).
 
-### Planner Server
+### Planner Server { #set-up-planner-server }
 
 The algorithm plugins for the planner server find the robot’s path using a representation of its environment captured by its different sensors. Some of these algorithms operate by searching through the environment’s grid space while others expand the robot’s possible states while accounting for path feasibility.
 
@@ -58,7 +58,7 @@ planner_server:
 
 An example configuration of the planner server is shown above. The `planner_plugins` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in `planner_plugins` (`GridBased` in our example), we specify the type of plugin to be loaded in the `plugin` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the [Configuration Guide](/configuration/index.md) for more details.
 
-### Controller Server
+### Controller Server { #set-up-controller-server }
 
 The default controller plugin is the [DWB controller](/configuration/packages/configuring-dwb-controller.md). It implements a modified Dynamic Window Approach (DWA) algorithm with configurable plugins to compute the control commands for the robot. This controller makes use of a `Trajectory Generator plugin` that generates the set of possible trajectories. These are then evaluated by one or more `Critic plugins`, each of which may give a different score based on how they are configured. The sum of the scores from these `Critic plugins` determine the overall score of a trajectory. The best scoring trajectory then determines the output command velocity.
 

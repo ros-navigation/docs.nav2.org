@@ -119,7 +119,7 @@ Original GitHub tickets:
 - [PhotoAtWaypoint](https://github.com/ros-navigation/navigation2/pull/2041)
 - [InputAtWaypoint](https://github.com/ros-navigation/navigation2/pull/2049)
 
-## Costmap Filters
+## Costmap Filters { #foxy-to-galactic-costmap-filters }
 
 A new concept interacting with spatial-dependent objects called “Costmap Filters” appeared in Galactic (more information about this concept could be found at [Navigation Concepts](../concepts/index.md#navigation-concepts) page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavior.
 

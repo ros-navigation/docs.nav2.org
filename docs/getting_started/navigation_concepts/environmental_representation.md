@@ -18,7 +18,7 @@ Costmap layers can be created to detect and track obstacles in the scene for col
 Additionally, layers can be created to algorithmically change the underlying costmap based on some rule or heuristic.
 Finally, they may be used to buffer live data into the 2D or 3D world for binary obstacle marking.
 
-## Costmap Filters
+## Costmap Filters { #environmental-representation-costmap-filters }
 
 Imagine, you’re annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called “filter mask”. Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide the ability of marking areas on maps with some additional features or behavioral changes.
 

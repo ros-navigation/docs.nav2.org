@@ -1,4 +1,4 @@
-# Navigate Through Poses { #navigate-through-poses }
+# Navigate Through Poses { #nav2-bt-navigate-through-poses }
 
 This behavior tree implements a navigation behavior from a starting point, through many intermediary hard pose constraints, to a final goal in freespace.
 It contains both use of custom behaviors for recovery in specific sub-contexts as well as a global recovery subtree for system-level failures.

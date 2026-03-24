@@ -236,7 +236,7 @@ Default value:
 
 - `"raw"` - Uses `sensor_msgs/msg/PointCloud2` with no compression.
 
-### Configuration guide
+### Configuration guide { #kilted-to-l-turtle-configuration-guide }
 
 If your sensor already publishes compressed streams (e.g., [Seterolabs ZED X Cameras](https://www.stereolabs.com/docs/ros2/dds_and_network_tuning#use-compressed-topics)), you can enable this option in the costmap layers that ingest pointcloud sensor streams (i.e. obstacle, voxel) and in the collision monitor as well.
 
@@ -390,7 +390,7 @@ An example usage in a Behavior Tree XML file:
 <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle"/>
 ```
 
-## Following Server
+## Following Server { #kilted-to-l-turtle-following-server }
 
 [PR #5565](https://github.com/ros-navigation/navigation2/pull/5565) adds a new Following Server into the `opennav_following` package.
 The Following Server implements a server for following dynamic objects or specific reference frames.

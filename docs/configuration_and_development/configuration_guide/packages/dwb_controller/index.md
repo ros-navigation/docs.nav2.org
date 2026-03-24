@@ -1,4 +1,4 @@
-# DWB Controller { #dwb-controller }
+# DWB Controller { #dwb-controller-index }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller).
 

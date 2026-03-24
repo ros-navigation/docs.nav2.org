@@ -1,4 +1,4 @@
-# Map Server { #map-server }
+# Map Server { #map-server-index }
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server).
 
