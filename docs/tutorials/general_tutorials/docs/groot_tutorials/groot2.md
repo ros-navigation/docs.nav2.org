@@ -11,20 +11,20 @@ Therefore, we must point Groot2 to our palette, or index of Nav2 / custom behavi
 3. Click the blue icon as shown in the second image, browse the tree you want to visualize, then select Open. The Nav2 BTs exist in /path/to/navigation2/nav2_bt_navigator/behavior_trees/.
 
 <div markdown="span" style="display: flex; gap: 10px;">
-	![](images/Groot2/groot_bt_editor.png){ height="auto" width="50%" }
-	![](images/Groot2/groot_with_nav2_custom_nodes.png){ height="auto" width="50%" }
+	![](../images/Groot2/groot_bt_editor.png){ height="auto" width="50%" }
+	![](../images/Groot2/groot_with_nav2_custom_nodes.png){ height="auto" width="50%" }
 </div>
 
 If you select the default tree navigate_w_replanning_and_recovery.xml, the Groot2 editor should now display the full behavior tree structure, as shown in the image below.
 
 <figure markdown="span">
-  ![](images/Groot2/bt_w_replanning_and_recovery.png){ width="80%" }
+  ![](../images/Groot2/bt_w_replanning_and_recovery.png){ width="80%" }
 </figure>
 
 You can also check/uncheck the Nodes visualization part in the preferences to better visualize the tree.
 
 <figure markdown="span">
-  ![](images/Groot2/groot_preferences.png){ width="80%" }
+  ![](../images/Groot2/groot_preferences.png){ width="80%" }
 </figure>
 
 !!! note
@@ -40,7 +40,7 @@ You may then connect the nodes using a “drag and drop” motion between the no
 If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you’re done modifying, simply save the new configuration file and use that on your robot the next time!
 
 <figure markdown="span">
-  ![](images/Groot2/editing_bt.png){ width="80%" }
+  ![](../images/Groot2/editing_bt.png){ width="80%" }
 </figure>
 
 ## Adding A Custom Node
@@ -54,13 +54,13 @@ Implementing the node itself needs to be done separately from Groot2, which is d
 Creating a new custom node can be started by clicking the red marked icon, while Groot2 is in Editor mode.
 
 <figure markdown="span">
-  ![](images/Groot2/groot_create_custom_node.png){ width="40%" }
+  ![](../images/Groot2/groot_create_custom_node.png){ width="40%" }
 </figure>
 
 This should load a new window, as shown in the next image.
 
 <figure markdown="span">
-  ![](images/Groot2/groot_interactive_node_creation.png){ width="50%" }
+  ![](../images/Groot2/groot_interactive_node_creation.png){ width="50%" }
 </figure>
 
 In this new window, it asks you to fill in the metadata about this new node, in order to create it.
@@ -68,7 +68,7 @@ It will ask you for standard information such as port name, type of node, and an
 After completing, select OK, the new custom node should now appear in the TreeNode Palette.
 
 <figure markdown="span">
-  ![](images/Groot2/groot_new_node.png){ width="35%" }
+  ![](../images/Groot2/groot_new_node.png){ width="35%" }
 </figure>
 
 ## Exporting Behavior Trees
@@ -77,8 +77,8 @@ Once you have finished editing or creating your behavior tree in Groot2, you may
 To do this, you can either use the Export Project button shown in the image below, or use the Save Current Project As button next to it.
 
 <div markdown="span" style="display: flex; gap: 10px;">
-	![](images/Groot2/groot_export_button.png){ height="auto" width="50%" }
-	![](images/Groot2/groot_export_page.png){ height="auto" width="50%" }
+	![](../images/Groot2/groot_export_button.png){ height="auto" width="50%" }
+	![](../images/Groot2/groot_export_page.png){ height="auto" width="50%" }
 </div>
 
 Your behavior tree has been successfully exported! You can reload it the next time you open Groot2.

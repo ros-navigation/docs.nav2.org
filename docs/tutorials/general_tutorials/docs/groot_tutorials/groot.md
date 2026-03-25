@@ -14,11 +14,11 @@ Therefore, we must point Groot to our palette, or index of Nav2 / custom behavio
 
 <div markdown="span" style="display: flex; gap: 10px;">
     <figure markdown="span" id="groot-bt-editor">
-        ![](images/Groot/groot_bt_editor.png){ width="400px" }
+        ![](../images/Groot/groot_bt_editor.png){ width="400px" }
         <figcaption>Figur 1: Default Editor View</figcaption>
     </figure>
     <figure markdown="span" id="groot-bt-editor-with-nodes">
-        ![](images/Groot/groot_with_nav2_custom_nodes.png){ width="397px" }
+        ![](../images/Groot/groot_with_nav2_custom_nodes.png){ width="397px" }
         <figcaption>Figure 2: Editor with Custom Nodes loaded in blue</figcaption>
     </figure>
 </div>
@@ -26,7 +26,7 @@ Therefore, we must point Groot to our palette, or index of Nav2 / custom behavio
 If you select the default tree navigate_w_replanning_and_recovery.xml, then a Groot editor should look like [Figure 3](#groot-nav2-default-bt).
 
 <figure markdown="span" id="groot-nav2-default-bt">
-    ![](images/Groot/bt_w_replanning_and_recovery.png)
+    ![](../images/Groot/bt_w_replanning_and_recovery.png)
     <figcaption>Figure 3: Full Nav2 Default BehaviorTree</figcaption>
 </figure>
 
@@ -51,7 +51,7 @@ Within Groot, you may create new custom nodes to add to your tree and export the
 Implementing the node itself needs to be done separately from Groot, which is described in [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin].
 
 <figure markdown="span" id="groot-create-custom-node">
-    ![](images/Groot/groot_create_custom_node.png)
+    ![](../images/Groot/groot_create_custom_node.png)
     <figcaption>Figure 4: Create a new Custom Node</figcaption>
 </figure>
 
@@ -64,11 +64,11 @@ After completing, select OK in [Figure 5](#groot-interactive-node-creation), the
 
 <div markdown="span" style="display: flex; gap: 10px; height: 350px">
     <figure markdown="span" id="groot-interactive-node-creation" style="object-fit: fill;">
-        ![](images/Groot/groot_interactive_node_creation.png){ width="350px" }
+        ![](../images/Groot/groot_interactive_node_creation.png){ width="350px" }
         <figcaption>Figure 5: UI to describing new Nodes</figcaption>
     </figure>
     <figure markdown="span" id="groot-export-new-node" style="object-fit: fill;">
-        ![](images/Groot/groot_export_new_node.png){ width="342px" }
+        ![](../images/Groot/groot_export_new_node.png){ width="342px" }
         <figcaption>Figure 6: Exporting the new Custom Node</figcaption>
     </figure>
 </div>
