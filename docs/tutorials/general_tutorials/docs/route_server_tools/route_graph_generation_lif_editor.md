@@ -72,13 +72,13 @@ Now we can add edges to the map. There are two ways to create edges:
 1. Select a node, enter the target node ID in the **‘Connected Nodes’** input in the right sidebar, and select the node from the list. This will create an edge between the selected node and the target node.
 
     <figure markdown="span">
-    ![](../images/route_graph_generation_lif_editor/add_edge_normal.png){ width="710px" height="330px" }
+      ![](../images/route_graph_generation_lif_editor/add_edge_normal.png){ width="710px" height="330px" }
     </figure>
 
 2. If the **‘Fast Create’** toggle is on, clicking on the map will automatically connect the new node to the previously selected node.
 
     <figure markdown="span">
-    ![](../images/route_graph_generation_lif_editor/add_edge_fast_create.png){ width="710px" height="330px" }
+      ![](../images/route_graph_generation_lif_editor/add_edge_fast_create.png){ width="710px" height="330px" }
     </figure>
 
 #### Delete Edge

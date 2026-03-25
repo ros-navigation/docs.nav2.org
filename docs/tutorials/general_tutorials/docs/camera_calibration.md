@@ -47,7 +47,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     `ros2 topic hz /camera/image_raw`
 
     <figure markdown="span">
-        ![](images/Camera_Calibration/ROS2_topic_hz.png){ width="600" }
+      ![](images/Camera_Calibration/ROS2_topic_hz.png){ width="600" }
     </figure>
 
 5. Start the camera calibration node
@@ -98,7 +98,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     ```
 
     <figure markdown="span">
-        ![](images/Camera_Calibration/window1.png){ width="600" }
+      ![](images/Camera_Calibration/window1.png){ width="600" }
     </figure>
 
 6. In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
@@ -111,23 +111,23 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     - checkerboard tilted to the left, right, top and bottom (Skew)
 
     <figure markdown="span">
-        ![](images/Camera_Calibration/calibration.jpg){ width="600" }
+      ![](images/Camera_Calibration/calibration.jpg){ width="600" }
     </figure>
 
 7. As the checkerboard is moved around the 4 bars on the calibration sidebar increases in length. When all then the 4 bars are green and enough data is available for calibration the CALIBRATE button will light up. Click it to see the results. It takes around the minute for calibration to take place.
 
     <figure markdown="span">
-        ![](images/Camera_Calibration/greenbars.png){ width="600" }
+      ![](images/Camera_Calibration/greenbars.png){ width="600" }
     </figure>
 
 8. After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
 
     <figure markdown="span"> 
-        ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
+      ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
     </figure>
 
     <figure markdown="span"> 
-        ![](images/Camera_Calibration/calibration_parameters.png){ width="600" }
+      ![](images/Camera_Calibration/calibration_parameters.png){ width="600" }
     </figure>
 
 
