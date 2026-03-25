@@ -70,7 +70,7 @@ local_costmap:
 
 ### 2. Run Nav2 stack
 
-After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as written in [Getting Started][getting-started]:
+After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as written in [Quickstart][quickstart]:
 
 ```bash
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False

@@ -205,10 +205,10 @@ In the above snippet, you can observe the mapping of our `nav2_straightline_plan
 
 ### 4. Run StraightLine plugin
 
-Run Turtlebot3 simulation with enabled navigation2. Detailed instruction how to make it are written at [Getting Started][getting-started]. Below is shortcut command for that:
+Run Turtlebot3 simulation with enabled navigation2. Detailed instruction how to make it are written at [Quickstart][quickstart]. Below is shortcut command for that:
 
 ```bash
 $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 ```
 
-Then goto RViz and click on the “2D Pose Estimate” button at the top and point to the location on map as it was described in [Getting Started][getting-started]. Robot will localize on the map and then click on “Navigation2 goal” and click on the pose where you want your planner to consider a goal pose. After that planner will plan the path and robot will start moving towards the goal.
+Then goto RViz and click on the “2D Pose Estimate” button at the top and point to the location on map as it was described in [Quickstart][quickstart]. Robot will localize on the map and then click on “Navigation2 goal” and click on the pose where you want your planner to consider a goal pose. After that planner will plan the path and robot will start moving towards the goal.

@@ -38,7 +38,7 @@ The ROSCon talk for STVL can be found [in this video](https://vimeo.com/29269957
 
 ### 0. Setup
 
-Follow the same process as in [Getting Started][getting-started] for installing and setting up a robot for hardware testing or simulation, as applicable. Ensure ROS 2, Navigation2, and Gazebo are installed.
+Follow the same process as in [Quickstart][quickstart] for installing and setting up a robot for hardware testing or simulation, as applicable. Ensure ROS 2, Navigation2, and Gazebo are installed.
 
 ### 1. Install STVL
 
@@ -136,7 +136,7 @@ Note: Pluginlib plugins for other Navigation2 servers such as planning, behavior
 
 ### 3. Launch Navigation2
 
-Follow the same process as in [Getting Started][getting-started] to launch a simulated robot in gazebo with Navigation2.
+Follow the same process as in [Quickstart][quickstart] to launch a simulated robot in gazebo with Navigation2.
 Navigation2 is now using STVL as its 3D sensing costmap layer.
 
 ### 4.  RVIZ

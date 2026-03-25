@@ -7,12 +7,12 @@
 ## Overview
 
 This tutorial shows how to add a smoother to your behavior tree to smooth output paths from a path planner.
-Before completing this tutorials, completing [Getting Started][getting-started] is highly recommended especially if you are new to ROS and Nav2.
+Before completing this tutorials, completing [Quickstart][quickstart] is highly recommended especially if you are new to ROS and Nav2.
 
 ## Requirements
 
 You must install Nav2, Turtlebot3.
-If you don’t have them installed, please follow [Getting Started][getting-started].
+If you don’t have them installed, please follow [Quickstart][quickstart].
 You must also have a working behavior tree, such as those provided by the Nav2 BT Navigator package, for editing.
 You should also have a copy of the `nav2_params.yaml` file for your system to edit as well.
 

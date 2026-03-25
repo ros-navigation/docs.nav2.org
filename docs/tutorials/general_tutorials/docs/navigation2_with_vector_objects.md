@@ -124,7 +124,7 @@ global_costmap:
 
 ## Demo Execution
 
-After Vector Object server was launched and Vector Object layer was enabled for the global costmap, run Nav2 stack as written in [Getting Started][getting-started]:
+After Vector Object server was launched and Vector Object layer was enabled for the global costmap, run Nav2 stack as written in [Quickstart][quickstart]:
 
 ```bash
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False

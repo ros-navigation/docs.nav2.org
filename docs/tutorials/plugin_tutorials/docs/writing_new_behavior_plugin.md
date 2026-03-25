@@ -242,7 +242,7 @@ We also tell the behavior server that the `send_sms` is of type `SendSms` and gi
 
 ### 4. Run Behavior Plugin
 
-Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at [Getting Started][getting-started]. Below is shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at [Quickstart][quickstart]. Below is shortcut command for that:
 
 ```bash
 $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml

@@ -215,13 +215,13 @@ gradient_layer_2:
 
 ### 4. Run GradientLayer plugin
 
-Run Turtlebot3 simulation with enabled Nav2. Detailed instructions how to make it are written at [Getting Started][getting-started]. Below is shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instructions how to make it are written at [Quickstart][quickstart]. Below is shortcut command for that:
 
 ```bash
 $ ros2 launch nav2_bringup tb3_simulation_launch.py
 ```
 
-Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on map as it was described in [Getting Started][getting-started]. Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by `GradientLayer::updateCosts()` costmap within its bounds and global path curved by gradient:
+Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on map as it was described in [Quickstart][quickstart]. Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by `GradientLayer::updateCosts()` costmap within its bounds and global path curved by gradient:
 
 <figure markdown="span">
   ![](images/Writing_new_Costmap2D_plugin/gradient_layer_run.png){ width="700px" title="Image of gradient costmap used" }

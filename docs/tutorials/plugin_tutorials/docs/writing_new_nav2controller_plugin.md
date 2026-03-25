@@ -254,12 +254,12 @@ To pass plugin-specific parameters we have used `<plugin_id>.<plugin_specific_pa
 
 ### 4. Run Pure Pursuit Controller plugin
 
-Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at [Getting Started][getting-started]. Below is a shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at [Quickstart][quickstart]. Below is a shortcut command for that:
 
 ```bash
 $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 ```
 
-Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on the map as it was described in [Getting Started][getting-started].
+Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on the map as it was described in [Quickstart][quickstart].
 The robot will localize on the map and then click on the “Nav2 goal” and click on the pose where you want your robot to navigate to.
 After that controller will make the robot follow the global path.

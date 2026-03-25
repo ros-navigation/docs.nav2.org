@@ -9,7 +9,7 @@
 ## Overview
 
 This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Nav2 on a physical Turtlebot 3 robot.
-Before completing this tutorials, completing [Getting Started][getting-started] is highly recommended especially if you are new to ROS and Nav2.
+Before completing this tutorials, completing [Quickstart][quickstart] is highly recommended especially if you are new to ROS and Nav2.
 
 This tutorial may take about 1 hour to complete.
 It depends on your experience with ROS, robots, and what computer system you have.
@@ -17,7 +17,7 @@ It depends on your experience with ROS, robots, and what computer system you hav
 ## Requirements
 
 You must install Nav2, Turtlebot3.
-If you don’t have them installed, please follow [Getting Started][getting-started].
+If you don’t have them installed, please follow [Quickstart][quickstart].
 
 The turtlebot3 software can be installed via the following or on the [turtlebot3 repository](https://github.com/ROBOTIS-GIT/turtlebot3):
 

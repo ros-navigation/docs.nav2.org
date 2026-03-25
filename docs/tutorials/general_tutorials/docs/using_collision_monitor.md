@@ -325,7 +325,7 @@ If you have changed Collision Monitor’s default `cmd_vel_in_topic` and `cmd_ve
 ## Demo Execution
 
 Once Collision Monitor node has been tuned and `cmd_vel` topics adjusted, Collision Monitor node is ready to run.
-For that, run Nav2 stack as written in [Getting Started][getting-started]:
+For that, run Nav2 stack as written in [Quickstart][quickstart]:
 
 ```bash
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
