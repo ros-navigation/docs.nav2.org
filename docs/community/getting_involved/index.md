@@ -27,8 +27,8 @@ Lastly, we have a [Community Slack](https://join.slack.com/t/navigation2/shared_
 If you’re looking to contribute code or bugs, please see the Process section below.
 
 Over time, for developers that have an interest and have shown technical competence in an area of the stack, we elevate developers to a maintainers status.
-That allows push rights to our protected branches, first-reviewers rights, and getting your name on [About and Contact](../../about/index.md#about).
-There currently is not a clear process for getting to be a maintainer, but if you’ve been involved and contributing over a duration of several months, you may be a good candidate and should email the project lead listed on [About and Contact](../../about/index.md#about).
+That allows push rights to our protected branches, first-reviewers rights, and getting your name on [About and Contact][about-and-contact].
+There currently is not a clear process for getting to be a maintainer, but if you’ve been involved and contributing over a duration of several months, you may be a good candidate and should email the project lead listed on [About and Contact][about-and-contact].
 
 ## Process
 

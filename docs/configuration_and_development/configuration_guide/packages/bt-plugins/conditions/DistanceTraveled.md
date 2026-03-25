@@ -6,7 +6,7 @@ Node that returns success when a configurable distance has been traveled.
 
 ### **`transform_tolerance`**
 
-  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
+  Defined and declared in [Behavior-Tree Navigator][behavior-tree-navigator].
 
 ## Example
 

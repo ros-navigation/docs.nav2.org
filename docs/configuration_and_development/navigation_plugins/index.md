@@ -7,12 +7,12 @@ If you know of a plugin, or you have created a new plugin, please consider submi
 
 This file can be found and edited under `sphinx_docs/plugins/index.rst`.
 For tutorials on creating your own plugins, please see 
-[Writing a New Costmap2D Plugin](../plugin_tutorials/docs/writing_new_costmap2d_plugin.md#writing-a-new-costmap2d-plugin), 
-[Writing a New Behavior Tree Plugin](../plugin_tutorials/docs/writing_new_bt_plugin.md#writing-a-new-behavior-tree-plugin), 
-[Writing a New Controller Plugin](../plugin_tutorials/docs/writing_new_nav2controller_plugin.md#writing-a-new-controller-plugin), 
-[Writing a New Planner Plugin](../plugin_tutorials/docs/writing_new_nav2planner_plugin.md#writing-a-new-planner-plugin), 
-[Writing a New Behavior Plugin](../plugin_tutorials/docs/writing_new_behavior_plugin.md#writing-a-new-behavior-plugin), or 
-[Writing a New Navigator Plugin](../plugin_tutorials/docs/writing_new_navigator_plugin.md#writing-a-new-navigator-plugin).
+[Writing a New Costmap2D Plugin][writing-a-new-costmap-2d-plugin], 
+[Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin], 
+[Writing a New Controller Plugin][writing-a-new-controller-plugin], 
+[Writing a New Planner Plugin][writing-a-new-planner-plugin], 
+[Writing a New Behavior Plugin][writing-a-new-behavior-plugin], or 
+[Writing a New Navigator Plugin][writing-a-new-navigator-plugin].
 
 ## Behavior-Tree Navigators
 

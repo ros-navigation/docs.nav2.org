@@ -26,7 +26,7 @@ Description
 | `string` | N/A     |
 
 Description
-:   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server](../configuring-map-server.md#map-server) configuration page.
+:   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server][map-server-index] configuration page.
 
 ### **`<filter name>.transform_tolerance`**
 

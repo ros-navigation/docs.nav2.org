@@ -49,7 +49,7 @@ Each node in the behavior tree holds a specialized function.
 Sometimes, its useful to create new nodes and add them to your palette during the design process - perhaps before the implementations themselves exist.
 This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they’d like to interact with a given node (e.g. type, ports, etc).
 Within Groot2, you may create new custom nodes to add to your tree and export these new nodes back to your palette.
-Implementing the node itself needs to be done separately from Groot2, which is described in [Writing a New Behavior Tree Plugin](../../plugin_tutorials/docs/writing_new_bt_plugin.md#writing-a-new-behavior-tree-plugin).
+Implementing the node itself needs to be done separately from Groot2, which is described in [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin].
 
 Creating a new custom node can be started by clicking the red marked icon, while Groot2 is in Editor mode.
 

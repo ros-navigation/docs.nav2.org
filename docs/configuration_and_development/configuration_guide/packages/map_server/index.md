@@ -4,7 +4,7 @@ Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/
 
 The Map server package implements various components for handling grid maps, including loading, saving, and publishing maps and their metadata. Currently the following components are supported in Nav2:
 
-- [Map Server](map_server/configuring-map-server.md)
-- [Map Saver](map_server/configuring-map-saver.md)
-- [Costmap Filter Info Server](map_server/configuring-costmap-filter-info-server.md)
-- [Vector Object Server](map_server/configuring-vector-object-server.md)
+- [Map Server][map-server]
+- [Map Saver][map-saver]
+- [Costmap Filter Info Server][costmap-filter-info-server]
+- [Vector Object Server][vector-object-server]

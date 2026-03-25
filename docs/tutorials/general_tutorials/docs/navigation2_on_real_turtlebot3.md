@@ -9,7 +9,7 @@
 ## Overview
 
 This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Nav2 on a physical Turtlebot 3 robot.
-Before completing this tutorials, completing [Getting Started](../../getting_started/index.md#getting-started) is highly recommended especially if you are new to ROS and Nav2.
+Before completing this tutorials, completing [Getting Started][getting-started] is highly recommended especially if you are new to ROS and Nav2.
 
 This tutorial may take about 1 hour to complete.
 It depends on your experience with ROS, robots, and what computer system you have.
@@ -17,7 +17,7 @@ It depends on your experience with ROS, robots, and what computer system you hav
 ## Requirements
 
 You must install Nav2, Turtlebot3.
-If you don’t have them installed, please follow [Getting Started](../../getting_started/index.md#getting-started).
+If you don’t have them installed, please follow [Getting Started][getting-started].
 
 The turtlebot3 software can be installed via the following or on the [turtlebot3 repository](https://github.com/ROBOTIS-GIT/turtlebot3):
 
@@ -53,7 +53,7 @@ You will need to launch your robot’s interface, for example:
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
 In case you are interested, there is a use case tutorial which shows how to use Nav2 with SLAM.
-[Navigating while Mapping (SLAM)](navigation2_with_slam.md#navigating-while-mapping-slam).
+[Navigating while Mapping (SLAM)][navigating-while-mapping-slam].
 
 Required files:
 

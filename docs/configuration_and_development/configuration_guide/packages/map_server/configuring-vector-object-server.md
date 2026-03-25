@@ -16,7 +16,7 @@ Each vector shape is being handled by its `unique_identifier_msgs/UUID`. Develop
 
 The Vector Object server places shapes on the map. Each vector object has its own value in the range from `{-1}, [0..100]`, which matches the OccupancyGrid values. Vector objects can be overlapped with each other by using one of the global overlapping rules: (a) **sequential overlapping** in the same order as vector objects arrived on the server, or (b) taking the **maximum / minimum value** from all vector objects and the map background (if it is known).
 
-This page describes all the configuration parameters of the Vector Object server. For more information on how to navigate with your own Vector Object server, please refer to the [Navigating with Vector Objects](../../../tutorials/docs/navigation2_with_vector_objects.md#navigating-with-vector-objects) tutorial.
+This page describes all the configuration parameters of the Vector Object server. For more information on how to navigate with your own Vector Object server, please refer to the [Navigating with Vector Objects][navigating-with-vector-objects] tutorial.
 
 ## Features
 
@@ -46,7 +46,7 @@ This page describes all the configuration parameters of the Vector Object server
 
 ## Covered use-cases
 
-Using Vector Object server publishing an output map as input mask to [Costmap Filters](../../../migration/Foxy.md#costmap-filters) allows the following example use-cases using polygon, vector representations of areas rather than rastered masks:
+Using Vector Object server publishing an output map as input mask to [Costmap Filters][foxy-to-galactic-costmap-filters] allows the following example use-cases using polygon, vector representations of areas rather than rastered masks:
 
 - No-access zone
 - Speed-restriction areas

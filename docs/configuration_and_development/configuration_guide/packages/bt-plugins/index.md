@@ -4,102 +4,102 @@ The [nav2_behavior_tree](https://github.com/ros-navigation/navigation2/tree/main
 
 Check this [introduction](https://www.behaviortree.dev/docs/learn-the-basics/BT_basics) to learn how behavior trees work and the difference between actions, conditions, controls and decorators.
 
-Consider checking out the [Groot Tutorials](../../tutorials/docs/using_groot.md#groot-tutorials) tutorial for using Groot to visualize and modify behavior trees.
+Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using Groot to visualize and modify behavior trees.
 
 ## Action Plugins
 
-- [Wait](bt-plugins/actions/Wait.md)
-- [Spin](bt-plugins/actions/Spin.md)
-- [BackUp](bt-plugins/actions/BackUp.md)
-- [DriveOnHeading](bt-plugins/actions/DriveOnHeading.md)
-- [AssistedTeleop](bt-plugins/actions/AssistedTeleop.md)
-- [ComputePathToPose](bt-plugins/actions/ComputePathToPose.md)
-- [ComputeRoute](bt-plugins/actions/ComputeRoute.md)
-- [ComputeAndTrackRoute](bt-plugins/actions/ComputeAndTrackRoute.md)
-- [FollowPath](bt-plugins/actions/FollowPath.md)
-- [NavigateToPose](bt-plugins/actions/NavigateToPose.md)
-- [ClearEntireCostmap](bt-plugins/actions/ClearEntireCostmap.md)
-- [ClearCostmapExceptRegion](bt-plugins/actions/ClearCostmapExceptRegion.md)
-- [ClearCostmapAroundRobot](bt-plugins/actions/ClearCostmapAroundRobot.md)
-- [ClearCostmapAroundPose](bt-plugins/actions/ClearCostmapAroundPose.md)
-- [ReinitializeGlobalLocalization](bt-plugins/actions/ReinitializeGlobalLocalization.md)
-- [TruncatePath](bt-plugins/actions/TruncatePath.md)
-- [TruncatePathLocal](bt-plugins/actions/TruncatePathLocal.md)
-- [PlannerSelector](bt-plugins/actions/PlannerSelector.md)
-- [ControllerSelector](bt-plugins/actions/ControllerSelector.md)
-- [SmootherSelector](bt-plugins/actions/SmootherSelector.md)
-- [GoalCheckerSelector](bt-plugins/actions/GoalCheckerSelector.md)
-- [ProgressCheckerSelector](bt-plugins/actions/ProgressCheckerSelector.md)
-- [PathHandlerSelector](bt-plugins/actions/PathHandlerSelector.md)
-- [NavigateThroughPoses](bt-plugins/actions/NavigateThroughPoses.md)
-- [ComputePathThroughPoses](bt-plugins/actions/ComputePathThroughPoses.md)
-- [ComputeCoveragePath](bt-plugins/actions/ComputeCoveragePath.md)
-- [CancelCoverage](bt-plugins/actions/CancelCoverage.md)
-- [RemovePassedGoals](bt-plugins/actions/RemovePassedGoals.md)
-- [RemoveInCollisionGoals](bt-plugins/actions/RemoveInCollisionGoals.md)
-- [CancelControl](bt-plugins/actions/CancelControl.md)
-- [CancelBackUp](bt-plugins/actions/CancelBackUp.md)
-- [CancelSpin](bt-plugins/actions/CancelSpin.md)
-- [CancelWait](bt-plugins/actions/CancelWait.md)
-- [CancelDriveOnHeading](bt-plugins/actions/CancelDriveOnHeading.md)
-- [CancelAssistedTeleop](bt-plugins/actions/CancelAssistedTeleop.md)
-- [CancelComputeAndTrackRoute](bt-plugins/actions/CancelComputeAndTrackRoute.md)
-- [SmoothPath](bt-plugins/actions/Smooth.md)
-- [GetPoseFromPath](bt-plugins/actions/GetPoseFromPath.md)
-- [DockRobot](bt-plugins/actions/DockRobot.md)
-- [UndockRobot](bt-plugins/actions/UndockRobot.md)
-- [ConcatenatePaths](bt-plugins/actions/ConcatenatePaths.md)
-- [GetCurrentPose](bt-plugins/actions/GetCurrentPose.md)
-- [AppendGoalPoseToGoals](bt-plugins/actions/AppendGoalPoseToGoals.md)
-- [ExtractRouteNodesAsGoals](bt-plugins/actions/ExtractRouteNodesAsGoals.md)
-- [GetNextFewGoals](bt-plugins/actions/GetNextFewGoals.md)
-- [ToggleCollisionMonitor](bt-plugins/actions/ToggleCollisionMonitor.md)
-- [FollowObject](bt-plugins/actions/FollowObject.md)
-- [CancelFollowObject](bt-plugins/actions/CancelFollowObject.md)
+- [Wait][wait]
+- [Spin][spin]
+- [BackUp][back-up]
+- [DriveOnHeading][drive-on-heading]
+- [AssistedTeleop][assisted-teleop]
+- [ComputePathToPose][compute-path-to-pose]
+- [ComputeRoute][compute-route]
+- [ComputeAndTrackRoute][compute-and-track-route]
+- [FollowPath][follow-path]
+- [NavigateToPose][navigate-to-pose]
+- [ClearEntireCostmap][clear-entire-costmap]
+- [ClearCostmapExceptRegion][clear-costmap-except-region]
+- [ClearCostmapAroundRobot][clear-costmap-around-robot]
+- [ClearCostmapAroundPose][clear-costmap-around-pose]
+- [ReinitializeGlobalLocalization][reinitialize-global-localization]
+- [TruncatePath][truncate-path]
+- [TruncatePathLocal][truncate-path-local]
+- [PlannerSelector][planner-selector]
+- [ControllerSelector][controller-selector]
+- [SmootherSelector][smoother-selector]
+- [GoalCheckerSelector][goal-checker-selector]
+- [ProgressCheckerSelector][progress-checker-selector]
+- [PathHandlerSelector][path-handler-selector]
+- [NavigateThroughPoses][navigate-through-poses]
+- [ComputePathThroughPoses][compute-path-through-poses]
+- [ComputeCoveragePath][compute-coverage-path]
+- [CancelCoverage][cancel-coverage]
+- [RemovePassedGoals][remove-passed-goals]
+- [RemoveInCollisionGoals][remove-in-collision-goals]
+- [CancelControl][cancel-control]
+- [CancelBackUp][cancel-back-up]
+- [CancelSpin][cancel-spin]
+- [CancelWait][cancel-wait]
+- [CancelDriveOnHeading][cancel-drive-on-heading]
+- [CancelAssistedTeleop][cancel-assisted-teleop]
+- [CancelComputeAndTrackRoute][cancel-compute-and-track-route]
+- [SmoothPath][smooth-path]
+- [GetPoseFromPath][get-pose-from-path]
+- [DockRobot][dock-robot]
+- [UndockRobot][undock-robot]
+- [ConcatenatePaths][concatenate-paths]
+- [GetCurrentPose][get-current-pose]
+- [AppendGoalPoseToGoals][append-goal-pose-to-goals]
+- [ExtractRouteNodesAsGoals][extract-route-nodes-as-goals]
+- [GetNextFewGoals][get-next-few-goals]
+- [ToggleCollisionMonitor][toggle-collision-monitor]
+- [FollowObject][follow-object]
+- [CancelFollowObject][cancel-follow-object]
 
 ## Condition Plugins
 
-- [GoalReached](bt-plugins/conditions/GoalReached.md)
-- [TransformAvailable](bt-plugins/conditions/TransformAvailable.md)
-- [DistanceTraveled](bt-plugins/conditions/DistanceTraveled.md)
-- [GoalUpdated](bt-plugins/conditions/GoalUpdated.md)
-- [GlobalUpdatedGoal](bt-plugins/conditions/GlobalUpdatedGoal.md)
-- [InitialPoseReceived](bt-plugins/conditions/InitialPoseReceived.md)
-- [IsGoalNearby](bt-plugins/conditions/IsGoalNearby.md)
-- [IsStuck](bt-plugins/conditions/IsStuck.md)
-- [IsStopped](bt-plugins/conditions/IsStopped.md)
-- [TimeExpired](bt-plugins/conditions/TimeExpired.md)
-- [IsBatteryLow](bt-plugins/conditions/IsBatteryLow.md)
-- [IsPathValid](bt-plugins/conditions/IsPathValid.md)
-- [IsPoseOccupied](bt-plugins/conditions/IsPoseOccupied.md)
-- [IsWithinPathTrackingBounds](bt-plugins/conditions/IsWithinPathTrackingBounds.md)
-- [PathExpiringTimer](bt-plugins/conditions/PathExpiringTimer.md)
-- [AreErrorCodesPresent](bt-plugins/conditions/AreErrorCodesPresent.md)
-- [WouldAControllerRecoveryHelp](bt-plugins/conditions/WouldAControllerRecoveryHelp.md)
-- [WouldAPlannerRecoveryHelp](bt-plugins/conditions/WouldAPlannerRecoveryHelp.md)
-- [WouldASmootherRecoveryHelp](bt-plugins/conditions/WouldASmootherRecoveryHelp.md)
-- [WouldARouteRecoveryHelp](bt-plugins/conditions/WouldARouteRecoveryHelp.md)
-- [IsBatteryCharging](bt-plugins/conditions/IsBatteryCharging.md)
-- [ArePosesNear](bt-plugins/conditions/ArePosesNear.md)
+- [GoalReached][goal-reached]
+- [TransformAvailable][transform-available]
+- [DistanceTraveled][distance-traveled]
+- [GoalUpdated][goal-updated]
+- [GlobalUpdatedGoal][global-updated-goal]
+- [InitialPoseReceived][initial-pose-received]
+- [IsGoalNearby][is-goal-nearby]
+- [IsStuck][is-stuck]
+- [IsStopped][is-stopped]
+- [TimeExpired][time-expired]
+- [IsBatteryLow][is-battery-low]
+- [IsPathValid][is-path-valid]
+- [IsPoseOccupied][is-pose-occupied]
+- [IsWithinPathTrackingBounds][is-within-path-tracking-bounds]
+- [PathExpiringTimer][path-expiring-timer]
+- [AreErrorCodesPresent][are-error-codes-present]
+- [WouldAControllerRecoveryHelp][would-a-controller-recovery-help]
+- [WouldAPlannerRecoveryHelp][would-a-planner-recovery-help]
+- [WouldASmootherRecoveryHelp][would-a-smoother-recovery-help]
+- [WouldARouteRecoveryHelp][would-a-route-recovery-help]
+- [IsBatteryCharging][is-battery-charging]
+- [ArePosesNear][are-poses-near]
 
 ## Control Plugins
 
-- [PipelineSequence](bt-plugins/controls/PipelineSequence.md)
-- [RoundRobin](bt-plugins/controls/RoundRobin.md)
-- [RecoveryNode](bt-plugins/controls/RecoveryNode.md)
-- [NonblockingSequence](bt-plugins/controls/NonblockingSequence.md)
-- [PersistentSequence](bt-plugins/controls/PersistentSequence.md)
-- [PauseResumeController](bt-plugins/controls/PauseResumeController.md)
+- [PipelineSequence][pipeline-sequence]
+- [RoundRobin][round-robin]
+- [RecoveryNode][recovery-node]
+- [NonblockingSequence][nonblocking-sequence]
+- [PersistentSequence][persistent-sequence]
+- [PauseResumeController][pause-resume-controller]
 
 ## Decorator Plugins
 
-- [RateController](bt-plugins/decorators/RateController.md)
-- [DistanceController](bt-plugins/decorators/DistanceController.md)
-- [SpeedController](bt-plugins/decorators/SpeedController.md)
-- [GoalUpdater](bt-plugins/decorators/GoalUpdater.md)
-- [PathLongerOnApproach](bt-plugins/decorators/PathLongerOnApproach.md)
-- [SingleTrigger](bt-plugins/decorators/SingleTrigger.md)
-- [GoalUpdatedController](bt-plugins/decorators/GoalUpdatedController.md)
+- [RateController][rate-controller]
+- [DistanceController][distance-controller]
+- [SpeedController][speed-controller]
+- [GoalUpdater][goal-updater]
+- [PathLongerOnApproach][path-longer-on-approach]
+- [SingleTrigger][single-trigger]
+- [GoalUpdatedController][goal-updated-controller]
 
 ## Example
 

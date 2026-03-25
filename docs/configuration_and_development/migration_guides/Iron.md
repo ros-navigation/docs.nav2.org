@@ -18,7 +18,7 @@ A new parameter `enable_stamped_cmd_vel` has been added to all of the publishers
 
 ## Add VelocityPolygon in Collision Monitor
 
-[PR #3708](https://github.com/ros-navigation/navigation2/pull/3708) adds `VelocityPolygon` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the [Configuring Collision Monitor with VelocityPolygon](../tutorials/docs/using_collision_monitor.md#using-collision-monitor) section.
+[PR #3708](https://github.com/ros-navigation/navigation2/pull/3708) adds `VelocityPolygon` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the [Configuring Collision Monitor with VelocityPolygon][using-collision-monitor] section.
 
 ## Change polygon points parameter format in Collision Monitor
 
@@ -58,7 +58,7 @@ A new metapackage exists in: [https://github.com/open-navigation/opennav_docking
 This allows for docking of any type of robot with any type of charging dock in a repeatable and generalized way.
 It will be integrated into Nav2 directly soon (Update June 2024: within Nav2 stack directly `nav2_docking`!)
 
-See [Using Docking Server](../tutorials/docs/using_docking.md#using-docking-server) for a tutorial on using this new capability! Thanks to NVIDIA for sponsoring this package!
+See [Using Docking Server][using-docking-server] for a tutorial on using this new capability! Thanks to NVIDIA for sponsoring this package!
 
 ## Introduce a new Multi-Robot Bringup Launch
 
@@ -212,7 +212,7 @@ The stack no longer contains wall timers or wall rates. It will now use the node
 
 [PR #4021](https://github.com/ros-navigation/navigation2/pull/4021) introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and comfortable trajectory.
 
-See [Graceful Controller](../configuration/packages/configuring-graceful-motion-controller.md#graceful-controller) for more information.
+See [Graceful Controller][graceful-controller] for more information.
 
 ## Plugin Libraries in BT Navigator Only Includes Custom Nodes
 

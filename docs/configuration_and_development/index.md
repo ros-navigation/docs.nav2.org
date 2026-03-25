@@ -1,9 +1,9 @@
 # Configuration & Development { #configuration-and-development }
 
-- [Navigation Plugins](navigation_plugins/index.md)
-- [First-Time Robot Setup Guide](first_time_robot_setup_guide/index.md)
-- [Configuration Guide](configuration_guide/index.md)
-- [Tuning Guide](tuning_guide/index.md)
-- [Simple Commander API](simple_commander_api/index.md)
-- [Migration Guides](migration_guides/index.md)
+- [Navigation Plugins][navigation-plugins]
+- [First-Time Robot Setup Guide][first-time-robot-setup-guide]
+- [Configuration Guide][configuration-guide]
+- [Tuning Guide][tuning-guide]
+- [Simple Commander API][simple-commander-api]
+- [Migration Guides][migration-guides]
 - [API Docs](https://api.nav2.org/)

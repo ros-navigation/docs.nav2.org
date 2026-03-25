@@ -6,7 +6,7 @@ Checks if the robot is near the goal by computing the remaining path length from
 
 ### **`transform_tolerance`**
 
-  Defined and declared in [Behavior-Tree Navigator](../../configuring-bt-navigator.md#behavior-tree-navigator).
+  Defined and declared in [Behavior-Tree Navigator][behavior-tree-navigator].
 
 ## Example
 

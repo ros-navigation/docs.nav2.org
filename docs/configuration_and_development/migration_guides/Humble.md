@@ -6,11 +6,11 @@ Moving from ROS 2 Humble to Iron, a number of stability improvements were added 
 
 New in [PR 3345](https://github.com/ros-navigation/navigation2/pull/3345), the navigator types are exposed to users as plugins that can be replaced or new navigator types added. The default behaviors of navigate to pose and navigate through poses continue to be default behavior but are now customizable with new action interface definitions. These plugins implement the `nav2_core::BehaviorTreeNavigator` base class, which must process the action request, feedback, and completion messages. The behavior tree is handled by this base class with as much general logic as possible abstracted away from users to minimize repetition.
 
-See [Writing a New Navigator Plugin](../plugin_tutorials/docs/writing_new_navigator_plugin.md#writing-a-new-navigator-plugin) for a tutorial about writing new navigator plugins.
+See [Writing a New Navigator Plugin][writing-a-new-navigator-plugin] for a tutorial about writing new navigator plugins.
 
 ## Added Collision Monitor
 
-[PR 2982](https://github.com/ros-navigation/navigation2/pull/2982) adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc...). See [Collision Monitor](../configuration/packages/configuring-collision-monitor.md#collision-monitor) for more details. It is not included in the default bringup batteries included from `nav2_bringup`.
+[PR 2982](https://github.com/ros-navigation/navigation2/pull/2982) adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc...). See [Collision Monitor][collision-monitor] for more details. It is not included in the default bringup batteries included from `nav2_bringup`.
 
 ## Removed use_sim_time from yaml
 
@@ -81,7 +81,7 @@ The current implemented servers with error codes are:
 
 This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.
 The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed.
-See [Adding a New Nav2 Task Server](../tutorials/docs/adding_a_nav2_task_server.md#adding-a-new-nav2-task-server) and the PR for additional information.
+See [Adding a New Nav2 Task Server][adding-a-new-nav2-task-server] and the PR for additional information.
 
 ## Costmap Filters { #humble-to-iron-costmap-filters }
 
@@ -91,7 +91,7 @@ Added new binary flip filter, allowing e.g. to turn off camera in sensitive area
 
 ## Savitzky-Golay Smoother { #humble-to-iron-savitzky-golay-smoother }
 
-Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide [Savitzky-Golay Smoother](../configuration/packages/configuring-savitzky-golay-smoother.md#savitzky-golay-smoother) for more details.
+Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide [Savitzky-Golay Smoother][savitzky-golay-smoother] for more details.
 
 ## Changes to Map yaml file path for map_server node in Launch
 
@@ -99,7 +99,7 @@ Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother ser
 
 ## SmootherSelector BT Node
 
-[PR #3283](https://github.com/ros-navigation/navigation2/pull/3283) adds a BT node to set the smoother based on a topic or a default. See the configuration guide [Simple Smoother](../configuration/packages/configuring-simple-smoother.md#simple-smoother) for more details.
+[PR #3283](https://github.com/ros-navigation/navigation2/pull/3283) adds a BT node to set the smoother based on a topic or a default. See the configuration guide [Simple Smoother][simple-smoother] for more details.
 
 ## Publish Costmap Layers
 
@@ -118,7 +118,7 @@ or `BOTH` if both are required. This allows us to only create and maintain the m
 
 The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers - with Nav2. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.
 
-See the README.md and [Model Predictive Path Integral Controller](../configuration/packages/configuring-mppic.md#model-predictive-path-integral-controller) page for more detail.
+See the README.md and [Model Predictive Path Integral Controller][model-predictive-path-integral-controller] page for more detail.
 
 ## Behavior Tree Uses Error Codes
 
@@ -182,7 +182,7 @@ Beware that it is a breaking change and that configuration files will need to be
 
 ## IsBatteryChargingCondition BT Node
 
-[PR #3553](https://github.com/ros-navigation/navigation2/pull/3553) adds a BT node to check if the battery is charging. See the configuration guide [IsBatteryCharging](../configuration/packages/bt-plugins/conditions/IsBatteryCharging.md#isbatterycharging) for more details.
+[PR #3553](https://github.com/ros-navigation/navigation2/pull/3553) adds a BT node to check if the battery is charging. See the configuration guide [IsBatteryCharging][is-battery-charging] for more details.
 
 ## Behavior Server Error Codes
 
@@ -197,9 +197,9 @@ Beware that it is a breaking change and that configuration files will need to be
 
 [PR #2567](https://github.com/ros-navigation/navigation2/pull/2567) adds the new plugin for filtering noise on the costmap.
 
-Due to errors in `Voxel Layer` or `Obstacle Layer` measurements, salt and pepper noise may appear on the [costmap](../configuration/packages/configuring-costmaps.md#costmap-2d). This noise creates false obstacles that prevent the robot from finding the best path on the map.
+Due to errors in `Voxel Layer` or `Obstacle Layer` measurements, salt and pepper noise may appear on the [costmap][costmap-2d]. This noise creates false obstacles that prevent the robot from finding the best path on the map.
 The new `Denoise Layer` plugin is designed to filter out noise-induced standalone obstacles or small obstacles groups. This plugin allows you to add layer that will filter local or global costmap.
-More information about `Denoise Layer` plugin and how it works could be found [here](../tutorials/docs/filtering_of_noise-induced_obstacles.md#filtering-of-noise-induced-obstacles).
+More information about `Denoise Layer` plugin and how it works could be found [here][filtering-of-noise-induced-obstacles].
 
 ## SmacPlannerHybrid viz_expansions parameter
 

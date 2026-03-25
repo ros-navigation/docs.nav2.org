@@ -301,19 +301,19 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 ## Plugin Parameters
 
-- [Static Layer Parameters](costmap-plugins/static.md)
-- [Inflation Layer Parameters](costmap-plugins/inflation.md)
-- [Obstacle Layer Parameters](costmap-plugins/obstacle.md)
-- [Voxel Layer Parameters](costmap-plugins/voxel.md)
-- [Range Sensor Parameters](costmap-plugins/range.md)
-- [Denoise Layer Parameters](costmap-plugins/denoise.md)
-- [Plugin Container Layer Parameters](costmap-plugins/plugin_container.md)
+- [Static Layer Parameters][static-layer-parameters]
+- [Inflation Layer Parameters][inflation-layer-parameters]
+- [Obstacle Layer Parameters][obstacle-layer-parameters]
+- [Voxel Layer Parameters][voxel-layer-parameters]
+- [Range Sensor Parameters][range-sensor-parameters]
+- [Denoise Layer Parameters][denoise-layer-parameters]
+- [Plugin Container Layer Parameters][plugin-container-layer-parameters]
 
 ## Costmap Filters Parameters
 
-- [Keepout Filter Parameters](costmap-plugins/keepout_filter.md)
-- [Speed Filter Parameters](costmap-plugins/speed_filter.md)
-- [Binary Filter Parameters](costmap-plugins/binary_filter.md)
+- [Keepout Filter Parameters][keepout-filter-parameters]
+- [Speed Filter Parameters][speed-filter-parameters]
+- [Binary Filter Parameters][binary-filter-parameters]
 
 ## Example
 

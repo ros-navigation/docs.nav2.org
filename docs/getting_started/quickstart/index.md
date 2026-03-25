@@ -5,7 +5,7 @@ and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 
 !!! note
 
-    See the [Build and Install](../development_guides/build_docs/index.md#build-and-install) for other situations such as building from source or working with other types of robots.
+    See the [Build and Install][build-and-install] for other situations such as building from source or working with other types of robots.
 
 !!! warning
 

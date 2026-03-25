@@ -1,6 +1,6 @@
 # Tuning Guide { #tuning-guide }
 
-This guide is meant to assist users in tuning their navigation system. While [Configuration Guide](../configuration/index.md#configuration-guide) is the home of the list of parameters for all of Nav2, it doesn’t contain much *color* for how to tune a system using the most important of them. The aim of this guide is to give more advice in how to setup your system beyond a first time setup, which you can find at [First-Time Robot Setup Guide](../setup_guides/index.md#first-time-robot-setup-guide). This will by no means cover all of the parameters (so please, do review the configuration guides for the packages of interest), but will give some helpful hints and tips.
+This guide is meant to assist users in tuning their navigation system. While [Configuration Guide][configuration-guide] is the home of the list of parameters for all of Nav2, it doesn’t contain much *color* for how to tune a system using the most important of them. The aim of this guide is to give more advice in how to setup your system beyond a first time setup, which you can find at [First-Time Robot Setup Guide][first-time-robot-setup-guide]. This will by no means cover all of the parameters (so please, do review the configuration guides for the packages of interest), but will give some helpful hints and tips.
 
 This tuning guide is a perpetual work in progress. If you see some insights you have missing, please feel free to file a ticket or pull request with the wisdom you would like to share. This is an open section supported by the generosity of Nav2 users and maintainers. Please consider paying it forward.
 
@@ -30,7 +30,7 @@ If your robot is truly circular, continue to use the `robot_radius` parameter. T
 
 ## Rotate in Place Behavior
 
-Using the [Rotation Shim Controller](../configuration/packages/configuring-rotation-shim-controller.md#rotation-shim-controller), a robot will simply rotate in place before starting to track a holonomic path. This allows a developer to tune a controller plugin to be optimized for path tracking and give you clean rotations, out of the box.
+Using the [Rotation Shim Controller][rotation-shim-controller], a robot will simply rotate in place before starting to track a holonomic path. This allows a developer to tune a controller plugin to be optimized for path tracking and give you clean rotations, out of the box.
 
 This was added due to quirks in some existing controllers whereas tuning the controller for a task can make it rigid – or the algorithm simply doesn’t rotate in place when working with holonomic paths (if that’s a desirable trait). The result is an awkward, stuttering, or whipping around behavior when your robot’s initial and path heading’s are significantly divergent. Giving a controller a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers (in one maintainer’s opinion).
 
@@ -43,7 +43,7 @@ This behavior is most optimally for:
 
 ## Planner Plugin Selection
 
-Nav2 provides a number of planning plugins out of the box. For a first-time setup, see [Setting Up Navigation Plugins](../setup_guides/algorithm/select_algorithm.md#setting-up-navigation-plugins) for a more verbose breakdown of algorithm styles within Nav2, and [Navigation Plugins](../plugins/index.md#navigation-plugins) for a full accounting of the current list of plugins available (which may be updated over time).
+Nav2 provides a number of planning plugins out of the box. For a first-time setup, see [Setting Up Navigation Plugins][setting-up-navigation-plugins] for a more verbose breakdown of algorithm styles within Nav2, and [Navigation Plugins][navigation-plugins] for a full accounting of the current list of plugins available (which may be updated over time).
 
 In general though, the following table is a good guide for the optimal planning plugin for different types of robot bases:
 
@@ -61,11 +61,11 @@ Since the planning problem is primarily driven by the robot type, the table accu
 
 !!! note
 
-    These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the [Writing a New Planner Plugin](../plugin_tutorials/docs/writing_new_nav2planner_plugin.md#writing-a-new-planner-plugin) tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
+    These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the [Writing a New Planner Plugin][writing-a-new-planner-plugin] tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
 
 ## Controller Plugin Selection
 
-Nav2 provides a number of controller plugins out of the box. For a first-time setup, see [Setting Up Navigation Plugins](../setup_guides/algorithm/select_algorithm.md#setting-up-navigation-plugins) for a more verbose breakdown of algorithm styles within Nav2, and [Navigation Plugins](../plugins/index.md#navigation-plugins) for a full accounting of the current list of plugins available (which may be updated over time).
+Nav2 provides a number of controller plugins out of the box. For a first-time setup, see [Setting Up Navigation Plugins][setting-up-navigation-plugins] for a more verbose breakdown of algorithm styles within Nav2, and [Navigation Plugins][navigation-plugins] for a full accounting of the current list of plugins available (which may be updated over time).
 
 In general though, the following table is a good first-order description of the controller plugins available for different types of robot bases:
 
@@ -91,7 +91,7 @@ Finally, Vector Pursuit is another good path tracking solution and just like RPP
 
 !!! note
 
-    These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the [Writing a New Controller Plugin](../plugin_tutorials/docs/writing_new_nav2controller_plugin.md#writing-a-new-controller-plugin) tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
+    These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the [Writing a New Controller Plugin][writing-a-new-controller-plugin] tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.
 
 ## Caching Obstacle Heuristic in Smac Planners
 

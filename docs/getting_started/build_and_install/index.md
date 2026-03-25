@@ -38,7 +38,7 @@ There are a few ways to build Nav2 using:
 
 !!! tip
 
-    For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using [Dev Containers](../devcontainer_docs/index.md)!
+    For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using [Dev Containers][dev-containers]!
 
 ### Released Distribution Binaries
 
@@ -146,7 +146,7 @@ The [docker build](https://docs.docker.com/engine/reference/commandline/build/) 
 
 !!! tip
 
-    The images cached from above are used for Nav2 CI, but can also be used with Nav2 [Dev Containers](../devcontainer_docs/index.md)!
+    The images cached from above are used for Nav2 CI, but can also be used with Nav2 [Dev Containers][dev-containers]!
 
 ### Using Pre-built nav2_docker Images
 
@@ -181,4 +181,4 @@ The documentation entrypoint in a browser is index.html.
 
 ## Help
 
-[Build Troubleshooting Guide](build_troubleshooting_guide.md#build-troubleshooting-guide)
+[Build Troubleshooting Guide][build-troubleshooting-guide]

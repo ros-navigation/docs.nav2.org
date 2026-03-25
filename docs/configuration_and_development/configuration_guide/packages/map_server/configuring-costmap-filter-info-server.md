@@ -1,6 +1,6 @@
 # Costmap Filter Info Server { #costmap-filter-info-server }
 
-The costmap filter info server is responsible for providing information about the [Costmap Filters](../../../migration/Foxy.md#costmap-filters) being used in the navigation stack. It publishes costmap filter mask specific metadata on a configured topic. This metadata is used by other components in the system to interpret the values in the costmap filter masks.
+The costmap filter info server is responsible for providing information about the [Costmap Filters][foxy-to-galactic-costmap-filters] being used in the navigation stack. It publishes costmap filter mask specific metadata on a configured topic. This metadata is used by other components in the system to interpret the values in the costmap filter masks.
 
 ## Costmap Filter Info Server Parameters
 

@@ -53,4 +53,4 @@ It is best convention for all ROS systems to use lifecycle nodes if it is possib
 Within Nav2, we use a wrapper of LifecycleNodes, `nav2_util LifecycleNode`.
 This wrapper wraps much of the complexities of LifecycleNodes for typical applications.
 It also includes a `bond` connection for the lifecycle manager to ensure that after a server transitions up, it also remains active.
-If a server crashes, it lets the lifecycle manager know and transition down the system to prevent a critical failure. See [Eloquent to Foxy](../migration/Eloquent.md#eloquent-to-foxy) for details.
+If a server crashes, it lets the lifecycle manager know and transition down the system to prevent a critical failure. See [Eloquent to Foxy][eloquent-to-foxy] for details.

@@ -4,7 +4,7 @@
 
 This tutorial will discuss how to set up your robot to use the `RotationShimController` to help create intuitive, rotate-in-place, behavior for your robot while starting out to track a path. The goal of this tutorial is to explain to the reader the value of the controller, how to configure it, how to configure the primary controller with it, and finally an example of it in use.
 
-Before starting this tutorial, completing the [Getting Started](../../getting_started/index.md#getting-started) is highly recommended especially if you are new to ROS and Nav2. The requirements are having the latest install of Nav2 / ROS 2 containing this package.
+Before starting this tutorial, completing the [Getting Started][getting-started] is highly recommended especially if you are new to ROS and Nav2. The requirements are having the latest install of Nav2 / ROS 2 containing this package.
 
 ## What is the Rotation Shim Controller?
 
@@ -22,7 +22,7 @@ The `RotationShimController` is most suitable for:
 
 !!! note
 
-    Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See [Navigation Plugins](../../plugins/index.md#navigation-plugins) for a full list of current controller plugins.
+    Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See [Navigation Plugins][navigation-plugins] for a full list of current controller plugins.
 
 ## Configuring Rotation Shim Controller
 

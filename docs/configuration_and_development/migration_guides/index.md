@@ -2,11 +2,11 @@
 
 Navigation2 guides for migration between distributions.
 
-- [Dashing to Eloquent](Dashing.md)
-- [Eloquent to Foxy](Eloquent.md)
-- [Foxy to Galactic](Foxy.md)
-- [Galactic to Humble](Galactic.md)
-- [Humble to Iron](Humble.md)
-- [Iron to Jazzy](Iron.md)
-- [Jazzy to Kilted](Jazzy.md)
-- [Kilted to L-turtle](Kilted.md)
+- [Dashing to Eloquent][dashing-to-eloquent]
+- [Eloquent to Foxy][eloquent-to-foxy]
+- [Foxy to Galactic][foxy-to-galactic]
+- [Galactic to Humble][galactic-to-humble]
+- [Humble to Iron][humble-to-iron]
+- [Iron to Jazzy][iron-to-jazzy]
+- [Jazzy to Kilted][jazzy-to-kilted]
+- [Kilted to L-turtle][kilted-to-l-turtle]

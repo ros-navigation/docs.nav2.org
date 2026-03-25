@@ -10,7 +10,7 @@ Unlike simple distance-based goal checkers, the AxisGoalChecker allows independe
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server][controller-server].
 
 ### **`<nav2_controller plugin>.along_path_tolerance`**
 

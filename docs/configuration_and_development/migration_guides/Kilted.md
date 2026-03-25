@@ -198,7 +198,7 @@ This is not longer required to be set.
 
 - Custom dock plugins must implement the new hooks (return `true` if nothing extra is required).
 - `Simple(Non)ChargingDock` gained `detector_service_name`, `detector_service_timeout`, and `subscribe_toggle` parameters so a detector service can be triggered only while detections are needed.
-- See [Docking Server](../configuration/packages/configuring-docking-server.md#docking-server) for the updated parameter reference and YAML example.
+- See [Docking Server][docking-server] for the updated parameter reference and YAML example.
 
 ## Added Corner Smoothing functionality to route_server
 
@@ -212,7 +212,7 @@ New parameters include `smooth_corners` which enable or disable corner smoothing
 
 In [PR #5325](https://github.com/ros-navigation/navigation2/pull/5325) a new Nav2 specific behavior tree control node has been added. The new behavior tree control node, `NonblockingSequence`, allows every child node in the sequence to be ticked through even if one of the child node returns `RUNNING`. This is done to prevent long running child nodes from blocking the sequence.
 
-For additional details regarding the `NonblockingSequence` please see the [Nav2 specific node walkthrough](/behavior_trees/overview/nav2_specific_nodes.md) and [NonblockingSequence configuration guide](/configuration/packages/bt-plugins/controls/NonblockingSequence.md).
+For additional details regarding the `NonblockingSequence` please see the [Nav2 specific node walkthrough][introduction-to-nav2-specific-nodes] and [NonblockingSequence configuration guide][nonblocking-sequence].
 
 ## MPPI Optimal Trajectory Validator Plugin
 
@@ -225,7 +225,7 @@ Note that kinematic and dynamic constraints are not required to be checked as th
 
 In [PR #5247](https://github.com/ros-navigation/navigation2/pull/5247) two new Nav2 specific behavior tree control nodes have been added.
 
-The [PauseResumeController](/configuration/packages/bt-plugins/controls/PauseResumeController.md) adds services to pause and resume execution of the tree. Related to this, the [PersistentSequence](/configuration/packages/bt-plugins/controls/PersistentSequence.md) control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
+The [PauseResumeController][pause-resume-controller] adds services to pause and resume execution of the tree. Related to this, the [PersistentSequence][persistent-sequence] control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
 
 ## Option to use point_cloud_transport
 
@@ -263,7 +263,7 @@ collision_monitor:
       transport_type: "raw"  # Change this to your compressed format (zlib, draco, zstd)
 ```
 
-See transport_type in [Collision Monitor Node](../configuration/packages/collision_monitor/configuring-collision-monitor-node.md#collision-monitor-node) for more information.
+See transport_type in [Collision Monitor Node][collision-monitor-node] for more information.
 
 ### Performance Metrics
 
@@ -328,7 +328,7 @@ bt_navigator:
       polygon_frame_blackboard_id: "polygon_frame_id"
 ```
 
-See also [Behavior-Tree Navigator](../configuration/packages/configuring-bt-navigator.md#behavior-tree-navigator)
+See also [Behavior-Tree Navigator][behavior-tree-navigator]
 
 ## Add BehaviorTree SubTrees Support
 
@@ -358,8 +358,8 @@ This allows to cover such use-cases as:
 adding virtual obstacles on maps, dynamic objects simulation/highlighting, hiding some areas or sticking-out robot parts, sensors noise removal, blacking-out areas on maps, adding keep-out or maximum speed restricted areas on vector basis, synthetic testing purposes, and much more.
 
 To run Vector Object server a new `vector_object_server.launch.py` launch-file is being supplied.
-[Navigating with Vector Objects](../tutorials/docs/navigation2_with_vector_objects.md#navigating-with-vector-objects) tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
-The information about Vector Object server parameters set-up could be found at [Vector Object Server](../configuration/packages/map_server/configuring-vector-object-server.md#vector-object-server) configuration guide.
+[Navigating with Vector Objects][navigating-with-vector-objects] tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
+The information about Vector Object server parameters set-up could be found at [Vector Object Server][vector-object-server] configuration guide.
 
 ## Toggle collision monitor service and BT plugin
 
@@ -396,9 +396,9 @@ An example usage in a Behavior Tree XML file:
 The Following Server implements a server for following dynamic objects or specific reference frames.
 This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.
 
-The information about Following Server parameters set-up could be found at [Following Server](../configuration/packages/configuring-following-server.md#following-server) configuration guide.
+The information about Following Server parameters set-up could be found at [Following Server][following-server] configuration guide.
 
-The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see [Dynamic Object Following](../tutorials/docs/navigation2_dynamic_point_following.md#dynamic-object-following).
+The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see [Dynamic Object Following][dynamic-object-following].
 
 ## Option for MPPI to use open loop mode
 
@@ -484,7 +484,7 @@ This change addresses issues where RoundRobin index can become misaligned with R
 </RoundRobin>
 ```
 
-For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide](/configuration/packages/bt-plugins/controls/RoundRobin.md).
+For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide][round-robin].
 
 ## Configurable Inscribed Obstacle Cost Value for Costmap Conversion
 
@@ -703,7 +703,7 @@ Moreover, several parameters have also been added to / removed from individual c
 
 In [PR 5804](https://github.com/ros-navigation/navigation2/pull/5804), an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing use_intra_process_comms parameter as true while launching Nav2 nodes.
 
-It is currently disabled by default. Please refer to the [Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS](../tuning/index.md#performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos) and the [TB3/TB4 examples in the Nav2 stack](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch) for reference.
+It is currently disabled by default. Please refer to the [Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS][performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos] and the [TB3/TB4 examples in the Nav2 stack](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch) for reference.
 
 ## New AxisGoalChecker Plugin
 
@@ -718,7 +718,7 @@ Key parameters:
 
 This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
 
-See [AxisGoalChecker](../configuration/packages/nav2_controller-plugins/axis_goal_checker.md#axisgoalchecker) for full configuration details.
+See [AxisGoalChecker][axis-goal-checker] for full configuration details.
 
 ## New default_cancel_timeout parameter in bt_navigator
 

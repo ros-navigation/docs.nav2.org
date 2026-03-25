@@ -10,7 +10,7 @@ As such, this does not provide hard real-time safety certifications, but uses th
 This is a useful and integral part of large heavy industrial robots, or robots moving with high velocities, around people or other dynamic agents (e.g. other robots) as a safety mechanism for high-response emergency stopping.
 The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot’s perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.
 
-See the package’s `README` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the [Using Collision Monitor](../../../tutorials/docs/using_collision_monitor.md#using-collision-monitor) tutorial.
+See the package’s `README` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the [Using Collision Monitor][using-collision-monitor] tutorial.
 
 Also, the practical demonstration of Collision Monitor abilities presented at 6th ROS Developers Day 2023, could be found below:
 
@@ -68,7 +68,7 @@ The data may be obtained from different data sources:
 Description
 :   Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then.
     Please note that is not a dynamic parameter, there’s `/toggle` service interface
-    and [BT Node](../bt-plugins/actions/ToggleCollisionMonitor.md) to update this state later at runtime.
+    and [BT Node][toggle-collision-monitor] to update this state later at runtime.
 
 ### **`base_frame_id`**
 

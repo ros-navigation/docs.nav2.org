@@ -7,12 +7,12 @@
 ## Overview
 
 This tutorial shows how to add a smoother to your behavior tree to smooth output paths from a path planner.
-Before completing this tutorials, completing [Getting Started](../../getting_started/index.md#getting-started) is highly recommended especially if you are new to ROS and Nav2.
+Before completing this tutorials, completing [Getting Started][getting-started] is highly recommended especially if you are new to ROS and Nav2.
 
 ## Requirements
 
 You must install Nav2, Turtlebot3.
-If you don’t have them installed, please follow [Getting Started](../../getting_started/index.md#getting-started).
+If you don’t have them installed, please follow [Getting Started][getting-started].
 You must also have a working behavior tree, such as those provided by the Nav2 BT Navigator package, for editing.
 You should also have a copy of the `nav2_params.yaml` file for your system to edit as well.
 
@@ -20,7 +20,7 @@ You should also have a copy of the `nav2_params.yaml` file for your system to ed
 
 ### 0. Familiarization with the Smoother BT Node
 
-The [SmoothPath](../../configuration/packages/bt-plugins/actions/Smooth.md#smoothpath) BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be separately interacted with via other servers and client library languages.
+The [SmoothPath][smooth-path] BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be separately interacted with via other servers and client library languages.
 
 Please see the BT node’s configuration page to familiarize yourself with all aspects, but the core ports to note are the `unsmoothed_path` input port and the `smoothed_path` output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server’s action API.
 

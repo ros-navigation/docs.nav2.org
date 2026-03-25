@@ -9,7 +9,7 @@ This tutorial shows how to configure filtering of false obstacles caused by nois
 
 ## Requirements
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install](../../development_guides/build_docs/index.md#build-and-install).
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in [Build and Install][build-and-install].
 
 ## Tutorial Steps
 
@@ -19,7 +19,7 @@ Denoise Layer is Costmap2D plugin. You can enable the `DenoiseLayer` plugin in C
 
 - `plugin`: type of plugin. In our case `nav2_costmap_2d::DenoiseLayer`.
 
-Full list of parameters supported by `DenoiseLayer` are listed at [Denoise Layer Parameters](../../configuration/packages/costmap-plugins/denoise.md#denoise-layer-parameters) page.
+Full list of parameters supported by `DenoiseLayer` are listed at [Denoise Layer Parameters][denoise-layer-parameters] page.
 
 It is important to note that `DenoiseLayer` typically should be placed before the inflation layer.
 This is required to prevent inflation from noise-induced obstacles.
@@ -70,7 +70,7 @@ local_costmap:
 
 ### 2. Run Nav2 stack
 
-After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as written in [Getting Started](../../getting_started/index.md#getting-started):
+After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as written in [Getting Started][getting-started]:
 
 ```bash
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False

@@ -25,13 +25,13 @@ Applying these technologies to a non-Nova design is possible using the general c
 
 ## Additional Resources
 
-- [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter](isaac_perceptor/rebuilding_tensorrt_engine.md)
+- [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter][rebuilding-tensor-rt-engine-for-isaac-perceptor-on-nova-carter]
 
 ## Concepts
 
 Navigation is performed by combining sensor data map(s) of the environment, and task intent to successfully move a robot to a final destination.
 Major elements of this include Path Planning, Control, Perception, Localization, and the Autonomy system to pull them all together.
-If you want to learn more about Navigation, checkout [Navigation Concepts](../../concepts/index.md#navigation-concepts).
+If you want to learn more about Navigation, checkout [Navigation Concepts][navigation-concepts].
 
 The elements that make use of sensor data are Perception and Localization.
 Planning and Control make use of derivative information from these subsystems, such as the robot’s current pose or information about the location of potential obstacles, but not the direct data itself.
@@ -478,7 +478,7 @@ More demonstrations can be found here:
 
 This error occurs when the packages on the Nova Carter host install are different from those installed on the Docker container, specifically the TensorRT and nvblox packages. More specifically, this often occurs because the Nova Carter JetPack install provides 10.3.x versions of TensorRT(tensorrt,nvinfer,etc.) and the development Docker containers use 10.7.x
 
-See [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter](isaac_perceptor/rebuilding_tensorrt_engine.md#rebuilding-tensorrt-engine-for-isaac-perceptor-on-nova-carter) for a step-by-step guide to fix this error.
+See [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter][rebuilding-tensor-rt-engine-for-isaac-perceptor-on-nova-carter] for a step-by-step guide to fix this error.
 
 `Error Code 4: API Usage Error`
 

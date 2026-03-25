@@ -13,7 +13,7 @@ It is also useful for outdoor navigation in locations like urban centers on road
 
 It also includes a tracking feature that will track the route’s progression and provide live feedback on its status as well as trigger contextual operations at various nodes and edge events (change speed, turn on light, etc).
 
-See [Route Server](../configuration/packages/configuring-route-server.md#route-server) for additional configuration information, the tutorials on generating graphs and using it, and example graphs in `nav2_bringup` and `nav2_route`.
+See [Route Server][route-server] for additional configuration information, the tutorials on generating graphs and using it, and example graphs in `nav2_bringup` and `nav2_route`.
 
 ## BehaviorTree error_msg
 
@@ -176,7 +176,7 @@ Default value:
 
 ## Option to disable zero velocity publishing on goal exit
 
-In [PR #4675](https://github.com/ros-navigation/navigation2/pull/4675) a `publish_zero_velocity` parameter was introduced for the [Controller server](/configuration/packages/configuring-controller-server.md) in order to disable zero velocity publishing on goal exit.
+In [PR #4675](https://github.com/ros-navigation/navigation2/pull/4675) a `publish_zero_velocity` parameter was introduced for the [Controller server][controller-server] in order to disable zero velocity publishing on goal exit.
 
 Default value:
 
@@ -189,7 +189,7 @@ Previous behavior rotated until the `angular_dist_threshold`, now it can rotate 
 
 ## Added optional collision checking for the Docking Server
 
-In [PR #4752](https://github.com/ros-navigation/navigation2/pull/4752) an optional collision checking feature was added to the [Docking server](/configuration/packages/configuring-docking-server.md) to check for collisions between the robot and the dock.
+In [PR #4752](https://github.com/ros-navigation/navigation2/pull/4752) an optional collision checking feature was added to the [Docking server][docking-server] to check for collisions between the robot and the dock.
 
 Default value:
 
@@ -436,7 +436,7 @@ Because live monitoring of Behavior Tree with more than 20 nodes and visualizing
 
 In [PR #5079](https://github.com/ros-navigation/navigation2/pull/5079), the `dock_backwards` boolean parameter has been moved from the docking server to the dock plugin as the string parameter `dock_direction`. This allows the user to have multiple dock plugins with different directions in the same docking server. Default value is `forward` but may also be set as `backward`.
 
-See [Docking Server](../configuration/packages/configuring-docking-server.md#docking-server) for more information.
+See [Docking Server][docking-server] for more information.
 
 ## New Position Goal Checker
 
@@ -452,7 +452,7 @@ Default value:
 
 - false
 
-See [Docking Server](../configuration/packages/configuring-docking-server.md#docking-server) for more information.
+See [Docking Server][docking-server] for more information.
 
 Here we can see the working demo of the feature:
 

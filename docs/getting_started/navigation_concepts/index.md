@@ -2,11 +2,11 @@
 
 This page is to help familiarize new roboticists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.
 
-- [ROS 2](ros2.md)
-- [Behavior Trees](behavior_trees.md)
-- [Navigation Servers](navigation_servers.md)
-- [State Estimation](state_estimation.md)
-- [Environmental Representation](environmental_representation.md)
+- [ROS 2][ros-2]
+- [Behavior Trees][behavior-trees]
+- [Navigation Servers][navigation-servers]
+- [State Estimation][state-estimation]
+- [Environmental Representation][environmental-representation]
 
 ## Nav2 Academic Overview
 

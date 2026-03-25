@@ -76,7 +76,7 @@ Getting started using dev containers is as simple as opening the project in VS C
 
 While waiting for the initial setup, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about creating and using dev containers, or how to visualize and leverage graphical user interfaces from a headless development environment.
 
-- **[Dev Container Guide](devcontainer_guide.md)**
+- **[Dev Container Guide][dev-container-guide]**
     - How to develop Nav2 using dev containers and supporting tools
 
 ## Security

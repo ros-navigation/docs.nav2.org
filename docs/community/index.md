@@ -1,5 +1,5 @@
 # Community { #community }
 
-- [Getting Involved](getting_involved/index.md)
-- [Maintainer Docs](maintainer_docs/index.md)
-- [Roadmaps](roadmaps/index.md)
+- [Getting Involved][getting-involved]
+- [Maintainer Docs][maintainer-docs]
+- [Roadmaps][roadmaps]

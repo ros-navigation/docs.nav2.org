@@ -175,7 +175,7 @@ Description
 | `string` | “speed_limit” |
 
 Description
-:   Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters](costmap-plugins/speed_filter.md#speed-filter-parameters) configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
+:   Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters][speed-filter-parameters] configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
 
 ### **`odom_topic`**
 
@@ -248,13 +248,13 @@ Description
 
 The plugins listed below are inside the `nav2_controller` namespace.
 
-- [SimpleProgressChecker](nav2_controller-plugins/simple_progress_checker.md)
-- [PoseProgressChecker](nav2_controller-plugins/pose_progress_checker.md)
-- [AxisGoalChecker](nav2_controller-plugins/axis_goal_checker.md)
-- [SimpleGoalChecker](nav2_controller-plugins/simple_goal_checker.md)
-- [StoppedGoalChecker](nav2_controller-plugins/stopped_goal_checker.md)
-- [PositionGoalChecker](nav2_controller-plugins/position_goal_checker.md)
-- [FeasiblePathHandler](nav2_controller-plugins/feasible_path_handler.md)
+- [SimpleProgressChecker][simple-progress-checker]
+- [PoseProgressChecker][pose-progress-checker]
+- [AxisGoalChecker][axis-goal-checker]
+- [SimpleGoalChecker][simple-goal-checker]
+- [StoppedGoalChecker][stopped-goal-checker]
+- [PositionGoalChecker][position-goal-checker]
+- [FeasiblePathHandler][feasible-path-handler]
 
 ## Default Plugins
 

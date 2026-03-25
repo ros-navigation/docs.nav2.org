@@ -24,29 +24,29 @@ Choose the appropriate guide based on your ROS 2 distribution:
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;" markdown>
 <div markdown>
 
-- [Setup Guide for Gazebo](gazebo.md)
-    - [Setting Up Transformations](transformation/setup_transforms.md)
-    - [Setting Up The URDF](urdf/setup_urdf.md)
-    - [Setting Up The SDF - Gazebo](sdf/setup_sdf.md)
-    - [Setting Up Odometry - Gazebo](odom/setup_odom_gz.md)
-    - [Smoothing Odometry using Robot Localization](odom/setup_robot_localization.md)
-    - [Setting Up Sensors - Gazebo](sensors/setup_sensors_gz.md)
-    - [Mapping and Localization](sensors/mapping_localization.md)
-    - [Setting Up the Robot's Footprint](footprint/setup_footprint.md)
-    - [Setting Up Navigation Plugins](algorithm/select_algorithm.md)
+- [Setup Guide for Gazebo][setup-guide-for-gazebo]
+    - [Setting Up Transformations][setting-up-transformations]
+    - [Setting Up The URDF][setting-up-the-urdf]
+    - [Setting Up The SDF - Gazebo][setting-up-the-sdf-gazebo]
+    - [Setting Up Odometry - Gazebo][setting-up-odometry-gazebo]
+    - [Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]
+    - [Setting Up Sensors - Gazebo][setting-up-sensors-gazebo]
+    - [Mapping and Localization][mapping-and-localization]
+    - [Setting Up the Robot's Footprint][setting-up-the-robots-footprint]
+    - [Setting Up Navigation Plugins][setting-up-navigation-plugins]
 
 </div>
 <div markdown>
 
-- [Setup Guide for Gazebo Classic](gazebo_classic.md)
-    - [Setting Up Transformations](transformation/setup_transforms.md)
-    - [Setting Up The URDF](urdf/setup_urdf.md)
-    - [Setting Up Odometry - Gazebo Classic](odom/setup_odom_gz_classic.md)
-    - [Smoothing Odometry using Robot Localization](odom/setup_robot_localization.md)
-    - [Setting Up Sensors - Gazebo Classic](sensors/setup_sensors_gz_classic.md)
-    - [Mapping and Localization](sensors/mapping_localization.md)
-    - [Setting Up the Robot's Footprint](footprint/setup_footprint.md)
-    - [Setting Up Navigation Plugins](algorithm/select_algorithm.md)
+- [Setup Guide for Gazebo Classic][setup-guide-for-gazebo-classic]
+    - [Setting Up Transformations][setting-up-transformations]
+    - [Setting Up The URDF][setting-up-the-urdf]
+    - [Setting Up Odometry - Gazebo Classic][setting-up-odometry-gazebo-classic]
+    - [Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]
+    - [Setting Up Sensors - Gazebo Classic][setting-up-sensors-gazebo-classic]
+    - [Mapping and Localization][mapping-and-localization]
+    - [Setting Up the Robot's Footprint][setting-up-the-robots-footprint]
+    - [Setting Up Navigation Plugins][setting-up-navigation-plugins]
 
 </div>
 </div>

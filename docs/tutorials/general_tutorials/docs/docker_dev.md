@@ -422,7 +422,7 @@ RUN apt update && apt upgrade -y \
 ### Nav2 Deployment Image
 
 This image either downloads and installs Nav2 (Rolling; from source) or installs it (from binaries) to have a self contained image of everything you need to run Nav2.
-From here, you can go to the [Getting Started](../../getting_started/index.md#getting-started) to test it out!
+From here, you can go to the [Getting Started][getting-started] to test it out!
 
 ```bash
 ARG ROS_DISTRO=rolling

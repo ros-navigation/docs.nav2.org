@@ -4,9 +4,9 @@ Scores a trajectory based on verifying all points along the robot’s footprint 
 
 ## Parameters
 
-`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server](../configuring-controller-server.md#controller-server).
+`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server][controller-server].
 
-`<name>`: ObstacleFootprintCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller](../dwb-params/controller.md#dwb-controller).
+`<name>`: ObstacleFootprintCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller][dwb-controller].
 
 ### **`<dwb plugin>.<name>.sum_scores`**
 

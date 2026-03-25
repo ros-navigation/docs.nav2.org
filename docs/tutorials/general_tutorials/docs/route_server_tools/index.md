@@ -17,10 +17,10 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 
 ## Provided Tools
 
-- [Using the Nav2 Route Tool](route_server_tools/navigation2_route_tool.md)
-- [Route Graph Generation LIF Editor](route_server_tools/route_graph_generation_lif_editor.md)
-- [Route Graph Generation](route_server_tools/route_graph_generation.md)
-- [SWAGGER Route Graph Generation](route_server_tools/swagger_generation.md)
+- [Using the Nav2 Route Tool][using-the-nav2-route-tool]
+- [Route Graph Generation LIF Editor][route-graph-generation-lif-editor]
+- [Route Graph Generation][route-graph-generation]
+- [SWAGGER Route Graph Generation][swagger-route-graph-generation]
 
 ## Description
 
@@ -58,4 +58,4 @@ In order to run the demonstration in the warehouse map, you can set the `MAP_TYP
   <figcaption>Turtlebot4 moving from the 0th node to the 61th node in the warehouse map.</figcaption>
 </figure>
 
-For more information on how to configure the start and goal nodes, or the supported maps, please refer to the [Configuration Guide](/configuration/packages/configuring-route-server.md) page.
+For more information on how to configure the start and goal nodes, or the supported maps, please refer to the [Configuration Guide][route-server] page.

@@ -288,7 +288,7 @@ Note
 | `bool` | false   |
 
 Description
-:   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner](configuring-smac-planner.md#smac-planner) to know more.
+:   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner][smac-planner] to know more.
 
 ### **`rotate_to_heading_min_angle`**
 

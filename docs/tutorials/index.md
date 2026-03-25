@@ -1,4 +1,4 @@
 # Tutorials { #tutorials }
 
-- [Plugin Tutorials](plugin_tutorials/index.md)
-- [General Tutorials](general_tutorials/index.md)
+- [Plugin Tutorials][plugin-tutorials]
+- [General Tutorials][general-tutorials]

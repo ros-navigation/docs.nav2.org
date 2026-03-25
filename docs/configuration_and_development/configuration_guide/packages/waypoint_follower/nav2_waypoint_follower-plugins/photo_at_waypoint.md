@@ -6,7 +6,7 @@ index and time stamp. The leading digit in file name implies the waypoint index 
 
 ## Parameters
 
-`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower](../configuring-waypoint-follower.md#waypoint-follower).
+`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower][waypoint-follower].
 
 ### **`<nav2_waypoint_follower plugin>.enabled`**
 

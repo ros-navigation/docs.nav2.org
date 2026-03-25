@@ -1,14 +1,14 @@
 # Nav2 Behavior Trees { #nav2-behavior-trees }
 
-- [Introduction To Nav2 Specific Nodes](overview/nav2_specific_nodes.md)
-- [Detailed Behavior Tree Walkthrough](overview/detailed_behavior_tree_walkthrough.md)
-- [Navigate To Pose](trees/nav_to_pose_recovery.md)
-- [Navigate Through Poses](trees/nav_through_poses_recovery.md)
-- [Navigate To Pose and Pause Near Goal-Obstacle](trees/nav_to_pose_and_pause_near_goal_obstacle.md)
-- [Navigate To Pose With Consistent Replanning And If Path Becomes Invalid](trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.md)
-- [Navigate on Route Graph with Recovery](trees/navigate_on_route_graph_w_recovery.md)
-- [Follow Dynamic Point](trees/follow_point.md)
-- [Odometry Calibration](trees/odometry_calibration.md)
+- [Introduction To Nav2 Specific Nodes][introduction-to-nav2-specific-nodes]
+- [Detailed Behavior Tree Walkthrough][detailed-behavior-tree-walkthrough]
+- [Navigate To Pose][nav2-bt-navigate-to-pose]
+- [Navigate Through Poses][nav2-bt-navigate-through-poses]
+- [Navigate To Pose and Pause Near Goal-Obstacle][navigate-to-pose-and-pause-near-goal-obstacle]
+- [Navigate To Pose With Consistent Replanning And If Path Becomes Invalid][navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid]
+- [Navigate on Route Graph with Recovery][navigate-on-route-graph-with-recovery]
+- [Follow Dynamic Point][follow-dynamic-point]
+- [Odometry Calibration][odometry-calibration]
 
 Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more!
 This section highlights some of the example behavior tree xml files provided by default in the project to do interesting tasks.
