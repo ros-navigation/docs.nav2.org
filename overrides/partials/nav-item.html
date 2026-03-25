@@ -181,7 +181,7 @@
         {% set checked = "checked" if nav_item.active %}
 
         <!-- Determine checked and indeterminate state -->
-        {% if "navigation.expand" in features and not checked %}
+        {% if ("navigation.expand" in features and not checked) or page.title == "Nav2" %}
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
 
