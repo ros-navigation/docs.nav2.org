@@ -30,25 +30,33 @@ In this subsection, we discuss some of the common types of `sensor_msgs` you mig
 
 This message represents a single scan from a planar laser range-finder. This message is used in `slam_toolbox` and `nav2_amcl` for localization and mapping, or in `nav2_costmap_2d` for perception.
 
-![](images/sensor_laserscan.png)
+<figure markdown="span">
+  ![](images/sensor_laserscan.png)
+</figure>
 
 #### sensor_msgs/PointCloud2
 
 This message holds a collection of 3D points, plus optional additional information about each point. This can be from a 3D lidar, a 2D lidar, a depth camera or more.
 
-![](images/sensor_pointcloud2.png)
+<figure markdown="span">
+  ![](images/sensor_pointcloud2.png)
+</figure>
 
 #### sensor_msgs/Range
 
 This is a single range reading from an active ranger that emits energy and reports one range reading that is valid along an arc at the distance measured. A sonar, IR sensor, or 1D range finder are examples of sensors that use this message.
 
-![](images/sensor_range.png)
+<figure markdown="span">
+  ![](images/sensor_range.png)
+</figure>
 
 #### sensor_msgs/Image
 
 This represents the sensor readings from RGB or depth camera, corresponding to RGB or range values.
 
-![](images/sensor_image.png)
+<figure markdown="span">
+  ![](images/sensor_image.png)
+</figure>
 
 ## Simulating Sensors using Gazebo
 

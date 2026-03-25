@@ -1,6 +1,8 @@
 # Filtering of Noise-Induced Obstacles { #filtering-of-noise-induced-obstacles }
 
-![](images/Filtering_of_noise-induced_obstacles/title.png){ width="100%" }
+<figure markdown="span">
+  ![](images/Filtering_of_noise-induced_obstacles/title.png){ width="100%" }
+</figure>
 
 ## Overview
 

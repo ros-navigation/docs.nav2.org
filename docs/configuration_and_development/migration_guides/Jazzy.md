@@ -111,7 +111,9 @@ The panel displays the action goal status and feedback published by `nav2_msgs/D
 
 Here we can see the working demo of the plugin:
 
-![](images/docking_panel.gif)
+<figure markdown="span">
+  ![](images/docking_panel.gif)
+</figure>
 
 !!! warning "Attention"
 
@@ -140,7 +142,9 @@ Usage:
 
 Working demo of the tool:
 
-![](images/rviz_costmap_cost_tool.gif)
+<figure markdown="span">
+  ![](images/rviz_costmap_cost_tool.gif)
+</figure>
 
 !!! warning "Attention"
 
@@ -160,11 +164,15 @@ Minimum Value Without Flickering:
 
 Before:
 
-![](images/fix_flickering_visualization_before.png)
+<figure markdown="span">
+  ![](images/fix_flickering_visualization_before.png)
+</figure>
 
 After:
 
-![](images/fix_flickering_visualization_after.png)
+<figure markdown="span">
+  ![](images/fix_flickering_visualization_after.png)
+</figure>
 
 ## Option to limit velocity through DWB trajectory
 
@@ -456,7 +464,9 @@ See [Docking Server][docking-server] for more information.
 
 Here we can see the working demo of the feature:
 
-![](images/reverse_to_dock.gif)
+<figure markdown="span">
+  ![](images/reverse_to_dock.gif)
+</figure>
 
 ## RegulatedPurePursuit Controller [RPP]: new parameter `stateful`
 

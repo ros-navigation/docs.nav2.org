@@ -249,11 +249,15 @@ In the [PR](https://github.com/ros-navigation/navigation2/pull/2802), a new Deco
 
 Obstacle does not clear at all, with obstacle_clearance_time to be 3 seconds:
 
-![](images/nav2_patience_near_goal_and_clear_obstacle.gif)
+<figure markdown="span">
+  ![](images/nav2_patience_near_goal_and_clear_obstacle.gif)
+</figure>
 
 Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:
 
-![](images/nav2_patience_near_goal_and_go_around.gif)
+<figure markdown="span">
+  ![](images/nav2_patience_near_goal_and_go_around.gif)
+</figure>
 
 ## BT TruncatePathLocal Node
 

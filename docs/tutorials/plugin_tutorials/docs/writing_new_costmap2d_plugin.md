@@ -87,7 +87,9 @@ In our example these methods have the following functionality:
 
     where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap’s value per each step:
 
-    ![](images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
+    <figure markdown="span">
+      ![](images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
+    </figure>
 
     These parameters are defined in plugin’s header file.
 

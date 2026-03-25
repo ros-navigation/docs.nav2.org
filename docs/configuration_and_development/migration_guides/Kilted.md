@@ -204,7 +204,9 @@ This is not longer required to be set.
 
 In [PR #5226](https://github.com/ros-navigation/navigation2/pull/5226) the ability to stitch two successive edges in `route_server` with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.
 
-![](images/smoothing.png)
+<figure markdown="span">
+  ![](images/smoothing.png)
+</figure>
 
 New parameters include `smooth_corners` which enable or disable corner smoothing and `smoothing_radius` which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that’s longer than the edge lengths, then it will not add a corner arc.
 

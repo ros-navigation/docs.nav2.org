@@ -26,7 +26,9 @@ Open `depot_keepout.pgm` in your favourite raster graphics editor (as an example
 
 In the GIMP lightness is expressed through color components value (e.g. `R` in percent scale) and might be set by moving `L` slider in color changing tool:
 
-![](images/Navigation2_with_Keepout_Filter/ligtness_in_GIMP.png)
+<figure markdown="span">
+  ![](images/Navigation2_with_Keepout_Filter/ligtness_in_GIMP.png)
+</figure>
 
 The incoming mask file is being read by the Map Server and converted into `OccupancyGrid` values from `[0..100]` range (where `0` means free cell, `100` - occupied, anything in between - less or more occupied cells on map) or be equal to `-1` for unknown value. In Nav2 stack each map has `mode` attribute which could be `trinary`, `scale` or `raw`. Depending on `mode` selected, the color lightness of PGM/PNG/BMP is being converted to `OccupancyGrid` by one of the following principles:
 
@@ -46,7 +48,9 @@ Keepout Filter also covers preferred lanes case, where robots should moving only
 
 For simplicity, in the example fill the areas with black color (in `trinary` mode this means occupied map) that you are going to mark as a keep-out zones:
 
-![](images/Navigation2_with_Keepout_Filter/drawing_keepout_mask.png){ width="500px" }
+<figure markdown="span">
+  ![](images/Navigation2_with_Keepout_Filter/drawing_keepout_mask.png){ width="500px" }
+</figure>
 
 After all keepout areas will be filled, save the `depot_keepout.pgm` image.
 
@@ -365,7 +369,9 @@ ros2 launch nav2_bringup tb4_simulation_launch.py
 
 And check that filter is working properly as in the pictures below
 
-![](images/Navigation2_with_Keepout_Filter/keepout_global.png){ height="400px" }
+<figure markdown="span">
+  ![](images/Navigation2_with_Keepout_Filter/keepout_global.png){ height="400px" }
+</figure>
 
 !!! note
 

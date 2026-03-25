@@ -228,7 +228,9 @@ In order to facilitate the dynamic selection of the specified components, the BT
 
 Here we can see the working demo of the plugin:
 
-![](images/selector_plugin_demo.gif)
+<figure markdown="span">
+  ![](images/selector_plugin_demo.gif)
+</figure>
 
 In the GIF, it can be seen that there are two controller_ids namely, FollowPath and HighSpeedFollowPath. By default, the one defined in the Behavior tree is utilized.
 
@@ -244,7 +246,9 @@ In this case, the FollowPath is the default controller_id. The difference betwee
 
 Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when `interpolate_curvature_after_goal` is `true`. It can be used only when `use_fixed_curvature_lookahead: true`.
 
-![](images/rpp_goal_lookahead_interpolate.gif){ width="45%" }
+<figure markdown="span">
+  ![](images/rpp_goal_lookahead_interpolate.gif){ width="45%" }
+</figure>
 
 Additionally, the conflict between `use_rotate_to_heading` and `allow_reversing` was fixed so `use_rotate_to_heading` can now be used backward.
 
