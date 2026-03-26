@@ -1,0 +1,28 @@
+/* For tables that require borders on all sides */
+
+.table-bordered {
+  border-collapse: collapse;
+  background-color: var(--md-default-bg-color);
+  border-radius: .1rem;
+  display: inline-block;
+  font-size: .64rem;
+  max-width: 100%;
+  overflow: auto;
+  touch-action: auto;
+}
+
+.table-bordered th {
+  border: .05rem solid var(--md-typeset-table-color);
+  font-weight: 700;
+  min-width: 5rem;
+  padding: .9375em 1.25em;
+  vertical-align: top;
+  text-align: start;
+}
+
+.table-bordered td {
+  border: .05rem solid var(--md-typeset-table-color);
+  min-width: 5rem;
+  padding: .9375em 1.25em;
+  vertical-align: top;
+}

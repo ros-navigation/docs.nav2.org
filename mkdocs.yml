@@ -58,6 +58,7 @@ extra_css:
   - assets/stylesheets/search_button.css
   - assets/stylesheets/sidebar.css
   - assets/stylesheets/distro_grid.css
+  - assets/stylesheets/table.css
 
 markdown_extensions:
   - admonition
