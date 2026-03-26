@@ -47,36 +47,38 @@ Nav2 provides a number of planning plugins out of the box. For a first-time setu
 
 In general though, the following table is a good guide for the optimal planning plugin for different types of robot bases:
 
-<table class="table-bordered">
-  <thead>
-    <tr>
-      <th>Plugin Name</th>
-      <th>Supported Robot Types</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>NavFn Planner</td>
-      <td rowspan="3" style="vertical-align: middle;">
-        Circular Differential, Circular Omnidirectional
-      </td>
-    </tr>
-    <tr>
-      <td>Smac Planner 2D</td>
-    </tr>
-    <tr>
-      <td>Theta Star Planner</td>
-    </tr>
-    <tr>
-      <td>Smac Hybrid-A* Planner</td>
-      <td>Non-circular or Circular Ackermann, Non-circular or Circular Legged</td>
-    </tr>
-    <tr>
-      <td>Smac Lattice Planner</td>
-      <td>Non-circular Differential, Non-circular Omnidirectional, Arbitrary</td>
-    </tr>
-  </tbody>
-</table>
+<div class="center-table" markdown>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>Plugin Name</th>
+        <th>Supported Robot Types</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>NavFn Planner</td>
+        <td rowspan="3" style="vertical-align: middle;">
+          Circular Differential, Circular Omnidirectional
+        </td>
+      </tr>
+      <tr>
+        <td>Smac Planner 2D</td>
+      </tr>
+      <tr>
+        <td>Theta Star Planner</td>
+      </tr>
+      <tr>
+        <td>Smac Hybrid-A* Planner</td>
+        <td>Non-circular or Circular Ackermann, Non-circular or Circular Legged</td>
+      </tr>
+      <tr>
+        <td>Smac Lattice Planner</td>
+        <td>Non-circular Differential, Non-circular Omnidirectional, Arbitrary</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 If you are using a non-circular robot with very limited compute, it may be worth assessing the benefits of using one of the holonomic planners (e.g. particle assumption planners). It is the recommendation of the maintainers to start using one of the more advanced algorithms appropriate for your platform *first*, but to scale back the planner if need be. The run-time of the feasible planners are typically on par (or sometimes faster) than their holonomic counterparts, so don’t let the more recent nature of them fool you.
 
@@ -92,43 +94,45 @@ Nav2 provides a number of controller plugins out of the box. For a first-time se
 
 In general though, the following table is a good first-order description of the controller plugins available for different types of robot bases:
 
-<table class="table-bordered">
-  <thead>
-    <tr>
-      <th>Plugin Name</th>
-      <th>Supported Robot Types</th>
-      <th>Task</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>DWB controller</td>
-      <td>Differential, Omnidirectional</td>
-      <td rowspan="2" style="vertical-align: middle;">
-        Dynamic obstacle avoidance
-      </td>
-    </tr>
-    <tr>
-      <td>MPPI Controller</td>
-      <td>Differential, Omnidirectional, Ackermann, Legged</td>
-    </tr>
-    <tr>
-      <td>RPP controller</td>
-      <td>Differential, Ackermann, Legged</td>
-      <td>Exact path following</td>
-    </tr>
-    <tr>
-      <td>Rotation Shim</td>
-      <td>Differential, Omnidirectional</td>
-      <td>Rotate to rough heading</td>
-    </tr>
-    <tr>
-      <td>VP controller</td>
-      <td>Differential, Ackermann, Legged</td>
-      <td>High speed path tracking</td>
-    </tr>
-  </tbody>
-</table>
+<div class="center-table" markdown>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>Plugin Name</th>
+        <th>Supported Robot Types</th>
+        <th>Task</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DWB controller</td>
+        <td>Differential, Omnidirectional</td>
+        <td rowspan="2" style="vertical-align: middle;">
+          Dynamic obstacle avoidance
+        </td>
+      </tr>
+      <tr>
+        <td>MPPI Controller</td>
+        <td>Differential, Omnidirectional, Ackermann, Legged</td>
+      </tr>
+      <tr>
+        <td>RPP controller</td>
+        <td>Differential, Ackermann, Legged</td>
+        <td>Exact path following</td>
+      </tr>
+      <tr>
+        <td>Rotation Shim</td>
+        <td>Differential, Omnidirectional</td>
+        <td>Rotate to rough heading</td>
+      </tr>
+      <tr>
+        <td>VP controller</td>
+        <td>Differential, Ackermann, Legged</td>
+        <td>High speed path tracking</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 All of the above controllers can handle both circular and arbitrary shaped robots in configuration.
 
@@ -215,6 +219,8 @@ In Nav2, we strongly recommend setting use_composition to true, as it enables no
 
 The following table summarizes CPU usage results for different RMW implementations and intra-process communication (IPC) settings, measured on the TurtleBot4 simulation (ros2 launch nav2_bringup tb4_simulation_launch.py). Baseline measurements correspond to the latest rolling commit at the time of testing (December 2025).
 
+<div class="center-table" markdown>
+
 | Middleware   | Configuration           | CPU Usage (%)   |
 |--------------|-------------------------|-----------------|
 | Zenoh        | Baseline                | 4.5%            |
@@ -226,6 +232,8 @@ The following table summarizes CPU usage results for different RMW implementatio
 | FastDDS      | Baseline                | 6.8%            |
 | FastDDS      | IPC enabled (SharedPtr) | 7.8%            |
 | FastDDS      | IPC + ConstSharedPtr    | 7.8%            |
+
+</div>
 
 As shown in the table, enabling intra-process communication leads to increased CPU usage for FastDDS and Zenoh, while CycloneDDS shows a reduction in CPU usage.
 
