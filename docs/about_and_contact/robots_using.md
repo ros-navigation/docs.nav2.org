@@ -5,26 +5,7 @@ Below is a very early list of robots we have encountered using our software as e
 
 Click on the images below for a link to the drivers or navigation configurations.
 
-<style>
-.robots-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  margin: 20px 0;
-}
-.robots-grid figure {
-  margin: 0;
-  text-align: center;
-}
-.robots-grid img {
-  width: 340px;
-}
-.robots-grid a:hover img {
-  transform: scale(1.02);
-  transition: transform 0.1s;
-}
-</style>
-
+<!-- CSS located in overrides/assets/stylesheets/robots_grid.css -->
 <div class="robots-grid" markdown>
 <figure markdown="span">
   [![Dexory](images/dexory.png)](https://www.dexory.com/)

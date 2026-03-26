@@ -1,0 +1,22 @@
+/* For "Robots Using" cards in docs/about_and_contact/robots_using.md file */
+
+.robots-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.robots-grid figure {
+  margin: 0;
+  text-align: center;
+}
+
+.robots-grid img {
+  width: 340px;
+}
+
+.robots-grid a:hover img {
+  transform: scale(1.02);
+  transition: transform 0.1s;
+}
