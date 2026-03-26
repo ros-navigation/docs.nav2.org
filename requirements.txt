@@ -3,4 +3,5 @@
 click<=8.2.1
 mike
 mkdocs-autorefs
+mkdocs-glightbox
 mkdocs-material==9.7.1
