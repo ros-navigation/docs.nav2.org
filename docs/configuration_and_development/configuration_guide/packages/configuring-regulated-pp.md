@@ -11,15 +11,51 @@ It also implements the Dynamic Window Pure Pursuit algorithm, which computes opt
 
 The following videos compare Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Regulated Pure Pursuit (RPP), and Dynamic Window Pure Pursuit (DWPP).
 
-<div style="text-align: center; width: 100%;">
-   <div style="display: inline-block; margin: 10px; vertical-align: top;">
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/fIKk4Q_rvLM?si=Tt0JabQmQZNtYdK1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <p style="text-align: center; font-weight: bold; margin-top: 5px;">Simulation results</p>
+<style>
+.video-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.video-frame {
+  flex: 0 1 calc(50% - 5px);
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+.video-frame p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* 959.75px = 59.984rem */
+@media (max-width: 59.9844em) {
+  .video-frame {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+</style>
+
+<div class="video-container">
+   <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/fIKk4Q_rvLM?si=Tt0JabQmQZNtYdK1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <p>Simulation results</p>
    </div>
 
-   <div style="display: inline-block; margin: 10px; vertical-align: top;">
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/H6r3x1AhsjM?si=9tMY9qKYjDY1Pwzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <p style="text-align: center; font-weight: bold; margin-top: 5px;">Real-robot experiment</p>
+   <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/H6r3x1AhsjM?si=9tMY9qKYjDY1Pwzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <p>Real-robot experiment</p>
    </div>
 </div>
 
