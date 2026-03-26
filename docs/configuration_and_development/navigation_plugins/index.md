@@ -5,7 +5,7 @@ Namely, the costmap layer, planner, controller, behavior tree, and behavior plug
 A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
-This file can be found and edited under `sphinx_docs/plugins/index.rst`.
+This file can be found and edited under `docs/configuration_and_development/navigation_plugins/index.md`.
 For tutorials on creating your own plugins, please see 
 [Writing a New Costmap2D Plugin][writing-a-new-costmap-2d-plugin], 
 [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin], 
