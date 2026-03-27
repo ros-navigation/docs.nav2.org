@@ -5,6 +5,8 @@ the best navigation performance.
 
 ## Core Servers
 
+<div class="grid cards" markdown>
+
 - [Behavior Server][behavior-server]
 - [Behavior-Tree Navigator][behavior-tree-navigator]
 - [Behavior Tree XML Nodes][behavior-tree-xml-nodes]
@@ -20,13 +22,21 @@ the best navigation performance.
 - [Velocity Smoother][velocity-smoother]
 - [Waypoint Follower][waypoint-follower]
 
+</div>
+
 ## Planners Plugins
+
+<div class="grid cards" markdown>
 
 - [NavFn Planner][navfn-planner]
 - [Smac Planner][smac-planner]
 - [Theta Star Planner][theta-star-planner]
 
+</div>
+
 ## Controller Plugins
+
+<div class="grid cards" markdown>
 
 - [DWB Controller][dwb-controller-index]
 - [Graceful Controller][graceful-controller]
@@ -34,15 +44,25 @@ the best navigation performance.
 - [Regulated Pure Pursuit][regulated-pure-pursuit]
 - [Rotation Shim Controller][rotation-shim-controller]
 
+</div>
+
 ## Smoother Plugins
+
+<div class="grid cards" markdown>
 
 - [Constrained smoother][constrained-smoother]
 - [Savitzky-Golay Smoother][savitzky-golay-smoother]
 - [Simple Smoother][simple-smoother]
 
+</div>
+
 ## Others
+
+<div class="grid cards" markdown>
 
 - [AMCL][amcl]
 - [Coverage Server][coverage-server]
 - [Following Server][following-server]
 - [Loopback Simulator][loopback-simulator]
+
+</div>

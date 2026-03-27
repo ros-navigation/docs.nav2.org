@@ -8,6 +8,8 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 
 ## Action Plugins
 
+<div class="grid cards" markdown>
+
 - [Wait][wait]
 - [Spin][spin]
 - [BackUp][back-up]
@@ -57,7 +59,11 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 - [FollowObject][follow-object]
 - [CancelFollowObject][cancel-follow-object]
 
+</div>
+
 ## Condition Plugins
+
+<div class="grid cards" markdown>
 
 - [GoalReached][goal-reached]
 - [TransformAvailable][transform-available]
@@ -82,7 +88,11 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 - [IsBatteryCharging][is-battery-charging]
 - [ArePosesNear][are-poses-near]
 
+</div>
+
 ## Control Plugins
+
+<div class="grid cards" markdown>
 
 - [PipelineSequence][pipeline-sequence]
 - [RoundRobin][round-robin]
@@ -91,7 +101,11 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 - [PersistentSequence][persistent-sequence]
 - [PauseResumeController][pause-resume-controller]
 
+</div>
+
 ## Decorator Plugins
+
+<div class="grid cards" markdown>
 
 - [RateController][rate-controller]
 - [DistanceController][distance-controller]
@@ -100,6 +114,8 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 - [PathLongerOnApproach][path-longer-on-approach]
 - [SingleTrigger][single-trigger]
 - [GoalUpdatedController][goal-updated-controller]
+
+</div>
 
 ## Example
 

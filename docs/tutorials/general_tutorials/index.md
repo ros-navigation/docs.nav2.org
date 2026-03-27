@@ -2,6 +2,8 @@
 
 Nav2 Tutorials
 
+<div class="grid cards" markdown>
+
 - [Navigating with a Physical Turtlebot 3][navigating-with-a-physical-turtlebot-3]
 - [Navigating while Mapping (SLAM)][navigating-while-mapping-slam]
 - [Using an External Costmap Plugin (STVL)][using-an-external-costmap-plugin-stvl]
@@ -27,3 +29,5 @@ Nav2 Tutorials
 - [Navigating with Vector Objects][navigating-with-vector-objects]
 - [ROSCon UK 2025: State Estimation for Mobile Robotics Workshop][roscon-uk-2025-state-estimation-for-mobile-robotics-workshop]
 - [Enhanced Safety for Nav2 using 3Laws Supervisor][enhanced-safety-for-nav2-using-3laws-supervisor]
+
+</div>
