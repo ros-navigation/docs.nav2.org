@@ -7,38 +7,38 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Lyrical Roadmap
 
-- [ ] (Large) (In Progress) - Controller Server and Plugin factor for centralized path handling and crosstrack error estimation and enforcement.
-- [ ] (Large) (In Progress) - Massive refactor of `rclcpp` types to `nav2` types for ROS API abstraction.
-- [x] (Medium) - Improve dynamic feasibility on approach to goal on all control and behavior plugins.
-- [x] (Medium) - Introduce Vector Object Server to augment Costmap Filters with polygons rather than annotated masks.
-- [ ] (Medium) - [Continued Route Server][]
-- [x] (Medium) - Add Pause and Resume feature to Nav2 behavior tree tasks.
-- [x] (Medium) - Use PointCloud Transport for all pointcloud subscriptions.
-- [ ] (Medium) - Update and refine behavior trees for more intelligent behavior.
-- [x] (Medium) - Fix for statics in Smac Planner to allow for multiple instances in a server not to conflict.
-- [ ] (Large) - Create initial prototype of a framework for environmental modeling, sensor processing, and external model integration.
+- [ ] :roadmap-size-large: :roadmap-note-in-progress: - Controller Server and Plugin factor for centralized path handling and crosstrack error estimation and enforcement.
+- [ ] :roadmap-size-large: :roadmap-note-in-progress: - Massive refactor of `rclcpp` types to `nav2` types for ROS API abstraction.
+- [x] :roadmap-size-medium: - Improve dynamic feasibility on approach to goal on all control and behavior plugins.
+- [x] :roadmap-size-medium: - Introduce Vector Object Server to augment Costmap Filters with polygons rather than annotated masks.
+- [ ] :roadmap-size-medium: - [Continued Route Server][]
+- [x] :roadmap-size-medium: - Add Pause and Resume feature to Nav2 behavior tree tasks.
+- [x] :roadmap-size-medium: - Use PointCloud Transport for all pointcloud subscriptions.
+- [ ] :roadmap-size-medium: - Update and refine behavior trees for more intelligent behavior.
+- [x] :roadmap-size-medium: - Fix for statics in Smac Planner to allow for multiple instances in a server not to conflict.
+- [ ] :roadmap-size-large: - Create initial prototype of a framework for environmental modeling, sensor processing, and external model integration.
 
 [Continued Route Server]: https://github.com/ros-navigation/navigation2/issues/5082
 
 ## Kilted Roadmap
 
-- [x] (Large) - Release of Route server.
-- [x] (Medium) - Allow non-orientation sp. for smac planner goals.
-- [x] (Medium) - Allow docking server to operate forward and backwards.
+- [x] :roadmap-size-large: - Release of Route server.
+- [x] :roadmap-size-medium: - Allow non-orientation sp. for smac planner goals.
+- [x] :roadmap-size-medium: - Allow docking server to operate forward and backwards.
 
 ## Jazzy Roadmap
 
-- [x] (Large) - [Smac Planner Improvements][]
-- [x] (Small) - Get CI Green Again.
-- [x] (Medium) - Various MPPI Improvements.
-- [ ] (Medium) (Incomplete) - [Fuse Migration][]
-- [x] (Medium) - [Ignition Migration][]
-- [ ] (Large) (In Progress) - [Route Graph Planner][]
-- [x] (Medium) - Provide Advanced Capabilities Tutorials (e.g. gps, vio).
-- [x] (Medium) - ROS Time Respect Across Stack.
-- [x] (Medium) - TwistStamped Migration.
-- [x] (Medium) - Velocity-Scheduled Collision Monitor Polygons.
-- [x] (Medium) - Nav2 auto-docking capability.
+- [x] :roadmap-size-large: - [Smac Planner Improvements][]
+- [x] :roadmap-size-small: - Get CI Green Again.
+- [x] :roadmap-size-medium: - Various MPPI Improvements.
+- [ ] :roadmap-size-medium: :roadmap-note-incomplete: - [Fuse Migration][]
+- [x] :roadmap-size-medium: - [Ignition Migration][]
+- [ ] :roadmap-size-large: :roadmap-note-in-progress: - [Route Graph Planner][]
+- [x] :roadmap-size-medium: - Provide Advanced Capabilities Tutorials (e.g. gps, vio).
+- [x] :roadmap-size-medium: - ROS Time Respect Across Stack.
+- [x] :roadmap-size-medium: - TwistStamped Migration.
+- [x] :roadmap-size-medium: - Velocity-Scheduled Collision Monitor Polygons.
+- [x] :roadmap-size-medium: - Nav2 auto-docking capability.
 
 [Smac Planner Improvements]: https://github.com/ros-navigation/navigation2/issues/3172
 [Fuse Migration]: https://github.com/ros-navigation/navigation2/issues/2598
@@ -47,12 +47,12 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Iron Roadmap
 
-- [x] (Medium) - [Pluginize Navigators][]
-- [x] (Very Large) - [MPPI Controller][]
-- [ ] (Large) (Incomplete) - [Route Graph Planner][]
-- [x] (Small) - 90% unit test coverage.
-- [x] (Medium) - [Velocity Smoother][]
-- [ ] (Medium) (Incomplete) - ROS Time Respect Across Stack.
+- [x] :roadmap-size-medium: - [Pluginize Navigators][]
+- [x] :roadmap-size-mega: - [MPPI Controller][]
+- [ ] :roadmap-size-large: :roadmap-note-incomplete: - [Route Graph Planner][]
+- [x] :roadmap-size-small: - 90% unit test coverage.
+- [x] :roadmap-size-medium: - [Velocity Smoother][]
+- [ ] :roadmap-size-medium: :roadmap-note-incomplete: - ROS Time Respect Across Stack.
 
 [Pluginize Navigators]: https://github.com/ros-navigation/navigation2/issues/3335
 [MPPI Controller]: https://github.com/ros-navigation/navigation2/pull/3350
@@ -61,15 +61,15 @@ For a full list of important completed changes in the project, see the Migration
 
 ## Humble Roadmap
 
-- [x] (Medium) - [Nav2 1 Node Per Server][]
-- [x] (Large) - [Smac Lattice Planner][]
-- [x] (Medium) - [Safety Collision Nodes][]
-- [x] (Small) - [Fix Min Range Bug][]
-- [x] (Small) - [Move Development from Master to Rolling][]
-- [x] (Medium) - Push Test Coverage to 88%.
-- [x] (Medium) - [Complete First Time Guide][]
-- [x] (Small) - [Rotation Shim Controller][]
-- [x] (Medium) - [Dynamic Composition][]
+- [x] :roadmap-size-medium: - [Nav2 1 Node Per Server][]
+- [x] :roadmap-size-large: - [Smac Lattice Planner][]
+- [x] :roadmap-size-medium: - [Safety Collision Nodes][]
+- [x] :roadmap-size-small: - [Fix Min Range Bug][]
+- [x] :roadmap-size-small: - [Move Development from Master to Rolling][]
+- [x] :roadmap-size-medium: - Push Test Coverage to 88%.
+- [x] :roadmap-size-medium: - [Complete First Time Guide][]
+- [x] :roadmap-size-small: - [Rotation Shim Controller][]
+- [x] :roadmap-size-medium: - [Dynamic Composition][]
 
 [Nav2 1 Node Per Server]: https://github.com/ros-navigation/navigation2/issues/816
 [Smac Lattice Planner]: https://github.com/ros-navigation/navigation2/issues/1710

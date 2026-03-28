@@ -86,3 +86,8 @@
 .center-table {
   text-align: center;
 }
+
+/* Use full width for Roadmaps badges */
+.md-typeset .twemoji svg {
+  width: 100%;
+}
