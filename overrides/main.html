@@ -46,6 +46,46 @@
     {% endif %}
     <div class="md-sidebar-primary-container">
       <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+
+        <!-- Site title -->
+        <!-- Moved from nav.html -->
+        <label class="md-nav__title" for="__drawer">
+          <a
+            href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+            title="{{ config.site_name | e }}"
+            class="md-nav__button md-logo"
+            aria-label="{{ config.site_name }}"
+            data-md-component="logo"
+          >
+            {% include "partials/logo.html" %}
+          </a>
+          {{ config.site_name }}
+        </label>
+
+        <!-- Repository information -->
+        <!-- Moved from nav.html -->
+        {% if config.repo_url %}
+          <div class="md-nav__source">
+            {% include "partials/source.html" %}
+          </div>
+        {% endif %}
+
+        <!-- Button to open search modal -->
+        <!-- Moved from header.html -->
+        <!-- Allows to use search in the sidebar and regardless of scrollwrap -->
+        {% if "material/search" in config.plugins %}
+          {% set search = config.plugins["material/search"] | attr("config") %}
+          <!-- Check if search is actually enabled - see https://t.ly/DT_0V -->
+          {% if search.enabled %}
+            <label class="md-header__button md-icon" for="__search">
+              {% set icon = config.theme.icon.search or "material/magnify" %}
+              {% include ".icons/" ~ icon ~ ".svg" %}
+            </label>
+            <!-- Search interface -->
+            {% include "partials/search.html" %}
+          {% endif %}
+        {% endif %}
+        
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
             {% include "partials/nav.html" %}

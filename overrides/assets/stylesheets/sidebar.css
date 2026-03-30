@@ -1,6 +1,6 @@
 /* Overrides for the new sidebar */
 
-.md-main{
+.md-main {
   flex: 1 1 0;
 }
 
@@ -24,7 +24,7 @@
   --md-typeset-a-color: var(--sidebar-typeset-a-color);
 }
 
-.md-sidebar--primary{
+.md-sidebar--primary {
   padding-top: 0;
 }
 
@@ -34,12 +34,17 @@
   max-width: 40rem;
 }
 
-.md-sidebar--secondary{
+.md-sidebar--secondary {
   margin-top: 1.5rem;
   width: 17rem;
 }
 
+.md-sidebar--primary > .md-nav__title {
+  display: none;
+}
 
+
+/* Small screen <1220px */
 /* 1219.75px = 76.2344rem */
 @media screen and (max-width: 76.2344rem) {
 
@@ -47,7 +52,7 @@
     background-color: var(--sidebar-bg-color);
   }
 
-  .md-sidebar--secondary{
+  .md-sidebar--secondary {
     /* Set default value */
     width: 12.1rem; 
   }
@@ -60,7 +65,8 @@
   [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary {
     transform: none !important;
     width: 12.1rem;
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   /* To uncheck only the search overlay and leave the sidebar active */
@@ -69,9 +75,76 @@
     pointer-events: none;
     opacity: 0;
   }
+
+  /* Hide old elemnts declared in overrides/partials/nav.html */
+  /* They were left for proper site generation. */
+  .md-sidebar__scrollwrap .md-nav--primary {
+    .md-nav__title[for="__drawer"]{
+      display: none;
+    }
+    .md-nav__source{
+      display: none;
+    }
+  }
+
+  /* Copy of md-nav__title and md-nav__source now placed in overrides/partials/main.html (outside md-sidebar__scrollwrap) 
+  and their style should be redefined. Properties below partially replicate style from
+  mkdocs-material/material/templates/assets/stylesheets/main/components/_nav.scss */
+
+  .md-sidebar--primary > .md-nav__title {
+    display: block;
+    position: relative;
+    height: 5.6rem;
+    padding: 3rem .8rem .2rem;
+    line-height: 2.4rem;
+    z-index: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: var(--md-default-bg-color);
+    
+    /* matches :is(.md-nav__title, .md-nav__item) */
+    font-size: 1rem;
+
+    /* matches .md-logo in _nav.scss */
+    .md-nav__button.md-logo {
+      display: block;
+      margin: 0.2rem;
+      padding: 0.4rem;
+      position: absolute;
+      inset-inline: 0.25rem;
+      top: 0.2rem;
+    }
+  }
+
+  /* matches &[for="__drawer"] in _nav.scss */
+  .md-sidebar--primary .md-nav__title[for="__drawer"] {
+    font-weight: 700;
+    color: var(--md-primary-bg-color);
+    background-color: var(--md-primary-fg-color);
+  }
+
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    flex: 1;
+    position: relative !important;
+    inset: unset !important;
+    min-height: 0;
+    height: auto !important;
+  }
+
+  /* Align elements in a sliding block to return to the parent page.
+  This block is now located below the search */
+  .md-nav--primary .md-nav__title {
+    padding: 0rem 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    
+    .md-nav__icon {
+      top: 0.45rem;
+    }
+  }
 }
 
-
+/* Small screen <960px */
 /* 959.75px = 59.984rem */
 @media screen and (max-width: 59.9844em) {
 
@@ -79,7 +152,7 @@
     background-color: var(--nav-sidebar-source-bg-color);
   }
 
-  .md-content{
+  .md-content {
     margin-left: 1rem;
   }
 }
