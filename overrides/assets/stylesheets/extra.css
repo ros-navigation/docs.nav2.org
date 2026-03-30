@@ -55,7 +55,7 @@
 
 .md-tabs {
   display: flex;
-  justify-content: center;
+  justify-content: safe center;
 }
 
 .md-code__nav {
