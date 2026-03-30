@@ -8,112 +8,112 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 
 ## Action Plugins
 
-<div class="grid cards" markdown>
+<div class="grid" markdown>
 
-- [Wait][wait]
-- [Spin][spin]
-- [BackUp][back-up]
-- [DriveOnHeading][drive-on-heading]
-- [AssistedTeleop][assisted-teleop]
-- [ComputePathToPose][compute-path-to-pose]
-- [ComputeRoute][compute-route]
-- [ComputeAndTrackRoute][compute-and-track-route]
-- [FollowPath][follow-path]
-- [NavigateToPose][navigate-to-pose]
-- [ClearEntireCostmap][clear-entire-costmap]
-- [ClearCostmapExceptRegion][clear-costmap-except-region]
-- [ClearCostmapAroundRobot][clear-costmap-around-robot]
-- [ClearCostmapAroundPose][clear-costmap-around-pose]
-- [ReinitializeGlobalLocalization][reinitialize-global-localization]
-- [TruncatePath][truncate-path]
-- [TruncatePathLocal][truncate-path-local]
-- [PlannerSelector][planner-selector]
-- [ControllerSelector][controller-selector]
-- [SmootherSelector][smoother-selector]
-- [GoalCheckerSelector][goal-checker-selector]
-- [ProgressCheckerSelector][progress-checker-selector]
-- [PathHandlerSelector][path-handler-selector]
-- [NavigateThroughPoses][navigate-through-poses]
-- [ComputePathThroughPoses][compute-path-through-poses]
-- [ComputeCoveragePath][compute-coverage-path]
-- [CancelCoverage][cancel-coverage]
-- [RemovePassedGoals][remove-passed-goals]
-- [RemoveInCollisionGoals][remove-in-collision-goals]
-- [CancelControl][cancel-control]
-- [CancelBackUp][cancel-back-up]
-- [CancelSpin][cancel-spin]
-- [CancelWait][cancel-wait]
-- [CancelDriveOnHeading][cancel-drive-on-heading]
-- [CancelAssistedTeleop][cancel-assisted-teleop]
-- [CancelComputeAndTrackRoute][cancel-compute-and-track-route]
-- [SmoothPath][smooth-path]
-- [GetPoseFromPath][get-pose-from-path]
-- [DockRobot][dock-robot]
-- [UndockRobot][undock-robot]
-- [ConcatenatePaths][concatenate-paths]
-- [GetCurrentPose][get-current-pose]
-- [AppendGoalPoseToGoals][append-goal-pose-to-goals]
-- [ExtractRouteNodesAsGoals][extract-route-nodes-as-goals]
-- [GetNextFewGoals][get-next-few-goals]
-- [ToggleCollisionMonitor][toggle-collision-monitor]
-- [FollowObject][follow-object]
-- [CancelFollowObject][cancel-follow-object]
+[Wait][wait]{ .md-button .md-button--primary }
+[Spin][spin]{ .md-button .md-button--primary }
+[BackUp][back-up]{ .md-button .md-button--primary }
+[DriveOnHeading][drive-on-heading]{ .md-button .md-button--primary }
+[AssistedTeleop][assisted-teleop]{ .md-button .md-button--primary }
+[ComputePathToPose][compute-path-to-pose]{ .md-button .md-button--primary }
+[ComputeRoute][compute-route]{ .md-button .md-button--primary }
+[ComputeAndTrackRoute][compute-and-track-route]{ .md-button .md-button--primary }
+[FollowPath][follow-path]{ .md-button .md-button--primary }
+[NavigateToPose][navigate-to-pose]{ .md-button .md-button--primary }
+[ClearEntireCostmap][clear-entire-costmap]{ .md-button .md-button--primary }
+[ClearCostmapExceptRegion][clear-costmap-except-region]{ .md-button .md-button--primary }
+[ClearCostmapAroundRobot][clear-costmap-around-robot]{ .md-button .md-button--primary }
+[ClearCostmapAroundPose][clear-costmap-around-pose]{ .md-button .md-button--primary }
+[ReinitializeGlobalLocalization][reinitialize-global-localization]{ .md-button .md-button--primary }
+[TruncatePath][truncate-path]{ .md-button .md-button--primary }
+[TruncatePathLocal][truncate-path-local]{ .md-button .md-button--primary }
+[PlannerSelector][planner-selector]{ .md-button .md-button--primary }
+[ControllerSelector][controller-selector]{ .md-button .md-button--primary }
+[SmootherSelector][smoother-selector]{ .md-button .md-button--primary }
+[GoalCheckerSelector][goal-checker-selector]{ .md-button .md-button--primary }
+[ProgressCheckerSelector][progress-checker-selector]{ .md-button .md-button--primary }
+[PathHandlerSelector][path-handler-selector]{ .md-button .md-button--primary }
+[NavigateThroughPoses][navigate-through-poses]{ .md-button .md-button--primary }
+[ComputePathThroughPoses][compute-path-through-poses]{ .md-button .md-button--primary }
+[ComputeCoveragePath][compute-coverage-path]{ .md-button .md-button--primary }
+[CancelCoverage][cancel-coverage]{ .md-button .md-button--primary }
+[RemovePassedGoals][remove-passed-goals]{ .md-button .md-button--primary }
+[RemoveInCollisionGoals][remove-in-collision-goals]{ .md-button .md-button--primary }
+[CancelControl][cancel-control]{ .md-button .md-button--primary }
+[CancelBackUp][cancel-back-up]{ .md-button .md-button--primary }
+[CancelSpin][cancel-spin]{ .md-button .md-button--primary }
+[CancelWait][cancel-wait]{ .md-button .md-button--primary }
+[CancelDriveOnHeading][cancel-drive-on-heading]{ .md-button .md-button--primary }
+[CancelAssistedTeleop][cancel-assisted-teleop]{ .md-button .md-button--primary }
+[CancelComputeAndTrackRoute][cancel-compute-and-track-route]{ .md-button .md-button--primary }
+[SmoothPath][smooth-path]{ .md-button .md-button--primary }
+[GetPoseFromPath][get-pose-from-path]{ .md-button .md-button--primary }
+[DockRobot][dock-robot]{ .md-button .md-button--primary }
+[UndockRobot][undock-robot]{ .md-button .md-button--primary }
+[ConcatenatePaths][concatenate-paths]{ .md-button .md-button--primary }
+[GetCurrentPose][get-current-pose]{ .md-button .md-button--primary }
+[AppendGoalPoseToGoals][append-goal-pose-to-goals]{ .md-button .md-button--primary }
+[ExtractRouteNodesAsGoals][extract-route-nodes-as-goals]{ .md-button .md-button--primary }
+[GetNextFewGoals][get-next-few-goals]{ .md-button .md-button--primary }
+[ToggleCollisionMonitor][toggle-collision-monitor]{ .md-button .md-button--primary }
+[FollowObject][follow-object]{ .md-button .md-button--primary }
+[CancelFollowObject][cancel-follow-object]{ .md-button .md-button--primary }
 
 </div>
 
 ## Condition Plugins
 
-<div class="grid cards" markdown>
+<div class="grid" markdown>
 
-- [GoalReached][goal-reached]
-- [TransformAvailable][transform-available]
-- [DistanceTraveled][distance-traveled]
-- [GoalUpdated][goal-updated]
-- [GlobalUpdatedGoal][global-updated-goal]
-- [InitialPoseReceived][initial-pose-received]
-- [IsGoalNearby][is-goal-nearby]
-- [IsStuck][is-stuck]
-- [IsStopped][is-stopped]
-- [TimeExpired][time-expired]
-- [IsBatteryLow][is-battery-low]
-- [IsPathValid][is-path-valid]
-- [IsPoseOccupied][is-pose-occupied]
-- [IsWithinPathTrackingBounds][is-within-path-tracking-bounds]
-- [PathExpiringTimer][path-expiring-timer]
-- [AreErrorCodesPresent][are-error-codes-present]
-- [WouldAControllerRecoveryHelp][would-a-controller-recovery-help]
-- [WouldAPlannerRecoveryHelp][would-a-planner-recovery-help]
-- [WouldASmootherRecoveryHelp][would-a-smoother-recovery-help]
-- [WouldARouteRecoveryHelp][would-a-route-recovery-help]
-- [IsBatteryCharging][is-battery-charging]
-- [ArePosesNear][are-poses-near]
+[GoalReached][goal-reached]{ .md-button .md-button--primary }
+[TransformAvailable][transform-available]{ .md-button .md-button--primary }
+[DistanceTraveled][distance-traveled]{ .md-button .md-button--primary }
+[GoalUpdated][goal-updated]{ .md-button .md-button--primary }
+[GlobalUpdatedGoal][global-updated-goal]{ .md-button .md-button--primary }
+[InitialPoseReceived][initial-pose-received]{ .md-button .md-button--primary }
+[IsGoalNearby][is-goal-nearby]{ .md-button .md-button--primary }
+[IsStuck][is-stuck]{ .md-button .md-button--primary }
+[IsStopped][is-stopped]{ .md-button .md-button--primary }
+[TimeExpired][time-expired]{ .md-button .md-button--primary }
+[IsBatteryLow][is-battery-low]{ .md-button .md-button--primary }
+[IsPathValid][is-path-valid]{ .md-button .md-button--primary }
+[IsPoseOccupied][is-pose-occupied]{ .md-button .md-button--primary }
+[IsWithinPathTrackingBounds][is-within-path-tracking-bounds]{ .md-button .md-button--primary }
+[PathExpiringTimer][path-expiring-timer]{ .md-button .md-button--primary }
+[AreErrorCodesPresent][are-error-codes-present]{ .md-button .md-button--primary }
+[WouldAControllerRecoveryHelp][would-a-controller-recovery-help]{ .md-button .md-button--primary }
+[WouldAPlannerRecoveryHelp][would-a-planner-recovery-help]{ .md-button .md-button--primary }
+[WouldASmootherRecoveryHelp][would-a-smoother-recovery-help]{ .md-button .md-button--primary }
+[WouldARouteRecoveryHelp][would-a-route-recovery-help]{ .md-button .md-button--primary }
+[IsBatteryCharging][is-battery-charging]{ .md-button .md-button--primary }
+[ArePosesNear][are-poses-near]{ .md-button .md-button--primary }
 
 </div>
 
 ## Control Plugins
 
-<div class="grid cards" markdown>
+<div class="grid" markdown>
 
-- [PipelineSequence][pipeline-sequence]
-- [RoundRobin][round-robin]
-- [RecoveryNode][recovery-node]
-- [NonblockingSequence][nonblocking-sequence]
-- [PersistentSequence][persistent-sequence]
-- [PauseResumeController][pause-resume-controller]
+[PipelineSequence][pipeline-sequence]{ .md-button .md-button--primary }
+[RoundRobin][round-robin]{ .md-button .md-button--primary }
+[RecoveryNode][recovery-node]{ .md-button .md-button--primary }
+[NonblockingSequence][nonblocking-sequence]{ .md-button .md-button--primary }
+[PersistentSequence][persistent-sequence]{ .md-button .md-button--primary }
+[PauseResumeController][pause-resume-controller]{ .md-button .md-button--primary }
 
 </div>
 
 ## Decorator Plugins
 
-<div class="grid cards" markdown>
+<div class="grid" markdown>
 
-- [RateController][rate-controller]
-- [DistanceController][distance-controller]
-- [SpeedController][speed-controller]
-- [GoalUpdater][goal-updater]
-- [PathLongerOnApproach][path-longer-on-approach]
-- [SingleTrigger][single-trigger]
-- [GoalUpdatedController][goal-updated-controller]
+[RateController][rate-controller]{ .md-button .md-button--primary }
+[DistanceController][distance-controller]{ .md-button .md-button--primary }
+[SpeedController][speed-controller]{ .md-button .md-button--primary }
+[GoalUpdater][goal-updater]{ .md-button .md-button--primary }
+[PathLongerOnApproach][path-longer-on-approach]{ .md-button .md-button--primary }
+[SingleTrigger][single-trigger]{ .md-button .md-button--primary }
+[GoalUpdatedController][goal-updated-controller]{ .md-button .md-button--primary }
 
 </div>
 

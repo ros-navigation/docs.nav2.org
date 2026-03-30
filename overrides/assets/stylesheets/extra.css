@@ -91,3 +91,35 @@
 .md-typeset .twemoji svg {
   width: 100%;
 }
+
+/* .md-typeset .grid.cards > ul > li {
+  border-radius: .4rem;
+  background-color: var(--md-code-bg-color);
+  border-color: var(--code-border-color);
+  transition: box-shadow .1s;
+}
+
+.md-typeset .grid.cards > ul > li:hover{
+  border-color: var(--code-border-color);
+  transform: scale(1.01);
+  box-shadow: 0 0.05rem 0.3rem #0000002d;
+} */
+
+
+/* Adapt the grid to work with buttons */
+.md-typeset .grid {
+
+  /* Use default grid style */
+  /* Apply to the <p> wrapper that the button creates by default */
+  & > p {
+    grid-gap: .4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr));
+    margin: 1em 0;
+  }
+
+  .md-button {
+    border-radius: .4rem;
+    padding: .8rem 2rem;
+  }
+}
