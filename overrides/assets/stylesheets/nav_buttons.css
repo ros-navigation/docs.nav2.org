@@ -1,0 +1,29 @@
+/* For buttons used for navigation in the main index pages */
+
+/* Adapt the grid to work with buttons */
+.md-typeset .grid {
+
+  /* Apply to the <p> wrapper that the button creates by default */
+  & > p {
+    grid-gap: .5rem;
+
+    /* Use default grid style */
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr));
+    margin: 1em 0;
+  }
+
+  .md-button {
+    border-radius: .4rem;
+    padding: .8rem 2rem;
+    background-color: var(--button-primary-bg-color);
+    border-color: var(--button-primary-bg-color);
+
+    &:hover {
+      border-color: var(--md-accent-fg-color);;
+      background-color: var(--md-accent-fg-color);
+      box-shadow: 0 2px 8px #00000034;
+      transform: translateY(-1px);
+    }
+  }
+}

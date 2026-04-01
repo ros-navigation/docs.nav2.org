@@ -60,6 +60,7 @@ extra_css:
   - assets/stylesheets/distro_grid.css
   - assets/stylesheets/robots_grid.css
   - assets/stylesheets/table.css
+  - assets/stylesheets/nav_buttons.css
 
 markdown_extensions:
   - admonition
