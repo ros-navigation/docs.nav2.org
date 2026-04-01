@@ -1,7 +1,7 @@
-# IsPathValid { #is-path-valid }
+# ValidatePath { #validate-path }
 
 Checks to see if the global path is valid. If there is an
-obstacle along the path, the condition returns FAILURE, otherwise
+obstacle along the path, it returns FAILURE, otherwise
 it returns SUCCESS. Optionally checks specific costmap layers and
 can use a custom footprint for validation.
 
@@ -90,7 +90,7 @@ Description
 ## Example
 
 ```xml
-<IsPathValid
+<ValidatePath
   server_timeout="10"
   path="{path}"
   max_cost="100"
@@ -104,7 +104,7 @@ Description
 With custom footprint:
 
 ```xml
-<IsPathValid
+<ValidatePath
   path="{path}"
   footprint="[[0.5,0.5],[0.5,-0.5],[-0.5,-0.5],[-0.5,0.5]]"
   collision_poses="{collision_poses}" />
@@ -113,7 +113,7 @@ With custom footprint:
 Checking a specific costmap layer:
 
 ```xml
-<IsPathValid
+<ValidatePath
   path="{path}"
   layer_name="obstacle_layer"
   check_full_path="true"

@@ -1,6 +1,6 @@
-# IsPoseOccupied { #is-pose-occupied }
+# CheckPoseOccupancy { #check-pose-occupancy }
 
-Checks to see if the pose is occupied. If it is occupied, the condition returns SUCCESS, otherwise
+Checks to see if the pose is occupied. If it is occupied, it returns SUCCESS, otherwise
 it returns FAILURE.
 
 ## Input Ports
@@ -63,5 +63,5 @@ Description
 ## Example
 
 ```xml
-<IsPoseOccupied server_timeout="10" pose="{goal}"/>
+<CheckPoseOccupancy server_timeout="10" pose="{goal}"/>
 ```

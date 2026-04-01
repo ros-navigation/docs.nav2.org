@@ -293,6 +293,10 @@ nav:
             - ToggleCollisionMonitor: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ToggleCollisionMonitor.md
             - FollowObject: configuration_and_development/configuration_guide/packages/bt-plugins/actions/FollowObject.md
             - CancelFollowObject: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CancelFollowObject.md
+            - ValidatePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ValidatePath.md
+            - CheckStopStatus: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CheckStopStatus.md
+            - CheckPoseOccupancy: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CheckPoseOccupancy.md
+
           - Condition Plugins:
             - GoalReached: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/GoalReached.md
             - TransformAvailable: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TransformAvailable.md
@@ -302,11 +306,8 @@ nav:
             - InitialPoseReceived: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/InitialPoseReceived.md
             - IsGoalNearby: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsGoalNearby.md
             - IsStuck: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsStuck.md
-            - IsStopped: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsStopped.md
             - TimeExpired: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TimeExpired.md
             - IsBatteryLow: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsBatteryLow.md
-            - IsPathValid: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsPathValid.md
-            - IsPoseOccupied: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsPoseOccupied.md
             - IsWithinPathTrackingBounds: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsWithinPathTrackingBounds.md
             - PathExpiringTimer: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/PathExpiringTimer.md
             - AreErrorCodesPresent: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/AreErrorCodesPresent.md

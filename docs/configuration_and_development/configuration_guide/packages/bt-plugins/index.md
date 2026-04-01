@@ -58,6 +58,9 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [ToggleCollisionMonitor][toggle-collision-monitor]{ .md-button .md-button--primary }
 [FollowObject][follow-object]{ .md-button .md-button--primary }
 [CancelFollowObject][cancel-follow-object]{ .md-button .md-button--primary }
+[ValidatePath][validate-path]{ .md-button .md-button--primary }
+[CheckPoseOccupancy][check-pose-occupancy]{ .md-button .md-button--primary }
+[CheckStopStatus][check-stop-status]{ .md-button .md-button--primary }
 
 </div>
 
@@ -73,11 +76,8 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [InitialPoseReceived][initial-pose-received]{ .md-button .md-button--primary }
 [IsGoalNearby][is-goal-nearby]{ .md-button .md-button--primary }
 [IsStuck][is-stuck]{ .md-button .md-button--primary }
-[IsStopped][is-stopped]{ .md-button .md-button--primary }
 [TimeExpired][time-expired]{ .md-button .md-button--primary }
 [IsBatteryLow][is-battery-low]{ .md-button .md-button--primary }
-[IsPathValid][is-path-valid]{ .md-button .md-button--primary }
-[IsPoseOccupied][is-pose-occupied]{ .md-button .md-button--primary }
 [IsWithinPathTrackingBounds][is-within-path-tracking-bounds]{ .md-button .md-button--primary }
 [PathExpiringTimer][path-expiring-timer]{ .md-button .md-button--primary }
 [AreErrorCodesPresent][are-error-codes-present]{ .md-button .md-button--primary }

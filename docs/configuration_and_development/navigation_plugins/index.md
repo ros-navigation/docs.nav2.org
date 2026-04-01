@@ -269,6 +269,9 @@ For tutorials on creating your own plugins, please see
 | [Toggle Collision Monitor Service][]                                   | David Grbac                    | Calls toggle collision monitor service                                                                                     |
 | [Follow Object][]                                                      | Alberto Tudela                 | Dynamically follows an object                                                                                              |
 | [Cancel Follow Object][]                                               | Alberto Tudela                 | Cancels follow object action                                                                                               |
+| [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
+| [Check Stop Status][]                                                  | Tony Najjar                    | Checks if robot is stopped for a duration                                                                               |
+| [Check Pose Occupancy][]                                               | Maurice Alexander<br>Purnawan  | Checks if a pose is occupied.                                                                                           |
 
 </div>
 
@@ -319,6 +322,9 @@ For tutorials on creating your own plugins, please see
 [Toggle Collision Monitor Service]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/toggle_collision_monitor_service.cpp
 [Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_action.cpp
 [Cancel Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_cancel_node.cpp
+[Validate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
+[Check Stop Status]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_stop_status_action.cpp
+[Check Pose Occupancy]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp
 
 <div class="center-table" markdown>
 
@@ -329,12 +335,10 @@ For tutorials on creating your own plugins, please see
 | [Global Updated Goal Condition][]                                  | Joshua Wallace                 | Checks if goal is<br>preempted in the global<br>BT context                                                         |
 | [Initial Pose received Condition][]                                | Carl Delsey                    | Checks if initial pose<br>has been set                                                                             |
 | [Is Stuck Condition][]                                             | Michael Jeronimo               | Checks if robot is<br>making progress or<br>stuck                                                                  |
-| [Is Stopped Condition][]                                           | Tony Najjar                    | Checks if robot is<br>stopped for a duration                                                                       |
 | [Transform Available Condition][]                                  | Steve Macenski                 | Checks if a TF<br>transformation is<br>available. When<br>succeeds returns<br>success for subsequent<br>calls.     |
 | [Distance Traveled Condition][]                                    | Sarthak Mittal                 | Checks is robot has<br>traveled a given<br>distance.                                                               |
 | [Time Expired Condition][]                                         | Sarthak Mittal                 | Checks if a given<br>time period has<br>passed.                                                                    |
 | [Is Battery Low Condition][]                                       | Sarthak Mittal                 | Checks if battery<br>percentage is below<br>a specified value.                                                     |
-| [Is Path Valid Condition][]                                        | Joshua Wallace                 | Checks if a path is<br>valid by making sure<br>there are no LETHAL<br>obstacles along the<br>path.                 |
 | [Path Expiring Timer][]                                            | Joshua Wallace                 | Checks if the timer has<br>expired. The timer is<br>reset if the path gets<br>updated.                             |
 | [Are Error Codes Present][]                                        | Joshua Wallace                 | Checks if the specified<br>error codes are<br>present.                                                             |
 | [Would A Controller Recovery Help][]                               | Joshua Wallace                 | Checks if a controller<br>recovery could help<br>clear the controller<br>server error code.                        |
@@ -343,7 +347,6 @@ For tutorials on creating your own plugins, please see
 | [Would A Route Recovery Help][]                                    | Steve Macenski                 | Checks if a Route<br>recovery could help<br>clear the route<br>server error code.                                  |
 | [Is Battery Charging Condition][]                                  | Alberto Tudela                 | Checks if the battery<br>is charging.                                                                              |
 | [Are Poses Near Condition][]                                       | Steve Macenski                 | Checks if 2 poses are<br>nearby to each other.                                                                     |
-| [Is Pose Occupied Condition][]                                     | Maurice Alexander<br>Purnawan  | Checks if a pose is<br>occupied.                                                                                   |
 | [Is Goal Nearby Condition][]                                       | Jakub Chudziński               | Checks if the robot is<br>near the goal based on<br>remaining path length.                                         |
 | [Is Within Path Tracking Bounds Condition][]                       | Berkan Tali                    | Checks if the robot is<br>within bounds for<br>path tracking.                                                      |
 
@@ -354,12 +357,10 @@ For tutorials on creating your own plugins, please see
 [Global Updated Goal Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 [Initial Pose received Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 [Is Stuck Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
-[Is Stopped Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp
 [Transform Available Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 [Distance Traveled Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 [Time Expired Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 [Is Battery Low Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
-[Is Path Valid Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 [Path Expiring Timer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 [Are Error Codes Present]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
 [Would A Controller Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp
@@ -368,7 +369,6 @@ For tutorials on creating your own plugins, please see
 [Would A Route Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_route_recovery_help_condition.cpp
 [Is Battery Charging Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 [Are Poses Near Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
-[Is Pose Occupied Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_pose_occupied_condition.cpp
 [Is Goal Nearby Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp
 [Is Within Path Tracking Bounds Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp
 
