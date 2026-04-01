@@ -303,6 +303,7 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 - [Static Layer Parameters][static-layer-parameters]
 - [Inflation Layer Parameters][inflation-layer-parameters]
+- [Legacy Inflation Layer Parameters][legacy-inflation-layer-parameters]
 - [Obstacle Layer Parameters][obstacle-layer-parameters]
 - [Voxel Layer Parameters][voxel-layer-parameters]
 - [Range Sensor Parameters][range-sensor-parameters]
