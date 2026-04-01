@@ -20,8 +20,8 @@
     border-color: var(--button-primary-bg-color);
 
     &:hover {
-      border-color: var(--md-accent-fg-color);;
-      background-color: var(--md-accent-fg-color);
+      border-color:#76cfe5;
+      background-color:#76cfe5;
       box-shadow: 0 2px 8px #00000034;
       transform: translateY(-1px);
     }
