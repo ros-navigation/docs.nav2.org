@@ -63,6 +63,7 @@ extra_css:
   - assets/stylesheets/robots_grid.css
   - assets/stylesheets/table.css
   - assets/stylesheets/nav_buttons.css
+  - assets/stylesheets/sponsorship_banner.css
   - assets/stylesheets/images.css
 
 extra_javascript:
