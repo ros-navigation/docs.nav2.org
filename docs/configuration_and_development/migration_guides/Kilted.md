@@ -732,6 +732,32 @@ The default value is set to 50 milliseconds, and should be adjusted based on the
 
 Prior to [PR 5840](https://github.com/ros-navigation/navigation2/pull/5840), switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
 
+## OMNI Analytic Expansion Support in SmacPlannerLattice
+
+[PR #5965](https://github.com/ros-navigation/navigation2/pull/5965) adds omnidirectional (OMNI) analytic expansion support to `SmacPlannerLattice`.
+When a lattice primitives file specifies `motion_model: "omni"` in its metadata, the planner now automatically:
+
+- Uses `SE2StateSpace` (straight-line with linear heading interpolation) instead of Dubins/Reeds-Shepp for analytic expansion and distance heuristics
+- Skips turning-radius refinement in analytic path expansion (SE2 paths are radius-independent)
+- Configures the path smoother in holonomic mode
+- Disables `allow_reverse_expansion` with a warning (meaningless for omnidirectional robots)
+
+No parameter changes are required — the OMNI motion model is auto-detected from the lattice file metadata.
+
+Before:
+
+<div markdown="span" style="display: flex; gap: 10px;">
+	![](images/smac_lattice_omni_before_1.png){ height="auto" flex="1" }
+	![](images/smac_lattice_omni_before_2.png){ height="auto" flex="1" }
+</div>
+
+After:
+
+<div markdown="span" style="display: flex; gap: 10px;">
+	![](images/smac_lattice_omni_after_1.png){ height="auto" flex="1" }
+	![](images/smac_lattice_omni_after_2.png){ height="auto" flex="1" }
+</div>
+
 ## New bt_log_idle_transitions parameter in bt_navigator
 
 In [PR 5963](https://github.com/ros-navigation/navigation2/pull/5963), A new `bt_log_idle_transitions` parameter has been added to the BT navigator. When set to `true` (default), idle (no state change) transitions in the behavior tree are published to the `/behavior_tree_log` topic and console output. When `false`, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
