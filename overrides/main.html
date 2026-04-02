@@ -99,6 +99,15 @@
       {% set hidden = "hidden" if "toc" in page.meta.hide %}
     {% endif %}
     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
+
+      <!-- Add sponsorship banner above the Table of Contents -->
+      <div class="sidebar-banner">
+        <span class="sponsorship-banner">
+          <strong>Partner with Nav2:</strong> sponsorship opportunities &amp; professional services available.
+        </span>
+        <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
+      </div>
+
       <div class="md-sidebar__scrollwrap">
         <div class="md-sidebar__inner">
           {% include "partials/toc.html" %}
@@ -106,16 +115,5 @@
       </div>
     </div>
   {% endif %}
-
-{% endblock %}
-
-
-{% block announce %}
-
-<span class="sponsorship-banner">
-  <strong>Partner with Nav2:</strong> sponsorship opportunities &amp; professional services available.
-</span>
-
-<a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
 
 {% endblock %}

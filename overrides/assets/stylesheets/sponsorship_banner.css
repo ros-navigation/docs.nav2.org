@@ -1,28 +1,37 @@
 /* For Sponsorship banner defined in overrides/main.html */
 
-.md-banner__inner {
-  text-align: center;
-}
-
-.md-banner {
+.sidebar-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
   color:#333;
+  width: 12rem;
   background-color:#76CFE5;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  margin-left: 0.8rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.21);
 
   .sponsorship-banner {
-    margin-right: 20px;
+    font-size: 0.7rem;
   }
   
   .sponsorship-banner-button {
     color:white;
-    background:#333; 
-    padding: 6px 17px; 
-    border-radius: 4px; 
+    background:#333;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.2rem; 
     text-decoration: none; 
     font-weight: bold; 
-    font-size: 14px;
+    font-size: 0.65rem;
+    text-align: center;
 
     &:hover {
       color: white;
+      background:#434343;
+      /* transform: translateY(-1px); */
     }
   }
 }
