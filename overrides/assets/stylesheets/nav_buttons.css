@@ -22,8 +22,9 @@
     &:hover {
       border-color:#76cfe5;
       background-color:#76cfe5;
-      box-shadow: 0 2px 8px #00000034;
+      box-shadow: 0 2px 2px #00000034;
       transform: translateY(-1px);
+      transition: position 0.2s ease;
     }
   }
 }
