@@ -57,9 +57,9 @@ ros2 pkg create --build-type ament_cmake sam_bot_description
 
 Now that we have our project workspace set up, let’s dive straight into writing the URDF. Below is an image of the robot we will be trying to build.
 
-<div markdown="span" style="display: flex; gap: 10px;">
-  ![](images/base-bot_1.png){ height="auto" width="50%" }
-  ![](images/base-bot_2.png){ height="auto" width="50%" }
+<div markdown="span" class="flex-images">
+  ![](images/base-bot_1.png)
+  ![](images/base-bot_2.png)
 </div>
 
 To get started, create a file named `sam_bot_description.urdf` under `src/description` and input the following as the initial contents of the file.

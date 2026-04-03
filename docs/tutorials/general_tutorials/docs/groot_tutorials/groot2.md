@@ -10,9 +10,9 @@ Therefore, we must point Groot2 to our palette, or index of Nav2 / custom behavi
 2. Click the red icon as shown in the second image, open the file /path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml to import all the custom behavior tree nodes used for navigation. Once loaded, you should see the full palette of Nav2’s custom nodes.
 3. Click the blue icon as shown in the second image, browse the tree you want to visualize, then select Open. The Nav2 BTs exist in /path/to/navigation2/nav2_bt_navigator/behavior_trees/.
 
-<div markdown="span" style="display: flex; gap: 10px;">
-	![](../images/Groot2/groot_bt_editor.png){ height="auto" width="50%" }
-	![](../images/Groot2/groot_with_nav2_custom_nodes.png){ height="auto" width="50%" }
+<div markdown="span" class="flex-images">
+	![](../images/Groot2/groot_bt_editor.png)
+	![](../images/Groot2/groot_with_nav2_custom_nodes.png)
 </div>
 
 If you select the default tree navigate_w_replanning_and_recovery.xml, the Groot2 editor should now display the full behavior tree structure, as shown in the image below.
@@ -76,9 +76,9 @@ After completing, select OK, the new custom node should now appear in the TreeNo
 Once you have finished editing or creating your behavior tree in Groot2, you may want to export it for use in your application.
 To do this, you can either use the Export Project button shown in the image below, or use the Save Current Project As button next to it.
 
-<div markdown="span" style="display: flex; gap: 10px;">
-	![](../images/Groot2/groot_export_button.png){ height="auto" width="50%" }
-	![](../images/Groot2/groot_export_page.png){ height="auto" width="50%" }
+<div markdown="span" class="flex-images">
+	![](../images/Groot2/groot_export_button.png)
+	![](../images/Groot2/groot_export_page.png)
 </div>
 
 Your behavior tree has been successfully exported! You can reload it the next time you open Groot2.

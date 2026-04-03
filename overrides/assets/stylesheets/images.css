@@ -1,0 +1,21 @@
+
+/* For paired images */
+.flex-images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 10px;
+
+  /* Use multiple children to make sure 
+  it will work with/without the glightbox plugin
+  and for images with captions */
+  & > a.glightbox,
+  & > figure,
+  & > img {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 10rem;
+    height: auto;
+    width: 50%;
+  }
+}

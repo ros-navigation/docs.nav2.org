@@ -746,16 +746,16 @@ No parameter changes are required — the OMNI motion model is auto-detected fro
 
 Before:
 
-<div markdown="span" style="display: flex; gap: 10px;">
-	![](images/smac_lattice_omni_before_1.png){ height="auto" flex="1" }
-	![](images/smac_lattice_omni_before_2.png){ height="auto" flex="1" }
+<div markdown="span" class="flex-images">
+	![](images/smac_lattice_omni_before_1.png)
+	![](images/smac_lattice_omni_before_2.png)
 </div>
 
 After:
 
-<div markdown="span" style="display: flex; gap: 10px;">
-	![](images/smac_lattice_omni_after_1.png){ height="auto" flex="1" }
-	![](images/smac_lattice_omni_after_2.png){ height="auto" flex="1" }
+<div markdown="span" class="flex-images">
+	![](images/smac_lattice_omni_after_1.png)
+	![](images/smac_lattice_omni_after_2.png)
 </div>
 
 ## New bt_log_idle_transitions parameter in bt_navigator

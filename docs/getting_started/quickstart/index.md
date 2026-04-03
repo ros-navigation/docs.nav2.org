@@ -66,9 +66,9 @@ sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
     If everything has started correctly, you will see the RViz and Gazebo GUIs like
     this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
 
-    <div markdown="span" style="display: flex; gap: 10px;">
-      ![](/images/rviz/rviz-not-started.png){ height="auto" width="50%" }
-      ![](/images/gazebo/gazebo_turtlebot1.png){ height="auto" width="50%" }
+    <div markdown="span" class="flex-images">
+      ![](/images/rviz/rviz-not-started.png)
+      ![](/images/gazebo/gazebo_turtlebot1.png)
     </div>
 
 4. If not autostarting, click the “Startup” button in the bottom left corner of RViz.

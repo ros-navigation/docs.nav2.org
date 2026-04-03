@@ -61,6 +61,7 @@ extra_css:
   - assets/stylesheets/robots_grid.css
   - assets/stylesheets/table.css
   - assets/stylesheets/nav_buttons.css
+  - assets/stylesheets/images.css
 
 markdown_extensions:
   - admonition

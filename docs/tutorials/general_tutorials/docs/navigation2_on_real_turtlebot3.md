@@ -82,9 +82,9 @@ Now, you should see a shadow of Turtlebot 3 robot model in the center of the plo
 Click on the Start button (Bottom Left) if you set the auto_start parameter to false.
 Then, the map should appear in RViz.
 
-<div markdown="span" style="display: flex; gap: 10px;">
-	![](images/Navigation2_on_real_Turtlebot3/rviz_after_launch_view.png){ height="auto" width="50%" }
-	![](images/Navigation2_on_real_Turtlebot3/rviz_slam_map_view.png){ height="auto" width="50%" }
+<div markdown="span" class="flex-images">
+	![](images/Navigation2_on_real_Turtlebot3/rviz_after_launch_view.png)
+	![](images/Navigation2_on_real_Turtlebot3/rviz_slam_map_view.png)
 </div>
 
 ### 4. Initialize the Location of Turtlebot 3
