@@ -1,5 +1,9 @@
 /* For Sponsorship banner defined in overrides/main.html */
 
+.md-banner {
+  display: none;
+}
+
 .sidebar-banner {
   display: flex;
   flex-direction: column;
@@ -32,6 +36,41 @@
       color: white;
       background:#434343;
       /* transform: translateY(-1px); */
+    }
+  }
+}
+
+/* Small screen <960px */
+/* 959.75px = 59.984rem */
+@media screen and (max-width: 59.9844em) {
+
+  .md-banner__inner {
+    text-align: center;
+  }
+
+  .md-banner {
+    display: block;
+    color:#333;
+    background-color:#76CFE5;
+
+    .sponsorship-banner {
+      margin-right: 1rem;
+      line-height: 1.9;
+    }
+    
+    .sponsorship-banner-button {
+      color:white;
+      background:#333; 
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.2rem; 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 0.65rem;
+      white-space: nowrap;
+
+      &:hover {
+        color: white;
+      }
     }
   }
 }
