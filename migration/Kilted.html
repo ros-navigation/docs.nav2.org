@@ -23,6 +23,7 @@
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1214,6 +1215,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-debounce-parameters">Collision Monitor debounce parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-per-critic-trajectory-cost-visualization">MPPI per-critic trajectory cost visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constrained-smoother-cost-function-formulation-corrected">Constrained Smoother cost function formulation corrected</a></li>
 </ul>
 </li>
 </ul>
@@ -2101,6 +2103,13 @@ In practice, values greater than <code class="docutils literal notranslate"><spa
 When <code class="docutils literal notranslate"><span class="pre">visualize</span></code> is enabled, candidate trajectories are now rendered as cost-colored lines using a green-to-yellow-to-red gradient, with collision trajectories shown in magenta.
 A new <code class="docutils literal notranslate"><span class="pre">critic_index_to_visualize</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">0</span></code>) selects which critic’s costs to display: <code class="docutils literal notranslate"><span class="pre">0</span></code> shows the total cost across all critics, while <code class="docutils literal notranslate"><span class="pre">1..N</span></code> selects an individual critic by index.
 The <code class="docutils literal notranslate"><span class="pre">publish_critics_stats</span></code> parameter has been removed; critic statistics (<code class="docutils literal notranslate"><span class="pre">~/critics_stats</span></code> topic) are now published automatically when <code class="docutils literal notranslate"><span class="pre">visualize</span></code> is enabled.</p>
+</div>
+<div class="section" id="constrained-smoother-cost-function-formulation-corrected">
+<h2>Constrained Smoother cost function formulation corrected<a class="headerlink" href="#constrained-smoother-cost-function-formulation-corrected" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6000">PR #6000</a> changes the cost function formulation in <cite>nav2_constrained_smoother</cite>. Weights for the constrained smoother may need to be adjusted as a result.</p>
+<p>Earlier, <cite>nav2_constrained_smoother</cite> was using a cost formulation of <span class="math notranslate nohighlight">\(cost = w_1^2 * cost_1^4 + w_2^2 * cost_2^4 + ...\)</span> because the internal squaring of residuals performed by <cite>Ceres Solver</cite> was not accounted for. This caused the optimizer to frequently fail to converge.</p>
+<p>The internal squaring of <cite>Ceres</cite> is now considered and the cost formulation is corrected to <span class="math notranslate nohighlight">\(cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...\)</span>. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: <a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987">Issue #5072</a></p>
+<p>Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!</p>
 </div>
 </div>
 

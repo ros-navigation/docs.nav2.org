@@ -1214,6 +1214,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#move-isstopped-ispathvalid-and-isposeoccupied-from-condition-nodes-to-action-nodes">Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#collision-monitor-debounce-parameters">Collision Monitor debounce parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#mppi-per-critic-trajectory-cost-visualization">MPPI per-critic trajectory cost visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#constrained-smoother-cost-function-formulation-corrected">Constrained Smoother cost function formulation corrected</a></li>
 </ul>
 </li>
 </ul>
@@ -1712,10 +1713,10 @@ Following image depicts improvement of the path with <code class="docutils liter
 <span class="w">      </span><span class="nt">keep_start_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># whether to prevent the start orientation from being smoothed</span>
 <span class="w">      </span><span class="nt">keep_goal_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">   </span><span class="c1"># whether to prevent the gpal orientation from being smoothed</span>
 <span class="w">      </span><span class="nt">minimum_turning_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.40</span><span class="w">  </span><span class="c1"># minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots</span>
-<span class="w">      </span><span class="nt">w_curve</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w">                 </span><span class="c1"># weight to enforce minimum_turning_radius</span>
+<span class="w">      </span><span class="nt">w_curve</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w">                  </span><span class="c1"># weight to enforce minimum_turning_radius</span>
 <span class="w">      </span><span class="nt">w_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">                   </span><span class="c1"># weight to bind path to original as optional replacement for cost weight</span>
-<span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000000.0</span><span class="w">           </span><span class="c1"># weight to maximize smoothness of path</span>
-<span class="w">      </span><span class="nt">w_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span><span class="w">                 </span><span class="c1"># weight to steer robot away from collision and cost</span>
+<span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0e+3</span><span class="w">              </span><span class="c1"># weight to maximize smoothness of path</span>
+<span class="w">      </span><span class="nt">w_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.000045</span><span class="w">              </span><span class="c1"># weight to steer robot away from collision and cost</span>
 
 <span class="w">      </span><span class="c1"># Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)</span>
 <span class="w">      </span><span class="nt">w_cost_cusp_multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w">   </span><span class="c1"># option to use higher weight during forward/reverse direction change which is often accompanied with dangerous rotations</span>
@@ -1728,7 +1729,7 @@ Following image depicts improvement of the path with <code class="docutils liter
 <span class="w">      </span><span class="nt">optimizer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span><span class="w">            </span><span class="c1"># max iterations of smoother</span>
 <span class="w">        </span><span class="nt">debug_optimizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">        </span><span class="c1"># print debug info</span>
-<span class="w">        </span><span class="nt">gradient_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5e3</span>
+<span class="w">        </span><span class="nt">gradient_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0</span>
 <span class="w">        </span><span class="nt">fn_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-15</span>
 <span class="w">        </span><span class="nt">param_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-20</span>
 </pre></div>
