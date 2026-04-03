@@ -906,3 +906,5 @@ Constrained Smoother cost function formulation corrected
 Earlier, `nav2_constrained_smoother` was using a cost formulation of :math:`cost = w_1^2 * cost_1^4 + w_2^2 * cost_2^4 + ...` because the internal squaring of residuals performed by `Ceres Solver` was not accounted for. This caused the optimizer to frequently fail to converge.
 
 The internal squaring of `Ceres` is now considered and the cost formulation is corrected to :math:`cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...`. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: `Issue #5072 <https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987>`_
+
+Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!
