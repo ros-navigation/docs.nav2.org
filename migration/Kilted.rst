@@ -897,3 +897,12 @@ MPPI per-critic trajectory cost visualization
 When ``visualize`` is enabled, candidate trajectories are now rendered as cost-colored lines using a green-to-yellow-to-red gradient, with collision trajectories shown in magenta.
 A new ``critic_index_to_visualize`` parameter (default ``0``) selects which critic's costs to display: ``0`` shows the total cost across all critics, while ``1..N`` selects an individual critic by index.
 The ``publish_critics_stats`` parameter has been removed; critic statistics (``~/critics_stats`` topic) are now published automatically when ``visualize`` is enabled.
+
+Constrained Smoother cost function formulation corrected
+--------------------------------------------------------
+
+`PR #6000 <https://github.com/ros-navigation/navigation2/pull/6000>`_ changes the cost function formulation in `nav2_constrained_smoother`. Weights for the constrained smoother may need to be adjusted as a result.
+
+Earlier, `nav2_constrained_smoother` was using a cost formulation of :math:`cost = w_1^2 * cost_1^4 + w_2^2 * cost_2^4 + ...` because the internal squaring of residuals performed by `Ceres Solver` was not accounted for. This caused the optimizer to frequently fail to converge.
+
+The internal squaring of `Ceres` is now considered and the cost formulation is corrected to :math:`cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...`. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: `Issue #5072 <https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987>`_
