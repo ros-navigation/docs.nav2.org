@@ -43,12 +43,12 @@ plugins:
   - glightbox
   - macros:
       module_name: macros/main
+      include_yaml: 
+        - macros/variables.yml
 
 extra:
   version:
     provider: mike
-  nav2_repo: "ros-navigation/navigation2"
-  nav2_ref: "refs/heads/main"
   scope: /
   social:
     - icon: fontawesome/brands/github
