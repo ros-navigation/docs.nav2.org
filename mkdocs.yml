@@ -47,6 +47,8 @@ plugins:
 extra:
   version:
     provider: mike
+  nav2_repo: "ros-navigation/navigation2"
+  nav2_ref: "refs/heads/main"
   scope: /
   social:
     - icon: fontawesome/brands/github
