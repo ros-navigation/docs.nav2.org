@@ -41,7 +41,8 @@ plugins:
   - mike # All parameters: https://github.com/jimporter/mike#configuration
   - autorefs
   - glightbox
-  - macros
+  - macros:
+      module_name: macros/main
 
 extra:
   version:
