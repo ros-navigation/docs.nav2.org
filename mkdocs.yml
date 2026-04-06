@@ -52,8 +52,10 @@ extra:
     - icon: fontawesome/brands/slack
       link: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA
 
-# Path relative to custom_dir (overrides/)
 extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+  
+  # Path relative to custom_dir (overrides/):
   - assets/stylesheets/extra.css
   - assets/stylesheets/search_button.css
   - assets/stylesheets/sidebar.css
@@ -62,6 +64,13 @@ extra_css:
   - assets/stylesheets/table.css
   - assets/stylesheets/nav_buttons.css
   - assets/stylesheets/images.css
+
+extra_javascript:
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  
+  # Path relative to custom_dir (overrides/):
+  - assets/javascripts/katex.js
 
 markdown_extensions:
   - admonition
@@ -84,6 +93,8 @@ markdown_extensions:
       options:
         custom_icons:
           - overrides/.icons
+  - pymdownx.arithmatex:
+      generic: true
 
 validation:
   links:
