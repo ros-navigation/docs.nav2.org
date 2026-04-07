@@ -100,11 +100,9 @@
     {% endif %}
     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
 
-      {# note: uncomment to hide banner on index pages without TOC 
       {% set first = page.toc | first %}
       {% set has_toc = first and first.children %}
       {% if has_toc %}
-      #}
 
         <!-- Add sponsorship banner above the Table of Contents -->
         <div class="sidebar-banner">
@@ -114,7 +112,17 @@
           <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
         </div>
       
-      {# {% endif %} #}
+      {% else %}
+
+        <div class="sidebar-banner">
+          <span class="sponsorship-banner">
+            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
+          </span>
+          <img class="sponsorship-expanded-banner-logo" src="{{ 'images/nav2_logo_powered_gray_text.png' | url }}"/>
+          <a class="sponsorship-expanded-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
+        </div>
+
+      {% endif %}
 
       <div class="md-sidebar__scrollwrap">
         <div class="md-sidebar__inner">

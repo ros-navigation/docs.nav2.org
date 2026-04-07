@@ -43,6 +43,27 @@
       background:#76CFE5;
     }
   }
+
+  .sponsorship-expanded-banner-logo {
+    width: 10rem;
+    margin: 0.8rem 0 0.5rem;
+  }
+
+  .sponsorship-expanded-banner-button {
+    color:white;
+    background:#47c7ef;
+    padding: 0.5rem 1.6rem;
+    border-radius: 0.3rem; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 0.76rem;
+    text-align: center;
+
+    &:hover {
+      color: white;
+      background:#76CFE5;
+    }
+  }
 }
 
 /* Small screen <960px */
