@@ -41,7 +41,6 @@
     &:hover {
       color: white;
       background:#76CFE5;
-      /* transform: translateY(-1px); */
     }
   }
 }
@@ -50,33 +49,44 @@
 /* 959.75px = 59.984rem */
 @media screen and (max-width: 59.9844em) {
 
-  .md-banner__inner {
-    text-align: center;
-  }
-
   .md-banner {
     display: block;
-    color:#333;
+    color:#434343;
     background-color:#76CFE5;
+    border-bottom: 1px solid #6BBED3;
 
     .sponsorship-banner {
       margin-right: 1rem;
-      line-height: 1.9;
+      line-height: 1rem;
+      font-size: 0.7rem;
+
+      /* 480px */
+      @media screen and (max-width: 30em) {
+        margin-right: 0.1rem;
+      }
     }
     
     .sponsorship-banner-button {
       color:white;
-      background:#333; 
+      background:#434343;
       padding: 0.3rem 0.6rem;
-      border-radius: 0.2rem; 
+      border-radius: 0.3rem; 
       text-decoration: none; 
       font-weight: bold; 
-      font-size: 0.65rem;
+      font-size: 0.7rem;
+      text-align: center;
       white-space: nowrap;
+      line-height: 1.5rem;
 
       &:hover {
         color: white;
+        background:#4e4e4e;
       }
     }
+  }
+
+  .md-banner__inner {
+    text-align: center;
+    margin: 0.5rem auto;
   }
 }
