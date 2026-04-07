@@ -44,9 +44,34 @@
     }
   }
 
+  .sponsorship-banner-button--fallback {
+    display: none;
+  }
+
   .sponsorship-expanded-banner-logo {
     width: 10rem;
     margin: 0.8rem 0 0.5rem;
+  
+    @media screen and (min-height: 740px) and (max-height: 799px) {
+      width: 8rem;
+    }
+    @media screen and (min-height: 670px) and (max-height: 739px) {
+      width: 6rem;
+    }
+  }
+
+  @media screen and (max-height: 669px) {
+    .sponsorship-expanded-banner-logo {
+      display: none;
+    }
+
+    .sponsorship-expanded-banner-button {
+      display: none;
+    }
+
+    .sponsorship-banner-button--fallback {
+      display: inline-block;
+    }
   }
 
   .sponsorship-expanded-banner-button {
