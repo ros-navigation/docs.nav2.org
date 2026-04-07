@@ -16,6 +16,7 @@
   --search-form-border-hover-color:#d7d7d7;
   --code-border-color:#e5e5e5;
   --button-primary-bg-color: var(--md-primary-fg-color);
+  --sponsorship-banner-typeset-a-color:#434343;
 }
 
 /* Dark mode */
@@ -38,6 +39,7 @@
   --search-form-border-hover-color:#424242;
   --code-border-color:#4b4b4b;
   --button-primary-bg-color: var(--sidebar-bg-color);
+  --sponsorship-banner-typeset-a-color: var(--md-default-fg-color);
 }
 
 .md-header__title {

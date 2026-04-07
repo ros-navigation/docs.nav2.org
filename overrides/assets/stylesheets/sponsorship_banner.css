@@ -9,24 +9,30 @@
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  color:#333;
-  width: 12rem;
-  background-color:#76CFE5;
+  color: var(--sponsorship-banner-typeset-a-color);
+  width: 12.1rem;
+  background-color:#76CFE545;
   padding: 0.8rem;
   margin-bottom: 1rem;
   margin-left: 0.8rem;
-  border-radius: 0.5rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.21);
+  border-radius: 0.8rem;
+  border: 1px solid #76CFE5;
 
   .sponsorship-banner {
     font-size: 0.7rem;
+    line-height: 1rem;
+
+    h3 {
+      margin: 0rem 0rem 0.5rem 0rem;
+    }
   }
   
   .sponsorship-banner-button {
     color:white;
-    background:#333;
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.2rem; 
+    background:#47c7ef;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem; 
     text-decoration: none; 
     font-weight: bold; 
     font-size: 0.65rem;
@@ -34,7 +40,7 @@
 
     &:hover {
       color: white;
-      background:#434343;
+      background:#76CFE5;
       /* transform: translateY(-1px); */
     }
   }
