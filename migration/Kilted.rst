@@ -908,3 +908,16 @@ Earlier, `nav2_constrained_smoother` was using a cost formulation of :math:`cost
 The internal squaring of `Ceres` is now considered and the cost formulation is corrected to :math:`cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...`. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: `Issue #5072 <https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987>`_
 
 Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!
+
+Nav2 Loopback Simulator converted to C++
+-----------------------------------------
+
+`PR #6062 <https://github.com/ros-navigation/navigation2/pull/6062>`_ converts ``nav2_loopback_sim`` from Python to C++ for improved performance and consistency with the rest of the Nav2 stack.
+
+Key changes:
+
+- The ``clock_publisher`` is no longer a separate node. It is now embedded within the ``loopback_simulator`` node. Launch files that previously launched both nodes should be updated to launch only the ``loopback_simulator`` node.
+- A new ``speed_factor`` parameter (default ``1.0``) controls the simulated clock speed (e.g. ``2.0`` for 2x). This parameter is dynamically reconfigurable.
+- New parameters ``publish_scan``, ``odom_publish_dur``, and ``scan_noise_std`` are available.
+
+See :ref:`configuring_loopback_sim` for full parameter documentation.
