@@ -93,7 +93,7 @@ def define_env(env):
     """
 
     @env.macro
-    def generate_bt_parameters(bt_node_id: str) -> str:
+    def render_bt_node_ports(bt_node_id: str) -> str:
 
         try:
             tree = ET.parse('./macros/tmp/nav2_tree_nodes.xml')
