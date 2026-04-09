@@ -14,6 +14,16 @@ def _strip_template_suffix(type_str: str) -> str:
     return type_str
 
 
+def _format_default(default_str: str) -> str:
+    """Simplify numeric default values by stripping trailing zeros, e.g.
+    '0.150000' -> '0.15', '1.000000' -> '1.0'
+    """
+    try:
+        return str(float(default_str))
+    except (ValueError, TypeError):
+        return default_str
+
+
 def _parse_ports(node: ET.Element) -> tuple:
     """
     Parse input_port and output_port children from an XML BT node.
@@ -26,9 +36,17 @@ def _parse_ports(node: ET.Element) -> tuple:
     for child in node:
         if child.tag not in ('input_port', 'output_port'):
             continue
+
+        raw_type = child.attrib.get('type', '')
+        type = _strip_template_suffix(raw_type)
+
+        raw_default = child.attrib.get('default', 'N/A')
+        default = _format_default(raw_default) if type in ('double', 'float') else raw_default
+
         port = {
             'name': child.attrib.get('name', ''),
-            'parameter_type': _strip_template_suffix(child.attrib.get('type', '')),
+            'parameter_type': type,
+            'default': default,
             'description': (child.text or '').strip(),
         }
 
