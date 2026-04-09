@@ -908,3 +908,10 @@ Earlier, `nav2_constrained_smoother` was using a cost formulation of :math:`cost
 The internal squaring of `Ceres` is now considered and the cost formulation is corrected to :math:`cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...`. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: `Issue #5072 <https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987>`_
 
 Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!
+
+ValidatePath / IsPathValid parameter changes
+---------------------------------------------
+
+`PR #6027 <https://github.com/ros-navigation/navigation2/pull/6027>`_ renames the ``check_full_path`` parameter to ``stop_at_first_collision`` in both the ``ValidatePath`` BT node and the ``IsPathValid`` service definition. The boolean semantics are inverted: ``check_full_path=false`` (old default) is equivalent to ``stop_at_first_collision=true`` (new default).
+
+Additionally, a new ``max_lookahead_distance`` parameter (default ``-1.0``) has been added to both the BT node and the service. When set to a positive value, only the portion of the path within that distance ahead of the robot is validated, improving efficiency when full path validation is not necessary.
