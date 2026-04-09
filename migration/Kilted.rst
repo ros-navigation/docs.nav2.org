@@ -912,7 +912,7 @@ Values for the weights will need to be retuned for all users, unfortunately, but
 Nav2 Loopback Simulator converted to C++
 -----------------------------------------
 
-`PR #6062 <https://github.com/ros-navigation/navigation2/pull/6062>`_ converts ``nav2_loopback_sim`` from Python to C++ for improved performance and consistency with the rest of the Nav2 stack.
+`PR #6062 <https://github.com/ros-navigation/navigation2/pull/6062>`_ converts ``nav2_loopback_sim`` from Python to C++ for improved performance and consistency with the rest of the Nav2 stack. This results in roughly a 2x improvement in CPU consumption.
 
 Key changes:
 

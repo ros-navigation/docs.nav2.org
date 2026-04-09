@@ -94,11 +94,11 @@ Parameters
 
 :odom_publish_dur:
 
-  ============== ==============
+  ============== =================
   Type           Default
-  -------------- --------------
+  -------------- -----------------
   double         <update_duration>
-  ============== ==============
+  ============== =================
 
   Description
     The duration between publishing odometry (in sec). Defaults to ``update_duration``.
