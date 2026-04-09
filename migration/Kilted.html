@@ -1164,6 +1164,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dock-plugin-external-detection-rotation">Dock Plugin External Detection Rotation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dock-plugin-detector-control">Dock Plugin Detector Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-corner-smoothing-functionality-to-route-server">Added Corner Smoothing functionality to route_server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-nonblockingsequence-control-node">Added NonblockingSequence Control Node</a></li>
@@ -1469,6 +1470,15 @@ Additionally, it supports QoS override using the parameter <code class="docutils
 <h2>Removed Parameter action_server_result_timeout<a class="headerlink" href="#removed-parameter-action-server-result-timeout" title="Permalink to this heading"></a></h2>
 <p>Removed the parameter <code class="docutils literal notranslate"><span class="pre">action_server_result_timeout</span></code> from all action servers after resolution within <code class="docutils literal notranslate"><span class="pre">rcl</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> to address early goal removal.
 This is not longer required to be set.</p>
+</div>
+<div class="section" id="dock-plugin-external-detection-rotation">
+<h2>Dock Plugin External Detection Rotation<a class="headerlink" href="#dock-plugin-external-detection-rotation" title="Permalink to this heading"></a></h2>
+<p>The external detection rotation order of <code class="docutils literal notranslate"><span class="pre">Simple(Non)ChargingDock</span></code> dock plugins has changed to the more natural Rx -&gt; Ry -&gt; Rz (was: Rz -&gt; Rx -&gt; Ry). From implementation point of view, <code class="docutils literal notranslate"><span class="pre">setEuler()</span></code> calls have been replaced with <code class="docutils literal notranslate"><span class="pre">setRPY()</span></code>. The old behavior is retained only when</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">external_detection_rotation_yaw</span></code> equals 0.0, or</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">external_detection_rotation_pitch</span></code> and <code class="docutils literal notranslate"><span class="pre">external_detection_rotation_roll</span></code> both equal 0.0</p></li>
+</ul>
+<p>Non-default external detection rotation that differs from the above cases needs to be adjusted appropriately.</p>
 </div>
 <div class="section" id="dock-plugin-detector-control">
 <h2>Dock Plugin Detector Control<a class="headerlink" href="#dock-plugin-detector-control" title="Permalink to this heading"></a></h2>

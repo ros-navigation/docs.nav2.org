@@ -202,6 +202,16 @@ Removed Parameter action_server_result_timeout
 Removed the parameter ``action_server_result_timeout`` from all action servers after resolution within ``rcl`` and ``rclcpp`` to address early goal removal.
 This is not longer required to be set.
 
+Dock Plugin External Detection Rotation
+---------------------------------------
+
+The external detection rotation order of ``Simple(Non)ChargingDock`` dock plugins has changed to the more natural Rx -> Ry -> Rz (was: Rz -> Rx -> Ry). From implementation point of view, ``setEuler()`` calls have been replaced with ``setRPY()``. The old behavior is retained only when
+
+- ``external_detection_rotation_yaw`` equals 0.0, or
+- ``external_detection_rotation_pitch`` and ``external_detection_rotation_roll`` both equal 0.0
+
+Non-default external detection rotation that differs from the above cases needs to be adjusted appropriately.
+
 Dock Plugin Detector Control
 ----------------------------
 
