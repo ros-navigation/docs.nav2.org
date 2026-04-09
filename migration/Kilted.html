@@ -1216,6 +1216,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-debounce-parameters">Collision Monitor debounce parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-per-critic-trajectory-cost-visualization">MPPI per-critic trajectory cost visualization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constrained-smoother-cost-function-formulation-corrected">Constrained Smoother cost function formulation corrected</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validatepath-ispathvalid-parameter-changes">ValidatePath / IsPathValid parameter changes</a></li>
 </ul>
 </li>
 </ul>
@@ -2110,6 +2111,11 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 <p>Earlier, <cite>nav2_constrained_smoother</cite> was using a cost formulation of <span class="math notranslate nohighlight">\(cost = w_1^2 * cost_1^4 + w_2^2 * cost_2^4 + ...\)</span> because the internal squaring of residuals performed by <cite>Ceres Solver</cite> was not accounted for. This caused the optimizer to frequently fail to converge.</p>
 <p>The internal squaring of <cite>Ceres</cite> is now considered and the cost formulation is corrected to <span class="math notranslate nohighlight">\(cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...\)</span>. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: <a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987">Issue #5072</a></p>
 <p>Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!</p>
+</div>
+<div class="section" id="validatepath-ispathvalid-parameter-changes">
+<h2>ValidatePath / IsPathValid parameter changes<a class="headerlink" href="#validatepath-ispathvalid-parameter-changes" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6027">PR #6027</a> renames the <code class="docutils literal notranslate"><span class="pre">check_full_path</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">stop_at_first_collision</span></code> in both the <code class="docutils literal notranslate"><span class="pre">ValidatePath</span></code> BT node and the <code class="docutils literal notranslate"><span class="pre">IsPathValid</span></code> service definition. The boolean semantics are inverted: <code class="docutils literal notranslate"><span class="pre">check_full_path=false</span></code> (old default) is equivalent to <code class="docutils literal notranslate"><span class="pre">stop_at_first_collision=true</span></code> (new default).</p>
+<p>Additionally, a new <code class="docutils literal notranslate"><span class="pre">max_lookahead_distance</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>) has been added to both the BT node and the service. When set to a positive value, only the portion of the path within that distance ahead of the robot is validated, improving efficiency when full path validation is not necessary.</p>
 </div>
 </div>
 
