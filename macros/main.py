@@ -2,6 +2,18 @@ import requests
 import xml.etree.ElementTree as ET
 
 
+def _strip_template_suffix(type_str: str) -> str:
+    """Strip allocator template suffix from msg types, e.g.
+    'nav2_msgs::msg::Route_<std::allocator<void> >' -> 'nav2_msgs::msg::Route'
+    """
+    
+    if 'msg::' in type_str:
+        idx = type_str.find('_<')
+        if idx != -1:
+            return type_str[:idx]
+    return type_str
+
+
 def _parse_ports(node: ET.Element) -> tuple:
     """
     Parse input_port and output_port children from an XML BT node.
@@ -16,8 +28,7 @@ def _parse_ports(node: ET.Element) -> tuple:
             continue
         port = {
             'name': child.attrib.get('name', ''),
-            'parameter_type': child.attrib.get('type', ''),
-            'default': child.attrib.get('default', 'N/A'),
+            'parameter_type': _strip_template_suffix(child.attrib.get('type', '')),
             'description': (child.text or '').strip(),
         }
 
