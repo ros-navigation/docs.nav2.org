@@ -1218,6 +1218,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#mppi-per-critic-trajectory-cost-visualization">MPPI per-critic trajectory cost visualization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constrained-smoother-cost-function-formulation-corrected">Constrained Smoother cost function formulation corrected</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#validatepath-ispathvalid-parameter-changes">ValidatePath / IsPathValid parameter changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
 </ul>
 </li>
 </ul>
@@ -2126,6 +2127,17 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 <h2>ValidatePath / IsPathValid parameter changes<a class="headerlink" href="#validatepath-ispathvalid-parameter-changes" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6027">PR #6027</a> renames the <code class="docutils literal notranslate"><span class="pre">check_full_path</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">stop_at_first_collision</span></code> in both the <code class="docutils literal notranslate"><span class="pre">ValidatePath</span></code> BT node and the <code class="docutils literal notranslate"><span class="pre">IsPathValid</span></code> service definition. The boolean semantics are inverted: <code class="docutils literal notranslate"><span class="pre">check_full_path=false</span></code> (old default) is equivalent to <code class="docutils literal notranslate"><span class="pre">stop_at_first_collision=true</span></code> (new default).</p>
 <p>Additionally, a new <code class="docutils literal notranslate"><span class="pre">max_lookahead_distance</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>) has been added to both the BT node and the service. When set to a positive value, only the portion of the path within that distance ahead of the robot is validated, improving efficiency when full path validation is not necessary.</p>
+</div>
+<div class="section" id="nav2-loopback-simulator-converted-to-c">
+<h2>Nav2 Loopback Simulator converted to C++<a class="headerlink" href="#nav2-loopback-simulator-converted-to-c" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6062">PR #6062</a> converts <code class="docutils literal notranslate"><span class="pre">nav2_loopback_sim</span></code> from Python to C++ for improved performance and consistency with the rest of the Nav2 stack. This results in roughly a 2x improvement in CPU consumption.</p>
+<p>Key changes:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">clock_publisher</span></code> is no longer a separate node. It is now embedded within the <code class="docutils literal notranslate"><span class="pre">loopback_simulator</span></code> node. Launch files that previously launched both nodes should be updated to launch only the <code class="docutils literal notranslate"><span class="pre">loopback_simulator</span></code> node.</p></li>
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">speed_factor</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">1.0</span></code>) controls the simulated clock speed (e.g. <code class="docutils literal notranslate"><span class="pre">2.0</span></code> for 2x). This parameter is dynamically reconfigurable.</p></li>
+<li><p>New parameters <code class="docutils literal notranslate"><span class="pre">publish_scan</span></code>, <code class="docutils literal notranslate"><span class="pre">odom_publish_dur</span></code>, and <code class="docutils literal notranslate"><span class="pre">scan_noise_std</span></code> are available.</p></li>
+</ul>
+<p>See <a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html#configuring-loopback-sim"><span class="std std-ref">Loopback Simulator</span></a> for full parameter documentation.</p>
 </div>
 </div>
 
