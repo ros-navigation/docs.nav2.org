@@ -94,28 +94,31 @@ def _render_port_section(heading: str, ports: list) -> str:
 #     response.raise_for_status()
 #     return response.text
 
+def _load_bt_nodes_model():
+    try:
+        tree = ET.parse('./macros/cache/nav2_tree_nodes.xml')
+    except Exception as exc:
+        logger.warning(f'Could not load BT parameters - Failed to load: {exc}')
+        return None
+    return tree.getroot()[0]
 
 def define_env(env):
     """
     This is the hook for the variables, macros and filters.
     """
 
+    bt_nodes_model = _load_bt_nodes_model() 
+
     @env.macro
     def render_bt_node_ports(bt_node_id: str) -> str:
-
-        try:
-            tree = ET.parse('./macros/tmp/nav2_tree_nodes.xml')
-        except Exception as exc:
-            logger.warning(f'Could not fetch BT parameters - Failed to load: {exc}')
+        
+        if bt_nodes_model is None:
             return (
-                '!!! warning "Could not fetch BT parameters"\n'
-                f'    Failed to load: {exc}\n'
+                '!!! warning "BT node reference data unavailable"\n'
+                f'    The behavior tree node model file (./macros/cache/nav2_tree_nodes.xml) could not be loaded.\n'
             )
         
-        root = tree.getroot()
-        bt_nodes = root[0]
-
-        node = bt_nodes.find(f'.//*[@ID="{bt_node_id}"]')
+        node = bt_nodes_model.find(f'.//*[@ID="{bt_node_id}"]')
         if node is None:
             logger.warning(f'BT node not found - No node with ID `{bt_node_id}` found in the BT node model')
             return (
