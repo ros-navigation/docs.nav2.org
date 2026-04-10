@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 import logging
+from pathlib import Path
 
 logging.basicConfig(
     level=logging.WARNING,
@@ -79,35 +80,63 @@ def _render_port_section(heading: str, ports: list) -> str:
     return '\n'.join(lines)
 
 
-# def _get_github_data(repo: str, file_path: str, ref: str) -> str:
-#     """
-#     Fetch raw file content using the GitHub API.
-#     """
+def _fetch_github_file(repo: str, ref: str, file_path: str) -> str:
+    """
+    Fetch raw file content using the GitHub API.
+    """
     
-#     api_url = f"https://api.github.com/repos/{repo}/contents/{file_path}"
+    api_url = f"https://api.github.com/repos/{repo}/contents/{file_path}"
 
-#     headers = {
-#         "Accept": "application/vnd.github.v3.raw",
-#     }
+    headers = {
+        "Accept": "application/vnd.github.v3.raw",
+    }
 
-#     response = requests.get(api_url, headers=headers, params={"ref": ref}, timeout=15)
-#     response.raise_for_status()
-#     return response.text
+    response = requests.get(api_url, headers=headers, params={"ref": ref}, timeout=15)
+    response.raise_for_status()
+    return response.text
 
-def _load_bt_nodes_model():
+
+def _load_bt_nodes_model(repo: str, ref: str, file_path: str):
+    """
+    Load BT node model from cache, or fetch from GitHub if missing.
+    """
+    
+    cache_path = Path('./macros/cache/nav2_tree_nodes.xml')
+    if cache_path.exists():
+        try:
+            tree = ET.parse(str(cache_path))
+            return tree.getroot()[0]
+        except Exception as exc:
+            logger.warning(f'Failed to load cached BT nodes: {exc}')
+
     try:
-        tree = ET.parse('./macros/cache/nav2_tree_nodes.xml')
+        
+        # Uncomment after adding the file generation
+        bt_nodes_xml = "" 
+        # bt_nodes_xml_content = _fetch_github_file(repo, ref, file_path)
+        
+        # Save to cache for next build
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(bt_nodes_xml)
+        logger.info(f'Cached BT node model to {cache_path}')
+        
+        tree = ET.fromstring(bt_nodes_xml)
+        return tree[0]
+    
     except Exception as exc:
-        logger.warning(f'Could not load BT parameters - Failed to load: {exc}')
-        return None
-    return tree.getroot()[0]
+        logger.error(f'Failed to fetch BT nodes from GitHub: {exc}')
+        return None  
+
 
 def define_env(env):
     """
     This is the hook for the variables, macros and filters.
     """
 
-    bt_nodes_model = _load_bt_nodes_model() 
+    repo = env.variables["nav2_repo"]
+    ref = env.variables["nav2_ref"]
+    file_path = env.variables["nav2_bt_nodes_path"]
+    bt_nodes_model = _load_bt_nodes_model(repo, ref, file_path)
 
     @env.macro
     def render_bt_node_ports(bt_node_id: str) -> str:
