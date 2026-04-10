@@ -46,7 +46,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.5
+  double 0.05
   ====== =======
 
     Description
