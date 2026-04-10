@@ -1,5 +1,13 @@
 import requests
 import xml.etree.ElementTree as ET
+import logging
+
+logging.basicConfig(
+    level=logging.WARNING,
+    format='%(levelname)s - [%(asctime)s][%(filename)s] %(message)s',
+    datefmt='%H:%M:%S'
+)
+logger = logging.getLogger(__name__)
 
 
 def _strip_template_suffix(type_str: str) -> str:
@@ -98,6 +106,7 @@ def define_env(env):
         try:
             tree = ET.parse('./macros/tmp/nav2_tree_nodes.xml')
         except Exception as exc:
+            logger.warning(f'Could not fetch BT parameters - Failed to load: {exc}')
             return (
                 '!!! warning "Could not fetch BT parameters"\n'
                 f'    Failed to load: {exc}\n'
@@ -108,6 +117,7 @@ def define_env(env):
 
         node = bt_nodes.find(f'.//*[@ID="{bt_node_id}"]')
         if node is None:
+            logger.warning(f'BT node not found - No node with ID `{bt_node_id}` found in the BT node model')
             return (
                 '!!! warning "BT node not found"\n'
                 f'    No node with ID `{bt_node_id}` found in the BT node model.\n'
