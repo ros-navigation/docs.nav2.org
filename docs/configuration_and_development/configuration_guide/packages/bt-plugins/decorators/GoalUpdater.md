@@ -22,46 +22,7 @@ Description
 Description
 :   The topic to receive the updated goals poses
 
-## Input Ports
-
-### **`input_goal`**
-
-| Type                        | Default |
-|-----------------------------|---------|
-| `geometry_msgs/PoseStamped` | N/A     |
-
-Description
-:   The original goal pose
-
-### **`input_goals`**
-
-| Type             | Default |
-|------------------|---------|
-| `nav_msgs/Goals` | N/A     |
-
-Description
-:   The original goals poses
-
-## Output Ports
-
-### **`output_goal`**
-
-| Type                        | Default |
-|-----------------------------|---------|
-| `geometry_msgs/PoseStamped` | N/A     |
-
-Description
-:   The resulting updated goal. If no goal received by subscription, it will be the input_goal
-
-### **`output_goals`**
-
-| Type           | Default |
-|----------------|---------|
-| nav_msgs/Goals | N/A     |
-    
-
-Description
-:   The resulting updated goals. If no goals received by subscription, it will be the input_goals
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

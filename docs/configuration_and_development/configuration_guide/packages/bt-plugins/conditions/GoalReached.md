@@ -27,26 +27,7 @@ bt_navigator:
     goal_reached_tol: 0.25
 ```
 
-## Input Ports
-
-### **`goal`**
-
-| Type                              | Default |
-|-----------------------------------|---------|
-| `geometry_msgs::msg::PoseStamped` | N/A     |
-
-Description
-:   Destination to check. Takes in a blackboard variable, e.g. “{goal}”.
-    The global reference frame is taken from the goal’s header frame_id field.
-
-### **`robot_base_frame`**
-
-| Type     | Default     |
-|----------|-------------|
-| `string` | “base_link” |
-
-Description
-:   Robot base frame.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

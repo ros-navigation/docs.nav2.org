@@ -2,14 +2,7 @@
 
 Node that returns success when a time duration has passed
 
-### **`seconds`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   The time passed to return success (s).
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

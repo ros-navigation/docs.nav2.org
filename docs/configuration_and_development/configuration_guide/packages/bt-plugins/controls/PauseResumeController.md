@@ -15,6 +15,8 @@ The controller only returns success when the RESUMED child returns success.
 The controller returns failure if any child returns failure.
 In any other case, it returns running.
 
+{{ render_bt_node_ports(page.title) }}
+
 ## Example
 
 ```xml

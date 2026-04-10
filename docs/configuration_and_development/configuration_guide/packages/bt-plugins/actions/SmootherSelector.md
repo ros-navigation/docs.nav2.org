@@ -4,36 +4,7 @@ It is used to select the Smoother that will be used by the Smoother server. It s
 
 Any publisher to this topic needs to be configured with some QoS defined as `reliable` and `transient local`.
 
-## Input Ports
-
-### **`topic_name`**
-
-| Type     | Default           |
-|----------|-------------------|
-| `string` | smoother_selector |
-
-Description
-:   The name of the topic used to received select command messages. This is used to support multiple SmootherSelector nodes.
-
-### **`default_smoother`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   The default value for the selected Smoother if no message is received from the input topic.
-
-## Output Ports
-
-### **`selected_smoother`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   The output selected Smoother id.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

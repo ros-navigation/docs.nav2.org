@@ -3,54 +3,7 @@
 Invokes the Wait ROS 2 action server, which is implemented by the [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors) module.
 This action is used in nav2 Behavior Trees as a recovery behavior.
 
-## Input Ports
-
-### **`wait_duration`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   Wait time (s).
-
-### **`server_name`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   Action server name.
-
-### **`server_timeout`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
-
-Description
-:   Action server timeout (ms).
-
-## Output Ports
-
-### **`error_code_id`**
-
-| Type     | Default |
-|----------|---------|
-| `uint16` | N/A     |
-
-Description
-:   Wait error code. See `Wait` action message for the enumerated set of error codes.
-
-### **`error_msg`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   Wait error message. See `Wait` action message for the enumerated set of error codes.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

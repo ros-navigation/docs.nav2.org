@@ -4,36 +4,7 @@ It is used to select the Controller that will be used by the Controller server. 
 
 Any publisher to this topic needs to be configured with some QoS defined as `reliable` and `transient local`.
 
-## Input Ports
-
-### **`topic_name`**
-
-| Type     | Default             |
-|----------|---------------------|
-| `string` | controller_selector |
-
-Description
-:   The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.
-
-### **`default_controller`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   The default value for the selected Controller if no message is received from the input topic.
-
-## Output Ports
-
-### **`selected_controller`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

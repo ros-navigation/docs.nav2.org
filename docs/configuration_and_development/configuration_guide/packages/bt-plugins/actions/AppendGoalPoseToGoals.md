@@ -3,36 +3,7 @@
 Appends a goal `PoseStamped` to the end of a `goals` vector.
 May be useful to add in the final task goal pose to a list of goals extracted from Route nodes (or other sources of future goals).
 
-## Input Ports
-
-### **`goal_pose`**
-
-| Type                        | Default |
-|-----------------------------|---------|
-| `geometry_msgs/PoseStamped` | N/A     |
-
-Description
-:   Goal pose to append to the `goals` vector.
-
-### **`input_goals`**
-
-| Type             | Default |
-|------------------|---------|
-| `nav_msgs/Goals` | N/A     |
-
-Description
-:   Input goals vector to append to.
-
-## Output Ports
-
-### **`output_goals`**
-
-| Type             | Default |
-|------------------|---------|
-| `nav_msgs/Goals` | N/A     |
-
-Description
-:   Output goals vector appended to.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

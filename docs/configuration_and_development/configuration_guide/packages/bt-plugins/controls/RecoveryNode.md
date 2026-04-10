@@ -7,16 +7,7 @@ If the second child SUCCEEDS, then the first child will be executed again.
 The user can specify how many times the recovery actions should be taken before returning FAILURE.
 In nav2, the RecoveryNode is included in Behavior Trees to implement recovery actions upon failures.
 
-## Input Ports
-
-### **`number_of_retries`**
-
-| Type  | Default |
-|-------|---------|
-| `int` | 1       |
-
-Description
-:   Number of retries.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

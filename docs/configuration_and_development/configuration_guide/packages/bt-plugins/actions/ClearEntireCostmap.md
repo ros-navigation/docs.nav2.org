@@ -2,25 +2,7 @@
 
 Action to call a costmap clearing server.
 
-## Input Ports
-
-### **`service_name`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   costmap service name responsible for clearing the costmap.
-
-### **`server_timeout`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
-
-Description
-:   Action server timeout (ms).
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

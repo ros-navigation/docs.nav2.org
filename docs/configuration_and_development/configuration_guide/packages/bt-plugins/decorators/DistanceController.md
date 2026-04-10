@@ -5,34 +5,7 @@ The distance to be traveled before replanning can be supplied to the node as a p
 The node returns RUNNING when it is not ticking its child. Currently, in the navigation
 stack, the `DistanceController` is used to adjust the rate at which the `ComputePathToPose` and `GoalReached` nodes are ticked.
 
-## Input Ports
-
-### **`distance`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   The distance travelled to trigger an action such as planning a path (m).
-
-### **`global_frame`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | “map”   |
-
-Description
-:   Reference frame.
-
-### **`robot_base_frame`**
-
-| Type     | Default     |
-|----------|-------------|
-| `string` | “base_link” |
-
-Description
-:   Robot base frame.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

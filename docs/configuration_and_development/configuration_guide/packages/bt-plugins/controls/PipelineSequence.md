@@ -5,6 +5,8 @@ It then ticks the first, second, and third children until the third succeeds, an
 time a child returns RUNNING, that doesn’t change the behavior. If at any time a child returns FAILURE, that
 stops all children and returns FAILURE overall.
 
+{{ render_bt_node_ports(page.title) }}
+
 ## Example
 
 ```xml

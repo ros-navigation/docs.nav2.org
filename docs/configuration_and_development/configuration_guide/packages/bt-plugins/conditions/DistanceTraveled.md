@@ -17,34 +17,7 @@ bt_navigator:
     transform_tolerance: 0.1
 ```
 
-## Input Ports
-
-### **`distance`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   The distance that must travel before returning success (m).
-
-### **`global_frame`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | “map”   |
-
-Description
-:   Reference frame.
-
-### **`robot_base_frame`**
-
-| Type     | Default     |
-|----------|-------------|
-| `string` | “base_link” |
-
-Description
-:   Robot base frame.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 

@@ -7,6 +7,8 @@ This can be helpful paired with the `PauseResumeController`.
 - If a child returns RUNNING, this node returns RUNNING. Loop is NOT restarted, the same running child will be ticked again.
 - If a child returns FAILURE, stop the loop and return FAILURE. Restart the loop only if (reset_on_failure == true)
 
+{{ render_bt_node_ports(page.title) }}
+
 ## Example
 
 ```xml

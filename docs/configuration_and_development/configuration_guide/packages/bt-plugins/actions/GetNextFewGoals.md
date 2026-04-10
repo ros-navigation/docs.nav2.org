@@ -2,36 +2,7 @@
 
 Extracts only the next `N` goals from a list of goals to send to a later task that only needs localized future knowledge.
 
-## Input Ports
-
-### **`num_goals`**
-
-| Type  | Default |
-|-------|---------|
-| `int` | N/A     |
-
-Description
-:   How many of the goals to take from the input goals.
-
-### **`input_goals`**
-
-| Type             | Default |
-|------------------|---------|
-| `nav_msgs/Goals` | N/A     |
-
-Description
-:   Input goals list.
-
-## Output Ports
-
-### **`output_goals`**
-
-| Type             | Default |
-|------------------|---------|
-| `nav_msgs/Goals` | N/A     |
-
-Description
-:   The output pruned goals list.
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
 
