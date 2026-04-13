@@ -112,19 +112,23 @@ def _load_bt_nodes_model(repo: str, ref: str, bt_nodes_repo_file_path: str, bt_n
         try:
             root = ET.parse(bt_nodes_cache_file_path).getroot()
             return root[0]
-        except Exception as exc:
-            logger.error(f'Failed to load the file ({bt_nodes_cache_file_path}) from cache: {exc}')
+        except (ET.ParseError, IndexError) as exc:
+            logger.error(f'Failed to parse the file ({bt_nodes_cache_file_path}) from cache: {exc}')
             logger.warning('Falling back to GitHub fetch...')
     
     try:
         xml_content = _fetch_github_file(repo, ref, bt_nodes_repo_file_path)
         _cache_file(bt_nodes_cache_file_path, xml_content)
-        root = ET.fromstring(xml_content)
-        return root[0]
     except Exception as exc:
         logger.error(f'Failed to fetch the file ({bt_nodes_repo_file_path}) from GitHub: {exc}')
         return None
-
+    
+    try:
+        root = ET.fromstring(xml_content)
+        return root[0]
+    except (ET.ParseError, IndexError) as exc:
+        logger.error(f'Failed to parse the file ({bt_nodes_repo_file_path}) from GitHub: {exc}')
+        return None
 
 def define_env(env):
     """
