@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 
 logging.basicConfig(
-    level=logging.WARNING,
+    level=logging.INFO,
     format='%(levelname)s - [%(asctime)s][%(filename)s] %(message)s',
     datefmt='%H:%M:%S'
 )
