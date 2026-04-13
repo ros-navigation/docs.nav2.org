@@ -1,3 +1,5 @@
+cache_dir: "macros/cache" 
+
 nav2_repo: "ros-navigation/navigation2"
 nav2_ref: "refs/heads/main"
-nav2_bt_nodes_path: "nav2_tree_nodes.xml" # Update path to the XML file
+nav2_bt_nodes_file_path: "nav2_behavior_tree/nav2_tree_nodes.xml" # Update path to the XML file

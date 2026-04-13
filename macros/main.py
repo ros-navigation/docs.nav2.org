@@ -93,39 +93,37 @@ def _fetch_github_file(repo: str, ref: str, file_path: str) -> str:
 
     response = requests.get(api_url, headers=headers, params={"ref": ref}, timeout=15)
     response.raise_for_status()
+    logger.info(f'File {Path(file_path).name} is fetched from the GitHub repository {repo}')
     return response.text
 
 
-def _load_bt_nodes_model(repo: str, ref: str, file_path: str):
+def _cache_file(cache_file_path: Path, data):
+    cache_file_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_file_path.write_text(data, encoding='utf-8')
+    logger.info(f'File {cache_file_path.name} is cached to {cache_file_path.parent} directory')
+
+
+def _load_bt_nodes_model(repo: str, ref: str, bt_nodes_repo_file_path: str, bt_nodes_cache_file_path: Path) -> ET.Element | None:
     """
     Load BT node model from cache, or fetch from GitHub if missing.
     """
-    
-    cache_path = Path('./macros/cache/nav2_tree_nodes.xml')
-    if cache_path.exists():
-        try:
-            tree = ET.parse(str(cache_path))
-            return tree.getroot()[0]
-        except Exception as exc:
-            logger.warning(f'Failed to load cached BT nodes: {exc}')
 
-    try:
-        
-        # Uncomment after adding the file generation
-        bt_nodes_xml = "" 
-        # bt_nodes_xml_content = _fetch_github_file(repo, ref, file_path)
-        
-        # Save to cache for next build
-        cache_path.parent.mkdir(parents=True, exist_ok=True)
-        cache_path.write_text(bt_nodes_xml)
-        logger.info(f'Cached BT node model to {cache_path}')
-        
-        tree = ET.fromstring(bt_nodes_xml)
-        return tree[0]
+    if bt_nodes_cache_file_path.exists():
+        try:
+            root = ET.parse(bt_nodes_cache_file_path).getroot()
+            return root[0]
+        except Exception as exc:
+            logger.error(f'Failed to load the file ({bt_nodes_cache_file_path}) from cache: {exc}')
+            logger.warning('Falling back to GitHub fetch...')
     
+    try:
+        xml_content = _fetch_github_file(repo, ref, bt_nodes_repo_file_path)
+        _cache_file(bt_nodes_cache_file_path, xml_content)
+        root = ET.fromstring(xml_content)
+        return root[0]
     except Exception as exc:
-        logger.error(f'Failed to fetch BT nodes from GitHub: {exc}')
-        return None  
+        logger.error(f'Failed to fetch the file ({bt_nodes_repo_file_path}) from GitHub: {exc}')
+        return None
 
 
 def define_env(env):
@@ -135,8 +133,11 @@ def define_env(env):
 
     repo = env.variables["nav2_repo"]
     ref = env.variables["nav2_ref"]
-    file_path = env.variables["nav2_bt_nodes_path"]
-    bt_nodes_model = _load_bt_nodes_model(repo, ref, file_path)
+    bt_nodes_repo_file_path = env.variables["nav2_bt_nodes_file_path"]
+    cache_dir = Path(env.variables["cache_dir"])
+
+    bt_nodes_cache_file_path = cache_dir / Path(bt_nodes_repo_file_path).name
+    bt_nodes_model = _load_bt_nodes_model(repo, ref, bt_nodes_repo_file_path, bt_nodes_cache_file_path)
 
     @env.macro
     def render_bt_node_ports(bt_node_id: str) -> str:
@@ -144,7 +145,7 @@ def define_env(env):
         if bt_nodes_model is None:
             return (
                 '!!! warning "BT node reference data unavailable"\n'
-                f'    The behavior tree node model file (./macros/cache/nav2_tree_nodes.xml) could not be loaded.\n'
+                f'    The behavior tree node model file ({bt_nodes_cache_file_path}) could not be loaded.\n'
             )
         
         node = bt_nodes_model.find(f'.//*[@ID="{bt_node_id}"]')
