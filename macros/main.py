@@ -1,3 +1,4 @@
+from __future__ import annotations # Required for Python 3.8 support in CI (ubuntu:focal)
 import requests
 import xml.etree.ElementTree as ET
 import logging
