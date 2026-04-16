@@ -96,6 +96,17 @@ Parameters
   Description:
     The name of the coordinate frame where the map is being published at.
 
+:enforce_global_frame_id:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description:
+    Enforce the use of the global frame ID for all shapes. Any shape with a non-empty frame ID, different than the global frame ID, will lead to failure. This will also disable the creation of the TF listener.
+
 :resolution:
 
   ============== =============================
@@ -288,6 +299,7 @@ Here is an example of configuration YAML for the Vector Object server:
       ros__parameters:
         map_topic: "vo_map"
         global_frame_id: "map"
+        enforce_global_frame_id: False
         resolution: 0.05
         default_value: -1
         overlay_type: 0
