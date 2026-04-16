@@ -2,6 +2,7 @@ from __future__ import annotations # Required for Python 3.8 support in CI (ubun
 import requests
 import xml.etree.ElementTree as ET
 import logging
+import re
 from pathlib import Path
 from jinja2 import Template
 
@@ -14,18 +15,16 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-_TYPE_MAPPINGS = {
-    "direct": {
-        "unsigned short": "uint16",
-        "unsigned int": "uint32",
-    },
-    "strip_prefix": {
-        "std::": None,
-    },
-    "strip_suffix": {
-        "_<std::allocator<void> >": None,
-    },
+_TYPE_DIRECT_MAPPINGS = {
+    "unsigned short": "uint16",
 }
+
+
+_TYPE_REGEX_TRANSFORMS = [
+    (re.compile(r'^std::'), ''),
+    (re.compile(r'_<std::allocator<void>\s*>\s*'), ''),
+    (re.compile(r',\s*std::allocator<(?:[^<>]|<[^>]*>)*>\s*'), ''),
+]
 
 
 _PORT_SECTION_TEMPLATE = Template("""\
@@ -49,22 +48,18 @@ Description
 def _convert_type(type_name: str) -> str:
     """
     Convert C++ types to simplified names for documentation, e.g.
-    `nav2_msgs::msg::Route_<std::allocator<void> >` -> `nav2_msgs::msg::Route`,
     `std::string` -> `string`,
+    `std::vector<int, std::allocator<int> >` -> `vector<int>`,
+    `nav2_msgs::msg::Route_<std::allocator<void> >` -> `nav2_msgs::msg::Route`,
     """
 
-    if type_name in _TYPE_MAPPINGS["direct"]:
-        return _TYPE_MAPPINGS["direct"][type_name]
-    
-    for prefix in _TYPE_MAPPINGS["strip_prefix"]:
-        if type_name.startswith(prefix):
-            return type_name[len(prefix):]
-    
-    for suffix in _TYPE_MAPPINGS["strip_suffix"]:
-        if type_name.endswith(suffix):
-            return type_name[:-len(suffix)]
-    
-    return type_name
+    if type_name in _TYPE_DIRECT_MAPPINGS:
+        return _TYPE_DIRECT_MAPPINGS[type_name]
+
+    result = type_name
+    for pattern, replacement in _TYPE_REGEX_TRANSFORMS:
+        result = pattern.sub(replacement, result)
+    return result
 
 
 def _format_default(default_str: str) -> str:
