@@ -1405,8 +1405,28 @@ A typical setup model for this is a Nav2 stack with Costmap Filters enabled, run
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">resolution</dt>
+<dt class="field-odd">enforce_global_frame_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Enforce the use of the global frame ID for all shapes. Any shape with a non-empty frame ID, different than the global frame ID, will lead to failure. This will also disable the creation of the TF listener.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">resolution</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1425,8 +1445,8 @@ A typical setup model for this is a Nav2 stack with Costmap Filters enabled, run
 </dd>
 </dl>
 </dd>
-<dt class="field-even">default_value</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">default_value</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1445,8 +1465,8 @@ A typical setup model for this is a Nav2 stack with Costmap Filters enabled, run
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">overlay_type</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">overlay_type</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1473,8 +1493,8 @@ The following values are supported:</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">update_frequency</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">update_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1493,8 +1513,8 @@ The following values are supported:</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1513,8 +1533,8 @@ The following values are supported:</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">shapes</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">shapes</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1738,6 +1758,7 @@ The following values are supported:</p>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">map_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vo_map&quot;</span>
 <span class="w">    </span><span class="nt">global_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
+<span class="w">    </span><span class="nt">enforce_global_frame_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
 <span class="w">    </span><span class="nt">default_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 <span class="w">    </span><span class="nt">overlay_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
