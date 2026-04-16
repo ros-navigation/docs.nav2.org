@@ -88,25 +88,35 @@ def _parse_ports(node: ET.Element) -> tuple:
     output_ports = []
 
     for child in node:
-        if child.tag not in ('input_port', 'output_port'):
+        
+        port_direction = child.tag
+        if port_direction not in ('input_port', 'output_port'):
             continue
 
-        raw_type = child.attrib.get('type', '')
-        port_type = _convert_type(raw_type)
+        port_name = child.attrib.get('name', '')
+        
+        raw_port_type = child.attrib.get('type', '')
+        port_type = _convert_type(raw_port_type)
 
-        raw_default = child.attrib.get('default', 'N/A')
-        default = _format_default(raw_default) if port_type in ('double', 'float') else raw_default
+        raw_port_default_value = child.attrib.get('default', 'N/A')
+        port_default_value = (
+            _format_default(raw_port_default_value)
+            if port_type in ('double', 'float')
+            else raw_port_default_value
+        )
+
+        port_description = (child.text or '').strip()
 
         port = {
-            'name': child.attrib.get('name', ''),
+            'name': port_name,
             'type': port_type,
-            'default': default,
-            'description': (child.text or '').strip(),
+            'default': port_default_value,
+            'description': port_description,
         }
 
-        if child.tag == 'input_port':
+        if port_direction == 'input_port':
             input_ports.append(port)
-        elif child.tag == 'output_port':
+        elif port_direction == 'output_port':
             output_ports.append(port)
 
     return input_ports, output_ports
