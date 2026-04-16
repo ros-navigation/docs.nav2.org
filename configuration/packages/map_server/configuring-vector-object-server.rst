@@ -105,8 +105,8 @@ Parameters
   ============== =============================
 
   Description:
-    Enforce the use of the global frame ID for all shapes. Any shape with a non-empty frame ID, different than the global frame ID, will lead to failure. This will also disable the creation of the TF listener. 
-    
+    Enforce the use of the global frame ID for all shapes. Any shape with a non-empty frame ID, different than the global frame ID, will lead to failure. This will also disable the creation of the TF listener.
+
 :resolution:
 
   ============== =============================
