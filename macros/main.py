@@ -3,6 +3,8 @@ import requests
 import xml.etree.ElementTree as ET
 import logging
 from pathlib import Path
+from jinja2 import Template
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -10,6 +12,24 @@ logging.basicConfig(
     datefmt='%H:%M:%S'
 )
 logger = logging.getLogger(__name__)
+
+
+_PORT_SECTION_TEMPLATE = Template("""\
+## {{ heading }}
+
+{% for port in ports -%}
+### **`{{ port.name }}`**
+
+| Type                        | Default            |
+|-----------------------------|--------------------|
+| `{{ port.parameter_type }}` | {{ port.default }} |
+
+{% if port.description %}
+Description
+:   {{ port.description }}
+{% endif %}
+{% endfor -%}
+""")
 
 
 def _strip_template_suffix(type_str: str) -> str:
@@ -66,19 +86,6 @@ def _parse_ports(node: ET.Element) -> tuple:
             output_ports.append(port)
 
     return input_ports, output_ports
-
-
-def _render_port_section(heading: str, ports: list) -> str:
-    lines = [f'## {heading}\n']
-    for p in ports:
-        lines.append(f'### **`{p["name"]}`**\n')
-        lines.append('| Type | Default |')
-        lines.append('|------|---------|')
-        lines.append(f'| `{p["parameter_type"]}` | {p["default"]} |\n')
-        if p['description']:
-            lines.append('Description')
-            lines.append(f':   {p["description"]}\n')
-    return '\n'.join(lines)
 
 
 def _fetch_github_file(repo: str, ref: str, file_path: str) -> str:
@@ -165,8 +172,12 @@ def define_env(env):
 
         sections = []
         if input_ports:
-            sections.append(_render_port_section('Input Ports', input_ports))
+            sections.append(
+                _PORT_SECTION_TEMPLATE.render(heading='Input Ports', ports=input_ports)
+            )
         if output_ports:
-            sections.append(_render_port_section('Output Ports', output_ports))
+            sections.append(
+                _PORT_SECTION_TEMPLATE.render(heading='Output Ports', ports=output_ports)
+            )
 
         return '\n\n'.join(sections)
