@@ -45,8 +45,9 @@ def _strip_template_suffix(type_str: str) -> str:
 
 
 def _format_default(default_str: str) -> str:
-    """Simplify numeric default values by stripping trailing zeros, e.g.
-    '0.150000' -> '0.15', '1.000000' -> '1.0'
+    """
+    Simplify numeric default values by stripping trailing zeros, e.g.
+    `0.150000` -> `0.15`, `1.000000` -> `1.0`
     """
     try:
         return str(float(default_str))
@@ -153,6 +154,9 @@ def define_env(env):
 
     @env.macro
     def render_bt_node_ports(bt_node_id: str) -> str:
+        """
+        Render MkDocs-formatted documentation for a Behavior Tree node's input/output ports.
+        """
         
         if bt_nodes_model is None:
             return (
