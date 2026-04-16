@@ -14,15 +14,29 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+_TYPE_MAPPINGS = {
+    "direct": {
+        "unsigned short": "uint16",
+        "unsigned int": "uint32",
+    },
+    "strip_prefix": {
+        "std::": None,
+    },
+    "strip_suffix": {
+        "_<std::allocator<void> >": None,
+    },
+}
+
+
 _PORT_SECTION_TEMPLATE = Template("""\
 ## {{ heading }}
 
 {% for port in ports -%}
 ### **`{{ port.name }}`**
 
-| Type                        | Default            |
-|-----------------------------|--------------------|
-| `{{ port.parameter_type }}` | {{ port.default }} |
+| Type              | Default            |
+|-------------------|--------------------|
+| `{{ port.type }}` | {{ port.default }} |
 
 {% if port.description %}
 Description
@@ -32,16 +46,25 @@ Description
 """)
 
 
-def _strip_template_suffix(type_str: str) -> str:
-    """Strip allocator template suffix from msg types, e.g.
-    'nav2_msgs::msg::Route_<std::allocator<void> >' -> 'nav2_msgs::msg::Route'
+def _convert_type(type_name: str) -> str:
     """
+    Convert C++ types to simplified names for documentation, e.g.
+    `nav2_msgs::msg::Route_<std::allocator<void> >` -> `nav2_msgs::msg::Route`,
+    `std::string` -> `string`,
+    """
+
+    if type_name in _TYPE_MAPPINGS["direct"]:
+        return _TYPE_MAPPINGS["direct"][type_name]
     
-    if 'msg::' in type_str:
-        idx = type_str.find('_<')
-        if idx != -1:
-            return type_str[:idx]
-    return type_str
+    for prefix in _TYPE_MAPPINGS["strip_prefix"]:
+        if type_name.startswith(prefix):
+            return type_name[len(prefix):]
+    
+    for suffix in _TYPE_MAPPINGS["strip_suffix"]:
+        if type_name.endswith(suffix):
+            return type_name[:-len(suffix)]
+    
+    return type_name
 
 
 def _format_default(default_str: str) -> str:
@@ -69,14 +92,14 @@ def _parse_ports(node: ET.Element) -> tuple:
             continue
 
         raw_type = child.attrib.get('type', '')
-        type = _strip_template_suffix(raw_type)
+        port_type = _convert_type(raw_type)
 
         raw_default = child.attrib.get('default', 'N/A')
-        default = _format_default(raw_default) if type in ('double', 'float') else raw_default
+        default = _format_default(raw_default) if port_type in ('double', 'float') else raw_default
 
         port = {
             'name': child.attrib.get('name', ''),
-            'parameter_type': type,
+            'type': port_type,
             'default': default,
             'description': (child.text or '').strip(),
         }
@@ -112,7 +135,12 @@ def _cache_file(cache_file_path: Path, data):
     logger.info(f'File {cache_file_path.name} is cached to {cache_file_path.parent} directory')
 
 
-def _load_bt_nodes_model(repo: str, ref: str, bt_nodes_repo_file_path: str, bt_nodes_cache_file_path: Path) -> ET.Element | None:
+def _load_bt_nodes_model(
+    repo: str,
+    ref: str,
+    bt_nodes_repo_file_path: str,
+    bt_nodes_cache_file_path: Path
+) -> ET.Element | None:
     """
     Load BT node model from cache, or fetch from GitHub if missing.
     """
