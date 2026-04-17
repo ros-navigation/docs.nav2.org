@@ -399,17 +399,6 @@ Regulated Pure Pursuit Parameters
 
     Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
 
-:stateful:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           true
-  ============== =============================
-
-  Description
-    Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
-
 :allow_parameter_qos_overrides:
 
   ============== =============================
@@ -478,7 +467,6 @@ Example
         plugin: "nav2_controller::SimpleGoalChecker"
         xy_goal_tolerance: 0.25
         yaw_goal_tolerance: 0.25
-        stateful: True
       FollowPath:
         plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
         max_linear_vel: 0.5
@@ -511,6 +499,5 @@ Example
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
         min_distance_to_obstacle: 0.0
-        stateful: true
         use_dynamic_window: false
         allow_obstacle_checking_beyond_goal: false
