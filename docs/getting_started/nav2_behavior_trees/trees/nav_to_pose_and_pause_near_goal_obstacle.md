@@ -90,4 +90,6 @@ In conclusion, this particular BT would serve, both as an example and ready-to-u
 
 A complete demo of this BT can be seen in the video below:
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7AkZiH2Cf_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<figure markdown="span">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7AkZiH2Cf_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
