@@ -95,3 +95,7 @@
 .md-typeset .twemoji svg {
   width: 100%;
 }
+
+.md-top:focus, .md-top:hover {
+  background-color:#47c7ef;
+}
