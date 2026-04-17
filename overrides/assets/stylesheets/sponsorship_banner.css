@@ -17,7 +17,7 @@
   margin-left: 0.8rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.21);
   border-radius: 0.8rem;
-  border: 1px solid #76CFE5;
+  border: 1px solid  var(--color-nav2-light-blue);
 
   .sponsorship-banner {
     font-size: 0.7rem;
@@ -30,7 +30,7 @@
   
   .sponsorship-banner-button {
     color:white;
-    background:#47c7ef;
+    background: var(--color-nav2-blue);
     padding: 0.4rem 0.8rem;
     border-radius: 0.3rem; 
     text-decoration: none; 
@@ -40,7 +40,7 @@
 
     &:hover {
       color: white;
-      background:#76CFE5;
+      background: var(--color-nav2-light-blue);
     }
   }
 
@@ -76,7 +76,7 @@
 
   .sponsorship-expanded-banner-button {
     color:white;
-    background:#47c7ef;
+    background: var(--color-nav2-blue);
     padding: 0.5rem 1.6rem;
     border-radius: 0.3rem; 
     text-decoration: none; 
@@ -86,7 +86,7 @@
 
     &:hover {
       color: white;
-      background:#76CFE5;
+      background: var(--color-nav2-light-blue);
     }
   }
 }
@@ -97,8 +97,8 @@
 
   .md-banner {
     display: block;
-    color:#434343;
-    background-color:#76CFE5;
+    color: var(--color-nav2-gray);
+    background-color: var(--color-nav2-light-blue);
     border-bottom: 1px solid #6BBED3;
 
     .sponsorship-banner {
@@ -114,7 +114,7 @@
     
     .sponsorship-banner-button {
       color:white;
-      background:#434343;
+      background: var(--color-nav2-gray);
       padding: 0.3rem 0.6rem;
       border-radius: 0.3rem; 
       text-decoration: none; 

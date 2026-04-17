@@ -20,8 +20,8 @@
     border-color: var(--button-primary-bg-color);
 
     &:hover {
-      border-color:#76cfe5;
-      background-color:#76cfe5;
+      border-color: var(--color-nav2-light-blue);
+      background-color: var(--color-nav2-light-blue);
       box-shadow: 0 2px 2px #00000034;
       transform: translateY(-1px);
       transition: position 0.2s ease;

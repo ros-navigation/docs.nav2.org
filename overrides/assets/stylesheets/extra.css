@@ -1,7 +1,14 @@
+:root {
+  /* Nav2 Color Palette */
+  --color-nav2-blue:#47c7ef;
+  --color-nav2-light-blue:#76cfe5;
+  --color-nav2-gray:#434343;
+}
+
 /* Override default schemes */
 /* Light mode */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:#47c7ef;
+  --md-primary-fg-color: var(--color-nav2-blue);
   --md-default-fg-color:#000000d6;
   --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
@@ -16,13 +23,13 @@
   --search-form-border-hover-color:#d7d7d7;
   --code-border-color:#e5e5e5;
   --button-primary-bg-color: var(--md-primary-fg-color);
-  --sponsorship-banner-typeset-a-color:#434343;
+  --sponsorship-banner-typeset-a-color: var(--color-nav2-gray);
 }
 
 /* Dark mode */
 [data-md-color-scheme="slate"][data-md-color-primary] {
-  --md-primary-fg-color:#47c7ef;
-  --md-default-bg-color:#434343;
+  --md-primary-fg-color: var(--color-nav2-blue);
+  --md-default-bg-color: var(--color-nav2-gray);
   --md-default-fg-color:#fffffff5;
   --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
   --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
@@ -97,5 +104,5 @@
 }
 
 .md-top:focus, .md-top:hover {
-  background-color:#47c7ef;
+  background-color: var(--color-nav2-blue);
 }
