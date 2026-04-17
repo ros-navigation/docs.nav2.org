@@ -938,3 +938,9 @@ Key changes:
 - New parameters ``publish_scan``, ``odom_publish_dur``, and ``scan_noise_std`` are available.
 
 See :ref:`configuring_loopback_sim` for full parameter documentation.
+
+Stateful parameter removed from Regulated Pure Pursuit Controller
+-----------------------------------------------------------------
+`PR #6071 <https://github.com/ros-navigation/navigation2/pull/6071>`_ removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.
+
+A new GoalChecker API has been added so that controllers can query whether goal checking should be stateful. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.
