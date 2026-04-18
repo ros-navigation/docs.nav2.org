@@ -582,7 +582,7 @@ Step 7 - Build and Run
 
 .. note::
 
-   For a step-by-step video on how to launch and try the demos with explanations, `click here <https://youtu.be/Au8p1TmpboI>`_.
+   For a step-by-step video on how to launch and try the demos with explanations, `click here <https://youtu.be/3IUE7dGl_d8>`_.
 
 First of all, to try the demos, build the workspace:
 
