@@ -106,3 +106,19 @@
 .md-top:focus, .md-top:hover {
   background-color: var(--color-nav2-blue);
 }
+
+/* Prevent long headings from wrapping in the path and 
+update the style of scrollbar */
+.md-content .md-path {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--light) transparent;
+
+  .md-path__list {
+    margin: 0.5rem 0;
+
+    .md-path__link .md-ellipsis {
+      white-space: nowrap;
+    }
+  }
+}
