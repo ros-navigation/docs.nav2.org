@@ -6,9 +6,12 @@ Navigating with Pose Constraints (Navigate Through Poses)
 
 - `Requirements`_
 - `Start TB4 simulation and Nav2`_
+- `Optional: Use Smac Planner`_
 - `What is navigating through poses?`_
+- `Behavior tree overview`_
 - `Waypoint Follower vs. Navigate Through Poses`_
 - `Send a goal in Python using Simple Commander`_
+- `Demo video`_
 - `References`_
 
 
@@ -29,13 +32,81 @@ In terminal:
 
 .. code-block:: bash
 
-   ros2 launch nav2_bringup tb4_simulation_launch.py slam:=True
+   ros2 launch nav2_bringup tb4_simulation_launch.py \
+     use_sim_time:=True \
+     slam:=False \
+     autostart:=True \
+     headless:=False \
+     map:=/opt/ros/${ROS_DISTRO}/share/nav2_bringup/maps/depot.yaml
 
 Notes:
 
 - This combined launch starts the TurtleBot 4 simulation and the Nav2 stack together.
-- ``slam:=True`` starts SLAM for map creation and localization in a fresh simulation.
-- With ``slam:=False``, Nav2 runs localization instead and expects ``map:=...`` to be provided.
+- ``headless:=False`` opens the Gazebo GUI. Without it, the simulation runs in
+  the background and only RViz is shown.
+- The TB4 simulation assets are provided by ``nav2_minimal_tb4_sim``, installed
+  under ``/opt/ros/${ROS_DISTRO}/share/nav2_minimal_tb4_sim``.
+- ``slam:=False`` uses localization against the provided static map. This is
+  preferred for this tutorial because the robot starts in a known map frame.
+- ``tb4_simulation_launch.py`` uses ``x_pose`` and ``y_pose`` to spawn the
+  robot in Gazebo. These are simulation world coordinates, not necessarily the
+  AMCL initial pose coordinates in the loaded map.
+- AMCL needs an initial pose before it can publish the ``map`` to ``odom``
+  transform. After the launch file starts, set the robot's initial pose in RViz
+  with the ``2D Pose Estimate`` tool before running the Python script.
+- ``bringup_launch.py`` starts Nav2, but does not by itself spawn the TB4
+  simulation. Use ``tb4_simulation_launch.py`` for this tutorial so the
+  simulator, robot, RViz, and Nav2 stack are launched together.
+
+Optional: Use Smac Planner
+==========================
+
+``NavigateThroughPoses`` can use any planner plugin loaded by the planner
+server. For a TurtleBot-style simulation, ``SmacPlanner2D`` is a good choice for a
+smooth, cost-aware demonstration.
+
+The default Nav2 parameters file is installed at
+``/opt/ros/${ROS_DISTRO}/share/nav2_bringup/params/nav2_params.yaml`` and uses
+``nav2_navfn_planner::NavfnPlanner`` for the default ``GridBased`` planner.
+Rather than editing the file in ``/opt/ros`` directly, copy it into a
+``config`` directory in your own ROS 2 package, edit the copy, and pass that
+file to the launch command. In the copied file, configure the planner server so
+that ``GridBased`` maps to ``nav2_smac_planner::SmacPlanner2D``:
+
+.. code-block:: yaml
+
+   planner_server:
+     ros__parameters:
+       planner_plugins: ["GridBased"]
+
+       GridBased:
+         plugin: "nav2_smac_planner::SmacPlanner2D"
+         tolerance: 0.125
+         downsample_costmap: false
+         downsampling_factor: 1
+         allow_unknown: true
+         max_iterations: 1000000
+         max_on_approach_iterations: 1000
+         max_planning_time: 2.0
+         cost_travel_multiplier: 2.0
+         use_final_approach_orientation: false
+         smoother:
+           max_iterations: 1000
+           w_smooth: 0.3
+           w_data: 0.2
+           tolerance: 1.0e-10
+
+Then launch Nav2 with the updated parameters file:
+
+.. code-block:: bash
+
+   ros2 launch nav2_bringup tb4_simulation_launch.py \
+     use_sim_time:=True \
+     slam:=False \
+     autostart:=True \
+     headless:=False \
+     map:=/opt/ros/${ROS_DISTRO}/share/nav2_bringup/maps/depot.yaml \
+     params_file:=/path/to/ros2_pkg/config/nav2_params.yaml
 
 What is navigating through poses?
 =================================
@@ -47,6 +118,16 @@ for the full route. This is useful when an application needs the robot to visit
 several waypoints, follow a preferred corridor, inspect multiple locations, or
 break a larger navigation task into smaller intentional steps.
 
+The `NavigateThroughPoses action definition <https://api.nav2.org/actions/kilted/navigatethroughposes.html>`_
+describes the goal, result, and feedback messages used by this behavior. The
+goal contains the ordered poses and an optional behavior tree override. The
+result provides an error code and human-readable error message when navigation
+does not succeed. The feedback is especially useful for monitoring progress
+because it reports values such as the robot's current pose, navigation time,
+estimated time remaining, number of recoveries, distance remaining, and number
+of poses remaining. The Python example below logs ``distance_remaining`` and
+``number_of_poses_remaining`` from that feedback message.
+
 In Simple Commander, ``BasicNavigator.goThroughPoses(...)`` is the convenience
 API for this behavior. It waits for the ``NavigateThroughPoses`` action server,
 packages the provided ``nav_msgs/Goals`` message into a
@@ -54,6 +135,20 @@ packages the provided ``nav_msgs/Goals`` message into a
 task handle when the request is accepted. The examples below use that task
 handle to monitor feedback such as distance remaining, poses remaining, and
 recoveries until navigation completes.
+
+Behavior tree overview
+======================
+
+The default ``NavigateThroughPoses`` behavior tree plans with
+``ComputePathThroughPoses``, prunes completed goals with ``RemovePassedGoals``,
+and follows the generated path with ``FollowPath``. This is what lets Nav2 treat
+the poses as constraints along one continuous route instead of separate
+per-waypoint tasks.
+
+See the full
+`Navigate Through Poses behavior tree <https://docs.nav2.org/behavior_trees/trees/nav_through_poses_recovery.html>`_
+for the complete XML with replanning, planner and controller recovery, and
+system-level recovery actions.
 
 Waypoint Follower vs. Navigate Through Poses
 ============================================
@@ -84,6 +179,9 @@ Send a goal in Python using Simple Commander
 This method uses ``nav2_simple_commander`` and sends ``nav_msgs/Goals`` to
 ``BasicNavigator.goThroughPoses(...)``.
 
+The goal poses below are example ``map`` frame poses. If you use a different
+map, choose poses in free space within that map's bounds.
+
 
 Create ``~/tb4_sim_ws/go_through_poses.py``:
 
@@ -94,6 +192,7 @@ Create ``~/tb4_sim_ws/go_through_poses.py``:
    import time
 
    import rclpy
+   from rclpy.duration import Duration
    from builtin_interfaces.msg import Time
    from geometry_msgs.msg import PoseStamped
    from nav_msgs.msg import Goals
@@ -114,18 +213,17 @@ Create ``~/tb4_sim_ws/go_through_poses.py``:
        rclpy.init()
        navigator = BasicNavigator(node_name="navigate_through_poses_py_client")
 
-       # If you launched Nav2 with slam:=True, use localizer='robot_localization'.
-       # For AMCL localization mode, use waitUntilNav2Active() with defaults.
-       navigator.waitUntilNav2Active(localizer="robot_localization")
+       navigator.waitUntilNav2Active()
 
        stamp = navigator.get_clock().now().to_msg()
        goals_msg = Goals()
        goals_msg.header.frame_id = "map"
        goals_msg.header.stamp = stamp
        goals_msg.goals = [
-           make_pose(stamp, 3.5, 0.0, 1.0),
-           make_pose(stamp, 5.0, 1.0, 0.25),
-           make_pose(stamp, 7.0, 2.0, 0.0),
+           make_pose(stamp, 7.0, 6.0, 1.0),
+           make_pose(stamp, 12.0, 6.5, 1.0),
+           make_pose(stamp, 9.5, 8.0, 1.0),
+           make_pose(stamp, 5.0, 8.0, 1.0),
        ]
 
        task = navigator.goThroughPoses(goals_msg, behavior_tree="")
@@ -140,12 +238,15 @@ Create ``~/tb4_sim_ws/go_through_poses.py``:
        while not navigator.isTaskComplete(task):
            feedback = navigator.getFeedback(task)
            now_sec = time.monotonic()
-           if feedback and (now_sec - last_log_time) >= 0.5:
+           if feedback and (now_sec - last_log_time) >= 1.0:
                navigator.info(
                    "Feedback: distance_remaining="
                    f"{feedback.distance_remaining:.2f}, "
                    f"poses_remaining={feedback.number_of_poses_remaining}, "
-                   f"recoveries={feedback.number_of_recoveries}"
+                   f"recoveries={feedback.number_of_recoveries}, "
+                   "Estimated time of arrival: "
+                   f"{Duration.from_msg(feedback.estimated_time_remaining).nanoseconds / 1e9:.0f}"
+                   " seconds."
                )
                last_log_time = now_sec
 
@@ -168,8 +269,18 @@ Create ``~/tb4_sim_ws/go_through_poses.py``:
    if __name__ == "__main__":
        main()
 
+Demo video
+==========
+
+A video demonstration shows the robot executing this script with
+``NavigateThroughPoses`` and Smac Planner configured for ``GridBased``. In RViz,
+the planned path should pass through the ordered pose constraints and the robot
+should continue through intermediate poses as part of one navigation task,
+rather than stopping to run a separate waypoint task at each pose.
+
 References
 ==========
 
+- `Smac Planner Configuration Guide <https://docs.nav2.org/configuration/packages/configuring-smac-planner.html>`_
 - `Nav2 Simple Commander Navigate Through Poses example <https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/nav2_simple_commander/example_nav_through_poses.py>`_
 - `Achieving Smooth Navigation with Nav2 Waypoint Follower <https://robotics.stackexchange.com/questions/104201/achieving-smooth-navigation-with-nav2-waypoint-follower>`_
