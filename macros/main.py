@@ -3,6 +3,7 @@ import requests
 import xml.etree.ElementTree as ET
 import logging
 import re
+import sys
 from pathlib import Path
 from jinja2 import Template
 
@@ -184,26 +185,26 @@ def define_env(env):
 
     bt_nodes_cache_file_path = cache_dir / Path(bt_nodes_repo_file_path).name
     bt_nodes_model = _load_bt_nodes_model(repo, ref, bt_nodes_repo_file_path, bt_nodes_cache_file_path)
+    
+    if bt_nodes_model is None:
+        logger.error(
+            'BT node model unavailable:\n'
+            f'  Cache: {bt_nodes_cache_file_path}\n'
+            f'  GitHub ({ref}): {repo}/{bt_nodes_repo_file_path}\n'
+            'Review paths in macros/variables.yml configuration.'
+        )
+        sys.exit(1)
 
     @env.macro
     def render_bt_node_ports(bt_node_id: str) -> str:
         """
         Render MkDocs-formatted documentation for a Behavior Tree node's input/output ports.
         """
-        
-        if bt_nodes_model is None:
-            return (
-                '!!! warning "BT node reference data unavailable"\n'
-                f'    The behavior tree node model file ({bt_nodes_cache_file_path}) could not be loaded.\n'
-            )
-        
+
         node = bt_nodes_model.find(f'.//*[@ID="{bt_node_id}"]')
         if node is None:
-            logger.warning(f'BT node not found - No node with ID `{bt_node_id}` found in the BT node model')
-            return (
-                '!!! warning "BT node not found"\n'
-                f'    No node with ID `{bt_node_id}` found in the BT node model.\n'
-            )
+            logger.error(f'BT node ID not found: "{bt_node_id}".')
+            sys.exit(1)
 
         input_ports, output_ports = _parse_ports(node)
 
