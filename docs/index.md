@@ -2,8 +2,7 @@
 
 <style>
 .video-frame {
-  flex: 1 1 300px;
-  min-width: 250px;
+  flex: 1 1 clamp(10rem, 45vw, 15rem);
   aspect-ratio: 16/9;
   max-width: 100%;
 }
