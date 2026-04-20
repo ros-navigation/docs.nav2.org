@@ -938,3 +938,10 @@ Key changes:
 - New parameters ``publish_scan``, ``odom_publish_dur``, and ``scan_noise_std`` are available.
 
 See :ref:`configuring_loopback_sim` for full parameter documentation.
+
+Global planner plugin natively accepts viapoints
+-------------------------------------------------
+
+`PR #5995 <https://github.com/ros-navigation/navigation2/pull/5995>`_ updates the ``createPath`` API for the ``BaseGlobalPlanner`` to include a vector ``std::vector<geometry_msgs::msg::PoseStamped>`` argument that takes in a list of intermediate points and passes them to the planner plugin implementation.
+
+The function signature for ``createPath`` must be updated accordingly for all custom planner plugins inheriting from the ``BaseGlobalPlanner``. This change does not alter the behavior of ``ComputePathThroughPoses`` that connects consecutive segments end-to-end but does upgrade the ``ComputePathToPose`` action.
