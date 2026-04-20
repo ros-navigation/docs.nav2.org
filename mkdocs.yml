@@ -97,6 +97,9 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+# Terminate the build on warning
+strict: true
+
 validation:
   links:
     absolute_links: relative_to_docs
