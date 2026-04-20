@@ -1218,6 +1218,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#constrained-smoother-cost-function-formulation-corrected">Constrained Smoother cost function formulation corrected</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#validatepath-ispathvalid-parameter-changes">ValidatePath / IsPathValid parameter changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
 </ul>
 </li>
 </ul>
@@ -1370,8 +1371,28 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-even">planner_id</dt>
+<dt class="field-even">viapoints</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 87%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Optional. A list of intermediate viapoints (excluding goal) to consider for planning. Takes in a blackboard variable, e.g. “{viapoints}”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">planner_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1390,8 +1411,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">server_name</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">server_name</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1410,8 +1431,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-even">server_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">server_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />

@@ -1219,6 +1219,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#constrained-smoother-cost-function-formulation-corrected">Constrained Smoother cost function formulation corrected</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#validatepath-ispathvalid-parameter-changes">ValidatePath / IsPathValid parameter changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
 </ul>
 </li>
 </ul>
@@ -2138,6 +2139,11 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 <li><p>New parameters <code class="docutils literal notranslate"><span class="pre">publish_scan</span></code>, <code class="docutils literal notranslate"><span class="pre">odom_publish_dur</span></code>, and <code class="docutils literal notranslate"><span class="pre">scan_noise_std</span></code> are available.</p></li>
 </ul>
 <p>See <a class="reference internal" href="../configuration/packages/configuring-loopback-sim.html#configuring-loopback-sim"><span class="std std-ref">Loopback Simulator</span></a> for full parameter documentation.</p>
+</div>
+<div class="section" id="global-planner-plugin-natively-accepts-viapoints">
+<h2>Global planner plugin natively accepts viapoints<a class="headerlink" href="#global-planner-plugin-natively-accepts-viapoints" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5995">PR #5995</a> updates the <code class="docutils literal notranslate"><span class="pre">createPath</span></code> API for the <code class="docutils literal notranslate"><span class="pre">BaseGlobalPlanner</span></code> to include a vector <code class="docutils literal notranslate"><span class="pre">std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</span></code> argument that takes in a list of intermediate points and passes them to the planner plugin implementation.</p>
+<p>The function signature for <code class="docutils literal notranslate"><span class="pre">createPath</span></code> must be updated accordingly for all custom planner plugins inheriting from the <code class="docutils literal notranslate"><span class="pre">BaseGlobalPlanner</span></code>. This change does not alter the behavior of <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> that connects consecutive segments end-to-end but does upgrade the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> action.</p>
 </div>
 </div>
 
