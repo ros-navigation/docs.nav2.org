@@ -1,13 +1,18 @@
 /* For "Distributions" cards in docs/index.md file */
 
 .distro-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   text-align: center;
 }
 
 .distro-cell {
+  flex: 0 1 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid var(--md-typeset-table-color);
   border-radius: 0.4rem;
   padding: 1rem;
@@ -21,12 +26,19 @@
 }
 
 .distro-badge {
+  display: inline-block;
   margin-bottom: 0.8rem;
   padding: 0.5rem 1.3rem;
   border-radius: 1.5rem;
   font-size: .8rem;
   font-weight: bold;
-  display: inline-block;
+  text-align: center;
+  min-width: 9rem;
+}
+
+.distro-cell img {
+  max-width: 100%;
+  height: auto;
 }
 
 .distro-badge.dev {

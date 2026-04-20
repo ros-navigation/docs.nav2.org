@@ -87,32 +87,32 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
   <div class="distro-cell">
     <div class="distro-title">Rolling Ridley</div>
     <div class="distro-badge dev">Development</div>
-    <img src="distro_graphics/rolling.png" width="300px"/>
+    <img src="distro_graphics/rolling.png"/>
   </div>
   <div class="distro-cell">
     <div class="distro-title">Kilted Kaiju</div>
     <div class="distro-badge active">Active Support</div>
-    <img src="distro_graphics/kilted.png" width="300px"/>
+    <img src="distro_graphics/kilted.png"/>
   </div>
   <div class="distro-cell">
     <div class="distro-title">Jazzy Jalisco</div>
     <div class="distro-badge active">Active Support</div>
-    <img src="distro_graphics/Jazzy.png" width="300px"/>
+    <img src="distro_graphics/Jazzy.png"/>
   </div>
   <div class="distro-cell">
     <div class="distro-title">Iron Irwini</div>
     <div class="distro-badge eol">End of Life</div>
-    <img src="distro_graphics/iron.png" width="300px"/>
+    <img src="distro_graphics/iron.png"/>
   </div>
   <div class="distro-cell">
     <div class="distro-title">Humble Hawksbill</div>
     <div class="distro-badge maintained">Maintained</div>
-    <img src="distro_graphics/humble.png" width="300px"/>
+    <img src="distro_graphics/humble.png"/>
   </div>
   <div class="distro-cell">
     <div class="distro-title">Galactic Geochelone</div>
     <div class="distro-badge eol">End of Life</div>
-    <img src="distro_graphics/galactic.png" width="300px"/>
+    <img src="distro_graphics/galactic.png"/>
   </div>
 </div>
 
