@@ -53,17 +53,6 @@ MPPI Parameters
     The plugin to use for the motion model constraints of the MPPI planner. 
     Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
 
-:``<motion_model>``.min_turning_r:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.2
-  ============== ===========================
-
-  Description
-    The minimum turning radius possible for the vehicle platform (m). This is only used if ``<motion_model>``.plugin is set to "mppi::AckermannMotionModel".
-
 :critics:
 
   ============== ===========================
@@ -397,6 +386,19 @@ Trajectory Visualization
   Description
     Whether to allow QoS profiles to be overwritten with parameterized values.
 
+AckermannMotionModel
+--------------------
+
+:``<motion_model>``.min_turning_r:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.2
+  ============== ===========================
+
+  Description
+    The minimum turning radius possible for the vehicle platform (m). This is only used if ``<motion_model>``.plugin is set to "mppi::AckermannMotionModel".
 
 Default Optimal Trajectory Validator
 ------------------------------------

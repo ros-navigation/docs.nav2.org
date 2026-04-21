@@ -946,8 +946,8 @@ Global planner plugin natively accepts viapoints
 
 The function signature for ``createPath`` must be updated accordingly for all custom planner plugins inheriting from the ``BaseGlobalPlanner``. This change does not alter the behavior of ``ComputePathThroughPoses`` that connects consecutive segments end-to-end but does upgrade the ``ComputePathToPose`` action.
 
-MPPI motion uses support plugin-based configuration
-----------------------------------------------------
+MPPI motion models use plugin-based configuration
+--------------------------------------------------
 
 `PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI. 
 
