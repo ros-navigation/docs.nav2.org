@@ -35,11 +35,34 @@ MPPI Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  string         "DiffDrive"
+  string         "diff_drive"
   ============== ===========================
 
   Description
-    The desired motion model to use for trajectory planning. Options are ``DiffDrive``, ``Omni``, or ``Ackermann``. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
+    The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace. 
+
+:``<motion_model>``.plugin:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  string         N/A
+  ============== ===========================
+
+  Description
+    The plugin to use for the motion model constraints of the MPPI planner. 
+    Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
+
+:``<motion_model>``.min_turning_r:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.2
+  ============== ===========================
+
+  Description
+    The minimum turning radius possible for the vehicle platform (m). This is only used if ``<motion_model>``.plugin is set to "mppi::AckermannMotionModel".
 
 :critics:
 
@@ -374,19 +397,6 @@ Trajectory Visualization
   Description
     Whether to allow QoS profiles to be overwritten with parameterized values.
 
-Ackermann Motion Model
-----------------------
-
-:min_turning_r:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  double         0.2
-  ============== ===========================
-
-  Description
-    The minimum turning radius possible for the vehicle platform (m).
 
 Default Optimal Trajectory Validator
 ------------------------------------
@@ -1085,7 +1095,9 @@ Example
           iteration_count: 1
           temperature: 0.3
           gamma: 0.015
-          motion_model: "DiffDrive"
+          motion_model: "diff_drive"
+          diff_drive:
+            plugin: "mppi::DiffDriveMotionModel"
           visualize: false
           critic_index_to_visualize: 0
           reset_period: 1.0 # (only in Humble)
@@ -1097,8 +1109,6 @@ Example
             plugin: "mppi::DefaultOptimalTrajectoryValidator"
             collision_lookahead_time: 2.0
             consider_footprint: false
-          AckermannConstraints:
-            min_turning_r: 0.2
           critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
           ConstraintCritic:
             enabled: true

@@ -945,3 +945,25 @@ Global planner plugin natively accepts viapoints
 `PR #5995 <https://github.com/ros-navigation/navigation2/pull/5995>`_ updates the ``createPath`` API for the ``BaseGlobalPlanner`` to include a vector ``std::vector<geometry_msgs::msg::PoseStamped>`` argument that takes in a list of intermediate points and passes them to the planner plugin implementation.
 
 The function signature for ``createPath`` must be updated accordingly for all custom planner plugins inheriting from the ``BaseGlobalPlanner``. This change does not alter the behavior of ``ComputePathThroughPoses`` that connects consecutive segments end-to-end but does upgrade the ``ComputePathToPose`` action.
+
+MPPI motion uses support plugin-based configuration
+----------------------------------------------------
+
+`PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI. 
+
+Motion model now has to be set up by specifying plugin to use:
+
+.. code-block:: yaml
+
+  MPPIController:
+    plugin: "nav2_mppi_controller::MPPIController"
+    motion_model: "diff_drive"
+    diff_drive:
+      plugin: "mppi::DiffDriveMotionModel"
+
+Supported motion model plugins are:
+  - ``mppi::DiffDriveMotionModel`` : replaces ``motion_model: DiffDrive``
+  - ``mppi::OmniMotionModel`` : replaces ``motion_model: Omni``
+  - ``mppi::AckermannMotionModel`` : replaces ``motion_model: Ackermann``
+
+While "diff_drive" is the default value for ``motion_model`` parameter, it is still required to specify the plugin for it, as shown above.
