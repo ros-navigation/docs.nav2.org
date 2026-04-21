@@ -39,7 +39,7 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace. 
+    The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace.
 
 :``<motion_model>``.plugin:
 
@@ -50,7 +50,7 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    The plugin to use for the motion model constraints of the MPPI planner. 
+    The plugin to use for the motion model constraints of the MPPI planner.
     Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
 
 :critics:

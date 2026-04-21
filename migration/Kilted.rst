@@ -949,7 +949,7 @@ The function signature for ``createPath`` must be updated accordingly for all cu
 MPPI motion models use plugin-based configuration
 --------------------------------------------------
 
-`PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI. 
+`PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI.
 
 Motion model now has to be set up by specifying plugin to use:
 
