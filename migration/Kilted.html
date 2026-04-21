@@ -1220,6 +1220,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#validatepath-ispathvalid-parameter-changes">ValidatePath / IsPathValid parameter changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -2144,6 +2145,27 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 <h2>Global planner plugin natively accepts viapoints<a class="headerlink" href="#global-planner-plugin-natively-accepts-viapoints" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5995">PR #5995</a> updates the <code class="docutils literal notranslate"><span class="pre">createPath</span></code> API for the <code class="docutils literal notranslate"><span class="pre">BaseGlobalPlanner</span></code> to include a vector <code class="docutils literal notranslate"><span class="pre">std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</span></code> argument that takes in a list of intermediate points and passes them to the planner plugin implementation.</p>
 <p>The function signature for <code class="docutils literal notranslate"><span class="pre">createPath</span></code> must be updated accordingly for all custom planner plugins inheriting from the <code class="docutils literal notranslate"><span class="pre">BaseGlobalPlanner</span></code>. This change does not alter the behavior of <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> that connects consecutive segments end-to-end but does upgrade the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> action.</p>
+</div>
+<div class="section" id="mppi-motion-models-use-plugin-based-configuration">
+<h2>MPPI motion models use plugin-based configuration<a class="headerlink" href="#mppi-motion-models-use-plugin-based-configuration" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6076">PR #6076</a> adds support for plugin-based configuration of motion models in MPPI.</p>
+<p>Motion model now has to be set up by specifying plugin to use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">MPPIController</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_mppi_controller::MPPIController&quot;</span>
+<span class="w">  </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;diff_drive&quot;</span>
+<span class="w">  </span><span class="nt">diff_drive</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mppi::DiffDriveMotionModel&quot;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Supported motion model plugins are:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mppi::DiffDriveMotionModel</span></code> : replaces <code class="docutils literal notranslate"><span class="pre">motion_model:</span> <span class="pre">DiffDrive</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mppi::OmniMotionModel</span></code> : replaces <code class="docutils literal notranslate"><span class="pre">motion_model:</span> <span class="pre">Omni</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mppi::AckermannMotionModel</span></code> : replaces <code class="docutils literal notranslate"><span class="pre">motion_model:</span> <span class="pre">Ackermann</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>While “diff_drive” is the default value for <code class="docutils literal notranslate"><span class="pre">motion_model</span></code> parameter, it is still required to specify the plugin for it, as shown above.</p>
 </div>
 </div>
 

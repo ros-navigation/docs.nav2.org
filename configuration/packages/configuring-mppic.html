@@ -1219,6 +1219,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#validatepath-ispathvalid-parameter-changes">ValidatePath / IsPathValid parameter changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -1330,17 +1331,38 @@ This process is then repeated a number of times and returns a converged solution
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>string</p></td>
-<td><p>“DiffDrive”</p></td>
+<td><p>“diff_drive”</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The desired motion model to use for trajectory planning. Options are <code class="docutils literal notranslate"><span class="pre">DiffDrive</span></code>, <code class="docutils literal notranslate"><span class="pre">Omni</span></code>, or <code class="docutils literal notranslate"><span class="pre">Ackermann</span></code>. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.</p>
+<dt>Description</dt><dd><p>The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">critics</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;motion_model&gt;</span></code>.plugin</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The plugin to use for the motion model constraints of the MPPI planner.
+Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi::OmniMotionModel”, and “mppi::AckermannMotionModel” for differential drive, omnidirectional, and Ackermann robots respectively.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">critics</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1359,8 +1381,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">iteration_count</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">iteration_count</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1379,8 +1401,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">batch_size</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">batch_size</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1399,8 +1421,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">time_steps</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">time_steps</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1419,8 +1441,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">model_dt</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">model_dt</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1439,8 +1461,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">vx_std</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">vx_std</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1459,8 +1481,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vy_std</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">vy_std</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1479,8 +1501,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">wz_std</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">wz_std</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1499,8 +1521,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vx_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">vx_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1519,8 +1541,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">vy_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">vy_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1539,8 +1561,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vx_min</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">vx_min</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1559,8 +1581,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">wz_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">wz_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1579,8 +1601,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">ax_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">ax_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1599,8 +1621,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">ay_min</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">ay_min</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1619,8 +1641,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">ay_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">ay_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1639,8 +1661,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">ax_min</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">ax_min</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1659,8 +1681,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">az_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">az_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1679,8 +1701,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">temperature</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">temperature</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1699,8 +1721,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">gamma</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">gamma</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1719,8 +1741,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">visualize</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">visualize</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1739,8 +1761,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">critic_index_to_visualize</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">critic_index_to_visualize</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1759,8 +1781,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">publish_optimal_trajectory</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">publish_optimal_trajectory</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1779,8 +1801,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">retry_attempt_limit</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">retry_attempt_limit</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1799,8 +1821,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">reset_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">reset_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1819,8 +1841,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">regenerate_noises</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">regenerate_noises</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1839,8 +1861,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">open_loop</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">open_loop</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1859,8 +1881,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">TrajectoryValidator.plugin</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">TrajectoryValidator.plugin</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -1945,10 +1967,10 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </div>
-<div class="section" id="ackermann-motion-model">
-<h3>Ackermann Motion Model<a class="headerlink" href="#ackermann-motion-model" title="Permalink to this heading"></a></h3>
+<div class="section" id="ackermannmotionmodel">
+<h3>AckermannMotionModel<a class="headerlink" href="#ackermannmotionmodel" title="Permalink to this heading"></a></h3>
 <dl class="field-list">
-<dt class="field-odd">min_turning_r</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;motion_model&gt;</span></code>.min_turning_r</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
@@ -1964,7 +1986,7 @@ This process is then repeated a number of times and returns a converged solution
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The minimum turning radius possible for the vehicle platform (m).</p>
+<dt>Description</dt><dd><p>The minimum turning radius possible for the vehicle platform (m). This is only used if <code class="docutils literal notranslate"><span class="pre">&lt;motion_model&gt;</span></code>.plugin is set to “mppi::AckermannMotionModel”.</p>
 </dd>
 </dl>
 </dd>
@@ -3170,7 +3192,9 @@ Dynamic and kinematic constraints are not required to be checked as trajectories
 <span class="w">      </span><span class="nt">iteration_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">      </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span>
-<span class="w">      </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DiffDrive&quot;</span>
+<span class="w">      </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;diff_drive&quot;</span>
+<span class="w">      </span><span class="nt">diff_drive</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mppi::DiffDriveMotionModel&quot;</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">critic_index_to_visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">      </span><span class="nt">reset_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"> </span><span class="c1"># (only in Humble)</span>
@@ -3182,8 +3206,6 @@ Dynamic and kinematic constraints are not required to be checked as trajectories
 <span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mppi::DefaultOptimalTrajectoryValidator&quot;</span>
 <span class="w">        </span><span class="nt">collision_lookahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">        </span><span class="nt">consider_footprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">      </span><span class="nt">AckermannConstraints</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">min_turning_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ConstraintCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;CostCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlignCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathFollowCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PreferForwardCritic&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">ConstraintCritic</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
