@@ -66,19 +66,11 @@ Package Structure
 
 The tutorial spans five packages, which you can find `here <https://github.com/NOTMOVETON/NAV2Tutorial>`_.
 
-+---------------------------------------+------------------------------------------------------+
-| **Package**                           | **Role**                                             |
-+=======================================+======================================================+
-| ``nav2_operations_msgs``              | Action message definitions                           |
-+---------------------------------------+------------------------------------------------------+
-| ``nav2_operations_servers``           | BladeServer and CameraServer lifecycle nodes         |
-+---------------------------------------+------------------------------------------------------+
-| ``nav2_operations_bt_nodes``          | ``SetBladeState`` and ``SetCameraYaw`` BT nodes      |
-+---------------------------------------+------------------------------------------------------+
-| ``nav2_operations_navigator``         | ``NavigateWithOperations`` navigator plugin          |
-+---------------------------------------+------------------------------------------------------+
-| ``nav2_operations_bringup``           | Launch files, params, and BT XML trees               |
-+---------------------------------------+------------------------------------------------------+
+- ``nav2_operations_msgs`` defines the custom action message types used to communicate hardware commands between the navigator and the task servers.
+- ``nav2_operations_servers`` implements the ``BladeServer`` and ``CameraServer`` lifecycle nodes that receive action goals and drive the physical hardware.
+- ``nav2_operations_bt_nodes`` provides the ``SetBladeState`` and ``SetCameraYaw`` BT action nodes that call the respective servers from within a behavior tree.
+- ``nav2_operations_navigator`` contains the ``NavigateWithOperations`` navigator plugin that composes path following with hardware operation BT nodes into a single navigation action.
+- ``nav2_operations_bringup`` holds the launch files, parameter files, and BT XML trees needed to bring up the full system.
 
 Step 1 - Define Action Messages
 ================================
