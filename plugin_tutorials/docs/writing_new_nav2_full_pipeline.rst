@@ -351,6 +351,7 @@ Model XML (``nav2_tree_nodes.xml``):
        </Action>
      </TreeNodesModel>
    </root>
+Many more BT node examples can be found in ``nav2_behavior_tree`` as well.
 
 Step 4 - Implement the Navigator Plugin
 ========================================
