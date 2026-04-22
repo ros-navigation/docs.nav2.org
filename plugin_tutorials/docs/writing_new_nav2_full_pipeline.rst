@@ -125,7 +125,7 @@ For more details refer to the ``nav2_operations_msgs`` package in the tutorial c
 Step 2 - Implement Dedicated Action Servers
 ============================================
 
-Each server is a ``nav2_util::LifecycleNode`` that wraps a ``nav2_util::SimpleActionServer``. Using ``LifecycleNode`` is what allows the ``nav2_lifecycle_manager`` to bring the servers up and down in the correct order alongside the rest of the Nav2 stack. ``SimpleActionServer`` handles goal queuing, preemption, and cancellation boilerplate so the execute callback only contains hardware logic.
+Each server is a ``nav2::LifecycleNode`` that wraps a ``nav2::SimpleActionServer``. Using ``LifecycleNode`` is what allows the ``nav2_lifecycle_manager`` to bring the servers up and down in the correct order alongside the rest of the Nav2 stack. ``SimpleActionServer`` handles goal queuing, preemption, and cancellation logic so the execute callback only contains task specific logic rather than ROS 2 actions boilerplate.
 
 BladeServer
 -----------
