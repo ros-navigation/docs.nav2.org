@@ -342,6 +342,7 @@ Model XML (``nav2_tree_nodes.xml``):
        </Action>
      </TreeNodesModel>
    </root>
+
 Many more BT node examples can be found in ``nav2_behavior_tree`` as well.
 
 Step 4 - Implement the Navigator Plugin
@@ -454,6 +455,7 @@ Export at the bottom of the ``.cpp``:
    PLUGINLIB_EXPORT_CLASS(
      nav2_operations_navigator::NavigateWithOperations,
      nav2_core::NavigatorBase)
+
 See ``nav2_bt_navigator`` package for the implementations of ``NavigateToPose`` and ``NavigateThroughPoses`` for more examples.
 
 Step 5 - Write Behavior Tree XML
