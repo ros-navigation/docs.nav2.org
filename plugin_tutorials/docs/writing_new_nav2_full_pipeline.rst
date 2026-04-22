@@ -231,6 +231,8 @@ Execute handler to complete some kind of task:
      action_server_->succeeded_current(result);
    }
 
+You can find other examples of Task Servers across Nav2, including the ``controller_server`` and ``planner_server`` for more example implementations.
+
 CameraServer
 ------------
 
