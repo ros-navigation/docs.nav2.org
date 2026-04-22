@@ -85,7 +85,7 @@ The tutorial spans five packages, which you can find at XYZ:
 Step 1 - Define Action Messages
 ================================
 
-Each operation gets its own action file with a goal, result, and feedback section.
+Each task server or operation gets its own action file with a goal, result, and feedback section. We also define a navigation action to be used by the BT Navigator plugin to define the I/O for the customized lawn mower navigation task using the task servers and precomputed path.
 
 Create three action definitions in ``nav2_operations_msgs/action/``.
 
