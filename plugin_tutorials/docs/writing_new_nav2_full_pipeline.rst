@@ -216,7 +216,7 @@ Lifecycle transitions:
      return CallbackReturn::SUCCESS;
    }
 
-Execute handler:
+Execute handler to complete some kind of task:
 
 .. code-block:: cpp
 
