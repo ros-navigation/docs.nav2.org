@@ -1,7 +1,7 @@
-.. _writing_new_nav2_full_pipeline:
+.. _integrating_new_task_server_and_navigator_plugin:
 
-Writing a Full Pipeline For New Functionality in Nav2
-*****************************************************
+Integrating New Task Server and Navigator Plugin
+*************************************************
 
 .. image:: images/Writing_new_nav2_full_pipeline/demo.gif
    :width: 100%
