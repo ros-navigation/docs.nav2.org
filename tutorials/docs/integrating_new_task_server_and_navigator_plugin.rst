@@ -507,7 +507,7 @@ The following configures the BT Navigator node to use our new navigator type and
 
    bt_navigator:
      ros__parameters:
-       default_navigate_with_operations_bt_xml: "/ros2_ws/src/nav2_operations_bringup/config/bt/navigate_with_operations.xml"
+       default_navigate_with_operations_bt_xml: "$(find-pkg-share nav2_operations_bringup)/config/bt/navigate_with_operations.xml"
        navigators: ["navigate_with_operations"]
        navigate_with_operations:
          plugin: nav2_operations_navigator::NavigateWithOperations
