@@ -283,7 +283,7 @@ For more details refer to the ``nav2_operations_servers`` package in the tutoria
 Step 3 - Implement Behavior Tree Nodes
 =======================================
 
-Each BT node inherits from ``nav2_behavior_tree::BtActionNode<ActionT>`` and is compiled as a shared library loaded by the BT executor at runtime. ``BtActionNode`` handles the full ROS 2 action lifecycle — sending the goal, waiting for acceptance, streaming feedback, and mapping the result to a ``BT::NodeStatus``. The subclass only needs to override ``on_tick()`` to populate the goal from the BT blackboard/ports.
+Each BT node inherits from ``nav2_behavior_tree::BtActionNode<ActionT>`` and is a BehaviorTree.CPP library plugin that is loaded by the BT Navigator at runtime when loading the BT XML file. ``BtActionNode`` handles the full ROS 2 action lifecycle — sending the goal, waiting for acceptance, streaming feedback, and mapping the result to a ``BT::NodeStatus``. The subclass only needs to override ``on_tick()`` to populate the goal from the BT blackboard/ports, and ``on_XYZ()`` for handling terminal states like cancellation, preemption, or successful completion to populate the response ports.
 
 The shared library is registered under a string ID (e.g. ``"SetBladeState"``) via ``BT_REGISTER_NODES``. The BT executor discovers it at startup by scanning the library names listed in ``plugin_lib_names`` in ``nav2_params.yaml``.
 
