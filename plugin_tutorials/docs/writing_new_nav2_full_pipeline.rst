@@ -54,7 +54,7 @@ For another real-world example of this pattern see `opennav_coverage <https://gi
 
 .. note::
 
-   Both operation servers can alternatively be implemented as Nav2 *behavior plugins* loaded by the ``behavior_server``, which avoids writing a separate lifecycle node. But this tutorial deliberately uses standalone action servers to illustrate the full integration path: how to write a Nav2-compatible server from scratch, give it lifecycle management, and expose it to the BT executor as a first-class node type.
+   Both operation servers can alternatively be implemented as Nav2 *behavior plugins* loaded by the ``behavior_server``, which avoids writing a separate lifecycle node. But this tutorial deliberately uses standalone action servers to illustrate the full integration path: how to write a Nav2-compatible server from scratch, expose it to the BT, and creating a BT  Navigator to leverage them as a first-class node type.
 
 Requirements
 ============
