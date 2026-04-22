@@ -33,7 +33,7 @@ The example implements a lawnmower robot with two operations:
 - **BladeServer** — enables or disables the cutting blade.
 - **CameraServer** — rotates an onboard camera to a target yaw.
 
-The key insight is the **layered integration pattern**: a dedicated ROS 2 action server owns each hardware operation, a BT node wraps an action client that calls this server as a tree primitive, and the navigator plugin composes those primitives into a mission via a BT XML file.
+The key insight is the **layered integration pattern**: a dedicated ROS 2 action server owns each hardware operation, a BT node wraps an action client that calls this server as a tree primitive, and the navigator plugin composes those primitives into a navigation mission with the task-specific inputs and outputs via a BT XML file.
 
 For a better understanding, here is the image of the pipeline flow:
 
