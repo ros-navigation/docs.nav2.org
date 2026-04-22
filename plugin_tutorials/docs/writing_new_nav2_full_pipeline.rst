@@ -48,7 +48,7 @@ Here is how a navigation request travels through the stack end-to-end:
 2. **Navigator plugin → Behavior Tree**: The plugin's ``goalReceived()`` loads the BT XML file specified in the goal and writes all required variables onto the blackboard from the action request — in this demo that is the precomputed path (``nav_msgs/Path``). The BT executor then executes on the behavior tree.
 3. **Behavior Tree → BT nodes**: The tree executes the navigation behavior, each BT node is a thin wrapper around a ROS 2 action client. They read inputs from blackboard ports, sends the action goal, and maps the server response back to its output ports.
 4. **BT nodes → Task servers**: Each BT ndoe action client calls a dedicated ROS 2 action server that owns one task or operation (``blade_server``, ``controller_server``, ``camera_server``).
-5. **Task servers → Hardware**: Each server owns a hardware abstraction layer — it publishes commands to ROS 2 topics that physical hardware drivers or simulation nodes subscribe to. For example, ``blade_server`` publishes ``std_msgs/Bool`` to ``/lawnmower/blade_command``; ``camera_server`` drives rotation and publishes the current yaw as ``std_msgs/Float32``. The hardware driver (or simulator) subscribes to these topics and actuates the physical device. The rest of the stack never touches hardware directly.
+5. **Task servers → Task**: Each server owns a core capability like computing a path or performing an operation with hardware. It returns the derived result to be used by other behavior tree nodes to compose the complete navigation behavior.
 
 For another real-world example of this pattern see `opennav_coverage <https://github.com/open-navigation/opennav_coverage>`_ — a coverage planning navigator uses the same approach.
 
