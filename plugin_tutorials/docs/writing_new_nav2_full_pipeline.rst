@@ -26,7 +26,7 @@ Overview
 
 This tutorial shows how to integrate a custom server to do a task-specific action as part of navigation using the Nav2 framework. This could be anything from a custom VLM integration, application-specific algorithm, or even a task to complete along the mission. This shows, for example, how to put together a navigation system following a precomputed path while performing hardware operations to engage a mowing blade and rotate a camera for a lawn mowing example.
 
-This tutorial shows how to wire together custom hardware-operation servers, Behavior Tree (BT) action nodes, and a ``BehaviorTreeNavigator`` plugin so that a robot can execute hardware commands (e.g. engage a mowing blade, rotate a camera) as part of autonomous navigation with Nav2.
+This tutorial shows how to wire together custom hardware-operation task servers, Behavior Tree (BT) action nodes, and a ``BehaviorTreeNavigator`` plugin so that a robot can execute hardware commands corresponding to the specific navigation style the application requires (e.g. engage a mowing blade, rotate a camera) as part of autonomous navigation with Nav2. This demonstrates that you do not need to simply navigate to pose, but can create autonomous navigation capabilities within Nav2 completing customized navigation APIs.
 
 The example implements a lawnmower robot with two operations:
 
