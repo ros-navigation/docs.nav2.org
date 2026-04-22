@@ -20,9 +20,7 @@ Integrating New Task Server and Navigator Plugin
 Overview
 ========
 
-.. note::
 
-   Source code can be `found here <https://github.com/NOTMOVETON/NAV2Tutorial>`_.
 
 This tutorial shows how to integrate a custom server to do a task-specific action as part of navigation using the Nav2 framework. This could be anything from a custom VLM integration, application-specific algorithm, or even a task to complete along the mission. This shows, for example, how to put together a navigation system following a precomputed path while performing hardware operations to engage a mowing blade and rotate a camera for a lawn mowing example.
 
@@ -66,7 +64,7 @@ Requirements
 Package Structure
 =================
 
-The tutorial spans five packages, which you can find at XYZ:
+The tutorial spans five packages, which you can find `here <https://github.com/NOTMOVETON/NAV2Tutorial>`_.
 
 +---------------------------------------+------------------------------------------------------+
 | **Package**                           | **Role**                                             |
