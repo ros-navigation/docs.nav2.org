@@ -507,6 +507,7 @@ Step 6 - Configure Parameters and Launch
 
 nav2_params.yaml (relevant sections)
 --------------------------------------
+The following configures the BT Navigator node to use our new navigator type and establish a default if the behavior tree field is not populated in the request. We also configure our new task servers as well.
 
 .. code-block:: yaml
 
