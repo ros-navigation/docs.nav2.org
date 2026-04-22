@@ -44,7 +44,7 @@ Data Flow Explanation
 
 Here is how a navigation request travels through the stack end-to-end:
 
-1. **Client → Navigator plugin**: The ``bt_navigator`` node loads and manages navigator plugins via pluginlib. Each plugin registers its own ROS 2 action server during activation. A client sends a goal directly to that action server (e.g. ``navigate_with_operations``). The goal has all fields already formed — how that is done is covered in Step 7.
+1. **Client → Navigator plugin**: The ``bt_navigator`` node loads and manages navigator plugins via pluginlib. Each plugin registers its own ROS 2 action server during activation. A client (i.e. your application) sends a goal to that action server (e.g. ``navigate_with_operations``) to navigate using a customizable API.
 2. **Navigator plugin → Behavior Tree**: The plugin's ``goalReceived()`` loads the BT XML file specified in the goal (or the default tree if none is provided) and writes all required variables onto the blackboard — in this demo that is only the path (``nav_msgs/Path``). The BT executor then begins ticking the tree.
 3. **Behavior Tree → BT nodes**: The tree on the diagram sequences three BT action nodes (``SetBladeState``, ``FollowPath``, ``SetCameraYaw``). Each node is a thin wrapper around a ROS 2 action client; it reads its inputs from blackboard ports, sends the action goal, and maps the server response back to a ``BT::NodeStatus``.
 4. **BT nodes → Task servers**: Each action client calls a dedicated ROS 2 action server that owns one operation (``blade_server``, ``controller_server``, ``camera_server``). The server executes the hardware command and streams feedback or returns a result.
