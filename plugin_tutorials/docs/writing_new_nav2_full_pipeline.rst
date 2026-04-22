@@ -120,7 +120,7 @@ Create three action definitions in ``nav2_operations_msgs/action/``.
    ---
    # no feedback
 
-For more details refer to the ``nav2_operations_msgs`` package in the tutorial code.
+For more details refer to the ``nav2_operations_msgs`` package in the tutorial code. You can find more examples of this in ``nav2_msgs`` for ``NavigateToPose``, ``NavigateThroughPoses`` navigator APIs as well as other task servers like ``FollowPath`` and ``ComputePathToPose``.
 
 Step 2 - Implement Dedicated Action Servers
 ============================================
