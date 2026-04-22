@@ -66,7 +66,7 @@ Requirements
 Package Structure
 =================
 
-The tutorial spans five packages:
+The tutorial spans five packages, which you can find at XYZ:
 
 +---------------------------------------+------------------------------------------------------+
 | **Package**                           | **Role**                                             |
