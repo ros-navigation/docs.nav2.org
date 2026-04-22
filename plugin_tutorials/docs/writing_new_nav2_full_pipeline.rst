@@ -261,7 +261,7 @@ Lifecycle transitions:
 | ``on_cleanup``     | Reset all members                            |
 +--------------------+----------------------------------------------+
 
-``CameraServer`` follows the same lifecycle pattern as ``BladeServer`` above — ``on_configure`` reads parameters and creates the publisher and action server, ``on_activate`` activates them and bonds to the lifecycle manager, ``on_deactivate`` reverses that, and ``on_cleanup`` resets all members. The full implementation is in ``workspace/nav2_operations_servers/src/camera_server.cpp``.
+``CameraServer`` follows the same lifecycle pattern as ``BladeServer`` above — ``on_configure`` reads parameters and creates the publisher and action server, ``on_activate`` activates them and bonds to the lifecycle manager, ``on_deactivate`` reverses that, and ``on_cleanup`` resets all members. The full implementation is in ``nav2_operations_servers/src/camera_server.cpp``.
 
 The execute loop checks for cancellation, steps ``current_yaw_`` toward ``target_yaw``, publishes the intermediate yaw, and exits when within ``tolerance_``:
 
