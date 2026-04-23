@@ -1,9 +1,6 @@
 from __future__ import annotations # Required for Python 3.8 support in CI (ubuntu:focal)
-import requests
+import subprocess, logging, re, sys, os, shutil
 import xml.etree.ElementTree as ET
-import logging
-import re
-import sys
 from pathlib import Path
 from jinja2 import Template
 
@@ -118,59 +115,80 @@ def _parse_ports(node: ET.Element) -> tuple:
     return input_ports, output_ports
 
 
-def _fetch_github_file(repo: str, ref: str, file_path: str) -> str:
-    """
-    Fetch raw file content using the GitHub API.
-    """
-    
-    api_url = f"https://api.github.com/repos/{repo}/contents/{file_path}"
-
-    headers = {
-        "Accept": "application/vnd.github.v3.raw",
-    }
-
-    response = requests.get(api_url, headers=headers, params={"ref": ref}, timeout=15)
-    response.raise_for_status()
-    logger.info(f'File {Path(file_path).name} is fetched from the GitHub repository {repo}')
-    return response.text
-
-
-def _cache_file(cache_file_path: Path, data):
-    cache_file_path.parent.mkdir(parents=True, exist_ok=True)
-    cache_file_path.write_text(data, encoding='utf-8')
-    logger.info(f'File {cache_file_path.name} is cached to {cache_file_path.parent} directory')
-
-
-def _load_bt_nodes_model(
-    repo: str,
-    ref: str,
-    bt_nodes_repo_file_path: str,
-    bt_nodes_cache_file_path: Path
-) -> ET.Element | None:
-    """
-    Load BT node model from cache, or fetch from GitHub if missing.
-    """
-
-    if bt_nodes_cache_file_path.exists():
+def _remove_dir(dir_path: Path):
+    """Remove directory if it exists"""
+    if os.path.exists(dir_path):
         try:
-            root = ET.parse(bt_nodes_cache_file_path).getroot()
-            return root[0]
-        except (ET.ParseError, IndexError) as exc:
-            logger.error(f'Failed to parse the file ({bt_nodes_cache_file_path}) from cache: {exc}')
-            logger.warning('Falling back to GitHub fetch...')
+            shutil.rmtree(dir_path)
+            logger.info(f"Removed existing directory: {dir_path}")
+        except OSError as exc:
+            logger.error(f"Failed to remove existing directory {dir_path}: {exc}")
+            raise
+
+
+def _clone_sparse_github_data(repo: str, branch: str, data_to_clone: list[str], clone_dir: Path):
+    """
+    Clone GitHub repository sparsely and checkout the specified files/directories.
+    """
+
+    if not data_to_clone:
+        logger.error("No directories or files specified for sparse checkout.")
+        raise ValueError("data_to_clone cannot be empty.")
     
+    if not clone_dir.exists():
+        logger.error(f"Clone directory does not exist: {clone_dir}")
+        raise ValueError(f"clone_dir must exist: {clone_dir}")
+    
+    repo_work_dir = clone_dir / Path(repo).name
+    _remove_dir(repo_work_dir)
+
+    github_url = f"https://github.com/{repo}.git"
+    logger.info(f"Cloning from {github_url} (branch: {branch})")
     try:
-        xml_content = _fetch_github_file(repo, ref, bt_nodes_repo_file_path)
-        _cache_file(bt_nodes_cache_file_path, xml_content)
-    except Exception as exc:
-        logger.error(f'Failed to fetch the file ({bt_nodes_repo_file_path}) from GitHub: {exc}')
+        subprocess.run([
+            "git", "clone",
+            "--depth=1",
+            "--filter=blob:none",
+            "--sparse",
+            "--branch", branch,
+            github_url,
+            str(repo_work_dir),
+        ], check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as exc:
+        raise
+    
+    logger.info(f"Performing sparse checkout in {repo_work_dir}")
+    try:
+        subprocess.run([
+            "git", 
+            "sparse-checkout", 
+            "set",
+            "--no-cone",
+            *data_to_clone,
+        ], cwd=repo_work_dir, check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as exc:
+        _remove_dir(repo_work_dir)
+        raise
+
+    logger.info(
+        f"Cloned the following data from {github_url} (branch: {branch}) to {repo_work_dir}:\n\t" +
+        "\n\t".join(data_to_clone)
+    )
+
+
+def _load_bt_nodes_model(file_path: Path ) -> ET.Element | None:
+    """
+    Load the behavior-tree nodes model from a cached file.
+    """
+
+    if not file_path.exists():
         return None
-    
+
     try:
-        root = ET.fromstring(xml_content)
+        root = ET.parse(file_path).getroot()
         return root[0]
     except (ET.ParseError, IndexError) as exc:
-        logger.error(f'Failed to parse the file ({bt_nodes_repo_file_path}) from GitHub: {exc}')
+        logger.error(f"Failed to parse file {file_path} from cache: {exc}")
         return None
 
 def define_env(env):
@@ -178,20 +196,24 @@ def define_env(env):
     This is the hook for the variables, macros and filters.
     """
 
-    repo = env.variables["nav2_repo"]
-    ref = env.variables["nav2_ref"]
-    bt_nodes_repo_file_path = env.variables["nav2_bt_nodes_file_path"]
     cache_dir = Path(env.variables["cache_dir"])
+    nav2_repo = env.variables["nav2_repo"]
+    nav2_branch = env.variables["nav2_branch"]
+    nav2_data_to_clone = env.variables["nav2_data_to_clone"]
+    nav2_tree_nodes_file_path = Path(env.variables["nav2_tree_nodes_file_path"])
 
-    bt_nodes_cache_file_path = cache_dir / Path(bt_nodes_repo_file_path).name
-    bt_nodes_model = _load_bt_nodes_model(repo, ref, bt_nodes_repo_file_path, bt_nodes_cache_file_path)
+    try:
+        _clone_sparse_github_data(nav2_repo, nav2_branch, nav2_data_to_clone, cache_dir)
+    except (ValueError, OSError, subprocess.CalledProcessError) as exc:
+        logger.error(f"Failed to clone GitHub data: {getattr(exc, 'stderr', exc)}")
+        sys.exit(1)
+
+    bt_nodes_model = _load_bt_nodes_model(nav2_tree_nodes_file_path)
     
     if bt_nodes_model is None:
         logger.error(
-            'BT node model unavailable:\n'
-            f'  Cache: {bt_nodes_cache_file_path}\n'
-            f'  GitHub ({ref}): {repo}/{bt_nodes_repo_file_path}\n'
-            'Review paths in macros/variables.yml configuration.'
+            f"BT node model not found at: {nav2_tree_nodes_file_path}\n"
+            "Review paths in macros/variables.yml configuration."
         )
         sys.exit(1)
 
@@ -203,7 +225,7 @@ def define_env(env):
 
         node = bt_nodes_model.find(f'.//*[@ID="{bt_node_id}"]')
         if node is None:
-            logger.error(f'BT node ID not found: "{bt_node_id}".')
+            logger.error(f"BT node ID not found: {bt_node_id}.")
             sys.exit(1)
 
         input_ports, output_ports = _parse_ports(node)

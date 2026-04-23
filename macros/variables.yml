@@ -1,5 +1,11 @@
-cache_dir: "macros/cache" 
+cache_dir: "macros/cache"
+nav2_tree_nodes_file_path: "macros/cache/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml"
 
-nav2_repo: "ros-navigation/navigation2"
-nav2_ref: "refs/heads/main"
-nav2_bt_nodes_file_path: "nav2_behavior_tree/nav2_tree_nodes.xml" # Update path to the XML file
+nav2_repo: "ros-navigation/navigation2" # "owner/repo" format
+nav2_branch: "main" # Rolling
+
+# Relative /navigation2 directory
+nav2_data_to_clone: [
+  "/nav2_behavior_tree/nav2_tree_nodes.xml",
+  "/nav2_behavior_tree/include/nav2_behavior_tree/plugins",
+]
