@@ -176,20 +176,20 @@ def _clone_sparse_github_data(repo: str, branch: str, data_to_clone: list[str], 
     )
 
 
-def _load_bt_nodes_model(file_path: Path ) -> ET.Element | None:
+def _load_bt_nodes_model(file_path: Path ) -> ET.Element:
     """
     Load the behavior-tree nodes model from a cached file.
     """
 
     if not file_path.exists():
-        return None
+        raise ValueError("File path does not exist.")
 
     try:
         root = ET.parse(file_path).getroot()
         return root[0]
     except (ET.ParseError, IndexError) as exc:
         logger.error(f"Failed to parse file {file_path} from cache: {exc}")
-        return None
+        raise
 
 def define_env(env):
     """
@@ -208,10 +208,10 @@ def define_env(env):
         logger.error(f"Failed to clone GitHub data: {getattr(exc, 'stderr', exc)}")
         sys.exit(1)
 
-    bt_nodes_model = _load_bt_nodes_model(nav2_tree_nodes_file_path)
-    
-    if bt_nodes_model is None:
-        logger.error(
+    try:
+        bt_nodes_model = _load_bt_nodes_model(nav2_tree_nodes_file_path)
+    except (ValueError, ET.ParseError, IndexError) as exc:
+        logger.exception(
             f"BT node model not found at: {nav2_tree_nodes_file_path}\n"
             "Review paths in macros/variables.yml configuration."
         )
