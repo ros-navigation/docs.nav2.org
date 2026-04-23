@@ -13,12 +13,16 @@ references:
         apt install -y \
           git \
           openssh-server \
-          python3-pip
+          python3-pip \
+          python3-venv
+        python3 -m venv /nav2_docs/venv
+        . /nav2_docs/venv/bin/activate
         pip3 install -r requirements.txt
   build_docs: &build_docs
     run:
       name: Build documentation
       command: |
+        . /nav2_docs/venv/bin/activate
         mkdocs build
   store_built_docs: &store_built_docs
     store_artifacts:
@@ -31,6 +35,8 @@ references:
         # Set up git configuration
         git config user.name ci
         git config user.email ci@noreply.com
+
+        . /nav2_docs/venv/bin/activate
 
         TITLE=${CIRCLE_BRANCH^}
         # Uncomment --push flag once SSH key fingerprint is added
