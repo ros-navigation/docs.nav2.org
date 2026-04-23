@@ -310,6 +310,18 @@ Implementation (``src/action/set_blade_state.cpp``):
      goal_.enable = enable;
    }
 
+``on_success()``, ``on_aborted()``, and ``on_cancelled()`` are not overridden here — the ``BtActionNode`` base class defaults apply. If they were explicitly written out, they would look like this:
+
+.. code-block:: cpp
+
+   BT::NodeStatus SetBladeState::on_success()   { return BT::NodeStatus::SUCCESS; }
+   BT::NodeStatus SetBladeState::on_aborted()   { return BT::NodeStatus::FAILURE; }
+   BT::NodeStatus SetBladeState::on_cancelled() { return BT::NodeStatus::SUCCESS; }
+
+Override these in your own node when you need to extract result fields, publish feedback, or return a non-default status.
+
+.. code-block:: cpp
+
    BT_REGISTER_NODES(factory)
    {
      BT::NodeBuilder builder = [](const std::string & name,
