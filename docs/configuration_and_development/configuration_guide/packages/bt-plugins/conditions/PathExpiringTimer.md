@@ -7,6 +7,6 @@ The timer will reset if the path gets updated.
 
 ## Example
 
-```xml
-<PathExpiringTimer seconds="15" path="{path}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/path_expiring_timer_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

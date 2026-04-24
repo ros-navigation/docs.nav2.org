@@ -7,6 +7,6 @@ The server address can be remapped using the `server_name` input port.
 
 ## Example
 
-```xml
-<FollowObject name="FollowPerson" pose_topic="/person_pose" max_duration="0.0"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/follow_object_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

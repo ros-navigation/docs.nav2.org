@@ -8,6 +8,6 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ## Example
 
-```xml
-<ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="precise_progress_checker" topic_name="progress_checker_selector"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/progress_checker_selector_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

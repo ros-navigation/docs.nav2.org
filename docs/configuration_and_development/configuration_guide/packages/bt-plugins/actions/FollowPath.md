@@ -7,6 +7,6 @@ The server address can be remapped using the `server_name` input port.
 
 ## Example
 
-```xml
-<FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" path_handler_id="PathHandler" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/follow_path_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

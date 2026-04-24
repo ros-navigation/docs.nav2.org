@@ -6,6 +6,6 @@ Gets a pose from a particular index on the path. Use `-1` to get the last pose, 
 
 ## Example
 
-```xml
-<GetPoseFromPath path="{path}" index="-1" pose="{goal}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/get_pose_from_path_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

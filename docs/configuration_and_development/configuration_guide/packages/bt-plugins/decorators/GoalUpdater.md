@@ -26,8 +26,6 @@ Description
 
 ## Example
 
-```xml
-<GoalUpdater input_goal="{goal}" input_goals="{goals}" output_goal="{goal}" output_goals="{goals}">
-  <!--Add tree components here-->
-</GoalUpdater>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/goal_updater_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

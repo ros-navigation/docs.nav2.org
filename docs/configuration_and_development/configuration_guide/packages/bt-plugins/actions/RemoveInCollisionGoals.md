@@ -7,6 +7,6 @@ This may be used to cull goal points passed from `ComputePathThroughPoses` to av
 
 ## Example
 
-```xml
-<RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}" />
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/remove_in_collision_goals_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

@@ -19,32 +19,6 @@ In any other case, it returns running.
 
 ## Example
 
-```xml
-<PauseResumeController pause_service_name="/pause" resume_service_name="/resume">
-    <!-- RESUMED branch (mandatory) -->
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/control/pause_resume_controller.hpp" %}
 
-    <!-- PAUSED branch (optional) -->
-
-    <!-- ON_PAUSE branch (optional) -->
-
-    <!-- ON_RESUME branch (optional) -->
-</PauseResumeController>
-```
-
-When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desirable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:
-
-```xml
-<PauseResumeController pause_service_name="/pause" resume_service_name="/resume">
-    <!-- RESUMED branch -->
-
-    <!-- PAUSED branch -->
-
-    <RetryUntilSuccessful num_attempts="3">
-        <!-- ON_PAUSE branch -->
-    </RetryUntilSuccessful>
-
-    <RetryUntilSuccessful num_attempts="3">
-        <!-- ON_RESUME branch -->
-    </RetryUntilSuccessful>
-</PauseResumeController>
-```
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

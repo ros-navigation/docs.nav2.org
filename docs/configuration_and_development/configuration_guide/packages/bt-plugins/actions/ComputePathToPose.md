@@ -7,7 +7,6 @@ The server address can be remapped using the `server_name` input port.
 
 ## Example
 
-```xml
-<ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" server_name="ComputePathToPose" server_timeout="10"
-                   error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/compute_path_to_pose_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

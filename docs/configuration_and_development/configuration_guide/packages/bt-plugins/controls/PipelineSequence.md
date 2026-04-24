@@ -9,8 +9,6 @@ stops all children and returns FAILURE overall.
 
 ## Example
 
-```xml
-<PipelineSequence>
-    <!--Add tree components here-->
-</PipelineSequence>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/control/pipeline_sequence.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

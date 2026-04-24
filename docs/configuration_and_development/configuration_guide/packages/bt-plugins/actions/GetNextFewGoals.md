@@ -6,6 +6,6 @@ Extracts only the next `N` goals from a list of goals to send to a later task th
 
 ## Example
 
-```xml
-<GetNextFewGoals num_goals="3" input_goals="{goal_poses}" output_goals="{planning_goals}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/get_next_few_goals_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

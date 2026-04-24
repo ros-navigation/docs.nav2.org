@@ -8,6 +8,6 @@ If the active error code is a match, the node returns `SUCCESS`. Otherwise, it r
 
 ## Example
 
-```xml
-<WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/would_a_controller_recovery_help_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

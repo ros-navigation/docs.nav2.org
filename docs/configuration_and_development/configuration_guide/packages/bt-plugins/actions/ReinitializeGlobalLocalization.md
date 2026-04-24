@@ -6,6 +6,6 @@ Used to trigger global relocalization using AMCL in case of severe delocalizatio
 
 ## Example
 
-```xml
-<ReinitializeGlobalLocalization service_name="reinitialize_global_localization"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/reinitialize_global_localization_service.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

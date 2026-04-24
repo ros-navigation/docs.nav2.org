@@ -6,6 +6,6 @@ Node that returns success when a time duration has passed
 
 ## Example
 
-```xml
-<TimeExpired seconds="1.0"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/time_expired_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

@@ -6,6 +6,6 @@ A custom control node, which modifies a path making it shorter. It removes parts
 
 ## Example
 
-```xml
-<TruncatePathLocal input_path="{path}" output_path="{path_local}" distance_forward="3.5" distance_backward="2.0" robot_frame="base_link"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/truncate_path_local_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

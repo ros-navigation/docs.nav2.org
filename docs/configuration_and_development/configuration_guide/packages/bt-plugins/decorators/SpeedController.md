@@ -9,8 +9,6 @@ stack, the `SpeedController` is used to adjust the rate at which the `ComputePat
 
 ## Example
 
-```xml
-<SpeedController min_rate="0.1" max_rate="1.0" min_speed="0.0" max_speed="0.5" filter_duration="0.3">
-  <!--Add tree components here-->
-</SpeedController>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/speed_controller.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

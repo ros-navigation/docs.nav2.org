@@ -6,8 +6,6 @@ Ticks all child nodes until they all return SUCCESS. If any of the child nodes r
 
 ## Example
 
-```xml
-<NonblockingSequence>
-    <!--Add tree components here-->
-</NonblockingSequence>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/control/nonblocking_sequence.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

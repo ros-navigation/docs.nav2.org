@@ -11,9 +11,6 @@ This can be helpful paired with the `PauseResumeController`.
 
 ## Example
 
-```xml
-<Script code="current_child_idx := 0" />
-<PersistentSequence current_child_idx="{current_child_idx}">
-    <!-- Child nodes here -->
-</PersistentSequence>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/control/persistent_sequence.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

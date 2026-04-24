@@ -8,6 +8,6 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ## Example
 
-```xml
-<GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="precise_goal_checker" topic_name="goal_checker_selector"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/goal_checker_selector_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

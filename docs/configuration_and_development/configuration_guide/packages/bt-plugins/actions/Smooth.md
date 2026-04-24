@@ -6,6 +6,6 @@ Invokes the SmoothPath action API in the smoother server to smooth a given path 
 
 ## Example
 
-```xml
-<SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" max_smoothing_duration="3.0" smoother_id="simple_smoother" check_for_collisions="false" smoothing_duration="{smoothing_duration_used}" was_completed="{smoothing_completed}" error_code_id="{smoothing_path_error_code}" error_msg="{smoothing_path_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/smooth_path_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

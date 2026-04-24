@@ -8,7 +8,6 @@ The [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav
 
 ## Example
 
-```xml
-<AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"
-                error_code_id="{assisted_teleop_error_code}" error_msg="{assisted_teleop_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/assisted_teleop_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

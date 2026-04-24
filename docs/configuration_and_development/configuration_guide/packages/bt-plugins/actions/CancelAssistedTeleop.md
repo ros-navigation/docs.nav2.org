@@ -6,6 +6,6 @@ Used to cancel the AssistedTeleop action that is part of the behavior server. Th
 
 ## Example
 
-```xml
-<CancelAssistedTeleop server_name="assisted_teleop" server_timeout="10"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/assisted_teleop_cancel_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

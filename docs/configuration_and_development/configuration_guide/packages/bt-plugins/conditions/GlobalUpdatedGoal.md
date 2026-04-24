@@ -10,6 +10,6 @@ such that it will update on any “global” change to the goal.
 
 ## Example
 
-```xml
-<GlobalUpdatedGoal/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/globally_updated_goal_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

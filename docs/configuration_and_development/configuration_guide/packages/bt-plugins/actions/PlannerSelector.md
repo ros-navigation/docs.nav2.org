@@ -8,6 +8,6 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ## Example
 
-```xml
-<PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/planner_selector_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

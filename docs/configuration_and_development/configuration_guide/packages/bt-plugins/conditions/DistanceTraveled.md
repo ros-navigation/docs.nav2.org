@@ -21,6 +21,6 @@ bt_navigator:
 
 ## Example
 
-```xml
-<DistanceTraveled distance="0.8" global_frame="map" robot_base_frame="base_link"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/distance_traveled_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

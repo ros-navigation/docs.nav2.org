@@ -9,8 +9,6 @@ stack, the `DistanceController` is used to adjust the rate at which the `Compute
 
 ## Example
 
-```xml
-<DistanceController distance="0.5" global_frame="map" robot_base_frame="base_link">
-  <!--Add tree components here-->
-</DistanceController>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/distance_controller.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

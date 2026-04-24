@@ -6,6 +6,6 @@ Used to cancel the drive on heading action that is part of the behavior server. 
 
 ## Example
 
-```xml
-<CancelDriveOnHeading server_name="drive_on_heading" server_timeout="10"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/drive_on_heading_cancel_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

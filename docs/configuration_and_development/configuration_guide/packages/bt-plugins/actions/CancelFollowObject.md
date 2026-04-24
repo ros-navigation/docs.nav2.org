@@ -6,6 +6,6 @@ Used to cancel the goals given to the follow object action server. The server ad
 
 ## Example
 
-```xml
-<CancelFollowObject server_name="follow_object" server_timeout="10"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/follow_object_cancel_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

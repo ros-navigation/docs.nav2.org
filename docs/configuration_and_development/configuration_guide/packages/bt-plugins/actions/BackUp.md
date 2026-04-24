@@ -10,7 +10,7 @@ This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors m
 
 ## Example
 
-```xml
-<BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"
-        error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
-```
+
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/back_up_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

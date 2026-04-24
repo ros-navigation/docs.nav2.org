@@ -6,8 +6,6 @@ This node triggers its child only once and returns FAILURE for every succeeding 
 
 ## Example
 
-```xml
-<SingleTrigger>
-  <!--Add tree components here-->
-</SingleTrigger>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/single_trigger_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

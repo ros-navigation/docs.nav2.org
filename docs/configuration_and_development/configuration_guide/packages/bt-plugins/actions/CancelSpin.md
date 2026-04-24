@@ -6,6 +6,6 @@ Used to cancel the spin action that is part of the behavior server. The server a
 
 ## Example
 
-```xml
-<CancelSpin server_name="Spin" server_timeout="10"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/spin_cancel_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

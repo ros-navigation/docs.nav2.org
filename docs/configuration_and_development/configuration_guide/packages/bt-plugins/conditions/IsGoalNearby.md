@@ -21,6 +21,6 @@ bt_navigator:
 
 ## Example
 
-```xml
-<IsGoalNearby path="{path}" proximity_threshold="1.0" />
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/is_goal_nearby_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

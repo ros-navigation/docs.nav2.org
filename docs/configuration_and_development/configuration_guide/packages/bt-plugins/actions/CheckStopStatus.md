@@ -7,6 +7,6 @@ RUNNING if stopped but not for long enough and FAILURE otherwise
 
 ## Example
 
-```xml
-<CheckStopStatus velocity_threshold="0.01" duration_stopped="1000"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/check_stop_status_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

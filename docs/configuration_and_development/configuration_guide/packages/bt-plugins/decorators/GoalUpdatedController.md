@@ -6,8 +6,6 @@ Checks if the global navigation goal, or a vector of goals, has changed in the b
 
 ## Example
 
-```xml
-<GoalUpdatedController goal="{goal}" goals="{goals}">
-  <!--Add tree components here-->
-</GoalUpdatedController>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/goal_updated_controller.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

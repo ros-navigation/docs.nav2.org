@@ -6,6 +6,6 @@ Checks if the robot is within determined tracking error bounds during path follo
 
 ## Example
 
-```xml
-<IsWithinPathTrackingBounds max_error_left="0.5" max_error_right="0.5" max_error_heading="3.14" tracking_feedback="{tracking_feedback}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/is_within_path_tracking_bounds_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

@@ -9,42 +9,6 @@ can use a custom footprint for validation.
 
 ## Example
 
-```xml
-<ValidatePath
-  server_timeout="10"
-  path="{path}"
-  max_cost="100"
-  consider_unknown_as_obstacle="false"
-  layer_name=""
-  footprint=""
-  stop_at_first_collision="true"
-  collision_poses="{collision_poses}" />
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/validate_path_action.hpp" %}
 
-With max_lookahead_distance:
-
-```xml
-<ValidatePath
-  path="{path}"
-  max_lookahead_distance="5.0"
-  collision_poses="{collision_poses}" />
-```
-
-With custom footprint:
-
-```xml
-<ValidatePath
-  path="{path}"
-  footprint="[[0.5,0.5],[0.5,-0.5],[-0.5,-0.5],[-0.5,0.5]]"
-  collision_poses="{collision_poses}" />
-```
-
-Checking a specific costmap layer:
-
-```xml
-<ValidatePath
-  path="{path}"
-  layer_name="obstacle_layer"
-  stop_at_first_collision="false"
-  collision_poses="{collision_poses}" />
-```
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

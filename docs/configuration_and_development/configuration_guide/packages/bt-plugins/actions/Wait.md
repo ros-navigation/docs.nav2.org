@@ -7,7 +7,6 @@ This action is used in nav2 Behavior Trees as a recovery behavior.
 
 ## Example
 
-```xml
-<Wait wait_duration="1.0" server_name="wait_server" server_timeout="10"
-      error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/wait_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

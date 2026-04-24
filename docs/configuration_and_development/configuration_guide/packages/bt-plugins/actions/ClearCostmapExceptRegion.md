@@ -6,6 +6,6 @@ Action to call a costmap clearing except region server.
 
 ## Example
 
-```xml
-<ClearCostmapExceptRegion name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_except_local_costmap"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/clear_costmap_service.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path, "ClearCostmapExceptRegionService") }}

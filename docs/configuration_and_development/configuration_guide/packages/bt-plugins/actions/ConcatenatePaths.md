@@ -7,6 +7,6 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 
 ## Example
 
-```xml
-<ConcatenatePaths input_path1="{main_path}" input_path2="{last_mile_path}" output_path="{path}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/concatenate_paths_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

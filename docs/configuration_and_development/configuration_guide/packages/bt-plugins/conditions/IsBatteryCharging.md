@@ -7,6 +7,6 @@ Returns SUCCESS in that case, FAILURE otherwise.
 
 ## Example
 
-```xml
-<IsBatteryCharging battery_topic="/battery_status"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/is_battery_charging_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

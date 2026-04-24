@@ -7,6 +7,6 @@ May be useful to add in the final task goal pose to a list of goals extracted fr
 
 ## Example
 
-```xml
-<AppendGoalPoseToGoals goal_pose="{goal}" input_goals="{goal_poses}" output_goals="{goal_poses}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/append_goal_pose_to_goals_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

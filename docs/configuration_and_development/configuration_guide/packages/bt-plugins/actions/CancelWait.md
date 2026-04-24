@@ -6,6 +6,6 @@ Used to cancel the wait action that is part of the behavior server. The server a
 
 ## Example
 
-```xml
-<CancelWait server_name="Wait" server_timeout="10"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/wait_cancel_node.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

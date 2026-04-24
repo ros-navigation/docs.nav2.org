@@ -7,7 +7,6 @@ The server address can be remapped using the `server_name` input port.
 
 ## Example
 
-```xml
-<ComputeAndTrackRoute start="{start}" goal="{goal}" use_poses="{true}" use_start="{true}" server_name="ComputeAndTrackRoute" server_timeout="10"
-                   error_code_id="{compute_route_error_code}" error_msg="{compute_route_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/compute_and_track_route_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

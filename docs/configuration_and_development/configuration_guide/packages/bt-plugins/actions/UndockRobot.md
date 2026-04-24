@@ -55,6 +55,6 @@ Description
 
 ## Example
 
-```xml
-<UndockRobot dock_type="{dock_type}" error_code_id={undock_error_code} error_msg={undock_error_msg}/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_docking_hpp_path + "/undock_robot.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

@@ -6,6 +6,6 @@ Calls the ToggleCollisionMonitor service. Used to toggle the collision monitor o
 
 ## Example
 
-```xml
-<ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/toggle_collision_monitor_service.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

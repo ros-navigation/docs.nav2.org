@@ -6,8 +6,6 @@ Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by th
 
 ## Example
 
-```xml
-<NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10"
-                      error_code_id="{navigate_through_poses_error_code}" error_msg="{navigate_through_poses_error_msg}"
-                      behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/navigate_through_poses_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

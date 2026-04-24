@@ -6,8 +6,6 @@ Invokes the NavigateToPose ROS 2 action server, which is implemented by the [bt_
 
 ## Example
 
-```xml
-<NavigateToPose goal="{goal}" server_name="NavigateToPose" server_timeout="10"
-                error_code_id="{navigate_to_pose_error_code}" error_msg="{navigate_to_pose_error_msg}"
-                behavior_tree="NavigateThroughPosesWReplanningAndRecovery"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/navigate_to_pose_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

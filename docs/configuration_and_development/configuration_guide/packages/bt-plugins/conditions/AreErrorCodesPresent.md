@@ -8,14 +8,6 @@ If the active error code is a match, the node returns `SUCCESS`. Otherwise, it r
 
 ## Example
 
-Error codes to check are defined in another port.
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/are_error_codes_present_condition.hpp" %}
 
-```xml
-<AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="{error_codes_to_check}"/>
-```
-
-Error codes to check are defined to be 101, 107 and 119.
-
-```xml
-<AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="101;107;119"/>
-```
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

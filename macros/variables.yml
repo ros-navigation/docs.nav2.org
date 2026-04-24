@@ -1,5 +1,7 @@
 cache_dir: "macros/cache"
 nav2_tree_nodes_file_path: "macros/cache/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml"
+nav2_bt_plugins_hpp_path: "/navigation2/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
+nav2_docking_hpp_path: "/navigation2/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
 
 nav2_repo: "ros-navigation/navigation2" # "owner/repo" format
 nav2_branch: "main" # Rolling
@@ -8,4 +10,5 @@ nav2_branch: "main" # Rolling
 nav2_data_to_clone: [
   "/nav2_behavior_tree/nav2_tree_nodes.xml",
   "/nav2_behavior_tree/include/nav2_behavior_tree/plugins",
+  "/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
 ]

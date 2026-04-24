@@ -8,6 +8,6 @@ Returns SUCCESS when battery percentage/voltage is lower than the specified valu
 
 ## Example
 
-```xml
-<IsBatteryLow min_battery="0.5" battery_topic="/battery_status" is_voltage="false"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/is_battery_low_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

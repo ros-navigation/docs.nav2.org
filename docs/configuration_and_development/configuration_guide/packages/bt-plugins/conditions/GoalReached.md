@@ -31,6 +31,6 @@ bt_navigator:
 
 ## Example
 
-```xml
-<GoalReached goal="{goal}" robot_base_frame="base_link"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/goal_reached_condition.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

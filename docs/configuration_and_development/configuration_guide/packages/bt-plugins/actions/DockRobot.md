@@ -100,6 +100,6 @@ Description
 
 ## Example
 
-```xml
-<DockRobot dock_id="{dock_id}" error_code_id="{dock_error_code}" error_msg="{dock_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_docking_hpp_path + "/dock_robot.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}

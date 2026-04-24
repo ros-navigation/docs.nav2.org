@@ -8,7 +8,6 @@ This action is used in nav2 Behavior Trees as a recovery behavior.
 
 ## Example
 
-```xml
-<Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true" disable_collision_checks="false"
-      error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/spin_action.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}
