@@ -1,6 +1,7 @@
 from __future__ import annotations # Required for Python 3.8 support in CI (ubuntu:focal)
 import subprocess, logging, re, sys, os, shutil
 import xml.etree.ElementTree as ET
+from typing import Pattern 
 from pathlib import Path
 from jinja2 import Template
 
@@ -40,6 +41,13 @@ Description
 :   {{ port.description }}
 {% endif %}
 {% endfor -%}
+""")
+
+
+_XML_CODE_BLOCK_TEMPLATE = Template("""\
+```xml
+{{ xml_code }}
+```
 """)
 
 
@@ -191,6 +199,109 @@ def _load_bt_nodes_model(file_path: Path ) -> ET.Element:
         logger.error(f"Failed to parse file {file_path} from cache: {exc}")
         raise
 
+
+def _get_all_lines(file_path: Path) -> list[str]:
+    """Read all lines from a given file and return them as list[str]."""
+    try:
+        with open(file_path, encoding="utf-8") as file:
+            return file.readlines()
+    except OSError:
+        logger.error(f"Cannot read file {file_path}")
+        raise
+
+
+def _get_lines_section(
+        lines: list[str], 
+        start: Pattern, 
+        end: Pattern, 
+        stop_at: Pattern
+    ) -> list[str]:
+    """
+    Extract a section of lines between start and end patterns, 
+    with a condition to stop searching.
+    """
+    
+    start_idx = None
+    end_idx = None
+
+    # Note: Intentionally updates start_idx/end_idx on every match to capture
+    # the MOST RECENT occurrence before stop_at. 
+
+    for index, line in enumerate(lines):
+        if start.search(line):
+            start_idx = index
+        
+        if end.search(line):
+            end_idx = index
+
+        if stop_at.search(line):
+            break
+    
+    if start_idx is None:
+        raise ValueError(f"Pattern '{start.pattern}' not found.")
+    
+    if end_idx is None:
+        raise ValueError(f"Pattern '{end.pattern}' not found.")
+
+    if end_idx < start_idx:
+        raise ValueError(
+            f"End pattern '{end.pattern}' found before start pattern '{start.pattern}'."
+        )
+
+    return lines[start_idx:end_idx]
+    
+
+def _extract_doxygen_code_block(
+        lines: list[str], 
+        code_start_pattern: Pattern, 
+        code_end_pattern: Pattern, 
+        comment_block_pattern: Pattern
+    ) -> list[str]:
+    """
+    Extract code block from Doxygen with trailing comments removing.
+    """
+
+    code_lines: list[str] = []
+    in_code_block = False
+    code_start_found = False
+    code_end_found = False
+
+    for line in lines:
+        if code_start_pattern.search(line):
+            in_code_block = True
+            code_start_found = True
+            continue
+        elif code_end_pattern.search(line):
+            if not code_start_found:
+                raise ValueError(
+                    f"Code end pattern '{code_end_pattern.pattern}' "
+                    f"found before code start pattern '{code_start_pattern.pattern}'."
+                )
+            in_code_block = False
+            code_end_found = True
+            continue
+        
+        if in_code_block:
+            line = re.sub(comment_block_pattern, '', line)
+            code_lines.append(line)
+
+    if not code_start_found:
+        raise ValueError(f"Code start pattern '{code_start_pattern.pattern}' not found.")
+    
+    if not code_end_found:
+        raise ValueError(f"Code end pattern '{code_end_pattern.pattern}' not found.")
+
+    if not code_lines:
+        raise ValueError(
+            f"No code block found between '{code_start_pattern.pattern}' "
+            f"and '{code_end_pattern.pattern}' patterns. "
+            "Review Doxygen comment formatting in the hpp file."
+        )
+    
+    code_lines[-1] = code_lines[-1].rstrip('\n')
+    return code_lines
+
+
 def define_env(env):
     """
     This is the hook for the variables, macros and filters.
@@ -241,3 +352,49 @@ def define_env(env):
             )
 
         return '\n\n'.join(sections)
+    
+
+    @env.macro
+    def render_bt_node_example(file_path: Path, class_name: str | None = None) -> str:
+        """
+        Render MD-formatted XML code example for a Behavior Tree node 
+        from a Doxygen comment in a HPP file.
+        """
+        
+        try:
+            file_lines = _get_all_lines(file_path)
+        except OSError as exc:
+            logger.error(f"Failed to read lines from file: {exc}")
+            sys.exit(1)
+
+        class_str = r"^\s*class\s+"
+        if class_name:
+            class_str += rf"{re.escape(class_name)}\b"
+        class_pattern = re.compile(class_str)
+
+        try:
+            doxygen_section = _get_lines_section(
+                lines=file_lines, 
+                start=re.compile(r"Usage in XML:"), 
+                end=re.compile(r"^\s*\*/"), 
+                stop_at=class_pattern
+            )
+        except ValueError as exc:
+            logger.error(f"Failed to extract lines section from file {file_path}: {exc}")
+            sys.exit(1)
+
+        try:
+            code_section = _extract_doxygen_code_block(
+                lines=doxygen_section, 
+                code_start_pattern=re.compile(r"@code\b"), 
+                code_end_pattern=re.compile(r"@endcode\b"), 
+                comment_block_pattern=re.compile(r"^[ \t]*\*[ \t]?")
+            )
+        except ValueError as exc:
+            logger.error(f"Failed to extract code block from file {file_path}: {exc}")
+            sys.exit(1)
+
+        code_example = ''.join(code_section)
+        code_example_md = _XML_CODE_BLOCK_TEMPLATE.render(xml_code=code_example)
+
+        return code_example_md        
