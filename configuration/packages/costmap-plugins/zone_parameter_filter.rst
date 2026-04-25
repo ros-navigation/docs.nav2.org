@@ -168,3 +168,23 @@ Example Fully-Described YAML
               FollowPath.max_vel_x: 1.0
             local_costmap:
               inflation_layer.inflation_radius: 0.55
+
+Common Pitfalls
+---------------
+
+These are the operational sharp edges that have surfaced during design and review:
+
+- **Target-node typos go silent at config-load until first transition.**
+  An override under a ``state_<N>`` namespace whose first segment doesn't match an entry in ``target_nodes`` is rejected with a warning. The filter still becomes active and continues with the remaining valid overrides — but the typo'd parameter is never set. Always check the warn log on first activation.
+
+- **State-to-state transitions only apply the new state's overrides.**
+  If state 1 sets ``A`` and ``B`` and state 2 sets only ``A``, then a 1→2 transition writes the new value of ``A`` and leaves ``B`` at state 1's value. Only the special state ``0`` reset restores anything to ``nominal_defaults``. Plan ``nominal_defaults`` so any param touched by any state has a documented baseline.
+
+- **The hot path is non-blocking by design.**
+  If a target node's parameter service is not ready when ``process()`` runs (target node restarting, network blip, etc.), the override for that node is skipped that cycle and a throttled warning is logged. The filter does *not* call ``wait_for_service`` because that would stall the entire costmap update loop. Subsequent ``process()`` calls retry naturally.
+
+- **Effective state-ID range is [1, 127], not [1, 255].**
+  Although the documentation shows the conceptual range as 0–255, the underlying ``OccupancyGrid::data`` field is ``int8_t``, so values 128–255 arrive as their signed-negative complement. Negative mask values are reserved for ``OCC_GRID_UNKNOWN`` and are silently ignored at the robot's pose. If you need the full 0–255 range, wrap your mask publisher to reinterpret-cast unsigned to signed before publishing — but [1, 127] covers the vast majority of zone schemes.
+
+- **Longest-prefix matching applies to ``target_nodes`` ordering.**
+  When ``target_nodes`` contains both a node name and a namespace-prefixed sibling (e.g., ``["a", "a.b"]``), an override under ``state_<N>.a.b.foo`` is routed to ``a.b`` (longer match), not to ``a`` (with parameter path ``b.foo``). The filter sorts ``target_nodes`` by length descending at config-load to make this deterministic.
