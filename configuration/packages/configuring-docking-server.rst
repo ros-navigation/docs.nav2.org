@@ -336,7 +336,7 @@ Parameters
   ============== ==============
 
   Description
-    Maximum deceleration (m/s²) used to compute a velocity limit based on distance to the goal: v = sqrt(2 * dist * deceleration_max). Works alongside slowdown_radius — the minimum of the two limits is applied.
+    Maximum deceleration (m/s²) used to compute a velocity limit based on distance to the goal.
 
 :controller.rotate_to_heading_angular_vel:
 
