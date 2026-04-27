@@ -134,9 +134,16 @@ def _remove_dir(dir_path: Path):
             raise
 
 
-def _clone_sparse_github_data(repo: str, branch: str, data_to_clone: list[str], clone_dir: Path):
+def _clone_sparse_github_data(
+        repo_name: str, 
+        owner: str, 
+        branch: str, 
+        data_to_clone: list[str], 
+        clone_dir: Path
+    ) -> None:
     """
-    Clone GitHub repository sparsely and checkout the specified files/directories.
+    Clone GitHub repository sparsely and 
+    checkout the specified files/directories.
     """
 
     if not data_to_clone:
@@ -147,10 +154,10 @@ def _clone_sparse_github_data(repo: str, branch: str, data_to_clone: list[str], 
         logger.error(f"Clone directory does not exist: {clone_dir}")
         raise ValueError(f"clone_dir must exist: {clone_dir}")
     
-    repo_work_dir = clone_dir / Path(repo).name
+    repo_work_dir = clone_dir / repo_name
     _remove_dir(repo_work_dir)
 
-    github_url = f"https://github.com/{repo}.git"
+    github_url = f"https://github.com/{owner}/{repo_name}.git"
     logger.info(f"Cloning from {github_url} (branch: {branch})")
     try:
         subprocess.run([
@@ -308,13 +315,18 @@ def define_env(env):
     """
 
     cache_dir = Path(env.variables["cache_dir"])
-    nav2_repo = env.variables["nav2_repo"]
-    nav2_branch = env.variables["nav2_branch"]
-    nav2_data_to_clone = env.variables["nav2_data_to_clone"]
+    github_repos = env.variables["github_repositories"]
     nav2_tree_nodes_file_path = Path(env.variables["nav2_tree_nodes_file_path"])
 
     try:
-        _clone_sparse_github_data(nav2_repo, nav2_branch, nav2_data_to_clone, cache_dir)
+        for repo_name, repo_info in github_repos.items():
+            _clone_sparse_github_data(
+                repo_name=repo_name, 
+                owner=repo_info["owner"], 
+                branch=repo_info["branch"], 
+                data_to_clone=repo_info["data_to_clone"], 
+                clone_dir=cache_dir
+            )
     except (ValueError, OSError, subprocess.CalledProcessError) as exc:
         logger.error(f"Failed to clone GitHub data: {getattr(exc, 'stderr', exc)}")
         sys.exit(1)
