@@ -134,6 +134,36 @@ def _remove_dir(dir_path: Path):
             raise
 
 
+def _is_git_workdir_synced(local_repo_path: Path) -> bool:
+    """
+    Check if the local working directory is up to date with the GitHub upstream.
+    Returns True if up to date, False if update is needed.
+    """
+
+    try:
+        local_commit = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=local_repo_path,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+        remote_commit = subprocess.run(
+            ["git", "rev-parse", "@{upstream}"],
+            cwd=local_repo_path,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+        return local_commit == remote_commit
+
+    except subprocess.CalledProcessError as exc:
+        logger.error(f"Failed to check Git working directory status: {exc}")
+        return False
+
+
 def _clone_sparse_github_data(
         repo_name: str, 
         owner: str, 
@@ -320,6 +350,15 @@ def define_env(env):
 
     try:
         for repo_name, repo_info in github_repos.items():
+
+            local_repo_path = cache_dir / Path(repo_name)
+            if local_repo_path.exists() and _is_git_workdir_synced(local_repo_path):
+                logger.info(
+                    f"Cached Git repository '{local_repo_path}' is synced with upstream. "
+                    "Skipping clone."
+                )
+                continue
+
             _clone_sparse_github_data(
                 repo_name=repo_name, 
                 owner=repo_info["owner"], 
