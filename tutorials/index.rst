@@ -12,6 +12,7 @@ Nav2 Tutorials
    docs/navigation2_with_slam.rst
    docs/navigation2_with_stvl.rst
    docs/navigation2_with_gps.rst
+   docs/navigate_through_poses.rst
    docs/using_isaac_perceptor.rst
    docs/navigation2_with_semantic_segmentation.rst
    docs/using_groot.rst
