@@ -1532,8 +1532,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">initial_rotation</dt>
+<dt class="field-even">deceleration_max</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum deceleration (m/s²) used to compute a velocity limit based on distance to the goal.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">initial_rotation</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1552,8 +1572,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">initial_rotation_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">initial_rotation_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1572,8 +1592,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">prefer_final_rotation</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">prefer_final_rotation</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1592,8 +1612,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">rotation_scaling_factor</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">rotation_scaling_factor</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1612,8 +1632,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">allow_backward</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">allow_backward</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1632,8 +1652,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">in_place_collision_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">in_place_collision_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1652,8 +1672,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_collision_detection</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">use_collision_detection</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1672,8 +1692,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">footprint_scaling_linear_vel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">footprint_scaling_linear_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1692,8 +1712,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">footprint_scaling_factor</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">footprint_scaling_factor</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1712,8 +1732,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">footprint_scaling_step</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">footprint_scaling_step</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1732,8 +1752,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">obstacle_cost_margin</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">obstacle_cost_margin</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1752,8 +1772,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">final_rotation_search_step</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">final_rotation_search_step</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1772,8 +1792,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">allow_parameter_qos_overrides</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1832,6 +1852,7 @@
 <span class="w">      </span><span class="nt">v_angular_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
 <span class="w">      </span><span class="nt">v_angular_min_in_place</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">slowdown_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span>
+<span class="w">      </span><span class="nt">deceleration_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span>
 <span class="w">      </span><span class="nt">footprint_scaling_linear_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">footprint_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">footprint_scaling_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
