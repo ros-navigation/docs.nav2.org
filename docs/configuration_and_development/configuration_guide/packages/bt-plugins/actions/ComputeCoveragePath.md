@@ -109,8 +109,8 @@ Description
 
 ## Example
 
-```xml
-<ComputeCoveragePath file_field="{field_filepath}" nav_path="{path}" coverage_path="{cov_path}" server_name="ComputeCoverage" server_timeout="10" error_code_id="{compute_coverage_error_code}" error_msg="{compute_coverage_error_msg}"/>
-```
+{% set bt_plugin_hpp_path = cache_dir + opennav_cov_bt_plugins_hpp_path + "/compute_complete_coverage_path.hpp" %}
+
+{{ render_bt_node_example(bt_plugin_hpp_path) }}
 
 Note: the blackboard IDs for the path, error code, and more may be adjusted, but need to match the corresponding parameters in the `CoverageNavigator` plugin to set on the blackboard for use from the action server.
