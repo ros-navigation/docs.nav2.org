@@ -297,6 +297,7 @@ Header (``include/nav2_operations_bt_nodes/action/set_blade_state.hpp``):
        });
      }
      void on_tick() override;
+     BT::NodeStatus on_success() override;
    };
 
 Implementation (``src/action/set_blade_state.cpp``):
@@ -310,13 +311,18 @@ Implementation (``src/action/set_blade_state.cpp``):
      goal_.enable = enable;
    }
 
-``on_success()``, ``on_aborted()``, and ``on_cancelled()`` are not overridden here — the ``BtActionNode`` base class defaults apply. If they were explicitly written out, they would look like this:
+``on_aborted()`` and ``on_cancelled()`` are not overridden here — the ``BtActionNode`` base class defaults apply (``FAILURE`` and ``SUCCESS`` respectively). ``on_success()`` checks the action result's ``success`` field so that the BT node reports the real outcome rather than assuming success unconditionally:
 
 .. code-block:: cpp
 
-   BT::NodeStatus SetBladeState::on_success()   { return BT::NodeStatus::SUCCESS; }
-   BT::NodeStatus SetBladeState::on_aborted()   { return BT::NodeStatus::FAILURE; }
-   BT::NodeStatus SetBladeState::on_cancelled() { return BT::NodeStatus::SUCCESS; }
+   // Use the action result to decide the BT node status
+   BT::NodeStatus SetBladeState::on_success()
+   {
+     return result_.result->success ? BT::NodeStatus::SUCCESS : BT::NodeStatus::FAILURE;
+   }
+   // Base-class defaults for reference:
+   // BT::NodeStatus SetBladeState::on_aborted()   { return BT::NodeStatus::FAILURE; }
+   // BT::NodeStatus SetBladeState::on_cancelled() { return BT::NodeStatus::SUCCESS; }
 
 Override these in your own node when you need to extract result fields, publish feedback, or return a non-default status.
 
