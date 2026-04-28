@@ -320,17 +320,20 @@ References
 KISS-ICP Odometry
 -----------------
 
+KISS-ICP is used as an odometry solution in the demo.
+
 .. code-block:: bibtex
-      @article{vizzo2023ral,
-      author    = {Vizzo, Ignacio and Guadagnino, Tiziano and Mersch, Benedikt and Wiesmann, Louis and Behley, Jens and Stachniss, Cyrill},
-      title     = {{KISS-ICP: In Defense of Point-to-Point ICP -- Simple, Accurate, and Robust Registration If Done the Right Way}},
-      journal   = {IEEE Robotics and Automation Letters (RA-L)},
-      pages     = {1029--1036},
-      doi       = {10.1109/LRA.2023.3236571},
-      volume    = {8},
-      number    = {2},
-      year      = {2023},
-      codeurl   = {https://github.com/PRBonn/kiss-icp},
+
+   @article{vizzo2023ral,
+   author    = {Vizzo, Ignacio and Guadagnino, Tiziano and Mersch, Benedikt and Wiesmann, Louis and Behley, Jens and Stachniss, Cyrill},
+   title     = {{KISS-ICP: In Defense of Point-to-Point ICP -- Simple, Accurate, and Robust Registration If Done the Right Way}},
+   journal   = {IEEE Robotics and Automation Letters (RA-L)},
+   pages     = {1029--1036},
+   doi       = {10.1109/LRA.2023.3236571},
+   volume    = {8},
+   number    = {2},
+   year      = {2023},
+   codeurl   = {https://github.com/PRBonn/kiss-icp},
    }
 
 Husky Robot Model
@@ -356,3 +359,4 @@ Funding
 -------
 
 Developed at the Robotics Innovation Center (DFKI), Bremen. Supported by Robdekon2 (50RA1406), German Federal Ministry for Research and Technology.
+
