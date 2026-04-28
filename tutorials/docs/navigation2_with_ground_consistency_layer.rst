@@ -25,10 +25,12 @@ It is assumed you have ROS 2 Jazzy installed. To install all required dependenci
 
 .. code-block:: bash
 
+   mkdir -p src && cd src
    git clone https://github.com/haider8645/nav2_ground_consistency_demo.git
 
 .. code-block:: bash
 
+   cd nav2_ground_consistency_demo
    bash install_dependencies.bash ~/my_custom_workspace
 
 This script will:
@@ -140,8 +142,11 @@ Step 1: Launch Gazebo Simulation
 
 In **Terminal 1**, start the Gazebo simulation with the Husky robot:
 
+Note: Gazebo will take some time to download the baylands terrain and husky model
+
 .. code-block:: bash
 
+   source install/setup.bash
    ros2 launch nav2_ground_consistency_demo start.launch.py
 
 You should see:
@@ -169,9 +174,26 @@ Step 2: Launch Navigation Stack
 
 In **Terminal 2**, launch the stack with the ground consistency layer (this includes ground segmentation):
 
+On some systems, the ``ground_segmentation_ros2_node`` may fail to start with: ``error while loading shared libraries: libjawt.so: cannot open shared object file``
+
+Fix this error by using the following:
+
 .. code-block:: bash
 
+   export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
+   echo "$JAVA_HOME/lib" | sudo tee /etc/ld.so.conf.d/java.conf
+   echo "$JAVA_HOME/lib/server" | sudo tee -a /etc/ld.so.conf.d/java.conf
+   sudo ldconfig
+
+.. code-block:: bash
+
+   source install/setup.bash
    ros2 launch nav2_ground_consistency_demo full_stack.launch.py
+
+.. code-block:: bash
+
+   ros2 lifecycle set /controller_server configure
+   ros2 lifecycle set /controller_server activate
 
 This starts:
 
@@ -201,9 +223,9 @@ You should see RViz open with:
 
 You should see:
 
-- ``/tf`` publishing at ~10 Hz (odometry transforms)
-- Ground points publishing at ~10 Hz (from lidar)
-- Obstacle points publishing at ~10 Hz (from lidar)
+- ``/tf`` publishing at ~5-10 Hz (odometry transforms)
+- Ground points publishing at ~5-10 Hz (from ground segmentation)
+- Obstacle points publishing at ~5-10 Hz (from ground segmentation)
 
 If any topic shows "0 Hz", something is not working - check the logs in the launch terminal for errors.
 
@@ -253,7 +275,7 @@ Debugging
 
 .. code-block:: bash
 
-   ros2 topic echo /husky/scan/points | head -20
+   ros2 topic echo /husky/scan/points
 
 **Ground segmentation very slow:**
 
@@ -262,7 +284,7 @@ Debugging
 
 **No ground points detected:**
 
-- Check ``lidar_to_ground`` parameter in ``config/ground_seg/parameters.yaml``
+- Check ``lidar_to_ground`` parameter in ``config/gseg3d_config.yaml``
 - This should match your lidar's height above the ground (negative value)
 - If incorrect, all points will be classified as obstacles
 - Verify with: ``ros2 topic echo /ground_segmentation/ground_points``
@@ -278,11 +300,10 @@ Hardware Adaptation
 
 The demo is tuned for a Husky with VLP-16 lidar. To adapt to your robot:
 
-1. **Update robot model** in ``resource/COSTAR_HUSKY_SENSOR_CONFIG_1/model.sdf``
-2. **Update lidar height** in ``simulation/start.launch.py`` static transform
-3. **Update IMU orientation** in model.sdf if your IMU is mounted differently (check ``<pose>`` element in IMU sensor definition)
-4. **Update robot dimensions** in ``config/nav2/nav2_params.yaml`` (robot_height, etc.)
-5. **Retune ground segmentation** parameters for your lidar's FOV and point density
+1. **Update robot model** in ``simulation/models/COSTAR_HUSKY_SENSOR_CONFIG_1/model.sdf``
+2. **Update lidar and IMU static transforms** in ``simulation/start.launch.py`` static transform
+3. **Update robot dimensions** in ``config/nav2_config.yaml`` (robot_height, etc.)
+4. **Retune ground segmentation** parameters in ``config/gseg3d_config.yaml`` for your lidar's FOV and point density
 
 References
 ==========
