@@ -108,7 +108,11 @@ Create three action definitions in ``nav2_operations_msgs/action/``.
    ---
    uint16 error_code
    ---
-   # no feedback
+   builtin_interfaces/Duration navigation_time
+   uint32 path_poses_count
+
+- ``navigation_time`` — elapsed wall-clock time since the goal was accepted.
+- ``path_poses_count`` — number of poses in the path currently on the blackboard. Demonstrates how to read a BT blackboard value and surface it as feedback.
 
 For more details refer to the ``nav2_operations_msgs`` package in the tutorial code. You can find more examples of this in ``nav2_msgs`` for ``NavigateToPose``, ``NavigateThroughPoses`` navigator APIs as well as other task servers like ``FollowPath`` and ``ComputePathToPose``.
 
@@ -386,14 +390,14 @@ Virtual method summary:
 +--------------------+--------------------------------------------------------------+
 | ``goalReceived()`` | Load BT, write ``path`` to blackboard                        |
 +--------------------+--------------------------------------------------------------+
-| ``onLoop()``       | Publish empty feedback                                       |
+| ``onLoop()``       | Compute elapsed time, read blackboard, publish feedback      |
 +--------------------+--------------------------------------------------------------+
 | ``onPreempt()``    | Accept or reject pending goal based on BT file               |
 +--------------------+--------------------------------------------------------------+
 | ``goalCompleted()``| Write ``error_code`` (0/1/2), clear blackboard               |
 +--------------------+--------------------------------------------------------------+
 
-**goalReceived** — loads the BT file and writes the path to the blackboard so BT nodes can read it immediately on the first tick.
+**goalReceived** — loads the BT file and writes the path to the blackboard so BT nodes can read it immediately on the first tick. It also snapshots the start time so ``onLoop()`` can compute elapsed navigation time.
 
 .. code-block:: cpp
 
@@ -407,16 +411,32 @@ Virtual method summary:
      auto blackboard = bt_action_server_->getBlackboard();
      blackboard->set<nav_msgs::msg::Path>(path_blackboard_id_, goal->path);
      active_goal_ = true;
+     goal_start_time_ = clock_->now();
      return true;
    }
 
-**onLoop** — called on every tick of the BT executor loop. This is where the navigator publishes action feedback to the client. For this navigator the feedback is empty, but a richer implementation could read progress from the blackboard here.
+**onLoop** — called on every tick of the BT executor loop. This is where the navigator publishes action feedback to the client. It computes elapsed wall-clock time since the goal was accepted and reads the path size from the blackboard to surface it as a progress signal.
 
 .. code-block:: cpp
 
    void NavigateWithOperations::onLoop()
    {
-     bt_action_server_->publishFeedback(std::make_shared<ActionT::Feedback>());
+     auto feedback = std::make_shared<ActionT::Feedback>();
+
+     feedback->navigation_time = clock_->now() - goal_start_time_;
+
+     // Read a value from the BT blackboard and publish it as feedback.
+     // The path is written once by goalReceived(); a BT action node
+     // could write a separate progress key that gets read here instead,
+     // or you could try to calculate remaining poses with 
+     // nav2_util::getCurrentPose for example.
+     auto blackboard = bt_action_server_->getBlackboard();
+     nav_msgs::msg::Path current_path;
+     if (blackboard->get<nav_msgs::msg::Path>(path_blackboard_id_, current_path)) {
+       feedback->path_poses_count = static_cast<uint32_t>(current_path.poses.size());
+     }
+
+     bt_action_server_->publishFeedback(feedback);
    }
 
 **goalCompleted** — called once when the tree finishes. Maps the BT outcome to an error code in the action result and clears the blackboard so a subsequent goal that reuses the same BT file does not find stale data.
