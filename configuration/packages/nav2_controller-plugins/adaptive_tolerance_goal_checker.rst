@@ -3,7 +3,7 @@
 AdaptiveToleranceGoalChecker
 ============================
 
-The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningfull progress towards it (or not expected to).
+The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).
 
 The goal is cosidered reached when one of the following conditions is met:
   - The robot is within the fine goal tolerance
@@ -138,4 +138,3 @@ Example
           trans_stopped_velocity: 0.10
           rot_stopped_velocity: 0.10
           required_stagnation_cycles: 15
-
