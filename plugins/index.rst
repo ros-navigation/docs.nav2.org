@@ -81,6 +81,11 @@ Costmap Layers
 |                                |                        | costmap with different isolated  |
 |                                |                        | combinations of costmap layers   |
 +--------------------------------+------------------------+----------------------------------+
+| `Ground Consistency Layer`_    |  Muhammad Haider Khan  | Height-aware costmap layer using |
+|                                |  Lodhi                 | 3D ground segmentation. Pair     |
+|                                |                        | with Inflation Layer for terrain-|
+|                                |                        | aware navigation.                |
++--------------------------------+------------------------+----------------------------------+
 
 .. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
 .. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
@@ -92,6 +97,7 @@ Costmap Layers
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 .. _Denoise Layer: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 .. _Plugin Container Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
+.. _Ground Consistency Layer: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
 
 Costmap Filters
 ===============
