@@ -92,25 +92,25 @@ Mask values in ``[1, 127]`` map to configured states.
 
 :``<filter name>``.state_event_topic:
 
-  ====== =======
+  ====== ====================
   Type   Default
-  ------ -------
-  string ""
-  ====== =======
+  ------ --------------------
+  string "zone_filter_state"
+  ====== ====================
 
   Description
-    Optional. If set to a non-empty topic name, the filter publishes a ``std_msgs::msg::UInt8`` message containing the new state ID on every state transition (including transitions to state ``0``). If left empty, no publisher is created.
+    Topic name on which the filter publishes a ``std_msgs::msg::UInt8`` message containing the new state ID on every state transition (including transitions to state ``0``). The publisher is always created.
 
 :``<filter name>``.on_param_set_failure:
 
   ====== =======
   Type   Default
   ------ -------
-  string "warn"
+  string "throw"
   ====== =======
 
   Description
-    Behavior when a target node's ``set_parameters`` call returns ``successful = false``. Either ``"warn"`` (log the failure and continue — the costmap update loop is preserved) or ``"throw"`` (raise an exception, terminating the filter). The default is ``"warn"`` because a hot-path exception in a costmap filter takes the entire navigation stack down; ``"throw"`` is offered for stacks that prefer hard correctness over operational continuity.
+    Behavior when a target node's ``set_parameters`` call returns ``successful = false``. Either ``"throw"`` (raise an exception, terminating the filter) or ``"warn"`` (log the failure and continue — the costmap update loop is preserved). The default is ``"throw"`` for fail-safe behavior on persistent set-parameter faults; ``"warn"`` is offered for environments where transient RPC faults (target node mid-restart, parameter-service overloaded) are common and continuing through them is preferred over the lifecycle-stopping exception.
 
 Example Fully-Described YAML
 ----------------------------
@@ -125,8 +125,8 @@ Example Fully-Described YAML
           plugin: "nav2_costmap_2d::ZoneParameterFilter"
           enabled: true
           filter_info_topic: "/zone_filter_info"
-          state_event_topic: "/zone_filter_state"   # optional
-          on_param_set_failure: "warn"               # or "throw"
+          state_event_topic: "zone_filter_state"     # default
+          on_param_set_failure: "throw"              # default; or "warn"
           target_nodes: [controller_server, local_costmap]
           state_ids: [1, 2]
           state_1:                                   # winter / icy zone
