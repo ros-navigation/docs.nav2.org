@@ -79,19 +79,22 @@ def _format_default(default_str: str) -> str:
         return default_str
 
 
-def _parse_ports(node: ET.Element) -> tuple:
+def _parse_ports(
+        node: ET.Element
+    ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
     """
-    Parse input_port and output_port children from an XML BT node.
-    Returns (input_ports, output_ports).
+    Parse input_port, output_port and bidirectional_port children from XML BT node.
+    Returns (input_ports, output_ports, bidirectional_ports).
     """
 
-    input_ports = []
-    output_ports = []
+    input_ports: list[dict[str, str]] = []
+    output_ports: list[dict[str, str]] = []
+    bidirectional_ports: list[dict[str, str]] = []
 
     for child in node:
         
         port_direction = child.tag
-        if port_direction not in ('input_port', 'output_port'):
+        if port_direction not in ('input_port', 'output_port', 'bidirectional_port'):
             continue
 
         port_name = child.attrib.get('name', '')
@@ -119,8 +122,10 @@ def _parse_ports(node: ET.Element) -> tuple:
             input_ports.append(port)
         elif port_direction == 'output_port':
             output_ports.append(port)
+        elif port_direction == 'bidirectional_port':
+            bidirectional_ports.append(port)
 
-    return input_ports, output_ports
+    return input_ports, output_ports, bidirectional_ports
 
 
 def _remove_dir(dir_path: Path):
@@ -410,7 +415,7 @@ def define_env(env):
             logger.error(f"BT node ID not found: {bt_node_id}.")
             sys.exit(1)
 
-        input_ports, output_ports = _parse_ports(node)
+        input_ports, output_ports, bidirectional_ports = _parse_ports(node)
 
         sections = []
         if input_ports:
@@ -420,6 +425,10 @@ def define_env(env):
         if output_ports:
             sections.append(
                 _PORT_SECTION_TEMPLATE.render(heading='Output Ports', ports=output_ports)
+            )
+        if bidirectional_ports:
+            sections.append(
+                _PORT_SECTION_TEMPLATE.render(heading='Bidirectional Ports', ports=bidirectional_ports)
             )
 
         return '\n\n'.join(sections)
