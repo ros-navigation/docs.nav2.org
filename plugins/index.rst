@@ -322,7 +322,8 @@ Goal Checkers
 |                                 |                        | of goal, without requiring       |
 |                                 |                        | rotational convergence.          |
 +---------------------------------+------------------------+----------------------------------+
-| `AxisGoalChecker`_              | Tony Najjar            | A plugin check whether robot     |
+| `AxisGoalChecker`_              | Guillaume Doisy &      | A plugin check whether robot     |
+|                                 | Tony Najjar            | is within tolerance along the    |
 |                                 |                        | is within tolerance along the    |
 |                                 |                        | path direction and perpendicular |
 |                                 |                        | to it (cross-track).             |
