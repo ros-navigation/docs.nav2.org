@@ -1220,6 +1220,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
 </ul>
 </li>
 </ul>
@@ -1793,6 +1794,22 @@ and velocity threshold.</p></td>
 is within translational distance
 of goal, without requiring
 rotational convergence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/axis_goal_checker.cpp">AxisGoalChecker</a></p></td>
+<td><p>Guillaume Doisy &amp;
+Tony Najjar</p></td>
+<td><p>A plugin check whether robot
+is within tolerance along the
+is within tolerance along the
+path direction and perpendicular
+to it (cross-track).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/adaptive_tolerance_goal_checker.cpp">AdaptiveToleranceGoalChecker</a></p></td>
+<td><p>David Grbac</p></td>
+<td><p>A plugin check whether robot
+is within translational distance
+(using two tolerance levels)
+and rotational distance of goal.</p></td>
 </tr>
 </tbody>
 </table>

@@ -1221,6 +1221,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#nav2-loopback-simulator-converted-to-c">Nav2 Loopback Simulator converted to C++</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
 </ul>
 </li>
 </ul>
@@ -2166,6 +2167,21 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 </dd>
 </dl>
 <p>While “diff_drive” is the default value for <code class="docutils literal notranslate"><span class="pre">motion_model</span></code> parameter, it is still required to specify the plugin for it, as shown above.</p>
+</div>
+<div class="section" id="adaptive-tolerance-goal-checker">
+<h2>Adaptive tolerance goal checker<a class="headerlink" href="#adaptive-tolerance-goal-checker" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6052">PR #6052</a> adds a new adaptive tolerance goal checker.</p>
+<p>The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).</p>
+<dl class="simple">
+<dt>The goal is cosidered reached when one of the following conditions is met:</dt><dd><ul class="simple">
+<li><p>The robot is within the fine goal tolerance</p></li>
+<li><p>The robot is within the coarse goal tolerance and its linear velocity and orientational velocity are below a specified threshold for a set amount of cycles</p></li>
+<li><p>The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles</p></li>
+<li><p>The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)</p></li>
+</ul>
+</dd>
+</dl>
+<p>See <a class="reference internal" href="../configuration/packages/nav2_controller-plugins/adaptive_tolerance_goal_checker.html#configuring-nav2-controller-adaptive-tolerance-goal-checker-plugin"><span class="std std-ref">AdaptiveToleranceGoalChecker</span></a> for full details.</p>
 </div>
 </div>
 

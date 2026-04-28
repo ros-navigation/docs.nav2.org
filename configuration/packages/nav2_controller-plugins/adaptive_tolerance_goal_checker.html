@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FeasiblePathHandler &mdash; Nav2 1.0.0 documentation</title>
+  <title>AdaptiveToleranceGoalChecker &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Costmap 2D" href="../configuring-costmaps.html" />
-    <link rel="prev" title="PositionGoalChecker" href="position_goal_checker.html" />
+    <link rel="next" title="SimpleGoalChecker" href="simple_goal_checker.html" />
+    <link rel="prev" title="AxisGoalChecker" href="axis_goal_checker.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -1297,7 +1297,7 @@
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../configuring-controller-server.html">Controller Server</a></li>
-      <li class="breadcrumb-item active">FeasiblePathHandler</li>
+      <li class="breadcrumb-item active">AdaptiveToleranceGoalChecker</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1306,19 +1306,138 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="feasiblepathhandler">
-<span id="configuring-nav2-controller-feasible-path-handler-plugin"></span><h1>FeasiblePathHandler<a class="headerlink" href="#feasiblepathhandler" title="Permalink to this heading"></a></h1>
-<p>Transforms the global plan into the local costmap frame, prunes it to the relevant portion
-within the costmap bounds, and handles in-place rotation and cusp pruning.</p>
+  <div class="section" id="adaptivetolerancegoalchecker">
+<span id="configuring-nav2-controller-adaptive-tolerance-goal-checker-plugin"></span><h1>AdaptiveToleranceGoalChecker<a class="headerlink" href="#adaptivetolerancegoalchecker" title="Permalink to this heading"></a></h1>
+<p>The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).</p>
+<dl class="simple">
+<dt>The goal is cosidered reached when one of the following conditions is met:</dt><dd><ul class="simple">
+<li><p>The robot is within the fine goal tolerance</p></li>
+<li><p>The robot is within the coarse goal tolerance and its linear velocity and orientational velocity are below a specified threshold for a set amount of cycles</p></li>
+<li><p>The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles</p></li>
+<li><p>The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)</p></li>
+</ul>
+</dd>
+</dl>
+<img alt="AdaptiveToleranceGoalChecker Illustration" class="align-center" src="../../../_images/adaptive_tolerance_goal_checker.png" />
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>path_handler_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>goal_checker_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
 <dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.reject_unit_path</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.fine_xy_goal_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.10</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Fine (desired) XY tolerance to the goal (m). When the robot’s XY distance to the goal is within this tolerance, the goal is considered reached immediately (subject to the yaw check). Should be smaller than <code class="docutils literal notranslate"><span class="pre">coarse_xy_goal_tolerance</span></code>.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.coarse_xy_goal_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Coarse (fallback) XY tolerance to the goal (m). When the robot is within this tolerance but outside the fine tolerance, the goal is considered reached only if one of the coarse-tier acceptance conditions fires (stopped stagnation, distance stagnation, or finish-line crossing). Should be larger than <code class="docutils literal notranslate"><span class="pre">fine_xy_goal_tolerance</span></code>.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.yaw_goal_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Tolerance on the yaw angle to the goal orientation (rad). The goal is only considered reached once the XY check passes AND the yaw error is within this tolerance.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.path_length_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Maximum remaining transformed global plan length above which the goal check is skipped (m). Prevents premature goal acceptance when the robot is still far from the goal along the path.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.stateful</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>If true, once the XY tolerance is satisfied the checker latches that result and only re-evaluates yaw on subsequent cycles. If false, both XY and yaw are re-checked every cycle.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.symmetric_yaw_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
@@ -1329,165 +1448,97 @@ within the costmap bounds, and handles in-place rotation and cusp pruning.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If enabled, the path handler will reject a path that contains only a single pose.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>If true, the yaw check accepts both the goal orientation and its 180° opposite (useful for symmetric robots that can drive forward or backward). If false, only the goal orientation is accepted.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.prune_distance</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>2.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Distance ahead of nearest point on path to robot to prune path to (m). This distance should be at least as great as the furthest distance of interest by a critic (i.e. for maximum velocity projection forward, threshold to consider).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.max_robot_pose_search_dist</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.trans_stopped_velocity</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>Costmap size / 2</p></td>
+<td><p>0.10</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Max integrated distance ahead of robot pose to search for nearest path point in case of path looping.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Linear velocity threshold below which the robot is considered “stopped” for the stopped-stagnation acceptance path (m/s). Combined with <code class="docutils literal notranslate"><span class="pre">rot_stopped_velocity</span></code> and <code class="docutils literal notranslate"><span class="pre">required_stagnation_cycles</span></code>.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.enforce_path_inversion</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.rot_stopped_velocity</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.10</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If true, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner’s requested inversion point. In addition, these cusping points will also be treated by the critics as local goals that the robot will attempt to reach. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Angular velocity threshold below which the robot is considered “stopped” for the stopped-stagnation acceptance path (rad/s). Combined with <code class="docutils literal notranslate"><span class="pre">trans_stopped_velocity</span></code> and <code class="docutils literal notranslate"><span class="pre">required_stagnation_cycles</span></code>.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.enforce_path_rotation</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.required_stagnation_cycles</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>15</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If true, the controller will detect in-place rotation segments (where translation is near zero) and prune the remaining poses after the rotation point. This forces the robot to explicitly perform the rotation before proceeding along the rest of the path.
-This is particularly useful for feasible planners (e.g., Smac Planner) where direction changes are intentionally introduced and must be respected during execution.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Number of consecutive controller cycles for which a stagnation condition must hold before the coarse-tier acceptance fires. Applies to both stopped stagnation (velocity below threshold) and distance stagnation (no improvement in distance to goal). Must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1</span></code>.</p>
 </dd>
 </dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.minimum_rotation_angle</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.785</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The minimum accumulated rotation (in radians) required to classify a segment as an in-place rotation. 0.785 rad = 45 deg.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.inversion_xy_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.2</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Cartesian proximity (m) to path inversion point to be considered “achieved” to pass on the rest of the path after path inversion.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.inversion_yaw_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.4</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Angular proximity (radians) to path inversion point to be considered “achieved” to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">PathHandler</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::FeasiblePathHandler&quot;</span>
-<span class="w">    </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
-<span class="w">    </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">    </span><span class="nt">enforce_path_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-<span class="w">    </span><span class="nt">inversion_xy_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-<span class="w">    </span><span class="nt">inversion_yaw_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
-<span class="w">    </span><span class="nt">minimum_rotation_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
-<span class="w">    </span><span class="nt">reject_unit_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;goal_checker&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">goal_checker</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::AdaptiveToleranceGoalChecker&quot;</span>
+<span class="w">      </span><span class="nt">fine_xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.10</span>
+<span class="w">      </span><span class="nt">coarse_xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">      </span><span class="nt">path_length_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">symmetric_yaw_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">trans_stopped_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.10</span>
+<span class="w">      </span><span class="nt">rot_stopped_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.10</span>
+<span class="w">      </span><span class="nt">required_stagnation_cycles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
 </pre></div>
 </div>
 </div>
