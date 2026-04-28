@@ -26,12 +26,13 @@ It is assumed you have ROS 2 Jazzy installed. To install all required dependenci
 .. code-block:: bash
 
    mkdir -p src && cd src
-   git clone https://github.com/haider8645/nav2_ground_consistency_demo.git
+   git clone https://github.com/ros-navigation/navigation2_tutorials.git
+   git checkout -t remotes/origin/jazzy
 
 .. code-block:: bash
 
-   cd nav2_ground_consistency_demo
-   bash install_dependencies.bash ~/my_custom_workspace
+   cd navigation2_tutorials/nav2_ground_consistency_demo
+   bash install_dependencies.bash ~/path_to_my_custom_workspace
 
 This script will:
 
