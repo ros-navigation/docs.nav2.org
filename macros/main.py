@@ -134,6 +134,25 @@ def _remove_dir(dir_path: Path):
             raise
 
 
+def _get_git_branch_name(local_repo_path: Path) -> str | None:
+    """
+    Get current Git branch name in the working directory.
+    """
+
+    try:
+        branch_name = subprocess.run(
+            ["git", "branch", "--show-current"],
+            cwd=local_repo_path,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        return branch_name
+    except subprocess.CalledProcessError as exc:
+        logger.error(f"Failed to get Git branch name: {exc}")
+        return None
+
+
 def _is_git_workdir_synced(local_repo_path: Path) -> bool:
     """
     Check if the local working directory is up to date with the GitHub upstream.
@@ -352,13 +371,14 @@ def define_env(env):
         for repo_name, repo_info in github_repos.items():
 
             local_repo_path = cache_dir / Path(repo_name)
-            if local_repo_path.exists() and _is_git_workdir_synced(local_repo_path):
+            if local_repo_path.exists() \
+            and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
+            and _is_git_workdir_synced(local_repo_path):
                 logger.info(
                     f"Cached Git repository '{local_repo_path}' is synced with upstream. "
                     "Skipping clone."
                 )
                 continue
-
             _clone_sparse_github_data(
                 repo_name=repo_name, 
                 owner=repo_info["owner"], 
