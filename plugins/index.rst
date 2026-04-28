@@ -322,6 +322,11 @@ Goal Checkers
 |                                 |                        | of goal, without requiring       |
 |                                 |                        | rotational convergence.          |
 +---------------------------------+------------------------+----------------------------------+
+| `AxisGoalChecker`_              | Tony Najjar            | A plugin check whether robot     |
+|                                 |                        | is within tolerance along the    |
+|                                 |                        | path direction and perpendicular |
+|                                 |                        | to it (cross-track).             |
++---------------------------------+------------------------+----------------------------------+
 | `AdaptiveToleranceGoalChecker`_ | David Grbac            | A plugin check whether robot     |
 |                                 |                        | is within translational distance |
 |                                 |                        | (using two tolerance levels)     |
@@ -331,6 +336,7 @@ Goal Checkers
 .. _SimpleGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 .. _StoppedGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
 .. _PositionGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp
+.. _AxisGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/axis_goal_checker.cpp
 .. _AdaptiveToleranceGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/adaptive_tolerance_goal_checker.cpp
 
 Progress Checkers
