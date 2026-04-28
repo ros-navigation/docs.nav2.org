@@ -428,7 +428,7 @@ Virtual method summary:
      // Read a value from the BT blackboard and publish it as feedback.
      // The path is written once by goalReceived(); a BT action node
      // could write a separate progress key that gets read here instead,
-     // or you could try to calculate remaining poses with 
+     // or you could try to calculate remaining poses with
      // nav2_util::getCurrentPose for example.
      auto blackboard = bt_action_server_->getBlackboard();
      nav_msgs::msg::Path current_path;
