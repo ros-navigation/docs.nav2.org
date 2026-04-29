@@ -96,22 +96,27 @@ Costmap Layers
 Costmap Filters
 ===============
 
-+--------------------+--------------------+-----------------------------------+
-|    Plugin Name     |      Creator       |       Description                 |
-+====================+====================+===================================+
-| `Keepout Filter`_  | Alexey Merzlyakov  | Maintains keep-out/safety zones   |
-|                    |                    | and preferred lanes for moving    |
-+--------------------+--------------------+-----------------------------------+
-| `Speed Filter`_    | Alexey Merzlyakov  | Limits maximum velocity of robot  |
-|                    |                    | in speed restriction areas        |
-+--------------------+--------------------+-----------------------------------+
-| `Binary Filter`_   | Alexey Merzlyakov  | Enables binary (boolean) mask     |
-|                    |                    | behavior to trigger actions.      |
-+--------------------+--------------------+-----------------------------------+
++--------------------------+--------------------+-----------------------------------+
+|        Plugin Name       |      Creator       |       Description                 |
++==========================+====================+===================================+
+| `Keepout Filter`_        | Alexey Merzlyakov  | Maintains keep-out/safety zones   |
+|                          |                    | and preferred lanes for moving    |
++--------------------------+--------------------+-----------------------------------+
+| `Speed Filter`_          | Alexey Merzlyakov  | Limits maximum velocity of robot  |
+|                          |                    | in speed restriction areas        |
++--------------------------+--------------------+-----------------------------------+
+| `Binary Filter`_         | Alexey Merzlyakov  | Enables binary (boolean) mask     |
+|                          |                    | behavior to trigger actions.      |
++--------------------------+--------------------+-----------------------------------+
+| `Zone Parameter Filter`_ | aki1770-del        | Applies a configured set of nav2  |
+|                          |                    | parameter overrides per mask      |
+|                          |                    | state.                            |
++--------------------------+--------------------+-----------------------------------+
 
 .. _Keepout Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
 .. _Speed Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
 .. _Binary Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
+.. _Zone Parameter Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/zone_parameter_filter.cpp
 
 Controllers
 ===========
