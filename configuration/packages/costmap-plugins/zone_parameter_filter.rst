@@ -88,7 +88,7 @@ Mask values in ``[1, 127]`` map to configured states.
   ====== =======
 
   Description
-    Optional but strongly recommended. The value to restore for each parameter when the robot enters state ``0`` (reset). One entry per parameter that any state ``N`` overrides. Declarative rather than auto-captured because the underlying ``get_parameters`` and ``set_parameters`` services are separate ``services::Client`` instances on the target node — server-side ordering between a "capture-then-override" sequence is not guaranteed, so a late get response could capture the overridden value rather than the nominal. The filter logs a warning at config-load time for any state-N override that has no matching ``nominal_defaults`` entry; such parameters will not be restored on state-0 reset.
+    Value to restore for each parameter on state ``0`` (reset). Declared rather than auto-captured because ``get_parameters`` and ``set_parameters`` use separate underlying ``services::Client`` instances on the target node, so a "capture-then-override" sequence cannot guarantee FIFO ordering at the server. The filter logs a warning at config-load for any state-N override without a matching ``nominal_defaults`` entry; such parameters will not be restored on state-0 reset.
 
 :``<filter name>``.state_event_topic:
 
