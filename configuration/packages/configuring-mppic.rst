@@ -821,7 +821,18 @@ This critic incentivizes aligning with the global path, if relevant. It does not
   ============== ===========================
 
   Description
-    Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path's intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
+    Maximum proportion of a path segment that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path's intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
+
+:occupancy_check_min_distance:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.0
+  ============== ===========================
+
+  Description
+    Min distance for the occupancy check's path segment. The segment length is ``min(occupancy_check_min_distance, distance_to_furthest_reached_path_point).``
 
 :use_path_orientations:
 
@@ -1207,6 +1218,8 @@ As this is a predictive planner, there is some relationship between maximum spee
 The same applies to the Path Follow and Align offsets from furthest. In the same example if the furthest point we can consider is already at the edge of the costmap, then further offsets are thresholded because they're unusable. So its important while selecting these parameters to make sure that the theoretical offsets can exist on the costmap settings selected with the maximum prediction horizon and velocities desired. Setting the threshold for consideration in the path follower + goal critics as the same as your prediction horizon can make sure you have clean hand-offs between them, as the path follower will otherwise attempt to slow slightly once it reaches the final goal pose as its marker.
 
 The Path Follow critic cannot drive velocities greater than the projectable distance of that velocity on the available path on the rolling costmap. The Path Align critic `offset_from_furthest` represents the number of path points a trajectory passes through while tracking the path. If this is set either absurdly low (e.g. 5) it can trigger when a robot is simply trying to start path tracking causing some suboptimal behaviors and local minima while starting a task. If it is set absurdly high (e.g. 50) relative to the path resolution and costmap size, then the critic may never trigger or only do so when at full-speed. A balance here is wise. A selection of this value to be ~30% of the maximum velocity distance projected is good (e.g. if a planner produces points every 2.5cm, 60 can fit on the 1.5m local costmap radius. If the max speed is 0.5m/s with a 3s prediction time, then 20 points represents 33% of the maximum speed projected over the prediction horizon onto the path). When in doubt, ``prediction_horizon_s * max_speed / path_resolution / 3.0`` is a good baseline.
+
+If your robot's kinematics is very different than the defaults, you may need to tune ``PathAlignCritic.occupancy_check_min_distance``. This distance defines the min length of the path segment used to disable the ``PathAlignCritic``. A reasonable initial value should be the horizon's length at full speed. If the distance is too short, the robot may slow down when approaching an obstacle ahead and may even get too close to it and get stuck. If the distance is too big, the critic will be disabled too early, which may cause deviation from path (if for example, the reference point for PathFollowCritic is beyond a curve on the path).
 
 Obstacle, Inflation Layer, and Path Following
 ---------------------------------------------
