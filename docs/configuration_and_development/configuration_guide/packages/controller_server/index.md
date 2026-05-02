@@ -251,6 +251,7 @@ The plugins listed below are inside the `nav2_controller` namespace.
 - [SimpleProgressChecker][simple-progress-checker]
 - [PoseProgressChecker][pose-progress-checker]
 - [AxisGoalChecker][axis-goal-checker]
+- [AdaptiveToleranceGoalChecker][adaptive-tolerance-goal-checker]
 - [SimpleGoalChecker][simple-goal-checker]
 - [StoppedGoalChecker][stopped-goal-checker]
 - [PositionGoalChecker][position-goal-checker]

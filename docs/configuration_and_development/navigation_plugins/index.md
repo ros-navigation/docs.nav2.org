@@ -178,17 +178,21 @@ For tutorials on creating your own plugins, please see
 
 <div class="center-table" markdown>
 
-| Plugin Name               | Creator        | Description                                                                                                                      |
-|---------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------|
-| [SimpleGoalChecker][]     | David Lu!!     | A plugin check whether robot<br>is within translational distance<br>and rotational distance of goal.                             |
-| [StoppedGoalChecker][]    | David Lu!!     | A plugin check whether robot<br>is within translational distance,<br>rotational distance of goal,<br>and velocity threshold.     |
-| [PositionGoalChecker][]   | Prabhav Saxena | A plugin check whether robot<br>is within translational distance<br>of goal, without requiring<br>rotational convergence.        |
+| Plugin Name                        | Creator                       | Description                                                                                                                          |
+|------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| [SimpleGoalChecker][]              | David Lu!!                    | A plugin check whether robot<br>is within translational distance<br>and rotational distance of goal.                                 |
+| [StoppedGoalChecker][]             | David Lu!!                    | A plugin check whether robot<br>is within translational distance,<br>rotational distance of goal,<br>and velocity threshold.         |
+| [PositionGoalChecker][]            | Prabhav Saxena                | A plugin check whether robot<br>is within translational distance<br>of goal, without requiring<br>rotational convergence.            |
+| [AxisGoalChecker][]                | Guillaume Doisy & Tony Najjar | A plugin check whether robot<br>is within tolerance along the<br>path direction and perpendicular<br>to it (cross-track).            |
+| [AdaptiveToleranceGoalChecker][]   | David Grbac                   | A plugin check whether robot<br>is within translational distance<br>(using two tolerance levels)<br>and rotational distance of goal. |
 
 </div>
 
 [SimpleGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 [StoppedGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
 [PositionGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp
+[AxisGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/axis_goal_checker.cpp
+[AdaptiveToleranceGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/adaptive_tolerance_goal_checker.cpp
 
 ## Progress Checkers
 

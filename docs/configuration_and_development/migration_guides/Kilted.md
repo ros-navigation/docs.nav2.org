@@ -880,3 +880,18 @@ Supported motion model plugins are:
   - `mppi::AckermannMotionModel` : replaces `motion_model: Ackermann`
 
 While "diff_drive" is the default value for `motion_model` parameter, it is still required to specify the plugin for it, as shown above.
+
+## Adaptive tolerance goal checker { #kilted-to-l-adaptive-tolerance-goal-checker }
+
+[PR #6052](https://github.com/ros-navigation/navigation2/pull/6052) adds a new adaptive tolerance goal checker.
+
+The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).
+
+The goal is cosidered reached when one of the following conditions is met:
+
+  - The robot is within the fine goal tolerance
+  - The robot is within the coarse goal tolerance and its linear velocity and orientational velocity are below a specified threshold for a set amount of cycles
+  - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
+  - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
+
+See [AdaptiveToleranceGoalChecker][adaptive-tolerance-goal-checker] for full details.
