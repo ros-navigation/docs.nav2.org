@@ -107,6 +107,15 @@ Description
 Description
 :   Radius (m) around the goal pose in which the robot will start to slow down.
 
+### **`deceleration_max`**
+
+| Type     | Default |
+|----------|---------|
+| `double` | 2.5     |
+
+Description
+:   Maximum deceleration (m/s²) used to compute a velocity limit based on distance to the goal.
+
 ### **`initial_rotation`**
 
 | Type   | Default |
@@ -263,6 +272,7 @@ controller_server:
       v_angular_max: 5.0
       v_angular_min_in_place: 0.25
       slowdown_radius: 1.5
+      deceleration_max: 2.5
       footprint_scaling_linear_vel: 0.5
       footprint_scaling_factor: 0.25
       footprint_scaling_step: 0.1
