@@ -160,12 +160,13 @@ def _get_git_branch_name(local_repo_path: Path) -> str | None:
 
 def _is_git_workdir_synced(local_repo_path: Path) -> bool:
     """
-    Check if the local working directory is up to date with the GitHub upstream.
+    Check if the local working directory is synced 
+    with the GitHub remote repository.
     Returns True if up to date, False if update is needed.
     """
 
     try:
-        local_commit = subprocess.run(
+        local_commit_hash = subprocess.run(
             ["git", "rev-parse", "HEAD"],
             cwd=local_repo_path,
             check=True,
@@ -173,15 +174,16 @@ def _is_git_workdir_synced(local_repo_path: Path) -> bool:
             text=True,
         ).stdout.strip()
 
-        remote_commit = subprocess.run(
-            ["git", "rev-parse", "@{upstream}"],
+        branch_name = _get_git_branch_name(local_repo_path)
+        remote_commit_hash = subprocess.run(
+            ["git", "ls-remote", "origin", f"refs/heads/{branch_name}"],
             cwd=local_repo_path,
             check=True,
             capture_output=True,
             text=True,
-        ).stdout.strip()
+        ).stdout.strip().split()[0]
 
-        return local_commit == remote_commit
+        return local_commit_hash == remote_commit_hash
 
     except subprocess.CalledProcessError as exc:
         logger.error(f"Failed to check Git working directory status: {exc}")
@@ -380,7 +382,8 @@ def define_env(env):
             and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
             and _is_git_workdir_synced(local_repo_path):
                 logger.info(
-                    f"Cached Git repository '{local_repo_path}' is synced with upstream. "
+                    f"Cached Git repository '{local_repo_path}' "
+                    "is synced with remote GitHub repository. "
                     "Skipping clone."
                 )
                 continue
