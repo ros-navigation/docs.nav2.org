@@ -26,6 +26,15 @@ _TYPE_REGEX_TRANSFORMS = [
 ]
 
 
+_DOXYGEN_REGEX_PATTERNS = {
+    "COMMENT_STYLE": re.compile(r"^[ \t]*\*[ \t]?"),
+    "COMMENT_END": re.compile(r"^\s*\*/"),
+    "XML_USAGE_EXAMPLE": re.compile(r"Usage in XML:"),
+    "CODE_BLOCK_START": re.compile(r"@code\b"),
+    "CODE_BLOCK_END": re.compile(r"@endcode\b"),
+}
+
+
 _PORT_SECTION_TEMPLATE = Template("""\
 ## {{ heading }}
 
@@ -458,8 +467,8 @@ def define_env(env):
         try:
             doxygen_section = _get_lines_section(
                 lines=file_lines, 
-                start=re.compile(r"Usage in XML:"), 
-                end=re.compile(r"^\s*\*/"), 
+                start=_DOXYGEN_REGEX_PATTERNS["XML_USAGE_EXAMPLE"], 
+                end=_DOXYGEN_REGEX_PATTERNS["COMMENT_END"], 
                 stop_at=class_pattern
             )
         except ValueError as exc:
@@ -469,9 +478,9 @@ def define_env(env):
         try:
             code_section = _extract_doxygen_code_block(
                 lines=doxygen_section, 
-                code_start_pattern=re.compile(r"@code\b"), 
-                code_end_pattern=re.compile(r"@endcode\b"), 
-                comment_block_pattern=re.compile(r"^[ \t]*\*[ \t]?")
+                code_start_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_START"], 
+                code_end_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_END"], 
+                comment_block_pattern=_DOXYGEN_REGEX_PATTERNS["COMMENT_STYLE"]
             )
         except ValueError as exc:
             logger.error(f"Failed to extract code block from file {file_path}: {exc}")
