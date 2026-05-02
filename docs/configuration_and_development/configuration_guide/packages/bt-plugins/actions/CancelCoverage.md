@@ -2,28 +2,9 @@
 
 Used to cancel the goals given to the complete coverage action server. The server address can be remapped using the `server_name` input port.
 
-## Input Ports
-
-### **`service_name`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   Service name.
-
-### **`server_timeout`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
-
-Description
-:   Server timeout (ms).
+{{ render_bt_node_ports(page.title) }}
 
 ## Example
-
 
 {% set bt_plugin_hpp_path = cache_dir + opennav_cov_bt_plugins_hpp_path + "/cancel_complete_coverage_path.hpp" %}
 
