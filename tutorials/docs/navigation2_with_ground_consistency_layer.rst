@@ -20,7 +20,7 @@ Overview
 In this tutorial, we demonstrate a terrain-aware costmap layer for Nav2 which uses 3D lidar ground segmentation. The 
 `ground consistency costmap layer <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_ allows users 
 to classify terrain into traversable ground and obstacles for intelligent outdoor 
-navigation in non-planar environments for smarter costmaps for safer navigation.
+navigation in non-planar environments, creating smarter and safer costmaps.
 
 The Ground Consistency layer uses 
 local terrain-relative obstacle and ground height reasoning based on ground segmentation rather than fixed global thresholds. This enables reliable 
@@ -40,16 +40,16 @@ This tutorial requires ROS 2 Jazzy and Nav2. Follow the official setup guides:
 
 - **ROS 2 Jazzy Installation**: https://docs.ros.org/en/jazzy/Installation.html
 - **Nav2 Setup Guide**: https://docs.nav2.org/setup_guides/index.html
-- **Ground Segmentation**: There are many well-established ground segmentation methods; in this tutorial, we use the `ground_segmentation_ros2 <https://github.com/dfki-ric/ground_segmentation_ros2>`_ package  developed by DFKI Robotics Innovation Center. You will find the installation instructions `here <https://github.com/dfki-ric/ground_segmentation_ros2#prerequisite>`_
+- **Ground Segmentation**: There are many well-established ground segmentation methods; in this tutorial, we use the `ground_segmentation_ros2 <https://github.com/dfki-ric/ground_segmentation_ros2>`_ package developed by DFKI Robotics Innovation Center. You will find the installation instructions `here <https://github.com/dfki-ric/ground_segmentation_ros2#prerequisite>`_
 
 Installation Steps
 ==================
 
-It is assumed ROS2, Nav2, and a ground segmentation package are built locally.
+It is assumed that ROS 2, Nav2, and a ground segmentation package are built locally.
 
-Next, you will also need to compile the `nav2_ground_consistency_costmap_plugin <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_ package. To do it, clone the repo to your ROS 2 workspace source and build the package:
+Next, you will also need to compile the `nav2_ground_consistency_costmap_plugin <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_ package. To do so, clone the repository to your ROS 2 workspace and build the package:
 
-Note: currently only ROS2 Jazzy (main branch) is supported, but branches for humble and rolling will be added soon.
+Note: currently only ROS 2 Jazzy (main branch) is supported, but branches for humble and rolling will be added soon.
 
 .. code-block:: bash
 
@@ -75,10 +75,7 @@ Segmented Ground (Green) and Non-Ground Points (Magenta) based on `GSeg3D <https
 .. image:: images/Navigation2_with_Ground_Consistency/segmented_points.png
    :alt: Segmented Ground and Non-Ground Points
 
-The results from ground segmentation are very interesting because it allows us to reason about the geometry of the terrain and make smarter 
-decisions about what is an obstacle and what is traversable ground. Although it has been practiced to use ground segmentation to filter out ground points 
-from the costmap, we could rather make use of the ground points to implement an evidence accumulation and height-based classification system. This allows it to 
-create more accurate and stable costmaps in challenging environments.
+Ground segmentation results enable us to reason about terrain geometry and make smarter decisions about what constitutes obstacles versus traversable surfaces. While ground segmentation is traditionally used to filter out ground points from costmaps, we can instead use ground points to implement an evidence accumulation and height-based classification system. This approach creates more accurate and stable costmaps in challenging environments.
 
 Ground Consistency Layer
 ========================
@@ -91,14 +88,14 @@ This section describes the three core mechanisms.
 The ground and non-ground points compete with each other to determine the occupancy status of each cell in the costmap. The layer also incorporates 
 height-based classification to distinguish between actual obstacles and traversable terrain variations, such as slopes or small bumps.
 
-Lets look at the core mechanisms in more detail:
+Let's look at the core mechanisms in more detail:
 
 1. Evidence Accumulation and Competition System
 -----------------------------------------------
 
 Each grid cell collects two types of evidence: ground and obstacle. As new sensor data arrives, these 
-scores are updated and compared to estimate how likely the cell is occupied. The evidences can be scaled differently (e.g., obstacle evidence may 
-be weighted more heavily than ground evidence) to create a bias towards safety.
+scores are updated and compared to estimate how likely the cell is occupied. Evidence weights can be adjusted differently (e.g., obstacle evidence may 
+be weighted more heavily than ground evidence) to create a safety bias.
 
 A cell is marked as an obstacle only when there is both:
 
@@ -119,28 +116,28 @@ local ground height. Based on the robot's height:
 - Only objects within the robot’s collision range are considered blocking
 
 At times, the terrain is such that no local ground height can be reliably determined. In this case, the 
-layer can be configured to use neighbour cells to estimate local ground height (See parameter ``ground_neighbor_search_cells``), or treat all such obstacles 
+layer can be configured to use neighboring cells to estimate local ground height (see the ``ground_neighbor_search_cells`` parameter), or treat all such obstacles 
 without ground below them as blocking. For example, if the robot is navigating through a tunnel and the ground 
-segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` (See `Tuning Guide`_) can be applied to all non-ground points 
+segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` (see `Tuning Guide`_) can be applied to all non-ground points 
 in the obstacle points frame (usually base_link or lidar_link) to determine if they are blocking or not. 
 This allows the robot to navigate through tunnels and under bridges without being blocked by misclassified ground points.
 
 3. Temporal Stability Through Evidence Decay
 --------------------------------------------
 
-The evidences are decayed over time to allow the costmap to adapt to changing environments. Cells transition gradually between free and 
-occupied states as evidence builds or fades. The amount of 
+Evidence is decayed over time to allow the costmap to adapt to changing environments. Cells transition gradually between free and 
+occupied states as evidence builds or fades. The rate of 
 decay can be tuned separately for ground and obstacle evidence, creating temporal hysteresis, which allows for more stable and
 responsive terrain adaptation (faster ground decay) while maintaining stable obstacle marking (slower obstacle decay).
 
 Nav2 Integration
 ================
 
-Now we configure Nav2 to use the ground consistency layer in its local costmap. It is recommended to use the layer in the local costmap 
-since it relies on real-time sensor data and is designed for short-term occupancy estimation. It is best for safety to use the layer
+Configure Nav2 to use the ground consistency layer in its local costmap. It is recommended to use the layer in the local costmap 
+since it relies on real-time sensor data and is designed for short-term occupancy estimation. For safety, use the layer
 together with the inflation layer to create a buffer around detected obstacles. 
 
-Let us look at an example configuration for the local costmap:
+Here is an example configuration for the local costmap:
 
 .. code-block:: yaml
 
@@ -300,7 +297,7 @@ External Parameters
 -------------------
 
 **Ground Segmentation Parameters**
-- You may additionally also need to tune ground segmentation algorithm parameters for your robot (e.g., slope threshold, clustering parameters) to ensure good classification of ground vs non-ground points, as this directly affects the layer's performance. Please refer to the `GSeg3D <https://github.com/dfki-ric/ground_segmentation_ros2#parameters-key>`_ documentation.
+- You may also need to tune ground segmentation algorithm parameters for your robot (e.g., slope threshold, clustering parameters) to ensure proper classification of ground and non-ground points, as this directly affects the layer's performance. Refer to the `GSeg3D <https://github.com/dfki-ric/ground_segmentation_ros2#parameters-key>`_ documentation.
    
 Use Cases
 =========
@@ -353,7 +350,7 @@ works in a simulated navigation scenario.
 Install Additional Tools
 ------------------------
 
-All dependency reposisities needed for the tutorial are managed using ``vcstool``. If you don't have it installed, you can install it using apt:
+All dependency repositories needed for the tutorial are managed using ``vcstool``. If you don't have it installed, you can install it using apt:
 
 .. code-block:: bash
 
