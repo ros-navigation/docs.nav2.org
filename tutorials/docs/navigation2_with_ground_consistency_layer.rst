@@ -17,9 +17,9 @@ Navigating with Ground Consistency Layer
 Overview
 ========
 
-In this tutorial, we demonstrate a terrain-aware costmap layer for Nav2 which uses 3D lidar ground segmentation. The 
-`ground consistency costmap layer <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_ allows users 
-to classify terrain into traversable ground and obstacles for intelligent outdoor 
+In this tutorial, we demonstrate a terrain-aware costmap layer for Nav2 which uses 3D lidar ground segmentation. The
+`ground consistency costmap layer <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_ allows users
+to classify terrain into traversable ground and obstacles for intelligent outdoor
 navigation in non-planar environments, creating smarter and safer costmaps.
 
 .. image:: images/Navigation2_with_Ground_Consistency/ground_consistency_layer.gif
@@ -75,12 +75,12 @@ Ground segmentation results enable us to reason about terrain geometry and make 
 Ground Consistency Layer
 ========================
 
-Ground Consistency is a costmap layer that uses the output of ground segmentation to create a more intelligent costmap for navigation. 
-Instead of simply filtering out ground points from the costmap, the Ground Consistency layer implements an evidence-based probabilistic approach for cell occupancy 
-estimation. It does this by maintaining accumulated evidence of ground and non-ground points over multiple sensor observations rather than making binary decisions on individual observations. 
+Ground Consistency is a costmap layer that uses the output of ground segmentation to create a more intelligent costmap for navigation.
+Instead of simply filtering out ground points from the costmap, the Ground Consistency layer implements an evidence-based probabilistic approach for cell occupancy
+estimation. It does this by maintaining accumulated evidence of ground and non-ground points over multiple sensor observations rather than making binary decisions on individual observations.
 This section describes the three core mechanisms.
 
-The ground and non-ground points compete with each other to determine the occupancy status of each cell in the costmap. The layer also incorporates 
+The ground and non-ground points compete with each other to determine the occupancy status of each cell in the costmap. The layer also incorporates
 height-based classification to distinguish between actual obstacles and traversable terrain variations, such as slopes or small bumps.
 
 Let's look at the core mechanisms in more detail:
@@ -88,8 +88,8 @@ Let's look at the core mechanisms in more detail:
 1. Evidence Accumulation and Competition System
 -----------------------------------------------
 
-Each grid cell collects two types of evidence: ground and obstacle. As new sensor data arrives, these 
-scores are updated and compared to estimate how likely the cell is occupied. Evidence weights can be adjusted differently (e.g., obstacle evidence may 
+Each grid cell collects two types of evidence: ground and obstacle. As new sensor data arrives, these
+scores are updated and compared to estimate how likely the cell is occupied. Evidence weights can be adjusted differently (e.g., obstacle evidence may
 be weighted more heavily than ground evidence) to create a safety bias.
 
 A cell is marked as an obstacle only when there is both:
@@ -97,40 +97,40 @@ A cell is marked as an obstacle only when there is both:
 - enough evidence of obstacle points, and
 - high confidence that the evidence of obstacle is stronger than the evidence of ground.
 
-This approach prevents isolated sensor noise from affecting navigation. For example, a single false positive obstacle 
+This approach prevents isolated sensor noise from affecting navigation. For example, a single false positive obstacle
 point will not mark a cell as occupied if there is strong ground evidence.
 
 2. Height-Based Occupancy Classification
 ----------------------------------------
 
-Not all detected obstacles actually block the robot. The layer evaluates obstacle height relative to the 
+Not all detected obstacles actually block the robot. The layer evaluates obstacle height relative to the
 local ground height. Based on the robot's height:
 
 - Very high objects are treated as overhead (safe to pass under)
 - Very low objects are treated as terrain variation
 - Only objects within the robot’s collision range are considered blocking
 
-At times, the terrain is such that no local ground height can be reliably determined. In this case, the 
-layer can be configured to use neighboring cells to estimate local ground height (see the ``ground_neighbor_search_cells`` parameter), or treat all such obstacles 
-without ground below them as blocking. For example, if the robot is navigating through a tunnel and the ground 
-segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` (see `Tuning Guide`_) can be applied to all non-ground points 
-in the obstacle points frame (usually base_link or lidar_link) to determine if they are blocking or not. 
+At times, the terrain is such that no local ground height can be reliably determined. In this case, the
+layer can be configured to use neighboring cells to estimate local ground height (see the ``ground_neighbor_search_cells`` parameter), or treat all such obstacles
+without ground below them as blocking. For example, if the robot is navigating through a tunnel and the ground
+segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` (see `Tuning Guide`_) can be applied to all non-ground points
+in the obstacle points frame (usually base_link or lidar_link) to determine if they are blocking or not.
 This allows the robot to navigate through tunnels and under bridges without being blocked by misclassified ground points.
 
 3. Temporal Stability Through Evidence Decay
 --------------------------------------------
 
-Evidence is decayed over time to allow the costmap to adapt to changing environments. Cells transition gradually between free and 
-occupied states as evidence builds or fades. The rate of 
+Evidence is decayed over time to allow the costmap to adapt to changing environments. Cells transition gradually between free and
+occupied states as evidence builds or fades. The rate of
 decay can be tuned separately for ground and obstacle evidence, creating temporal hysteresis, which allows for more stable and
 responsive terrain adaptation (faster ground decay) while maintaining stable obstacle marking (slower obstacle decay).
 
 Nav2 Integration
 ================
 
-Configure Nav2 to use the ground consistency layer in its local costmap. It is recommended to use the layer in the local costmap 
+Configure Nav2 to use the ground consistency layer in its local costmap. It is recommended to use the layer in the local costmap
 since it relies on real-time sensor data and is designed for short-term occupancy estimation. For safety, use the layer
-together with the inflation layer to create a buffer around detected obstacles. 
+together with the inflation layer to create a buffer around detected obstacles.
 
 Here is an example configuration for the local costmap:
 
@@ -141,7 +141,7 @@ Here is an example configuration for the local costmap:
        ros__parameters:
          # ... other costmap settings ...
          plugins: ["ground_consistency", "inflation_layer"]
-         
+
          ground_consistency:
            plugin: "nav2_ground_consistency_costmap_plugin::GroundConsistencyLayer"
            ground_points_topic: /ground_segmentation/ground_points
@@ -219,7 +219,7 @@ Parameters Reference
    * - ``maximum_height_filter``
      - double
      - 2.0
-     - Non-ground points above this height are ignored. The threshold is applied in the coordinate frame of the topic ``/nonground_points``, not the global frame.   
+     - Non-ground points above this height are ignored. The threshold is applied in the coordinate frame of the topic ``/nonground_points``, not the global frame.
    * - ``ground_neighbor_search_cells``
      - int
      - 0
@@ -235,7 +235,7 @@ Parameters Reference
    * - ``discretize_costs``
      - bool
      - true
-     - Convert cost values to binary (LETHAL or FREE) instead of continuous costs  
+     - Convert cost values to binary (LETHAL or FREE) instead of continuous costs
    * - ``max_data_range``
      - double
      - 50.0
@@ -243,13 +243,13 @@ Parameters Reference
    * - ``enable_kpi_logging``
      - bool
      - false
-     - Enable KPI logging of layer performance metrics (for development/debugging)  
-     
+     - Enable KPI logging of layer performance metrics (for development/debugging)
+
 Tuning Guide
 ============
 
 The layer's behavior depends on your specific use case (terrain type, robot size, sensor characteristics). Here's how to tune key parameters:
-     
+
 **Robot Height** (``robot_height``)
    - Set to your robot's actual height
    - The layer uses this to classify obstacles as blocking or non-blocking based on their height relative to the ground.
@@ -261,7 +261,7 @@ The layer's behavior depends on your specific use case (terrain type, robot size
    - Typical ratio: 1.0 ground, 1.5 nonground
 
 **Evidence Decay** (``ground_decay``, ``nonground_decay``)
-   - **Ground decay** (lower value): We decay ground evidence faster to allow the costmap to adapt quickly to changes in terrain (e.g., moving onto a slope). 
+   - **Ground decay** (lower value): We decay ground evidence faster to allow the costmap to adapt quickly to changes in terrain (e.g., moving onto a slope).
      Use 0.80-0.85 for responsive terrain adaptation.
    - **Nonground decay** (higher value): We want obstacles to persist longer to prevent flickering due to sensor noise. Use 0.90-0.95 for stable obstacle marking.
    - Difference creates temporal hysteresis: obstacles are believed longer than ground evidence.
@@ -269,7 +269,7 @@ The layer's behavior depends on your specific use case (terrain type, robot size
 **Height Filtering** (``min_clearance``, ``maximum_height_filter``)
    - ``min_clearance``: Minimum bump your robot can detect. Too low = sensitive to noise; too high = misses small obstacles.
    - ``maximum_height_filter``: Overhead canopy/ceiling height. Objects above this are ignored.
-   - At times, ground segmentation may classify ground points as non-ground (e.g., due to sensor noise or very uneven terrain). 
+   - At times, ground segmentation may classify ground points as non-ground (e.g., due to sensor noise or very uneven terrain).
      Setting a reasonable ``min_clearance`` can prevent these misclassifications from blocking navigation.
 
 **Neighbor Search** (``ground_neighbor_search_cells``)
@@ -279,12 +279,12 @@ The layer's behavior depends on your specific use case (terrain type, robot size
 
 **Decision Thresholds** (``nonground_occ_thresh``, ``nonground_prob_thresh``)
    These two thresholds work together in a two-stage filter:
-   
+
    - ``nonground_occ_thresh``: **Minimum score (accumulated evidence) required**. With default ``nonground_inc: 1.5``, a value of 6.0 means you need ~4 obstacle point observations before considering a cell for LETHAL marking. This is the primary defense against stray sensor noise.
    - ``nonground_prob_thresh``: **Probability confidence required** (after score passes). Even with enough accumulated evidence, the observations must agree with high confidence (default 75%) to actually mark as LETHAL.
-   
+
    **Why both?** Alone, ``nonground_prob_thresh`` would fire on a single high-confidence false positive point. Together, they require **both**: sustained evidence (multiple observations) **and** high agreement (high confidence). This combination prevents isolated false positives from blocking navigation.
-   
+
    - **For aggressive navigation** (narrow spaces): Decrease ``nonground_occ_thresh`` to 4-5, increase ``nonground_prob_thresh`` to 0.85 (requires stronger evidence per point)
    - **For conservative navigation** (safety-critical): Increase ``nonground_occ_thresh`` to 8-10, decrease ``nonground_prob_thresh`` to 0.5 (generous with evidence accumulation)
 
@@ -292,8 +292,8 @@ External Parameters
 -------------------
 
 **Ground Segmentation Parameters**
-- You may also need to tune ground segmentation algorithm parameters for your robot (e.g., slope threshold, clustering parameters) to ensure proper classification of ground and non-ground points, as this directly affects the layer's performance. Refer to the `GSeg3D <https://github.com/dfki-ric/ground_segmentation_ros2#parameters-key>`_ documentation.
-   
+- You may also need to tune ground segmentation algorithm parameters for your robot (e.g., slope threshold, clustering parameters) to ensure proper classification of ground and non-ground points, as this directly affects the layer's performance. Refer to the `GSeg3D parameters <https://github.com/dfki-ric/ground_segmentation_ros2#parameters-key>`__ documentation.
+
 Use Cases
 =========
 
@@ -339,7 +339,7 @@ The layer's behavior is highly tunable, so start with the provided defaults, the
 Practical Example
 =================
 
-To help you get started, we have prepared a practical example demonstrating the Ground Consistency layer in action. It is highly recommended to follow along with the example to see how the layer 
+To help you get started, we have prepared a practical example demonstrating the Ground Consistency layer in action. It is highly recommended to follow along with the example to see how the layer
 works in a simulated navigation scenario.
 
 Install Additional Tools
@@ -382,13 +382,13 @@ For this tutorial, we will use the Baylands outdoor world in Gazebo with a Husky
 
 .. code-block:: bash
 
-   cd ~/nav2_ws   
+   cd ~/nav2_ws
    colcon build --symlink-install --packages-up-to nav2_ground_consistency_demo
    source install/setup.bash
 
 Test that the simulation launches correctly:
 
-Note: The ``grep -v "SampleConsensus"`` is used to filter out expected warnings from the ground segmentation algorithm 
+Note: The ``grep -v "SampleConsensus"`` is used to filter out expected warnings from the ground segmentation algorithm
 that do not affect the demo. You can omit it if you want to see all output.
 
 .. code-block:: bash
@@ -405,8 +405,8 @@ You should see Gazebo launch with Husky in the Baylands world.
 2. Observe Ground Consistency Layer in Action
 ---------------------------------------------
 
-An RViz2 window will also open showing the costmap layers and the sensor data. You should see the ground points (green) and non-ground points (magenta) 
-from the segmentation algorithm, as well as the costmap with the ground consistency layer applied. Use the ``2D Goal Pose`` tool in RViz2 to set 
+An RViz2 window will also open showing the costmap layers and the sensor data. You should see the ground points (green) and non-ground points (magenta)
+from the segmentation algorithm, as well as the costmap with the ground consistency layer applied. Use the ``2D Goal Pose`` tool in RViz2 to set
 navigation goals for the robot and observe how it navigates while respecting the terrain.
 
 .. image:: images/Navigation2_with_Ground_Consistency/rviz_window.png
@@ -414,7 +414,7 @@ navigation goals for the robot and observe how it navigates while respecting the
    :align: center
    :alt: RViz2 window showing costmap layers
 
-Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency 
+Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency
 layer allows the robot to navigate through these challenging terrains by correctly classifying obstacles and traversable ground.
 
 .. image:: images/Navigation2_with_Ground_Consistency/robot_in_action.png
