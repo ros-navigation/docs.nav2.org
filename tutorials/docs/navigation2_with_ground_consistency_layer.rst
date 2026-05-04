@@ -22,11 +22,6 @@ In this tutorial, we demonstrate a terrain-aware costmap layer for Nav2 which us
 to classify terrain into traversable ground and obstacles for intelligent outdoor 
 navigation in non-planar environments, creating smarter and safer costmaps.
 
-The Ground Consistency layer uses 
-local terrain-relative obstacle and ground height reasoning based on ground segmentation rather than fixed global thresholds. This enables reliable 
-navigation on slopes, under overhangs like bridges, through tunnels, and across uneven 
-environments where traditional costmaps would struggle. 
-
 .. image:: images/Navigation2_with_Ground_Consistency/ground_consistency_layer.gif
    :alt: Ground Consistency Layer Demo
 
@@ -39,7 +34,7 @@ Install ROS 2, Nav2, and Ground Segmentation
 This tutorial requires ROS 2 Jazzy and Nav2. Follow the official setup guides:
 
 - **ROS 2 Jazzy Installation**: https://docs.ros.org/en/jazzy/Installation.html
-- **Nav2 Setup Guide**: https://docs.nav2.org/setup_guides/index.html
+- **Nav2 Setup Guide**: https://docs.nav2.org/getting_started/index.html#installation
 - **Ground Segmentation**: There are many well-established ground segmentation methods; in this tutorial, we use the `ground_segmentation_ros2 <https://github.com/dfki-ric/ground_segmentation_ros2>`_ package developed by DFKI Robotics Innovation Center. You will find the installation instructions `here <https://github.com/dfki-ric/ground_segmentation_ros2#prerequisite>`_
 
 Installation Steps
