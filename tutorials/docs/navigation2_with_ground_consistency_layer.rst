@@ -467,17 +467,6 @@ Troubleshooting
    - Disable ``enable_kpi_logging`` in production
    - Verify that ``ground_neighbor_search_cells`` is set appropriately (0 is fastest)
 
-Ground Segmentation Sources
----------------------------
-
-The Ground Consistency layer requires two input streams: ground and non-ground points. The quality of these classifications directly affects layer performance.
-
-**Recommended approaches:**
-
-- **3D Lidar-based**: Fast, works in varying light. Examples: VLP-16, Ouster, Sick
-- **Camera-based**: RGB-D or stereo. Works indoors, can be affected by lighting
-- **Multi-sensor fusion**: Combine multiple lidar sensors for robustness
-
 Funding
 =======
 
