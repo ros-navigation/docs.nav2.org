@@ -35,7 +35,7 @@ This tutorial requires ROS 2 Jazzy and Nav2. Follow the official setup guides:
 
 - **ROS 2 Jazzy Installation**: https://docs.ros.org/en/jazzy/Installation.html
 - **Nav2 Setup Guide**: https://docs.nav2.org/getting_started/index.html#installation
-- **Ground Segmentation**: There are many well-established ground segmentation methods; in this tutorial, we use the `ground_segmentation_ros2 <https://github.com/dfki-ric/ground_segmentation_ros2>`_ package developed by DFKI Robotics Innovation Center. You will find the installation instructions `here <https://github.com/dfki-ric/ground_segmentation_ros2#prerequisite>`_
+- **Ground Segmentation**: There are many well-established ground segmentation methods; in this tutorial, we use the `ground_segmentation_ros2 <https://github.com/dfki-ric/ground_segmentation_ros2>`_ package developed by `DFKI Robotics Innovation Center <https://robotik.dfki-bremen.de/en/startpage>`_. You will find the installation instructions `here <https://github.com/dfki-ric/ground_segmentation_ros2#prerequisite>`_
 
 Installation Steps
 ==================
