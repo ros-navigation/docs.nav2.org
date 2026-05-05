@@ -1,7 +1,7 @@
 .. _navigation2_with_ground_consistency_layer:
 
-Navigating with Ground Consistency Layer
-****************************************
+Ground Terrain Segmentation using 3D Lidar
+******************************************
 
 - `Overview`_
 - `Requirements`_
