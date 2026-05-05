@@ -385,7 +385,7 @@ All dependency repositories needed for the tutorial are managed using ``vcstool`
 
 
 Setup Tutorial Package and Dependencies
------------------------------------------
+---------------------------------------
 
 Create and prepare a workspace::
 
