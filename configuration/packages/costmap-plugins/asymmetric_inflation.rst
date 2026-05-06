@@ -150,7 +150,7 @@ Example
         plan_topic: "plan"
         goal_distance_threshold: 1.5
         neutral_threshold: 3.0
-      
+
 
 
 The above example settings, when applied to an office simulation would give the following costmap.
