@@ -113,33 +113,57 @@ Usage Note
 ``nav2_costmap_2d::InflationLayer``.
 It must appear **after** ``InflationLayer`` in the ``plugins`` list:
 
+
+Example
+----------
+
 .. code-block:: yaml
 
-    local_costmap:
-      ros__parameters:
-        plugins: ["obstacle_layer", "inflation_layer", "asymmetric_inflation_layer"]
-        obstacle_layer:
-          plugin: "nav2_costmap_2d::ObstacleLayer"
-          observation_sources: scan
-          scan:
-            topic: scan
-            max_obstacle_height: 2.0
-            clearing: true
-            marking: true
-            data_type: "LaserScan"
-            raytrace_max_range: 3.0
-            raytrace_min_range: 0.0
-            obstacle_max_range: 2.5
-          obstacle_min_range: 0.0
-        inflation_layer:
-          plugin: "nav2_costmap_2d::InflationLayer"
-          inflation_radius: 1.0
-          cost_scaling_factor: 5.0
-        asymmetric_inflation_layer:
-          plugin: "nav2_costmap_2d::AsymmetricInflationLayer"
-          inflation_radius: 3.0
-          cost_scaling_factor: 4.0
-          asymmetry_factor: 0.75
-          plan_topic: "plan"
-          goal_distance_threshold: 1.5
-          neutral_threshold: 2.0
+  global_costmap:
+    ros__parameters:
+      update_frequency: 10.0
+      publish_frequency: 10.0
+      global_frame: map
+      robot_base_frame: base_link
+      footprint: "[ [0.525, 0.325], [0.525, -0.325], [-0.525, -0.325], [-0.525, 0.325] ]"
+      width: 10
+      height: 10
+      origin_x: -5.0
+      origin_y: -5.0
+      resolution: 0.05
+      track_unknown_space: false
+      plugins: ["static_layer", "inflation_layer", "asymmetric_inflation_layer"]
+      static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_subscribe_transient_local: True
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 5.0
+        inflation_radius: 1.0
+      asymmetric_inflation_layer:
+        plugin: "nav2_costmap_2d::AsymmetricInflationLayer"
+        enabled: True
+        inflation_radius: 3.0
+        cost_scaling_factor: 4.0
+        asymmetry_factor: 0.75
+        inflate_around_unknown: False
+        plan_topic: "plan"
+        goal_distance_threshold: 1.5
+        neutral_threshold: 3.0
+      
+
+
+The above example settings, when applied to an office simulation would give the following costmap.
+
+.. figure:: images/asymmetric_layer_inactive.png
+    :align: center
+    :alt: Costmap without asymmetric inflation layer
+
+    Costmap without the asymmetric inflation layer.
+
+
+.. figure:: images/asymmetric_layer_active.png
+    :align: center
+    :alt: Costmap with asymmetric inflation layer
+
+    Costmap with the asymmetric inflation layer.
