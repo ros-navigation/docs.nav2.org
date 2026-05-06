@@ -43,9 +43,9 @@ Description
 
 ### **`critics`**
 
-| Type          | Default |
-|---------------|---------|
-| string vector | N/A     |
+| Type            | Default |
+|-----------------|---------|
+| `string vector` | N/A     |
 
 Description
 :   A vector of critic plugin functions to use, without `mppi::critic::` namespace which will be automatically added on loading.
