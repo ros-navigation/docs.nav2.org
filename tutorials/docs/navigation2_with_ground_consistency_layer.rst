@@ -25,6 +25,8 @@ navigation in non-planar environments, creating smarter and safer costmaps.
 .. image:: images/Navigation2_with_Ground_Consistency/ground_consistency_layer.gif
    :alt: Ground Consistency Layer Demo
 
+*Ground Consistency Layer in action: Green points are ground, magenta points are obstacles overlaid on the costmap*
+
 Requirements
 ============
 
@@ -80,15 +82,15 @@ accurate costmaps that allow the robot to navigate safely and efficiently in com
 - **Underground/tunnel navigation**: Enables navigation in challenging environments where traditional costmaps fail
 
 
-Raw Input Point Cloud:
-
 .. image:: images/Navigation2_with_Ground_Consistency/raw_points.png
    :alt: Raw Input Point Cloud
 
-Segmented Ground (Green) and Obstacle Points (Magenta) based on `GSeg3D <https://github.com/dfki-ric/ground_segmentation_ros2>`_:
+*Raw Input Point Cloud*
 
 .. image:: images/Navigation2_with_Ground_Consistency/segmented_points.png
    :alt: Segmented Ground and Obstacle Points
+
+*Segmented Ground (Green) and Obstacle Points (Magenta) based on* `GSeg3D <https://github.com/dfki-ric/ground_segmentation_ros2>`_
 
 While ground segmentation is traditionally used to filter out ground points from costmaps, we can instead use ground points in our decision-making process to implement an
 evidence accumulation and height-based classification system. This approach creates more accurate and stable costmaps in outdoor challenging environments.
@@ -374,10 +376,10 @@ Practical Example
 To help you get started, we have prepared a practical example demonstrating the Ground Consistency layer in action. It is highly recommended to follow along with the example to see how the layer
 works in a simulated navigation scenario.
 
-Install Additional Tools
-------------------------
+Install Required Tools
+----------------------
 
-All dependency repositories needed for the tutorial are managed using ``vcstool``. If you don't have it installed, you can install it using apt:
+This tutorial uses ``vcstool`` to manage repository dependencies. Install it using apt:
 
 .. code-block:: bash
 
@@ -387,7 +389,9 @@ All dependency repositories needed for the tutorial are managed using ``vcstool`
 Setup Tutorial Package and Dependencies
 ---------------------------------------
 
-Create and prepare a workspace::
+Create and prepare a workspace:
+
+.. code-block:: bash
 
    # Create workspace
    mkdir -p ~/nav2_ws/src
@@ -395,17 +399,19 @@ Create and prepare a workspace::
 
    # Clone navigation2_tutorials repository
    git clone -b jazzy https://github.com/ros-navigation/navigation2_tutorials.git
-   cd navigation2_tutorials/nav2_ground_consistency_demo
 
-   # Run setup script to import dependencies from .repos file and install ROS package dependencies
-   bash install_dependencies.bash ~/nav2_ws
+Now, install all dependencies:
 
+.. code-block:: bash
 
-The ``install_dependencies.bash`` script will:
+   cd ~/nav2_ws
 
-- Import all demo dependencies (KISS-ICP, ground segmentation, etc.) using vcstool
-- Install all ROS package dependencies using rosdep
-- Prepare your workspace for building
+   # Import all demo dependencies (KISS-ICP, ground segmentation, etc.) from the .repos file
+   vcs import src < src/navigation2_tutorials/nav2_ground_consistency_demo/dependencies.repos
+
+   # Install ROS package dependencies
+   source /opt/ros/jazzy/setup.bash
+   rosdep install --from-paths src --ignore-src --rosdistro jazzy -y
 
 1. Setup Simulation Environment
 -------------------------------
@@ -438,16 +444,27 @@ You should see Gazebo launch with Husky in Baylands world.
 2. Observe Ground Consistency Layer in Action
 ---------------------------------------------
 
-An RViz2 window will also open showing the costmap layers and the sensor data. You should see the ground points (green) and obstacle points (magenta)
-from the segmentation algorithm, as well as the costmap with the ground consistency layer applied. Use the ``2D Goal Pose`` tool in RViz2 to set
-navigation goals for the robot and observe how it navigates while respecting the terrain.
+An RViz2 window will also open showing the costmap layers.
+
+**Visualizing Ground Segmentation Points (Optional)**
+
+Add the following PointCloud2 topics to your RViz2 display to visualize ground and obstacle classification:
+
+- ``/ground_segmentation/ground_points``
+- ``/ground_segmentation/obstacle_points``
+
+**Important**: Set RViz2 target frame rate to **~8 Hz** to match the LiDAR sensor publish rate from Gazebo. If set higher, point clouds will display intermittently.
+
+You should now see the ground points and obstacle points from the segmentation algorithm overlaid on the costmap with the ground consistency layer applied.
 
 .. image:: images/Navigation2_with_Ground_Consistency/rviz_window.png
    :width: 700px
    :align: center
    :alt: RViz2 window showing costmap layers
 
-Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency
+**Testing Navigation**
+
+Use the ``Nav2 Goal`` tool in RViz2 to set navigation goals for the robot. Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency
 layer allows the robot to navigate through these challenging terrains by correctly classifying obstacles and traversable ground.
 
 .. image:: images/Navigation2_with_Ground_Consistency/robot_in_action.png
