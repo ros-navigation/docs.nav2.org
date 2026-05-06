@@ -400,7 +400,7 @@ Description
 
 Description
 :   Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.
-    Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints”, the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
+    Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
 
 ### **`allow_obstacle_checking_beyond_goal`**
 

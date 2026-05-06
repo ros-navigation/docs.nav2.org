@@ -17,7 +17,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   Topic to publish loaded map to.
@@ -26,7 +26,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   Frame to publish loaded map in.
@@ -35,7 +35,7 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".

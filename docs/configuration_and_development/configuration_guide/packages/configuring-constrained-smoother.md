@@ -167,7 +167,7 @@ Description
 
 | Type     | Default                  |
 |----------|--------------------------|
-| `string` | “SPARSE_NORMAL_CHOLESKY” |
+| `string` | "SPARSE_NORMAL_CHOLESKY" |
 
 Description
 :   Linear solver type to be used by optimizer. Valid values are `SPARSE_NORMAL_CHOLESKY` and `DENSE_QR`

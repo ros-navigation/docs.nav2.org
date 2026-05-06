@@ -69,7 +69,7 @@ Note
 
 | Type             | Default              |
 |------------------|----------------------|
-| `vector<string>` | [“progress_checker”] |
+| `vector<string>` | ["progress_checker"] |
 
 Description
 :   Mapped name for progress checker plugin for checking progress made by robot. Formerly `progress_checker_plugin` for Humble and older with a single string plugin.
@@ -90,7 +90,7 @@ Note
 
 | Type             | Default          |
 |------------------|------------------|
-| `vector<string>` | [“goal_checker”] |
+| `vector<string>` | ["goal_checker"] |
 
 Description
 :   Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each `FollowPath` action needs to specify the goal checker plugin name with its `goal_checker_id` field.
@@ -111,7 +111,7 @@ Note
 
 | Type             | Default         |
 |------------------|-----------------|
-| `vector<string>` | [“PathHandler”] |
+| `vector<string>` | ["PathHandler"] |
 
 Description
 :   Mapped name for path handler plugin for processing path from the planner. When the number of the plugins is more than 2, each `FollowPath` action needs to specify the path handler plugin name with its `path_handler_id` field.
@@ -172,7 +172,7 @@ Description
 
 | Type     | Default       |
 |----------|---------------|
-| `string` | “speed_limit” |
+| `string` | "speed_limit" |
 
 Description
 :   Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters][speed-filter-parameters] configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
@@ -181,7 +181,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Topic to get instantaneous measurement of speed from.
@@ -221,10 +221,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -263,10 +263,10 @@ When the `progress_checker_plugins`, `goal_checker_plugin`, `path_handler_plugin
 
 | Namespace          | Plugin                                   |
 |--------------------|------------------------------------------|
-| “progress_checker” | “nav2_controller::SimpleProgressChecker” |
-| “goal_checker”     | “nav2_controller::SimpleGoalChecker”     |
-| “path_handler”     | “nav2_controller::FeasiblePathHandler”   |
-| “FollowPath”       | “dwb_core::DWBLocalPlanner”              |
+| "progress_checker" | "nav2_controller::SimpleProgressChecker" |
+| "goal_checker"     | "nav2_controller::SimpleGoalChecker"     |
+| "path_handler"     | "nav2_controller::FeasiblePathHandler"   |
+| "FollowPath"       | "dwb_core::DWBLocalPlanner"              |
 
 ## Example
 

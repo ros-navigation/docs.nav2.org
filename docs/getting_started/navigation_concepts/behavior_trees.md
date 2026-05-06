@@ -7,7 +7,7 @@ This is opposed to a finite state machine (FSM) which may have dozens of states 
 An example would be a soccer-playing robot.
 Embedding the logic of soccer game play into a FSM would be challenging and error prone with many possible states and rules.
 Additionally, modeling choices like to shoot at the goal from the left, right, or center, is particularly unclear.
-With a BT, basic primitives, like “kick”, “walk”, “go to ball”, can be created and reused for many behaviors.
+With a BT, basic primitives, like "kick", "walk", "go to ball", can be created and reused for many behaviors.
 More information can be found [in this book](https://arxiv.org/abs/1709.00084).
 I **strongly** recommend reading chapters 1-3 to get a good understanding of the nomenclature and workflow.
 It should only take about 30 minutes.
@@ -20,7 +20,7 @@ The node plugins are loaded into the BT and when the XML file of the tree is par
 At this point, we can march through the behavior tree to navigate.
 
 One reason this library is used is its ability to load subtrees. This means that the Nav2 behavior tree can be loaded into another higher-level BT to use this project as node plugin.
-An example would be in soccer play, using the Nav2 behavior tree as the “go to ball” node with a ball detection as part of a larger task.
+An example would be in soccer play, using the Nav2 behavior tree as the "go to ball" node with a ball detection as part of a larger task.
 Additionally, we supply a `NavigateToPoseAction` plugin (among others) for BT so the Nav2 stack can be called from a client application through the usual action interface.
 
 Other systems could be used to design complex autonomous behavior, namely Hierarchical FSMs (HFSM).

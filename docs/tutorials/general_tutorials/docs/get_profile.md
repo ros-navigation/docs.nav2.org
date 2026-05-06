@@ -115,7 +115,7 @@ This should open a window looking like below. The left side shows all of the cal
   ![](images/kcachegrind.png){ width="700px" }
 </figure>
 
-If you select the top level entry on the left sidebar, then select “Call Graph” at the bottom of the right workspace, it should show you a call graph of where the compute time was spent as a graph of method calls. This can be exceptionally helpful to find the methods where the most time is spent.
+If you select the top level entry on the left sidebar, then select "Call Graph" at the bottom of the right workspace, it should show you a call graph of where the compute time was spent as a graph of method calls. This can be exceptionally helpful to find the methods where the most time is spent.
 
 <figure markdown="span">
   ![](images/call_graph.png){ width="700px" }

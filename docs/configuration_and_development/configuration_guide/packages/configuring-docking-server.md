@@ -88,7 +88,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “base_link” |
+| `string` | "base_link" |
 
 Description
 :   Robot’s base frame for control law.
@@ -97,7 +97,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Fixed frame to use, recommended to be a smooth odometry frame **not** map.
@@ -106,7 +106,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   The topic to use for the odometry data when rotate_to_dock is enabled.
@@ -169,7 +169,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   BT XML to use for Navigator, if non-default.
@@ -178,10 +178,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -304,7 +304,7 @@ Description
 
 | Type     | Default                     |
 |----------|-----------------------------|
-| `string` | “local_costmap/costmap_raw” |
+| `string` | "local_costmap/costmap_raw" |
 
 Description
 :   Raw costmap topic for collision checking.
@@ -313,7 +313,7 @@ Description
 
 | Type     | Default                             |
 |----------|-------------------------------------|
-| `string` | “local_costmap/published_footprint” |
+| `string` | "local_costmap/published_footprint" |
 
 Description
 :   Topic for footprint in the costmap frame.
@@ -377,7 +377,7 @@ Description
 | `double` | 0.0     |
 
 Description
-:   Staging pose angle relative to dock pose (rad). If `dock_direction` is set to “backward”, this angle must be faced in the opposite direction of the dock pose. However, if `rotate_to_dock` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
+:   Staging pose angle relative to dock pose (rad). If `dock_direction` is set to "backward", this angle must be faced in the opposite direction of the dock pose. However, if `rotate_to_dock` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
 
 ### **`<dock_name>.use_battery_status`**
 
@@ -401,7 +401,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Optional `std_srvs/Trigger` service invoked when detection starts or stops via `startDetectionProcess` / `stopDetectionProcess` if detection method accepts a service call to start and stop.
@@ -545,10 +545,10 @@ Description
 
 | Type     | Default   |
 |----------|-----------|
-| `string` | “forward” |
+| `string` | "forward" |
 
 Description
-:   Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated `dock_backwards` parameter. Options are “forward” or “backward”.
+:   Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated `dock_backwards` parameter. Options are "forward" or "backward".
 
 ### **`<dock_name>.rotate_to_dock`**
 
@@ -560,7 +560,7 @@ Description
 :   Enables backward docking without requiring a sensor for detection during the final approach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading. This may also be paired with sensor detection in the reverse direction as well if available.
 
 Note
-:   This parameter is only valid when the `dock_direction` is set to “backward”.
+:   This parameter is only valid when the `dock_direction` is set to "backward".
 
 ## Example
 

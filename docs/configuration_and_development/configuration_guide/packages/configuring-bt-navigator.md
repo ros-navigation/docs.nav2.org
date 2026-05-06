@@ -99,7 +99,7 @@ Description
 
 Description
 :   Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
-    This value will be overwritten for a BT node if the input port “server_timeout” is provided.
+    This value will be overwritten for a BT node if the input port "server_timeout" is provided.
 
 ### **`default_cancel_timeout`**
 
@@ -109,7 +109,7 @@ Description
 
 Description
 :   Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
-    This value will be overwritten for a BT node if the input port “cancel_timeout” is provided.
+    This value will be overwritten for a BT node if the input port "cancel_timeout" is provided.
 
 ### **`wait_for_service_timeout`**
 
@@ -119,16 +119,16 @@ Description
 
 Description
 :   Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. `wait_for_action_server(timeout)`).
-    This value will be overwritten for a BT node if the input port “wait_for_service_timeout” is provided.
+    This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
 ### **`introspection_mode`**
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`transform_tolerance`**
 
@@ -236,7 +236,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “goal”  |
+| `string` | "goal"  |
 
 Description
 :   Blackboard variable to use to supply the goal to the behavior tree for `NavigateToPose`. Should match ports of BT XML file.
@@ -245,7 +245,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “path”  |
+| `string` | "path"  |
 
 Description
 :   Blackboard variable to get the path from the behavior tree for `NavigateToPose` feedback. Should match port names of BT XML file.
@@ -254,7 +254,7 @@ Description
 
 | Type     | Default             |
 |----------|---------------------|
-| `string` | “tracking_feedback” |
+| `string` | "tracking_feedback" |
 
 Description
 :   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateToPose` feedback. Should match port names of BT XML file.
@@ -292,7 +292,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “goals” |
+| `string` | "goals" |
 
 Description
 :   Blackboard variable to use to supply the goals to the behavior tree for `NavigateThroughPoses`. Should match ports of BT XML file.
@@ -301,7 +301,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “path”  |
+| `string` | "path"  |
 
 Description
 :   Blackboard variable to get the path from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
@@ -310,7 +310,7 @@ Description
 
 | Type     | Default             |
 |----------|---------------------|
-| `string` | “tracking_feedback” |
+| `string` | "tracking_feedback" |
 
 Description
 :   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
@@ -319,7 +319,7 @@ Description
 
 | Type     | Default             |
 |----------|---------------------|
-| `string` | “waypoint_statuses” |
+| `string` | "waypoint_statuses" |
 
 Description
 :   Blackboard variable to get the statuses of waypoints from the behavior tree for `NavigateThroughPoses` feedback/result. Should match ports of BT XML file.

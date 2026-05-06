@@ -64,12 +64,12 @@ The following error codes are supported (with more to come as necessary): Unknow
 
 [PR #3251](https://github.com/ros-navigation/navigation2/pull/3251) pipes the highest priority error code through the bt_navigator and defines the error code structure.
 
-A new parameter for the the BT Navigator called “error_code_id_names” was added to the nav2_params.yaml to define the error codes to compare.
-The lowest error in the “error_code_id_names” is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
+A new parameter for the the BT Navigator called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare.
+The lowest error in the "error_code_id_names" is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
 
 The error codes produced from the servers follow the guidelines stated below.
 Error codes from 0 to 9999 are reserved for nav2 while error codes from 10000-65535 are reserved for external servers.
-Each server has two “reserved” error codes. 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+Each server has two "reserved" error codes. 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 
 The current implemented servers with error codes are:
 
@@ -163,7 +163,7 @@ Looping functionality is not specific to the nav2 panel in RViz. Users utilizing
 
 [PR #3513](https://github.com/ros-navigation/navigation2/pull/3513) renames `max_points` parameter to `min_points` and changes its meaning. Formerly `max_points` meant the maximum number of points inside the area still not triggering the action, while `min_points` - is a minimal number of points starting from the action to be initiated. In other words `min_points` now should be adjusted as `max_points + 1`.
 
-## New safety behavior model “limit” in Collision Monitor
+## New safety behavior model "limit" in Collision Monitor
 
 [PR #3519](https://github.com/ros-navigation/navigation2/pull/3519) adds a new collision monitor behavior model `limit` that restricts maximum linear and angular speed to specific values (`linear_limit` and `angular_limit`) if enough points are in the given shape.
 

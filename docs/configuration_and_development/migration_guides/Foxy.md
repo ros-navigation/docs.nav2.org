@@ -121,7 +121,7 @@ Original GitHub tickets:
 
 ## Costmap Filters { #foxy-to-galactic-costmap-filters }
 
-A new concept interacting with spatial-dependent objects called “Costmap Filters” appeared in Galactic (more information about this concept could be found at [Navigation Concepts][navigation-concepts] page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavior.
+A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at [Navigation Concepts][navigation-concepts] page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavior.
 
 Architecturally, costmap filters consists from `CostmapFilter` class which is a basic class incorporating much common of its inherited filter plugins:
 
@@ -169,7 +169,7 @@ In galactic, that will remain turn, however it will also add additional capabili
 
 ## Standard time units in parameters
 
-To follow the SI units outlined in REP-103 to the “T” nodes below were modified to use seconds consistently in every parameter. Under each node name you can see which parameters changed to seconds instead of using milliseconds.
+To follow the SI units outlined in REP-103 to the "T" nodes below were modified to use seconds consistently in every parameter. Under each node name you can see which parameters changed to seconds instead of using milliseconds.
 
 - lifecycle manager
     - `bond_timeout_ms` became `bond_timeout` in seconds

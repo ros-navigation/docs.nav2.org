@@ -2,9 +2,9 @@
 
 **Task description**
 
-The aim of this project is to create a safety watchdog node to ensure the robot is acting properly and not about to collide with an obstacle. Typical safety-rated lidars will contain “safety zones” whereas if any sensor points are located in a box around the lidar, then the lidar will send a signal to the robot to stop due to a potential collision. However, less and less people are using safety-rated lidars as consumer available lidars are dropping in cost and 3D lidars are seeing more use in mobile robotics.
+The aim of this project is to create a safety watchdog node to ensure the robot is acting properly and not about to collide with an obstacle. Typical safety-rated lidars will contain "safety zones" whereas if any sensor points are located in a box around the lidar, then the lidar will send a signal to the robot to stop due to a potential collision. However, less and less people are using safety-rated lidars as consumer available lidars are dropping in cost and 3D lidars are seeing more use in mobile robotics.
 
-Your project will be to re-create this logic at the Navigation level. While this wouldn’t be “safety certified”, this is a significant functional improvement on safety that could potentially safe real people from real injuries in the real-world. The project will be to create a node that sits below the navigation stack but above the robot controller to do the following:
+Your project will be to re-create this logic at the Navigation level. While this wouldn’t be "safety certified", this is a significant functional improvement on safety that could potentially safe real people from real injuries in the real-world. The project will be to create a node that sits below the navigation stack but above the robot controller to do the following:
 
 - Take in the current command velocity from navigation and the most recent laser or RGBD scan
 - Projecting the velocity forward in time `N` seconds, check if that velocity will result in a collision with any sensor measurements

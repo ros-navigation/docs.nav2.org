@@ -1,7 +1,7 @@
 # Follow Dynamic Point { #follow-dynamic-point }
 
 This behavior tree implements a navigation behavior from a starting point, attempting to follow a dynamic point over time.
-This “dynamic point” could be a person, another robot, a virtual carrot, anything.
+This "dynamic point" could be a person, another robot, a virtual carrot, anything.
 The only requirement is that the pose you’d like to follow is published to the topic outlined in the `GoalUpdater` BT node.
 
 In this tree, we replan at 1 hz just as we did in [Navigate To Pose][nav2-bt-navigate-to-pose] using the `ComputePathToPose` node.

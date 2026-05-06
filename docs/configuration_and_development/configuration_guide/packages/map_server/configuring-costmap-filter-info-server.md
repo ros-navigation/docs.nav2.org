@@ -21,7 +21,7 @@ Description
 
 | Type     | Default               |
 |----------|-----------------------|
-| `string` | “costmap_filter_info” |
+| `string` | "costmap_filter_info" |
 
 Description
 :   Topic to publish costmap filter information to.
@@ -30,7 +30,7 @@ Description
 
 | Type     | Default       |
 |----------|---------------|
-| `string` | “filter_mask” |
+| `string` | "filter_mask" |
 
 Description
 :   Topic to publish filter mask to. The value of this parameter should be in accordance with `topic_name` parameter of Map Server tuned to filter mask publishing.

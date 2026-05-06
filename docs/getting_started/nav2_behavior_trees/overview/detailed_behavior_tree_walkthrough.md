@@ -13,7 +13,7 @@ in great detail.
 
 - Become familiar with the concept of a behavior tree before continuing with this walkthrough
     - Read the short explanation in [navigation concepts][navigation-concepts]
-    - Read the general tutorial and guide (not Nav2 specific) on the [BehaviorTree CPP V4](https://www.behaviortree.dev/) website. Specifically, the “Basic Concepts” section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
+    - Read the general tutorial and guide (not Nav2 specific) on the [BehaviorTree CPP V4](https://www.behaviortree.dev/) website. Specifically, the "Basic Concepts" section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
 - Become familiar with the custom [Nav2 specific BT nodes][introduction-to-nav2-specific-nodes]
 
 ## Navigate To Pose With Replanning and Recovery
@@ -195,7 +195,7 @@ The only differences in the BT subtree of `ComputePathToPose` and `FollowPath` a
     - The `ComputePathToPose` subtree centers around the `ComputePathToPose` action.
     - The `FollowPath` subtree centers around the `FollowPath` action.
 - The use of conditional flow control (`Fallback`):
-    - The `ComputePathToPose` subtree incorporates logic to handle the robot’s behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary “looping” behaviors.
+    - The `ComputePathToPose` subtree incorporates logic to handle the robot’s behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary "looping" behaviors.
     To prevent this, the subtree uses a `ReactiveSequence` with the `IsGoalNearby` node. If the robot is within a specified proximity threshold and the current path remains valid (i.e., no new obstacles), the subtree will skip the re-planning request. This allows the robot to smoothly transition into its final approach using its current path without unnecessary re-planning.
     - The `FollowPath` subtree, by contrast, does not typically use this conditional gating. Once a path is available, the controller is invoked directly to produce velocity commands.
 - The `RateController` that decorates the `ComputePathToPose` subtree
@@ -211,7 +211,7 @@ This subtree also utilizes the `PlannerSelector`, `ControllerSelector`, `GoalChe
 
 ## Recovery Subtree
 
-The `Recovery` subtree is the second big “half” of the Nav2 default `navigate_to_pose_w_replanning_and_recovery.xml` tree.
+The `Recovery` subtree is the second big "half" of the Nav2 default `navigate_to_pose_w_replanning_and_recovery.xml` tree.
 In short, this subtree is triggered when the `Navigation` subtree returns `FAILURE` and controls the recoveries at the system level (in the case the contextual recoveries in the `Navigation` subtree were not sufficient).
 
 <figure markdown="span">
@@ -247,7 +247,7 @@ At the top level, a `Sequence` ensures the following steps are executed in order
 - A `ReactiveFallback` that controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
 
 If at any point the goal gets updated, this subtree will halt all children and return `SUCCESS`. This allows for quick reactions to new goals and preempt currently executing recoveries.
-This should look familiar to the contextual recovery portions of the `Navigation` subtree. This is a common BT pattern to handle the situation “Unless ‘this condition’ happens, Do action A”.
+This should look familiar to the contextual recovery portions of the `Navigation` subtree. This is a common BT pattern to handle the situation "Unless ‘this condition’ happens, Do action A".
 
 These condition nodes can be extremely powerful and are typically paired with `ReactiveFallback`. It can be easy to imagine wrapping this whole `navigate_to_pose_w_replanning_and_recovery` tree
 in a `ReactiveFallback` with a `isBatteryLow` condition – meaning the `navigate_to_pose_w_replanning_and_recovery` tree will execute *unless* the battery becomes low (and then enter a different subtree for docking to recharge).

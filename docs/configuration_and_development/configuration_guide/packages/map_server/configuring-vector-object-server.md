@@ -64,7 +64,7 @@ Using Vector Object server publishing an output map as input mask to [Costmap Fi
 
 | Type     | Default  |
 |----------|----------|
-| `string` | “vo_map” |
+| `string` | "vo_map" |
 
 Description
 :   Output topic, publishing an OccupancyGrid map with vector objects put on it.
@@ -73,7 +73,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   The name of the coordinate frame where the map is being published at.
@@ -172,7 +172,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Frame ID of the given shape. Empty value is being treated as map’s global frame.

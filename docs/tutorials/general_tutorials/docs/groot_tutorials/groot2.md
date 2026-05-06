@@ -35,7 +35,7 @@ You can also check/uncheck the Nodes visualization part in the preferences to be
 
 Now that you have a Nav2 BT open in Groot2 in editor mode, you should be able to trivially modify it using the GUI.
 You can pull in new nodes from the side panel to add them to the workspace.
-You may then connect the nodes using a “drag and drop” motion between the node’s input and output ports to assemble the new nodes into the tree.
+You may then connect the nodes using a "drag and drop" motion between the node’s input and output ports to assemble the new nodes into the tree.
 
 If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you’re done modifying, simply save the new configuration file and use that on your robot the next time!
 

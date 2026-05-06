@@ -79,7 +79,7 @@ Description
 
 | Type             | Default |
 |------------------|---------|
-| `vector<string>` | {“”}    |
+| `vector<string>` | {""}    |
 
 Description
 :   namespace of sources of data.
@@ -88,7 +88,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Topic of data.
@@ -105,7 +105,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Frame of sensor, to use if not provided by message. If empty, uses message frame_id.
@@ -132,7 +132,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “LaserScan” |
+| `string` | "LaserScan" |
 
 Description
 :   Data type of input, LaserScan or PointCloud2.
@@ -141,7 +141,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “raw”   |
+| `string` | "raw"   |
 
 Description
 :   For `PointCloud2` data, specify the transport plugin to use:

@@ -82,7 +82,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “base_link” |
+| `string` | "base_link" |
 
 Description
 :   Robot’s base frame for control law.
@@ -91,7 +91,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Fixed frame to use, recommended to be a smooth odometry frame **not** map.
@@ -145,7 +145,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Odometry topic to use for obtaining the robot’s current velocity.

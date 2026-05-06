@@ -11,7 +11,7 @@ The server exposes an action interface for smoothing with multiple smoothers tha
 
 | Type     | Default                      |
 |----------|------------------------------|
-| `string` | “global_costmap/costmap_raw” |
+| `string` | "global_costmap/costmap_raw" |
 
 Description
 :   Raw costmap topic for collision checking.
@@ -20,7 +20,7 @@ Description
 
 | Type     | Default                              |
 |----------|--------------------------------------|
-| `string` | “global_costmap/published_footprint” |
+| `string` | "global_costmap/published_footprint" |
 
 Description
 :   Topic for footprint in the costmap frame.
@@ -38,7 +38,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “base_link” |
+| `string` | "base_link" |
 
 Description
 :   Robot base frame.
@@ -47,7 +47,7 @@ Description
 
 | Type             | Default                           |
 |------------------|-----------------------------------|
-| `vector<string>` | {“nav2_smoother::SimpleSmoother”} |
+| `vector<string>` | {"nav2_smoother::SimpleSmoother"} |
 
 Description
 :   List of plugin names to use, also matches action server names.
@@ -70,10 +70,10 @@ Note
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`bond_heartbeat_period`**
 

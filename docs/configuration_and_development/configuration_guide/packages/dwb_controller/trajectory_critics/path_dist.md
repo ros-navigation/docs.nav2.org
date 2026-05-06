@@ -10,7 +10,7 @@ Scores a trajectory based on how well it is aligned to the path provided by the 
 
 | Type     | Default |
 |----------|---------|
-| `string` | “last”  |
+| `string` | "last"  |
 
 Description
 :   last, sum, or product combination methods.

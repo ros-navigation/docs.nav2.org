@@ -29,7 +29,7 @@ This is done because of the wide variety of behavior actions that may be created
 The behavior server also contains a costmap subscriber to the local costmap, receiving real-time updates from the controller server, to compute its tasks.
 We do this to avoid having multiple instances of the local costmap which are computationally expensive to duplicate.
 
-The route server does not contain multiple “routing algorithms” like the planner or controller servers.
+The route server does not contain multiple "routing algorithms" like the planner or controller servers.
 Instead, it computes a route using a navigation graph using a set of plugins for scoring edges in the graph, parsing graph files, and performing operations along the route, if necessary.
 Rather than freespace planning, this computes a route using a graph that can be generated to represent lanes, areas the robot is allowed to navigate, a teach-and-repeat route, urban roadways, and more.
 

@@ -19,7 +19,7 @@ Description
 
 | Type Default     |      |
 |------------------|------|
-| `vector<string>` | [“”] |
+| `vector<string>` | [""] |
 
 Description
 :   Range topics to subscribe to.

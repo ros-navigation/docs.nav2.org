@@ -41,7 +41,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “OPEN_LOOP” |
+| `string` | "OPEN_LOOP" |
 
 Description
 :   Type of feedback to use for the current state of the robot’s velocity. In `OPEN_LOOP`, it will use the last commanded velocity as the next iteration’s current velocity. When acceleration limits are set appropriately, this is a good assumption. In `CLOSED_LOOP`, it will use the odometry from the `odom` topic to estimate the robot’s current speed. In closed loop mode, it is important that the odometry is high rate and low latency, relative to the smoothing frequency.
@@ -104,7 +104,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Topic to find robot odometry, if in `CLOSED_LOOP` operational mode.

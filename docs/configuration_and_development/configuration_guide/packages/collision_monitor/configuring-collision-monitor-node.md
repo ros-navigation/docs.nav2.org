@@ -24,7 +24,7 @@ Also, the practical demonstration of Collision Monitor abilities presented at 6t
 
 ## Features
 
-The Collision Monitor uses polygons relative the robot’s base frame origin to define “zones”.
+The Collision Monitor uses polygons relative the robot’s base frame origin to define "zones".
 Data that fall into these zones trigger an operation depending on the model being used.
 A given instance of the Collision Monitor can have many zones with different models at the same time.
 When multiple zones trigger at once, the most aggressive one is used (e.g. stop > slow 50% > slow 10%).
@@ -43,7 +43,7 @@ The zones around the robot can take the following shapes:
 - Circle: is made for the best performance and could be used in the cases where the zone or robot footprint could be approximated by round shape.
 - VelocityPolygon: allow switching of polygons based on the command velocity. This is useful for robots to set different safety zones based on their velocity (e.g. a robot that has a larger safety zone when moving at 1.0 m/s than when moving at 0.5 m/s).
 
-All shapes (`Polygon`, `Circle` and `VelocityPolygon`) are derived from base `Polygon` class, so without loss of generality they would be called as “polygons”.
+All shapes (`Polygon`, `Circle` and `VelocityPolygon`) are derived from base `Polygon` class, so without loss of generality they would be called as "polygons".
 Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.
 
 The data may be obtained from different data sources:
@@ -74,7 +74,7 @@ Description
 
 | Type     | Default          |
 |----------|------------------|
-| `string` | “base_footprint” |
+| `string` | "base_footprint" |
 
 Description
 :   Robot base frame.
@@ -83,7 +83,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Which frame to use for odometry.
@@ -92,7 +92,7 @@ Description
 
 | Type     | Default            |
 |----------|--------------------|
-| `string` | “cmd_vel_smoothed” |
+| `string` | "cmd_vel_smoothed" |
 
 Description
 :   Input `cmd_vel` topic with desired robot velocity.
@@ -102,7 +102,7 @@ Description
 
 | Type     | Default   |
 |----------|-----------|
-| `string` | “cmd_vel” |
+| `string` | "cmd_vel" |
 
 Description
 :   Output `cmd_vel` topic with output produced by Collision Monitor velocities.
@@ -111,7 +111,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Output the currently activated polygon action type and name. Optional parameter. No publisher will be created if it is unspecified.
@@ -225,7 +225,7 @@ Description
 
 | Type     | Default                             |
 |----------|-------------------------------------|
-| `string` | “local_costmap/published_footprint” |
+| `string` | "local_costmap/published_footprint" |
 
 Description
 :   Topic to listen the robot footprint from. Applicable only for `polygon` type and `approach` action type. If both `points` and `footprint_topic` are specified, the static `points` takes priority.
@@ -458,7 +458,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “scan”  |
+| `string` | "scan"  |
 
 Description
 :   Type of polygon shape. Could be `scan`, `pointcloud`, `range`, `polygon` or `costmap`.
@@ -467,7 +467,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “raw”   |
+| `string` | "raw"   |
 
 Description
 :   For `pointcloud` data, specify the transport plugin to use:
@@ -483,7 +483,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “scan”  |
+| `string` | "scan"  |
 
 Description
 :   Topic to listen the source data from.
@@ -513,7 +513,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Set true for pointcloud sources containing a “height” field relative to a real world ground contour. The “height” field will be used for the min and max height checks instead of the “z” field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `pointcloud` type.
+:   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `pointcloud` type.
 
 ### **`<source name>.min_range`**
 

@@ -61,7 +61,7 @@ controller_server:
 The Rotation Shim Controller is very simple and only has a couple of parameters to dictate the conditions it should be enacted.
 
 - `angular_dist_threshold`: The angular distance (in radians) apart from the robot’s current heading and the approximated path heading to trigger the rotation behavior. Once the robot is within this threshold, control is handed over to the primary controller plugin.
-- `forward_sampling_distance`: The distance (in meters) away from the robot to select a point on the path to approximate the path’s starting heading at. This is analogous to a “lookahead” point.
+- `forward_sampling_distance`: The distance (in meters) away from the robot to select a point on the path to approximate the path’s starting heading at. This is analogous to a "lookahead" point.
 - `rotate_to_heading_angular_vel`: The angular velocity (in rad/s) to have the robot rotate to heading by, when the behavior is enacted.
 - `max_angular_accel`: The angular acceleration (in rad/s/s) to have the robot rotate to heading by, when the behavior is enacted.
 - `simulate_ahead_time`: The Time (s) to forward project the rotation command to check for collision

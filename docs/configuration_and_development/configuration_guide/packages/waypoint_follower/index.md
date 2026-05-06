@@ -41,10 +41,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`bond_heartbeat_period`**
 
@@ -99,7 +99,7 @@ The plugins listed below are inside the `nav2_waypoint_follower` namespace.
 
 | Namespace          | Plugin                                   |
 |--------------------|------------------------------------------|
-| “wait_at_waypoint” | “nav2_waypoint_follower::WaitAtWaypoint” |
+| "wait_at_waypoint" | "nav2_waypoint_follower::WaitAtWaypoint" |
 
 ## Example
 

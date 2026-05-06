@@ -50,7 +50,7 @@ Description
 
 | Type     | Default        |
 |----------|----------------|
-| `string` | “binary_state” |
+| `string` | "binary_state" |
 
 Description
 :   Topic of `std_msgs::msg::Bool` type to publish binary filter state to.

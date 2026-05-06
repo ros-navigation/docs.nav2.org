@@ -483,7 +483,7 @@ See [Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter][rebuilding-t
 `Error Code 4: API Usage Error`
 
 This error should be avoided as part of the engine regeneration solution to the `Error Code 6:` issue. In case it still occurs, the problem is related to how trtexec generated the new .engine and .plan file.
-By default trtexec will generate a “lean” .engine runtime model. A “full” runtime model is necessary for the dnn_stereo_disparity node to run successfully.
+By default trtexec will generate a "lean" .engine runtime model. A "full" runtime model is necessary for the dnn_stereo_disparity node to run successfully.
 
 #### Library Path Errors
 

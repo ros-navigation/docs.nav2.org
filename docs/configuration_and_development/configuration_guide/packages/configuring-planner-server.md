@@ -69,10 +69,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -89,7 +89,7 @@ When the `planner_plugins` parameter is not overridden, the following default pl
 
 | Namespace   | Plugin                             |
 |-------------|------------------------------------|
-| “GridBased” | “nav2_navfn_planner::NavfnPlanner” |
+| "GridBased" | "nav2_navfn_planner::NavfnPlanner" |
 
 ## Example
 

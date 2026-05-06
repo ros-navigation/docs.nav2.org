@@ -21,7 +21,7 @@ Description
 
 | Type     | Default                   |
 |----------|---------------------------|
-| `string` | “/camera/color/image_raw” |
+| `string` | "/camera/color/image_raw" |
 
 Description
 :   Camera image topic name to subscribe
@@ -30,7 +30,7 @@ Description
 
 | Type     | Default                |
 |----------|------------------------|
-| `string` | “/tmp/waypoint_images” |
+| `string` | "/tmp/waypoint_images" |
 
 Description
 :   Path to directory to save taken photos at waypoint arrivals.
@@ -39,7 +39,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “png”   |
+| `string` | "png"   |
 
 Description
 :   Desired image format.

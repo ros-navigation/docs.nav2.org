@@ -28,7 +28,7 @@ Description
 
 | Type     | Default                   |
 |----------|---------------------------|
-| `string` | “input_at_waypoint/input” |
+| `string` | "input_at_waypoint/input" |
 
 Description
 :   Topic input is published to to indicate to move to the next waypoint, in std_msgs/Empty.

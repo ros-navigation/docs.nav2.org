@@ -29,7 +29,7 @@ the ClearCostmapService action node is *not* an action server client, but a serv
 - isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 
 The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return `SUCCESS` if the condition is true and `FAILURE` otherwise.
-The key condition that is used in the default Nav2 BT is `GoalUpdated` which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as “If the goal has been updated, then we must replan”.
+The key condition that is used in the default Nav2 BT is `GoalUpdated` which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as "If the goal has been updated, then we must replan".
 Condition nodes are typically paired with ReactiveFallback nodes.
 
 ## Decorator Nodes
@@ -43,7 +43,7 @@ Condition nodes are typically paired with ReactiveFallback nodes.
 ## Control: PipelineSequence
 
 The `PipelineSequence` control node re-ticks previous children when a child returns `RUNNING`.
-This node is similar to the `Sequence` node, with the additional property that the children prior to the “current” are re-ticked, (resembling the flow of water in a pipe).
+This node is similar to the `Sequence` node, with the additional property that the children prior to the "current" are re-ticked, (resembling the flow of water in a pipe).
 If at any point a child returns `FAILURE`, all children will be halted and the parent node will also return `FAILURE`. Upon `SUCCESS` of the **last node** in the sequence, this node will halt and return `SUCCESS`.
 
 To explain this further, here is an example BT that uses PipelineSequence.
@@ -102,7 +102,7 @@ If the first child returns `FAILURE`, the second child will be ticked. This loop
 - The second child returns `FAILURE` (which results in `FAILURE` of the parent node)
 - The `number_of_retries` input parameter is violated
 
-This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the “main” behavior,
+This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the "main" behavior,
 and the second action will be something to be done in case of `FAILURE` of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.
 
 <figure markdown="span">
@@ -245,7 +245,7 @@ For additional details regarding the `NonblockingSequence` please see the [Nonbl
 
 ## Control: PersistentSequence
 
-The `PersistentSequence` is similar to the `Sequence` node, but it stores the index of the last running child in the blackboard (key: “current_child_idx”), and it does not reset the index on halt.
+The `PersistentSequence` is similar to the `Sequence` node, but it stores the index of the last running child in the blackboard (key: "current_child_idx"), and it does not reset the index on halt.
 
 For more information see the `Sequence` BT node in BT.CPP.
 

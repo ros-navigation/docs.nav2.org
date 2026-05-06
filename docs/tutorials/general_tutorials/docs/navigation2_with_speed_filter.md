@@ -49,8 +49,8 @@ Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.co
   ![](images/Navigation2_with_Speed_Filter/drawing_speed_mask.png){ width="500px" }
 </figure>
 
-Area “A” is filled with `25%` gray color, area “B” - with `50%` gray, that means that speed restriction will take `100% - 25% = 75%` in area “A” and `100% - 50% = 50%` in area “B” from maximum speed value allowed for this robot.
-We will use `scale` map mode with no thresholds. In this mode darker colors will have higher `OccupancyGrid` values. E.g. for area “B” with `50%` of gray `OccupancyGrid` data will be equal to `50`. So in order to hit the target, we need to choose `base = 100.0` and `multiplier = -1.0`. This will reverse the scale `OccupancyGrid` values to a desired one. No thresholds (`free_thresh` `occupied_thresh`) were chosen for the convenience in the `yaml`  file: to have 1:1 full range conversion of lightness value from filter mask -> to speed restriction percent.
+Area "A" is filled with `25%` gray color, area "B" - with `50%` gray, that means that speed restriction will take `100% - 25% = 75%` in area "A" and `100% - 50% = 50%` in area "B" from maximum speed value allowed for this robot.
+We will use `scale` map mode with no thresholds. In this mode darker colors will have higher `OccupancyGrid` values. E.g. for area "B" with `50%` of gray `OccupancyGrid` data will be equal to `50`. So in order to hit the target, we need to choose `base = 100.0` and `multiplier = -1.0`. This will reverse the scale `OccupancyGrid` values to a desired one. No thresholds (`free_thresh` `occupied_thresh`) were chosen for the convenience in the `yaml`  file: to have 1:1 full range conversion of lightness value from filter mask -> to speed restriction percent.
 
 !!! note
 
@@ -78,7 +78,7 @@ occupied_thresh: 1.0
 free_thresh: 0.0
 ```
 
-Since Costmap2D does not support orientation, the last third “yaw” component of the `origin` vector should be equal to zero (for example: `origin: [1.25, -5.18, 0.0]`). Save `speed_mask.yaml` and the new filter mask is ready to use.
+Since Costmap2D does not support orientation, the last third "yaw" component of the `origin` vector should be equal to zero (for example: `origin: [1.25, -5.18, 0.0]`). Save `speed_mask.yaml` and the new filter mask is ready to use.
 
 !!! note
 
@@ -338,7 +338,7 @@ Costmap Filters are Costmap2D plugins. You can enable the `SpeedFilter` plugin i
 
 Full list of parameters supported by `SpeedFilter` are listed at the [Speed Filter Parameters][speed-filter-parameters] page.
 
-You can place the plugin either in the `global_costmap` section in `nav2_params.yaml` to have speed restriction mask applied to global costmap or in the `local_costmap` to apply speed mask to the local costmap. However, `SpeedFilter` plugin should never be enabled simultaneously for global and local costmaps. Otherwise, it can lead to unwanted multiple “speed restriction” - “no restriction” message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.
+You can place the plugin either in the `global_costmap` section in `nav2_params.yaml` to have speed restriction mask applied to global costmap or in the `local_costmap` to apply speed mask to the local costmap. However, `SpeedFilter` plugin should never be enabled simultaneously for global and local costmaps. Otherwise, it can lead to unwanted multiple "speed restriction" - "no restriction" message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.
 
 In this tutorial, we will enable Speed Filter for the global costmap. For this use the following configuration:
 

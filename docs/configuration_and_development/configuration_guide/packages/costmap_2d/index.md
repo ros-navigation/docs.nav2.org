@@ -20,10 +20,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -47,16 +47,16 @@ Description
 
 | Type             | Default |
 |------------------|---------|
-| `vector<double>` | “[]”    |
+| `vector<double>` | "[]"    |
 
 Description
-:   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”. Note that this can also be adjusted over time using the costmap’s `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. If this parameter is set, `isPathValid` will do full collision checking.
+:   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]". Note that this can also be adjusted over time using the costmap’s `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. If this parameter is set, `isPathValid` will do full collision checking.
 
 ### **`global_frame`**
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   Reference frame.
@@ -140,7 +140,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “base_link” |
+| `string` | "base_link" |
 
 Description
 :   Robot base frame.
@@ -252,7 +252,7 @@ Description
 
 | Type             | Default                                               |
 |------------------|-------------------------------------------------------|
-| `vector<string>` | {“static_layer”, “obstacle_layer”, “inflation_layer”} |
+| `vector<string>` | {"static_layer", "obstacle_layer", "inflation_layer"} |
 
 Description
 :   List of mapped plugin names for parameter namespaces and names.
@@ -302,9 +302,9 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 | Namespace         | Plugin                            |
 |-------------------|-----------------------------------|
-| “static_layer”    | “nav2_costmap_2d::StaticLayer”    |
-| “obstacle_layer”  | “nav2_costmap_2d::ObstacleLayer”  |
-| “inflation_layer” | “nav2_costmap_2d::InflationLayer” |
+| "static_layer"    | "nav2_costmap_2d::StaticLayer"    |
+| "obstacle_layer"  | "nav2_costmap_2d::ObstacleLayer"  |
+| "inflation_layer" | "nav2_costmap_2d::InflationLayer" |
 
 ## Plugin Parameters
 

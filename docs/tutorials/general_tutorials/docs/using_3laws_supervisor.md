@@ -166,7 +166,7 @@ Now that we have the parameters extracted from the Nav2 configuration, we can co
 
 On the landing page shown above:
 
-- Input your license key in the “License Key” field. When one is inputted, it should automatically validate and show the license status in the GUI
+- Input your license key in the "License Key" field. When one is inputted, it should automatically validate and show the license status in the GUI
 - Name the robot this configuration belongs to, whether a specific robot or a model of robot depending on the granularity of your configuration settings
 - Select the ROS TF world frame to be `map` if not already set
 
@@ -182,7 +182,7 @@ There are additional advanced settings that may be configured, including:
 
     For safest operations, re-timestamping messages should be disabled and all messages in a system should be validated to be properly timestamped. For getting started, restamping all incoming messages would be OK if you are not confident in your system’s timestamping or wish to use simulation time.
 
-Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration and hit “Next” to proceed to the next page.
+Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration and hit "Next" to proceed to the next page.
 
 <figure markdown="span">
   ![](images/3laws_supervisor/graphics/kinematics_perception.svg){ title="Supervisor Robot Model Configuration" }
@@ -234,7 +234,7 @@ The maximum velocities should be populated from the Nav2 configuration, but you 
 
 Finally if you have characterized your robot’s odometry noise models, you can input the covariance diagonal values here. Otherwise, do not worry and you can leave these as the default values.
 
-Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration and hit “Next” to proceed to the next page.
+Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration and hit "Next" to proceed to the next page.
 
 ### Supervisor Configuration: Localization
 
@@ -260,7 +260,7 @@ Otherwise, populate each odometry source you would like to monitor, including wh
 Select the frame of reference setup in the General page for each Odometry source’s frame.
 If you did not set this up previously, go back now and do so. It will now be available in the dropdown menu.
 
-Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration and hit “Next” to proceed to the next page.
+Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration and hit "Next" to proceed to the next page.
 
 ### Supervisor Configuration: Perception
 
@@ -287,7 +287,7 @@ This currently supports obstacles provided in the form of:
 
 - `lll_msgs/ObstacleArray`
 
-Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration and hit “Next” to proceed to the next page.
+Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration and hit "Next" to proceed to the next page.
 
 ### Supervisor Configuration: Control
 
@@ -340,7 +340,7 @@ This is not required for the Supervisor to function, but it can be useful for mo
 This is disabled by default, but you may enable it if desired and configure each topic or process source.
 Individual nodes can also be configured and monitored for expected input and output.
 
-Once you are done making changes on this page, click the “Save” button at the bottom of the page to save your configuration.
+Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration.
 At this point, all 6 tabs should be white meaning that the configuration is complete and valid.
 If any tab is yellow, it means that there are still required fields that need to be filled in.
 Save again once complete.

@@ -28,7 +28,7 @@ For the best understanding how Keepout Filter works (which is the part of curren
 Vector Object server has its own `vector_object_server.launch.py` launch-file and preset parameters in the `vector_object_server_params.yaml` file for demonstration, though its trivial to add this to Nav2’s main launch file if being used in practice.
 
 In this tutorial, we are focusing on the application how to utilize the simple setup allowing to add virtual obstacles on costmaps.
-For demonstration purposes, let’s specify two obstacle shapes: triangle polygon and circle filled with “occupied” value, in order to prevent the robot to go through them. The YAML-part for polygon and circle will look as follows:
+For demonstration purposes, let’s specify two obstacle shapes: triangle polygon and circle filled with "occupied" value, in order to prevent the robot to go through them. The YAML-part for polygon and circle will look as follows:
 
 ```yaml
 shapes: ["Poly", "Circle"]
@@ -49,7 +49,7 @@ Circle:
 
 Where the triangle polygon is specified by `{0.3, 0.5}, {-0.4, 1.2}, {-0.4, -0.2}` 3-point shape and the circle has `{1.5, 0.5}` coordinate of its center with `0.7` meter radius in the `map` frame.
 `closed` true-value for the polygon and `fill` for the circle mean that both shapes to be filled the with specified `value`.
-This value is equal to `100` which means “occupied” in OccupancyGrid format.
+This value is equal to `100` which means "occupied" in OccupancyGrid format.
 
 !!! note
 
@@ -110,7 +110,7 @@ ros2 launch nav2_map_server vector_object_server.launch.py
 
 Vector Object server puts shapes to OccupacyGrid map and publishes it in a topic, which is used as an input mask for enabled in Nav2 Keepout Filter.
 Enabling of Keeput Filter in Nav2 stack principles are similar as written in [Navigating with Keepout Zones][navigating-with-keepout-zones] tutorial.
-Since vector objects are being enabled in global costmaps, Keepout Filter called as “vector_object_layer”, should be added to the global costmap section of the `nav2_params.yaml` standard Nav2 configuration as follows:
+Since vector objects are being enabled in global costmaps, Keepout Filter called as "vector_object_layer", should be added to the global costmap section of the `nav2_params.yaml` standard Nav2 configuration as follows:
 
 ```yaml
 global_costmap:

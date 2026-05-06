@@ -43,9 +43,9 @@ Commonly GPS devices calculate their position using the [WGS84 standard](https:/
 
 However, this reference system is impractical for describing the motion and representing the environment around objects in or close to the earth’s surface: Imagine your robot is located on a soccer field and you want it to move from one end to the other, your navigation task would look something like:
 
-“go from X=4789.413km, Y=177.511km z=4194.292km to X=4789.475km, Y=177.553km z=4194.22km”
+"go from X=4789.413km, Y=177.511km z=4194.292km to X=4789.475km, Y=177.553km z=4194.22km"
 
-Addinally, if your robot has for instance a 2D lidar, you would have to transform its data to this reference system as well. It would make much more sense to create a local reference system where you could tell your robot “go 100 meters forward” and your sensor data could populate your environment representation accordingly, right?
+Addinally, if your robot has for instance a 2D lidar, you would have to transform its data to this reference system as well. It would make much more sense to create a local reference system where you could tell your robot "go 100 meters forward" and your sensor data could populate your environment representation accordingly, right?
 
 To cope with this, geodesy proposes several planar projection systems for localization with respect to the surface of the earth. One of them is the [UTM coordinate system](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system), which assumes earth is an ellipsoid and divides it in 60 zones, each of them spanning across 6 longitude degrees. A zone represents the projection of the ellipsoid’s surface over a secant cylinder parallel to its central meridian; each of them is then split into 20 latitude bands that span across 8 latitude degrees, which create local grid zones where positions are expressed using planar coordinates from the origin of the zone. The image below shows the grid zones spanning across South America.
 
@@ -307,7 +307,7 @@ The gif below shows what you should see:
 Sensors in a real robot may be less accurate than Gazebo’s, especially GPSs and absolute heading measurements from IMUs. To mitigate this you can leverage robot_localization’s EKFs to complement sensor’s capabilities:
 
 1. If your IMU does not provide absolute yaw measurements accurately, consider setting the `differential` parameter of its input to RL to `true`. This way the filter will only fuse changes in the orientation and derive the absolute value from its motion model internally, differentiating changes in the position to estimate where the robot was heading (e.g. If the robot had a speed of 1m/s forward according to the wheel odometry and moved 1 meter north according to the GPS, that means it should be facing north). Note that if that’s the case, you won’t have an accurate absolute heading until your robot moves around a bit and the filter can estimate it from that movement; if this is not possible in your application consider adding another sensor that can measure absolute heading accurately, like a dual GPS system.
-2. If your GPS is noisy but you have another trustworthy odometry source (ex: wheel odometry, visual odometry), consider tuning the sensors and process noise covariances to make the filter “trust” more or less one data source or its own internal state estimate. A properly tuned filter should be able to reject wrong GPS measurements to some degree.
+2. If your GPS is noisy but you have another trustworthy odometry source (ex: wheel odometry, visual odometry), consider tuning the sensors and process noise covariances to make the filter "trust" more or less one data source or its own internal state estimate. A properly tuned filter should be able to reject wrong GPS measurements to some degree.
 
 ### 2. Setup Navigation system
 

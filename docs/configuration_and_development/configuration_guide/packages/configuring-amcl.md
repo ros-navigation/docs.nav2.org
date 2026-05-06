@@ -199,7 +199,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Which frame to use for odometry.
@@ -265,13 +265,13 @@ Description
 
 | Type     | Default                              |
 |----------|--------------------------------------|
-| `string` | “nav2_amcl::DifferentialMotionModel” |
+| `string` | "nav2_amcl::DifferentialMotionModel" |
 
 Description
-:   The fully-qualified type of the plugin class. Options are “nav2_amcl::DifferentialMotionModel” and “nav2_amcl::OmniMotionModel”. Users can also provide their own custom motion model plugin type.
+:   The fully-qualified type of the plugin class. Options are "nav2_amcl::DifferentialMotionModel" and "nav2_amcl::OmniMotionModel". Users can also provide their own custom motion model plugin type.
 
   Note for users of galactic and earlier
-:   The models are selectable by string key (valid options: “differential”, “omnidirectional”) rather than plugins.
+:   The models are selectable by string key (valid options: "differential", "omnidirectional") rather than plugins.
 
 ### **`save_pose_rate`**
 
@@ -313,10 +313,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`update_min_a`**
 

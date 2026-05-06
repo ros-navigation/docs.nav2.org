@@ -69,7 +69,7 @@ Description
 | `double` | 0.2     |
 
 Description
-:   Cartesian proximity (m) to path inversion point to be considered “achieved” to pass on the rest of the path after path inversion.
+:   Cartesian proximity (m) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion.
 
 ### **`<nav2_controller plugin>.inversion_yaw_tolerance`**
 
@@ -78,7 +78,7 @@ Description
 | `double` | 0.4     |
 
 Description
-:   Angular proximity (radians) to path inversion point to be considered “achieved” to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.
+:   Angular proximity (radians) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.
 
 ## Example
 

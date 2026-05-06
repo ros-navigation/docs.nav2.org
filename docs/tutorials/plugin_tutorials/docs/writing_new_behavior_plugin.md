@@ -89,7 +89,7 @@ ResultStatus SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
 
 We receive an action goal, `command`, which we want to process.
 `command` contains a field `message` that contains the message we want to communicate to our mothership.
-This is the “call for help” message that we want to send via SMS to our brothers in arms in the operations center.
+This is the "call for help" message that we want to send via SMS to our brothers in arms in the operations center.
 
 We use the service Twilio to complete this task.
 Please [create an account](https://www.twilio.com/) and get all the relevant information needed for creating the service (e.g. `account_sid`, `auth_token`, and a phone number).

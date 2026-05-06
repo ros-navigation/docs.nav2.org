@@ -8,7 +8,7 @@ A custom control node, which updates the goal(s) pose(s). It subscribes to a top
 
 | Type     | Default       |
 |----------|---------------|
-| `string` | “goal_update” |
+| `string` | "goal_update" |
 
 Description
 :   The topic to receive the updated goal pose
@@ -17,7 +17,7 @@ Description
 
 | Type     | Default        |
 |----------|----------------|
-| `string` | “goals_update” |
+| `string` | "goals_update" |
 
 Description
 :   The topic to receive the updated goals poses

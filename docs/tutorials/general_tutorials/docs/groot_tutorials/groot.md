@@ -38,7 +38,7 @@ If you select the default tree navigate_w_replanning_and_recovery.xml, then a Gr
 
 Now that you have a Nav2 BT open in Groot in editor mode, you should be able to trivially modify it using the GUI.
 Starting from a screen like that shown in [Figure 3](#groot-nav2-default-bt), you can pull in new nodes from the side panel to add them to the workspace.
-You may then connect the nodes using a “drag and drop” motion between the node’s input and output ports to assemble the new nodes into the tree.
+You may then connect the nodes using a "drag and drop" motion between the node’s input and output ports to assemble the new nodes into the tree.
 
 If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you’re done modifying, simply save the new configuration file and use that on your robot the next time!
 

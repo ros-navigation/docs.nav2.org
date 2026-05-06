@@ -28,7 +28,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 **Also, make sure you have the following:**
 
-- A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 20mm squares. **Calibration uses the interior vertex points of the checkerboard, so an “8x10” board uses the interior vertex parameter “7x9” as in the example below.** The checkerboard with set dimensions can be downloaded from [here](https://calib.io/pages/camera-calibration-pattern-generator).
+- A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 20mm squares. **Calibration uses the interior vertex points of the checkerboard, so an "8x10" board uses the interior vertex parameter "7x9" as in the example below.** The checkerboard with set dimensions can be downloaded from [here](https://calib.io/pages/camera-calibration-pattern-generator).
 - A well-lit area clear of obstructions and other check board patterns
 - A monocular camera publishing images over ROS
 
@@ -131,10 +131,10 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     </figure>
 
 
-9. Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”
+9. Press the save button to see the result. Data is saved to  "/tmp/calibrationdata.tar.gz"
 
 10. To use the the calibration file unzip the calibration.tar.gz
 
     `tar -xvf calibration.tar.gz`
 
-11. In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
+11. In the folder images used for calibration are available and also "**ost.yaml**" and "**ost.txt**". You can use the yaml file which contains the calibration parameters as directed by the camera driver.

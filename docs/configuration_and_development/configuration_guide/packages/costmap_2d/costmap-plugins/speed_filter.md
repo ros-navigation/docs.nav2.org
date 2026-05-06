@@ -32,7 +32,7 @@ Description
 
 | Type     | Default       |
 |----------|---------------|
-| `string` | “speed_limit” |
+| `string` | "speed_limit" |
 
 Description
 :   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) have the following fields’ meaning:

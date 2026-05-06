@@ -121,10 +121,10 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “DUBIN” |
+| `string` | "DUBIN" |
 
 Description
-:   Motion model enum string to search with. For Hybrid-A\* node, default is “DUBIN”. Options for SE2 are DUBIN or REEDS_SHEPP.
+:   Motion model enum string to search with. For Hybrid-A\* node, default is "DUBIN". Options for SE2 are DUBIN or REEDS_SHEPP.
 
 ### **`<name>.angle_quantization_bins`**
 
@@ -223,7 +223,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Advanced feature: Allows a user to add additional primitives to the exploration set to interpolate between the angular quantization jumps between the normal primitive set (e.g. left, right, straight). This generates additional primitives such that every angular bin between the furthest-left and furthest-right are represented in the primitive set for exploration. That way, if the settings (e.x. 0.4 turning rad, 5cm costmap, 72 bins) jump by 3 quantizations, you can explore not simply 0,3,6,9,... but the full 1,2,3,4,5,6,7,8,9,... set. This typically comes at an increased computation time, but can remove “zig-zag”-like behavior when your base primitive set is significantly not representative. It may come at less compute times when used in more confined settings like hallways whereas it can follow a narrow heuristic channel better. When this is enabled, users should take care to re-tune `angle_quantization_bins`, since such a large number is not required. To continue with the previous example, when enabled, it is the same as `angle_quantization_bins` set to 24 (e.g. `24 * 3 = 72`), so 32 might be a good selection to start with to get higher quality without substantial changes in compute time.
+:   Advanced feature: Allows a user to add additional primitives to the exploration set to interpolate between the angular quantization jumps between the normal primitive set (e.g. left, right, straight). This generates additional primitives such that every angular bin between the furthest-left and furthest-right are represented in the primitive set for exploration. That way, if the settings (e.x. 0.4 turning rad, 5cm costmap, 72 bins) jump by 3 quantizations, you can explore not simply 0,3,6,9,... but the full 1,2,3,4,5,6,7,8,9,... set. This typically comes at an increased computation time, but can remove "zig-zag"-like behavior when your base primitive set is significantly not representative. It may come at less compute times when used in more confined settings like hallways whereas it can follow a narrow heuristic channel better. When this is enabled, users should take care to re-tune `angle_quantization_bins`, since such a large number is not required. To continue with the previous example, when enabled, it is the same as `angle_quantization_bins` set to 24 (e.g. `24 * 3 = 72`), so 32 might be a good selection to start with to get higher quality without substantial changes in compute time.
 
 ### **`<name>.downsample_obstacle_heuristic`**
 
@@ -295,7 +295,7 @@ Description
 | `bool` | true    |
 
 Description
-:   Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A\* planner due to the extra “wobbling” it can have due to the very small primitive lengths but may cause the path to get slightly closer to some obstacles.
+:   Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A\* planner due to the extra "wobbling" it can have due to the very small primitive lengths but may cause the path to get slightly closer to some obstacles.
 
 ### **`<name>.smoother.refinement_num`**
 
@@ -310,10 +310,10 @@ Description
 
 | Type     | Default   |
 |----------|-----------|
-| `string` | “DEFAULT” |
+| `string` | "DEFAULT" |
 
 Description
-:   Goal heading mode enum string to plan goal with multiple orientation. Options are “DEFAULT”, “BIDIRECTIONAL” and “ALL_DIRECTION”. With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the “BIDIRECTIONAL” mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For “ALL_DIRECTION” mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the “BIDIRECTIONAL” and “ALL_DIRECTION” mode, the planner returns the path with the minimum cost.
+:   Goal heading mode enum string to plan goal with multiple orientation. Options are "DEFAULT", "BIDIRECTIONAL" and "ALL_DIRECTION". With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the "BIDIRECTIONAL" mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For "ALL_DIRECTION" mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the "BIDIRECTIONAL" and "ALL_DIRECTION" mode, the planner returns the path with the minimum cost.
 
 ### **`<name>.coarse_search_resolution`**
 
@@ -322,7 +322,7 @@ Description
 | `int` | 4       |
 
 Description
-:   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to “ALL_DIRECTION” and It helps to reduce search time of analytic expansions.
+:   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and It helps to reduce search time of analytic expansions.
 
 ### **`allow_parameter_qos_overrides`**
 

@@ -14,7 +14,7 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 
 | Type     | Default                     |
 |----------|-----------------------------|
-| `string` | “local_costmap/costmap_raw” |
+| `string` | "local_costmap/costmap_raw" |
 
 Description
 :   Raw costmap topic for collision checking on the local costmap.
@@ -23,7 +23,7 @@ Description
 
 | Type     | Default                      |
 |----------|------------------------------|
-| `string` | “global_costmap/costmap_raw” |
+| `string` | "global_costmap/costmap_raw" |
 
 Description
 :   Raw costmap topic for collision checking on the global costmap.
@@ -32,7 +32,7 @@ Description
 
 | Type     | Default                             |
 |----------|-------------------------------------|
-| `string` | “local_costmap/published_footprint” |
+| `string` | "local_costmap/published_footprint" |
 
 Description
 :   Topic for footprint in the local costmap frame.
@@ -41,7 +41,7 @@ Description
 
 | Type     | Default                              |
 |----------|--------------------------------------|
-| `string` | “global_costmap/published_footprint” |
+| `string` | "global_costmap/published_footprint" |
 
 Description
 :   Topic for footprint in the global costmap frame.
@@ -68,7 +68,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “odom”  |
+| `string` | "odom"  |
 
 Description
 :   Local reference frame.
@@ -77,7 +77,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   Global reference frame.
@@ -86,7 +86,7 @@ Description
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “base_link” |
+| `string` | "base_link" |
 
 Description
 :   Robot base frame.
@@ -95,16 +95,16 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`behavior_plugins`**
 
 | Type             | Default                                         |
 |------------------|-------------------------------------------------|
-| `vector<string>` | {“spin”, “back_up”, “drive_on_heading”, “wait”} |
+| `vector<string>` | {"spin", "back_up", "drive_on_heading", "wait"} |
 
 Description
 :   List of plugin names to use, also matches action server names.
@@ -133,16 +133,16 @@ Note
 
 !!! note
 
-    In Iron and older versions, “/” was used instead of “::”.
+    In Iron and older versions, "/" was used instead of "::".
 
 When the `behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 
 | Namespace          | Plugin                           |
 |--------------------|----------------------------------|
-| “spin”             | “nav2_behaviors::Spin”           |
-| “backup”           | “nav2_behaviors::BackUp”         |
-| “drive_on_heading” | “nav2_behaviors::DriveOnHeading” |
-| “wait”             | “nav2_behaviors::Wait”           |
+| "spin"             | "nav2_behaviors::Spin"           |
+| "backup"           | "nav2_behaviors::BackUp"         |
+| "drive_on_heading" | "nav2_behaviors::DriveOnHeading" |
+| "wait"             | "nav2_behaviors::Wait"           |
 
 ## Spin Behavior Parameters
 

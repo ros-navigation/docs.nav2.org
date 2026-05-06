@@ -207,7 +207,7 @@ To debug directly from the nav2 bringup launch files you may want to do the foll
 
 !!! note
 
-    Turning off composition has serious performance impacts. If this is important to you please follow “From Large Project”.
+    Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project".
 
 Once your server crashes, you’ll see a prompt like below in the xterm window. At this point you can now get a backtrace.
 

@@ -89,7 +89,7 @@ An example simulation migration using Gazebo can be seen in the [following pull 
 
 ## New Nav2 Loopback Simulator
 
-The `nav2_loopback_sim` is a stand-alone simulator to create a “loopback” for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
+The `nav2_loopback_sim` is a stand-alone simulator to create a "loopback" for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
 It computes the robot’s odometry based on the command velocity’s output request to create a perfect ‘frictionless plane’-style simulation for unit testing, system testing, R&D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.
 
 ## Docking with Static Infrastructure or Dynamic Docking
@@ -207,7 +207,7 @@ Default value:
 
 In [PR #4715](https://github.com/ros-navigation/navigation2/pull/4715) multirobot bringup and the use of namespaces were overhauled to be compatible out of the box with ROS namespaces and remove custom logic, specifically:
 
-- The `use_namespace` parameter has been removed from `nav2_bringup` launch files. The `namespace` parameter will now always be used and default to `/` for “global namespace”.
+- The `use_namespace` parameter has been removed from `nav2_bringup` launch files. The `namespace` parameter will now always be used and default to `/` for "global namespace".
 - There is now a single rviz config file for both normal and namespaced robots. Topics have been changed to a relative path (i.e. `/map` -> `map`) and the rviz `namespace` will be added automatically.
 - There is now a single `nav2_params.yaml` config file for both single and multirobot bringup. All the topics have been changed to relative (i.e. `/scan` -> `scan`).
 
@@ -383,11 +383,11 @@ Default value:
 
 ## Service introspection
 
-In [PR #4955](https://github.com/ros-navigation/navigation2/pull/4955) the parameter `service_introspection_mode` was introduced to the Nav2 stack to allow introspection of services. The options are “disabled”, “metadata”, “contents”.
+In [PR #4955](https://github.com/ros-navigation/navigation2/pull/4955) the parameter `service_introspection_mode` was introduced to the Nav2 stack to allow introspection of services. The options are "disabled", "metadata", "contents".
 
 Default value:
 
-- “disabled”
+- "disabled"
 
 ## Rotation Shim Using Path Orientations
 

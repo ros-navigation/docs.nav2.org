@@ -211,8 +211,8 @@ After we have properly set up and launched Nav2, the `/global_costmap` and `/loc
     To make the costmaps show up, run the 3 commands in this order:
 
     1. Launching Description Nodes, RViz and Gazebo - wait a bit for everything to launch
-    2. Launching slam_toolbox - in logs wait for “Registering sensor”
-    3. Launching Nav2 - in logs wait for “Creating bond timer”
+    2. Launching slam_toolbox - in logs wait for "Registering sensor"
+    3. Launching Nav2 - in logs wait for "Creating bond timer"
 
 #### Visualizing Costmaps in RViz
 

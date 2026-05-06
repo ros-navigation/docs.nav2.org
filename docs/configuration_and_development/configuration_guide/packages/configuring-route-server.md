@@ -31,7 +31,7 @@ See the package’s README file for additional information such as performance m
 
 | Type     | Default     |
 |----------|-------------|
-| `string` | “base_link” |
+| `string` | "base_link" |
 
 Description
 :   The base frame of the robot to use to obtain the robot’s pose from when not using the `use_start` request parameter.
@@ -40,7 +40,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   The frame of the route graph to plan within. If values in the graph file are not w.r.t. this frame, they will be automatically transformed.
@@ -211,7 +211,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server’s set graph service later.
@@ -220,7 +220,7 @@ Description
 
 | Type     | Default                  |
 |----------|--------------------------|
-| `string` | “GeoJsonGraphFileLoader” |
+| `string` | "GeoJsonGraphFileLoader" |
 
 Description
 :   The name of the graph file loader plugin to use.
@@ -229,7 +229,7 @@ Description
 
 | Type     | Default                              |
 |----------|--------------------------------------|
-| `string` | “nav2_route::GeoJsonGraphFileLoader” |
+| `string` | "nav2_route::GeoJsonGraphFileLoader" |
 
 Description
 :   The graph loading plugin to use. By default, we use `geojson`.
@@ -256,7 +256,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   The plugin to load under that name. The `edge_cost_functions.<name>` namespaces is also where plugin-specific parameters are defined.
@@ -265,10 +265,10 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “disabled” |
+| `string` | "disabled" |
 
 Description
-:   The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.
+:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -367,7 +367,7 @@ Description
 
 | Type     | Default       |
 |----------|---------------|
-| `string` | “speed_limit” |
+| `string` | "speed_limit" |
 
 Description
 :   Graph metadata key to look for percentage speed limits (speed_limit).
@@ -392,7 +392,7 @@ Description
 
 | Type     | Default           |
 |----------|-------------------|
-| `string` | “abs_speed_limit” |
+| `string` | "abs_speed_limit" |
 
 Description
 :   Graph metadata key to look for absolute speed limits.
@@ -401,7 +401,7 @@ Description
 
 | Type     | Default          |
 |----------|------------------|
-| `string` | “abs_time_taken” |
+| `string` | "abs_time_taken" |
 
 Description
 :   Graph metadata key to look for abs traversal times.
@@ -433,7 +433,7 @@ Description
 
 | Type     | Default   |
 |----------|-----------|
-| `string` | “penalty” |
+| `string` | "penalty" |
 
 Description
 :   Graph metadata key to look for penalty value.
@@ -584,7 +584,7 @@ If it is blocked, it sets the edge blocked as blocked for rerouting around the b
 
 | Type     | Default                      |
 |----------|------------------------------|
-| `string` | “global_costmap/costmap_raw” |
+| `string` | "global_costmap/costmap_raw" |
 
 Description
 :   The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server’s costmap topic, then it will be shared here as well without duplicate subscriptions.

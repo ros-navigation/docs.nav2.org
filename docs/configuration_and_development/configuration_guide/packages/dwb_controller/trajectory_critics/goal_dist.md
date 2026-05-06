@@ -12,7 +12,7 @@ Scores a trajectory based on how close the trajectory gets the robot to the goal
 
 | Type     | Default |
 |----------|---------|
-| `string` | “last”  |
+| `string` | "last"  |
 
 Description
 :   last, sum, or product combination methods.

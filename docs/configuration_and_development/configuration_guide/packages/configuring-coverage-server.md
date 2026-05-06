@@ -68,7 +68,7 @@ Description
 
 | Type     | Default    |
 |----------|------------|
-| `string` | “CONSTANT” |
+| `string` | "CONSTANT" |
 
 Description
 :   The default headland generation method. Constant is the only valid method currently. Only for `opennav_coverage`.
@@ -86,7 +86,7 @@ Description
 
 | Type     | Default  |
 |----------|----------|
-| `string` | “LENGTH” |
+| `string` | "LENGTH" |
 
 Description
 :   Objective to use to score swath generation candidates at different angles when using `BRUTE_FORCE` swath angle type. Options: `LENGTH`, `COVERAGE`, `NUMBER` for `opennav_coverage`. Option: `OFFSET`, `CENTER`, `ROWSARESWATHS` for `opennav_row_coverage`.
@@ -123,7 +123,7 @@ Description
 
 | Type     | Default         |
 |----------|-----------------|
-| `string` | “BOUSTROPHEDON” |
+| `string` | "BOUSTROPHEDON" |
 
 Description
 :   Default order when computing routes to order swaths. Options: `BOUSTROPHEDON`, `SNAKE`, `SPIRAL`, `CUSTOM`
@@ -150,7 +150,7 @@ Description
 
 | Type     | Default      |
 |----------|--------------|
-| `string` | “CONTINUOUS” |
+| `string` | "CONTINUOUS" |
 
 Description
 :   Default continuity type when computing paths to connect routes together. Options `DISCONTINUOUS`, `CONTINUOUS`.
@@ -159,7 +159,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “DUBIN” |
+| `string` | "DUBIN" |
 
 Description
 :   Default type when computing paths to connect routes together using curves. Options: `DUBIN`, `REEDS_SHEPP`.

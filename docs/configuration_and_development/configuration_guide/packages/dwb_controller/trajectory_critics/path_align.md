@@ -19,7 +19,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “last”  |
+| `string` | "last"  |
 
 Description
 :   last, sum, or product combination methods.

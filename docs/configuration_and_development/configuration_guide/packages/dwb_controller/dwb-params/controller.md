@@ -17,7 +17,7 @@ Description
 
 | Type             | Default         |
 |------------------|-----------------|
-| `vector<string>` | [“dwb_critics”] |
+| `vector<string>` | ["dwb_critics"] |
 
 Description
 :   Namespaces to load critics in.
@@ -35,7 +35,7 @@ Description
 
 | Type     | Default                                    |
 |----------|--------------------------------------------|
-| `string` | “dwb_plugins::StandardTrajectoryGenerator” |
+| `string` | "dwb_plugins::StandardTrajectoryGenerator" |
 
 Description
 :   Trajectory generator plugin name.
@@ -44,7 +44,7 @@ Description
 
 | Type     | Default                          |
 |----------|----------------------------------|
-| `string` | “dwb_plugins::SimpleGoalChecker” |
+| `string` | "dwb_plugins::SimpleGoalChecker" |
 
 Description
 :   Goal checker plugin name.

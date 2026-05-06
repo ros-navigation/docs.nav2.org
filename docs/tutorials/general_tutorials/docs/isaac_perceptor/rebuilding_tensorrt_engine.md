@@ -1,10 +1,10 @@
 # Rebuilding TensorRT Engine for Isaac Perceptor on Nova Carter { #rebuilding-tensor-rt-engine-for-isaac-perceptor-on-nova-carter }
 
-This is a step-by-step guide for fixing Isaac Perceptor model (“Engine”) compatibility issues in the NVIDIA Isaac environment. While this has been developed (and tested) on the NVIDIA Nova Carter robot, this should work for Isaac Sim, etc. as well.
+This is a step-by-step guide for fixing Isaac Perceptor model ("Engine") compatibility issues in the NVIDIA Isaac environment. While this has been developed (and tested) on the NVIDIA Nova Carter robot, this should work for Isaac Sim, etc. as well.
 
-Among the collection of nodes and packages Perceptor uses for 3-D scene reconstruction are a set of “engine” and “plan” files, which are the actual neural network models used by Perceptor components such as `nvblox` to do things like object recognition, semantic segmentation, image disparity calculation, etc.
+Among the collection of nodes and packages Perceptor uses for 3-D scene reconstruction are a set of "engine" and "plan" files, which are the actual neural network models used by Perceptor components such as `nvblox` to do things like object recognition, semantic segmentation, image disparity calculation, etc.
 
-**Problem**: Incompatible “engine” files.
+**Problem**: Incompatible "engine" files.
 
 When running the Isaac ROS Perceptor node, the following error occurs:
 
@@ -16,11 +16,11 @@ Error Code 6: API Usage Error (The engine plan file is not compatible with this 
 
 **Solution**: Fortunately, NVIDIA provides some fine-grained tools for working with CUDA, building & converting models between different formats and NVIDIA hardware platforms. So, we can rebuild the incompatible `.engine` files with the `trtexec` tool.
 
-Rebuild engines inside the container using `trtexec` compiled against the container’s TensorRT version with “full” runtime optimization.
+Rebuild engines inside the container using `trtexec` compiled against the container’s TensorRT version with "full" runtime optimization.
 
 !!! note
 
-    We will see why “full” is important later, although sneak-peek: it has to do with resolving the error message:
+    We will see why "full" is important later, although sneak-peek: it has to do with resolving the error message:
 
     ```default
     Error Code 4: API Usage Error (Cannot deserialize engine with lean runtime...

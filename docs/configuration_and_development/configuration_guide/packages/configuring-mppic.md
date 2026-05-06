@@ -201,7 +201,7 @@ Description
 | `double` | 0.3     |
 
 Description
-:   Selectiveness of trajectories by their costs (The closer this value to 0, the “more” we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
+:   Selectiveness of trajectories by their costs (The closer this value to 0, the "more" we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
 
 ### **`gamma`**
 
@@ -210,7 +210,7 @@ Description
 | `double` | 0.015   |
 
 Description
-:   A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won’t need to be changed from the default. See Section 3D-2 in “Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving” for detailed information.
+:   A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won’t need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
 
 ### **`visualize`**
 
@@ -279,7 +279,7 @@ Description
 
 | Type     | Default                                   |
 |----------|-------------------------------------------|
-| `string` | “mppi::DefaultOptimalTrajectoryValidator” |
+| `string` | "mppi::DefaultOptimalTrajectoryValidator" |
 
 Description
 :   The plugin to use for validating final optimal trajectories.
@@ -530,7 +530,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
@@ -606,7 +606,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “”      |
+| `string` | ""      |
 
 Description
 :   Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.

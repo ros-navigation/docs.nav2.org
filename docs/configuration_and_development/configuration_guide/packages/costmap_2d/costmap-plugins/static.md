@@ -54,7 +54,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | “map”   |
+| `string` | "map"   |
 
 Description
 :   Map topic to subscribe to.

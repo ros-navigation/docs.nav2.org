@@ -22,7 +22,7 @@ As was written in [Navigation Concepts][navigation-concepts], any Costmap Filter
 
 Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a `Nav2` repository to a new `depot_keepout.pgm` file.
 
-Open `depot_keepout.pgm` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the `[0..255]` range (or `[0..100]` in percent scale), where `0` means black color and `255` - white. Another term “darkness” will be understood as the exact opposite of lightness. In other words `color_darkness = 100% - color_lightness`.
+Open `depot_keepout.pgm` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the `[0..255]` range (or `[0..100]` in percent scale), where `0` means black color and `255` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words `color_darkness = 100% - color_lightness`.
 
 In the GIMP lightness is expressed through color components value (e.g. `R` in percent scale) and might be set by moving `L` slider in color changing tool:
 
@@ -42,9 +42,9 @@ where `free_thresh` and `occupied_thresh` thresholds are expressed in percentage
 
     There is another parameter in a YAML metadata file called `negate`. By default it is set to `false`. When it is set to `true`, blacker pixels will be considered as free, whiter pixels - as occupied. In this case we should count color lightness instead of darkness for `trinary` and `scale` modes. `negate` has no effect on `raw` mode.
 
-For Keepout Filter `OccupancyGrid` value is proportional to the passibility of area corresponding to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. `KeepoutFilter` can also act as a “weighted areas layer” by setting the `OccupancyGrid` to something between `[1-99]` non-occupied values. Robot is allowed to move in these areas, however its presence there would be “undesirable” there (the higher the value, the sooner planners will try to get the robot out of this area).
+For Keepout Filter `OccupancyGrid` value is proportional to the passibility of area corresponding to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. `KeepoutFilter` can also act as a "weighted areas layer" by setting the `OccupancyGrid` to something between `[1-99]` non-occupied values. Robot is allowed to move in these areas, however its presence there would be "undesirable" there (the higher the value, the sooner planners will try to get the robot out of this area).
 
-Keepout Filter also covers preferred lanes case, where robots should moving only on pre-defined lanes and permitted areas e.g. in warehouses. To use this feature you need to prepare the mask image where the lanes and permitted areas will be marked with free values while all other areas will be occupied. TIP for drawing the mask in a `trinary` or `scale` mode: typically, amount of pixels belonging to lanes are much less than pixels covering other areas. In this case initially all lanes data might be drawn with a black pencil over white background and then (just before saving a PGM) “color inversion” tool in a image raster editor might be used.
+Keepout Filter also covers preferred lanes case, where robots should moving only on pre-defined lanes and permitted areas e.g. in warehouses. To use this feature you need to prepare the mask image where the lanes and permitted areas will be marked with free values while all other areas will be occupied. TIP for drawing the mask in a `trinary` or `scale` mode: typically, amount of pixels belonging to lanes are much less than pixels covering other areas. In this case initially all lanes data might be drawn with a black pencil over white background and then (just before saving a PGM) "color inversion" tool in a image raster editor might be used.
 
 For simplicity, in the example fill the areas with black color (in `trinary` mode this means occupied map) that you are going to mark as a keep-out zones:
 
@@ -70,7 +70,7 @@ Since filter mask image was created as a copy of main map, other fields of YAML-
 
 !!! note
 
-    Another important note is that since Costmap2D does not support orientation, the last third “yaw” component of the `origin` vector should be equal to zero. For example: `origin: [1.25, -5.18, 0.0]`.
+    Another important note is that since Costmap2D does not support orientation, the last third "yaw" component of the `origin` vector should be equal to zero. For example: `origin: [1.25, -5.18, 0.0]`.
 
 ### 2. Configure Costmap Filter Info Publisher Server
 
