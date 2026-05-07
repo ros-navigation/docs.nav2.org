@@ -25,11 +25,17 @@ Configuring Robot Localization
 
 Let us now configure the ``robot_localization`` package to use an Extended Kalman Filter (``ekf_node``) to fuse odometry information and publish the ``odom`` => ``base_link`` transform.
 
-First, install the ``robot_localization`` package using your machines package manager or by executing the following command:
+First, source your ROS 2 installation to set the environment variables:
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-robot-localization
+  source /opt/ros/<ros2-distro>/setup.bash
+
+Then install the ``robot_localization`` package:
+
+.. code-block:: shell
+
+  sudo apt install ros-$ROS_DISTRO-robot-localization
 
 Next, we specify the parameters of the ``ekf_node`` using a YAML file. Create a directory named ``config`` at the root of your project and create a file named ``ekf.yaml``. Copy the following lines of code into your ``ekf.yaml`` file.
 

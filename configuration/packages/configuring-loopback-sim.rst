@@ -86,33 +86,67 @@ Parameters
   ============== ==============
   Type           Default
   -------------- --------------
-  string         0.1
+  double         0.1
   ============== ==============
 
   Description
     The duration between publishing scan (in sec)
+
+:odom_publish_dur:
+
+  ============== =================
+  Type           Default
+  -------------- -----------------
+  double         <update_duration>
+  ============== =================
+
+  Description
+    The duration between publishing odometry (in sec). Defaults to ``update_duration``.
 
 :publish_map_odom_tf:
 
   ============== ==============
   Type           Default
   -------------- --------------
-  string         true
+  bool           true
   ============== ==============
 
   Description
     Whether or not to publish tf from ``map_frame_id`` to ``odom_frame_id``
+
+:publish_scan:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  bool           true
+  ============== ==============
+
+  Description
+    Whether or not to publish a fake laser scan.
 
 :publish_clock:
 
   ============== ==============
   Type           Default
   -------------- --------------
-  string         true
+  bool           true
   ============== ==============
 
   Description
     Whether or not to publish simulated clock to ``/clock``
+
+:speed_factor:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         1.0
+  ============== ==============
+
+  Description
+    Speed factor for the simulated clock, e.g. ``2.0`` runs simulation at 2x wall time.
+    Only used when ``publish_clock`` is ``true``. Dynamically reconfigurable.
 
 :scan_range_min:
 
@@ -181,6 +215,17 @@ Parameters
     Whether to use ``inf`` for out-of-range values.
     If ``false``, values are set to ``scan_range_max - 0.1`` instead.
 
+:scan_noise_std:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         0.01
+  ============== ==============
+
+  Description
+    Standard deviation of Gaussian noise added to scan ranges (in meters).
+
 Example
 *******
 .. code-block:: yaml
@@ -192,9 +237,13 @@ Example
         map_frame_id: "map"
         scan_frame_id: "base_scan"  # tb4_loopback_simulator.launch.py remaps to 'rplidar_link'
         update_duration: 0.02
+        publish_scan: true
+        publish_clock: true
+        speed_factor: 1.0
         scan_range_min: 0.05
         scan_range_max: 30.0
         scan_angle_min: -3.1415
         scan_angle_max: 3.1415
         scan_angle_increment: 0.02617
         scan_use_inf: true
+        scan_noise_std: 0.01

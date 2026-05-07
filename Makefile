@@ -38,7 +38,7 @@ html:
 # Autobuild the docs on changes
 
 autobuild:
-	sphinx-autobuild -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS)
+	sphinx-autobuild --host 0.0.0.0 --port 8000 -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS)
 
 # Remove generated content (Sphinx and doxygen)
 

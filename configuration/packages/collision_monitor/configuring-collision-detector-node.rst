@@ -182,6 +182,31 @@ Polygons parameters
   Description:
     Minimum number of data readings within a zone to trigger the action. Former ``max_points`` parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). ``min_points`` is equal to ``max_points + 1`` value.
 
+:``<polygon_name>``.trigger_consecutive_points:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  int            1
+  ============== =============================
+
+  Description:
+    Number of consecutive processing cycles with ``points_inside >= min_points`` required to enter the triggered state.
+    A value of ``1`` means trigger in a single processing cycle.
+
+:``<polygon_name>``.release_consecutive_points:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  int            1
+  ============== =============================
+
+  Description:
+    Number of consecutive processing cycles with ``points_inside < min_points`` required to leave the triggered state.
+    A value of ``1`` means release in a single processing cycle.
+    In practice, values greater than ``1`` can reduce sensor noise flicker while remaining responsive.
+
 :``<polygon_name>``.visualize:
 
   ============== =============================

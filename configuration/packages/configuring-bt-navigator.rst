@@ -68,6 +68,17 @@ Parameters
   Description
     Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
 
+:bt_log_idle_transitions:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   true
+  ====== =======
+
+  Description
+    Whether to log idle (no state change) transitions in the behavior tree to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. When ``true`` (default), all tick transitions including idle ones are published.
+
 :plugin_lib_names:
 
   ============== ==========================================================
@@ -110,8 +121,20 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+    Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
+
+:default_cancel_timeout:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  50
+  ==== =======
+
+  Description
+    Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
+    This value will be overwritten for a BT node if the input port "cancel_timeout" is provided.
 
 :wait_for_service_timeout:
 
@@ -122,7 +145,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
+    Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
 :introspection_mode:
@@ -245,7 +268,29 @@ Parameters
   ============== ==================================================
 
   Description
-    List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.
+    List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.
+
+:allow_navigator_preemption:
+
+  ============== ==================================================
+  Type           Default
+  -------------- --------------------------------------------------
+  bool           false
+  ============== ==================================================
+
+  Description
+    Controls whether a new navigation goal can preempt a currently active navigator. If set to false, if a navigator is already running and a new goal arrives for a different navigator, the new goal is rejected. If set to true, the new goal signals the active navigator to stop, waits for it to finish, then hands control over to the new navigator.
+
+:navigator_preemption_timeout:
+
+  ============== ==================================================
+  Type           Default
+  -------------- --------------------------------------------------
+  int            500
+  ============== ==================================================
+
+  Description
+    Only relevant when ``allow_navigator_preemption`` is true. Sets the maximum time (in ms) to wait for the currently active navigator to stop. If the active navigator doesn't finish within this timeout, the new goal is rejected.
 
 NavigateToPose Parameters
 *************************
@@ -272,6 +317,17 @@ NavigateToPose Parameters
   Description
     Blackboard variable to get the path from the behavior tree for ``NavigateToPose`` feedback. Should match port names of BT XML file.
 
+:``<navigate_to_pose_name>``.tracking_feedback_blackboard_id:
+
+  ====== ===================
+  Type   Default
+  ------ -------------------
+  string "tracking_feedback"
+  ====== ===================
+
+  Description
+    Blackboard variable to get the tracking feedback from the behavior tree for ``NavigateToPose`` feedback. Should match port names of BT XML file.
+
 :``<navigate_to_pose_name>``.enable_groot_monitoring:
 
   ============== =======
@@ -293,6 +349,17 @@ NavigateToPose Parameters
 
   Description
     The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+
+:``<navigate_to_pose_name>``.search_window:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double           2.0
+  ============== =============================
+
+  Description
+    How far (in meters) along the path the searching algorithm will look for the closest point.
 
 NavigateThroughPoses Parameters
 *******************************
@@ -318,6 +385,17 @@ NavigateThroughPoses Parameters
 
   Description
     Blackboard variable to get the path from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
+
+:``<navigate_through_poses>``.tracking_feedback_blackboard_id:
+
+  ====== ===================
+  Type   Default
+  ------ -------------------
+  string "tracking_feedback"
+  ====== ===================
+
+  Description
+    Blackboard variable to get the tracking feedback from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
 
 :``<navigate_through_poses>``.waypoint_statuses_blackboard_id:
 
@@ -352,6 +430,17 @@ NavigateThroughPoses Parameters
   Description
     The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
 
+:``<navigate_through_poses>``.search_window:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double           2.0
+  ============== =============================
+
+  Description
+    How far (in meters) along the path the searching algorithm will look for the closest point.
+
 Example
 *******
 .. code-block:: yaml
@@ -362,10 +451,13 @@ Example
         robot_base_frame: base_link
         transform_tolerance: 0.1
         filter_duration: 0.3
+        default_server_timeout: 20
+        default_cancel_timeout: 50
         introspection_mode: "disabled"
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
         always_reload_bt_xml: false
+        bt_log_idle_transitions: true
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
@@ -377,10 +469,12 @@ Example
           plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
           enable_groot_monitoring: false
           groot_server_port: 1667
+          search_window: 2.0
         navigate_through_poses:
           plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
           enable_groot_monitoring: false
           groot_server_port: 1669
+          search_window: 2.0
         plugin_lib_names:
           - nav2_compute_path_to_pose_action_bt_node
           - nav2_follow_path_action_bt_node

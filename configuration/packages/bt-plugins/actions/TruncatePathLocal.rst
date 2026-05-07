@@ -28,7 +28,7 @@ Input Ports
   ====== ===========
 
   Description
-      The trimming distance in forward direction.
+      The trimming distance in forward direction. Set to -1 to search full path forward.
 
 :distance_backward:
 

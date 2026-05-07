@@ -43,6 +43,17 @@ Input Ports
   Description
         Goal pose. Takes in a blackboard variable, e.g. "{goal}".
 
+:viapoints:
+
+  ============================================= =======
+  Type                                          Default
+  --------------------------------------------- -------
+  std::vector<geometry_msgs::msg::PoseStamped>    N/A
+  ============================================= =======
+
+  Description
+        Optional. A list of intermediate viapoints (excluding goal) to consider for planning. Takes in a blackboard variable, e.g. "{viapoints}".
+
 :planner_id:
 
   ============== =======

@@ -81,7 +81,8 @@ The Rotation Shim Controller is very simple and only has a couple of parameters 
 Configuring Primary Controller
 ==============================
 
-There is one more remaining parameter of the ``RotationShimController`` not mentioned above, the ``primary_controller``. This is the type of controller that your application would like to use as the primary modus operandi. It will share the same name and yaml namespace as the shim plugin. You can observe this below with the primary controller set the ``DWB`` (with the progress and goal checkers removed for brevity).
+There is one more remaining parameter of the ``RotationShimController`` not mentioned above, the ``primary_controller``. This is the type of controller that your application would like to use as the primary modus operandi.
+You can observe this below with the primary controller set the ``DWB`` (with the progress and goal checkers removed for brevity).
 
 .. code-block:: yaml
 
@@ -94,19 +95,17 @@ There is one more remaining parameter of the ``RotationShimController`` not ment
         controller_plugins: ["FollowPath"]
         FollowPath:
           plugin: "nav2_rotation_shim_controller::RotationShimController"
-          primary_controller: "dwb_core::DWBLocalPlanner"
           angular_dist_threshold: 0.785
           forward_sampling_distance: 0.5
           rotate_to_heading_angular_vel: 1.8
           max_angular_accel: 3.2
           simulate_ahead_time: 1.0
-
-          # DWB parameters
-          ...
-          ...
-          ...
-
-An important note is that **within the same yaml namespace**, you may also include any ``primary_controller`` specific parameters required for a robot. Thusly, after ``max_angular_accel``, you can include any of ``DWB``'s parameters for your platform.
+          primary_controller:
+            plugin: "dwb_core::DWBLocalPlanner"
+            # DWB parameters
+            ...
+            ...
+            ...
 
 
 Demo Execution

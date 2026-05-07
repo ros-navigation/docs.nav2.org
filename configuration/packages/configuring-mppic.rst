@@ -35,11 +35,23 @@ MPPI Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  string         "DiffDrive"
+  string         "diff_drive"
   ============== ===========================
 
   Description
-    The desired motion model to use for trajectory planning. Options are ``DiffDrive``, ``Omni``, or ``Ackermann``. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
+    The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace.
+
+:``<motion_model>``.plugin:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  string         N/A
+  ============== ===========================
+
+  Description
+    The plugin to use for the motion model constraints of the MPPI planner.
+    Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
 
 :critics:
 
@@ -259,7 +271,18 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+    Whether to publish debugging trajectories for visualization and critic statistics. When enabled, candidate trajectories are colored by cost (green to red gradient, magenta for collisions) and a ``nav2_msgs::msg::CriticsStats`` message is published on the ``~/critics_stats`` topic. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+
+:critic_index_to_visualize:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            0
+  ============== ===========================
+
+  Description
+    Selects which critic to visualize the color-scheme of when ``visualize`` is true publishing Marker messages for visualization in rviz. ``0`` shows the total cost across all critics, ``1..N`` selects an individual critic by index (in the order listed in the ``critics`` parameter).
 
 :publish_optimal_trajectory:
 
@@ -385,10 +408,10 @@ Trajectory Visualization
   Description
     Whether to allow QoS profiles to be overwritten with parameterized values.
 
-Ackermann Motion Model
-----------------------
+AckermannMotionModel
+--------------------
 
-:min_turning_r:
+:``<motion_model>``.min_turning_r:
 
   ============== ===========================
   Type           Default
@@ -397,7 +420,7 @@ Ackermann Motion Model
   ============== ===========================
 
   Description
-    The minimum turning radius possible for the vehicle platform (m).
+    The minimum turning radius possible for the vehicle platform (m). This is only used if ``<motion_model>``.plugin is set to "mppi::AckermannMotionModel".
 
 Default Optimal Trajectory Validator
 ------------------------------------
@@ -1096,8 +1119,11 @@ Example
           iteration_count: 1
           temperature: 0.3
           gamma: 0.015
-          motion_model: "DiffDrive"
+          motion_model: "diff_drive"
+          diff_drive:
+            plugin: "mppi::DiffDriveMotionModel"
           visualize: false
+          critic_index_to_visualize: 0
           reset_period: 1.0 # (only in Humble)
           regenerate_noises: false
           sgf_order: 1
@@ -1108,8 +1134,6 @@ Example
             plugin: "mppi::DefaultOptimalTrajectoryValidator"
             collision_lookahead_time: 2.0
             consider_footprint: false
-          AckermannConstraints:
-            min_turning_r: 0.2
           critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
           ConstraintCritic:
             enabled: true

@@ -202,6 +202,16 @@ Removed Parameter action_server_result_timeout
 Removed the parameter ``action_server_result_timeout`` from all action servers after resolution within ``rcl`` and ``rclcpp`` to address early goal removal.
 This is not longer required to be set.
 
+Dock Plugin External Detection Rotation
+---------------------------------------
+
+The external detection rotation order of ``Simple(Non)ChargingDock`` dock plugins has changed to the more natural Rx -> Ry -> Rz (was: Rz -> Rx -> Ry). From implementation point of view, ``setEuler()`` calls have been replaced with ``setRPY()``. The old behavior is retained only when
+
+- ``external_detection_rotation_yaw`` equals 0.0, or
+- ``external_detection_rotation_pitch`` and ``external_detection_rotation_roll`` both equal 0.0
+
+Non-default external detection rotation that differs from the above cases needs to be adjusted appropriately.
+
 Dock Plugin Detector Control
 ----------------------------
 
@@ -361,10 +371,12 @@ See also :ref:`configuring_bt_navigator`
 Add BehaviorTree SubTrees Support
 ---------------------------------
 
-The BehaviorTree engine now supports SubTrees in different files within directory(s) set through ``bt_search_directories`` parameter. This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
-The interface now supports passing the behavior tree file or ID as input to the `loadBehaviorTree` method of the BT action server.
-Each behavior tree is now strictly required to have its own unique ID, therefore the need to replace `MainTre` to a unique ID. For example, in `navigate_through_poses_w_replanning_and_recovery.xml
-` `MainTree` can be replaced with `NavigateThroughPosesWReplanningAndRecovery`.
+The BehaviorTree engine now supports loading SubTrees from multiple files.
+This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
+The .xml files should be located within directory(s) set through the ``bt_search_directories`` parameter.
+
+The interface also supports requesting the desired behavior tree as a filepath or as an ID.
+To use the ID or multiple SubTrees features, each behavior tree is required to have its own unique ID - replace `MainTree` with a unique ID.
 
 Option to have custom window size and poly order in Savitsky-Golay Smoother
 ---------------------------------------------------------------------------
@@ -563,6 +575,35 @@ The UI workflow is now organized into two primary navigation modes:
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
 
+Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller
+---------------------------------------------------------------------------
+
+In `PR #5783 <https://github.com/ros-navigation/navigation2/pull/5783>`_, an option was added to enable the Dynamic Window Pure Pursuit (DWPP) algorithm in the Regulated Pure Pursuit controller. When this option is enabled, velocity and acceleration constraints are explicitly considered when computing command velocities. See the Configuration Guide for the new parameters associated with this feature.
+
+- Fumiya Ohnishi and Masaki Takahashi, `DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints <https://arxiv.org/abs/2601.15006>`_. arXiv:2601.15006., 2026.
+
+.. image:: images/dwpp_comparison.gif
+  :width: 800
+  :alt: Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants
+  :align: center
+
+The following parameters are updated for this feature.
+
+:max_linear_vel (renamed):
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.5
+  ============== ===========================
+
+  Description
+    The maximum linear velocity (m/s) to use.  **Previously named `desired_linear_vel`**
+
+
+**Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing `cmd_vel`.
+Therefore, the velocity smoother parameters `max_velocity`, `min_velocity`, `max_accel`, and `max_decel` must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
+
 Bond Heartbeat Period Default Value Change
 ------------------------------------------
 
@@ -744,3 +785,200 @@ Option to enable Intra-process Communication in Nav2
 In `PR 5804 <https://github.com/ros-navigation/navigation2/pull/5804>`_, an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing `use_intra_process_comms` parameter as true while launching Nav2 nodes.
 
 It is currently disabled by default. Please refer to the :ref:`performance_ros2` and the `TB3/TB4 examples in the Nav2 stack <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch>`_ for reference.
+
+New AxisGoalChecker Plugin
+--------------------------
+
+A new goal checker plugin, ``AxisGoalChecker``, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, ``AxisGoalChecker`` projects the robot's position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (``along_path_tolerance``) and perpendicular to it (``cross_track_tolerance``).
+
+Key parameters:
+
+- ``along_path_tolerance``: Tolerance along the path direction (default: 0.25m)
+- ``cross_track_tolerance``: Tolerance perpendicular to the path (default: 0.25m)
+- ``path_length_tolerance``: Maximum remaining path length to consider for goal checking (default: 1.0m)
+- ``is_overshoot_valid``: When true, allows the robot to overshoot past the goal by any distance along the path while still being within tolerance (default: false)
+
+This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
+
+See :ref:`configuring_nav2_controller_axis_goal_checker_plugin` for full configuration details.
+
+New default_cancel_timeout parameter in bt_navigator
+----------------------------------------------------
+
+In `PR 5895 <https://github.com/ros-navigation/navigation2/pull/5895>`_, a new `default_cancel_timeout` parameter was introduced to address timeout issues during action cancellation, such as ``Failed to get result for follow_path in node halt!``.
+
+The default value is set to `50` milliseconds, and should be adjusted based on the planning time and overall system performance.
+
+Add support for switching between SMAC planners
+-----------------------------------------------
+
+Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
+
+OMNI Analytic Expansion Support in SmacPlannerLattice
+-----------------------------------------------------
+
+`PR #5965 <https://github.com/ros-navigation/navigation2/pull/5965>`_ adds omnidirectional (OMNI) analytic expansion support to ``SmacPlannerLattice``.
+When a lattice primitives file specifies ``motion_model: "omni"`` in its metadata, the planner now automatically:
+
+- Uses ``SE2StateSpace`` (straight-line with linear heading interpolation) instead of Dubins/Reeds-Shepp for analytic expansion and distance heuristics
+- Skips turning-radius refinement in analytic path expansion (SE2 paths are radius-independent)
+- Configures the path smoother in holonomic mode
+- Disables ``allow_reverse_expansion`` with a warning (meaningless for omnidirectional robots)
+
+No parameter changes are required — the OMNI motion model is auto-detected from the lattice file metadata.
+
+Before:
+
+.. image:: images/smac_lattice_omni_before_1.png
+  :width: 418
+
+.. image:: images/smac_lattice_omni_before_2.png
+  :width: 418
+
+After:
+
+.. image:: images/smac_lattice_omni_after_1.png
+  :width: 418
+
+.. image:: images/smac_lattice_omni_after_2.png
+  :width: 418
+
+New bt_log_idle_transitions parameter in bt_navigator
+-----------------------------------------------------
+
+In `PR 5963 <https://github.com/ros-navigation/navigation2/pull/5963>`_, A new ``bt_log_idle_transitions`` parameter has been added to the BT navigator. When set to ``true`` (default), idle (no state change) transitions in the behavior tree are published to the ``/behavior_tree_log`` topic and console output. When ``false``, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.
+
+New IsWithinPathTrackingBounds Node
+-----------------------------------
+
+In `PR 5983 <https://github.com/ros-navigation/navigation2/pull/5983>`_, a new behavior tree node, ``IsWithinPathTrackingBounds``, was added to check if the robot is within specified bounds of the path for tracking purposes. See the `demo <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_bounds_check.xml>`_ for an example of how to use this node in a behavior tree.
+
+RPP: min_distance_to_obstacle fix and new allow_obstacle_checking_beyond_goal parameter
+---------------------------------------------------------------------------------------
+
+`PR #5677 <https://github.com/ros-navigation/navigation2/pull/5677>`_ resolves an issue where ``min_distance_to_obstacle`` was not properly enforced when ``use_velocity_scaled_lookahead_dist`` was enabled. Previously, collision checking was limited to the carrot distance, which at low speeds could be shorter than ``min_distance_to_obstacle``. For example, with ``min_lookahead_dist: 0.3``, ``min_distance_to_obstacle: 0.9``, and ``max_lookahead_dist: 1.5``, if the robot had not accelerated enough for the lookahead to reach 0.9m, obstacle checking would only cover up to the carrot position rather than the configured 0.9m. The collision checker now correctly extends the simulation distance to ``min_distance_to_obstacle`` (capped by ``max_lookahead_dist``) regardless of the current carrot distance.
+
+Additionally, warnings have been added to the parameter handler to alert users of configurations where ``min_distance_to_obstacle`` cannot be fully enforced:
+
+- When using ``use_velocity_scaled_lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``max_lookahead_dist``.
+- When using a constant ``lookahead_dist``, a warning is emitted if ``min_distance_to_obstacle`` exceeds ``lookahead_dist``.
+
+A new parameter ``allow_obstacle_checking_beyond_goal`` (default: false) has also been added. By default, obstacle checking along the projected trajectory stops at the goal position (end of the path). When enabled, collision checking continues past the goal up to ``min_distance_to_obstacle``, regardless of the remaining path length. This parameter requires ``use_velocity_scaled_lookahead_dist`` to be enabled and ``min_distance_to_obstacle`` > 0.0.
+
+Refactored Inflation layer powered by OpenMP
+--------------------------------------------
+
+`PR #5933 <https://github.com/ros-navigation/navigation2/pull/5933>`_ refactors the Inflation layer to leverage OpenMP for parallel processing, significantly improving performance in large maps.
+
+The new implementation replaces the previous queue-based cell iteration with a Felzenszwalb-Huttenlocher distance transform algorithm.
+When OpenMP is not available at compile time, the layer falls back to single-threaded operation.
+
+Move isStopped, isPathValid, and isPoseOccupied from condition nodes to action nodes
+------------------------------------------------------------------------------------
+
+In `PR 5991 <https://github.com/ros-navigation/navigation2/pull/5991>`_, the following nodes were moved from condition nodes to action nodes and renamed:
+
+- `IsStopped` is now `CheckStopStatus`
+- `IsPathValid` is now `ValidatePath`
+- `IsPoseOccupied` is now `CheckPoseOccupancy`
+
+This change was made because these behavior tree nodes may return RUNNING or require more time to complete, making them unsuitable for behavior tree that are expected to be ticked at 100 Hz.
+
+Collision Monitor debounce parameters
+-------------------------------------
+
+`PR #6006 <https://github.com/ros-navigation/navigation2/pull/6006>`_ adds temporal debounce controls for polygon trigger behavior in Collision Monitor and Collision Detector:
+
+- ``<polygon_name>.trigger_consecutive_points``
+- ``<polygon_name>.release_consecutive_points``
+
+A value of ``1/1`` preserves single-cycle trigger/release behavior.
+In practice, values greater than ``1`` can reduce sensor noise flicker while remaining responsive.
+
+See:
+
+- :ref:`configuring_collision_monitor_node`
+- :ref:`configuring_collision_detector_node`
+
+MPPI per-critic trajectory cost visualization
+---------------------------------------------
+
+`PR #6036 <https://github.com/ros-navigation/navigation2/pull/6036>`_ enhances MPPI trajectory visualization with per-critic cost coloring.
+When ``visualize`` is enabled, candidate trajectories are now rendered as cost-colored lines using a green-to-yellow-to-red gradient, with collision trajectories shown in magenta.
+A new ``critic_index_to_visualize`` parameter (default ``0``) selects which critic's costs to display: ``0`` shows the total cost across all critics, while ``1..N`` selects an individual critic by index.
+The ``publish_critics_stats`` parameter has been removed; critic statistics (``~/critics_stats`` topic) are now published automatically when ``visualize`` is enabled.
+
+Constrained Smoother cost function formulation corrected
+--------------------------------------------------------
+
+`PR #6000 <https://github.com/ros-navigation/navigation2/pull/6000>`_ changes the cost function formulation in `nav2_constrained_smoother`. Weights for the constrained smoother may need to be adjusted as a result.
+
+Earlier, `nav2_constrained_smoother` was using a cost formulation of :math:`cost = w_1^2 * cost_1^4 + w_2^2 * cost_2^4 + ...` because the internal squaring of residuals performed by `Ceres Solver` was not accounted for. This caused the optimizer to frequently fail to converge.
+
+The internal squaring of `Ceres` is now considered and the cost formulation is corrected to :math:`cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...`. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: `Issue #5072 <https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987>`_
+
+Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!
+
+ValidatePath / IsPathValid parameter changes
+---------------------------------------------
+
+`PR #6027 <https://github.com/ros-navigation/navigation2/pull/6027>`_ renames the ``check_full_path`` parameter to ``stop_at_first_collision`` in both the ``ValidatePath`` BT node and the ``IsPathValid`` service definition. The boolean semantics are inverted: ``check_full_path=false`` (old default) is equivalent to ``stop_at_first_collision=true`` (new default).
+
+Additionally, a new ``max_lookahead_distance`` parameter (default ``-1.0``) has been added to both the BT node and the service. When set to a positive value, only the portion of the path within that distance ahead of the robot is validated, improving efficiency when full path validation is not necessary.
+
+Nav2 Loopback Simulator converted to C++
+----------------------------------------
+
+`PR #6062 <https://github.com/ros-navigation/navigation2/pull/6062>`_ converts ``nav2_loopback_sim`` from Python to C++ for improved performance and consistency with the rest of the Nav2 stack. This results in roughly a 2x improvement in CPU consumption.
+
+Key changes:
+
+- The ``clock_publisher`` is no longer a separate node. It is now embedded within the ``loopback_simulator`` node. Launch files that previously launched both nodes should be updated to launch only the ``loopback_simulator`` node.
+- A new ``speed_factor`` parameter (default ``1.0``) controls the simulated clock speed (e.g. ``2.0`` for 2x). This parameter is dynamically reconfigurable.
+- New parameters ``publish_scan``, ``odom_publish_dur``, and ``scan_noise_std`` are available.
+
+See :ref:`configuring_loopback_sim` for full parameter documentation.
+
+Global planner plugin natively accepts viapoints
+-------------------------------------------------
+
+`PR #5995 <https://github.com/ros-navigation/navigation2/pull/5995>`_ updates the ``createPath`` API for the ``BaseGlobalPlanner`` to include a vector ``std::vector<geometry_msgs::msg::PoseStamped>`` argument that takes in a list of intermediate points and passes them to the planner plugin implementation.
+
+The function signature for ``createPath`` must be updated accordingly for all custom planner plugins inheriting from the ``BaseGlobalPlanner``. This change does not alter the behavior of ``ComputePathThroughPoses`` that connects consecutive segments end-to-end but does upgrade the ``ComputePathToPose`` action.
+
+MPPI motion models use plugin-based configuration
+--------------------------------------------------
+
+`PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI.
+
+Motion model now has to be set up by specifying plugin to use:
+
+.. code-block:: yaml
+
+  MPPIController:
+    plugin: "nav2_mppi_controller::MPPIController"
+    motion_model: "diff_drive"
+    diff_drive:
+      plugin: "mppi::DiffDriveMotionModel"
+
+Supported motion model plugins are:
+  - ``mppi::DiffDriveMotionModel`` : replaces ``motion_model: DiffDrive``
+  - ``mppi::OmniMotionModel`` : replaces ``motion_model: Omni``
+  - ``mppi::AckermannMotionModel`` : replaces ``motion_model: Ackermann``
+
+While "diff_drive" is the default value for ``motion_model`` parameter, it is still required to specify the plugin for it, as shown above.
+
+Adaptive tolerance goal checker
+-------------------------------
+
+`PR #6052 <https://github.com/ros-navigation/navigation2/pull/6052>`_ adds a new adaptive tolerance goal checker.
+
+The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).
+
+The goal is cosidered reached when one of the following conditions is met:
+  - The robot is within the fine goal tolerance
+  - The robot is within the coarse goal tolerance and its linear velocity and orientational velocity are below a specified threshold for a set amount of cycles
+  - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
+  - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
+
+See :ref:`configuring_nav2_controller_adaptive_tolerance_goal_checker_plugin` for full details.

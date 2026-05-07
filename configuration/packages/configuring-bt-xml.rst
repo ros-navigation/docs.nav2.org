@@ -67,6 +67,9 @@ Action Plugins
   bt-plugins/actions/ToggleCollisionMonitor.rst
   bt-plugins/actions/FollowObject.rst
   bt-plugins/actions/CancelFollowObject.rst
+  bt-plugins/actions/ValidatePath.rst
+  bt-plugins/actions/CheckPoseOccupancy.rst
+  bt-plugins/actions/CheckStopStatus.rst
 
 Condition Plugins
 *****************
@@ -80,12 +83,11 @@ Condition Plugins
   bt-plugins/conditions/GoalUpdated.rst
   bt-plugins/conditions/GlobalUpdatedGoal.rst
   bt-plugins/conditions/InitialPoseReceived.rst
+  bt-plugins/conditions/IsGoalNearby.rst
   bt-plugins/conditions/IsStuck.rst
-  bt-plugins/conditions/IsStopped.rst
   bt-plugins/conditions/TimeExpired.rst
   bt-plugins/conditions/IsBatteryLow.rst
-  bt-plugins/conditions/IsPathValid.rst
-  bt-plugins/conditions/IsPoseOccupied.rst
+  bt-plugins/conditions/IsWithinPathTrackingBounds.rst
   bt-plugins/conditions/PathExpiringTimer.rst
   bt-plugins/conditions/AreErrorCodesPresent.rst
   bt-plugins/conditions/WouldAControllerRecoveryHelp.rst
