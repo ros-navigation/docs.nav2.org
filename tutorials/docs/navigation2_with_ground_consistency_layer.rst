@@ -5,13 +5,12 @@ Ground Terrain Segmentation using 3D Lidar
 
 - `Overview`_
 - `Requirements`_
+- `Installation Steps`_
 - `Ground Segmentation Overview`_
 - `Ground Consistency Layer`_
-- `Nav2 Integration`_
-- `Tuning Guide`_
 - `Use Cases`_
+- `Practical Example: Running the Demo`_
 - `Conclusion`_
-- `Practical Example`_
 - `Extended Topics`_
 
 Overview
@@ -30,51 +29,72 @@ navigation in non-planar environments, creating smarter and safer costmaps.
 Requirements
 ============
 
-Install ROS 2, Nav2, and Ground Segmentation
---------------------------------------------
-
-This tutorial requires ROS 2 Jazzy and Nav2. Follow the official setup guides:
-
-- **ROS 2 Jazzy Installation**: https://docs.ros.org/en/jazzy/Installation.html
-- **Nav2 Setup Guide**: https://docs.nav2.org/getting_started/index.html#installation
-- **Ground Segmentation**: There are many well-established ground segmentation methods; in this tutorial, we use the `ground_segmentation_ros2 <https://github.com/dfki-ric/ground_segmentation_ros2>`_ package developed by `DFKI Robotics Innovation Center <https://robotik.dfki-bremen.de/en/startpage>`_. You will find the installation instructions `here <https://github.com/dfki-ric/ground_segmentation_ros2#prerequisite>`_
+This tutorial requires ROS 2 Jazzy and Nav2. If you don't have Nav2 already installed, check out our `Getting Started <https://docs.nav2.org/getting_started/index.html>`_ page before moving forward.
 
 Installation Steps
 ==================
 
-It is assumed that ROS 2, Nav2, and a ground segmentation package are built locally. In case you want to skip to the practical example, you can follow the
-instructions in the `Practical Example`_ section below, which will set up everything for you.
-
-Next, you will also need to compile the `nav2_ground_consistency_costmap_plugin <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_ package. To do so, clone the repository to your ROS 2 workspace and build the package:
-
-Note: currently only ROS 2 Jazzy (main branch) is supported, but branches for humble and rolling will be added soon.
+This tutorial uses ``vcstool`` to manage repository dependencies. Install it using apt:
 
 .. code-block:: bash
 
-   cd <your workspace path>/src
-   git clone https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin.git
-   cd <your workspace path>
-   colcon build --symlink-install # on your workspace path
+   sudo apt-get install python3-vcstool
+
+Setup Tutorial Package and Dependencies
+----------------------------------------
+
+Create and prepare a workspace:
+
+.. code-block:: bash
+
+   # Create workspace
+   mkdir -p ~/nav2_ws/src
+   cd ~/nav2_ws/src
+
+   # Clone navigation2_tutorials repository
+   git clone -b jazzy https://github.com/ros-navigation/navigation2_tutorials.git
+
+Now, install all dependencies (including ground segmentation, KISS-ICP odometry, and the ground consistency costmap plugin):
+
+.. code-block:: bash
+
+   cd ~/nav2_ws
+
+   # Import all demo dependencies from the .repos file
+   vcs import src < src/navigation2_tutorials/nav2_lidar_ground_segmentation_demo/dependencies.repos
+
+   # Install ROS package dependencies
+   source /opt/ros/jazzy/setup.bash
+   rosdep install --from-paths src --ignore-src --rosdistro jazzy -y
+
+Build the Demo
+---------------
+
+Build the tutorial package and all its dependencies:
+
+.. code-block:: bash
+
+   cd ~/nav2_ws
+   source /opt/ros/jazzy/setup.bash
+   colcon build --symlink-install --packages-up-to nav2_lidar_ground_segmentation_demo --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
+   source install/setup.bash
 
 Ground Segmentation Overview
 ============================
 
 Ground segmentation in point cloud data is the
-process of separating ground points from obstacle points.
+process of separating ground points from obstacle points when not operating on trivial, planar terrain.
 This task is fundamental for perception in mobile robotics, where safety and reliable operation depend on the
 precise detection of obstacles and navigable surfaces. A single LiDAR scan
 can contain over a million points, capturing both ground and
 obstacle surfaces within the region of interest. However,
 not all points are equally relevant for downstream perception
-tasks. For example, object and obstacle detection algorithms often
-misclassify ground points as obstacles, leading to false positives that can compromise safety and increase computational
-load. Accurate ground segmentation is essential for reliable perception, traversability analysis, navigation, and map
-generation in autonomous systems. By effectively distinguishing between ground and obstacle points, we can create more
-accurate costmaps that allow the robot to navigate safely and efficiently in complex environments.
+tasks. Accurate ground segmentation is essential for reliable perception, traversability analysis, navigation,
+and map generation in autonomous systems. By effectively distinguishing between ground and obstacle points, we can create
+more accurate costmaps that allow the robot to navigate safely and efficiently in complex environments.
 
 **Benefits of Ground Segmentation:**
 
-- **Reduced false positives**: Eliminates misclassified ground points that would otherwise block navigation
 - **Improved computational efficiency**: Filters irrelevant points before processing, reducing memory and CPU usage
 - **Enhanced traversability analysis**: Accurately identifies traversable terrain for safe navigation planning
 - **Better obstacle detection**: Focuses processing on actual obstacles rather than terrain variations
@@ -99,7 +119,8 @@ Ground Consistency Layer
 ========================
 
 Ground Consistency is a costmap layer that leverages ground segmentation to create more reliable occupancy estimates for navigation in
-challenging outdoor environments.
+challenging outdoor environments. While it can be used with any ground segmentation algorithm, we recommend using GSeg3D for which this plugin was
+originally developed to integrate with.
 
 **Key Features:**
 
@@ -139,7 +160,7 @@ local ground height. Based on the robot's height:
 At times, the terrain is such that no local ground height can be reliably determined. In this case, the
 layer can be configured to use neighboring cells to estimate local ground height (see the ``ground_neighbor_search_cells`` parameter), or treat all such obstacles
 without ground below them as blocking. For example, if the robot is navigating through a tunnel and the ground
-segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` (see `Tuning Guide`_) can be applied to incoming obstacle points.
+segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` can be applied to incoming obstacle points.
 This allows the robot to navigate through tunnels and under bridges without being blocked by misclassified ground points.
 
 3. Temporal Stability Through Evidence Decay
@@ -150,10 +171,10 @@ occupied states as evidence builds or fades. The rate of
 decay can be tuned separately for ground and obstacle evidence, creating temporal hysteresis, which allows for more stable and
 responsive terrain adaptation (faster ground decay) while maintaining stable obstacle marking (slower obstacle decay).
 
-Nav2 Integration
-================
+Configuration and Tuning
+------------------------
 
-Configure Nav2 to use the ground consistency layer in its local costmap. It is recommended to use the layer in the local costmap
+We will now configure Nav2 to use the ground consistency layer in its local costmap. It is recommended to use the layer in the local costmap
 since it relies on real-time sensor data and is designed for short-term occupancy estimation. For safety, use the layer
 together with the inflation layer to create a buffer around detected obstacles.
 
@@ -192,88 +213,7 @@ Here is an example configuration for the local costmap:
            cost_scaling_factor: 3.0
            inflation_radius: 0.7
 
-Parameters Reference
---------------------
-.. list-table::
-   :header-rows: 1
-
-   * - Name
-     - Type
-     - Default
-     - Description
-   * - ``ground_points_topic``
-     - string
-     - /ground_points
-     - Topic providing ground points (PointCloud2)
-   * - ``nonground_points_topic``
-     - string
-     - /nonground_points
-     - Topic providing obstacle points (PointCloud2)
-   * - ``robot_height``
-     - double
-     - 1.2
-     - Robot height in meters (used for height filtering)
-   * - ``tf_timeout``
-     - double
-     - 0.1
-     - Timeout for TF lookups (seconds)
-   * - ``ground_inc``
-     - double
-     - 1.0
-     - Evidence added per ground point
-   * - ``nonground_inc``
-     - double
-     - 1.5
-     - Evidence added per obstacle point (typically higher than ``ground_inc``)
-   * - ``max_score``
-     - double
-     - 5000.0
-     - Maximum accumulated evidence per cell
-   * - ``ground_decay``
-     - double
-     - 0.80
-     - Ground evidence decay factor (faster forgetting)
-   * - ``nonground_decay``
-     - double
-     - 0.93
-     - Obstacle evidence decay factor (slower forgetting)
-   * - ``min_clearance``
-     - double
-     - 0.1
-     - Minimum height to consider an obstacle blocking
-   * - ``maximum_height_filter``
-     - double
-     - 2.0
-     - Obstacle points above this height are ignored. The threshold is applied in the coordinate frame of the topic ``nonground_points_topic``, not the global frame.
-   * - ``ground_neighbor_search_cells``
-     - int
-     - 0
-     - Neighbor radius for ground height estimation (0 = disabled)
-   * - ``nonground_occ_thresh``
-     - double
-     - 6.0
-     - Minimum obstacle evidence required before occupancy is considered
-   * - ``nonground_prob_thresh``
-     - double
-     - 0.75
-     - Probability threshold for marking a cell as occupied
-   * - ``discretize_costs``
-     - bool
-     - true
-     - Convert cost values to binary (LETHAL or FREE) instead of continuous costs
-   * - ``max_data_range``
-     - double
-     - 50.0
-     - Maximum sensor range used. All cells beyond this distance are erased to prevent stale data from far away.
-   * - ``enable_kpi_logging``
-     - bool
-     - false
-     - Enable KPI logging of layer performance metrics (for development/debugging)
-
-Tuning Guide
-============
-
-The layer's behavior depends on your specific use case (terrain type, robot size, sensor characteristics). Here's how to tune key parameters:
+The layer's behavior depends on your specific use case (terrain type, robot size, sensor characteristics). Here are the key parameters and how to tune them:
 
 **Robot Height** (``robot_height``)
    - Set to your robot's actual height
@@ -319,37 +259,109 @@ External Parameters
 **Ground Segmentation Parameters**
 - You may also need to tune ground segmentation algorithm parameters for your robot (e.g., slope threshold, sensor distance to ground) to ensure proper classification of ground and obstacle points, as this directly affects the layer's performance. Refer to the `GSeg3D parameters <https://github.com/dfki-ric/ground_segmentation_ros2#parameters-key>`__ documentation.
 
+For a complete and exhaustive reference of all available parameters, consult the `plugin documentation <https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin>`_.
+
 Use Cases
 =========
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 25 30 25
+   :widths: 25 35 40
 
    * - **Use Case**
-     - **Problem**
+     - **Challenge**
      - **Solution**
-     - **Tuning**
-   * - Outdoor Navigation on Uneven Terrain
-     - Standard costmaps mark slopes as obstacles
-     - Ground consistency ignores traversable slopes while detecting real blocking obstacles
-     - Lower decay values to respond quickly to terrain changes
-   * - Navigation Under Structures (Bridges, Overpasses)
-     - Standard costmaps block navigation under overhead structures
-     - Layer marks overhead structures as non-blocking
-     - Set ``maximum_height_filter`` to the maximum obstacle height you want the layer to evaluate; objects above this are treated as overhead/non-blocking
-   * - Forest/Cluttered Navigation
-     - Branches, leaves, and small debris create false obstacles
-     - Only actual blocking-height obstacles are marked
-     - Adjust ``min_clearance`` to filter out debris below robot height
-   * - Temporal Stability in Dynamic Environments
-     - Sensor noise creates flickering obstacles
-     - Evidence accumulation and decay smooth the costmap over time
-     - Increase decay values to smooth out noise, decrease to respond faster to changes
-   * - Varied Terrain with Elevation Changes
-     - Traditional costmaps use fixed height thresholds in the global frame, failing on slopes and inclines where ground elevation varies significantly
-     - Ground Consistency uses terrain-relative heights, adapting to local ground level rather than absolute global thresholds
-     - Set appropriate ``min_clearance`` and ``maximum_height_filter`` values. Ensure ``robot_height`` is accurately set—only obstacles taller than ``robot_height`` relative to ground are considered blocking
+   * - Uneven Terrain & Slopes
+     - Standard costmaps mark slopes and elevation changes as obstacles, blocking navigation on traversable terrain
+     - Ground Consistency uses terrain-relative heights, distinguishing navigable slopes from actual blocking obstacles. Lower decay values allow quick response to terrain changes.
+   * - Navigation Under Structures
+     - Overhead structures (bridges, tree canopies) are incorrectly marked as blocking
+     - Set ``maximum_height_filter`` to filter out overhead obstacles. Also ensure ``robot_height`` is accurately configured, as it's used to determine which obstacles actually block the robot when heights of overhead obstacles vary
+   * - Cluttered Environments
+     - Branches, leaves, and small debris create false positive obstacles
+     - Use ``min_clearance`` to filter out debris below robot height; only actual blocking-height obstacles are marked
+   * - Dynamic Environments
+     - Sensor noise causes flickering costmaps with frequent occupation/free state changes
+     - Evidence accumulation and decay smooth the costmap over time, creating temporal stability
+
+Let's look at some real-world examples of the ground consistency layer in action:
+
+1. Demonstration of ground consistency layer with `Arter Excavator <https://robotik.dfki-bremen.de/en/research/robot-systems/arter>`_ at the `Robotics Innovation Center <https://robotik.dfki-bremen.de/en/startpage>`_ (DFKI) in Bremen, Germany:
+
+.. image:: images/Navigation2_with_Ground_Consistency/arter.gif
+   :width: 700px
+   :align: center
+   :alt: Ground Consistency Layer Use Cases
+
+2. Demonstration in `BotanicGarden <https://github.com/robot-pesg/BotanicGarden>`_ dataset:
+
+.. image:: images/Navigation2_with_Ground_Consistency/botanic_garden.gif
+   :width: 700px
+   :align: center
+   :alt: Ground Consistency Layer Use Cases
+
+3. Demonstration in `CitrusFarm <https://github.com/UCR-Robotics/Citrus-Farm-Dataset>`_ dataset:
+
+.. image:: images/Navigation2_with_Ground_Consistency/citrus_farm.gif
+   :width: 700px
+   :align: center
+   :alt: Ground Consistency Layer Use Cases
+
+Practical Example: Running the Demo
+===================================
+
+Now that everything is installed and built, let's run the practical example demonstrating the Ground Consistency layer in action.
+
+Launch the Simulation
+---------------------
+
+For this tutorial, we will use the Baylands outdoor world in Gazebo with a Husky robot.
+
+Start the complete simulation:
+
+.. code-block:: bash
+
+   ros2 launch nav2_lidar_ground_segmentation_demo lidar_ground_segmentation_demo.launch.py 2>&1 | grep -v "SampleConsensus"
+
+Note: The ``grep -v "SampleConsensus"`` is used to filter out expected warnings from the ground segmentation algorithm that do not affect the demo. You can omit it if you want to see all output.
+
+You should see Gazebo launch with Husky in the Baylands world:
+
+.. image:: images/Navigation2_with_Ground_Consistency/husky_in_baylands.png
+   :width: 700px
+   :align: center
+   :alt: Gazebo Baylands world
+
+Observe Ground Consistency Layer in Action
+-------------------------------------------
+
+An RViz2 window will also open showing the costmap layers.
+
+**Visualizing Ground Segmentation Points (Optional)**
+
+Add the following PointCloud2 topics to your RViz2 display to visualize ground and obstacle classification:
+
+- ``/ground_segmentation/ground_points``
+- ``/ground_segmentation/obstacle_points``
+
+**Important**: Set RViz2 target frame rate to **~8 Hz** to match the LiDAR sensor publish rate from Gazebo. If set higher, point clouds will display intermittently.
+
+You should now see the ground points and obstacle points from the segmentation algorithm overlaid on the costmap with the ground consistency layer applied:
+
+.. image:: images/Navigation2_with_Ground_Consistency/rviz_window.png
+   :width: 700px
+   :align: center
+   :alt: RViz2 window showing costmap layers
+
+**Testing Navigation**
+
+Use the ``Nav2 Goal`` tool in RViz2 to set navigation goals for the robot. Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency
+layer allows the robot to navigate through these challenging terrains by correctly classifying obstacles and traversable ground:
+
+.. image:: images/Navigation2_with_Ground_Consistency/robot_in_action.png
+   :width: 700px
+   :align: center
+   :alt: Robot navigating through terrain with ground consistency layer
 
 Conclusion
 ==========
@@ -369,108 +381,6 @@ You can integrate the layer into any Nav2-based robot by:
 4. Adding it to your costmap configuration
 
 The layer's behavior is highly tunable, so start with the provided defaults, then adjust based on your specific terrain and robot characteristics.
-
-Practical Example
-=================
-
-To help you get started, we have prepared a practical example demonstrating the Ground Consistency layer in action. It is highly recommended to follow along with the example to see how the layer
-works in a simulated navigation scenario.
-
-Install Required Tools
-----------------------
-
-This tutorial uses ``vcstool`` to manage repository dependencies. Install it using apt:
-
-.. code-block:: bash
-
-   sudo apt-get install python3-vcstool
-
-
-Setup Tutorial Package and Dependencies
----------------------------------------
-
-Create and prepare a workspace:
-
-.. code-block:: bash
-
-   # Create workspace
-   mkdir -p ~/nav2_ws/src
-   cd ~/nav2_ws/src
-
-   # Clone navigation2_tutorials repository
-   git clone -b jazzy https://github.com/ros-navigation/navigation2_tutorials.git
-
-Now, install all dependencies:
-
-.. code-block:: bash
-
-   cd ~/nav2_ws
-
-   # Import all demo dependencies (KISS-ICP, ground segmentation, etc.) from the .repos file
-   vcs import src < src/navigation2_tutorials/nav2_ground_consistency_demo/dependencies.repos
-
-   # Install ROS package dependencies
-   source /opt/ros/jazzy/setup.bash
-   rosdep install --from-paths src --ignore-src --rosdistro jazzy -y
-
-1. Setup Simulation Environment
--------------------------------
-
-For this tutorial, we will use the Baylands outdoor world in Gazebo with a Husky robot.
-
-.. code-block:: bash
-
-   cd ~/nav2_ws
-   source /opt/ros/jazzy/setup.bash
-   colcon build --symlink-install --packages-up-to nav2_ground_consistency_demo --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
-   source install/setup.bash
-
-Test that the simulation launches correctly:
-
-Note: The ``grep -v "SampleConsensus"`` is used to filter out expected warnings from the ground segmentation algorithm
-that do not affect the demo. You can omit it if you want to see all output.
-
-.. code-block:: bash
-
-   ros2 launch nav2_ground_consistency_demo full_stack.launch.py 2>&1 | grep -v "SampleConsensus"
-
-You should see Gazebo launch with Husky in Baylands world.
-
-.. image:: images/Navigation2_with_Ground_Consistency/husky_in_baylands.png
-   :width: 700px
-   :align: center
-   :alt: Gazebo Baylands world
-
-2. Observe Ground Consistency Layer in Action
----------------------------------------------
-
-An RViz2 window will also open showing the costmap layers.
-
-**Visualizing Ground Segmentation Points (Optional)**
-
-Add the following PointCloud2 topics to your RViz2 display to visualize ground and obstacle classification:
-
-- ``/ground_segmentation/ground_points``
-- ``/ground_segmentation/obstacle_points``
-
-**Important**: Set RViz2 target frame rate to **~8 Hz** to match the LiDAR sensor publish rate from Gazebo. If set higher, point clouds will display intermittently.
-
-You should now see the ground points and obstacle points from the segmentation algorithm overlaid on the costmap with the ground consistency layer applied.
-
-.. image:: images/Navigation2_with_Ground_Consistency/rviz_window.png
-   :width: 700px
-   :align: center
-   :alt: RViz2 window showing costmap layers
-
-**Testing Navigation**
-
-Use the ``Nav2 Goal`` tool in RViz2 to set navigation goals for the robot. Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency
-layer allows the robot to navigate through these challenging terrains by correctly classifying obstacles and traversable ground.
-
-.. image:: images/Navigation2_with_Ground_Consistency/robot_in_action.png
-   :width: 700px
-   :align: center
-   :alt: Robot navigating through terrain with ground consistency layer
 
 
 Extended Topics
