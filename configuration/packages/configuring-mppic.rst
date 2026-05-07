@@ -337,7 +337,7 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    The order of the Savitzky-Golay filter (SGF) used for smoothing the optimal control sequence. Must be either ``1`` (1st order) or ``2`` (2nd order).
+    The order of the Savitzky-Golay filter (SGF) used for smoothing the optimal control sequence. Must be either ``1`` (1st order) or ``2`` (2nd order). Recommend using second order, as first order can oversmooth making it difficult to fit through tight situations, but comes with the benefit of being smoother.
 
 :publish_critics_stats:
 
