@@ -1034,15 +1034,6 @@ Asymmetric Inflation Field
 
 The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.
 
-.. figure:: images/asymmetric_layer_inactive.png
-    :align: center
-    :alt: Costmap without asymmetric inflation layer
-
-    Costmap without the asymmetric inflation layer.
-
-
 .. figure:: images/asymmetric_layer_active.png
     :align: center
     :alt: Costmap with asymmetric inflation layer
-
-    Costmap with the asymmetric inflation layer.
