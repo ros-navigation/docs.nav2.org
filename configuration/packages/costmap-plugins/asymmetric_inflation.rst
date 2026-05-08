@@ -5,6 +5,9 @@ Asymmetric Inflation Layer Parameters
 
 This layer implements an asymmetric variant of the inflation layer, biasing the robot's path toward one side of the corridor by raising obstacle costs asymmetrically around the planned path.
 
+.. figure:: images/asymmetric_layer_active.png
+    :align: center
+    :alt: Costmap with asymmetric inflation layer
 
 ``<asymmetric inflation layer>`` is the corresponding plugin name selected for this type.
 
@@ -150,20 +153,3 @@ Example
         plan_topic: "plan"
         goal_distance_threshold: 1.5
         neutral_threshold: 3.0
-
-
-
-The above example settings, when applied to an office simulation would give the following costmap.
-
-.. figure:: images/asymmetric_layer_inactive.png
-    :align: center
-    :alt: Costmap without asymmetric inflation layer
-
-    Costmap without the asymmetric inflation layer.
-
-
-.. figure:: images/asymmetric_layer_active.png
-    :align: center
-    :alt: Costmap with asymmetric inflation layer
-
-    Costmap with the asymmetric inflation layer.
