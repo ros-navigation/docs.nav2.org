@@ -88,7 +88,7 @@ Mask values in ``[1, 127]`` map to configured states.
   ====== =======
 
   Description
-    Value to restore for each parameter on state ``0`` (reset). Declared rather than auto-captured because ``get_parameters`` and ``set_parameters`` use separate underlying ``services::Client`` instances on the target node, so a "capture-then-override" sequence cannot guarantee FIFO ordering at the server. The filter logs a warning at config-load for any state-N override without a matching ``nominal_defaults`` entry; such parameters will not be restored on state-0 reset.
+    Value to restore for each parameter when the filter resets it (on state ``0`` reset, and on state-``N``-to-state-``M`` transitions for parameters touched by ``N`` but not ``M``). Declared rather than auto-captured at startup for three reasons: (1) ``get_parameters`` and ``set_parameters`` use separate underlying ``services::Client`` instances on the target node, so neither a startup capture nor a transition-time override can guarantee FIFO ordering at the server; (2) the costmap lifecycle does not guarantee that target nodes are configured-and-active before this filter's ``on_configure``, so a blocking startup ``get_parameters`` would risk deadlock or time-out during costmap bringup; (3) a non-blocking auto-capture that drained asynchronously would silently no-op the first state transition if the capture future had not yet completed, replacing a documented declared-baseline path with an undocumented timing-dependent one. The filter logs a warning at config-load for any state-N override without a matching ``nominal_defaults`` entry; such parameters retain their last-set value (see Notes below).
 
 :``<filter name>``.state_event_topic:
 
