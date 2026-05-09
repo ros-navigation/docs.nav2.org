@@ -327,6 +327,17 @@ Parameters
   Description
     Radius to end goal to commense slow down.
 
+:controller.deceleration_max:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         2.5
+  ============== ==============
+
+  Description
+    Maximum deceleration (m/s²) used to compute a velocity limit based on distance to the goal.
+
 :controller.rotate_to_heading_angular_vel:
 
   ============== ==============
@@ -740,6 +751,7 @@ Example
           v_linear_max: 0.15
           v_angular_max: 0.75
           slowdown_radius: 0.25
+          deceleration_max: 2.5
           rotate_to_heading_angular_vel: 1.0
           rotate_to_heading_max_angular_accel: 3.2
           use_collision_detection: true

@@ -939,6 +939,50 @@ Key changes:
 
 See :ref:`configuring_loopback_sim` for full parameter documentation.
 
+Global planner plugin natively accepts viapoints
+-------------------------------------------------
+
+`PR #5995 <https://github.com/ros-navigation/navigation2/pull/5995>`_ updates the ``createPath`` API for the ``BaseGlobalPlanner`` to include a vector ``std::vector<geometry_msgs::msg::PoseStamped>`` argument that takes in a list of intermediate points and passes them to the planner plugin implementation.
+
+The function signature for ``createPath`` must be updated accordingly for all custom planner plugins inheriting from the ``BaseGlobalPlanner``. This change does not alter the behavior of ``ComputePathThroughPoses`` that connects consecutive segments end-to-end but does upgrade the ``ComputePathToPose`` action.
+
+MPPI motion models use plugin-based configuration
+--------------------------------------------------
+
+`PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI.
+
+Motion model now has to be set up by specifying plugin to use:
+
+.. code-block:: yaml
+
+  MPPIController:
+    plugin: "nav2_mppi_controller::MPPIController"
+    motion_model: "diff_drive"
+    diff_drive:
+      plugin: "mppi::DiffDriveMotionModel"
+
+Supported motion model plugins are:
+  - ``mppi::DiffDriveMotionModel`` : replaces ``motion_model: DiffDrive``
+  - ``mppi::OmniMotionModel`` : replaces ``motion_model: Omni``
+  - ``mppi::AckermannMotionModel`` : replaces ``motion_model: Ackermann``
+
+While "diff_drive" is the default value for ``motion_model`` parameter, it is still required to specify the plugin for it, as shown above.
+
+Adaptive tolerance goal checker
+-------------------------------
+
+`PR #6052 <https://github.com/ros-navigation/navigation2/pull/6052>`_ adds a new adaptive tolerance goal checker.
+
+The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).
+
+The goal is cosidered reached when one of the following conditions is met:
+  - The robot is within the fine goal tolerance
+  - The robot is within the coarse goal tolerance and its linear velocity and orientational velocity are below a specified threshold for a set amount of cycles
+  - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
+  - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
+
+See :ref:`configuring_nav2_controller_adaptive_tolerance_goal_checker_plugin` for full details.
+
 Stateful parameter removed from Regulated Pure Pursuit Controller
 -----------------------------------------------------------------
 `PR #6071 <https://github.com/ros-navigation/navigation2/pull/6071>`_ removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.
