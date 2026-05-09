@@ -95,10 +95,10 @@ more accurate costmaps that allow the robot to navigate safely and efficiently i
 
 **Benefits of Ground Segmentation:**
 
-- **Improved computational efficiency**: Filters irrelevant points before processing, reducing memory and CPU usage
 - **Enhanced traversability analysis**: Accurately identifies traversable terrain for safe navigation planning
 - **Better obstacle detection**: Focuses processing on actual obstacles rather than terrain variations
 - **Robust slope handling**: Distinguishes between navigable slopes and actual blocking obstacles
+- **Improved computational efficiency**: Filters irrelevant points before processing, reducing memory and CPU usage
 - **Underground/tunnel navigation**: Enables navigation in challenging environments where traditional costmaps fail
 
 
@@ -129,47 +129,6 @@ originally developed to integrate with.
 - **Height-Based Classification**: Distinguishes between actual obstacles and terrain variations (e.g., slopes, small bumps) by evaluating obstacle height relative to local ground level
 - **Temporal Stability**: Evidence accumulates and decays over time, creating smooth transitions between free and occupied states while maintaining responsiveness to environmental changes
 - **Noise Resilience**: Protects against isolated sensor noise by requiring sustained evidence before marking a cell as occupied
-
-Let's look at the core mechanisms in more detail:
-
-1. Evidence Accumulation and Competition System
------------------------------------------------
-
-Each grid cell in the layer maintains two types of evidence: ground and obstacle. As new sensor data arrives, these
-scores are updated and compared to estimate how likely the cell is occupied. Evidence weights for ground and obstacle points can be adjusted independently (e.g., obstacle evidence may
-be weighted more heavily than ground evidence) to create a safety bias.
-
-A cell is marked as an obstacle only when there is both:
-
-- enough evidence of obstacle points, and
-- high confidence that the evidence of obstacle is stronger than the evidence of ground.
-
-This approach prevents isolated sensor noise from affecting navigation. For example, a single false positive obstacle
-point will not mark a cell as occupied if there is strong ground evidence.
-
-2. Height-Based Occupancy Classification
-----------------------------------------
-
-Not all detected obstacles actually block the robot. The layer evaluates obstacle height relative to the
-local ground height. Based on the robot's height:
-
-- Very high objects are treated as overhead (safe to pass under)
-- Very low objects are treated as terrain variation
-- Only objects within the robot’s collision range are considered blocking
-
-At times, the terrain is such that no local ground height can be reliably determined. In this case, the
-layer can be configured to use neighboring cells to estimate local ground height (see the ``ground_neighbor_search_cells`` parameter), or treat all such obstacles
-without ground below them as blocking. For example, if the robot is navigating through a tunnel and the ground
-segmentation fails to detect any ground points, then as a backup plan, a ``maximum_height_filter`` can be applied to incoming obstacle points.
-This allows the robot to navigate through tunnels and under bridges without being blocked by misclassified ground points.
-
-3. Temporal Stability Through Evidence Decay
---------------------------------------------
-
-Evidence is decayed over time to allow the costmap to adapt to changing environments. Cells transition gradually between free and
-occupied states as evidence builds or fades. The rate of
-decay can be tuned separately for ground and obstacle evidence, creating temporal hysteresis, which allows for more stable and
-responsive terrain adaptation (faster ground decay) while maintaining stable obstacle marking (slower obstacle decay).
 
 Configuration and Tuning
 ------------------------
