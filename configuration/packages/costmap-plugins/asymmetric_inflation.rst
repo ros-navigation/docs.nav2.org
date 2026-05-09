@@ -3,7 +3,7 @@
 Asymmetric Inflation Layer Parameters
 ======================================
 
-This layer implements an asymmetric variant of the inflation layer, biasing the robot's path toward one side of the corridor by raising obstacle costs asymmetrically around the planned path.
+This layer implements an asymmetric variant of the inflation layer, by scaling inflation costs based on the planned path.
 
 .. figure:: images/asymmetric_layer_active.png
     :align: center
@@ -34,7 +34,7 @@ This layer implements an asymmetric variant of the inflation layer, biasing the 
   Description
     Radius to inflate costmap around lethal obstacles.
 
-:``<asymmetric inflation layer>``.cost_scaling_factor:
+:``<asymmetric inflation layer>``.cost_scaling_factor_left:
 
   ====== =======
   Type   Default
@@ -43,21 +43,18 @@ This layer implements an asymmetric variant of the inflation layer, biasing the 
   ====== =======
 
   Description
-    Exponential decay factor across inflation radius.
+    Decay factor across inflation radius for obstacles on the left side of the path.
 
-:``<asymmetric inflation layer>``.asymmetry_factor:
+:``<asymmetric inflation layer>``.cost_scaling_factor_right:
 
   ====== =======
   Type   Default
   ------ -------
-  double 0.75
+  double 4.0
   ====== =======
 
   Description
-    Signed bias in to influence asymmetry. Must be in the range (-1, 1).
-
-    a value > 0 biases to the right of the path, < 0 to the left
-
+    Decay factor across inflation radius for obstacles on the right side of the path.
 
 
 :``<asymmetric inflation layer>``.inflate_around_unknown:
@@ -95,27 +92,6 @@ This layer implements an asymmetric variant of the inflation layer, biasing the 
 
     This prevents oscillations when the robot is approaching the target pose.
 
-:``<asymmetric inflation layer>``.neutral_threshold:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 2.0
-  ====== =======
-
-  Description
-    Maximum perpendicular distance (m) from the path centreline.
-
-    Obstacles farther than this distance are ignored.
-
-
-Usage Note
-----------
-
-``AsymmetricInflationLayer`` reads the symmetric cost baseline written by
-``nav2_costmap_2d::InflationLayer``.
-It must appear **after** ``InflationLayer`` in the ``plugins`` list:
-
 
 Example
 ----------
@@ -135,21 +111,16 @@ Example
       origin_y: -5.0
       resolution: 0.05
       track_unknown_space: false
-      plugins: ["static_layer", "inflation_layer", "asymmetric_inflation_layer"]
+      plugins: ["static_layer", "asymmetric_inflation_layer"]
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
-      inflation_layer:
-        plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 5.0
-        inflation_radius: 1.0
       asymmetric_inflation_layer:
         plugin: "nav2_costmap_2d::AsymmetricInflationLayer"
         enabled: True
         inflation_radius: 3.0
-        cost_scaling_factor: 4.0
-        asymmetry_factor: 0.75
+        cost_scaling_factor_left: 1.0
+        cost_scaling_factor_right: 4.0
         inflate_around_unknown: False
         plan_topic: "plan"
         goal_distance_threshold: 1.5
-        neutral_threshold: 3.0
