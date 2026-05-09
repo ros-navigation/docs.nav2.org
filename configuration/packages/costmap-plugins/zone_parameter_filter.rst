@@ -148,5 +148,5 @@ Example Fully-Described YAML
 Notes
 -----
 
-- **State-to-state transitions only apply the new state's overrides.**
-  If state 1 sets ``A`` and ``B`` and state 2 sets only ``A``, then a 1→2 transition writes the new value of ``A`` and leaves ``B`` at state 1's value. Only the special state ``0`` reset restores anything to ``nominal_defaults``. Plan ``nominal_defaults`` so any param touched by any state has a documented baseline.
+- **State-to-state transitions reconcile to the active state's configuration.**
+  At any time, the active parameter set equals ``nominal_defaults`` except for the overrides specifically declared in the current state. On a transition from state ``N`` to state ``M``, the filter resets each parameter touched by ``N`` but not by ``M`` to its ``nominal_defaults`` value, then applies ``M``'s overrides. A parameter declared in a state-``N`` override but absent from ``nominal_defaults`` cannot be restored: the filter warns at config-load and that parameter retains its state-``N`` value across the transition until state ``0`` reset. State ``0`` continues to restore every entry in ``nominal_defaults``.
