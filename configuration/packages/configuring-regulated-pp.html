@@ -1221,6 +1221,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -1985,28 +1986,8 @@ It also implements the Dynamic Window Pure Pursuit algorithm, which computes opt
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">stateful</dt>
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
 <dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>true</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">allow_parameter_qos_overrides</dt>
-<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2025,8 +2006,8 @@ It also implements the Dynamic Window Pure Pursuit algorithm, which computes opt
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_distance_to_obstacle</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_distance_to_obstacle</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2045,8 +2026,8 @@ It also implements the Dynamic Window Pure Pursuit algorithm, which computes opt
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_dynamic_window</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">use_dynamic_window</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2066,8 +2047,8 @@ Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Pa
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_obstacle_checking_beyond_goal</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_obstacle_checking_beyond_goal</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2141,7 +2122,6 @@ Fumiya Ohnishi and Masaki Takahashi, “Dynamic Window Pure Pursuit for Robot Pa
 <span class="w">      </span><span class="nt">allow_reversing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">rotate_to_heading_min_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
 <span class="w">      </span><span class="nt">min_distance_to_obstacle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
-<span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">use_dynamic_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">allow_obstacle_checking_beyond_goal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>

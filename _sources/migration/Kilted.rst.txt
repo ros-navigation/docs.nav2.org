@@ -982,3 +982,9 @@ The goal is cosidered reached when one of the following conditions is met:
   - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
 
 See :ref:`configuring_nav2_controller_adaptive_tolerance_goal_checker_plugin` for full details.
+
+Stateful parameter removed from Regulated Pure Pursuit Controller
+-----------------------------------------------------------------
+`PR #6071 <https://github.com/ros-navigation/navigation2/pull/6071>`_ removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.
+
+A new `isGoalXYReached` API has been added to the GoalChecker, which checks if the XY position has been reached but not the yaw. It takes the stateful parameter into consideration if set to true in the goal checker configuration. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.

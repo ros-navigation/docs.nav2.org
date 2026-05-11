@@ -1222,6 +1222,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#global-planner-plugin-natively-accepts-viapoints">Global planner plugin natively accepts viapoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -2182,6 +2183,11 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 </dd>
 </dl>
 <p>See <a class="reference internal" href="../configuration/packages/nav2_controller-plugins/adaptive_tolerance_goal_checker.html#configuring-nav2-controller-adaptive-tolerance-goal-checker-plugin"><span class="std std-ref">AdaptiveToleranceGoalChecker</span></a> for full details.</p>
+</div>
+<div class="section" id="stateful-parameter-removed-from-regulated-pure-pursuit-controller">
+<h2>Stateful parameter removed from Regulated Pure Pursuit Controller<a class="headerlink" href="#stateful-parameter-removed-from-regulated-pure-pursuit-controller" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6071">PR #6071</a> removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.</p>
+<p>A new <cite>isGoalXYReached</cite> API has been added to the GoalChecker, which checks if the XY position has been reached but not the yaw. It takes the stateful parameter into consideration if set to true in the goal checker configuration. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.</p>
 </div>
 </div>
 
