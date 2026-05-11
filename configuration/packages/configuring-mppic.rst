@@ -1126,7 +1126,7 @@ Example
           critic_index_to_visualize: 0
           reset_period: 1.0 # (only in Humble)
           regenerate_noises: false
-          sgf_order: 1
+          sgf_order: 2
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
