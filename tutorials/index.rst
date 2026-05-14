@@ -33,3 +33,4 @@ Nav2 Tutorials
    docs/navigation2_with_vector_objects.rst
    docs/roscon_uk_2025_state_estimation.rst
    docs/using_3laws_supervisor.rst
+   docs/integrating_new_task_server_and_navigator_plugin.rst
