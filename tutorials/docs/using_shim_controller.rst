@@ -68,6 +68,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
           forward_sampling_distance: 0.5
           rotate_to_heading_angular_vel: 1.8
           max_angular_accel: 3.2
+          max_cost_threshold: 254.0
           simulate_ahead_time: 1.0
 
 The Rotation Shim Controller is very simple and only has a couple of parameters to dictate the conditions it should be enacted.
@@ -76,6 +77,7 @@ The Rotation Shim Controller is very simple and only has a couple of parameters 
 - ``forward_sampling_distance``: The distance (in meters) away from the robot to select a point on the path to approximate the path's starting heading at. This is analogous to a "lookahead" point.
 - ``rotate_to_heading_angular_vel``: The angular velocity (in rad/s) to have the robot rotate to heading by, when the behavior is enacted.
 - ``max_angular_accel``: The angular acceleration (in rad/s/s) to have the robot rotate to heading by, when the behavior is enacted.
+- ``max_cost_threshold``: Maximum footprint cost threshold to detect a collision. Defaults to 254.0 i.e., LETHAL_OBSTACLE.
 - ``simulate_ahead_time``: The Time (s) to forward project the rotation command to check for collision
 
 Configuring Primary Controller
@@ -99,6 +101,7 @@ You can observe this below with the primary controller set the ``DWB`` (with the
           forward_sampling_distance: 0.5
           rotate_to_heading_angular_vel: 1.8
           max_angular_accel: 3.2
+          max_cost_threshold: 254.0
           simulate_ahead_time: 1.0
           primary_controller:
             plugin: "dwb_core::DWBLocalPlanner"
