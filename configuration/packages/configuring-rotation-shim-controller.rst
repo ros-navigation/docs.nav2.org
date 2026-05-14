@@ -96,6 +96,17 @@ Rotation Shim Controller Parameters
   Description
     Maximum angular acceleration for rotation to heading (rad/s/s)
 
+:max_cost_threshold:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         254.0
+  ============== =============================
+
+  Description
+    Maximum footprint cost threshold to detect a collision. Defaults to 254.0 i.e., LETHAL_OBSTACLE. If needed, it can be adjusted to match the behavior of the primary controller plugin.
+
 :simulate_ahead_time:
 
   ============== =============================
@@ -181,6 +192,7 @@ Example
         angular_disengage_threshold: 0.3925
         rotate_to_heading_angular_vel: 1.8
         max_angular_accel: 3.2
+        max_cost_threshold: 254.0
         simulate_ahead_time: 1.0
         rotate_to_goal_heading: false
 
