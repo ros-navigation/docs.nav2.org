@@ -1445,8 +1445,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">simulate_ahead_time</dt>
+<dt class="field-odd">max_cost_threshold</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>254.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum footprint cost threshold to detect a collision. Defaults to 254.0 i.e., LETHAL_OBSTACLE. If needed, it can be adjusted to match the behavior of the primary controller plugin.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">simulate_ahead_time</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1465,8 +1485,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">rotate_to_goal_heading</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">rotate_to_goal_heading</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1485,8 +1505,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">rotate_to_heading_once</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">rotate_to_heading_once</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1505,8 +1525,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">closed_loop</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">closed_loop</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1525,8 +1545,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_path_orientations</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">use_path_orientations</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1575,6 +1595,7 @@
 <span class="w">      </span><span class="nt">angular_disengage_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3925</span>
 <span class="w">      </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.8</span>
 <span class="w">      </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
+<span class="w">      </span><span class="nt">max_cost_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">254.0</span>
 <span class="w">      </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">rotate_to_goal_heading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 

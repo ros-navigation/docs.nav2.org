@@ -1364,6 +1364,7 @@
 <span class="w">      </span><span class="nt">forward_sampling_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.8</span>
 <span class="w">      </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
+<span class="w">      </span><span class="nt">max_cost_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">254.0</span>
 <span class="w">      </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </pre></div>
 </div>
@@ -1373,6 +1374,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">forward_sampling_distance</span></code>: The distance (in meters) away from the robot to select a point on the path to approximate the path’s starting heading at. This is analogous to a “lookahead” point.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rotate_to_heading_angular_vel</span></code>: The angular velocity (in rad/s) to have the robot rotate to heading by, when the behavior is enacted.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_angular_accel</span></code>: The angular acceleration (in rad/s/s) to have the robot rotate to heading by, when the behavior is enacted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_cost_threshold</span></code>: Maximum footprint cost threshold to detect a collision. Defaults to 254.0 i.e., LETHAL_OBSTACLE.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">simulate_ahead_time</span></code>: The Time (s) to forward project the rotation command to check for collision</p></li>
 </ul>
 </div>
@@ -1393,6 +1395,7 @@ You can observe this below with the primary controller set the <code class="docu
 <span class="w">      </span><span class="nt">forward_sampling_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.8</span>
 <span class="w">      </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
+<span class="w">      </span><span class="nt">max_cost_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">254.0</span>
 <span class="w">      </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">primary_controller</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
