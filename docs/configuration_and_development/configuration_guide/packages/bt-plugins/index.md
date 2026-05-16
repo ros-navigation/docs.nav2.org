@@ -35,8 +35,8 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [PathHandlerSelector][path-handler-selector]{ .md-button .md-button--primary }
 [NavigateThroughPoses][navigate-through-poses]{ .md-button .md-button--primary }
 [ComputePathThroughPoses][compute-path-through-poses]{ .md-button .md-button--primary }
-[ComputeCoveragePath][compute-coverage-path]{ .md-button .md-button--primary }
-[CancelCoverage][cancel-coverage]{ .md-button .md-button--primary }
+<!-- [ComputeCoveragePath][compute-coverage-path]{ .md-button .md-button--primary } -->
+<!-- [CancelCoverage][cancel-coverage]{ .md-button .md-button--primary } -->
 [RemovePassedGoals][remove-passed-goals]{ .md-button .md-button--primary }
 [RemoveInCollisionGoals][remove-in-collision-goals]{ .md-button .md-button--primary }
 [CancelControl][cancel-control]{ .md-button .md-button--primary }

@@ -12,8 +12,8 @@ github_repositories:
       - "/nav2_behavior_tree/nav2_tree_nodes.xml"
       - "/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
       - "/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
-  opennav_coverage:
-    owner: "open-navigation"
-    branch: "main" # Rolling
-    data_to_clone:
-      - "/opennav_coverage_bt/include/opennav_coverage_bt"
+  # opennav_coverage:
+  #   owner: "open-navigation"
+  #   branch: "main" # Rolling
+  #   data_to_clone:
+  #     - "/opennav_coverage_bt/include/opennav_coverage_bt"
