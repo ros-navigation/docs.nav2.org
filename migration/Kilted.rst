@@ -988,3 +988,22 @@ Stateful parameter removed from Regulated Pure Pursuit Controller
 `PR #6071 <https://github.com/ros-navigation/navigation2/pull/6071>`_ removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.
 
 A new `isGoalXYReached` API has been added to the GoalChecker, which checks if the XY position has been reached but not the yaw. It takes the stateful parameter into consideration if set to true in the goal checker configuration. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.
+
+Clearing Individual Costmap Plugins
+-----------------------------------
+
+`PR #6140 <https://github.com/ros-navigation/navigation2/pull/6140>`_ extends the below costmap clearing services to allow optionally clearing a subset of selected costmap plugins.
+
+  - ClearEntireCostmap
+  - ClearCostmapAroundRobot
+  - ClearCostmapAroundPose
+  - ClearCostmapExceptRegion
+
+An new field ``plugins`` has been added to these service requests, which takes a list of plugin names to clear.
+If this field is empty, all plugins will be cleared as before. If specific plugin names are provided, only those plugins will be cleared while the others remain unchanged.
+This is useful for selectively clearing specific layers (e.g. completely clearing only the obstacle layer while keeping the static layer intact).
+
+Any plugin name that is specified in the service request must satisfy the following conditions. If either of these conditions is not met, no clearing operation is performed and the service returns a failure response.
+
+  - The plugin name must correspond to a plugin that is currently loaded in the costmap.
+  - The requested plugin must be ``clearable``. For example, a plugin of type ``ObstacleLayer`` is clearable while that of type ``StaticLayer`` is not.
