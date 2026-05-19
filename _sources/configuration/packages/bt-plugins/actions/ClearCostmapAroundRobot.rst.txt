@@ -42,9 +42,25 @@ Input Ports
   Description
       Action server timeout (ms).
 
+:plugins:
+
+  ===================== =======
+  Type                  Default
+  --------------------- -------
+  std::vector<string>   N/A
+  ===================== =======
+
+  Description
+      Optional. A list of costmap plugin names to be cleared.
+      If specified, only these costmap plugins will be cleared.
+      Otherwise, all "clearable" costmap plugins will be cleared.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <ClearCostmapAroundRobot name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_around_local_costmap"/>
+  <ClearCostmapAroundRobot name="ClearLocalCostmap-Subtree"
+                           service_name="local_costmap/clear_around_local_costmap"
+                           reset_distance="2.0"
+                           plugins="obstacle_layer;voxel_layer"/>

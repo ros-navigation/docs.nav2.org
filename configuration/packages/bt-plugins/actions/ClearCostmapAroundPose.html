@@ -1250,6 +1250,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 </ul>
 </li>
 </ul>
@@ -1421,6 +1422,28 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 75%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>std::vector&lt;string&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Optional. A list of costmap plugin names to be cleared.
+If specified, only these costmap plugins will be cleared.
+Otherwise, all “clearable” costmap plugins will be cleared.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1428,7 +1451,8 @@
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ClearCostmapAroundPose</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearLocalCostmapAroundPose&quot;</span>
 <span class="w">                        </span><span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_around_pose_local_costmap&quot;</span>
 <span class="w">                        </span><span class="na">pose=</span><span class="s">&quot;{goal_pose}&quot;</span>
-<span class="w">                        </span><span class="na">reset_distance=</span><span class="s">&quot;2.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                        </span><span class="na">reset_distance=</span><span class="s">&quot;2.0&quot;</span>
+<span class="w">                        </span><span class="na">plugins=</span><span class="s">&quot;obstacle_layer;voxel_layer&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

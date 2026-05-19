@@ -1251,6 +1251,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#mppi-motion-models-use-plugin-based-configuration">MPPI motion models use plugin-based configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 </ul>
 </li>
 </ul>
@@ -2216,6 +2217,28 @@ The <code class="docutils literal notranslate"><span class="pre">publish_critics
 <h2>Stateful parameter removed from Regulated Pure Pursuit Controller<a class="headerlink" href="#stateful-parameter-removed-from-regulated-pure-pursuit-controller" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6071">PR #6071</a> removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.</p>
 <p>A new <cite>isGoalXYReached</cite> API has been added to the GoalChecker, which checks if the XY position has been reached but not the yaw. It takes the stateful parameter into consideration if set to true in the goal checker configuration. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.</p>
+</div>
+<div class="section" id="clearing-individual-costmap-plugins">
+<h2>Clearing Individual Costmap Plugins<a class="headerlink" href="#clearing-individual-costmap-plugins" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6140">PR #6140</a> extends the below costmap clearing services to allow optionally clearing a subset of selected costmap plugins.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ClearEntireCostmap</p></li>
+<li><p>ClearCostmapAroundRobot</p></li>
+<li><p>ClearCostmapAroundPose</p></li>
+<li><p>ClearCostmapExceptRegion</p></li>
+</ul>
+</div></blockquote>
+<p>An new field <code class="docutils literal notranslate"><span class="pre">plugins</span></code> has been added to these service requests, which takes a list of plugin names to clear.
+If this field is empty, all plugins will be cleared as before. If specific plugin names are provided, only those plugins will be cleared while the others remain unchanged.
+This is useful for selectively clearing specific layers (e.g. completely clearing only the obstacle layer while keeping the static layer intact).</p>
+<p>Any plugin name that is specified in the service request must satisfy the following conditions. If either of these conditions is not met, no clearing operation is performed and the service returns a failure response.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The plugin name must correspond to a plugin that is currently loaded in the costmap.</p></li>
+<li><p>The requested plugin must be <code class="docutils literal notranslate"><span class="pre">clearable</span></code>. For example, a plugin of type <code class="docutils literal notranslate"><span class="pre">ObstacleLayer</span></code> is clearable while that of type <code class="docutils literal notranslate"><span class="pre">StaticLayer</span></code> is not.</p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
