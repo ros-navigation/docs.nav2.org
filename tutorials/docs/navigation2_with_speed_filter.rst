@@ -398,5 +398,37 @@ Set the goal behind the speed restriction areas and check that the filter is wor
 .. image:: images/Navigation2_with_Speed_Filter/speed_global.png
     :height: 400px
 
+5. Optional: Enable path lookahead
+----------------------------------
+
+By default the Speed Filter applies the speed limit of the cell directly under the robot. This means the speed limit is published only once the robot has already entered a speed-restricted zone, and the controller is responsible for the deceleration. For most cases this is sufficient.
+
+If your application requires the robot to already be at (or close to) the limit by the time it crosses the zone boundary, for example, when entering a low-speed aisle in a warehouse, you can enable path lookahead mode. In this mode the filter samples poses along the planned path within a velocity-dependent window, and applies the strictest speed limit found along that window. This allows the robot to begin decelerating before reaching the zone.
+
+To enable it, set ``enable_path_lookahead: true`` in the ``speed_filter`` plugin config:
+
+.. code-block:: yaml
+
+  global_costmap:
+    global_costmap:
+      ros__parameters:
+        ...
+        speed_filter:
+          plugin: "nav2_costmap_2d::SpeedFilter"
+          enabled: True
+          filter_info_topic: "speed_costmap_filter_info"
+          speed_limit_topic: "speed_limit"
+          enable_path_lookahead: true
+          max_decel: -0.5
+          min_lookahead: 0.3
+          max_lookahead: 5.0
+          path_sample_resolution: 0.1
+          path_topic: "/plan"
+          odom_topic: "/odom"
+
+The lookahead distance is sized from the robot's current speed using ``d = v² / (2·|max_decel|)``, clamped to ``[min_lookahead, max_lookahead]``. Set ``max_decel`` to match your robot's comfortable deceleration so the lookahead window is sized for stopping at the zone boundary. See the :ref:`speed_filter` configuration page for the full parameter reference.
+
+.. TODO: Add video for path lookahead
+
 .. note::
   For another example and additional context, check the Navigation2 tutorials https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo

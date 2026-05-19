@@ -69,6 +69,83 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
   Description
     Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
 
+:``<filter name>``.enable_path_lookahead:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   False
+  ====== =======
+
+  Description
+    Whether to enable path lookahead mode. When disabled (default), the speed filter applies the speed limit of the cell directly at the robot pose. When enabled, the filter samples poses along the planned path within a velocity-dependent window and applies the strictest non-zero speed limit found along that window. This allows the robot to begin decelerating before entering a speed-restricted zone rather than at the boundary itself.
+
+:``<filter name>``.max_decel:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double -0.5
+  ====== =======
+
+  Description
+    Maximum deceleration (m/s^2) used to size the lookahead window based on the robot's current speed, when path lookahead mode is enabled. Lookahead distance is computed as ``v² / (2·max_decel)`` and clamped to ``[min_lookahead, max_lookahead]``. Must be negative. Lower magnitude values produce longer lookahead windows. Has no effect when ``enable_path_lookahead`` is false.
+
+:``<filter name>``.min_lookahead:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.3
+  ====== =======
+
+  Description
+    Minimum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
+
+:``<filter name>``.max_lookahead:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 5.0
+  ====== =======
+
+  Description
+    Maximum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
+
+:``<filter name>``.path_sample_resolution:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.1
+  ====== =======
+
+  Description
+    Resolution (m) for sampling the path, when path lookahead mode is enabled. Lower values sample at higher density, but may increase computation time.
+
+:``<filter name>``.path_topic:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "plan"
+  ====== =======
+
+  Description
+    Topic to subscribe to for the planned path, when path lookahead mode is enabled. This is used to look ahead and sample poses along the planned path to determine upcoming speed limits.
+
+:``<filter name>``.odom_topic:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "odom"
+  ====== =======
+
+  Description
+    Topic to subscribe to for the odometry, when path lookahead mode is enabled. This is used to determine the robot's current speed for lookahead distance calculation.
+
 Example
 *******
 .. code-block:: yaml
@@ -86,3 +163,10 @@ Example
           filter_info_topic: "/costmap_filter_info"
           speed_limit_topic: "/speed_limit"
           transform_tolerance: 0.1
+          enable_path_lookahead: true
+          max_decel: -0.3
+          min_lookahead: 1.0
+          max_lookahead: 5.0
+          path_sample_resolution: 0.1
+          path_topic: "/plan"
+          odom_topic: "/odom"
