@@ -162,6 +162,7 @@ Here we are using Depth Anything V3 model, and it is exported to ONNX with these
 
 Params for DAV3
 ~~~~~~~~~~~~~~~
+
 .. note::
   These params need to be configured for the Depth Anything V3 AI Model
 
@@ -191,6 +192,7 @@ Params for DAV3
 
 Point Cloud Node to project the points from depth image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. note::
   Uncomment if you want to output the point cloud. As in this example, we are using point cloud from depth_anything_v3 node.
 
