@@ -422,7 +422,6 @@ To enable it, set ``enable_path_lookahead: true`` in the ``speed_filter`` plugin
           max_decel: -0.5
           min_lookahead: 0.3
           max_lookahead: 5.0
-          path_sample_resolution: 0.1
           path_topic: "/plan"
           odom_topic: "/odom"
 

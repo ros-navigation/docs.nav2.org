@@ -113,17 +113,6 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
   Description
     Maximum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
 
-:``<filter name>``.path_sample_resolution:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 0.1
-  ====== =======
-
-  Description
-    Resolution (m) for sampling the path, when path lookahead mode is enabled. Lower values sample at higher density, but may increase computation time.
-
 :``<filter name>``.path_topic:
 
   ====== =======
@@ -167,6 +156,5 @@ Example
           max_decel: -0.3
           min_lookahead: 1.0
           max_lookahead: 5.0
-          path_sample_resolution: 0.1
           path_topic: "/plan"
           odom_topic: "/odom"
