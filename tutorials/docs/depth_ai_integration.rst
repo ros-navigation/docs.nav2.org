@@ -263,7 +263,8 @@ Finally, launch the entire pipeline using the provided launch file:
 
   ros2 launch nav2_depth_estimation_ai depth_estimation_pipeline_launch.py
 
-This will start the camera node, process the images through the AI model, and publish the resulting PointCloud2 messages to a topic that Nav2 can subscribe to for navigation.
+.. note::
+  This will start the camera node (if not using already), process the image topic using pipeline through the DA3 model, and publish the resulting PointCloud2 topic. This topic is subscribed by Nav2 to add voxel costmap layer for path planning and obstacle avoidance.
 
 Acknowledgements
 ================
