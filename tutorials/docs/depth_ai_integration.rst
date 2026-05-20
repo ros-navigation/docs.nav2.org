@@ -269,6 +269,7 @@ This will start the camera node, process the images through the AI model, and pu
 Acknowledgements
 ================
 
-This tutorial was developed in collaboration with the ROS 2 community and the developers of the Depth Anything V3 model. Special thanks to the contributors who provided insights and feedback during the development process.
+This tutorial was developed in collaboration with the ROS 2 community. Special thanks to the contributors who provided insights and feedback during the development process.
 
-- [ika-rwth-aachen Depth Anything V3 TensorRT repository.](https://github.com/ika-rwth-aachen/ros2-depth-anything-v3-trt)
+- `Depth Anything 3: Recovering the Visual Space from Any Views (arXiv:2511.10647) <https://arxiv.org/abs/2511.10647>`_
+- `ika-rwth-aachen Depth Anything V3 TensorRT repository <https://github.com/ika-rwth-aachen/ros2-depth-anything-v3-trt>`_
