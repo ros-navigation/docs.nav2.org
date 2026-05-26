@@ -10,9 +10,9 @@ Tutorial for integrating AI Depth Estimation with Nav2 Costmap
 .. raw:: html
 
     <h1 align="center">
-      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="700" height="450" src="https://github.com/user-attachments/assets/efb731bb-9056-4833-bad2-ca5f7388c85c" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+            <iframe width="708" height="400" src="https://www.youtube.com/embed/QDN1uA71su4?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+        </div>
     </h1>
 
 Overview
