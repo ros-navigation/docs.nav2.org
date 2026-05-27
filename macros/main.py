@@ -1,9 +1,14 @@
-from __future__ import annotations # Required for Python 3.8 support in CI (ubuntu:focal)
-import subprocess, logging, re, sys
+from __future__ import annotations  # Required for Python 3.8 support in CI (ubuntu:focal)
+
+import subprocess
+import logging
+import re
+import sys
 from shutil import rmtree
 import xml.etree.ElementTree as ET
-from typing import Pattern 
+from typing import Pattern
 from pathlib import Path
+
 from jinja2 import Template
 
 
@@ -63,12 +68,13 @@ _XML_CODE_BLOCK_TEMPLATE = Template("""\
 
 def _convert_type(type_name: str) -> str:
     """
-    Convert C++ types to simplified names for documentation, e.g.
+    Convert C++ types to simplified names for documentation.
+
+    For example:
     `std::string` -> `string`,
     `std::vector<int, std::allocator<int> >` -> `vector<int>`,
-    `nav2_msgs::msg::Route_<std::allocator<void> >` -> `nav2_msgs::msg::Route`,
+    `nav2_msgs::msg::Route_<std::allocator<void> >` -> `nav2_msgs::msg::Route`.
     """
-
     if type_name in _TYPE_DIRECT_MAPPINGS:
         return _TYPE_DIRECT_MAPPINGS[type_name]
 
@@ -80,8 +86,9 @@ def _convert_type(type_name: str) -> str:
 
 def _format_default(default_str: str) -> str:
     """
-    Simplify numeric default values by stripping trailing zeros, e.g.
-    `0.150000` -> `0.15`, `1.000000` -> `1.0`
+    Simplify numeric default values by stripping trailing zeros.
+
+    For example: `0.150000` -> `0.15`, `1.000000` -> `1.0`.
     """
     try:
         return str(float(default_str))
@@ -90,25 +97,25 @@ def _format_default(default_str: str) -> str:
 
 
 def _parse_ports(
-        node: ET.Element
-    ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
+    node: ET.Element
+) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
     """
     Parse input_port, output_port and bidirectional_port children from XML BT node.
-    Returns (input_ports, output_ports, bidirectional_ports).
-    """
 
+    Returns tuple (input_ports, output_ports, bidirectional_ports).
+    """
     input_ports: list[dict[str, str]] = []
     output_ports: list[dict[str, str]] = []
     bidirectional_ports: list[dict[str, str]] = []
 
     for child in node:
-        
+
         port_direction = child.tag
         if port_direction not in ('input_port', 'output_port', 'bidirectional_port'):
             continue
 
         port_name = child.attrib.get('name', '')
-        
+
         raw_port_type = child.attrib.get('type', '')
         port_type = _convert_type(raw_port_type)
 
@@ -139,10 +146,7 @@ def _parse_ports(
 
 
 def _get_git_branch_name(local_repo_path: Path) -> str | None:
-    """
-    Get current Git branch name in the working directory.
-    """
-
+    """Get current Git branch name in the working directory."""
     try:
         branch_name = subprocess.run(
             ["git", "branch", "--show-current"],
@@ -159,11 +163,10 @@ def _get_git_branch_name(local_repo_path: Path) -> str | None:
 
 def _is_git_workdir_synced(local_repo_path: Path) -> bool:
     """
-    Check if the local working directory is synced 
-    with the GitHub remote repository.
+    Check if the local working directory is synced with the GitHub remote repository.
+
     Returns True if up to date, False if update is needed.
     """
-
     try:
         local_commit_hash = subprocess.run(
             ["git", "rev-parse", "HEAD"],
@@ -190,16 +193,13 @@ def _is_git_workdir_synced(local_repo_path: Path) -> bool:
 
 
 def _clone_sparse_github_data(
-        repo_name: str, 
-        owner: str, 
-        branch: str, 
-        data_to_clone: list[str], 
-        clone_dir: Path
-    ) -> None:
-    """
-    Clone GitHub repository sparsely and 
-    checkout the specified files/directories.
-    """
+    repo_name: str,
+    owner: str,
+    branch: str,
+    data_to_clone: list[str],
+    clone_dir: Path
+) -> None:
+    """Clone GitHub repository sparsely and checkout the specified files/directories."""
     if not data_to_clone:
         raise ValueError("No directories or files specified for sparse checkout.")
 
@@ -225,8 +225,8 @@ def _clone_sparse_github_data(
 
         logger.info(f"Performing sparse checkout in {repo_workdir} directory...")
         subprocess.run([
-            "git", 
-            "sparse-checkout", 
+            "git",
+            "sparse-checkout",
             "set",
             "--no-cone",
             *data_to_clone,
@@ -243,11 +243,11 @@ def _clone_sparse_github_data(
 
 
 def _clone_github_repository(
-        repo_name: str, 
-        owner: str, 
-        branch: str, 
-        clone_dir: Path
-    ) -> None:
+    repo_name: str,
+    owner: str,
+    branch: str,
+    clone_dir: Path
+) -> None:
     """Clone GitHub repository."""
     if not clone_dir.exists():
         raise ValueError(f"Clone directory does not exist: {clone_dir}")
@@ -274,11 +274,8 @@ def _clone_github_repository(
     )
 
 
-def _load_bt_nodes_model(file_path: Path ) -> ET.Element:
-    """
-    Load the behavior-tree nodes model from a cached file.
-    """
-
+def _load_bt_nodes_model(file_path: Path) -> ET.Element:
+    """Load the behavior-tree nodes model from a cached file."""
     if not file_path.exists():
         raise ValueError("File path does not exist.")
 
@@ -301,35 +298,35 @@ def _get_all_lines(file_path: Path) -> list[str]:
 
 
 def _get_lines_section(
-        lines: list[str], 
-        start: Pattern, 
-        end: Pattern, 
-        stop_at: Pattern
-    ) -> list[str]:
+    lines: list[str],
+    start: Pattern,
+    end: Pattern,
+    stop_at: Pattern
+) -> list[str]:
     """
-    Extract a section of lines between start and end patterns, 
-    with a condition to stop searching.
+    Extract a section of lines.
+
+    Search between start and end patterns, with a condition to stop searching.
     """
-    
     start_idx = None
     end_idx = None
 
     # Note: Intentionally updates start_idx/end_idx on every match to capture
-    # the MOST RECENT occurrence before stop_at. 
+    # the MOST RECENT occurrence before stop_at.
 
     for index, line in enumerate(lines):
         if start.search(line):
             start_idx = index
-        
+
         if end.search(line):
             end_idx = index
 
         if stop_at.search(line):
             break
-    
+
     if start_idx is None:
         raise ValueError(f"Pattern '{start.pattern}' not found.")
-    
+
     if end_idx is None:
         raise ValueError(f"Pattern '{end.pattern}' not found.")
 
@@ -339,18 +336,15 @@ def _get_lines_section(
         )
 
     return lines[start_idx:end_idx]
-    
+
 
 def _extract_doxygen_code_block(
-        lines: list[str], 
-        code_start_pattern: Pattern, 
-        code_end_pattern: Pattern, 
-        comment_block_pattern: Pattern
-    ) -> list[str]:
-    """
-    Extract code block from Doxygen with trailing comments removing.
-    """
-
+    lines: list[str],
+    code_start_pattern: Pattern,
+    code_end_pattern: Pattern,
+    comment_block_pattern: Pattern
+) -> list[str]:
+    """Extract code block from Doxygen with trailing comments removing."""
     code_lines: list[str] = []
     in_code_block = False
     code_start_found = False
@@ -370,14 +364,14 @@ def _extract_doxygen_code_block(
             in_code_block = False
             code_end_found = True
             continue
-        
+
         if in_code_block:
             line = re.sub(comment_block_pattern, '', line)
             code_lines.append(line)
 
     if not code_start_found:
         raise ValueError(f"Code start pattern '{code_start_pattern.pattern}' not found.")
-    
+
     if not code_end_found:
         raise ValueError(f"Code end pattern '{code_end_pattern.pattern}' not found.")
 
@@ -387,16 +381,13 @@ def _extract_doxygen_code_block(
             f"and '{code_end_pattern.pattern}' patterns. "
             "Review Doxygen comment formatting in the hpp file."
         )
-    
+
     code_lines[-1] = code_lines[-1].rstrip('\n')
     return code_lines
 
 
 def define_env(env):
-    """
-    This is the hook for the variables, macros and filters.
-    """
-
+    """This is the hook for the variables, macros and filters."""
     cache_dir = Path(env.variables["cache_dir"])
     github_repos = env.variables["github_repositories"]
     nav2_tree_nodes_file_path = Path(env.variables["nav2_tree_nodes_file_path"])
@@ -405,8 +396,8 @@ def define_env(env):
 
         local_repo_path = cache_dir / Path(repo_name)
         if local_repo_path.exists() \
-        and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
-        and _is_git_workdir_synced(local_repo_path):
+                and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
+                and _is_git_workdir_synced(local_repo_path):
             logger.info(
                 f"Cached Git repository '{local_repo_path}' "
                 "is synced with remote GitHub repository. "
@@ -415,10 +406,10 @@ def define_env(env):
             continue
         try:
             _clone_sparse_github_data(
-                repo_name=repo_name, 
-                owner=repo_info["owner"], 
-                branch=repo_info["branch"], 
-                data_to_clone=repo_info["data_to_clone"], 
+                repo_name=repo_name,
+                owner=repo_info["owner"],
+                branch=repo_info["branch"],
+                data_to_clone=repo_info["data_to_clone"],
                 clone_dir=cache_dir
             )
         except subprocess.CalledProcessError as exc:
@@ -427,14 +418,14 @@ def define_env(env):
             logger.info("Attempting complete clone as fallback...")
             try:
                 _clone_github_repository(
-                    repo_name=repo_name, 
-                    owner=repo_info["owner"], 
-                    branch=repo_info["branch"], 
+                    repo_name=repo_name,
+                    owner=repo_info["owner"],
+                    branch=repo_info["branch"],
                     clone_dir=cache_dir
                 )
             except (subprocess.CalledProcessError, ValueError, OSError) as exc:
                 stderr = getattr(exc, 'stderr', None)
-                logger.error(f"Failed to clone GitHub repository: {stderr or exc}")        
+                logger.error(f"Failed to clone GitHub repository: {stderr or exc}")
                 sys.exit(1)
         except (ValueError, OSError) as exc:
             logger.error(f"Failed to clone GitHub data: {exc}")
@@ -442,7 +433,7 @@ def define_env(env):
 
     try:
         bt_nodes_model = _load_bt_nodes_model(nav2_tree_nodes_file_path)
-    except (ValueError, ET.ParseError, IndexError) as exc:
+    except (ValueError, ET.ParseError, IndexError):
         logger.exception(
             f"BT node model not found at: {nav2_tree_nodes_file_path}\n"
             "Review paths in macros/variables.yml configuration."
@@ -452,9 +443,10 @@ def define_env(env):
     @env.macro
     def render_bt_node_ports(bt_node_id: str) -> str:
         """
-        Render MkDocs-formatted documentation for a Behavior Tree node's input/output ports.
-        """
+        Render MkDocs-formatted documentation for a Behavior Tree node's ports.
 
+        Returns a string with sections for input, output and bidirectional ports.
+        """
         node = bt_nodes_model.find(f'.//*[@ID="{bt_node_id}"]')
         if node is None:
             logger.error(f"BT node ID not found: {bt_node_id}.")
@@ -465,27 +457,36 @@ def define_env(env):
         sections = []
         if input_ports:
             sections.append(
-                _PORT_SECTION_TEMPLATE.render(heading='Input Ports', ports=input_ports)
+                _PORT_SECTION_TEMPLATE.render(
+                    heading='Input Ports',
+                    ports=input_ports
+                )
             )
         if output_ports:
             sections.append(
-                _PORT_SECTION_TEMPLATE.render(heading='Output Ports', ports=output_ports)
+                _PORT_SECTION_TEMPLATE.render(
+                    heading='Output Ports',
+                    ports=output_ports
+                )
             )
         if bidirectional_ports:
             sections.append(
-                _PORT_SECTION_TEMPLATE.render(heading='Bidirectional Ports', ports=bidirectional_ports)
+                _PORT_SECTION_TEMPLATE.render(
+                    heading='Bidirectional Ports',
+                    ports=bidirectional_ports
+                )
             )
 
         return '\n\n'.join(sections)
-    
 
     @env.macro
     def render_bt_node_example(file_path: Path, class_name: str | None = None) -> str:
         """
-        Render MD-formatted XML code example for a Behavior Tree node 
-        from a Doxygen comment in a HPP file.
+        Render MkDocs-formatted documentation for a Behavior Tree node's example usage in XML.
+
+        Returns a string with the XML code example from a Doxygen comment in a HPP file.
         """
-        
+
         try:
             file_lines = _get_all_lines(file_path)
         except OSError as exc:
@@ -499,9 +500,9 @@ def define_env(env):
 
         try:
             doxygen_section = _get_lines_section(
-                lines=file_lines, 
-                start=_DOXYGEN_REGEX_PATTERNS["XML_USAGE_EXAMPLE"], 
-                end=_DOXYGEN_REGEX_PATTERNS["COMMENT_END"], 
+                lines=file_lines,
+                start=_DOXYGEN_REGEX_PATTERNS["XML_USAGE_EXAMPLE"],
+                end=_DOXYGEN_REGEX_PATTERNS["COMMENT_END"],
                 stop_at=class_pattern
             )
         except ValueError as exc:
@@ -510,9 +511,9 @@ def define_env(env):
 
         try:
             code_section = _extract_doxygen_code_block(
-                lines=doxygen_section, 
-                code_start_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_START"], 
-                code_end_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_END"], 
+                lines=doxygen_section,
+                code_start_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_START"],
+                code_end_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_END"],
                 comment_block_pattern=_DOXYGEN_REGEX_PATTERNS["COMMENT_STYLE"]
             )
         except ValueError as exc:
@@ -522,4 +523,4 @@ def define_env(env):
         code_example = ''.join(code_section)
         code_example_md = _XML_CODE_BLOCK_TEMPLATE.render(xml_code=code_example)
 
-        return code_example_md        
+        return code_example_md
