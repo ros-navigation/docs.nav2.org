@@ -7,6 +7,7 @@ import sys
 from shutil import rmtree
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from typing import Any
 
 from jinja2 import Template
 
@@ -63,6 +64,9 @@ _XML_CODE_BLOCK_TEMPLATE = Template("""\
 {{ xml_code }}
 ```
 """)
+
+
+TREE_NODES_MODEL_TAG = 'TreeNodesModel'
 
 
 def _convert_type(type_name: str) -> str:
@@ -273,17 +277,22 @@ def _clone_github_repository(
     )
 
 
-def _load_bt_nodes_model(file_path: Path) -> ET.Element:
-    """Load the behavior-tree nodes model from a cached file."""
-    if not file_path.exists():
-        raise ValueError("File path does not exist.")
+def _extract_bt_nodes_model(content: ET.ElementTree[Any]) -> ET.Element:
+    """Load the Behavior Tree nodes model from the given XML element tree."""
+    root = content.getroot()
+    if root is None or len(root) == 0:
+        raise ValueError(
+            'Invalid XML structure: '
+            f'Expected <{TREE_NODES_MODEL_TAG}> element as the first child of the root.'
+        )
+    bt_nodes_model = root[0]
 
-    try:
-        root = ET.parse(file_path).getroot()
-        return root[0]
-    except (ET.ParseError, IndexError) as exc:
-        logger.error(f"Failed to parse file {file_path} from cache: {exc}")
-        raise
+    if bt_nodes_model.tag != TREE_NODES_MODEL_TAG:
+        raise ValueError(
+            'Invalid XML structure: '
+            f'Expected <{TREE_NODES_MODEL_TAG}> element as the first child of the root.'
+        )
+    return bt_nodes_model
 
 
 def _get_all_lines(file_path: Path) -> list[str]:
@@ -431,12 +440,18 @@ def define_env(env):
             sys.exit(1)
 
     try:
-        bt_nodes_model = _load_bt_nodes_model(nav2_tree_nodes_file_path)
-    except (ValueError, ET.ParseError, IndexError):
-        logger.exception(
-            f"BT node model not found at: {nav2_tree_nodes_file_path}\n"
-            "Review paths in macros/variables.yml configuration."
+        bt_nodes_content = ET.parse(nav2_tree_nodes_file_path)
+    except (OSError, ET.ParseError) as exc:
+        logger.error(
+            f'Failed to load BT nodes data from {nav2_tree_nodes_file_path}: {exc}\n'
+            'Review paths in macros/variables.yml configuration.'
         )
+        sys.exit(1)
+
+    try:
+        bt_nodes_model = _extract_bt_nodes_model(bt_nodes_content)
+    except (ValueError, IndexError) as exc:
+        logger.error(f'Failed to extract BT nodes model from XML: {exc}')
         sys.exit(1)
 
     @env.macro
