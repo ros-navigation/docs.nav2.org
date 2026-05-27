@@ -6,7 +6,6 @@ import re
 import sys
 from shutil import rmtree
 import xml.etree.ElementTree as ET
-from typing import Pattern
 from pathlib import Path
 
 from jinja2 import Template
@@ -299,9 +298,9 @@ def _get_all_lines(file_path: Path) -> list[str]:
 
 def _get_lines_section(
     lines: list[str],
-    start: Pattern,
-    end: Pattern,
-    stop_at: Pattern
+    start: re.Pattern,
+    end: re.Pattern,
+    stop_at: re.Pattern
 ) -> list[str]:
     """
     Extract a section of lines.
@@ -340,9 +339,9 @@ def _get_lines_section(
 
 def _extract_doxygen_code_block(
     lines: list[str],
-    code_start_pattern: Pattern,
-    code_end_pattern: Pattern,
-    comment_block_pattern: Pattern
+    code_start_pattern: re.Pattern,
+    code_end_pattern: re.Pattern,
+    comment_block_pattern: re.Pattern
 ) -> list[str]:
     """Extract code block from Doxygen with trailing comments removing."""
     code_lines: list[str] = []
