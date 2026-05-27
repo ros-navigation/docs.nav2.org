@@ -256,6 +256,38 @@ def _clone_sparse_github_data(
     )
 
 
+def _clone_github_repository(
+        repo_name: str, 
+        owner: str, 
+        branch: str, 
+        clone_dir: Path
+    ) -> None:
+    """Clone GitHub repository."""
+
+    if not clone_dir.exists():
+        raise ValueError(f"Clone directory does not exist: {clone_dir}")
+
+    repo_work_dir = clone_dir / repo_name
+    _remove_dir(repo_work_dir)
+
+    github_url = f"https://github.com/{owner}/{repo_name}.git"
+    logger.info(f"Cloning repository {github_url} (branch: {branch})")
+    try:
+        subprocess.run([
+            "git", "clone",
+            "--branch", branch,
+            github_url,
+            str(repo_work_dir),
+        ], check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError:
+        _remove_dir(repo_work_dir)
+        raise
+
+    logger.info(
+        f"Cloned the repository {github_url} (branch: {branch}) to {repo_work_dir}."
+    )
+
+
 def _load_bt_nodes_model(file_path: Path ) -> ET.Element:
     """
     Load the behavior-tree nodes model from a cached file.
@@ -383,19 +415,19 @@ def define_env(env):
     github_repos = env.variables["github_repositories"]
     nav2_tree_nodes_file_path = Path(env.variables["nav2_tree_nodes_file_path"])
 
-    try:
-        for repo_name, repo_info in github_repos.items():
+    for repo_name, repo_info in github_repos.items():
 
-            local_repo_path = cache_dir / Path(repo_name)
-            if local_repo_path.exists() \
-            and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
-            and _is_git_workdir_synced(local_repo_path):
-                logger.info(
-                    f"Cached Git repository '{local_repo_path}' "
-                    "is synced with remote GitHub repository. "
-                    "Skipping clone."
-                )
-                continue
+        local_repo_path = cache_dir / Path(repo_name)
+        if local_repo_path.exists() \
+        and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
+        and _is_git_workdir_synced(local_repo_path):
+            logger.info(
+                f"Cached Git repository '{local_repo_path}' "
+                "is synced with remote GitHub repository. "
+                "Skipping clone."
+            )
+            continue
+        try:
             _clone_sparse_github_data(
                 repo_name=repo_name, 
                 owner=repo_info["owner"], 
@@ -403,9 +435,24 @@ def define_env(env):
                 data_to_clone=repo_info["data_to_clone"], 
                 clone_dir=cache_dir
             )
-    except (ValueError, OSError, subprocess.CalledProcessError) as exc:
-        logger.error(f"Failed to clone GitHub data: {getattr(exc, 'stderr', exc)}")
-        sys.exit(1)
+        except subprocess.CalledProcessError as exc:
+            stderr = getattr(exc, 'stderr', None)
+            logger.error(f"Failed to clone GitHub data: {stderr or exc}")
+            logger.info("Attempting complete clone as fallback...")
+            try:
+                _clone_github_repository(
+                    repo_name=repo_name, 
+                    owner=repo_info["owner"], 
+                    branch=repo_info["branch"], 
+                    clone_dir=cache_dir
+                )
+            except (subprocess.CalledProcessError, ValueError, OSError) as exc:
+                stderr = getattr(exc, 'stderr', None)
+                logger.error(f"Failed to clone GitHub repository: {stderr or exc}")        
+                sys.exit(1)
+        except (ValueError, OSError) as exc:
+            logger.error(f"Failed to clone GitHub data: {exc}")
+            sys.exit(1)
 
     try:
         bt_nodes_model = _load_bt_nodes_model(nav2_tree_nodes_file_path)
