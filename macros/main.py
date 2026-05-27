@@ -9,7 +9,7 @@ from jinja2 import Template
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(levelname)s - [%(asctime)s][%(filename)s] %(message)s',
+    format='%(levelname)s    -  [%(asctime)s][%(filename)s] %(message)s',
     datefmt='%H:%M:%S'
 )
 logger = logging.getLogger(__name__)
@@ -236,9 +236,10 @@ def _clone_sparse_github_data(
         raise
 
     logger.info(
-        f"Cloned the following data from {github_url} (branch: {branch}) to {repo_work_dir}:\n\t" +
-        "\n\t".join(data_to_clone)
+        f"Cloned the following data from {github_url} (branch: {branch}) to {repo_workdir}:"
     )
+    for path in data_to_clone:
+        logger.info(f'\t - {path}')
 
 
 def _clone_github_repository(
