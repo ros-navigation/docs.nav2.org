@@ -34,18 +34,19 @@ For tutorials on creating your own plugins, please see
 
 <div class="center-table" markdown>
 
-| Plugin Name                            | Creator               | Description                                                                                                                                                                |
-|----------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Voxel Layer][]                        | Eitan Marder-Eppstein | Maintains persistent<br>3D voxel layer using depth and<br>laser sensor readings and<br>raycasting to clear free space                                                      |
-| [Range Layer][]                        | David Lu              | Uses a probabilistic model to<br>put data from sensors that<br>publish range msgs on the costmap                                                                           |
-| [Static Layer][]                       | Eitan Marder-Eppstein | Gets static `map` and loads<br>occupancy information into<br>costmap                                                                                                       |
-| [Inflation Layer][]                    | Tony Najjar           | Inflates lethal obstacles in<br>costmap with exponential decay<br>(with the option to use OpenMP<br>for parallelization)                                                   |
-| [Legacy Inflation Layer][]             | Eitan Marder-Eppstein | Inflates lethal obstacles in<br>costmap with exponential decay                                                                                                             |
-| [Obstacle Layer][]                     | Eitan Marder-Eppstein | Maintains persistent 2D costmap<br>from 2D laser scans with<br>raycasting to clear free space                                                                              |
-| [Spatio-Temporal Voxel Layer][]        | Steve Macenski        | Maintains temporal 3D sparse<br>volumetric voxel grid with decay<br>through sensor models                                                                                  |
-| [Non-Persistent Voxel Layer][]         | Steve Macenski        | Maintains 3D occupancy grid<br>consisting only of the most<br>sets of measurements                                                                                         |
-| [Denoise Layer][]                      | Andrey Ryzhikov       | Filters noise-induced<br>standalone obstacles or small<br>obstacles groups                                                                                                 |
-| [Plugin Container Layer][]             | Alexander Yuen        | Combines the different costmap<br>layers specified under this<br>layer in order populate the same<br>costmap with different isolated<br>combinations of costmap layers     |
+| Plugin Name                            | Creator                    | Description                                                                                                                                                                |
+|----------------------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Voxel Layer][]                        | Eitan Marder-Eppstein      | Maintains persistent<br>3D voxel layer using depth and<br>laser sensor readings and<br>raycasting to clear free space                                                      |
+| [Range Layer][]                        | David Lu                   | Uses a probabilistic model to<br>put data from sensors that<br>publish range msgs on the costmap                                                                           |
+| [Static Layer][]                       | Eitan Marder-Eppstein      | Gets static `map` and loads<br>occupancy information into<br>costmap                                                                                                       |
+| [Inflation Layer][]                    | Tony Najjar                | Inflates lethal obstacles in<br>costmap with exponential decay<br>(with the option to use OpenMP<br>for parallelization)                                                   |
+| [Legacy Inflation Layer][]             | Eitan Marder-Eppstein      | Inflates lethal obstacles in<br>costmap with exponential decay                                                                                                             |
+| [Obstacle Layer][]                     | Eitan Marder-Eppstein      | Maintains persistent 2D costmap<br>from 2D laser scans with<br>raycasting to clear free space                                                                              |
+| [Spatio-Temporal Voxel Layer][]        | Steve Macenski             | Maintains temporal 3D sparse<br>volumetric voxel grid with decay<br>through sensor models                                                                                  |
+| [Non-Persistent Voxel Layer][]         | Steve Macenski             | Maintains 3D occupancy grid<br>consisting only of the most<br>sets of measurements                                                                                         |
+| [Denoise Layer][]                      | Andrey Ryzhikov            | Filters noise-induced<br>standalone obstacles or small<br>obstacles groups                                                                                                 |
+| [Plugin Container Layer][]             | Alexander Yuen             | Combines the different costmap<br>layers specified under this<br>layer in order populate the same<br>costmap with different isolated<br>combinations of costmap layers     |
+| [Ground Consistency Layer][]           | Muhammad Haider Khan Lodhi | Height-aware costmap layer using<br>3D ground segmentation. Pair<br>with Inflation Layer for terrain-aware navigation.                                                     |
 
 </div>
 
@@ -59,6 +60,7 @@ For tutorials on creating your own plugins, please see
 [Non-Persistent Voxel Layer]: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 [Denoise Layer]: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 [Plugin Container Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
+[Ground Consistency Layer]: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
 
 ## Costmap Filters { #navigation-plugins-costmap-filters }
 

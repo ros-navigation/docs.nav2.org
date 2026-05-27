@@ -109,6 +109,7 @@ nav:
       - Navigating with Vector Objects: tutorials/general_tutorials/docs/navigation2_with_vector_objects.md
       - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/general_tutorials/docs/roscon_uk_2025_state_estimation.md
       - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
+      - Ground Terrain Segmentation using 3D Lidar: tutorials/general_tutorials/docs/navigation2_with_ground_consistency_layer.md
   - Configuration & Development:
     - configuration_and_development/index.md
     - First-Time Robot Setup Guide:
