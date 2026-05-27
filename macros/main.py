@@ -7,7 +7,7 @@ import sys
 from shutil import rmtree
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Any
+from typing import Any, TypedDict
 
 from jinja2 import Template
 
@@ -41,21 +41,16 @@ _DOXYGEN_REGEX_PATTERNS = {
 }
 
 
-_PORT_SECTION_TEMPLATE = Template("""\
-## {{ heading }}
+# MkDocs-formatted template for a single port
+_PORT_TEMPLATE = Template("""
+### **`{{ port_name }}`**
 
-{% for port in ports -%}
-### **`{{ port.name }}`**
+| Type                        | Default                 |
+|-----------------------------|-------------------------|
+| `{{ port_data.data_type }}` | {{ port_data.default }} |
 
-| Type              | Default            |
-|-------------------|--------------------|
-| `{{ port.type }}` | {{ port.default }} |
-
-{% if port.description %}
 Description
-:   {{ port.description }}
-{% endif %}
-{% endfor -%}
+:   {{ port_data.description }}
 """)
 
 
@@ -67,6 +62,14 @@ _XML_CODE_BLOCK_TEMPLATE = Template("""\
 
 
 TREE_NODES_MODEL_TAG = 'TreeNodesModel'
+
+
+class PortData(TypedDict):
+    data_type: str
+    default: str
+    description: str
+
+type NodePorts = dict[str, PortData]  # {port_name: PortData}
 
 
 def _convert_type(type_name: str) -> str:
@@ -87,29 +90,15 @@ def _convert_type(type_name: str) -> str:
     return result
 
 
-def _format_default(default_str: str) -> str:
+def _extract_ports(node: ET.Element) -> tuple[NodePorts, NodePorts, NodePorts]:
     """
-    Simplify numeric default values by stripping trailing zeros.
-
-    For example: `0.150000` -> `0.15`, `1.000000` -> `1.0`.
-    """
-    try:
-        return str(float(default_str))
-    except (ValueError, TypeError):
-        return default_str
-
-
-def _parse_ports(
-    node: ET.Element
-) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
-    """
-    Parse input_port, output_port and bidirectional_port children from XML BT node.
+    Extract input, output and bidirectional ports from given XML BT node.
 
     Returns tuple (input_ports, output_ports, bidirectional_ports).
     """
-    input_ports: list[dict[str, str]] = []
-    output_ports: list[dict[str, str]] = []
-    bidirectional_ports: list[dict[str, str]] = []
+    input_ports: NodePorts = {}
+    output_ports: NodePorts = {}
+    bidirectional_ports: NodePorts = {}
 
     for child in node:
 
@@ -117,35 +106,39 @@ def _parse_ports(
         if port_direction not in ('input_port', 'output_port', 'bidirectional_port'):
             continue
 
-        port_name = child.attrib.get('name', '')
+        port_name = child.attrib.get('name')
+        if not port_name:
+            raise ValueError(f'Each port must have a "name" attribute.')
 
-        raw_port_type = child.attrib.get('type', '')
+        raw_port_type = child.attrib.get('type')
+        if not raw_port_type:
+            raise ValueError(f'Port {port_name}: missing "type" attribute.')
         port_type = _convert_type(raw_port_type)
 
-        raw_port_default_value = child.attrib.get('default', 'N/A')
-        port_default_value = (
-            _format_default(raw_port_default_value)
-            if port_type in ('double', 'float')
-            else raw_port_default_value
-        )
+        port_default_value = child.attrib.get('default', 'N/A')
+        if port_default_value in ('double', 'float'):
+            # Simplify numeric default values by stripping trailing zeros
+            port_default_value = str(float(port_default_value))
 
         port_description = (child.text or '').strip()
+        if not port_description:
+            raise ValueError(f'Port {port_name}: missing description.')
 
-        port = {
-            'name': port_name,
-            'type': port_type,
+        port_data: PortData = {
+            'data_type': port_type,
             'default': port_default_value,
             'description': port_description,
         }
 
-        if port_direction == 'input_port':
-            input_ports.append(port)
-        elif port_direction == 'output_port':
-            output_ports.append(port)
-        elif port_direction == 'bidirectional_port':
-            bidirectional_ports.append(port)
+        match port_direction:
+            case 'input_port':
+                input_ports[port_name] = port_data
+            case 'output_port':
+                output_ports[port_name] = port_data
+            case 'bidirectional_port':
+                bidirectional_ports[port_name] = port_data
 
-    return input_ports, output_ports, bidirectional_ports
+    return (input_ports, output_ports, bidirectional_ports)
 
 
 def _get_git_branch_name(local_repo_path: Path) -> str | None:
@@ -466,32 +459,41 @@ def define_env(env):
             logger.error(f"BT node ID not found: {bt_node_id}.")
             sys.exit(1)
 
-        input_ports, output_ports, bidirectional_ports = _parse_ports(node)
+        try:
+            input_ports, output_ports, bidirectional_ports = _extract_ports(node)
+        except ValueError as exc:
+            logger.error(f"Failed to extract ports for BT node {bt_node_id}: {exc}")
+            sys.exit(1)
 
-        sections = []
+        rendered_ports = []
         if input_ports:
-            sections.append(
-                _PORT_SECTION_TEMPLATE.render(
-                    heading='Input Ports',
-                    ports=input_ports
+            rendered_ports.append('## Input Ports\n')
+            for port_name, port_data in input_ports.items():
+                rendered_port = _PORT_TEMPLATE.render(
+                    port_name=port_name, 
+                    port_data=port_data
                 )
-            )
-        if output_ports:
-            sections.append(
-                _PORT_SECTION_TEMPLATE.render(
-                    heading='Output Ports',
-                    ports=output_ports
-                )
-            )
-        if bidirectional_ports:
-            sections.append(
-                _PORT_SECTION_TEMPLATE.render(
-                    heading='Bidirectional Ports',
-                    ports=bidirectional_ports
-                )
-            )
+                rendered_ports.append(rendered_port)
 
-        return '\n\n'.join(sections)
+        if output_ports:
+            rendered_ports.append('## Output Ports\n')
+            for port_name, port_data in output_ports.items():
+                rendered_port = _PORT_TEMPLATE.render(
+                    port_name=port_name, 
+                    port_data=port_data
+                )
+                rendered_ports.append(rendered_port)
+
+        if bidirectional_ports:
+            rendered_ports.append('## Bidirectional Ports\n')
+            for port_name, port_data in bidirectional_ports.items():
+                rendered_port = _PORT_TEMPLATE.render(
+                    port_name=port_name, 
+                    port_data=port_data
+                )
+                rendered_ports.append(rendered_port)
+
+        return '\n\n'.join(rendered_ports)
 
     @env.macro
     def render_bt_node_example(file_path: Path, class_name: str | None = None) -> str:
