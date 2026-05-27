@@ -1,5 +1,6 @@
 from __future__ import annotations # Required for Python 3.8 support in CI (ubuntu:focal)
-import subprocess, logging, re, sys, os, shutil
+import subprocess, logging, re, sys
+from shutil import rmtree
 import xml.etree.ElementTree as ET
 from typing import Pattern 
 from pathlib import Path
@@ -137,17 +138,6 @@ def _parse_ports(
     return input_ports, output_ports, bidirectional_ports
 
 
-def _remove_dir(dir_path: Path):
-    """Remove directory if it exists"""
-    if os.path.exists(dir_path):
-        try:
-            shutil.rmtree(dir_path)
-            logger.info(f"Removed existing directory: {dir_path}")
-        except OSError as exc:
-            logger.error(f"Failed to remove existing directory {dir_path}: {exc}")
-            raise
-
-
 def _get_git_branch_name(local_repo_path: Path) -> str | None:
     """
     Get current Git branch name in the working directory.
@@ -210,17 +200,15 @@ def _clone_sparse_github_data(
     Clone GitHub repository sparsely and 
     checkout the specified files/directories.
     """
-
     if not data_to_clone:
-        logger.error("No directories or files specified for sparse checkout.")
-        raise ValueError("data_to_clone cannot be empty.")
-    
+        raise ValueError("No directories or files specified for sparse checkout.")
+
     if not clone_dir.exists():
-        logger.error(f"Clone directory does not exist: {clone_dir}")
-        raise ValueError(f"clone_dir must exist: {clone_dir}")
-    
-    repo_work_dir = clone_dir / repo_name
-    _remove_dir(repo_work_dir)
+        raise ValueError(f"Clone directory does not exist: {clone_dir}")
+
+    repo_workdir = clone_dir / repo_name
+    if repo_workdir.exists():
+        rmtree(repo_workdir)
 
     github_url = f"https://github.com/{owner}/{repo_name}.git"
     logger.info(f"Cloning from {github_url} (branch: {branch})")
@@ -232,22 +220,19 @@ def _clone_sparse_github_data(
             "--sparse",
             "--branch", branch,
             github_url,
-            str(repo_work_dir),
-        ], check=True, capture_output=True, text=True)
-    except subprocess.CalledProcessError as exc:
-        raise
-    
-    logger.info(f"Performing sparse checkout in {repo_work_dir}")
-    try:
+            repo_workdir,
+        ], check=True, text=True)
+
+        logger.info(f"Performing sparse checkout in {repo_workdir} directory...")
         subprocess.run([
             "git", 
             "sparse-checkout", 
             "set",
             "--no-cone",
             *data_to_clone,
-        ], cwd=repo_work_dir, check=True, capture_output=True, text=True)
-    except subprocess.CalledProcessError as exc:
-        _remove_dir(repo_work_dir)
+        ], cwd=repo_workdir, check=True, text=True)
+    except subprocess.CalledProcessError:
+        rmtree(repo_workdir, ignore_errors=True)
         raise
 
     logger.info(
@@ -263,12 +248,12 @@ def _clone_github_repository(
         clone_dir: Path
     ) -> None:
     """Clone GitHub repository."""
-
     if not clone_dir.exists():
         raise ValueError(f"Clone directory does not exist: {clone_dir}")
 
-    repo_work_dir = clone_dir / repo_name
-    _remove_dir(repo_work_dir)
+    repo_workdir = clone_dir / repo_name
+    if repo_workdir.exists():
+        rmtree(repo_workdir)
 
     github_url = f"https://github.com/{owner}/{repo_name}.git"
     logger.info(f"Cloning repository {github_url} (branch: {branch})")
@@ -277,14 +262,14 @@ def _clone_github_repository(
             "git", "clone",
             "--branch", branch,
             github_url,
-            str(repo_work_dir),
-        ], check=True, capture_output=True, text=True)
+            repo_workdir,
+        ], check=True, text=True)
     except subprocess.CalledProcessError:
-        _remove_dir(repo_work_dir)
+        rmtree(repo_workdir, ignore_errors=True)
         raise
 
     logger.info(
-        f"Cloned the repository {github_url} (branch: {branch}) to {repo_work_dir}."
+        f"Cloned the repository {github_url} (branch: {branch}) to {repo_workdir}."
     )
 
 
