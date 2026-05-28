@@ -288,16 +288,6 @@ def _extract_bt_nodes_model(content: ET.ElementTree[Any]) -> ET.Element:
     return bt_nodes_model
 
 
-def _get_all_lines(file_path: Path) -> list[str]:
-    """Read all lines from a given file and return them as list[str]."""
-    try:
-        with open(file_path, encoding='utf-8') as file:
-            return file.readlines()
-    except OSError:
-        logger.error(f'Cannot read file {file_path}')
-        raise
-
-
 def _get_lines_section(
     lines: list[str],
     start: re.Pattern,
@@ -504,9 +494,10 @@ def define_env(env):
         """
 
         try:
-            file_lines = _get_all_lines(file_path)
+            with open(file_path, encoding='utf-8') as file:
+                file_lines = file.readlines()
         except OSError as exc:
-            logger.error(f'Failed to read lines from file: {exc}')
+            logger.error(f'Failed to read lines from file {file_path}: {exc}')
             sys.exit(1)
 
         class_str = r'^\s*class\s+'
