@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 _TYPE_DIRECT_MAPPINGS = {
-    "unsigned short": "uint16",
+    'unsigned short': 'uint16',
 }
 
 
@@ -33,11 +33,11 @@ _TYPE_REGEX_TRANSFORMS = [
 
 
 _DOXYGEN_REGEX_PATTERNS = {
-    "COMMENT_STYLE": re.compile(r"^[ \t]*\*[ \t]?"),
-    "COMMENT_END": re.compile(r"^\s*\*/"),
-    "XML_USAGE_EXAMPLE": re.compile(r"Usage in XML:"),
-    "CODE_BLOCK_START": re.compile(r"@code\b"),
-    "CODE_BLOCK_END": re.compile(r"@endcode\b"),
+    'COMMENT_STYLE': re.compile(r'^[ \t]*\*[ \t]?'),
+    'COMMENT_END': re.compile(r'^\s*\*/'),
+    'XML_USAGE_EXAMPLE': re.compile(r'Usage in XML:'),
+    'CODE_BLOCK_START': re.compile(r'@code\b'),
+    'CODE_BLOCK_END': re.compile(r'@endcode\b'),
 }
 
 
@@ -145,7 +145,7 @@ def _get_git_branch_name(local_repo_path: Path) -> str | None:
     """Get current Git branch name in the working directory."""
     try:
         branch_name = subprocess.run(
-            ["git", "branch", "--show-current"],
+            ['git', 'branch', '--show-current'],
             cwd=local_repo_path,
             check=True,
             capture_output=True,
@@ -153,7 +153,7 @@ def _get_git_branch_name(local_repo_path: Path) -> str | None:
         ).stdout.strip()
         return branch_name
     except subprocess.CalledProcessError as exc:
-        logger.error(f"Failed to get Git branch name: {exc}")
+        logger.error(f'Failed to get Git branch name: {exc}')
         return None
 
 
@@ -165,7 +165,7 @@ def _is_git_workdir_synced(local_repo_path: Path) -> bool:
     """
     try:
         local_commit_hash = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
+            ['git', 'rev-parse', 'HEAD'],
             cwd=local_repo_path,
             check=True,
             capture_output=True,
@@ -174,7 +174,7 @@ def _is_git_workdir_synced(local_repo_path: Path) -> bool:
 
         branch_name = _get_git_branch_name(local_repo_path)
         remote_commit_hash = subprocess.run(
-            ["git", "ls-remote", "origin", f"refs/heads/{branch_name}"],
+            ['git', 'ls-remote', 'origin', f'refs/heads/{branch_name}'],
             cwd=local_repo_path,
             check=True,
             capture_output=True,
@@ -184,7 +184,7 @@ def _is_git_workdir_synced(local_repo_path: Path) -> bool:
         return local_commit_hash == remote_commit_hash
 
     except subprocess.CalledProcessError as exc:
-        logger.error(f"Failed to check Git working directory status: {exc}")
+        logger.error(f'Failed to check Git working directory status: {exc}')
         return False
 
 
@@ -197,34 +197,34 @@ def _clone_sparse_github_data(
 ) -> None:
     """Clone GitHub repository sparsely and checkout the specified files/directories."""
     if not data_to_clone:
-        raise ValueError("No directories or files specified for sparse checkout.")
+        raise ValueError('No directories or files specified for sparse checkout.')
 
     if not clone_dir.exists():
-        raise ValueError(f"Clone directory does not exist: {clone_dir}")
+        raise ValueError(f'Clone directory does not exist: {clone_dir}')
 
     repo_workdir = clone_dir / repo_name
     if repo_workdir.exists():
         rmtree(repo_workdir)
 
-    github_url = f"https://github.com/{owner}/{repo_name}.git"
-    logger.info(f"Cloning from {github_url} (branch: {branch})")
+    github_url = f'https://github.com/{owner}/{repo_name}.git'
+    logger.info(f'Cloning from {github_url} (branch: {branch})')
     try:
         subprocess.run([
-            "git", "clone",
-            "--depth=1",
-            "--filter=blob:none",
-            "--sparse",
-            "--branch", branch,
+            'git', 'clone',
+            '--depth=1',
+            '--filter=blob:none',
+            '--sparse',
+            '--branch', branch,
             github_url,
             repo_workdir,
         ], check=True, text=True)
 
-        logger.info(f"Performing sparse checkout in {repo_workdir} directory...")
+        logger.info(f'Performing sparse checkout in {repo_workdir} directory...')
         subprocess.run([
-            "git",
-            "sparse-checkout",
-            "set",
-            "--no-cone",
+            'git',
+            'sparse-checkout',
+            'set',
+            '--no-cone',
             *data_to_clone,
         ], cwd=repo_workdir, check=True, text=True)
     except subprocess.CalledProcessError:
@@ -232,7 +232,7 @@ def _clone_sparse_github_data(
         raise
 
     logger.info(
-        f"Cloned the following data from {github_url} (branch: {branch}) to {repo_workdir}:"
+        f'Cloned the following data from {github_url} (branch: {branch}) to {repo_workdir}:'
     )
     for path in data_to_clone:
         logger.info(f'\t - {path}')
@@ -246,18 +246,18 @@ def _clone_github_repository(
 ) -> None:
     """Clone GitHub repository."""
     if not clone_dir.exists():
-        raise ValueError(f"Clone directory does not exist: {clone_dir}")
+        raise ValueError(f'Clone directory does not exist: {clone_dir}')
 
     repo_workdir = clone_dir / repo_name
     if repo_workdir.exists():
         rmtree(repo_workdir)
 
-    github_url = f"https://github.com/{owner}/{repo_name}.git"
-    logger.info(f"Cloning repository {github_url} (branch: {branch})")
+    github_url = f'https://github.com/{owner}/{repo_name}.git'
+    logger.info(f'Cloning repository {github_url} (branch: {branch})')
     try:
         subprocess.run([
-            "git", "clone",
-            "--branch", branch,
+            'git', 'clone',
+            '--branch', branch,
             github_url,
             repo_workdir,
         ], check=True, text=True)
@@ -266,7 +266,7 @@ def _clone_github_repository(
         raise
 
     logger.info(
-        f"Cloned the repository {github_url} (branch: {branch}) to {repo_workdir}."
+        f'Cloned the repository {github_url} (branch: {branch}) to {repo_workdir}.'
     )
 
 
@@ -291,10 +291,10 @@ def _extract_bt_nodes_model(content: ET.ElementTree[Any]) -> ET.Element:
 def _get_all_lines(file_path: Path) -> list[str]:
     """Read all lines from a given file and return them as list[str]."""
     try:
-        with open(file_path, encoding="utf-8") as file:
+        with open(file_path, encoding='utf-8') as file:
             return file.readlines()
     except OSError:
-        logger.error(f"Cannot read file {file_path}")
+        logger.error(f'Cannot read file {file_path}')
         raise
 
 
@@ -326,14 +326,14 @@ def _get_lines_section(
             break
 
     if start_idx is None:
-        raise ValueError(f"Pattern '{start.pattern}' not found.")
+        raise ValueError(f'Pattern "{start.pattern}" not found.')
 
     if end_idx is None:
-        raise ValueError(f"Pattern '{end.pattern}' not found.")
+        raise ValueError(f'Pattern "{end.pattern}" not found.')
 
     if end_idx < start_idx:
         raise ValueError(
-            f"End pattern '{end.pattern}' found before start pattern '{start.pattern}'."
+            f'End pattern "{end.pattern}" found before start pattern "{start.pattern}".'
         )
 
     return lines[start_idx:end_idx]
@@ -359,8 +359,8 @@ def _extract_doxygen_code_block(
         elif code_end_pattern.search(line):
             if not code_start_found:
                 raise ValueError(
-                    f"Code end pattern '{code_end_pattern.pattern}' "
-                    f"found before code start pattern '{code_start_pattern.pattern}'."
+                    f'Code end pattern "{code_end_pattern.pattern}" '
+                    f'found before code start pattern "{code_start_pattern.pattern}".'
                 )
             in_code_block = False
             code_end_found = True
@@ -371,16 +371,16 @@ def _extract_doxygen_code_block(
             code_lines.append(line)
 
     if not code_start_found:
-        raise ValueError(f"Code start pattern '{code_start_pattern.pattern}' not found.")
+        raise ValueError(f'Code start pattern "{code_start_pattern.pattern}" not found.')
 
     if not code_end_found:
-        raise ValueError(f"Code end pattern '{code_end_pattern.pattern}' not found.")
+        raise ValueError(f'Code end pattern "{code_end_pattern.pattern}" not found.')
 
     if not code_lines:
         raise ValueError(
-            f"No code block found between '{code_start_pattern.pattern}' "
-            f"and '{code_end_pattern.pattern}' patterns. "
-            "Review Doxygen comment formatting in the hpp file."
+            f'No code block found between "{code_start_pattern.pattern}" '
+            f'and "{code_end_pattern.pattern}" patterns. '
+            'Review Doxygen comment formatting in the hpp file.'
         )
 
     code_lines[-1] = code_lines[-1].rstrip('\n')
@@ -389,47 +389,47 @@ def _extract_doxygen_code_block(
 
 def define_env(env):
     """This is the hook for the variables, macros and filters."""
-    cache_dir = Path(env.variables["cache_dir"])
-    github_repos = env.variables["github_repositories"]
-    nav2_tree_nodes_file_path = Path(env.variables["nav2_tree_nodes_file_path"])
+    cache_dir = Path(env.variables['cache_dir'])
+    github_repos = env.variables['github_repositories']
+    nav2_tree_nodes_file_path = Path(env.variables['nav2_tree_nodes_file_path'])
 
     for repo_name, repo_info in github_repos.items():
 
         local_repo_path = cache_dir / Path(repo_name)
         if local_repo_path.exists() \
-                and repo_info["branch"] == _get_git_branch_name(local_repo_path) \
+                and repo_info['branch'] == _get_git_branch_name(local_repo_path) \
                 and _is_git_workdir_synced(local_repo_path):
             logger.info(
-                f"Cached Git repository '{local_repo_path}' "
-                "is synced with remote GitHub repository. "
-                "Skipping clone."
+                f'Cached Git repository "{local_repo_path}" '
+                f'is synced with remote GitHub repository. '
+                f'Skipping clone.'
             )
             continue
         try:
             _clone_sparse_github_data(
                 repo_name=repo_name,
-                owner=repo_info["owner"],
-                branch=repo_info["branch"],
-                data_to_clone=repo_info["data_to_clone"],
+                owner=repo_info['owner'],
+                branch=repo_info['branch'],
+                data_to_clone=repo_info['data_to_clone'],
                 clone_dir=cache_dir
             )
         except subprocess.CalledProcessError as exc:
             stderr = getattr(exc, 'stderr', None)
-            logger.error(f"Failed to clone GitHub data: {stderr or exc}")
-            logger.info("Attempting complete clone as fallback...")
+            logger.error(f'Failed to clone GitHub data: {stderr or exc}')
+            logger.info('Attempting complete clone as fallback...')
             try:
                 _clone_github_repository(
                     repo_name=repo_name,
-                    owner=repo_info["owner"],
-                    branch=repo_info["branch"],
+                    owner=repo_info['owner'],
+                    branch=repo_info['branch'],
                     clone_dir=cache_dir
                 )
             except (subprocess.CalledProcessError, ValueError, OSError) as exc:
                 stderr = getattr(exc, 'stderr', None)
-                logger.error(f"Failed to clone GitHub repository: {stderr or exc}")
+                logger.error(f'Failed to clone GitHub repository: {stderr or exc}')
                 sys.exit(1)
         except (ValueError, OSError) as exc:
-            logger.error(f"Failed to clone GitHub data: {exc}")
+            logger.error(f'Failed to clone GitHub data: {exc}')
             sys.exit(1)
 
     try:
@@ -456,13 +456,13 @@ def define_env(env):
         """
         node = bt_nodes_model.find(f'.//*[@ID="{bt_node_id}"]')
         if node is None:
-            logger.error(f"BT node ID not found: {bt_node_id}.")
+            logger.error(f'BT node ID not found: {bt_node_id}.')
             sys.exit(1)
 
         try:
             input_ports, output_ports, bidirectional_ports = _extract_ports(node)
         except ValueError as exc:
-            logger.error(f"Failed to extract ports for BT node {bt_node_id}: {exc}")
+            logger.error(f'Failed to extract ports for BT node {bt_node_id}: {exc}')
             sys.exit(1)
 
         rendered_ports = []
@@ -506,34 +506,34 @@ def define_env(env):
         try:
             file_lines = _get_all_lines(file_path)
         except OSError as exc:
-            logger.error(f"Failed to read lines from file: {exc}")
+            logger.error(f'Failed to read lines from file: {exc}')
             sys.exit(1)
 
-        class_str = r"^\s*class\s+"
+        class_str = r'^\s*class\s+'
         if class_name:
-            class_str += rf"{re.escape(class_name)}\b"
+            class_str += rf'{re.escape(class_name)}\b'
         class_pattern = re.compile(class_str)
 
         try:
             doxygen_section = _get_lines_section(
                 lines=file_lines,
-                start=_DOXYGEN_REGEX_PATTERNS["XML_USAGE_EXAMPLE"],
-                end=_DOXYGEN_REGEX_PATTERNS["COMMENT_END"],
+                start=_DOXYGEN_REGEX_PATTERNS['XML_USAGE_EXAMPLE'],
+                end=_DOXYGEN_REGEX_PATTERNS['COMMENT_END'],
                 stop_at=class_pattern
             )
         except ValueError as exc:
-            logger.error(f"Failed to extract lines section from file {file_path}: {exc}")
+            logger.error(f'Failed to extract lines section from file {file_path}: {exc}')
             sys.exit(1)
 
         try:
             code_section = _extract_doxygen_code_block(
                 lines=doxygen_section,
-                code_start_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_START"],
-                code_end_pattern=_DOXYGEN_REGEX_PATTERNS["CODE_BLOCK_END"],
-                comment_block_pattern=_DOXYGEN_REGEX_PATTERNS["COMMENT_STYLE"]
+                code_start_pattern=_DOXYGEN_REGEX_PATTERNS['CODE_BLOCK_START'],
+                code_end_pattern=_DOXYGEN_REGEX_PATTERNS['CODE_BLOCK_END'],
+                comment_block_pattern=_DOXYGEN_REGEX_PATTERNS['COMMENT_STYLE']
             )
         except ValueError as exc:
-            logger.error(f"Failed to extract code block from file {file_path}: {exc}")
+            logger.error(f'Failed to extract code block from file {file_path}: {exc}')
             sys.exit(1)
 
         code_example = ''.join(code_section)
