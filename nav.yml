@@ -99,7 +99,7 @@ nav:
       - Camera Calibration: tutorials/general_tutorials/docs/camera_calibration.md
       - Get Backtrace in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_backtrace.md
       - Profiling in ROS 2 / Nav2: tutorials/general_tutorials/docs/get_profile.md
-      - Docker for Development - Zero to Hero: tutorials/general_tutorials/docs/docker_dev.md
+      - 'Docker for Development: Zero to Hero': tutorials/general_tutorials/docs/docker_dev.md
       - Route Server Tools:
         - tutorials/general_tutorials/docs/route_server_tools/index.md
         - Using the Nav2 Route Tool: tutorials/general_tutorials/docs/route_server_tools/navigation2_route_tool.md
