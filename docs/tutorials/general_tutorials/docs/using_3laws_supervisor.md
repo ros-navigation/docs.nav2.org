@@ -345,13 +345,13 @@ At this point, all 6 tabs should be white meaning that the configuration is comp
 If any tab is yellow, it means that there are still required fields that need to be filled in.
 Save again once complete.
 
-You should now see your complete configuration saved in ~/.3laws/config/supervisor.yaml!
+You should now see your complete configuration saved in *~/.3laws/config/supervisor.yaml*!
 Check out [tb4_supervisor.yaml](https://github.com/open-navigation/opennav_3laws_demonstration/blob/main/lll_nav2_warehouse_demo/config/tb4_supervisor.yaml) for a fully-configured example for the Turtlebot4 robot which can be used for the simulation demonstrations in this tutorial.
-Just be sure to move this file into your ~/.3laws/config/ directory, rename it to supervisor.yaml, and input your API key & desired robot name before proceeding.
+Just be sure to move this file into your *~/.3laws/config/* directory, rename it to *supervisor.yaml*, and input your API key & desired robot name before proceeding.
 
 ### Debugging
 
-If you run into problems, check out the logs in the Supervisor terminal and in the Supervisor’s control panel Operations tab while the supervisor is running.
+If you run into problems, check out the logs in the Supervisor terminal and in the Supervisor’s control panel *Operations* tab while the supervisor is running.
 If a box is green, it means it is receiving and successfully processing data.
 If it is blue, it is receiving data but not processing it correctly.
 If it is red, it is not receiving data at all.

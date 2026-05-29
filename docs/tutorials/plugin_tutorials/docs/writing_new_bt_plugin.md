@@ -264,7 +264,7 @@ BT_JSON_CONVERTER(geometry_msgs::msg::Point, msg)
 
 The macro `BT_JSON_CONVERTER` must be placed within the namespace of the custom type to be converted. Additionally, if the custom type is composed of other custom types, those types must be converted first before converting the parent type.
 
-After defining the conversion, you need to register the custom type in the providedPorts function. Below is an example of how to register it:
+After defining the conversion, you need to register the custom type in the *providedPorts* function. Below is an example of how to register it:
 
 ```cpp
 static PortsList providedPorts()
@@ -281,4 +281,4 @@ For more information on custom type conversion, you can refer to the [json_utils
 
 !!! note
 
-    All custom types used in Nav2 are already registered in the json_utils.hpp file. You can use them directly without the need to register them again.
+    All custom types used in Nav2 are already registered in the *json_utils.hpp* file. You can use them directly without the need to register them again.

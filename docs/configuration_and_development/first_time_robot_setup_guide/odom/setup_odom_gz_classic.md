@@ -243,14 +243,14 @@ joint_state_publisher_gui_node = launch_ros.actions.Node(
 )
 ```
 
-Remove the following gui param:
+Remove the following *gui* param:
 
 ```shell
 DeclareLaunchArgument(name='gui', default_value='True',
                       description='Flag to enable joint_state_publisher_gui')
 ```
 
-Remove the condition and parameters. Add arguments to the joint_state_publisher_node:
+Remove the condition and parameters. Add arguments to the *joint_state_publisher_node*:
 
 ```shell
 joint_state_publisher_node = launch_ros.actions.Node(

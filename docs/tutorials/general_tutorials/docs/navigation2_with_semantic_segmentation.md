@@ -105,7 +105,7 @@ The segmentation node is configured through an ontology YAML file that defines:
 - **Classes to detect**: Each class has a name and color for visualization. Classes should be defined in the same order as the model output. 0 is always the background class.
 - **Model settings**: Device (CPU/CUDA), image preprocessing parameters. We use the CPU for inference for greater compatibility; however, if you have a GPU you can install [onnxruntime-gpu](https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html#requirements) and its dependencies according to your hardware, and set the device to cuda.
 
-An example configuration file (config/ontology.yaml):
+An example configuration file (*config/ontology.yaml*):
 
 ```yaml
 ontology:
@@ -196,13 +196,13 @@ The tutorial provides a complete launch file that launches the simulation, the s
 ros2 launch semantic_segmentation_sim segmentation_simulation_launch.py
 ```
 
-The Baylands simulation and rviz should appear. You should be able to send navigation goals via rviz and the robot should navigate the Baylands world, preferring sidewalks and avoiding grass:
+The Baylands simulation and *rviz* should appear. You should be able to send navigation goals via *rviz* and the robot should navigate the Baylands world, preferring sidewalks and avoiding grass:
 
 <figure markdown="span">
   ![](images/Navigation2_with_segmentation/demo.gif){ width="90%" }
 </figure>
 
-To better see what the plugin is doing, you can enable the segmentation tile map visualization in rviz. This will show a pointcloud of the segmentation observations for each tile, colored by their confidence.
+To better see what the plugin is doing, you can enable the segmentation tile map visualization in *rviz*. This will show a pointcloud of the segmentation observations for each tile, colored by their confidence.
 Again, you can refer to the picture on the Layer’s [README](https://github.com/kiwicampus/semantic_segmentation_layer) for a visual explanation of how observations are accumulated on the costmap tiles and how that translates to the cost assigned to each tile.
 
 <figure markdown="span">

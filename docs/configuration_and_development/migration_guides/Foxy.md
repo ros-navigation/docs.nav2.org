@@ -90,7 +90,7 @@ Enabled by default.
 ## New Plugins
 
 `nav2_waypoint_follower` has an action server that takes in a list of waypoints to follow and follow them in order. In some cases we might want robot to
-perform some tasks/behaviours at arrivals of these waypoints. In order to perform such tasks, a generic plugin interface WaypointTaskExecutor has been added to `nav2_core`.
+perform some tasks/behaviours at arrivals of these waypoints. In order to perform such tasks, a generic plugin interface *WaypointTaskExecutor* has been added to `nav2_core`.
 Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs.
 
 Several example implementations are included in `nav2_waypoint_follower`. `WaitAtWaypoint` and `PhotoAtWaypoint` plusings are included in

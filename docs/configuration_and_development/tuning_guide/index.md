@@ -181,7 +181,7 @@ Note: When the costmap filters can be paired with the `VectorObject` server to u
 
 ## Symmetric Yaw Tolerance
 
-For robots that can drive equally well forward and backward, you can set symmetric_yaw_tolerance: true to allow the robot to reach goals without unnecessary 180° rotations. This is especially useful for symmetric robots (e.g., differential drive robots with sensors on both ends) whereas you do not care which orientation it ends in for the controller algorithm to decide.
+For robots that can drive equally well forward and backward, you can set *symmetric_yaw_tolerance: true* to allow the robot to reach goals without unnecessary 180° rotations. This is especially useful for symmetric robots (e.g., differential drive robots with sensors on both ends) whereas you do not care which orientation it ends in for the controller algorithm to decide.
 
 If you wish to control which orientation it ends in using a symmetric robot, check out [Bidirectional navigation with Nav2](https://vimeo.com/879000809) from ROSCon 2023 for setting up and tuning a bidirectional robot using Nav2. It highlights how to tune controllers, planners, and various other settings to obtain fully unbiased navigation with a platform with no traditional ‘front’.
 
@@ -215,9 +215,9 @@ Within `nav2_bringup`, there is a main entryfile `tb3_simulation_launch.py`. Thi
 
 ## Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS { #performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos }
 
-In Nav2, we strongly recommend setting use_composition to true, as it enables node composition, reduces process overhead, and generally improves system efficiency. However, whether to enable intra-process communication and which RMW implementation to use depends on your specific application.
+In Nav2, we strongly recommend setting *use_composition* to true, as it enables node composition, reduces process overhead, and generally improves system efficiency. However, whether to enable intra-process communication and which RMW implementation to use depends on your specific application.
 
-The following table summarizes CPU usage results for different RMW implementations and intra-process communication (IPC) settings, measured on the TurtleBot4 simulation (ros2 launch nav2_bringup tb4_simulation_launch.py). Baseline measurements correspond to the latest rolling commit at the time of testing (December 2025).
+The following table summarizes CPU usage results for different RMW implementations and intra-process communication (IPC) settings, measured on the TurtleBot4 simulation (*ros2 launch nav2_bringup tb4_simulation_launch.py*). Baseline measurements correspond to the latest *rolling* commit at the time of testing (December 2025).
 
 <div class="center-table" markdown>
 
@@ -240,7 +240,7 @@ As shown in the table, enabling intra-process communication leads to increased C
 For more details, please refer to this post:
 [https://discourse.openrobotics.org/t/performance-characteristics-subscription-callback-signatures-rmw-implementation-intra-process-communication-ipc/](https://discourse.openrobotics.org/t/performance-characteristics-subscription-callback-signatures-rmw-implementation-intra-process-communication-ipc/)
 
-Regarding QoS, we provide the allow_parameter_qos_overrides parameter, which allows you to customize QoS settings if needed.
+Regarding QoS, we provide the *allow_parameter_qos_overrides* parameter, which allows you to customize QoS settings if needed.
 
 If you have additional findings, please feel free to open a PR to share them, we would be happy to include that information here!
 

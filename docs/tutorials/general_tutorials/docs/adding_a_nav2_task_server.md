@@ -113,7 +113,7 @@ The table below shows the current servers along with the expected error code str
 | [Smoother Server][]                               | NONE=0, UNKNOWN=500   | 501-599     |
 | [Waypoint Follower Server][]                      | NONE=0, UNKNOWN=600   | 601-699     |
 | [Behavior Server][]                               | NONE=0                | 701-799     |
-| Coverage Server                                   | NONE=0, UNKNOWN=800   | 801-899     |
+| *Coverage Server*                                 | NONE=0, UNKNOWN=800   | 801-899     |
 | ...                                               | ...                   |             |
 | Last Nav2 Server                                  | NONE=0, UNKNOWN=8900  | 8901-8999   |
 | ...                                               | ...                   |             |
@@ -163,7 +163,7 @@ Since the route server is a external server, the error codes start at 10000 and 
 
 To ensure your server’s error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.
 
-The BT Navigator parameter error_code_name_prefixes defines a list of prefixes used to search the behavior tree blackboard for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
+The BT Navigator parameter *error_code_name_prefixes* defines a list of prefixes used to search the behavior tree blackboard for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
 
 ```yaml
 error_code_name_prefixes:

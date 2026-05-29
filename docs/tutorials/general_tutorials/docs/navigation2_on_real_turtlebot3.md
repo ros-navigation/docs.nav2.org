@@ -66,7 +66,7 @@ You need to make sure these values are correct.
 More information about the map.yaml can be found [here](http://wiki.ros.org/map_server).
 
 Launch Nav2. If you set autostart:=False, you need to click on the start button in RViz to initialize the nodes.
-Make sure use_sim time is set to **False**, because we want to use the system time instead of the time simulation time from Gazebo.
+Make sure *use_sim time* is set to **False**, because we want to use the system time instead of the time simulation time from Gazebo.
 
 `ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False autostart:=False map:=/path/to/your-map.yaml`
 

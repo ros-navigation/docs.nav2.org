@@ -17,29 +17,29 @@ The expectation is that all Nav2 nodes and packages use the utilities in this pa
 The lifecycle node includes factories for subscriptions, publishers, clients, and servers that return Nav2 objects in this package rather than the ROS 2 base classes as a level of abstraction of common boilerplate configurations and capabilities.
 The factories are listed below:
 
-- create_client –> nav2::ServiceClient
-- create_service –> nav2::ServiceServer
-- create_publisher –> nav2::Publisher
-- create_subscriber –> nav2::Subscriber
-- create_action_server –> nav2::SimpleActionServer
-- create_action_client –> nav2::ActionClient
+- *create_client* –> *nav2::ServiceClient*
+- *create_service* –> *nav2::ServiceServer*
+- *create_publisher* –> *nav2::Publisher*
+- *create_subscriber* –> *nav2::Subscriber*
+- *create_action_server* –> *nav2::SimpleActionServer*
+- *create_action_client* –> *nav2::ActionClient*
 
 [A large-scale migration example can be found here](https://github.com/ros-navigation/navigation2/pull/5288).
 
 In most cases, these are very similar to the previous `rclcpp` version.
 If a previous `nav2_util` version existed, the APIs should be largely the same, except now they should be constructed using the `create_*` factory rather than manually to make use of the abstracted configuration settings and advanced features to come.
-Where changed, it is typically to move the QoS profile specification to the end of the arguments, which is now optional and defaults to the nav2::qos::StandardTopicQoS profile (reliable, volitile, queue depth of 10).
+Where changed, it is typically to move the QoS profile specification to the end of the arguments, which is now optional and defaults to the *nav2::qos::StandardTopicQoS* profile (reliable, volitile, queue depth of 10).
 
-- nav2_util::LifecycleNode is now nav2::LifecycleNode, which is largely the same except for the factories and a couple of internal implementation details.
-- The Service Client, Service Server, and Simple Action Server were also moved to the nav2:: namespace, but they should not be accessed directly. Use the create_\* factories from the nav2::LifecycleNode, such as create_action_server or create_action_client.
-- There are now nav2::qos profiles for QoS to be used in the codebase for homologation and later easier changing: nav2::qos::StandardTopicQoS nav2::qos::LatchedPublisherQoS, nav2::qos::LatchedSubscriberQoS and nav2::qos::SensorDataQoS. These should be used rather than rclcpp profiles.
-- The APIs for create_\* are very similar to the default ones, but slightly different to move the now optional QoS profile specification below required information. When this is not specified the StandardTopicQoS is used (reliable, queue size 10). Only override this if you want another QoS type. Avoid use of SystemDefaultsQoS.
+- *nav2_util::LifecycleNode* is now *nav2::LifecycleNode*, which is largely the same except for the factories and a couple of internal implementation details.
+- The Service Client, Service Server, and Simple Action Server were also moved to the *nav2::* namespace, but they should not be accessed directly. Use the *create_\** factories from the *nav2::LifecycleNode*, such as *create_action_server* or *create_action_client*.
+- There are now *nav2::qos* profiles for QoS to be used in the codebase for homologation and later easier changing: *nav2::qos::StandardTopicQoS*, *nav2::qos::LatchedPublisherQoS*, *nav2::qos::LatchedSubscriberQoS* and *nav2::qos::SensorDataQoS*. These should be used rather than *rclcpp* profiles.
+- The APIs for *create_\** are very similar to the default ones, but slightly different to move the now optional QoS profile specification below required information. When this is not specified the *StandardTopicQoS* is used (reliable, queue size 10). Only override this if you want another QoS type. Avoid use of *SystemDefaultsQoS*.
 
 ### Plugin Migration
 
-All plugins now use nav2::LifecycleNode instead of rclcpp_lifecycle::LifecycleNode or nav2_util::LifecycleNode.
+All plugins now use *nav2::LifecycleNode* instead of *rclcpp_lifecycle::LifecycleNode* or *nav2_util::LifecycleNode*.
 All must be updated to use this new API from planners and controllers to behavior tree nodes.
-Similarly, calls to the create_\* factories will now point to the Nav2 objects, where applicable.
+Similarly, calls to the *create_\** factories will now point to the Nav2 objects, where applicable.
 See above for what those look like and below for a migration from the existing code usage to the new version in order to make use of the new features and API.
 
 ### Service Client Migration
@@ -159,7 +159,7 @@ It now supports action request, feedback, and result introspection using the par
 
 To migrate, the order of the arguments in the Subscription must change since the QoS profile is now optional. It is now `(topic, callback, QoS)` whereas QoS defaults to the StandardTopicQoS, which is the same as `rclcpp::QoS` for the moment.
 
-Publishers that explicitly specify a QoS profile do not require changes, though if the constructor using depth is used, it must now specify a policy explicitly.
+Publishers that explicitly specify a QoS profile do not require changes, though if the constructor using *depth* is used, it must now specify a policy explicitly.
 Both are now `nav2::Publisher` and `nav2::Subscription` objects that today just typedef the rclcpp and rclcpp_lifecycle versions.
 In the future, more features will be added here like lifecycle support for the subscriptions, so its highly recommended as part of this migration to migrate the `rclcpp::` to `nav2::` as well so those updates are already easily available.
 
@@ -274,7 +274,7 @@ collision_monitor:
       transport_type: "raw"  # Change this to your compressed format (zlib, draco, zstd)
 ```
 
-See transport_type in [Collision Monitor Node][collision-monitor-node] for more information.
+See *transport_type* in [Collision Monitor Node][collision-monitor-node] for more information.
 
 ### Performance Metrics
 
@@ -348,7 +348,7 @@ This allows you to modularize your behavior trees into smaller components that c
 The .xml files should be located within directory(s) set through the `bt_search_directories` parameter.
 
 The interface also supports requesting the desired behavior tree as a filepath or as an ID.
-To use the ID or multiple SubTrees features, each behavior tree is required to have its own unique ID - replace MainTree with a unique ID.
+To use the ID or multiple SubTrees features, each behavior tree is required to have its own unique ID - replace *MainTree* with a unique ID.
 
 ## Option to have custom window size and poly order in Savitsky-Golay Smoother
 
@@ -425,9 +425,9 @@ Default value:
 
 [PR #5687](https://github.com/ros-navigation/navigation2/pull/5687) adds support for outputting partial paths when planning through poses with the Planner Server. This is an
 alternative behavior to the existing all-or-nothing approach, where either a complete path through all poses is returned, or no path at all if any pose cannot be reached due to obstacles.
-While partial path output will still remain disabled by default, it can be set using the new allow_partial_planning dynamic parameter.
+While partial path output will still remain disabled by default, it can be set using the new *allow_partial_planning* dynamic parameter.
 
-When this feature is used, the result from compute_path_through_poses action server will now indicate the last reached pose from the goals list in last_reached_index field.
+When this feature is used, the result from *compute_path_through_poses* action server will now indicate the last reached pose from the goals list in *last_reached_index* field.
 
 ## Namespace added for primary controller parameters in Rotation Shim Controller
 
@@ -547,10 +547,10 @@ The following parameters are updated for this feature.
 | double |       0.5 |
 
 Description
-:   The maximum linear velocity (m/s) to use.  **Previously named \`desired_linear_vel\`**
+:   The maximum linear velocity (m/s) to use.  **Previously named `desired_linear_vel`**
 
-**Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing cmd_vel.
-Therefore, the velocity smoother parameters max_velocity, min_velocity, max_accel, and max_decel must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
+**Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing *cmd_vel*.
+Therefore, the velocity smoother parameters *max_velocity*, *min_velocity*, *max_accel*, and *max_decel* must be set to values consistent with, or greater than, the corresponding velocity, acceleration, and deceleration parameters of this controller.
 
 ## Bond Heartbeat Period Default Value Change
 
@@ -712,7 +712,7 @@ Moreover, several parameters have also been added to / removed from individual c
 
 ## Option to enable Intra-process Communication in Nav2
 
-In [PR 5804](https://github.com/ros-navigation/navigation2/pull/5804), an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing use_intra_process_comms parameter as true while launching Nav2 nodes.
+In [PR 5804](https://github.com/ros-navigation/navigation2/pull/5804), an option to enable Intra-process Communication in Nav2 has been added. This can be done by passing *use_intra_process_comms* parameter as true while launching Nav2 nodes.
 
 It is currently disabled by default. Please refer to the [Performance in ROS 2: RMW, Node Composition, Intra-process Communication, and QoS][performance-in-ros-2-rmw-node-composition-intra-process-communication-and-qos] and the [TB3/TB4 examples in the Nav2 stack](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/launch) for reference.
 
@@ -733,9 +733,9 @@ See [AxisGoalChecker][axis-goal-checker] for full configuration details.
 
 ## New default_cancel_timeout parameter in bt_navigator
 
-In [PR 5895](https://github.com/ros-navigation/navigation2/pull/5895), a new default_cancel_timeout parameter was introduced to address timeout issues during action cancellation, such as `Failed to get result for follow_path in node halt!`.
+In [PR 5895](https://github.com/ros-navigation/navigation2/pull/5895), a new *default_cancel_timeout* parameter was introduced to address timeout issues during action cancellation, such as `Failed to get result for follow_path in node halt!`.
 
-The default value is set to 50 milliseconds, and should be adjusted based on the planning time and overall system performance.
+The default value is set to *50* milliseconds, and should be adjusted based on the planning time and overall system performance.
 
 ## Add support for switching between SMAC planners
 
@@ -797,9 +797,9 @@ When OpenMP is not available at compile time, the layer falls back to single-thr
 
 In [PR 5991](https://github.com/ros-navigation/navigation2/pull/5991), the following nodes were moved from condition nodes to action nodes and renamed:
 
-- `IsStopped` is now `CheckStopStatus`
-- `IsPathValid` is now `ValidatePath`
-- `IsPoseOccupied` is now `CheckPoseOccupancy`
+- *IsStopped* is now *CheckStopStatus*
+- *IsPathValid* is now *ValidatePath*
+- *IsPoseOccupied* is now *CheckPoseOccupancy*
 
 This change was made because these behavior tree nodes may return RUNNING or require more time to complete, making them unsuitable for behavior tree that are expected to be ticked at 100 Hz.
 

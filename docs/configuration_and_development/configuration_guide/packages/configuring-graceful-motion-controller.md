@@ -2,7 +2,7 @@
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_graceful_controller).
 
-The graceful controller implements a controller based on the works of Jong Jin Park and Benjamin Kuipers in "A Smooth Control Law for Graceful Motion of Differential Wheeled Mobile Robots in 2D Environment" (ICRA 2011). In this implementation, a motion_target is set at a distance away from the robot that is exponentially stable to generate a smooth trajectory for the robot to follow.
+The graceful controller implements a controller based on the works of Jong Jin Park and Benjamin Kuipers in "A Smooth Control Law for Graceful Motion of Differential Wheeled Mobile Robots in 2D Environment" (ICRA 2011). In this implementation, a *motion_target* is set at a distance away from the robot that is exponentially stable to generate a smooth trajectory for the robot to follow.
 
 See the package’s `README` for more complete information.
 
@@ -33,7 +33,7 @@ Description
 | `double` | 2.0     |
 
 Description
-:   Ratio of the rate of change in phi to the rate of change in r. Controls the convergence of the slow subsystem. If this value is equal to zero, the controller will behave as a pure waypoint follower. A high value offers extreme scenario of pose-following where theta is reduced much faster than r. The referenced paper calls this k1.
+:   Ratio of the rate of change in phi to the rate of change in r. Controls the convergence of the slow subsystem. If this value is equal to zero, the controller will behave as a pure waypoint follower. A high value offers extreme scenario of pose-following where theta is reduced much faster than r. The referenced paper calls this *k1*.
 
 ### **`k_delta`**
 
@@ -42,7 +42,7 @@ Description
 | `double` | 1.0     |
 
 Description
-:   Constant factor applied to the heading error feedback. Controls the convergence of the fast subsystem. The bigger the value, the robot converge faster to the reference heading. The referenced paper calls this k2.
+:   Constant factor applied to the heading error feedback. Controls the convergence of the fast subsystem. The bigger the value, the robot converge faster to the reference heading. The referenced paper calls this *k2*.
 
 ### **`beta`**
 

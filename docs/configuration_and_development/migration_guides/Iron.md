@@ -9,8 +9,8 @@ Since we migrated from version 3.8 to 4.5, users must upgrade their XML and sour
 You can refer to [this page](https://www.behaviortree.dev/docs/migration) for more details, but the main changes are:
 
 - XML must be changed. This [python script can help](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/convert_v3_to_v4.py).
-- The syntax of SubTrees has changed; the one of SubTreePlus was adopted, instead.
-- If you created a custom **ControlNode** or **DecoratorNode**, you must handle the case when a child returns BT::NodeStatus::SKIPPED.
+- The syntax of *SubTrees* has changed; the one of *SubTreePlus* was adopted, instead.
+- If you created a custom **ControlNode** or **DecoratorNode**, you must handle the case when a child returns *BT::NodeStatus::SKIPPED*.
 
 ## Added TwistStamped Option for Commands
 
@@ -180,13 +180,13 @@ if the transformation from the robot base frame to the global frame does not bec
 
 ## Collision Monitor: added watchdog mechanism based on `source_timeout` parameter with default blocking behavior
 
-[PR #3880](https://github.com/ros-navigation/navigation2/pull/3880) adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the source_timeout\` parameter, or if impossible to transform data to base frame. `source_timeout` parameter can now be set per source: if `source_timeout` is not set for a source, the value of the node `source_timeout` parameter is used.
+[PR #3880](https://github.com/ros-navigation/navigation2/pull/3880) adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the `source_timeout` parameter, or if impossible to transform data to base frame. `source_timeout` parameter can now be set per source: if `source_timeout` is not set for a source, the value of the node `source_timeout` parameter is used.
 
 Additionally, this watchdog mechanism can be disabled by setting `source_timeout: 0.0`.
 
 ## BtActionServer: use native library haltTree()
 
-[PR #3950](https://github.com/ros-navigation/navigation2/pull/3950) changes the method used by BehaviorTreeEngine::haltAllActions to halt the BT nodes to the bt.cpp native method haltTree().
+[PR #3950](https://github.com/ros-navigation/navigation2/pull/3950) changes the method used by *BehaviorTreeEngine::haltAllActions* to halt the BT nodes to the bt.cpp native method *haltTree()*.
 
 Before this change, only the active BT node was halted when finishing the action. After this change, all BT nodes halt() methods are called. This is very convenient to handle cleaning operation (switch off your lights when leaving) in halt().
 
@@ -232,9 +232,9 @@ Here we can see the working demo of the plugin:
   ![](images/selector_plugin_demo.gif)
 </figure>
 
-In the GIF, it can be seen that there are two controller_ids namely, FollowPath and HighSpeedFollowPath. By default, the one defined in the Behavior tree is utilized.
+In the GIF, it can be seen that there are two controller_ids namely, *FollowPath* and *HighSpeedFollowPath*. By default, the one defined in the Behavior tree is utilized.
 
-In this case, the FollowPath is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
+In this case, the *FollowPath* is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
 
 !!! warning "Attention"
 
@@ -315,9 +315,9 @@ Smac and Theta\* planners have a new parameter `terminal_checking_interval` whic
 
 ## Clear Costamp Around Passed Pose
 
-In [PR #5309](https://github.com/ros-navigation/navigation2/pull/5309), a new service was added to the nav2_costmap_2d package to clear the costmap around a passed pose.
+In [PR #5309](https://github.com/ros-navigation/navigation2/pull/5309), a new service was added to the *nav2_costmap_2d* package to clear the costmap around a passed pose.
 
-A service client was also added to the clear costmap plugin in the nav2_behavior_tree package.
+A service client was also added to the clear costmap plugin in the *nav2_behavior_tree* package.
 
 This is particularly useful in scenarios where the planner fails due to outdated costmap data at the goal location which is outside of your obstacle/raytrace range—often caused by dynamic obstacles that have since moved. Instead of clearing the entire costmap as a recovery behavior, this feature would enable targeted clearing, preserving useful map data.
 

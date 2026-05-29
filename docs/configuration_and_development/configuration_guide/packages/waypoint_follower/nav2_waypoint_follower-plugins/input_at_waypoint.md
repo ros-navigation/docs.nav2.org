@@ -31,7 +31,7 @@ Description
 | `string` | "input_at_waypoint/input" |
 
 Description
-:   Topic input is published to to indicate to move to the next waypoint, in std_msgs/Empty.
+:   Topic input is published to to indicate to move to the next waypoint, in *std_msgs/Empty*.
 
 ### **`allow_parameter_qos_overrides`**
 

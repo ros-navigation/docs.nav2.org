@@ -89,7 +89,7 @@ Description
 | `double` | 2.0     |
 
 Description
-:   Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-FREE cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A\*.
+:   Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-*FREE* cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A\*.
 
 ### **`<name>.use_final_approach_orientation`**
 

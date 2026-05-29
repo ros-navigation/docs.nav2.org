@@ -138,7 +138,7 @@ Note
 | `bool` | false   |
 
 Description
-:   Whether to interpolate the timestamps of the smoothed geometery_msgs:msg::TwistStamped cmd_vel message after the last command velocity received. Only available in Jazzy as a backport of the now-default behavior in Lyrical and newer. Default is `false` for backwards compatibility.
+:   Whether to interpolate the timestamps of the smoothed *geometery_msgs:msg::TwistStamped* cmd_vel message after the last command velocity received. Only available in Jazzy as a backport of the now-default behavior in Lyrical and newer. Default is `false` for backwards compatibility.
 
 ### **`bond_heartbeat_period`**
 

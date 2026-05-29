@@ -19,7 +19,7 @@ The [configuration guide][behavior-tree-xml-nodes] can also be quite useful.
 - ClearCostmapService - ClearCostmapService Server Clients
 
 Upon completion, these action nodes will return `SUCCESS` if the action server believes the action has been completed correctly, `RUNNING` when still running, and will return `FAILURE` otherwise. Note that in the above list,
-the ClearCostmapService action node is *not* an action server client, but a service client.
+the *ClearCostmapService* action node is *not* an action server client, but a service client.
 
 ## Condition Nodes
 
@@ -227,7 +227,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
       ![](../images/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png)
     </figure>
 
-4. Now, let’s assume on the next re-tick, `Action_A` and `Action_C`  return `SUCCESS`, and `Action_B` returns `RUNNING`. In this configuration, the NonblockingSequence still returns `RUNNING`, as there is still one child node that is `RUNNING`. Note that `ActionA` was re-ticked and again returned `SUCCESS` in this case, it did not skip due to previously returning SUCCESS\`.
+4. Now, let’s assume on the next re-tick, `Action_A` and `Action_C`  return `SUCCESS`, and `Action_B` returns `RUNNING`. In this configuration, the NonblockingSequence still returns `RUNNING`, as there is still one child node that is `RUNNING`. Note that `ActionA` was re-ticked and again returned `SUCCESS` in this case, it did not skip due to previously returning `SUCCESS`.
 
     <figure markdown="span">
       ![](../images/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png)

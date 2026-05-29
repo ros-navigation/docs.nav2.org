@@ -142,7 +142,7 @@ docker build --tag navigation2:$ROS_DISTRO \
   ./navigation2
 ```
 
-The [docker build](https://docs.docker.com/engine/reference/commandline/build/) command above creates a tagged image using the Dockerfile from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of [colcon mixins](https://github.com/colcon/colcon-mixin-repository) to configure the workspace build. Check the `ARG` directives in the Dockerfile to discover all build-time variables available. The command also specifies an [external cache source](https://docs.docker.com/engine/reference/commandline/build/#cache-from) to pull the latest cached image from Nav2’s [Container Registry](https://github.com/ros-navigation/navigation2/pkgs/container/navigation2) to speed up the build process.
+The [docker build](https://docs.docker.com/engine/reference/commandline/build/) command above creates a tagged image using the *Dockerfile* from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of [colcon mixins](https://github.com/colcon/colcon-mixin-repository) to configure the workspace build. Check the `ARG` directives in the *Dockerfile* to discover all build-time variables available. The command also specifies an [external cache source](https://docs.docker.com/engine/reference/commandline/build/#cache-from) to pull the latest cached image from Nav2’s [Container Registry](https://github.com/ros-navigation/navigation2/pkgs/container/navigation2) to speed up the build process.
 
 !!! tip
 

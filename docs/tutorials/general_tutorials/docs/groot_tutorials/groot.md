@@ -7,10 +7,10 @@ Out of the box, Groot can only display Behavior Trees and nodes that are from th
 Therefore, we must point Groot to our palette, or index of Nav2 / custom behavior tree nodes:
 
 1. Open Groot in editor mode. Now, Groot should look like in [Figure 1](#groot-bt-editor).
-2. Select the Load palette from file option either via the context menu or the import icon in the top middle of the menu bar.
-3. Open the file /path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml to import all the custom behavior tree nodes used for navigation. This is the palette of Nav2 custom behavior tree nodes. Now, Groot should look like in [Figure 2](#groot-bt-editor-with-nodes).
-4. Select Load tree option near the top left corner
-5. Browse the tree you want to visualize, then select OK. The Nav2 BTs exist in /path/to/navigation2/nav2_bt_navigator/behavior_trees/
+2. Select the *Load palette from file* option either via the context menu or the import icon in the top middle of the menu bar.
+3. Open the file */path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml* to import all the custom behavior tree nodes used for navigation. This is the palette of Nav2 custom behavior tree nodes. Now, Groot should look like in [Figure 2](#groot-bt-editor-with-nodes).
+4. Select *Load tree* option near the top left corner
+5. Browse the tree you want to visualize, then select *OK*. The Nav2 BTs exist in */path/to/navigation2/nav2_bt_navigator/behavior_trees/*
 
     <div markdown="span" class="flex-images">
       <figure markdown="span" id="groot-bt-editor">
@@ -23,7 +23,7 @@ Therefore, we must point Groot to our palette, or index of Nav2 / custom behavio
       </figure>
     </div>
 
-If you select the default tree navigate_w_replanning_and_recovery.xml, then a Groot editor should look like [Figure 3](#groot-nav2-default-bt).
+If you select the default tree *navigate_w_replanning_and_recovery.xml*, then a Groot editor should look like [Figure 3](#groot-nav2-default-bt).
 
 <figure markdown="span" id="groot-nav2-default-bt">
   ![](../images/Groot/bt_w_replanning_and_recovery.png)
@@ -60,7 +60,7 @@ This should load a new window, similar to [Figure 5](#groot-interactive-node-cre
 In this new window, it asks you to fill in the metadata about this new node, in order to create it.
 It will ask you for standard information such as name (green box), type of node (orange box), and any optional ports for parameterization or access to blackboard variables (blue box).
 
-After completing, select OK in [Figure 5](#groot-interactive-node-creation), the new custom node should appear in blue in the TreeNode Palette as in [Figure 6](#groot-export-new-node).
+After completing, select *OK* in [Figure 5](#groot-interactive-node-creation), the new custom node should appear in blue in the *TreeNode Palette* as in [Figure 6](#groot-export-new-node).
 
 <div markdown="span" class="flex-images">
   <figure markdown="span" id="groot-interactive-node-creation">

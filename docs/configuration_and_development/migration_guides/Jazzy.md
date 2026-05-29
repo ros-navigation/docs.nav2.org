@@ -268,7 +268,7 @@ Parameters `parent_namespace` / `use_sim_time` both provide default values to ma
 
 ## Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions
 
-In [PR #4785](https://github.com/ros-navigation/navigation2/pull/4785) a new boolean parameter named disable_collision_checks was added to the DriveOnHeading, BackUp and Spin actions to optionally disable collision checking.
+In [PR #4785](https://github.com/ros-navigation/navigation2/pull/4785) a new boolean parameter named *disable_collision_checks* was added to the *DriveOnHeading*, *BackUp* and *Spin* actions to optionally disable collision checking.
 This can be useful, for example, in cases where you want to move the robot even in the presence of known obstacles.
 
 Default value:
@@ -306,8 +306,8 @@ IncludeLaunchDescription(
 ## ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use `nav_msgs/Goals` instead of `vector<PoseStamped>`
 
 In [PR #269](https://github.com/ros2/common_interfaces/pull/269) a new message type Goals was introduced to the nav_msgs package.
-In [PR #4980](https://github.com/ros-navigation/navigation2/pull/4980), all collections of PoseStamped has been migrated to use the nav_msgs::msg::Goals message. Most notably, NavigateThroughPoses.action and ComputePathThroughPoses.action have been updated to use nav_msgs/Goals.
-Since nav_msgs/Goals contains a header, the poses are now accessed via NavigateThroughPoses.poses.goals instead of NavigateThroughPoses.poses or ComputePathThroughPoses.goals.goals instead of ComputePathThroughPoses.poses. Please update your code accordingly when using these interfaces.
+In [PR #4980](https://github.com/ros-navigation/navigation2/pull/4980), all collections of *PoseStamped* has been migrated to use the *nav_msgs::msg::Goals* message. Most notably, *NavigateThroughPoses.action* and *ComputePathThroughPoses.action* have been updated to use *nav_msgs/Goals*.
+Since *nav_msgs/Goals* contains a header, the poses are now accessed via *NavigateThroughPoses.poses.goals* instead of *NavigateThroughPoses.poses* or *ComputePathThroughPoses.goals.goals* instead of *ComputePathThroughPoses.poses*. Please update your code accordingly when using these interfaces.
 
 ## MPPI controller re-implemented using Eigen library and performance improved by 40-45%
 
@@ -340,7 +340,7 @@ Here is an Example of the smacHybrid planner with the all_directions goal_headin
 
 ## DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
 
-[PR #4810](https://github.com/ros-navigation/navigation2/pull/4810) adds new parameters `acceleration_limit`, `deceleration_limit`, `minimum_speed` for the DriveOnHeading and BackUp Behaviors. The default values are as follows:
+[PR #4810](https://github.com/ros-navigation/navigation2/pull/4810) adds new parameters `acceleration_limit`, `deceleration_limit`, `minimum_speed` for the *DriveOnHeading* and *BackUp* Behaviors. The default values are as follows:
 
 - `acceleration_limit`: 2.5
 - `deceleration_limit`: -2.5
@@ -348,7 +348,7 @@ Here is an Example of the smacHybrid planner with the all_directions goal_headin
 
 ## Rotation Shim Deceleration as a function of its target orientation
 
-In [PR #4864](https://github.com/ros-navigation/navigation2/pull/4864) the Rotation Shim Controller was updated to decelerate as a function of its target orientation. This allows the robot to slow down as it approaches its target orientation, reducing overshoot when passing to the primary controller. The deceleration is controlled by the max_angular_accel parameter.
+In [PR #4864](https://github.com/ros-navigation/navigation2/pull/4864) the Rotation Shim Controller was updated to decelerate as a function of its target orientation. This allows the robot to slow down as it approaches its target orientation, reducing overshoot when passing to the primary controller. The deceleration is controlled by the *max_angular_accel* parameter.
 
 A demo can be seen below with the following parameters:
 
@@ -383,7 +383,7 @@ Default value:
 
 ## Service introspection
 
-In [PR #4955](https://github.com/ros-navigation/navigation2/pull/4955) the parameter `service_introspection_mode` was introduced to the Nav2 stack to allow introspection of services. The options are "disabled", "metadata", "contents".
+In [PR #4955](https://github.com/ros-navigation/navigation2/pull/4955) the parameter `service_introspection_mode` was introduced to the *Nav2* stack to allow introspection of services. The options are "disabled", "metadata", "contents".
 
 Default value:
 

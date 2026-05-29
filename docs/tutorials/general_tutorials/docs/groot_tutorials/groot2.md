@@ -7,15 +7,15 @@ Out of the box, Groot2 can only display Behavior Trees and nodes that are from t
 Therefore, we must point Groot2 to our palette, or index of Nav2 / custom behavior tree nodes:
 
 1. Open Groot2 in editor mode. The interface should now look like the example shown in the first image below.
-2. Click the red icon as shown in the second image, open the file /path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml to import all the custom behavior tree nodes used for navigation. Once loaded, you should see the full palette of Nav2’s custom nodes.
-3. Click the blue icon as shown in the second image, browse the tree you want to visualize, then select Open. The Nav2 BTs exist in /path/to/navigation2/nav2_bt_navigator/behavior_trees/.
+2. Click the red icon as shown in the second image, open the file */path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml* to import all the custom behavior tree nodes used for navigation. Once loaded, you should see the full palette of Nav2’s custom nodes.
+3. Click the blue icon as shown in the second image, browse the tree you want to visualize, then select *Open*. The Nav2 BTs exist in */path/to/navigation2/nav2_bt_navigator/behavior_trees/*.
 
 <div markdown="span" class="flex-images">
 	![](../images/Groot2/groot_bt_editor.png)
 	![](../images/Groot2/groot_with_nav2_custom_nodes.png)
 </div>
 
-If you select the default tree navigate_w_replanning_and_recovery.xml, the Groot2 editor should now display the full behavior tree structure, as shown in the image below.
+If you select the default tree *navigate_w_replanning_and_recovery.xml*, the Groot2 editor should now display the full behavior tree structure, as shown in the image below.
 
 <figure markdown="span">
   ![](../images/Groot2/bt_w_replanning_and_recovery.png){ width="80%" }
@@ -65,7 +65,7 @@ This should load a new window, as shown in the next image.
 
 In this new window, it asks you to fill in the metadata about this new node, in order to create it.
 It will ask you for standard information such as port name, type of node, and any optional ports for parameterization or access to blackboard variables.
-After completing, select OK, the new custom node should now appear in the TreeNode Palette.
+After completing, select *OK*, the new custom node should now appear in the *TreeNode Palette*.
 
 <figure markdown="span">
   ![](../images/Groot2/groot_new_node.png){ width="35%" }

@@ -11,7 +11,7 @@ See the package’s `README` for more information.
 ## Features
 
 Similarly to the Collision Monitor, the Collision Detector uses robot’s relative polygons to define "zones".
-However, unlike the Collision Monitor that uses different behavior models, the Collision Detector does not use any of them and therefore the action_type should always be set to none. If set to anything else, it will throw an error
+However, unlike the Collision Monitor that uses different behavior models, the Collision Detector does not use any of them and therefore the *action_type* should always be set to *none*. If set to anything else, it will throw an error
 
 The zones around the robot and the data sources are the same as for the Collision Monitor, with the exception of the footprint polygon, which is not supported by the Collision Detector.
 

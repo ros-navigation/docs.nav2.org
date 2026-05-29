@@ -439,7 +439,7 @@ Description
 | `double` | -PI     |
 
 Description
-:   Start angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for holonomic mode only.
+:   Start angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
 
 ### **`<vel_poly>.<subpoly>.direction_end_angle`**
 
@@ -448,7 +448,7 @@ Description
 | `double` | PI      |
 
 Description
-:   End angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for holonomic mode only.
+:   End angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
 
 ## Observation sources parameters
 

@@ -31,7 +31,7 @@ This wrapper class derives from the `nav2_core` class so it can be used as a plu
 
 The base class from `nav2_core` provides 4 pure virtual methods to implement a Behavior Plugin.
 The plugin will be used by the behavior server to host the plugins, but each plugin will provide their own unique action server interface.
-Let’s learn more about the methods needed to write a Behavior Plugin **if you did not use the \`\`nav2_behaviors\`\` wrapper**.
+Let’s learn more about the methods needed to write a Behavior Plugin **if you did not use the `nav2_behaviors` wrapper**.
 
 <div class="center-table" markdown>
 

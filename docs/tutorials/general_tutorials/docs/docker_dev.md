@@ -258,7 +258,7 @@ For each distribution, there are a couple of variants:
 - `desktop`: Contains `ros-base` and tutorials, lifecycle, rviz2, teleop, and rqt
 - `desktop-full`: Contains `desktop`, `perception` and simulation
 
-These are the same as if you were to use apt install ros-rolling-desktop-full, but in container form.
+These are the same as if you were to use *apt install ros-rolling-desktop-full*, but in container form.
 Each of those containers build off of the previous one using `FROM` and then install the binaries described to serve to the container user.
 Which you use depends on your application and needs, but `osrf/ros:<distro>-ros-base` is a good default for development and deployment.
 We’re using desktop-full in the context of this tutorial for ease of having rviz2 and such built-in batteries-included.
@@ -271,7 +271,7 @@ sudo docker pull osrf/ros:humble-desktop
 ```
 
 Note that some containers may require `osrf/` and others may not. The `osrf/` images are released by osrf while the non-prefixed are a part of the official docker libraries.
-In general, the desktop installs are with `osrf/`` and the ros core and base are without.
+In general, the desktop installs are with `osrf/` and the ros core and base are without.
 
 ## For Docker-Based Development
 

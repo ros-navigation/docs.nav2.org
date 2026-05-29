@@ -102,7 +102,7 @@ This functionality has been discussed in [the ticket #816](https://github.com/ro
 some APIs are changed in these PRs:
 
 - [PR2489](https://github.com/ros-navigation/navigation2/pull/2489) removes arguments `client_node`, `rclcpp_node` and adds argument `callback_group` in the initialize function of class `nav2_costmap_2d::Layer`. `callback_group` is used to replace `rclcpp_node`.
-- [PR2993](https://github.com/ros-navigation/navigation2/pull/2993) removes argument `use_rclcpp_node `` in the constructor of class ``nav2_util::LifecycleNode`.
+- [PR2993](https://github.com/ros-navigation/navigation2/pull/2993) removes argument `use_rclcpp_node` in the constructor of class `nav2_util::LifecycleNode`.
 
 ## API Change for nav2_core
 
@@ -247,7 +247,7 @@ The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu
 
 In the [PR](https://github.com/ros-navigation/navigation2/pull/2802), a new Decorator BT node known as `PathLongerOnApproach` has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT `navigate_to_pose_w_replanning_goal_patience_and_recovery.xml` would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below, where the robot pauses when close to a goal to see if the dynamic obstacle moves out of the way. Else, it executes the replan:
 
-Obstacle does not clear at all, with obstacle_clearance_time to be 3 seconds:
+Obstacle does not clear at all, with *obstacle_clearance_time* to be 3 seconds:
 
 <figure markdown="span">
   ![](images/nav2_patience_near_goal_and_clear_obstacle.gif)
@@ -296,7 +296,7 @@ That PR also enables the lifecycle manager to check if a system goes down due to
 
 ## Goal Checker API Changed
 
-[PR 2965](https://github.com/ros-navigation/navigation2/pull/2965) adds an extra argument in the initialize function of the nav2_core::GoalChecker class.
+[PR 2965](https://github.com/ros-navigation/navigation2/pull/2965) adds an extra argument in the initialize function of the *nav2_core::GoalChecker* class.
 The extra argument is a costmap_ros pointer. This is used to check if the goal is in collision, so that we can avoid moving towards the goal and replanning can be initiates using some BT plugin.
 
 ## Added Assisted Teleop

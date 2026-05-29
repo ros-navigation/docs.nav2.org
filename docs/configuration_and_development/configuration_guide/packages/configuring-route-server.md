@@ -441,7 +441,7 @@ Description
 ## SemanticScorer
 
 This edge scoring plugin will score based on semantic information provided in the graph file.
-It can either check for the edge’s semantic class via a parameterized key’s value **or** search all key names to match known semantic classes to apply weight (e.g. class: highway or highway: <some other application info>).
+It can either check for the edge’s semantic class via a parameterized key’s value **or** search all key names to match known semantic classes to apply weight (e.g. *class: highway* or *highway: <some other application info\>*).
 
 ### **`weight`**
 
@@ -654,7 +654,7 @@ This route operation will receive service requests from a 3rd party application 
 ## TriggerEvent
 
 This route operation will trigger an external service when a graph node or edge contains a route operation of this name.
-It uses a std_srvs/Trigger interface and is a demonstration of the RouteOperationClient<SrvT> base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
+It uses a *std_srvs/Trigger* interface and is a demonstration of the *RouteOperationClient<SrvT\>* base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
 
 ## Example
 

@@ -4,9 +4,9 @@ Source code on [Github](https://github.com/open-navigation/opennav_docking).
 
 The Docking Server in `opennav_docking` implements a server for docking and undocking a robot.
 This can be from Charging stations (i.e. docks) or non-charging docking locations such as the end of a conveyor belt or a pallet.
-It uses plugin dock implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, charging-type, and so on.
+It uses plugin *dock* implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, charging-type, and so on.
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
-This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low – not within the navigate-to-pose action itself (though undock may be called from inside navigate actions!).
+This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low – not within the navigate-to-pose action itself (though *undock* may be called from inside navigate actions!).
 
 Thanks to NVIDIA for sponsoring this Docking Server package!
 
@@ -163,7 +163,7 @@ Description
 | `vector<string>` | N/A     |
 
 Description
-:   Instead of dock_database, the set of docks specified in the params file itself. Use `dock_database` or this param.
+:   Instead of *dock_database*, the set of docks specified in the params file itself. Use `dock_database` or this param.
 
 ### **`navigator_bt_xml`**
 
@@ -467,7 +467,7 @@ Description
 | `double` | 1.57    |
 
 Description
-:   Pitch offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in image_proc and isaac_ros.
+:   Pitch offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
 
 ### **`<dock_name>.external_detection_rotation_roll`**
 
@@ -476,7 +476,7 @@ Description
 | `double` | -1.57   |
 
 Description
-:   Roll offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in image_proc and isaac_ros.
+:   Roll offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
 
 ### **`<dock_name>.filter_coef`**
 

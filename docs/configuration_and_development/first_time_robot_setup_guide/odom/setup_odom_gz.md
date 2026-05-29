@@ -449,7 +449,7 @@ ros_gz_bridge,
 spawn_entity,
 ```
 
-Finally, add the below lines to your package.xml:
+Finally, add the below lines to your *package.xml*:
 
 ```xml
 <exec_depend>ros_gz_bridge</exec_depend>
