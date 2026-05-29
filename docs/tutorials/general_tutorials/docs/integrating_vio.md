@@ -58,6 +58,8 @@ In order to run VIO alone, we need to do the following:
 2. Disable VIO’s publication of `odom->camera` and instead publish `nav_msgs/Odometry` of the VIO’s pose solution for fusion. By default the `zed_wrapper` publishes this under the `odom` topic, but it is recommended to remap this to a non-reserved topic name (for example, `camera_odom`).
 3. Re-configure the ZED Wrapper’s parameters to obtain the best VIO as possible.
 
+<br>
+
 - `two_d_mode` will force the pose tracking to be in 2D dimensions (e.g. X, Y, Yaw) for indoor or 2D applications.
 - `pos_tracking_enabled` will disable or enable pose tracking, if you desire it (and we do here!).
 - `path_max_count` will set the maximum size of the visualization of the pose over time. By default it is infinite. We should make this finite.
