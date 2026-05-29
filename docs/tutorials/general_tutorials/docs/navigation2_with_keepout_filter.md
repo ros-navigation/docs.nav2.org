@@ -8,7 +8,7 @@
 
 ## Overview
 
-This tutorial shows how to simply utilize keep-out/safety zones where robots can’t enter and preferred lanes for robots moving in industrial environments and warehouses. All this functionality is being covered by `KeepoutFilter` costmap filter plugin which will be enabled and used in this document.
+This tutorial shows how to simply utilize keep-out/safety zones where robots can't enter and preferred lanes for robots moving in industrial environments and warehouses. All this functionality is being covered by `KeepoutFilter` costmap filter plugin which will be enabled and used in this document.
 
 ## Requirements
 
@@ -318,14 +318,14 @@ Note, that:
 
 ### 3. Enable Keepout Filter
 
-Costmap Filters are Costamp2D plugins. You can enable the `KeepoutFilter` plugin in Costmap2D by adding `keepout_filter` to the `plugins` parameter in `nav2_params.yaml`. You can place it in the `global_costmap` for planning with keepouts and `local_costmap` to make sure the robot won’t attempt to drive through a keepout zone. The KeepoutFilter plugin should have the following parameters defined:
+Costmap Filters are Costamp2D plugins. You can enable the `KeepoutFilter` plugin in Costmap2D by adding `keepout_filter` to the `plugins` parameter in `nav2_params.yaml`. You can place it in the `global_costmap` for planning with keepouts and `local_costmap` to make sure the robot won't attempt to drive through a keepout zone. The KeepoutFilter plugin should have the following parameters defined:
 
 - `plugin`: type of plugin. In our case `nav2_costmap_2d::KeepoutFilter`.
 - `filter_info_topic`: filter info topic name. This need to be equal to `filter_info_topic` parameter of Costmap Filter Info Publisher Server from the chapter above.
 
 Full list of parameters supported by `KeepoutFilter` are listed at [Keepout Filter Parameters][keepout-filter-parameters] page.
 
-It is important to note that enabling `KeepoutFilter` for `global_costmap` only will cause the path planner to build plans bypassing keepout zones. Enabling `KeepoutFilter` for `local_costmap` only will cause the robot to not enter keepout zones, but the path may still go through them. So, the best practice is to enable `KeepoutFilter` for global and local costmaps simultaneously by adding it both in `global_costmap` and `local_costmap` in `nav2_params.yaml`. However it does not always have to be true. In some cases keepout zones don’t have to be the same for global and local costmaps, e.g. if the robot doesn’t allowed to intentionally go inside keepout zones, but if its there, the robot can drive in and out really quick if it clips an edge or corner. For this case, there is not need to use extra resources of the local costmap copy.
+It is important to note that enabling `KeepoutFilter` for `global_costmap` only will cause the path planner to build plans bypassing keepout zones. Enabling `KeepoutFilter` for `local_costmap` only will cause the robot to not enter keepout zones, but the path may still go through them. So, the best practice is to enable `KeepoutFilter` for global and local costmaps simultaneously by adding it both in `global_costmap` and `local_costmap` in `nav2_params.yaml`. However it does not always have to be true. In some cases keepout zones don't have to be the same for global and local costmaps, e.g. if the robot doesn't allowed to intentionally go inside keepout zones, but if its there, the robot can drive in and out really quick if it clips an edge or corner. For this case, there is not need to use extra resources of the local costmap copy.
 
 To enable `KeepoutFilter` with same mask for both global and local costmaps, use the following configuration:
 

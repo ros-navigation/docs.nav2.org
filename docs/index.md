@@ -64,7 +64,7 @@ It has tools to:
 - Build complicated and highly-customizable robot behaviors using behavior trees
 - Conduct pre-defined behaviors in case of failure, human intervention, or other
 - Follow sequential waypoints comprising a mission
-- Manage the system’s program lifecycle and watchdog for the servers
+- Manage the system's program lifecycle and watchdog for the servers
 - Easy dynamically loaded plugins for creating customized algorithms, behaviors and so on
 - Monitor raw sensor data for imminent collision or dangerous situation
 - Python3 API to interact with Nav2 and its internal task servers in a pythonic manner

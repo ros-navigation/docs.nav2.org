@@ -12,9 +12,9 @@ It is likely that you may be able to use this as well rather than developing you
 
 The docking procedure is as follows:
 
-1. Take action request and obtain the dock’s plugin and its pose
-2. If the robot is not within the prestaging tolerance of the dock’s staging pose, navigate to the staging pose
-3. Use the dock’s plugin to initially detect the dock and return the docking pose
+1. Take action request and obtain the dock's plugin and its pose
+2. If the robot is not within the prestaging tolerance of the dock's staging pose, navigate to the staging pose
+3. Use the dock's plugin to initially detect the dock and return the docking pose
 4. Enter a vision-control loop where the robot attempts to reach the docking pose while its actively being refined by the vision system
 5. Exit the vision-control loop once contact has been detected or charging has started
 6. Wait until charging starts (if applicable) and return success.
@@ -38,28 +38,28 @@ See `opennav_docking` README for complete concept explanations, parameters, and 
 ## ChargingDock Plugins
 
 `opennav_docking_core::ChargingDock` and `opennav_docking_core::NonChargingDock` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
-This allows a system to leverage this framework and provide its own methods for detecting the dock’s current pose, when the robot is charging, and when contact is made.
+This allows a system to leverage this framework and provide its own methods for detecting the dock's current pose, when the robot is charging, and when contact is made.
 Luckily, there are several common ROS APIs that allow us to create semi-generalized `SimpleChargingDock` and `SimpleNonChargingDock` plugins that allows out-of-the-box docking as long as users provide `JointState`, `BatteryState`, and detected dock pose `PoseStamped` topics.
 However, one way or another, your system requires an applicable `ChargingDock` or `NonChargingDock` plugin for each type of dock you wish to use.
 
 The plugins has a few key APIs:
 
-- `PoseStamped getStagingPose(const Pose & pose, const string & frame)` which must provide the pre-docking staging pose given a dock’s location and frame.
+- `PoseStamped getStagingPose(const Pose & pose, const string & frame)` which must provide the pre-docking staging pose given a dock's location and frame.
 - `bool getRefinedPose(PoseStamped & pose)` which must provide the detected (or pass through) pose of the dock
-- `bool isDocked()` which provides if we’ve made contact with the dock
-- `bool isCharging()` which provides if we’ve started charging while docked (charging docks only)
-- `bool disableCharging()` which should disable charging, if under the robot’s control for undocking (charging docks only)
-- `bool hasStoppedCharging()` which indicates if we’ve successfully stopped charging on undocking (charging docks only)
+- `bool isDocked()` which provides if we've made contact with the dock
+- `bool isCharging()` which provides if we've started charging while docked (charging docks only)
+- `bool disableCharging()` which should disable charging, if under the robot's control for undocking (charging docks only)
+- `bool hasStoppedCharging()` which indicates if we've successfully stopped charging on undocking (charging docks only)
 - `bool isCharger()` which indicates if this is a charging-typed dock
 - `DockDirection getDockDirection()` which indicates the direction of the dock (if the robot should drive forwards, backwards, etc onto the dock)
 - `bool shouldRotateToDock()` which indicates if the robot should rotate to dock (for example, to perform a backward docking without detections)
 
 The `SimpleChargingDock` provides an implementation with common options for these APIs:
 
-- `getStagingPose` - Finds a relative offset pose with translation and rotation from the dock’s pose
-- `getRefinedPose` - Filters a detected pose topic of type `PoseStamped` into the fixed frame *or* is a pass through function returning the dock’s database location if detection is not enabled
-- `isDocked` - Returns as dock if a pose tolerance is met relative to the dock *or* if the `JointStates` of the motors detect a clear spike due to stalling by driving into the dock’s surface, if enabled
-- `isCharging` - Returns charging if `isDocked` *or* if `BatteryState`’s current is above a threshold, if enabled (charging docks only)
+- `getStagingPose` - Finds a relative offset pose with translation and rotation from the dock's pose
+- `getRefinedPose` - Filters a detected pose topic of type `PoseStamped` into the fixed frame *or* is a pass through function returning the dock's database location if detection is not enabled
+- `isDocked` - Returns as dock if a pose tolerance is met relative to the dock *or* if the `JointStates` of the motors detect a clear spike due to stalling by driving into the dock's surface, if enabled
+- `isCharging` - Returns charging if `isDocked` *or* if `BatteryState`'s current is above a threshold, if enabled (charging docks only)
 - `disableCharging` - Always `true`, considers disable of charging as automatic when robot leaves dock (charging docks only)
 - `hasStoppedCharging` - The inverse of `isCharging` (charging docks only)
 
@@ -79,12 +79,12 @@ The defaults support this out of the box, see `nova_carter_docking` for an examp
 
 ## Dock Database
 
-To dock your robot, you must provide the set of docks in your environment you’d like to utilize.
+To dock your robot, you must provide the set of docks in your environment you'd like to utilize.
 This is done in the docking server via the *Dock Database* which contains the set of docks, their instance types, and a set of shared plugins.
 The plugins are separated from the dock instances so that many instances can share the same plugin to save on memory and networking overhead when potentially dozens or more docks exist in a space.
 
-The docks plugins must be provided in your docking server’s configuration file.
-However, the dock instance may be provided either in the configuration file *or* within a provided filepath to decouple the server’s configuration from a particular application environment.
+The docks plugins must be provided in your docking server's configuration file.
+However, the dock instance may be provided either in the configuration file *or* within a provided filepath to decouple the server's configuration from a particular application environment.
 The example below shows an inline configuration of the docking plugins and dock instances where one dock type (`nova_carter_dock`) is specified with 3 individual instances: a home dock, and 2 general shared fallback docks.
 The docks can be specified as `[x, y, theta]` in any reference frame you like, as long as TF is aware of them.
 Please update these with your own docking plugin and dock locations in your map.
@@ -136,31 +136,31 @@ docks:
 ```
 
 Note that you are required to provide at least 1 dock plugin and 1 dock instance.
-The Docking Server’s Action API can take in a dock’s instance information separately to bypass the database, but its plugin must exist in the server’s configuration.
+The Docking Server's Action API can take in a dock's instance information separately to bypass the database, but its plugin must exist in the server's configuration.
 If you plan to only use this API, you can set a `dummy_dock`.
-Generally speaking, its wise to set your docks in the database and use the Docking Server’s API to dock at an instance’s Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks’ locations), but bypassing the database can be useful for testing and movable docking targets.
+Generally speaking, its wise to set your docks in the database and use the Docking Server's API to dock at an instance's Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks' locations), but bypassing the database can be useful for testing and movable docking targets.
 
 The dock poses in the map can be annotated using your favorite map editing tools, obtained by `/clicked_point` in rviz2, or measured location.
 
 ## Configuring Docking Server
 
-Now that we have both a plugin for interacting with a dock and specified the locations of docks in your map, we’re ready to configure the docking server.
-For this example, we’re going to use the Nvidia-Segway Nova Carter Robot and you can find the source code of this demo in the `nova_carter_docking` package.
+Now that we have both a plugin for interacting with a dock and specified the locations of docks in your map, we're ready to configure the docking server.
+For this example, we're going to use the Nvidia-Segway Nova Carter Robot and you can find the source code of this demo in the `nova_carter_docking` package.
 For a full list of parameters and their descriptions, check out the [Docking Server][docking-server].
 
 Below is an example configuration used by the Nova Carter robot.
 Notable is the setting of the `fixed_frame` to `odom`, not `map` in order to decouple localization error from the docking procedure.
 We also use one dock plugin `nova_carter_dock` for all `N` docks specified in the `dock_database` file.
 
-The simple charging dock plugin uses a 70cm staging offset from the dock’s database pose for staging.
+The simple charging dock plugin uses a 70cm staging offset from the dock's database pose for staging.
 This staging pose is selected as close enough to detect the dock but far enough away to give maneuvering space to account for expected dock movement or localization error.
 
-Since `use_stall_detection` for the `JointStates` is `false`, we are considered successfully docked once we’re within `docking_threshold` (5cm) to the docking pose.
-This docking pose is specified as the detected pose with the `external_detection_*` offsets applied to account for the robot’s intended docking pose relative to the detected feature.
-In this example, Apriltags are used, so we apply the rotations to the Apriltag detected frame and a `-0.18` translational offset to account for the pose the robot should be in when docked relative to the tag’s pose.
-Since `use_external_detection_pose` and `use_battery_status` are both enabled, we use both detected dock poses (apriltag) and battery state information for determining if we’re charging.
+Since `use_stall_detection` for the `JointStates` is `false`, we are considered successfully docked once we're within `docking_threshold` (5cm) to the docking pose.
+This docking pose is specified as the detected pose with the `external_detection_*` offsets applied to account for the robot's intended docking pose relative to the detected feature.
+In this example, Apriltags are used, so we apply the rotations to the Apriltag detected frame and a `-0.18` translational offset to account for the pose the robot should be in when docked relative to the tag's pose.
+Since `use_external_detection_pose` and `use_battery_status` are both enabled, we use both detected dock poses (apriltag) and battery state information for determining if we're charging.
 
-The maximum speed is 15 cm/s to slowly and carefully back into the dock and we’ll retry docking 3x in case charging is not detected or we lose detected dock tracks during the attempt.
+The maximum speed is 15 cm/s to slowly and carefully back into the dock and we'll retry docking 3x in case charging is not detected or we lose detected dock tracks during the attempt.
 
 ```yaml
 docking_server:
@@ -234,7 +234,7 @@ The API for docking and undocking is comparatively simple.
 The `DockRobot` action consists of two main modalities: using the dock database or specifying a dock to use in the action.
 If using the database, set `use_dock_id = True` (default) and you only need to specify the `dock_id` you wish to use, such as `home_dock`, `flex_dock1`, or whatever dock instance you like.
 If bypassing the database, `use_dock_id` must be set to false and `dock_pose`, `dock_type` must be fully specified to make up for the lack of entry metadata in the database.
-This requires the action caller to know about all of the docks, rather than pushing that into the Docking Server’s database, which is not recommended.
+This requires the action caller to know about all of the docks, rather than pushing that into the Docking Server's database, which is not recommended.
 
 Optionally, you can disable using Nav2 to navigate to the staging pose if outside of the pre-staging tolerance using `navigate_to_staging_pose = False` or set the maximum time for staging navigation `max_staging_time`.
 
@@ -262,11 +262,11 @@ builtin_interfaces/Duration docking_time  # Docking time elapsed
 uint16 num_retries 0  # Number of retries attempted
 ```
 
-In result, you obtain if the action was successful, if it wasn’t what the error code was, and the total number of retries attempted.
+In result, you obtain if the action was successful, if it wasn't what the error code was, and the total number of retries attempted.
 During execution, feedback is provided on the current docking state - which is published irregularly only when an event occurs. It contains the state, the current total elapsed duration of attempted docking, and the current number of retries.
 The feedback can be obtained from your action client if this information is useful to your application.
 
-The `UndockRobot` action is even simpler. There are no required goal fields except `dock_type` if undocking is being called when the server’s instance did not dock the robot to store its current state information (such as after a restart on the dock).
+The `UndockRobot` action is even simpler. There are no required goal fields except `dock_type` if undocking is being called when the server's instance did not dock the robot to store its current state information (such as after a restart on the dock).
 It contains no feedback and returns the `success` state and the `error_code` if a problem occurs.
 
 ```bash
@@ -285,14 +285,14 @@ uint16 error_code 0  # Contextual error code, if any
 
 ## Putting It All Together
 
-At this point, if you haven’t already, create your dock plugin (or use `SimpleChargingDock`), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
+At this point, if you haven't already, create your dock plugin (or use `SimpleChargingDock`), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
 You can see an example package used in this tutorial in the `nova_carter_docking` package, which contains a configuration file and launch file containing the apriltags detector and `PoseStamped` pose publisher.
 
-If you’re interested in using Apriltags and an Nvidia Jetson, you can find the tags we used in the `media/` directory and the launch file `isaac_apriltag_detection_pipeline.launch.py` which sets it all up for you.
+If you're interested in using Apriltags and an Nvidia Jetson, you can find the tags we used in the `media/` directory and the launch file `isaac_apriltag_detection_pipeline.launch.py` which sets it all up for you.
 If not using the Jetson, you can replace the Isaac ROS apriltag detector with `image_proc`.
 
-We can test this using the script `demo.py` in `nova_carter_docking`’s root directory.
-It will set the robot’s pose as virtually the dock’s staging pose to bypass navigating to the staging pose and attempt docking immediately, then infinitely loop docking and undocking in a row.
+We can test this using the script `demo.py` in `nova_carter_docking`'s root directory.
+It will set the robot's pose as virtually the dock's staging pose to bypass navigating to the staging pose and attempt docking immediately, then infinitely loop docking and undocking in a row.
 This is a useful first-time setup to try docking, refine your detection offsets, and obtain reliability metrics of your complete system.
 See the video below of this all at work!
 
@@ -305,7 +305,7 @@ See the video below of this all at work!
 Note that the robot is able to overcome:
 
 - Large distances away from the dock staging pose, as long as the dock was in view
-- Able to detect the dock’s offsets and compute controls to dock successfully - including when we manually move it during and between runs
+- Able to detect the dock's offsets and compute controls to dock successfully - including when we manually move it during and between runs
 - Dock repeatedly with a 100% success rate due to the detections and charging state feedback
 
 This script demonstrates the essential use of the Docking Server.
@@ -349,11 +349,11 @@ tester.dockRobot(dock_id)
   </div>
 </h1>
 
-Depending on your robot’s relative pose to the dock and your pre-staging tolerance settings, Nav2 may attempt to navigate to the staging pose before docking.
+Depending on your robot's relative pose to the dock and your pre-staging tolerance settings, Nav2 may attempt to navigate to the staging pose before docking.
 If you wish to disable that, set `goal_msg.navigate_to_staging_pose = False` and then Docking will trigger immediately.
 You can see both of these in action in the video above.
 
-Don’t want to call Docking Server from a script Python or C++ script and want to use it in your Autonomous Behavior Tree? See `opennav_docking_bt` for `DockRobot`, `UndockRobot` Behavior Tree nodes to call the Docking Server from your application behavior tree – with a provided `XML` example.
+Don't want to call Docking Server from a script Python or C++ script and want to use it in your Autonomous Behavior Tree? See `opennav_docking_bt` for `DockRobot`, `UndockRobot` Behavior Tree nodes to call the Docking Server from your application behavior tree – with a provided `XML` example.
 Note that if using `navigate_to_staging_pose = True`, you cannot call `DockRobot` from inside a Nav2 Behavior Tree, only from your higher level autonomy tree since it recursively calls Nav2.
 If you wish to call `DockRobot` from inside your Nav2 BT, you must roughly pre-stage the robot near the dock first (which should be easy as a navigation goal).
 However, you can always call `UndockRobot` from any behavior tree!

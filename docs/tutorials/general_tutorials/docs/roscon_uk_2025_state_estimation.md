@@ -7,7 +7,7 @@ State estimation is a fundamental component of any autonomous mobile robot syste
 This workshop covers two complementary approaches to state estimation that are widely used in production robotics systems.
 
 The workshop materials explore both classical filtering approaches and modern optimization-based methods for sensor fusion.
-Whether you’re building a warehouse robot, an outdoor autonomous vehicle, or any other mobile platform, understanding these state estimation techniques is crucial for achieving reliable navigation and localization performance.
+Whether you're building a warehouse robot, an outdoor autonomous vehicle, or any other mobile platform, understanding these state estimation techniques is crucial for achieving reliable navigation and localization performance.
 The hands-on exercises use real ROS 2 packages that are production-tested and widely deployed in commercial robotics applications.
 
 The complete workshop materials, including setup instructions, exercises, and solutions, are available in the official repository:
@@ -35,7 +35,7 @@ Topics include:
 **Fuse - Factor Graph Optimization**
 
 Fuse is a general architecture for performing sensor fusion using factor graphs.
-Unlike traditional filtering approaches, factor graph optimization considers a history of measurements to jointly optimize the robot’s trajectory.
+Unlike traditional filtering approaches, factor graph optimization considers a history of measurements to jointly optimize the robot's trajectory.
 This batch optimization approach can produce more accurate results by reasoning about past measurements and future constraints simultaneously.
 The workshop covers:
 

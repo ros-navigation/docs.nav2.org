@@ -6,8 +6,8 @@ Moving from ROS 2 Kilted to L-Turtle, a number of stability improvements were ad
 
 Starting in Lyrical, a new package `nav2_ros_common` was added that contains a set of Nav2, ROS 2 utilities, wrappers, and overrides for working with ROS 2 in Nav2 in a standardized and controllable way.
 This ingests previous capabilities from `nav2_util` like the `LifecycleNode` and `SimpleActionServer`, but extends it to wrap all ROS 2 interfaces with Nav2 variants in the `nav2::` namespace.
-The new `nav2::LifecycleNode`’s factory members (`create_client`, `create_service`, `create_publisher`, `create_subscriber`, `create_action_server`, and `create_action_client`) now return these Nav2 objects.
-This requires some migration of custom plugins, Task Servers, or other components in the Nav2 styling and/or application that wish to use Nav2’s utilities.
+The new `nav2::LifecycleNode`'s factory members (`create_client`, `create_service`, `create_publisher`, `create_subscriber`, `create_action_server`, and `create_action_client`) now return these Nav2 objects.
+This requires some migration of custom plugins, Task Servers, or other components in the Nav2 styling and/or application that wish to use Nav2's utilities.
 Additionally, it contains a set of QoS profiles to be globally used within the stack to give developers complete control over the QoS settings of the system and a one-stop location to update or test different profiles and be applied globally in the stack.
 
 This work is motived by a need to set certain global configurations for interfaces, such as enabling QoS overrides for publishers and subscribers via a run-time parameter and enabling Action and Service introspection.
@@ -45,7 +45,7 @@ See above for what those look like and below for a migration from the existing c
 ### Service Client Migration
 
 We no longer need to create the object manually, nor should we as it bypasses the lifecycle node factories that set introspection and other future features.
-We can use the node now to do this instead of passing in a node and we don’t need to specify the node type anymore as a template.
+We can use the node now to do this instead of passing in a node and we don't need to specify the node type anymore as a template.
 All Nav2 servers should use `nav2::ServiceClient<T>`.
 
 ```cpp
@@ -217,7 +217,7 @@ In [PR #5226](https://github.com/ros-navigation/navigation2/pull/5226) the abili
   ![](images/smoothing.png)
 </figure>
 
-New parameters include `smooth_corners` which enable or disable corner smoothing and `smoothing_radius` which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that’s longer than the edge lengths, then it will not add a corner arc.
+New parameters include `smooth_corners` which enable or disable corner smoothing and `smoothing_radius` which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that's longer than the edge lengths, then it will not add a corner arc.
 
 ## Added NonblockingSequence Control Node
 
@@ -287,7 +287,7 @@ Below are measured bandwidth values for different transport types with default p
 | zstd             |            64.33 |
 | zlib             |           121.95 |
 
-## Private BT Navigator’s BlackBoard ID parameters
+## Private BT Navigator's BlackBoard ID parameters
 
 The parameters `xx_blackboard_id` used in the BT navigator to specify the name of the blackboard variables from the
 behavior trees were moved into the respective navigators. They now have to be specified under the namespace of the particular navigator.
@@ -415,7 +415,7 @@ The tutorial for the Following Server has been recently updated. For the latest 
 
 In [PR #5617](https://github.com/ros-navigation/navigation2/pull/5617),add new option to have open loop for MPPI.
 Now it have 1 more option to use last command velocity for initial state estimation instead of odometry.
-Useful when using low accelerations or when wheel odometry’s latency (motor response is poor) causes issues in MPPI initial state estimation.
+Useful when using low accelerations or when wheel odometry's latency (motor response is poor) causes issues in MPPI initial state estimation.
 
 Default value:
 
@@ -432,7 +432,7 @@ When this feature is used, the result from *compute_path_through_poses* action s
 ## Namespace added for primary controller parameters in Rotation Shim Controller
 
 In [PR #5654](https://github.com/ros-navigation/navigation2/pull/5654), a namespace was introduced for the primary controller parameters within the Rotation Shim Controller.
-This change ensures proper handling of dynamic parameter updates by grouping the primary controller’s parameters under its own namespace.
+This change ensures proper handling of dynamic parameter updates by grouping the primary controller's parameters under its own namespace.
 
 Before
 
@@ -718,7 +718,7 @@ It is currently disabled by default. Please refer to the [Performance in ROS 2: 
 
 ## New AxisGoalChecker Plugin
 
-A new goal checker plugin, `AxisGoalChecker`, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, `AxisGoalChecker` projects the robot’s position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (`along_path_tolerance`) and perpendicular to it (`cross_track_tolerance`).
+A new goal checker plugin, `AxisGoalChecker`, has been added to provide path-direction-aware goal checking. Unlike distance-based goal checkers, `AxisGoalChecker` projects the robot's position onto the path direction defined by the last segment of the path, allowing independent tolerances along the path (`along_path_tolerance`) and perpendicular to it (`cross_track_tolerance`).
 
 Key parameters:
 

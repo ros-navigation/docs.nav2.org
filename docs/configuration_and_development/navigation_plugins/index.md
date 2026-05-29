@@ -428,7 +428,7 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                | Creator        | Description                                                                                     |
 |----------------------------|----------------|-------------------------------------------------------------------------------------------------|
-| DistanceScorer             | Steve Macenski | Scores an edge’s length,<br>optionally scaled by relative<br>speed limits.                      |
+| DistanceScorer             | Steve Macenski | Scores an edge's length,<br>optionally scaled by relative<br>speed limits.                      |
 | TimeScorer                 | Steve Macenski | Scores and edge traversal time<br>using absolute speed limits or<br>previous traversal times.   |
 | PenaltyScorer              | Steve Macenski | Scores using a static semantic<br>penalty.                                                      |
 | SemanticScorer             | Steve Macenski | Scores using stored semantic data<br>regarding the edge and/or nodes.                           |
@@ -444,9 +444,9 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name      | Creator        | Description                                                                  |
 |------------------|----------------|------------------------------------------------------------------------------|
-| AdjustSpeedLimit | Steve Macenski | Adjusts robot speed limits using<br>an edge’s semantic data.                 |
+| AdjustSpeedLimit | Steve Macenski | Adjusts robot speed limits using<br>an edge's semantic data.                 |
 | CollisionMoniter | Steve Macenski | Checks for collision in the<br>immediate future which tracking<br>a route.   |
-| TimeMarker       | Steve Macenski | Records the traversal time for an<br>edge in the edge’s metadata.            |
+| TimeMarker       | Steve Macenski | Records the traversal time for an<br>edge in the edge's metadata.            |
 | ReroutingService | Steve Macenski | Triggers a rereoute from an<br>external server.                              |
 | TriggerEvent     | Steve Macenski | Triggers an event based on a<br>configurable server name.                    |
 

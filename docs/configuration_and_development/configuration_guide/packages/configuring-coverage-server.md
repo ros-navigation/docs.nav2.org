@@ -26,7 +26,7 @@ Description
 | `double` | 2.1     |
 
 Description
-:   The robot’s width in meters.
+:   The robot's width in meters.
 
 ### **`operation_width`**
 
@@ -35,7 +35,7 @@ Description
 | `double` | 2.5     |
 
 Description
-:   The robot’s operational width (cleaning, planting, etc) for computing coverage swath distances
+:   The robot's operational width (cleaning, planting, etc) for computing coverage swath distances
 
 ### **`min_turning_radius`**
 
@@ -44,7 +44,7 @@ Description
 | `double` | 0.4     |
 
 Description
-:   The robot’s minimum turning radius for computing paths connecting route swaths (m)
+:   The robot's minimum turning radius for computing paths connecting route swaths (m)
 
 ### **`linear_curv_change`**
 
@@ -53,7 +53,7 @@ Description
 | `double` | 2.0     |
 
 Description
-:   The robot’s maximum linear curvature change for computing paths connecting route swaths (1/m^2)
+:   The robot's maximum linear curvature change for computing paths connecting route swaths (1/m^2)
 
 ### **`default_allow_overlap`**
 

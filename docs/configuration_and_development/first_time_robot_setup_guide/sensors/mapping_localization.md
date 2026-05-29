@@ -2,7 +2,7 @@
 
 Now that we have a robot with its sensors set up, we can use the obtained sensor information to build a map of the environment and to localize the robot on the map. The `slam_toolbox` package is a set of tools and capabilities for 2D Simultaneous Localization and Mapping (SLAM) in potentially massive maps with ROS2. It is also one of the officially supported SLAM libraries in Nav2, and we recommend to use this package in situations you need to use SLAM on your robot setup. Aside from the `slam_toolbox`, localization can also be implemented through the `nav2_amcl` package. This package implements Adaptive Monte Carlo Localization (AMCL) which estimates the position and orientation of the robot in a map. Other techniques may also be available, please check Nav2 documentation for more information.
 
-Both the `slam_toolbox` and `nav2_amcl` use information from the laser scan sensor to be able to perceive the robot’s environment. Hence, to verify that they can access the laser scan sensor readings, we must make sure that they are subscribed to the correct topic that publishes the `sensor_msgs/LaserScan` message. This can be configured by setting their `scan_topic` parameters to the topic that publishes that message. It is a convention to publish the `sensor_msgs/LaserScan` messages to  `/scan` topic. Thus, by default, the `scan_topic` parameter is set to `/scan`. Recall that when we added the lidar sensor to `sam_bot` in the previous section, we set the topic to which the lidar sensor will publish the `sensor_msgs/LaserScan` messages as `/scan`.
+Both the `slam_toolbox` and `nav2_amcl` use information from the laser scan sensor to be able to perceive the robot's environment. Hence, to verify that they can access the laser scan sensor readings, we must make sure that they are subscribed to the correct topic that publishes the `sensor_msgs/LaserScan` message. This can be configured by setting their `scan_topic` parameters to the topic that publishes that message. It is a convention to publish the `sensor_msgs/LaserScan` messages to  `/scan` topic. Thus, by default, the `scan_topic` parameter is set to `/scan`. Recall that when we added the lidar sensor to `sam_bot` in the previous section, we set the topic to which the lidar sensor will publish the `sensor_msgs/LaserScan` messages as `/scan`.
 
 In-depth discussions on the complete configuration parameters will not be a scope of our tutorials since they can be pretty complex. Instead, we recommend you to have a look at their official documentation in the links below.
 
@@ -12,13 +12,13 @@ In-depth discussions on the complete configuration parameters will not be a scop
 
     For the complete list of configuration parameters and example configuration of `nav2_amcl`, see the [AMCL Configuration Guide][amcl].
 
-You can also refer to the [(SLAM) Navigating While Mapping guide][navigating-while-mapping-slam] for the tutorial on how to use Nav2 with SLAM. You can verify that `slam_toolbox` and `nav2_amcl` have been correctly setup by visualizing the map and the robot’s pose in RViz, similar to what was shown in the previous section.
+You can also refer to the [(SLAM) Navigating While Mapping guide][navigating-while-mapping-slam] for the tutorial on how to use Nav2 with SLAM. You can verify that `slam_toolbox` and `nav2_amcl` have been correctly setup by visualizing the map and the robot's pose in RViz, similar to what was shown in the previous section.
 
 ## Costmap 2D { #mapping-and-localization-costmap-2d }
 
-The costmap 2D package makes use of the sensor information to provide a representation of the robot’s environment in the form of an occupancy grid. The cells in the occupancy grid store cost values between 0-254 which denote a cost to travel through these zones. A cost of 0 means the cell is free while a cost of 254 means that the cell is lethally occupied. Values in between these extremes are used by navigation algorithms to steer your robot away from obstacles as a potential field. Costmaps in Nav2 are implemented through the `nav2_costmap_2d` package.
+The costmap 2D package makes use of the sensor information to provide a representation of the robot's environment in the form of an occupancy grid. The cells in the occupancy grid store cost values between 0-254 which denote a cost to travel through these zones. A cost of 0 means the cell is free while a cost of 254 means that the cell is lethally occupied. Values in between these extremes are used by navigation algorithms to steer your robot away from obstacles as a potential field. Costmaps in Nav2 are implemented through the `nav2_costmap_2d` package.
 
-The costmap implementation consists of multiple layers, each of which has a certain function that contributes to a cell’s overall cost. The package consists of the following layers, but are plugin-based to allow customization and new layers to be used as well: static layer, inflation layer, range layer, obstacle layer, and voxel layer. The static layer represents the map section of the costmap, obtained from the messages published to the `/map` topic like those produced by SLAM.  The obstacle layer includes the objects detected by sensors that publish either or both the `LaserScan` and `PointCloud2` messages. The voxel layer is similar to the obstacle layer such that it can use either or both the `LaserScan` and `PointCloud2` sensor information but handles 3D data instead. The range layer allows for the inclusion of information provided by sonar and infrared sensors. Lastly, the inflation layer represents the added cost values around lethal obstacles such that our robot avoids navigating into obstacles due to the robot’s geometry. In the next subsection of this tutorial, we will have some discussion about the basic configuration of the different layers in `nav2_costmap_2d`.
+The costmap implementation consists of multiple layers, each of which has a certain function that contributes to a cell's overall cost. The package consists of the following layers, but are plugin-based to allow customization and new layers to be used as well: static layer, inflation layer, range layer, obstacle layer, and voxel layer. The static layer represents the map section of the costmap, obtained from the messages published to the `/map` topic like those produced by SLAM.  The obstacle layer includes the objects detected by sensors that publish either or both the `LaserScan` and `PointCloud2` messages. The voxel layer is similar to the obstacle layer such that it can use either or both the `LaserScan` and `PointCloud2` sensor information but handles 3D data instead. The range layer allows for the inclusion of information provided by sonar and infrared sensors. Lastly, the inflation layer represents the added cost values around lethal obstacles such that our robot avoids navigating into obstacles due to the robot's geometry. In the next subsection of this tutorial, we will have some discussion about the basic configuration of the different layers in `nav2_costmap_2d`.
 
 The layers are integrated into the costmap through a plugin interface and then inflated using a user-specified [inflation radius](http://wiki.ros.org/costmap_2d/hydro/inflation), if the inflation layer is enabled. For a deeper discussion on costmap concepts, you can have a look at the [ROS1 costmap_2D documentation](http://wiki.ros.org/costmap_2d). Note that the `nav2_costmap_2d` package is mostly a straightforward ROS2 port of the ROS1 navigation stack version with minor changes required for ROS2 support and some new layer plugins.
 
@@ -161,7 +161,7 @@ To be able to launch `slam_toolbox`, make sure that you have installed the `slam
 sudo apt install ros-$ROS_DISTRO-slam-toolbox
 ```
 
-We will launch the `async_slam_toolbox_node` of `slam_toolbox` using the package’s built-in launch files. Open a new terminal and then execute the following lines:
+We will launch the `async_slam_toolbox_node` of `slam_toolbox` using the package's built-in launch files. Open a new terminal and then execute the following lines:
 
 ```shell
 ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
@@ -196,7 +196,7 @@ sudo apt install ros-$ROS_DISTRO-navigation2
 sudo apt install ros-$ROS_DISTRO-nav2-bringup
 ```
 
-We will now launch Nav2 using the `nav2_bringup`’s built-in launch file, `navigation_launch.py` . Open a new terminal and execute the following:
+We will now launch Nav2 using the `nav2_bringup`'s built-in launch file, `navigation_launch.py` . Open a new terminal and execute the following:
 
 ```shell
 ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true

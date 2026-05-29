@@ -20,7 +20,7 @@ Description
 | `bool` | true    |
 
 Description
-:   Whether to publish the local planner’s plan.
+:   Whether to publish the local planner's plan.
 
 ### **`<dwb plugin>.publish_trajectories`**
 

@@ -11,37 +11,37 @@ project so your patch will be accepted quickly in the codebase.
 
 ## Getting Involved
 
-If you’re interested in getting involved in Navigation 2, first of all, welcome!
+If you're interested in getting involved in Navigation 2, first of all, welcome!
 We encourage everyone to get involved from students, to junior developers, to senior developers, and executives.
-There’s something to do for everyone from bug fixes, to feature development, new algorithms, and refactoring.
+There's something to do for everyone from bug fixes, to feature development, new algorithms, and refactoring.
 
 All ROS 2 TSC Working Groups have their meetings on the [working group calendar](https://calendar.google.com/calendar/embed?src=agf3kajirket8khktupm9go748%40group.calendar.google.com).
-Here, you can find the date and time of the Navigation2 working group meeting. Make sure you’re checking in your local timezone.
+Here, you can find the date and time of the Navigation2 working group meeting. Make sure you're checking in your local timezone.
 From this calendar, you can add yourself to the event so it will appear on your google calendar and get the event link to the call through Google Hangouts.
 We encourage everyone interested to come to the meeting to introduce yourself, your project, and see what everyone is working on.
 
 Further, [ROS Discourse](https://discourse.ros.org/) is a good place to follow larger discussions happening in the community and announcements. This is **not** the correct place to post questions or ask for assistance. Please visit [ROS Answers](https://answers.ros.org/) for Q&A.
 
-Lastly, we have a [Community Slack](https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA) where we chat in real-time about topics in public channels or sidebar maintainers on individual projects via PMs. If you’re interested in contributing to Nav2, this is a great place to join!
+Lastly, we have a [Community Slack](https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA) where we chat in real-time about topics in public channels or sidebar maintainers on individual projects via PMs. If you're interested in contributing to Nav2, this is a great place to join!
 
-If you’re looking to contribute code or bugs, please see the Process section below.
+If you're looking to contribute code or bugs, please see the Process section below.
 
 Over time, for developers that have an interest and have shown technical competence in an area of the stack, we elevate developers to a maintainers status.
 That allows push rights to our protected branches, first-reviewers rights, and getting your name on [About and Contact][about-and-contact].
-There currently is not a clear process for getting to be a maintainer, but if you’ve been involved and contributing over a duration of several months, you may be a good candidate and should email the project lead listed on [About and Contact][about-and-contact].
+There currently is not a clear process for getting to be a maintainer, but if you've been involved and contributing over a duration of several months, you may be a good candidate and should email the project lead listed on [About and Contact][about-and-contact].
 
 ## Process
 
-After you’ve introduced yourself in a working group meeting (recommended, not required), you’re ready to get started!
+After you've introduced yourself in a working group meeting (recommended, not required), you're ready to get started!
 We recommend a typical open-source project flow and value detail and transparency.
 If you commit to something and need to pull back, say so.
 We all know priorities change and appreciate the heads up so that task can go into the open queue of tasks.
 
 The process is simple and is as follow:
 
-1. Create a ticket for any issues or features you’d like to see. You are not required to fix / implement patches required, but it would be helpful. Reporting bugs is also a valuable contribution.
+1. Create a ticket for any issues or features you'd like to see. You are not required to fix / implement patches required, but it would be helpful. Reporting bugs is also a valuable contribution.
 2. If this ticket, or another existing ticket, is something you would like to work on, comment in the ticket claiming ownership over it. It would be helpful at this time if you declared a strategy and a timeline for planning purposes of other folks working around you. Over time, update the ticket with progress of key markers and engage in any constructive feedback maintainers or other users may have.
-3. Once you’ve completed the task you set out to complete, submit a PR! Please fill out the PR template in complete to ensure that we have a full understanding of your work. At that point, 1-2 reviewers will take a look at your work and give it some feedback to be merged into the codebase. For trivial changes, a single maintainer may merge it after review if they’re happy with it, up to their discretion. Any substantial changes should be approved by at least 1 maintainer and 1 other community member.
+3. Once you've completed the task you set out to complete, submit a PR! Please fill out the PR template in complete to ensure that we have a full understanding of your work. At that point, 1-2 reviewers will take a look at your work and give it some feedback to be merged into the codebase. For trivial changes, a single maintainer may merge it after review if they're happy with it, up to their discretion. Any substantial changes should be approved by at least 1 maintainer and 1 other community member.
 
 Note: We take code quality seriously and strive for high-quality and consistent code.
 We make use of the linting and static analysis tools provided in ROS 2 (`ament_cpplint`, `ament_uncrustify`, `ament_cppcheck`, etc).
@@ -57,14 +57,14 @@ software continues to be available under the terms that the author
 desired.
 
 Because much of the source code is ported from other ROS 1 projects, each
-package has it’s own license. Contributions should be made under the predominant
+package has it's own license. Contributions should be made under the predominant
 license of that package. Entirely new packages should be made available under
 the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
 
 A license tells you what rights you have as a developer, as provided by
 the copyright holder. It is important that the contributor fully
 understands the licensing rights and agrees to them. Sometimes the
-copyright holder isn’t the contributor, such as when the contributor is
+copyright holder isn't the contributor, such as when the contributor is
 doing work on behalf of a company.
 
 If for some reason Apache 2.0 or BSD licenses are not appropriate for your work, please get in contact with a project maintainer and discuss your concerns or requirements.

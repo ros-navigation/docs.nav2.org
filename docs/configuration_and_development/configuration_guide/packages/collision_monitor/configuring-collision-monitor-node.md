@@ -8,9 +8,9 @@ However, this node is done at the CPU level with any form of sensor.
 As such, this does not provide hard real-time safety certifications, but uses the same types of techniques with the same types of data for users that do not have safety-rated laser sensors, safety-rated controllers, or wish to use any type of data input (e.g. pointclouds from depth or stereo or range sensors).
 
 This is a useful and integral part of large heavy industrial robots, or robots moving with high velocities, around people or other dynamic agents (e.g. other robots) as a safety mechanism for high-response emergency stopping.
-The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot’s perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.
+The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot's perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.
 
-See the package’s `README` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the [Using Collision Monitor][using-collision-monitor] tutorial.
+See the package's `README` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the [Using Collision Monitor][using-collision-monitor] tutorial.
 
 Also, the practical demonstration of Collision Monitor abilities presented at 6th ROS Developers Day 2023, could be found below:
 
@@ -24,7 +24,7 @@ Also, the practical demonstration of Collision Monitor abilities presented at 6t
 
 ## Features
 
-The Collision Monitor uses polygons relative the robot’s base frame origin to define "zones".
+The Collision Monitor uses polygons relative the robot's base frame origin to define "zones".
 Data that fall into these zones trigger an operation depending on the model being used.
 A given instance of the Collision Monitor can have many zones with different models at the same time.
 When multiple zones trigger at once, the most aggressive one is used (e.g. stop > slow 50% > slow 10%).
@@ -67,7 +67,7 @@ The data may be obtained from different data sources:
 
 Description
 :   Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then.
-    Please note that is not a dynamic parameter, there’s `/toggle` service interface
+    Please note that is not a dynamic parameter, there's `/toggle` service interface
     and [BT Node][toggle-collision-monitor] to update this state later at runtime.
 
 ### **`base_frame_id`**
@@ -177,7 +177,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
+:   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
 
 ### **`enable_stamped_cmd_vel`**
 
@@ -379,7 +379,7 @@ Description
 | `vector<string>` | N/A     |
 
 Description
-:   List of sub polygons for switching based on the robot’s current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
+:   List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.points`**
 
@@ -580,7 +580,7 @@ Description
 Description
 :   For `costmap` sources only. If `true`, cells with cost `255` (`NO_INFORMATION`)
     will also be turned into obstacle points. Set to `false` if your costmap has
-    large unknown areas you don’t want to trigger Collision Monitor.
+    large unknown areas you don't want to trigger Collision Monitor.
 
 ### **`bond_heartbeat_period`**
 

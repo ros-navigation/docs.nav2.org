@@ -4,7 +4,7 @@
 
 This document explains one method for profiling applications in ROS 2 / Nav2. The aim of profiling is to generate files that can be analyzed to see where compute time and resources are spent during the execution of a program. This can be useful to determine where the bottlenecks in your program exist and where things might be able to be improved.
 
-The following steps show ROS 2 users how to modify the Nav2 stack to get profiling information about a particular server / algorithm when they encounter a situation they’d like to understand better. This tutorial applies to both simulated and physical robots.
+The following steps show ROS 2 users how to modify the Nav2 stack to get profiling information about a particular server / algorithm when they encounter a situation they'd like to understand better. This tutorial applies to both simulated and physical robots.
 
 ## Preliminaries
 
@@ -43,9 +43,9 @@ As in our generic example, for a given node, we need to compile with debug flags
 colcon build --packages-select <packages of interest> --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
 ```
 
-Optionally, you may add the following line to the `CMakeLists.txt` of the package you’re looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single `colcon build` invocation.
+Optionally, you may add the following line to the `CMakeLists.txt` of the package you're looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single `colcon build` invocation.
 
-It is important that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin’s run-time profile.
+It is important that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin's run-time profile.
 
 ```cmake
 add_compile_options(-pg)
@@ -69,7 +69,7 @@ Once sufficient data has been collected, cleanly exit the process with Control+C
 
 Just as in the Node example, we must also compile with debug flags when profiling a node from launch. We can complete the same valgrind call as from the commandline as within a launch file using launch prefixes.
 
-As our example before, this is how we’d launch the `controller_server` node from inside a launch file.
+As our example before, this is how we'd launch the `controller_server` node from inside a launch file.
 
 ```python
 start_controller_server_node = Node(
@@ -90,12 +90,12 @@ Once sufficient data has been collected, cleanly exit the process with Control+C
 
 ## From Nav2 Bringup
 
-Because Nav2 bringup has more than one node per launch file (and in the case `use_composition=true`, more than one per process), it is necessary to separate out a particular node that you’re interested in profiling from the rest of the system. As previously described, once they’re isolated in either a launch file or as a node to be launched on the commandline, they can easily be run to collect the callgrind information.
+Because Nav2 bringup has more than one node per launch file (and in the case `use_composition=true`, more than one per process), it is necessary to separate out a particular node that you're interested in profiling from the rest of the system. As previously described, once they're isolated in either a launch file or as a node to be launched on the commandline, they can easily be run to collect the callgrind information.
 
 The steps within Nav2 are as follows:
 
 - Remove server node from the `navigation_launch.py`, ensuring to remove from both composed and non-composed options within the file
-- In a separate launch file or using `ros2 run` CLI, start up the node you’d like to profile using the instructions above
+- In a separate launch file or using `ros2 run` CLI, start up the node you'd like to profile using the instructions above
 - Launch Nav2 as usual with the missing node
 - Once your data has been collected, control+C and cleanly finish the profiled process and the rest of the navigation
 

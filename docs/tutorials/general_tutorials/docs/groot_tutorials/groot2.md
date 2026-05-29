@@ -7,7 +7,7 @@ Out of the box, Groot2 can only display Behavior Trees and nodes that are from t
 Therefore, we must point Groot2 to our palette, or index of Nav2 / custom behavior tree nodes:
 
 1. Open Groot2 in editor mode. The interface should now look like the example shown in the first image below.
-2. Click the red icon as shown in the second image, open the file */path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml* to import all the custom behavior tree nodes used for navigation. Once loaded, you should see the full palette of Nav2’s custom nodes.
+2. Click the red icon as shown in the second image, open the file */path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml* to import all the custom behavior tree nodes used for navigation. Once loaded, you should see the full palette of Nav2's custom nodes.
 3. Click the blue icon as shown in the second image, browse the tree you want to visualize, then select *Open*. The Nav2 BTs exist in */path/to/navigation2/nav2_bt_navigator/behavior_trees/*.
 
 <div markdown="span" class="flex-images">
@@ -29,15 +29,15 @@ You can also check/uncheck the Nodes visualization part in the preferences to be
 
 !!! note
 
-    If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2’s BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
+    If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2's BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
 
 ## Edit Behavior Trees
 
 Now that you have a Nav2 BT open in Groot2 in editor mode, you should be able to trivially modify it using the GUI.
 You can pull in new nodes from the side panel to add them to the workspace.
-You may then connect the nodes using a "drag and drop" motion between the node’s input and output ports to assemble the new nodes into the tree.
+You may then connect the nodes using a "drag and drop" motion between the node's input and output ports to assemble the new nodes into the tree.
 
-If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you’re done modifying, simply save the new configuration file and use that on your robot the next time!
+If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you're done modifying, simply save the new configuration file and use that on your robot the next time!
 
 <figure markdown="span">
   ![](../images/Groot2/editing_bt.png){ width="80%" }
@@ -47,7 +47,7 @@ If you select a given node, you can change metadata about it such as its name or
 
 Each node in the behavior tree holds a specialized function.
 Sometimes, its useful to create new nodes and add them to your palette during the design process - perhaps before the implementations themselves exist.
-This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they’d like to interact with a given node (e.g. type, ports, etc).
+This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they'd like to interact with a given node (e.g. type, ports, etc).
 Within Groot2, you may create new custom nodes to add to your tree and export these new nodes back to your palette.
 Implementing the node itself needs to be done separately from Groot2, which is described in [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin].
 

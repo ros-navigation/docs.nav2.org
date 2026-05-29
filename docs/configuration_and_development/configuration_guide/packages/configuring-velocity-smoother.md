@@ -3,10 +3,10 @@
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_velocity_smoother).
 
 The `nav2_velocity_smoother` is a package containing a lifecycle-component node for smoothing velocities sent by Nav2 to robot controllers.
-The aim of this package is to implement velocity, acceleration, and deadband smoothing from Nav2 to reduce wear-and-tear on robot motors and hardware controllers by smoothing out the accelerations/jerky movements that might be present with some local trajectory planners’ control efforts.
+The aim of this package is to implement velocity, acceleration, and deadband smoothing from Nav2 to reduce wear-and-tear on robot motors and hardware controllers by smoothing out the accelerations/jerky movements that might be present with some local trajectory planners' control efforts.
 It can also interpolate velocity commands at higher rates than the controller server publishes.
 
-See the package’s README for more information.
+See the package's README for more information.
 
 ## Velocity Smoother Parameters
 
@@ -17,7 +17,7 @@ See the package’s README for more information.
 | `bool` | false   |
 
 Description
-:   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
+:   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
 
 ### **`smoothing_frequency`**
 
@@ -35,7 +35,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Whether or not to adjust other components of velocity proportionally to a component’s required changes due to acceleration limits. This will try to adjust all components to follow the same direction, but still enforces acceleration limits to guarantee compliance, even if it means deviating off commanded trajectory slightly.
+:   Whether or not to adjust other components of velocity proportionally to a component's required changes due to acceleration limits. This will try to adjust all components to follow the same direction, but still enforces acceleration limits to guarantee compliance, even if it means deviating off commanded trajectory slightly.
 
 ### **`feedback`**
 
@@ -44,7 +44,7 @@ Description
 | `string` | "OPEN_LOOP" |
 
 Description
-:   Type of feedback to use for the current state of the robot’s velocity. In `OPEN_LOOP`, it will use the last commanded velocity as the next iteration’s current velocity. When acceleration limits are set appropriately, this is a good assumption. In `CLOSED_LOOP`, it will use the odometry from the `odom` topic to estimate the robot’s current speed. In closed loop mode, it is important that the odometry is high rate and low latency, relative to the smoothing frequency.
+:   Type of feedback to use for the current state of the robot's velocity. In `OPEN_LOOP`, it will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately, this is a good assumption. In `CLOSED_LOOP`, it will use the odometry from the `odom` topic to estimate the robot's current speed. In closed loop mode, it is important that the odometry is high rate and low latency, relative to the smoothing frequency.
 
 ### **`max_velocity`**
 

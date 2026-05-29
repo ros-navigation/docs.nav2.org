@@ -5,7 +5,7 @@ This is the instructions for releasing a new Nav2 version for a ROS distribution
 !!! note
 
     We require `osrf/ros:<distro>-desktop-full` images to exist for a distribution before this process may be completed. 
-    This usually means we wait until the release date to perform Nav2’s release and have it included in the first distribution sync.
+    This usually means we wait until the release date to perform Nav2's release and have it included in the first distribution sync.
 
 ## 0. Initial Freeze
 
@@ -54,12 +54,12 @@ Once all testing passes, move onto the next steps.
 
 ## 2. Setup Nav2 Docker Images
 
-Next, we need to setup Nav2’s Nightly and Release docker image jobs in [nav2_docker](https://github.com/ros-navigation/nav2_docker).
+Next, we need to setup Nav2's Nightly and Release docker image jobs in [nav2_docker](https://github.com/ros-navigation/nav2_docker).
 
 Update `.github/workflows/build_images.yaml` to contain the new distribution in the `ros_distro` matrix.
 Remove any EOL distributions at this time.
 Within the `strategy.matrix.version` map, please a new entry for the distribution being added.
-The `main_version` is `1` unless a new major version is set in Nav2’s `package.xml` files.
+The `main_version` is `1` unless a new major version is set in Nav2's `package.xml` files.
 The `distro_version` should be bumped by one from the last distribution representing the release in the format `1.4.X`.
 Remove any EOL distributions at this time.
 
@@ -75,7 +75,7 @@ First, update `.github/workflows/build_main_against_distros.yml` by adding the n
 While the `nav2_docker` nightly image does not yet exist, it will by the end of this step.
 Remove any EOL distributions at this time.
 
-Next, bump the `main` branch’s distribution number to the same set in Step 2 above (i.e. `1.4.0`).
+Next, bump the `main` branch's distribution number to the same set in Step 2 above (i.e. `1.4.0`).
 Add the distribution branch to `.github/workflows/update_ci_image.yaml` so that future pushes will result in CI image updates.
 Remove any EOL distributions at this time.
 
@@ -97,10 +97,10 @@ In the new distribution branch, update the files for CI ([Humble Example](https:
 
 - Update `.circleci/config.yml` to use the new distribution image (replace `ghcr.io/ros-navigation/navigation2:main`).
 - Update `.devcontainer/devcontainer.json` to `cacheFrom` the new distribution image (replace `ghcr.io/ros-navigation/navigation2:main`).
-- Update `Dockerfile` to use the new distribution’s image rather than `rolling`.
-- Update `tools/distro.Dockerfile` to use the new distribution’s image rather than `rolling` in 3x places.
+- Update `Dockerfile` to use the new distribution's image rather than `rolling`.
+- Update `tools/distro.Dockerfile` to use the new distribution's image rather than `rolling` in 3x places.
 
-Then, retrigger the Update CI Image workflow in Nav2’s GitHub Actions tab, it should now also be successful.
+Then, retrigger the Update CI Image workflow in Nav2's GitHub Actions tab, it should now also be successful.
 Open a dummy PR against the new distribution branch and ensure that it builds successfully.
 
 ## 6. Update Auxiliary Projects

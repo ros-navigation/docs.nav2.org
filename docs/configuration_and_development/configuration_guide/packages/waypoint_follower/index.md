@@ -31,7 +31,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | ‘map’   |
+| `string` | 'map'   |
 
 Description
 :   The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
@@ -68,7 +68,7 @@ Description
 
 | Type     | Default            |
 |----------|--------------------|
-| `string` | ‘wait_at_waypoint’ |
+| `string` | 'wait_at_waypoint' |
 
 Description
 :   A plugin to define tasks to be executed when robot arrives to a waypoint.

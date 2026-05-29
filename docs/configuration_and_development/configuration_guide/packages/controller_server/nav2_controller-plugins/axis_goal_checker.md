@@ -1,6 +1,6 @@
 # AxisGoalChecker { #axis-goal-checker }
 
-Checks whether the robot has reached the goal pose by projecting the robot’s position onto the path direction defined by the last segment of the path. This goal checker uses the last two poses of the path (`before_goal_pose` and `goal_pose`) to determine the path direction and then checks if the robot is within tolerance along that axis.
+Checks whether the robot has reached the goal pose by projecting the robot's position onto the path direction defined by the last segment of the path. This goal checker uses the last two poses of the path (`before_goal_pose` and `goal_pose`) to determine the path direction and then checks if the robot is within tolerance along that axis.
 
 Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (`along_path_tolerance`) and perpendicular to it (`cross_track_tolerance`). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.
 

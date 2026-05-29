@@ -36,7 +36,7 @@ They are nodes that contain state machine transitions for bringup and teardown o
 This helps in deterministic behavior of ROS systems in startup and shutdown.
 It also helps users structure their programs in reasonable ways for commercial uses and debugging.
 
-When a node is started, it is in the unconfigured state, only processing the node’s constructor which should **not** contain any ROS networking setup or parameter reading.
+When a node is started, it is in the unconfigured state, only processing the node's constructor which should **not** contain any ROS networking setup or parameter reading.
 By the launch system, or the supplied lifecycle manager, the nodes need to be transitioned to inactive by configuring.
 After, it is possible to activate the node by transitioning through the activating stage.
 

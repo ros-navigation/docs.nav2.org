@@ -32,21 +32,21 @@ If you select the default tree *navigate_w_replanning_and_recovery.xml*, then a 
 
 !!! note
 
-    If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2’s BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
+    If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2's BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
 
 ## Edit Behavior Trees
 
 Now that you have a Nav2 BT open in Groot in editor mode, you should be able to trivially modify it using the GUI.
 Starting from a screen like that shown in [Figure 3](#groot-nav2-default-bt), you can pull in new nodes from the side panel to add them to the workspace.
-You may then connect the nodes using a "drag and drop" motion between the node’s input and output ports to assemble the new nodes into the tree.
+You may then connect the nodes using a "drag and drop" motion between the node's input and output ports to assemble the new nodes into the tree.
 
-If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you’re done modifying, simply save the new configuration file and use that on your robot the next time!
+If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you're done modifying, simply save the new configuration file and use that on your robot the next time!
 
 ## Adding A Custom Node
 
 Each node in the behavior tree holds a specialized function.
 Sometimes, its useful to create new nodes and add them to your palette during the design process - perhaps before the implementations themselves exist.
-This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they’d like to interact with a given node (e.g. type, ports, etc).
+This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they'd like to interact with a given node (e.g. type, ports, etc).
 Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your palette.
 Implementing the node itself needs to be done separately from Groot, which is described in [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin].
 
@@ -76,7 +76,7 @@ After completing, select *OK* in [Figure 5](#groot-interactive-node-creation), t
 Before starting to create a new BT based on the new custom nodes, it is recommend to export the newly created nodes to save in case of Groot crashing.
 This can be performed with the icon highlighted in green from [Figure 6](#groot-export-new-node).
 The resulting XML output from the node created in [Figure 5](#groot-interactive-node-creation) can be seen below.
-You can see more examples in [Nav2’s BT Node Palette XML](https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml).
+You can see more examples in [Nav2's BT Node Palette XML](https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml).
 
 ```xml
 <root>

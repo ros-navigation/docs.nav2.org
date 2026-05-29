@@ -35,4 +35,4 @@ This will involve porting code from ROS 1 to ROS 2, analyzing uses of the enviro
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

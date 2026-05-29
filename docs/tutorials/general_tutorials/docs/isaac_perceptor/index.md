@@ -1,16 +1,16 @@
 # Lidar-Free, Vision-Based Navigation { #lidar-free-vision-based-navigation }
 
-In this tutorial, you’ll see how to use the NVIDIA Jetson, [Isaac ROS](https://developer.nvidia.com/isaac/ros), [Isaac Perceptor](https://developer.nvidia.com/isaac/perceptor), and [NVIDIA Nova](https://nvidia-isaac-ros.github.io/nova/index.html) technologies to implement Vision-based Navigation entirely without the use of LIDARs, active depth sensors, or other range-providing modalities.
-Instead, we’ll rely solely on passive stereo cameras as the extrinsic sensing source to achieve collision avoidance, localization, and mapping — a powerful and cost-effective alternative.
+In this tutorial, you'll see how to use the NVIDIA Jetson, [Isaac ROS](https://developer.nvidia.com/isaac/ros), [Isaac Perceptor](https://developer.nvidia.com/isaac/perceptor), and [NVIDIA Nova](https://nvidia-isaac-ros.github.io/nova/index.html) technologies to implement Vision-based Navigation entirely without the use of LIDARs, active depth sensors, or other range-providing modalities.
+Instead, we'll rely solely on passive stereo cameras as the extrinsic sensing source to achieve collision avoidance, localization, and mapping — a powerful and cost-effective alternative.
 The scripts and resources used can be found in [open-navigation/opennav_visual_navigation](https://github.com/open-navigation/opennav_visual_navigation).
 
 This tutorial will guide you through the fundamental concepts behind vision-based navigation, explain how to configure and launch a vision-enabled Nav2 stack, and culminate in a hardware demonstration of a mobile robot performing autonomous security patrols.
 
-Whether you’re developing for resource-constrained embedded systems or exploring alternatives to expensive sensor suites, this walk-through provides a complete introduction to deploying advanced autonomous navigation with only vision-based perception using a NVIDIA Nova reference platform, including stereo cameras and Jetson AGX Orin.
+Whether you're developing for resource-constrained embedded systems or exploring alternatives to expensive sensor suites, this walk-through provides a complete introduction to deploying advanced autonomous navigation with only vision-based perception using a NVIDIA Nova reference platform, including stereo cameras and Jetson AGX Orin.
 
 !!! note
 
-    While vision-based solutions offer powerful and efficient capabilities they can face challenges in certain environments. Scenarios involving glass surfaces, featureless corridors, thin obstacles, sudden movements, vibrations, or prolonged stillness under changing lighting conditions may impact performance. It’s important to thoughtfully evaluate whether a visual navigation approach aligns with the specific demands and conditions of your application to ensure the best results.
+    While vision-based solutions offer powerful and efficient capabilities they can face challenges in certain environments. Scenarios involving glass surfaces, featureless corridors, thin obstacles, sudden movements, vibrations, or prolonged stillness under changing lighting conditions may impact performance. It's important to thoughtfully evaluate whether a visual navigation approach aligns with the specific demands and conditions of your application to ensure the best results.
 
 <div style="width:100%;max-width:960px;margin:0 auto;">
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?autoplay=1&mute=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -34,7 +34,7 @@ Major elements of this include Path Planning, Control, Perception, Localization,
 If you want to learn more about Navigation, checkout [Navigation Concepts][navigation-concepts].
 
 The elements that make use of sensor data are Perception and Localization.
-Planning and Control make use of derivative information from these subsystems, such as the robot’s current pose or information about the location of potential obstacles, but not the direct data itself.
+Planning and Control make use of derivative information from these subsystems, such as the robot's current pose or information about the location of potential obstacles, but not the direct data itself.
 Structures like the environmental model fuses sensor data from many sensors together into a representation that is data agnostic, which can be used for planning and control algorithms to make decisions based off of.
 In Nav2, that is commonly the Costmap package, but could be height maps, voxel grids, and so on.
 
@@ -51,7 +51,7 @@ Currently, these are solved in Lidar-based solutions using Costmap2D, a SLAM lib
 ## NVIDIA Technologies
 
 NVIDIA provides the necessary technologies to replace the existing Lidar-based navigation solutions.
-This is made possible by leveraging the power of NVIDIA’s GPU and the Isaac ROS & Perceptor SDKs.
+This is made possible by leveraging the power of NVIDIA's GPU and the Isaac ROS & Perceptor SDKs.
 
 **Data Acquisition**:
 
@@ -61,9 +61,9 @@ Sometimes post-processing is needed to remove noise or other artifacts to improv
 
 In the Vision-based navigation, we instead require more stages to obtain both the sensor data and derived results needed for 3D reconstructions to build the environmental model required for global path planning and local trajectory planning (control).
 
-Data is first acquired via the Jetson’s `libargus` or a sensor manufacturer provided library to obtain sensor data in a low-latency, time-synchronized way to enable accurate information for Visual mapping and localization purposes.
+Data is first acquired via the Jetson's `libargus` or a sensor manufacturer provided library to obtain sensor data in a low-latency, time-synchronized way to enable accurate information for Visual mapping and localization purposes.
 This is key for good performance of a vision-based solution and many sensors are supported.
-The disparity is then estimated using Isaac’s `isaac_ros_ess`, which computes a GPU accelerated, deep-learning based stereo disparity image.
+The disparity is then estimated using Isaac's `isaac_ros_ess`, which computes a GPU accelerated, deep-learning based stereo disparity image.
 Finally, `isaac_ros_stereo_image_proc` converts the disparity image into a Depth Image used for later 3D reconstruction.
 
 !!! note
@@ -72,14 +72,14 @@ Finally, `isaac_ros_stereo_image_proc` converts the disparity image into a Depth
 
 **Data Fusion**:
 
-Once we’d obtained the depth information from the stereo pair, we can use this for environmental model construction and updates so we can leverage knowledge about the environment to make intelligent planning and control choices.
-While definitionally 3D Reconstruction methods may not require depth information from camera feeds, most modern and robust solutions require it, hence the need for the Isaac SDK’s depth estimation pipeline.
+Once we'd obtained the depth information from the stereo pair, we can use this for environmental model construction and updates so we can leverage knowledge about the environment to make intelligent planning and control choices.
+While definitionally 3D Reconstruction methods may not require depth information from camera feeds, most modern and robust solutions require it, hence the need for the Isaac SDK's depth estimation pipeline.
 
 NVIDIA provides a great 3D Reconstruction solution called [NvBlox](https://github.com/nvidia-isaac/nvblox).
 `NvBlox` is a GPU accelerated signed-distance field library which can be used to generate environmental models using voxel grids.
 This can take in multiple depth images from stereo camera pairs and populate a 3D environmental representation.
 
-It can also accept an optional semantic segmentation mask to detect people, robots, or other dynamic objects in the scene to remove them from the environmental model’s update.
+It can also accept an optional semantic segmentation mask to detect people, robots, or other dynamic objects in the scene to remove them from the environmental model's update.
 These dynamic obstacles are then later re-inserted at the end of the update to avoid artifacts in environmental updates related to dynamic obstacles without the need of expensive clearing logic.
 Common demonstrations show this with a particular human segmentation model, but any model may be used trained to segment out any number of object classes.
 
@@ -119,7 +119,7 @@ It may also be used to relocalize the robot during runtime as well, which can be
 
 ### Jetpack
 
-If you don’t already have the latest jetpack installed follow the instructions below.
+If you don't already have the latest jetpack installed follow the instructions below.
 The current version at the time of writing is Jetpack 6.2 with Isaac 3.2.
 
 If the Jetson is currently running Jetpack 6.0 or higher, [please use this guide to upgrade using apt to Jetpack 6.2](https://docs.nvidia.com/jetson/jetpack/install-setup/index.html#upgrade-jetpack).
@@ -127,7 +127,7 @@ Otherwise, the [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager) is
 
 !!! note
 
-    Be sure to have the Jetson’s USB-C port used for bootloading accessible if upgrading using the SDK Manager. Use the IP addresses of this wired connection, not over a local WAN.
+    Be sure to have the Jetson's USB-C port used for bootloading accessible if upgrading using the SDK Manager. Use the IP addresses of this wired connection, not over a local WAN.
 
 ### Nova Init
 
@@ -157,7 +157,7 @@ However, stereo cameras from [Leopard Imaging](https://leopardimaging.com/leopar
 
 Cameras with tight integration and synchronization are required to work with cuVSLAM due to its timing constraints to achieve accurate results.
 Thus, we recommend using one of these compatible options.
-However, if you’d like to use NvBlox without cuVSLAM and using another localization and mapping solution, a broader range of camera options are available such as the Realsense.
+However, if you'd like to use NvBlox without cuVSLAM and using another localization and mapping solution, a broader range of camera options are available such as the Realsense.
 NvBlox uses the pose estimates that cuVSLAM provides, but those pose estimates can be from any source.
 It uses these pose estimates to place the sensor data in the scene to populate the environmental model.
 NvBlox can work well on just a single stereo camera, but cuVSLAM typically requires two or more cameras to see enough of the scene to obtain robust results.
@@ -200,7 +200,7 @@ echo -e '-v /mnt/nova_ssd/recordings:/mnt/nova_ssd/recordings' > ${ISAAC_ROS_WS}
 echo -e '-v /mnt/nova_ssd/maps:/mnt/nova_ssd/maps' > ${ISAAC_ROS_WS}/src/isaac_ros_common/scripts/.isaac_ros_dev-dockerargs
 ```
 
-Next, we’re going to clone the `isaac_ros_common` package which contains key elements of Isaac ROS, including the dockerfiles and scripts needed to run Isaac in the Dev environment.
+Next, we're going to clone the `isaac_ros_common` package which contains key elements of Isaac ROS, including the dockerfiles and scripts needed to run Isaac in the Dev environment.
 
 ```bash
 cd ${ISAAC_ROS_WS}/src && git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git
@@ -210,13 +210,13 @@ If working with a Nova Carter device, [do the following](https://nvidia-isaac-ro
 
 ### Demonstration Setup
 
-We’re now ready to launch the container, we can do so via:
+We're now ready to launch the container, we can do so via:
 
 ```bash
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && ./scripts/run_dev.sh
 ```
 
-Once we’ve obtained and setup Isaac, we can add in the `opennav_visual_navigation` project as a starting point.
+Once we've obtained and setup Isaac, we can add in the `opennav_visual_navigation` project as a starting point.
 
 ```bash
 # Clones the project and creates a colcon_ws relative to your path
@@ -232,7 +232,7 @@ Please reference this package for more information.
 To adapt to another platform, make a new `my_robot_nav` package which:
 
 - Launches the robot hardware drivers for accepting commands, bringing up sensors, providing transformation tree, etc
-- Launches Isaac Perceptor, usually via `isaac_ros_perceptor_bringup` package’s `perceptor_general.launch.py` or `perceptor_rgbd.launch.py`
+- Launches Isaac Perceptor, usually via `isaac_ros_perceptor_bringup` package's `perceptor_general.launch.py` or `perceptor_rgbd.launch.py`
 - Launches Nav2 with the appropriate configurations (i.e. removed AMCL for cuVSLAM, Costmap configurations for NvBlox)
 
 Use these launch files to replace `nova_carter_bringup/launch/navigation.launch.py` used in this package.
@@ -255,8 +255,8 @@ Tips and Tricks:
 - Teleop the robot into a clear space before starting recording, ensure it is not docked and the cameras are not obstructed by a wall, furniture, etc. This ensures the starting data will contain features that can be processed later.
 - For each 5x5m area, drive for around 1 minute
 - Drive in closed loops and make sure to capture data at more than one angle (i.e. drive in different directions to obtain different viewpoints)
-- Don’t drive for a long time in a straight line, weave and swerve.
-- There’s a technique to making a good VSLAM map, it might take you a few tries to get good results.
+- Don't drive for a long time in a straight line, weave and swerve.
+- There's a technique to making a good VSLAM map, it might take you a few tries to get good results.
 
 <figure markdown="span">
   ![](../images/perceptor/mapping1.gif)
@@ -325,7 +325,7 @@ ros2 run isaac_mapping_ros create_map_offline.py --sensor_data_bag=/mnt/nova_ssd
 
 !!! warning
 
-    Starting with version 4.1.0 of the `isaac-ros-ess` code, the plugin architecture was changed to allow for custom plugins. This means you need to explicitly provide the path to the plugins for the models you’ve installed, even if they are the default ones provided by NVIDIA.
+    Starting with version 4.1.0 of the `isaac-ros-ess` code, the plugin architecture was changed to allow for custom plugins. This means you need to explicitly provide the path to the plugins for the models you've installed, even if they are the default ones provided by NVIDIA.
     For the `dnn_stereo_disparity` models, installed as part of the `isaac-ros-ess-install-models` package, this looks like:
 
     `export LD_LIBRARY_PATH="/workspaces/isaac_ros-dev/ros_ws/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64/:$LD_LIBRARY_PATH"`
@@ -387,17 +387,17 @@ occupied_thresh: 0.65
 free_thresh: 0.25
 ```
 
-Let’s take a look at the `occupancy_map.png` file itself:
+Let's take a look at the `occupancy_map.png` file itself:
 
 <figure markdown="span">
   ![](../images/perceptor/occupancy_map.png)
 </figure>
 
-We’ll note that this lacks the typical fine detail we’re used to seeing from a LIDAR-generated occupancy grid map. This is an artifact of image data being converted to depth data and highlights the importance of using the loop-closure techniques mentioned above when recording the visual data. Despite appearances, this map is quite sufficient for visual navigation around the space. The occupancy map is really only one layer in the whole localization stack used by the robot during visual navigation. Isaac ROS Perceptor will also use the cuvslam_map, cuvgl_map and live image data from the cameras on the robot for localization against features in the mapped space.
+We'll note that this lacks the typical fine detail we're used to seeing from a LIDAR-generated occupancy grid map. This is an artifact of image data being converted to depth data and highlights the importance of using the loop-closure techniques mentioned above when recording the visual data. Despite appearances, this map is quite sufficient for visual navigation around the space. The occupancy map is really only one layer in the whole localization stack used by the robot during visual navigation. Isaac ROS Perceptor will also use the cuvslam_map, cuvgl_map and live image data from the cameras on the robot for localization against features in the mapped space.
 
 ## 4. Navigation Testing
 
-Now that this initial setup is complete, we’re ready to start navigating using visual localization and collision avoidance!
+Now that this initial setup is complete, we're ready to start navigating using visual localization and collision avoidance!
 
 <figure markdown="span">
   ![](../images/perceptor/isaac_ros_perceptor_polymath_zoomed_out.png)
@@ -435,7 +435,7 @@ And be able to now navigate as shown in the video below! A special thanks to Nav
 
 ## 5. Conclusions & Extensions
 
-In this tutorial, we showed how Nav2 can be used without lidar or depth cameras to conduct vision-only navigation leveraging NVIDA’s technologies (Jetson, Isaac ROS, Isaac Perceptor, Nova reference platform).
+In this tutorial, we showed how Nav2 can be used without lidar or depth cameras to conduct vision-only navigation leveraging NVIDA's technologies (Jetson, Isaac ROS, Isaac Perceptor, Nova reference platform).
 To leverage even more vision features during Visual Navigation, you can also use the Isaac SDK, ZED SDK, or other AI technologies to leverage the GPU for:
 
 - Object detection or semantic segmentation: `isaac-ros-peoplenet` and `isaac-ros-peoplesemsegnet` for person recognition and semantic segmentation of people from mapped spaces.

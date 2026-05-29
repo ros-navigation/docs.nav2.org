@@ -19,7 +19,7 @@ Lets briefly explain what dev containers are, why you should use them, and how t
 
 !!! tip "Hint"
 
-    Here we’ll assume the use of VS Code, but still applies to alternative tools and services, including  other CLIs, IDEs, etc. such as:
+    Here we'll assume the use of VS Code, but still applies to alternative tools and services, including  other CLIs, IDEs, etc. such as:
 
     - [Dev Container CLI](https://github.com/devcontainers/cli)
         - A reference implementation for the open specification
@@ -30,7 +30,7 @@ Lets briefly explain what dev containers are, why you should use them, and how t
 
 ### What is a Dev Container?
 
-A dev container is a Docker container that has all the tools and dependencies you need to develop the project. It runs in a self-contained environment and is isolated from other containers and your host machine. This lets you reliably develop for the project anywhere, notably for linux distributions targeted by ROS, regardless of your host machine’s operating system.
+A dev container is a Docker container that has all the tools and dependencies you need to develop the project. It runs in a self-contained environment and is isolated from other containers and your host machine. This lets you reliably develop for the project anywhere, notably for linux distributions targeted by ROS, regardless of your host machine's operating system.
 
 ### Why use a Dev Container?
 
@@ -38,7 +38,7 @@ A dev container provides a common and consistent development environment. It ens
 
 ### How do Dev Containers work?
 
-When you open the project in VS Code, VS Code checks for the dev container configuration nested within the `.devcontainer` folder under the project’s root directory. If it finds one, it can prompt you to reopen the project in a container. If you choose to do so, it launches the container, connects to it, and mounts your project folder inside the container. You can then use VS Code in the container just as you would locally. While setting up the container, VS Code can also attempt to passthrough useful aspects of your local environment, such as git user configurations, X11 sockets, and more.
+When you open the project in VS Code, VS Code checks for the dev container configuration nested within the `.devcontainer` folder under the project's root directory. If it finds one, it can prompt you to reopen the project in a container. If you choose to do so, it launches the container, connects to it, and mounts your project folder inside the container. You can then use VS Code in the container just as you would locally. While setting up the container, VS Code can also attempt to passthrough useful aspects of your local environment, such as git user configurations, X11 sockets, and more.
 
 This is quite similar to earlier tools used to customize and run docker containers for development:
 
@@ -51,7 +51,7 @@ This is quite similar to earlier tools used to customize and run docker containe
 
 ## Prerequisites
 
-To use dev containers, you’ll need the following:
+To use dev containers, you'll need the following:
 
 - [Docker Engine](https://docs.docker.com/engine/install/) installed and running on the host machine
 - [Visual Studio Code](https://code.visualstudio.com/) installed on any remote machine
@@ -68,7 +68,7 @@ To use dev containers, you’ll need the following:
 
 ## Getting started { #dev-containers-getting-started }
 
-Getting started using dev containers is as simple as opening the project in VS Code by either: following the notification prompt to reopen the project in a container, or explicitly opening the command palette (Crtl+Shift+P) and selecting `Remote-Containers: Reopen in Container`. This will create a new container, install any extensions specified in the project’s default `.devcontainer/devcontainer.json` config file, and mount the project’s root directory as the workspace folder. Once the container is created, VS Code will connect to it and you can start developing.
+Getting started using dev containers is as simple as opening the project in VS Code by either: following the notification prompt to reopen the project in a container, or explicitly opening the command palette (Crtl+Shift+P) and selecting `Remote-Containers: Reopen in Container`. This will create a new container, install any extensions specified in the project's default `.devcontainer/devcontainer.json` config file, and mount the project's root directory as the workspace folder. Once the container is created, VS Code will connect to it and you can start developing.
 
 !!! tip
 

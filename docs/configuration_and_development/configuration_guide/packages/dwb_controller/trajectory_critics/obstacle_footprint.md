@@ -1,6 +1,6 @@
 # ObstacleFootprintCritic { #obstacle-footprint-critic }
 
-Scores a trajectory based on verifying all points along the robot’s footprint don’t touch an obstacle marked in the costmap.
+Scores a trajectory based on verifying all points along the robot's footprint don't touch an obstacle marked in the costmap.
 
 ## Parameters
 

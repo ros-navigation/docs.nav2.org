@@ -32,7 +32,7 @@ A **very** basic, but functional, navigator can be seen below.
 ```
 
 This behavior tree will simply plan a new path to `goal` every 1 meter (set by `DistanceController`) using `ComputePathToPose`.
-If a new path is computed on the `path` blackboard variable, `FollowPath` will take this `path` and follow it using the server’s default algorithm.
+If a new path is computed on the `path` blackboard variable, `FollowPath` will take this `path` and follow it using the server's default algorithm.
 
 This tree contains:
 

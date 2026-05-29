@@ -24,7 +24,7 @@ Description
 | `bool` | False   |
 
 Description
-:   Whether to use A\*. If false, uses Dijkstra’s expansion.
+:   Whether to use A\*. If false, uses Dijkstra's expansion.
 
 ### **`<name>.allow_unknown`**
 

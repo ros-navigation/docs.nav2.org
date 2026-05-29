@@ -91,7 +91,7 @@ Description
 | `string` | "base_link" |
 
 Description
-:   Robot’s base frame for control law.
+:   Robot's base frame for control law.
 
 ### **`fixed_frame`**
 
@@ -127,7 +127,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Whether the robot is docking with the dock forward or backward in motion. This parameter is deprecated. Use the dock plugin’s `dock_direction` parameter instead.
+:   Whether the robot is docking with the dock forward or backward in motion. This parameter is deprecated. Use the dock plugin's `dock_direction` parameter instead.
 
 ### **`dock_prestaging_tolerance`**
 
@@ -395,7 +395,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Whether to use external detection topic for dock or use the databases’ pose.
+:   Whether to use external detection topic for dock or use the databases' pose.
 
 ### **`<dock_name>.detector_service_name`**
 

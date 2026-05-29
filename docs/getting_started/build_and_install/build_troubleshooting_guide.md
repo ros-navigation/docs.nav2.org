@@ -9,11 +9,11 @@
 - Make sure that the `setup.bash` in `nav2_depend_ws/install` is sourced.
 - Check if you have the correct ROS version and distribution. `printenv | grep -i ROS`
 - If you see a bunch of errors on startup about `map` or `odom` frame not existing, remember to activate drivers (or gazebo for simulation) and set an initial pose in `map` frame. Costmap2D will block activation until a full TF tree is available.
-- Make sure you’ve activated the lifecycle nodes if you’re not seeing transforms or servers running.
+- Make sure you've activated the lifecycle nodes if you're not seeing transforms or servers running.
 - Search [GitHub Issues](https://github.com/ros-navigation/navigation2/issues)
-- Make sure you’re using the correct branch for your distribution. There is no cross support from branch for `DistroA` in `DistroB`. The main development branch uses the rolling distribution.
+- Make sure you're using the correct branch for your distribution. There is no cross support from branch for `DistroA` in `DistroB`. The main development branch uses the rolling distribution.
 
-Still can’t solve it? Let us know about your issue. [Open a ticket](https://github.com/ros-navigation/navigation2/issues/new).
+Still can't solve it? Let us know about your issue. [Open a ticket](https://github.com/ros-navigation/navigation2/issues/new).
 
 ## Reporting Issue
 

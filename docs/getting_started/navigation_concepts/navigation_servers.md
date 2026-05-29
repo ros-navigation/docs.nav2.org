@@ -82,7 +82,7 @@ The clear costmap recovery would then be triggered to allow the robot to move.
 Another example would be if the robot was stuck due to dynamic obstacles or poor control.
 Backing up or spinning in place, if permissible, allow the robot to move from a poor location into free space it may navigate successfully.
 
-Finally, in the case of a total failure, a recovery may be implemented to call an operator’s attention for help.
+Finally, in the case of a total failure, a recovery may be implemented to call an operator's attention for help.
 This can be done via email, SMS, Slack, Matrix, etc.
 
 It is important to note that the behavior server can hold any behavior to share access to expensive resources like costmaps or TF buffers, not just recovery behaviors. Each may have its own API.
@@ -106,7 +106,7 @@ This navigation graph can be generated to represent lanes, areas the robot is al
 
 ## Robot Footprints
 
-It is worth remarking that in the cost maps, we set a robot’s footprint either as a circle of radius `robot_radius` or as a vector of points `footprint` representing an arbitrary polygon if the robot is non-circular. This can also be adjusted over time using the costmap’s `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. That polygon will then automatically be used by the planners and controllers.
+It is worth remarking that in the cost maps, we set a robot's footprint either as a circle of radius `robot_radius` or as a vector of points `footprint` representing an arbitrary polygon if the robot is non-circular. This can also be adjusted over time using the costmap's `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. That polygon will then automatically be used by the planners and controllers.
 
 ## Waypoint Following
 
@@ -122,7 +122,7 @@ There are 2 schools of thoughts for fleet managers / dispatchers:
 - Dumb robot; smart centralized dispatcher
 - Smart robot; dumb centralized dispatcher
 
-In the first, the `nav2_waypoint_follower` is fully sufficient to create a production-grade on-robot solution. Since the autonomy system / dispatcher is taking into account things like the robot’s pose, battery level, current task, and more when assigning tasks, the application on the robot just needs to worry about the task at hand and not the other complexities of the system to complete the requested task. In this situation, you should think of a request to the waypoint follower as 1 unit of work (e.g. 1 pick in a warehouse, 1 security patrole loop, 1 aisle, etc) to do a task and then return to the dispatcher for the next task or request to recharge. In this school of thought, the waypoint following application is just one step above navigation and below the system autonomy application.
+In the first, the `nav2_waypoint_follower` is fully sufficient to create a production-grade on-robot solution. Since the autonomy system / dispatcher is taking into account things like the robot's pose, battery level, current task, and more when assigning tasks, the application on the robot just needs to worry about the task at hand and not the other complexities of the system to complete the requested task. In this situation, you should think of a request to the waypoint follower as 1 unit of work (e.g. 1 pick in a warehouse, 1 security patrole loop, 1 aisle, etc) to do a task and then return to the dispatcher for the next task or request to recharge. In this school of thought, the waypoint following application is just one step above navigation and below the system autonomy application.
 
 In the second, the `nav2_waypoint_follower` is a nice sample application / proof of concept, but you really need your waypoint following / autonomy system on the robot to carry more weight in making a robust solution. In this case, you should use the `nav2_behavior_tree` package to create a custom application-level behavior tree using navigation to complete the task. This can include subtrees like checking for the charge status mid-task for returning to dock or handling more than 1 unit of work in a more complex task. Soon, there will be a `nav2_bt_waypoint_follower` (name subject to adjustment) that will allow you to create this application more easily. In this school of thought, the waypoint following application is more closely tied to the system autonomy, or in many cases, is the system autonomy.
 

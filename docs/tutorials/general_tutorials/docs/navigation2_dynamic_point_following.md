@@ -16,7 +16,7 @@ The `FollowObject` action can be called using two different input methods:
 - **pose_topic**: Topic to publish the pose of the object to follow. When using this method, the server subscribes to the specified topic of type `geometry_msgs::msg::PoseStamped` containing the pose of the object to follow.
 - **tracked_frame**: Target TF frame to follow. When using this method, the server directly follows the specified frame name using the transform tree.
 
-The Following server uses the same controller as the Docking server, leveraging the `SmoothControlLaw` to generate velocity commands for smoothly following the target object. This ensures consistent and predictable motion behavior across Nav2’s specialized servers.
+The Following server uses the same controller as the Docking server, leveraging the `SmoothControlLaw` to generate velocity commands for smoothly following the target object. This ensures consistent and predictable motion behavior across Nav2's specialized servers.
 
 **Recovery Mechanism**: If the object becomes undetectable for a period of time (e.g., when the pose topic stops publishing), the server implements a recovery mechanism where the robot will rotate left and right in a search pattern until it relocates the target object.
 
@@ -38,7 +38,7 @@ The simplest behavior tree for following a dynamic object using a pose topic is 
 
 In this configuration:
 
-- `pose_topic`: Specifies the topic (`/person_pose`) where `geometry_msgs::msg::PoseStamped` messages containing the object’s pose are published
+- `pose_topic`: Specifies the topic (`/person_pose`) where `geometry_msgs::msg::PoseStamped` messages containing the object's pose are published
 - `max_duration`: Duration to run the action (0.0 means indefinitely)
 
 #### Method 2: Using tracked_frame
@@ -126,7 +126,7 @@ send the initial pose to the `NavigateToPose` action, and update it on a topic f
 
 #### 0. Create the Behavior Tree
 
-Let’s start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:
+Let's start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:
 
 ```xml
 <root main_tree_to_execute="MainTree">
@@ -141,7 +141,7 @@ Let’s start from this simple behavior tree. This behavior tree replans a new p
 </root>
 ```
 
-First, let’s make this behavior run until there’s a failure. For this purpose, we will use the `KeepRunningUntilFailure` control node.
+First, let's make this behavior run until there's a failure. For this purpose, we will use the `KeepRunningUntilFailure` control node.
 
 ```xml
 <root main_tree_to_execute="MainTree">
@@ -158,7 +158,7 @@ First, let’s make this behavior run until there’s a failure. For this purpos
 </root>
 ```
 
-We will then use the decorator `GoalUpdater` to accept updates of the dynamic object pose we’re trying to follow. This node takes as input the current goal and subscribes to the topic `/goal_update`. It sets the new goal as `updated_goal` if a new goal on that topic is received.
+We will then use the decorator `GoalUpdater` to accept updates of the dynamic object pose we're trying to follow. This node takes as input the current goal and subscribes to the topic `/goal_update`. It sets the new goal as `updated_goal` if a new goal on that topic is received.
 
 ```xml
 <root main_tree_to_execute="MainTree">
@@ -177,7 +177,7 @@ We will then use the decorator `GoalUpdater` to accept updates of the dynamic ob
 </root>
 ```
 
-To stay at a certain distance from the target, we will use the action node `TruncatePath`. This node modifies a path making it shorter so we don’t try to navigate into the object of interest. We can set up the desired distance to the goal using the input port `distance`.
+To stay at a certain distance from the target, we will use the action node `TruncatePath`. This node modifies a path making it shorter so we don't try to navigate into the object of interest. We can set up the desired distance to the goal using the input port `distance`.
 
 ```xml
 <root main_tree_to_execute="MainTree">

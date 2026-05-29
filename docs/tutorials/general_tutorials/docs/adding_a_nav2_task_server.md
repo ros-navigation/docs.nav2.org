@@ -4,11 +4,11 @@ A nav2 task server consists of server-side logic to complete different types of 
 
 While this tutorial does not cover how to add the complementary Behavior Tree Node to interact with this new Task Server, that is covered at length in [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin] so this Task Server can be invoked in the BTs in BT Navigator.
 
-If you’ve created a new Task Server that may have general reuse for the community, consider contacting the maintainers to add it to the Nav2 project! Nav2 gets better through contributions by users like you!
+If you've created a new Task Server that may have general reuse for the community, consider contacting the maintainers to add it to the Nav2 project! Nav2 gets better through contributions by users like you!
 
 ## Lifecycle Nodes
 
-The Lifecycle node is the first key component of a nav2 task server. Lifecycle nodes were introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot’s operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin execution and Nav2 shuts down all nodes if there is any unresponsive node.
+The Lifecycle node is the first key component of a nav2 task server. Lifecycle nodes were introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin execution and Nav2 shuts down all nodes if there is any unresponsive node.
 
 Lifecycle nodes contain state machine transitions that enable deterministic behavior in ROS 2 servers. The Lifecycle node transitions in Nav2 are handled by the `Lifecycle Manager`. The Lifecycle Manager transitions the states of the Lifecycle nodes and provides greater control over the state of a system.
 
@@ -87,7 +87,7 @@ We make use of the launch files to compose different servers into a single proce
 
     !!! info "See also"
 
-        See example in composition demo’s [composition_demo.launch.py](https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py).
+        See example in composition demo's [composition_demo.launch.py](https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py).
 
 2. Add the package containing the server to your `package.xml` file.
     ```xml
@@ -96,7 +96,7 @@ We make use of the launch files to compose different servers into a single proce
 
 ## Error codes
 
-Your nav2 task server may also wish to return a ‘error_code’ and ‘error_msg’ in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
+Your nav2 task server may also wish to return a 'error_code' and 'error_msg' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
 
 It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535.
 The table below shows the current servers along with the expected error code structure.
@@ -161,7 +161,7 @@ string error_msg
 As stated in the message, the priority order of the error codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 Since the route server is a external server, the error codes start at 10000 and go up to 10099.
 
-To ensure your server’s error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.
+To ensure your server's error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.
 
 The BT Navigator parameter *error_code_name_prefixes* defines a list of prefixes used to search the behavior tree blackboard for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
 

@@ -29,7 +29,7 @@ After the items are configured, there should be a preview to see how the paramet
 **Project output requirements**
 
 - A QT based GUI configuration assistant that support the parameters listed above
-- A preview panel to display the parameters’ effection on the robot
+- A preview panel to display the parameters' effection on the robot
 
 **Skills required**
 
@@ -46,4 +46,4 @@ After the items are configured, there should be a preview to see how the paramet
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

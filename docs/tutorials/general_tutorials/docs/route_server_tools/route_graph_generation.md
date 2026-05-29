@@ -30,7 +30,7 @@ By default, the imported raster image origin will be at the top left corner, wit
 To correctly set the origin and the resolution we will georeference the raster image.
 To georeference the image, three control points will chosen. Each control point maps a pixel location to the spatial reference.
 
-For example, let’s say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
+For example, let's say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
 The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame.
 This is the convention of our ROS maps, typically.
 For the second control point we will select the top left corner of the image as the original (0, 0)px. The associated coordinates in the spatial frame can be calculated by using the resolution

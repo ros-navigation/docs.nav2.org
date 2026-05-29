@@ -13,7 +13,7 @@ AMCL implements the server for taking a static map and localizing the robot with
 | `double` | 0.2     |
 
 Description
-:   Expected process noise in odometry’s rotation estimate from rotation.
+:   Expected process noise in odometry's rotation estimate from rotation.
 
 ### **`alpha2`**
 
@@ -22,7 +22,7 @@ Description
 | `double` | 0.2     |
 
 Description
-:   Expected process noise in odometry’s rotation estimate from translation.
+:   Expected process noise in odometry's rotation estimate from translation.
 
 ### **`alpha3`**
 
@@ -31,7 +31,7 @@ Description
 | `double` | 0.2     |
 
 Description
-:   Expected process noise in odometry’s translation estimate from translation.
+:   Expected process noise in odometry's translation estimate from translation.
 
 ### **`alpha4`**
 
@@ -40,7 +40,7 @@ Description
 | `double` | 0.2     |
 
 Description
-:   Expected process noise in odometry’s translation estimate from rotation.
+:   Expected process noise in odometry's translation estimate from rotation.
 
 ### **`alpha5`**
 
@@ -130,7 +130,7 @@ Description
 | `double` | 100.0   |
 
 Description
-:   Maximum scan range to be considered, -1.0 will cause the laser’s reported maximum range to be used.
+:   Maximum scan range to be considered, -1.0 will cause the laser's reported maximum range to be used.
 
 ### **`laser_min_range`**
 
@@ -139,7 +139,7 @@ Description
 | `double` | -1.0    |
 
 Description
-:   Minimum scan range to be considered, -1.0 will cause the laser’s reported minimum range to be used.
+:   Minimum scan range to be considered, -1.0 will cause the laser's reported minimum range to be used.
 
 ### **`laser_model_type`**
 
@@ -406,7 +406,7 @@ Description
 | `bool` | False   |
 
 Description
-:   Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you’re using the *LoadMap* service in *map_server*. Prior to Humble, this is `first_map_only_`.
+:   Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the *LoadMap* service in *map_server*. Prior to Humble, this is `first_map_only_`.
 
 ### **`bond_heartbeat_period`**
 

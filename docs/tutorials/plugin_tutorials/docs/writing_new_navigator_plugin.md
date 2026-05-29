@@ -6,7 +6,7 @@ This tutorial shows how to create your own behavior-tree navigator [plugin](http
 
 In this tutorial, we will be reviewing the `Navigate to Pose` behavior-tree navigator plugin, which is the foundational navigator of Nav2 and complimentary behavior to ROS 1 Navigation. This completes point-to-point navigation. This tutorial will be reviewing the code and structure as of ROS 2 Iron. While small variations may be made over time, this should be sufficient to get started writing your own navigator if you choose as we do not expect major API changes on this system.
 
-It may be beneficial to write your own Navigator if you have a custom action message definition you’d like to use with Navigation rather than the provided `NavigateToPose` or `NavigateThroughPoses` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used.
+It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided `NavigateToPose` or `NavigateThroughPoses` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ It may be beneficial to write your own Navigator if you have a custom action mes
 
 ### 1. Create a new Navigator Plugin
 
-We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in [Nav2’s BT Navigator package](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator) as the `NavigateToPoseNavigator`. This package can be considered as a reference for writing your own plugin.
+We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in [Nav2's BT Navigator package](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator) as the `NavigateToPoseNavigator`. This package can be considered as a reference for writing your own plugin.
 
 Our example plugin class `nav2_bt_navigator::NavigateToPoseNavigator` inherits from the base class `nav2_core::BehaviorTreeNavigator`. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.
 
@@ -115,7 +115,7 @@ std::string NavigateToPoseNavigator::getDefaultBTFilepath(
 ```
 
 When a goal is received, we need to determine if this goal is valid and should be processed.
-The `goalReceived` method provides you the `goal` and a return value if it is being processed or not. This information is sent back to the action server to notify the client. In this case, we want to make sure that the goal’s behavior tree is valid or else we cannot proceed. If it is valid, then we can initialize the goal pose onto the blackboard and reset some state in order to cleanly process this new request.
+The `goalReceived` method provides you the `goal` and a return value if it is being processed or not. This information is sent back to the action server to notify the client. In this case, we want to make sure that the goal's behavior tree is valid or else we cannot proceed. If it is valid, then we can initialize the goal pose onto the blackboard and reset some state in order to cleanly process this new request.
 
 ```c++
 bool NavigateToPoseNavigator::goalReceived(ActionT::Goal::ConstSharedPtr goal)
@@ -135,7 +135,7 @@ bool NavigateToPoseNavigator::goalReceived(ActionT::Goal::ConstSharedPtr goal)
 }
 ```
 
-Once this goal is completed, we need to populate the Action’s result, if required and meaningful. In this navigator’s case, it contains no result information when the navigation request was completed successfully, so this method is empty. For other navigator types, you may populate the `result` object provided.
+Once this goal is completed, we need to populate the Action's result, if required and meaningful. In this navigator's case, it contains no result information when the navigation request was completed successfully, so this method is empty. For other navigator types, you may populate the `result` object provided.
 
 ```c++
 void NavigateToPoseNavigator::goalCompleted(
@@ -193,7 +193,7 @@ NavigateToPoseNavigator::initializeGoalPose(ActionT::Goal::ConstSharedPtr goal)
 }
 ```
 
-The recovery counter and start time are both important feedback terms for a client to understand the state of the current task (e.g. if its failing, having problems, or taking exceptionally long). The setting of the goal on the blackboard is taken by the `ComputePathToPose` BT Action node to plan a new route to the goal (and then who’s path is communicated to the `FollowPath` BT node via the blackboard ID previously set).
+The recovery counter and start time are both important feedback terms for a client to understand the state of the current task (e.g. if its failing, having problems, or taking exceptionally long). The setting of the goal on the blackboard is taken by the `ComputePathToPose` BT Action node to plan a new route to the goal (and then who's path is communicated to the `FollowPath` BT node via the blackboard ID previously set).
 
 The final function implemented is `onLoop`, which is simplified below for tutorial purposes. While anything can be done in this method, which is called as the BT is looping through the tree, it is common to use this as an opportunity to populate any necessary feedback about the state of the navigation request, robot, or metadata that a client might be interested in.
 
@@ -225,7 +225,7 @@ void NavigateToPoseNavigator::onLoop()
 ### 2. Exporting the navigator plugin
 
 Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server.
-Plugins are loaded at runtime, and if they are not visible, then our server won’t be able to load it. In ROS 2, exporting and loading
+Plugins are loaded at runtime, and if they are not visible, then our server won't be able to load it. In ROS 2, exporting and loading
 plugins is handled by `pluginlib`.
 
 Coming to our tutorial, class `nav2_bt_navigator::NavigateToPoseNavigator` is loaded dynamically as `nav2_core::NavigatorBase` which is our base class due to the subtleties previously described.
@@ -237,13 +237,13 @@ Coming to our tutorial, class `nav2_bt_navigator::NavigateToPoseNavigator` is lo
     PLUGINLIB_EXPORT_CLASS(nav2_bt_navigator::NavigateToPoseNavigator, nav2_core::NavigatorBase)
     ```
 
-    Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS`, which does all the work of exporting.
+    Note that it requires pluginlib to export out the plugin's class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS`, which does all the work of exporting.
 
     It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-2. The next step would be to create the plugin’s description file in the root directory of the package. For example, `navigator_plugin.xml` file in our tutorial package. This file contains the following information
+2. The next step would be to create the plugin's description file in the root directory of the package. For example, `navigator_plugin.xml` file in our tutorial package. This file contains the following information
 
-    - `library path`: Plugin’s library name and it’s location.
+    - `library path`: Plugin's library name and it's location.
     - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
     - `class type`: Type of class.
     - `base class`: Name of the base class.
@@ -287,7 +287,7 @@ Coming to our tutorial, class `nav2_bt_navigator::NavigateToPoseNavigator` is lo
         Plugin(name='nav2_bt_navigator::NavigateToPoseNavigator', type='nav2_bt_navigator::NavigateToPoseNavigator', base='nav2_core::NavigatorBase')
     ```
 
-Next, we’ll use this plugin.
+Next, we'll use this plugin.
 
 ### 3. Pass the plugin name through the params file
 

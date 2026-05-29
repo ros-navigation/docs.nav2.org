@@ -50,15 +50,15 @@ The number of recursive refinements for the Simple and Smac Planner Smoothers ha
 
 ## Feedback for Navigation Failures
 
-[PR #3146](https://github.com/ros-navigation/navigation2/pull/3146) updates the global planners to throw exceptions on planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.
+[PR #3146](https://github.com/ros-navigation/navigation2/pull/3146) updates the global planners to throw exceptions on planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
 
 The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, or No Valid Path Found.
 
-[PR #3248](https://github.com/ros-navigation/navigation2/pull/3248) updates the compute path through poses action to report planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.
+[PR #3248](https://github.com/ros-navigation/navigation2/pull/3248) updates the compute path through poses action to report planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
 
 The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, No Valid Path Found and No Waypoints given.
 
-[PR #3227](https://github.com/ros-navigation/navigation2/pull/3227) updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior’s blackboard for use in contextual error handling in the autonomy application.
+[PR #3227](https://github.com/ros-navigation/navigation2/pull/3227) updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application.
 
 The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.
 
@@ -79,7 +79,7 @@ The current implemented servers with error codes are:
 - Smoother Server: NONE: 0, UNKNOWN: 501, server error codes: 501-599
 - Waypoint Follower Server: NONE: 0, UNKNOWN: 601, server error codes: 601-699
 
-This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.
+This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
 The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed.
 See [Adding a New Nav2 Task Server][adding-a-new-nav2-task-server] and the PR for additional information.
 

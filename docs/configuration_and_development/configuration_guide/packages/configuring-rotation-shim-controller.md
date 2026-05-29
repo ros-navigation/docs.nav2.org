@@ -2,17 +2,17 @@
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_rotation_shim_controller).
 
-The `nav2_rotation_shim_controller` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the `primary_controller` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot’s main plugin will take control for a smooth hand off into the task.
+The `nav2_rotation_shim_controller` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the `primary_controller` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task.
 
 When the `rotate_to_goal_heading` parameter is set to true, this controller is also able to take back control of the robot when reaching the XY goal tolerance of the goal checker. In this case, the robot will rotate towards the goal heading until the goal checker validate the goal and ends the current navigation task.
 
 The `RotationShimController` is most suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
-- Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.
-- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A\* and State Lattice will start search from the robot’s actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints).
+- Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot's current heading – or when tuning your controller for its task makes tight rotations difficult.
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A\* and State Lattice will start search from the robot's actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints).
 
-See the package’s `README` for more complete information.
+See the package's `README` for more complete information.
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
@@ -38,7 +38,7 @@ Description
 | `double` | 0.3925  |
 
 Description
-:   New to Jazzy, the threshold to the path’s heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the `angular_dist_threshold` instead. This allows for better alignment before passing to the child controller when engaged.
+:   New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the `angular_dist_threshold` instead. This allows for better alignment before passing to the child controller when engaged.
 
 ### **`forward_sampling_distance`**
 
@@ -47,7 +47,7 @@ Description
 | `double` | 0.5     |
 
 Description
-:   Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler’s prune distance.
+:   Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler's prune distance.
 
 ### **`rotate_to_heading_angular_vel`**
 
@@ -119,7 +119,7 @@ Description
 | `bool` | true    |
 
 Description
-:   If false, the rotationShimController will use the last commanded velocity as the next iteration’s current velocity. When acceleration limits are set appropriately and the robot’s controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot’s current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
+:   If false, the rotationShimController will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately and the robot's controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot's current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
 
 ### **`use_path_orientations`**
 

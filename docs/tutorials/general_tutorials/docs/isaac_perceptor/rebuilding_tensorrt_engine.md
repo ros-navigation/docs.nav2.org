@@ -16,7 +16,7 @@ Error Code 6: API Usage Error (The engine plan file is not compatible with this 
 
 **Solution**: Fortunately, NVIDIA provides some fine-grained tools for working with CUDA, building & converting models between different formats and NVIDIA hardware platforms. So, we can rebuild the incompatible `.engine` files with the `trtexec` tool.
 
-Rebuild engines inside the container using `trtexec` compiled against the container’s TensorRT version with "full" runtime optimization.
+Rebuild engines inside the container using `trtexec` compiled against the container's TensorRT version with "full" runtime optimization.
 
 !!! note
 

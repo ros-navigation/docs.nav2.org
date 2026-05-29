@@ -2,7 +2,7 @@
 
 **Task description**
 
-This project is admittedly abstract to explain to someone unfamiliar with the inner-details of ROS 2 and its layers. If you’re interested in working on this, you will become one of the few that truly understand the inner workings of it and be a very marketable skill. We do not expect anyone applying for this project to have that knowledge beforehand and we will help you learn the necessary items.
+This project is admittedly abstract to explain to someone unfamiliar with the inner-details of ROS 2 and its layers. If you're interested in working on this, you will become one of the few that truly understand the inner workings of it and be a very marketable skill. We do not expect anyone applying for this project to have that knowledge beforehand and we will help you learn the necessary items.
 
 ROS 2 architecturally was changed before Foxy in order to ensure that any single process containing multiple ROS 2 node objects will share the same DDS participant on the network. This is important due to the overhead that each additional DDS participant has on the system.
 
@@ -38,4 +38,4 @@ More details about this project can be supplied if interested, but the tickets l
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

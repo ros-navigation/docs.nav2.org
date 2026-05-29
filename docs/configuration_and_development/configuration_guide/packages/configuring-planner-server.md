@@ -12,7 +12,7 @@ It also hosts the global costmap.
 
 | Type             | Default       |
 |------------------|---------------|
-| `vector<string>` | [‘GridBased’] |
+| `vector<string>` | ['GridBased'] |
 
 Description
 :   List of Mapped plugin names for parameters and processing requests.

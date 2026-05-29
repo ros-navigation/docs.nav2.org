@@ -98,13 +98,13 @@ Description
 
     0 - Overwrite: Overwrite master costmap with every valid observation.
     <br>
-    1 - Max: Sets the new value to the maximum of the master_grid’s value and this layer’s value.
+    1 - Max: Sets the new value to the maximum of the master_grid's value and this layer's value.
     <br>
     This is the default.
     <br>
-    2 - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the master_grid’s
+    2 - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the master_grid's
     <br>
-    value and this layer’s value. If the master value is NO_INFORMATION, it is NOT overwritten.
+    value and this layer's value. If the master value is NO_INFORMATION, it is NOT overwritten.
     <br>
     It can be used to make sure that the static map is the dominant source of information, and
     <br>
@@ -147,7 +147,7 @@ Description
 Description
 :   Topic of data.
 
-    Relative topics will be relative to the node’s parent namespace.
+    Relative topics will be relative to the node's parent namespace.
     For example, if you specify *topic: scan* in the *voxel_layer* of a *local_costmap* and you launch your bringup with a *tb4* namespace:
 
       - User chosen namespace is *tb4*.

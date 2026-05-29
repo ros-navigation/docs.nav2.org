@@ -17,7 +17,7 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 ### 1. Creating a new BT Plugin
 
 We will create a simple BT plugin node to perform an action on another server.
-For this example, we’re going to analyze the simplest behavior tree action node in the `nav2_behavior_tree` package, the `wait` node.
+For this example, we're going to analyze the simplest behavior tree action node in the `nav2_behavior_tree` package, the `wait` node.
 Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
 Each node type has a unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.
 
@@ -32,7 +32,7 @@ When working with other types of BT nodes (e.g. decorator, control, condition) u
 For BT action nodes that do *not* utilize ROS 2 action interfaces, use the `BT::ActionNodeBase` base class itself.
 
 The `BTActionNode` class provides 5 virtual methods to use, in addition to the information provided in the constructor.
-Let’s learn more about the methods needed to write a BT action plugin.
+Let's learn more about the methods needed to write a BT action plugin.
 
 <div class="center-table" markdown>
 
@@ -78,7 +78,7 @@ This will be seen later when we register this BT node as a plugin.
 It also takes in the string name of the action server that it will call to execute some behavior.
 Finally, a set of configurations that we can safely ignore for the purposes of most node plugins.
 
-We then call the `BTActionNode` constructor. As can be seen, it’s templated by the ROS 2 action type, so we give it the `nav2_msgs::action::Wait` action message type and forward our other inputs.
+We then call the `BTActionNode` constructor. As can be seen, it's templated by the ROS 2 action type, so we give it the `nav2_msgs::action::Wait` action message type and forward our other inputs.
 The `BTActionNode` has the `tick()` method, which is called directly by the behavior tree when this node is called from the tree.
 `on_tick()` is then called before sending the action client goal.
 
@@ -121,7 +121,7 @@ The success, aborted, and cancelled methods will default to `SUCCESS`, `FAILURE`
 ### 2. Exporting the planner plugin
 
 Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
-Plugins are loaded at runtime, and if they are not visible, then our BT Navigator server won’t be able to load them or use them.
+Plugins are loaded at runtime, and if they are not visible, then our BT Navigator server won't be able to load them or use them.
 In BehaviorTree.CPP, exporting and loading plugins is handled by the `BT_REGISTER_NODES` macro.
 
 ```c++
@@ -140,7 +140,7 @@ BT_REGISTER_NODES(factory)
 In this macro, we must create a `NodeBuilder` so that our custom action node can have a non-default constructor signature (for the action and xml names).
 This lambda will return a unique pointer to the behavior tree node we have created.
 Fill in the constructor with the relevant information, giving it the `name` and `config` given in the function arguments.
-Then define the ROS 2 action server’s name that this BT node will call, in this case, it’s the `Wait` action.
+Then define the ROS 2 action server's name that this BT node will call, in this case, it's the `Wait` action.
 
 We finally give the builder to a factory to register.
 `Wait` given to the factory is the name in the behavior tree XML file that corresponds to this BT node plugin.
@@ -152,7 +152,7 @@ An example can be seen below, where the `Wait` BT XML node specifies a non-varia
 
 ### 3. Add plugin library name to config
 
-In order for the BT Navigator node to discover the plugin we’ve just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.
+In order for the BT Navigator node to discover the plugin we've just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.
 
 ```yaml
 bt_navigator:
@@ -172,7 +172,7 @@ bt_navigator:
 Now you can use a behavior tree with your custom BT node.
 For example, the `navigate_w_replanning_and_recovery.xml` file is shown below.
 
-Select this BT XML file in your specific navigation request in `NavigateToPose` or as the default behavior tree in the BT Navigator’s configuration yaml file.
+Select this BT XML file in your specific navigation request in `NavigateToPose` or as the default behavior tree in the BT Navigator's configuration yaml file.
 
 ```xml
 <root main_tree_to_execute="MainTree">

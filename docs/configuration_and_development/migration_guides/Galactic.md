@@ -13,7 +13,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A\* imple
 - Computing the possibly inscribed zones, or the cost over which some part of the footprint may be in collision with a boundary to check the full footprint. Else, check center cost since promised to not be in a potential collision state
 - Renaming Hybrid-A\* planner to SmacPlannerHybrid
 - Precomputing the Reedshepp and Dubin paths offline so at runtime its just a lookup table
-- Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra’s path using Differential A\* search taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
+- Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra's path using Differential A\* search taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
 - Improvements to the analytic expansion algorithm to remove the possibility of loops at the end of paths, whenever possible to remove
 - Improving analytic expansions to provide maximum path length to prevent skirting close to obstacles
 - 2D A\* travel cost and heuristic improvements to speed up planning times and also increase the path quality significantly
@@ -81,7 +81,7 @@ def main():
         print('Goal failed!')
 ```
 
-[The full API can be found in the README of the package](https://github.com/ros-navigation/navigation2/tree/main/nav2_simple_commander). A number of well commented examples and demos can also be found in the package’s source code at the link prior.
+[The full API can be found in the README of the package](https://github.com/ros-navigation/navigation2/tree/main/nav2_simple_commander). A number of well commented examples and demos can also be found in the package's source code at the link prior.
 
 ## Reduce Nodes and Executors
 
@@ -138,8 +138,8 @@ The normal behavior of the `BtServiceNode` is not affected by introducing the `o
 The Rotation Shim Controller is suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
-- Preference to rotate in place rather than ‘spiral out’ when starting to track a new path that is at a significantly different heading than the robot’s current heading.
-- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A\* and State Lattice will start search from the robot’s actual starting heading, requiring no rotation).
+- Preference to rotate in place rather than 'spiral out' when starting to track a new path that is at a significantly different heading than the robot's current heading.
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A\* and State Lattice will start search from the robot's actual starting heading, requiring no rotation).
 
 ## Spawning the robot in Gazebo
 
@@ -147,7 +147,7 @@ The Rotation Shim Controller is suitable for:
 Note that
 
 - gazebo should be started with both `libgazebo_ros_init.so` and `libgazebo_ros_factory.so` to work correctly.
-- spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument `<remapping>/tf:=tf</remapping>`  `<remapping>/tf_static:=tf_static</remapping>` under ros2 tag in each plugin which publishes transforms in the SDF file. It is essential to differentiate the tf’s of the different robot.
+- spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument `<remapping>/tf:=tf</remapping>`  `<remapping>/tf_static:=tf_static</remapping>` under ros2 tag in each plugin which publishes transforms in the SDF file. It is essential to differentiate the tf's of the different robot.
 
 ## Recovery Behavior Timeout
 
@@ -182,7 +182,7 @@ Newly added dynamic parameters to:
 - [This PR 2592](https://github.com/ros-navigation/navigation2/pull/2592) makes most of the Costmap2DROS parameters dynamic
 - [This PR 2607](https://github.com/ros-navigation/navigation2/pull/2607) makes most of the Regulated Pure Pursuit parameters dynamic
 - [This PR 2665](https://github.com/ros-navigation/navigation2/pull/2665) makes most of the Theta \* Planner parameters dynamic
-- [This PR 2704](https://github.com/ros-navigation/navigation2/pull/2704) makes Waypoint Follower, Planner Server, and Controller Server’s params reconfigurable
+- [This PR 2704](https://github.com/ros-navigation/navigation2/pull/2704) makes Waypoint Follower, Planner Server, and Controller Server's params reconfigurable
 
 ## BT Action Nodes Exception Changes
 
@@ -214,7 +214,7 @@ The parameter `use_approach_linear_velocity_scaling` is removed in favor of alwa
 
 - [https://github.com/ros-navigation/navigation2/pull/2696](https://github.com/ros-navigation/navigation2/pull/2696)
 
-It was a great feature idea but never quite panned out, especially after we introduced multiple navigator types in the BT Navigator server. The issue we run into primarily is that Zero-MQ prevents users from producing multiple logger types in the same process. Since BT nav has multiple servers, the swapping between them for viewing has never had a clean hand off causing folks to file tickets or have nasty logs appear or ZMQ crashes in the background. The BT.CPP client for this doesn’t allow us to have a clean shutdown process so we’re left with hoping that ZMQ properly handles the situation, which it rarely does. Further, Groot only supports visualizing one type of tree at a time so for applications often switching between navigator types, its not possible to use a single groot client, causing great frustration.
+It was a great feature idea but never quite panned out, especially after we introduced multiple navigator types in the BT Navigator server. The issue we run into primarily is that Zero-MQ prevents users from producing multiple logger types in the same process. Since BT nav has multiple servers, the swapping between them for viewing has never had a clean hand off causing folks to file tickets or have nasty logs appear or ZMQ crashes in the background. The BT.CPP client for this doesn't allow us to have a clean shutdown process so we're left with hoping that ZMQ properly handles the situation, which it rarely does. Further, Groot only supports visualizing one type of tree at a time so for applications often switching between navigator types, its not possible to use a single groot client, causing great frustration.
 
 So, what I propose here is to remove live monitoring of the BT from Nav2. **We can still use Groot to modify, visualize, and generally work with behavior trees**, the only thing being removed is to live view the executing behavior tree as Nav2 is currently executing it (it used to light up the boxes of the current nodes). This was of dubious value anyhow, since the tree ticks so fast its difficult to visualize and get meaningful insights into things as the system is moving so quickly.
 
@@ -228,7 +228,7 @@ So, what I propose here is to remove live monitoring of the BT from Nav2. **We c
 
 ## Dynamic Composition
 
-[This PR 2750](https://github.com/ros-navigation/navigation2/pull/2750) provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it’s used by default, but can be disabled by using the launch argument `use_composition:=False`.
+[This PR 2750](https://github.com/ros-navigation/navigation2/pull/2750) provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it's used by default, but can be disabled by using the launch argument `use_composition:=False`.
 
 Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by `psutil` :
 

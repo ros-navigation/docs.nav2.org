@@ -2,7 +2,7 @@
 
 In this guide, we will discuss the importance of the sensors in navigating a robot safely and how to set up the sensors with Nav2. In the first half of this tutorial, we will take a brief look at commonly used sensors and common sensor messages in Nav2. Next, we will add a basic sensor setup on our previously built simulated robot, `sam_bot`. Lastly, we will then verify the simulated sensor messages of `sam_bot` by visualizing them in RViz.
 
-Once sensors have been set up on a robot, their readings can be used in mapping, localization, and perception tasks. In the second half of this guide, we will first discuss how mapping and localization use the sensor data. Then, we will also take a look at one of Nav2’s packages, `nav2_costmap_2d`, which generates costmaps that will eventually be used in Nav2 path planning. We will set up basic configuration parameters for this package so it properly takes in sensor information from `sam_bot`. Lastly, we visualize a generated costmaps in RViz to verify its received data.
+Once sensors have been set up on a robot, their readings can be used in mapping, localization, and perception tasks. In the second half of this guide, we will first discuss how mapping and localization use the sensor data. Then, we will also take a look at one of Nav2's packages, `nav2_costmap_2d`, which generates costmaps that will eventually be used in Nav2 path planning. We will set up basic configuration parameters for this package so it properly takes in sensor information from `sam_bot`. Lastly, we visualize a generated costmaps in RViz to verify its received data.
 
 ## Sensor Introduction
 
@@ -16,7 +16,7 @@ Aside from the `sensor_msgs` package, there are also the `radar_msgs` and `visio
 
     For more information, see the API documentation of [sensor_msgs](http://wiki.ros.org/sensor_msgs), [radar_msgs](http://wiki.ros.org/radar_msgs), and [vision_msgs](http://wiki.ros.org/vision_msgs).
 
-Your physical robot’s sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the `sensor_msgs` package. The `sensor_msgs` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as `sam_bot`, Gazebo has sensor plugins which also publish their information following the `sensor_msgs` package.
+Your physical robot's sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the `sensor_msgs` package. The `sensor_msgs` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as `sam_bot`, Gazebo has sensor plugins which also publish their information following the `sensor_msgs` package.
 
 ### Common Sensor Messages
 
@@ -66,7 +66,7 @@ To be able to follow the rest of this section, make sure that you have properly 
 
 ### Adding Gazebo Plugins to a URDF or SDF
 
-Let us first add a lidar sensor to `sam_bot`. In your URDF paste the following lines before the `</robot>` tag to just add the lidar’s link and joint.
+Let us first add a lidar sensor to `sam_bot`. In your URDF paste the following lines before the `</robot>` tag to just add the lidar's link and joint.
 
 ```xml
 <link name="lidar_link">
@@ -98,7 +98,7 @@ Let us first add a lidar sensor to `sam_bot`. In your URDF paste the following l
 </joint>
 ```
 
-In your SDF add the below before the `</model>` line to add the lidar’s link, joint, and Gazebo specific sensor information:
+In your SDF add the below before the `</model>` line to add the lidar's link, joint, and Gazebo specific sensor information:
 
 ```xml
 <joint name="lidar_joint" type="fixed">
@@ -159,9 +159,9 @@ In your SDF add the below before the `</model>` line to add the lidar’s link, 
 </link>
 ```
 
-In the code snippet above we set the sensor values of lidar_link to the simulated lidar’s scan and range properties and set `/scan` as the topic to which it will publish the `sensor_msgs/LaserScan` messages.
+In the code snippet above we set the sensor values of lidar_link to the simulated lidar's scan and range properties and set `/scan` as the topic to which it will publish the `sensor_msgs/LaserScan` messages.
 
-Next, let us add a depth camera to `sam_bot`. In your URDF paste the following lines after the `</joint>` tag of the lidar sensor to just add the camera’s link and joint.
+Next, let us add a depth camera to `sam_bot`. In your URDF paste the following lines after the `</joint>` tag of the lidar sensor to just add the camera's link and joint.
 
 ```xml
 <link name="camera_link">
@@ -193,7 +193,7 @@ Next, let us add a depth camera to `sam_bot`. In your URDF paste the following l
 </joint>
 ```
 
-In your SDF, paste the following lines after the `</link>` tag of the lidar sensor to add the camera’s link, joint, and Gazebo specific sensor information:
+In your SDF, paste the following lines after the `</link>` tag of the lidar sensor to add the camera's link, joint, and Gazebo specific sensor information:
 
 ```xml
 <joint name="camera_joint" type="fixed">
@@ -256,7 +256,7 @@ In your SDF, paste the following lines after the `</link>` tag of the lidar sens
 </link>
 ```
 
-In the code snippet above we set the sensor values of camera_link to the simulated depth camera’s properties and configure the sensor such that it will publish sensor_msgs/Image and `sensor_msgs/PointCloud2` messages to /depth_camera/image_raw\` and `/depth_camera/points` topics respectively.
+In the code snippet above we set the sensor values of camera_link to the simulated depth camera's properties and configure the sensor such that it will publish sensor_msgs/Image and `sensor_msgs/PointCloud2` messages to /depth_camera/image_raw\` and `/depth_camera/points` topics respectively.
 
 ### Updating Bridge Config
 

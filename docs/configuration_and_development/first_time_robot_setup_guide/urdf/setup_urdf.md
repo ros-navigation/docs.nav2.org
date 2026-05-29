@@ -2,7 +2,7 @@
 
 !!! note
 
-    Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot’s structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
+    Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot's structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
 
 For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
@@ -26,9 +26,9 @@ Another major feature of URDF is that it also supports Xacro (XML Macros) to hel
 
 ## Setting Up the Environment
 
-In this guide, we are assuming that you are already familiar with ROS 2 and how to setup your development environment, so we’ll breeze through the steps in this section.
+In this guide, we are assuming that you are already familiar with ROS 2 and how to setup your development environment, so we'll breeze through the steps in this section.
 
-Let’s begin by installing some additional ROS 2 packages that we will be using during this tutorial.
+Let's begin by installing some additional ROS 2 packages that we will be using during this tutorial.
 
 First, source your ROS 2 installation to set the environment variables:
 
@@ -43,7 +43,7 @@ sudo apt install ros-$ROS_DISTRO-joint-state-publisher-gui
 sudo apt install ros-$ROS_DISTRO-xacro
 ```
 
-Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we’ll be calling it `sam_bot`.
+Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we'll be calling it `sam_bot`.
 
 ```shell
 ros2 pkg create --build-type ament_cmake sam_bot_description
@@ -55,7 +55,7 @@ ros2 pkg create --build-type ament_cmake sam_bot_description
 
     This section aims to provide you with a beginner-friendly introduction to building URDFs for your robot. If you would like to learn more about URDF and XAcro, we suggest for you to have a look at the official [URDF Documentation](http://wiki.ros.org/urdf)
 
-Now that we have our project workspace set up, let’s dive straight into writing the URDF. Below is an image of the robot we will be trying to build.
+Now that we have our project workspace set up, let's dive straight into writing the URDF. Below is an image of the robot we will be trying to build.
 
 <div markdown="span" class="flex-images">
   ![](images/base-bot_1.png)
@@ -93,11 +93,11 @@ Next, let us define some constants using XAcro properties that will be reused th
   <xacro:property name="caster_xoff" value="0.14"/>
 ```
 
-Here is a brief discussion on what these properties will represent in our urdf. The `base_*` properties all define the size of the robot’s main chassis. The `wheel_radius` and `wheel_width` define the shape of the robot’s two back wheels. The `wheel_ygap` adjusts the gap between the wheel and the chassis along the y-axis whilst `wheel_zoff` and `wheel_xoff` position the back wheels along the z-axis and x-axis appropriately. Lastly, the `caster_xoff` positions the front caster wheel along the x-axis.
+Here is a brief discussion on what these properties will represent in our urdf. The `base_*` properties all define the size of the robot's main chassis. The `wheel_radius` and `wheel_width` define the shape of the robot's two back wheels. The `wheel_ygap` adjusts the gap between the wheel and the chassis along the y-axis whilst `wheel_zoff` and `wheel_xoff` position the back wheels along the z-axis and x-axis appropriately. Lastly, the `caster_xoff` positions the front caster wheel along the x-axis.
 
 Let us then define our `base_link` - this link will be a large box and will act as the main chassis of our robot. In URDF, a `link` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them.
 
-We will also be defining some of the link’s visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are `<geometry>` which describes the link’s shape and `<material>` which describes it’s color.
+We will also be defining some of the link's visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are `<geometry>` which describes the link's shape and `<material>` which describes it's color.
 
 For the code block below, we access the `base` properties from the robot constants sections we defined before using the `${property}` syntax. In addition, we also set the material color of the main chassis to `Cyan`. Note that we set these parameters under the `<visual>` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
 
@@ -115,7 +115,7 @@ For the code block below, we access the `base` properties from the robot constan
   </link>
 ```
 
-Next, let us define a `base_footprint` link. The `base_footprint` link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot’s center is in when it is projected to the ground plane.
+Next, let us define a `base_footprint` link. The `base_footprint` link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot's center is in when it is projected to the ground plane.
 
 After defining our base_link, we then add a joint to connect it to `base_link`. In URDF, a `joint` element describes the kinematic and dynamic properties between coordinate frames. For this case, we will be defining a `fixed` joint with the appropriate offsets to place our `base_footprint` link in the proper location based on the description above. Remember that we want to set our base_footprint to be at the ground plane when projected from the center of the main chassis, hence we get the sum of the `wheel_radius` and the `wheel_zoff` to get the appropriate location along the z-axis.
 
@@ -161,7 +161,7 @@ At the end of this code block, we will be instantiating two wheels using the mac
   <xacro:wheel prefix="drivewhl_r" x_reflect="-1" y_reflect="-1" />
 ```
 
-Next, we will be adding a caster wheel at the front of our robot. We will be modelling this wheel as a sphere to keep things simple. Again, we define the wheel’s geometry, material and the joint to connect it to `base_link` at the appropriate location.
+Next, we will be adding a caster wheel at the front of our robot. We will be modelling this wheel as a sphere to keep things simple. Again, we define the wheel's geometry, material and the joint to connect it to `base_link` at the appropriate location.
 
 ```xml
   <!-- Caster Wheel -->
@@ -183,7 +183,7 @@ Next, we will be adding a caster wheel at the front of our robot. We will be mod
   </joint>
 ```
 
-And that’s it! We have built a URDF for a simple differential drive robot. In the next section, we will focus on building the ROS Package containing our URDF, launching the robot state publisher, and visualizing the robot in RVIz.
+And that's it! We have built a URDF for a simple differential drive robot. In the next section, we will focus on building the ROS Package containing our URDF, launching the robot state publisher, and visualizing the robot in RVIz.
 
 ## Build and Launch
 
@@ -191,7 +191,7 @@ And that’s it! We have built a URDF for a simple differential drive robot. In 
 
     The launch files from this tutorial were adapted from the official [URDF Tutorials for ROS 2](https://github.com/ros/urdf_tutorial/tree/ros2)
 
-Let’s start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your `package.xml` (preferably after the `<buildtool_depend>` tag)
+Let's start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your `package.xml` (preferably after the `<buildtool_depend>` tag)
 
 ```xml
 <exec_depend>joint_state_publisher</exec_depend>
@@ -349,7 +349,7 @@ After a successful build, execute the following commands to install the ROS 2 pa
 ros2 launch sam_bot_description display.launch.py
 ```
 
-ROS 2 should now launch a robot publisher node and start up RVIZ using our URDF. We’ll be taking a look at our robot using RVIZ in the next section.
+ROS 2 should now launch a robot publisher node and start up RVIZ using our URDF. We'll be taking a look at our robot using RVIZ in the next section.
 
 ## Visualization using RVIZ
 
@@ -359,7 +359,7 @@ RVIZ is a robot visualization tool that allows us to see a 3D model of our robot
   ![](images/base-bot_3.png)
 </figure>
 
-As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it’s a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations.
+As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it's a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations.
 
 You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS 2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.
 
@@ -369,13 +369,13 @@ You may have noticed that another window was launched - this is a GUI for the jo
 
 !!! note
 
-    We won’t be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official [Joint State Publisher Documentation](http://wiki.ros.org/joint_state_publisher).
+    We won't be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official [Joint State Publisher Documentation](http://wiki.ros.org/joint_state_publisher).
 
-At this point, you may already decide to stop with this tutorial since we have already achieved our objective of creating a URDF for a simple differential drive robot. The robot state publisher is now publishing the transforms derived from the URDF. These transforms can now be used by other packages (such as Nav2) to get information regarding the shape and structure of your robot. However, to properly use this URDF in a simulation, we need physical properties so that the robot reacts to physical environments like a real robot would. The visualization fields are only for visualization, not collision, so your robot will drive straight through obstacles. We’ll get into adding these properties in our URDF in the next section.
+At this point, you may already decide to stop with this tutorial since we have already achieved our objective of creating a URDF for a simple differential drive robot. The robot state publisher is now publishing the transforms derived from the URDF. These transforms can now be used by other packages (such as Nav2) to get information regarding the shape and structure of your robot. However, to properly use this URDF in a simulation, we need physical properties so that the robot reacts to physical environments like a real robot would. The visualization fields are only for visualization, not collision, so your robot will drive straight through obstacles. We'll get into adding these properties in our URDF in the next section.
 
 ## Adding Physical Properties
 
-As an additional section to this guide, we will be modifying our current URDF to include some of our robot’s kinematic properties. This information may be used by physics simulators such as Gazebo to model and simulate how our robot will act in the virtual environment.
+As an additional section to this guide, we will be modifying our current URDF to include some of our robot's kinematic properties. This information may be used by physics simulators such as Gazebo to model and simulate how our robot will act in the virtual environment.
 
 Let us first define macros containing the inertial properties of the geometric primitives we used in our project. Place the snippet below after our constants section in the URDF:
 
@@ -416,7 +416,7 @@ Let us start by adding collision areas to our `base_link` using the `<collision>
 ```
 
 We will also be using the box_inertia macro we defined before to add some inertial properties to our `base_link`.
-The `kdl_parser` package used in `robot_state_publisher` doesn’t like inertial properties being specified in the root link, in this case the `base_link`, to combat this we will be including them in the `base_footprint` instead.
+The `kdl_parser` package used in `robot_state_publisher` doesn't like inertial properties being specified in the root link, in this case the `base_link`, to combat this we will be including them in the `base_footprint` instead.
 Include the following code snippet within `<link name="base_footprint">` tag of `base_footprint` in our URDF.
 
 ```xml
@@ -471,6 +471,6 @@ For now, we will have to stop here since we will need to set up a lot more compo
 
 ## Conclusion
 
-And that’s it. In this tutorial, you have successfully created a URDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your URDF to publish the robot’s transforms. We have also used RViz to visualize our robot to verify whether our URDF is correct. Lastly, we have added in some physical properties to our URDF in order to prepare it for simulation.
+And that's it. In this tutorial, you have successfully created a URDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your URDF to publish the robot's transforms. We have also used RViz to visualize our robot to verify whether our URDF is correct. Lastly, we have added in some physical properties to our URDF in order to prepare it for simulation.
 
 Feel free to use this tutorial as a template for your own robot. Remember that your main goal is to publish the correct transforms from your base_link up to your sensor_frames. Once these have been setup, then you may proceed to our other setup guides.

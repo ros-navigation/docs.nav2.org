@@ -11,7 +11,7 @@ In this case, the planner will generate feasible paths with localized environmen
 This is useful for industrial applications where the robot should deterministically plan within known areas, lanes, and/or routes rather than having free rein to globally navigate.
 It is also useful for outdoor navigation in locations like urban centers on roadways or natural environments over vast distances.
 
-It also includes a tracking feature that will track the route’s progression and provide live feedback on its status as well as trigger contextual operations at various nodes and edge events (change speed, turn on light, etc).
+It also includes a tracking feature that will track the route's progression and provide live feedback on its status as well as trigger contextual operations at various nodes and edge events (change speed, turn on light, etc).
 
 See [Route Server][route-server] for additional configuration information, the tutorials on generating graphs and using it, and example graphs in `nav2_bringup` and `nav2_route`.
 
@@ -90,7 +90,7 @@ An example simulation migration using Gazebo can be seen in the [following pull 
 ## New Nav2 Loopback Simulator
 
 The `nav2_loopback_sim` is a stand-alone simulator to create a "loopback" for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
-It computes the robot’s odometry based on the command velocity’s output request to create a perfect ‘frictionless plane’-style simulation for unit testing, system testing, R&D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.
+It computes the robot's odometry based on the command velocity's output request to create a perfect 'frictionless plane'-style simulation for unit testing, system testing, R&D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.
 
 ## Docking with Static Infrastructure or Dynamic Docking
 
@@ -133,7 +133,7 @@ Below is a list of changes to existing BT Nodes:
 
 ## New RViz Tool for Costmap Cost Cell Inspection
 
-In [PR #4546](https://github.com/ros-navigation/navigation2/pull/4546) a new RViz tool was added to get the costmap costcell’s cost and a service to get the costcell’s cost at the footprint pose.
+In [PR #4546](https://github.com/ros-navigation/navigation2/pull/4546) a new RViz tool was added to get the costmap costcell's cost and a service to get the costcell's cost at the footprint pose.
 
 Usage:
 
@@ -176,7 +176,7 @@ After:
 
 ## Option to limit velocity through DWB trajectory
 
-In [PR #4663](https://github.com/ros-navigation/navigation2/pull/4663) a `limit_vel_cmd_in_traj` parameter was introduced to DWB local planner to allow the user to limit the velocity used in the trajectory generation based on the robot’s current velocity.
+In [PR #4663](https://github.com/ros-navigation/navigation2/pull/4663) a `limit_vel_cmd_in_traj` parameter was introduced to DWB local planner to allow the user to limit the velocity used in the trajectory generation based on the robot's current velocity.
 
 Default value:
 
@@ -193,7 +193,7 @@ Default value:
 ## Rotation Shim Disengagement Threshold
 
 The parameter `angular_disengage_threshold` was introduced as a new threshold for disengagement of the rotation in the rotation shim controller.
-Previous behavior rotated until the `angular_dist_threshold`, now it can rotate until the `angular_disengage_threshold`, which can be set closer to the path’s orientation if desired.
+Previous behavior rotated until the `angular_dist_threshold`, now it can rotate until the `angular_disengage_threshold`, which can be set closer to the path's orientation if desired.
 
 ## Added optional collision checking for the Docking Server
 
@@ -213,7 +213,7 @@ In [PR #4715](https://github.com/ros-navigation/navigation2/pull/4715) multirobo
 
 Note that some plugins / nodes might have their own local namespace. This is the case for `CostmapLayer` which will be in a `/ns/[layer_name]` namespace. For these, a new function `joinWithParentNamespace` has been added to make sure joining relative paths results in `/ns/topic_name` rather than `/ns/[layer_name]/topic_name`.
 
-If your use case doesn’t require multiple robots, keeping absolute paths in your `nav2_params.yaml` config file and rviz config file will preserve existing behavior.
+If your use case doesn't require multiple robots, keeping absolute paths in your `nav2_params.yaml` config file and rviz config file will preserve existing behavior.
 
 For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
 
@@ -263,7 +263,7 @@ explicit Costmap2DROS(
  const bool & use_sim_time = false);
 ```
 
-The `local_namespace` parameter has been removed and is now automatically set to the node’s name (which is what the second removed constructor did).
+The `local_namespace` parameter has been removed and is now automatically set to the node's name (which is what the second removed constructor did).
 Parameters `parent_namespace` / `use_sim_time` both provide default values to maintain the ability of creating a `Costmap2DROS` object by just specifying a name.
 
 ## Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions
@@ -312,7 +312,7 @@ Since *nav_msgs/Goals* contains a header, the poses are now accessed via *Naviga
 ## MPPI controller re-implemented using Eigen library and performance improved by 40-45%
 
 In the [PR #4621](https://github.com/ros-navigation/navigation2/pull/4621) MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
-MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.
+MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.
 
 ## Enable goal orientation non-specificity
 
@@ -367,7 +367,7 @@ A demo can be seen below with the following parameters:
 
 ## Rotation Shim Open-loop Control
 
-The parameter `closed_loop` was introduced to the Rotation Shim Controller to allow users to choose between open-loop and closed-loop control. If false, the rotationShimController will use the last commanded velocity as the next iteration’s current velocity. When acceleration limits are set appropriately and the robot’s controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot’s current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
+The parameter `closed_loop` was introduced to the Rotation Shim Controller to allow users to choose between open-loop and closed-loop control. If false, the rotationShimController will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately and the robot's controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot's current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
 
 Default value:
 
@@ -391,7 +391,7 @@ Default value:
 
 ## Rotation Shim Using Path Orientations
 
-The parameter `use_path_orientations` was introduced to the Rotation Shim Controller to allow users to choose between using the orientations of the path points to compute the heading of the path instead of computing the heading from the path point’s relative locations. This is useful for planners that generate feasible paths with orientations for forward and reverse motion, such as the Smac Planner.
+The parameter `use_path_orientations` was introduced to the Rotation Shim Controller to allow users to choose between using the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. This is useful for planners that generate feasible paths with orientations for forward and reverse motion, such as the Smac Planner.
 
 Default value:
 
@@ -399,18 +399,18 @@ Default value:
 
 ## MPPI - Publishing Optimal Trajectory
 
-When `publish_optimal_trajectory` is enabled, the full optimal trajectory in the form of a `nav2_msgs/Trajectory` is published for debugging, visualization, and/or injection by other systems. This provides not just the pose information but velocities and timestamps of the MPC trajectory’s viapoints which can be useful for multi-stage control systems, jerk minimization, or collision avoidance systems.
+When `publish_optimal_trajectory` is enabled, the full optimal trajectory in the form of a `nav2_msgs/Trajectory` is published for debugging, visualization, and/or injection by other systems. This provides not just the pose information but velocities and timestamps of the MPC trajectory's viapoints which can be useful for multi-stage control systems, jerk minimization, or collision avoidance systems.
 
 ## NavigateThroughPoses - Reporting waypoint statuses information
 
 [PR #4994](https://github.com/ros-navigation/navigation2/pull/4994) enhances the `NavigateThroughPoses` navigator to provide real-time status feedback for waypoints.
-Introduces the `WaypointStatus` message type, which indicates a waypoint’s status: pending, complete, skipped, or failed.
+Introduces the `WaypointStatus` message type, which indicates a waypoint's status: pending, complete, skipped, or failed.
 This also replaces the deprecated `MissedWaypoint` type used in `WaypointFollower`.
 This also updates the behavior tree nodes `RemovePassedGoals` and `RemoveInCollisionGoals` to mark waypoint statuses as the action progresses.
-`NavigateThroughPoses` now retrieves waypoint statuses via the blackboard (similar to path and goal(s)) and organizes them into the action server’s feedback and result messages, exposing the waypoint execution status to users.
+`NavigateThroughPoses` now retrieves waypoint statuses via the blackboard (similar to path and goal(s)) and organizes them into the action server's feedback and result messages, exposing the waypoint execution status to users.
 
 The parameter `waypoint_statuses_blackboard_id` was introduced to the `bt_navigator` node to allow users to customize the variable name for `waypoint_statuses` in the blackboard.
-In the Behavior Tree XML, the `RemovePassedGoals` and `RemoveInCollisionGoals` nodes must expose corresponding ports to align with the `waypoint_statuses` workflow to manage the waypoints’ state when removing them due to completion or skipped due to collision.
+In the Behavior Tree XML, the `RemovePassedGoals` and `RemoveInCollisionGoals` nodes must expose corresponding ports to align with the `waypoint_statuses` workflow to manage the waypoints' state when removing them due to completion or skipped due to collision.
 This ensures `NavigateThroughPoses` can retrieve and propagate waypoint statuses via the blackboard.
 The action also populates the completed waypoints at the end when populating the action result.
 
@@ -428,7 +428,7 @@ Custom nodes can access or modify the `waypoint_statuses` array as well if other
 Modified statuses should then be propagated through output ports for downstream nodes.
 
 The `NavigateThroughPoses` navigator retrieves the `waypoint_statuses` instance from the blackboard in its `onLoop` callback and writes it into the feedback message.
-During the `goalCompleted` callback, it fetches the `waypoint_statuses` instance and, based on the BT’s final execution status (`final_bt_status`), updates any waypoints still in the `PENDING` state to either `COMPLETED` (if `final_bt_status` is `SUCCEEDED`) or `FAILED` (otherwise).
+During the `goalCompleted` callback, it fetches the `waypoint_statuses` instance and, based on the BT's final execution status (`final_bt_status`), updates any waypoints still in the `PENDING` state to either `COMPLETED` (if `final_bt_status` is `SUCCEEDED`) or `FAILED` (otherwise).
 
 ## Groot 2 Support
 

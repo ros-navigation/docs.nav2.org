@@ -39,4 +39,4 @@ If time permits, you may also work to also integrate this dynamic information in
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

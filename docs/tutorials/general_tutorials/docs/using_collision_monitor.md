@@ -15,7 +15,7 @@ Please make sure that Nav2 project is also built locally as it was made in [Buil
 
 ## Configuring Collision Monitor
 
-The Collision Monitor node has its own `collision_monitor_node.launch.py` launch-file and preset parameters in the `collision_monitor_params.yaml` file for demonstration, though its trivial to add this to Nav2’s main launch file if being used in practice.
+The Collision Monitor node has its own `collision_monitor_node.launch.py` launch-file and preset parameters in the `collision_monitor_params.yaml` file for demonstration, though its trivial to add this to Nav2's main launch file if being used in practice.
 For the demonstration, two shapes will be created - an inner stop and a larger slowdown bounding boxes placed in the front of the robot:
 
 <figure markdown="span">
@@ -47,7 +47,7 @@ PolygonSlow:
 
 !!! note
 
-    The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the [Collision Monitor][collision-monitor] configuration guide.
+    The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let's focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the [Collision Monitor][collision-monitor] configuration guide.
 
 !!! note
 
@@ -106,19 +106,19 @@ collision_monitor:
   ![](images/Collision_Monitor/dexory_velocity_polygon.gif){ width="800px" }
 </figure>
 
-For this part of tutorial, we will set up the Collision Monitor with `VelocityPolygon` type for a `stop` action. `VelocityPolygon` allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
+For this part of tutorial, we will set up the Collision Monitor with `VelocityPolygon` type for a `stop` action. `VelocityPolygon` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
 
 In general, here are the steps to configure the Collision Monitor with `VelocityPolygon` type:
 
 1. Add a `VelocityPolygon` to the `polygons` param list
 2. Configure the `VelocityPolygon`
 3. Specify the `holonomic` property of the polygon (default is `false`)
-4. Start by adding a `stopped` sub polygon to cover the full range of the robot’s velocity limits in `velocity_polygons` list
-5. Add additional sub polygons to the front of the `velocity_polygons` list to cover the range of the robot’s velocity limits for each type of motion (e.g. rotation, moving forward, moving backward)
+4. Start by adding a `stopped` sub polygon to cover the full range of the robot's velocity limits in `velocity_polygons` list
+5. Add additional sub polygons to the front of the `velocity_polygons` list to cover the range of the robot's velocity limits for each type of motion (e.g. rotation, moving forward, moving backward)
 
-In this example, we will consider a **non-holonomic** robot with linear velocity limits of `-1.0` to `1.0` m/s and angular velocity limits of `-1.0` to `1.0` rad/s. The `linear_min` and `linear_max` parameters of the sub polygons should be set to the robot’s linear velocity limits, while the `theta_min` and `theta_max` parameters should be set to the robot’s angular velocity limits.
+In this example, we will consider a **non-holonomic** robot with linear velocity limits of `-1.0` to `1.0` m/s and angular velocity limits of `-1.0` to `1.0` rad/s. The `linear_min` and `linear_max` parameters of the sub polygons should be set to the robot's linear velocity limits, while the `theta_min` and `theta_max` parameters should be set to the robot's angular velocity limits.
 
-Below is the example configuration using 4 sub-polygons to cover the full range of the robot’s velocity limits:
+Below is the example configuration using 4 sub-polygons to cover the full range of the robot's velocity limits:
 
 ```yaml
 polygons: ["VelocityPolygonStop"]
@@ -162,7 +162,7 @@ VelocityPolygonStop:
 
 !!! note
 
-    It is recommended to include a `stopped` sub polygon as the last entry in the `velocity_polygons` list to cover the entire range of the robot’s velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
+    It is recommended to include a `stopped` sub polygon as the last entry in the `velocity_polygons` list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
 
 !!! note
 
@@ -170,7 +170,7 @@ VelocityPolygonStop:
 
 **For holomic robots:**
 
-For holomic robots, the `holonomic` property should be set to `true`. In this scenario, the `linear_min` and `linear_max` parameters should cover  the magnitude of the robot’s resultant velocity limits (using only non-negative values), while the `theta_min` and `theta_max` parameters should cover the robot’s angular velocity limits. Additionally, there will be 2 more parameters, `direction_start_angle` and `direction_end_angle`, to specify the resultant velocity direction. The covered direction will always span from `direction_start_angle` to `direction_end_angle` in the **counter-clockwise** direction.
+For holomic robots, the `holonomic` property should be set to `true`. In this scenario, the `linear_min` and `linear_max` parameters should cover  the magnitude of the robot's resultant velocity limits (using only non-negative values), while the `theta_min` and `theta_max` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, `direction_start_angle` and `direction_end_angle`, to specify the resultant velocity direction. The covered direction will always span from `direction_start_angle` to `direction_end_angle` in the **counter-clockwise** direction.
 
 <figure markdown="span">
   ![](images/Collision_Monitor/holonomic_direction.png){ width="365px" }
@@ -301,7 +301,7 @@ It acts as a filter for the `cmd_vel` messages from the controller to avoid pote
 If no such zone is triggered, then the `cmd_vel` message is used.
 Else, it is scaled or set to stop as appropriate.
 
-By default, the Collision Monitor is configured for usage with the Nav2 bringup package, running in parallel with the `navigation_launch.py` launch file. For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother’s `cmd_vel_smoothed` remapping in the `navigation_launch.py` bringup script as presented below. This will make the output topic of the Velocity Smoother to be untouched, which will be the input to the newly added Collision Monitor:
+By default, the Collision Monitor is configured for usage with the Nav2 bringup package, running in parallel with the `navigation_launch.py` launch file. For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's `cmd_vel_smoothed` remapping in the `navigation_launch.py` bringup script as presented below. This will make the output topic of the Velocity Smoother to be untouched, which will be the input to the newly added Collision Monitor:
 
 ```python
 Node(
@@ -327,7 +327,7 @@ ComposableNode(
 +              [('cmd_vel', 'cmd_vel_nav')]),
 ```
 
-If you have changed Collision Monitor’s default `cmd_vel_in_topic` and `cmd_vel_out_topic` configuration, make sure Velocity Smoother’s default output topic `cmd_vel_smoothed` should match to the input velocity `cmd_vel_in_topic` parameter value of the Collision Monitor node, and the output velocity `cmd_vel_out_topic` parameter value should be actual `cmd_vel` to fit the replacement.
+If you have changed Collision Monitor's default `cmd_vel_in_topic` and `cmd_vel_out_topic` configuration, make sure Velocity Smoother's default output topic `cmd_vel_smoothed` should match to the input velocity `cmd_vel_in_topic` parameter value of the Collision Monitor node, and the output velocity `cmd_vel_out_topic` parameter value should be actual `cmd_vel` to fit the replacement.
 
 !!! note
 

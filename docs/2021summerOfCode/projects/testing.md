@@ -31,4 +31,4 @@ The ROS 2 Navigation Stack has had a focus on testing and reliability as a chara
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

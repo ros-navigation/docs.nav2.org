@@ -118,7 +118,7 @@ This happens until the `number_of_retries` for the parent `RecoveryNode` is exce
 
 ## Navigation Subtree
 
-Now that we have gone over the control flow between the `Navigation` subtree and the `Recovery` subtree, let’s focus on the Navigation subtree.
+Now that we have gone over the control flow between the `Navigation` subtree and the `Recovery` subtree, let's focus on the Navigation subtree.
 
 <figure markdown="span">
   ![](../images/walkthrough/navigation_subtree.png)
@@ -195,7 +195,7 @@ The only differences in the BT subtree of `ComputePathToPose` and `FollowPath` a
     - The `ComputePathToPose` subtree centers around the `ComputePathToPose` action.
     - The `FollowPath` subtree centers around the `FollowPath` action.
 - The use of conditional flow control (`Fallback`):
-    - The `ComputePathToPose` subtree incorporates logic to handle the robot’s behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary "looping" behaviors.
+    - The `ComputePathToPose` subtree incorporates logic to handle the robot's behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary "looping" behaviors.
     To prevent this, the subtree uses a `ReactiveSequence` with the `IsGoalNearby` node. If the robot is within a specified proximity threshold and the current path remains valid (i.e., no new obstacles), the subtree will skip the re-planning request. This allows the robot to smoothly transition into its final approach using its current path without unnecessary re-planning.
     - The `FollowPath` subtree, by contrast, does not typically use this conditional gating. Once a path is available, the controller is invoked directly to produce velocity commands.
 - The `RateController` that decorates the `ComputePathToPose` subtree
@@ -247,7 +247,7 @@ At the top level, a `Sequence` ensures the following steps are executed in order
 - A `ReactiveFallback` that controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
 
 If at any point the goal gets updated, this subtree will halt all children and return `SUCCESS`. This allows for quick reactions to new goals and preempt currently executing recoveries.
-This should look familiar to the contextual recovery portions of the `Navigation` subtree. This is a common BT pattern to handle the situation "Unless ‘this condition’ happens, Do action A".
+This should look familiar to the contextual recovery portions of the `Navigation` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 
 These condition nodes can be extremely powerful and are typically paired with `ReactiveFallback`. It can be easy to imagine wrapping this whole `navigate_to_pose_w_replanning_and_recovery` tree
 in a `ReactiveFallback` with a `isBatteryLow` condition – meaning the `navigate_to_pose_w_replanning_and_recovery` tree will execute *unless* the battery becomes low (and then enter a different subtree for docking to recharge).
@@ -262,14 +262,14 @@ If the goal is never updated, the behavior tree will go on to the `RoundRobin` n
 Upon `SUCCESS` of any of the four children of the parent `RoundRobin`, the robot will attempt to renavigate in the `Navigation` subtree.
 If this renavigation was not successful, the next child of the `RoundRobin` will be ticked.
 
-For example, let’s say the robot is stuck and the `Navigation` subtree returns `FAILURE`:
-(for the sake of this example, let’s assume that the goal is never updated).
+For example, let's say the robot is stuck and the `Navigation` subtree returns `FAILURE`:
+(for the sake of this example, let's assume that the goal is never updated).
 
 1. The Costmap clearing sequence in the `Recovery` subtree is attempted, and returns `SUCCESS`. The robot now moves to `Navigation` subtree again
-2. Let’s assume that clearing both costmaps was not sufficient, and the `Navigation` subtree returns `FAILURE` once again. The robot now ticks the `Recovery` subtree
-3. In the `Recovery` subtree, the `Spin` action will be ticked. If this returns `SUCCESS`, then the robot will return to the main `Navigation` subtree *BUT* let’s assume that the `Spin` action returns `FAILURE`. In this case, the tree will *remain* in the `Recovery` subtree
-4. Let’s say the next action, `Wait` returns `SUCCESS`. The robot will then move on to the `Navigation` subtree
-5. Assume  the `Navigation` subtree returns `FAILURE` (clearing the costmaps, attempting a spin, and waiting were *still* not sufficient to recover the system). The robot will move onto the `Recovery` subtree and attempt the `BackUp` action. Let’s say that the robot attempts the `BackUp` action and was able to successfully complete the action. The `BackUp` action node returns `SUCCESS` and so now we move on to the Navigation subtree again.
-6. In this hypothetical scenario, let’s assume that the `BackUp` action allowed the robot to successfully navigate in the `Navigation` subtree, and the robot reaches the goal. In this case, the overall BT will still return `SUCCESS`.
+2. Let's assume that clearing both costmaps was not sufficient, and the `Navigation` subtree returns `FAILURE` once again. The robot now ticks the `Recovery` subtree
+3. In the `Recovery` subtree, the `Spin` action will be ticked. If this returns `SUCCESS`, then the robot will return to the main `Navigation` subtree *BUT* let's assume that the `Spin` action returns `FAILURE`. In this case, the tree will *remain* in the `Recovery` subtree
+4. Let's say the next action, `Wait` returns `SUCCESS`. The robot will then move on to the `Navigation` subtree
+5. Assume  the `Navigation` subtree returns `FAILURE` (clearing the costmaps, attempting a spin, and waiting were *still* not sufficient to recover the system). The robot will move onto the `Recovery` subtree and attempt the `BackUp` action. Let's say that the robot attempts the `BackUp` action and was able to successfully complete the action. The `BackUp` action node returns `SUCCESS` and so now we move on to the Navigation subtree again.
+6. In this hypothetical scenario, let's assume that the `BackUp` action allowed the robot to successfully navigate in the `Navigation` subtree, and the robot reaches the goal. In this case, the overall BT will still return `SUCCESS`.
 
 If the `BackUp` action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the `number_of_retries` in the parent of the `Navigate` subtree and `Recovery` subtree is exceeded, or if all the system-wide recoveries in the `Recovery` subtree return `FAILURE` (this is unlikely, and likely points to some other system failure).

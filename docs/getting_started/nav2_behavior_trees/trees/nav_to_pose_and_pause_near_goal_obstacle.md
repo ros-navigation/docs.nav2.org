@@ -5,7 +5,7 @@
     As a prerequisite, we encourage the users to go through the [Behavior Tree documentation](https://behaviortree.github.io/BehaviorTree.CPP/), which explains about different behaviors nodes used in these trees such as `ReactiveSequence`, `SequenceWithMemory` and `RetryUntilSuccessful`.
 
 This behavior tree is a soft extension to the [Navigate To Pose][nav2-bt-navigate-to-pose].
-Apart from the functionalities of [Navigate To Pose][nav2-bt-navigate-to-pose], this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacles) close to the goal by pausing the robot’s navigation and wait for a user-specified time to check if the obstacle has cleared.
+Apart from the functionalities of [Navigate To Pose][nav2-bt-navigate-to-pose], this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacles) close to the goal by pausing the robot's navigation and wait for a user-specified time to check if the obstacle has cleared.
 If the obstacle has moved during the waiting time, the robot will continue to the goal taking the shorter path. If the obstacle has not moved during the waiting time or the waiting time expires, then the robot will use the longer path around to reach the final goal location.
 Ultimately, for a given task, this behavior tree aids in solving the problem of long cycle time, which is caused because of the long path generated due to the temporary obstacles present close to the goal location.
 

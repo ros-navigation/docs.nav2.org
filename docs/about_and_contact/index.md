@@ -17,7 +17,7 @@ With change comes possibilities.
 Navigation2 builds on the success but redesigns the framework to be more flexible and the feedback gathered over 10 years.
 
 We strive to create an open community and encourage new ROS users and experts alike to collaborate.
-However, that can’t happen without your issues, pull requests, and support.
+However, that can't happen without your issues, pull requests, and support.
 Navigation, like all open-source projects, is kept going by a dedicated group of developers, maintainers, users, and collaborators.
 We would like to thank here our current and past contributors and maintainers.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This tutorial demonstrates how to use semantic segmentation in costmaps with stereo cameras, using a custom [semantic_segmentation_layer plugin](https://github.com/kiwicampus/semantic_segmentation_layer) and a pre-trained segmentation model that works on Gazebo’s Baylands world. It was written by Pedro Gonzalez at [robot.com](https://robot.com/).
+This tutorial demonstrates how to use semantic segmentation in costmaps with stereo cameras, using a custom [semantic_segmentation_layer plugin](https://github.com/kiwicampus/semantic_segmentation_layer) and a pre-trained segmentation model that works on Gazebo's Baylands world. It was written by Pedro Gonzalez at [robot.com](https://robot.com/).
 
 <figure markdown="span">
   ![](images/Navigation2_with_segmentation/video.gif){ width="90%" }
@@ -28,7 +28,7 @@ cd <your workspace path>
 colcon build --symlink-install # on your workspace path
 ```
 
-The code for this tutorial is hosted in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory. It’s highly recommended that you clone and build these packages when setting up your development environment.
+The code for this tutorial is hosted in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory. It's highly recommended that you clone and build these packages when setting up your development environment.
 
 Finally, you will need:
 
@@ -68,7 +68,7 @@ For that reason, both the class and the confidence are important inputs for deci
 ### 0. Setup Simulation Environment
 
 To navigate using semantic segmentation, we first need to set up a simulation environment with a robot equipped with a camera sensor. For this tutorial, we will use the Baylands outdoor world in Gazebo with a TurtleBot 4 robot.
-Everything is already set up in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory, so clone the repo and build it if you haven’t already:
+Everything is already set up in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory, so clone the repo and build it if you haven't already:
 
 ```bash
 # On your workspace source folder
@@ -152,7 +152,7 @@ Now we need to configure Nav2 to use the semantic segmentation layer in its cost
 
 Currently, the costmap plugin works only with pointclouds from a stereo camera, which are aligned to the color image and thus with the segmentation mask.
 
-Here’s an example configuration for the local costmap:
+Here's an example configuration for the local costmap:
 
 ```yaml
 local_costmap:
@@ -203,7 +203,7 @@ The Baylands simulation and *rviz* should appear. You should be able to send nav
 </figure>
 
 To better see what the plugin is doing, you can enable the segmentation tile map visualization in *rviz*. This will show a pointcloud of the segmentation observations for each tile, colored by their confidence.
-Again, you can refer to the picture on the Layer’s [README](https://github.com/kiwicampus/semantic_segmentation_layer) for a visual explanation of how observations are accumulated on the costmap tiles and how that translates to the cost assigned to each tile.
+Again, you can refer to the picture on the Layer's [README](https://github.com/kiwicampus/semantic_segmentation_layer) for a visual explanation of how observations are accumulated on the costmap tiles and how that translates to the cost assigned to each tile.
 
 <figure markdown="span">
   ![](images/Navigation2_with_segmentation/tile_map.gif){ width="90%" }
@@ -213,7 +213,7 @@ Again, you can refer to the picture on the Layer’s [README](https://github.com
 
 ## Conclusion
 
-This tutorial demonstrated how to integrate semantic segmentation with Nav2 for terrain-aware navigation using a pre-trained model that works on Gazebo’s Baylands world and a custom semantic segmentation layer plugin.
+This tutorial demonstrated how to integrate semantic segmentation with Nav2 for terrain-aware navigation using a pre-trained model that works on Gazebo's Baylands world and a custom semantic segmentation layer plugin.
 
 To go further, you can train your own model using the [Simple Segmentation Toolkit](https://github.com/pepisg/simple_segmentation_toolkit), and tune the costmap parameters to your own application.
 

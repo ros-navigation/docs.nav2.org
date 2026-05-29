@@ -31,7 +31,7 @@ namespace nav2_gradient_costmap_plugin
 class GradientLayer : public nav2_costmap_2d::Layer
 ```
 
-The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are called at runtime by `LayeredCostmap`. The list of methods, their description, and necessity to have these methods in plugin’s code is presented in the table below:
+The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are called at runtime by `LayeredCostmap`. The list of methods, their description, and necessity to have these methods in plugin's code is presented in the table below:
 
 <div class="center-table" markdown>
 
@@ -85,13 +85,13 @@ In our example these methods have the following functionality:
     }
     ```
 
-    where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap’s value per each step:
+    where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap's value per each step:
 
     <figure markdown="span">
       ![](images/Writing_new_Costmap2D_plugin/gradient_explanation.png)
     </figure>
 
-    These parameters are defined in plugin’s header file.
+    These parameters are defined in plugin's header file.
 
 4. `GradientLayer::onFootprintChanged()` just resets `need_recalculation_` value.
 5. `GradientLayer::reset()` method is dummy: it is not used in this example plugin. It remains there since pure virtual function `reset()` in parent `Layer` class required to be overridden.
@@ -101,9 +101,9 @@ In our example these methods have the following functionality:
 
 The written plugin will be loaded at runtime as its basic parent class and then will be called by plugin handling modules (for costmap2d by `LayeredCostmap`). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.
 
-In our example the `nav2_gradient_costmap_plugin::GradientLayer` plugin’s class should be dynamically loaded as a `nav2_costmap_2d::Layer` basic class. For this the plugin should be registered as follows:
+In our example the `nav2_gradient_costmap_plugin::GradientLayer` plugin's class should be dynamically loaded as a `nav2_costmap_2d::Layer` basic class. For this the plugin should be registered as follows:
 
-1. Plugin’s class should be registered with a basic type of loaded class. For this there is a special macro `PLUGINLIB_EXPORT_CLASS` should be added to any source-file composing the plugin library:
+1. Plugin's class should be registered with a basic type of loaded class. For this there is a special macro `PLUGINLIB_EXPORT_CLASS` should be added to any source-file composing the plugin library:
 
     ```c++
     #include "pluginlib/class_list_macros.hpp"
@@ -112,7 +112,7 @@ In our example the `nav2_gradient_costmap_plugin::GradientLayer` plugin’s clas
 
     This part is usually placed at the end of cpp-file where the plugin class was written (in our example `gradient_layer.cpp`). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.
 
-2. Plugin’s information should be stored to the plugin’s description file. This is done by using separate XML (in our example `gradient_plugins.xml`) in the plugin’s package. This file contains information about:
+2. Plugin's information should be stored to the plugin's description file. This is done by using separate XML (in our example `gradient_plugins.xml`) in the plugin's package. This file contains information about:
 
     - `path`: Path and name of library where plugin is placed.
     - `name`: Plugin type referenced in `plugin_types` parameter (see next section for more details). It could be whatever you want.

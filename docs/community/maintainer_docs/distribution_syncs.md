@@ -1,7 +1,7 @@
 # ROS Distribution Sync Process { #ros-distribution-sync-process }
 
 This is the instructions for updating a Nav2 version in a ROS distribution sync.
-We do this by bulk cherry picking commits from the `main` branch after they’ve had time to soak and apply them to the branch we looking to sync with the newest features.
+We do this by bulk cherry picking commits from the `main` branch after they've had time to soak and apply them to the branch we looking to sync with the newest features.
 
 ## 0. Initial Setup
 
@@ -21,7 +21,7 @@ This can be found either in the git logs of the `main` branch or using the GitHu
 If using GitHub, open two tabs - one for `main` and one for `<distro>`.
 
 Finally, we need to identify the date of the last sync.
-This can be found looking in the commit messages for `<distro>`’s branch or by looking at the release page for Nav2 and finding the date of the last release for that distribution.
+This can be found looking in the commit messages for `<distro>`'s branch or by looking at the release page for Nav2 and finding the date of the last release for that distribution.
 Scroll back in the `main` and `<distro>` git logs to find the last sync commit to begin.
 
 Once you have a local clone, the git logs, and the date of the last sync, we can begin the process.
@@ -86,4 +86,4 @@ Let CI run and merge once passes for a second independent validation of compilat
 
 Once the PR is merged, we can release the changes to the distribution.
 Create a release of the same version as the `package.xml` files targeting the `<distro>` branch.
-Then, follow [Steve’s Bloom Release Guide](https://gist.github.com/SteveMacenski/1c321d1c9edca096ae4d763d8327c2ee) to perform the bloom release.
+Then, follow [Steve's Bloom Release Guide](https://gist.github.com/SteveMacenski/1c321d1c9edca096ae4d763d8327c2ee) to perform the bloom release.

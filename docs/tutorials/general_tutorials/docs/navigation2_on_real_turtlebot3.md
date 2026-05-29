@@ -17,7 +17,7 @@ It depends on your experience with ROS, robots, and what computer system you hav
 ## Requirements
 
 You must install Nav2, Turtlebot3.
-If you don’t have them installed, please follow [Quickstart][quickstart].
+If you don't have them installed, please follow [Quickstart][quickstart].
 
 The turtlebot3 software can be installed via the following or on the [turtlebot3 repository](https://github.com/ROBOTIS-GIT/turtlebot3):
 
@@ -44,7 +44,7 @@ Run the following commands first whenever you open a new terminal during this tu
 
 ### 1. Launch Turtlebot 3
 
-You will need to launch your robot’s interface, for example:
+You will need to launch your robot's interface, for example:
 
 `ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False`
 
@@ -70,7 +70,7 @@ Make sure *use_sim time* is set to **False**, because we want to use the system 
 
 `ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False autostart:=False map:=/path/to/your-map.yaml`
 
-Note: Don’t forget to change **/path/to/your-map.yaml** to the actual path to the your-map.yaml file.
+Note: Don't forget to change **/path/to/your-map.yaml** to the actual path to the your-map.yaml file.
 
 ### 3.  Launch RVIZ
 

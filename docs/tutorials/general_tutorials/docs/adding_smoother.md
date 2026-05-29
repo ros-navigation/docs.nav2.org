@@ -12,7 +12,7 @@ Before completing this tutorials, completing [Quickstart][quickstart] is highly 
 ## Requirements
 
 You must install Nav2, Turtlebot3.
-If you don’t have them installed, please follow [Quickstart][quickstart].
+If you don't have them installed, please follow [Quickstart][quickstart].
 You must also have a working behavior tree, such as those provided by the Nav2 BT Navigator package, for editing.
 You should also have a copy of the `nav2_params.yaml` file for your system to edit as well.
 
@@ -22,15 +22,15 @@ You should also have a copy of the `nav2_params.yaml` file for your system to ed
 
 The [SmoothPath][smooth-path] BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be separately interacted with via other servers and client library languages.
 
-Please see the BT node’s configuration page to familiarize yourself with all aspects, but the core ports to note are the `unsmoothed_path` input port and the `smoothed_path` output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server’s action API.
+Please see the BT node's configuration page to familiarize yourself with all aspects, but the core ports to note are the `unsmoothed_path` input port and the `smoothed_path` output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server's action API.
 
 ### 1. Specifying a Smoother Plugin
 
 In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use.
 
-For each smoother plugin you would like to use, a name must be given to it (e.g. `simple_smoother`, `curvature_smoother`). This name is its `smoother_id` for other servers to interact with this algorithm from a request to the Smoother Server’s action interface.
+For each smoother plugin you would like to use, a name must be given to it (e.g. `simple_smoother`, `curvature_smoother`). This name is its `smoother_id` for other servers to interact with this algorithm from a request to the Smoother Server's action interface.
 
-Under each name, the parameters for that particular algorithm must be specified along with the `plugin` name for pluginlib to load a given algorithm’s library. An example configuration of 2 smoother plugins is shown below that could be used in the `nav2_params.yaml` for your robot.
+Under each name, the parameters for that particular algorithm must be specified along with the `plugin` name for pluginlib to load a given algorithm's library. An example configuration of 2 smoother plugins is shown below that could be used in the `nav2_params.yaml` for your robot.
 
 ```yaml
 smoother_server:

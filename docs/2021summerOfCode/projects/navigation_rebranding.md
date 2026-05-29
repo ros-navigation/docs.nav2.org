@@ -31,4 +31,4 @@ As such, we would like to initiate a re-branding effort to help differentiate it
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

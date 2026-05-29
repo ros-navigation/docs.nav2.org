@@ -5,7 +5,7 @@ Rather than using a freespace planner `ComputePathToPose` to plan a complete pat
 This can be useful for navigating in large-scale environments where real-time planning in freespace for a long distance is not computationally feasible, where a map of the entire space is not possible to plan within, or where deterministic behavior and limited navigation zones/lanes/routes are demanded.
 
 This tree computes a route through the environment using the `ComputeRoute` node which is executed on initialization and when either the goal is updated due to preemption (`GlobalUpdatedGoal`) or the current route path is invalid due to collision (`ValidatePath`).
-After which, if the robot’s starting pose is too far from the first route node in the graph solution, it will use freespace planning to connect the robot’s current pose to the first node in the route.
+After which, if the robot's starting pose is too far from the first route node in the graph solution, it will use freespace planning to connect the robot's current pose to the first node in the route.
 This is called the `first mile` and is computed using the `ComputePathToPose` node.
 This may be removed if navigation only on the graph is required and you know that the robot will always be located on or near the graph.
 

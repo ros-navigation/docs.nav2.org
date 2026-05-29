@@ -247,4 +247,4 @@ ros2 launch sam_bot_description display.launch.py
 
 ## Conclusion
 
-And that’s it. In this tutorial, you have successfully created a SDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your SDF to publish the robot’s transforms. We have also used RViz to visualize our robot to verify whether our SDF is correct.
+And that's it. In this tutorial, you have successfully created a SDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your SDF to publish the robot's transforms. We have also used RViz to visualize our robot to verify whether our SDF is correct.

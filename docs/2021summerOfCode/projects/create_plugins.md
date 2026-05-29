@@ -2,7 +2,7 @@
 
 **Task description**
 
-The ROS 2 Navigation Stack has a number of plugin interfaces to help users create or select specific plugins for planning, control, and behaviors for their applications. Two specific areas that the Nav2 stack could use more algorithm plugins for is for path planning (referred to as a planner plugin) and local trajectory generation (referred to as controller plugins). A simple tutorial for creating a [planner plugin can be found here.](https://docs.nav2.org/tutorials/docs/writing_new_nav2planner_plugin.html) Currently, we have one planner, NavFn which implements an A\* and Dijkstra’s planner. It also has two controllers, DWB and TEB which implement a DWA and timed elastic-band optimization techniques. There is also a Hybrid-A\* and OMPL planner in development.
+The ROS 2 Navigation Stack has a number of plugin interfaces to help users create or select specific plugins for planning, control, and behaviors for their applications. Two specific areas that the Nav2 stack could use more algorithm plugins for is for path planning (referred to as a planner plugin) and local trajectory generation (referred to as controller plugins). A simple tutorial for creating a [planner plugin can be found here.](https://docs.nav2.org/tutorials/docs/writing_new_nav2planner_plugin.html) Currently, we have one planner, NavFn which implements an A\* and Dijkstra's planner. It also has two controllers, DWB and TEB which implement a DWA and timed elastic-band optimization techniques. There is also a Hybrid-A\* and OMPL planner in development.
 
 Your task will be to create a high-quality implementation of one of the following algorithms for the Nav2 plugin interfaces. Alternative algorithms may also be considered upon approval, please ask @steve in the application phase. Please select only one to discuss.
 
@@ -38,4 +38,4 @@ Your task will be to create a high-quality implementation of one of the followin
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

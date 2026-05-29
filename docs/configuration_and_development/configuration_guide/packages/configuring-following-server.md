@@ -85,7 +85,7 @@ Description
 | `string` | "base_link" |
 
 Description
-:   Robot’s base frame for control law.
+:   Robot's base frame for control law.
 
 ### **`fixed_frame`**
 
@@ -121,7 +121,7 @@ Description
 | `bool` | true    |
 
 Description
-:   If true, ignore the detected object’s orientation and point toward it from the robot’s position.
+:   If true, ignore the detected object's orientation and point toward it from the robot's position.
 
 ### **`search_by_rotating`**
 
@@ -148,7 +148,7 @@ Description
 | `string` | "odom"  |
 
 Description
-:   Odometry topic to use for obtaining the robot’s current velocity.
+:   Odometry topic to use for obtaining the robot's current velocity.
 
 ### **`odom_duration`**
 

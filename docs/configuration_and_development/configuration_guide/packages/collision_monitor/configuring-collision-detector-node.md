@@ -2,15 +2,15 @@
 
 The Collision Detector is a node similar to the Collision Monitor, so it is recommended to read the [Using Collision Monitor][using-collision-monitor] tutorial first.
 
-In some cases, the user may want to be informed about the detected obstacles without affecting the robot’s velocity and instead take a different action within an external node. For example, the user may want to blink LEDs or sound an alarm when the robot is close to an obstacle.
+In some cases, the user may want to be informed about the detected obstacles without affecting the robot's velocity and instead take a different action within an external node. For example, the user may want to blink LEDs or sound an alarm when the robot is close to an obstacle.
 Another use case could be to detect data points in particular regions (e.g extremely close to the sensor) and warn of malfunctioning sensors. For this purpose, the Collision Detector node was introduced.
-It works similarly to the Collision Monitor, but does not affect the robot’s velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the `collision_detector_state` topic.
+It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the `collision_detector_state` topic.
 
-See the package’s `README` for more information.
+See the package's `README` for more information.
 
 ## Features
 
-Similarly to the Collision Monitor, the Collision Detector uses robot’s relative polygons to define "zones".
+Similarly to the Collision Monitor, the Collision Detector uses robot's relative polygons to define "zones".
 However, unlike the Collision Monitor that uses different behavior models, the Collision Detector does not use any of them and therefore the *action_type* should always be set to *none*. If set to anything else, it will throw an error
 
 The zones around the robot and the data sources are the same as for the Collision Monitor, with the exception of the footprint polygon, which is not supported by the Collision Detector.

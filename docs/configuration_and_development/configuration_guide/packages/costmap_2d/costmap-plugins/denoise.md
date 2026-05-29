@@ -1,6 +1,6 @@
 # Denoise Layer Parameters { #denoise-layer-parameters }
 
-This layer attempts to remove simple noise that may exist in a costmap’s layers due to sensor noise or discrete raycasting errors.
+This layer attempts to remove simple noise that may exist in a costmap's layers due to sensor noise or discrete raycasting errors.
 
 `<denoise layer>` is the corresponding plugin name selected for this type.
 

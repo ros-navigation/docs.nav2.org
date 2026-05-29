@@ -19,7 +19,7 @@ It may also be used to add breakpoints in your code to check values in memory a 
 
 Using GDB is a critical skill for all software developers working on C/C++.
 Many IDEs will have some kind of debugger or profiler built in, but with ROS, there are few IDEs to choose.
-Therefore it’s important to understand how to use these raw tools you have available rather than relying on an IDE to provide them.
+Therefore it's important to understand how to use these raw tools you have available rather than relying on an IDE to provide them.
 Further, understanding these tools is a fundamental skill of C/C++ development and leaving it up to your IDE can be problematic if you change roles and no longer have access to it or are doing development on the fly through an ssh session to a remote asset.
 
 Using GDB luckily is fairly simple after you have the basics under your belt.
@@ -37,19 +37,19 @@ It may take a little longer than usual to compile.
 add_compile_options(-g)
 ```
 
-Now you’re ready to debug your code!
+Now you're ready to debug your code!
 If this was a non-ROS project, at this point you might do something like below.
-Here we’re launching a GDB session and telling our program to immediately run.
+Here we're launching a GDB session and telling our program to immediately run.
 Once your program crashes, it will return a gdb session prompt denoted by `(gdb)`.
-At this prompt you can access the information you’re interested in.
-However, since this is a ROS project with lots of node configurations and other things going on, this isn’t a great option for beginners or those that don’t like tons of commandline work and understanding the filesystem.
+At this prompt you can access the information you're interested in.
+However, since this is a ROS project with lots of node configurations and other things going on, this isn't a great option for beginners or those that don't like tons of commandline work and understanding the filesystem.
 
 ```bash
 gdb ex run --args /path/to/exe/program
 ```
 
 Below are sections to describe the 3 major situations you could run into with ROS 2-based systems.
-Read the section that best describes the problem you’re attempting to solve.
+Read the section that best describes the problem you're attempting to solve.
 
 ## From a Node
 
@@ -57,11 +57,11 @@ Just as in our non-ROS example, we need to setup a GDB session before launching 
 While we could set this up through the commandline with some knowledge of the ROS 2 file system, we can instead use the launch `--prefix` option the kind folks at Open Robotics provided for us.
 
 `--prefix` will execute some bits of code before our `ros2` command allowing us to insert some information.
-If you attempted to do `gdb ex run --args ros2 run <pkg> <node>` as analog to our example in the preliminaries, you’d find that it couldn’t find the `ros2` command.
-If you’re even more clever, you’d find that trying to source your workspace would also fail for similar reasons.
+If you attempted to do `gdb ex run --args ros2 run <pkg> <node>` as analog to our example in the preliminaries, you'd find that it couldn't find the `ros2` command.
+If you're even more clever, you'd find that trying to source your workspace would also fail for similar reasons.
 
 Rather than having to revert to finding the install path of the executable and typing it all out, we can instead use `--prefix`.
-This allows us to use the same `ros2 run` syntax you’re used to without having to worry about some of the GDB details.
+This allows us to use the same `ros2 run` syntax you're used to without having to worry about some of the GDB details.
 
 ```bash
 ros2 run --prefix 'gdb -ex run --args' <pkg> <node> --all-other-launch arguments
@@ -70,7 +70,7 @@ ros2 run --prefix 'gdb -ex run --args' <pkg> <node> --all-other-launch arguments
 Just as before, this prefix will launch a GDB session and run the node you requested with all the additional commandline arguments.
 You should now have your node running and should be chugging along with some debug printing.
 
-Once your server crashes, you’ll see a prompt like below. At this point you can now get a backtrace.
+Once your server crashes, you'll see a prompt like below. At this point you can now get a backtrace.
 
 ```bash
 (gdb)
@@ -102,7 +102,7 @@ For example:
 In this example you should read this in the following way, starting at the bottom:
 
 - In the main function, on line 25 we call a function VectorCrash.
-- In VectorCrash, on line 44, we crashed in the Vector’s `at()` method with input `100`.
+- In VectorCrash, on line 44, we crashed in the Vector's `at()` method with input `100`.
 - It crashed in `at()` on STL vector line 1091 after throwing an exception from a range check failure.
 
 These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
@@ -115,7 +115,7 @@ It may ask you if you want to kill some threads at the end, say yes.
 Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 launch file.
 While we could set this up through the commandline, we can instead make use of the same mechanics that we did in the `ros2 run` node example, now using a launch file.
 
-In your launch file, find the node that you’re interested in debugging.
+In your launch file, find the node that you're interested in debugging.
 For this section, we assume that your launch file contains only a single node (and potentially other information as well).
 The `Node` function used in the `launch_ros` package will take in a field `prefix` taking a list of prefix arguments.
 We will insert the GDB snippet here with one change from our node example, use of `xterm`.
@@ -139,7 +139,7 @@ start_sync_slam_toolbox_node = Node(
 
 Just as before, this prefix will launch a GDB session, now in `xterm` and run the launch file you requested with all the additional launch arguments defined.
 
-Once your server crashes, you’ll see a prompt like below, now in the `xterm` session. At this point you can now get a backtrace.
+Once your server crashes, you'll see a prompt like below, now in the `xterm` session. At this point you can now get a backtrace.
 
 ```bash
 (gdb)
@@ -157,24 +157,24 @@ It may ask you if you want to kill some threads at the end, say yes.
 ## From Large Project
 
 Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
-For this reason, when working with larger launch files, its good to pull out the specific server you’re interested in and launching it separately.
+For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it separately.
 These instructions are targeting Nav2, but are applicable to any large project with many nodes of any type in a series of launch file(s).
 
-As such, for this case, when you see a crash you’d like to investigate, its beneficial to separate this server from the others.
+As such, for this case, when you see a crash you'd like to investigate, its beneficial to separate this server from the others.
 
 If your server of interest is being launched from a nested launch file (e.g. an included launch file) you may want to do the following:
 
 - Comment out the launch file inclusion from the parent launch file
 - Recompile the package of interest with `-g` flag for debug symbols
 - Launch the parent launch file in a terminal
-- Launch the server’s launch file in another terminal following the instructions in [From a Launch File](#from-a-launch-file).
+- Launch the server's launch file in another terminal following the instructions in [From a Launch File](#from-a-launch-file).
 
 Alternatively, if you server of interest is being launched in these files directly (e.g. you see a `Node`, `LifecycleNode`, or inside a `ComponentContainer`), you will need to separate this from the others:
 
-- Comment out the node’s inclusion from the parent launch file
+- Comment out the node's inclusion from the parent launch file
 - Recompile the package of interest with `-g` flag for debug symbols
 - Launch the parent launch file in a terminal
-- Launch the server’s node in another terminal following the instructions in [From a Node](#from-a-node).
+- Launch the server's node in another terminal following the instructions in [From a Node](#from-a-node).
 
 !!! note
 
@@ -182,7 +182,7 @@ Alternatively, if you server of interest is being launched in these files direct
 
     We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be `--ros-args -r __node:=<node_name> --params-file /absolute/path/to/params.yaml` (as a template).
 
-Once your server crashes, you’ll see a prompt like below in the specific server’s terminal. At this point you can now get a backtrace.
+Once your server crashes, you'll see a prompt like below in the specific server's terminal. At this point you can now get a backtrace.
 
 ```bash
 (gdb)
@@ -209,7 +209,7 @@ To debug directly from the nav2 bringup launch files you may want to do the foll
 
     Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project".
 
-Once your server crashes, you’ll see a prompt like below in the xterm window. At this point you can now get a backtrace.
+Once your server crashes, you'll see a prompt like below in the xterm window. At this point you can now get a backtrace.
 
 ```bash
 (gdb)

@@ -21,7 +21,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
     ```bash
     source /opt/ros/<ros2-distro>/setup.bash
     ```
-3. Install the Nav2 packages using your operating system’s package manager:
+3. Install the Nav2 packages using your operating system's package manager:
     ```bash
     sudo apt install ros-$ROS_DISTRO-navigation2
     sudo apt install ros-$ROS_DISTRO-nav2-bringup
@@ -92,11 +92,11 @@ If you are using the defaults so far, the robot should look roughly like this.
   ![](/images/rviz/rviz-set-initial-pose.png){ width="700" title="Approximate starting location of Turtlebot" }
 </figure>
 
-If you don’t get the location exactly right, that’s fine. Nav2 will refine
+If you don't get the location exactly right, that's fine. Nav2 will refine
 the position as it navigates. You can also, click the "2D Pose
 Estimate" button and try again, if you prefer.
 
-Once you’ve set the initial pose, the transform tree will be complete and
+Once you've set the initial pose, the transform tree will be complete and
 Nav2 will be fully active and ready to go. You should see the robot and particle
 cloud now.
 

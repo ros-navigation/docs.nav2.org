@@ -1,7 +1,7 @@
 # BaseObstacleCritic { #base-obstacle-critic }
 
 Scores a trajectory based on where the path passes over the costmap.
-To use this properly, you must use the inflation layer in costmap to expand obstacles by the robot’s radius.
+To use this properly, you must use the inflation layer in costmap to expand obstacles by the robot's radius.
 
 ## Parameters
 

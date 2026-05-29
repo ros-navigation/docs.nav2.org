@@ -11,7 +11,7 @@ Follow these tutorials in order to set up your robot for Nav2:
 - [Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]
 - [Setting Up Sensors - Gazebo][setting-up-sensors-gazebo]
 - [Mapping and Localization][mapping-and-localization]
-- [Setting Up the Robot’s Footprint][setting-up-the-robots-footprint]
+- [Setting Up the Robot's Footprint][setting-up-the-robots-footprint]
 - [Setting Up Navigation Plugins][setting-up-navigation-plugins]
 
 !!! note

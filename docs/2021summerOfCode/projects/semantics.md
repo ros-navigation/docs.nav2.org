@@ -35,4 +35,4 @@ After creating the generic representation, your project will be to create demons
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

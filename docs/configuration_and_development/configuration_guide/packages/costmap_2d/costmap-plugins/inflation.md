@@ -2,7 +2,7 @@
 
 # Inflation Layer Parameters { #inflation-layer-parameters }
 
-This layer places an exponential decay functions around obstacles to increase cost to traverse near collision. It also places a lethal cost around obstacles within the robot’s fully inscribed radius - even if a robot is non-circular for optimized first-order collision checking.
+This layer places an exponential decay functions around obstacles to increase cost to traverse near collision. It also places a lethal cost around obstacles within the robot's fully inscribed radius - even if a robot is non-circular for optimized first-order collision checking.
 
 `<inflation layer>` is the corresponding plugin name selected for this type.
 

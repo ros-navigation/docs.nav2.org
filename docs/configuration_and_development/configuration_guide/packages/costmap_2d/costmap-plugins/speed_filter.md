@@ -35,7 +35,7 @@ Description
 | `string` | "speed_limit" |
 
 Description
-:   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) have the following fields’ meaning:
+:   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) have the following fields' meaning:
 
     - `percentage`: speed limit is expressed in percentage if `true` or in absolute values in `false` case. This parameter is set depending on `type` field of `CostmapFilterInfo` message.
     - `speed_limit`: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on `percentage` value. Zero value means no speed restriction (independently on `percentage`). `speed_limit` is being linearly converted from `OccupancyGrid` filter mask value as: `speed_limit = base + multiplier * mask_value`, where `base` and `multiplier` coefficients are taken from `CostmapFilterInfo` message.

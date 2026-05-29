@@ -40,4 +40,4 @@ An optional but recommended feature of this work would be to also accept the inp
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.
+- No other CLA's are required.

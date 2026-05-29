@@ -1,6 +1,6 @@
 # Setting Up Odometry - Gazebo Classic { #setting-up-odometry-gazebo-classic }
 
-In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2.
+In this guide, we will be looking at how to integrate our robot's odometry system with Nav2.
 First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly.
 Next, we will show how to setup odometry with two different cases.
 In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders.
@@ -12,9 +12,9 @@ In the second case, we will build a demo that simulates a functioning odometry s
 
 ## Odometry Introduction
 
-The odometry system provides a locally accurate estimate of a robot’s pose and velocity based on its motion. The odometry information can be obtained from various sources such as IMU, LIDAR, RADAR, VIO, and wheel encoders. One thing to note is that IMUs drift over time while wheel encoders drift over distance traveled, thus they are often used together to counter each other’s negative characteristics.
+The odometry system provides a locally accurate estimate of a robot's pose and velocity based on its motion. The odometry information can be obtained from various sources such as IMU, LIDAR, RADAR, VIO, and wheel encoders. One thing to note is that IMUs drift over time while wheel encoders drift over distance traveled, thus they are often used together to counter each other's negative characteristics.
 
-The `odom` frame and the transformation associated with it use a robot’s odometry system to publish localization information that is continuous but becomes less accurate over time or distance (depending on the sensor modalities and drift). In spite of this, the information can still be used by the robot to navigate its immediate vicinity (e.g collision avoidance). To obtain consistently accurate odometry information over time, the `map` frame provides globally accurate information that is used to correct the `odom` frame.
+The `odom` frame and the transformation associated with it use a robot's odometry system to publish localization information that is continuous but becomes less accurate over time or distance (depending on the sensor modalities and drift). In spite of this, the information can still be used by the robot to navigate its immediate vicinity (e.g collision avoidance). To obtain consistently accurate odometry information over time, the `map` frame provides globally accurate information that is used to correct the `odom` frame.
 
 As discussed in the previous guides and in [REP 105](https://www.ros.org/reps/rep-0105.html), the `odom` frame is connected to the rest of the system and Nav2 through the `odom` => `base_link` transform. This transform is published by a tf2 broadcaster or by frameworks such as `robot_localization`, which also provide additional functionalities. We will be talking more about `robot_localization` in a following section.
 
@@ -99,7 +99,7 @@ Note that we described `sam_bot` using URDF. However, Gazebo uses [Simulation De
 
 We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at [Tutorial: Using Gazebo plugins with ROS](http://classic.gazebosim.org/tutorials?tut=ros_gzplugins).
 
-For our robot, we will be using the [GazeboRosImuSensor](http://classic.gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)) which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an `imu_link` to which the IMU sensor will be attached. This link will be referenced under the `<gazebo>` element. Next, we will set `/demo/imu` as the topic to which the IMU will be publishing its information, and we will comply with [REP145](https://www.ros.org/reps/rep-0145.html) by setting `initialOrientationAsReference` to `false`. We will also add some noise to the sensor configuration using Gazebo’s [sensor noise model](http://classic.gazebosim.org/tutorials?tut=sensor_noise).
+For our robot, we will be using the [GazeboRosImuSensor](http://classic.gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)) which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an `imu_link` to which the IMU sensor will be attached. This link will be referenced under the `<gazebo>` element. Next, we will set `/demo/imu` as the topic to which the IMU will be publishing its information, and we will comply with [REP145](https://www.ros.org/reps/rep-0145.html) by setting `initialOrientationAsReference` to `false`. We will also add some noise to the sensor configuration using Gazebo's [sensor noise model](http://classic.gazebosim.org/tutorials?tut=sensor_noise).
 
 Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the `</robot>` line in our URDF:
 

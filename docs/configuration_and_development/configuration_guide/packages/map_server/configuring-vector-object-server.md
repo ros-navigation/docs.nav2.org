@@ -12,7 +12,7 @@ A typical setup model for this is a Nav2 stack with Costmap Filters enabled, run
 
 These vector shapes could be added by using ROS input parameters as well as being handled by the following service calls: `AddShapes.srv` which adds new shapes or modifies existing ones, `RemoveShapes.srv` which removes any or all shapes from the map `GetShapes.srv` which returns all shapes on the map.
 
-Each vector shape is being handled by its `unique_identifier_msgs/UUID`. Developers can choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a `GetShapes.srv` request and getting the response with all shapes’ UUIDs and their properties.
+Each vector shape is being handled by its `unique_identifier_msgs/UUID`. Developers can choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a `GetShapes.srv` request and getting the response with all shapes' UUIDs and their properties.
 
 The Vector Object server places shapes on the map. Each vector object has its own value in the range from `{-1}, [0..100]`, which matches the OccupancyGrid values. Vector objects can be overlapped with each other by using one of the global overlapping rules: (a) **sequential overlapping** in the same order as vector objects arrived on the server, or (b) taking the **maximum / minimum value** from all vector objects and the map background (if it is known).
 
@@ -135,7 +135,7 @@ Description
 | `double` | 0.1     |
 
 Description
-:   Transform tolerance for the case when any of the shapes are placed in different than map’s frame.
+:   Transform tolerance for the case when any of the shapes are placed in different than map's frame.
 
 ### **`shapes`**
 
@@ -175,7 +175,7 @@ Description
 | `string` | ""      |
 
 Description
-:   Frame ID of the given shape. Empty value is being treated as map’s global frame.
+:   Frame ID of the given shape. Empty value is being treated as map's global frame.
 
 ### **`<shape_name>.value`**
 
@@ -184,7 +184,7 @@ Description
 | `int` | 100 (occupied) |
 
 Description
-:   Shape’s value to be put on map with.
+:   Shape's value to be put on map with.
 
 #### Parameters applicable for polygons only
 
@@ -215,7 +215,7 @@ Description
 | `vector<double>` | N/A     |
 
 Description
-:   Center of the circle, listed in `{center.x, center.y}` format (e.g. `{0.2, 0.3}`). Should contain exactly 2 items: X and Y coordinate of the circle’s center in a given frame. Otherwise, causes an error.
+:   Center of the circle, listed in `{center.x, center.y}` format (e.g. `{0.2, 0.3}`). Should contain exactly 2 items: X and Y coordinate of the circle's center in a given frame. Otherwise, causes an error.
 
 ### **`<shape_name>.radius`**
 
@@ -233,7 +233,7 @@ Description
 | `bool` | true    |
 
 Description
-:   Whether the circle to be filled with a given value, or drawn only circle’s border otherwise.
+:   Whether the circle to be filled with a given value, or drawn only circle's border otherwise.
 
 ## Example
 

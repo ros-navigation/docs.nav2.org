@@ -36,7 +36,7 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 
 | **Virtual method**        | **Method description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | **Requires override?**   |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| configure()               | Method is called when controller server enters on_configure state. Ideally this method should perform declarations of ROS parameters and initialization of controller’s member variables. This method takes 4 input params: weak pointer to parent node, controller name, tf buffer pointer and shared pointer to costmap.                                                                                                                                                                                          | Yes                      |
+| configure()               | Method is called when controller server enters on_configure state. Ideally this method should perform declarations of ROS parameters and initialization of controller's member variables. This method takes 4 input params: weak pointer to parent node, controller name, tf buffer pointer and shared pointer to costmap.                                                                                                                                                                                          | Yes                      |
 | activate()                | Method is called when controller server enters on_activate state. Ideally this method should implement operations which are necessary before controller goes to an active state.                                                                                                                                                                                                                                                                                                                                    | Yes                      |
 | deactivate()              | Method is called when controller server enters on_deactivate state. Ideally this method should implement operations which are necessary before controller goes to an inactive state.                                                                                                                                                                                                                                                                                                                                | Yes                      |
 | cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method should clean up resources which are created for the controller.                                                                                                                                                                                                                                                                                                                                                               | Yes                      |
@@ -99,9 +99,9 @@ We will see more on this when we discuss the parameters file (or params file).
 The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
 
 The computation for the desired velocity happens in the `computeVelocityCommands()` method. It is used to calculate the desired velocity command given the current velocity and pose.
-The third argument - is a pointer to the `nav2_core::GoalChecker`, that checks whether a goal has been reached. In our example, this won’t be used.
+The third argument - is a pointer to the `nav2_core::GoalChecker`, that checks whether a goal has been reached. In our example, this won't be used.
 The fourth argument - is the global plan that has already been transformed into the local costmap frame and pruned to only the relevant portion within the costmap bounds. In our example, we will transform this local plan from costmap global frame to robot base frame. This is the path that pure pursuit will track.
-The fifth argument - is the last pose of the global plan. In our example, this won’t be used.
+The fifth argument - is the last pose of the global plan. In our example, this won't be used.
 In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.
 
@@ -161,12 +161,12 @@ geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
 }
 ```
 
-The remaining methods are not used, but it’s mandatory to override them. As per the rules, we did override all but left them empty.
+The remaining methods are not used, but it's mandatory to override them. As per the rules, we did override all but left them empty.
 
 ### 2. Exporting the controller plugin
 
 Now that we have created our custom controller, we need to export our controller plugin so that it will be visible to the controller server.
-Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load them. In ROS 2, exporting and loading
+Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load them. In ROS 2, exporting and loading
 plugins is handled by `pluginlib`.
 
 Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitController` is loaded dynamically as `nav2_core::Controller` which is our base class.
@@ -178,14 +178,14 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
     PLUGINLIB_EXPORT_CLASS(nav2_pure_pursuit_controller::PurePursuitController, nav2_core::Controller)
     ```
 
-    Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS`, which does all the work of exporting.
+    Note that it requires pluginlib to export out the plugin's class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS`, which does all the work of exporting.
 
     It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-2. The next step would be to create the plugin’s description file in the root directory of the package. For example, 
+2. The next step would be to create the plugin's description file in the root directory of the package. For example, 
    `pure_pursuit_controller_plugin.xml` file in our tutorial package. This file contains the following information
 
-    - `library path`: Plugin’s library name and its location.
+    - `library path`: Plugin's library name and its location.
     - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
     - `class type`: Type of class.
     - `base class`: Name of the base class.
@@ -229,7 +229,7 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
         Plugin(name='nav2_pure_pursuit_controller::PurePursuitController', type='nav2_pure_pursuit_controller::PurePursuitController', base='nav2_core::Controller')
     ```
 
-Next, we’ll use this plugin.
+Next, we'll use this plugin.
 
 ### 3. Pass the plugin name through the params file
 

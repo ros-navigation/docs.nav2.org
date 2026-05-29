@@ -59,7 +59,7 @@ The following videos compare Pure Pursuit (PP), Adaptive Pure Pursuit (APP), Reg
    </div>
 </div>
 
-See the package’s `README` for more complete information.
+See the package's `README` for more complete information.
 
 If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This tutorial walks a user through generating a graph for the nav2 route server using [NVIDIA’s SWAGGER](https://github.com/nvidia-isaac/SWAGGER).
+This tutorial walks a user through generating a graph for the nav2 route server using [NVIDIA's SWAGGER](https://github.com/nvidia-isaac/SWAGGER).
 
 ## Requirements
 
@@ -58,11 +58,11 @@ This conversion populates the GeoJSON with the key information about the graph a
 ### 3. Use with Nav2 Route!
 
 At this point, this file is now ready to use with the Nav2 Route Server.
-This can be passed onto your application using the `nav2_bringup`’s `graph` CLI parameter or found by your custom launch or Nav2 configuration files.
+This can be passed onto your application using the `nav2_bringup`'s `graph` CLI parameter or found by your custom launch or Nav2 configuration files.
 
 ### 4. Demonstration
 
-For demonstration, we’re going to use the Large Warehouse map provided by SWAGGER.
+For demonstration, we're going to use the Large Warehouse map provided by SWAGGER.
 This map can be found in the `maps` directory of the SWAGGER repository.
 You can run the following command to generate the graph and convert it to GeoJSON:
 
@@ -76,7 +76,7 @@ python scripts/generate_graph.py \
 python integrations/nav2/tools/gml_to_geojson.py graphs/graph.gml
 ```
 
-Then, we’ll create a `large_warehouse.yaml` for the map so that we can load it into the map server:
+Then, we'll create a `large_warehouse.yaml` for the map so that we can load it into the map server:
 
 ```yaml
 image: large_warehouse.png
@@ -97,7 +97,7 @@ bt_navigator:
   ...
 ```
 
-Finally, launch Nav2’s Loopback simulator bringup, which uses a simple backend kinematic simulator for R&D and high level testing purposes, to avoid having to create a custom Gazebo or Isaac Sim simulation for this map:
+Finally, launch Nav2's Loopback simulator bringup, which uses a simple backend kinematic simulator for R&D and high level testing purposes, to avoid having to create a custom Gazebo or Isaac Sim simulation for this map:
 
 ```default
 ros2 launch nav2_bringup tb4_loopback_simulation_launch.py map:=/path/to/your/map.yaml graph:=/path/to/your/graph.geojson

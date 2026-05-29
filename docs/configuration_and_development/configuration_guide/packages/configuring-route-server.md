@@ -8,8 +8,8 @@ In this case, the planner will generate feasible paths with localized environmen
 
 The graph itself has very few rules associated with it, but may be generated manually or automatically via AI, geometric, or probabilistic techniques.
 See [Route Graph Generation][route-graph-generation] and [Route Graph Generation LIF Editor][route-graph-generation-lif-editor] for a tutorial about how to generate a graph using QGIS, Rviz2 and/or LIF for structured environment applications.
-You can also use sampling or procedural generation techniques to create a graph for less structured environments, for example using [NVIDIA’s SWAGGER project](https://github.com/nvidia-isaac/SWAGGER) which can generate a graph from a map image and provides utilities to convert into geojson for easy integration with Nav2 Route.
-There’s also a tutorial [SWAGGER Route Graph Generation][swagger-route-graph-generation] to help with that process as well.
+You can also use sampling or procedural generation techniques to create a graph for less structured environments, for example using [NVIDIA's SWAGGER project](https://github.com/nvidia-isaac/SWAGGER) which can generate a graph from a map image and provides utilities to convert into geojson for easy integration with Nav2 Route.
+There's also a tutorial [SWAGGER Route Graph Generation][swagger-route-graph-generation] to help with that process as well.
 
 There are also several locations for customization using plugins:
 
@@ -17,7 +17,7 @@ There are also several locations for customization using plugins:
 - Route Operation: Execute a user-defined action when entering or leaving a route edge or achieving a node, including use of node and edge semantic information,
 - Route Graph Parser: Parse graph files using the chosen format (e.g. geoJSON, OpenStreetMap, etc.) and convert them into the internal graph representation.
 
-See the package’s README file for additional information such as performance metrics, design, advice, and graph formatting.
+See the package's README file for additional information such as performance metrics, design, advice, and graph formatting.
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
@@ -34,7 +34,7 @@ See the package’s README file for additional information such as performance m
 | `string` | "base_link" |
 
 Description
-:   The base frame of the robot to use to obtain the robot’s pose from when not using the `use_start` request parameter.
+:   The base frame of the robot to use to obtain the robot's pose from when not using the `use_start` request parameter.
 
 ### **`route_frame`**
 
@@ -103,7 +103,7 @@ Description
 
 | Type     | Default                      |
 |----------|------------------------------|
-| `string` | ‘global_costmap/costmap_raw’ |
+| `string` | 'global_costmap/costmap_raw' |
 
 Description
 :   The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
@@ -151,7 +151,7 @@ Description
 | `double` | 8.0     |
 
 Description
-:   Maximum distance from an edge to consider pruning it as in-progress (i.e. if we’re to far away from an edge, it is nonsensical to prune it).
+:   Maximum distance from an edge to consider pruning it as in-progress (i.e. if we're to far away from an edge, it is nonsensical to prune it).
 
 ### **`min_prune_dist_from_goal`**
 
@@ -160,7 +160,7 @@ Description
 | `double` | 0.15    |
 
 Description
-:   Minimum distance from the goal node away from the request’s goal pose (if using `use_poses`) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
+:   Minimum distance from the goal node away from the request's goal pose (if using `use_poses`) to consider pruning as being passed, in case the goal pose is very close to the goal node, but is not exact.
 
 ### **`min_prune_dist_from_start`**
 
@@ -214,7 +214,7 @@ Description
 | `string` | ""      |
 
 Description
-:   The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server’s set graph service later.
+:   The filepath to the graph file for loading. It may be empty on initialization, but then the graph must be set from the server's set graph service later.
 
 ### **`graph_file_loader`**
 
@@ -377,7 +377,7 @@ Description
 This edge scoring plugin will score based on the time to traverse the length of the edge.
 This will use the distance of the edge weighted in proportion to the absolute speed limits of the robot over an edge.
 If none is set in the graph, a parameterized maximum speed will be used.
-If an actual, measured time of a previous traversal is in the edge’s metadata, this will be used.
+If an actual, measured time of a previous traversal is in the edge's metadata, this will be used.
 
 ### **`weight`**
 
@@ -441,7 +441,7 @@ Description
 ## SemanticScorer
 
 This edge scoring plugin will score based on semantic information provided in the graph file.
-It can either check for the edge’s semantic class via a parameterized key’s value **or** search all key names to match known semantic classes to apply weight (e.g. *class: highway* or *highway: <some other application info\>*).
+It can either check for the edge's semantic class via a parameterized key's value **or** search all key names to match known semantic classes to apply weight (e.g. *class: highway* or *highway: <some other application info\>*).
 
 ### **`weight`**
 
@@ -477,11 +477,11 @@ Description
 | `string` | class   |
 
 Description
-:   The key to search for edge’s semantic data with the edge’s metadata. If empty string, will look at key names instead.
+:   The key to search for edge's semantic data with the edge's metadata. If empty string, will look at key names instead.
 
 ## StartPoseOrientationScorer
 
-This edge scoring plugin will score an edge starting at the start node (vector from start->goal) based on its angular proximity to the starting pose’s orientation.
+This edge scoring plugin will score an edge starting at the start node (vector from start->goal) based on its angular proximity to the starting pose's orientation.
 This will either score a weighted-angular distance or reject traversals that are outside of a set threshold to force the route to go down a particular direction (i.e. direction robot is already facing).
 
 ### **`orientation_weight`**
@@ -509,11 +509,11 @@ Description
 | `double` | PI/2    |
 
 Description
-:   The angular threshold to reject edges’ angles if greater than this w.r.t. starting pose, when `use_orientation_threshold: true`.
+:   The angular threshold to reject edges' angles if greater than this w.r.t. starting pose, when `use_orientation_threshold: true`.
 
 ## GoalPoseOrientationScorer
 
-This edge scoring plugin will score a an edge with terminus of the goal node (vector from start->goal) based on its angular proximity to the goal pose’s orientation.
+This edge scoring plugin will score a an edge with terminus of the goal node (vector from start->goal) based on its angular proximity to the goal pose's orientation.
 This will either score a weighted-angular distance or reject traversals that are outside of a set threshold to force the route to go down a particular direction (i.e. direction robot wants to be facing).
 
 ### **`orientation_weight`**
@@ -541,7 +541,7 @@ Description
 | `double` | PI/2    |
 
 Description
-:   The angular threshold to reject edges’ angles if greater than this w.r.t. goal pose, when `use_orientation_threshold: true`.
+:   The angular threshold to reject edges' angles if greater than this w.r.t. goal pose, when `use_orientation_threshold: true`.
 
 ## DynamicEdgesScorer
 
@@ -573,7 +573,7 @@ Description
 | `string` | speed_limit |
 
 Description
-:   The graph’s semantic metadata key to look for speed limits under.
+:   The graph's semantic metadata key to look for speed limits under.
 
 ## CollisionMonitor
 
@@ -587,7 +587,7 @@ If it is blocked, it sets the edge blocked as blocked for rerouting around the b
 | `string` | "global_costmap/costmap_raw" |
 
 Description
-:   The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server’s costmap topic, then it will be shared here as well without duplicate subscriptions.
+:   The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server's costmap topic, then it will be shared here as well without duplicate subscriptions.
 
 ### **`rate`**
 
@@ -596,7 +596,7 @@ Description
 | `double` | 1.0     |
 
 Description
-:   The rate to collision at, rather than the tracker’s update rate since this is an expensive operation.
+:   The rate to collision at, rather than the tracker's update rate since this is an expensive operation.
 
 ### **`max_cost`**
 
@@ -614,7 +614,7 @@ Description
 | `double` | 5.0     |
 
 Description
-:   The distance (meters) ahead of the robot’s position on the route to collision check during.
+:   The distance (meters) ahead of the robot's position on the route to collision check during.
 
 ### **`check_resolution`**
 
@@ -623,7 +623,7 @@ Description
 | `int` | 1       |
 
 Description
-:   The resolution to check at in terms of multiples of the costmap’s resolution (1 = 1 cell, 2 = every 2 cells, and so on). This reduces the computational complexity for long-range routes.
+:   The resolution to check at in terms of multiples of the costmap's resolution (1 = 1 cell, 2 = every 2 cells, and so on). This reduces the computational complexity for long-range routes.
 
 ### **`reroute_on_collision`**
 

@@ -1,6 +1,6 @@
 # Robots Using { #robots-using }
 
-It’s always helpful (and fun!) to have a list of robots using or ship with our work.
+It's always helpful (and fun!) to have a list of robots using or ship with our work.
 Below is a very early list of robots we have encountered using our software as examples.
 
 Click on the images below for a link to the drivers or navigation configurations.

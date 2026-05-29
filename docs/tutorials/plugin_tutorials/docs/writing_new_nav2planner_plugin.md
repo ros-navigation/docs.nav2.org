@@ -24,13 +24,13 @@ The annotated code in this tutorial can be found in [navigation_tutorials](https
 This package can be considered as a reference for writing planner plugin.
 
 Our example plugin inherits from the base class `nav2_core::GlobalPlanner`. The base class provides 5 pure virtual methods to implement a planner plugin. The plugin will be used by the planner server to compute trajectories.
-Let’s learn more about the methods needed to write a planner plugin.
+Let's learn more about the methods needed to write a planner plugin.
 
 <div class="center-table" markdown>
 
 | **Virtual method**   | **Method description**                                                                                                                                                                                                                                                                                                                                | **Requires override?**   |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| configure()          | Method is called at when planner server enters on_configure state. Ideally this methods should perform declarations of ROS parameters and initialization of planner’s member variables. This method takes 4 input params: shared pointer to parent node, planner name, tf buffer pointer and shared pointer to costmap.                               | Yes                      |
+| configure()          | Method is called at when planner server enters on_configure state. Ideally this methods should perform declarations of ROS parameters and initialization of planner's member variables. This method takes 4 input params: shared pointer to parent node, planner name, tf buffer pointer and shared pointer to costmap.                               | Yes                      |
 | activate()           | Method is called when planner server enters on_activate state. Ideally this method should implement operations which are necessary before planner goes to an active state.                                                                                                                                                                            | Yes                      |
 | deactivate()         | Method is called when planner server enters on_deactivate state. Ideally this method should implement operations which are necessary before planner goes to an inactive state.                                                                                                                                                                        | Yes                      |
 | cleanup()            | Method is called when planner server goes to on_cleanup state. Ideally this method should clean up resources which are created for the planner.                                                                                                                                                                                                       | Yes                      |
@@ -115,11 +115,11 @@ global_path.poses.push_back(goal);
 return global_path;
 ```
 
-The remaining methods are not used but it’s mandatory to override them. As per the rules, we did override all but left them blank.
+The remaining methods are not used but it's mandatory to override them. As per the rules, we did override all but left them blank.
 
 ### 2. Exporting the planner plugin
 
-Now that we have created our custom planner, we need to export our planner plugin so that it will be visible to the planner server. Plugins are loaded at runtime and if they are not visible, then our planner server won’t be able to load it. In ROS 2, exporting and loading plugins is handled by `pluginlib`.
+Now that we have created our custom planner, we need to export our planner plugin so that it will be visible to the planner server. Plugins are loaded at runtime and if they are not visible, then our planner server won't be able to load it. In ROS 2, exporting and loading plugins is handled by `pluginlib`.
 
 Coming back to our tutorial, class `nav2_straightline_planner::StraightLine` is loaded dynamically as `nav2_core::GlobalPlanner` which is our base class.
 
@@ -130,13 +130,13 @@ Coming back to our tutorial, class `nav2_straightline_planner::StraightLine` is 
     PLUGINLIB_EXPORT_CLASS(nav2_straightline_planner::StraightLine, nav2_core::GlobalPlanner)
     ```
 
-    Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS` which does all the work of exporting.
+    Note that it requires pluginlib to export out plugin's class. Pluginlib would provide as macro `PLUGINLIB_EXPORT_CLASS` which does all the work of exporting.
 
     It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-2. Next step would be to create plugin’s description file in the root directory of the package. For example, `global_planner_plugin.xml` file in our tutorial package. This file contains the following information
+2. Next step would be to create plugin's description file in the root directory of the package. For example, `global_planner_plugin.xml` file in our tutorial package. This file contains the following information
 
-    - `library path`: Plugin’s library name and its location.
+    - `library path`: Plugin's library name and its location.
     - `class name`: Name of the class (optional). If not set, it will default to the `class type`.
     - `class type`: Type of class.
     - `base class`: Name of the base class.
@@ -178,7 +178,7 @@ Coming back to our tutorial, class `nav2_straightline_planner::StraightLine` is 
         Plugin(name='nav2_straightline_planner::StraightLine', type='nav2_straightline_planner::StraightLine', base='nav2_core::GlobalPlanner')
     ```
 
-Next, we’ll use this plugin.
+Next, we'll use this plugin.
 
 ### 3. Pass the plugin name through params file
 

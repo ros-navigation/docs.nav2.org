@@ -103,7 +103,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 6. In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
 
-    - checkerboard on the camera’s left, right, top and bottom of field of view
+    - checkerboard on the camera's left, right, top and bottom of field of view
         - X bar - left/right in field of view
         - Y bar - top/bottom in field of view
         - Size bar - toward/away and tilt from the camera

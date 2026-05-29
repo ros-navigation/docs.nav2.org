@@ -2,7 +2,7 @@
 
 In this guide, we will discuss the importance of the sensors in navigating a robot safely and how to set up the sensors with Nav2. In the first half of this tutorial, we will take a brief look at commonly used sensors and common sensor messages in Nav2. Next, we will add a basic sensor setup on our previously built simulated robot, `sam_bot`. Lastly, we will then verify the simulated sensor messages of `sam_bot` by visualizing them in RViz.
 
-Once sensors have been set up on a robot, their readings can be used in mapping, localization, and perception tasks. In the second half of this guide, we will first discuss how mapping and localization use the sensor data. Then, we will also take a look at one of Nav2’s packages, `nav2_costmap_2d`, which generates costmaps that will eventually be used in Nav2 path planning. We will set up basic configuration parameters for this package so it properly takes in sensor information from `sam_bot`. Lastly, we visualize a generated costmaps in RViz to verify its received data.
+Once sensors have been set up on a robot, their readings can be used in mapping, localization, and perception tasks. In the second half of this guide, we will first discuss how mapping and localization use the sensor data. Then, we will also take a look at one of Nav2's packages, `nav2_costmap_2d`, which generates costmaps that will eventually be used in Nav2 path planning. We will set up basic configuration parameters for this package so it properly takes in sensor information from `sam_bot`. Lastly, we visualize a generated costmaps in RViz to verify its received data.
 
 ## Sensor Introduction
 
@@ -16,7 +16,7 @@ Aside from the `sensor_msgs` package, there are also the `radar_msgs` and `visio
 
     For more information, see the API documentation of [sensor_msgs](http://wiki.ros.org/sensor_msgs), [radar_msgs](http://wiki.ros.org/radar_msgs), and [vision_msgs](http://wiki.ros.org/vision_msgs).
 
-Your physical robot’s sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the `sensor_msgs` package. The `sensor_msgs` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as `sam_bot`, Gazebo has sensor plugins which also publish their information following the `sensor_msgs` package.
+Your physical robot's sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the `sensor_msgs` package. The `sensor_msgs` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as `sam_bot`, Gazebo has sensor plugins which also publish their information following the `sensor_msgs` package.
 
 ### Common Sensor Messages
 
@@ -133,7 +133,7 @@ Let us first add a lidar sensor to `sam_bot`. Open the URDF file, [src/descripti
 </gazebo>
 ```
 
-In the code snippet above, we create a `lidar_link` which will be referenced by the `gazebo_ros_ray_sensor` plugin as the location to attach our sensor. We also set values to the simulated lidar’s scan and range properties. Lastly, we set the `/scan` as the topic to which it will publish the `sensor_msgs/LaserScan` messages.
+In the code snippet above, we create a `lidar_link` which will be referenced by the `gazebo_ros_ray_sensor` plugin as the location to attach our sensor. We also set values to the simulated lidar's scan and range properties. Lastly, we set the `/scan` as the topic to which it will publish the `sensor_msgs/LaserScan` messages.
 
 Next, let us add a depth camera to `sam_bot`. Paste the following lines after the `</gazebo>` tag of the lidar sensor.
 
@@ -217,7 +217,7 @@ Similar to the lidar sensor, we create `camera_link` which will be referenced by
 ### Launch and Build Files
 
 To verify that the sensors are set up properly and that they can see objects in our environment, let us launch `sam_bot` in a Gazebo world with objects.
-Let us create a Gazebo world with a single cube and a single sphere that are within the range of `sam_bot`’s sensors so we can verify if it can see the objects correctly.
+Let us create a Gazebo world with a single cube and a single sphere that are within the range of `sam_bot`'s sensors so we can verify if it can see the objects correctly.
 
 To create the world, create a directory named `world` at the root of your project and create a file named `my_world.sdf` inside the `world` folder . Then copy the contents of [world/my_world.sdf](https://github.com/ros-navigation/navigation2_tutorials/blob/humble/sam_bot_description/world/my_world.sdf) and paste them inside `my_world.sdf`.
 
