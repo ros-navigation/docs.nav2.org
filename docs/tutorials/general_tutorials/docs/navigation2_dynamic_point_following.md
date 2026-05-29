@@ -96,14 +96,18 @@ This tutorial shows how to use Nav2 for a different task other than going from p
 
 This task is useful in cases such as following a person or another robot. Below are some sample videos of applications that could be created using this capability. The "Carry My Luggage" RoboCup @ Home test, in which the [CATIE Robotics](https://robotics.catie.fr/) team performs the test successfully and this real (future) world application:
 
-<h1 align="center">
-  <div>
-    <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/lTjKO4M7yZc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/KgRKyzsja9Q?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-    </div>
-  </div>
-</h1>
+<style>
+.video-frame {
+  flex: 1 1 clamp(10rem, 45vw, 15rem);
+  aspect-ratio: 16/9;
+  max-width: 100%;
+}
+</style>
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <iframe class="video-frame" src="https://www.youtube.com/embed/lTjKO4M7yZc?autoplay=1&mute=1" allowfullscreen></iframe>
+  <iframe class="video-frame" src="https://www.youtube.com/embed/KgRKyzsja9Q?autoplay=1&mute=1" allowfullscreen></iframe>
+</div>
 
 The requirements for this task are as follows:
 
