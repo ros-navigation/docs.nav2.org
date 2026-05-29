@@ -154,7 +154,7 @@ An example can be seen below, where the `Wait` BT XML node specifies a non-varia
 
 In order for the BT Navigator node to discover the plugin we’ve just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.
 
-```text
+```yaml
 bt_navigator:
   ros__parameters:
     global_frame: map

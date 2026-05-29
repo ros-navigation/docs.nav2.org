@@ -152,7 +152,7 @@ Coming back to our tutorial, class `nav2_straightline_planner::StraightLine` is 
 
 3. Next step would be to export plugin using `CMakeLists.txt` by using cmake function `pluginlib_export_plugin_description_file()`. This function installs plugin description file to `share` directory and sets ament indexes to make it discoverable.
 
-    ```text
+    ```cmake
     pluginlib_export_plugin_description_file(nav2_core global_planner_plugin.xml)
     ```
 
@@ -188,7 +188,7 @@ To enable the plugin, we need to modify the `nav2_params.yaml` file as below to 
 
     For Galactic or later, `plugin_names` and `plugin_types` have been replaced with a single `plugins` string vector for plugin names. The types are now defined in the `plugin_name` namespace in the `plugin:` field (e.g. `plugin: MyPlugin::Plugin`). Inline comments in the code blocks will help guide you through this.
 
-```text
+```yaml
 planner_server:
   ros__parameters:
     plugins: ["GridBased"]
@@ -201,7 +201,7 @@ planner_server:
 
 with
 
-```text
+```yaml
 planner_server:
   ros__parameters:
     plugins: ["GridBased"]

@@ -147,7 +147,7 @@ Coming to our tutorial, class `nav2_sms_behavior::SendSms` is loaded dynamically
 
 3. Next step would be to export plugin using `CMakeLists.txt` by using cmake function `pluginlib_export_plugin_description_file()`. This function installs plugin description file to `share` directory and sets ament indexes to make it discoverable.
 
-    ```text
+    ```cmake
     pluginlib_export_plugin_description_file(nav2_core behavior_plugin.xml)
     ```
 

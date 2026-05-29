@@ -24,7 +24,7 @@ Please refer to it when making your own layer plugin for Costmap2D.
 
 The plugin class `nav2_gradient_costmap_plugin::GradientLayer` is inherited from basic class `nav2_costmap_2d::Layer`:
 
-```c
+```c++
 namespace nav2_gradient_costmap_plugin
 {
 
@@ -51,13 +51,13 @@ In our example these methods have the following functionality:
 
 1. `GradientLayer::onInitialize()` contains declaration of a ROS parameter with its default value:
 
-    ```c
+    ```c++
     node->declare_or_get_parameter(name_ + "." + "enabled", true);
     ```
 
     and sets `need_recalculation_` bounds recalculation indicator:
 
-    ```c
+    ```c++
     need_recalculation_ = false;
     ```
 
@@ -65,7 +65,7 @@ In our example these methods have the following functionality:
 
 3. `GradientLayer::updateCosts()` - in this method the gradient is writing directly to the resulting costmap `master_grid` without merging with previous layers. This is equal to working with internal `costmap_` and then calling `updateWithTrueOverwrite()` method. Here is the gradient making algorithm for master costmap:
 
-    ```c
+    ```c++
     int gradient_index;
     for (int j = min_j; j < max_j; j++) {
         // Reset gradient_index each time when reaching the end of re-calculated window
@@ -105,7 +105,7 @@ In our example the `nav2_gradient_costmap_plugin::GradientLayer` plugin’s clas
 
 1. Plugin’s class should be registered with a basic type of loaded class. For this there is a special macro `PLUGINLIB_EXPORT_CLASS` should be added to any source-file composing the plugin library:
 
-    ```text
+    ```c++
     #include "pluginlib/class_list_macros.hpp"
     PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap_2d::Layer)
     ```
@@ -130,13 +130,13 @@ In our example the `nav2_gradient_costmap_plugin::GradientLayer` plugin’s clas
 
 The export of plugin is performed by including `pluginlib_export_plugin_description_file()` cmake-function into `CMakeLists.txt`. This function installs plugin description file into `share` directory and sets ament indexes for plugin description XML to be discoverable as a plugin of selected type:
 
-```text
+```cmake
 pluginlib_export_plugin_description_file(nav2_costmap_2d gradient_layer.xml)
 ```
 
 Plugin description file is also should be added to `package.xml`. `costmap_2d` is the package of the interface definition, for our case `Layer`, and requires a path to the xml file:
 
-```text
+```xml
 <export>
   <costmap_2d plugin="${prefix}/gradient_layer.xml" />
   ...
@@ -194,13 +194,13 @@ YAML-file may also contain the list of parameters (if any) for each plugin, iden
 
 NOTE: there could be many simultaneously loaded plugin objects of one type. For this, `plugin_names` list should contain different plugins names whether the `plugin_types` will remain the same types. For example:
 
-```text
+```yaml
 plugins: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"]
 ```
 
 In this case each plugin object will be handled by its own parameters tree in a YAML-file, like:
 
-```text
+```yaml
 gradient_layer_1:
   plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
   enabled: True

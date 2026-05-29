@@ -203,7 +203,7 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
 
 3. Next step would be to export plugin using `CMakeLists.txt` by using CMake function `pluginlib_export_plugin_description_file()`. This function installs the plugin description file to `share` directory and sets ament indexes to make it discoverable.
 
-    ```text
+    ```cmake
     pluginlib_export_plugin_description_file(nav2_core pure_pursuit_controller_plugin.xml)
     ```
 
@@ -235,7 +235,7 @@ Next, we’ll use this plugin.
 
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below
 
-```text
+```yaml
 controller_server:
   ros__parameters:
     controller_plugins: ["FollowPath"]

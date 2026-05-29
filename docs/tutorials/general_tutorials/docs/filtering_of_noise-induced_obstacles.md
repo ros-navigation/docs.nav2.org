@@ -32,7 +32,7 @@ If a cell with an obstacle is recognized as noise, it will be replaced by `FREE_
 
 To enable `DenoiseLayer` for both global and local costmaps, use the following configuration:
 
-```text
+```yaml
 global_costmap:
   global_costmap:
     ros__parameters:
