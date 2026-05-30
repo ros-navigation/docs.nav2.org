@@ -48,6 +48,8 @@ plugins:
       module_name: macros/main
       include_yaml: 
         - macros/variables.yml
+      on_error_fail: true
+      on_undefined: strict
 
 extra:
   version:
