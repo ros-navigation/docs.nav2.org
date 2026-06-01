@@ -380,8 +380,9 @@ def _extract_doxygen_code_block(
 def define_env(env):
     """This is the hook for the variables, macros and filters."""
     cache_dir = Path(env.variables['cache_dir'])
-    github_repos = env.variables['github_repositories']
     nav2_tree_nodes_file_path = Path(env.variables['nav2_tree_nodes_file_path'])
+    github_repos = env.variables['github_repositories']
+    cached_bt_nodes_file_path = cache_dir / nav2_tree_nodes_file_path
 
     for repo_name, repo_info in github_repos.items():
 
@@ -423,10 +424,10 @@ def define_env(env):
             sys.exit(1)
 
     try:
-        bt_nodes_content = ET.parse(nav2_tree_nodes_file_path)
+        bt_nodes_content = ET.parse(cached_bt_nodes_file_path)
     except (OSError, ET.ParseError) as exc:
         logger.error(
-            f'Failed to load BT nodes data from {nav2_tree_nodes_file_path}: {exc}\n'
+            f'Failed to load BT nodes data from {cached_bt_nodes_file_path}: {exc}\n'
             'Review paths in macros/variables.yml configuration.'
         )
         sys.exit(1)
