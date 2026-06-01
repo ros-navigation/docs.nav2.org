@@ -530,6 +530,6 @@ def define_env(env):
             sys.exit(1)
 
         code_example = ''.join(code_section)
-        code_example_md = _XML_CODE_BLOCK_TEMPLATE.render(xml_code=code_example)
+        rendered_code_example = _XML_CODE_BLOCK_TEMPLATE.render(xml_code=code_example)
 
-        return code_example_md
+        return rendered_code_example
