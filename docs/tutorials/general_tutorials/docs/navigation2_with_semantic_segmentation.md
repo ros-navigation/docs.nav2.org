@@ -1,4 +1,4 @@
-# Navigating with Semantic Segmentation { #navigating-with-semantic-segmentation }
+# Navigating with Semantic Segmentation (Nvidia Jetson) { #navigating-with-semantic-segmentation-nvidia-jetson }
 
 ## Overview
 
