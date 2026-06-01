@@ -8,8 +8,8 @@ This server can take in both cartesian and GPS coordinates and is implemented us
 
 ## Example
 
-{% set bt_plugin_hpp_path = opennav_cov_bt_plugins_hpp_path + "/compute_complete_coverage_path.hpp" %}
+{% set bt_hpp_file_path = opennav_cov_bt_plugins_hpp_path + "/compute_complete_coverage_path.hpp" %}
 
-{{ render_bt_node_example(bt_plugin_hpp_path) }}
+{{ render_bt_node_example(bt_hpp_file_path) }}
 
 Note: the blackboard IDs for the path, error code, and more may be adjusted, but need to match the corresponding parameters in the `CoverageNavigator` plugin to set on the blackboard for use from the action server.

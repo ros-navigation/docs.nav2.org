@@ -7,6 +7,6 @@ RUNNING if stopped but not for long enough and FAILURE otherwise
 
 ## Example
 
-{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/check_stop_status_action.hpp" %}
+{% set bt_hpp_file_path = nav2_bt_hpp_dir_path + "/action/check_stop_status_action.hpp" %}
 
-{{ render_bt_node_example(bt_plugin_hpp_path) }}
+{{ render_bt_node_example(bt_hpp_file_path) }}

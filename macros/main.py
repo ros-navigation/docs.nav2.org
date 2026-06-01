@@ -380,9 +380,9 @@ def _extract_doxygen_code_block(
 def define_env(env):
     """This is the hook for the variables, macros and filters."""
     cache_dir = Path(env.variables['cache_dir'])
-    nav2_tree_nodes_file_path = Path(env.variables['nav2_tree_nodes_file_path'])
+    nav2_bt_xml_file_path = Path(env.variables['nav2_bt_xml_file_path'])
     github_repos = env.variables['github_repositories']
-    cached_bt_nodes_file_path = cache_dir / nav2_tree_nodes_file_path
+    cached_bt_xml_file_path = cache_dir / nav2_bt_xml_file_path
 
     for repo_name, repo_info in github_repos.items():
 
@@ -424,16 +424,16 @@ def define_env(env):
             sys.exit(1)
 
     try:
-        bt_nodes_content = ET.parse(cached_bt_nodes_file_path)
+        bt_xml_content = ET.parse(cached_bt_xml_file_path)
     except (OSError, ET.ParseError) as exc:
         logger.error(
-            f'Failed to load BT nodes data from {cached_bt_nodes_file_path}: {exc}\n'
+            f'Failed to load BT nodes data from {cached_bt_xml_file_path}: {exc}\n'
             'Review paths in macros/variables.yml configuration.'
         )
         sys.exit(1)
 
     try:
-        bt_nodes_model = _extract_bt_nodes_model(bt_nodes_content)
+        bt_nodes_model = _extract_bt_nodes_model(bt_xml_content)
     except (ValueError, IndexError) as exc:
         logger.error(f'Failed to extract BT nodes model from XML: {exc}')
         sys.exit(1)

@@ -6,6 +6,6 @@ Used to cancel the goals given to the follow object action server. The server ad
 
 ## Example
 
-{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/follow_object_cancel_node.hpp" %}
+{% set bt_hpp_file_path = nav2_bt_hpp_dir_path + "/action/follow_object_cancel_node.hpp" %}
 
-{{ render_bt_node_example(bt_plugin_hpp_path) }}
+{{ render_bt_node_example(bt_hpp_file_path) }}

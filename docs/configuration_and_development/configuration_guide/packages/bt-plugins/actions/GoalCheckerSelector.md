@@ -8,6 +8,6 @@ Any publisher to this topic needs to be configured with some QoS defined as `rel
 
 ## Example
 
-{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/goal_checker_selector_node.hpp" %}
+{% set bt_hpp_file_path = nav2_bt_hpp_dir_path + "/action/goal_checker_selector_node.hpp" %}
 
-{{ render_bt_node_example(bt_plugin_hpp_path) }}
+{{ render_bt_node_example(bt_hpp_file_path) }}

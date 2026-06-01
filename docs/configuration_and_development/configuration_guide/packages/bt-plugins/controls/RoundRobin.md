@@ -6,6 +6,6 @@ Custom control flow node used to create a round-robin behavior for children BT n
 
 ## Example
 
-{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/control/round_robin_node.hpp" %}
+{% set bt_hpp_file_path = nav2_bt_hpp_dir_path + "/control/round_robin_node.hpp" %}
 
-{{ render_bt_node_example(bt_plugin_hpp_path) }}
+{{ render_bt_node_example(bt_hpp_file_path) }}

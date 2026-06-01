@@ -1,7 +1,7 @@
 cache_dir: "macros/cache"
-nav2_tree_nodes_file_path: "navigation2/nav2_behavior_tree/nav2_tree_nodes.xml"
-nav2_bt_plugins_hpp_path: "navigation2/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
-nav2_docking_hpp_path: "navigation2/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
+nav2_bt_xml_file_path: "navigation2/nav2_behavior_tree/nav2_tree_nodes.xml"
+nav2_bt_hpp_dir_path: "navigation2/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
+nav2_docking_hpp_dir_path: "navigation2/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
 
 github_repositories:
   navigation2:

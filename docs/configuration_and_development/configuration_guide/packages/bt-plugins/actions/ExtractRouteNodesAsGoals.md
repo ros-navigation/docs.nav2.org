@@ -7,6 +7,6 @@ May be used with multiple of these calls sequentially to concatenate multiple pa
 
 ## Example
 
-{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/extract_route_nodes_as_goals_action.hpp" %}
+{% set bt_hpp_file_path = nav2_bt_hpp_dir_path + "/action/extract_route_nodes_as_goals_action.hpp" %}
 
-{{ render_bt_node_example(bt_plugin_hpp_path) }}
+{{ render_bt_node_example(bt_hpp_file_path) }}
