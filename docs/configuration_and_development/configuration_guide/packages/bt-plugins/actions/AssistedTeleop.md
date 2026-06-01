@@ -8,6 +8,6 @@ The [nav2_behaviors](https://github.com/ros-navigation/navigation2/tree/main/nav
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/assisted_teleop_action.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/assisted_teleop_action.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

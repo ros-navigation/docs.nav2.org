@@ -26,6 +26,6 @@ Description
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/goal_updater_node.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/decorator/goal_updater_node.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

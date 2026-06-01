@@ -7,6 +7,6 @@ The timer will reset if the path gets updated.
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/condition/path_expiring_timer_condition.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/condition/path_expiring_timer_condition.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

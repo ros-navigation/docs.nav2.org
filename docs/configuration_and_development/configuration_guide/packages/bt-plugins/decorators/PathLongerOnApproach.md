@@ -6,6 +6,6 @@ This node checks if the newly generated global path is significantly larger than
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/decorator/path_longer_on_approach.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/decorator/path_longer_on_approach.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

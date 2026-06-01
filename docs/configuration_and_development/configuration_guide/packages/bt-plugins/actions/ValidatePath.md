@@ -9,6 +9,6 @@ can use a custom footprint for validation.
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/validate_path_action.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/validate_path_action.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

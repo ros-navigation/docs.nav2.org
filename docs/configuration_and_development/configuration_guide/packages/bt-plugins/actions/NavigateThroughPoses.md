@@ -6,6 +6,6 @@ Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by th
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/navigate_through_poses_action.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/navigate_through_poses_action.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

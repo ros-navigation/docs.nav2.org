@@ -7,6 +7,6 @@ It performs a linear translation by a given distance. The nav2_behaviors module 
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/drive_on_heading_action.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/drive_on_heading_action.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

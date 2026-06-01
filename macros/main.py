@@ -493,12 +493,13 @@ def define_env(env):
 
         Returns a string with the XML code example from a Doxygen comment in a HPP file.
         """
+        cached_bt_hpp_file_path = cache_dir / file_path
 
         try:
-            with open(file_path, encoding='utf-8') as file:
+            with open(cached_bt_hpp_file_path, encoding='utf-8') as file:
                 file_lines = file.readlines()
         except OSError as exc:
-            logger.error(f'Failed to read lines from file {file_path}: {exc}')
+            logger.error(f'Failed to read lines from file {cached_bt_hpp_file_path}: {exc}')
             sys.exit(1)
 
         class_str = r'^\s*class\s+'
@@ -514,7 +515,7 @@ def define_env(env):
                 stop_at=class_pattern
             )
         except ValueError as exc:
-            logger.error(f'Failed to extract lines section from file {file_path}: {exc}')
+            logger.error(f'Failed to extract lines section from file {cached_bt_hpp_file_path}: {exc}')
             sys.exit(1)
 
         try:
@@ -525,7 +526,7 @@ def define_env(env):
                 comment_block_pattern=_DOXYGEN_REGEX_PATTERNS['COMMENT_STYLE']
             )
         except ValueError as exc:
-            logger.error(f'Failed to extract code block from file {file_path}: {exc}')
+            logger.error(f'Failed to extract code block from file {cached_bt_hpp_file_path}: {exc}')
             sys.exit(1)
 
         code_example = ''.join(code_section)

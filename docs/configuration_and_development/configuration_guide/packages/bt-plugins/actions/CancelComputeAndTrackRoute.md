@@ -6,6 +6,6 @@ Used to cancel the compute and track route action that is part of the behavior s
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/compute_and_track_route_cancel_node.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/compute_and_track_route_cancel_node.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

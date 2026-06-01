@@ -6,6 +6,6 @@ Obtains the current pose from TF and places it on the blackboard for other nodes
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/get_current_pose_action.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/get_current_pose_action.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

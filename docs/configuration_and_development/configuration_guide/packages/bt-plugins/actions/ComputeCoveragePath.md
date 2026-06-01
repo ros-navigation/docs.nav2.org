@@ -8,7 +8,7 @@ This server can take in both cartesian and GPS coordinates and is implemented us
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + opennav_cov_bt_plugins_hpp_path + "/compute_complete_coverage_path.hpp" %}
+{% set bt_plugin_hpp_path = opennav_cov_bt_plugins_hpp_path + "/compute_complete_coverage_path.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}
 

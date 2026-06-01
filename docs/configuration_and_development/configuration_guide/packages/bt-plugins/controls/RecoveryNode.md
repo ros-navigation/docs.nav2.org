@@ -12,6 +12,6 @@ In nav2, the RecoveryNode is included in Behavior Trees to implement recovery ac
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/control/recovery_node.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/control/recovery_node.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

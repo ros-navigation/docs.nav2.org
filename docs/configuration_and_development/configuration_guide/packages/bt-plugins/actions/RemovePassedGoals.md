@@ -7,6 +7,6 @@ This is used to cull goal points that have been passed from `ComputePathThroughP
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_bt_plugins_hpp_path + "/action/remove_passed_goals_action.hpp" %}
+{% set bt_plugin_hpp_path = nav2_bt_plugins_hpp_path + "/action/remove_passed_goals_action.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}

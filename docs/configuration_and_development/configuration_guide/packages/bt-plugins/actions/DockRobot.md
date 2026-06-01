@@ -8,6 +8,6 @@ It is used to dock the robot to a docking station.
 
 ## Example
 
-{% set bt_plugin_hpp_path = cache_dir + nav2_docking_hpp_path + "/dock_robot.hpp" %}
+{% set bt_plugin_hpp_path = nav2_docking_hpp_path + "/dock_robot.hpp" %}
 
 {{ render_bt_node_example(bt_plugin_hpp_path) }}
