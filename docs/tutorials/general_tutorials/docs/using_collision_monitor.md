@@ -77,7 +77,7 @@ collision_monitor:
     transform_tolerance: 0.5
     source_timeout: 5.0
     stop_pub_timeout: 2.0
-    enable_stamped_cmd_vel: True # False for Jazzy or older by default
+    enable_stamped_cmd_vel: False # False for Jazzy or older by default
     polygons: ["PolygonStop", "PolygonSlow"]
     PolygonStop:
       type: "polygon"

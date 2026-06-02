@@ -56,13 +56,13 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `string` | True    |
+| `string` | false   |
 
 Description
 :   Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped).
 
 Note
-:   This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+:   This parameter is default `false` in Jazzy or older.
 
 ### **`scan_publish_dur`**
 

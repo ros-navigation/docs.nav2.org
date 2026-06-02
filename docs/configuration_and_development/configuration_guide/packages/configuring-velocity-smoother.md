@@ -122,14 +122,14 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | true    |
+| `bool` | false   |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
 Note
-:   This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+:   This parameter is default `false` in Jazzy or older.
 
 ### **`stamp_smoothed_velocity_with_smoothing_time`**
 

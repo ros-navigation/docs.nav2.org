@@ -183,12 +183,12 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | true    |
+| `bool` | false   |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+    Note: This parameter is default `false` in Jazzy or older.
 
 ## Polygons parameters
 
@@ -623,7 +623,7 @@ collision_monitor:
     source_timeout: 5.0
     base_shift_correction: True
     stop_pub_timeout: 2.0
-    enable_stamped_cmd_vel: True  # False for Jazzy or older
+    enable_stamped_cmd_vel: False # False for Jazzy or older by default
     use_realtime_priority: false
     polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
     PolygonStop:

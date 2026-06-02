@@ -188,12 +188,12 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | true    |
+| `bool` | false   |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+    Note: This parameter is default `false` in Jazzy or older.
 
 ## BackUp Behavior Parameters
 
@@ -212,12 +212,12 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | true    |
+| `bool` | false   |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+    Note: This parameter is default `false` in Jazzy or older.
 
 ### **`backup.acceleration_limit`**
 
@@ -263,12 +263,12 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | true    |
+| `bool` | false   |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+    Note: This parameter is default `false` in Jazzy or older.
 
 ### **`bond_heartbeat_period`**
 
@@ -350,12 +350,12 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | true    |
+| `bool` | false   |
 
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
+    Note: This parameter is default `false` in Jazzy or older.
 
 ## Example
 
@@ -386,5 +386,5 @@ behavior_server:
     max_rotational_vel: 1.0
     min_rotational_vel: 0.4
     rotational_acc_lim: 3.2
-    enable_stamped_cmd_vel: true  # default false in Jazzy or older
+    enable_stamped_cmd_vel: false # False for Jazzy or older by default
 ```
