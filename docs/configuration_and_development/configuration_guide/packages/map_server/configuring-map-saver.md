@@ -30,12 +30,3 @@ Description
 
 Description
 :   Occupied space minimum probability threshold value for occupancy grid.
-
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".

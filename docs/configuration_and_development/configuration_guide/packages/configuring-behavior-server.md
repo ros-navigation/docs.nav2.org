@@ -91,15 +91,6 @@ Description
 Description
 :   Robot base frame.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`behavior_plugins`**
 
 | Type             | Default                                         |

@@ -65,15 +65,6 @@ Description
 Description
 :   The timeout value (seconds) for the costmap to be fully updated before a planning request.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`allow_parameter_qos_overrides`**
 
 | Type   | Default |
@@ -99,7 +90,6 @@ planner_server:
     allow_partial_planning: false
     expected_planner_frequency: 20.0
     costmap_update_timeout: 1.0
-    introspection_mode: "disabled"
     planner_plugins: ['GridBased']
     GridBased:
       plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"

@@ -217,15 +217,6 @@ Note
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`allow_parameter_qos_overrides`**
 
 | Type   | Default |

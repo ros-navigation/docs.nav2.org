@@ -261,15 +261,6 @@ Description
 Description
 :   The plugin to load under that name. The `edge_cost_functions.<name>` namespaces is also where plugin-specific parameters are defined.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`allow_parameter_qos_overrides`**
 
 | Type   | Default |

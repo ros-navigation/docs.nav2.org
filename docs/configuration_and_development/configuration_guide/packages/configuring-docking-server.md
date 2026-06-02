@@ -174,15 +174,6 @@ Description
 Description
 :   BT XML to use for Navigator, if non-default.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`allow_parameter_qos_overrides`**
 
 | Type   | Default |
@@ -580,7 +571,6 @@ docking_server:
     odom_duration: 0.3
     dock_backwards: false  # Deprecated, use dock_direction in plugin
     dock_prestaging_tolerance: 0.5
-    introspection_mode: "disabled"
 
     # Types of docks
     dock_plugins: ['nova_carter_dock']

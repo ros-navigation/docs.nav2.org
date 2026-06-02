@@ -121,15 +121,6 @@ Description
 :   Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. `wait_for_action_server(timeout)`).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`transform_tolerance`**
 
 | Type     | Default | Unit    |
@@ -353,7 +344,6 @@ bt_navigator:
     filter_duration: 0.3
     default_server_timeout: 20
     default_cancel_timeout: 50
-    introspection_mode: "disabled"
     default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
     default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
     always_reload_bt_xml: false

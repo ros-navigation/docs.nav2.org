@@ -16,15 +16,6 @@ It is used in the planner and controller servers for creating the space to check
 Description
 :   Whether to send the full costmap on every update instead of only incremental updates.
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`allow_parameter_qos_overrides`**
 
 | Type   | Default |
@@ -404,8 +395,6 @@ global_costmap:
         inflate_unknown: false
         inflate_around_unknown: true
       always_send_full_costmap: True
-      introspection_mode: "disabled"
-
 
 local_costmap:
   local_costmap:
@@ -418,5 +407,4 @@ local_costmap:
       width: 3
       height: 3
       resolution: 0.05
-      introspection_mode: "disabled"
 ```

@@ -66,15 +66,6 @@ Note
           plugin: "nav2_smoother::SimpleSmoother"
     ```
 
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
 ### **`bond_heartbeat_period`**
 
 | Type     | Default |

@@ -30,12 +30,3 @@ Description
 
 Description
 :   Frame to publish loaded map in.
-
-### **`introspection_mode`**
-
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
-
-Description
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".

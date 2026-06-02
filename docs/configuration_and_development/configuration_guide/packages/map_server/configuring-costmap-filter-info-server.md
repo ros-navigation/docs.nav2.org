@@ -81,14 +81,12 @@ map_server:
     yaml_filename: "turtlebot3_world.yaml"
     topic_name: "map"
     frame_id: "map"
-    introspection_mode: "disabled"
 
 map_saver:
   ros__parameters:
     save_map_timeout: 5.0
     free_thresh_default: 0.25
     occupied_thresh_default: 0.65
-    introspection_mode: "disabled"
 
 costmap_filter_info_server:
   ros__parameters:
