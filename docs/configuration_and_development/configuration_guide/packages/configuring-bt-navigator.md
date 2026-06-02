@@ -297,15 +297,6 @@ Description
 Description
 :   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
 
-### **`<navigate_through_poses>.waypoint_statuses_blackboard_id`**
-
-| Type     | Default             |
-|----------|---------------------|
-| `string` | "waypoint_statuses" |
-
-Description
-:   Blackboard variable to get the statuses of waypoints from the behavior tree for `NavigateThroughPoses` feedback/result. Should match ports of BT XML file.
-
 ### **`<navigate_through_poses>.enable_groot_monitoring`**
 
 | Type   | Default |
@@ -351,7 +342,6 @@ bt_navigator:
     goal_blackboard_id: goal
     goals_blackboard_id: goals
     path_blackboard_id: path
-    waypoint_statuses_blackboard_id: waypoint_statuses
     navigators: ['navigate_to_pose', 'navigate_through_poses']
     bt_search_directories:
       - $(find-pkg-share nav2_bt_navigator)/behavior_trees
