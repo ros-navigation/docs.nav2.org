@@ -38,7 +38,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 <!-- [ComputeCoveragePath][compute-coverage-path]{ .md-button .md-button--primary } -->
 <!-- [CancelCoverage][cancel-coverage]{ .md-button .md-button--primary } -->
 [RemovePassedGoals][remove-passed-goals]{ .md-button .md-button--primary }
-[RemoveInCollisionGoals][remove-in-collision-goals]{ .md-button .md-button--primary }
 [CancelControl][cancel-control]{ .md-button .md-button--primary }
 [CancelBackUp][cancel-back-up]{ .md-button .md-button--primary }
 [CancelSpin][cancel-spin]{ .md-button .md-button--primary }
@@ -60,7 +59,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [CancelFollowObject][cancel-follow-object]{ .md-button .md-button--primary }
 [ValidatePath][validate-path]{ .md-button .md-button--primary }
 [CheckPoseOccupancy][check-pose-occupancy]{ .md-button .md-button--primary }
-[CheckStopStatus][check-stop-status]{ .md-button .md-button--primary }
 
 </div>
 

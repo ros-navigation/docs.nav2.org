@@ -1,6 +1,6 @@
 # GoalUpdater { #goal-updater }
 
-A custom control node, which updates the goal(s) pose(s). It subscribes to a topic in which it can receive (an) updated goal(s) pose(s) to use instead of the one(s) commanded in action. It is useful for dynamic object following tasks.
+A custom control node, which updates the goal pose. It subscribes to a topic in which it can receive an updated goal pose to use instead of the one commanded in action. It is useful for dynamic object following tasks.
 
 ## Parameters
 
@@ -13,14 +13,6 @@ A custom control node, which updates the goal(s) pose(s). It subscribes to a top
 Description
 :   The topic to receive the updated goal pose
 
-### **`goals_updater_topic`**
-
-| Type     | Default        |
-|----------|----------------|
-| `string` | "goals_update" |
-
-Description
-:   The topic to receive the updated goals poses
 
 {{ render_bt_node_ports(page.title) }}
 

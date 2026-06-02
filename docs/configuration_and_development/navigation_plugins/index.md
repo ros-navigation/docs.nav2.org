@@ -251,7 +251,6 @@ For tutorials on creating your own plugins, please see
 | [Path Handler Selector][]                                              | Maurice Alexander<br>Purnawan  | Selects the path handler based on a<br>topic input, otherwises uses a default<br>path handler id                           |
 | [Navigate Through Poses][]                                             | Steve Macenski                 | BT Node for other BehaviorTree.CPP BTs<br>to call Nav2's NavThroughPoses action                                            |
 | [Remove Passed Goals][]                                                | Steve Macenski                 | Removes goal poses passed or within a<br>tolerance for culling old viapoints from<br>path re-planning                      |
-| [Remove In Collision Goals][]                                          | Tony Najjar                    | Removes goal poses that have a footprint<br>or point cost above a threshold.                                               |
 | [Compute Path Through Poses][]                                         | Steve Macenski                 | Computes a path through a set of poses<br>rather than a single end goal pose<br>using the planner plugin specified         |
 | [Compute Route][]                                                      | Steve Macenski                 | Computes a Route through a navigation<br>graph and returns both a dense path and<br>set of sparse route nodes and edges.   |
 | [Compute And Track Route][]                                            | Steve Macenski                 | Computes a Route as above, but also<br>actively tracks progress and triggers<br>route contextual semantic operations.      |
@@ -276,7 +275,6 @@ For tutorials on creating your own plugins, please see
 | [Follow Object][]                                                      | Alberto Tudela                 | Dynamically follows an object                                                                                              |
 | [Cancel Follow Object][]                                               | Alberto Tudela                 | Cancels follow object action                                                                                               |
 | [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
-| [Check Stop Status][]                                                  | Tony Najjar                    | Checks if robot is stopped for a duration                                                                               |
 | [Check Pose Occupancy][]                                               | Maurice Alexander<br>Purnawan  | Checks if a pose is occupied.                                                                                           |
 
 </div>
@@ -304,7 +302,6 @@ For tutorials on creating your own plugins, please see
 [Path Handler Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/path_handler_selector_node.cpp
 [Navigate Through Poses]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 [Remove Passed Goals]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
-[Remove In Collision Goals]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
 [Compute Path Through Poses]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
 [Compute Route]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp
 [Compute And Track Route]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp
@@ -329,7 +326,6 @@ For tutorials on creating your own plugins, please see
 [Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_action.cpp
 [Cancel Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_cancel_node.cpp
 [Validate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
-[Check Stop Status]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_stop_status_action.cpp
 [Check Pose Occupancy]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp
 
 <div class="center-table" markdown>
