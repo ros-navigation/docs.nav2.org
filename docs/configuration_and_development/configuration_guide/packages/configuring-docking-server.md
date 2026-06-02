@@ -66,15 +66,6 @@ Description
 Description
 :   Angular tolerance (rad) to exit undocking loop at staging pose.
 
-### **`rotation_angular_tolerance`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.05    |
-
-Description
-:   Angular tolerance (rad) to exit the rotation loop when rotate_to_dock is enabled.
-
 ### **`max_retries`**
 
 | Type  | Default |
@@ -102,15 +93,6 @@ Description
 Description
 :   Fixed frame to use, recommended to be a smooth odometry frame **not** map.
 
-### **`odom_topic`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | "odom"  |
-
-Description
-:   The topic to use for the odometry data when rotate_to_dock is enabled.
-
 ### **`odom_duration`**
 
 | Type     | Default |
@@ -127,7 +109,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Whether the robot is docking with the dock forward or backward in motion. This parameter is deprecated. Use the dock plugin's `dock_direction` parameter instead.
+:   Whether the robot is docking with the dock forward or backward in motion.
 
 ### **`dock_prestaging_tolerance`**
 
@@ -255,33 +237,6 @@ Description
 Description
 :   Radius to end goal to commense slow down.
 
-### **`controller.deceleration_max`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.5     |
-
-Description
-:   Maximum deceleration (m/s²) used to compute a velocity limit based on distance to the goal.
-
-### **`controller.rotate_to_heading_angular_vel`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   Angular velocity (rad/s) to rotate to the goal heading when rotate_to_dock is enabled.
-
-### **`controller.rotate_to_heading_max_angular_accel`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 3.2     |
-
-Description
-:   Maximum angular acceleration (rad/s^2) to rotate to the goal heading when rotate_to_dock is enabled.
-
 ### **`controller.use_collision_detection`**
 
 | Type   | Default |
@@ -368,7 +323,7 @@ Description
 | `double` | 0.0     |
 
 Description
-:   Staging pose angle relative to dock pose (rad). If `dock_direction` is set to "backward", this angle must be faced in the opposite direction of the dock pose. However, if `rotate_to_dock` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
+:   Staging pose angle relative to dock pose (rad).
 
 ### **`<dock_name>.use_battery_status`**
 
@@ -532,27 +487,6 @@ Description
 Description
 :   If not using stall detection, the pose threshold to the docking pose where `isDocked() = true`.
 
-### **`<dock_name>.dock_direction`**
-
-| Type     | Default   |
-|----------|-----------|
-| `string` | "forward" |
-
-Description
-:   Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated `dock_backwards` parameter. Options are "forward" or "backward".
-
-### **`<dock_name>.rotate_to_dock`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
-
-Description
-:   Enables backward docking without requiring a sensor for detection during the final approach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading. This may also be paired with sensor detection in the reverse direction as well if available.
-
-Note
-:   This parameter is only valid when the `dock_direction` is set to "backward".
-
 ## Example
 
 ```yaml
@@ -567,9 +501,8 @@ docking_server:
     max_retries: 3
     base_frame: "base_link"
     fixed_frame: "odom"
-    odom_topic: "odom"
+    dock_backwards: false
     odom_duration: 0.3
-    dock_backwards: false  # Deprecated, use dock_direction in plugin
     dock_prestaging_tolerance: 0.5
 
     # Types of docks
@@ -584,7 +517,6 @@ docking_server:
       subscribe_toggle: true
       use_battery_status: false # true
       use_stall_detection: false
-      rotate_to_dock: false
 
       external_detection_timeout: 1.0
       external_detection_translation_x: -0.18
@@ -593,7 +525,6 @@ docking_server:
       external_detection_rotation_pitch: -1.57
       external_detection_rotation_yaw: 0.0
       filter_coef: 0.1
-      dock_direction: "forward" # "backward"
 
     # Dock instances
     docks: ['home_dock']
@@ -610,9 +541,6 @@ docking_server:
       v_linear_max: 0.15
       v_angular_max: 0.75
       slowdown_radius: 0.25
-      deceleration_max: 2.5
-      rotate_to_heading_angular_vel: 1.0
-      rotate_to_heading_max_angular_accel: 3.2
       use_collision_detection: true
       costmap_topic: "local_costmap/costmap_raw"
       footprint_topic: "local_costmap/published_footprint"
