@@ -147,14 +147,6 @@ Description
 Description
 :   Topic of data.
 
-    Relative topics will be relative to the node's parent namespace.
-    For example, if you specify *topic: scan* in the *voxel_layer* of a *local_costmap* and you launch your bringup with a *tb4* namespace:
-
-      - User chosen namespace is *tb4*.
-      - User chosen topic is *scan*.
-      - Topic will be remapped to */tb4/scan* without *local_costmap*.
-      - Use global topic */scan* if you do not wish the node namespace to apply.
-
 ### **`<voxel layer>.<data source>.sensor_frame`**
 
 | Type     | Default |

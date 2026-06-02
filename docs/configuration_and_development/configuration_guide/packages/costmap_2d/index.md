@@ -88,6 +88,15 @@ Description
 Description
 :   Minimum cost of an occupancy grid map to be considered a lethal obstacle.
 
+### **`map_topic`**
+
+| Type     | Default |
+|----------|---------|
+| `string` | "map"   |
+
+Description
+:   Topic of map from map_server or SLAM.
+
 ### **`map_vis_z`**
 
 | Type     | Default |
