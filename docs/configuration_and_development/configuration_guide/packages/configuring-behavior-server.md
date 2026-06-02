@@ -219,33 +219,6 @@ Description
     True uses TwistStamped, false uses Twist.
     Note: This parameter is default `false` in Jazzy or older.
 
-### **`backup.acceleration_limit`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.5     |
-
-Description
-:   Maximum acceleration limit (m/s^2). This parameter limits the rate at which speed increases when moving backward.
-
-### **`backup.deceleration_limit`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | -2.5    |
-
-Description
-:   Maximum deceleration limit (m/s^2). Negative value. This parameter limits the rate at which speed decreases when moving backward.
-
-### **`backup.minimum_speed`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
-
-Description
-:   Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
-
 ## DriveOnHeading Behavior Parameters
 
 DriveOnHeading distance, speed and time_allowance is given from the action request.
@@ -287,33 +260,6 @@ Description
 
 Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
-
-### **`drive_on_heading.acceleration_limit`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.5     |
-
-Description
-:   Maximum acceleration limit (m/s^2).
-
-### **`drive_on_heading.deceleration_limit`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | -2.5    |
-
-Description
-:   Maximum deceleration limit (m/s^2). Negative value.
-
-### **`drive_on_heading.minimum_speed`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
-
-Description
-:   Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 ## AssistedTeleop Behavior Parameters
 
