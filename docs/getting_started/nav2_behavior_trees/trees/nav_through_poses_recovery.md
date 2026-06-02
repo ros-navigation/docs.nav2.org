@@ -56,7 +56,7 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
               </ReactiveSequence>
               <ReactiveSequence>
                 <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
-                <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
               </ReactiveSequence>
             </Fallback>
             <Sequence>
@@ -66,7 +66,7 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
           </RecoveryNode>
         </RateController>
         <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" goal_checker_id="{selected_goal_checker}" progress_checker_id="{selected_progress_checker}" path_handler_id="{selected_path_handler}" tracking_feedback="{tracking_feedback}"/>
+          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" goal_checker_id="{selected_goal_checker}" progress_checker_id="{selected_progress_checker}" path_handler_id="{selected_path_handler}" tracking_feedback="{tracking_feedback}"/>
           <Sequence>
             <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
             <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
@@ -85,9 +85,9 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
               <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
               <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
-            <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-            <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+            <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}"/>
+            <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}"/>
+            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
           </RoundRobin>
         </ReactiveFallback>
       </Sequence>

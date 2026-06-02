@@ -35,7 +35,7 @@ For a detailed description of the role of the selector nodes, recovery behaviors
                 </ReactiveSequence>
                 <Sequence name="ComputeAndSmoothRoute">
                   <!-- Compute the route -->
-                  <ComputeRoute goal="{goal}" path="{route_path}" route="{route}" use_poses="true" error_code_id="{compute_route_error_code}" error_msg="{compute_route_error_msg}"/>
+                  <ComputeRoute goal="{goal}" path="{route_path}" route="{route}" use_poses="true" error_code_id="{compute_route_error_code}"/>
 
                   <!-- Find if the route start node is far from the robot's current pose; if so, connect them for 'first mile'. -->
                   <ReactiveSequence>
@@ -44,7 +44,7 @@ For a detailed description of the role of the selector nodes, recovery behaviors
                     <Inverter>
                       <ArePosesNear ref_pose="{current_pose}" target_pose="{route_start_pose}" tolerance="0.3"/>
                     </Inverter>
-                    <ComputePathToPose goal="{route_start_pose}" path="{first_mile_path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                    <ComputePathToPose goal="{route_start_pose}" path="{first_mile_path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
                     <ConcatenatePaths input_path1="{first_mile_path}" input_path2="{route_path}" output_path="{route_path}"/>
                   </ReactiveSequence>
 
@@ -54,12 +54,12 @@ For a detailed description of the role of the selector nodes, recovery behaviors
                     <Inverter>
                       <ArePosesNear ref_pose="{goal}" target_pose="{route_end_pose}" tolerance="0.1"/>
                     </Inverter>
-                    <ComputePathToPose start="{route_end_pose}" goal="{goal}" path="{last_mile_path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                    <ComputePathToPose start="{route_end_pose}" goal="{goal}" path="{last_mile_path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
                     <ConcatenatePaths input_path1="{route_path}" input_path2="{last_mile_path}" output_path="{route_path}"/>
                   </ReactiveSequence>
 
                   <!-- Smooth the completed route -->
-                  <SmoothPath unsmoothed_path="{route_path}" smoothed_path="{path}" smoother_id="route_smoother" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
+                  <SmoothPath unsmoothed_path="{route_path}" smoothed_path="{path}" smoother_id="route_smoother" error_code_id="{smoother_error_code}"/>
                 </Sequence>
               </Fallback>
             </RateController>
@@ -72,7 +72,7 @@ For a detailed description of the role of the selector nodes, recovery behaviors
           </Sequence>
         </RecoveryNode>
         <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}"/>
           <Sequence>
             <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
             <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
@@ -91,8 +91,8 @@ For a detailed description of the role of the selector nodes, recovery behaviors
               <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
               <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
-            <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+            <Wait wait_duration="5.0" error_code_id="{wait_error_code}"/>
+            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
           </RoundRobin>
         </ReactiveFallback>
       </Sequence>

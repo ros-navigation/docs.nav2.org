@@ -166,15 +166,6 @@ Description
 Description
 :   Topic on which odometry is published
 
-### **`error_code_name_prefixes`**
-
-| Type             | Default                                                                                                                                                                                                                        |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `vector<string>` | ["assisted_teleop",<br> "backup",<br>  "compute_path",<br>  "dock_robot",<br>  "drive_on_heading",<br>  "follow_path",<br>  "nav_thru_poses",<br>  "nav_to_pose",<br>  "spin",<br>  "route",<br>  "undock_robot",<br>  "wait"] |
-
-Description
-:   For Kilted and newer: List of of error code name prefixes to be appended with `_error_code` and `_error_msg` and searched for during aborted navigator error processing.
-
 ### **`error_code_names`**
 
 | Type             | Default                                                   |
@@ -182,7 +173,7 @@ Description
 | `vector<string>` | ["compute_path_error_code",<br> "follow_path_error_code"] |
 
 Description
-:   For Jazzy and older: List of of error codes to compare.
+:   List of of error codes to compare.
 
 ### **`bond_heartbeat_period`**
 
@@ -409,17 +400,8 @@ bt_navigator:
       - nav2_time_expired_condition_bt_node
       - nav2_distance_traveled_condition_bt_node
       - nav2_single_trigger_bt_node
-    error_code_name_prefixes:
-      - assisted_teleop
-      - backup
-      - compute_path
-      - dock_robot
-      - drive_on_heading
-      - follow_path
-      - nav_thru_poses
-      - nav_to_pose
-      - spin
-      - route
-      - undock_robot
-      - wait
+    error_code_names:
+      - compute_path_error_code
+      - follow_path_error_code
+      # - smoother_error_code, navigate_to_pose_error_code, navigate_through_poses_error_code, etc
 ```

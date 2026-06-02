@@ -48,7 +48,7 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                                 <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
                                 <ValidatePath path="{remaining_path}"/>
                             </ReactiveSequence>
-                            <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                            <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
                         </Fallback>
                         <Sequence>
                             <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
@@ -57,7 +57,7 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                     </RecoveryNode>
                 </RateController>
                 <RecoveryNode number_of_retries="1" name="FollowPath">
-                    <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
+                    <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" tracking_feedback="{tracking_feedback}"/>
                     <Sequence>
                         <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
                         <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
@@ -76,9 +76,9 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                         <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
                         <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
                         </Sequence>
-                        <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-                        <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-                        <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+                        <Spin spin_dist="1.57" error_code_id="{spin_error_code}"/>
+                        <Wait wait_duration="5.0" error_code_id="{wait_error_code}">
+                        <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
                     </RoundRobin>
                 </ReactiveFallback>
             </Sequence>
@@ -144,7 +144,7 @@ The XML of this subtree is as follows:
             <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
             <ValidatePath path="{remaining_path}"/>
           </ReactiveSequence>
-          <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
         </Fallback>
         <Sequence>
           <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
@@ -153,7 +153,7 @@ The XML of this subtree is as follows:
       </RecoveryNode>
     </RateController>
     <RecoveryNode number_of_retries="1" name="FollowPath">
-      <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" tracking_feedback="{tracking_feedback}"/>
+      <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" tracking_feedback="{tracking_feedback}"/>
       <Sequence>
         <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
         <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
@@ -233,9 +233,9 @@ And the XML snippet:
             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
-            <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-            <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+            <Spin spin_dist="1.57" error_code_id="{spin_error_code}"/>
+            <Wait wait_duration="5.0" error_code_id="{wait_error_code}"/>
+            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
         </RoundRobin>
     </ReactiveFallback>
 </Sequence>
