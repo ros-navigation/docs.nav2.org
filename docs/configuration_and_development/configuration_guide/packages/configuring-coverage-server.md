@@ -10,6 +10,15 @@ Note: All `default_` prefixed parameters can be overwritten in the action reques
 
 ## Parameters
 
+### **`action_server_result_timeout`**
+
+| Type     | Default | Unit    |
+|----------|---------|---------|
+| `double` | 10.0    | seconds |
+
+Description
+:   The timeout for rclcpp to keep action results active before caching them as complete. Set as higher than ROS 2 default since this is a longer-running task server.
+
 ### **`coordinates_in_cartesian_frame`**
 
 | Type   | Default |
