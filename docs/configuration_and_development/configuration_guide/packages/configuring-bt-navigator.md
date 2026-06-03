@@ -211,15 +211,6 @@ Description
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
-### **`bt_search_directories`**
-
-| Type             | Default                                            |
-|------------------|----------------------------------------------------|
-| `vector<string>` | $(find-pkg-share nav2_bt_navigator)/behavior_trees |
-
-Description
-:   List of directories that hosts behavior trees XML files. Used to register all behavior trees and subtrees.
-
 ### **`allow_navigator_preemption`**
 
 | Type   | Default |
@@ -334,8 +325,6 @@ bt_navigator:
     goals_blackboard_id: goals
     path_blackboard_id: path
     navigators: ['navigate_to_pose', 'navigate_through_poses']
-    bt_search_directories:
-      - $(find-pkg-share nav2_bt_navigator)/behavior_trees
     navigate_to_pose:
       plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
       enable_groot_monitoring: false
