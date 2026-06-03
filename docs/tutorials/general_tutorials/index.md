@@ -26,7 +26,6 @@ Nav2 Tutorials
 [Profiling in ROS 2 / Nav2][profiling-in-ros-2-nav2]{ .md-button .md-button--primary }
 [Docker for Development: Zero to Hero][docker-for-development-zero-to-hero]{ .md-button .md-button--primary }
 [Route Server Tools][route-server-tools]{ .md-button .md-button--primary }
-[Navigating with Vector Objects][navigating-with-vector-objects]{ .md-button .md-button--primary }
 [ROSCon UK 2025: State Estimation for Mobile Robotics Workshop][roscon-uk-2025-state-estimation-for-mobile-robotics-workshop]{ .md-button .md-button--primary }
 [Enhanced Safety for Nav2 using 3Laws Supervisor][enhanced-safety-for-nav2-using-3laws-supervisor]{ .md-button .md-button--primary }
 [Ground Terrain Segmentation using 3D Lidar][ground-terrain-segmentation-using-3d-lidar]{ .md-button .md-button--primary }

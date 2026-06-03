@@ -106,7 +106,6 @@ nav:
         - Route Graph Generation LIF Editor: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation_lif_editor.md
         - Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/route_graph_generation.md
         - SWAGGER Route Graph Generation: tutorials/general_tutorials/docs/route_server_tools/swagger_generation.md
-      - Navigating with Vector Objects: tutorials/general_tutorials/docs/navigation2_with_vector_objects.md
       - ROSCon UK 2025 - State Estimation for Mobile Robotics Workshop: tutorials/general_tutorials/docs/roscon_uk_2025_state_estimation.md
       - Enhanced Safety for Nav2 using 3Laws Supervisor: tutorials/general_tutorials/docs/using_3laws_supervisor.md
       - Ground Terrain Segmentation using 3D Lidar: tutorials/general_tutorials/docs/navigation2_with_ground_consistency_layer.md
@@ -263,7 +262,6 @@ nav:
           - Map Server: configuration_and_development/configuration_guide/packages/map_server/configuring-map-server.md
           - Map Saver: configuration_and_development/configuration_guide/packages/map_server/configuring-map-saver.md
           - Costmap Filter Info Server: configuration_and_development/configuration_guide/packages/map_server/configuring-costmap-filter-info-server.md
-          - Vector Object Server: configuration_and_development/configuration_guide/packages/map_server/configuring-vector-object-server.md
         - Planner Server: configuration_and_development/configuration_guide/packages/configuring-planner-server.md
         - Route Server: configuration_and_development/configuration_guide/packages/configuring-route-server.md
         - Smoother Server: configuration_and_development/configuration_guide/packages/configuring-smoother-server.md

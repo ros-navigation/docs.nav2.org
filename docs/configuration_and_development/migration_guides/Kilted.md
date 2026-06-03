@@ -369,8 +369,8 @@ This allows to cover such use-cases as:
 adding virtual obstacles on maps, dynamic objects simulation/highlighting, hiding some areas or sticking-out robot parts, sensors noise removal, blacking-out areas on maps, adding keep-out or maximum speed restricted areas on vector basis, synthetic testing purposes, and much more.
 
 To run Vector Object server a new `vector_object_server.launch.py` launch-file is being supplied.
-[Navigating with Vector Objects][navigating-with-vector-objects] tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
-The information about Vector Object server parameters set-up could be found at [Vector Object Server][vector-object-server] configuration guide.
+Navigating with Vector Objects tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
+The information about Vector Object server parameters set-up could be found at Vector Object Server configuration guide.
 
 ## Toggle collision monitor service and BT plugin
 

@@ -7,4 +7,3 @@ The Map server package implements various components for handling grid maps, inc
 - [Map Server][map-server]
 - [Map Saver][map-saver]
 - [Costmap Filter Info Server][costmap-filter-info-server]
-- [Vector Object Server][vector-object-server]
