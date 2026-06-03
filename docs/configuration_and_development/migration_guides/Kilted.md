@@ -223,7 +223,7 @@ New parameters include `smooth_corners` which enable or disable corner smoothing
 
 In [PR #5325](https://github.com/ros-navigation/navigation2/pull/5325) a new Nav2 specific behavior tree control node has been added. The new behavior tree control node, `NonblockingSequence`, allows every child node in the sequence to be ticked through even if one of the child node returns `RUNNING`. This is done to prevent long running child nodes from blocking the sequence.
 
-For additional details regarding the `NonblockingSequence` please see the [Nav2 specific node walkthrough][introduction-to-nav2-specific-nodes] and [NonblockingSequence configuration guide][nonblocking-sequence].
+For additional details regarding the `NonblockingSequence` please see the [Nav2 specific node walkthrough][introduction-to-nav2-specific-nodes] and NonblockingSequence configuration guide.
 
 ## MPPI Optimal Trajectory Validator Plugin
 

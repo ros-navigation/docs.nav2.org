@@ -218,7 +218,6 @@ nav:
             - PipelineSequence: configuration_and_development/configuration_guide/packages/bt-plugins/controls/PipelineSequence.md
             - RoundRobin: configuration_and_development/configuration_guide/packages/bt-plugins/controls/RoundRobin.md
             - RecoveryNode: configuration_and_development/configuration_guide/packages/bt-plugins/controls/RecoveryNode.md
-            - NonblockingSequence: configuration_and_development/configuration_guide/packages/bt-plugins/controls/NonblockingSequence.md
             - PersistentSequence: configuration_and_development/configuration_guide/packages/bt-plugins/controls/PersistentSequence.md
             - PauseResumeController: configuration_and_development/configuration_guide/packages/bt-plugins/controls/PauseResumeController.md
           - Decorator Plugins:
