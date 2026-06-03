@@ -271,8 +271,6 @@ For tutorials on creating your own plugins, please see
 | [Append Goal Pose To Goals Action][]                                   | Steve Macenski                 | Appends a goal pose to a goals vector                                                                                      |
 | [Extract Route Nodes To Goals Action][]                                | Steve Macenski                 | Converts Route Nodes to Goals                                                                                              |
 | [Get Next Few Goals Action][]                                          | Steve Macenski                 | Obtains the next N goals in a goal vector                                                                                  |
-| [Follow Object][]                                                      | Alberto Tudela                 | Dynamically follows an object                                                                                              |
-| [Cancel Follow Object][]                                               | Alberto Tudela                 | Cancels follow object action                                                                                               |
 | [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
 | [Check Pose Occupancy][]                                               | Maurice Alexander<br>Purnawan  | Checks if a pose is occupied.                                                                                           |
 
@@ -321,8 +319,6 @@ For tutorials on creating your own plugins, please see
 [Append Goal Pose To Goals Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp
 [Extract Route Nodes To Goals Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
 [Get Next Few Goals Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
-[Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_action.cpp
-[Cancel Follow Object]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/follow_object_cancel_node.cpp
 [Validate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
 [Check Pose Occupancy]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp
 

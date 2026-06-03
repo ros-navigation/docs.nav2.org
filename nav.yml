@@ -188,8 +188,6 @@ nav:
             - AppendGoalPoseToGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/AppendGoalPoseToGoals.md
             - ExtractRouteNodesAsGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.md
             - GetNextFewGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GetNextFewGoals.md
-            - FollowObject: configuration_and_development/configuration_guide/packages/bt-plugins/actions/FollowObject.md
-            - CancelFollowObject: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CancelFollowObject.md
             - ValidatePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ValidatePath.md
             - CheckPoseOccupancy: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CheckPoseOccupancy.md
           - Condition Plugins:
@@ -312,7 +310,6 @@ nav:
       - Others:
         - AMCL: configuration_and_development/configuration_guide/packages/configuring-amcl.md
         - Coverage Server: configuration_and_development/configuration_guide/packages/configuring-coverage-server.md
-        - Following Server: configuration_and_development/configuration_guide/packages/configuring-following-server.md
         - Loopback Simulator: configuration_and_development/configuration_guide/packages/configuring-loopback-sim.md
     - Tuning Guide:
       - configuration_and_development/tuning_guide/index.md

@@ -407,7 +407,7 @@ An example usage in a Behavior Tree XML file:
 The Following Server implements a server for following dynamic objects or specific reference frames.
 This server allows the robot to follow and maintain a determined distance from a detected object or specific frame, using topic-based detection techniques or coordinate frame tracking.
 
-The information about Following Server parameters set-up could be found at [Following Server][following-server] configuration guide.
+The information about Following Server parameters set-up could be found at Following Server configuration guide.
 
 The tutorial for the Following Server has been recently updated. For the latest instructions and examples, see [Dynamic Object Following][dynamic-object-following].
 

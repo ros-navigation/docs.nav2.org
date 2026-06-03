@@ -62,7 +62,6 @@ the best navigation performance.
 
 [AMCL][amcl]{ .md-button .md-button--primary }
 [Coverage Server][coverage-server]{ .md-button .md-button--primary }
-[Following Server][following-server]{ .md-button .md-button--primary }
 [Loopback Simulator][loopback-simulator]{ .md-button .md-button--primary }
 
 </div>
