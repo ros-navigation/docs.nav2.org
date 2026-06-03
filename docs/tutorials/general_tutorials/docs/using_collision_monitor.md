@@ -69,7 +69,6 @@ The whole `nav2_collision_monitor/params/collision_monitor_params.yaml` file in 
 ```yaml
 collision_monitor:
   ros__parameters:
-    enabled: True
     base_frame_id: "base_footprint"
     odom_frame_id: "odom"
     cmd_vel_in_topic: "cmd_vel_smoothed"
