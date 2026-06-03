@@ -403,16 +403,12 @@ For tutorials on creating your own plugins, please see
 | [Pipeline Sequence][]             | Carl Delsey            | A variant of a sequence node that<br>will re-tick previous children<br>even if another child is running                                                                                                                                                         |
 | [Recovery][]                      | Carl Delsey            | Node must contain 2 children<br>and returns success if first<br>succeeds. If first fails, the<br>second will be ticked. If<br>successful, it will retry the<br>first and then return its value                                                                  |
 | [Round Robin][]                   | Mohammad Haghighipanah | Will tick `i` th child until<br>a result and move on to `i+1`                                                                                                                                                                                                   |
-| [Persistent Sequence][]           | Enjoy Robotics         | A variant of a sequence node that<br>exposes `current_child_idx` as<br>a bidirectional port.                                                                                                                                                                    |
-| [Pause Resume Controller][]       | Enjoy Robotics         | Controlled through service calls<br>to pause and resume the<br>execution of the tree.                                                                                                                                                                           |
 
 </div>
 
 [Pipeline Sequence]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 [Recovery]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
 [Round Robin]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
-[Persistent Sequence]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/persistent_sequence.cpp
-[Pause Resume Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pause_resume_controller.cpp
 
 ## Route Plugins
 

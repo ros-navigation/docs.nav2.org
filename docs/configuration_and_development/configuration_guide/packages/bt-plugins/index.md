@@ -95,8 +95,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [PipelineSequence][pipeline-sequence]{ .md-button .md-button--primary }
 [RoundRobin][round-robin]{ .md-button .md-button--primary }
 [RecoveryNode][recovery-node]{ .md-button .md-button--primary }
-[PersistentSequence][persistent-sequence]{ .md-button .md-button--primary }
-[PauseResumeController][pause-resume-controller]{ .md-button .md-button--primary }
 
 </div>
 
