@@ -463,22 +463,6 @@ Description
 Description
 :   Type of polygon shape. Could be `scan`, `pointcloud`, `range`, `polygon` or `costmap`.
 
-### **`<source name>.transport_type`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | "raw"   |
-
-Description
-:   For `pointcloud` data, specify the transport plugin to use:
-
-    - raw: No compression. Default; highest bandwidth usage.
-    - draco: Lossy compression via Google.
-    - zlib: Lossless compression via Zlib compression.
-    - zstd: Lossless compression via Zstd compression.
-
-  See the [known transports](https://github.com/ros-perception/point_cloud_transport_plugins) for more details.
-
 ### **`<source name>.topic`**
 
 | Type     | Default |
@@ -698,7 +682,6 @@ collision_monitor:
     pointcloud:
       type: "pointcloud"
       topic: "/intel_realsense_r200_depth/points"
-      transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
       min_height: 0.1
       max_height: 0.5
       min_range: 0.2
