@@ -156,15 +156,6 @@ Description
 Description
 :   BT XML to use for Navigator, if non-default.
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ### **`controller.k_phi`**
 
 | Type     | Default |

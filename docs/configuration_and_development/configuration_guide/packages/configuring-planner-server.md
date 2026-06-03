@@ -65,15 +65,6 @@ Description
 Description
 :   The timeout value (seconds) for the costmap to be fully updated before a planning request.
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ## Default Plugins
 
 When the `planner_plugins` parameter is not overridden, the following default plugins are loaded:

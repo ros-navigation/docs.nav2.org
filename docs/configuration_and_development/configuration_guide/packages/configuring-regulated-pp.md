@@ -365,15 +365,6 @@ Description
 Note
 :   Needs `use_fixed_curvature_lookahead` to be `true`
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ### **`min_distance_to_obstacle`**
 
 | Type     | Default |

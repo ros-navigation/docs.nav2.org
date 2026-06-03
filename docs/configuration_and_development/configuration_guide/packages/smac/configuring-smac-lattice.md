@@ -284,15 +284,6 @@ Description
 Description
 :   Advanced feature: This allows a user to specify a quadratic traversal and heuristic cost computation (e.g. `cost * cost`) rather than linear. This will speed up the planner since the optimal channel for feasible search is deeper and prunes search branches more aggressively. This will also create overall much smoother paths since search will not attempt to refine itself to stay in the center of wide aisleways or open spaces to reduce low finite costs. However, the smoothness and less sensitivity to cost also makes it come somewhat closer to obstacles. Broadly speaking the change and non-straight penalties can be disabled when this feature is in use. The cost penalty and inflation layer parameters may need to be adjusted when enabling this parameter to create optimal performance.
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ## Example
 
 ```yaml

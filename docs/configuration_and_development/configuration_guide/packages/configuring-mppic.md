@@ -322,15 +322,6 @@ Description
 Description
 :   The step between points on trajectories to visualize to downsample trajectory density.
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ## AckermannMotionModel
 
 ### **`<motion_model>.min_turning_r`**

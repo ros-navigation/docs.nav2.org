@@ -16,15 +16,6 @@ It is used in the planner and controller servers for creating the space to check
 Description
 :   Whether to send the full costmap on every update instead of only incremental updates.
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ### **`footprint_padding`**
 
 | Type     | Default |

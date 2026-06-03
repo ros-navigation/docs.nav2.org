@@ -154,15 +154,6 @@ Description
 Description
 :   Number of times to recursively attempt to smooth, must be `>= 1`.
 
-### **`allow_parameter_qos_overrides`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to allow QoS profiles to be overwritten with parameterized values.
-
 ## Example
 
 ```yaml
