@@ -293,15 +293,6 @@ Description
 Description
 :   Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
 
-### **`TrajectoryValidator.plugin`**
-
-| Type     | Default                                   |
-|----------|-------------------------------------------|
-| `string` | "mppi::DefaultOptimalTrajectoryValidator" |
-
-Description
-:   The plugin to use for validating final optimal trajectories.
-
 ## Trajectory Visualization
 
 ### **`trajectory_step`**
@@ -332,30 +323,6 @@ Description
 
 Description
 :   The minimum turning radius possible for the vehicle platform (m). This is only used if `<motion_model>.plugin` is set to "mppi::AckermannMotionModel".
-
-## Default Optimal Trajectory Validator
-
-This validator checks the final optimal trajectory for validity and does not collide with obstacles.
-Additional validator plugins can be created to support different features like constraints on the maximum deviation from a path, collision margin, progress being made, etc.
-Dynamic and kinematic constraints are not required to be checked as trajectories are guaranteed to be within the constraints of the motion model.
-
-### **`collision_lookahead_time`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
-
-Description
-:   The time in seconds to look ahead for potential collisions when validating the trajectory.
-
-### **`consider_footprint`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
-
-Description
-:   Whether to consider the robot's footprint when validating the trajectory. Else, will use the center point cost of a circular robot
 
 ## Constraint Critic
 
@@ -915,10 +882,6 @@ controller_server:
       TrajectoryVisualizer:
         trajectory_step: 5
         time_step: 3
-      TrajectoryValidator:
-        plugin: "mppi::DefaultOptimalTrajectoryValidator"
-        collision_lookahead_time: 2.0
-        consider_footprint: false
       critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
       ConstraintCritic:
         enabled: true
