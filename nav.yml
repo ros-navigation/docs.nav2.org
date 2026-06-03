@@ -188,7 +188,6 @@ nav:
             - AppendGoalPoseToGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/AppendGoalPoseToGoals.md
             - ExtractRouteNodesAsGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.md
             - GetNextFewGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GetNextFewGoals.md
-            - ToggleCollisionMonitor: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ToggleCollisionMonitor.md
             - FollowObject: configuration_and_development/configuration_guide/packages/bt-plugins/actions/FollowObject.md
             - CancelFollowObject: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CancelFollowObject.md
             - ValidatePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ValidatePath.md

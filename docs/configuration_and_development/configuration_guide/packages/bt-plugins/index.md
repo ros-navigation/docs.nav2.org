@@ -54,7 +54,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [AppendGoalPoseToGoals][append-goal-pose-to-goals]{ .md-button .md-button--primary }
 [ExtractRouteNodesAsGoals][extract-route-nodes-as-goals]{ .md-button .md-button--primary }
 [GetNextFewGoals][get-next-few-goals]{ .md-button .md-button--primary }
-[ToggleCollisionMonitor][toggle-collision-monitor]{ .md-button .md-button--primary }
 [FollowObject][follow-object]{ .md-button .md-button--primary }
 [CancelFollowObject][cancel-follow-object]{ .md-button .md-button--primary }
 [ValidatePath][validate-path]{ .md-button .md-button--primary }
