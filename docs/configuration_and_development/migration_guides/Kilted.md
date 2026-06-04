@@ -530,10 +530,6 @@ In [PR #5783](https://github.com/ros-navigation/navigation2/pull/5783), an optio
 
 - Fumiya Ohnishi and Masaki Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
 
-<figure markdown="span">
-  ![](images/dwpp_comparison.gif){ width="800" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" }
-</figure>
-
 The following parameters are updated for this feature.
 
 **`max_linear_vel` (renamed):**
