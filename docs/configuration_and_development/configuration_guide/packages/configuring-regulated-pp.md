@@ -274,6 +274,15 @@ Description
 Note
 :   Needs `use_fixed_curvature_lookahead` to be `true`
 
+### **`stateful`**
+
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
+
+Description
+:   Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
+
 ### **`min_distance_to_obstacle`**
 
 | Type     | Default |
@@ -333,4 +342,5 @@ controller_server:
       max_angular_accel: 3.2
       max_robot_pose_search_dist: 10.0
       min_distance_to_obstacle: 0.0
+      stateful: true
 ```
