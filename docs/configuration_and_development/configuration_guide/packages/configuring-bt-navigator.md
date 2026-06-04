@@ -54,16 +54,6 @@ Description
 Description
 :   Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
 
-### **`bt_log_idle_transitions`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
-
-Description
-:   Whether to log idle (no state change) transitions in the behavior tree to the `/behavior_tree_log` topic and console output. 
-    When `false`, only state changes are logged, reducing topic and console noise. When `true` (default), all tick transitions including idle ones are published.
-
 ### **`plugin_lib_names`**
 
 | Type             | Default |
@@ -320,7 +310,6 @@ bt_navigator:
     default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
     default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
     always_reload_bt_xml: false
-    bt_log_idle_transitions: true
     goal_blackboard_id: goal
     goals_blackboard_id: goals
     path_blackboard_id: path
