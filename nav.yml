@@ -229,7 +229,6 @@ nav:
           - Provided Plugins:
             - SimpleProgressChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/simple_progress_checker.md
             - PoseProgressChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/pose_progress_checker.md
-            - AdaptiveToleranceGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/adaptive_tolerance_goal_checker.md
             - SimpleGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/simple_goal_checker.md
             - StoppedGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/stopped_goal_checker.md
             - PositionGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/position_goal_checker.md

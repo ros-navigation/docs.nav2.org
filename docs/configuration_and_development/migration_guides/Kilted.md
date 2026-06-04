@@ -872,7 +872,7 @@ The goal is cosidered reached when one of the following conditions is met:
   - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
   - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
 
-See [AdaptiveToleranceGoalChecker][adaptive-tolerance-goal-checker] for full details.
+See AdaptiveToleranceGoalChecker for full details.
 
 ## Stateful parameter removed from Regulated Pure Pursuit Controller
 
