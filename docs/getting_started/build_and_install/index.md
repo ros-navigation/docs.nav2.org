@@ -108,15 +108,6 @@ to ignore the rosdep error of from the missing `slam_toolbox` key.
 
 !!! tip "Hint"
 
-    If you are using `rmw_zenoh_cpp` and want to run tests without a Zenoh router, you can enable isolated tests by building with:
-
-    ```bash
-    colcon build --symlink-install \
-    --cmake-args -DUSE_ISOLATED_TESTS=ON
-    ```
-
-!!! tip "Hint"
-
     For more examples on building Nav2 from rolling development source, checkout [source.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile).
 
 ### Docker Container Images
