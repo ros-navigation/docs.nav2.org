@@ -721,7 +721,7 @@ Key parameters:
 
 This goal checker is particularly useful for applications requiring precise alignment along specific axes, such as docking operations or warehouse navigation where lateral precision differs from forward/backward precision.
 
-See [AxisGoalChecker][axis-goal-checker] for full configuration details.
+See AxisGoalChecker for full configuration details.
 
 ## New default_cancel_timeout parameter in bt_navigator
 
