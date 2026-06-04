@@ -210,15 +210,6 @@ Description
 Description
 :   Cost of unknown space if tracking it.
 
-### **`inscribed_obstacle_cost_value`**
-
-| Type  | Default |
-|-------|---------|
-| `int` | 99      |
-
-Description
-:   The OccupancyGrid values that represents `INSCRIBED_INFLATED_OBSTACLE` during costmap conversion operations.
-
 ### **`update_frequency`**
 
 | Type     | Default |
