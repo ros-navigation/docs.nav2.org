@@ -154,6 +154,7 @@ controller_server:
       stateful: True
     FollowPath:
       plugin: "nav2_rotation_shim_controller::RotationShimController"
+      primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
       angular_dist_threshold: 0.785
       forward_sampling_distance: 0.5
       angular_disengage_threshold: 0.3925
@@ -164,7 +165,5 @@ controller_server:
       rotate_to_goal_heading: false
 
       # Primary controller params can be placed here below
-      primary_controller:
-        plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-        # ...
+      ...
 ```
