@@ -26,20 +26,10 @@ See the package's `README` for more complete information.
 
 | Type     | Default      |
 |----------|--------------|
-| `string` | "diff_drive" |
+| `string` | "DiffDrive"  |
 
 Description
-:   The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace.
-
-### **`<motion_model>.plugin`**
-
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
-
-Description
-:   The plugin to use for the motion model constraints of the MPPI planner.
-    Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
+:   The desired motion model to use for trajectory planning. Options are `DiffDrive`, `Omni`, or `Ackermann`. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
 
 ### **`critics`**
 
@@ -351,16 +341,16 @@ Description
 Description
 :   Angular proximity (radians) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.
 
-## AckermannMotionModel
+## Ackermann Motion Model
 
-### **`<motion_model>.min_turning_r`**
+### **`min_turning_r`**
 
 | Type     | Default |
 |----------|---------|
 | `double` | 0.2     |
 
 Description
-:   The minimum turning radius possible for the vehicle platform (m). This is only used if `<motion_model>.plugin` is set to "mppi::AckermannMotionModel".
+:   The minimum turning radius possible for the vehicle platform (m).
 
 ## Constraint Critic
 
@@ -911,9 +901,7 @@ controller_server:
       transform_tolerance: 0.1
       temperature: 0.3
       gamma: 0.015
-      motion_model: "diff_drive"
-      diff_drive:
-        plugin: "mppi::DiffDriveMotionModel"
+      motion_model: "DiffDrive"
       visualize: false
       reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
@@ -921,6 +909,8 @@ controller_server:
       TrajectoryVisualizer:
         trajectory_step: 5
         time_step: 3
+      AckermannConstraints:
+        min_turning_r: 0.2
       critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
       ConstraintCritic:
         enabled: true
