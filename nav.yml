@@ -200,7 +200,6 @@ nav:
             - IsStuck: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsStuck.md
             - TimeExpired: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TimeExpired.md
             - IsBatteryLow: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsBatteryLow.md
-            - IsWithinPathTrackingBounds: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsWithinPathTrackingBounds.md
             - PathExpiringTimer: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/PathExpiringTimer.md
             - AreErrorCodesPresent: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/AreErrorCodesPresent.md
             - WouldAControllerRecoveryHelp: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.md

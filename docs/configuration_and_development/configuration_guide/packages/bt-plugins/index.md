@@ -72,7 +72,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [IsStuck][is-stuck]{ .md-button .md-button--primary }
 [TimeExpired][time-expired]{ .md-button .md-button--primary }
 [IsBatteryLow][is-battery-low]{ .md-button .md-button--primary }
-[IsWithinPathTrackingBounds][is-within-path-tracking-bounds]{ .md-button .md-button--primary }
 [PathExpiringTimer][path-expiring-timer]{ .md-button .md-button--primary }
 [AreErrorCodesPresent][are-error-codes-present]{ .md-button .md-button--primary }
 [WouldAControllerRecoveryHelp][would-a-controller-recovery-help]{ .md-button .md-button--primary }

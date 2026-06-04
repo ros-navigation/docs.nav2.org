@@ -328,7 +328,6 @@ For tutorials on creating your own plugins, please see
 | [Is Battery Charging Condition][]                                  | Alberto Tudela                 | Checks if the battery<br>is charging.                                                                              |
 | [Are Poses Near Condition][]                                       | Steve Macenski                 | Checks if 2 poses are<br>nearby to each other.                                                                     |
 | [Is Goal Nearby Condition][]                                       | Jakub Chudziński               | Checks if the robot is<br>near the goal based on<br>remaining path length.                                         |
-| [Is Within Path Tracking Bounds Condition][]                       | Berkan Tali                    | Checks if the robot is<br>within bounds for<br>path tracking.                                                      |
 
 </div>
 
@@ -350,7 +349,6 @@ For tutorials on creating your own plugins, please see
 [Is Battery Charging Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 [Are Poses Near Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 [Is Goal Nearby Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp
-[Is Within Path Tracking Bounds Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_within_path_tracking_bounds_condition.cpp
 
 <div class="center-table" markdown>
 
