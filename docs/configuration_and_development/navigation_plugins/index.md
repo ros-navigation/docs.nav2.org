@@ -39,8 +39,7 @@ For tutorials on creating your own plugins, please see
 | [Voxel Layer][]                        | Eitan Marder-Eppstein      | Maintains persistent<br>3D voxel layer using depth and<br>laser sensor readings and<br>raycasting to clear free space                                                      |
 | [Range Layer][]                        | David Lu                   | Uses a probabilistic model to<br>put data from sensors that<br>publish range msgs on the costmap                                                                           |
 | [Static Layer][]                       | Eitan Marder-Eppstein      | Gets static `map` and loads<br>occupancy information into<br>costmap                                                                                                       |
-| [Inflation Layer][]                    | Tony Najjar                | Inflates lethal obstacles in<br>costmap with exponential decay<br>(with the option to use OpenMP<br>for parallelization)                                                   |
-| [Legacy Inflation Layer][]             | Eitan Marder-Eppstein      | Inflates lethal obstacles in<br>costmap with exponential decay                                                                                                             |
+| [Inflation Layer][]                    | Eitan Marder-Eppstein      | Inflates lethal obstacles in<br>costmap with exponential decay                                                                                                             |
 | [Obstacle Layer][]                     | Eitan Marder-Eppstein      | Maintains persistent 2D costmap<br>from 2D laser scans with<br>raycasting to clear free space                                                                              |
 | [Spatio-Temporal Voxel Layer][]        | Steve Macenski             | Maintains temporal 3D sparse<br>volumetric voxel grid with decay<br>through sensor models                                                                                  |
 | [Non-Persistent Voxel Layer][]         | Steve Macenski             | Maintains 3D occupancy grid<br>consisting only of the most<br>sets of measurements                                                                                         |
@@ -54,7 +53,6 @@ For tutorials on creating your own plugins, please see
 [Range Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 [Static Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
 [Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
-[Legacy Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp
 [Obstacle Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 [Spatio-Temporal Voxel Layer]: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 [Non-Persistent Voxel Layer]: https://github.com/SteveMacenski/nonpersistent_voxel_layer
