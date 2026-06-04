@@ -522,10 +522,6 @@ The UI workflow is now organized into two primary navigation modes:
     - Editing: The list is fully interactive; users can modify specific pose parameters or remove individual goals from the sequence.
     - Execution: Once the list is defined, navigation can be executed via `NavigateThroughPoses` or `Waypoint Following` actions.
 
-<figure markdown="span">
-  ![](images/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }
-</figure>
-
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
 
 ## Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller
