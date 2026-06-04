@@ -54,15 +54,6 @@ Description
 Description
 :   When a server crashes or becomes non-responsive, the lifecycle manager will bring down all nodes for safety. This is the duration of which the lifecycle manager will attempt to reconnect with the failed server(s) during to recover and re-activate the system. If this passes, it will stop attempts and will require a manual re-activation once the problem is manually resolved. Units: seconds.
 
-### **`bond_heartbeat_period`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
-
-Description
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
-
 ## Example
 
 ```yaml
@@ -73,5 +64,4 @@ lifecycle_manager:
     bond_timeout: 4.0
     attempt_respawn_reconnection: true
     bond_respawn_max_duration: 10.0
-    bond_heartbeat_period: 0.25
 ```

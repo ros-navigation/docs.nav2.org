@@ -59,7 +59,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `double` | 0.25    |
+| `double` | 0.1     |
 
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
