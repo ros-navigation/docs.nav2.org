@@ -2,22 +2,27 @@
 
 /* Adapt the grid to work with buttons */
 .md-typeset .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr));
+  grid-gap: .5rem;
+  margin: 1em 0;
+  align-content: start;
+  align-items: stretch;
 
-  /* Apply to the <p> wrapper that the button creates by default */
   & > p {
-    grid-gap: .5rem;
-
-    /* Use default grid style */
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr));
-    margin: 1em 0;
+    display: contents;  /* Makes the <p> wrapper invisible to grid layout */
+    margin: 0;
   }
 
   .md-button {
+    display: flex;
+    align-items: center;
+    height: 100%;
     border-radius: .4rem;
     padding: .8rem 2rem;
     background-color: var(--button-primary-bg-color);
     border-color: var(--button-primary-bg-color);
+    box-sizing: border-box;
 
     &:hover {
       border-color: var(--color-nav2-light-blue);
