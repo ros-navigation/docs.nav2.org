@@ -34,20 +34,20 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 
 <div class="center-table" markdown>
 
-| **Virtual method**        | **Method description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | **Requires override?**   |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| configure()               | Method is called when controller server enters on_configure state. Ideally this method should perform declarations of ROS parameters and initialization of controller's member variables. This method takes 4 input params: weak pointer to parent node, controller name, tf buffer pointer and shared pointer to costmap.                                                                                                                                                                                          | Yes                      |
-| activate()                | Method is called when controller server enters on_activate state. Ideally this method should implement operations which are necessary before controller goes to an active state.                                                                                                                                                                                                                                                                                                                                    | Yes                      |
-| deactivate()              | Method is called when controller server enters on_deactivate state. Ideally this method should implement operations which are necessary before controller goes to an inactive state.                                                                                                                                                                                                                                                                                                                                | Yes                      |
-| cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method should clean up resources which are created for the controller.                                                                                                                                                                                                                                                                                                                                                               | Yes                      |
-| newPathReceived()         | Method is called when the global plan is updated. Ideally this method should only perform minimal work, such as extracting global information that may be of interest (e.g. reset internal states when new path received).                                                                                                                                                                                                                                                                                          | Yes                      |
-| computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server in-order for the robot to follow the global path. This method returns a *geometry_msgs::msg::TwistStamped* which represents the velocity command for the robot to drive.  This method passes 5 parameters: reference to the current robot pose, its current velocity, a pointer to the *nav2_core::GoalChecker*, the transformed_global_plan output by the path handler plugin, and the last pose of the global plan.             | Yes                      |
-| cancel()                  | Method is called when the controller server receives a cancel request. If this method is unimplemented, the controller will immediately stop when receiving a cancel request. If this method is implemented, the controller can perform a more graceful stop and signal the controller server when it is done.                                                                                                                                                                                                      | No                       |
-| setSpeedLimit()           | Method is called when it is required to limit the maximum linear speed of the robot. Speed limit could be expressed in absolute value (m/s) or in percentage from maximum robot speed. Note that typically, maximum rotational speed is being limited proportionally to the change of maximum linear speed, in order to keep current robot behavior untouched.                                                                                                                                                      | Yes                      |
+| **Virtual method**        | **Method description**                                                                                                                                                                                                                                                                                                                                                                                  | **Requires override?**   |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| configure()               | Method is called when controller server enters on_configure state. Ideally this method should perform declarations of ROS parameters and initialization of controller's member variables. This method takes 4 input params: weak pointer to parent node, controller name, tf buffer pointer and shared pointer to costmap.                                                                              | Yes                      |
+| activate()                | Method is called when controller server enters on_activate state. Ideally this method should implement operations which are necessary before controller goes to an active state.                                                                                                                                                                                                                        | Yes                      |
+| deactivate()              | Method is called when controller server enters on_deactivate state. Ideally this method should implement operations which are necessary before controller goes to an inactive state.                                                                                                                                                                                                                    | Yes                      |
+| cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method should clean up resources which are created for the controller.                                                                                                                                                                                                                                                   | Yes                      |
+| setPlan()                 | Method is called when the global plan is updated. Ideally this method should perform  operations that transform the global plan and store it.                                                                                                                                                                                                                                                           | Yes                      |
+| computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server in-order for the robot to follow the global path. This method returns a *geometry_msgs::msg::TwistStamped* which represents the velocity command for the robot to drive.  This method passes 3 parameters: reference to the current robot pose, its current velocity, and a pointer to the *nav2_core::GoalChecker*.  | Yes                      |
+| cancel()                  | Method is called when the controller server receives a cancel request. If this method is unimplemented, the controller will immediately stop when receiving a cancel request. If this method is implemented, the controller can perform a more graceful stop and signal the controller server when it is done.                                                                                          | No                       |
+| setSpeedLimit()           | Method is called when it is required to limit the maximum linear speed of the robot. Speed limit could be expressed in absolute value (m/s) or in percentage from maximum robot speed. Note that typically, maximum rotational speed is being limited proportionally to the change of maximum linear speed, in order to keep current robot behavior untouched.                                          | Yes                      |
 
 </div>
 
-In this tutorial, we will use the methods `PurePursuitController::configure`, `PurePursuitController::newPathReceived` and
+In this tutorial, we will use the methods `PurePursuitController::configure`, `PurePursuitController::setPlan` and
 `PurePursuitController::computeVelocityCommands`.
 
 In controllers, `configure()` method must set member variables from ROS parameters and perform any initialization required.
@@ -98,10 +98,20 @@ We will see more on this when we discuss the parameters file (or params file).
 
 The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
 
+In `setPlan()` method, we receive the updated global path for the robot to follow. 
+In our example, we transform the received global path into
+the frame of the robot and then store this transformed global path for later use.
+
+```c++
+void PurePursuitController::setPlan(const nav_msgs::msg::Path & path)
+{
+  // Transform global path into the robot's frame
+  global_plan_ = transformGlobalPlan(path);
+}
+```
+
 The computation for the desired velocity happens in the `computeVelocityCommands()` method. It is used to calculate the desired velocity command given the current velocity and pose.
 The third argument - is a pointer to the `nav2_core::GoalChecker`, that checks whether a goal has been reached. In our example, this won't be used.
-The fourth argument - is the global plan that has already been transformed into the local costmap frame and pruned to only the relevant portion within the costmap bounds. In our example, we will transform this local plan from costmap global frame to robot base frame. This is the path that pure pursuit will track.
-The fifth argument - is the last pose of the global plan. In our example, this won't be used.
 In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.
 
@@ -109,20 +119,8 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
 geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
   const geometry_msgs::msg::PoseStamped & pose,
   const geometry_msgs::msg::Twist & velocity,
-  nav2_core::GoalChecker * /*goal_checker*/,
-  const nav_msgs::msg::Path & transformed_global_plan,
-  const geometry_msgs::msg::PoseStamped & /*global_goal*/)
+  nav2_core::GoalChecker * /*goal_checker*/)
 {
-  // Transform the plan from costmap's global frame to robot base frame
-  nav_msgs::msg::Path transformed_plan;
-  if (!nav2_util::transformPathInTargetFrame(
-      transformed_global_plan, transformed_plan, *tf_,
-      costmap_ros_->getBaseFrameID(), costmap_ros_->getTransformTolerance()))
-  {
-    throw nav2_core::ControllerTFError(
-    "Unable to transform plan pose into local frame");
-  }
-
   // Find the first pose which is at a distance greater than the specified lookahead distance
   auto goal_pose = std::find_if(
     global_plan_.poses.begin(), global_plan_.poses.end(),

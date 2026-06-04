@@ -17,15 +17,6 @@ Only allows the robot to rotate to the goal orientation when it is sufficiently 
 Description
 :   Tolerance to meet goal completion criteria (m).
 
-### **`<dwb plugin>.path_length_tolerance`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   Tolerance to meet goal completion criteria (m).
-
 ### **`<dwb plugin>.trans_stopped_velocity`**
 
 | Type     | Default |

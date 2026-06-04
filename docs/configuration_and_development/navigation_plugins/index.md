@@ -210,18 +210,6 @@ For tutorials on creating your own plugins, please see
 [SimpleProgressChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
 [PoseProgressChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
 
-## Path Handlers
-
-<div class="center-table" markdown>
-
-| Plugin Name             | Creator                        | Description                                                                                                                                                                                       |
-|-------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [FeasiblePathHandler][] | Maurice Alexander<br>Purnawan  | A plugin that transforms global<br>plan to the local costmap frame,<br>prunes it to the relevant portion<br>within the costmap bounds, and<br>handles in-place rotation and<br>cusp pruning.      |
-
-</div>
-
-[FeasiblePathHandler]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/feasible_path_handler.cpp
-
 ## Behavior Tree Nodes
 
 <div class="center-table" markdown>
@@ -248,7 +236,6 @@ For tutorials on creating your own plugins, please see
 | [Goal Checker Selector][]                                              | Pablo Iñigo Blasco             | Selects the goal checker based on a<br>topic input, otherwises uses a default<br>goal checker id                           |
 | [Smoother Selector][]                                                  | Owen Hooper                    | Selects the smoother based on a<br>topic input, otherwises uses a default<br>smoother id                                   |
 | [Progress Checker Selector][]                                          | Steve Macenski                 | Selects the progress checker based on a<br>topic input, otherwises uses a default<br>progress checker id                   |
-| [Path Handler Selector][]                                              | Maurice Alexander<br>Purnawan  | Selects the path handler based on a<br>topic input, otherwises uses a default<br>path handler id                           |
 | [Navigate Through Poses][]                                             | Steve Macenski                 | BT Node for other BehaviorTree.CPP BTs<br>to call Nav2's NavThroughPoses action                                            |
 | [Remove Passed Goals][]                                                | Steve Macenski                 | Removes goal poses passed or within a<br>tolerance for culling old viapoints from<br>path re-planning                      |
 | [Compute Path Through Poses][]                                         | Steve Macenski                 | Computes a path through a set of poses<br>rather than a single end goal pose<br>using the planner plugin specified         |
@@ -296,7 +283,6 @@ For tutorials on creating your own plugins, please see
 [Goal Checker Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
 [Smoother Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
 [Progress Checker Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
-[Path Handler Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/path_handler_selector_node.cpp
 [Navigate Through Poses]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 [Remove Passed Goals]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 [Compute Path Through Poses]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp

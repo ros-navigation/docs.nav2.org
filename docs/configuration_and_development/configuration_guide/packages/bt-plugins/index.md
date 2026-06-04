@@ -32,7 +32,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [SmootherSelector][smoother-selector]{ .md-button .md-button--primary }
 [GoalCheckerSelector][goal-checker-selector]{ .md-button .md-button--primary }
 [ProgressCheckerSelector][progress-checker-selector]{ .md-button .md-button--primary }
-[PathHandlerSelector][path-handler-selector]{ .md-button .md-button--primary }
 [NavigateThroughPoses][navigate-through-poses]{ .md-button .md-button--primary }
 [ComputePathThroughPoses][compute-path-through-poses]{ .md-button .md-button--primary }
 <!-- [ComputeCoveragePath][compute-coverage-path]{ .md-button .md-button--primary } -->

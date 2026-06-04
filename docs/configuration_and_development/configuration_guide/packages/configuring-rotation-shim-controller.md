@@ -47,7 +47,7 @@ Description
 | `double` | 0.5     |
 
 Description
-:   Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler's prune distance.
+:   Forward distance, in meters, along path to select a sampling point to use to approximate path heading.
 
 ### **`rotate_to_heading_angular_vel`**
 

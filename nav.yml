@@ -166,7 +166,6 @@ nav:
             - SmootherSelector: configuration_and_development/configuration_guide/packages/bt-plugins/actions/SmootherSelector.md
             - GoalCheckerSelector: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GoalCheckerSelector.md
             - ProgressCheckerSelector: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ProgressCheckerSelector.md
-            - PathHandlerSelector: configuration_and_development/configuration_guide/packages/bt-plugins/actions/PathHandlerSelector.md
             - NavigateThroughPoses: configuration_and_development/configuration_guide/packages/bt-plugins/actions/NavigateThroughPoses.md
             - ComputePathThroughPoses: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ComputePathThroughPoses.md
             # - ComputeCoveragePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ComputeCoveragePath.md
@@ -236,7 +235,6 @@ nav:
             - SimpleGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/simple_goal_checker.md
             - StoppedGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/stopped_goal_checker.md
             - PositionGoalChecker: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/position_goal_checker.md
-            - FeasiblePathHandler: configuration_and_development/configuration_guide/packages/controller_server/nav2_controller-plugins/feasible_path_handler.md
         - Costmap 2D:
           - configuration_and_development/configuration_guide/packages/costmap_2d/index.md
           - Plugin Parameters:

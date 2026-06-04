@@ -13,6 +13,24 @@
 Description
 :   Whether to publish the local plan evaluation.
 
+### **`<dwb plugin>.publish_global_plan`**
+
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
+
+Description
+:   Whether to publish the global plan.
+
+### **`<dwb plugin>.publish_transformed_plan`**
+
+| Type   | Default |
+|--------|---------|
+| `bool` | true    |
+
+Description
+:   Whether to publish the global plan in the odometry frame.
+
 ### **`<dwb plugin>.publish_local_plan`**
 
 | Type   | Default |
