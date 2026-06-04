@@ -283,16 +283,6 @@ Note
 Description
 :   The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
 
-### **`allow_obstacle_checking_beyond_goal`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
-
-Description
-:   Whether to continue obstacle checking past the goal position up to `min_distance_to_obstacle`. When enabled, obstacles located beyond the goal along the projected trajectory may prevent motion. This can be useful when the goal pose is close to obstacles or when a safety margin must be enforced beyond the final path pose. For example, in constrained environments, users may prefer to ensure that obstacle checking continues slightly past the goal to avoid approaching obstacles that lie immediately beyond it. Requires `use_velocity_scaled_lookahead_dist` to be enabled and `min_distance_to_obstacle` > 0.0.
-
-
 ## Example
 
 ```yaml
@@ -343,5 +333,4 @@ controller_server:
       max_angular_accel: 3.2
       max_robot_pose_search_dist: 10.0
       min_distance_to_obstacle: 0.0
-      allow_obstacle_checking_beyond_goal: false
 ```
