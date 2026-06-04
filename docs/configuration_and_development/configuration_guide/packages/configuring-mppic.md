@@ -219,16 +219,7 @@ Description
 | `bool` | false   |
 
 Description
-:   Whether to publish debugging trajectories for visualization and critic statistics. When enabled, candidate trajectories are colored by cost (green to red gradient, magenta for collisions) and a `nav2_msgs::msg::CriticsStats` message is published on the `~/critics_stats` topic. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
-
-### **`critic_index_to_visualize`**
-
-| Type  | Default |
-|-------|---------|
-| `int` | 0       |
-
-Description
-:   Selects which critic to visualize the color-scheme of when `visualize` is true publishing Marker messages for visualization in rviz. `0` shows the total cost across all critics, `1..N` selects an individual critic by index (in the order listed in the `critics` parameter).
+:   Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
 
 ### **`publish_optimal_trajectory`**
 
@@ -924,7 +915,6 @@ controller_server:
       diff_drive:
         plugin: "mppi::DiffDriveMotionModel"
       visualize: false
-      critic_index_to_visualize: 0
       reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
       sgf_order: 2
