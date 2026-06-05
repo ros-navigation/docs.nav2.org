@@ -90,15 +90,6 @@ Description
 Description
 :   Radius to fit to corners formed by edges if corner smoothing is enabled
 
-### **`smoothing_angle_threshold`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.9     |
-
-Description
-:   Angle threshold (rad). If angle > threshold, no smoothing is applied. This prevents unnecessary smoothing of largely straight segments caused by small differences or annotation error. 2.9 rad is 166 deg, meaning it will not smooth for segments that are within 14 deg of straight anti-parallel.
-
 ### **`costmap_topic`**
 
 | Type     | Default                      |
