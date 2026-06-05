@@ -203,15 +203,6 @@ Description
 
 ## NavigateToPose Parameters
 
-### **`<navigate_to_pose_name>.tracking_feedback_blackboard_id`**
-
-| Type     | Default             |
-|----------|---------------------|
-| `string` | "tracking_feedback" |
-
-Description
-:   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateToPose` feedback. Should match port names of BT XML file.
-
 ### **`<navigate_to_pose_name>.enable_groot_monitoring`**
 
 | Type   | Default |
@@ -230,25 +221,7 @@ Description
 Description
 :   The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
 
-### **`<navigate_to_pose_name>.search_window`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
-
-Description
-:   How far (in meters) along the path the searching algorithm will look for the closest point.
-
 ## NavigateThroughPoses Parameters
-
-### **`<navigate_through_poses>.tracking_feedback_blackboard_id`**
-
-| Type     | Default             |
-|----------|---------------------|
-| `string` | "tracking_feedback" |
-
-Description
-:   Blackboard variable to get the tracking feedback from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
 
 ### **`<navigate_through_poses>.enable_groot_monitoring`**
 
@@ -267,15 +240,6 @@ Description
 
 Description
 :   The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
-
-### **`<navigate_through_poses>.search_window`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
-
-Description
-:   How far (in meters) along the path the searching algorithm will look for the closest point.
 
 ## Example
 
@@ -299,12 +263,10 @@ bt_navigator:
       plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
       enable_groot_monitoring: false
       groot_server_port: 1667
-      search_window: 2.0
     navigate_through_poses:
       plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
       enable_groot_monitoring: false
       groot_server_port: 1669
-      search_window: 2.0
     plugin_lib_names:
       - nav2_compute_path_to_pose_action_bt_node
       - nav2_follow_path_action_bt_node
