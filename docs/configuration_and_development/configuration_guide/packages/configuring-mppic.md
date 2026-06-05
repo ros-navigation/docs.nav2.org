@@ -247,24 +247,6 @@ Description
 Description
 :   Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
 
-### **`sgf_order`**
-
-| Type   | Default |
-|--------|---------|
-| `int`  | 2       |
-
-Description
-:   The order of the Savitzky-Golay filter (SGF) used for smoothing the optimal control sequence. Must be either `1` (1st order) or `2` (2nd order). Recommend using second order, as first order can oversmooth making it difficult to fit through tight situations, but comes with the benefit of being smoother.
-
-### **`publish_critics_stats`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
-
-Description
-:   Whether to publish statistics about each critic's performance. When enabled, publishes a `nav2_msgs::msg::CriticsStats` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
-
 ## Trajectory Visualization
 
 ### **`trajectory_step`**
@@ -905,7 +887,6 @@ controller_server:
       visualize: false
       reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
-      sgf_order: 2
       TrajectoryVisualizer:
         trajectory_step: 5
         time_step: 3
