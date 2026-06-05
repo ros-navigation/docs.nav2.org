@@ -52,7 +52,8 @@ In our example these methods have the following functionality:
 1. `GradientLayer::onInitialize()` contains declaration of a ROS parameter with its default value:
 
     ```c++
-    node->declare_or_get_parameter(name_ + "." + "enabled", true);
+    declareParameter("enabled", rclcpp::ParameterValue(true));
+    node_->get_parameter(name_ + "." + "enabled", enabled_);
     ```
 
     and sets `need_recalculation_` bounds recalculation indicator:
