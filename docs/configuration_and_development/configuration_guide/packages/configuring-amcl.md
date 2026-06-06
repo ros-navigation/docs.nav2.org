@@ -222,18 +222,6 @@ Description
 Description
 :   Particle filter population density. 2.33 is the 99% percentile.
 
-### **`random_seed`**
-
-| Type  | Default |
-|-------|---------|
-| `int` | -1      |
-
-Description
-:   Seed for the particle filter RNG.
-
-    - `random_seed >= 0`: seed the RNG with the provided value (repeatable runs).
-    - `random_seed < 0` (default): seed the RNG from time (preserves historical behavior).
-
 ### **`recovery_alpha_fast`**
 
 | Type     | Default |
@@ -435,7 +423,6 @@ amcl:
     odom_frame_id: "odom"
     pf_err: 0.05
     pf_z: 0.99
-    random_seed: -1
     recovery_alpha_fast: 0.0
     recovery_alpha_slow: 0.0
     resample_interval: 1
