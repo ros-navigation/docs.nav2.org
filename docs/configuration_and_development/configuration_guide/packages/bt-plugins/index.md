@@ -68,7 +68,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [GoalUpdated][goal-updated]{ .md-button .md-button--primary }
 [GlobalUpdatedGoal][global-updated-goal]{ .md-button .md-button--primary }
 [InitialPoseReceived][initial-pose-received]{ .md-button .md-button--primary }
-[IsGoalNearby][is-goal-nearby]{ .md-button .md-button--primary }
 [IsStuck][is-stuck]{ .md-button .md-button--primary }
 [TimeExpired][time-expired]{ .md-button .md-button--primary }
 [IsBatteryLow][is-battery-low]{ .md-button .md-button--primary }

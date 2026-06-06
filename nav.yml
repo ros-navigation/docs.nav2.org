@@ -196,7 +196,6 @@ nav:
             - GoalUpdated: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/GoalUpdated.md
             - GlobalUpdatedGoal: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/GlobalUpdatedGoal.md
             - InitialPoseReceived: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/InitialPoseReceived.md
-            - IsGoalNearby: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsGoalNearby.md
             - IsStuck: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsStuck.md
             - TimeExpired: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TimeExpired.md
             - IsBatteryLow: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsBatteryLow.md

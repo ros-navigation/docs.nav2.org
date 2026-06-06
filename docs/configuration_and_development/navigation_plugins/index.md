@@ -323,7 +323,6 @@ For tutorials on creating your own plugins, please see
 | [Would A Route Recovery Help][]                                    | Steve Macenski                 | Checks if a Route<br>recovery could help<br>clear the route<br>server error code.                                  |
 | [Is Battery Charging Condition][]                                  | Alberto Tudela                 | Checks if the battery<br>is charging.                                                                              |
 | [Are Poses Near Condition][]                                       | Steve Macenski                 | Checks if 2 poses are<br>nearby to each other.                                                                     |
-| [Is Goal Nearby Condition][]                                       | Jakub Chudziński               | Checks if the robot is<br>near the goal based on<br>remaining path length.                                         |
 
 </div>
 
@@ -344,7 +343,6 @@ For tutorials on creating your own plugins, please see
 [Would A Route Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_route_recovery_help_condition.cpp
 [Is Battery Charging Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 [Are Poses Near Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
-[Is Goal Nearby Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_goal_nearby_condition.cpp
 
 <div class="center-table" markdown>
 
