@@ -72,15 +72,6 @@ Description
 Description
 :   Duration (in milliseconds) for each iteration of BT execution.
 
-### **`filter_duration`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3     |
-
-Description
-:   Duration (secs) over which robot velocity should be smoothed.
-
 ### **`default_server_timeout`**
 
 | Type  | Default |
@@ -249,7 +240,6 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_link
     transform_tolerance: 0.1
-    filter_duration: 0.3
     default_server_timeout: 20
     default_cancel_timeout: 50
     default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
