@@ -93,15 +93,6 @@ Description
 Description
 :   Fixed frame to use, recommended to be a smooth odometry frame **not** map.
 
-### **`odom_duration`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3     |
-
-Description
-:   Time (s) to buffer odometry commands to estimate the robot speed.
-
 ### **`dock_backwards`**
 
 | Type   | Default |
@@ -466,7 +457,6 @@ docking_server:
     base_frame: "base_link"
     fixed_frame: "odom"
     dock_backwards: false
-    odom_duration: 0.3
     dock_prestaging_tolerance: 0.5
 
     # Types of docks
