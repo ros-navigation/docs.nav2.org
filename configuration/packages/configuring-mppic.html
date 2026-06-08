@@ -1251,6 +1251,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
 </ul>
 </li>
 </ul>
@@ -1492,8 +1493,71 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vx_std</dt>
+<dt class="field-even">model_delay_vx</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Actuator delay in seconds. The rollout shifts the control sequence by <code class="docutils literal notranslate"><span class="pre">round(model_delay_vx</span> <span class="pre">/</span> <span class="pre">model_dt)</span></code> steps and replays recently published commands during the delay window.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">model_delay_vy</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Same as <code class="docutils literal notranslate"><span class="pre">model_delay_vx</span></code> for the vy axis (holonomic only)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>:model_delay_wx</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Same as <code class="docutils literal notranslate"><span class="pre">model_delay_vx</span></code> for the wz axis</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list">
+<dt class="field-odd">vx_std</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1512,8 +1576,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">vy_std</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">vy_std</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1532,8 +1596,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">wz_std</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">wz_std</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1552,8 +1616,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">vx_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">vx_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1572,8 +1636,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vy_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">vy_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1592,8 +1656,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">vx_min</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">vx_min</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1612,8 +1676,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">wz_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">wz_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1632,8 +1696,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">ax_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">ax_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1652,8 +1716,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">ay_min</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">ay_min</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1672,8 +1736,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">ay_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">ay_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1692,8 +1756,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">ax_min</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">ax_min</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1712,8 +1776,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">az_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">az_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1732,8 +1796,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">temperature</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">temperature</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1752,8 +1816,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">gamma</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">gamma</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1772,8 +1836,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">visualize</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">visualize</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1792,8 +1856,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">critic_index_to_visualize</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">critic_index_to_visualize</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1812,8 +1876,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">publish_optimal_trajectory</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">publish_optimal_trajectory</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1832,8 +1896,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">retry_attempt_limit</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">retry_attempt_limit</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1852,8 +1916,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">reset_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">reset_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1872,8 +1936,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">regenerate_noises</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">regenerate_noises</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1892,8 +1956,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">sgf_order</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">sgf_order</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1912,8 +1976,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">publish_critics_stats</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">publish_critics_stats</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1932,8 +1996,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">open_loop</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">open_loop</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1952,8 +2016,8 @@ Supported motion model plugins include “mppi::DiffDriveMotionModel”, “mppi
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">TrajectoryValidator.plugin</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">TrajectoryValidator.plugin</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />

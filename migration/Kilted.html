@@ -1252,6 +1252,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#adaptive-tolerance-goal-checker">Adaptive tolerance goal checker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
 </ul>
 </li>
 </ul>
@@ -2239,6 +2240,19 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 <li><p>The requested plugin must be <code class="docutils literal notranslate"><span class="pre">clearable</span></code>. For example, a plugin of type <code class="docutils literal notranslate"><span class="pre">ObstacleLayer</span></code> is clearable while that of type <code class="docutils literal notranslate"><span class="pre">StaticLayer</span></code> is not.</p></li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="mppi-controller-per-axis-delay-compensation-with-command-history-replay">
+<h2>MPPI Controller: Per-Axis Delay Compensation with command history replay<a class="headerlink" href="#mppi-controller-per-axis-delay-compensation-with-command-history-replay" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6154">PR #6154</a> adds a feature to compensate per-axis actuator and transport delay. Without it the planner assumes commands take effect instantly. On platforms with hydraulic steering or any other source of lag, this mismatch causes oscillations while tracking the path. The feature works best in combination with setting <code class="docutils literal notranslate"><span class="pre">open_loop:</span> <span class="pre">true</span></code>.</p>
+<p>Three new MPPIController parameters, default <code class="docutils literal notranslate"><span class="pre">0.0</span></code> (feature disabled):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model_delay_vx</span></code> — linear-x command delay</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_delay_vy</span></code> — linear-y command delay (holonomic platforms only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_delay_wz</span></code> — angular-z command delay</p></li>
+</ul>
+<p>When non-zero, the optimizer fills the first <code class="docutils literal notranslate"><span class="pre">round(delay</span> <span class="pre">/</span> <span class="pre">model_dt)</span></code> rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.</p>
+<a class="reference internal image-reference" href="../_images/mppi_delay_compensation_serpentines.png"><img alt="Open-loop trajectory with and without per-axis delay compensation." class="align-center" src="../_images/mppi_delay_compensation_serpentines.png" style="width: 800px;" /></a>
+<p>The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation <code class="docutils literal notranslate"><span class="pre">model_delay_wz=0.6</span></code> (right), tracking is visibly better.</p>
 </div>
 </div>
 
