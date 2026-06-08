@@ -205,15 +205,6 @@ Note
 Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
-### **`search_window`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
-
-Description
-:   How far (in meters) along the path the searching algorithm will look for the closest point.
-
 ## Provided Plugins
 
 The plugins listed below are inside the `nav2_controller` namespace.
