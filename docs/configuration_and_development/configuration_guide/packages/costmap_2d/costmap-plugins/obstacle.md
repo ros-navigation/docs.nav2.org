@@ -66,15 +66,6 @@ Description
     prevent the robot to go through places that are not present in the static map.
     <br>
 
-### **`<obstacle layer>.tf_filter_tolerance`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.05    |
-
-Description
-:   Tolerance for the `tf2_ros::MessageFilter`.
-
 ### **`<obstacle layer>.observation_sources`**
 
 | Type             | Default |
