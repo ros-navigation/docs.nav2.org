@@ -283,15 +283,6 @@ Note
 Description
 :   Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
 
-### **`min_distance_to_obstacle`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | -1.0    |
-
-Description
-:   The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
-
 ## Example
 
 ```yaml
@@ -341,6 +332,5 @@ controller_server:
       rotate_to_heading_min_angle: 0.785
       max_angular_accel: 3.2
       max_robot_pose_search_dist: 10.0
-      min_distance_to_obstacle: 0.0
       stateful: true
 ```
