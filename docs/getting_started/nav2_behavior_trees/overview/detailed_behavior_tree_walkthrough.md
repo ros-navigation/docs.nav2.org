@@ -28,28 +28,15 @@ This behavior tree replans the global path periodically at 1 Hz and it also has 
 BTs are primarily defined in XML. The tree shown above is represented in XML as follows.
 
 ```xml
-<root BTCPP_format="4" main_tree_to_execute="NavigateToPoseWReplanningAndRecovery">
-    <BehaviorTree ID="NavigateToPoseWReplanningAndRecovery">
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
         <RecoveryNode number_of_retries="6" name="NavigateRecovery">
             <PipelineSequence name="NavigateWithReplanning">
-                <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
-                <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
-                <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="PathHandler" topic_name="path_handler_selector"/>
                 <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
                 <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
                 <RateController hz="1.0">
                     <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-                        <Fallback name="FallbackComputePathToPose">
-                            <ReactiveSequence name="CheckIfNewPathNeeded">
-                                <Inverter>
-                                    <GlobalUpdatedGoal/>
-                                </Inverter>
-                                <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
-                                <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
-                                <ValidatePath path="{remaining_path}"/>
-                            </ReactiveSequence>
-                            <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
-                        </Fallback>
+                        <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
                         <Sequence>
                             <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
                             <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
@@ -57,7 +44,7 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                     </RecoveryNode>
                 </RateController>
                 <RecoveryNode number_of_retries="1" name="FollowPath">
-                    <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" tracking_feedback="{tracking_feedback}"/>
+                    <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}"/>
                     <Sequence>
                         <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
                         <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
@@ -73,12 +60,12 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
                     <GoalUpdated/>
                     <RoundRobin name="RecoveryActions">
                         <Sequence name="ClearingActions">
-                        <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-                        <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                            <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                            <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
                         </Sequence>
                         <Spin spin_dist="1.57" error_code_id="{spin_error_code}"/>
-                        <Wait wait_duration="5.0" error_code_id="{wait_error_code}">
-                        <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
+                        <Wait wait_duration="5.0"/>
+                        <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_code_id}"/>
                     </RoundRobin>
                 </ReactiveFallback>
             </Sequence>
@@ -97,7 +84,7 @@ This can be represented in the following way:
 
 The `Navigation` subtree mainly involves actual navigation behavior:
 
-- selecting planners / controllers / goal checkers / path handlers / progress checkers plugins
+- selecting planners and controllers plugins
 - calculating a path
 - following a path
 - contextual recovery behaviors for each of the above primary navigation behaviors
@@ -128,36 +115,23 @@ The XML of this subtree is as follows:
 
 ```xml
 <PipelineSequence name="NavigateWithReplanning">
-    <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
-    <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
-    <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="PathHandler" topic_name="path_handler_selector"/>
     <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
     <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
     <RateController hz="1.0">
-      <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-        <Fallback name="FallbackComputePathToPose">
-          <ReactiveSequence name="CheckIfNewPathNeeded">
-            <Inverter>
-              <GlobalUpdatedGoal/>
-            </Inverter>
-            <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
-            <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
-            <ValidatePath path="{remaining_path}"/>
-          </ReactiveSequence>
-          <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
-        </Fallback>
-        <Sequence>
-          <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
-          <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-        </Sequence>
-      </RecoveryNode>
+        <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+            <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
+            <Sequence>
+                <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+                <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+            </Sequence>
+        </RecoveryNode>
     </RateController>
     <RecoveryNode number_of_retries="1" name="FollowPath">
-      <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" tracking_feedback="{tracking_feedback}"/>
-      <Sequence>
-        <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-        <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-      </Sequence>
+        <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}"/>
+        <Sequence>
+            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+            <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+        </Sequence>
     </RecoveryNode>
 </PipelineSequence>
 ```
@@ -194,11 +168,7 @@ The only differences in the BT subtree of `ComputePathToPose` and `FollowPath` a
 - The action node in the subtree:
     - The `ComputePathToPose` subtree centers around the `ComputePathToPose` action.
     - The `FollowPath` subtree centers around the `FollowPath` action.
-- The use of conditional flow control (`Fallback`):
-    - The `ComputePathToPose` subtree incorporates logic to handle the robot's behavior as it nears the goal. When using feasible planners, re-planning within a small radius (e.g., < 1.0m) can be detrimental due to state estimation drift or path-tracking errors, often resulting in unnecessary "looping" behaviors.
-    To prevent this, the subtree uses a `ReactiveSequence` with the `IsGoalNearby` node. If the robot is within a specified proximity threshold and the current path remains valid (i.e., no new obstacles), the subtree will skip the re-planning request. This allows the robot to smoothly transition into its final approach using its current path without unnecessary re-planning.
-    - The `FollowPath` subtree, by contrast, does not typically use this conditional gating. Once a path is available, the controller is invoked directly to produce velocity commands.
-- The `RateController` that decorates the `ComputePathToPose` subtree
+- The `RateController` that decorates the `ComputePathToPose` subtree.
     : The `RateController` decorates the `ComputePathToPose` subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz.
     This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz). 
     Consider changing this frequency to something higher or lower depending on the application and the computational cost of calculating the path. There are other decorators that can be used instead of the `RateController`. Consider using the `SpeedController` or `DistanceController` decorators if appropriate.
@@ -207,7 +177,7 @@ The only differences in the BT subtree of `ComputePathToPose` and `FollowPath` a
     - The `ComputePathToPose` subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner
     - The `FollowPath` subtree clears the local costmap. The local costmap is the relevant costmap in the context of the controller
 
-This subtree also utilizes the `PlannerSelector`, `ControllerSelector`, `GoalCheckerSelector`, `ProgressCheckerSelector`, and `PathHandlerSelector` nodes. These nodes offer flexibility for applications that need to adjust navigation behavior on the fly.
+This subtree also utilizes the `PlannerSelector` and `ControllerSelector` nodes. These nodes offer flexibility for applications that need to adjust navigation behavior on the fly.
 
 ## Recovery Subtree
 
@@ -230,12 +200,12 @@ And the XML snippet:
         <GoalUpdated/>
         <RoundRobin name="RecoveryActions">
             <Sequence name="ClearingActions">
-            <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-            <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
             <Spin spin_dist="1.57" error_code_id="{spin_error_code}"/>
-            <Wait wait_duration="5.0" error_code_id="{wait_error_code}"/>
-            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
+            <Wait wait_duration="5.0"/>
+            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_code_id}"/>
         </RoundRobin>
     </ReactiveFallback>
 </Sequence>

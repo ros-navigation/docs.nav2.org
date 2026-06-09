@@ -26,8 +26,8 @@ If it continues to fail, the next recovery in the recovery subtree is ticked.
 While this behavior tree does not make use of it, the `PlannerSelector`, `ControllerSelector`, and `GoalCheckerSelector` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (`GridBased` and `FollowPath`), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
 
 ```xml
-<root BTCPP_format="4" main_tree_to_execute="NavToPoseWithConsistentReplanningAndIfPathBecomesInvalid">
-  <BehaviorTree ID="NavToPoseWithConsistentReplanningAndIfPathBecomesInvalid">
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
     <RecoveryNode number_of_retries="6" name="NavigateRecovery">
       <PipelineSequence name="NavigateWithReplanning">
         <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
@@ -42,9 +42,7 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
                 <Inverter>
                   <GlobalUpdatedGoal/>
                 </Inverter>
-                <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
-                <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
-                <ValidatePath path="{remaining_path}"/>
+                <IsPathValid path="{path}"/>
               </ReactiveSequence>
               <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
             </Fallback>
@@ -52,7 +50,7 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
           </RecoveryNode>
         </RateController>
         <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" tracking_feedback="{tracking_feedback}"/>
+          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}"/>
           <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
         </RecoveryNode>
       </PipelineSequence>
@@ -63,9 +61,9 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
           </Sequence>
-          <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}"/>
-          <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}"/>
-          <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}"/>
+          <Spin spin_dist="1.57"/>
+          <Wait wait_duration="5.0"/>
+          <BackUp backup_dist="0.30" backup_speed="0.15"/>
         </RoundRobin>
       </ReactiveFallback>
     </RecoveryNode>
