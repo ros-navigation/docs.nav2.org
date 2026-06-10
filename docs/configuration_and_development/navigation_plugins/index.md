@@ -249,7 +249,6 @@ For tutorials on creating your own plugins, please see
 | [Undock Robot Action][]                                                | Steve Macenski                 | Calls undock robot action                                                                                                  |
 | [Concatenate Paths Action][]                                           | Steve Macenski                 | Concatenates 2 paths together                                                                                              |
 | [Get Current Pose Action][]                                            | Steve Macenski                 | Gets current pose to the blackboard                                                                                        |
-| [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
 
 </div>
 
@@ -292,7 +291,6 @@ For tutorials on creating your own plugins, please see
 [Undock Robot Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
 [Concatenate Paths Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
 [Get Current Pose Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
-[Validate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
 
 <div class="center-table" markdown>
 
@@ -307,6 +305,7 @@ For tutorials on creating your own plugins, please see
 | [Distance Traveled Condition][]                                    | Sarthak Mittal                 | Checks is robot has<br>traveled a given<br>distance.                                                               |
 | [Time Expired Condition][]                                         | Sarthak Mittal                 | Checks if a given<br>time period has<br>passed.                                                                    |
 | [Is Battery Low Condition][]                                       | Sarthak Mittal                 | Checks if battery<br>percentage is below<br>a specified value.                                                     |
+| [Is Path Valid Condition][]                                        | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                       |
 | [Path Expiring Timer][]                                            | Joshua Wallace                 | Checks if the timer has<br>expired. The timer is<br>reset if the path gets<br>updated.                             |
 | [Are Error Codes Present][]                                        | Joshua Wallace                 | Checks if the specified<br>error codes are<br>present.                                                             |
 | [Would A Controller Recovery Help][]                               | Joshua Wallace                 | Checks if a controller<br>recovery could help<br>clear the controller<br>server error code.                        |
@@ -326,6 +325,7 @@ For tutorials on creating your own plugins, please see
 [Distance Traveled Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 [Time Expired Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 [Is Battery Low Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
+[Is Path Valid Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 [Path Expiring Timer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 [Are Error Codes Present]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
 [Would A Controller Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp

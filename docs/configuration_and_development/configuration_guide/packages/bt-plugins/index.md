@@ -50,7 +50,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [UndockRobot][undock-robot]{ .md-button .md-button--primary }
 [ConcatenatePaths][concatenate-paths]{ .md-button .md-button--primary }
 [GetCurrentPose][get-current-pose]{ .md-button .md-button--primary }
-[ValidatePath][validate-path]{ .md-button .md-button--primary }
 
 </div>
 
@@ -67,6 +66,7 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [IsStuck][is-stuck]{ .md-button .md-button--primary }
 [TimeExpired][time-expired]{ .md-button .md-button--primary }
 [IsBatteryLow][is-battery-low]{ .md-button .md-button--primary }
+[IsPathValid][is-path-valid]{ .md-button .md-button--primary }
 [PathExpiringTimer][path-expiring-timer]{ .md-button .md-button--primary }
 [AreErrorCodesPresent][are-error-codes-present]{ .md-button .md-button--primary }
 [WouldAControllerRecoveryHelp][would-a-controller-recovery-help]{ .md-button .md-button--primary }

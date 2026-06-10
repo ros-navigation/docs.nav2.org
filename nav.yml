@@ -184,7 +184,6 @@ nav:
             - UndockRobot: configuration_and_development/configuration_guide/packages/bt-plugins/actions/UndockRobot.md
             - ConcatenatePaths: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ConcatenatePaths.md
             - GetCurrentPose: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GetCurrentPose.md
-            - ValidatePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ValidatePath.md
           - Condition Plugins:
             - GoalReached: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/GoalReached.md
             - TransformAvailable: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TransformAvailable.md
@@ -195,6 +194,7 @@ nav:
             - IsStuck: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsStuck.md
             - TimeExpired: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TimeExpired.md
             - IsBatteryLow: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsBatteryLow.md
+            - IsPathValid: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsPathValid.md
             - PathExpiringTimer: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/PathExpiringTimer.md
             - AreErrorCodesPresent: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/AreErrorCodesPresent.md
             - WouldAControllerRecoveryHelp: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.md
