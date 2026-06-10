@@ -1027,3 +1027,22 @@ When non-zero, the optimizer fills the first ``round(delay / model_dt)`` rollout
   :align: center
 
 The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation ``model_delay_wz=0.6`` (right), tracking is visibly better.
+
+Asymmetric Inflation Field
+--------------------------
+`PR #6118 <https://github.com/ros-navigation/navigation2/pull/6118>`_ adds a new asymmetric inflation field.
+
+The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.
+
+.. figure:: images/asymmetric_layer_inactive.png
+    :align: center
+    :alt: Costmap without asymmetric inflation layer
+
+    Costmap without the asymmetric inflation layer.
+
+
+.. figure:: images/asymmetric_layer_active.png
+    :align: center
+    :alt: Costmap with asymmetric inflation layer
+
+    Costmap with the asymmetric inflation layer.
