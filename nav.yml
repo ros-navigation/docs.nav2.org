@@ -184,9 +184,6 @@ nav:
             - UndockRobot: configuration_and_development/configuration_guide/packages/bt-plugins/actions/UndockRobot.md
             - ConcatenatePaths: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ConcatenatePaths.md
             - GetCurrentPose: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GetCurrentPose.md
-            - AppendGoalPoseToGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/AppendGoalPoseToGoals.md
-            - ExtractRouteNodesAsGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.md
-            - GetNextFewGoals: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GetNextFewGoals.md
             - ValidatePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ValidatePath.md
             - CheckPoseOccupancy: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CheckPoseOccupancy.md
           - Condition Plugins:
@@ -204,7 +201,6 @@ nav:
             - WouldAControllerRecoveryHelp: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.md
             - WouldAPlannerRecoveryHelp: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/WouldAPlannerRecoveryHelp.md
             - WouldASmootherRecoveryHelp: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/WouldASmootherRecoveryHelp.md
-            - WouldARouteRecoveryHelp: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/WouldARouteRecoveryHelp.md
             - IsBatteryCharging: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/IsBatteryCharging.md
             - ArePosesNear: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/ArePosesNear.md
           - Control Plugins:

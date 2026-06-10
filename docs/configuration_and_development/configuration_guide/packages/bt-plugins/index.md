@@ -50,9 +50,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [UndockRobot][undock-robot]{ .md-button .md-button--primary }
 [ConcatenatePaths][concatenate-paths]{ .md-button .md-button--primary }
 [GetCurrentPose][get-current-pose]{ .md-button .md-button--primary }
-[AppendGoalPoseToGoals][append-goal-pose-to-goals]{ .md-button .md-button--primary }
-[ExtractRouteNodesAsGoals][extract-route-nodes-as-goals]{ .md-button .md-button--primary }
-[GetNextFewGoals][get-next-few-goals]{ .md-button .md-button--primary }
 [ValidatePath][validate-path]{ .md-button .md-button--primary }
 [CheckPoseOccupancy][check-pose-occupancy]{ .md-button .md-button--primary }
 
@@ -76,7 +73,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [WouldAControllerRecoveryHelp][would-a-controller-recovery-help]{ .md-button .md-button--primary }
 [WouldAPlannerRecoveryHelp][would-a-planner-recovery-help]{ .md-button .md-button--primary }
 [WouldASmootherRecoveryHelp][would-a-smoother-recovery-help]{ .md-button .md-button--primary }
-[WouldARouteRecoveryHelp][would-a-route-recovery-help]{ .md-button .md-button--primary }
 [IsBatteryCharging][is-battery-charging]{ .md-button .md-button--primary }
 [ArePosesNear][are-poses-near]{ .md-button .md-button--primary }
 

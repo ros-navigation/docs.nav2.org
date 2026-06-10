@@ -249,9 +249,6 @@ For tutorials on creating your own plugins, please see
 | [Undock Robot Action][]                                                | Steve Macenski                 | Calls undock robot action                                                                                                  |
 | [Concatenate Paths Action][]                                           | Steve Macenski                 | Concatenates 2 paths together                                                                                              |
 | [Get Current Pose Action][]                                            | Steve Macenski                 | Gets current pose to the blackboard                                                                                        |
-| [Append Goal Pose To Goals Action][]                                   | Steve Macenski                 | Appends a goal pose to a goals vector                                                                                      |
-| [Extract Route Nodes To Goals Action][]                                | Steve Macenski                 | Converts Route Nodes to Goals                                                                                              |
-| [Get Next Few Goals Action][]                                          | Steve Macenski                 | Obtains the next N goals in a goal vector                                                                                  |
 | [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
 | [Check Pose Occupancy][]                                               | Maurice Alexander<br>Purnawan  | Checks if a pose is occupied.                                                                                           |
 
@@ -296,9 +293,6 @@ For tutorials on creating your own plugins, please see
 [Undock Robot Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
 [Concatenate Paths Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
 [Get Current Pose Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
-[Append Goal Pose To Goals Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp
-[Extract Route Nodes To Goals Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
-[Get Next Few Goals Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
 [Validate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
 [Check Pose Occupancy]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp
 
@@ -320,7 +314,6 @@ For tutorials on creating your own plugins, please see
 | [Would A Controller Recovery Help][]                               | Joshua Wallace                 | Checks if a controller<br>recovery could help<br>clear the controller<br>server error code.                        |
 | [Would A Planner Recovery Help][]                                  | Joshua Wallace                 | Checks if a planner<br>recovery could help<br>clear the planner<br>server error code.                              |
 | [Would A Smoother Recovery Help][]                                 | Joshua Wallace                 | Checks if a Smoother<br>recovery could help<br>clear the smoother<br>server error code.                            |
-| [Would A Route Recovery Help][]                                    | Steve Macenski                 | Checks if a Route<br>recovery could help<br>clear the route<br>server error code.                                  |
 | [Is Battery Charging Condition][]                                  | Alberto Tudela                 | Checks if the battery<br>is charging.                                                                              |
 | [Are Poses Near Condition][]                                       | Steve Macenski                 | Checks if 2 poses are<br>nearby to each other.                                                                     |
 
@@ -340,7 +333,6 @@ For tutorials on creating your own plugins, please see
 [Would A Controller Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp
 [Would A Planner Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help_condition.cpp
 [Would A Smoother Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help_condition.cpp
-[Would A Route Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_route_recovery_help_condition.cpp
 [Is Battery Charging Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 [Are Poses Near Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 

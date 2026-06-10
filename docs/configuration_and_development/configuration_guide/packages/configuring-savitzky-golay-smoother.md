@@ -32,15 +32,6 @@ Description
 Description
 :   Number of times to recursively smooth a segment
 
-### **`enforce_path_inversion`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
-
-Description
-:   Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
-
 ## Example
 
 ```yaml
@@ -55,5 +46,4 @@ smoother_server:
       plugin: "nav2_smoother::SavitzkyGolaySmoother"
       do_refinement: True
       refinement_num: 2
-      enforce_path_inversion: True
 ```
