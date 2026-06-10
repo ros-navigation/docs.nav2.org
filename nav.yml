@@ -185,7 +185,6 @@ nav:
             - ConcatenatePaths: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ConcatenatePaths.md
             - GetCurrentPose: configuration_and_development/configuration_guide/packages/bt-plugins/actions/GetCurrentPose.md
             - ValidatePath: configuration_and_development/configuration_guide/packages/bt-plugins/actions/ValidatePath.md
-            - CheckPoseOccupancy: configuration_and_development/configuration_guide/packages/bt-plugins/actions/CheckPoseOccupancy.md
           - Condition Plugins:
             - GoalReached: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/GoalReached.md
             - TransformAvailable: configuration_and_development/configuration_guide/packages/bt-plugins/conditions/TransformAvailable.md

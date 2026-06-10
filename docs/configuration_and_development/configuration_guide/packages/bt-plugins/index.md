@@ -51,7 +51,6 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 [ConcatenatePaths][concatenate-paths]{ .md-button .md-button--primary }
 [GetCurrentPose][get-current-pose]{ .md-button .md-button--primary }
 [ValidatePath][validate-path]{ .md-button .md-button--primary }
-[CheckPoseOccupancy][check-pose-occupancy]{ .md-button .md-button--primary }
 
 </div>
 

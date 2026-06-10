@@ -250,7 +250,6 @@ For tutorials on creating your own plugins, please see
 | [Concatenate Paths Action][]                                           | Steve Macenski                 | Concatenates 2 paths together                                                                                              |
 | [Get Current Pose Action][]                                            | Steve Macenski                 | Gets current pose to the blackboard                                                                                        |
 | [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
-| [Check Pose Occupancy][]                                               | Maurice Alexander<br>Purnawan  | Checks if a pose is occupied.                                                                                           |
 
 </div>
 
@@ -294,7 +293,6 @@ For tutorials on creating your own plugins, please see
 [Concatenate Paths Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
 [Get Current Pose Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
 [Validate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/validate_path_action.cpp
-[Check Pose Occupancy]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/check_pose_occupancy_action.cpp
 
 <div class="center-table" markdown>
 
