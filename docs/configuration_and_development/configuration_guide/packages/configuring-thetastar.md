@@ -26,7 +26,7 @@ The parameters of the planner are:
 Description
 :   To choose between 4-connected (up, down, left, right) and 8-connected (all the adjacent cells) graph expansions, the accepted values are 4 and 8
 
-### **`<name> .w_euc_cost`**
+### **`<name>.w_euc_cost`**
 
 | Type     | Default |
 |----------|---------|
