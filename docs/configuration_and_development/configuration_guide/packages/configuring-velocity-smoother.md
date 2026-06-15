@@ -131,15 +131,6 @@ Description
 Note
 :   This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 
-### **`stamp_smoothed_velocity_with_smoothing_time`**
-
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
-
-Description
-:   Whether to interpolate the timestamps of the smoothed *geometery_msgs:msg::TwistStamped* cmd_vel message after the last command velocity received. Only available in Jazzy as a backport of the now-default behavior in Lyrical and newer. Default is `false` for backwards compatibility.
-
 ### **`bond_heartbeat_period`**
 
 | Type     | Default |
@@ -176,5 +167,4 @@ velocity_smoother:
     odom_duration: 0.1
     use_realtime_priority: false
     enable_stamped_cmd_vel: false
-    stamp_smoothed_velocity_with_smoothing_time: false  # ONLY IN JAZZY
 ```
