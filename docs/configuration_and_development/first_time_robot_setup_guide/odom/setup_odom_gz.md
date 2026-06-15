@@ -8,7 +8,7 @@ In the second case, we will build a demo that simulates a functioning odometry s
 
 !!! info "See also"
 
-    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## Odometry Introduction
 
@@ -63,7 +63,7 @@ For other types of sensors such as IMU, VIO, etc, their respective ROS drivers s
 
 ## Simulating an Odometry System using Gazebo
 
-In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description/).
+In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/sam_bot_description/).
 
 !!! note
 

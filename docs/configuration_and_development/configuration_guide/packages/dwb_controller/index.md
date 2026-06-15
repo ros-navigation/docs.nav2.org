@@ -1,6 +1,6 @@
 # DWB Controller { #dwb-controller-index }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_dwb_controller).
 
 The DWB controller is the default controller. It is a fork of [David Lu's
 controller](https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner)

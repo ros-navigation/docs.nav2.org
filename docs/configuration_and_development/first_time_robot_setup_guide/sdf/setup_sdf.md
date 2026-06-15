@@ -28,7 +28,7 @@ This package contains a C++ library and urdf_parser_plugin for converting SDForm
 
 !!! info "See also"
 
-    If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official [SDFormat Website](http://sdformat.org/) and the [sdformat_urdf GitHub repository](https://github.com/ros/sdformat_urdf/tree/rolling/sdformat_urdf)
+    If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official [SDFormat Website](http://sdformat.org/) and the [sdformat_urdf GitHub repository](https://github.com/ros/sdformat_urdf/tree/jazzy/sdformat_urdf)
 
 ## Writing the SDF
 

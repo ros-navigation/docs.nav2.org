@@ -26,9 +26,9 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[NavigateToPoseNavigator]: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator/src/navigators
-[NavigateThroughPosesNavigator]: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator/src/navigators
-[CoverageNavigator]: https://github.com/open-navigation/opennav_coverage/tree/main/opennav_coverage_navigator
+[NavigateToPoseNavigator]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_bt_navigator/src/navigators
+[NavigateThroughPosesNavigator]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_bt_navigator/src/navigators
+[CoverageNavigator]: https://github.com/open-navigation/opennav_coverage/tree/jazzy/opennav_coverage_navigator
 
 ## Costmap Layers
 
@@ -49,15 +49,15 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Voxel Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
-[Range Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
-[Static Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
-[Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
-[Obstacle Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
+[Voxel Layer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/voxel_layer.cpp
+[Range Layer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/range_sensor_layer.cpp
+[Static Layer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/static_layer.cpp
+[Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/inflation_layer.cpp
+[Obstacle Layer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/obstacle_layer.cpp
 [Spatio-Temporal Voxel Layer]: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 [Non-Persistent Voxel Layer]: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 [Denoise Layer]: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
-[Plugin Container Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
+[Plugin Container Layer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 [Ground Consistency Layer]: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
 
 ## Costmap Filters { #navigation-plugins-costmap-filters }
@@ -72,9 +72,9 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Keepout Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
-[Speed Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
-[Binary Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
+[Keepout Filter]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
+[Speed Filter]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
+[Binary Filter]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
 
 ## Controllers
 
@@ -92,12 +92,12 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[DWB Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller
+[DWB Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_dwb_controller
 [TEB Controller]: https://github.com/rst-tu-dortmund/teb_local_planner
-[Regulated Pure Pursuit]: https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
-[MPPI Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller
-[Rotation Shim Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_rotation_shim_controller
-[Graceful Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_graceful_controller
+[Regulated Pure Pursuit]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_regulated_pure_pursuit_controller
+[MPPI Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_mppi_controller
+[Rotation Shim Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_rotation_shim_controller
+[Graceful Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_graceful_controller
 [Vector Pursuit Controller]: https://github.com/blackcoffeerobotics/vector_pursuit_controller
 
 ## Planners
@@ -114,11 +114,11 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[NavFn Planner]: https://github.com/ros-navigation/navigation2/tree/main/nav2_navfn_planner
-[SmacPlannerHybrid]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
-[SmacPlanner2D]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
-[SmacPlannerLattice]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
-[ThetaStarPlanner]: https://github.com/ros-navigation/navigation2/tree/main/nav2_theta_star_planner
+[NavFn Planner]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_navfn_planner
+[SmacPlannerHybrid]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smac_planner
+[SmacPlanner2D]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smac_planner
+[SmacPlannerLattice]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smac_planner
+[ThetaStarPlanner]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_theta_star_planner
 
 ## Smoothers
 
@@ -132,9 +132,9 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Simple Smoother]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
-[Constrained Smoother]: https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother
-[Savitzky-Golay Smoother]: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
+[Simple Smoother]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smoother
+[Constrained Smoother]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_constrained_smoother
+[Savitzky-Golay Smoother]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smoother
 
 ## Behaviors
 
@@ -151,12 +151,12 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Clear Costmap]: https://github.com/ros-navigation/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
-[Spin]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
-[Back Up]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
-[Wait]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
-[Drive On Heading]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
-[Assisted Teleop]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
+[Clear Costmap]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_costmap_2d/src/clear_costmap_service.cpp
+[Spin]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behaviors/plugins
+[Back Up]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behaviors/plugins
+[Wait]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behaviors/plugins
+[Drive On Heading]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behaviors/plugins
+[Assisted Teleop]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behaviors/plugins
 
 ## Waypoint Task Executors
 
@@ -170,9 +170,9 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[WaitAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
-[PhotoAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
-[InputAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
+[WaitAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
+[PhotoAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
+[InputAtWaypoint]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
 
 ## Goal Checkers
 
@@ -186,9 +186,9 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[SimpleGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
-[StoppedGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
-[PositionGoalChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp
+[SimpleGoalChecker]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/plugins/simple_goal_checker.cpp
+[StoppedGoalChecker]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/plugins/stopped_goal_checker.cpp
+[PositionGoalChecker]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/plugins/position_goal_checker.cpp
 
 ## Progress Checkers
 
@@ -201,8 +201,8 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[SimpleProgressChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
-[PoseProgressChecker]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
+[SimpleProgressChecker]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/plugins/simple_progress_checker.cpp
+[PoseProgressChecker]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/plugins/pose_progress_checker.cpp
 
 ## Behavior Tree Nodes
 
@@ -252,45 +252,45 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Back Up Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
-[Drive On Heading Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
-[Assisted Teleop Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_action.cpp
-[Clear Entire Costmap Service]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
-[Clear Costmap Except Region Service]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
-[Clear Costmap Around Robot Service]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
-[Compute Path to Pose Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
-[Smooth Path Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smooth_path_action.cpp
-[Follow Path Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
-[Navigate to Pose Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
-[Reinitialize Global Localization Service]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
-[Spin Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp
-[Wait Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp
-[Truncate Path]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
-[Truncate Path Local]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_local_action.cpp
-[Planner Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
-[Controller Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
-[Goal Checker Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
-[Smoother Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
-[Progress Checker Selector]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
-[Navigate Through Poses]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
-[Remove Passed Goals]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
-[Compute Path Through Poses]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
-[Compute Route]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp
-[Compute And Track Route]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp
-[Cancel Control Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
-[Cancel BackUp Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
-[Cancel Spin Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
-[Cancel Wait Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
-[Cancel Route Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp
-[Cancel Drive on Heading Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
-[Cancel Assisted Teleop Action]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
-[Cancel Complete Coverage Action]: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
-[Compute Complete Coverage Path Action]: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
-[Get Pose From Path Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
-[Dock Robot Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp
-[Undock Robot Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
-[Concatenate Paths Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
-[Get Current Pose Action]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
+[Back Up Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/back_up_action.cpp
+[Drive On Heading Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
+[Assisted Teleop Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/assisted_teleop_action.cpp
+[Clear Entire Costmap Service]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+[Clear Costmap Except Region Service]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+[Clear Costmap Around Robot Service]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+[Compute Path to Pose Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
+[Smooth Path Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/smooth_path_action.cpp
+[Follow Path Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/follow_path_action.cpp
+[Navigate to Pose Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
+[Reinitialize Global Localization Service]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
+[Spin Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/spin_action.cpp
+[Wait Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/wait_action.cpp
+[Truncate Path]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
+[Truncate Path Local]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/truncate_path_local_action.cpp
+[Planner Selector]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
+[Controller Selector]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
+[Goal Checker Selector]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
+[Smoother Selector]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
+[Progress Checker Selector]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
+[Navigate Through Poses]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
+[Remove Passed Goals]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
+[Compute Path Through Poses]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
+[Compute Route]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/compute_route_action.cpp
+[Compute And Track Route]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp
+[Cancel Control Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
+[Cancel BackUp Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
+[Cancel Spin Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
+[Cancel Wait Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
+[Cancel Route Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp
+[Cancel Drive on Heading Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
+[Cancel Assisted Teleop Action]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
+[Cancel Complete Coverage Action]: https://github.com/open-navigation/opennav_coverage/blob/jazzy/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
+[Compute Complete Coverage Path Action]: https://github.com/open-navigation/opennav_coverage/blob/jazzy/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
+[Get Pose From Path Action]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
+[Dock Robot Action]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking_bt/src/dock_robot.cpp
+[Undock Robot Action]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
+[Concatenate Paths Action]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
+[Get Current Pose Action]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
 
 <div class="center-table" markdown>
 
@@ -316,23 +316,23 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Goal Reached Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
-[Goal Updated Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
-[Global Updated Goal Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
-[Initial Pose received Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
-[Is Stuck Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
-[Transform Available Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
-[Distance Traveled Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
-[Time Expired Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
-[Is Battery Low Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
-[Is Path Valid Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
-[Path Expiring Timer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
-[Are Error Codes Present]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
-[Would A Controller Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp
-[Would A Planner Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help_condition.cpp
-[Would A Smoother Recovery Help]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help_condition.cpp
-[Is Battery Charging Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
-[Are Poses Near Condition]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
+[Goal Reached Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
+[Goal Updated Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
+[Global Updated Goal Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
+[Initial Pose received Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
+[Is Stuck Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
+[Transform Available Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
+[Distance Traveled Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
+[Time Expired Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
+[Is Battery Low Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
+[Is Path Valid Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
+[Path Expiring Timer]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
+[Are Error Codes Present]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
+[Would A Controller Recovery Help]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help_condition.cpp
+[Would A Planner Recovery Help]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help_condition.cpp
+[Would A Smoother Recovery Help]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help_condition.cpp
+[Is Battery Charging Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
+[Are Poses Near Condition]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 
 <div class="center-table" markdown>
 
@@ -348,13 +348,13 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Rate Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
-[Distance Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
-[Speed Controller]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
-[Goal Updater]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
-[Single Trigger]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
-[PathLongerOnApproach]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
-[GoalUpdatedController]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
+[Rate Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
+[Distance Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
+[Speed Controller]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
+[Goal Updater]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
+[Single Trigger]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
+[PathLongerOnApproach]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
+[GoalUpdatedController]: https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
 
 <div class="center-table" markdown>
 
@@ -366,9 +366,9 @@ For tutorials on creating your own plugins, please see
 
 </div>
 
-[Pipeline Sequence]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
-[Recovery]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
-[Round Robin]: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
+[Pipeline Sequence]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
+[Recovery]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/control/recovery_node.cpp
+[Round Robin]: https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree/plugins/control/round_robin_node.cpp
 
 ## Route Plugins
 

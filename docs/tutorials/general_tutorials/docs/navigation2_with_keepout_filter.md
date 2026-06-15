@@ -20,7 +20,7 @@ It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built 
 
 As was written in [Navigation Concepts][navigation-concepts], any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
 
-Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a `Nav2` repository to a new `depot_keepout.pgm` file.
+Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a `Nav2` repository to a new `depot_keepout.pgm` file.
 
 Open `depot_keepout.pgm` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the `[0..255]` range (or `[0..100]` in percent scale), where `0` means black color and `255` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words `color_darkness = 100% - color_lightness`.
 
@@ -54,7 +54,7 @@ For simplicity, in the example fill the areas with black color (in `trinary` mod
 
 After all keepout areas will be filled, save the `depot_keepout.pgm` image.
 
-Like all other maps, filter mask should have its own YAML metadata file. Copy [depot.yaml](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.yaml) to `depot_keepout.yaml`. Open `depot_keepout.yaml` and correct `image` field to a newly made PGM mask:
+Like all other maps, filter mask should have its own YAML metadata file. Copy [depot.yaml](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bringup/maps/depot.yaml) to `depot_keepout.yaml`. Open `depot_keepout.yaml` and correct `image` field to a newly made PGM mask:
 
 ```yaml
 image: depot.pgm
@@ -74,7 +74,7 @@ Since filter mask image was created as a copy of main map, other fields of YAML-
 
 ### 2. Configure Costmap Filter Info Publisher Server
 
-Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in a messages of `nav2_msgs/CostmapFilterInfo` type. These messages are being published by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info). The server is running as a lifecycle node. According to the [design document](https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf), `nav2_msgs/CostmapFilterInfo` messages are going in a pair with `OccupancyGrid` filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter mask.
+Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in a messages of `nav2_msgs/CostmapFilterInfo` type. These messages are being published by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server/src/costmap_filter_info). The server is running as a lifecycle node. According to the [design document](https://github.com/ros-navigation/navigation2/blob/jazzy/doc/design/CostmapFilters_design.pdf), `nav2_msgs/CostmapFilterInfo` messages are going in a pair with `OccupancyGrid` filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter mask.
 
 In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. It is also possible to add them as Composition Nodes to your Navigation Component Container, which might look as follows:
 
@@ -361,7 +361,7 @@ local_costmap:
 
 ### 4. Run Nav2 stack
 
-Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in [nav2_bringup](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup) directory. To run the demo, simply launch as follows:
+Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in [nav2_bringup](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_bringup) directory. To run the demo, simply launch as follows:
 
 ```bash
 ros2 launch nav2_bringup tb4_simulation_launch.py
@@ -375,4 +375,4 @@ And check that filter is working properly as in the pictures below
 
 !!! note
 
-    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)
+    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/nav2_costmap_filters_demo)

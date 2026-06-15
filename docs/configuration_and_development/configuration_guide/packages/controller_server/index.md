@@ -1,6 +1,6 @@
 # Controller Server { #controller-server }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_controller).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_controller).
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
@@ -163,7 +163,7 @@ Description
 | `string` | "speed_limit" |
 
 Description
-:   Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters][speed-filter-parameters] configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg).
+:   Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to [Speed Filter Parameters][speed-filter-parameters] configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish [these messages](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_msgs/msg/SpeedLimit.msg).
 
 ### **`odom_topic`**
 

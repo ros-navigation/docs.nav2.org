@@ -21,7 +21,7 @@ For this example, we're going to analyze the simplest behavior tree action node 
 Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
 Each node type has a unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.
 
-The code in this tutorial can be found in [nav2_behavior_tree](https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree) package as the `wait_action` node.
+The code in this tutorial can be found in [nav2_behavior_tree](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_behavior_tree) package as the `wait_action` node.
 This action node can be considered as a reference for writing other action node plugins.
 
 Our example plugin inherits from the base class `nav2_behavior_tree::BtActionNode`.
@@ -244,7 +244,7 @@ inline geometry_msgs::msg::Point convertFromString(const StringView key)
 }  // namespace BT
 ```
 
-For more information on custom type conversion, you can refer to the [bt_utils.hpp](https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/bt_utils.hpp) or the BT.CPP documentation: [Parsing a string](https://www.behaviortree.dev/docs/tutorial-basics/tutorial_03_generic_ports#parsing-a-string).
+For more information on custom type conversion, you can refer to the [bt_utils.hpp](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behavior_tree/include/nav2_behavior_tree/bt_utils.hpp) or the BT.CPP documentation: [Parsing a string](https://www.behaviortree.dev/docs/tutorial-basics/tutorial_03_generic_ports#parsing-a-string).
 
 ## Visualize the content of the blackboard in Groot 2 (PRO)
 
@@ -277,7 +277,7 @@ static PortsList providedPorts()
 }
 ```
 
-For more information on custom type conversion, you can refer to the [json_utils.hpp](https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/json_utils.hpp) or the BT.CPP documentation: [Visualize custom types in the Blackboard](https://www.behaviortree.dev/docs/tutorial-basics/tutorial_11_groot2/#visualize-custom-types-in-the-blackboard)
+For more information on custom type conversion, you can refer to the [json_utils.hpp](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behavior_tree/include/nav2_behavior_tree/json_utils.hpp) or the BT.CPP documentation: [Visualize custom types in the Blackboard](https://www.behaviortree.dev/docs/tutorial-basics/tutorial_11_groot2/#visualize-custom-types-in-the-blackboard)
 
 !!! note
 

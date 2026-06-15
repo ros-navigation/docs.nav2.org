@@ -1,6 +1,6 @@
 # Route Server { #route-server }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_route).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_route).
 
 The Route Server in `nav2_route` implements the server for computing routes through a predefined navigation graph rather than using freespace planning like the Planner Server.
 It may be used to fully replace freespace planning when following a particular route closely or to augment the global planner with long-distance routing to a goal.

@@ -43,7 +43,7 @@ In this tutorial we will use the first type of speed restriction expressed in a 
 
     For speed restriction expressed in a percent, `speed_limit` will be used exactly as a percent belonging to `[0..100]` range, not `[0.0..1.0]` range.
 
-Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a Nav2 repository to a new `depot_speed.pgm` file. Open `depot_speed.pgm` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
+Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a Nav2 repository to a new `depot_speed.pgm` file. Open `depot_speed.pgm` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
 
 <figure markdown="span">
   ![](images/Navigation2_with_Speed_Filter/drawing_speed_mask.png){ width="500px" }
@@ -60,7 +60,7 @@ We will use `scale` map mode with no thresholds. In this mode darker colors will
 
 After all speed restriction areas will be filled, save the `depot_speed.pgm` image.
 
-Like all other maps, the filter mask should have its own YAML metadata file. Copy [depot.yaml](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.yaml) to `speed_mask.yaml`. Open `speed_mask.yaml` and update the fields as shown below (as mentioned before for the `scale` mode to use whole color lightness range there should be no thresholds: `free_thresh = 0.0` and `occupied_thresh = 1.0`):
+Like all other maps, the filter mask should have its own YAML metadata file. Copy [depot.yaml](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bringup/maps/tb3_sandbox.yaml) to `speed_mask.yaml`. Open `speed_mask.yaml` and update the fields as shown below (as mentioned before for the `scale` mode to use whole color lightness range there should be no thresholds: `free_thresh = 0.0` and `occupied_thresh = 1.0`):
 
 ```yaml
 image: depot.pgm
@@ -86,7 +86,7 @@ Since Costmap2D does not support orientation, the last third "yaw" component of 
 
 ### 2. Configure Costmap Filter Info Publisher Server
 
-Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in messages of `nav2_msgs/CostmapFilterInfo` type. These messages are being published by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info). The server is running as a lifecycle node. According to the [design document](https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf), `nav2_msgs/CostmapFilterInfo` messages are going in a pair with `OccupancyGrid` filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter masks.
+Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in messages of `nav2_msgs/CostmapFilterInfo` type. These messages are being published by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server/src/costmap_filter_info). The server is running as a lifecycle node. According to the [design document](https://github.com/ros-navigation/navigation2/blob/jazzy/doc/design/CostmapFilters_design.pdf), `nav2_msgs/CostmapFilterInfo` messages are going in a pair with `OccupancyGrid` filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter masks.
 
 In order to enable Speed Filter in your configuration, both servers should be enabled as lifecycle nodes in Python launch-file. For example, this might look as follows, though adding them as Composition Nodes to your Navigation Component Container is also possible:
 
@@ -357,7 +357,7 @@ global_costmap:
         speed_limit_topic: "speed_limit"
 ```
 
-As stated in the [design](https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf), Speed Filter publishes speed restricting [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) targeted for a Controller Server so that it could restrict maximum speed of the robot when it needed. Controller Server has a `speed_limit_topic` ROS parameter for that, which should be set to the same as in `speed_filter` plugin value. This topic in the map server could also be used to any number of other speed-restricted applications beyond the speed limiting zones, such as dynamically adjusting maximum speed by payload mass.
+As stated in the [design](https://github.com/ros-navigation/navigation2/blob/jazzy/doc/design/CostmapFilters_design.pdf), Speed Filter publishes speed restricting [messages](https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_msgs/msg/SpeedLimit.msg) targeted for a Controller Server so that it could restrict maximum speed of the robot when it needed. Controller Server has a `speed_limit_topic` ROS parameter for that, which should be set to the same as in `speed_filter` plugin value. This topic in the map server could also be used to any number of other speed-restricted applications beyond the speed limiting zones, such as dynamically adjusting maximum speed by payload mass.
 
 Set `speed_limit_topic` parameter of a Controller Server to the same value as it set for `speed_filter` plugin:
 
@@ -370,7 +370,7 @@ controller_server:
 
 ### 4. Run Nav2 stack
 
-Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Speed Filter could be found in [nav2_bringup](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup) directory. To run the demo, simply launch as follows:
+Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Speed Filter could be found in [nav2_bringup](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_bringup) directory. To run the demo, simply launch as follows:
 
 ```bash
 ros2 launch nav2_bringup tb4_simulation_launch.py
@@ -385,4 +385,4 @@ Set the goal behind the speed restriction areas and check that the filter is wor
 
 !!! note
 
-    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)
+    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/jazzy/rolling/nav2_costmap_filters_demo)

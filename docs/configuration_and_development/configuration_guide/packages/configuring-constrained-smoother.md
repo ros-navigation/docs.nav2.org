@@ -1,6 +1,6 @@
 # Constrained smoother { #constrained-smoother }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_constrained_smoother).
 
 A smoother plugin for nav2_smoother based on the original deprecated smoother in nav2_smac_planner and put into operational state by [RoboTech Vision](https://robotechvision.com/).
 Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models. It optimizes for path length, smoothness, distance from obstacles, and curvature in a large Ceres-based optimization program.
