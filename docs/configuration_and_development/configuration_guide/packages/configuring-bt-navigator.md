@@ -175,15 +175,6 @@ Description
 Description
 :   For Kilted and newer: List of of error code name prefixes to be appended with `_error_code` and `_error_msg` and searched for during aborted navigator error processing.
 
-### **`error_code_names`**
-
-| Type             | Default                                                   |
-|------------------|-----------------------------------------------------------|
-| `vector<string>` | ["compute_path_error_code",<br> "follow_path_error_code"] |
-
-Description
-:   For Jazzy and older: List of of error codes to compare.
-
 ### **`bond_heartbeat_period`**
 
 | Type     | Default |
