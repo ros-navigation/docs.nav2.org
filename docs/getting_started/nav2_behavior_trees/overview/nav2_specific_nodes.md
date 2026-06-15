@@ -3,7 +3,7 @@
 !!! warning
 
     Vocabulary can be a large point of confusion here when first starting out.
-    
+
     - A `Node` when discussing BTs is entirely different than a `Node` in the ROS 2 context
     - An `ActionNode` in the context of BTs is not necessarily connected to an Action Server in the ROS 2 context (but often it is)
 

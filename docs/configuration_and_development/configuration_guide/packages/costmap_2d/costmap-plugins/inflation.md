@@ -81,6 +81,6 @@ colcon build --packages-select nav2_costmap_2d --cmake-args -DENABLE_OPENMP=OFF
 **Robot Hardware:** 16 cores × 5000 MHz
 
 | Configuration   | Time    | Throughput       | vs Legacy Inflation Layer |
-|-----------------|---------|------------------|---------------------------| 
+|-----------------|---------|------------------|---------------------------|
 | OpenMP disabled | 48.9 ms | 81.8 M cells/s   | 2.1× faster               |
 | OpenMP enabled  | 9.11 ms | 468.9 M cells/s  | 11.5× faster              |

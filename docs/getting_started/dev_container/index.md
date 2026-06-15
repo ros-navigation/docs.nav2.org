@@ -90,6 +90,6 @@ A word of caution when using dev containers: they are powerful tools, but can be
 !!! info "See also"
 
     More info on trusting workspaces and extensions in general can be found here:
-    
+
     - [Workspace Trust](https://code.visualstudio.com/docs/editor/workspace-trust)
         - VS Code user guid on trusting and configure workspaces

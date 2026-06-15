@@ -1,4 +1,4 @@
-/* Here are the overrides needed to display the search button 
+/* Here are the overrides needed to display the search button
 after moving it from the header to the sidebar. */
 
 .md-search {
@@ -47,7 +47,7 @@ after moving it from the header to the sidebar. */
     opacity: 0.5;
     color: var(--md-default-fg-color);
   }
-  
+
   & + .md-search__icon {
     opacity: 0.5;
     color: var(--md-default-fg-color);
@@ -64,7 +64,7 @@ html:has([data-md-toggle="search"]:checked) {
 @media screen and (min-width: 60rem) {
 
   [data-md-toggle="search"]:checked ~ .md-container .md-sidebar-primary-container {
-    
+
     .md-sidebar--primary{
       z-index: 4;
     }
@@ -95,7 +95,7 @@ html:has([data-md-toggle="search"]:checked) {
       opacity: 1;
       z-index: 1;
     }
-    
+
     /* [form] -> [[icon][input][options]]*/
     .md-search__form {
       height: 1.8rem;
@@ -122,7 +122,7 @@ html:has([data-md-toggle="search"]:checked) {
       /* Dim "Search" placeholder */
       &::placeholder {
         opacity: 0.2;
-      } 
+      }
     }
 
     .md-search__output {
@@ -174,7 +174,7 @@ html:has([data-md-toggle="search"]:checked) {
 
   [dir="ltr"] .md-search__icon[for="__search"] {
     left: 0.5rem;
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
   }
 
@@ -185,7 +185,7 @@ html:has([data-md-toggle="search"]:checked) {
 
   /* To display toc above the search */
   .md-nav__toggle:checked ~ .md-nav {
-    z-index: 2; 
+    z-index: 2;
   }
 
   [data-md-toggle="search"]:checked ~ .md-container .md-main .md-sidebar-primary-container {
@@ -216,7 +216,7 @@ html:has([data-md-toggle="search"]:checked) {
       color: var(--md-default-fg-color--light);
 
       &[for="__search"] {
-        top: 50%; 
+        top: 50%;
         transform: translateY(-50%);
         left: 0.5rem;
 
@@ -235,9 +235,9 @@ html:has([data-md-toggle="search"]:checked) {
 
       /* Override clear button -> x */
       &:valid ~ .md-search__options {
-        top: 50%; 
+        top: 50%;
         transform: translateY(-50%);
-        
+
         & > .md-icon {
           opacity: 1;
           pointer-events: auto;
@@ -249,11 +249,11 @@ html:has([data-md-toggle="search"]:checked) {
       /* Dim "Search" placeholder */
       &::placeholder {
         opacity: 0.2;
-      } 
+      }
     }
 
     .md-search__options {
-      top: 50%; 
+      top: 50%;
       transform: translateY(-50%);
 
       & > .md-icon {

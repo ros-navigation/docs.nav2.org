@@ -182,7 +182,7 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
 
     It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-2. The next step would be to create the plugin's description file in the root directory of the package. For example, 
+2. The next step would be to create the plugin's description file in the root directory of the package. For example,
    `pure_pursuit_controller_plugin.xml` file in our tutorial package. This file contains the following information
 
     - `library path`: Plugin's library name and its location.

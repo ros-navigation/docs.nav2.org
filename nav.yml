@@ -1,5 +1,5 @@
 nav:
-  - Home: 
+  - Home:
     - index.md
     - Getting Started:
       - getting_started/index.md
@@ -60,7 +60,7 @@ nav:
       - Navigate on Route Graph with Recovery: getting_started/nav2_behavior_trees/trees/navigate_on_route_graph_w_recovery.md
       - Follow Dynamic Point: getting_started/nav2_behavior_trees/trees/follow_point.md
       - Odometry Calibration: getting_started/nav2_behavior_trees/trees/odometry_calibration.md
-    - ROSCon Talks: 
+    - ROSCon Talks:
       - getting_started/roscon_talks/index.md
   - Tutorials:
     - tutorials/index.md
@@ -346,7 +346,7 @@ nav:
       - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
     - Roadmaps:
-      - community/roadmaps/index.md  
+      - community/roadmaps/index.md
   - About & Contact:
     - about_and_contact/index.md
     - Robots Using: about_and_contact/robots_using.md

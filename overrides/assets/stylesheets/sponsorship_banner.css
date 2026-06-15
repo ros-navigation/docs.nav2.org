@@ -27,14 +27,14 @@
       margin: 0rem 0rem 0.5rem 0rem;
     }
   }
-  
+
   .sponsorship-banner-button {
     color:white;
     background: var(--color-nav2-blue);
     padding: 0.4rem 0.8rem;
-    border-radius: 0.3rem; 
-    text-decoration: none; 
-    font-weight: bold; 
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: bold;
     font-size: 0.65rem;
     text-align: center;
 
@@ -51,7 +51,7 @@
   .sponsorship-expanded-banner-logo {
     width: 10rem;
     margin: 0.8rem 0 0.5rem;
-  
+
     @media screen and (min-height: 740px) and (max-height: 799px) {
       width: 8rem;
     }
@@ -78,9 +78,9 @@
     color:white;
     background: var(--color-nav2-blue);
     padding: 0.5rem 1.6rem;
-    border-radius: 0.3rem; 
-    text-decoration: none; 
-    font-weight: bold; 
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: bold;
     font-size: 0.76rem;
     text-align: center;
 
@@ -111,14 +111,14 @@
         margin-right: 0.1rem;
       }
     }
-    
+
     .sponsorship-banner-button {
       color:white;
       background: var(--color-nav2-gray);
       padding: 0.3rem 0.6rem;
-      border-radius: 0.3rem; 
-      text-decoration: none; 
-      font-weight: bold; 
+      border-radius: 0.3rem;
+      text-decoration: none;
+      font-weight: bold;
       font-size: 0.7rem;
       text-align: center;
       white-space: nowrap;

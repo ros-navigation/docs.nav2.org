@@ -43,20 +43,20 @@
 
 .distro-badge.dev {
   background-color: #007bff;
-  color: white; 
+  color: white;
 }
 
 .distro-badge.active {
   background-color: #28a745;
-  color: white; 
+  color: white;
 }
 
 .distro-badge.maintained {
   background-color: #ffc107;
-  color: black; 
+  color: black;
 }
 
 .distro-badge.eol {
   background-color: #dc3545;
-  color: white; 
+  color: white;
 }

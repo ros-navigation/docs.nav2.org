@@ -46,7 +46,7 @@ plugins:
   - glightbox
   - macros:
       module_name: macros/main
-      include_yaml: 
+      include_yaml:
         - macros/variables.yml
       on_error_fail: true
       on_undefined: strict
@@ -63,7 +63,7 @@ extra:
 
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
-  
+
   # Path relative to custom_dir (overrides/):
   - assets/stylesheets/extra.css
   - assets/stylesheets/search_button.css
@@ -78,7 +78,7 @@ extra_css:
 extra_javascript:
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-  
+
   # Path relative to custom_dir (overrides/):
   - assets/javascripts/katex.js
 

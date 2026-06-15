@@ -122,11 +122,11 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 8. After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
 
-    <figure markdown="span"> 
+    <figure markdown="span">
       ![](images/Camera_Calibration/calibration_complete.png){ width="600" }
     </figure>
 
-    <figure markdown="span"> 
+    <figure markdown="span">
       ![](images/Camera_Calibration/calibration_parameters.png){ width="600" }
     </figure>
 

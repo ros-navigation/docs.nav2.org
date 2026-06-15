@@ -185,7 +185,7 @@ Setting a reasonable `min_clearance` can prevent these misclassifications from b
 - Use on very uneven terrain where cells might lack ground points or when low resolution lidar data causes sparse ground points.
 
 **Decision Thresholds** (`nonground_occ_thresh`, `nonground_prob_thresh`)
-   
+
 These two thresholds work together in a two-stage filter:
 
 - `nonground_occ_thresh`: **Minimum score (accumulated evidence) required**. With default `nonground_inc: 1.5`, a value of 6.0 means you need ~4 obstacle point observations before considering a cell for LETHAL marking. This is the primary defense against stray sensor noise.

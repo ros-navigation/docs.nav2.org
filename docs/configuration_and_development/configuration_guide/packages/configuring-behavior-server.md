@@ -114,7 +114,7 @@ Note
     <br/>
 
     Example:
-    
+
     ```yaml
     behavior_server:
       ros__parameters:

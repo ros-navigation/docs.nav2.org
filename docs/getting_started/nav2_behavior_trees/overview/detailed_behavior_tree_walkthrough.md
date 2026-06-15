@@ -200,7 +200,7 @@ The only differences in the BT subtree of `ComputePathToPose` and `FollowPath` a
     - The `FollowPath` subtree, by contrast, does not typically use this conditional gating. Once a path is available, the controller is invoked directly to produce velocity commands.
 - The `RateController` that decorates the `ComputePathToPose` subtree
     : The `RateController` decorates the `ComputePathToPose` subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz.
-    This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz). 
+    This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz).
     Consider changing this frequency to something higher or lower depending on the application and the computational cost of calculating the path. There are other decorators that can be used instead of the `RateController`. Consider using the `SpeedController` or `DistanceController` decorators if appropriate.
 
 - The costmap that is being cleared within the contextual recovery:

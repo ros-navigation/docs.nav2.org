@@ -28,7 +28,7 @@ To speed up the initial build, images layers from this `builder` stage are cache
 !!! info "See also"
 
     More details on the project's CI and related docker image registry can be found here:
-    
+
     - [Chronicles of Caching and Containerising CI for Nav2](https://vimeo.com/649647161/5b0c278e6c)
         - Video presentation from ROS World 2021 - Ruffin White
 
@@ -57,7 +57,7 @@ While the colcon workspace is being built, VS Code will simultaneously install a
     - Necessary for reducing startup time when spawning new Codespaces
 
 !!! tip "Hint"
-    
+
     More documentation about these additional colcon verb extensions can be found here:
 
     - [colcon-cache](https://github.com/ruffsl/colcon-cache)
@@ -109,7 +109,7 @@ Additionally, the container can be granted [privileged](https://docs.docker.com/
 Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project's root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project's dependencies, intellisense, linters, and other extensions pre-configured and ready to use. Simply open a new terminal (Crtl+Shift+\`), cd to the root of the colcon workspace, and run the usual colcon commands.
 
 !!! tip
-    
+
     You can incorporate the same scripts used by the `devcontainer.json` config file to further automate your local development workflow.
 
 ### Terminals

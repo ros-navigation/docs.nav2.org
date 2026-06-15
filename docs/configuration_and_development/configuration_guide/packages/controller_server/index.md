@@ -55,7 +55,7 @@ Description
 
 Note
 :   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    
+
     Example:
     ```yaml
     controller_server:
@@ -97,7 +97,7 @@ Description
 
 Note
 :   The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    
+
     Example:
     ```yaml
     controller_server:
@@ -118,7 +118,7 @@ Description
 
 Note
 :   The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    
+
     Example:
     ```yaml
     controller_server:
@@ -204,7 +204,7 @@ Description
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-  
+
 Note
 :   This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 

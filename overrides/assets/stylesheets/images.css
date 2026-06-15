@@ -6,7 +6,7 @@
   align-items: start;
   gap: 10px;
 
-  /* Use multiple children to make sure 
+  /* Use multiple children to make sure
   it will work with/without the glightbox plugin
   and for images with captions */
   & > a.glightbox,
