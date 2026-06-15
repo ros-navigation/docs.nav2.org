@@ -98,7 +98,7 @@ We will see more on this when we discuss the parameters file (or params file).
 
 The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
 
-In `setPlan()` method, we receive the updated global path for the robot to follow. 
+In `setPlan()` method, we receive the updated global path for the robot to follow.
 In our example, we transform the received global path into
 the frame of the robot and then store this transformed global path for later use.
 
@@ -180,7 +180,7 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
 
     It is good practice to place these lines at the end of the file, but technically, you can also write at the top.
 
-2. The next step would be to create the plugin's description file in the root directory of the package. For example, 
+2. The next step would be to create the plugin's description file in the root directory of the package. For example,
    `pure_pursuit_controller_plugin.xml` file in our tutorial package. This file contains the following information
 
     - `library path`: Plugin's library name and its location.

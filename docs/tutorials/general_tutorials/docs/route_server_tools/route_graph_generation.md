@@ -108,7 +108,7 @@ This will increment the edge *id* by one every time a new edge is added. The fir
 
 <figure markdown="span">
   ![](../images/route_graph_generation/edge_layer.png){ width="600" }
-</figure> 
+</figure>
 
 To see the directionality of the edges, right click on the edge layer and select *Properties*. Click *Symbology -> Simple Line* and change the *Symbol layer type* to *Arrow*.
 Click *Ok*. You should now be able to see arrows for each line string. Note that all edges in the route graph are directional, so if you want a bidirectional connection you should duplicate it in reverse.

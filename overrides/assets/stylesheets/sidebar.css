@@ -56,7 +56,7 @@
     margin-right: 2rem;
 
     /* Set default value */
-    width: 12.1rem; 
+    width: 12.1rem;
   }
 
   [dir="ltr"] .md-sidebar--primary {
@@ -78,7 +78,7 @@
     opacity: 0;
   }
 
-  /* Hide old elemnts declared in overrides/partials/nav.html */
+  /* Hide old elements declared in overrides/partials/nav.html */
   /* They were left for proper site generation. */
   .md-sidebar__scrollwrap .md-nav--primary {
     .md-nav__title[for="__drawer"]{
@@ -89,7 +89,7 @@
     }
   }
 
-  /* Copy of md-nav__title and md-nav__source now placed in overrides/partials/main.html (outside md-sidebar__scrollwrap) 
+  /* Copy of md-nav__title and md-nav__source now placed in overrides/partials/main.html (outside md-sidebar__scrollwrap)
   and their style should be redefined. Properties below partially replicate style from
   mkdocs-material/material/templates/assets/stylesheets/main/components/_nav.scss */
 
@@ -103,7 +103,7 @@
     white-space: nowrap;
     cursor: pointer;
     background: var(--md-default-bg-color);
-    
+
     /* matches :is(.md-nav__title, .md-nav__item) */
     font-size: 1rem;
 
@@ -139,7 +139,7 @@
     padding: 0rem 2.5rem;
     height: 2.5rem;
     line-height: 2.5rem;
-    
+
     .md-nav__icon {
       top: 0.45rem;
     }

@@ -461,7 +461,7 @@ def define_env(env):
             rendered_ports.append('## Input Ports\n')
             for port_name, port_data in input_ports.items():
                 rendered_port = _PORT_TEMPLATE.render(
-                    port_name=port_name, 
+                    port_name=port_name,
                     port_data=port_data
                 )
                 rendered_ports.append(rendered_port)
@@ -470,7 +470,7 @@ def define_env(env):
             rendered_ports.append('## Output Ports\n')
             for port_name, port_data in output_ports.items():
                 rendered_port = _PORT_TEMPLATE.render(
-                    port_name=port_name, 
+                    port_name=port_name,
                     port_data=port_data
                 )
                 rendered_ports.append(rendered_port)
@@ -479,7 +479,7 @@ def define_env(env):
             rendered_ports.append('## Bidirectional Ports\n')
             for port_name, port_data in bidirectional_ports.items():
                 rendered_port = _PORT_TEMPLATE.render(
-                    port_name=port_name, 
+                    port_name=port_name,
                     port_data=port_data
                 )
                 rendered_ports.append(rendered_port)

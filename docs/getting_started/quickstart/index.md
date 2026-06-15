@@ -62,7 +62,7 @@ sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
     simulation world.
     It will also launch the robot state publisher to provide transforms,
     a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
- 
+
     If everything has started correctly, you will see the RViz and Gazebo GUIs like
     this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
 

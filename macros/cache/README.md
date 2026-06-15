@@ -1,4 +1,4 @@
-The `macros/cache/` directory is used to temporarily store cloned data from GitHub.  
+The `macros/cache/` directory is used to temporarily store cloned data from GitHub.
 It contains all files needed for automatic documentation generation by the mkdocs-macros plugin.
 
 

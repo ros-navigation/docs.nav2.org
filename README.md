@@ -73,9 +73,9 @@ Example for two branches:
   ```
 
 Before viewing, you need to set the default version:
-```shell 
+```shell
 mike set-default <distribution>
-``` 
+```
 
 Similar to `mkdocs serve`, mike provides a server that can be started with:
 ```shell
@@ -87,7 +87,7 @@ See [more options][mike-serve-url] for this command.
 
 > [!NOTE]
 > This server does not provide a live preview after changes are made locally. \
-> To display the new changes, use the `mike deploy` command for the corresponding branch, as was shown before. 
+> To display the new changes, use the `mike deploy` command for the corresponding branch, as was shown before.
 
 This command is useful for local testing and viewing differences between versions without the need to use a real web server.
 If you need to make changes for only one version, it will be more convenient to use `mkdocs serve` for this purpose, due to its live preview ability.

@@ -160,7 +160,7 @@ uint16 error_code
 As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 Since the route server is a external server, the error codes start at 10000 and go up to 10099.
 
-In order to propagate your server's error code to the rest of the system it must be added to the nav2_params.yaml file. 
+In order to propagate your server's error code to the rest of the system it must be added to the nav2_params.yaml file.
 The `error_code_id_names` inside of the BT Navigator define what error codes to look for on the blackboard by the server. The lowest error code of the sequence is then returned - whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
 
 ```yaml
