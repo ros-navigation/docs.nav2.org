@@ -104,7 +104,7 @@ to ignore the rosdep error of from the missing `slam_toolbox` key.
 
 !!! tip "Hint"
 
-    For more examples on building Nav2 from rolling development source, checkout [source.Dockerfile](https://github.com/ros-navigation/navigation2/blob/jazzy/tools/source.Dockerfile).
+    For more examples on building Nav2 from rolling development source, checkout [source.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile).
 
 ### Docker Container Images
 
