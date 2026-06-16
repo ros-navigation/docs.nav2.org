@@ -67,7 +67,7 @@ If your robot or dock does not fall into these implementations (i.e. using custo
 However, you can use the `SimpleChargingDock` assuming you turn off these settings and dock blind to get started.
 There is an equivalent `SimpleNonChargingDock` plugin for non-charging docking needs.
 
-If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltags and the [isaac_ros_apriltag](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag) or [ROS image_proc](https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp) nodes to get started.
+If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltags and the [isaac_ros_apriltag](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag) or [ROS image_proc](https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/src/track_marker.cpp) nodes to get started.
 Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
 The defaults support this out of the box, see `nova_carter_docking` for an example.
 
