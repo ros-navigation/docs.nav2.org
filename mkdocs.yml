@@ -105,6 +105,8 @@ markdown_extensions:
           - overrides/.icons
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
 
 # Terminate the build on warning
 strict: true

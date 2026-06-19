@@ -38,6 +38,8 @@ nav:
       - getting_started/quickstart/index.md
     - Build and Install:
       - getting_started/build_and_install/index.md
+      - Local Installation: getting_started/build_and_install/local_installation.md
+      - Docker Installation: getting_started/build_and_install/docker_installation.md
       - Build Troubleshooting Guide: getting_started/build_and_install/build_troubleshooting_guide.md
     - Dev Container:
       - getting_started/dev_container/index.md
