@@ -52,7 +52,7 @@ As said above, a pre-trained model is included in this tutorial, so you can skip
 However, if you want to train your own model, you can use the [Simple Segmentation Toolkit](https://github.com/pepisg/simple_segmentation_toolkit) to easily prototype one with SAM-based auto-labeling (no manual annotation required).
 
 <figure markdown="span">
-  ![](images/Navigation2_with_segmentation/segmentation_example.png){ width="600px" title="Example of semantic segmentation showing original image and segmented mask" }
+  ![Example of semantic segmentation showing original image and segmented mask](images/Navigation2_with_segmentation/segmentation_example.png){ width="600px" title="Example of semantic segmentation showing original image and segmented mask" }
 </figure>
 
 Once trained, the output of a semantic segmentation model is typically an image with the same size as the input, where each pixel holds the probability of that pixel belonging to each class.
@@ -88,7 +88,7 @@ ros2 launch semantic_segmentation_sim simulation_launch.py headless:=0
 You should see Gazebo launch with the TurtleBot 4 in the Baylands world.
 
 <figure markdown="span">
-  ![](images/Navigation2_with_segmentation/gazebo_baylands.png){ width="700px" title="Gazebo Baylands world" }
+  ![Gazebo Baylands world](images/Navigation2_with_segmentation/gazebo_baylands.png){ width="700px" title="Gazebo Baylands world" }
 </figure>
 
 ### 1. Setup Semantic Segmentation Inference Node

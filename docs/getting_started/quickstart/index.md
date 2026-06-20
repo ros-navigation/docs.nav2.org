@@ -74,7 +74,7 @@ sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
 4. If not autostarting, click the "Startup" button in the bottom left corner of RViz.
     This will cause Nav2 to change to the Active state. It should change appearance to show the map.
     <figure markdown="span">
-      ![](/images/rviz/rviz_initial.png){ width="700" title="Initial appearance of RViz transitioning to the Active state" }
+      ![Initial appearance of RViz transitioning to the Active state](/images/rviz/rviz_initial.png){ width="700" title="Initial appearance of RViz transitioning to the Active state" }
     </figure>
 
 ## Navigating
@@ -89,7 +89,7 @@ forward from the down click.
 If you are using the defaults so far, the robot should look roughly like this.
 
 <figure markdown="span">
-  ![](/images/rviz/rviz-set-initial-pose.png){ width="700" title="Approximate starting location of Turtlebot" }
+  ![Approximate starting location of Turtlebot](/images/rviz/rviz-set-initial-pose.png){ width="700" title="Approximate starting location of Turtlebot" }
 </figure>
 
 If you don't get the location exactly right, that's fine. Nav2 will refine
@@ -101,7 +101,7 @@ Nav2 will be fully active and ready to go. You should see the robot and particle
 cloud now.
 
 <figure markdown="span">
-  ![](/images/rviz/navstack-ready.png){ width="700" title="Nav2 is ready. Transforms and Costmap show in RViz." }
+  ![Nav2 is ready. Transforms and Costmap show in RViz.](/images/rviz/navstack-ready.png){ width="700" title="Nav2 is ready. Transforms and Costmap show in RViz." }
 </figure>
 
 Next, click the "Navigaton2 Goal" button and choose a destination.
@@ -109,11 +109,11 @@ This will call the BT navigator to go to that goal through an action server.
 You can pause (cancel) or reset the action through the Nav2 rviz plugin shown.
 
 <figure markdown="span">
-  ![](/images/rviz/navigate-to-pose.png){ width="700" title="Setting the goal pose in RViz." }
+  ![Setting the goal pose in RViz.](/images/rviz/navigate-to-pose.png){ width="700" title="Setting the goal pose in RViz." }
 </figure>
 
 Now watch the robot go!
 
 <figure markdown="span">
-  ![](images/navigation_with_recovery_behaviours.gif){ width="700" title="Navigation2 with Turtlebot 3 Demo" }
+  ![Navigation2 with Turtlebot 3 Demo](images/navigation_with_recovery_behaviours.gif){ width="700" title="Navigation2 with Turtlebot 3 Demo" }
 </figure>

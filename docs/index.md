@@ -16,7 +16,7 @@
 ## Our Sponsors
 
 <figure markdown="span">
-  ![](images/sponsors_oct_2025.png){ width="700px" title="Our Sponsors"}
+  ![Our Sponsors](images/sponsors_oct_2025.png){ width="700px" title="Our Sponsors"}
 </figure>
 
 ## Services
@@ -72,7 +72,7 @@ It has tools to:
 - ... and more!
 
 <figure markdown="span">
-  ![](images/nav2_architecture.png){ width="700px" title="Navigation2 Block Diagram"}
+  ![Navigation2 Block Diagram](images/nav2_architecture.png){ width="700px" title="Navigation2 Block Diagram"}
 </figure>
 
 We also provide a set of starting plugins to get you going.

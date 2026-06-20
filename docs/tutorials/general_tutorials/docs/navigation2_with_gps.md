@@ -38,7 +38,7 @@ GPS (Global Positioning System) or more broadly GNSS (Global Navigation Satellit
 Commonly GPS devices calculate their position using the [WGS84 standard](https://en.wikipedia.org/wiki/World_Geodetic_System), which defines a cartesian system with its origin on the earth's center of mass, the `z` axis pointing north and the `x` axis pointing to the first meridian as the image below shows.
 
 <figure markdown="span">
-  ![](images/Gps_Navigation/WGS_84_reference_frame.svg){ width="562px" title="WGS84 reference frame" }
+  ![WGS84 reference frame](images/Gps_Navigation/WGS_84_reference_frame.svg){ width="562px" title="WGS84 reference frame" }
 </figure>
 
 However, this reference system is impractical for describing the motion and representing the environment around objects in or close to the earth's surface: Imagine your robot is located on a soccer field and you want it to move from one end to the other, your navigation task would look something like:
@@ -50,7 +50,7 @@ Addinally, if your robot has for instance a 2D lidar, you would have to transfor
 To cope with this, geodesy proposes several planar projection systems for localization with respect to the surface of the earth. One of them is the [UTM coordinate system](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system), which assumes earth is an ellipsoid and divides it in 60 zones, each of them spanning across 6 longitude degrees. A zone represents the projection of the ellipsoid's surface over a secant cylinder parallel to its central meridian; each of them is then split into 20 latitude bands that span across 8 latitude degrees, which create local grid zones where positions are expressed using planar coordinates from the origin of the zone. The image below shows the grid zones spanning across South America.
 
 <figure markdown="span">
-  ![](images/Gps_Navigation/South-America-UTM-zones.png){ width="520px" title="UTM grid zones in South America" }
+  ![UTM grid zones in South America](images/Gps_Navigation/South-America-UTM-zones.png){ width="520px" title="UTM grid zones in South America" }
 </figure>
 
 [robot_localization](http://docs.ros.org/en/noetic/api/robot_localization/html/index.html) uses this projection system to transform GPS measurements in the WGS84 reference system to a cartesian system, which centered on the origin of the grid zone where the GPS is at. This is achieved through the [navsat_transform node](http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html). This node complies with the ENU convention in [REP 103](https://www.ros.org/reps/rep-0103.html), meaning that the `+x` axis of the `utm` coordinate system faces east, the `+y` faces north and the `+z` axis points up.
@@ -157,7 +157,7 @@ ros2 launch nav2_gps_waypoint_follower_demo gazebo_gps_world.launch.py
 A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo the topic `/gps/fix` to verify the robot is indeed producing GPS measurements
 
 <figure markdown="span">
-  ![](images/Gps_Navigation/gazebo_sonoma_raceway.png){ width="700px" title="Turtlebot in the sonoma raceway" }
+  ![Turtlebot in the sonoma raceway](images/Gps_Navigation/gazebo_sonoma_raceway.png){ width="700px" title="Turtlebot in the sonoma raceway" }
 </figure>
 
 ### 1. Setup GPS Localization system
@@ -284,7 +284,7 @@ ros2 launch nav2_gps_waypoint_follower_demo mapviz.launch.py
 You should see the window below after properly setting the API key:
 
 <figure markdown="span">
-  ![](images/Gps_Navigation/mapviz_init.png){ width="800px" title="Turtlebot in the sonoma raceway" }
+  ![Turtlebot in the sonoma raceway](images/Gps_Navigation/mapviz_init.png){ width="800px" title="Turtlebot in the sonoma raceway" }
 </figure>
 
 Finally run the teleop twist keyboard node to teleoperate the simulated Turtlebot:

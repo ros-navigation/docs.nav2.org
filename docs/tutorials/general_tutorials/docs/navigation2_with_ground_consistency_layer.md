@@ -8,7 +8,7 @@ to classify terrain into traversable ground and obstacles for intelligent outdoo
 navigation in non-planar environments, creating smarter and safer costmaps.
 
 <figure markdown="span">
-  ![](images/Navigation2_with_Ground_Consistency/ground_consistency_layer.gif){ title="Ground Consistency Layer Demo" }
+  ![Ground Consistency Layer Demo](images/Navigation2_with_Ground_Consistency/ground_consistency_layer.gif){ title="Ground Consistency Layer Demo" }
   <figcaption>Ground Consistency Layer in action: Green points are ground, magenta points are obstacles overlaid on the costmap</figcaption>
 </figure>
 
@@ -83,12 +83,12 @@ more accurate costmaps that allow the robot to navigate safely and efficiently i
 - **Underground/tunnel navigation**: Enables navigation in challenging environments where traditional costmaps fail
 
 <figure markdown="span">
-  ![](images/Navigation2_with_Ground_Consistency/raw_points.png){ title="Raw Input Point Cloud"}
+  ![Raw Input Point Cloud](images/Navigation2_with_Ground_Consistency/raw_points.png){ title="Raw Input Point Cloud"}
   <figcaption>Raw Input Point Cloud</figcaption>
 </figure>
 
 <figure markdown="1">
-  ![](images/Navigation2_with_Ground_Consistency/segmented_points.png){ title="Segmented Ground and Obstacle Points"}
+  ![Segmented Ground and Obstacle Points](images/Navigation2_with_Ground_Consistency/segmented_points.png){ title="Segmented Ground and Obstacle Points"}
   <figcaption markdown="1">Segmented Ground (Green) and Obstacle Points (Magenta) based on [GSeg3D](https://github.com/dfki-ric/ground_segmentation_ros2)</figcaption>
 </figure>
 
@@ -218,21 +218,21 @@ Let's look at some real-world examples of the ground consistency layer in action
 1. Demonstration of ground consistency layer with [Arter Excavator](https://robotik.dfki-bremen.de/en/research/robot-systems/arter) at the [Robotics Innovation Center](https://robotik.dfki-bremen.de/en/startpage) (DFKI) in Bremen, Germany:
 
     <figure markdown="span">
-    ![](images/Navigation2_with_Ground_Consistency/arter.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
+    ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/arter.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
     <figcaption></figcaption>
     </figure>
 
 2. Demonstration in [BotanicGarden](https://github.com/robot-pesg/BotanicGarden) dataset:
 
     <figure markdown="span">
-    ![](images/Navigation2_with_Ground_Consistency/botanic_garden.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
+    ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/botanic_garden.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
     <figcaption></figcaption>
     </figure>
 
 3. Demonstration in [CitrusFarm](https://github.com/UCR-Robotics/Citrus-Farm-Dataset) dataset:
 
     <figure markdown="span">
-    ![](images/Navigation2_with_Ground_Consistency/citrus_farm.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
+    ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/citrus_farm.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
     <figcaption></figcaption>
     </figure>
 
@@ -255,7 +255,7 @@ Note: The `grep -v "SampleConsensus"` is used to filter out expected warnings fr
 You should see Gazebo launch with Husky in the Baylands world:
 
 <figure markdown="span">
-  ![](images/Navigation2_with_Ground_Consistency/husky_in_baylands.png){ width="700px" title="Gazebo Baylands world"}
+  ![Gazebo Baylands world](images/Navigation2_with_Ground_Consistency/husky_in_baylands.png){ width="700px" title="Gazebo Baylands world"}
   <figcaption></figcaption>
 </figure>
 
@@ -275,7 +275,7 @@ Add the following PointCloud2 topics to your RViz2 display to visualize ground a
 You should now see the ground points and obstacle points from the segmentation algorithm overlaid on the costmap with the ground consistency layer applied:
 
 <figure markdown="span">
-  ![](images/Navigation2_with_Ground_Consistency/rviz_window.png){ width="700px" title="RViz2 window showing costmap layers"}
+  ![RViz2 window showing costmap layers](images/Navigation2_with_Ground_Consistency/rviz_window.png){ width="700px" title="RViz2 window showing costmap layers"}
   <figcaption></figcaption>
 </figure>
 
@@ -285,7 +285,7 @@ Use the `Nav2 Goal` tool in RViz2 to set navigation goals for the robot. Try set
 layer allows the robot to navigate through these challenging terrains by correctly classifying obstacles and traversable ground:
 
 <figure markdown="span">
-  ![](images/Navigation2_with_Ground_Consistency/robot_in_action.png){ width="700px" title="Robot navigating through terrain with ground consistency layer"}
+  ![Robot navigating through terrain with ground consistency layer](images/Navigation2_with_Ground_Consistency/robot_in_action.png){ width="700px" title="Robot navigating through terrain with ground consistency layer"}
   <figcaption></figcaption>
 </figure>
 

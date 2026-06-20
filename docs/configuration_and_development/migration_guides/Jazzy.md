@@ -323,19 +323,19 @@ In addition to this, the coarse_search_resolution parameter is added to the smac
 Here is an Example of the smacHybrid planner with the default goal_heading_mode to see the difference in the planned path.
 
 <figure markdown="span">
-  ![](images/smacHybrid_with_default_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with default goal_heading_mode" }
+  ![Navigation2 with smacHybrid planner with default goal_heading_mode](images/smacHybrid_with_default_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with default goal_heading_mode" }
 </figure>
 
 Here is an Example of the smacHybrid planner with the bidirectional goal_heading_mode to see the difference in the planned path.
 
 <figure markdown="span">
-  ![](images/smacHybrid_with_bidirectional_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with bidirectional goal_heading_mode" }
+  ![Navigation2 with smacHybrid planner with bidirectional goal_heading_mode](images/smacHybrid_with_bidirectional_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with bidirectional goal_heading_mode" }
 </figure>
 
 Here is an Example of the smacHybrid planner with the all_directions goal_heading_mode to see the difference in the planned path.
 
 <figure markdown="span">
-  ![](images/smacHybrid_with_all_direction_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with all_direction goal_heading_mode" }
+  ![Navigation2 with smacHybrid planner with all_direction goal_heading_mode](images/smacHybrid_with_all_direction_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with all_direction goal_heading_mode" }
 </figure>
 
 ## DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
@@ -362,7 +362,7 @@ A demo can be seen below with the following parameters:
 ```
 
 <figure markdown="span">
-  ![](images/rotation_shim_decel.gif){ width="800" title="Rotation Shim Deceleration" }
+  ![Rotation Shim Deceleration](images/rotation_shim_decel.gif){ width="800" title="Rotation Shim Deceleration" }
 </figure>
 
 ## Rotation Shim Open-loop Control
