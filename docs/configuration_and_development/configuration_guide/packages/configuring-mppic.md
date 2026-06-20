@@ -3,7 +3,7 @@
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller).
 
 <figure markdown="span">
-  ![](images/mppi_demo.gif){ width="600" title="MPPI on Turtlebot3 demo" }
+  ![MPPI on Turtlebot3 demo](images/mppi_demo.gif){ width="600" title="MPPI on Turtlebot3 demo" }
 </figure>
 
 The MPPI Controller implements a [Model Predictive Path Integral Controller](https://ieeexplore.ieee.org/document/7487277).

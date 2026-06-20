@@ -1,7 +1,7 @@
 # Writing a New Planner Plugin { #writing-a-new-planner-plugin }
 
 <figure markdown="span">
-  ![](images/Writing_new_nav2planner_plugin/nav2_straightline_gif.gif){ width="700px" title="Animated gif with gradient demo" }
+  ![Animated gif with gradient demo](images/Writing_new_nav2planner_plugin/nav2_straightline_gif.gif){ width="700px" title="Animated gif with gradient demo" }
 </figure>
 
 ## Overview

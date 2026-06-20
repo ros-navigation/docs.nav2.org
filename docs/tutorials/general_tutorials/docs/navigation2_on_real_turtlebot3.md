@@ -96,7 +96,7 @@ Click on the 2D Pose Estimate button and point the location of the robot on the 
 The direction of the green arrow is the orientation of Turtlebot.
 
 <figure markdown="span">
-  ![](images/Navigation2_on_real_Turtlebot3/rviz_set_initial_pose.png){ width="700px" title="Set initial pose in RViz" }
+  ![Set initial pose in RViz](images/Navigation2_on_real_Turtlebot3/rviz_set_initial_pose.png){ width="700px" title="Set initial pose in RViz" }
 </figure>
 
 Now, the 3D model of Turtlebot should move to that location.
@@ -110,13 +110,13 @@ You can send Turtlebot 3 a goal position and a goal orientation by using the **N
 Note: Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
 
 <figure markdown="span">
-  ![](images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png){ width="700px" title="Send goal pose in RViz" }
+  ![Send goal pose in RViz](images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png){ width="700px" title="Send goal pose in RViz" }
 </figure>
 
 Once you define the target pose,  Nav2 will find a global path and start navigating the robot on the map.
 
 <figure markdown="span">
-  ![](images/Navigation2_on_real_Turtlebot3/rviz_robot_navigating.png){ width="700px" title="Robot navigating in RViz" }
+  ![Robot navigating in RViz](images/Navigation2_on_real_Turtlebot3/rviz_robot_navigating.png){ width="700px" title="Robot navigating in RViz" }
 </figure>
 
 Now, you can see that Turtlebot 3 moves towards the goal position in the room. See the video below.

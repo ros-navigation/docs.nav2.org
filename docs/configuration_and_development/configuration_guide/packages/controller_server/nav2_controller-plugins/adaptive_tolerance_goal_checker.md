@@ -10,7 +10,7 @@ The goal is cosidered reached when one of the following conditions is met:
 - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
 
 <figure markdown="span">
-  ![](/images/adaptive_tolerance_goal_checker.png){ title="AdaptiveToleranceGoalChecker Illustration"}
+  ![AdaptiveToleranceGoalChecker Illustration](/images/adaptive_tolerance_goal_checker.png){ title="AdaptiveToleranceGoalChecker Illustration"}
 </figure>
 
 ## Parameters

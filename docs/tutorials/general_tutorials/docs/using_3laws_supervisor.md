@@ -22,7 +22,7 @@ The commercial tier, Supervisor Pro, includes additional features such as: geofe
 To learn more about Supervisor Pro, [please contact 3Laws Robotics](https://3laws.io/contact/).
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/3LawsStack.svg){ title="3Laws Robotics Stack" }
+  ![3Laws Robotics Stack](images/3laws_supervisor/graphics/3LawsStack.svg){ title="3Laws Robotics Stack" }
 </figure>
 
 !!! note
@@ -44,7 +44,7 @@ This is broadly analog to traditional safety-rated systems, but it does not prov
 However, it has the same limitations due to the slow-and-stop nature of the solution.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/solution_infographic.png){ title="Supervisor Solution Infographic" }
+  ![Supervisor Solution Infographic](images/3laws_supervisor/graphics/solution_infographic.png){ title="Supervisor Solution Infographic" }
 </figure>
 
 The Supervisor ROS uses a dynamic approach to collision avoidance to enhance safety while addressing the efficiency challenges and reducing the system tuning load.
@@ -57,7 +57,7 @@ This can allow users to reduce the amount of tuning of Nav2's highly configurabl
 It is also very good for teleoperation tasks either joysticking locally or via remote monitoring systems to avoid collisions due to remote operation delays!
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/Nav2Diagram_3laws.png){ title="Nav2 and 3Laws Supervisor Integration Diagram" }
+  ![Nav2 and 3Laws Supervisor Integration Diagram](images/3laws_supervisor/graphics/Nav2Diagram_3laws.png){ title="Nav2 and 3Laws Supervisor Integration Diagram" }
 </figure>
 
 !!! note
@@ -69,7 +69,7 @@ It is also very good for teleoperation tasks either joysticking locally or via r
 If you wish to learn more about the technology behind the Supervisor, checkout the [3Laws Knowledge Base](https://docs.3laws.io/en/latest/sources/knowledge.html) page.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/3laws_amr2.gif){ width="100%" title="3Laws AMR demo" }
+  ![3Laws AMR demo](images/3laws_supervisor/graphics/3laws_amr2.gif){ width="100%" title="3Laws AMR demo" }
 </figure>
 
 ## 0. Obtain a License Key
@@ -127,7 +127,7 @@ bash
     ```
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/page1.png){ title="Supervisor Control Panel Page 1" }
+  ![Supervisor Control Panel Page 1](images/3laws_supervisor/graphics/page1.png){ title="Supervisor Control Panel Page 1" }
 </figure>
 
 Whether using the binaries or Docker image, you can now run the Supervisor control panel to configure the Supervisor and deploy it to your robot.
@@ -185,7 +185,7 @@ There are additional advanced settings that may be configured, including:
 Once you are done making changes on this page, click the "Save" button at the bottom of the page to save your configuration and hit "Next" to proceed to the next page.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/kinematics_perception.svg){ title="Supervisor Robot Model Configuration" }
+  ![Supervisor Robot Model Configuration](images/3laws_supervisor/graphics/kinematics_perception.svg){ title="Supervisor Robot Model Configuration" }
 </figure>
 
 ### Supervisor Configuration: Robot Model
@@ -196,7 +196,7 @@ Current options include Differential Drive or Omnidirectional.
 Ackermann steering support is planned for a future release.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/page2.png){ title="Supervisor Robot Model Configuration" }
+  ![Supervisor Robot Model Configuration](images/3laws_supervisor/graphics/page2.png){ title="Supervisor Robot Model Configuration" }
 </figure>
 
 Next, select the robot shape you wish to use for the Supervisor's collision avoidance calculations.
@@ -244,7 +244,7 @@ If not using an input of an obstacle map (i.e. using sensor data *only*), this s
 If using a pre-localized obstacle map for collision avoidance, this should be the topic that provides the robot's position within the obstacle map frame.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/page3.png){ title="Supervisor Localization Configuration" }
+  ![Supervisor Localization Configuration](images/3laws_supervisor/graphics/page3.png){ title="Supervisor Localization Configuration" }
 </figure>
 
 Select the QoS settings for the localization topic subscriber, usually System Default with a depth of 10 and set the approximate update rate of the localization topic.
@@ -270,7 +270,7 @@ The basic data from your sensors should be broadly pre-populated from the Nav2 C
 Set the sensor's QoS to be Sensor Data if not already default.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/page4.png){ title="Supervisor Perception Configuration" }
+  ![Supervisor Perception Configuration](images/3laws_supervisor/graphics/page4.png){ title="Supervisor Perception Configuration" }
 </figure>
 
 Add in the additional information about your sensors (number of rays, angles, range, update rate, etc) which should be obtained from your sensor's documentation.
@@ -303,7 +303,7 @@ This should be pre-populated with a `geometry_msgs/TwistStamped` topic for the i
 Thus, we only need to update the topic names to match your Nav2 configuration.
 
 <figure markdown="span">
-  ![](images/3laws_supervisor/graphics/page6.png){ title="Supervisor System Configuration" }
+  ![Supervisor System Configuration](images/3laws_supervisor/graphics/page6.png){ title="Supervisor System Configuration" }
 </figure>
 
 Set the Supervisor output signal to `/cmd_vel_supervised` for integration into the Nav2 post-processing pipeline.

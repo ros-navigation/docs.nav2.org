@@ -523,7 +523,7 @@ The UI workflow is now organized into two primary navigation modes:
     - Execution: Once the list is defined, navigation can be executed via `NavigateThroughPoses` or `Waypoint Following` actions.
 
 <figure markdown="span">
-  ![](images/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }
+  ![Multiple-Goal Navigation in Nav2 RViz Panel](images/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }
 </figure>
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
@@ -535,7 +535,7 @@ In [PR #5783](https://github.com/ros-navigation/navigation2/pull/5783), an optio
 - Fumiya Ohnishi and Masaki Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
 
 <figure markdown="span">
-  ![](images/dwpp_comparison.gif){ width="800" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" }
+  ![Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants](images/dwpp_comparison.gif){ width="800" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" }
 </figure>
 
 The following parameters are updated for this feature.
@@ -933,7 +933,7 @@ Three new MPPIController parameters, default `0.0` (feature disabled):
 When non-zero, the optimizer fills the first `round(delay / model_dt)` rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.
 
 <figure markdown="span">
-  ![](images/mppi_delay_compensation_serpentines.png){ width="800px" title="Open-loop trajectory with and without per-axis delay compensation."}
+  ![Open-loop trajectory with and without per-axis delay compensation.](images/mppi_delay_compensation_serpentines.png){ width="800px" title="Open-loop trajectory with and without per-axis delay compensation."}
 </figure>
 
 The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation `model_delay_wz=0.6` (right), tracking is visibly better.

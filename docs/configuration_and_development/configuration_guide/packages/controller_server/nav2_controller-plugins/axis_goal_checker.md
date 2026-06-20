@@ -5,7 +5,7 @@ Checks whether the robot has reached the goal pose by projecting the robot's pos
 Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (`along_path_tolerance`) and perpendicular to it (`cross_track_tolerance`). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.
 
 <figure markdown="span">
-  ![](/images/axis_goal_checker.png){ title="AxisGoalChecker Illustration" }
+  ![AxisGoalChecker Illustration](/images/axis_goal_checker.png){ title="AxisGoalChecker Illustration" }
 </figure>
 
 ## Parameters
