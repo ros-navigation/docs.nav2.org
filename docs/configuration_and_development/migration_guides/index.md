@@ -9,4 +9,3 @@ Navigation2 guides for migration between distributions.
 - [Humble to Iron][humble-to-iron]
 - [Iron to Jazzy][iron-to-jazzy]
 - [Jazzy to Kilted][jazzy-to-kilted]
-- [Kilted to L-turtle][kilted-to-l-turtle]

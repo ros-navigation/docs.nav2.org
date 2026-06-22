@@ -312,7 +312,6 @@ nav:
       - Humble to Iron: configuration_and_development/migration_guides/Humble.md
       - Iron to Jazzy: configuration_and_development/migration_guides/Iron.md
       - Jazzy to Kilted: configuration_and_development/migration_guides/Jazzy.md
-      - Kilted to L-turtle: configuration_and_development/migration_guides/Kilted.md
     - API Docs: https://api.nav2.org/
   - Community:
     - community/index.md
