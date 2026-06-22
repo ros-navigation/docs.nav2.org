@@ -57,7 +57,7 @@ An alternative to manually publishing this information that we recommend is thro
 
 !!! info "See also"
 
-    For more information, see the [ros2_control documentation](https://control.ros.org/) and the [Github repository of diff_drive_controller](https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/).
+    For more information, see the [ros2_control documentation](https://control.ros.org/) and the [Github repository of diff_drive_controller](https://github.com/ros-controls/ros2_controllers/tree/jazzy/diff_drive_controller/).
 
 For other types of sensors such as IMU, VIO, etc, their respective ROS drivers should have documentation on how publish the odometry information. Keep in mind that Nav2 requires the `nav_msgs/Odometry` message and `odom` => `base_link` transforms to be published and this should be your goal when setting up your odometry system.
 

@@ -8,7 +8,7 @@ In the second case, we will build a demo that simulates a functioning odometry s
 
 !!! info "See also"
 
-    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/humble/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## Odometry Introduction
 
@@ -57,13 +57,13 @@ An alternative to manually publishing this information that we recommend is thro
 
 !!! info "See also"
 
-    For more information, see the [ros2_control documentation](https://ros-controls.github.io/control.ros.org/) and the [Github repository of diff_drive_controller](https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/).
+    For more information, see the [ros2_control documentation](https://ros-controls.github.io/control.ros.org/) and the [Github repository of diff_drive_controller](https://github.com/ros-controls/ros2_controllers/tree/jazzy/diff_drive_controller/).
 
 For other types of sensors such as IMU, VIO, etc, their respective ROS drivers should have documentation on how publish the odometry information. Keep in mind that Nav2 requires the `nav_msgs/Odometry` message and `odom` => `base_link` transforms to be published and this should be your goal when setting up your odometry system.
 
 ## Simulating an Odometry System using Gazebo
 
-In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/humble/sam_bot_description/).
+In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/sam_bot_description/).
 
 !!! note
 
