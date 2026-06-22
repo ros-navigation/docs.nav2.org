@@ -24,9 +24,9 @@ In this section, we will configure the footprint of `sam_bot` such that `footpri
 
 !!! note
 
-    The complete source code for `sam_bot` can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description) repository.
+    The complete source code for `sam_bot` can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description) repository.
 
-Under the `config` directory, create a new file named  `nav2_params.yaml`. Next, copy the contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml) and paste them into the newly created file. The contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml) are copied from the default configuration file of Nav2 but with changes in the `footprint` and  `robot_radius` parameters to match the shape of `sam_bot`.
+Under the `config` directory, create a new file named  `nav2_params.yaml`. Next, copy the contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/config/nav2_params.yaml) and paste them into the newly created file. The contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/config/nav2_params.yaml) are copied from the default configuration file of Nav2 but with changes in the `footprint` and  `robot_radius` parameters to match the shape of `sam_bot`.
 
 !!! info "See also"
 

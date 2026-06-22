@@ -28,7 +28,7 @@ cd <your workspace path>
 colcon build --symlink-install # on your workspace path
 ```
 
-The code for this tutorial is hosted in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory. It's highly recommended that you clone and build these packages when setting up your development environment.
+The code for this tutorial is hosted in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_semantic_segmentation_demo) directory. It's highly recommended that you clone and build these packages when setting up your development environment.
 
 Finally, you will need:
 
@@ -68,7 +68,7 @@ For that reason, both the class and the confidence are important inputs for deci
 ### 0. Setup Simulation Environment
 
 To navigate using semantic segmentation, we first need to set up a simulation environment with a robot equipped with a camera sensor. For this tutorial, we will use the Baylands outdoor world in Gazebo with a TurtleBot 4 robot.
-Everything is already set up in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_semantic_segmentation_demo) directory, so clone the repo and build it if you haven't already:
+Everything is already set up in the [nav2_semantic_segmentation_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_semantic_segmentation_demo) directory, so clone the repo and build it if you haven't already:
 
 ```bash
 # On your workspace source folder
