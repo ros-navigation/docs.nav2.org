@@ -145,7 +145,7 @@ Description
 | `int` | 4       |
 
 Description
-:   Minimum number of data readings within a zone to trigger the action. Former `max_points` parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). `min_points` is equal to `max_points + 1` value.
+:   Minimum number of data readings within a zone to trigger the action.
 
 ### **`<polygon_name>.trigger_consecutive_points`**
 

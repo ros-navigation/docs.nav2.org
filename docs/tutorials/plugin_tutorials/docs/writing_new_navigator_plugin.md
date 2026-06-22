@@ -306,9 +306,9 @@ bt_navigator:
     path_blackboard_id: path
     navigators: ['navigate_to_pose', 'navigate_through_poses']
     navigate_to_pose:
-      plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
     navigate_through_poses:
-      plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator"
 ```
 
 In the above snippet, you can observe the mapping of our `nav2_bt_navigator::NavigateToPoseNavigator` plugin to its id `navigate_to_pose`.

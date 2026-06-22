@@ -53,7 +53,7 @@ planner_server:
   ros__parameters:
     planner_plugins: ['GridBased']
     GridBased:
-      plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
+      plugin: 'nav2_navfn_planner::NavfnPlanner'
 ```
 
 An example configuration of the planner server is shown above. The `planner_plugins` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in `planner_plugins` (`GridBased` in our example), we specify the type of plugin to be loaded in the `plugin` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the [Configuration Guide][configuration-guide] for more details.

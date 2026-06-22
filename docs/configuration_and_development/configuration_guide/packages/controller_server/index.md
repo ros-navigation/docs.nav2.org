@@ -72,7 +72,7 @@ Note
 | `vector<string>` | ["progress_checker"] |
 
 Description
-:   Mapped name for progress checker plugin for checking progress made by robot. Formerly `progress_checker_plugin` for Humble and older with a single string plugin.
+:   Mapped name for progress checker plugin for checking progress made by robot.
 
 Note
 :   The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -81,7 +81,7 @@ Note
     ```yaml
     controller_server:
       ros__parameters:
-        progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+        progress_checker_plugins: ["progress_checker"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
     ```
@@ -205,9 +205,6 @@ Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
-Note
-:   This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
-
 ### **`bond_heartbeat_period`**
 
 | Type     | Default |
@@ -281,8 +278,8 @@ controller_server:
     failure_tolerance: 0.3
     odom_topic: "odom"
     odom_duration: 0.3
-    progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
-    goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
+    progress_checker_plugins: ["progress_checker"]
+    goal_checker_plugins: ["goal_checker"]
     path_handler_plguins: ["PathHandler"]
     controller_plugins: ["FollowPath"]
     progress_checker:

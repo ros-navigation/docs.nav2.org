@@ -6,7 +6,6 @@ The Behavior Server implements the server for handling various behavior, such as
 It is also possible to implement independent behavior servers for each custom behavior, but this server will allow multiple behaviors to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.
 
 Note: the wait recovery behavior has no parameters, the duration to wait is given in the action request.
-Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Launch files, behaviors and tests were all renamed.
 
 ## Behavior Server Parameters
 
@@ -120,20 +119,16 @@ Note
       ros__parameters:
         behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
         spin:
-          plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
+          plugin: "nav2_behaviors::Spin"
         backup:
-          plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
+          plugin: "nav2_behaviors::BackUp"
         drive_on_heading:
-          plugin: "nav2_behaviors::DriveOnHeading" # In Iron and older versions, "/" was used instead of "::"
+          plugin: "nav2_behaviors::DriveOnHeading"
         wait:
-          plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
+          plugin: "nav2_behaviors::Wait"
     ```
 
 ## Default Plugins
-
-!!! note
-
-    In Iron and older versions, "/" was used instead of "::".
 
 When the `behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 
@@ -193,7 +188,6 @@ Description
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 
 ## BackUp Behavior Parameters
 
@@ -217,7 +211,6 @@ Description
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 
 ### **`backup.acceleration_limit`**
 
@@ -268,7 +261,6 @@ Description
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 
 ### **`bond_heartbeat_period`**
 
@@ -355,7 +347,6 @@ Description
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 
 ## Example
 
@@ -369,15 +360,15 @@ behavior_server:
     cycle_frequency: 10.0
     behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
     spin:
-      plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::Spin"
     backup:
-      plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::BackUp"
     drive_on_heading:
-      plugin: "nav2_behaviors::DriveOnHeading" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::DriveOnHeading"
     wait:
-      plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::Wait"
     assisted_teleop:
-      plugin: "nav2_behaviors::AssistedTeleop" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::AssistedTeleop"
     local_frame: odom
     global_frame: map
     robot_base_frame: base_link
@@ -386,5 +377,5 @@ behavior_server:
     max_rotational_vel: 1.0
     min_rotational_vel: 0.4
     rotational_acc_lim: 3.2
-    enable_stamped_cmd_vel: true  # default false in Jazzy or older
+    enable_stamped_cmd_vel: true
 ```

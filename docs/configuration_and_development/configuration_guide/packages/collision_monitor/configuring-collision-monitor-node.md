@@ -96,7 +96,6 @@ Description
 
 Description
 :   Input `cmd_vel` topic with desired robot velocity.
-    Please note, pre-`Jazzy` this was set to `cmd_vel_raw` by default.
 
 ### **`cmd_vel_out_topic`**
 
@@ -188,7 +187,6 @@ Description
 Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older! Kilted or newer uses `TwistStamped` by default.
 
 ## Polygons parameters
 
@@ -264,7 +262,7 @@ Description
 | `int` | 4       |
 
 Description
-:   Minimum number of data readings within a zone to trigger the action. Former `max_points` parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). `min_points` is equal to `max_points + 1` value.
+:   Minimum number of data readings within a zone to trigger the action.
 
 ### **`<polygon_name>.trigger_consecutive_points`**
 
@@ -623,14 +621,14 @@ collision_monitor:
     source_timeout: 5.0
     base_shift_correction: True
     stop_pub_timeout: 2.0
-    enable_stamped_cmd_vel: True  # False for Jazzy or older
+    enable_stamped_cmd_vel: True
     use_realtime_priority: false
     polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
     PolygonStop:
       type: "circle"
       radius: 0.3
       action_type: "stop"
-      min_points: 4  # max_points: 3 for Humble
+      min_points: 4
       visualize: True
       polygon_pub_topic: "polygon_stop"
       enabled: True
@@ -638,7 +636,7 @@ collision_monitor:
       type: "polygon"
       points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
       action_type: "slowdown"
-      min_points: 4  # max_points: 3 for Humble
+      min_points: 4
       slowdown_ratio: 0.3
       visualize: True
       polygon_pub_topic: "polygon_slowdown"
@@ -647,7 +645,7 @@ collision_monitor:
       type: "polygon"
       points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
       action_type: "limit"
-      min_points: 4  # max_points: 3 for Humble
+      min_points: 4
       linear_limit: 0.4
       angular_limit: 0.5
       visualize: True
@@ -659,7 +657,7 @@ collision_monitor:
       footprint_topic: "/local_costmap/published_footprint"
       time_before_collision: 2.0
       simulation_time_step: 0.02
-      min_points: 6  # max_points: 5 for Humble
+      min_points: 6
       visualize: False
       enabled: True
     VelocityPolygonStop:

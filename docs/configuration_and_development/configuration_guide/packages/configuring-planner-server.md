@@ -26,7 +26,7 @@ Note
       ros__parameters:
         planner_plugins: ["GridBased"]
         GridBased:
-          plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
+          plugin: "nav2_navfn_planner::NavfnPlanner"
     ```
 
 ### **`allow_partial_planning`**
@@ -102,5 +102,5 @@ planner_server:
     introspection_mode: "disabled"
     planner_plugins: ['GridBased']
     GridBased:
-      plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
+      plugin: 'nav2_navfn_planner::NavfnPlanner'
 ```

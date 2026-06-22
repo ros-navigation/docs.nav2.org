@@ -241,7 +241,7 @@ controller_server:
     controller_plugins: ["FollowPath"]
 
     FollowPath:
-      plugin: "nav2_pure_pursuit_controller::PurePursuitController" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_pure_pursuit_controller::PurePursuitController"
       debug_trajectory_details: True
       desired_linear_vel: 0.2
       lookahead_dist: 0.4

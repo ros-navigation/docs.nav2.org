@@ -180,20 +180,20 @@ Next, we'll use this plugin.
 To enable the plugin, we need to modify the `nav2_params.yaml` file as below to replace following params
 
 ```yaml
-behavior_server:  # Humble and later
-recoveries_server:  # Galactic and earlier
+behavior_server:
+recoveries_server:
   ros__parameters:
     costmap_topic: local_costmap/costmap_raw
     footprint_topic: local_costmap/published_footprint
     cycle_frequency: 10.0
-    behavior_plugins: ["spin", "backup", "wait"]  # Humble and later
-    recovery_plugins: ["spin", "backup", "wait"]  # Galactic and earlier
+    behavior_plugins: ["spin", "backup", "wait"]
+    recovery_plugins: ["spin", "backup", "wait"]
     spin:
-      plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::Spin"
     backup:
-      plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::BackUp"
     wait:
-      plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::Wait"
     global_frame: odom
     robot_base_frame: base_link
     transform_tolerance: 0.1
@@ -206,24 +206,24 @@ recoveries_server:  # Galactic and earlier
 with
 
 ```yaml
-behavior_server:  # Humble and newer
-recoveries_server:  # Galactic and earlier
+behavior_server:
+recoveries_server:
   ros__parameters:
     local_costmap_topic: local_costmap/costmap_raw
     local_footprint_topic: local_costmap/published_footprint
     global_costmap_topic: global_costmap/costmap_raw
     global_footprint_topic: global_costmap/published_footprint
     cycle_frequency: 10.0
-    behavior_plugins: ["spin", "backup", "wait","send_sms"]  # Humble and newer
-    recovery_plugins: ["spin", "backup", "wait","send_sms"]  # Galactic and earlier
+    behavior_plugins: ["spin", "backup", "wait","send_sms"]
+    recovery_plugins: ["spin", "backup", "wait","send_sms"]
     spin:
-      plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::Spin"
     backup:
-      plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::BackUp"
     wait:
-      plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_behaviors::Wait"
     send_sms:
-      plugin: "nav2_sms_behavior::SendSms" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_sms_behavior::SendSms"
     account_sid: ... # your sid
     auth_token: ... # your token
     from_number: ... # your number

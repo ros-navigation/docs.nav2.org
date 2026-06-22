@@ -231,7 +231,7 @@ Description
 | `double` | 1.0     |
 
 Description
-:   The time (s) to forward-simulate the current velocity command to check for collisions when `use_collision_detection` is `true`. At each simulation step, the robot's footprint is projected forward by the costmap resolution. The simulation stops at whichever limit is reached first: this time limit or the carrot distance. If a collision is detected at any projected pose, the robot will stop. When `min_distance_to_obstacle` is set, this time limit may be automatically extended to ensure the minimum obstacle distance can be checked at the current velocity. Pre-`Humble`, this was `max_allowed_time_to_collision`.
+:   The time (s) to forward-simulate the current velocity command to check for collisions when `use_collision_detection` is `true`. At each simulation step, the robot's footprint is projected forward by the costmap resolution. The simulation stops at whichever limit is reached first: this time limit or the carrot distance. If a collision is detected at any projected pose, the robot will stop. When `min_distance_to_obstacle` is set, this time limit may be automatically extended to ensure the minimum obstacle distance can be checked at the current velocity.
 
 ### **`use_regulated_linear_velocity_scaling`**
 
@@ -412,7 +412,7 @@ controller_server:
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.5
     min_theta_velocity_threshold: 0.001
-    progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+    progress_checker_plugins: ["progress_checker"]
     goal_checker_plugins: ["goal_checker"]
     controller_plugins: ["FollowPath"]
 

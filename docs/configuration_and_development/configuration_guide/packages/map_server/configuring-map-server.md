@@ -11,7 +11,7 @@ The Map Server implements the server for handling the map load requests for the 
 | `string` | N/A     |
 
 Description
-:   Path to map yaml file. Note from Rolling + Iron-Turtle forward: This parameter can set either from the yaml file or using the launch configuration parameter `map`. If we set it on launch commandline / launch configuration default, we override the yaml default. If you would like the specify your map file in yaml, remove the launch default so it is not overridden in Nav2's default launch files. Before Iron: `yaml_filename` must be set in the yaml (even if a bogus value) so that our launch scripts can overwrite it with launch values.
+:   Path to map yaml file. This parameter can set either from the yaml file or using the launch configuration parameter `map`. If we set it on launch commandline / launch configuration default, we override the yaml default. If you would like the specify your map file in yaml, remove the launch default so it is not overridden in Nav2's default launch files.
 
 ### **`topic_name`**
 

@@ -38,7 +38,7 @@ Description
 | `double` | 0.3925  |
 
 Description
-:   New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the `angular_dist_threshold` instead. This allows for better alignment before passing to the child controller when engaged.
+:   The threshold to the path's heading before disengagement (radians). This allows for better alignment before passing to the child controller when engaged.
 
 ### **`forward_sampling_distance`**
 
@@ -139,7 +139,7 @@ controller_server:
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.5
     min_theta_velocity_threshold: 0.001
-    progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+    progress_checker_plugins: ["progress_checker"]
     goal_checker_plugins: ["goal_checker"]
     controller_plugins: ["FollowPath"]
 

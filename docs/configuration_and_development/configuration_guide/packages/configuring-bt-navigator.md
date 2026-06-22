@@ -19,7 +19,7 @@ Make sure to review all parameters for non-default navigator plugins not discuss
 | `vector<string>` | {'navigate_to_pose', 'navigate_through_poses'} |
 
 Description
-:   New to Iron: Plugins for navigator types implementing the `nav2_core::BehaviorTreeNavigator` interface.
+:   Plugins for navigator types implementing the `nav2_core::BehaviorTreeNavigator` interface.
     They implement custom action servers with custom interface definitions and use that data to populate and process behavior tree navigation requests. Plugin classes are defined under the same namespace, see examples below. Defaults correspond to the `NavigateToPoseNavigator` and `NavigateThroughPosesNavigator` navigators.
 
 ### **`default_nav_to_pose_bt_xml`**
@@ -71,7 +71,7 @@ Description
 | `vector<string>` | [""]    |
 
 Description
-:   List of behavior tree node shared libraries. All Nav2 BT libraries are automatically included for you, so this only needs to include your new custom plugins (new to Jazzy).
+:   List of behavior tree node shared libraries. All Nav2 BT libraries are automatically included for you, so this only needs to include your new custom plugins.
 
 ### **`bt_loop_duration`**
 
@@ -173,7 +173,7 @@ Description
 | `vector<string>` | ["assisted_teleop",<br> "backup",<br>  "compute_path",<br>  "dock_robot",<br>  "drive_on_heading",<br>  "follow_path",<br>  "nav_thru_poses",<br>  "nav_to_pose",<br>  "spin",<br>  "route",<br>  "undock_robot",<br>  "wait"] |
 
 Description
-:   For Kilted and newer: List of of error code name prefixes to be appended with `_error_code` and `_error_msg` and searched for during aborted navigator error processing.
+:   List of of error code name prefixes to be appended with `_error_code` and `_error_msg` and searched for during aborted navigator error processing.
 
 ### **`bond_heartbeat_period`**
 
@@ -366,12 +366,12 @@ bt_navigator:
     bt_search_directories:
       - $(find-pkg-share nav2_bt_navigator)/behavior_trees
     navigate_to_pose:
-      plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
       enable_groot_monitoring: false
       groot_server_port: 1667
       search_window: 2.0
     navigate_through_poses:
-      plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator"
       enable_groot_monitoring: false
       groot_server_port: 1669
       search_window: 2.0

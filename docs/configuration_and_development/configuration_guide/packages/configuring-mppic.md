@@ -275,15 +275,6 @@ Description
 Description
 :   Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
 
-### **`reset_period`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
-
-Description
-:   Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
-
 ### **`regenerate_noises`**
 
 | Type   | Default |
@@ -552,24 +543,6 @@ Description
 
 Description
 :   Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
-
-### **`cost_scaling_factor`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
-
-Description
-:   Exponential decay factor across inflation radius. This should be the same as for your inflation layer (Humble only)
-
-### **`inflation_radius`**
-
-| Type     | Default |
-|----------|---------|
-| `double` | 0.55    |
-
-Description
-:   Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
 
 ### **`inflation_layer_name`**
 
@@ -945,7 +918,6 @@ controller_server:
         plugin: "mppi::DiffDriveMotionModel"
       visualize: false
       critic_index_to_visualize: 0
-      reset_period: 1.0 # (only in Humble)
       regenerate_noises: false
       sgf_order: 2
       TrajectoryVisualizer:
@@ -984,8 +956,6 @@ controller_server:
       #   collision_cost: 10000.0
       #   collision_margin_distance: 0.1
       #   near_goal_distance: 0.5
-      #   inflation_radius: 0.55 # (only in Humble)
-      #   cost_scaling_factor: 10.0 # (only in Humble)
       CostCritic:
         enabled: true
         cost_power: 1

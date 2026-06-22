@@ -270,9 +270,6 @@ Description
 Description
 :   The fully-qualified type of the plugin class. Options are "nav2_amcl::DifferentialMotionModel" and "nav2_amcl::OmniMotionModel". Users can also provide their own custom motion model plugin type.
 
-  Note for users of galactic and earlier
-:   The models are selectable by string key (valid options: "differential", "omnidirectional") rather than plugins.
-
 ### **`save_pose_rate`**
 
 | Type     | Default |
@@ -406,7 +403,7 @@ Description
 | `bool` | False   |
 
 Description
-:   Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the *LoadMap* service in *map_server*. Prior to Humble, this is `first_map_only_`.
+:   Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the *LoadMap* service in *map_server*.
 
 ### **`bond_heartbeat_period`**
 

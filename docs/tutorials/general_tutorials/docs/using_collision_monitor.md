@@ -32,14 +32,14 @@ PolygonStop:
   type: "polygon"
   points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
   action_type: "stop"
-  min_points: 4  # max_points: 3 for Humble
+  min_points: 4
   visualize: True
   polygon_pub_topic: "polygon_stop"
 PolygonSlow:
   type: "polygon"
   points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
   action_type: "slowdown"
-  min_points: 4  # max_points: 3 for Humble
+  min_points: 4
   slowdown_ratio: 0.3
   visualize: True
   polygon_pub_topic: "polygon_slowdown"
@@ -77,20 +77,20 @@ collision_monitor:
     transform_tolerance: 0.5
     source_timeout: 5.0
     stop_pub_timeout: 2.0
-    enable_stamped_cmd_vel: True # False for Jazzy or older by default
+    enable_stamped_cmd_vel: True
     polygons: ["PolygonStop", "PolygonSlow"]
     PolygonStop:
       type: "polygon"
       points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
       action_type: "stop"
-      min_points: 4  # max_points: 3 for Humble
+      min_points: 4
       visualize: True
       polygon_pub_topic: "polygon_stop"
     PolygonSlow:
       type: "polygon"
       points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
       action_type: "slowdown"
-      min_points: 4  # max_points: 3 for Humble
+      min_points: 4
       slowdown_ratio: 0.3
       visualize: True
       polygon_pub_topic: "polygon_slowdown"

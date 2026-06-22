@@ -193,7 +193,7 @@ planner_server:
   ros__parameters:
     plugins: ["GridBased"]
     GridBased:
-      plugin: "nav2_navfn_planner::NavfnPlanner" # For Foxy and later. In Iron and older versions, "/" was used instead of "::"
+      plugin: "nav2_navfn_planner::NavfnPlanner"
       tolerance: 2.0
       use_astar: false
       allow_unknown: true
