@@ -6,7 +6,7 @@ nav2_docking_hpp_dir_path: "navigation2/nav2_docking/opennav_docking_bt/include/
 github_repositories:
   navigation2:
     owner: "ros-navigation"
-    branch: "main" # Rolling
+    branch: "jazzy"
     data_to_clone:
       - "/nav2_behavior_tree/nav2_tree_nodes.xml"
       - "/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
