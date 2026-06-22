@@ -1,4 +1,4 @@
-# Setting Up The SDF - Gazebo { #setting-up-the-sdf-gazebo }
+# Setting Up The SDF { #setting-up-the-sdf }
 
 For this guide, we will be creating the SDF (Simulation Description Format) file for a simple differential drive robot to give you hands-on experience on building an SDF file for Gazebo simulation.
 

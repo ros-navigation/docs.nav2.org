@@ -116,27 +116,15 @@ nav:
     - configuration_and_development/index.md
     - First-Time Robot Setup Guide:
       - configuration_and_development/first_time_robot_setup_guide/index.md
-      - Setup Guide for Gazebo:
-        - configuration_and_development/first_time_robot_setup_guide/gazebo/index.md
-        - Setting Up Transformations: configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms.md
-        - Setting Up The URDF: configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf.md
-        - Setting Up The SDF - Gazebo: configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf.md
-        - Setting Up Odometry - Gazebo: configuration_and_development/first_time_robot_setup_guide/odom/setup_odom_gz.md
-        - Smoothing Odometry using Robot Localization: configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo: configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors_gz.md
-        - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
-      - Setup Guide for Gazebo Classic:
-        - configuration_and_development/first_time_robot_setup_guide/gazebo_classic/index.md
-        - Setting Up Transformations: configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms.md
-        - Setting Up The URDF: configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf.md
-        - Setting Up Odometry - Gazebo Classic: configuration_and_development/first_time_robot_setup_guide/odom/setup_odom_gz_classic.md
-        - Smoothing Odometry using Robot Localization: configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization.md
-        - Setting Up Sensors - Gazebo Classic: configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors_gz_classic.md
-        - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
-        - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
-        - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
+      - Setting Up Transformations: configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms.md
+      - Setting Up The URDF: configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf.md
+      - Setting Up The SDF: configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf.md
+      - Setting Up Odometry: configuration_and_development/first_time_robot_setup_guide/odom/setup_odom.md
+      - Smoothing Odometry using Robot Localization: configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization.md
+      - Setting Up Sensors: configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors.md
+      - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
+      - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
+      - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
     - Navigation Plugins:
       - configuration_and_development/navigation_plugins/index.md
     - Configuration Guide:

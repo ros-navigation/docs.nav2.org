@@ -6,7 +6,7 @@ The `robot_localization` package is used to provide a fused and locally accurate
 
 A usual robot setup consists of at least the wheel encoders and IMU as its odometry sensor sources. When multiple sources are provided to `robot_localization`, it is able to fuse the odometry information given by the sensors through the use of state estimation nodes. These nodes make use of either an Extended Kalman filter (`ekf_node`) or an Unscented Kalman Filter (`ukf_node`) to implement this fusion. In addition, the package also implements a `navsat_transform_node` which transforms geographic coordinates into the robot's world frame when working with GPS.
 
-Fused sensor data is published by the `robot_localization` package through the `odometry/filtered` and the `accel/filtered` topics, if enabled in its configuration. In addition, it can also publish the `odom` => `base_link` transform on the `/tf` topic. Do note that if you followed [Setting Up Odometry - Gazebo][setting-up-odometry-gazebo], you will need to remove the /tf bridge in `bridge_config.yaml` to get the transforms from `ekf_node` instead of Gazebo.
+Fused sensor data is published by the `robot_localization` package through the `odometry/filtered` and the `accel/filtered` topics, if enabled in its configuration. In addition, it can also publish the `odom` => `base_link` transform on the `/tf` topic. Do note that if you followed [Setting Up Odometry][setting-up-odometry], you will need to remove the /tf bridge in `bridge_config.yaml` to get the transforms from `ekf_node` instead of Gazebo.
 
 !!! info "See also"
 

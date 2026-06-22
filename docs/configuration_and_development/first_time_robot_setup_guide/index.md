@@ -17,36 +17,26 @@ To guide you through the first-time setup of your robot, we will be tackling the
 - Select and set up planner and controller navigation plugins for your robot's navigation tasks
 - Lifecycle node management for easy bringup of other related sensors or nodes
 
-There are tutorials below for the Gazebo Classic simulator and the Gazebo simulator. Gazebo Classic is used with ROS 2 Humble and previous ROS distributions, while Gazebo (Gazebo Harmonic or newer) is used with ROS 2 Jazzy or newer.
+!!! note
 
-Choose the appropriate guide based on your ROS 2 distribution:
+    This guide covers setting up Navigation2 with the modern Gazebo simulator (Gazebo Harmonic or newer), used with ROS 2 Jazzy or newer.
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;" markdown>
-<div markdown>
+Follow these tutorials in order to set up your robot for Nav2:
 
-- [Setup Guide for Gazebo][setup-guide-for-gazebo]
-    - [Setting Up Transformations][setting-up-transformations]
-    - [Setting Up The URDF][setting-up-the-urdf]
-    - [Setting Up The SDF - Gazebo][setting-up-the-sdf-gazebo]
-    - [Setting Up Odometry - Gazebo][setting-up-odometry-gazebo]
-    - [Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]
-    - [Setting Up Sensors - Gazebo][setting-up-sensors-gazebo]
-    - [Mapping and Localization][mapping-and-localization]
-    - [Setting Up the Robot's Footprint][setting-up-the-robots-footprint]
-    - [Setting Up Navigation Plugins][setting-up-navigation-plugins]
+<div class="grid" markdown>
 
-</div>
-<div markdown>
-
-- [Setup Guide for Gazebo Classic][setup-guide-for-gazebo-classic]
-    - [Setting Up Transformations][setting-up-transformations]
-    - [Setting Up The URDF][setting-up-the-urdf]
-    - [Setting Up Odometry - Gazebo Classic][setting-up-odometry-gazebo-classic]
-    - [Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]
-    - [Setting Up Sensors - Gazebo Classic][setting-up-sensors-gazebo-classic]
-    - [Mapping and Localization][mapping-and-localization]
-    - [Setting Up the Robot's Footprint][setting-up-the-robots-footprint]
-    - [Setting Up Navigation Plugins][setting-up-navigation-plugins]
+[Setting Up Transformations][setting-up-transformations]{ .md-button .md-button--primary }
+[Setting Up The URDF][setting-up-the-urdf]{ .md-button .md-button--primary }
+[Setting Up The SDF][setting-up-the-sdf]{ .md-button .md-button--primary }
+[Setting Up Odometry][setting-up-odometry]{ .md-button .md-button--primary }
+[Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]{ .md-button .md-button--primary }
+[Setting Up Sensors][setting-up-sensors]{ .md-button .md-button--primary }
+[Mapping and Localization][mapping-and-localization]{ .md-button .md-button--primary }
+[Setting Up the Robot's Footprint][setting-up-the-robots-footprint]{ .md-button .md-button--primary }
+[Setting Up Navigation Plugins][setting-up-navigation-plugins]{ .md-button .md-button--primary }
 
 </div>
-</div>
+
+!!! note
+
+    These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the [Configuration Guide][configuration-guide] section.

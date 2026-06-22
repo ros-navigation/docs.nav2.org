@@ -1,4 +1,4 @@
-# Setting Up Sensors - Gazebo { #setting-up-sensors-gazebo }
+# Setting Up Sensors { #setting-up-sensors }
 
 In this guide, we will discuss the importance of the sensors in navigating a robot safely and how to set up the sensors with Nav2. In the first half of this tutorial, we will take a brief look at commonly used sensors and common sensor messages in Nav2. Next, we will add a basic sensor setup on our previously built simulated robot, `sam_bot`. Lastly, we will then verify the simulated sensor messages of `sam_bot` by visualizing them in RViz.
 
@@ -62,7 +62,7 @@ This represents the sensor readings from RGB or depth camera, corresponding to R
 
 To give you a better grasp of how to set up sensors on a simulated robot, we will build up on our previous tutorials and attach sensors to our simulated robot `sam_bot`. Similar to the previous tutorial where we used Gazebo plugins to add odometry sensors to `sam_bot`, we will be using the Gazebo plugins to simulate a lidar sensor and a depth camera on `sam_bot`. If you are working with a real robot, most of these steps are still required for setting up your URDF frames and it will not hurt to also add in the gazebo plugins for later use.
 
-To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the [Setup and Prerequisites][gazebo-setup-and-prerequisites] of the previous tutorial to setup Gazebo.
+To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the [Setup and Prerequisites][setup-and-prerequisites] of the previous tutorial to setup Gazebo.
 
 ### Adding Gazebo Plugins to a URDF or SDF
 

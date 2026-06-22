@@ -6,7 +6,7 @@ In this guide, we will discuss how to configure the footprint of your robot for 
 
 The footprint outlines the robot's 2D shape when projected to the ground and is primarily used by Nav2 to avoid collisions during planning. The algorithms involved in this task makes sure that the robot does not collide with the obstacles in the costmap while it computes the robot's paths or plans.
 
-The footprint is set up using the `footprint` or `robot_radius` parameter of the global and local costmaps which we tackled in the previous tutorials ([Setting Up Sensors Guide][setting-up-sensors-gazebo]). The value defined in the `footprint` parameter is an ordered vector of 2-D points defining the robot's footprint with the `base_link` frame as the origin. The first and last points in the vector are joined into the last line segment to close the footprint's shape. As an alternative, you may also use the `robot_radius` parameter wherein circular footprint is automatically generated and centered at `base_link`.  In cases both the `footprint` and `robot_radius` parameters have been defined in the configuration, the `footprint` is used.
+The footprint is set up using the `footprint` or `robot_radius` parameter of the global and local costmaps which we tackled in the previous tutorials ([Setting Up Sensors Guide][setting-up-sensors]). The value defined in the `footprint` parameter is an ordered vector of 2-D points defining the robot's footprint with the `base_link` frame as the origin. The first and last points in the vector are joined into the last line segment to close the footprint's shape. As an alternative, you may also use the `robot_radius` parameter wherein circular footprint is automatically generated and centered at `base_link`.  In cases both the `footprint` and `robot_radius` parameters have been defined in the configuration, the `footprint` is used.
 
 !!! info "See also"
 
@@ -51,7 +51,7 @@ resolution: 0.05
 
 We will now confirm that we have properly set up `sam_bot`'s footprint.
 
-First, we launch [launch/display.launch.py](https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py) to launch the robot state publisher, spawn `sam_bot` in Gazebo, and visualize `sam_bot` and its footprint in Rviz. The robot state publisher publishes the `base_link` => `sensors` transforms defined in `sam_bot`'s URDF, while Gazebo's differential drive plugin publishes the `odom` => `base_link` transform. Open a new terminal and execute the lines below.
+First, we launch [launch/display.launch.py](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/launch/display.launch.py) to launch the robot state publisher, spawn `sam_bot` in Gazebo, and visualize `sam_bot` and its footprint in Rviz. The robot state publisher publishes the `base_link` => `sensors` transforms defined in `sam_bot`'s URDF, while Gazebo's differential drive plugin publishes the `odom` => `base_link` transform. Open a new terminal and execute the lines below.
 
 ```shell
 colcon build

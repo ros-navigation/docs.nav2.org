@@ -1,4 +1,4 @@
-# Setting Up Odometry - Gazebo { #setting-up-odometry-gazebo }
+# Setting Up Odometry { #setting-up-odometry }
 
 In this guide, we will be looking at how to integrate our robot's odometry system with Nav2.
 First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly.
@@ -71,7 +71,7 @@ In this section, we will be using Gazebo to simulate the odometry system of `sam
 
 As an overview for this section, we will first setup Gazebo and the necessary packages required to make it work with ROS 2. Next, we will be adding Gazebo plugins, which simulate an IMU sensor and a differential drive odometry system, in order to publish `sensor_msgs/Imu` and `nav_msgs/Odometry` messages respectively. Lastly, we will spawn `sam_bot` in a Gazebo environment and verify the published `sensor_msgs/Imu` and `nav_msgs/Odometry` messages over ROS 2.
 
-### Setup and Prerequisites { #gazebo-setup-and-prerequisites }
+### Setup and Prerequisites
 
 [Gazebo](http://gazebosim.org/) is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the [Gazebo Installation Documentation](https://gazebosim.org/docs/latest/ros_installation/).
 
@@ -359,7 +359,7 @@ joint_state_publisher_node,
 joint_state_publisher_gui_node,
 ```
 
-Next, open [package.xml](https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/package.xml) and delete the lines:
+Next, open [package.xml](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/package.xml) and delete the lines:
 
 ```xml
 <exec_depend>joint_state_publisher</exec_depend>
