@@ -33,6 +33,7 @@ theme:
   features:
     - content.action.edit
     - content.code.copy
+    - content.tabs.link
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path
@@ -110,6 +111,8 @@ markdown_extensions:
           - overrides/.icons
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
 
 # Terminate the build on warning
 strict: true
