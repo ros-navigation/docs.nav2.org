@@ -116,9 +116,12 @@ def _extract_ports(node: ET.Element) -> tuple[NodePorts, NodePorts, NodePorts]:
         port_type = _convert_type(raw_port_type)
 
         port_default_value = child.attrib.get('default', 'N/A')
-        if port_default_value in ('double', 'float'):
+        if raw_port_type in ('double', 'float'):
             # Simplify numeric default values by stripping trailing zeros
-            port_default_value = str(float(port_default_value))
+            try:
+                port_default_value = str(float(port_default_value))
+            except ValueError:
+                pass
 
         port_description = (child.text or '').strip()
         if not port_description:
@@ -173,13 +176,21 @@ def _is_git_workdir_synced(local_repo_path: Path) -> bool:
         ).stdout.strip()
 
         branch_name = _get_git_branch_name(local_repo_path)
-        remote_commit_hash = subprocess.run(
+        if branch_name is None:
+            logger.error(f'Could not determine branch name for {local_repo_path}')
+            return False
+
+        ls_remote_output = subprocess.run(
             ['git', 'ls-remote', 'origin', f'refs/heads/{branch_name}'],
             cwd=local_repo_path,
             check=True,
             capture_output=True,
             text=True,
-        ).stdout.strip().split()[0]
+        ).stdout.strip().split()
+        if not ls_remote_output:
+            logger.error(f'No remote ref found for branch {branch_name}')
+            return False
+        remote_commit_hash = ls_remote_output[0]
 
         return local_commit_hash == remote_commit_hash
 
