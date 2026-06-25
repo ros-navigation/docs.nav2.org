@@ -1,5 +1,3 @@
-from __future__ import annotations  # Required for Python 3.8 support in CI (ubuntu:focal)
-
 import subprocess
 import logging
 import re
@@ -7,7 +5,7 @@ import sys
 from shutil import rmtree
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Any, TypedDict
+from typing import TypedDict
 
 from jinja2 import Template
 
@@ -281,7 +279,7 @@ def _clone_github_repository(
     )
 
 
-def _extract_bt_nodes_model(content: ET.ElementTree[Any]) -> ET.Element:
+def _extract_bt_nodes_model(content: 'ET.ElementTree[ET.Element]') -> ET.Element:
     """Load the Behavior Tree nodes model from the given XML element tree."""
     root = content.getroot()
     if root is None or len(root) == 0:
