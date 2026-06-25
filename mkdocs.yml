@@ -126,8 +126,6 @@ exclude_docs: |
   adaptive_tolerance_goal_checker_illustration.py
   CancelCoverage.md
   ComputeCoveragePath.md
-
-not_in_nav: |
   2021summerOfCode
 
 INHERIT: nav.yml
