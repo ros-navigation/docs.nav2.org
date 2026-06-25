@@ -72,6 +72,7 @@ extra_css:
   - assets/stylesheets/robots_grid.css
   - assets/stylesheets/table.css
   - assets/stylesheets/nav_buttons.css
+  - assets/stylesheets/permalink.css
   - assets/stylesheets/sponsorship_banner.css
   - assets/stylesheets/images.css
 
@@ -88,7 +89,7 @@ markdown_extensions:
   - md_in_html
   - def_list
   - toc:
-      permalink: true
+      permalink: ''
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
