@@ -58,8 +58,12 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ros-navigation/navigation2
+    - icon: fontawesome/brands/docker
+      link: https://github.com/ros-navigation/nav2_docker/pkgs/container/nav2_docker
     - icon: fontawesome/brands/slack
       link: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/open-nav
 
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
