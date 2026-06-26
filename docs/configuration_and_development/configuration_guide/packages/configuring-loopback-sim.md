@@ -18,9 +18,9 @@ Description
 
 ### **`base_frame_id`**
 
-| Type     | Default     |
-|----------|-------------|
-| `string` | "base_link" |
+| Type     | Default          |
+|----------|------------------|
+| `string` | "base_footprint" |
 
 Description
 :   The base frame to use.
