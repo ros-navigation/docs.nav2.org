@@ -343,7 +343,7 @@ Description
 
 | Type  | Default |
 |-------|---------|
-| `int` | 1       |
+| `int` | 2       |
 
 Description
 :   Resolution to check costs at (1 = costmap resolution, 2 = 2x costmap resolution, etc)
