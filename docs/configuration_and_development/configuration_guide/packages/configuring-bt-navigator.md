@@ -376,31 +376,11 @@ bt_navigator:
       goals_blackboard_id: goals
       path_blackboard_id: path
       waypoint_statuses_blackboard_id: waypoint_statuses
-    plugin_lib_names:
-      - nav2_compute_path_to_pose_action_bt_node
-      - nav2_follow_path_action_bt_node
-      - nav2_back_up_action_bt_node
-      - nav2_spin_action_bt_node
-      - nav2_wait_action_bt_node
-      - nav2_clear_costmap_service_bt_node
-      - nav2_is_stuck_condition_bt_node
-      - nav2_is_stopped_condition_bt_node
-      - nav2_goal_reached_condition_bt_node
-      - nav2_initial_pose_received_condition_bt_node
-      - nav2_goal_updated_condition_bt_node
-      - nav2_reinitialize_global_localization_service_bt_node
-      - nav2_rate_controller_bt_node
-      - nav2_distance_controller_bt_node
-      - nav2_speed_controller_bt_node
-      - nav2_recovery_node_bt_node
-      - nav2_pipeline_sequence_bt_node
-      - nav2_persistent_sequence_bt_node
-      - nav2_pause_resume_controller_bt_node
-      - nav2_round_robin_node_bt_node
-      - nav2_transform_available_condition_bt_node
-      - nav2_time_expired_condition_bt_node
-      - nav2_distance_traveled_condition_bt_node
-      - nav2_single_trigger_bt_node
+
+    # plugin_lib_names is used to add custom BT plugins to the executor (vector of strings).
+    # Built-in plugins are added automatically
+    # plugin_lib_names: []
+
     error_code_name_prefixes:
       - assisted_teleop
       - backup
