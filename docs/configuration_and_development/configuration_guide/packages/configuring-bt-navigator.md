@@ -86,7 +86,7 @@ Description
 
 | Type  | Default |
 |-------|---------|
-| `int` | 50      |
+| `int` | 20      |
 
 Description
 :   Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
@@ -241,7 +241,7 @@ bt_navigator:
     robot_base_frame: base_link
     transform_tolerance: 0.1
     default_server_timeout: 20
-    default_cancel_timeout: 50
+    default_cancel_timeout: 20
     default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
     default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
     always_reload_bt_xml: false
