@@ -454,7 +454,7 @@ In [PR #5162](https://github.com/ros-navigation/navigation2/pull/5162), a new go
 
 In [PR #5153](https://github.com/ros-navigation/navigation2/pull/5153), the docking server was updated to allow docking backwards without a sensor for detection. It should be setup to approach the staging pose for the dock in the forward direction with sensor coverage for dock detection, then after detection it will rotate to back up into the dock using the initial detected pose only for deadreckoning.
 
-A new parameter `reverse_to_dock` was added to the `SimpleChargingDock` and `SimpleNonChargingDock` plugins to allow this feature.
+A new parameter `rotate_to_dock` was added to the `SimpleChargingDock` and `SimpleNonChargingDock` plugins to allow this feature.
 
 Default value:
 
