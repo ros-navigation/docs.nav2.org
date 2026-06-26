@@ -161,7 +161,7 @@ Description
 Description
 :   Whether to allow the robot to move backward.
 
-### **`in_place_collision_tolerance`**
+### **`in_place_collision_resolution`**
 
 | Type     | Default |
 |----------|---------|
