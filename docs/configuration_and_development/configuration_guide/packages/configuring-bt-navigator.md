@@ -358,10 +358,6 @@ bt_navigator:
     default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
     always_reload_bt_xml: false
     bt_log_idle_transitions: true
-    goal_blackboard_id: goal
-    goals_blackboard_id: goals
-    path_blackboard_id: path
-    waypoint_statuses_blackboard_id: waypoint_statuses
     navigators: ['navigate_to_pose', 'navigate_through_poses']
     bt_search_directories:
       - $(find-pkg-share nav2_bt_navigator)/behavior_trees
@@ -370,11 +366,16 @@ bt_navigator:
       enable_groot_monitoring: false
       groot_server_port: 1667
       search_window: 2.0
+      goal_blackboard_id: goal
+      path_blackboard_id: path
     navigate_through_poses:
       plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator"
       enable_groot_monitoring: false
       groot_server_port: 1669
       search_window: 2.0
+      goals_blackboard_id: goals
+      path_blackboard_id: path
+      waypoint_statuses_blackboard_id: waypoint_statuses
     plugin_lib_names:
       - nav2_compute_path_to_pose_action_bt_node
       - nav2_follow_path_action_bt_node
