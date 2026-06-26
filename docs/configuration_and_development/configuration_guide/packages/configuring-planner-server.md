@@ -42,7 +42,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `double` | 20.0    |
+| `double` | 1.0     |
 
 Description
 :   Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
