@@ -23,7 +23,7 @@ Traditional 3D navigation typically requires expensive hardware like LiDAR or St
 What is Depth Anything 3 AI model?
 ----------------------------------
 
-Depth Anything 3 (DA3) is an AI model that predicts spatially consistent geometry from an arbitrary number of visual inputs, with or without known camera poses. `For more details <https://arxiv.org/abs/2511.10647>`_. In this tutorial, we are using ROS 2 implementation of Depth Anything 3 `[2] <_2>`_, which provides the ROS 2 composable node to run the inference of the DA3 model. The attached image shows Rviz2 with two image views, one is showig the Color Image topic and other is showing Depth Image topic, published by DA3 ROS2 Node.
+Depth Anything 3 (DA3) is an AI model that predicts spatially consistent geometry from an arbitrary number of visual inputs, with or without known camera poses. `For more details <https://arxiv.org/abs/2511.10647>`_. In this tutorial, we are using ROS 2 implementation of Depth Anything 3 :ref:`[2] <repo_link>`, which provides the ROS 2 composable node to run the inference of the DA3 model. The attached image shows Rviz2 with two image views, one is showig the Color Image topic and other is showing Depth Image topic, published by DA3 ROS2 Node.
 
 .. image:: images/depth_ai_integration/depth_ai_nav2_costmap.png
   :width: 80%
@@ -83,7 +83,7 @@ Run the following commands on your robot's main computer to install the foundati
   sudo apt install ros-$ROS_DISTRO-image-proc ros-$ROS_DISTRO-depth-image-proc ros-$ROS_DISTRO-usb-cam
 
 
-2. Build DAV3 package
+2. Build Depth Anything V3 package
 ---------------------
 
 Navigate to your workspace, clone the TensorRT Depth Anything stack, and build it:
@@ -110,6 +110,8 @@ You need the compiled ONNX model weights for the pipeline to compute depth maps.
 
 A. Download the ONNX file from `Huggingface <https://huggingface.co/TillBeemelmanns/Depth-Anything-V3-ONNX>`_
 B. Generate ONNX following the instruction `here <https://github.com/ika-rwth-aachen/ros2-depth-anything-v3-trt/blob/main/onnx/README.md>`_
+
+You can place this file anywhere as you fit, e.g. `depth_anything_v3/models/`, but remember to modify this path in the ``nav2_depth_ai_params.yaml`` file as shown :ref:`below <param_yaml>`.
 
 4. Configure Params
 -------------------
@@ -160,11 +162,13 @@ Here we are using Depth Anything V3 model, and it is exported to ONNX with these
       width: 504
       height: 280
 
-Params for DAV3
+Params for Depth Anything V3
 ~~~~~~~~~~~~~~~
 
 .. note::
   These params need to be configured for the Depth Anything V3 AI Model
+
+.. _param_yaml:
 
 .. code-block:: yaml
 
@@ -268,12 +272,23 @@ Finally, launch the entire pipeline using the provided launch file:
 .. note::
   This will start the camera node (if not using already), process the image topic using pipeline through the DA3 model, and publish the resulting PointCloud2 topic. This topic is subscribed by Nav2 to add voxel costmap layer for path planning and obstacle avoidance.
 
+
+If everything is configured and running correctly, your results in RViz2 should match the demonstration in the video below.
+
+.. raw:: html
+
+    <h1 align="center">
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+            <iframe width="708" height="400" src="https://www.youtube.com/embed/QDN1uA71su4?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+        </div>
+    </h1>
+
 Acknowledgements
 ================
 
 This tutorial was developed in collaboration with the ROS 2 community. Special thanks to the contributors who provided insights and feedback during the development process.
 
-.. _2:
+.. _repo_link:
 
 1. `Depth Anything 3: Recovering the Visual Space from Any Views (arXiv:2511.10647) <https://arxiv.org/abs/2511.10647>`_
 2. `ika-rwth-aachen Depth Anything V3 TensorRT repository <https://github.com/ika-rwth-aachen/ros2-depth-anything-v3-trt>`_
