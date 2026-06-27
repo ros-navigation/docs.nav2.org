@@ -84,7 +84,7 @@ Run the following commands on your robot's main computer to install the foundati
 
 
 2. Build Depth Anything V3 package
----------------------
+----------------------------------
 
 Navigate to your workspace, clone the TensorRT Depth Anything stack, and build it:
 
@@ -163,7 +163,7 @@ Here we are using Depth Anything V3 model, and it is exported to ONNX with these
       height: 280
 
 Params for Depth Anything V3
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
   These params need to be configured for the Depth Anything V3 AI Model
