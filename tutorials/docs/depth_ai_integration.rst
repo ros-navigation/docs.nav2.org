@@ -18,12 +18,12 @@ AI Depth Estimation with Nav2 Costmap
 Overview
 ========
 
-Traditional 3D navigation typically requires expensive hardware like LiDAR or Stereo/RGB-D depth cameras. This pipeline allows a standard monocular USB camera to behave like a depth sensor by leveraging an AI model, which estimates depth from 2D images. The resulting depth image is then converted into PointCloud2 message that Nav2 can use as Voxel costmap layer for obstacle avoidance and path planning, enabling cost-effective navigation on the robots.
+Traditional 3D navigation typically requires expensive hardware like LiDAR or Stereo/RGB-D depth cameras. This pipeline allows a standard monocular camera (in this example, a USB camera) to behave like a depth sensor by leveraging an AI model, which estimates depth from 2D images. The resulting depth image is then converted into PointCloud2 message that Nav2 can use as Voxel costmap layer for obstacle avoidance and path planning, enabling cost-effective navigation on the robots.
 
 What is Depth Anything 3 AI model?
 ----------------------------------
 
-Depth Anything 3 (DA3) is an AI model that predicts spatially consistent geometry from an arbitrary number of visual inputs, with or without known camera poses. `For more details <https://arxiv.org/abs/2511.10647>`_. In this tutorial, we are using ROS2 implementation of Depth Anything 3 `[2] <_2>`_, which provides the ROS 2 composable node to run the inference of the DA3 model. The attached image shows Rviz2 with two image views, one is showig the Color Image topic and other is showing Depth Image topic, published by DA3 ROS2 Node.
+Depth Anything 3 (DA3) is an AI model that predicts spatially consistent geometry from an arbitrary number of visual inputs, with or without known camera poses. `For more details <https://arxiv.org/abs/2511.10647>`_. In this tutorial, we are using ROS 2 implementation of Depth Anything 3 `[2] <_2>`_, which provides the ROS 2 composable node to run the inference of the DA3 model. The attached image shows Rviz2 with two image views, one is showig the Color Image topic and other is showing Depth Image topic, published by DA3 ROS2 Node.
 
 .. image:: images/depth_ai_integration/depth_ai_nav2_costmap.png
   :width: 80%
@@ -37,7 +37,7 @@ Pipeline to process image
 
 The data flows sequentially through five distinct steps:
 
-1. USB Cam Node: Captures the raw RGB video stream from your physical camera.
+1. USB Cam Node: Captures the raw RGB video stream from your physical camera. This may be easily replaced with a camera from any source, not only a USB camera.
 2. Crop Decimate Node: Crops or skips pixels to remove unneeded peripheral data and save processing power.
 3. Resize Node: Scales the image down to match the exact input dimensions required by the AI model.
 4. Depth Anything V3 Node: Processes the 2D image and calculates an estimated depth map.
