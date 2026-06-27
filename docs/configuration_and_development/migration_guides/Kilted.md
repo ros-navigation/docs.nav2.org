@@ -28,7 +28,7 @@ The factories are listed below:
 
 In most cases, these are very similar to the previous `rclcpp` version.
 If a previous `nav2_util` version existed, the APIs should be largely the same, except now they should be constructed using the `create_*` factory rather than manually to make use of the abstracted configuration settings and advanced features to come.
-Where changed, it is typically to move the QoS profile specification to the end of the arguments, which is now optional and defaults to the *nav2::qos::StandardTopicQoS* profile (reliable, volitile, queue depth of 10).
+Where changed, it is typically to move the QoS profile specification to the end of the arguments, which is now optional and defaults to the *nav2::qos::StandardTopicQoS* profile (reliable, volatile, queue depth of 10).
 
 - *nav2_util::LifecycleNode* is now *nav2::LifecycleNode*, which is largely the same except for the factories and a couple of internal implementation details.
 - The Service Client, Service Server, and Simple Action Server were also moved to the *nav2::* namespace, but they should not be accessed directly. Use the *create_\** factories from the *nav2::LifecycleNode*, such as *create_action_server* or *create_action_client*.
