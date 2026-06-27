@@ -1,6 +1,6 @@
 .. _depth_ai_integration:
 
-Tutorial for integrating AI Depth Estimation with Nav2 Costmap
+AI Depth Estimation with Nav2 Costmap
 **************************************************************
 
 - `Overview`_
