@@ -44,7 +44,7 @@ Apart from the above scenarios, we also need to note that, the robot will take t
 In conclusion, this particular BT would serve, both as an example and ready-to-use BT for an organizational specific application, that wishes to optimize its process cycle time.
 
 ```xml
-<root main_tree_to_execute="MainTree">
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
     <RecoveryNode number_of_retries="6" name="NavigateRecovery">
       <PipelineSequence name="NavigateWithReplanning">
@@ -78,9 +78,9 @@ In conclusion, this particular BT would serve, both as an example and ready-to-u
             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
           </Sequence>
-          <Spin spin_dist="1.57" error_code_id="{spin_error_code}"/>
+          <Spin spin_dist="1.57"/>
           <Wait wait_duration="5.0"/>
-          <BackUp backup_dist="0.30" backup_speed="0.05" error_code_id="{backup_error_code}"/>
+          <BackUp backup_dist="0.30" backup_speed="0.15"/>
         </RoundRobin>
       </ReactiveFallback>
     </RecoveryNode>

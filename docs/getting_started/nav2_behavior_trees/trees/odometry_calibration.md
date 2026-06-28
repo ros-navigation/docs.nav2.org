@@ -9,7 +9,7 @@ This is a primitive experiment to measure odometric accuracy and can be used and
 </figure>
 
 ```xml
-<root main_tree_to_execute="MainTree">
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
     <Repeat num_cycles="3">
       <Sequence name="Drive in a square">

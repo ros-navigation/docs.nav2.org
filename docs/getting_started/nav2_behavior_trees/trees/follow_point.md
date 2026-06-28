@@ -15,7 +15,7 @@ However, note that it is under a `KeepRunningUntilFailure` decorator node ensuri
 This behavior tree will execute infinitely in time until the navigation request is preempted or cancelled.
 
 ```xml
-<root main_tree_to_execute="MainTree">
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
     <PipelineSequence name="NavigateWithReplanning">
       <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
@@ -25,7 +25,7 @@ This behavior tree will execute infinitely in time until the navigation request 
           <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
             <ComputePathToPose goal="{updated_goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
           </GoalUpdater>
-        <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
+          <TruncatePath distance="1.0" input_path="{path}" output_path="{truncated_path}"/>
         </Sequence>
       </RateController>
       <KeepRunningUntilFailure>
