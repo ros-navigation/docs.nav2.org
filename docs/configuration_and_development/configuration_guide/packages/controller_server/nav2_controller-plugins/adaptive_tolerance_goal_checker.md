@@ -103,17 +103,17 @@ Description
 
 ```yaml
 controller_server:
-    ros__parameters:
+  ros__parameters:
     goal_checker_plugins: ["goal_checker"]
     goal_checker:
-        plugin: "nav2_controller::AdaptiveToleranceGoalChecker"
-        fine_xy_goal_tolerance: 0.10
-        coarse_xy_goal_tolerance: 0.25
-        yaw_goal_tolerance: 0.25
-        path_length_tolerance: 1.0
-        stateful: true
-        symmetric_yaw_tolerance: false
-        trans_stopped_velocity: 0.10
-        rot_stopped_velocity: 0.10
-        required_stagnation_cycles: 15
+      plugin: "nav2_controller::AdaptiveToleranceGoalChecker"
+      fine_xy_goal_tolerance: 0.10
+      coarse_xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.25
+      path_length_tolerance: 1.0
+      stateful: true
+      symmetric_yaw_tolerance: false
+      trans_stopped_velocity: 0.10
+      rot_stopped_velocity: 0.10
+      required_stagnation_cycles: 15
 ```

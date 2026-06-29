@@ -70,14 +70,14 @@ Below it is shown an example of goal_checker configuration of the controller_ser
 ```yaml
 controller_server:
   ros__parameters:
-      goal_checker_plugins: ["general_goal_checker", "precise_goal_checker"]
-      precise_goal_checker:
-          plugin: "nav2_controller::SimpleGoalChecker"
-          xy_goal_tolerance: 0.25
-         yaw_goal_tolerance: 0.25
-      general_goal_checker:
-          plugin: "nav2_controller::SimpleGoalChecker"
-          xy_goal_tolerance: 0.25
+    goal_checker_plugins: ["general_goal_checker", "precise_goal_checker"]
+    precise_goal_checker:
+      plugin: "nav2_controller::SimpleGoalChecker"
+      xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.25
+    general_goal_checker:
+      plugin: "nav2_controller::SimpleGoalChecker"
+      xy_goal_tolerance: 0.25
 ```
 
 ## Groot Support

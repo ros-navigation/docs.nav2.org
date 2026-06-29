@@ -119,35 +119,35 @@ Here is an example configuration for the local costmap:
 
 ```yaml
 local_costmap:
-   local_costmap:
-      ros__parameters:
+  local_costmap:
+    ros__parameters:
       # ... other costmap settings ...
       plugins: ["ground_consistency", "inflation_layer"]
 
       ground_consistency:
-         plugin: "nav2_ground_consistency_costmap_plugin::GroundConsistencyLayer"
-         ground_points_topic: /ground_segmentation/ground_points
-         nonground_points_topic: /ground_segmentation/obstacle_points
-         tf_timeout: 0.1
-         min_clearance: 0.1
-         robot_height: 0.92
-         maximum_height_filter: 2.0
-         ground_inc: 1.0
-         nonground_inc: 1.5
-         nonground_decay: 0.93
-         ground_decay: 0.80
-         max_score: 5000.0
-         nonground_occ_thresh: 6.0
-         nonground_prob_thresh: 0.75
-         enable_kpi_logging: false
-         discretize_costs: true
-         max_data_range: 50.0
-         ground_neighbor_search_cells: 0
+        plugin: "nav2_ground_consistency_costmap_plugin::GroundConsistencyLayer"
+        ground_points_topic: /ground_segmentation/ground_points
+        nonground_points_topic: /ground_segmentation/obstacle_points
+        tf_timeout: 0.1
+        min_clearance: 0.1
+        robot_height: 0.92
+        maximum_height_filter: 2.0
+        ground_inc: 1.0
+        nonground_inc: 1.5
+        nonground_decay: 0.93
+        ground_decay: 0.80
+        max_score: 5000.0
+        nonground_occ_thresh: 6.0
+        nonground_prob_thresh: 0.75
+        enable_kpi_logging: false
+        discretize_costs: true
+        max_data_range: 50.0
+        ground_neighbor_search_cells: 0
 
       inflation_layer:
-         plugin: "nav2_costmap_2d::InflationLayer"
-         cost_scaling_factor: 3.0
-         inflation_radius: 0.7
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 3.0
+        inflation_radius: 0.7
 ```
 
 The layer's behavior depends on your specific use case (terrain type, robot size, sensor characteristics). Here are the key parameters and how to tune them:
@@ -218,22 +218,22 @@ Let's look at some real-world examples of the ground consistency layer in action
 1. Demonstration of ground consistency layer with [Arter Excavator](https://robotik.dfki-bremen.de/en/research/robot-systems/arter) at the [Robotics Innovation Center](https://robotik.dfki-bremen.de/en/startpage) (DFKI) in Bremen, Germany:
 
     <figure markdown="span">
-    ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/arter.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
-    <figcaption></figcaption>
+      ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/arter.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
+      <figcaption></figcaption>
     </figure>
 
 2. Demonstration in [BotanicGarden](https://github.com/robot-pesg/BotanicGarden) dataset:
 
     <figure markdown="span">
-    ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/botanic_garden.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
-    <figcaption></figcaption>
+      ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/botanic_garden.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
+      <figcaption></figcaption>
     </figure>
 
 3. Demonstration in [CitrusFarm](https://github.com/UCR-Robotics/Citrus-Farm-Dataset) dataset:
 
     <figure markdown="span">
-    ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/citrus_farm.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
-    <figcaption></figcaption>
+      ![Ground Consistency Layer Use Cases](images/Navigation2_with_Ground_Consistency/citrus_farm.gif){ width="700px" title="Ground Consistency Layer Use Cases"}
+      <figcaption></figcaption>
     </figure>
 
 ## Practical Example: Running the Demo
