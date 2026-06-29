@@ -1007,3 +1007,23 @@ Any plugin name that is specified in the service request must satisfy the follow
 
   - The plugin name must correspond to a plugin that is currently loaded in the costmap.
   - The requested plugin must be ``clearable``. For example, a plugin of type ``ObstacleLayer`` is clearable while that of type ``StaticLayer`` is not.
+
+
+MPPI Controller: Per-Axis Delay Compensation with command history replay
+------------------------------------------------------------------------
+`PR #6154 <https://github.com/ros-navigation/navigation2/pull/6154>`_ adds a feature to compensate per-axis actuator and transport delay. Without it the planner assumes commands take effect instantly. On platforms with hydraulic steering or any other source of lag, this mismatch causes oscillations while tracking the path. The feature works best in combination with setting ``open_loop: true``.
+
+Three new MPPIController parameters, default ``0.0`` (feature disabled):
+
+- ``model_delay_vx`` — linear-x command delay
+- ``model_delay_vy`` — linear-y command delay (holonomic platforms only)
+- ``model_delay_wz`` — angular-z command delay
+
+When non-zero, the optimizer fills the first ``round(delay / model_dt)`` rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.
+
+.. image:: images/mppi_delay_compensation_serpentines.png
+  :width: 800
+  :alt: Open-loop trajectory with and without per-axis delay compensation.
+  :align: center
+
+The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation ``model_delay_wz=0.6`` (right), tracking is visibly better.

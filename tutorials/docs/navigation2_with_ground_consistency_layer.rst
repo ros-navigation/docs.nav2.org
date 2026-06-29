@@ -384,4 +384,4 @@ Troubleshooting
 Funding
 =======
 
-Developed at the Robotics Innovation Center (DFKI), Bremen. Supported by Robdekon2 (50RA1406), German Federal Ministry for Research and Technology.
+This work was partially funded by VaMEx3-APO (German Federal Ministry of Research, Technology and Space (BMFTR) / German Aerospace Center (DLR), grant 50RK2252C) and ROBDEKON2 (German Federal Ministry of Research, Technology and Space (BMFTR), grant 13N16537). Development of the presented codebase was supported by both projects at the German Research Center for Artificial Intelligence (DFKI), Robotics Innovation Center.
