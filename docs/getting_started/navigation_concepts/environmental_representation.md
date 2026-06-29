@@ -39,7 +39,7 @@ For example, the following functionality could be made by use of costmap filters
 Various other forms of environmental representations exist.
 These include:
 
-- gradient maps, which are similar to costmaps but represent surface gradients to check traversibility over
+- Gradient maps, which are similar to costmaps but represent surface gradients to check traversibility over
 - 3D costmaps, which represent the space in 3D, but then also requires 3D planning and collision checking
 - Mesh maps, which are similar to gradient maps but with surface meshes at many angles
 - "Vector space", taking in sensor information and using machine learning to detect individual items and locations to track rather than buffering discrete points.
