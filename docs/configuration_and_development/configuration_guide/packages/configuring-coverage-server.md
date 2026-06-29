@@ -96,7 +96,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `double` | 0.017   |
+| `double` | 1.7e-2  |
 
 Description
 :   Mode to use for generating swaths. Need to find optimal angle by the swath generator objectives, if not given. Options: `BRUTE_FORCE`, `SET_ANGLE`. Only for `opennav_coverage`.
@@ -105,7 +105,7 @@ Description
 
 | Type     | Default |
 |----------|---------|
-| `double` | 0.017   |
+| `double` | 1.7e-2  |
 
 Description
 :   The angular step size to try to find the optimal angle for route objective, when using `BRUTE_FORCE` swath angle type. Default is 1 deg in rad units. Only for `opennav_coverage`.

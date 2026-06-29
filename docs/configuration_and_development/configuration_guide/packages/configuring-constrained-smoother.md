@@ -91,9 +91,9 @@ Description
 
 ### **`w_smooth`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2e+06   |
+| Type     | Default   |
+|----------|-----------|
+| `double` | 2000000.0 |
 
 Description
 :   Weight to maximize smoothness of path
@@ -185,7 +185,7 @@ Description
 
 | Type   | Default |
 |--------|---------|
-| `bool` | 1e-07   |
+| `bool` | 1e-7    |
 
 Description
 :   Function tolerance optimization termination criterion

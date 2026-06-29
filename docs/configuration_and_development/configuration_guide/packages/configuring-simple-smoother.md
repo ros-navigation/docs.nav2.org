@@ -10,9 +10,9 @@ It is recommended this is paired ONLY with infeasible (e.g. 2D) planners, since 
 
 ### **`tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1e-10   |
+| Type     | Default   |
+|----------|-----------|
+| `double` | 1.0e-10   |
 
 Description
 :   Change in parameter values across path to terminate smoothing

@@ -586,9 +586,9 @@ Description
 
 ### **`collision_cost`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1e+06   |
+| Type     | Default   |
+|----------|-----------|
+| `double` | 1000000.0 |
 
 Description
 :   Cost to apply to a true collision in a trajectory.
