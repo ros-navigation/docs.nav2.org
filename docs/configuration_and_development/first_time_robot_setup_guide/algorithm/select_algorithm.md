@@ -89,7 +89,7 @@ controller_server:
   ros__parameters:
     controller_plugins: ["FollowPath"]
     FollowPath:
-       plugin: "dwb_core::DWBLocalPlanner"
+      plugin: "dwb_core::DWBLocalPlanner"
 ```
 
 Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the `controller_plugins` parameter. Similar to the planner server, each namespace defined in the `controller_plugins` (`FollowPath` in our example) must define the type of plugin it will use in the `plugin` parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the [Configuration Guide][configuration-guide] for more details.
