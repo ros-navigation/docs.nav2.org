@@ -170,9 +170,10 @@ Description
 | `bool` | false   |
 
 Description
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
-    True uses TwistStamped, false uses Twist.
-    Note: This parameter is default `false` in Jazzy or older.
+:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data. True uses TwistStamped, false uses Twist.
+
+Note
+:   This parameter is default `false` in Jazzy or older.
 
 ## Polygons parameters
 
