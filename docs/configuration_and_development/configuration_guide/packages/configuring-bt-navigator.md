@@ -266,7 +266,10 @@ Description
 | `int` | 1667    |
 
 Description
-:   The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+:   The port number for the Groot2 server.
+
+Note
+:   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
 
 ### **`<navigate_to_pose_name>.search_window`**
 
@@ -331,7 +334,10 @@ Description
 | `int` | 1669    |
 
 Description
-:   The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
+:   The port number for the Groot2 server.
+
+Note
+:   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
 
 ### **`<navigate_through_poses>.search_window`**
 

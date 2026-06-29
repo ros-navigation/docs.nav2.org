@@ -34,7 +34,10 @@ Description
 | `double` | 4.0     |
 
 Description
-:   Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to `0` to deactivate. Recommended to be always larger than 0.3s for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.
+:   Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to `0` to deactivate. Recommended to be always larger than 0.3s for all-local node discovery.
+
+Note
+:   If a server cleanly exits the manager will immediately be notified.
 
 ### **`attempt_respawn_reconnection`**
 

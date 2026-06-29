@@ -467,7 +467,10 @@ Description
 | `double` | 1.57    |
 
 Description
-:   Pitch offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
+:   Pitch offset from detected pose for docking pose (rad).
+
+Note
+:   The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
 
 ### **`<dock_name>.external_detection_rotation_roll`**
 
@@ -476,7 +479,10 @@ Description
 | `double` | -1.57   |
 
 Description
-:   Roll offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
+:   Roll offset from detected pose for docking pose (rad).
+
+Note
+:   The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
 
 ### **`<dock_name>.filter_coef`**
 
