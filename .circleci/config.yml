@@ -102,6 +102,7 @@ workflows:
             branches:
               ignore:
                 - rolling
+                - lyrical
                 - jazzy
   publish_docs:
     jobs:
@@ -110,4 +111,5 @@ workflows:
             branches:
               only:
                 - rolling
+                - lyrical
                 - jazzy
