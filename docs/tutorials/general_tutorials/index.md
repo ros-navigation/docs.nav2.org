@@ -30,5 +30,6 @@ Nav2 Tutorials
 [ROSCon UK 2025: State Estimation for Mobile Robotics Workshop][roscon-uk-2025-state-estimation-for-mobile-robotics-workshop]{ .md-button .md-button--primary }
 [Enhanced Safety for Nav2 using 3Laws Supervisor][enhanced-safety-for-nav2-using-3laws-supervisor]{ .md-button .md-button--primary }
 [Ground Terrain Segmentation using 3D Lidar][ground-terrain-segmentation-using-3d-lidar]{ .md-button .md-button--primary }
+[AI Depth Estimation with Nav2 Costmap][ai-depth-estimation-with-nav2-costmap]{ .md-button .md-button--primary }
 
 </div>
