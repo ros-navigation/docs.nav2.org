@@ -107,7 +107,9 @@ A small error in the estimated location is tolerable.
 Pick a target location for Turtlebot on the map.
 You can send Turtlebot 3 a goal position and a goal orientation by using the **Nav2 Goal** or the **GoalTool** buttons.
 
-Note: Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
+!!! note
+
+    Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
 
 <figure markdown="span">
   ![Send goal pose in RViz](images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png){ width="700px" title="Send goal pose in RViz" }

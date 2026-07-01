@@ -11,8 +11,10 @@ This tutorial shows how to create your own controller [plugin](https://index.ros
 In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this [paper](https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf).
 It is recommended you go through it.
 
-Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
-You can find the source code matching this tutorial [here](https://github.com/ros-navigation/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller).
+!!! note
+
+    This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
+    You can find the source code matching this tutorial [here](https://github.com/ros-navigation/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller).
 
 ## Requirements
 

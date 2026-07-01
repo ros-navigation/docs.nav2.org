@@ -177,7 +177,9 @@ In addition, costmap filters:
 - `SpeedFilter`: Reduces or increases robot speeds based on position
 - `BinaryFilter`: Enables or disables a binary topic when in particular zones
 
-Note: When the costmap filters can be paired with the `VectorObject` server to use vectorized zones rather than map rastered zones sharing the same software.
+!!! note
+
+    When the costmap filters can be paired with the `VectorObject` server to use vectorized zones rather than map rastered zones sharing the same software.
 
 ## Symmetric Yaw Tolerance
 

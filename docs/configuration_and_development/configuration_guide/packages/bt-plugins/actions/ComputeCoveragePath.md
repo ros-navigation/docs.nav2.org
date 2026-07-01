@@ -12,4 +12,6 @@ This server can take in both cartesian and GPS coordinates and is implemented us
 
 {{ render_bt_node_example(bt_hpp_file_path) }}
 
-Note: the blackboard IDs for the path, error code, and more may be adjusted, but need to match the corresponding parameters in the `CoverageNavigator` plugin to set on the blackboard for use from the action server.
+!!! note
+
+    The blackboard IDs for the path, error code, and more may be adjusted, but need to match the corresponding parameters in the `CoverageNavigator` plugin to set on the blackboard for use from the action server.
