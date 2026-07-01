@@ -3,7 +3,7 @@
 Asymmetric Inflation Layer Parameters
 =====================================
 
-This layer implements an asymmetric variant of the inflation layer, by scaling inflation costs based on the planned path.
+This layer implements an asymmetric variant of the inflation layer, by scaling inflation costs based on the planned path to incentivize left- or right-hand navigation.
 
 .. figure:: images/asymmetric_layer_active.png
     :align: center
