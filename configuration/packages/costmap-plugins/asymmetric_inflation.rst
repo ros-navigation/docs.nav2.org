@@ -1,7 +1,7 @@
 .. asymmetric_inflation:
 
 Asymmetric Inflation Layer Parameters
-======================================
+=====================================
 
 This layer implements an asymmetric variant of the inflation layer, by scaling inflation costs based on the planned path.
 
