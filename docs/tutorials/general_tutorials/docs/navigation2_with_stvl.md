@@ -132,7 +132,9 @@ stvl_layer:
 Please copy-paste the text above, with the `plugin_names` and `plugin_types` registration, into your `nav2_params.yaml` to enable STVL in your application.
 Make sure to change both the local and global costmaps.
 
-Note: Pluginlib plugins for other Navigation2 servers such as planning, behavior, and control can be set in this same way.
+!!! note
+
+    Pluginlib plugins for other Navigation2 servers such as planning, behavior, and control can be set in this same way.
 
 ### 3. Launch Navigation2
 
@@ -142,4 +144,7 @@ Navigation2 is now using STVL as its 3D sensing costmap layer.
 ### 4.  RVIZ
 
 With RViz open and `publish_voxel_map: true`, you can visualize the underlying data structure's 3D grid using the `{local, global}_costmap/voxel_grid` topics.
-Note: It is recommended in RViz to set the `PointCloud2` Size to your voxel size and the style to `Boxes` with a neutral color for best visualization.
+
+!!! tip
+
+    It is recommended in RViz to set the `PointCloud2` Size to your voxel size and the style to `Boxes` with a neutral color for best visualization.

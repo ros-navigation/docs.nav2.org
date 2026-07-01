@@ -37,7 +37,9 @@ Finally, you will need:
 
 We will install these through the tutorial.
 
-NOTE: The semantic segmentation layer plugin is currently requires the depth and color images to be fully aligned, such as those from stereo or depth cameras. However, AI-based depth estimators may be used to create depth from monocular cameras.
+!!! note
+
+    The semantic segmentation layer plugin is currently requires the depth and color images to be fully aligned, such as those from stereo or depth cameras. However, AI-based depth estimators may be used to create depth from monocular cameras.
 
 ## Semantic Segmentation Overview
 
@@ -209,7 +211,9 @@ Again, you can refer to the picture on the Layer's [README](https://github.com/k
   ![](images/Navigation2_with_segmentation/tile_map.gif){ width="90%" }
 </figure>
 
-**IMPORTANT NOTE:** For the sake of simplicity, this tutorial publishes a static transform between the `map` and `odom` frames. In a real-world application, you should have a proper localization system (e.g. GPS) to get the `map` => `odom` transform.
+!!! warning "Important"
+
+    For the sake of simplicity, this tutorial publishes a static transform between the `map` and `odom` frames. In a real-world application, you should have a proper localization system (e.g. GPS) to get the `map` => `odom` transform.
 
 ## Conclusion
 

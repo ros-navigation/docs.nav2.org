@@ -6,7 +6,9 @@ The Coverage Server in `opennav_coverage` implements the server for handling the
 It can also compute coverage route and plans using a precomputed set of rows using the `opennav_row_coverage` server.
 It is within the `opennav_coverage` project, not within Nav2 directly, but is planned for a longer-term integration once a few key features are available in Fields2Cover. If you wish to contribute to this effort, please let a maintainer know!
 
-Note: All `default_` prefixed parameters can be overwritten in the action request field. When modes are not set in the Action goal, the defaults are utilized.
+!!! note
+
+    All `default_` prefixed parameters can be overwritten in the action request field. When modes are not set in the Action goal, the defaults are utilized.
 
 ## Parameters
 
