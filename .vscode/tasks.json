@@ -1,0 +1,47 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create venv",
+            "type": "shell",
+            "command": "python3",
+            "args": ["-m", "venv", "venv"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Install dependencies",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/bin/pip",
+            "args": ["install", "-r", "requirements.txt"],
+            "dependsOn": ["Create venv"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Nav2 Docs",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/bin/mkdocs",
+            "args": ["build"],
+            "dependsOn": ["Install dependencies"],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Start Nav2 Docs live preview server",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/bin/mkdocs",
+            "args": ["serve"],
+            "dependsOn": ["Install dependencies"],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+    ]
+}
