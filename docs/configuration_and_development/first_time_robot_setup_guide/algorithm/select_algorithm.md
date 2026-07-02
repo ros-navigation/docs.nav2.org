@@ -38,13 +38,38 @@ There is also the `Smac Lattice planner` plugin which is based on a State Lattic
 
 #### Summary
 
-| Plugin Name             | Supported Robot Types                                               |
-|-------------------------|---------------------------------------------------------------------|
-| NavFn Planner           | Circular Differential, Circular Omnidirectional                     |
-| Smac Planner 2D         |                                                                     |
-| Theta Star Planner      |                                                                     |
-| Smac Hybrid-A\* Planner | Non-circular or Circular Ackermann, Non-circular or Circular Legged |
-| Smac Lattice Planner    | Non-circular Differential, Non-circular Omnidirectional             |
+<div class="center-table" markdown>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>Plugin Name</th>
+        <th>Supported Robot Types</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>NavFn Planner</td>
+        <td rowspan="3" style="vertical-align: middle;">
+          Circular Differential, Circular Omnidirectional
+        </td>
+      </tr>
+      <tr>
+        <td>Smac Planner 2D</td>
+      </tr>
+      <tr>
+        <td>Theta Star Planner</td>
+      </tr>
+      <tr>
+        <td>Smac Hybrid-A* Planner</td>
+        <td>Non-circular or Circular Ackermann, Non-circular or Circular Legged</td>
+      </tr>
+      <tr>
+        <td>Smac Lattice Planner</td>
+        <td>Non-circular Differential, Non-circular Omnidirectional</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 #### Example Configuration
 
@@ -72,13 +97,45 @@ The last example is the [Vector Pursuit Controller](https://github.com/blackcoff
 
 #### Summary
 
-| Plugin Name     | Supported Robot Types                            | Task                       |
-|-----------------|--------------------------------------------------|----------------------------|
-| DWB controller  | Differential, Omnidirectional                    | Dynamic obstacle avoidance |
-| TEB Controller  | Differential, Omnidirectional, Ackermann, Legged |                            |
-| RPP controller  | Differential, Ackermann, Legged                  | Exact path following       |
-| MPPI controller | Differential, Ackermann, Legged, Omnidirectional | Modern MPC controller      |
-| VP controller   | Differential, Ackermann, Legged                  | High speed path tracking   |
+<div class="center-table" markdown>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>Plugin Name</th>
+        <th>Supported Robot Types</th>
+        <th>Task</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DWB controller</td>
+        <td>Differential, Omnidirectional</td>
+        <td rowspan="2" style="vertical-align: middle;">
+          Dynamic obstacle avoidance
+        </td>
+      </tr>
+      <tr>
+        <td>TEB controller</td>
+        <td>Differential, Omnidirectional, Ackermann, Legged</td>
+      </tr>
+      <tr>
+        <td>RPP controller</td>
+        <td>Differential, Ackermann, Legged</td>
+        <td>Exact path following</td>
+      </tr>
+      <tr>
+        <td>MPPI controller</td>
+        <td>Differential, Ackermann, Legged, Omnidirectional</td>
+        <td>Modern MPC controller</td>
+      </tr>
+      <tr>
+        <td>VP controller</td>
+        <td>Differential, Ackermann, Legged</td>
+        <td>High speed path tracking</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 All of these algorithms work for both circular and non-circular robots.
 
