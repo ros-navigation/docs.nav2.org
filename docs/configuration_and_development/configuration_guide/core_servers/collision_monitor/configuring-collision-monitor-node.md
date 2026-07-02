@@ -603,7 +603,7 @@ Description
 Here is an example illustrating the common configurations for holonomic robots that cover multiple directions of the resultant velocity:
 
 <figure markdown="span">
-  ![](../images/holonomic_examples.png){ height="2880px" }
+  ![](images/holonomic_examples.png){ height="2880px" }
 </figure>
 
 Here is an example of configuration YAML for the Collision Monitor.

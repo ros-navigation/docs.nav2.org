@@ -495,7 +495,7 @@ For the depot map, the shelves were encompassed in a speed zone of 75% of the ma
 For the warehouse map, the area around the beams and the middle of the warehouse were limited to 80% of the maximum speed.
 
 <figure markdown="span">
-  ![](../configuration_guide/packages/images/route_server/depot_graph.png){ width="100%" }
+  ![](../configuration_guide/core_servers/route_server/images/depot_graph.png){ width="100%" }
   <figcaption>The keepout zones are marked in pink, and the speed zones are marked with grey with proportional opacity to the speed limit.</figcaption>
 </figure>
 
@@ -503,6 +503,6 @@ In [PR #5160](https://github.com/ros-navigation/navigation2/pull/5160), graph su
 This allows users to visualize the route server in action and test the new features of the route server. The demo includes a simple route with a few waypoints and a graph to follow.
 
 <figure markdown="span">
-  ![](../configuration_guide/packages/images/route_server/warehouse_graph.png){ width="100%" }
+  ![](../configuration_guide/core_servers/route_server/images/warehouse_graph.png){ width="100%" }
   <figcaption>RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated. Speed zones are marked in grey with proportional opacity of 0.8 to match the speed limit.</figcaption>
 </figure>
