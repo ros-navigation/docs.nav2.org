@@ -11,7 +11,7 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 - Large scale outdoor urban or natural environments
 
 <figure markdown="span">
-  ![](../images/Navigation2_route_tool/route_homepage_demo.gif){ width="100%" }
+  ![](images/route_homepage_demo.gif){ width="100%" }
   <figcaption>Demonstration of Nav2 route tool using the Turtlebot4 Gazebo simulation environment visualised through RViz.</figcaption>
 </figure>
 

@@ -1,7 +1,7 @@
 # Groot Tutorials { #groot-tutorials }
 
 <figure markdown="span">
-  ![groot_startup_menu](../images/Groot/groot_start_menu.png){ title="groot_startup_menu"}
+  ![groot_startup_menu](groot/images/groot_start_menu.png){ title="groot_startup_menu"}
 </figure>
 
 ## Overview
