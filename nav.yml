@@ -125,7 +125,7 @@ nav:
       - Setting Up Sensors: configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors.md
       - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
       - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
-      - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
+      - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/navigation_plugins/setup_navigation_plugins.md
     - Navigation Plugins: configuration_and_development/navigation_plugins.md
     - Configuration Guide:
       - configuration_and_development/configuration_guide/index.md
