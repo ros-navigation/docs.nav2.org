@@ -11,7 +11,7 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 - Large scale outdoor urban or natural environments
 
 <figure markdown="span">
-  ![](../images/Navigation2_route_tool/route_homepage_demo.gif){ width="100%" }
+  ![](images/route_homepage_demo.gif){ width="100%" }
   <figcaption>Demonstration of Nav2 route tool using the Turtlebot4 Gazebo simulation environment visualised through RViz.</figcaption>
 </figure>
 
@@ -46,7 +46,7 @@ ros2 launch nav2_simple_commander route_example_launch.py
 This will by default initialize the Turtlebot4 in the depot map in the **3rd node** and will navigate to the **13rd node**.
 
 <figure markdown="span">
-  ![](../images/Navigation2_route_tool/route_depot_demo.gif){ width="90%" }
+  ![](images/route_depot_demo.gif){ width="90%" }
   <figcaption>Turtlebot4 moving from the 3rd node to the 13th node in the depot map.</figcaption>
 </figure>
 
@@ -54,7 +54,7 @@ In order to run the demonstration in the warehouse map, you can set the `MAP_TYP
 [route_example_launch.py](https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py) file to `warehouse` and run the same command as above.
 
 <figure markdown="span">
-  ![](../images/Navigation2_route_tool/route_warehouse_demo.gif){ width="90%" }
+  ![](images/route_warehouse_demo.gif){ width="90%" }
   <figcaption>Turtlebot4 moving from the 0th node to the 61th node in the warehouse map.</figcaption>
 </figure>
 
