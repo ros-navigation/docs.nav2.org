@@ -70,10 +70,10 @@ nav:
       - tutorials/plugin_tutorials/index.md
       - Writing a New Behavior Plugin: tutorials/plugin_tutorials/docs/writing_new_behavior_plugin.md
       - Writing a New Behavior Tree Plugin: tutorials/plugin_tutorials/docs/writing_new_bt_plugin.md
-      - Writing a New Controller Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2controller_plugin.md
-      - Writing a New Costmap2D Plugin: tutorials/plugin_tutorials/docs/writing_new_costmap2d_plugin.md
+      - Writing a New Controller Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2controller_plugin/writing_new_nav2controller_plugin.md
+      - Writing a New Costmap2D Plugin: tutorials/plugin_tutorials/docs/writing_new_costmap2d_plugin/writing_new_costmap2d_plugin.md
       - Writing a New Navigator Plugin: tutorials/plugin_tutorials/docs/writing_new_navigator_plugin.md
-      - Writing a New Planner Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2planner_plugin.md
+      - Writing a New Planner Plugin: tutorials/plugin_tutorials/docs/writing_new_nav2planner_plugin/writing_new_nav2planner_plugin.md
     - General Tutorials:
       - tutorials/general_tutorials/index.md
       - Navigating with a Physical Turtlebot 3: tutorials/general_tutorials/docs/navigation2_on_real_turtlebot3/navigation2_on_real_turtlebot3.md
