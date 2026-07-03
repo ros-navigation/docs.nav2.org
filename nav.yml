@@ -16,10 +16,10 @@ nav:
     - Configuration & Development:
       - configuration_and_development/index.md
       - First-Time Robot Setup Guide: configuration_and_development/first_time_robot_setup_guide/index.md
-      - Navigation Plugins: configuration_and_development/navigation_plugins/index.md
+      - Navigation Plugins: configuration_and_development/navigation_plugins.md
       - Configuration Guide: configuration_and_development/configuration_guide/index.md
-      - Tuning Guide: configuration_and_development/tuning_guide/index.md
-      - Simple Commander API: configuration_and_development/simple_commander_api/index.md
+      - Tuning Guide: configuration_and_development/tuning_guide.md
+      - Simple Commander API: configuration_and_development/simple_commander_api/simple_commander_api.md
       - Migration Guides: configuration_and_development/migration_guides/index.md
       - API Docs: https://api.nav2.org/
     - Community:
@@ -126,8 +126,7 @@ nav:
       - Mapping and Localization: configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization.md
       - Setting Up the Robot's Footprint: configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint.md
       - Setting Up Navigation Plugins: configuration_and_development/first_time_robot_setup_guide/algorithm/select_algorithm.md
-    - Navigation Plugins:
-      - configuration_and_development/navigation_plugins/index.md
+    - Navigation Plugins: configuration_and_development/navigation_plugins.md
     - Configuration Guide:
       - configuration_and_development/configuration_guide/index.md
       - Core Servers:
@@ -313,10 +312,8 @@ nav:
         - Coverage Server: configuration_and_development/configuration_guide/others/configuring-coverage-server.md
         - Following Server: configuration_and_development/configuration_guide/others/configuring-following-server.md
         - Loopback Simulator: configuration_and_development/configuration_guide/others/configuring-loopback-sim.md
-    - Tuning Guide:
-      - configuration_and_development/tuning_guide/index.md
-    - Simple Commander API:
-      - configuration_and_development/simple_commander_api/index.md
+    - Tuning Guide: configuration_and_development/tuning_guide.md
+    - Simple Commander API: configuration_and_development/simple_commander_api/simple_commander_api.md
     - Migration Guides:
       - configuration_and_development/migration_guides/index.md
       - Dashing to Eloquent: configuration_and_development/migration_guides/Dashing.md
