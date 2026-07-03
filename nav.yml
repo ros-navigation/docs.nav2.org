@@ -310,7 +310,7 @@ nav:
       - configuration_and_development/migration_guides/index.md
       - Dashing to Eloquent: configuration_and_development/migration_guides/Dashing.md
       - Eloquent to Foxy: configuration_and_development/migration_guides/Eloquent.md
-      - Foxy to Galactic: configuration_and_development/migration_guides/Foxy.md
+      - Foxy to Galactic: configuration_and_development/migration_guides/foxy/Foxy.md
       - Galactic to Humble: configuration_and_development/migration_guides/Galactic.md
       - Humble to Iron: configuration_and_development/migration_guides/Humble.md
       - Iron to Jazzy: configuration_and_development/migration_guides/Iron.md
