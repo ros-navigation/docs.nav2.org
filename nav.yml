@@ -259,7 +259,7 @@ nav:
           - Map Server: configuration_and_development/configuration_guide/core_servers/map_server/configuring-map-server.md
           - Map Saver: configuration_and_development/configuration_guide/core_servers/map_server/configuring-map-saver.md
           - Costmap Filter Info Server: configuration_and_development/configuration_guide/core_servers/map_server/configuring-costmap-filter-info-server.md
-          - Vector Object Server: configuration_and_development/configuration_guide/core_servers/map_server/configuring-vector-object-server.md
+          - Vector Object Server: configuration_and_development/configuration_guide/core_servers/map_server/vector_object_server/configuring-vector-object-server.md
         - Planner Server: configuration_and_development/configuration_guide/core_servers/configuring-planner-server.md
         - Route Server: configuration_and_development/configuration_guide/core_servers/route_server/configuring-route-server.md
         - Smoother Server: configuration_and_development/configuration_guide/core_servers/configuring-smoother-server.md
