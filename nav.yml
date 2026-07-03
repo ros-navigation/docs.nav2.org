@@ -24,9 +24,9 @@ nav:
       - API Docs: https://api.nav2.org/
     - Community:
       - community/index.md
-      - Getting Involved: community/getting_involved/index.md
+      - Getting Involved: community/getting_involved.md
       - Maintainer Docs: community/maintainer_docs/index.md
-      - Roadmaps: community/roadmaps/index.md
+      - Roadmaps: community/roadmaps.md
     - About & Contact:
       - about_and_contact/index.md
       - Robots Using: about_and_contact/robots_using/robots_using.md
@@ -330,14 +330,12 @@ nav:
     - API Docs: https://api.nav2.org/
   - Community:
     - community/index.md
-    - Getting Involved:
-      - community/getting_involved/index.md
+    - Getting Involved: community/getting_involved.md
     - Maintainer Docs:
       - community/maintainer_docs/index.md
       - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
-    - Roadmaps:
-      - community/roadmaps/index.md
+    - Roadmaps: community/roadmaps.md
   - About & Contact:
     - about_and_contact/index.md
     - Robots Using: about_and_contact/robots_using/robots_using.md
