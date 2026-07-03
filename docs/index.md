@@ -97,7 +97,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
   <div class="distro-cell">
     <div class="distro-title">Jazzy Jalisco</div>
     <div class="distro-badge active">Active Support</div>
-    <img src="distro_graphics/Jazzy.png"/>
+    <img src="distro_graphics/jazzy.png"/>
   </div>
   <div class="distro-cell">
     <div class="distro-title">Iron Irwini</div>
