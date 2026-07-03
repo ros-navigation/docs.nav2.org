@@ -29,7 +29,7 @@ nav:
       - Roadmaps: community/roadmaps/index.md
     - About & Contact:
       - about_and_contact/index.md
-      - Robots Using: about_and_contact/robots_using.md
+      - Robots Using: about_and_contact/robots_using/robots_using.md
       - Related Projects: about_and_contact/related_projects.md
       - Citations: about_and_contact/citations.md
   - Getting Started:
@@ -340,6 +340,6 @@ nav:
       - community/roadmaps/index.md
   - About & Contact:
     - about_and_contact/index.md
-    - Robots Using: about_and_contact/robots_using.md
+    - Robots Using: about_and_contact/robots_using/robots_using.md
     - Related Projects: about_and_contact/related_projects.md
     - Citations: about_and_contact/citations.md
