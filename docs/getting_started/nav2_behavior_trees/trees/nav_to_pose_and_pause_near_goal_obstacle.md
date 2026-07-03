@@ -15,7 +15,7 @@ In this particular BT, the monitoring branch is exclusively utilized by `PathLon
 If there is no significantly longer path, the monitor node goes into the `FollowPath` recovery node, which then generates the necessary control commands.
 
 <figure markdown="span">
-  ![](../images/walkthrough/patience_and_recovery.png)
+  ![](../detailed_behavior_tree_walkthrough/images/patience_and_recovery.png)
 </figure>
 
 Once there is a significantly longer path, the child node for the `PathLongerOnApproach` node ticks.
