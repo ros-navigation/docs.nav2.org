@@ -57,7 +57,7 @@ nav:
       - Detailed Behavior Tree Walkthrough: getting_started/nav2_behavior_trees/detailed_behavior_tree_walkthrough/detailed_behavior_tree_walkthrough.md
       - Navigate To Pose: getting_started/nav2_behavior_trees/trees/nav_to_pose_recovery.md
       - Navigate Through Poses: getting_started/nav2_behavior_trees/trees/nav_through_poses_recovery.md
-      - Navigate To Pose and Pause Near Goal-Obstacle: getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.md
+      - Navigate To Pose and Pause Near Goal-Obstacle: getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/nav_to_pose_and_pause_near_goal_obstacle.md
       - Navigate To Pose With Consistent Replanning And If Path Becomes Invalid: getting_started/nav2_behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.md
       - Navigate on Route Graph with Recovery: getting_started/nav2_behavior_trees/trees/navigate_on_route_graph_w_recovery.md
       - Follow Dynamic Point: getting_started/nav2_behavior_trees/trees/follow_point.md
@@ -322,11 +322,11 @@ nav:
       - Dashing to Eloquent: configuration_and_development/migration_guides/Dashing.md
       - Eloquent to Foxy: configuration_and_development/migration_guides/Eloquent.md
       - Foxy to Galactic: configuration_and_development/migration_guides/foxy/Foxy.md
-      - Galactic to Humble: configuration_and_development/migration_guides/Galactic.md
+      - Galactic to Humble: configuration_and_development/migration_guides/galactic/Galactic.md
       - Humble to Iron: configuration_and_development/migration_guides/Humble.md
-      - Iron to Jazzy: configuration_and_development/migration_guides/Iron.md
-      - Jazzy to Kilted: configuration_and_development/migration_guides/Jazzy.md
-      - Kilted to L-turtle: configuration_and_development/migration_guides/Kilted.md
+      - Iron to Jazzy: configuration_and_development/migration_guides/iron/Iron.md
+      - Jazzy to Kilted: configuration_and_development/migration_guides/jazzy/Jazzy.md
+      - Kilted to L-turtle: configuration_and_development/migration_guides/kilted/Kilted.md
     - API Docs: https://api.nav2.org/
   - Community:
     - community/index.md
