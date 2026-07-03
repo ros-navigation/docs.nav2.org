@@ -273,9 +273,9 @@ nav:
         - NavFn Planner: configuration_and_development/configuration_guide/planners_plugins/configuring-navfn.md
         - Smac Planner:
           - configuration_and_development/configuration_guide/planners_plugins/smac/index.md
-          - Smac 2D Planner: configuration_and_development/configuration_guide/planners_plugins/smac/configuring-smac-2d.md
-          - Smac Hybrid-A* Planner: configuration_and_development/configuration_guide/planners_plugins/smac/configuring-smac-hybrid.md
-          - Smac State Lattice Planner: configuration_and_development/configuration_guide/planners_plugins/smac/configuring-smac-lattice.md
+          - Smac 2D Planner: configuration_and_development/configuration_guide/planners_plugins/smac/smac-2d/configuring-smac-2d.md
+          - Smac Hybrid-A* Planner: configuration_and_development/configuration_guide/planners_plugins/smac/smac-hybrid/configuring-smac-hybrid.md
+          - Smac State Lattice Planner: configuration_and_development/configuration_guide/planners_plugins/smac/smac-lattice/configuring-smac-lattice.md
         - Theta Star Planner: configuration_and_development/configuration_guide/planners_plugins/thetastar/configuring-thetastar.md
       - Controller Plugins:
         - DWB Controller:
