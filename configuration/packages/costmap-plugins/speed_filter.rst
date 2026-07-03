@@ -156,5 +156,5 @@ Example
           max_decel: -0.3
           min_lookahead: 1.0
           max_lookahead: 5.0
-          path_topic: "/plan"
-          odom_topic: "/odom"
+          path_topic: "plan"
+          odom_topic: "odom"
