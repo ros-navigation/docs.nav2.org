@@ -5,7 +5,7 @@ The robot will traverse each side of the square at 0.2 (m/s) for 2 meters before
 This is a primitive experiment to measure odometric accuracy and can be used and repeated to tune parameters related to odometry to improve quality.
 
 <figure markdown="span">
-  ![Alternative text](gifs/odometry_calibration.gif){ width="800" title="Alternative text" }
+  ![Alternative text](images/odometry_calibration.gif){ width="800" title="Alternative text" }
 </figure>
 
 ```xml
