@@ -989,6 +989,45 @@ Stateful parameter removed from Regulated Pure Pursuit Controller
 
 A new `isGoalXYReached` API has been added to the GoalChecker, which checks if the XY position has been reached but not the yaw. It takes the stateful parameter into consideration if set to true in the goal checker configuration. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.
 
+Clearing Individual Costmap Plugins
+-----------------------------------
+
+`PR #6140 <https://github.com/ros-navigation/navigation2/pull/6140>`_ extends the below costmap clearing services to allow optionally clearing a subset of selected costmap plugins.
+
+  - ClearEntireCostmap
+  - ClearCostmapAroundRobot
+  - ClearCostmapAroundPose
+  - ClearCostmapExceptRegion
+
+An new field ``plugins`` has been added to these service requests, which takes a list of plugin names to clear.
+If this field is empty, all plugins will be cleared as before. If specific plugin names are provided, only those plugins will be cleared while the others remain unchanged.
+This is useful for selectively clearing specific layers (e.g. completely clearing only the obstacle layer while keeping the static layer intact).
+
+Any plugin name that is specified in the service request must satisfy the following conditions. If either of these conditions is not met, no clearing operation is performed and the service returns a failure response.
+
+  - The plugin name must correspond to a plugin that is currently loaded in the costmap.
+  - The requested plugin must be ``clearable``. For example, a plugin of type ``ObstacleLayer`` is clearable while that of type ``StaticLayer`` is not.
+
+
+MPPI Controller: Per-Axis Delay Compensation with command history replay
+------------------------------------------------------------------------
+`PR #6154 <https://github.com/ros-navigation/navigation2/pull/6154>`_ adds a feature to compensate per-axis actuator and transport delay. Without it the planner assumes commands take effect instantly. On platforms with hydraulic steering or any other source of lag, this mismatch causes oscillations while tracking the path. The feature works best in combination with setting ``open_loop: true``.
+
+Three new MPPIController parameters, default ``0.0`` (feature disabled):
+
+- ``model_delay_vx`` — linear-x command delay
+- ``model_delay_vy`` — linear-y command delay (holonomic platforms only)
+- ``model_delay_wz`` — angular-z command delay
+
+When non-zero, the optimizer fills the first ``round(delay / model_dt)`` rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.
+
+.. image:: images/mppi_delay_compensation_serpentines.png
+  :width: 800
+  :alt: Open-loop trajectory with and without per-axis delay compensation.
+  :align: center
+
+The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation ``model_delay_wz=0.6`` (right), tracking is visibly better.
+
 SpeedFilter path lookahead
 --------------------------
 `PR #6150 <https://github.com/ros-navigation/navigation2/pull/6150>`_ adds an optional path-lookahead mode to the SpeedFilter plugin, enabled via the ``enable_path_lookahead`` parameter (default disabled). When enabled, the filter looks ahead along the planned path and applies the strictest speed limit found within a velocity-dependent window, allowing the robot to decelerate before entering a speed-restricted zone. The default behavior of speed limits being applied only at the robot's current pose is unchanged when the parameter ``enable_path_lookahead`` is left disabled. See the :ref:`speed_filter` configuration page for the new parameters that control the lookahead behavior.
