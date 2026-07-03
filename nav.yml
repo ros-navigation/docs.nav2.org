@@ -231,8 +231,8 @@ nav:
           - Provided Plugins:
             - SimpleProgressChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/simple_progress_checker.md
             - PoseProgressChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/pose_progress_checker.md
-            - AxisGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/axis_goal_checker.md
-            - AdaptiveToleranceGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/adaptive_tolerance_goal_checker.md
+            - AxisGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/axis_goal_checker/axis_goal_checker.md
+            - AdaptiveToleranceGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/adaptive_tolerance_goal_checker/adaptive_tolerance_goal_checker.md
             - SimpleGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/simple_goal_checker.md
             - StoppedGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/stopped_goal_checker.md
             - PositionGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/position_goal_checker.md
@@ -321,7 +321,7 @@ nav:
       - configuration_and_development/migration_guides/index.md
       - Dashing to Eloquent: configuration_and_development/migration_guides/Dashing.md
       - Eloquent to Foxy: configuration_and_development/migration_guides/Eloquent.md
-      - Foxy to Galactic: configuration_and_development/migration_guides/Foxy.md
+      - Foxy to Galactic: configuration_and_development/migration_guides/foxy/Foxy.md
       - Galactic to Humble: configuration_and_development/migration_guides/Galactic.md
       - Humble to Iron: configuration_and_development/migration_guides/Humble.md
       - Iron to Jazzy: configuration_and_development/migration_guides/Iron.md
