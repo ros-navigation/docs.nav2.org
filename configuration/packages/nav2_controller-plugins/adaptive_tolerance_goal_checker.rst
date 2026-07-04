@@ -51,7 +51,7 @@ Parameters
   ====== =======
 
     Description
-        Hysteresis buffer for stateful XY position checking (m). When ``stateful`` is true, after the XY goal condition has been satisfied, the robot may drift within ``coarse_xy_goal_tolerance + xy_goal_tolerance_buffer`` without rechecking the XY position. If the robot moves outside this buffered region, the previous XY reached state is cleared and the XY position must be checked again.
+        Hysteresis buffer for stateful XY position checking (m). When ``stateful`` is true, after the XY goal condition has been satisfied, the robot may drift within the corresponding accepted tolerance plus this buffer without rechecking the XY position. If the robot moves outside this buffered region, the previous XY reached state is cleared and the XY position must be checked again.
 
 :``<nav2_controller plugin>``.yaw_goal_tolerance:
 
