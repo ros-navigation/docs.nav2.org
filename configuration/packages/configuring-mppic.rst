@@ -108,6 +108,41 @@ MPPI Parameters
   Description
     Length of each time step's ``dt`` timestep, in seconds. ``time_steps * model_dt`` is the prediction horizon.
 
+:model_delay_vx:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+    Actuator delay in seconds. The rollout shifts the control sequence by ``round(model_delay_vx / model_dt)`` steps and replays recently published commands during the delay window.
+
+
+:model_delay_vy:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+   Same as ``model_delay_vx`` for the vy axis (holonomic only)
+
+:model_delay_wx
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+   Same as ``model_delay_vx`` for the wz axis
+
+
 :vx_std:
 
   ============== ===========================

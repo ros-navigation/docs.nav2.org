@@ -34,3 +34,4 @@ Nav2 Tutorials
    docs/roscon_uk_2025_state_estimation.rst
    docs/using_3laws_supervisor.rst
    docs/navigation2_with_ground_consistency_layer.rst
+   docs/depth_ai_integration.rst
