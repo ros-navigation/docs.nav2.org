@@ -11,6 +11,8 @@ The goal is cosidered reached when one of the following conditions is met:
   - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
   - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
 
+When ``stateful`` is enabled, the XY goal reached state is preserved after one of the above conditions has been satisfied. See ``xy_goal_tolerance_buffer`` for configuring the hysteresis behavior.
+
 .. image:: /images/adaptive_tolerance_goal_checker.png
    :alt: AdaptiveToleranceGoalChecker Illustration
    :align: center
