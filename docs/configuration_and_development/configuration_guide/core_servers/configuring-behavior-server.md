@@ -110,7 +110,6 @@ Description
 
 Note
 :   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
-    <br/>
 
     Example:
 

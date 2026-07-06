@@ -23,11 +23,10 @@ Description
 :   The minimum number of adjacent obstacles that should not be discarded as noise.
 
     If 1 or less, all obstacles will be kept.
-    <br>
+
     If 2, standalone obstacles (without neighbors in adjacent cells) will be removed.
-    <br>
+
     If N, obstacles groups smaller than N will be removed.
-    <br>
 
 ### **`<denoise layer>.group_connectivity_type`**
 
@@ -40,9 +39,8 @@ Description
     Must be 4 or 8.
 
     4 - adjacent obstacles are connected horizontally and vertically.
-    <br>
+
     8 - adjacent obstacles are connected horizontally, vertically and diagonally.
-    <br>
 
 ## Example
 
