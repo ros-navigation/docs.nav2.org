@@ -52,7 +52,7 @@ If you're using Visual Studio Code, you can use the dev container for an easy se
 
 1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 2. Open this folder in VS Code
-3. When prompted, click "Reopen in Container" (or use Command Palette: "Dev Containers: Reopen in Container")
+3. When prompted, click "Reopen in Container" (or use Command Palette: `Dev Containers: Reopen in Container`)
 4. Once the container is built and running, use the integrated terminal to build the docs
 
 The dev container automatically sets up all dependencies. You can then use the build commands described below.
@@ -125,10 +125,17 @@ See [more options][mike-serve-url] for this command.
 This command is useful for local testing and viewing differences between versions without the need to use a real web server.
 If you need to make changes for only one version, it will be more convenient to use `mkdocs serve` for this purpose, due to its live preview ability.
 
-After completing all changes, use this command to exit the virtual environment (venv):
-```shell
-deactivate
-```
+After completing all changes, use these commands to exit the working environment:
+
+- If using the virtual environment (venv):
+
+  ```shell
+  deactivate
+  ```
+
+- If using the VS Code Dev Container:
+
+  Select in the Command Palette: `Dev Containers: Reopen Folder Locally`
 
 ## License
 
