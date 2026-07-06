@@ -105,13 +105,4 @@ Similarly, you can install the Nav2 project in different ways:
 
     !!! tip "Hint"
 
-        If you are using `rmw_zenoh_cpp` and want to run tests without a Zenoh router, you can enable isolated tests by building with:
-
-        ```bash
-        colcon build --symlink-install \
-        --cmake-args -DUSE_ISOLATED_TESTS=ON
-        ```
-
-    !!! tip "Hint"
-
         For more examples on building Nav2 from rolling development source, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/jazzy/tools/distro.Dockerfile).
