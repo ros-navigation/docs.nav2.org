@@ -6,13 +6,14 @@ A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
 This file can be found and edited under `docs/configuration_and_development/navigation_plugins/index.md`.
-For tutorials on creating your own plugins, please see
-[Writing a New Costmap2D Plugin][writing-a-new-costmap-2d-plugin],
-[Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin],
-[Writing a New Controller Plugin][writing-a-new-controller-plugin],
-[Writing a New Planner Plugin][writing-a-new-planner-plugin],
-[Writing a New Behavior Plugin][writing-a-new-behavior-plugin], or
-[Writing a New Navigator Plugin][writing-a-new-navigator-plugin].
+For tutorials on creating your own plugins, please see:
+
+- [Writing a New Costmap2D Plugin][writing-a-new-costmap-2d-plugin]
+- [Writing a New Behavior Tree Plugin][writing-a-new-behavior-tree-plugin]
+- [Writing a New Controller Plugin][writing-a-new-controller-plugin]
+- [Writing a New Planner Plugin][writing-a-new-planner-plugin]
+- [Writing a New Behavior Plugin][writing-a-new-behavior-plugin]
+- [Writing a New Navigator Plugin][writing-a-new-navigator-plugin]
 
 ## Behavior-Tree Navigators
 
