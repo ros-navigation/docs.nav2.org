@@ -375,7 +375,7 @@ Observation sources parameters
 Exclusion zones parameters
 ==========================
 
-``<source name>.<zone name>`` is the corresponding exclusion zone name ID listed in the source's ``exclusion_zones``.
+``<zone name>`` is a parameter block referenced by name from a source's ``exclusion_zones`` list. Zone names are global across the node.
 Exclusion zones remove (mask out) a source's points and never trigger detection. Each zone inherits the owning source's ``base_shift_correction`` policy.
 
 :``<zone name>``.type:
@@ -523,13 +523,14 @@ Here is an example of configuration YAML for the Collision Detector.
           min_height: 0.1
           max_height: 0.5
           enabled: True
-          exclusion_zones: ["dock"]
-          dock:
-            enabled: True
-            type: "polygon"          # "polygon" or "circle"
-            frame_id: "dock_link"    # frame the zone is anchored to; empty -> robot base frame (static)
-            points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"  # polygon type only
-            # radius: 0.5            # circle type only (must be > 0)
-            min_height: -1.0         # base-frame z band a point must be within to be masked
-            max_height: 1.0
-            visualize: True          # publish the zone footprint as a PolygonStamped
+          exclusion_zones: ["dock"]   # references the "dock" zone block below
+        # Exclusion zone blocks are referenced by name from a source's "exclusion_zones" list.
+        dock:
+          enabled: True
+          type: "polygon"          # "polygon" or "circle"
+          frame_id: "dock_link"    # frame the zone is anchored to; empty -> robot base frame (static)
+          points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"  # polygon type only
+          # radius: 0.5            # circle type only (must be > 0)
+          min_height: -1.0         # base-frame z band a point must be within to be masked
+          max_height: 1.0
+          visualize: True          # publish the zone footprint as a PolygonStamped
