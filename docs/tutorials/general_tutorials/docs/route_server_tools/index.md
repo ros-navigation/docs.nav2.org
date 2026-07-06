@@ -38,7 +38,7 @@ Choose the tool that best fits your needs based on your workflow and requirement
 A demonstration of the assembled route server is provided to the Turtlebot4 Gazebo simulation for the Depot and Warehouse maps.
 
 In order to run the demonstration, run the following command:
-```console
+```shell
 ros2 launch nav2_simple_commander route_example_launch.py
 ```
 
