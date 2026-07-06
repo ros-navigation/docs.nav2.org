@@ -422,8 +422,8 @@ To enable it, set ``enable_path_lookahead: true`` in the ``speed_filter`` plugin
           max_decel: -0.5
           min_lookahead: 0.3
           max_lookahead: 5.0
-          path_topic: "/plan"
-          odom_topic: "/odom"
+          path_topic: "plan"
+          odom_topic: "odom"
 
 The lookahead distance is sized from the robot's current speed using ``d = v² / (2·|max_decel|)``, clamped to ``[min_lookahead, max_lookahead]``. Set ``max_decel`` to match your robot's comfortable deceleration so the lookahead window is sized for stopping at the zone boundary. See the :ref:`speed_filter` configuration page for the full parameter reference.
 
