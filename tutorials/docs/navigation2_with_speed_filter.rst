@@ -427,7 +427,13 @@ To enable it, set ``enable_path_lookahead: true`` in the ``speed_filter`` plugin
 
 The lookahead distance is sized from the robot's current speed using ``d = v² / (2·|max_decel|)``, clamped to ``[min_lookahead, max_lookahead]``. Set ``max_decel`` to match your robot's comfortable deceleration so the lookahead window is sized for stopping at the zone boundary. See the :ref:`speed_filter` configuration page for the full parameter reference.
 
-.. TODO: Add video for path lookahead
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/zxl1rGuIhu8?si=dUWKldgB63AfndCU" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </h1>
 
 .. note::
   For another example and additional context, check the Navigation2 tutorials https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo
