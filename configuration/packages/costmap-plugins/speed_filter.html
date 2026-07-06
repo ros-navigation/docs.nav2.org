@@ -440,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tutorials/docs/navigation2_with_speed_filter.html#optional-enable-path-lookahead">5. Optional: Enable path lookahead</a></li>
 </ul>
 </li>
 </ul>
@@ -1270,6 +1271,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 </ul>
 </li>
 </ul>
@@ -1454,6 +1456,126 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.enable_path_lookahead</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to enable path lookahead mode. When disabled (default), the speed filter applies the speed limit of the cell directly at the robot pose. When enabled, the filter samples poses along the planned path within a velocity-dependent window and applies the strictest non-zero speed limit found along that window. This allows the robot to begin decelerating before entering a speed-restricted zone rather than at the boundary itself.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.max_decel</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-0.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum deceleration (m/s^2) used to size the lookahead window based on the robot’s current speed, when path lookahead mode is enabled. Lookahead distance is computed as <code class="docutils literal notranslate"><span class="pre">v²</span> <span class="pre">/</span> <span class="pre">(2·max_decel)</span></code> and clamped to <code class="docutils literal notranslate"><span class="pre">[min_lookahead,</span> <span class="pre">max_lookahead]</span></code>. Must be negative. Lower magnitude values produce longer lookahead windows. Has no effect when <code class="docutils literal notranslate"><span class="pre">enable_path_lookahead</span></code> is false.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.min_lookahead</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.max_lookahead</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>5.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.path_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“plan”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic to subscribe to for the planned path, when path lookahead mode is enabled. This is used to look ahead and sample poses along the planned path to determine upcoming speed limits.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“odom”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic to subscribe to for the odometry, when path lookahead mode is enabled. This is used to determine the robot’s current speed for lookahead distance calculation.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
@@ -1470,6 +1592,12 @@
 <span class="w">      </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/costmap_filter_info&quot;</span>
 <span class="w">      </span><span class="nt">speed_limit_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/speed_limit&quot;</span>
 <span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">      </span><span class="nt">enable_path_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">max_decel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.3</span>
+<span class="w">      </span><span class="nt">min_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">max_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="w">      </span><span class="nt">path_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;plan&quot;</span>
+<span class="w">      </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
 </pre></div>
 </div>
 </div>

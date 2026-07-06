@@ -440,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enable-speed-filter">3. Enable Speed Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-enable-path-lookahead">5. Optional: Enable path lookahead</a></li>
 </ul>
 </li>
 </ul>
@@ -1270,6 +1271,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 </ul>
 </li>
 </ul>
@@ -1719,7 +1721,35 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 <p>For better visualization of speed filter mask, in RViz in the left <code class="docutils literal notranslate"><span class="pre">Displays</span></code> pane unfold <code class="docutils literal notranslate"><span class="pre">Map</span></code> and change <code class="docutils literal notranslate"><span class="pre">Topic</span></code> from <code class="docutils literal notranslate"><span class="pre">/map</span></code> -&gt; to <code class="docutils literal notranslate"><span class="pre">/speed_filter_mask</span></code>.
 Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look:</p>
 <a class="reference internal image-reference" href="../../_images/speed_global.png"><img alt="../../_images/speed_global.png" src="../../_images/speed_global.png" style="height: 400px;" /></a>
-<div class="admonition note">
+</div>
+<div class="section" id="optional-enable-path-lookahead">
+<h3>5. Optional: Enable path lookahead<a class="headerlink" href="#optional-enable-path-lookahead" title="Permalink to this heading"></a></h3>
+<p>By default the Speed Filter applies the speed limit of the cell directly under the robot. This means the speed limit is published only once the robot has already entered a speed-restricted zone, and the controller is responsible for the deceleration. For most cases this is sufficient.</p>
+<p>If your application requires the robot to already be at (or close to) the limit by the time it crosses the zone boundary, for example, when entering a low-speed aisle in a warehouse, you can enable path lookahead mode. In this mode the filter samples poses along the planned path within a velocity-dependent window, and applies the strictest speed limit found along that window. This allows the robot to begin decelerating before reaching the zone.</p>
+<p>To enable it, set <code class="docutils literal notranslate"><span class="pre">enable_path_lookahead:</span> <span class="pre">true</span></code> in the <code class="docutils literal notranslate"><span class="pre">speed_filter</span></code> plugin config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">speed_filter</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::SpeedFilter&quot;</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">        </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;speed_costmap_filter_info&quot;</span>
+<span class="w">        </span><span class="nt">speed_limit_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;speed_limit&quot;</span>
+<span class="w">        </span><span class="nt">enable_path_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">max_decel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.5</span>
+<span class="w">        </span><span class="nt">min_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="w">        </span><span class="nt">max_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="w">        </span><span class="nt">path_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;plan&quot;</span>
+<span class="w">        </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+</pre></div>
+</div>
+<p>The lookahead distance is sized from the robot’s current speed using <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">v²</span> <span class="pre">/</span> <span class="pre">(2·|max_decel|)</span></code>, clamped to <code class="docutils literal notranslate"><span class="pre">[min_lookahead,</span> <span class="pre">max_lookahead]</span></code>. Set <code class="docutils literal notranslate"><span class="pre">max_decel</span></code> to match your robot’s comfortable deceleration so the lookahead window is sized for stopping at the zone boundary. See the <a class="reference internal" href="../../configuration/packages/costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> configuration page for the full parameter reference.</p>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="800" height="450" src="https://www.youtube.com/embed/zxl1rGuIhu8?si=dUWKldgB63AfndCU" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</h1><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For another example and additional context, check the Navigation2 tutorials <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo">https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo</a></p>
 </div>

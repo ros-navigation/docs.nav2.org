@@ -441,6 +441,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#optional-enable-path-lookahead">5. Optional: Enable path lookahead</a></li>
 </ul>
 </li>
 </ul>
@@ -1271,6 +1272,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#stateful-parameter-removed-from-regulated-pure-pursuit-controller">Stateful parameter removed from Regulated Pure Pursuit Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 </ul>
 </li>
 </ul>
@@ -2271,6 +2273,10 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 <p>When non-zero, the optimizer fills the first <code class="docutils literal notranslate"><span class="pre">round(delay</span> <span class="pre">/</span> <span class="pre">model_dt)</span></code> rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.</p>
 <a class="reference internal image-reference" href="../_images/mppi_delay_compensation_serpentines.png"><img alt="Open-loop trajectory with and without per-axis delay compensation." class="align-center" src="../_images/mppi_delay_compensation_serpentines.png" style="width: 800px;" /></a>
 <p>The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation <code class="docutils literal notranslate"><span class="pre">model_delay_wz=0.6</span></code> (right), tracking is visibly better.</p>
+</div>
+<div class="section" id="speedfilter-path-lookahead">
+<h2>SpeedFilter path lookahead<a class="headerlink" href="#speedfilter-path-lookahead" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6150">PR #6150</a> adds an optional path-lookahead mode to the SpeedFilter plugin, enabled via the <code class="docutils literal notranslate"><span class="pre">enable_path_lookahead</span></code> parameter (default disabled). When enabled, the filter looks ahead along the planned path and applies the strictest speed limit found within a velocity-dependent window, allowing the robot to decelerate before entering a speed-restricted zone. The default behavior of speed limits being applied only at the robot’s current pose is unchanged when the parameter <code class="docutils literal notranslate"><span class="pre">enable_path_lookahead</span></code> is left disabled. See the <a class="reference internal" href="../configuration/packages/costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> configuration page for the new parameters that control the lookahead behavior.</p>
 </div>
 </div>
 
