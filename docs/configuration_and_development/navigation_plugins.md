@@ -20,9 +20,9 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                       | Creator        | Description                                                           |
 |-----------------------------------|----------------|-----------------------------------------------------------------------|
-| [NavigateToPoseNavigator][]       | Steve Macenski | Point-to-point navigation via a<br>behavior tree action server        |
-| [NavigateThroughPosesNavigator][] | Steve Macenski | Point-through-points navigation<br>via a behavior tree action server  |
-| [CoverageNavigator][]             | Steve Macenski | Complete coverage navigation<br>(Cartesian or GPS) via a BTs          |
+| [NavigateToPoseNavigator][]       | Steve Macenski | Point-to-point navigation via a behavior tree action server           |
+| [NavigateThroughPosesNavigator][] | Steve Macenski | Point-through-points navigation via a behavior tree action server     |
+| [CoverageNavigator][]             | Steve Macenski | Complete coverage navigation (Cartesian or GPS) via a BTs             |
 
 </div>
 
@@ -36,17 +36,17 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                            | Creator                    | Description                                                                                                                                                                |
 |----------------------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Voxel Layer][]                        | Eitan Marder-Eppstein      | Maintains persistent<br>3D voxel layer using depth and<br>laser sensor readings and<br>raycasting to clear free space                                                      |
-| [Range Layer][]                        | David Lu                   | Uses a probabilistic model to<br>put data from sensors that<br>publish range msgs on the costmap                                                                           |
-| [Static Layer][]                       | Eitan Marder-Eppstein      | Gets static `map` and loads<br>occupancy information into<br>costmap                                                                                                       |
-| [Inflation Layer][]                    | Tony Najjar                | Inflates lethal obstacles in<br>costmap with exponential decay<br>(with the option to use OpenMP<br>for parallelization)                                                   |
-| [Legacy Inflation Layer][]             | Eitan Marder-Eppstein      | Inflates lethal obstacles in<br>costmap with exponential decay                                                                                                             |
-| [Obstacle Layer][]                     | Eitan Marder-Eppstein      | Maintains persistent 2D costmap<br>from 2D laser scans with<br>raycasting to clear free space                                                                              |
-| [Spatio-Temporal Voxel Layer][]        | Steve Macenski             | Maintains temporal 3D sparse<br>volumetric voxel grid with decay<br>through sensor models                                                                                  |
-| [Non-Persistent Voxel Layer][]         | Steve Macenski             | Maintains 3D occupancy grid<br>consisting only of the most<br>sets of measurements                                                                                         |
-| [Denoise Layer][]                      | Andrey Ryzhikov            | Filters noise-induced<br>standalone obstacles or small<br>obstacles groups                                                                                                 |
-| [Plugin Container Layer][]             | Alexander Yuen             | Combines the different costmap<br>layers specified under this<br>layer in order populate the same<br>costmap with different isolated<br>combinations of costmap layers     |
-| [Ground Consistency Layer][]           | Muhammad Haider Khan Lodhi | Height-aware costmap layer using<br>3D ground segmentation. Pair<br>with Inflation Layer for terrain-aware navigation.                                                     |
+| [Voxel Layer][]                        | Eitan Marder-Eppstein      | Maintains persistent 3D voxel layer using depth and laser sensor readings and raycasting to clear free space                                                               |
+| [Range Layer][]                        | David Lu                   | Uses a probabilistic model to put data from sensors that publish range msgs on the costmap                                                                                 |
+| [Static Layer][]                       | Eitan Marder-Eppstein      | Gets static `map` and loads occupancy information into costmap                                                                                                             |
+| [Inflation Layer][]                    | Tony Najjar                | Inflates lethal obstacles in costmap with exponential decay (with the option to use OpenMP for parallelization)                                                            |
+| [Legacy Inflation Layer][]             | Eitan Marder-Eppstein      | Inflates lethal obstacles in costmap with exponential decay                                                                                                                |
+| [Obstacle Layer][]                     | Eitan Marder-Eppstein      | Maintains persistent 2D costmap from 2D laser scans with raycasting to clear free space                                                                                    |
+| [Spatio-Temporal Voxel Layer][]        | Steve Macenski             | Maintains temporal 3D sparse volumetric voxel grid with decay through sensor models                                                                                        |
+| [Non-Persistent Voxel Layer][]         | Steve Macenski             | Maintains 3D occupancy grid consisting only of the most sets of measurements                                                                                               |
+| [Denoise Layer][]                      | Andrey Ryzhikov            | Filters noise-induced standalone obstacles or small obstacles groups                                                                                                       |
+| [Plugin Container Layer][]             | Alexander Yuen             | Combines the different costmap layers specified under this layer in order populate the same costmap with different isolated combinations of costmap layers                 |
+| [Ground Consistency Layer][]           | Muhammad Haider Khan Lodhi | Height-aware costmap layer using 3D ground segmentation. Pair with Inflation Layer for terrain-aware navigation.                                                           |
 
 </div>
 
@@ -68,9 +68,9 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name          | Creator           | Description                                                        |
 |----------------------|-------------------|--------------------------------------------------------------------|
-| [Keepout Filter][]   | Alexey Merzlyakov | Maintains keep-out/safety zones<br>and preferred lanes for moving  |
-| [Speed Filter][]     | Alexey Merzlyakov | Limits maximum velocity of robot<br>in speed restriction areas     |
-| [Binary Filter][]    | Alexey Merzlyakov | Enables binary (boolean) mask<br>behavior to trigger actions       |
+| [Keepout Filter][]   | Alexey Merzlyakov | Maintains keep-out/safety zones and preferred lanes for moving     |
+| [Speed Filter][]     | Alexey Merzlyakov | Limits maximum velocity of robot in speed restriction areas        |
+| [Binary Filter][]    | Alexey Merzlyakov | Enables binary (boolean) mask behavior to trigger actions          |
 
 </div>
 
@@ -84,13 +84,13 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                               | Creator                             | Description                                                                                            | Drivetrain support                                           |
 |-------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| [DWB Controller][]                        | David Lu!!                          | A highly configurable  DWA<br>implementation with plugin<br>interfaces                                 | Differential,<br>Omnidirectional,<br>Legged                  |
-| [TEB Controller][]                        | Christoph Rösmann                   | A MPC-like controller suitable<br>for ackermann, differential, and<br>holonomic robots.                | **Ackermann**, Legged,<br>Omnidirectional,<br>Differential   |
-| [Regulated Pure Pursuit][]                | Steve Macenski                      | A service / industrial robot<br>variation on the pure pursuit<br>algorithm with adaptive features.     | **Ackermann**, Legged,<br>Differential                       |
-| [MPPI Controller][]                       | Steve Macenski<br>Aleksei Budyakov  | A predictive MPC controller with<br>modular & custom cost functions<br>that can accomplish many tasks. | Differential, Omni,<br>**Ackermann**                         |
-| [Rotation Shim Controller][]              | Steve Macenski                      | A "shim" controller to rotate<br>to path heading before passing<br>to main controller for  tracking.   | Differential, Omni,<br>model rotate in place                 |
-| [Graceful Controller][]                   | Alberto Tudela                      | A controller based on a<br>pose-following control law to<br>generate smooth trajectories.              | Differential, Omni,<br>Legged                                |
-| [Vector Pursuit Controller][]             | Black Coffee Robotics               | A controller based on the vector<br>pursuit algorithm useful for<br>high speed accurate path tracking. | Differential,<br>Ackermann, Legged                           |
+| [DWB Controller][]                        | David Lu!!                          | A highly configurable  DWA implementation with plugin interfaces                                       | Differential, Omnidirectional, Legged                        |
+| [TEB Controller][]                        | Christoph Rösmann                   | A MPC-like controller suitable for ackermann, differential, and holonomic robots.                      | **Ackermann**, Legged, Omnidirectional, Differential         |
+| [Regulated Pure Pursuit][]                | Steve Macenski                      | A service / industrial robot variation on the pure pursuit algorithm with adaptive features.           | **Ackermann**, Legged, Differential                          |
+| [MPPI Controller][]                       | Steve Macenski and Aleksei Budyakov | A predictive MPC controller with modular & custom cost functions that can accomplish many tasks.       | Differential, Omni, **Ackermann**                            |
+| [Rotation Shim Controller][]              | Steve Macenski                      | A "shim" controller to rotate to path heading before passing to main controller for  tracking.         | Differential, Omni, model rotate in place                    |
+| [Graceful Controller][]                   | Alberto Tudela                      | A controller based on a pose-following control law to generate smooth trajectories.                    | Differential, Omni, Legged                                   |
+| [Vector Pursuit Controller][]             | Black Coffee Robotics               | A controller based on the vector pursuit algorithm useful for high speed accurate path tracking.       | Differential, Ackermann, Legged                              |
 
 </div>
 
@@ -108,11 +108,11 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                                         | Creator                               | Description                                                                                                                                                                                                                                                          | Drivetrain support                                                                   |
 |-----------------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| [NavFn Planner][]                                   | Eitan Marder-Eppstein & Kurt Konolige | A navigation function<br>using A\* or Dijkstras<br>expansion, assumes 2D<br>holonomic particle                                                                                                                                                                       | Differential,<br>Omnidirectional,<br>Legged                                          |
-| [SmacPlannerHybrid][] <br> (formerly *SmacPlanner*) | Steve Macenski                        | A SE2 Hybrid-A\*<br>implementation using either<br>Dubin or Reeds-shepp motion<br>models with smoother and<br>multi-resolution query.<br>Cars, car-like, and<br>ackermann vehicles.<br>Kinematically feasible.                                                       | **Ackermann**,<br>Differential,<br>Omnidirectional,<br>Legged                        |
-| [SmacPlanner2D][]                                   | Steve Macenski                        | A 2D A\* implementation<br>Using either 4 or 8<br>connected neighborhoods<br>with smoother and<br>multi-resolution query                                                                                                                                             | Differential,<br>Omnidirectional,<br>Legged                                          |
-| [SmacPlannerLattice][]                              | Steve Macenski                        | An implementation of State<br>Lattice Planner using<br>pre-generated<br>minimum control sets for kinematically<br>feasible planning with any<br>type of vehicle imaginable.<br>Includes generator script for<br>Ackermann, diff, omni, and<br>legged robots.         | Differential,<br>Omnidirectional,<br>Ackermann,<br>Legged,<br>Arbitrary / Custom     |
-| [ThetaStarPlanner][]                                | Anshumaan Singh                       | An implementation of Theta\*<br>using either 4 or 8<br>connected neighborhoods,<br>assumes the robot as a<br>2D holonomic particle                                                                                                                                   | Differential,<br>Omnidirectional                                                     |
+| [NavFn Planner][]                                   | Eitan Marder-Eppstein & Kurt Konolige | A navigation function using A\* or Dijkstras expansion, assumes 2D holonomic particle                                                                                                                                                                                | Differential, Omnidirectional, Legged                                                |
+| [SmacPlannerHybrid][] <br> (formerly *SmacPlanner*) | Steve Macenski                        | A SE2 Hybrid-A\* implementation using either Dubin or Reeds-shepp motion models with smoother and multi-resolution query. Cars, car-like, and ackermann vehicles. Kinematically feasible.                                                                            | **Ackermann**, Differential, Omnidirectional, Legged                                 |
+| [SmacPlanner2D][]                                   | Steve Macenski                        | A 2D A\* implementation Using either 4 or 8 connected neighborhoods with smoother and multi-resolution query                                                                                                                                                         | Differential, Omnidirectional, Legged                                                |
+| [SmacPlannerLattice][]                              | Steve Macenski                        | An implementation of State Lattice Planner using pre-generated minimum control sets for kinematically feasible planning with any type of vehicle imaginable. Includes generator script for Ackermann, diff, omni, and legged robots.                                 | Differential, Omnidirectional, Ackermann, Legged, Arbitrary / Custom                 |
+| [ThetaStarPlanner][]                                | Anshumaan Singh                       | An implementation of Theta\* using either 4 or 8 connected neighborhoods, assumes the robot as a 2D holonomic particle                                                                                                                                               | Differential, Omnidirectional                                                        |
 
 </div>
 
@@ -128,9 +128,9 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                          | Creator                          | Description                                                                                                                                                                               |
 |--------------------------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Simple Smoother][]                  | Steve Macenski                   | A simple path smoother for<br>infeasible (e.g. 2D)<br>planners                                                                                                                            |
-| [Constrained Smoother][]             | Matej Vargovcik & Steve Macenski | A path smoother using a<br>constraints problem solver<br>to optimize various criteria<br>such as smoothness or<br>distance from obstacles,<br>maintaining minimum turning<br>radius       |
-| [Savitzky-Golay Smoother][]          | Steve Macenski                   | A path smoother using a<br>Savitzky-Golay filter<br>to smooth the path via<br>digital signal processing<br>to remove noise from the<br>path.                                              |
+| [Simple Smoother][]                  | Steve Macenski                   | A simple path smoother for infeasible (e.g. 2D) planners                                                                                                                                  |
+| [Constrained Smoother][]             | Matej Vargovcik & Steve Macenski | A path smoother using a constraints problem solver to optimize various criteria such as smoothness or distance from obstacles, maintaining minimum turning radius                         |
+| [Savitzky-Golay Smoother][]          | Steve Macenski                   | A path smoother using a Savitzky-Golay filter to smooth the path via digital signal processing to remove noise from the path.                                                             |
 
 </div>
 
@@ -144,12 +144,12 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                       | Creator               | Description                                                                                                                            |
 |-----------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| [Clear Costmap][]                 | Eitan Marder-Eppstein | A service to clear the given<br>costmap in case of incorrect<br>perception or robot is stuck                                           |
-| [Spin][]                          | Steve Macenski        | Rotate behavior of configurable<br>angles to clear out free space<br>and nudge robot out of potential<br>local failures                |
-| [Back Up][]                       | Brian Wilcox          | Back up behavior of configurable<br>distance to back out of a<br>situation where the robot is<br>stuck                                 |
-| [Wait][]                          | Steve Macenski        | Wait behavior with configurable<br>time to wait in case of time<br>based obstacle like human traffic<br>or getting more sensor data    |
-| [Drive On Heading][]              | Joshua Wallace        | Drive on heading behavior with<br>configurable distance to drive                                                                       |
-| [Assisted Teleop][]               | Joshua Wallace        | AssistedTeleop behavior that<br>scales teleop commands to<br>prevent collisions.                                                       |
+| [Clear Costmap][]                 | Eitan Marder-Eppstein | A service to clear the given costmap in case of incorrect perception or robot is stuck                                                 |
+| [Spin][]                          | Steve Macenski        | Rotate behavior of configurable angles to clear out free space and nudge robot out of potential local failures                         |
+| [Back Up][]                       | Brian Wilcox          | Back up behavior of configurable distance to back out of a situation where the robot is stuck                                          |
+| [Wait][]                          | Steve Macenski        | Wait behavior with configurable time to wait in case of time based obstacle like human traffic or getting more sensor data             |
+| [Drive On Heading][]              | Joshua Wallace        | Drive on heading behavior with configurable distance to drive                                                                          |
+| [Assisted Teleop][]               | Joshua Wallace        | AssistedTeleop behavior that scales teleop commands to prevent collisions.                                                             |
 
 </div>
 
@@ -166,9 +166,9 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name          | Creator        | Description                                                                           |
 |----------------------|----------------|---------------------------------------------------------------------------------------|
-| [WaitAtWaypoint][]   | Fetullah Atas  | A plugin to execute a wait<br>behavior  on<br>waypoint arrivals.                      |
-| [PhotoAtWaypoint][]  | Fetullah Atas  | A plugin to take and save photos<br>to specified directory on<br>waypoint arrivals.   |
-| [InputAtWaypoint][]  | Steve Macenski | A plugin to wait for user input<br>before moving onto the next<br>waypoint.           |
+| [WaitAtWaypoint][]   | Fetullah Atas  | A plugin to execute a wait behavior  on waypoint arrivals.                            |
+| [PhotoAtWaypoint][]  | Fetullah Atas  | A plugin to take and save photos to specified directory on waypoint arrivals.         |
+| [InputAtWaypoint][]  | Steve Macenski | A plugin to wait for user input before moving onto the next waypoint.                 |
 
 </div>
 
@@ -182,11 +182,11 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                        | Creator                       | Description                                                                                                                          |
 |------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| [SimpleGoalChecker][]              | David Lu!!                    | A plugin check whether robot<br>is within translational distance<br>and rotational distance of goal.                                 |
-| [StoppedGoalChecker][]             | David Lu!!                    | A plugin check whether robot<br>is within translational distance,<br>rotational distance of goal,<br>and velocity threshold.         |
-| [PositionGoalChecker][]            | Prabhav Saxena                | A plugin check whether robot<br>is within translational distance<br>of goal, without requiring<br>rotational convergence.            |
-| [AxisGoalChecker][]                | Guillaume Doisy & Tony Najjar | A plugin check whether robot<br>is within tolerance along the<br>path direction and perpendicular<br>to it (cross-track).            |
-| [AdaptiveToleranceGoalChecker][]   | David Grbac                   | A plugin check whether robot<br>is within translational distance<br>(using two tolerance levels)<br>and rotational distance of goal. |
+| [SimpleGoalChecker][]              | David Lu!!                    | A plugin check whether robot is within translational distance and rotational distance of goal.                                       |
+| [StoppedGoalChecker][]             | David Lu!!                    | A plugin check whether robot is within translational distance, rotational distance of goal, and velocity threshold.                  |
+| [PositionGoalChecker][]            | Prabhav Saxena                | A plugin check whether robot is within translational distance of goal, without requiring rotational convergence.                     |
+| [AxisGoalChecker][]                | Guillaume Doisy & Tony Najjar | A plugin check whether robot is within tolerance along the path direction and perpendicular to it (cross-track).                     |
+| [AdaptiveToleranceGoalChecker][]   | David Grbac                   | A plugin check whether robot is within translational distance (using two tolerance levels) and rotational distance of goal.          |
 
 </div>
 
@@ -202,8 +202,8 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                | Creator         | Description                                                                                                                                  |
 |----------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| [SimpleProgressChecker][]  | David Lu!!      | A plugin to check whether the<br>robot was able to move a minimum<br>distance in a given time to<br>make progress towards a goal             |
-| [PoseProgressChecker][]    | Guillaume Doisy | A plugin to check whether the<br>robot was able to move a minimum<br>distance or angle in a given time<br>to make progress towards a goal    |
+| [SimpleProgressChecker][]  | David Lu!!      | A plugin to check whether the robot was able to move a minimum distance in a given time to make progress towards a goal                      |
+| [PoseProgressChecker][]    | Guillaume Doisy | A plugin to check whether the robot was able to move a minimum distance or angle in a given time to make progress towards a goal             |
 
 </div>
 
@@ -216,7 +216,7 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name             | Creator                        | Description                                                                                                                                                                                       |
 |-------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [FeasiblePathHandler][] | Maurice Alexander<br>Purnawan  | A plugin that transforms global<br>plan to the local costmap frame,<br>prunes it to the relevant portion<br>within the costmap bounds, and<br>handles in-place rotation and<br>cusp pruning.      |
+| [FeasiblePathHandler][] | Maurice Alexander Purnawan     | A plugin that transforms global plan to the local costmap frame, prunes it to the relevant portion within the costmap bounds, and handles in-place rotation and cusp pruning.                     |
 
 </div>
 
@@ -237,24 +237,24 @@ For tutorials on creating your own plugins, please see
 | [Compute Path to Pose Action][]                                        | Michael Jeronimo               | Calls Nav2 planner server                                                                                                  |
 | [Smooth Path Action][]                                                 | Matej Vargovcik                | Calls Nav2 smoother server                                                                                                 |
 | [Follow Path Action][]                                                 | Michael Jeronimo               | Calls Nav2 controller server                                                                                               |
-| [Navigate to Pose Action][]                                            | Michael Jeronimo               | BT Node for other<br>BehaviorTree.CPP BTs to call<br>Navigation2 as a subtree action                                       |
+| [Navigate to Pose Action][]                                            | Michael Jeronimo               | BT Node for other BehaviorTree.CPP BTs to call Navigation2 as a subtree action                                             |
 | [Reinitialize Global Localization Service][]                           | Carl Delsey                    | Reinitialize AMCL to a new pose                                                                                            |
 | [Spin Action][]                                                        | Carl Delsey                    | Calls spin behavior action                                                                                                 |
 | [Wait Action][]                                                        | Steve Macenski                 | Calls wait behavior action                                                                                                 |
 | [Truncate Path][]                                                      | Francisco Martín               | Modifies a path making it shorter                                                                                          |
 | [Truncate Path Local][]                                                | Matej Vargovcik                | Extracts a path section around robot                                                                                       |
-| [Planner Selector][]                                                   | Pablo Iñigo Blasco             | Selects the global planner based on a<br>topic input, otherwises uses a default<br>planner id                              |
-| [Controller Selector][]                                                | Pablo Iñigo Blasco             | Selects the controller based on a<br>topic input, otherwises uses a default<br>controller id                               |
-| [Goal Checker Selector][]                                              | Pablo Iñigo Blasco             | Selects the goal checker based on a<br>topic input, otherwises uses a default<br>goal checker id                           |
-| [Smoother Selector][]                                                  | Owen Hooper                    | Selects the smoother based on a<br>topic input, otherwises uses a default<br>smoother id                                   |
-| [Progress Checker Selector][]                                          | Steve Macenski                 | Selects the progress checker based on a<br>topic input, otherwises uses a default<br>progress checker id                   |
-| [Path Handler Selector][]                                              | Maurice Alexander<br>Purnawan  | Selects the path handler based on a<br>topic input, otherwises uses a default<br>path handler id                           |
-| [Navigate Through Poses][]                                             | Steve Macenski                 | BT Node for other BehaviorTree.CPP BTs<br>to call Nav2's NavThroughPoses action                                            |
-| [Remove Passed Goals][]                                                | Steve Macenski                 | Removes goal poses passed or within a<br>tolerance for culling old viapoints from<br>path re-planning                      |
-| [Remove In Collision Goals][]                                          | Tony Najjar                    | Removes goal poses that have a footprint<br>or point cost above a threshold.                                               |
-| [Compute Path Through Poses][]                                         | Steve Macenski                 | Computes a path through a set of poses<br>rather than a single end goal pose<br>using the planner plugin specified         |
-| [Compute Route][]                                                      | Steve Macenski                 | Computes a Route through a navigation<br>graph and returns both a dense path and<br>set of sparse route nodes and edges.   |
-| [Compute And Track Route][]                                            | Steve Macenski                 | Computes a Route as above, but also<br>actively tracks progress and triggers<br>route contextual semantic operations.      |
+| [Planner Selector][]                                                   | Pablo Iñigo Blasco             | Selects the global planner based on a topic input, otherwises uses a default planner id                                    |
+| [Controller Selector][]                                                | Pablo Iñigo Blasco             | Selects the controller based on a topic input, otherwises uses a default controller id                                     |
+| [Goal Checker Selector][]                                              | Pablo Iñigo Blasco             | Selects the goal checker based on a topic input, otherwises uses a default goal checker id                                 |
+| [Smoother Selector][]                                                  | Owen Hooper                    | Selects the smoother based on a topic input, otherwises uses a default smoother id                                         |
+| [Progress Checker Selector][]                                          | Steve Macenski                 | Selects the progress checker based on a topic input, otherwises uses a default progress checker id                         |
+| [Path Handler Selector][]                                              | Maurice Alexander Purnawan     | Selects the path handler based on a topic input, otherwises uses a default path handler id                                 |
+| [Navigate Through Poses][]                                             | Steve Macenski                 | BT Node for other BehaviorTree.CPP BTs to call Nav2's NavThroughPoses action                                               |
+| [Remove Passed Goals][]                                                | Steve Macenski                 | Removes goal poses passed or within a tolerance for culling old viapoints from path re-planning                            |
+| [Remove In Collision Goals][]                                          | Tony Najjar                    | Removes goal poses that have a footprint or point cost above a threshold.                                                  |
+| [Compute Path Through Poses][]                                         | Steve Macenski                 | Computes a path through a set of poses rather than a single end goal pose using the planner plugin specified               |
+| [Compute Route][]                                                      | Steve Macenski                 | Computes a Route through a navigation graph and returns both a dense path and set of sparse route nodes and edges.         |
+| [Compute And Track Route][]                                            | Steve Macenski                 | Computes a Route as above, but also actively tracks progress and triggers route contextual semantic operations.            |
 | [Cancel Control Action][]                                              | Pradheep Padmanabhan           | Cancels Nav2 controller server                                                                                             |
 | [Cancel BackUp Action][]                                               | Pradheep Padmanabhan           | Cancels backup behavior action                                                                                             |
 | [Cancel Spin Action][]                                                 | Pradheep Padmanabhan           | Cancels spin behavior action                                                                                               |
@@ -275,9 +275,9 @@ For tutorials on creating your own plugins, please see
 | [Toggle Collision Monitor Service][]                                   | David Grbac                    | Calls toggle collision monitor service                                                                                     |
 | [Follow Object][]                                                      | Alberto Tudela                 | Dynamically follows an object                                                                                              |
 | [Cancel Follow Object][]                                               | Alberto Tudela                 | Cancels follow object action                                                                                               |
-| [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure<br>there are no LETHAL obstacles<br>along the path.                            |
-| [Check Stop Status][]                                                  | Tony Najjar                    | Checks if robot is stopped for a duration                                                                               |
-| [Check Pose Occupancy][]                                               | Maurice Alexander<br>Purnawan  | Checks if a pose is occupied.                                                                                           |
+| [Validate Path][]                                                      | Joshua Wallace                 | Checks if a path is valid by making sure there are no LETHAL obstacles along the path.                                     |
+| [Check Stop Status][]                                                  | Tony Najjar                    | Checks if robot is stopped for a duration                                                                                  |
+| [Check Pose Occupancy][]                                               | Maurice Alexander Purnawan     | Checks if a pose is occupied.                                                                                              |
 
 </div>
 
@@ -336,25 +336,25 @@ For tutorials on creating your own plugins, please see
 
 | Condition Plugin Name                                              | Creator                        | Description                                                                                                        |
 |--------------------------------------------------------------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| [Goal Reached Condition][]                                         | Carl Delsey                    | Checks if goal is<br>reached within tol.                                                                           |
-| [Goal Updated Condition][]                                         | Aitor Miguel Blanco            | Checks if goal is<br>preempted.                                                                                    |
-| [Global Updated Goal Condition][]                                  | Joshua Wallace                 | Checks if goal is<br>preempted in the global<br>BT context                                                         |
-| [Initial Pose received Condition][]                                | Carl Delsey                    | Checks if initial pose<br>has been set                                                                             |
-| [Is Stuck Condition][]                                             | Michael Jeronimo               | Checks if robot is<br>making progress or<br>stuck                                                                  |
-| [Transform Available Condition][]                                  | Steve Macenski                 | Checks if a TF<br>transformation is<br>available. When<br>succeeds returns<br>success for subsequent<br>calls.     |
-| [Distance Traveled Condition][]                                    | Sarthak Mittal                 | Checks is robot has<br>traveled a given<br>distance.                                                               |
-| [Time Expired Condition][]                                         | Sarthak Mittal                 | Checks if a given<br>time period has<br>passed.                                                                    |
-| [Is Battery Low Condition][]                                       | Sarthak Mittal                 | Checks if battery<br>percentage is below<br>a specified value.                                                     |
-| [Path Expiring Timer][]                                            | Joshua Wallace                 | Checks if the timer has<br>expired. The timer is<br>reset if the path gets<br>updated.                             |
-| [Are Error Codes Present][]                                        | Joshua Wallace                 | Checks if the specified<br>error codes are<br>present.                                                             |
-| [Would A Controller Recovery Help][]                               | Joshua Wallace                 | Checks if a controller<br>recovery could help<br>clear the controller<br>server error code.                        |
-| [Would A Planner Recovery Help][]                                  | Joshua Wallace                 | Checks if a planner<br>recovery could help<br>clear the planner<br>server error code.                              |
-| [Would A Smoother Recovery Help][]                                 | Joshua Wallace                 | Checks if a Smoother<br>recovery could help<br>clear the smoother<br>server error code.                            |
-| [Would A Route Recovery Help][]                                    | Steve Macenski                 | Checks if a Route<br>recovery could help<br>clear the route<br>server error code.                                  |
-| [Is Battery Charging Condition][]                                  | Alberto Tudela                 | Checks if the battery<br>is charging.                                                                              |
-| [Are Poses Near Condition][]                                       | Steve Macenski                 | Checks if 2 poses are<br>nearby to each other.                                                                     |
-| [Is Goal Nearby Condition][]                                       | Jakub Chudziński               | Checks if the robot is<br>near the goal based on<br>remaining path length.                                         |
-| [Is Within Path Tracking Bounds Condition][]                       | Berkan Tali                    | Checks if the robot is<br>within bounds for<br>path tracking.                                                      |
+| [Goal Reached Condition][]                                         | Carl Delsey                    | Checks if goal is reached within tol.                                                                              |
+| [Goal Updated Condition][]                                         | Aitor Miguel Blanco            | Checks if goal is preempted.                                                                                       |
+| [Global Updated Goal Condition][]                                  | Joshua Wallace                 | Checks if goal is preempted in the global BT context                                                               |
+| [Initial Pose received Condition][]                                | Carl Delsey                    | Checks if initial pose has been set                                                                                |
+| [Is Stuck Condition][]                                             | Michael Jeronimo               | Checks if robot is making progress or stuck                                                                        |
+| [Transform Available Condition][]                                  | Steve Macenski                 | Checks if a TF transformation is available. When succeeds returns success for subsequent calls.                    |
+| [Distance Traveled Condition][]                                    | Sarthak Mittal                 | Checks is robot has traveled a given distance.                                                                     |
+| [Time Expired Condition][]                                         | Sarthak Mittal                 | Checks if a given time period has passed.                                                                          |
+| [Is Battery Low Condition][]                                       | Sarthak Mittal                 | Checks if battery percentage is below a specified value.                                                           |
+| [Path Expiring Timer][]                                            | Joshua Wallace                 | Checks if the timer has expired. The timer is reset if the path gets updated.                                      |
+| [Are Error Codes Present][]                                        | Joshua Wallace                 | Checks if the specified error codes are present.                                                                   |
+| [Would A Controller Recovery Help][]                               | Joshua Wallace                 | Checks if a controller recovery could help clear the controller server error code.                                 |
+| [Would A Planner Recovery Help][]                                  | Joshua Wallace                 | Checks if a planner recovery could help clear the planner server error code.                                       |
+| [Would A Smoother Recovery Help][]                                 | Joshua Wallace                 | Checks if a Smoother recovery could help clear the smoother server error code.                                     |
+| [Would A Route Recovery Help][]                                    | Steve Macenski                 | Checks if a Route recovery could help clear the route server error code.                                           |
+| [Is Battery Charging Condition][]                                  | Alberto Tudela                 | Checks if the battery is charging.                                                                                 |
+| [Are Poses Near Condition][]                                       | Steve Macenski                 | Checks if 2 poses are nearby to each other.                                                                        |
+| [Is Goal Nearby Condition][]                                       | Jakub Chudziński               | Checks if the robot is near the goal based on remaining path length.                                               |
+| [Is Within Path Tracking Bounds Condition][]                       | Berkan Tali                    | Checks if the robot is within bounds for path tracking.                                                            |
 
 </div>
 
@@ -382,13 +382,13 @@ For tutorials on creating your own plugins, please see
 
 | Decorator Plugin Name              | Creator              | Description                                                                                                                      |
 |------------------------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| [Rate Controller][]                | Michael Jeronimo     | Throttles child node to a given<br>rate                                                                                          |
-| [Distance Controller][]            | Sarthak Mittal       | Ticks child node based on the<br>distance traveled by the robot                                                                  |
-| [Speed Controller][]               | Sarthak Mittal       | Throttles child node to a rate<br>based on current robot speed.                                                                  |
-| [Goal Updater][]                   | Francisco Martín     | Updates the goal received via<br>topic subscription.                                                                             |
-| [Single Trigger][]                 | Steve Macenski       | Triggers nodes/subtrees below<br>only a single time per BT run.                                                                  |
-| [PathLongerOnApproach][]           | Pradheep Padmanabhan | Triggers child nodes if the new<br>global path is significantly<br>larger than the old global path<br>on approach to the goal    |
-| [GoalUpdatedController][]          | Sophia Koffler       | Ticks child node if the goal<br>has been updated                                                                                 |
+| [Rate Controller][]                | Michael Jeronimo     | Throttles child node to a given rate                                                                                             |
+| [Distance Controller][]            | Sarthak Mittal       | Ticks child node based on the distance traveled by the robot                                                                     |
+| [Speed Controller][]               | Sarthak Mittal       | Throttles child node to a rate based on current robot speed.                                                                     |
+| [Goal Updater][]                   | Francisco Martín     | Updates the goal received via topic subscription.                                                                                |
+| [Single Trigger][]                 | Steve Macenski       | Triggers nodes/subtrees below only a single time per BT run.                                                                     |
+| [PathLongerOnApproach][]           | Pradheep Padmanabhan | Triggers child nodes if the new global path is significantly larger than the old global path on approach to the goal             |
+| [GoalUpdatedController][]          | Sophia Koffler       | Ticks child node if the goal has been updated                                                                                    |
 
 </div>
 
@@ -404,12 +404,12 @@ For tutorials on creating your own plugins, please see
 
 | Control Plugin Name               | Creator                | Description                                                                                                                                                                                                                                                     |
 |-----------------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Pipeline Sequence][]             | Carl Delsey            | A variant of a sequence node that<br>will re-tick previous children<br>even if another child is running                                                                                                                                                         |
-| [Recovery][]                      | Carl Delsey            | Node must contain 2 children<br>and returns success if first<br>succeeds. If first fails, the<br>second will be ticked. If<br>successful, it will retry the<br>first and then return its value                                                                  |
-| [Round Robin][]                   | Mohammad Haghighipanah | Will tick `i` th child until<br>a result and move on to `i+1`                                                                                                                                                                                                   |
-| [Nonblocking Sequence][]          | Alexander Yuen         | A variant of a sequence node that<br>will tick through the whole<br>sequence even if a child returns<br>running. On reticks of this<br>control node, successful children<br>will be ticked once again to<br>prevent a stale state from being<br>latched.        |
-| [Persistent Sequence][]           | Enjoy Robotics         | A variant of a sequence node that<br>exposes `current_child_idx` as<br>a bidirectional port.                                                                                                                                                                    |
-| [Pause Resume Controller][]       | Enjoy Robotics         | Controlled through service calls<br>to pause and resume the<br>execution of the tree.                                                                                                                                                                           |
+| [Pipeline Sequence][]             | Carl Delsey            | A variant of a sequence node that will re-tick previous children even if another child is running                                                                                                                                                               |
+| [Recovery][]                      | Carl Delsey            | Node must contain 2 children and returns success if first succeeds. If first fails, the second will be ticked. If successful, it will retry the first and then return its value                                                                                 |
+| [Round Robin][]                   | Mohammad Haghighipanah | Will tick `i` th child until a result and move on to `i+1`                                                                                                                                                                                                      |
+| [Nonblocking Sequence][]          | Alexander Yuen         | A variant of a sequence node that will tick through the whole sequence even if a child returns running. On reticks of this control node, successful children will be ticked once again to prevent a stale state from being latched.                             |
+| [Persistent Sequence][]           | Enjoy Robotics         | A variant of a sequence node that exposes `current_child_idx` as a bidirectional port.                                                                                                                                                                          |
+| [Pause Resume Controller][]       | Enjoy Robotics         | Controlled through service calls to pause and resume the execution of the tree.                                                                                                                                                                                 |
 
 </div>
 
@@ -428,13 +428,13 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name                | Creator        | Description                                                                                     |
 |----------------------------|----------------|-------------------------------------------------------------------------------------------------|
-| DistanceScorer             | Steve Macenski | Scores an edge's length,<br>optionally scaled by relative<br>speed limits.                      |
-| TimeScorer                 | Steve Macenski | Scores and edge traversal time<br>using absolute speed limits or<br>previous traversal times.   |
-| PenaltyScorer              | Steve Macenski | Scores using a static semantic<br>penalty.                                                      |
-| SemanticScorer             | Steve Macenski | Scores using stored semantic data<br>regarding the edge and/or nodes.                           |
-| StartPoseOrientationScorer | Alex Yuen      | Scores based on the initial pose<br>and start edge orientations.                                |
-| GoalPoseOrientationScorer  | Alex Yuen      | Scores based on the goal pose and<br>goal edge orientations.                                    |
-| DynamicEdgesScorer         | Steve Macenski | Scores based on a dynamically set<br>service cost and/or closure.                               |
+| DistanceScorer             | Steve Macenski | Scores an edge's length, optionally scaled by relative speed limits.                            |
+| TimeScorer                 | Steve Macenski | Scores and edge traversal time using absolute speed limits or previous traversal times.         |
+| PenaltyScorer              | Steve Macenski | Scores using a static semantic penalty.                                                         |
+| SemanticScorer             | Steve Macenski | Scores using stored semantic data regarding the edge and/or nodes.                              |
+| StartPoseOrientationScorer | Alex Yuen      | Scores based on the initial pose and start edge orientations.                                   |
+| GoalPoseOrientationScorer  | Alex Yuen      | Scores based on the goal pose and goal edge orientations.                                       |
+| DynamicEdgesScorer         | Steve Macenski | Scores based on a dynamically set service cost and/or closure.                                  |
 
 </div>
 
@@ -444,11 +444,11 @@ For tutorials on creating your own plugins, please see
 
 | Plugin Name      | Creator        | Description                                                                  |
 |------------------|----------------|------------------------------------------------------------------------------|
-| AdjustSpeedLimit | Steve Macenski | Adjusts robot speed limits using<br>an edge's semantic data.                 |
-| CollisionMoniter | Steve Macenski | Checks for collision in the<br>immediate future which tracking<br>a route.   |
-| TimeMarker       | Steve Macenski | Records the traversal time for an<br>edge in the edge's metadata.            |
-| ReroutingService | Steve Macenski | Triggers a rereoute from an<br>external server.                              |
-| TriggerEvent     | Steve Macenski | Triggers an event based on a<br>configurable server name.                    |
+| AdjustSpeedLimit | Steve Macenski | Adjusts robot speed limits using an edge's semantic data.                    |
+| CollisionMoniter | Steve Macenski | Checks for collision in the immediate future which tracking a route.         |
+| TimeMarker       | Steve Macenski | Records the traversal time for an edge in the edge's metadata.               |
+| ReroutingService | Steve Macenski | Triggers a rereoute from an external server.                                 |
+| TriggerEvent     | Steve Macenski | Triggers an event based on a configurable server name.                       |
 
 </div>
 
