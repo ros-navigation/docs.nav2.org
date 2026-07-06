@@ -112,6 +112,12 @@
           <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
         </div>
 
+        <div class="md-sidebar__scrollwrap">
+          <div class="md-sidebar__inner">
+            {% include "partials/toc.html" %}
+          </div>
+        </div>
+
       {% else %}
 
         <div class="sidebar-banner">
@@ -125,11 +131,6 @@
 
       {% endif %}
 
-      <div class="md-sidebar__scrollwrap">
-        <div class="md-sidebar__inner">
-          {% include "partials/toc.html" %}
-        </div>
-      </div>
     </div>
   {% endif %}
 
