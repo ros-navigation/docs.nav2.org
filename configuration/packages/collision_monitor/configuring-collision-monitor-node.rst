@@ -65,6 +65,14 @@ The data may be obtained from different data sources:
    Collision Monitor normally **bypasses the costmap** to minimize reaction latency using fresh sensor data.
    Use at your own caution or when using external costmap sources from derived sources.
 
+Any data source can optionally define one or more **exclusion zones**.
+An exclusion zone is a region that *removes* (masks out) that source's points which fall inside it, before the action polygons are evaluated.
+Unlike the polygons above, an exclusion zone does **not** trigger a behavior — it is a per-source pre-filter.
+A typical use case is ignoring known structure the robot deliberately approaches, such as a charging dock or a conveyor, whose returns would otherwise trip the stop/slowdown zones.
+A zone can be a polygon or circle anchored to an arbitrary ``frame_id`` (e.g. ``dock_link``), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+The filter is fail-safe: if the zone transform is unavailable, no points are removed, so collision protection is never silently lost.
+Each zone inherits its owning source's ``base_shift_correction`` policy, so the mask and the source points are always transformed under the same assumptions.
+
 
 Parameters
 **********
@@ -704,6 +712,113 @@ Observation sources parameters
     will also be turned into obstacle points. Set to ``false`` if your costmap has
     large unknown areas you don’t want to trigger Collision Monitor.
 
+:``<source name>``.exclusion_zones:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  vector<string> []
+  ============== =============================
+
+  Description:
+    List of exclusion zone name IDs defined for this source. Each name refers to a
+    zone parameter block (see `Exclusion zones parameters`_). Points from this source
+    that fall inside an enabled zone are removed before the action polygons are evaluated.
+
+Exclusion zones parameters
+==========================
+
+``<source name>.<zone name>`` is the corresponding exclusion zone name ID listed in the source's ``exclusion_zones``.
+Exclusion zones remove (mask out) a source's points and never trigger an action. Each zone inherits the owning source's ``base_shift_correction`` policy.
+
+:``<zone name>``.type:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "polygon"
+  ============== =============================
+
+  Description:
+    Type of zone shape. Available values are ``polygon`` and ``circle``.
+
+:``<zone name>``.points:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         ""
+  ============== =============================
+
+  Description:
+    Zone polygon vertices, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format, expressed in ``frame_id``. Used for ``polygon`` type. Minimum 3 points. Causes an error, if invalid for a ``polygon`` zone.
+
+:``<zone name>``.radius:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         N/A
+  ============== =============================
+
+  Description:
+    Circle radius. Used for ``circle`` type. Must be greater than 0. Causes an error, if not specified for a ``circle`` zone.
+
+:``<zone name>``.frame_id:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         (node ``base_frame_id``)
+  ============== =============================
+
+  Description:
+    Frame the zone shape is anchored to and tracked via TF (e.g. ``dock_link``). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.
+
+:``<zone name>``.min_height:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         -inf
+  ============== =============================
+
+  Description:
+    Lower bound (in the base frame ``z``) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.
+
+:``<zone name>``.max_height:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         +inf
+  ============== =============================
+
+  Description:
+    Upper bound (in the base frame ``z``) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.
+
+:``<zone name>``.enabled:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           False
+  ============== =============================
+
+  Description:
+    Whether this zone actively masks points. (Can be dynamically set)
+
+:``<zone name>``.visualize:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           False
+  ============== =============================
+
+  Description:
+    Whether to publish the zone footprint as a ``geometry_msgs/PolygonStamped`` for visualization.
+
 :bond_heartbeat_period:
 
   ============== =============================
@@ -839,6 +954,16 @@ Here is an example of configuration YAML for the Collision Monitor.
           max_height: 0.5
           min_range: 0.2
           enabled: True
+          exclusion_zones: ["dock"]
+          dock:
+            enabled: True
+            type: "polygon"          # "polygon" or "circle"
+            frame_id: "dock_link"    # frame the zone is anchored to; empty -> robot base frame (static)
+            points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"  # polygon type only
+            # radius: 0.5            # circle type only (must be > 0)
+            min_height: -1.0         # base-frame z band a point must be within to be masked
+            max_height: 1.0
+            visualize: True          # publish the zone footprint as a PolygonStamped
         # costmap:
         #   type: "costmap"   # relative, respects namespaces
         #   topic: "local_costmap/costmap"
