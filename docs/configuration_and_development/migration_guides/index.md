@@ -11,6 +11,6 @@ Navigation2 guides for migration between distributions.
 [Humble to Iron][humble-to-iron]{ .md-button .md-button--primary }
 [Iron to Jazzy][iron-to-jazzy]{ .md-button .md-button--primary }
 [Jazzy to Kilted][jazzy-to-kilted]{ .md-button .md-button--primary }
-[Kilted to L-turtle][kilted-to-l-turtle]{ .md-button .md-button--primary }
+[Kilted to Lyrical][kilted-to-lyrical]{ .md-button .md-button--primary }
 
 </div>

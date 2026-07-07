@@ -1,6 +1,6 @@
-# Kilted to L-turtle { #kilted-to-l-turtle }
+# Kilted to Lyrical { #kilted-to-lyrical }
 
-Moving from ROS 2 Kilted to L-Turtle, a number of stability improvements were added that we will not specifically address here.
+Moving from ROS 2 Kilted to Lyrical, a number of stability improvements were added that we will not specifically address here.
 
 ## New Nav2 ROS Common & Nav2 Lifecycle Node
 
@@ -247,7 +247,7 @@ Default value:
 
 - `"raw"` - Uses `sensor_msgs/msg/PointCloud2` with no compression.
 
-### Configuration guide { #kilted-to-l-turtle-configuration-guide }
+### Configuration guide { #kilted-to-lyrical-configuration-guide }
 
 If your sensor already publishes compressed streams (e.g., [Seterolabs ZED X Cameras](https://www.stereolabs.com/docs/ros2/dds_and_network_tuning#use-compressed-topics)), you can enable this option in the costmap layers that ingest pointcloud sensor streams (i.e. obstacle, voxel) and in the collision monitor as well.
 
@@ -401,7 +401,7 @@ An example usage in a Behavior Tree XML file:
 <ToggleCollisionMonitor enable="false" service_name="collision_monitor/toggle"/>
 ```
 
-## Following Server { #kilted-to-l-turtle-following-server }
+## Following Server { #kilted-to-lyrical-following-server }
 
 [PR #5565](https://github.com/ros-navigation/navigation2/pull/5565) adds a new Following Server into the `opennav_following` package.
 The Following Server implements a server for following dynamic objects or specific reference frames.
@@ -554,7 +554,7 @@ Therefore, the velocity smoother parameters *max_velocity*, *min_velocity*, *max
 
 ## Bond Heartbeat Period Default Value Change
 
-In L-turtle, the default value for `bond_heartbeat_period` parameter has been increased from `0.1` to `0.25` seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.
+In Lyrical, the default value for `bond_heartbeat_period` parameter has been increased from `0.1` to `0.25` seconds across all Nav2 lifecycle nodes, including the lifecycle manager. This change was implemented to reduce computational overhead and save CPU resources in systems with many nodes.
 
 **Migration note**: If you have explicitly set `bond_heartbeat_period` to `0.1` in your configurations, you may want to remove this explicit setting to use the new default, or explicitly set it to `0.25` if you want to be explicit about the value. This value should now also be set in the lifecycle manager node as well.
 
