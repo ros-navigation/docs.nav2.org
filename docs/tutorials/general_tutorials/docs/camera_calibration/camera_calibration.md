@@ -40,11 +40,15 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 3. Make sure camera is publishing images over ROS. This can be tested by running:
 
-    `ros2 topic list`
+    ```shell
+    ros2 topic list
+    ```
 
 4. This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:
 
-    `ros2 topic hz /camera/image_raw`
+    ```shell
+    ros2 topic hz /camera/image_raw
+    ```
 
     <figure markdown="span">
       ![](images/ROS2_topic_hz.png){ width="600" }
@@ -52,9 +56,11 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 5. Start the camera calibration node
 
-    `ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera`
+    ```shell
+    ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera
+    ```
 
-    ```default
+    ```text
     Camera Name:
 
     -c, --camera_name
@@ -135,6 +141,8 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 
 10. To use the the calibration file unzip the calibration.tar.gz
 
-    `tar -xvf calibration.tar.gz`
+    ```shell
+    tar -xvf calibration.tar.gz
+    ```
 
 11. In the folder images used for calibration are available and also "**ost.yaml**" and "**ost.txt**". You can use the yaml file which contains the calibration parameters as directed by the camera driver.
