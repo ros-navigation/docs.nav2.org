@@ -226,15 +226,14 @@ nav:
         - Collision Detector Node: configuration_and_development/configuration_guide/core_servers/collision_monitor/configuring-collision-detector-node.md
       - Controller Server:
         - configuration_and_development/configuration_guide/core_servers/controller_server/index.md
-        - Provided Plugins:
-          - SimpleProgressChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/simple_progress_checker.md
-          - PoseProgressChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/pose_progress_checker.md
-          - AxisGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/axis_goal_checker/axis_goal_checker.md
-          - AdaptiveToleranceGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/adaptive_tolerance_goal_checker/adaptive_tolerance_goal_checker.md
-          - SimpleGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/simple_goal_checker.md
-          - StoppedGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/stopped_goal_checker.md
-          - PositionGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/position_goal_checker.md
-          - FeasiblePathHandler: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/feasible_path_handler.md
+        - SimpleProgressChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/simple_progress_checker.md
+        - PoseProgressChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/pose_progress_checker.md
+        - AxisGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/axis_goal_checker/axis_goal_checker.md
+        - AdaptiveToleranceGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/adaptive_tolerance_goal_checker/adaptive_tolerance_goal_checker.md
+        - SimpleGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/simple_goal_checker.md
+        - StoppedGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/stopped_goal_checker.md
+        - PositionGoalChecker: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/position_goal_checker.md
+        - FeasiblePathHandler: configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/feasible_path_handler.md
       - Costmap 2D:
         - configuration_and_development/configuration_guide/core_servers/costmap_2d/index.md
         - Plugin Parameters:
@@ -264,10 +263,9 @@ nav:
       - Velocity Smoother: configuration_and_development/configuration_guide/core_servers/configuring-velocity-smoother.md
       - Waypoint Follower:
         - configuration_and_development/configuration_guide/core_servers/waypoint_follower/index.md
-        - Provided Plugins:
-          - WaitAtWaypoint: configuration_and_development/configuration_guide/core_servers/waypoint_follower/nav2_waypoint_follower-plugins/wait_at_waypoint.md
-          - PhotoAtWaypoint: configuration_and_development/configuration_guide/core_servers/waypoint_follower/nav2_waypoint_follower-plugins/photo_at_waypoint.md
-          - InputAtWaypoint: configuration_and_development/configuration_guide/core_servers/waypoint_follower/nav2_waypoint_follower-plugins/input_at_waypoint.md
+        - WaitAtWaypoint: configuration_and_development/configuration_guide/core_servers/waypoint_follower/nav2_waypoint_follower-plugins/wait_at_waypoint.md
+        - PhotoAtWaypoint: configuration_and_development/configuration_guide/core_servers/waypoint_follower/nav2_waypoint_follower-plugins/photo_at_waypoint.md
+        - InputAtWaypoint: configuration_and_development/configuration_guide/core_servers/waypoint_follower/nav2_waypoint_follower-plugins/input_at_waypoint.md
       - NavFn Planner: configuration_and_development/configuration_guide/planners_plugins/configuring-navfn.md
       - Smac Planner:
         - configuration_and_development/configuration_guide/planners_plugins/smac/index.md
