@@ -200,11 +200,15 @@ Description
 
 The plugins listed below are inside the `nav2_controller` namespace.
 
-- [SimpleProgressChecker][simple-progress-checker]
-- [PoseProgressChecker][pose-progress-checker]
-- [SimpleGoalChecker][simple-goal-checker]
-- [StoppedGoalChecker][stopped-goal-checker]
-- [PositionGoalChecker][position-goal-checker]
+<div class="grid" markdown>
+
+[SimpleProgressChecker][simple-progress-checker]{ .md-button .md-button--primary }
+[PoseProgressChecker][pose-progress-checker]{ .md-button .md-button--primary }
+[SimpleGoalChecker][simple-goal-checker]{ .md-button .md-button--primary }
+[StoppedGoalChecker][stopped-goal-checker]{ .md-button .md-button--primary }
+[PositionGoalChecker][position-goal-checker]{ .md-button .md-button--primary }
+
+</div>
 
 ## Default Plugins
 
