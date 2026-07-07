@@ -9,9 +9,13 @@ It is important to know that in June 2021 and December 2021, the package receive
 
 The plugins listed below are inside the `nav2_smac_planner` package. See the pages for individual configuration information.
 
-- [Smac 2D Planner][smac-2d-planner]
-- [Smac Hybrid-A\* Planner][smac-hybrid-a-star-planner]
-- [Smac State Lattice Planner][smac-state-lattice-planner]
+<div class="grid" markdown>
+
+[Smac 2D Planner][smac-2d-planner]{ .md-button .md-button--primary }
+[Smac Hybrid-A\* Planner][smac-hybrid-a-star-planner]{ .md-button .md-button--primary }
+[Smac State Lattice Planner][smac-state-lattice-planner]{ .md-button .md-button--primary }
+
+</div>
 
 ## Description
 

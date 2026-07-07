@@ -91,9 +91,13 @@ Note
 
 The plugins listed below are inside the `nav2_waypoint_follower` namespace.
 
-- [WaitAtWaypoint][wait-at-waypoint]
-- [PhotoAtWaypoint][photo-at-waypoint]
-- [InputAtWaypoint][input-at-waypoint]
+<div class="grid" markdown>
+
+[WaitAtWaypoint][wait-at-waypoint]{ .md-button .md-button--primary }
+[PhotoAtWaypoint][photo-at-waypoint]{ .md-button .md-button--primary }
+[InputAtWaypoint][input-at-waypoint]{ .md-button .md-button--primary }
+
+</div>
 
 ## Default Plugin
 

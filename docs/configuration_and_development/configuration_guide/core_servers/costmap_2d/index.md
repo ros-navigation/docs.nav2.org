@@ -308,20 +308,28 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 ## Plugin Parameters
 
-- [Static Layer Parameters][static-layer-parameters]
-- [Inflation Layer Parameters][inflation-layer-parameters]
-- [Legacy Inflation Layer Parameters][legacy-inflation-layer-parameters]
-- [Obstacle Layer Parameters][obstacle-layer-parameters]
-- [Voxel Layer Parameters][voxel-layer-parameters]
-- [Range Sensor Parameters][range-sensor-parameters]
-- [Denoise Layer Parameters][denoise-layer-parameters]
-- [Plugin Container Layer Parameters][plugin-container-layer-parameters]
+<div class="grid" markdown>
+
+[Static Layer Parameters][static-layer-parameters]{ .md-button .md-button--primary }
+[Inflation Layer Parameters][inflation-layer-parameters]{ .md-button .md-button--primary }
+[Legacy Inflation Layer Parameters][legacy-inflation-layer-parameters]{ .md-button .md-button--primary }
+[Obstacle Layer Parameters][obstacle-layer-parameters]{ .md-button .md-button--primary }
+[Voxel Layer Parameters][voxel-layer-parameters]{ .md-button .md-button--primary }
+[Range Sensor Parameters][range-sensor-parameters]{ .md-button .md-button--primary }
+[Denoise Layer Parameters][denoise-layer-parameters]{ .md-button .md-button--primary }
+[Plugin Container Layer Parameters][plugin-container-layer-parameters]{ .md-button .md-button--primary }
+
+</div>
 
 ## Costmap Filters Parameters
 
-- [Keepout Filter Parameters][keepout-filter-parameters]
-- [Speed Filter Parameters][speed-filter-parameters]
-- [Binary Filter Parameters][binary-filter-parameters]
+<div class="grid" markdown>
+
+[Keepout Filter Parameters][keepout-filter-parameters]{ .md-button .md-button--primary }
+[Speed Filter Parameters][speed-filter-parameters]{ .md-button .md-button--primary }
+[Binary Filter Parameters][binary-filter-parameters]{ .md-button .md-button--primary }
+
+</div>
 
 ## Example
 

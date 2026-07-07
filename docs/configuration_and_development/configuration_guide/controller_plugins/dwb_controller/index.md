@@ -8,32 +8,44 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 ## Controller
 
-- [DWB Controller][dwb-controller]
-- [XYTheta Iterator][xytheta-iterator]
-- [Kinematic Parameters][kinematic-parameters]
-- [Publisher][publisher]
+<div class="grid" markdown>
+
+[DWB Controller][dwb-controller]{ .md-button .md-button--primary }
+[XYTheta Iterator][xytheta-iterator]{ .md-button .md-button--primary }
+[Kinematic Parameters][kinematic-parameters]{ .md-button .md-button--primary }
+[Publisher][publisher]{ .md-button .md-button--primary }
+
+</div>
 
 ## Plugins
 
 The plugins listed below are inside the `dwb_plugins` namespace.
 
-- [LimitedAccelGenerator][limited-accel-generator]
-- [StandardTrajectoryGenerator][standard-trajectory-generator]
+<div class="grid" markdown>
+
+[LimitedAccelGenerator][limited-accel-generator]{ .md-button .md-button--primary }
+[StandardTrajectoryGenerator][standard-trajectory-generator]{ .md-button .md-button--primary }
+
+</div>
 
 ## Trajectory Critics
 
 The trajectory critics listed below are inside the `dwb_critics` namespace.
 
-- [BaseObstacleCritic][base-obstacle-critic]
-- [GoalAlignCritic][goal-align-critic]
-- [GoalDistCritic][goal-dist-critic]
-- [ObstacleFootprintCritic][obstacle-footprint-critic]
-- [OscillationCritic][oscillation-critic]
-- [PathAlignCritic][path-align-critic]
-- [PathDistCritic][path-dist-critic]
-- [PreferForwardCritic][prefer-forward-critic]
-- [RotateToGoalCritic][rotate-to-goal-critic]
-- [TwirlingCritic][twirling-critic]
+<div class="grid" markdown>
+
+[BaseObstacleCritic][base-obstacle-critic]{ .md-button .md-button--primary }
+[GoalAlignCritic][goal-align-critic]{ .md-button .md-button--primary }
+[GoalDistCritic][goal-dist-critic]{ .md-button .md-button--primary }
+[ObstacleFootprintCritic][obstacle-footprint-critic]{ .md-button .md-button--primary }
+[OscillationCritic][oscillation-critic]{ .md-button .md-button--primary }
+[PathAlignCritic][path-align-critic]{ .md-button .md-button--primary }
+[PathDistCritic][path-dist-critic]{ .md-button .md-button--primary }
+[PreferForwardCritic][prefer-forward-critic]{ .md-button .md-button--primary }
+[RotateToGoalCritic][rotate-to-goal-critic]{ .md-button .md-button--primary }
+[TwirlingCritic][twirling-critic]{ .md-button .md-button--primary }
+
+</div>
 
 ## Example
 

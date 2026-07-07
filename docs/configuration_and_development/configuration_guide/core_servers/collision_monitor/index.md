@@ -10,5 +10,9 @@ The Collision Detector works similarly to the Collision Monitor, but does not af
 
 The nodes listed below are inside the `nav2_collision_monitor` package. See the pages for individual configuration information.
 
-- [Collision Monitor Node][collision-monitor-node]
-- [Collision Detector Node][collision-detector-node]
+<div class="grid" markdown>
+
+[Collision Monitor Node][collision-monitor-node]{ .md-button .md-button--primary }
+[Collision Detector Node][collision-detector-node]{ .md-button .md-button--primary }
+
+</div>
