@@ -136,3 +136,8 @@
     margin: 0.5rem auto;
   }
 }
+
+/* Disable toc if full-size sponsorship banner is used */
+.md-sidebar__scrollwrap--empty {
+  display: none !important;
+}
