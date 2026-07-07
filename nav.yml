@@ -237,18 +237,18 @@ nav:
       - Costmap 2D:
         - configuration_and_development/configuration_guide/core_servers/costmap_2d/index.md
         - Plugin Parameters:
-          - Static Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/static.md
-          - Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/inflation.md
-          - Legacy Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/inflation_legacy.md
-          - Obstacle Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/obstacle.md
-          - Voxel Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/voxel.md
-          - Range Sensor Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/range.md
-          - Denoise Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/denoise.md
-          - Plugin Container Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/plugin_container/plugin_container.md
+          - Static Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/static.md
+          - Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation.md
+          - Legacy Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation_legacy.md
+          - Obstacle Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/obstacle.md
+          - Voxel Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/voxel.md
+          - Range Sensor Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/range.md
+          - Denoise Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/denoise.md
+          - Plugin Container Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/plugin_container/plugin_container.md
         - Costmap Filters Parameters:
-          - Keepout Filter Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/keepout_filter.md
-          - Speed Filter Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/speed_filter.md
-          - Binary Filter Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap-plugins/binary_filter/binary_filter.md
+          - Keepout Filter Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/keepout_filter.md
+          - Speed Filter Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/speed_filter.md
+          - Binary Filter Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/binary_filter/binary_filter.md
       - Docking Server: configuration_and_development/configuration_guide/core_servers/configuring-docking-server.md
       - Lifecycle Manager: configuration_and_development/configuration_guide/core_servers/configuring-lifecycle.md
       - Map Server:
