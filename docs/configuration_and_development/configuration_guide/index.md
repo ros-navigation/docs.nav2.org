@@ -3,7 +3,7 @@
 This guide provides a process through which the user can adjust the tunable parameters to obtain
 the best navigation performance.
 
-## Core Servers
+<span class="section-title">Core Servers</span>
 
 <div class="grid" markdown>
 
@@ -24,7 +24,7 @@ the best navigation performance.
 
 </div>
 
-## Planners Plugins
+<span class="section-title">Planners Plugins</span>
 
 <div class="grid" markdown>
 
@@ -34,7 +34,7 @@ the best navigation performance.
 
 </div>
 
-## Controller Plugins
+<span class="section-title">Controller Plugins</span>
 
 <div class="grid" markdown>
 
@@ -46,7 +46,7 @@ the best navigation performance.
 
 </div>
 
-## Smoother Plugins
+<span class="section-title">Smoother Plugins</span>
 
 <div class="grid" markdown>
 
@@ -56,7 +56,7 @@ the best navigation performance.
 
 </div>
 
-## Others
+<span class="section-title">Others</span>
 
 <div class="grid" markdown>
 
