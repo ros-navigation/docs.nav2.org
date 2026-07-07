@@ -209,7 +209,9 @@ We are going to use RViz instead of a full application so you can test at home w
 publish coordinates in the topic `/clicked_point`. This point needs to be sent to the behavior tree, using the program `clicked_point_to_pose`, from [this repo](https://github.com/fmrico/nav2_test_utils). Clone
 this repo in your workspace, build, and type in a terminal.
 
-`ros2 run nav2_test_utils clicked_point_to_pose`
+```shell
+ros2 run nav2_test_utils clicked_point_to_pose
+```
 
 Optionally, you can remap this topic in your rviz configuration file to `goal_updates`.
 
@@ -217,7 +219,9 @@ Optionally, you can remap this topic in your rviz configuration file to `goal_up
 
 Start Nav2 in one terminal:
 
-`ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False`
+```shell
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+```
 
 Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.
 
