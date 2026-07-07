@@ -1273,6 +1273,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -2277,6 +2278,18 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 <div class="section" id="speedfilter-path-lookahead">
 <h2>SpeedFilter path lookahead<a class="headerlink" href="#speedfilter-path-lookahead" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6150">PR #6150</a> adds an optional path-lookahead mode to the SpeedFilter plugin, enabled via the <code class="docutils literal notranslate"><span class="pre">enable_path_lookahead</span></code> parameter (default disabled). When enabled, the filter looks ahead along the planned path and applies the strictest speed limit found within a velocity-dependent window, allowing the robot to decelerate before entering a speed-restricted zone. The default behavior of speed limits being applied only at the robot’s current pose is unchanged when the parameter <code class="docutils literal notranslate"><span class="pre">enable_path_lookahead</span></code> is left disabled. See the <a class="reference internal" href="../configuration/packages/costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> configuration page for the new parameters that control the lookahead behavior.</p>
+</div>
+<div class="section" id="truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">
+<h2>TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame<a class="headerlink" href="#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6242">PR #6242</a> renames the <code class="docutils literal notranslate"><span class="pre">robot_frame</span></code> input port to <code class="docutils literal notranslate"><span class="pre">robot_base_frame</span></code> to align with Nav2 naming conventions. The node now uses <code class="docutils literal notranslate"><span class="pre">deconflictPortAndParamFrame()</span></code> to respect the <code class="docutils literal notranslate"><span class="pre">robot_base_frame</span></code> parameter from the BT Navigator config when the port is omitted, matching the behavior of other BT nodes like <code class="docutils literal notranslate"><span class="pre">GetCurrentPose</span></code> and <code class="docutils literal notranslate"><span class="pre">GoalReached</span></code>.</p>
+<p>Behavior trees using <code class="docutils literal notranslate"><span class="pre">TruncatePathLocal</span></code> with the old port name will need to update:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;!-- Before --&gt;
+&lt;TruncatePathLocal robot_frame=&quot;base_link&quot; ... /&gt;
+
+&lt;!-- After --&gt;
+&lt;TruncatePathLocal robot_base_frame=&quot;base_link&quot; ... /&gt;
+</pre></div>
+</div>
 </div>
 </div>
 

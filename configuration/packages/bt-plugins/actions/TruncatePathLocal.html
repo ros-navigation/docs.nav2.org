@@ -1272,6 +1272,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#clearing-individual-costmap-plugins">Clearing Individual Costmap Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -1423,7 +1424,7 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">robot_frame</dt>
+<dt class="field-even">robot_base_frame</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 35%" />
@@ -1434,12 +1435,12 @@
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>string</p></td>
-<td><p>“base_link”</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Robot base frame id.</p>
+<dt>Description</dt><dd><p>Robot base frame id. If not provided, uses the BT Navigator’s <code class="docutils literal notranslate"><span class="pre">robot_base_frame</span></code> setting automatically.</p>
 </dd>
 </dl>
 </dd>
