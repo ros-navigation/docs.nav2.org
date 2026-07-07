@@ -2,8 +2,8 @@
 
 <div class="grid" markdown>
 
-[Navigation Plugins][navigation-plugins]{ .md-button .md-button--primary }
 [First-Time Robot Setup Guide][first-time-robot-setup-guide]{ .md-button .md-button--primary }
+[Navigation Plugins][navigation-plugins]{ .md-button .md-button--primary }
 [Configuration Guide][configuration-guide]{ .md-button .md-button--primary }
 [Tuning Guide][tuning-guide]{ .md-button .md-button--primary }
 [Simple Commander API][simple-commander-api]{ .md-button .md-button--primary }
