@@ -23,12 +23,12 @@ theme:
   # Palette for light mode
   - scheme: default
     toggle:
-      icon: material/lightbulb
+      icon: toggle/nav2-balloon-light
       name: Switch to dark mode
   # Palette for dark mode
   - scheme: slate
     toggle:
-      icon: material/lightbulb-outline
+      icon: toggle/nav2-balloon-dark
       name: Switch to light mode
   features:
     - content.action.edit
