@@ -6,7 +6,7 @@ Check this [introduction](https://www.behaviortree.dev/docs/learn-the-basics/BT_
 
 Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using Groot to visualize and modify behavior trees.
 
-## Action Plugins
+<span class="section-title">Action Plugins</span>
 
 <div class="grid" markdown>
 
@@ -64,7 +64,7 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 
 </div>
 
-## Condition Plugins
+<span class="section-title">Condition Plugins</span>
 
 <div class="grid" markdown>
 
@@ -90,7 +90,7 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 
 </div>
 
-## Control Plugins
+<span class="section-title">Control Plugins</span>
 
 <div class="grid" markdown>
 
@@ -103,7 +103,7 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 
 </div>
 
-## Decorator Plugins
+<span class="section-title">Decorator Plugins</span>
 
 <div class="grid" markdown>
 
@@ -117,7 +117,7 @@ Consider checking out the [Groot Tutorials][groot-tutorials] tutorial for using 
 
 </div>
 
-## Example
+<span class="section-title">Example</span>
 
 This Behavior Tree replans the global path periodically at 1 Hz and it also has
 recovery actions.
