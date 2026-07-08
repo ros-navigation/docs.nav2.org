@@ -6,7 +6,7 @@ The DWB controller is the default controller. It is a fork of [David Lu's
 controller](https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner)
 modified for ROS 2 using the Dynamic Window Approach.
 
-## Controller
+<span class="section-title">Controller</span>
 
 <div class="grid" markdown>
 
@@ -17,7 +17,7 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 </div>
 
-## Plugins
+<span class="section-title">Plugins</span>
 
 The plugins listed below are inside the `dwb_plugins` namespace.
 
@@ -28,7 +28,7 @@ The plugins listed below are inside the `dwb_plugins` namespace.
 
 </div>
 
-## Trajectory Critics
+<span class="section-title">Trajectory Critics</span>
 
 The trajectory critics listed below are inside the `dwb_critics` namespace.
 
@@ -47,7 +47,7 @@ The trajectory critics listed below are inside the `dwb_critics` namespace.
 
 </div>
 
-## Example
+<span class="section-title">Example</span>
 
 ```yaml
 controller_server:
