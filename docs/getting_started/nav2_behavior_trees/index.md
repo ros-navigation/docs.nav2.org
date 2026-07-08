@@ -1,14 +1,25 @@
 # Nav2 Behavior Trees { #nav2-behavior-trees }
 
-- [Introduction To Nav2 Specific Nodes][introduction-to-nav2-specific-nodes]
-- [Detailed Behavior Tree Walkthrough][detailed-behavior-tree-walkthrough]
-- [Navigate To Pose][nav2-bt-navigate-to-pose]
-- [Navigate Through Poses][nav2-bt-navigate-through-poses]
-- [Navigate To Pose and Pause Near Goal-Obstacle][navigate-to-pose-and-pause-near-goal-obstacle]
-- [Navigate To Pose With Consistent Replanning And If Path Becomes Invalid][navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid]
-- [Navigate on Route Graph with Recovery][navigate-on-route-graph-with-recovery]
-- [Follow Dynamic Point][follow-dynamic-point]
-- [Odometry Calibration][odometry-calibration]
+<div class="grid" markdown>
+
+[Introduction To Nav2 Specific Nodes][introduction-to-nav2-specific-nodes]{ .md-button .md-button--primary }
+[Detailed Behavior Tree Walkthrough][detailed-behavior-tree-walkthrough]{ .md-button .md-button--primary }
+
+</div>
+
+<span class="section-title">Provided Nav2 Behavior Trees</span>
+
+<div class="grid" markdown>
+
+[Navigate To Pose][nav2-bt-navigate-to-pose]{ .md-button .md-button--primary }
+[Navigate Through Poses][nav2-bt-navigate-through-poses]{ .md-button .md-button--primary }
+[Navigate To Pose and Pause Near Goal-Obstacle][navigate-to-pose-and-pause-near-goal-obstacle]{ .md-button .md-button--primary }
+[Navigate To Pose With Consistent Replanning And If Path Becomes Invalid][navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid]{ .md-button .md-button--primary }
+[Navigate on Route Graph with Recovery][navigate-on-route-graph-with-recovery]{ .md-button .md-button--primary }
+[Follow Dynamic Point][follow-dynamic-point]{ .md-button .md-button--primary }
+[Odometry Calibration][odometry-calibration]{ .md-button .md-button--primary }
+
+</div>
 
 Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more!
 This section highlights some of the example behavior tree xml files provided by default in the project to do interesting tasks.
