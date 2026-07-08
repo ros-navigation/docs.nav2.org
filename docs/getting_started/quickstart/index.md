@@ -97,7 +97,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
         this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
 
         <div markdown="span" class="flex-images">
-          ![](images/rviz/rviz-not-started.png)
+          ![](images/rviz/rviz_not_started.png)
           ![](images/gazebo/gazebo_turtlebot1.png)
         </div>
 
@@ -138,7 +138,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
         this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
 
         <div markdown="span" class="flex-images">
-          ![](images/rviz/rviz-not-started.png)
+          ![](images/rviz/rviz_not_started.png)
           ![](images/gazebo/gazebo_turtlebot1.png)
         </div>
 
@@ -160,7 +160,7 @@ forward from the down click.
 If you are using the defaults so far, the robot should look roughly like this.
 
 <figure markdown="span">
-  ![Approximate starting location of Turtlebot](images/rviz/rviz-set-initial-pose.png){ width="700" title="Approximate starting location of Turtlebot" }
+  ![Approximate starting location of Turtlebot](images/rviz/rviz_set_initial_pose.png){ width="700" title="Approximate starting location of Turtlebot" }
 </figure>
 
 If you don't get the location exactly right, that's fine. Nav2 will refine
@@ -172,7 +172,7 @@ Nav2 will be fully active and ready to go. You should see the robot and particle
 cloud now.
 
 <figure markdown="span">
-  ![Nav2 is ready. Transforms and Costmap show in RViz.](images/rviz/navstack-ready.png){ width="700" title="Nav2 is ready. Transforms and Costmap show in RViz." }
+  ![Nav2 is ready. Transforms and Costmap show in RViz.](images/rviz/navstack_ready.png){ width="700" title="Nav2 is ready. Transforms and Costmap show in RViz." }
 </figure>
 
 Next, click the "Navigaton2 Goal" button and choose a destination.
@@ -180,7 +180,7 @@ This will call the BT navigator to go to that goal through an action server.
 You can pause (cancel) or reset the action through the Nav2 rviz plugin shown.
 
 <figure markdown="span">
-  ![Setting the goal pose in RViz.](images/rviz/navigate-to-pose.png){ width="700" title="Setting the goal pose in RViz." }
+  ![Setting the goal pose in RViz.](images/rviz/navigate_to_pose.png){ width="700" title="Setting the goal pose in RViz." }
 </figure>
 
 Now watch the robot go!
