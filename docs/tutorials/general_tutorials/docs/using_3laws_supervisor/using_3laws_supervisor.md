@@ -22,7 +22,7 @@ The commercial tier, Supervisor Pro, includes additional features such as: geofe
 To learn more about Supervisor Pro, [please contact 3Laws Robotics](https://3laws.io/contact/).
 
 <figure markdown="span">
-  ![3Laws Robotics Stack](images/3LawsStack.svg){ title="3Laws Robotics Stack" }
+  ![3Laws Robotics Stack](images/3laws_stack.svg){ title="3Laws Robotics Stack" }
 </figure>
 
 !!! note
@@ -57,7 +57,7 @@ This can allow users to reduce the amount of tuning of Nav2's highly configurabl
 It is also very good for teleoperation tasks either joysticking locally or via remote monitoring systems to avoid collisions due to remote operation delays!
 
 <figure markdown="span">
-  ![Nav2 and 3Laws Supervisor Integration Diagram](images/Nav2Diagram_3laws.png){ title="Nav2 and 3Laws Supervisor Integration Diagram" }
+  ![Nav2 and 3Laws Supervisor Integration Diagram](images/nav2_diagram_3laws.png){ title="Nav2 and 3Laws Supervisor Integration Diagram" }
 </figure>
 
 !!! note
