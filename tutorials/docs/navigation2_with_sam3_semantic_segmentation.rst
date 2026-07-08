@@ -8,7 +8,6 @@ Navigating with Semantic Segmentation (SAM3, AMD Strix Halo)
 - `Requirements`_
 - `Architecture Overview`_
 - `Tutorial Steps`_
-- `Swapping Prompts at Runtime`_
 - `Real-World Demonstrations`_
 
 Overview
@@ -187,7 +186,7 @@ A few notes on the parameters you will tune most often:
 
 - ``prompts`` / ``class_ids`` Each prompt becomes a class with the matching ID written into ``~/label_mask`` at every detected pixel. IDs must be in ``[1, 255]`` and unique (0 is reserved for "no detection").
 - ``score_threshold`` / ``mask_threshold`` - confidence thresholds for whole detections and for per-pixel binarization.
-- ``redetect_interval_ms`` - run full SAM3 detection every N milliseconds; track-only on the rest. ``0`` redetects every frame; larger values cut compute at the cost of catching new objects more slowly. See `Performance and Tuning`_.
+- ``redetect_interval_ms`` - run full SAM3 detection every N milliseconds; track-only on the rest. ``0`` redetects every frame; larger values cut compute at the cost of catching new objects more slowly.
 - ``max_objects_per_prompt`` - cap on simultaneously tracked instances per prompt. Excess (lowest score) are evicted so the tracker stops propagating them.
 
 Services are exposed to enable/disable or change the prompts and class IDs at run-time.
@@ -378,7 +377,7 @@ The previous demos showcase terrain.
 The other side of foundation-model perception is that you can ask SAM3 about specific things like cables on the floor, a puddle, a piece of debris, a low-profile pallet without training a detector for each one.
 I hope these provide some motivational examples of use-cases of SAM3 to detect and avoid obstacles (or adjust robot behavior) in situations that have been traditionally difficult for robots :-)
 
-.. image:: docs/examples.gif
+.. image:: images/semantic_strix_halo/examples.gif
     :width: 90%
     :align: center
     :alt: SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images
