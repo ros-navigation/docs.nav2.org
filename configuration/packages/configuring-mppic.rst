@@ -306,7 +306,7 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    Whether to apply acceleration limits on the raw controls. Set to ``true`` when the command output from MPPI is too noisy, especially with a high time_steps value.
+    Whether to apply acceleration limits on the raw controls. Set to ``true`` when the command output from MPPI is too noisy, especially with a high time_steps value. May cause issues if ``ax_max`` && ``ax_min`` are very asymmetric.
 
 :visualize:
 
