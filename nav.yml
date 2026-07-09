@@ -8,7 +8,6 @@ nav:
       - Dev Container: getting_started/dev_container/index.md
       - Navigation Concepts: getting_started/navigation_concepts/index.md
       - Nav2 Behavior Trees: getting_started/nav2_behavior_trees/index.md
-      - ROSCon Talks: getting_started/roscon_talks/index.md
     - Tutorials:
       - tutorials/index.md
       - Plugin Tutorials: tutorials/plugin_tutorials/index.md
@@ -27,6 +26,7 @@ nav:
       - Getting Involved: community/getting_involved.md
       - Maintainer Docs: community/maintainer_docs/index.md
       - Roadmaps: community/roadmaps.md
+      - ROSCon Talks: community/roscon_talks.md
     - About & Contact:
       - about_and_contact/index.md
       - Robots Using: about_and_contact/robots_using/robots_using.md
@@ -62,8 +62,6 @@ nav:
       - Navigate on Route Graph with Recovery: getting_started/nav2_behavior_trees/trees/navigate_on_route_graph_w_recovery.md
       - Follow Dynamic Point: getting_started/nav2_behavior_trees/trees/follow_point.md
       - Odometry Calibration: getting_started/nav2_behavior_trees/trees/odometry_calibration/odometry_calibration.md
-    - ROSCon Talks:
-      - getting_started/roscon_talks/index.md
   - Tutorials:
     - tutorials/index.md
     - Plugin Tutorials:
@@ -317,6 +315,7 @@ nav:
       - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
     - Roadmaps: community/roadmaps.md
+    - ROSCon Talks: community/roscon_talks.md
   - About & Contact:
     - about_and_contact/index.md
     - Robots Using: about_and_contact/robots_using/robots_using.md
