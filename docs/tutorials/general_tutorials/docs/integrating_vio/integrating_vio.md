@@ -136,12 +136,12 @@ The Visual-Inertial Odometry's error over these datasets is 4.1% over the 70m pa
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/VWfzeZJdtpc?autoplay=1&mute=1&t=143" frameborder="1" allowfullscreen></iframe>
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/VWfzeZJdtpc?playlist=VWfzeZJdtpc&autoplay=1&mute=1&loop=1&t=143" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/Flf6fyeyzIw?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/Flf6fyeyzIw?playlist=Flf6fyeyzIw&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>

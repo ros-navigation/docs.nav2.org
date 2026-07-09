@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?playlist=sRodzrrJChA&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1>
 
@@ -21,8 +21,8 @@ This task is useful in cases such as following a person or another robot. Below 
 </style>
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <iframe class="video-frame" src="https://www.youtube.com/embed/lTjKO4M7yZc?autoplay=1&mute=1" allowfullscreen></iframe>
-  <iframe class="video-frame" src="https://www.youtube.com/embed/KgRKyzsja9Q?autoplay=1&mute=1" allowfullscreen></iframe>
+  <iframe class="video-frame" src="https://www.youtube.com/embed/lTjKO4M7yZc?playlist=lTjKO4M7yZc&autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+  <iframe class="video-frame" src="https://www.youtube.com/embed/KgRKyzsja9Q?playlist=KgRKyzsja9Q&autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
 </div>
 
 The requirements for this task are as follows:
@@ -145,6 +145,6 @@ When you have a detector detecting your obstacle at a higher rate (1 hz, 10 hz, 
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="700" height="450" src="https://www.youtube.com/embed/r4fIkcktZUM?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="700" height="450" src="https://www.youtube.com/embed/r4fIkcktZUM?playlist=r4fIkcktZUM&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1>

@@ -13,7 +13,7 @@ Whether you're developing for resource-constrained embedded systems or exploring
     While vision-based solutions offer powerful and efficient capabilities they can face challenges in certain environments. Scenarios involving glass surfaces, featureless corridors, thin obstacles, sudden movements, vibrations, or prolonged stillness under changing lighting conditions may impact performance. It's important to thoughtfully evaluate whether a visual navigation approach aligns with the specific demands and conditions of your application to ensure the best results.
 
 <div style="width:100%;max-width:960px;margin:0 auto;">
-  <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?autoplay=1&mute=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?playlist=axvemCE_lLE&autoplay=1&mute=1&loop=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## Preliminaries
@@ -430,7 +430,7 @@ You should now see something like this in Foxglove Studio:
 And be able to now navigate as shown in the video below! A special thanks to Nav2 Sponsor [Polymath Robotics](https://www.polymathrobotics.com/) for allowing us to use their space over the holidays to perform these demonstrations.
 
 <div style="width:100%;max-width:960px;margin:0 auto;">
-  <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?autoplay=1&mute=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?playlist=axvemCE_lLE&autoplay=1&mute=1&loop=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## 5. Conclusions & Extensions
