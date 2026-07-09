@@ -27,9 +27,10 @@ nav:
       - Maintainer Docs: community/maintainer_docs/index.md
       - Roadmaps: community/roadmaps.md
       - ROSCon Talks: community/roscon_talks.md
+    - Robots Using:
+      - robots_using/index.md
     - About & Contact:
       - about_and_contact/index.md
-      - Robots Using: about_and_contact/robots_using/robots_using.md
       - Related Projects: about_and_contact/related_projects.md
       - Citations: about_and_contact/citations.md
   - Getting Started:
@@ -316,8 +317,9 @@ nav:
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
     - Roadmaps: community/roadmaps.md
     - ROSCon Talks: community/roscon_talks.md
+  - Robots Using:
+    - robots_using/index.md
   - About & Contact:
     - about_and_contact/index.md
-    - Robots Using: about_and_contact/robots_using/robots_using.md
     - Related Projects: about_and_contact/related_projects.md
     - Citations: about_and_contact/citations.md
