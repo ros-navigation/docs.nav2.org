@@ -7,6 +7,5 @@
 [Dev Container][dev-containers]{ .md-button .md-button--primary }
 [Navigation Concepts][navigation-concepts]{ .md-button .md-button--primary }
 [Nav2 Behavior Trees][nav2-behavior-trees]{ .md-button .md-button--primary }
-[ROSCon Talks][roscon-talks]{ .md-button .md-button--primary }
 
 </div>
