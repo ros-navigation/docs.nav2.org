@@ -297,6 +297,17 @@ MPPI Parameters
   Description
     A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
 
+:clamp_raw_controls:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         false
+  ============== ===========================
+
+  Description
+    Whether to apply acceleration limits on the raw controls. Set to ``true`` when the command output from MPPI is too noisy, especially with a high time_steps value.
+
 :visualize:
 
   ============== ===========================
