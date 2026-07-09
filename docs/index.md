@@ -9,8 +9,8 @@
 </style>
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <iframe class="video-frame" src="https://www.youtube.com/embed/OklxMhdDfe0?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-  <iframe class="video-frame" src="https://www.youtube.com/embed/CYaN43TJANc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  <iframe class="video-frame" src="https://www.youtube.com/embed/OklxMhdDfe0?playlist=OklxMhdDfe0&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+  <iframe class="video-frame" src="https://www.youtube.com/embed/CYaN43TJANc?playlist=CYaN43TJANc&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 
 ## Our Sponsors

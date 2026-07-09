@@ -24,7 +24,7 @@ You can find how to dock your Nova Carter robot using Nav2 and this work in the 
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?playlist=leiGkSVnQak&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>
 
@@ -298,7 +298,7 @@ See the video below of this all at work!
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/J3ygkehttlg?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/J3ygkehttlg?playlist=J3ygkehttlg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>
 
@@ -345,7 +345,7 @@ tester.dockRobot(dock_id)
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?playlist=uHT5TeHJqZg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1>
 

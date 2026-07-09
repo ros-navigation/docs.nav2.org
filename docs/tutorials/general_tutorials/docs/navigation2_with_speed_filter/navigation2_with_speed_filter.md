@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="600" height="480" src="https://www.youtube.com/embed/gKDsBsbIem4?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="600" height="480" src="https://www.youtube.com/embed/gKDsBsbIem4?playlist=gKDsBsbIem4&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1>
 
@@ -412,7 +412,7 @@ global_costmap:
 The lookahead distance is sized from the robot's current speed using `d = v² / (2·|max_decel|)`, clamped to `[min_lookahead, max_lookahead]`. Set `max_decel` to match your robot's comfortable deceleration so the lookahead window is sized for stopping at the zone boundary. See the [Speed Filter Parameters][speed-filter-parameters] configuration page for the full parameter reference.
 
 <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/zxl1rGuIhu8?si=dUWKldgB63AfndCU" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/zxl1rGuIhu8?playlist=zxl1rGuIhu8&si=dUWKldgB63AfndCU&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 !!! note

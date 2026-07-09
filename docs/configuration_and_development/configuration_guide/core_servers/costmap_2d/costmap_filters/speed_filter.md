@@ -4,7 +4,7 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="800" height="450" src="https://www.youtube.com/embed/pq0r0lqi0Sc?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="800" height="450" src="https://www.youtube.com/embed/pq0r0lqi0Sc?playlist=pq0r0lqi0Sc&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1>
 

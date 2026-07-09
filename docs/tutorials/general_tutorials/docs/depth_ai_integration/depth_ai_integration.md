@@ -1,7 +1,7 @@
 # AI Depth Estimation with Nav2 Costmap { ai-depth-estimation-with-nav2-costmap }
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <iframe width="708" height="400" src="https://www.youtube.com/embed/QDN1uA71su4?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/QDN1uA71su4?playlist=QDN1uA71su4&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 
 ## Overview
@@ -252,7 +252,7 @@ ros2 launch nav2_depth_estimation_ai depth_estimation_pipeline_launch.py
 If everything is configured and running correctly, your results in RViz2 should match the demonstration in the video below.
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <iframe width="708" height="400" src="https://www.youtube.com/embed/QDN1uA71su4?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/QDN1uA71su4?playlist=QDN1uA71su4&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 
 ## Acknowledgements
