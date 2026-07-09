@@ -99,6 +99,39 @@
         {% include "partials/source.html" %}
       </div>
     {% endif %}
+
+    <!-- Copied from overrides/partials/actions.html -->
+    <!-- NEW: Edit button -->
+    {% if "content.action.edit" in features %}
+      <a
+        href="{{ page.edit_url }}"
+        title="{{ lang.t('action.edit') }}"
+        class="md-content__button md-icon"
+        rel="edit"
+      >
+        {% set icon = config.theme.icon.edit or "material/file-edit-outline" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </a>
+    {% endif %}
+
+    <!-- Copied from overrides/partials/actions.html -->
+    <!-- NEW: View button -->
+    {% if "content.action.view" in features %}
+      {% if "/blob/" in page.edit_url %}
+        {% set part = "blob" %}
+      {% else %}
+        {% set part = "edit" %}
+      {% endif %}
+      <a
+        href="{{ page.edit_url | replace(part, 'raw') }}"
+        title="{{ lang.t('action.view') }}"
+        class="md-content__button md-icon"
+      >
+        {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </a>
+    {% endif %}
+
   </nav>
 
   <!-- Navigation tabs (sticky) -->
