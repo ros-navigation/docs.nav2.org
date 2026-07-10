@@ -13,9 +13,9 @@ Thus, this tutorial walks through the integration of VIO into a robot system to 
 Throughout this tutorial, we will be using the [Stereolabs](https://www.stereolabs.com) SDK's [Position Tracking](https://www.stereolabs.com/docs/positional-tracking/) capability as our VIO solution of choice paired with the new [ZED X](https://www.stereolabs.com/zed-x/) camera. This VIO solution is easy to use and provides production-quality performance for *free* when using a ZED camera module.
 
 <h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; height: 0; overflow: hidden; max-width: 100%; height: 100%;">
-      <iframe src="https://cdn2.stereolabs.com/docs/positional-tracking/images/zed-positional-tracking.mp4" frameborder="0" allowfullscreen width="550" height="400"></iframe>
-  </div>
+  <video width="550" height="400" autoplay loop muted>
+    <source src="https://files.buildwithfern.com/stereolabs.docs.buildwithfern.com/6c171fc1d8ebf7c31bac93a064525b0dcb089386655232ef2c221b40e5cc6f8c/docs/development/zed-sdk/modules/positional-tracking/images/positional_tracking.webm" type="video/webm">
+  </video>
 </h1>
 
 !!! note
