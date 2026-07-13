@@ -121,7 +121,7 @@ If you already cloned without ``--recursive`` (to get the costmap layer submodul
 ----------------------------------------
 
 The ``opennav_sam3_inference`` package ships a one-shot setup script that installs the pinned ROCm 7.2 stack, a patched MIGraphX 2.15, an ``opennav-sam3-inference`` conda environment with ROCm-nightly PyTorch + ``onnxruntime-migraphx``, and (optionally) the model weights
-That sounds like alot, but basically it sets up the right versions of AMD's software, AI optimization libraries, and PyTorch so that everyone plays nicely and there is no dependency hell.
+That sounds like a bunch, but basically it sets up the right versions of AMD's software, AI optimization libraries, and PyTorch so that everyone plays nicely and there is no dependency hell.
 You can review the setup script easily yourself to see exactly what happens.
 
 .. code-block:: bash
