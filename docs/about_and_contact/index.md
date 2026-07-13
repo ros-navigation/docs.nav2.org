@@ -57,6 +57,12 @@ Our former leadership team includes:
 [crdelsey]: https://github.com/crdelsey
 [AlexeyMerzlyakov]: https://github.com/AlexeyMerzlyakov
 
+<div class="grid cards" markdown>
+
+- :octicons-book-16: [Citations][citations] - If you use the navigation framework, an algorithm from this repository, or ideas from it please cite this work in your papers!
+
+</div>
+
 ## Contact
 
 If you are interested in contacting someone about Navigation, ROS 2, or related projects, please email the project leader or email [info@opennav.org](mailto:info@opennav.org).

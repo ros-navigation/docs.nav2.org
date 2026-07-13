@@ -78,6 +78,12 @@ It has tools to:
 We also provide a set of starting plugins to get you going.
 A list of all plugins can be found on [Navigation Plugins][navigation-plugins] - but they include algorithms for the spanning cross section of common behaviors and robot platform types.
 
+<div class="grid cards" markdown>
+
+- :octicons-book-16: [Citations][citations] - If you use the navigation framework, an algorithm from this repository, or ideas from it please cite this work in your papers!
+
+</div>
+
 ## Distributions
 
 Nav2 is available across multiple ROS 2 distributions with varying levels of support:
