@@ -38,11 +38,21 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
   <BehaviorTree ID="NavigateThroughPosesWReplanningAndRecovery">
     <RecoveryNode number_of_retries="6" name="NavigateRecovery">
       <PipelineSequence name="NavigateWithReplanning">
-        <ProgressCheckerSelector selected_progress_checker="{selected_progress_checker}" default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
-        <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
-        <PathHandlerSelector selected_path_handler="{selected_path_handler}" default_path_handler="PathHandler" topic_name="path_handler_selector"/>
-        <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
-        <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
+        <ProgressCheckerSelector
+          selected_progress_checker="{selected_progress_checker}"
+          default_progress_checker="progress_checker" topic_name="progress_checker_selector"/>
+        <GoalCheckerSelector
+          selected_goal_checker="{selected_goal_checker}"
+          default_goal_checker="general_goal_checker" topic_name="goal_checker_selector"/>
+        <PathHandlerSelector
+          selected_path_handler="{selected_path_handler}"
+          default_path_handler="PathHandler" topic_name="path_handler_selector"/>
+        <ControllerSelector
+          selected_controller="{selected_controller}"
+          default_controller="FollowPath" topic_name="controller_selector"/>
+        <PlannerSelector
+          selected_planner="{selected_planner}"
+          default_planner="GridBased" topic_name="planner_selector"/>
         <RateController hz="0.333">
           <RecoveryNode number_of_retries="1" name="ComputePathThroughPoses">
             <Fallback name="FallbackComputePathToPose">
@@ -50,26 +60,40 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
                 <Inverter>
                   <GlobalUpdatedGoal/>
                 </Inverter>
-                <IsGoalNearby path="{path}" proximity_threshold="4.0" max_robot_pose_search_dist="1.5"/>
-                <TruncatePathLocal input_path="{path}" output_path="{remaining_path}" distance_forward="-1" distance_backward="0.0" />
+                <IsGoalNearby path="{path}" proximity_threshold="4.0"
+                  max_robot_pose_search_dist="1.5"/>
+                <TruncatePathLocal input_path="{path}" output_path="{remaining_path}"
+                  distance_forward="-1" distance_backward="0.0" />
                 <ValidatePath path="{remaining_path}"/>
               </ReactiveSequence>
               <ReactiveSequence>
-                <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
-                <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7"
+                  input_waypoint_statuses="{waypoint_statuses}"
+                  output_waypoint_statuses="{waypoint_statuses}"/>
+                <ComputePathThroughPoses goals="{goals}" path="{path}"
+                  planner_id="{selected_planner}"
+                  error_code_id="{compute_path_error_code}"
+                  error_msg="{compute_path_error_msg}"/>
               </ReactiveSequence>
             </Fallback>
             <Sequence>
               <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
-              <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+              <ClearEntireCostmap name="ClearGlobalCostmap-Context"
+                service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
           </RecoveryNode>
         </RateController>
         <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}" goal_checker_id="{selected_goal_checker}" progress_checker_id="{selected_progress_checker}" path_handler_id="{selected_path_handler}" tracking_feedback="{tracking_feedback}"/>
+          <FollowPath path="{path}" controller_id="{selected_controller}"
+            error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"
+            goal_checker_id="{selected_goal_checker}"
+            progress_checker_id="{selected_progress_checker}"
+            path_handler_id="{selected_path_handler}"
+            tracking_feedback="{tracking_feedback}"/>
           <Sequence>
             <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
-            <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap name="ClearLocalCostmap-Context"
+              service_name="local_costmap/clear_entirely_local_costmap"/>
           </Sequence>
         </RecoveryNode>
       </PipelineSequence>
@@ -82,12 +106,17 @@ While this behavior tree does not make use of it, the `PlannerSelector`, `Contro
           <GoalUpdated/>
           <RoundRobin name="RecoveryActions">
             <Sequence name="ClearingActions">
-              <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-              <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+              <ClearEntireCostmap name="ClearLocalCostmap-Subtree"
+                service_name="local_costmap/clear_entirely_local_costmap"/>
+              <ClearEntireCostmap name="ClearGlobalCostmap-Subtree"
+                service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
-            <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-            <Wait name="WaitRecovery" wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
-            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+            <Spin name="SpinRecovery" spin_dist="1.57"
+              error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+            <Wait name="WaitRecovery" wait_duration="5.0"
+              error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.15"
+              error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
           </RoundRobin>
         </ReactiveFallback>
       </Sequence>
