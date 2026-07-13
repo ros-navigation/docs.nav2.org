@@ -1395,6 +1395,7 @@
 </ul>
 </dd>
 </dl>
+<p>When <code class="docutils literal notranslate"><span class="pre">stateful</span></code> is enabled, the XY goal reached state is preserved after one of the above conditions has been satisfied. See <code class="docutils literal notranslate"><span class="pre">xy_goal_tolerance_buffer</span></code> for configuring the hysteresis behavior.</p>
 <img alt="AdaptiveToleranceGoalChecker Illustration" class="align-center" src="../../../_images/adaptive_tolerance_goal_checker.png" />
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
@@ -1444,8 +1445,30 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.yaw_goal_tolerance</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.xy_goal_tolerance_buffer</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Hysteresis buffer for stateful XY position checking (m). When <code class="docutils literal notranslate"><span class="pre">stateful</span></code> is true, after the XY goal condition has been satisfied, the robot may drift within the corresponding accepted tolerance plus this buffer without rechecking the XY position. If the robot moves outside this buffered region, the previous XY reached state is cleared and the XY position must be checked again.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.yaw_goal_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1466,8 +1489,8 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.path_length_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.path_length_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1488,8 +1511,8 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.stateful</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.stateful</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1510,8 +1533,8 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.symmetric_yaw_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.symmetric_yaw_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1532,8 +1555,8 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.trans_stopped_velocity</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.trans_stopped_velocity</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1554,8 +1577,8 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.rot_stopped_velocity</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.rot_stopped_velocity</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1576,8 +1599,8 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.required_stagnation_cycles</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.required_stagnation_cycles</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1609,6 +1632,7 @@
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::AdaptiveToleranceGoalChecker&quot;</span>
 <span class="w">      </span><span class="nt">fine_xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.10</span>
 <span class="w">      </span><span class="nt">coarse_xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">      </span><span class="nt">xy_goal_tolerance_buffer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.10</span>
 <span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">path_length_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
