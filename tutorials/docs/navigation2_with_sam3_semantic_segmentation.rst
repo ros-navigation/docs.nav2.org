@@ -201,7 +201,7 @@ Fewer prompts run faster as SAM3 will do processing over each prompt given. Try 
 -----------------------------
 
 Build the SAM3 inference package inside the conda environment so the SAM3 node picks up the right Python.
-After built, you do not need to activate the conda enviornment again - launching the node will automatically handle the environment correctly!
+After built, you do not need to activate the conda environment again - launching the node will automatically handle the environment correctly!
 
 .. code-block:: bash
 
