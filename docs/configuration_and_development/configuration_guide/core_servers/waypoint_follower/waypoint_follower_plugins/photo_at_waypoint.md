@@ -10,45 +10,30 @@ index and time stamp. The leading digit in file name implies the waypoint index 
 
 ### **`<nav2_waypoint_follower plugin>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether waypoint_task_executor plugin is enabled.
 
 ### **`<nav2_waypoint_follower plugin>.camera_image_topic_name`**
 
-| Type     | Default                   |
-|----------|---------------------------|
-| `string` | "/camera/color/image_raw" |
+Type: `string` Default: `"/camera/color/image_raw"`
 
-Description
 :   Camera image topic name to subscribe
 
 ### **`<nav2_waypoint_follower plugin>.save_images_dir`**
 
-| Type     | Default                |
-|----------|------------------------|
-| `string` | "/tmp/waypoint_images" |
+Type: `string` Default: `"/tmp/waypoint_images"`
 
-Description
 :   Path to directory to save taken photos at waypoint arrivals.
 
 ### **`<nav2_waypoint_follower plugin>.image_format`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "png"   |
+Type: `string` Default: `"png"`
 
-Description
 :   Desired image format.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.

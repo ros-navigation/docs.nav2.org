@@ -6,24 +6,18 @@ This implements a costmap layer which combines costmap layers within a submap, w
 
 ### **`<plugin container layer>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether it is enabled.
 
 ### **`<plugin container layer>.plugins`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | {}      |
+Type: `vector<string>` Default: `{}`
 
-Description
 :   List of mapped costmap layer names for parameter namespaces and names.
 
-Note
-:   Costmap filters are presently unsupported.
+    Note
+    :   Costmap filters are presently unsupported.
 
 ## Example
 

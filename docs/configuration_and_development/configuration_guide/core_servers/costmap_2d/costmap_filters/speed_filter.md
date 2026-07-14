@@ -12,99 +12,69 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
 ### **`<filter name>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether it is enabled.
 
 ### **`<filter name>.filter_info_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server][map-server-index] configuration page.
 
 ### **`<filter name>.speed_limit_topic`**
 
-| Type     | Default       |
-|----------|---------------|
-| `string` | "speed_limit" |
+Type: `string` Default: `"speed_limit"`
 
-Description
 :   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) have the following fields' meaning:
 
     - `percentage`: speed limit is expressed in percentage if `true` or in absolute values in `false` case. This parameter is set depending on `type` field of `CostmapFilterInfo` message.
     - `speed_limit`: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on `percentage` value. Zero value means no speed restriction (independently on `percentage`). `speed_limit` is being linearly converted from `OccupancyGrid` filter mask value as: `speed_limit = base + multiplier * mask_value`, where `base` and `multiplier` coefficients are taken from `CostmapFilterInfo` message.
 
-Note
-:   `speed_limit` expressed in a percent should belong to `(0.0 .. 100.0]` range.
-    This topic will be used by a Controller Server. Please refer to [Controller Server][controller-server] configuration page to set it appropriately.
+    Note
+    :   `speed_limit` expressed in a percent should belong to `(0.0 .. 100.0]` range.
+        This topic will be used by a Controller Server. Please refer to [Controller Server][controller-server] configuration page to set it appropriately.
 
 ### **`<filter name>.transform_tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
 
 ### **`<filter name>.enable_path_lookahead`**
 
-| Type     | Default |
-|----------|---------|
-| `bool`   | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to enable path lookahead mode. When disabled (default), the speed filter applies the speed limit of the cell directly at the robot pose. When enabled, the filter samples poses along the planned path within a velocity-dependent window and applies the strictest non-zero speed limit found along that window. This allows the robot to begin decelerating before entering a speed-restricted zone rather than at the boundary itself.
 
 ### **`<filter name>.max_decel`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | -0.5    |
+Type: `double` Default: `-0.5`
 
-Description
 :   Maximum deceleration (m/s^2) used to size the lookahead window based on the robot's current speed, when path lookahead mode is enabled. Lookahead distance is computed as `v² / (2·max_decel)` and clamped to `[min_lookahead, max_lookahead]`. Must be negative. Lower magnitude values produce longer lookahead windows. Has no effect when `enable_path_lookahead` is false.
 
 ### **`<filter name>.min_lookahead`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3     |
+Type: `double` Default: `0.3`
 
-Description
 :   Minimum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
 
 ### **`<filter name>.max_lookahead`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 5.0     |
+Type: `double` Default: `5.0`
 
-Description
 :   Maximum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
 
 ### **`<filter name>.path_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "plan"  |
+Type: `string` Default: `"plan"`
 
-Description
 :   Topic to subscribe to for the planned path, when path lookahead mode is enabled. This is used to look ahead and sample poses along the planned path to determine upcoming speed limits.
 
 ### **`<filter name>.odom_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "odom"  |
+Type: `string` Default: `"odom"`
 
-Description
 :   Topic to subscribe to for the odometry, when path lookahead mode is enabled. This is used to determine the robot's current speed for lookahead distance calculation.
 
 ## Example

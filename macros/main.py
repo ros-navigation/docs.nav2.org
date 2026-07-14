@@ -43,11 +43,8 @@ _DOXYGEN_REGEX_PATTERNS = {
 _PORT_TEMPLATE = Template("""
 ### **`{{ port_name }}`**
 
-| Type                        | Default                 |
-|-----------------------------|-------------------------|
-| `{{ port_data.data_type }}` | {{ port_data.default }} |
+Type: `{{ port_data.data_type }}` Default: `{{ port_data.default }}`
 
-Description
 :   {{ port_data.description }}
 """)
 

@@ -11,121 +11,88 @@ Note: the wait recovery behavior has no parameters, the duration to wait is give
 
 ### **`local_costmap_topic`**
 
-| Type     | Default                     |
-|----------|-----------------------------|
-| `string` | "local_costmap/costmap_raw" |
+Type: `string` Default: `"local_costmap/costmap_raw"`
 
-Description
 :   Raw costmap topic for collision checking on the local costmap.
 
 ### **`global_costmap_topic`**
 
-| Type     | Default                      |
-|----------|------------------------------|
-| `string` | "global_costmap/costmap_raw" |
+Type: `string` Default: `"global_costmap/costmap_raw"`
 
-Description
 :   Raw costmap topic for collision checking on the global costmap.
 
 ### **`local_footprint_topic`**
 
-| Type     | Default                             |
-|----------|-------------------------------------|
-| `string` | "local_costmap/published_footprint" |
+Type: `string` Default: `"local_costmap/published_footprint"`
 
-Description
 :   Topic for footprint in the local costmap frame.
 
 ### **`global_footprint_topic`**
 
-| Type     | Default                              |
-|----------|--------------------------------------|
-| `string` | "global_costmap/published_footprint" |
+Type: `string` Default: `"global_costmap/published_footprint"`
 
-Description
 :   Topic for footprint in the global costmap frame.
 
 ### **`cycle_frequency`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
+Type: `double` Default: `10.0`
 
-Description
 :   Frequency to run behavior plugins.
 
 ### **`transform_tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   TF transform tolerance.
 
 ### **`local_frame`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "odom"  |
+Type: `string` Default: `"odom"`
 
-Description
 :   Local reference frame.
 
 ### **`global_frame`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "map"   |
+Type: `string` Default: `"map"`
 
-Description
 :   Global reference frame.
 
 ### **`robot_base_frame`**
 
-| Type     | Default     |
-|----------|-------------|
-| `string` | "base_link" |
+Type: `string` Default: `"base_link"`
 
-Description
 :   Robot base frame.
 
 ### **`introspection_mode`**
 
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
+Type: `string` Default: `"disabled"`
 
-Description
 :   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`behavior_plugins`**
 
-| Type             | Default                                         |
-|------------------|-------------------------------------------------|
-| `vector<string>` | {"spin", "back_up", "drive_on_heading", "wait"} |
+Type: `vector<string>` Default: `{"spin", "back_up", "drive_on_heading", "wait"}`
 
-Description
 :   List of plugin names to use, also matches action server names.
 
-Note
-:   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+    Note
+    :   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
 
-    Example:
+        Example:
 
-    ```yaml
-    behavior_server:
-      ros__parameters:
-        behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
-        spin:
-          plugin: "nav2_behaviors::Spin"
-        backup:
-          plugin: "nav2_behaviors::BackUp"
-        drive_on_heading:
-          plugin: "nav2_behaviors::DriveOnHeading"
-        wait:
-          plugin: "nav2_behaviors::Wait"
-    ```
+        ```yaml
+        behavior_server:
+          ros__parameters:
+            behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
+            spin:
+              plugin: "nav2_behaviors::Spin"
+            backup:
+              plugin: "nav2_behaviors::BackUp"
+            drive_on_heading:
+              plugin: "nav2_behaviors::DriveOnHeading"
+            wait:
+              plugin: "nav2_behaviors::Wait"
+        ```
 
 ## Default Plugins
 
@@ -144,47 +111,32 @@ Spin distance is given from the action request
 
 ### **`simulate_ahead_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Time to look ahead for collisions (s).
 
 ### **`max_rotational_vel`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Maximum rotational velocity (rad/s).
 
 ### **`min_rotational_vel`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.4     |
+Type: `double` Default: `0.4`
 
-Description
 :   Minimum rotational velocity (rad/s).
 
 ### **`rotational_acc_lim`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 3.2     |
+Type: `double` Default: `3.2`
 
-Description
 :   maximum rotational acceleration (rad/s^2).
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
@@ -194,48 +146,33 @@ Backup distance, speed and time_allowance is given from the action request.
 
 ### **`simulate_ahead_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Time to look ahead for collisions (s).
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
 ### **`backup.acceleration_limit`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.5     |
+Type: `double` Default: `2.5`
 
-Description
 :   Maximum acceleration limit (m/s^2). This parameter limits the rate at which speed increases when moving backward.
 
 ### **`backup.deceleration_limit`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | -2.5    |
+Type: `double` Default: `-2.5`
 
-Description
 :   Maximum deceleration limit (m/s^2). Negative value. This parameter limits the rate at which speed decreases when moving backward.
 
 ### **`backup.minimum_speed`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 ## DriveOnHeading Behavior Parameters
@@ -244,66 +181,45 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
 
 ### **`simulate_ahead_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Time to look ahead for collisions (s).
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`drive_on_heading.acceleration_limit`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.5     |
+Type: `double` Default: `2.5`
 
-Description
 :   Maximum acceleration limit (m/s^2).
 
 ### **`drive_on_heading.deceleration_limit`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | -2.5    |
+Type: `double` Default: `-2.5`
 
-Description
 :   Maximum deceleration limit (m/s^2). Negative value.
 
 ### **`drive_on_heading.minimum_speed`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 ## AssistedTeleop Behavior Parameters
@@ -312,38 +228,26 @@ AssistedTeleop time_allowance is given in the action request
 
 ### **`projection_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Time to look ahead for collisions (s).
 
 ### **`simulation_time_step`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Time step for projections (s).
 
 ### **`cmd_vel_teleop`**
 
-| Type     | Default        |
-|----------|----------------|
-| `string` | cmd_vel_teleop |
+Type: `string` Default: `cmd_vel_teleop`
 
-Description
 :   Topic to listen for teleop messages.
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 

@@ -6,20 +6,14 @@ A custom control node, which updates the goal(s) pose(s). It subscribes to a top
 
 ### **`goal_updater_topic`**
 
-| Type     | Default       |
-|----------|---------------|
-| `string` | "goal_update" |
+Type: `string` Default: `"goal_update"`
 
-Description
 :   The topic to receive the updated goal pose
 
 ### **`goals_updater_topic`**
 
-| Type     | Default        |
-|----------|----------------|
-| `string` | "goals_update" |
+Type: `string` Default: `"goals_update"`
 
-Description
 :   The topic to receive the updated goals poses
 
 {{ render_bt_node_ports(page.title) }}

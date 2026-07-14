@@ -59,130 +59,88 @@ The data may be obtained from different data sources:
 
 ### **`enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then.
     Please note that is not a dynamic parameter, there's `/toggle` service interface
     and [BT Node][toggle-collision-monitor] to update this state later at runtime.
 
 ### **`base_frame_id`**
 
-| Type     | Default          |
-|----------|------------------|
-| `string` | "base_footprint" |
+Type: `string` Default: `"base_footprint"`
 
-Description
 :   Robot base frame.
 
 ### **`odom_frame_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "odom"  |
+Type: `string` Default: `"odom"`
 
-Description
 :   Which frame to use for odometry.
 
 ### **`cmd_vel_in_topic`**
 
-| Type     | Default            |
-|----------|--------------------|
-| `string` | "cmd_vel_smoothed" |
+Type: `string` Default: `"cmd_vel_smoothed"`
 
-Description
 :   Input `cmd_vel` topic with desired robot velocity.
 
 ### **`cmd_vel_out_topic`**
 
-| Type     | Default   |
-|----------|-----------|
-| `string` | "cmd_vel" |
+Type: `string` Default: `"cmd_vel"`
 
-Description
 :   Output `cmd_vel` topic with output produced by Collision Monitor velocities.
 
 ### **`state_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | ""      |
+Type: `string` Default: `""`
 
-Description
 :   Output the currently activated polygon action type and name. Optional parameter. No publisher will be created if it is unspecified.
 
 ### **`transform_tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
 
 ### **`source_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting `source_timeout: 0.0` disables this blocking mechanism. This parameter can be overridden per observation source.
 
 ### **`base_shift_correction`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to correct source data towards to base frame movement, considering the difference between current time and latest source time. If enabled, produces more accurate sources positioning in the robot base frame, at the cost of slower performance. This will cause average delays for `~1/(2*odom_rate)` per each `cmd_vel` calculation cycle. However, disabling this option for better performance is not recommended for the fast moving robots, where during the typical rate of data sources, robot could move unacceptably far. Thus reasonable odometry rates are recommended (~100 hz).
 
 ### **`stop_pub_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Timeout, after which zero-velocity ceases to be published. It could be used for other overrode systems outside Nav2 are trying to bring the robot out of a state close to a collision, or to allow a standing robot to go into sleep mode.
 
 ### **`polygons`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | N/A     |
+Type: `vector<string>` Default: `N/A`
 
-Description
 :   List of zones (stop/slowdown/limit bounding boxes, footprint, approach circle, etc...). Causes an error, if not specialized.
 
 ### **`observation_sources`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | N/A     |
+Type: `vector<string>` Default: `N/A`
 
-Description
 :   List of data sources (laser scanners, pointclouds, etc...). Causes an error, if not specialized.
 
 ### **`use_realtime_priority`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
@@ -192,167 +150,113 @@ Description
 
 ### **`<polygon_name>.type`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Type of polygon shape. Available values are `polygon`, `circle`. Causes an error, if not specialized.
 
 ### **`<polygon_name>.points`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `polygon` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to `polygon_sub_topic` for points in the `stop`/`slowdown`/`limit` action types, or footprint subscriber to `footprint_topic` for `approach` action type.
 
 ### **`<polygon_name>.polygon_sub_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   For `polygon` type, topic to listen the polygon points from. For `circle` type, topic to listen the circle radius from. Applicable for `stop`/`slowdown`/`limit` action types. Causes an error if not specified **and** static polygon geometry (using parameter `points` for `polygon` type or `radius` for `circle` type) is also not specified. If both static polygon geometry and `polygon_sub_topic` are specified, the static parameter takes priority.
 
 ### **`<polygon_name>.footprint_topic`**
 
-| Type     | Default                             |
-|----------|-------------------------------------|
-| `string` | "local_costmap/published_footprint" |
+Type: `string` Default: `"local_costmap/published_footprint"`
 
-Description
 :   Topic to listen the robot footprint from. Applicable only for `polygon` type and `approach` action type. If both `points` and `footprint_topic` are specified, the static `points` takes priority.
 
 ### **`<polygon_name>.polygon_subscribe_transient_local`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   QoS durability setting for the incoming polygon or footprint topic subscription.
 
 ### **`<polygon_name>.radius`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | N/A     |
+Type: `double` Default: `N/A`
 
-Description
 :   Circle radius. Used for `circle` type. If not specified, the collision monitor will use dynamic polygon subscription to `polygon_sub_topic` for circle radius in the `stop`/`slowdown`/`limit` action types.
 
 ### **`<polygon_name>.action_type`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Zone behavior model. Available values are `stop`, `slowdown`, `limit`, `approach`. Causes an error, if not specialized.
 
 ### **`<polygon_name>.min_points`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 4       |
+Type: `int` Default: `4`
 
-Description
 :   Minimum number of data readings within a zone to trigger the action.
 
 ### **`<polygon_name>.trigger_consecutive_points`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1       |
+Type: `int` Default: `1`
 
-Description
 :   Number of consecutive processing cycles with `points_inside >= min_points` required to enter the triggered state.
     A value of `1` means trigger in a single processing cycle.
 
 ### **`<polygon_name>.release_consecutive_points`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1       |
+Type: `int` Default: `1`
 
-Description
 :   Number of consecutive processing cycles with `points_inside < min_points` required to leave the triggered state.
     A value of `1` means release in a single processing cycle.
     In practice, values greater than `1` can reduce sensor noise flicker while remaining responsive.
 
 ### **`<polygon_name>.slowdown_ratio`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.5     |
+Type: `double` Default: `0.5`
 
-Description
 :   Robot slowdown (share of its actual speed). Applicable for `slowdown` action type.
 
 ### **`<polygon_name>.linear_limit`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.5     |
+Type: `double` Default: `0.5`
 
-Description
 :   Robot linear speed limit. Applicable for `limit` action type.
 
 ### **`<polygon_name>.angular_limit`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.5     |
+Type: `double` Default: `0.5`
 
-Description
 :   Robot angular speed limit. Applicable for `limit` action type.
 
 ### **`<polygon_name>.time_before_collision`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Time before collision in seconds. Maximum simulation time used in collision prediction. Higher values mean lower performance. Applicable for `approach` action type.
 
 ### **`<polygon_name>.simulation_time_step`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Time iteration step for robot movement simulation during collision prediction. Higher values mean lower prediction accuracy but better performance. Applicable for `approach` action type.
 
 ### **`<polygon_name>.visualize`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to publish the polygon in a separate topic.
 
 ### **`<polygon_name>.polygon_pub_topic`**
 
-| Type     | Default        |
-|----------|----------------|
-| `string` | <polygon_name> |
+Type: `string` Default: `<polygon_name>`
 
-Description
 :   Topic name to publish a polygon to. Used only if `visualize` is true.
 
 ### **`<polygon_name name>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to use this polygon for collision monitoring. (Can be dynamically set)
 
 ## VelocityPolygon parameters
@@ -361,38 +265,26 @@ All previous Polygon parameters apply, in addition to the following unique param
 
 ### **`<vel_poly>.holonomic`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to use holonomic or non-holonomic robot model for collision prediction. For holonomic robot model, the resultant velocity will be used to compare the linear velocity range. Additionally, there will be 2 more parameters, `direction_start_angle` and `direction_end_angle`, to specify the resultant velocity direction.
 
 ### **`<vel_poly>.velocity_polygons`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | N/A     |
+Type: `vector<string>` Default: `N/A`
 
-Description
 :   List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.points`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | N/A     |
+Type: `vector<string>` Default: `N/A`
 
-Description
 :   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `polygon` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.linear_min`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | N/A     |
+Type: `double` Default: `N/A`
 
-Description
 :   Minimum linear velocity for the sub-polygon. Causes an error, if not specified.
 
     - **Non-holonomic:** This is the minimum signed velocity along the x-axis (allows negative values for reverse motion).
@@ -400,11 +292,8 @@ Description
 
 ### **`<vel_poly>.<subpoly>.linear_max`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | N/A     |
+Type: `double` Default: `N/A`
 
-Description
 :   Maximum linear velocity for the sub polygon. Causes an error, if not specified.
 
     - **Non-holonomic:** This is the maximum signed velocity along the x-axis. (allows negative values for reverse motion).
@@ -412,38 +301,26 @@ Description
 
 ### **`<vel_poly>.<subpoly>.theta_min`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | N/A     |
+Type: `double` Default: `N/A`
 
-Description
 :   Minimum angular velocity for the sub polygon. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.theta_max`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | N/A     |
+Type: `double` Default: `N/A`
 
-Description
 :   Maximum angular velocity for the sub polygon. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.direction_start_angle`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | -PI     |
+Type: `double` Default: `-PI`
 
-Description
 :   Start angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
 
 ### **`<vel_poly>.<subpoly>.direction_end_angle`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | PI      |
+Type: `double` Default: `PI`
 
-Description
 :   End angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
 
 ## Observation sources parameters
@@ -452,20 +329,14 @@ Description
 
 ### **`<source name>.type`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "scan"  |
+Type: `string` Default: `"scan"`
 
-Description
 :   Type of polygon shape. Could be `scan`, `pointcloud`, `range`, `polygon` or `costmap`.
 
 ### **`<source name>.transport_type`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "raw"   |
+Type: `string` Default: `"raw"`
 
-Description
 :   For `pointcloud` data, specify the transport plugin to use:
 
     - raw: No compression. Default; highest bandwidth usage.
@@ -477,123 +348,84 @@ Description
 
 ### **`<source name>.topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "scan"  |
+Type: `string` Default: `"scan"`
 
-Description
 :   Topic to listen the source data from.
 
 ### **`<source name>.min_height`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.05    |
+Type: `double` Default: `0.05`
 
-Description
 :   Minimum height the PointCloud projection to 2D space started from. Applicable for `pointcloud` type.
 
 ### **`<source name>.max_height`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.5     |
+Type: `double` Default: `0.5`
 
-Description
 :   Maximum height the PointCloud projection to 2D space ended with. Applicable for `pointcloud` type.
 
 ### **`<source name>.use_global_height`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `pointcloud` type.
 
 ### **`<source name>.min_range`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0     |
+Type: `double` Default: `0.0`
 
-Description
 :   Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for `pointcloud` type.
 
 ### **`<source name>.obstacles_angle`**
 
-| Type     | Default             |
-|----------|---------------------|
-| `double` | PI / 180 (1 degree) |
+Type: `double` Default: `PI / 180` (1 degree)
 
-Description
 :   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `range` type.
 
 ### **`<source name>.sampling_distance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `polygon` source type.
 
 ### **`<source name>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to use this source for collision monitoring. (Can be dynamically set)
 
 ### **`<source name>.source_timeout`**
 
-| Type     | Default                                 |
-|----------|-----------------------------------------|
-| `double` | (node parameter `source_timeout` value) |
+Type: `double` Default: (node parameter `source_timeout` value)
 
-Description
 :   Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting `source_timeout: 0.0` disables this blocking mechanism. Overrides node parameter for each source individually, if desired.
 
 ### **`<source name>.cost_threshold`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 253     |
+Type: `int` Default: `253`
 
-Description
 :   For `costmap` sources only. Minimum cell cost (0–255) to be treated as an
     obstacle. By default this matches inscribed/lethal cells (253–254) and ignores
     lower-cost cells.
 
 ### **`<source name>.treat_unknown_as_obstacle`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   For `costmap` sources only. If `true`, cells with cost `255` (`NO_INFORMATION`)
     will also be turned into obstacle points. Set to `false` if your costmap has
     large unknown areas you don't want to trigger Collision Monitor.
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ## Example

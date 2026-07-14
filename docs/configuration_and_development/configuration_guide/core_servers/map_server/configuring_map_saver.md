@@ -6,36 +6,24 @@ The map saver server runs in the background and saves maps based on service requ
 
 ### **`save_map_timeout`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 2       |
+Type: `int` Default: `2`
 
-Description
 :   Timeout to attempt saving the map (seconds).
 
 ### **`free_thresh_default`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   Free space maximum probability threshold value for occupancy grid.
 
 ### **`occupied_thresh_default`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.65    |
+Type: `double` Default: `0.65`
 
-Description
 :   Occupied space minimum probability threshold value for occupancy grid.
 
 ### **`introspection_mode`**
 
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
+Type: `string` Default: `"disabled"`
 
-Description
 :   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".

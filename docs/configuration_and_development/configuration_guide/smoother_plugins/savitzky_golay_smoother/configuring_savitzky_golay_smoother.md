@@ -16,47 +16,32 @@ This algorithm is deterministic and low-parameter. In the below image, some odd 
 
 ### **`window_size`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 7       |
+Type: `int` Default: `7`
 
-Description
 :   Size of the smoothing window. Must be an odd integer, with a minimum value of 3
 
 ### **`poly_order`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 3       |
+Type: `int` Default: `3`
 
-Description
 :   Order of the polynomial used to fit the samples in each smoothing window
 
 ### **`do_refinement`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to smooth the smoothed results `refinement_num` times to get an improved result.
 
 ### **`refinement_num`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 2       |
+Type: `int` Default: `2`
 
-Description
 :   Number of times to recursively smooth a segment
 
 ### **`enforce_path_inversion`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
 
 ## Example

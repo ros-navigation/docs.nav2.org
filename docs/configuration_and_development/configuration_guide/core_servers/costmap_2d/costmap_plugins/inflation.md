@@ -8,56 +8,38 @@ This layer places an exponential decay functions around obstacles to increase co
 
 ### **`<inflation layer>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether it is enabled.
 
 ### **`<inflation layer>.inflation_radius`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.55    |
+Type: `double` Default: `0.55`
 
-Description
 :   Radius to inflate costmap around lethal obstacles.
 
 ### **`<inflation layer>.cost_scaling_factor`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
+Type: `double` Default: `10.0`
 
-Description
 :   Exponential decay factor across inflation radius.
 
 ### **`<inflation layer>.inflate_unknown`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to inflate unknown cells as if lethal.
 
 ### **`<inflation layer>.inflate_around_unknown`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to inflate unknown cells.
 
 ### **`<inflation layer>.num_threads`**
 
-| Type     | Default |
-|----------|---------|
-| `int`    | -1      |
+Type: `int` Default: `-1`
 
-Description
 :   Number of threads to use for inflation computation when OpenMP is enabled.
     Set to `-1` for auto-detection (uses half of available CPU cores), or specify a positive integer for explicit thread count.
     Ignored if OpenMP support is not available.

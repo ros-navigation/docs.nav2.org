@@ -542,11 +542,8 @@ The following parameters are updated for this feature.
 
 **`max_linear_vel` (renamed):**
 
-| Type   |   Default |
-|--------|-----------|
-| double |       0.5 |
+Type: `double` Default: `0.5`
 
-Description
 :   The maximum linear velocity (m/s) to use.  **Previously named `desired_linear_vel`**
 
 **Note:** The velocity smoother clips velocity commands produced by this controller according to its own velocity and acceleration limits before publishing *cmd_vel*.

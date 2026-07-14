@@ -9,292 +9,208 @@ It is used in the planner and controller servers for creating the space to check
 
 ### **`always_send_full_costmap`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to send the full costmap on every update instead of only incremental updates.
 
 ### **`introspection_mode`**
 
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
+Type: `string` Default: `"disabled"`
 
-Description
 :   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`footprint_padding`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.01    |
+Type: `double` Default: `0.01`
 
-Description
 :   Amount to pad footprint (m).
 
 ### **`footprint`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<double>` | "[]"    |
+Type: `vector<double>` Default: `"[]"`
 
-Description
 :   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters *footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"*. Note that this can also be adjusted over time using the costmap's `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. If this parameter is set, `isPathValid` will do full collision checking.
 
 ### **`global_frame`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "map"   |
+Type: `string` Default: `"map"`
 
-Description
 :   Reference frame.
 
 ### **`height`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 5       |
+Type: `int` Default: `5`
 
-Description
 :   Height of costmap (m).
 
 ### **`width`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 5       |
+Type: `int` Default: `5`
 
-Description
 :   Width of costmap (m).
 
 ### **`lethal_cost_threshold`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 100     |
+Type: `int` Default: `100`
 
-Description
 :   Minimum cost of an occupancy grid map to be considered a lethal obstacle.
 
 ### **`map_vis_z`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0     |
+Type: `double` Default: `0.0`
 
-Description
 :   The height of the map used for visualization, helping to avoid RViz flickering issues (e.g., at -0.008).
 
 ### **`origin_x`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0     |
+Type: `double` Default: `0.0`
 
-Description
 :   X origin of the costmap relative to width (m).
 
 ### **`origin_y`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0     |
+Type: `double` Default: `0.0`
 
-Description
 :   Y origin of the costmap relative to height (m).
 
 ### **`publish_frequency`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Frequency (Hz) at which the costmap is published to a topic.
     Higher values provide more frequent updates for visualization and debugging but increase bandwidth usage.
 
 ### **`resolution`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Resolution of each cell (pixel) in the costmap, in meters.
     Smaller values increase map accuracy and obstacle detail but require more computation.
     Larger values reduce computational load but may miss fine obstacles.
 
 ### **`robot_base_frame`**
 
-| Type     | Default     |
-|----------|-------------|
-| `string` | "base_link" |
+Type: `string` Default: `"base_link"`
 
-Description
 :   Robot base frame.
 
 ### **`robot_radius`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Robot radius to use, if footprint coordinates not provided. If this parameter is set, `isPathValid` will do circular collision checking.
 
 ### **`subscribe_to_stamped_footprint`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   If true, the costmap will subscribe to PolygonStamped footprint messages instead of Polygon messages. This allows the footprint to include timestamp and frame information, which can be useful for applications that need temporally-aware footprint data.
 
 ### **`rolling_window`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   If true, the costmap moves with the robot, maintaining a local view centered around it.
     This is typically used for local costmaps.
     If false, the costmap remains fixed in the global frame.
 
 ### **`track_unknown_space`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   If false, treats unknown space as free space, else as unknown space.
 
 ### **`transform_tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3     |
+Type: `double` Default: `0.3`
 
-Description
 :   TF transform tolerance.
 
 ### **`initial_transform_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 60.0    |
+Type: `double` Default: `60.0`
 
-Description
 :   Time to wait for the transform from robot base frame to global frame to become available. If exceeded, the  configuration stage is aborted.
 
 ### **`trinary_costmap`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.
 
 ### **`unknown_cost_value`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 255     |
+Type: `int` Default: `255`
 
-Description
 :   Cost of unknown space if tracking it.
 
 ### **`inscribed_obstacle_cost_value`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 99      |
+Type: `int` Default: `99`
 
-Description
 :   The OccupancyGrid values that represents `INSCRIBED_INFLATED_OBSTACLE` during costmap conversion operations.
 
 ### **`update_frequency`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 5.0     |
+Type: `double` Default: `5.0`
 
-Description
 :   Costmap update frequency.
 
 ### **`use_maximum`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to use the maximum cost when combining multiple costmap layers.
     If true, the highest cost is preserved, ensuring obstacles are not overwritten.
     If false, newer layers may override previous cost values.
 
 ### **`plugins`**
 
-| Type             | Default                                               |
-|------------------|-------------------------------------------------------|
-| `vector<string>` | {"static_layer", "obstacle_layer", "inflation_layer"} |
+Type: `vector<string>` Default: `{"static_layer", "obstacle_layer", "inflation_layer"}`
 
-Description
 :   List of mapped plugin names for parameter namespaces and names.
 
-Note
-:   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+    Note
+    :   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
 
-    Example:
-    ```yaml
-    local_costmap:
-      ros__parameters:
-        plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
-        obstacle_layer:
-          plugin: "nav2_costmap_2d::ObstacleLayer"
-        voxel_layer:
-          plugin: "nav2_costmap_2d::VoxelLayer"
-        inflation_layer:
-          plugin: "nav2_costmap_2d::InflationLayer"
-    ```
+        Example:
+        ```yaml
+        local_costmap:
+          ros__parameters:
+            plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
+            obstacle_layer:
+              plugin: "nav2_costmap_2d::ObstacleLayer"
+            voxel_layer:
+              plugin: "nav2_costmap_2d::VoxelLayer"
+            inflation_layer:
+              plugin: "nav2_costmap_2d::InflationLayer"
+        ```
 
 ### **`filters`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | {}      |
+Type: `vector<string>` Default: `{}`
 
-Description
 :   List of mapped costmap filter names for parameter namespaces and names.
 
-Note
-:   Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a `plugin` parameter defining the type of filter plugin to be loaded in the namespace.
+    Note
+    :   Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a `plugin` parameter defining the type of filter plugin to be loaded in the namespace.
 
-    Example:
-    ```yaml
-    local_costmap:
-      ros__parameters:
-        filters: ["keepout_filter", "speed_filter"]
-        keepout_filter:
-          plugin: "nav2_costmap_2d::KeepoutFilter"
-        speed_filter:
-          plugin: "nav2_costmap_2d::SpeedFilter"
-    ```
+        Example:
+        ```yaml
+        local_costmap:
+          ros__parameters:
+            filters: ["keepout_filter", "speed_filter"]
+            keepout_filter:
+              plugin: "nav2_costmap_2d::KeepoutFilter"
+            speed_filter:
+              plugin: "nav2_costmap_2d::SpeedFilter"
+        ```
 
 ## Default Plugins
 

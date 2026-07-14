@@ -11,77 +11,53 @@ It will also create bond connections with the servers to ensure they are still u
 
 ### **`node_names`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | N/A     |
+Type: `vector<string>` Default: `N/A`
 
-Description
 :   Ordered list of node names to bringup through lifecycle transition.
 
 ### **`autostart`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Whether to transition nodes to active state on startup.
 
 ### **`bond_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 4.0     |
+Type: `double` Default: `4.0`
 
-Description
 :   Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to `0` to deactivate. Recommended to be always larger than 0.3s for all-local node discovery.
 
-Note
-:   If a server cleanly exits the manager will immediately be notified.
+    Note
+    :   If a server cleanly exits the manager will immediately be notified.
 
 ### **`attempt_respawn_reconnection`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to try to reconnect to servers that go down, presumably because respawn is set to `true` to re-create crashed nodes. While default to `true`, reconnections will not be made unless respawn is set to true in your launch files or your watchdog systems will bring up the server externally.
 
 ### **`bond_respawn_max_duration`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 10.0    |
+Type: `double` Default: `10.0`
 
-Description
 :   When a server crashes or becomes non-responsive, the lifecycle manager will bring down all nodes for safety. This is the duration of which the lifecycle manager will attempt to reconnect with the failed server(s) during to recover and re-activate the system. If this passes, it will stop attempts and will require a manual re-activation once the problem is manually resolved. Units: seconds.
 
 ### **`introspection_mode`**
 
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
+Type: `string` Default: `"disabled"`
 
-Description
 :   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ## Example

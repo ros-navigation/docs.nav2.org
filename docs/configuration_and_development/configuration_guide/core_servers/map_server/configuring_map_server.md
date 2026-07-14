@@ -6,36 +6,24 @@ The Map Server implements the server for handling the map load requests for the 
 
 ### **`yaml_filename`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Path to map yaml file. This parameter can set either from the yaml file or using the launch configuration parameter `map`. If we set it on launch commandline / launch configuration default, we override the yaml default. If you would like the specify your map file in yaml, remove the launch default so it is not overridden in Nav2's default launch files.
 
 ### **`topic_name`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "map"   |
+Type: `string` Default: `"map"`
 
-Description
 :   Topic to publish loaded map to.
 
 ### **`frame_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "map"   |
+Type: `string` Default: `"map"`
 
-Description
 :   Frame to publish loaded map in.
 
 ### **`introspection_mode`**
 
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
+Type: `string` Default: `"disabled"`
 
-Description
 :   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".

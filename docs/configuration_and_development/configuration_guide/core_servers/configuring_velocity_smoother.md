@@ -12,141 +12,96 @@ See the package's README for more information.
 
 ### **`use_realtime_priority`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (`90`) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of `/etc/security/limits.conf` to give userspace access to elevated prioritization permissions: `<username> soft rtprio 99 <username> hard rtprio 99`
 
 ### **`smoothing_frequency`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 20.0    |
+Type: `double` Default: `20.0`
 
-Description
 :   Frequency (Hz) to use the last received velocity command to smooth by velocity, acceleration, and deadband constraints. If set approximately to the rate of your local trajectory planner, it should smooth by acceleration constraints velocity commands. If set much higher, it will interpolate and provide a smooth set of commands to the hardware controller.
 
 ### **`scale_velocities`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Whether or not to adjust other components of velocity proportionally to a component's required changes due to acceleration limits. This will try to adjust all components to follow the same direction, but still enforces acceleration limits to guarantee compliance, even if it means deviating off commanded trajectory slightly.
 
 ### **`feedback`**
 
-| Type     | Default     |
-|----------|-------------|
-| `string` | "OPEN_LOOP" |
+Type: `string` Default: `"OPEN_LOOP"`
 
-Description
 :   Type of feedback to use for the current state of the robot's velocity. In `OPEN_LOOP`, it will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately, this is a good assumption. In `CLOSED_LOOP`, it will use the odometry from the `odom` topic to estimate the robot's current speed. In closed loop mode, it is important that the odometry is high rate and low latency, relative to the smoothing frequency.
 
 ### **`max_velocity`**
 
-| Type             | Default         |
-|------------------|-----------------|
-| `vector<double>` | [0.5, 0.0, 2.5] |
+Type: `vector<double>` Default: `[0.5, 0.0, 2.5]`
 
-Description
 :   Maximum velocities (m/s) in `[x, y, theta]` axes or `[x, y, z, roll, pitch, yaw]` for full 6-DoF support.
 
 ### **`min_velocity`**
 
-| Type             | Default           |
-|------------------|-------------------|
-| `vector<double>` | [-0.5, 0.0, -2.5] |
+Type: `vector<double>` Default: `[-0.5, 0.0, -2.5]`
 
-Description
 :   Minimum velocities (m/s) in `[x, y, theta]` axes or `[x, y, z, roll, pitch, yaw]` for full 6-DoF support. This is **signed** and thus must be **negative** to reverse.
 
-Note
-:   Rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.
+    Note
+    :   Rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.
 
 ### **`deadband_velocity`**
 
-| Type             | Default         |
-|------------------|-----------------|
-| `vector<double>` | [0.0, 0.0, 0.0] |
+Type: `vector<double>` Default: `[0.0, 0.0, 0.0]`
 
-Description
 :   Minimum velocities (m/s) in `[x, y, theta]` axes or `[x, y, z, roll, pitch, yaw]` for full 6-DoF support to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
 
 ### **`velocity_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Timeout (s) after which the velocity smoother will send a zero-ed out `Twist` command and stop publishing.
 
 ### **`max_accel`**
 
-| Type             | Default         |
-|------------------|-----------------|
-| `vector<double>` | [2.5, 0.0, 3.2] |
+Type: `vector<double>` Default: `[2.5, 0.0, 3.2]`
 
-Description
 :   Maximum acceleration to apply to each axis `[x, y, theta]` or `[x, y, z, roll, pitch, yaw]` for full 6-DoF support.
 
 ### **`max_decel`**
 
-| Type             | Default           |
-|------------------|-------------------|
-| `vector<double>` | [-2.5, 0.0, -3.2] |
+Type: `vector<double>` Default: `[-2.5, 0.0, -3.2]`
 
-Description
 :   Minimum acceleration to apply to each axis `[x, y, theta]` or `[x, y, z, roll, pitch, yaw]` for full 6-DoF support. This is **signed** and thus these should generally all be **negative**.
 
 ### **`odom_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "odom"  |
+Type: `string` Default: `"odom"`
 
-Description
 :   Topic to find robot odometry, if in `CLOSED_LOOP` operational mode.
 
 ### **`odom_duration`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   Time (s) to buffer odometry commands to estimate the robot speed, if in `CLOSED_LOOP` operational mode.
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ## Example

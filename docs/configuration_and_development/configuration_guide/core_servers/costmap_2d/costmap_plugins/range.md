@@ -8,20 +8,14 @@ This costmap layer implements a plugin that processes sonar, IR, or other 1-D se
 
 ### **`<range layer>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether it is enabled.
 
 ### **`<range layer>.topics`**
 
-| Type Default     |      |
-|------------------|------|
-| `vector<string>` | [""] |
+Type: `vector<string>` Default: `[""]`
 
-Description
 :   Range topics to subscribe to.
 
     Relative topics will be relative to the node's parent namespace.
@@ -34,65 +28,44 @@ Description
 
 ### **`<range layer>.phi`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.2     |
+Type: `double` Default: `1.2`
 
-Description
 :   Phi value.
 
 ### **`<range layer>.inflate_cone`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Inflate the triangular area covered by the sensor (percentage).
 
 ### **`<range layer>.no_readings_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0     |
+Type: `double` Default: `0.0`
 
-Description
 :   If zero, this parameter has no effect. Otherwise if the layer does
     not receive sensor data for this amount of time,
     the layer will warn the user and the layer will be marked as not current.
 
 ### **`<range layer>.clear_threshold`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.2     |
+Type: `double` Default: `0.2`
 
-Description
 :   Probability below which cells are marked as free.
 
 ### **`<range layer>.mark_threshold`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.8     |
+Type: `double` Default: `0.8`
 
-Description
 :   Probability above which cells are marked as occupied.
 
 ### **`<range layer>.clear_on_max_reading`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to clear the sensor readings on max range.
 
 ### **`<range layer>.input_sensor_type`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | ALL     |
+Type: `string` Default: `ALL`
 
-Description
 :   Input sensor type is either ALL (automatic selection), VARIABLE (min range != max range), or FIXED (min range == max range).

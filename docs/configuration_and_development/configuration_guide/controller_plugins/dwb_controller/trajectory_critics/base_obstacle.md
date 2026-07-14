@@ -11,18 +11,12 @@ To use this properly, you must use the inflation layer in costmap to expand obst
 
 ### **`<dwb plugin>.<name>.sum_scores`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Whether to allow for scores to be summed up.
 
 ### **`<dwb plugin>.<name>.scale`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Weighed scale for critic.

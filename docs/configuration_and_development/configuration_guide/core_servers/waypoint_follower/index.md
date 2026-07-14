@@ -11,81 +11,60 @@ If a waypoint is not achievable, the `stop_on_failure` parameter will determine 
 
 ### **`stop_on_failure`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to fail action task if a single waypoint fails. If false, will continue to next waypoint.
 
 ### **`loop_rate`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 20      |
+Type: `int` Default: `20`
 
-Description
 :   Rate to check for results from current navigation task.
 
 ### **`global_frame_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | 'map'   |
+Type: `string` Default: `'map'`
 
-Description
 :   The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
     convert GPS waypoints to this frame.
 
 ### **`introspection_mode`**
 
-| Type     | Default    |
-|----------|------------|
-| `string` | "disabled" |
+Type: `string` Default: `"disabled"`
 
-Description
 :   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ### **`waypoint_task_executor_plugin`**
 
-| Type     | Default            |
-|----------|--------------------|
-| `string` | 'wait_at_waypoint' |
+Type: `string` Default: `'wait_at_waypoint'`
 
-Description
 :   A plugin to define tasks to be executed when robot arrives to a waypoint.
 
-Note
-:   The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+    Note
+    :   The plugin namespace defined needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
 
-    Example:
-    ```yaml
-    waypoint_follower:
-      ros__parameters:
-        waypoint_task_executor_plugin: "wait_at_waypoint"
-        wait_at_waypoint:
-          plugin: "nav2_waypoint_follower::WaitAtWaypoint"
-          enabled: True
-          waypoint_pause_duration: 0
-    ```
+        Example:
+        ```yaml
+        waypoint_follower:
+          ros__parameters:
+            waypoint_task_executor_plugin: "wait_at_waypoint"
+            wait_at_waypoint:
+              plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+              enabled: True
+              waypoint_pause_duration: 0
+        ```
 
 ## Provided Plugins
 

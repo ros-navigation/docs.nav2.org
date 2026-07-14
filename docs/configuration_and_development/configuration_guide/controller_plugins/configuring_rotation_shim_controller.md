@@ -24,110 +24,74 @@ See the package's `README` for more complete information.
 
 ### **`angular_dist_threshold`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.785   |
+Type: `double` Default: `0.785`
 
-Description
 :   Maximum angular distance, in radians, away from the path heading to trigger rotation
 
 ### **`angular_disengage_threshold`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3925  |
+Type: `double` Default: `0.3925`
 
-Description
 :   The threshold to the path's heading before disengagement (radians). This allows for better alignment before passing to the child controller when engaged.
 
 ### **`forward_sampling_distance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.5     |
+Type: `double` Default: `0.5`
 
-Description
 :   Forward distance, in meters, along path to select a sampling point to use to approximate path heading. This distance should not be larger than the path handler's prune distance.
 
 ### **`rotate_to_heading_angular_vel`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.8     |
+Type: `double` Default: `1.8`
 
-Description
 :   Angular rotational velocity, in rad/s, to rotate to the path heading
 
 ### **`primary_controller`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Internal controller plugin to use for actual control behavior after rotating to heading
 
 ### **`max_angular_accel`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 3.2     |
+Type: `double` Default: `3.2`
 
-Description
 :   Maximum angular acceleration for rotation to heading (rad/s/s)
 
 ### **`max_cost_threshold`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 254.0   |
+Type: `double` Default: `254.0`
 
-Description
 :   Maximum footprint cost threshold to detect a collision. Defaults to 254.0 i.e., LETHAL_OBSTACLE. If needed, it can be adjusted to match the behavior of the primary controller plugin.
 
 ### **`simulate_ahead_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.
 
 ### **`rotate_to_goal_heading`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
 
 ### **`rotate_to_heading_once`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   If true, the rotationShimController will only rotate to heading once on a new goal, not each time a path is set.
 
 ### **`closed_loop`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   If false, the rotationShimController will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately and the robot's controllers are responsive, this can be a good assumption. If true, it will use odometry to estimate the robot's current speed. In this case it is important that the source is high-rate and low-latency to account for control delay.
 
 ### **`use_path_orientations`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   If true, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. If false, the controller will compute the heading from the path point's relative locations instead of using the path point orientations. Use for feasible planners like the Smac Planner which generate feasible paths with orientations for forward and reverse motion.
 
 ## Example

@@ -9,174 +9,117 @@ It computes the robot's odometry based on the command velocity's output request 
 
 ### **`update_duration`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.01    |
+Type: `double` Default: `0.01`
 
-Description
 :   The duration between updates (s)
 
 ### **`base_frame_id`**
 
-| Type     | Default          |
-|----------|------------------|
-| `string` | "base_footprint" |
+Type: `string` Default: `"base_footprint"`
 
-Description
 :   The base frame to use.
 
 ### **`odom_frame_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "odom"  |
+Type: `string` Default: `"odom"`
 
-Description
 :   The odom frame to use.
 
 ### **`map_frame_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "map"   |
+Type: `string` Default: `"map"`
 
-Description
 :   The map frame to use.
 
 ### **`scan_frame_id`**
 
-| Type     | Default     |
-|----------|-------------|
-| `string` | "base_scan" |
+Type: `string` Default: `"base_scan"`
 
-Description
 :   The scan frame to use to publish a scan
 
 ### **`enable_stamped_cmd_vel`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | True    |
+Type: `string` Default: `True`
 
-Description
 :   Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped).
 
 ### **`scan_publish_dur`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   The duration between publishing scan (in sec)
 
 ### **`odom_publish_dur`**
 
-| Type     | Default             |
-|----------|---------------------|
-| `double` | `<update_duration>` |
+Type: `double` Default: `<update_duration>`
 
-Description
 :   The duration between publishing odometry (in sec). Defaults to `update_duration`.
 
 ### **`publish_map_odom_tf`**
 
-| Type     | Default |
-|----------|---------|
-| `bool`   | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether or not to publish tf from `map_frame_id` to `odom_frame_id`
 
 ### **`publish_scan`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether or not to publish a fake laser scan.
 
 ### **`publish_clock`**
 
-| Type     | Default |
-|----------|---------|
-| `bool`   | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether or not to publish simulated clock to `/clock`
 
 ### **`speed_factor`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Speed factor for the simulated clock, e.g. `2.0` runs simulation at 2x wall time.
     Only used when `publish_clock` is `true`. Dynamically reconfigurable.
 
 ### **`scan_range_min`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.05    |
+Type: `double` Default: `0.05`
 
-Description
 :   Minimum measurable distance from the scan in meters. Values below this are considered invalid.
 
 ### **`scan_range_max`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 30.0    |
+Type: `double` Default: `30.0`
 
-Description
 :   Maximum measurable distance from the scan in meters. Values beyond this are out of range.
 
 ### **`scan_angle_min`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | -3.14   |
+Type: `double` Default: `-3.14`
 
-Description
 :   Starting angle of the scan in radians (leftmost angle)
 
 ### **`scan_angle_max`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 3.14    |
+Type: `double` Default: `3.14`
 
-Description
 :   Ending angle of the scan in radians (rightmost angle)
 
 ### **`scan_angle_increment`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0261  |
+Type: `double` Default: `0.0261`
 
-Description
 :   Angular resolution of the scan in radians (angle between consecutive measurements)
 
 ### **`scan_use_inf`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to use `inf` for out-of-range values.
     If `false`, values are set to `scan_range_max - 0.1` instead.
 
 ### **`scan_noise_std`**
-| Type     | Default |
-|----------|---------|
-| `double` | 0.01    |
+Type: `double` Default: `0.01`
 
-Description
 :   Standard deviation of Gaussian noise added to scan ranges (in meters).
 
 

@@ -6,10 +6,7 @@
 
 ### **`<dwb plugin>.sim_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.7     |
+Type: `double` Default: `1.7`
 
 
-Description
 :   Time to simulate ahead by (s).

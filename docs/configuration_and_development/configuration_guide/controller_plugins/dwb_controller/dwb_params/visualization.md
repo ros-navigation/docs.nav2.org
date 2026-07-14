@@ -6,45 +6,30 @@
 
 ### **`<dwb plugin>.publish_evaluation`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to publish the local plan evaluation.
 
 ### **`<dwb plugin>.publish_local_plan`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to publish the local planner's plan.
 
 ### **`<dwb plugin>.publish_trajectories`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to publish debug trajectories.
 
 ### **`<dwb plugin>.publish_cost_grid_pc`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Whether to publish the cost grid.
 
 ### **`<dwb plugin>.marker_lifetime`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   How long for the marker to remain.

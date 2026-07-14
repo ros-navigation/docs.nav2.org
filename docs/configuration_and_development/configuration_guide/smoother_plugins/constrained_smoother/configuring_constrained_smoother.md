@@ -20,101 +20,68 @@ increasing its smoothness and distance from obstacles. Resulting path is marked 
 
 ### **`reversing_enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned
 
 ### **`path_downsampling_factor`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1       |
+Type: `int` Default: `1`
 
-Description
 :   Every n-th node of the path is taken for optimization. Useful for speed-up
 
 ### **`path_upsampling_factor`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1       |
+Type: `int` Default: `1`
 
-Description
 :   Upsampling factor for refining. 0 - path remains downsampled (see `path_downsampling_factor`), 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
 
 ### **`keep_start_orientation`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to prevent the start orientation from being smoothed
 
 ### **`keep_goal_orientation`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to prevent the goal orientation from being smoothed
 
 ### **`minimum_turning_radius`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.4     |
+Type: `double` Default: `0.4`
 
-Description
 :   Minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
 
 ### **`w_curve`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 30.0    |
+Type: `double` Default: `30.0`
 
-Description
 :   Weight to enforce minimum_turning_radius
 
 ### **`w_dist`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.0     |
+Type: `double` Default: `0.0`
 
-Description
 :   Weight to bind path to original as optional replacement for cost weight
 
 ### **`w_smooth`**
 
-| Type     | Default   |
-|----------|-----------|
-| `double` | 2000000.0 |
+Type: `double` Default: `2000000.0`
 
-Description
 :   Weight to maximize smoothness of path
 
 ### **`w_cost`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.015   |
+Type: `double` Default: `0.015`
 
-Description
 :   Weight to steer robot away from collision and cost
 
 ### **`w_cost_cusp_multiplier`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 3.0     |
+Type: `double` Default: `3.0`
 
-Description
 :   Option to use higher weight during forward/reverse direction change, helping optimizer to converge or add an extra obstacle avoidance at these problematic segments.
     Following image depicts improvement of the path with `w_cost_cusp_multiplier` (green) compared to one without it (purple). Original path has cyan color.
     <figure markdown="span">
@@ -123,20 +90,14 @@ Description
 
 ### **`cusp_zone_length`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.5     |
+Type: `double` Default: `2.5`
 
-Description
 :   Length of the section around cusp in which nodes use `w_cost_cusp_multiplier` (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost\*w_cost_cusp_multiplier)
 
 ### **`cost_check_points`**
 
-| Type              | Default |
-|-------------------|---------|
-| array of `double` | []      |
+Type: `array of double` Default: `[]`
 
-Description
 :   Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...].
 
     !!! warning "Important"
@@ -150,56 +111,38 @@ Description
 
 ### **`optimizer.max_iterations`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 100     |
+Type: `int` Default: `100`
 
-Description
 :   Maximum number of optimizer iterations
 
 ### **`optimizer.debug_optimizer`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Whether to print optimizer debug info
 
 ### **`optimizer.linear_solver_type`**
 
-| Type     | Default                  |
-|----------|--------------------------|
-| `string` | "SPARSE_NORMAL_CHOLESKY" |
+Type: `string` Default: `"SPARSE_NORMAL_CHOLESKY"`
 
-Description
 :   Linear solver type to be used by optimizer. Valid values are `SPARSE_NORMAL_CHOLESKY` and `DENSE_QR`
 
 ### **`optimizer.gradient_tol`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | 1e-10   |
+Type: `bool` Default: `1e-10`
 
-Description
 :   Gradient tolerance optimization termination criterion
 
 ### **`optimizer.fn_tol`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | 1e-7    |
+Type: `bool` Default: `1e-7`
 
-Description
 :   Function tolerance optimization termination criterion
 
 ### **`optimizer.param_tol`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | 1e-15   |
+Type: `bool` Default: `1e-15`
 
-Description
 :   Parameter tolerance optimization termination criterion
 
 ## Example

@@ -10,18 +10,12 @@ Scores a trajectory based on how close the trajectory gets the robot to the goal
 
 ### **`<dwb plugin>.<name>.aggregation_type`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "last"  |
+Type: `string` Default: `"last"`
 
-Description
 :   last, sum, or product combination methods.
 
 ### **`<dwb plugin>.<name>.scale`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Weighed scale for critic.

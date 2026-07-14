@@ -16,191 +16,128 @@ The image above you can see the reverse expansion enabled, such that the robot c
 
 ### **`<name>.allow_unknown`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to allow traversing/search in unknown space.
 
 ### **`<name>.tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   If an exact path cannot be found, the tolerance (as measured by the heuristic cost-to-goal) that would be acceptable to diverge from the requested pose in distance-to-goal.
 
 ### **`<name>.max_iterations`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1000000 |
+Type: `int` Default: `1000000`
 
-Description
 :   Maximum number of search iterations before failing to limit compute time, disabled by -1.
 
 ### **`<name>.max_on_approach_iterations`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1000    |
+Type: `int` Default: `1000`
 
-Description
 :   Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances.
 
 ### **`<name>.terminal_checking_interval`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 5000    |
+Type: `int` Default: `5000`
 
-Description
 :   Number of iterations between checking if the goal has been cancelled or planner timed out
 
 ### **`<name>.max_planning_time`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 5.0     |
+Type: `double` Default: `5.0`
 
-Description
 :   Maximum planning time in seconds.
 
 ### **`<name>.analytic_expansion_ratio`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 3.5     |
+Type: `double` Default: `3.5`
 
-Description
 :   SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic. Negative values convert to infinite.
 
 ### **`<name>.analytic_expansion_max_length`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 3.0     |
+Type: `double` Default: `3.0`
 
-Description
 :   If the length is too far, reject this expansion. This prevents shortcutting of search with its penalty functions far out from the goal itself (e.g. so we don't reverse half-way across open maps or cut through high cost zones). This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
 
 ### **`<name>.analytic_expansion_max_cost`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 200.0   |
+Type: `double` Default: `200.0`
 
-Description
 :   For Hybrid/Lattice nodes: The maximum single cost for any part of an analytic expansion to contain and be considered valid (except when necessary on approach to goal). This allows for removing of potential shortcutting into higher cost spaces than you might otherwise desire
 
 ### **`<name>.analytic_expansion_max_cost_override`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2\*pi\*min_r of the goal, then it will override the max cost if `false`.
 
 ### **`<name>.reverse_penalty`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Heuristic penalty to apply to SE2 node if searching in reverse direction. Only used in `allow_reverse_expansion = true`.
 
 ### **`<name>.change_penalty`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.05    |
+Type: `double` Default: `0.05`
 
-Description
 :   Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search.
 
 ### **`<name>.non_straight_penalty`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.05    |
+Type: `double` Default: `1.05`
 
-Description
 :   Heuristic penalty to apply to SE2 node if searching in non-straight direction.
 
 ### **`<name>.cost_penalty`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 2.0     |
+Type: `double` Default: `2.0`
 
-Description
 :   Heuristic penalty to apply to SE2 node for cost at pose. Allows State Lattice to be cost aware.
 
 ### **`<name>.rotation_penalty`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 5.0     |
+Type: `double` Default: `5.0`
 
-Description
 :   Penalty to apply for rotations in place, if minimum control set contains in-place rotations. This should always be set sufficiently high to weight against in-place rotations unless strictly necessary for obstacle avoidance or there may be frequent discontinuities in the plan where the plan requests the robot to rotate in place to short-cut an otherwise smooth forward-moving path for marginal path distance savings.
 
 ### **`<name>.retrospective_penalty`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.015   |
+Type: `double` Default: `0.015`
 
-Description
 :   Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0. Must be *0.0* to be fully admissible.
 
 ### **`<name>.lattice_filepath`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | ""      |
+Type: `string` Default: `""`
 
-Description
 :   The filepath to the state lattice minimum control set graph, this will default to a 16 bin, 0.5m turning radius control set located in `test/` for basic testing and evaluation (opposed to Hybrid-A\*'s default of 0.5m).
 
 ### **`<name>.lookup_table_size`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 20.0    |
+Type: `double` Default: `20.0`
 
-Description
 :   Size of the dubin/reeds-sheep distance window to cache, in meters.
 
 ### **`<name>.cache_obstacle_heuristic`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
 
 ### **`<name>.allow_reverse_expansion`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
 
 ### **`<name>.debug_visualizations`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Whether to publish expansions on the `/expansions` topic as an array of poses and the path's footprints on the `/planned_footprints` topic.
 
     !!! warning
@@ -209,110 +146,74 @@ Description
 
 ### **`<name>.smooth_path`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   If true, does simple and fast smoothing post-processing to the path from search
 
 ### **`<name>.smoother.max_iterations`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1000    |
+Type: `int` Default: `1000`
 
-Description
 :   The maximum number of iterations the smoother has to smooth the path, to bound potential computation.
 
 ### **`<name>.smoother.w_smooth`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3     |
+Type: `double` Default: `0.3`
 
-Description
 :   Weight for smoother to apply to smooth out the data points
 
 ### **`<name>.smoother.w_data`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.2     |
+Type: `double` Default: `0.2`
 
-Description
 :   Weight for smoother to apply to retain original data information
 
 ### **`<name>.smoother.tolerance`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1e-10   |
+Type: `double` Default: `1e-10`
 
-Description
 :   Parameter tolerance change amount to terminate smoothing session
 
 ### **`<name>.smoother.do_refinement`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A\* planner but can be helpful on the state lattice planner to reduce the "blocky" movements in State Lattice caused by the limited number of headings.
 
 ### **`<name>.smoother.refinement_num`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 2       |
+Type: `int` Default: `2`
 
-Description
 :   Number of times to recursively attempt to smooth, must be `>= 1`.
 
 ### **`<name>.goal_heading_mode`**
 
-| Type     | Default   |
-|----------|-----------|
-| `string` | "DEFAULT" |
+Type: `string` Default: `"DEFAULT"`
 
-Description
 :   Goal heading mode enum string to plan goal with multiple orientation. Options are "DEFAULT", "BIDIRECTIONAL" and "ALL_DIRECTION". With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the "BIDIRECTIONAL" mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For "ALL_DIRECTION" mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the "BIDIRECTIONAL" and "ALL_DIRECTION" mode, the planner returns the path with the minimum cost.
 
 ### **`<name>.coarse_search_resolution`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1       |
+Type: `int` Default: `1`
 
-Description
 :   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are > 24. Otherwise, leave as 1 (fine search).
 
 ### **`<name>.downsample_obstacle_heuristic`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Advanced feature: This allows a user to disable downsampling of the obstacle heuristic's costmap representation to search at the costmap's full-resolution. This will come at increased up-front costs while searching for the 2D approximate route to the goal in exchange for less search iterations and a slightly more smooth path. With `smooth_path` on, this increased smoothness is noticeable but not massively different. When combined with all of the advanced features however, it can contribute to a better overall plan in exchange for some compute time. This scales with map size and complexity of the path plan requested. For simpler maps / paths, this may actually improve performance due to low up-front search times and lower iterations.
 
 ### **`<name>.use_quadratic_cost_penalty`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Advanced feature: This allows a user to specify a quadratic traversal and heuristic cost computation (e.g. `cost * cost`) rather than linear. This will speed up the planner since the optimal channel for feasible search is deeper and prunes search branches more aggressively. This will also create overall much smoother paths since search will not attempt to refine itself to stay in the center of wide aisleways or open spaces to reduce low finite costs. However, the smoothness and less sensitivity to cost also makes it come somewhat closer to obstacles. Broadly speaking the change and non-straight penalties can be disabled when this feature is in use. The cost penalty and inflation layer parameters may need to be adjusted when enabling this parameter to create optimal performance.
 
 ### **`allow_parameter_qos_overrides`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | true    |
+Type: `bool` Default: `true`
 
-Description
 :   Whether to allow QoS profiles to be overwritten with parameterized values.
 
 ## Example
