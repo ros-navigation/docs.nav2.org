@@ -1,3 +1,7 @@
+---
+watermark: true
+---
+
 # Getting Started { #getting-started }
 
 <div class="grid" markdown>
