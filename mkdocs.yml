@@ -35,7 +35,6 @@ theme:
     - content.code.copy
     - content.tabs.link
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.path
     - navigation.indexes
     - navigation.top # back-to-top button
