@@ -1,3 +1,7 @@
+---
+watermark: true
+---
+
 # Configuration & Development { #configuration-and-development }
 
 <div class="grid" markdown>

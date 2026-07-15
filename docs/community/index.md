@@ -1,3 +1,7 @@
+---
+watermark: true
+---
+
 # Community { #community }
 
 <div class="grid" markdown>

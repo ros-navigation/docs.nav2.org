@@ -1,3 +1,7 @@
+---
+watermark: true
+---
+
 # Tutorials { #tutorials }
 
 <div class="grid" markdown>

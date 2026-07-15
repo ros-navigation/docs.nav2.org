@@ -78,6 +78,7 @@ extra_css:
   - assets/stylesheets/permalink.css
   - assets/stylesheets/sponsorship_banner.css
   - assets/stylesheets/images.css
+  - assets/stylesheets/watermark.css
 
 extra_javascript:
   - https://unpkg.com/katex@0/dist/katex.min.js

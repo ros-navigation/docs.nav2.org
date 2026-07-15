@@ -162,7 +162,10 @@
     {% endif %}
 
     <!-- Page content -->
-    <article class="md-content__inner md-typeset">
+    {% if page.meta and page.meta.watermark %}
+      {% set watermark = "md-typeset--with-watermark" %}
+    {% endif %}
+    <article class="md-content__inner md-typeset {{ watermark }}">
       {% block content %}
         {% include "partials/content.html" %}
       {% endblock %}
