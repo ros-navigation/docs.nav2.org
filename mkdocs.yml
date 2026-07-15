@@ -34,7 +34,6 @@ theme:
     - content.action.edit
     - content.code.copy
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.path
     - navigation.indexes
     - navigation.top # back-to-top button
