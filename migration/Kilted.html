@@ -1299,6 +1299,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
 </ul>
 </li>
 </ul>
@@ -2314,6 +2315,14 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 &lt;!-- After --&gt;
 &lt;TruncatePathLocal robot_base_frame=&quot;base_link&quot; ... /&gt;
 </pre></div>
+</div>
+</div>
+<div class="section" id="asymmetric-inflation-field">
+<h2>Asymmetric Inflation Field<a class="headerlink" href="#asymmetric-inflation-field" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6118">PR #6118</a> adds a new asymmetric inflation field.</p>
+<p>The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.</p>
+<div class="figure align-center">
+<img alt="Costmap with asymmetric inflation layer" src="../_images/asymmetric_layer_active1.png" />
 </div>
 </div>
 </div>

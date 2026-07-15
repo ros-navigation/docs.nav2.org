@@ -59,6 +59,10 @@ Costmap Layers
 | `Legacy Inflation Layer`_      | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
 |                                |                        | costmap with exponential decay   |
 +--------------------------------+------------------------+----------------------------------+
+| `Asymmetric Inflation Layer`_  | Marc Blöchlinger       | Uses the global plan to          |
+|                                |                        | asymmetrically inflate lethal    |
+|                                |                        | obstacles depending on path side |
++--------------------------------+------------------------+----------------------------------+
 |  `Obstacle Layer`_             | Eitan Marder-Eppstein  | Maintains persistent 2D costmap  |
 |                                |                        | from 2D laser scans with         |
 |                                |                        | raycasting to clear free space   |
@@ -99,6 +103,7 @@ Costmap Layers
 .. _Range Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 .. _Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
 .. _Legacy Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp
+.. _Asymmetric Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/asymmetric_inflation_layer.cpp
 .. _Obstacle Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer

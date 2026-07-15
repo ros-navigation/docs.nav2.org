@@ -1298,6 +1298,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#mppi-controller-per-axis-delay-compensation-with-command-history-replay">MPPI Controller: Per-Axis Delay Compensation with command history replay</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
 </ul>
 </li>
 </ul>
@@ -1468,31 +1469,37 @@ for parallelization)</p></td>
 <td><p>Inflates lethal obstacles in
 costmap with exponential decay</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/asymmetric_inflation_layer.cpp">Asymmetric Inflation Layer</a></p></td>
+<td><p>Marc Blöchlinger</p></td>
+<td><p>Uses the global plan to
+asymmetrically inflate lethal
+obstacles depending on path side</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></p></td>
 <td><p>Eitan Marder-Eppstein</p></td>
 <td><p>Maintains persistent 2D costmap
 from 2D laser scans with
 raycasting to clear free space</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/SteveMacenski/spatio_temporal_voxel_layer/">Spatio-Temporal Voxel Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/SteveMacenski/spatio_temporal_voxel_layer/">Spatio-Temporal Voxel Layer</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Maintains temporal 3D sparse
 volumetric voxel grid with decay
 through sensor models</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/SteveMacenski/nonpersistent_voxel_layer">Non-Persistent Voxel Layer</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/SteveMacenski/nonpersistent_voxel_layer">Non-Persistent Voxel Layer</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Maintains 3D occupancy grid
 consisting only of the most
 sets of measurements</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp">Denoise Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp">Denoise Layer</a></p></td>
 <td><p>Andrey Ryzhikov</p></td>
 <td><p>Filters noise-induced
 standalone obstacles or small
 obstacles groups</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp">Plugin Container Layer</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp">Plugin Container Layer</a></p></td>
 <td><p>Alexander Yuen</p></td>
 <td><p>Combines the different costmap
 layers specified under this
@@ -1500,7 +1507,7 @@ layer in order populate the same
 costmap with different isolated
 combinations of costmap layers</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin">Ground Consistency Layer</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin">Ground Consistency Layer</a></p></td>
 <td><p>Muhammad Haider Khan
 Lodhi</p></td>
 <td><p>Height-aware costmap layer using
@@ -1508,7 +1515,7 @@ Lodhi</p></td>
 with Inflation Layer for terrain-
 aware navigation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/kiwicampus/semantic_segmentation_layer">Semantic Segmentation Layer</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/kiwicampus/semantic_segmentation_layer">Semantic Segmentation Layer</a></p></td>
 <td><p>Pedro Gonzalez</p></td>
 <td><p>Vision-based semantic
 segmentation costmap layer using
