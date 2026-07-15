@@ -1045,3 +1045,13 @@ Behavior trees using ``TruncatePathLocal`` with the old port name will need to u
 
    <!-- After -->
    <TruncatePathLocal robot_base_frame="base_link" ... />
+
+Asymmetric Inflation Field
+--------------------------
+`PR #6118 <https://github.com/ros-navigation/navigation2/pull/6118>`_ adds a new asymmetric inflation field.
+
+The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.
+
+.. figure:: images/asymmetric_layer_active.png
+    :align: center
+    :alt: Costmap with asymmetric inflation layer
