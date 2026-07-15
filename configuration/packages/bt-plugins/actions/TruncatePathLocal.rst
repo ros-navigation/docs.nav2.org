@@ -41,16 +41,16 @@ Input Ports
   Description
       The trimming distance in backward direction.
 
-:robot_frame:
+:robot_base_frame:
 
   ====== ===========
   Type   Default
   ------ -----------
-  string "base_link"
+  string N/A
   ====== ===========
 
   Description
-      Robot base frame id.
+      Robot base frame id. If not provided, uses the BT Navigator's ``robot_base_frame`` setting automatically.
 
 :transform_tolerance:
 

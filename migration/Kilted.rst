@@ -1028,6 +1028,24 @@ When non-zero, the optimizer fills the first ``round(delay / model_dt)`` rollout
 
 The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation ``model_delay_wz=0.6`` (right), tracking is visibly better.
 
+SpeedFilter path lookahead
+--------------------------
+`PR #6150 <https://github.com/ros-navigation/navigation2/pull/6150>`_ adds an optional path-lookahead mode to the SpeedFilter plugin, enabled via the ``enable_path_lookahead`` parameter (default disabled). When enabled, the filter looks ahead along the planned path and applies the strictest speed limit found within a velocity-dependent window, allowing the robot to decelerate before entering a speed-restricted zone. The default behavior of speed limits being applied only at the robot's current pose is unchanged when the parameter ``enable_path_lookahead`` is left disabled. See the :ref:`speed_filter` configuration page for the new parameters that control the lookahead behavior.
+
+TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame
+------------------------------------------------------------------
+`PR #6242 <https://github.com/ros-navigation/navigation2/pull/6242>`_ renames the ``robot_frame`` input port to ``robot_base_frame`` to align with Nav2 naming conventions. The node now uses ``deconflictPortAndParamFrame()`` to respect the ``robot_base_frame`` parameter from the BT Navigator config when the port is omitted, matching the behavior of other BT nodes like ``GetCurrentPose`` and ``GoalReached``.
+
+Behavior trees using ``TruncatePathLocal`` with the old port name will need to update:
+
+.. code-block:: xml
+
+   <!-- Before -->
+   <TruncatePathLocal robot_frame="base_link" ... />
+
+   <!-- After -->
+   <TruncatePathLocal robot_base_frame="base_link" ... />
+
 Asymmetric Inflation Field
 --------------------------
 `PR #6118 <https://github.com/ros-navigation/navigation2/pull/6118>`_ adds a new asymmetric inflation field.

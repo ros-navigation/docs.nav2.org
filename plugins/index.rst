@@ -90,7 +90,14 @@ Costmap Layers
 |                                |                        | with Inflation Layer for terrain-|
 |                                |                        | aware navigation.                |
 +--------------------------------+------------------------+----------------------------------+
+| `Semantic Segmentation Layer`_ |  Pedro Gonzalez        | Vision-based semantic            |
+|                                |                        | segmentation costmap layer using |
+|                                |                        | per-pixel class masks and        |
+|                                |                        | registered pointclouds for       |
+|                                |                        | terrain-aware navigation.        |
++--------------------------------+------------------------+----------------------------------+
 
+.. _Semantic Segmentation Layer: https://github.com/kiwicampus/semantic_segmentation_layer
 .. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
 .. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
 .. _Range Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp

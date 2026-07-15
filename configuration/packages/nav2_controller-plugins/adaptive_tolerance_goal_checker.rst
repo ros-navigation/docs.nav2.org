@@ -11,6 +11,8 @@ The goal is cosidered reached when one of the following conditions is met:
   - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
   - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
 
+When ``stateful`` is enabled, the XY goal reached state is preserved after one of the above conditions has been satisfied. See ``xy_goal_tolerance_buffer`` for configuring the hysteresis behavior.
+
 .. image:: /images/adaptive_tolerance_goal_checker.png
    :alt: AdaptiveToleranceGoalChecker Illustration
    :align: center
@@ -41,6 +43,17 @@ Parameters
 
     Description
         Coarse (fallback) XY tolerance to the goal (m). When the robot is within this tolerance but outside the fine tolerance, the goal is considered reached only if one of the coarse-tier acceptance conditions fires (stopped stagnation, distance stagnation, or finish-line crossing). Should be larger than ``fine_xy_goal_tolerance``.
+
+:``<nav2_controller plugin>``.xy_goal_tolerance_buffer:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.0
+  ====== =======
+
+    Description
+        Hysteresis buffer for stateful XY position checking (m). When ``stateful`` is true, after the XY goal condition has been satisfied, the robot may drift within the corresponding accepted tolerance plus this buffer without rechecking the XY position. If the robot moves outside this buffered region, the previous XY reached state is cleared and the XY position must be checked again.
 
 :``<nav2_controller plugin>``.yaw_goal_tolerance:
 
@@ -131,6 +144,7 @@ Example
           plugin: "nav2_controller::AdaptiveToleranceGoalChecker"
           fine_xy_goal_tolerance: 0.10
           coarse_xy_goal_tolerance: 0.25
+          xy_goal_tolerance_buffer: 0.10
           yaw_goal_tolerance: 0.25
           path_length_tolerance: 1.0
           stateful: true
