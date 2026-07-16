@@ -42,3 +42,7 @@
     background-size: 50%;
   }
 }
+
+[data-md-color-scheme="slate"] .md-typeset--with-watermark:before {
+  filter: brightness(10);
+}
