@@ -8,7 +8,7 @@ This layer places an exponential decay functions around obstacles to increase co
 
 ### **`<inflation layer>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 
@@ -26,13 +26,13 @@ Type: `double` Default: `10.0`
 
 ### **`<inflation layer>.inflate_unknown`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to inflate unknown cells as if lethal.
 
 ### **`<inflation layer>.inflate_around_unknown`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to inflate unknown cells.
 

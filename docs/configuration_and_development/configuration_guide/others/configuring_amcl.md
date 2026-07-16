@@ -62,7 +62,7 @@ Type: `double` Default: `0.3`
 
 ### **`do_beamskip`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to do beam skipping in Likelihood field model.
 
@@ -104,7 +104,7 @@ Type: `string` Default: `"likelihood_field"`
 
 ### **`set_initial_pose`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Causes AMCL to set initial pose from the initial_pose\* parameters instead of waiting for the initial_pose message.
 
@@ -197,7 +197,7 @@ Type: `double` Default: `0.2`
 
 ### **`tf_broadcast`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Set this to false to prevent amcl from publishing the transform between the global frame and the odometry frame.
 
@@ -251,7 +251,7 @@ Type: `double` Default: `0.005`
 
 ### **`always_reset_initial_pose`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Requires that AMCL is provided an initial pose either via topic or initial_pose\* parameter (with parameter set_initial_pose: true) when reset. Otherwise, by default AMCL will use the last known pose to initialize.
 
@@ -269,7 +269,7 @@ Type: `string` Default: `map`
 
 ### **`first_map_only`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the *LoadMap* service in *map_server*.
 

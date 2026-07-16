@@ -129,7 +129,7 @@ Type: `double` Default: `0.0`
 
 ### **`order_ids`**
 
-Type: `bool` Default: `0`
+Type: `bool` Default: `false`
 
 :   For `opennav_row_coverage`, whether to reorder the parsed rows in the order of their `id` s.
 

@@ -11,7 +11,7 @@ This plugin implements a cost-aware Hybrid-A\* global path planner with motion p
 
 ### **`<name>.downsample_costmap`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to downsample costmap to another resolution for search.
 
@@ -23,7 +23,7 @@ Type: `int` Default: `1`
 
 ### **`<name>.allow_unknown`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to allow traversing/search in unknown space.
 

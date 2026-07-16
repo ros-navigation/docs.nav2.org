@@ -28,7 +28,7 @@ Type: `int` Default: `3`
 
 ### **`do_refinement`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to smooth the smoothed results `refinement_num` times to get an improved result.
 
@@ -40,7 +40,7 @@ Type: `int` Default: `2`
 
 ### **`enforce_path_inversion`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
 

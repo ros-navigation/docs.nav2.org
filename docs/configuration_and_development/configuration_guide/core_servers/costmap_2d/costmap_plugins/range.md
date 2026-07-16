@@ -8,7 +8,7 @@ This costmap layer implements a plugin that processes sonar, IR, or other 1-D se
 
 ### **`<range layer>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 
@@ -60,7 +60,7 @@ Type: `double` Default: `0.8`
 
 ### **`<range layer>.clear_on_max_reading`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to clear the sensor readings on max range.
 

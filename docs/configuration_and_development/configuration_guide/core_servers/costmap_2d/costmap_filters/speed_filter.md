@@ -12,7 +12,7 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
 ### **`<filter name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 
@@ -43,7 +43,7 @@ Type: `double` Default: `0.1`
 
 ### **`<filter name>.enable_path_lookahead`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to enable path lookahead mode. When disabled (default), the speed filter applies the speed limit of the cell directly at the robot pose. When enabled, the filter samples poses along the planned path within a velocity-dependent window and applies the strictest non-zero speed limit found along that window. This allows the robot to begin decelerating before entering a speed-restricted zone rather than at the boundary itself.
 

@@ -59,7 +59,7 @@ The data may be obtained from different data sources:
 
 ### **`enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Sets the initial state. This can come in handy when the robot is docked/inside any of the zones at startup and the node needs to be disabled then.
     Please note that is not a dynamic parameter, there's `/toggle` service interface
@@ -109,7 +109,7 @@ Type: `double` Default: `2.0`
 
 ### **`base_shift_correction`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to correct source data towards to base frame movement, considering the difference between current time and latest source time. If enabled, produces more accurate sources positioning in the robot base frame, at the cost of slower performance. This will cause average delays for `~1/(2*odom_rate)` per each `cmd_vel` calculation cycle. However, disabling this option for better performance is not recommended for the fast moving robots, where during the typical rate of data sources, robot could move unacceptably far. Thus reasonable odometry rates are recommended (~100 hz).
 
@@ -174,7 +174,7 @@ Type: `string` Default: `"local_costmap/published_footprint"`
 
 ### **`<polygon_name>.polygon_subscribe_transient_local`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   QoS durability setting for the incoming polygon or footprint topic subscription.
 
@@ -243,7 +243,7 @@ Type: `double` Default: `0.1`
 
 ### **`<polygon_name>.visualize`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to publish the polygon in a separate topic.
 
@@ -255,7 +255,7 @@ Type: `string` Default: `<polygon_name>`
 
 ### **`<polygon_name name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to use this polygon for collision monitoring. (Can be dynamically set)
 
@@ -265,7 +265,7 @@ All previous Polygon parameters apply, in addition to the following unique param
 
 ### **`<vel_poly>.holonomic`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to use holonomic or non-holonomic robot model for collision prediction. For holonomic robot model, the resultant velocity will be used to compare the linear velocity range. Additionally, there will be 2 more parameters, `direction_start_angle` and `direction_end_angle`, to specify the resultant velocity direction.
 
@@ -390,7 +390,7 @@ Type: `double` Default: `0.1`
 
 ### **`<source name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to use this source for collision monitoring. (Can be dynamically set)
 

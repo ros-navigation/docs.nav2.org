@@ -16,13 +16,13 @@ Type: `double` Default: `0.5`
 
 ### **`<name>.use_astar`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to use A\*. If false, uses Dijkstra's expansion.
 
 ### **`<name>.allow_unknown`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to allow planning in unknown space.
 

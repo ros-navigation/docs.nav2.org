@@ -49,7 +49,7 @@ Type: `double` Default: `2.0`
 
 ### **`base_shift_correction`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to correct source data towards to base frame movement, considering the difference between current time and latest source time. If enabled, produces more accurate sources positioning in the robot base frame, at the cost of slower performance. This will cause average delays for `~1/(2*odom_rate)` per each `cmd_vel` calculation cycle. However, disabling this option for better performance is not recommended for the fast moving robots, where during the typical rate of data sources, robot could move unacceptably far. Thus reasonable odometry rates are recommended (~100 hz).
 
@@ -122,7 +122,7 @@ Type: `int` Default: `1`
 
 ### **`<polygon_name>.visualize`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to publish the polygon in a separate topic.
 
@@ -134,7 +134,7 @@ Type: `string` Default: `<polygon_name>`
 
 ### **`<source name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to use this source for collision detection. (Can be dynamically set)
 
@@ -193,7 +193,7 @@ Type: `double` Default: `0.1`
 
 ### **`<source name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to use this source for collision detection. (Can be dynamically set)
 

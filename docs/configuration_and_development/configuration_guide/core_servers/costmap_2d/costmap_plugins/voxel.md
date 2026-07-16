@@ -8,13 +8,13 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
 
 ### **`<voxel layer>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 
 ### **`<voxel layer>.footprint_clearing_enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Clear any occupied cells under robot footprint.
 
@@ -75,7 +75,7 @@ Type: `int` Default: `1`
 
 ### **`<voxel layer>.publish_voxel_map`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to publish 3D voxel grid for debug, computationally expensive.
 
@@ -156,19 +156,19 @@ Type: `double` Default: `0.0`
 
 ### **`<voxel layer>.<data source>.inf_is_valid`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Are infinite returns from laser scanners valid measurements to raycast.
 
 ### **`<voxel layer>.<data source>.marking`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether source should mark in costmap.
 
 ### **`<voxel layer>.<data source>.clearing`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether source should raytrace clear in costmap.
 

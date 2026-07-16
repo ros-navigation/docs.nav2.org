@@ -6,32 +6,32 @@ This implements a costmap layer taking in a map from either SLAM or `map_server`
 
 ### **`<static layer>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 
 ### **`<static layer>.footprint_clearing_enabled`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Clear any occupied cells under robot footprint.
 
 ### **`<static layer>.restore_cleared_footprint`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Restore map after clearing the area the footprint occupied.
     If `footprint_clearing_enabled` is false, this parameter is ignored.
 
 ### **`<static layer>.subscribe_to_updates`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Subscribe to static map updates after receiving first.
 
 ### **`<static layer>.map_subscribe_transient_local`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   QoS settings for map topic.
 

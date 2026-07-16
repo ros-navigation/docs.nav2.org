@@ -39,7 +39,7 @@ Type: `string` Default: `"base_scan"`
 
 ### **`enable_stamped_cmd_vel`**
 
-Type: `string` Default: `True`
+Type: `string` Default: `true`
 
 :   Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped).
 
