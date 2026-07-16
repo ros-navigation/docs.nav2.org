@@ -33,7 +33,7 @@ Type: `string` Default: `"base_link"`
 
 ### **`smoother_plugins`**
 
-Type: `vector<string>` Default: `{"nav2_smoother::SimpleSmoother"}`
+Type: `vector<string>` Default: `["simple_smoother"]`
 
 :   List of plugin names to use, also matches action server names.
 

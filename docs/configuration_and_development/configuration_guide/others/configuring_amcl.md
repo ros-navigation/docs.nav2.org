@@ -257,13 +257,13 @@ Type: `bool` Default: `false`
 
 ### **`scan_topic`**
 
-Type: `string` Default: `scan`
+Type: `string` Default: `"scan"`
 
 :   Laser scan topic to subscribe to.
 
 ### **`map_topic`**
 
-Type: `string` Default: `map`
+Type: `string` Default: `"map"`
 
 :   Map topic to subscribe to.
 

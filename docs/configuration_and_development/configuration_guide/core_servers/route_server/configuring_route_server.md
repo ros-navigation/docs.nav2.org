@@ -209,7 +209,7 @@ Type: `double` Default: `1.0`
 
 ### **`costmap_topic`**
 
-Type: `string` Default: `global_costmap/costmap_raw`
+Type: `string` Default: `"global_costmap/costmap_raw"`
 
 :   Costmap topic to use for scoring.
 
@@ -322,7 +322,7 @@ Type: `double` Default: `1.0`
 
 ### **`semantic_classes`**
 
-Type: `vector<string>` Default: `[]`
+Type: `vector<string>` Default: `[""]`
 
 :   The list of semantic classes in your graph that you would like to score based off of.
 
@@ -334,7 +334,7 @@ Type: `double` Default: `N/A`
 
 ### **`semantic_key`**
 
-Type: `string` Default: `class`
+Type: `string` Default: `"class"`
 
 :   The key to search for edge's semantic data with the edge's metadata. If empty string, will look at key names instead.
 
@@ -400,13 +400,13 @@ This route operation will check the graph at each state change (e.g. node passed
 
 ### **`speed_limit_topic`**
 
-Type: `string` Default: `speed_limit`
+Type: `string` Default: `"speed_limit"`
 
 :   The topic to publish new speed limits to.
 
 ### **`speed_tag`**
 
-Type: `string` Default: `speed_limit`
+Type: `string` Default: `"speed_limit"`
 
 :   The graph's semantic metadata key to look for speed limits under.
 
@@ -457,7 +457,7 @@ This route operation will track times taken to traverse particular edges to writ
 
 ### **`time_tag`**
 
-Type: `string` Default: `abs_time_taken`
+Type: `string` Default: `"abs_time_taken"`
 
 :   Metadata tag to write the time taken to within an edge. Is used with the `TimeScorer` to give an improved experiential estimate of traversal times.
 

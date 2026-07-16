@@ -34,7 +34,7 @@ Type: `bool` Default: `true`
 
 ### **`controller_plugins`**
 
-Type: `vector<string>` Default: `['FollowPath']`
+Type: `vector<string>` Default: `["FollowPath"]`
 
 :   List of mapped names for controller plugins for processing requests and parameters.
 

@@ -51,7 +51,7 @@ Type: `double` Default: `0.05`
 
 ### **`<obstacle layer>.observation_sources`**
 
-Type: `vector<string>` Default: `{""}`
+Type: `vector<string>` Default: `[""]`
 
 :   namespace of sources of data.
 

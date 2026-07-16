@@ -23,7 +23,7 @@ Type: `int` Default: `20`
 
 ### **`global_frame_id`**
 
-Type: `string` Default: `'map'`
+Type: `string` Default: `"map"`
 
 :   The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
     convert GPS waypoints to this frame.
@@ -48,7 +48,7 @@ Type: `bool` Default: `true`
 
 ### **`waypoint_task_executor_plugin`**
 
-Type: `string` Default: `'wait_at_waypoint'`
+Type: `string` Default: `"wait_at_waypoint"`
 
 :   A plugin to define tasks to be executed when robot arrives to a waypoint.
 

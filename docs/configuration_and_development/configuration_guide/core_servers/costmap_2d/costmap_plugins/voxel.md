@@ -87,7 +87,7 @@ Type: `double` Default: `0.05`
 
 ### **`<voxel layer>.observation_sources`**
 
-Type: `vector<string>` Default: `{""}`
+Type: `vector<string>` Default: `[""]`
 
 :   Namespace of sources of data.
 

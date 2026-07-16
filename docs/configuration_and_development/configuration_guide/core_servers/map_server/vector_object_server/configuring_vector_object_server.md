@@ -115,7 +115,7 @@ Type: `double` Default: `0.1`
 
 ### **`shapes`**
 
-Type: `vector<string>` Default: `{}`
+Type: `vector<string>` Default: `[""]`
 
 :   List of vector objects (polygons and circles). Empty by-default.
 

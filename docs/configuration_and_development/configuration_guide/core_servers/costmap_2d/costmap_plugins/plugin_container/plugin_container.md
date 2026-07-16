@@ -12,7 +12,7 @@ Type: `bool` Default: `true`
 
 ### **`<plugin container layer>.plugins`**
 
-Type: `vector<string>` Default: `{}`
+Type: `vector<string>` Default: `[""]`
 
 :   List of mapped costmap layer names for parameter namespaces and names.
 

@@ -613,7 +613,7 @@ Type: `int` Default: `1`
 
 ### **`deadband_velocities`**
 
-Type: `array of double` Default: `[0.05, 0.05, 0.05]`
+Type: `vector<double>` Default: `[0.05, 0.05, 0.05]`
 
 :   The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.
 

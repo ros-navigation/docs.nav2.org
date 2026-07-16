@@ -14,7 +14,7 @@ Make sure to review all parameters for non-default navigator plugins not discuss
 
 ### **`navigators`**
 
-Type: `vector<string>` Default: `{'navigate_to_pose', 'navigate_through_poses'}`
+Type: `vector<string>` Default: `["navigate_to_pose", "navigate_through_poses"]`
 
 :   Plugins for navigator types implementing the `nav2_core::BehaviorTreeNavigator` interface.
     They implement custom action servers with custom interface definitions and use that data to populate and process behavior tree navigation requests. Plugin classes are defined under the same namespace, see examples below. Defaults correspond to the `NavigateToPoseNavigator` and `NavigateThroughPosesNavigator` navigators.
@@ -102,19 +102,19 @@ Type: `double` Default: `0.1` Unit: `seconds`
 
 ### **`global_frame`**
 
-Type: `string` Default: `map`
+Type: `string` Default: `"map"`
 
 :   Reference frame.
 
 ### **`robot_base_frame`**
 
-Type: `string` Default: `base_link`
+Type: `string` Default: `"base_link"`
 
 :   Robot base frame.
 
 ### **`odom_topic`**
 
-Type: `string` Default: `odom`
+Type: `string` Default: `"odom"`
 
 :   Topic on which odometry is published
 

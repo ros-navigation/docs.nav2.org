@@ -66,6 +66,6 @@ Type: `bool` Default: `false`
 
 ### **`<range layer>.input_sensor_type`**
 
-Type: `string` Default: `ALL`
+Type: `string` Default: `"ALL"`
 
 :   Input sensor type is either ALL (automatic selection), VARIABLE (min range != max range), or FIXED (min range == max range).
