@@ -10,7 +10,7 @@ It also hosts the global costmap.
 
 ### **`planner_plugins`**
 
-Type: `vector<string>` Default: `['GridBased']`
+Type: `vector<string>` Default: `["GridBased"]`
 
 :   List of Mapped plugin names for parameters and processing requests.
 

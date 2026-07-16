@@ -73,7 +73,7 @@ Type: `string` Default: `"base_link"`
 
 ### **`behavior_plugins`**
 
-Type: `vector<string>` Default: `{"spin", "back_up", "drive_on_heading", "wait"}`
+Type: `vector<string>` Default: `["spin", "backup", "drive_on_heading", "wait"]`
 
 :   List of plugin names to use, also matches action server names.
 
@@ -210,7 +210,7 @@ Type: `double` Default: `0.1`
 
 ### **`cmd_vel_teleop`**
 
-Type: `string` Default: `cmd_vel_teleop`
+Type: `string` Default: `"cmd_vel_teleop"`
 
 :   Topic to listen for teleop messages.
 
