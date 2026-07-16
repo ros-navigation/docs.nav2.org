@@ -75,15 +75,13 @@ Type: `double` Default: `0.0`
 
 Type: `double` Default: `0.0`
 
-Description
-:  Same as `model_delay_vx` for the vy axis (holonomic only)
+:   Same as `model_delay_vx` for the vy axis (holonomic only)
 
 ### **`model_delay_wx`**
 
 Type: `double` Default: `0.0`
 
-Description
-:  Same as `model_delay_vx` for the wz axis
+:   Same as `model_delay_vx` for the wz axis
 
 ### **`vx_std`**
 

@@ -44,7 +44,6 @@ Type: `string` Default: `"binary_state"`
 
 Type: `double` Default: `50.0`
 
-  Descrioption
 :   Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.
 
 ## Example
