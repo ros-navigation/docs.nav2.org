@@ -13,36 +13,42 @@
   height: 100%;
   z-index: -1;
   pointer-events: none;
-
-  /* Adjust screen height with normal screen width */
-  @media screen and (min-height: 740px) and (max-height: 799px) {
-    background-size: 15%;
-  }
-  @media screen and (max-height: 739px) {
-    background-size: 10%;
-  }
-
-  /* Middle screen sizes */
-  @media screen and (max-width: 76.2344rem) {
-    background-size: 30%;
-  }
-  @media screen and (max-width: 76.2344rem) and (min-height: 740px) and (max-height: 799px) {
-    background-size: 20%;
-  }
-  @media screen and (max-width: 76.2344rem) and (max-height: 739px) {
-    background-size: 15%;
-  }
-
-  /* Small screen sizes */
-  @media screen and (max-width: 59.984rem) {
-    background-size: 30%;
-  }
-
-  @media screen and (max-width: 25rem) {
-    background-size: 50%;
-  }
 }
 
 [data-md-color-scheme="slate"] .md-typeset--with-watermark:before {
   filter: brightness(10);
+}
+
+/* Large screen sizes */
+@media screen and (max-width: 76.2344rem) {
+  .md-typeset--with-watermark:before {
+    background-size: 30%;
+  }
+}
+
+/* Medium screen sizes */
+@media screen and (max-width: 59.984rem) {
+  .md-typeset--with-watermark:before {
+    background-size: 35%;
+  }
+}
+
+/* Small screen sizes */
+@media screen and (max-width: 42rem) {
+  .md-typeset--with-watermark:before {
+    background-size: 50%;
+  }
+}
+
+/* Medium screens with reduced height */
+@media screen and (min-width: 60rem) and (max-height: 739px) {
+  .md-typeset--with-watermark:before {
+    background-size: 10%;
+  }
+}
+
+@media screen and (min-width: 60rem) and (min-height: 740px) and (max-height: 799px) {
+  .md-typeset--with-watermark:before {
+    background-size: 15%;
+  }
 }
