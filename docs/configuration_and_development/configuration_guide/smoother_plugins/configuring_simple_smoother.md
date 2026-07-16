@@ -10,56 +10,38 @@ It is recommended this is paired ONLY with infeasible (e.g. 2D) planners, since 
 
 ### **`tolerance`**
 
-| Type     | Default   |
-|----------|-----------|
-| `double` | 1.0e-10   |
+Type: `double` Default: `1.0e-10`
 
-Description
 :   Change in parameter values across path to terminate smoothing
 
 ### **`do_refinement`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether to smooth the smoothed path recursively to refine the quality further
 
 ### **`refinement_num`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 2       |
+Type: `int` Default: `2`
 
-Description
 :   Number of times to recursively attempt to smooth, must be `>= 1`.
 
 ### **`max_its`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1000    |
+Type: `int` Default: `1000`
 
-Description
 :   Maximum number of iterations to attempt smoothing before termination
 
 ### **`w_data`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.2     |
+Type: `double` Default: `0.2`
 
-Description
 :   Weight to apply to path data given (bounds it)
 
 ### **`w_smooth`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.3     |
+Type: `double` Default: `0.3`
 
-Description
 :   Weight to apply to smooth the path (smooths it)
 
 ## Example

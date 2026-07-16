@@ -14,21 +14,15 @@ Make sure to review all parameters for non-default navigator plugins not discuss
 
 ### **`navigators`**
 
-| Type             | Default                                        |
-|------------------|------------------------------------------------|
-| `vector<string>` | {'navigate_to_pose', 'navigate_through_poses'} |
+Type: `vector<string>` Default: `{'navigate_to_pose', 'navigate_through_poses'}`
 
-Description
 :   New to Iron: Plugins for navigator types implementing the `nav2_core::BehaviorTreeNavigator` interface.
     They implement custom action servers with custom interface definitions and use that data to populate and process behavior tree navigation requests. Plugin classes are defined under the same namespace, see examples below. Defaults correspond to the `NavigateToPoseNavigator` and `NavigateThroughPosesNavigator` navigators.
 
 ### **`default_nav_to_pose_bt_xml`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Path to the default behavior tree XML description for `NavigateToPose`,
     see [Behavior Tree XML Nodes][behavior-tree-xml-nodes] for details on this file.
     This parameter used to be `default_bt_xml_filename` pre-Galactic.
@@ -36,207 +30,144 @@ Description
 
 ### **`default_nav_through_poses_bt_xml`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | N/A     |
+Type: `string` Default: `N/A`
 
-Description
 :   Path to the default behavior tree XML description for `NavigateThroughPoses`,
     see [Behavior Tree XML Nodes][behavior-tree-xml-nodes] for details on this file. New to Galactic after `NavigateThroughPoses` was added.
     You can use substitution to specify file path like `$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml`. However, if left empty, the default behavior tree XML will be loaded from the `nav2_bt_navigator` package.
 
 ### **`always_reload_bt_xml`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | false   |
+Type: `bool` Default: `false`
 
-Description
 :   Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
 
 ### **`plugin_lib_names`**
 
-| Type             | Default |
-|------------------|---------|
-| `vector<string>` | [""]    |
+Type: `vector<string>` Default: `[""]`
 
-Description
 :   List of behavior tree node shared libraries. All Nav2 BT libraries are automatically included for you, so this only needs to include your new custom plugins (new to Jazzy).
 
 ### **`bt_loop_duration`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 10      |
+Type: `int` Default: `10`
 
-Description
 :   Duration (in milliseconds) for each iteration of BT execution.
 
 ### **`default_server_timeout`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 20      |
+Type: `int` Default: `20`
 
-Description
 :   Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
 
 ### **`default_cancel_timeout`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 20      |
+Type: `int` Default: `20`
 
-Description
 :   Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
     This value will be overwritten for a BT node if the input port "cancel_timeout" is provided.
 
 ### **`wait_for_service_timeout`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1000    |
+Type: `int` Default: `1000`
 
-Description
 :   Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. `wait_for_action_server(timeout)`).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
 ### **`action_server_result_timeout`**
 
-| Type     | Default | Unit    |
-|----------|---------|---------|
-| `double` | 900.0   | seconds |
+Type: `double` Default: `900.0` Unit: `seconds`
 
-Description
 :   The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to 15 minutes in rcl but was changed to 10 seconds in this [PR #1012]( https://github.com/ros2/rcl/pull/1012), which may be less than some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround.
 
 ### **`transform_tolerance`**
 
-| Type     | Default | Unit    |
-|----------|---------|---------|
-| `double` | 0.1     | seconds |
+Type: `double` Default: `0.1` Unit: `seconds`
 
-Description
 :   TF transform tolerance.
 
 ### **`global_frame`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | map     |
+Type: `string` Default: `map`
 
-Description
 :   Reference frame.
 
 ### **`robot_base_frame`**
 
-| Type     | Default   |
-|----------|-----------|
-| `string` | base_link |
+Type: `string` Default: `base_link`
 
-Description
 :   Robot base frame.
 
 ### **`odom_topic`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | odom    |
+Type: `string` Default: `odom`
 
-Description
 :   Topic on which odometry is published
 
 ### **`goal_blackboard_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "goal"  |
+Type: `string` Default: `"goal"`
 
-Description
 :   Blackboard variable to use to supply the goal to the behavior tree for `NavigateToPose`. Should match ports of BT XML file.
 
 ### **`path_blackboard_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "path"  |
+Type: `string` Default: `"path"`
 
-Description
 :   Blackboard variable to get the path from the behavior tree for `NavigateThroughPoses` feedback. Should match port names of BT XML file.
 
 ### **`goals_blackboard_id`**
 
-| Type     | Default |
-|----------|---------|
-| `string` | "goals" |
+Type: `string` Default: `"goals"`
 
-Description
 :   Blackboard variable to use to supply the goals to the behavior tree for `NavigateThroughPoses`. Should match ports of BT XML file.
 
 ### **`error_code_names`**
 
-| Type             | Default                                                   |
-|------------------|-----------------------------------------------------------|
-| `vector<string>` | ["compute_path_error_code",<br> "follow_path_error_code"] |
+Type: `vector<string>` Default: `["compute_path_error_code", "follow_path_error_code"]`
 
-Description
 :   List of of error codes to compare.
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ## NavigateToPose Parameters
 
 ### **`<navigate_to_pose_name>.enable_groot_monitoring`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to enable Groot2 monitoring for this navigator.
 
 ### **`<navigate_to_pose_name>.groot_server_port`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1667    |
+Type: `int` Default: `1667`
 
-Description
 :   The port number for the Groot2 server.
 
-Note
-:   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+    Note
+    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
 
 ## NavigateThroughPoses Parameters
 
 ### **`<navigate_through_poses>.enable_groot_monitoring`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | False   |
+Type: `bool` Default: `False`
 
-Description
 :   Whether to enable Groot2 monitoring for this navigator.
 
 ### **`<navigate_through_poses>.groot_server_port`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 1669    |
+Type: `int` Default: `1669`
 
-Description
 :   The port number for the Groot2 server.
 
-Note
-:   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
+    Note
+    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
 
 ## Example
 

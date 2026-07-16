@@ -10,59 +10,44 @@ It also hosts the global costmap.
 
 ### **`planner_plugins`**
 
-| Type             | Default       |
-|------------------|---------------|
-| `vector<string>` | ['GridBased'] |
+Type: `vector<string>` Default: `['GridBased']`
 
-Description
 :   List of Mapped plugin names for parameters and processing requests.
 
-Note
-:   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
+    Note
+    :   Each plugin namespace defined in this list needs to have a `plugin` parameter defining the type of plugin to be loaded in the namespace.
 
-    Example:
-    ```yaml
-    planner_server:
-      ros__parameters:
-        planner_plugins: ["GridBased"]
-        GridBased:
-          plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
-    ```
+        Example:
+        ```yaml
+        planner_server:
+          ros__parameters:
+            planner_plugins: ["GridBased"]
+            GridBased:
+              plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
+        ```
 
 ### **`expected_planner_frequency`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
 
 ### **`action_server_result_timeout`**
 
-| Type     | Default | Unit    |
-|----------|---------|---------|
-| `double` | 10.0    | seconds |
+Type: `double` Default: `10.0` Unit: `seconds`
 
-Description
 :   The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to 15 minutes in rcl but was changed to 10 seconds in this [PR #1012](https://github.com/ros2/rcl/pull/1012), which may be less than some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround.
 
 ### **`bond_heartbeat_period`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.1     |
+Type: `double` Default: `0.1`
 
-Description
 :   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 ### **`costmap_update_timeout`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 1.0     |
+Type: `double` Default: `1.0`
 
-Description
 :   The timeout value (seconds) for the costmap to be fully updated before a planning request.
 
 ## Default Plugins

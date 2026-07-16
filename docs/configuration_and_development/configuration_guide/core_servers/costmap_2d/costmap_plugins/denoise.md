@@ -6,20 +6,14 @@ This layer attempts to remove simple noise that may exist in a costmap's layers 
 
 ### **`<denoise layer>.enabled`**
 
-| Type   | Default |
-|--------|---------|
-| `bool` | True    |
+Type: `bool` Default: `True`
 
-Description
 :   Whether it is enabled.
 
 ### **`<denoise layer>.minimal_group_size`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 2       |
+Type: `int` Default: `2`
 
-Description
 :   The minimum number of adjacent obstacles that should not be discarded as noise.
 
     If 1 or less, all obstacles will be kept.
@@ -30,11 +24,8 @@ Description
 
 ### **`<denoise layer>.group_connectivity_type`**
 
-| Type  | Default |
-|-------|---------|
-| `int` | 8       |
+Type: `int` Default: `8`
 
-Description
 :   Obstacles connectivity type (is the way in which obstacles relate to their neighbors).
     Must be 4 or 8.
 

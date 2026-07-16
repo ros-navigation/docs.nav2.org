@@ -10,11 +10,8 @@ Checks the distance to the goal, if the distance to goal is less than the pre-de
 
 ### **`goal_reached_tol`**
 
-| Type     | Default |
-|----------|---------|
-| `double` | 0.25    |
+Type: `double` Default: `0.25`
 
-Description
 :   Tolerance of accepting pose as the goal (m).
 
 ## Example

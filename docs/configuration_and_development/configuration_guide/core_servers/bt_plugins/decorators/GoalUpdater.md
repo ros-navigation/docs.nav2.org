@@ -6,11 +6,8 @@ A custom control node, which updates the goal pose. It subscribes to a topic in 
 
 ### **`goal_updater_topic`**
 
-| Type     | Default       |
-|----------|---------------|
-| `string` | "goal_update" |
+Type: `string` Default: `"goal_update"`
 
-Description
 :   The topic to receive the updated goal pose
 
 
