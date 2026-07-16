@@ -1,6 +1,6 @@
 
 .md-typeset--with-watermark:before {
-  background-image: url(../../images/watermark.png);
+  background-image: url(../../images/watermark.svg);
   background-repeat: no-repeat;
   background-position: center 60%;
   background-size: 20%;
