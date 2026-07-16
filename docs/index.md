@@ -1,3 +1,7 @@
+---
+expand_sidebar_nav: true
+---
+
 # Nav2 { #nav2 }
 
 <style>
