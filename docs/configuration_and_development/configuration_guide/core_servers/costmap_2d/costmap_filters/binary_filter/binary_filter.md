@@ -12,7 +12,7 @@ Filter space value is being calculated as: `Fv = base + multiplier * mask_value`
 
 ### **`<filter name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 

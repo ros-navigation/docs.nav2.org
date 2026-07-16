@@ -6,7 +6,7 @@ This implements a costmap layer which combines costmap layers within a submap, w
 
 ### **`<plugin container layer>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 

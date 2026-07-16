@@ -139,7 +139,7 @@ Type: `double` Default: `0.1`
 
 ### **`<navigate_to_pose_name>.enable_groot_monitoring`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to enable Groot2 monitoring for this navigator.
 
@@ -156,7 +156,7 @@ Type: `int` Default: `1667`
 
 ### **`<navigate_through_poses>.enable_groot_monitoring`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to enable Groot2 monitoring for this navigator.
 

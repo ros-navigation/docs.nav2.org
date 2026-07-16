@@ -6,7 +6,7 @@ This layer attempts to remove simple noise that may exist in a costmap's layers 
 
 ### **`<denoise layer>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 

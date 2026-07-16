@@ -43,7 +43,7 @@ Type: `bool` Default: `false`
 
 ### **`<name>.allow_unknown`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to allow planning in unknown space.
 

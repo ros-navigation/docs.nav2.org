@@ -8,7 +8,7 @@ Note: As Costmap Filters does not have the inflation layer applied to them (sinc
 
 ### **`<filter name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 
@@ -20,7 +20,7 @@ Type: `string` Default: `N/A`
 
 ### **`<filter name>.override_lethal_cost`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   When true, check if the robot is in a lethal keepout zone, if so, replaces those lethal costs with lethal_override_cost.
 

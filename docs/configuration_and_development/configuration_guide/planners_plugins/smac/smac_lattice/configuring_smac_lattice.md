@@ -16,7 +16,7 @@ The image above you can see the reverse expansion enabled, such that the robot c
 
 ### **`<name>.allow_unknown`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to allow traversing/search in unknown space.
 

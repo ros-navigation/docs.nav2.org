@@ -16,7 +16,7 @@ Type: `double` Default: `1.0e-10`
 
 ### **`do_refinement`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to smooth the smoothed path recursively to refine the quality further
 

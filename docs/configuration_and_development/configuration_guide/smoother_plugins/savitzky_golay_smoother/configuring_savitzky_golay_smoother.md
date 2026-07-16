@@ -16,7 +16,7 @@ This algorithm is deterministic and low-parameter. In the below image, some odd 
 
 ### **`do_refinement`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to smooth the smoothed results `refinement_num` times to get an improved result.
 

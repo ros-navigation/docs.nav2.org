@@ -12,7 +12,7 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
 ### **`<filter name>.enabled`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether it is enabled.
 

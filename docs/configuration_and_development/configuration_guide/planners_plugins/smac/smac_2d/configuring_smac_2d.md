@@ -18,7 +18,7 @@ Type: `double` Default: `0.125`
 
 ### **`<name>.downsample_costmap`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to downsample costmap to another resolution for search.
 
@@ -30,7 +30,7 @@ Type: `int` Default: `1`
 
 ### **`<name>.allow_unknown`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   Whether to allow traversing/search in unknown space.
 

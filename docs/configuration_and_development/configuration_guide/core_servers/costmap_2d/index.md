@@ -9,7 +9,7 @@ It is used in the planner and controller servers for creating the space to check
 
 ### **`always_send_full_costmap`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to send the full costmap on every update instead of only incremental updates.
 
@@ -102,7 +102,7 @@ Type: `double` Default: `0.1`
 
 ### **`rolling_window`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   If true, the costmap moves with the robot, maintaining a local view centered around it.
     This is typically used for local costmaps.
@@ -110,7 +110,7 @@ Type: `bool` Default: `False`
 
 ### **`track_unknown_space`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   If false, treats unknown space as free space, else as unknown space.
 
@@ -128,7 +128,7 @@ Type: `double` Default: `60.0`
 
 ### **`trinary_costmap`**
 
-Type: `bool` Default: `True`
+Type: `bool` Default: `true`
 
 :   If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.
 
@@ -146,7 +146,7 @@ Type: `double` Default: `5.0`
 
 ### **`use_maximum`**
 
-Type: `bool` Default: `False`
+Type: `bool` Default: `false`
 
 :   Whether to use the maximum cost when combining multiple costmap layers.
     If true, the highest cost is preserved, ensuring obstacles are not overwritten.
