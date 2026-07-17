@@ -163,7 +163,7 @@ Coming to our tutorial, class `nav2_sms_behavior::SendSms` is loaded dynamically
 5. Compile and it should be registered. You can verify that it has been successfully registered by running:
 
     ```shell
-    $ ros2 plugin list
+    ros2 plugin list
     ```
 
     You should see an output similar to below:
@@ -245,11 +245,11 @@ We also tell the behavior server that the `send_sms` is of type `SendSms` and gi
 Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at [Quickstart][quickstart]. Below is shortcut command for that:
 
 ```bash
-$ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
+ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 ```
 
 In a new terminal run:
 
 ```bash
-$ ros2 action send_goal "send_sms" nav2_sms_behavior/action/SendSms "{message : Hello!! Navigation2 World }"
+ros2 action send_goal "send_sms" nav2_sms_behavior/action/SendSms "{message : Hello!! Navigation2 World }"
 ```

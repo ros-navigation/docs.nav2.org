@@ -221,7 +221,7 @@ Coming back to our tutorial, class `nav2_pure_pursuit_controller::PurePursuitCon
 5. Compile, and it should be registered. You can verify that it has been successfully registered by running:
 
     ```shell
-    $ ros2 plugin list
+    ros2 plugin list
     ```
 
     You should see an output similar to below:
@@ -259,7 +259,7 @@ To pass plugin-specific parameters we have used `<plugin_id>.<plugin_specific_pa
 Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at [Quickstart][quickstart]. Below is a shortcut command for that:
 
 ```bash
-$ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
+ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 ```
 
 Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in [Quickstart][quickstart].
