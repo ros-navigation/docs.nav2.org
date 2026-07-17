@@ -6,13 +6,9 @@
 
 ## Overview
 
-<h1 align="center">
-  <div>
-    <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z6xCat0zaWU?playlist=Z6xCat0zaWU&autoplay=1&mute=1&loop=1" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z6xCat0zaWU?playlist=Z6xCat0zaWU&autoplay=1&mute=1&loop=1" frameborder="0" allowfullscreen></iframe>
+</div>
 
 [Groot](https://github.com/BehaviorTree/Groot) is the companion application of the [BehaviorTree.CPP](https://github.com/BehaviorTree/BehaviorTree.CPP) library used to create, edit, and visualize behavior trees.
 Behavior Trees are deeply integrated into Nav2, used as the main method of orchestrating task server logic across a complex navigation and autonomy stack.

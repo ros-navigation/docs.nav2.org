@@ -22,11 +22,9 @@ The docking procedure is as follows:
 Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
 You can find how to dock your Nova Carter robot using Nav2 and this work in the [nova_carter_docking package](https://github.com/NVIDIA-ISAAC-ROS/nova_carter/tree/main/nova_carter_docking)!
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?playlist=leiGkSVnQak&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?playlist=leiGkSVnQak&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+</div>
 
 ## Requirements
 
@@ -296,11 +294,9 @@ It will set the robot's pose as virtually the dock's staging pose to bypass navi
 This is a useful first-time setup to try docking, refine your detection offsets, and obtain reliability metrics of your complete system.
 See the video below of this all at work!
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/J3ygkehttlg?playlist=J3ygkehttlg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/J3ygkehttlg?playlist=J3ygkehttlg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+</div>
 
 Note that the robot is able to overcome:
 
@@ -343,11 +339,9 @@ dock_id = 'home_dock'
 tester.dockRobot(dock_id)
 ```
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?playlist=uHT5TeHJqZg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?playlist=uHT5TeHJqZg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+</div>
 
 Depending on your robot's relative pose to the dock and your pre-staging tolerance settings, Nav2 may attempt to navigate to the staging pose before docking.
 If you wish to disable that, set `goal_msg.navigate_to_staging_pose = False` and then Docking will trigger immediately.

@@ -1,10 +1,8 @@
 # Using an External Costmap Plugin (STVL) { #using-an-external-costmap-plugin-stvl }
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="700" height="450" src="https://www.youtube.com/embed/TGxb1OzgmNQ?playlist=TGxb1OzgmNQ&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="700" height="450" src="https://www.youtube.com/embed/TGxb1OzgmNQ?playlist=TGxb1OzgmNQ&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## Overview
 

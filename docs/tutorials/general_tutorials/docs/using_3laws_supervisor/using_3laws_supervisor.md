@@ -1,6 +1,6 @@
 # Enhanced Safety for Nav2 using 3Laws Supervisor { #enhanced-safety-for-nav2-using-3laws-supervisor }
 
-<div style="width:100%;max-width:960px;margin:0 auto;">
+<div style="text-align: center; width:100%; max-width:960px; margin:0 auto;">
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/KDMI70BuDs0?playlist=KDMI70BuDs0&autoplay=1&mute=1&loop=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -476,7 +476,7 @@ There is no replanning of the route path and no freespace planning is computed.
 The Nav2 controllers could be tuned to track the path and then avoid obstacles when required, however it can be tedious and time consuming to achieve the right trade off for a given application and hardware system.
 However, a similar behavior could be accomplished by using the Supervisor, as you can see below.
 
-<div style="width:100%;max-width:960px;margin:0 auto;">
+<div style="text-align: center; width:100%; max-width:960px; margin:0 auto;">
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/LEaFQItPP98?playlist=LEaFQItPP98&autoplay=1&mute=1&loop=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -501,7 +501,7 @@ The Regulated Pure Pursuit Controller's collision avoidance is disabled as previ
 Each robot was initialized at the staging point at the front of the bin picking area and sent to random goals.
 The deconfliction between robots and deviations from the graph to give shelves additional clearance can be seen below:
 
-<div style="width:100%;max-width:960px;margin:0 auto;">
+<div style="text-align: center; width:100%; max-width:960px; margin:0 auto;">
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/jhCvL0TqG04?playlist=jhCvL0TqG04&autoplay=1&mute=1&loop=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -510,7 +510,7 @@ Below you can see how the Supervisor can handle a variety of dynamic obstacles, 
 Note: Usually for tasks such as this, using a controller like MPPI or DWB is recommended in a production environment so Supervisor may focus on deviations as needed rather than fully relying on it for intelligent & autonomous behavior.
 This is being shown in isolation to highlight what it is possible to accomplish in extreme situations whereas an autonomy controller is not attempting to avoid collisions.
 
-<div style="width:100%;max-width:960px;margin:0 auto;">
+<div style="text-align: center; width:100%; max-width:960px; margin:0 auto;">
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/kJV_XGtQFVo?playlist=kJV_XGtQFVo&autoplay=1&mute=1&loop=1" title="3Laws Supervisor demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

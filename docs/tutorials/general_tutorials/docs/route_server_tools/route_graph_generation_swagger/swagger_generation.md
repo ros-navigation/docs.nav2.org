@@ -103,10 +103,8 @@ Finally, launch Nav2's Loopback simulator bringup, which uses a simple backend k
 ros2 launch nav2_bringup tb4_loopback_simulation_launch.py map:=/path/to/your/map.yaml graph:=/path/to/your/graph.geojson
 ```
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/ppDY1Vd0cEQ?playlist=ppDY1Vd0cEQ&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/ppDY1Vd0cEQ?playlist=ppDY1Vd0cEQ&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+</div>
 
 Happy Routing!
