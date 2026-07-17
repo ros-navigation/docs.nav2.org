@@ -12,11 +12,11 @@ Thus, this tutorial walks through the integration of VIO into a robot system to 
 
 Throughout this tutorial, we will be using the [Stereolabs](https://www.stereolabs.com) SDK's [Position Tracking](https://www.stereolabs.com/docs/positional-tracking/) capability as our VIO solution of choice paired with the new [ZED X](https://www.stereolabs.com/zed-x/) camera. This VIO solution is easy to use and provides production-quality performance for *free* when using a ZED camera module.
 
-<h1 align="center">
+<div style="text-align: center;">
   <video width="550" height="400" autoplay loop muted>
     <source src="https://files.buildwithfern.com/stereolabs.docs.buildwithfern.com/6c171fc1d8ebf7c31bac93a064525b0dcb089386655232ef2c221b40e5cc6f8c/docs/development/zed-sdk/modules/positional-tracking/images/positional_tracking.webm" type="video/webm">
   </video>
-</h1>
+</div>
 
 !!! note
 
@@ -134,14 +134,10 @@ The Visual-Inertial Odometry's error over these datasets is 4.1% over the 70m pa
 
     Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve's a bad robot driver (he doesn't play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions... yeah... lets go with that*.
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/VWfzeZJdtpc?playlist=VWfzeZJdtpc&autoplay=1&mute=1&loop=1&t=143" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/VWfzeZJdtpc?playlist=VWfzeZJdtpc&autoplay=1&mute=1&loop=1&t=143" frameborder="1" allowfullscreen></iframe>
+</div>
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/Flf6fyeyzIw?playlist=Flf6fyeyzIw&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/Flf6fyeyzIw?playlist=Flf6fyeyzIw&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+</div>

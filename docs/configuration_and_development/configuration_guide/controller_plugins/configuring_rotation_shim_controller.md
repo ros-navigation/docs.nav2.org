@@ -14,11 +14,9 @@ The `RotationShimController` is most suitable for:
 
 See the package's `README` for more complete information.
 
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/t-g2CBGByEw?playlist=t-g2CBGByEw&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1>
+<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+  <iframe width="708" height="400" src="https://www.youtube.com/embed/t-g2CBGByEw?playlist=t-g2CBGByEw&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+</div>
 
 ## Rotation Shim Controller Parameters
 
