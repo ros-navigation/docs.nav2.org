@@ -74,13 +74,13 @@ Recovery behavior is automatically activated when the target becomes undetectabl
 
 The following video demonstrates the Following Server functionality in a real-world scenario:
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="450" src="https://www.youtube.com/embed/g-g58J1g9Ww?playlist=g-g58J1g9Ww&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## Using ComputePathToPose and FollowPath
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?playlist=sRodzrrJChA&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -90,7 +90,7 @@ This tutorial shows how to use Nav2 for a different task other than going from p
 
 This task is useful in cases such as following a person or another robot. Below are some sample videos of applications that could be created using this capability. The "Carry My Luggage" RoboCup @ Home test, in which the [CATIE Robotics](https://robotics.catie.fr/) team performs the test successfully and this real (future) world application:
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="450" src="https://www.youtube.com/embed/lTjKO4M7yZc?playlist=lTjKO4M7yZc&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -212,6 +212,6 @@ Open RViz and, after initialize the robot position, command the robot to navigat
 
 When you have a detector detecting your obstacle at a higher rate (1 hz, 10 hz, 100 hz) you will see a far more reactive robot following your detected object of interest!
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="450" src="https://www.youtube.com/embed/r4fIkcktZUM?playlist=r4fIkcktZUM&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>

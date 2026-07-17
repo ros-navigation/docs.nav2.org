@@ -14,7 +14,7 @@ See the package's `README` for more complete information. For more information h
 
 Also, the practical demonstration of Collision Monitor abilities presented at 6th ROS Developers Day 2023, could be found below:
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="394" src="https://www.youtube.com/embed/bWliK0PC5Ms?playlist=bWliK0PC5Ms&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 

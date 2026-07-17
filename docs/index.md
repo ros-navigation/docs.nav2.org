@@ -4,17 +4,9 @@ expand_sidebar_nav: true
 
 # Nav2 { #nav2 }
 
-<style>
-.video-frame {
-  flex: 1 1 clamp(10rem, 45vw, 15rem);
-  aspect-ratio: 16/9;
-  max-width: 100%;
-}
-</style>
-
-<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <iframe class="video-frame" src="https://www.youtube.com/embed/OklxMhdDfe0?playlist=OklxMhdDfe0&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
-  <iframe class="video-frame" src="https://www.youtube.com/embed/CYaN43TJANc?playlist=CYaN43TJANc&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+<div class="video-flex-container">
+  <iframe class="video-flex-iframe" src="https://www.youtube.com/embed/OklxMhdDfe0?playlist=OklxMhdDfe0&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
+  <iframe class="video-flex-iframe" src="https://www.youtube.com/embed/CYaN43TJANc?playlist=CYaN43TJANc&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 
 ## Our Sponsors

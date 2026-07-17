@@ -22,7 +22,7 @@ The docking procedure is as follows:
 Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
 You can find how to dock your Nova Carter robot using Nav2 and this work in the [nova_carter_docking package](https://github.com/NVIDIA-ISAAC-ROS/nova_carter/tree/main/nova_carter_docking)!
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?playlist=leiGkSVnQak&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 
@@ -294,7 +294,7 @@ It will set the robot's pose as virtually the dock's staging pose to bypass navi
 This is a useful first-time setup to try docking, refine your detection offsets, and obtain reliability metrics of your complete system.
 See the video below of this all at work!
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="708" height="400" src="https://www.youtube.com/embed/J3ygkehttlg?playlist=J3ygkehttlg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 
@@ -339,7 +339,7 @@ dock_id = 'home_dock'
 tester.dockRobot(dock_id)
 ```
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?playlist=uHT5TeHJqZg&autoplay=1&mute=1&loop=1" frameborder="1" allowfullscreen></iframe>
 </div>
 

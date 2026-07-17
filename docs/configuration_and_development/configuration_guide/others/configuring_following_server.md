@@ -7,7 +7,7 @@ This server allows the robot to follow and maintain a determined distance from a
 using topic-based detection techniques or coordinate frame tracking.
 The server is designed to be called by a BT application or autonomy application to follow moving objects.
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="450" src="https://www.youtube.com/embed/g-g58J1g9Ww?playlist=g-g58J1g9Ww&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
