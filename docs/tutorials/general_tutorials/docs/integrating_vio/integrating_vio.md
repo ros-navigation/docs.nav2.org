@@ -38,8 +38,8 @@ Though, any other ZED camera with an IMU in it will work as well (ZED2, ZED2i, Z
 At this point, you should be able to run one of the following commands to launch the driver and visualize the sensor data in Rviz. Note that these are ROS 2 component nodes that also may be loaded into your system's component manager to minimize latency due to serialization.
 
 ```bash
-$ ros2 launch zed_wrapper zedx.launch.py
-$ ros2 launch zed_wrapper zedxm.launch.py
+ros2 launch zed_wrapper zedx.launch.py
+ros2 launch zed_wrapper zedxm.launch.py
 ```
 
 <figure markdown="span">
