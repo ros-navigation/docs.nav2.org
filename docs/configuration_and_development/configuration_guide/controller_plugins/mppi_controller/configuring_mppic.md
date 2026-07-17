@@ -30,7 +30,7 @@ Type: `string` Default: `"DiffDrive"`
 
 ### **`critics`**
 
-Type: `string vector` Default: `N/A`
+Type: `vector<string>` Default: `N/A`
 
 :   A vector of critic plugin functions to use, without `mppi::critic::` namespace which will be automatically added on loading.
 
