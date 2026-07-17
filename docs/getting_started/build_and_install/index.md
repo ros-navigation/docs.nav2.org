@@ -9,15 +9,11 @@ You can install the Nav2 project in two ways: locally on your machine or using D
 
 </div>
 
----
-
 ## Generate Doxygen
 
 Run `doxygen` in the root of the Nav2 repository.
 It will generate a `/doc/*` directory containing the documentation.
 The documentation entrypoint in a browser is index.html.
-
----
 
 ## Help
 
