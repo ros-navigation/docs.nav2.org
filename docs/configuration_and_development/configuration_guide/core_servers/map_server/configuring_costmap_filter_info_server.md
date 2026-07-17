@@ -9,6 +9,7 @@ The costmap filter info server is responsible for providing information about th
 Type: `int` Default: `0`
 
 :   Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:
+
     - 0: keepout zones / preferred lanes filter
     - 1: speed filter, speed limit is specified in % of maximum speed
     - 2: speed filter, speed limit is specified in absolute value (m/s)
