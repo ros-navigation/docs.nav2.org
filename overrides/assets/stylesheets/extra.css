@@ -124,3 +124,7 @@ update the style of scrollbar */
 .section-title {
   font-size: 1.25em; /* The same as h3 */
 }
+
+.md-header__title {
+  font-weight: 700;
+}
