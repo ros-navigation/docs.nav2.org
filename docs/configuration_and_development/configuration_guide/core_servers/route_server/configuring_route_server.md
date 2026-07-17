@@ -19,7 +19,7 @@ There are also several locations for customization using plugins:
 
 See the package's README file for additional information such as performance metrics, design, advice, and graph formatting.
 
-<div style="text-align: center; position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+<div class="video-container">
   <iframe width="700" height="450" src="https://www.youtube.com/embed/VtIYE8WAZ4o?playlist=VtIYE8WAZ4o&autoplay=1&mute=1&loop=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
