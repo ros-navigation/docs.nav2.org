@@ -42,7 +42,7 @@ Type: `double` Default: `10.0` Unit: `seconds`
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`costmap_update_timeout`**
 

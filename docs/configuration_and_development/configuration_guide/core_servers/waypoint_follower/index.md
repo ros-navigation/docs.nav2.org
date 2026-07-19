@@ -25,7 +25,7 @@ Type: `int` Default: `20`
 
 Type: `string` Default: `"map"`
 
-:   The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
+:   The name of the global coordinate frame published by `robot_localization`. Only used by the `gps_waypoint_follower` to
     convert GPS waypoints to this frame.
 
 ### **`action_server_result_timeout`**
@@ -38,7 +38,7 @@ Type: `double` Default: `900.0` Unit: `seconds`
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`waypoint_task_executor_plugin`**
 

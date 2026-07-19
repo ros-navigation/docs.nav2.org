@@ -100,7 +100,7 @@ Type: `string` Default: `N/A`
 
 Type: `vector<string>` Default: `N/A`
 
-:   Instead of *dock_database*, the set of docks specified in the params file itself. Use `dock_database` or this param.
+:   Instead of `dock_database`, the set of docks specified in the params file itself. Use `dock_database` or this param.
 
 ### **`navigator_bt_xml`**
 

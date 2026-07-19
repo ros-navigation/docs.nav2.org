@@ -26,7 +26,7 @@ See the package's `README` for more complete information.
 
 Type: `string` Default: `"DiffDrive"`
 
-:   The desired motion model to use for trajectory planning. Options are `DiffDrive`, `Omni`, or `Ackermann`. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
+:   The desired motion model to use for trajectory planning. Options are `"DiffDrive"`, `"Omni"`, or `"Ackermann"`. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
 
 ### **`critics`**
 
@@ -86,7 +86,7 @@ Type: `double` Default: `0.5`
 
 Type: `double` Default: `0.5`
 
-:   Target maximum lateral velocity, if using `Omni` motion model (m/s).
+:   Target maximum lateral velocity, if using `"Omni"` motion model (m/s).
 
 ### **`vx_min`**
 
@@ -110,13 +110,13 @@ Type: `double` Default: `3.0`
 
 Type: `double` Default: `-3.0`
 
-:   Minimum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
+:   Minimum lateral acceleration in either direction, if using `"Omni"` motion model (m/s^2).
 
 ### **`ay_max`**
 
 Type: `double` Default: `3.0`
 
-:   Maximum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
+:   Maximum lateral acceleration in either direction, if using `"Omni"` motion model (m/s^2).
 
 ### **`ax_min`**
 
@@ -394,7 +394,7 @@ Type: `int` Default: `253`
 
 Type: `double` Default: `300.0`
 
-:   Cost to apply to a pose with a cost higher than the near_collision_cost.
+:   Cost to apply to a pose with a cost higher than the `near_collision_cost`.
 
 ### **`near_goal_distance`**
 
@@ -586,7 +586,7 @@ Type: `int` Default: `1`
 
 Type: `vector<double>` Default: `[0.05, 0.05, 0.05]`
 
-:   The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.
+:   The array of deadband velocities `[vx, vz, wz]`. A zero array indicates that the critic will take no action.
 
 ## Example
 

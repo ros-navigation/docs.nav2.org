@@ -85,7 +85,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `"DUBIN"`
 
-:   Motion model enum string to search with. For Hybrid-A\* node, default is "DUBIN". Options for SE2 are DUBIN or REEDS_SHEPP.
+:   Motion model enum string to search with. For Hybrid-A\* node, default is `"DUBIN"`. Options for SE2 are `"DUBIN"` or `"REEDS_SHEPP"`.
 
 ### **`<name>.angle_quantization_bins`**
 

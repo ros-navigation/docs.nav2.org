@@ -4,13 +4,13 @@ Lets robot to pause for a specified amount of time after reaching each waypoints
 
 ## Parameters
 
-`<nav2_waypoint_follower plugin>`: nav2_waypoint_follower plugin name defined in the **waypoint_task_executor_plugin_id** parameter in [Waypoint Follower][waypoint-follower].
+`<nav2_waypoint_follower plugin>`: `nav2_waypoint_follower` plugin name defined in the **`waypoint_task_executor_plugin_id`** parameter in [Waypoint Follower][waypoint-follower].
 
 ### **`<nav2_waypoint_follower plugin>.enabled`**
 
 Type: `bool` Default: `true`
 
-:   Whether waypoint_task_executor plugin is enabled.
+:   Whether `waypoint_task_executor` plugin is enabled.
 
 ### **`<nav2_waypoint_follower plugin>.waypoint_pause_duration`**
 

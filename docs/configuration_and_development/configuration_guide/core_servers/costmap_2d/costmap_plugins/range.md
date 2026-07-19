@@ -60,4 +60,4 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `"ALL"`
 
-:   Input sensor type is either ALL (automatic selection), VARIABLE (min range != max range), or FIXED (min range == max range).
+:   Input sensor type is either `"ALL"` (automatic selection), `"VARIABLE"` (min range != max range), or `"FIXED"` (min range == max range).

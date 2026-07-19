@@ -47,7 +47,7 @@ Type: `int` Default: `1`
 
 Type: `vector<string>` Default: `[""]`
 
-:   namespace of sources of data.
+:   Namespace of sources of data.
 
 ### **`<obstacle layer>.<data source>.topic`**
 
@@ -59,7 +59,7 @@ Type: `string` Default: `""`
 
 Type: `string` Default: `""`
 
-:   Frame of sensor, to use if not provided by message. If empty, uses message frame_id.
+:   Frame of sensor, to use if not provided by message. If empty, uses message `frame_id`.
 
 ### **`<obstacle layer>.<data source>.observation_persistence`**
 

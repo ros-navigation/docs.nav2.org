@@ -95,7 +95,7 @@ Type: `string` Default: `""`
 
 Type: `string` Default: `""`
 
-:   Frame of sensor, to use if not provided by message. If empty, uses message frame_id.
+:   Frame of sensor, to use if not provided by message. If empty, uses message `frame_id`.
 
 ### **`<voxel layer>.<data source>.observation_persistence`**
 
@@ -113,7 +113,7 @@ Type: `double` Default: `0.0`
 
 Type: `string` Default: `"LaserScan"`
 
-:   Data type of input, LaserScan or PointCloud2.
+:   Data type of input, `"LaserScan"` or `"PointCloud2"`.
 
 ### **`<voxel layer>.<data source>.min_obstacle_height`**
 

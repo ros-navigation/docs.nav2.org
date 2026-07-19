@@ -67,7 +67,7 @@ Type: `string` Default: `"odom"`
 Type: `string` Default: `"cmd_vel_smoothed"`
 
 :   Input `cmd_vel` topic with desired robot velocity.
-    Please note, pre-`Jazzy` this was set to `cmd_vel_raw` by default.
+    Please note, pre-Jazzy this was set to `cmd_vel_raw` by default.
 
 ### **`cmd_vel_out_topic`**
 
@@ -127,7 +127,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `false`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data. True uses TwistStamped, false uses Twist.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data. True uses TwistStamped, false uses Twist.
 
     Note
     :   This parameter is default `false` in Jazzy or older.
@@ -140,7 +140,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `N/A`
 
-:   Type of polygon shape. Available values are `polygon`, `circle`. Causes an error, if not specialized.
+:   Type of polygon shape. Available values are `"polygon"`, `"circle"`. Causes an error, if not specialized.
 
 ### **`<polygon_name>.points`**
 
@@ -304,7 +304,7 @@ Type: `double` Default: `PI`
 
 Type: `string` Default: `"scan"`
 
-:   Type of polygon shape. Could be `scan`, `pointcloud`, `range`, or `polygon`.
+:   Type of polygon shape. Could be `"scan"`, `"pointcloud"`, `"range"`, or `"polygon"`.
 
 ### **`<source name>.topic`**
 
@@ -316,37 +316,37 @@ Type: `string` Default: `"scan"`
 
 Type: `double` Default: `0.05`
 
-:   Minimum height the PointCloud projection to 2D space started from. Applicable for `pointcloud` type.
+:   Minimum height the PointCloud projection to 2D space started from. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.max_height`**
 
 Type: `double` Default: `0.5`
 
-:   Maximum height the PointCloud projection to 2D space ended with. Applicable for `pointcloud` type.
+:   Maximum height the PointCloud projection to 2D space ended with. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.use_global_height`**
 
 Type: `bool` Default: `false`
 
-:   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `pointcloud` type.
+:   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.min_range`**
 
 Type: `double` Default: `0.0`
 
-:   Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for `pointcloud` type.
+:   Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.obstacles_angle`**
 
 Type: `double` Default: `PI / 180` (1 degree)
 
-:   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `range` type.
+:   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `"range"` type.
 
 ### **`<source name>.sampling_distance`**
 
 Type: `double` Default: `0.1`
 
-:   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `polygon` source type.
+:   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `"polygon"` source type.
 
 ### **`<source name>.enabled`**
 
@@ -364,7 +364,7 @@ Type: `double` Default: (node parameter `source_timeout` value)
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ## Example
 

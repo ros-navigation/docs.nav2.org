@@ -136,7 +136,7 @@ Type: `string` Default: `"odom"`
 
 Type: `bool` Default: `false`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
     Note
@@ -146,7 +146,7 @@ Type: `bool` Default: `false`
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ## Provided Plugins
 
