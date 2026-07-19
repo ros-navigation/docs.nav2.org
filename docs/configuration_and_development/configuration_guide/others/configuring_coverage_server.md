@@ -69,7 +69,7 @@ Type: `string` Default: `"LENGTH"`
 
 ### **`default_swath_angle_type`**
 
-Type: `double` Default: `1.7e-2`
+Type: `string` Default: `"BRUTE_FORCE"`
 
 :   Mode to use for generating swaths. Need to find optimal angle by the swath generator objectives, if not given. Options: `"BRUTE_FORCE"`, `"SET_ANGLE"`. Only for `opennav_coverage`.
 
