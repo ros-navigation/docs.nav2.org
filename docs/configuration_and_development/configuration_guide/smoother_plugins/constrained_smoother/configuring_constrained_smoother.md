@@ -34,7 +34,11 @@ Type: `int` Default: `1`
 
 Type: `int` Default: `1`
 
-:   Upsampling factor for refining. 0 - path remains downsampled (see `path_downsampling_factor`), 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling
+:   Upsampling factor for refining.
+
+    - 0 - path remains downsampled (see `path_downsampling_factor`)
+    - 1 - path is upsampled back to original granularity using cubic bezier
+    - 2... - more upsampling
 
 ### **`keep_start_orientation`**
 
