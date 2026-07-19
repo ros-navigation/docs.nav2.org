@@ -17,7 +17,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -35,7 +35,7 @@ Type: `double` Default: `0.01`
 
 Type: `vector<double>` Default: `[]`
 
-:   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters *footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"*. Note that this can also be adjusted over time using the costmap's `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. If this parameter is set, `isPathValid` will do full collision checking.
+:   Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters `footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"`. Note that this can also be adjusted over time using the costmap's `~/footprint` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. If this parameter is set, `isPathValid` will do full collision checking.
 
 ### **`global_frame`**
 

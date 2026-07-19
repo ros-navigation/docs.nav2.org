@@ -33,7 +33,7 @@ Type: `string` Default: `"diff_drive"`
 Type: `string` Default: `N/A`
 
 :   The plugin to use for the motion model constraints of the MPPI planner.
-    Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
+    Supported motion model plugins include `"mppi::DiffDriveMotionModel"`, `"mppi::OmniMotionModel"`, and `"mppi::AckermannMotionModel"` for differential drive, omnidirectional, and Ackermann robots respectively.
 
 ### **`critics`**
 
@@ -247,7 +247,7 @@ Type: `bool` Default: `true`
 
 Type: `double` Default: `0.2`
 
-:   The minimum turning radius possible for the vehicle platform (m). This is only used if `<motion_model>.plugin` is set to "mppi::AckermannMotionModel".
+:   The minimum turning radius possible for the vehicle platform (m). This is only used if `<motion_model>.plugin` is set to `"mppi::AckermannMotionModel"`.
 
 ## Default Optimal Trajectory Validator
 
@@ -615,7 +615,7 @@ Type: `int` Default: `1`
 
 Type: `vector<double>` Default: `[0.05, 0.05, 0.05]`
 
-:   The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.
+:   The array of deadband velocities `[vx, vz, wz]`. A zero array indicates that the critic will take no action.
 
 ## Example
 

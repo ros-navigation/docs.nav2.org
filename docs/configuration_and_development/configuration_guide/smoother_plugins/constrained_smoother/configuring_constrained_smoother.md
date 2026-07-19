@@ -98,7 +98,7 @@ Type: `double` Default: `2.5`
 
 Type: `vector<double>` Default: `[]`
 
-:   Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...].
+:   Points in robot frame to grab costmap values from. Format: `[x1, y1, weight1, x2, y2, weight2, ...]`.
 
     !!! warning "Important"
 
@@ -125,7 +125,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `"SPARSE_NORMAL_CHOLESKY"`
 
-:   Linear solver type to be used by optimizer. Valid values are `SPARSE_NORMAL_CHOLESKY` and `DENSE_QR`
+:   Linear solver type to be used by optimizer. Valid values are `"SPARSE_NORMAL_CHOLESKY"` and `"DENSE_QR"`
 
 ### **`optimizer.gradient_tol`**
 

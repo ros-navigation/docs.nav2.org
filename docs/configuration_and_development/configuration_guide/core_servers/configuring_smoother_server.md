@@ -55,13 +55,13 @@ Type: `vector<string>` Default: `["simple_smoother"]`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 

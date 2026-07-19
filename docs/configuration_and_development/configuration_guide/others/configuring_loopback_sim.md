@@ -41,7 +41,7 @@ Type: `string` Default: `"base_scan"`
 
 Type: `bool` Default: `true`
 
-:   Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped).
+:   Whether `cmd_vel` is stamped or unstamped (i.e. `Twist` or `TwistStamped`).
 
 ### **`scan_publish_dur`**
 

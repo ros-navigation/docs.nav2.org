@@ -112,7 +112,7 @@ Type: `string` Default: `N/A`
 
 Type: `vector<string>` Default: `N/A`
 
-:   Instead of *dock_database*, the set of docks specified in the params file itself. Use `dock_database` or this param.
+:   Instead of `dock_database`, the set of docks specified in the params file itself. Use `dock_database` or this param.
 
 ### **`navigator_bt_xml`**
 
@@ -124,7 +124,7 @@ Type: `string` Default: `""`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -377,7 +377,7 @@ Type: `double` Default: `0.05`
 
 Type: `string` Default: `"forward"`
 
-:   Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated `dock_backwards` parameter. Options are "forward" or "backward".
+:   Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated `dock_backwards` parameter. Options are `"forward"` or `"backward"`.
 
 ### **`<dock_name>.rotate_to_dock`**
 
@@ -386,7 +386,7 @@ Type: `bool` Default: `false`
 :   Enables backward docking without requiring a sensor for detection during the final approach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading. This may also be paired with sensor detection in the reverse direction as well if available.
 
     Note
-    :   This parameter is only valid when the `dock_direction` is set to "backward".
+    :   This parameter is only valid when the `dock_direction` is set to `"backward"`.
 
 ## Example
 

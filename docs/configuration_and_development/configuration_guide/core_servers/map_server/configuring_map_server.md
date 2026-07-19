@@ -26,4 +26,4 @@ Type: `string` Default: `"map"`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.

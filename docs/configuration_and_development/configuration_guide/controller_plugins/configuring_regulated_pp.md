@@ -75,37 +75,37 @@ If you use the Dynamic Window Pure Pursuit Controller algorithm or software from
 
 Type: `double` Default: `0.5`
 
-:   The maximum linear velocity (m/s) to use.  Previously *desired_linear_vel*
+:   The maximum linear velocity (m/s) to use.  Previously `desired_linear_vel`
 
 ### **`min_linear_vel`**
 
 Type: `double` Default: `-0.5`
 
-:   The minimum linear velocity (m/s) used when *use_dynamic_window* is *true*.
+:   The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
 
 ### **`max_angular_vel`**
 
 Type: `double` Default: `2.5`
 
-:   The maximum angular velocity (rad/s) used when *use_dynamic_window* is *true*.
+:   The maximum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
 
 ### **`min_angular_vel`**
 
 Type: `double` Default: `-2.5`
 
-:   The minimum angular velocity (rad/s) used when *use_dynamic_window* is *true*.
+:   The minimum angular velocity (rad/s) used when `use_dynamic_window` is `true`.
 
 ### **`max_linear_accel`**
 
 Type: `double` Default: `2.5`
 
-:   The maximum linear acceleration (m/s^2) used when *use_dynamic_window* is *true*.
+:   The maximum linear acceleration (m/s^2) used when `use_dynamic_window` is `true`.
 
 ### **`max_linear_decel`**
 
 Type: `double` Default: `-2.5`
 
-:   The maximum linear deceleration (m/s^2) used when *use_dynamic_window* is *true*.
+:   The maximum linear deceleration (m/s^2) used when `use_dynamic_window` is `true`.
 
 ### **`max_angular_accel`**
 
@@ -117,7 +117,7 @@ Type: `double` Default: `3.2`
 
 Type: `double` Default: `-3.2`
 
-:   The maximum angular deceleration (rad/s^2) used when *use_dynamic_window* is *true*.
+:   The maximum angular deceleration (rad/s^2) used when `use_dynamic_window` is `true`.
 
 ### **`lookahead_dist`**
 

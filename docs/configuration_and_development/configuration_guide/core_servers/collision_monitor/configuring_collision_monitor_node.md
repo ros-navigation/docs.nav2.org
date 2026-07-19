@@ -139,7 +139,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `true`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
 ## Polygons parameters
@@ -329,7 +329,7 @@ Type: `double` Default: `PI`
 
 Type: `string` Default: `"scan"`
 
-:   Type of polygon shape. Could be `scan`, `pointcloud`, `range`, `polygon` or `costmap`.
+:   Type of polygon shape. Could be `"scan"`, `"pointcloud"`, `"range"`, `"polygon"` or `"costmap"`.
 
 ### **`<source name>.transport_type`**
 
@@ -337,10 +337,10 @@ Type: `string` Default: `"raw"`
 
 :   For `pointcloud` data, specify the transport plugin to use:
 
-    - raw: No compression. Default; highest bandwidth usage.
-    - draco: Lossy compression via Google.
-    - zlib: Lossless compression via Zlib compression.
-    - zstd: Lossless compression via Zstd compression.
+    - `"raw"`: No compression. Default; highest bandwidth usage.
+    - `"draco"`: Lossy compression via Google.
+    - `"zlib"`: Lossless compression via Zlib compression.
+    - `"zstd"`: Lossless compression via Zstd compression.
 
   See the [known transports](https://github.com/ros-perception/point_cloud_transport_plugins) for more details.
 
@@ -418,7 +418,7 @@ Type: `bool` Default: `true`
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 

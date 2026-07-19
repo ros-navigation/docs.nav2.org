@@ -67,7 +67,7 @@ Type: `string` Default: `"base_link"`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`behavior_plugins`**
 
@@ -137,7 +137,7 @@ Type: `double` Default: `3.2`
 
 Type: `bool` Default: `true`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
 ## BackUp Behavior Parameters
@@ -154,7 +154,7 @@ Type: `double` Default: `2.0`
 
 Type: `bool` Default: `true`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
 ### **`backup.acceleration_limit`**
@@ -189,14 +189,14 @@ Type: `double` Default: `2.0`
 
 Type: `bool` Default: `true`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -248,7 +248,7 @@ Type: `string` Default: `"cmd_vel_teleop"`
 
 Type: `bool` Default: `true`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
 ## Example

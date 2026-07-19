@@ -89,14 +89,14 @@ Type: `double` Default: `0.1`
 
 Type: `bool` Default: `true`
 
-:   Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
     True uses TwistStamped, false uses Twist.
 
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 

@@ -98,18 +98,18 @@ Type: `string` Default: `""`
 :   Topic of data.
 
     Relative topics will be relative to the node's parent namespace.
-    For example, if you specify *topic: scan* in the *voxel_layer* of a *local_costmap* and you launch your bringup with a *tb4* namespace:
+    For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
 
-      - User chosen namespace is *tb4*.
-      - User chosen topic is *scan*.
-      - Topic will be remapped to */tb4/scan* without *local_costmap*.
-      - Use global topic */scan* if you do not wish the node namespace to apply.
+      - User chosen namespace is `tb4`.
+      - User chosen topic is `scan`.
+      - Topic will be remapped to `/tb4/scan` without `local_costmap`.
+      - Use global topic `/scan` if you do not wish the node namespace to apply.
 
 ### **`<voxel layer>.<data source>.sensor_frame`**
 
 Type: `string` Default: `""`
 
-:   Frame of sensor, to use if not provided by message. If empty, uses message frame_id.
+:   Frame of sensor, to use if not provided by message. If empty, uses message `frame_id`.
 
 ### **`<voxel layer>.<data source>.observation_persistence`**
 
@@ -135,10 +135,10 @@ Type: `string` Default: `"raw"`
 
 :   For `PointCloud2` data, specify the transport plugin to use:
 
-    - raw: No compression. Default; highest bandwidth usage.
-    - draco: Lossy compression via Google.
-    - zlib: Lossless compression via Zlib compression.
-    - zstd: Lossless compression via Zstd compression.
+    - `"raw"`: No compression. Default; highest bandwidth usage.
+    - `"draco"`: Lossy compression via Google.
+    - `"zlib"`: Lossless compression via Zlib compression.
+    - `"zstd"`: Lossless compression via Zstd compression.
 
     See the [known transports](https://github.com/ros-perception/point_cloud_transport_plugins) for more details.
 

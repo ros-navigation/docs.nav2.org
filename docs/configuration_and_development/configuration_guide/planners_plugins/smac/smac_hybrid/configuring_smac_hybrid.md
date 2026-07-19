@@ -85,7 +85,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `"DUBIN"`
 
-:   Motion model enum string to search with. For Hybrid-A\* node, default is "DUBIN". Options for SE2 are DUBIN or REEDS_SHEPP.
+:   Motion model enum string to search with. For Hybrid-A\* node, default is `"DUBIN"`. Options for SE2 are `"DUBIN"` or `"REEDS_SHEPP"`.
 
 ### **`<name>.angle_quantization_bins`**
 
@@ -215,13 +215,13 @@ Type: `int` Default: `2`
 
 Type: `string` Default: `"DEFAULT"`
 
-:   Goal heading mode enum string to plan goal with multiple orientation. Options are "DEFAULT", "BIDIRECTIONAL" and "ALL_DIRECTION". With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the "BIDIRECTIONAL" mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For "ALL_DIRECTION" mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the "BIDIRECTIONAL" and "ALL_DIRECTION" mode, the planner returns the path with the minimum cost.
+:   Goal heading mode enum string to plan goal with multiple orientation. Options are `"DEFAULT"`, `"BIDIRECTIONAL"` and `"ALL_DIRECTION"`. With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the `"BIDIRECTIONAL"` mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For `"ALL_DIRECTION"` mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the `"BIDIRECTIONAL"` and `"ALL_DIRECTION"` mode, the planner returns the path with the minimum cost.
 
 ### **`<name>.coarse_search_resolution`**
 
 Type: `int` Default: `4`
 
-:   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and It helps to reduce search time of analytic expansions.
+:   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to `"ALL_DIRECTION"` and It helps to reduce search time of analytic expansions.
 
 ### **`allow_parameter_qos_overrides`**
 

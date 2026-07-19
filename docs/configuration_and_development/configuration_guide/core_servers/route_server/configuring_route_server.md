@@ -75,7 +75,7 @@ Type: `double` Default: `2.9`
 
 ### **`costmap_topic`**
 
-Type: `string` Default: `'global_costmap/costmap_raw'`
+Type: `string` Default: `"global_costmap/costmap_raw"`
 
 :   The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
 
@@ -185,7 +185,7 @@ Type: `string` Default: `""`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -466,7 +466,7 @@ This route operation will receive service requests from a 3rd party application 
 ## TriggerEvent
 
 This route operation will trigger an external service when a graph node or edge contains a route operation of this name.
-It uses a *std_srvs/Trigger* interface and is a demonstration of the *RouteOperationClient<SrvT\>* base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
+It uses a `std_srvs/Trigger` interface and is a demonstration of the `RouteOperationClient<SrvT\>` base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
 
 ## Example
 

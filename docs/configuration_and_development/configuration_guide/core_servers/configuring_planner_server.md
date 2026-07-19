@@ -42,7 +42,7 @@ Type: `double` Default: `1.0`
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`costmap_update_timeout`**
 
@@ -54,7 +54,7 @@ Type: `double` Default: `1.0`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`allow_parameter_qos_overrides`**
 

@@ -76,13 +76,13 @@ Type: `string` Default: `"map"`
 
 Type: `double` Default: `0.1`
 
-:   Exponential decay parameter for z_short part of model.
+:   Exponential decay parameter for `z_short` part of model.
 
 ### **`laser_likelihood_max_dist`**
 
 Type: `double` Default: `2.0`
 
-:   Maximum distance to do obstacle inflation on map, for use in likelihood_field model.
+:   Maximum distance to do obstacle inflation on map, for use in `"likelihood_field"` model.
 
 ### **`laser_max_range`**
 
@@ -100,7 +100,7 @@ Type: `double` Default: `-1.0`
 
 Type: `string` Default: `"likelihood_field"`
 
-:   Which model to use, either beam, likelihood_field, or likelihood_field_prob. Same as likelihood_field but incorporates the beamskip feature, if enabled.
+:   Which model to use, either `"beam"`, `"likelihood_field"`, or `"likelihood_field_prob"`. Same as `"likelihood_field"` but incorporates the beamskip feature, if enabled.
 
 ### **`set_initial_pose`**
 
@@ -181,19 +181,19 @@ Type: `int` Default: `1`
 
 Type: `string` Default: `"nav2_amcl::DifferentialMotionModel"`
 
-:   The fully-qualified type of the plugin class. Options are "nav2_amcl::DifferentialMotionModel" and "nav2_amcl::OmniMotionModel". Users can also provide their own custom motion model plugin type.
+:   The fully-qualified type of the plugin class. Options are `"nav2_amcl::DifferentialMotionModel"` and `"nav2_amcl::OmniMotionModel"`. Users can also provide their own custom motion model plugin type.
 
 ### **`save_pose_rate`**
 
 Type: `double` Default: `0.5`
 
-:   Maximum rate (Hz) at which to store the last estimated pose and covariance to the parameter server, in the variables ~initial_pose_\* and ~initial_cov_\*. This saved pose will be used on subsequent runs to initialize the filter (-1.0 to disable).
+:   Maximum rate (Hz) at which to store the last estimated pose and covariance to the parameter server, in the variables `~initial_pose_*` and `~initial_cov_*`. This saved pose will be used on subsequent runs to initialize the filter (-1.0 to disable).
 
 ### **`sigma_hit`**
 
 Type: `double` Default: `0.2`
 
-:   Standard deviation for Gaussian model used in z_hit part of the model.
+:   Standard deviation for Gaussian model used in `z_hit` part of the model.
 
 ### **`tf_broadcast`**
 
@@ -211,7 +211,7 @@ Type: `double` Default: `1.0`
 
 Type: `string` Default: `"disabled"`
 
-:   The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+:   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
 ### **`update_min_a`**
 
@@ -229,31 +229,31 @@ Type: `double` Default: `0.25`
 
 Type: `double` Default: `0.5`
 
-:   Mixture weight for z_hit part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses z_hit and z_rand..
+:   Mixture weight for `z_hit` part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses `z_hit` and `z_rand`.
 
 ### **`z_max`**
 
 Type: `double` Default: `0.05`
 
-:   Mixture weight for z_max part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses z_hit and z_rand.
+:   Mixture weight for `z_max` part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses `z_hit` and `z_rand`.
 
 ### **`z_rand`**
 
 Type: `double` Default: `0.5`
 
-:   Mixture weight for z_rand part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses z_hit and z_rand..
+:   Mixture weight for `z_rand` part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses `z_hit` and `z_rand`.
 
 ### **`z_short`**
 
 Type: `double` Default: `0.005`
 
-:   Mixture weight for z_short part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses z_hit and z_rand.
+:   Mixture weight for `z_short` part of model, sum of all used z weight must be 1. Beam uses all 4, likelihood model uses `z_hit` and `z_rand`.
 
 ### **`always_reset_initial_pose`**
 
 Type: `bool` Default: `false`
 
-:   Requires that AMCL is provided an initial pose either via topic or initial_pose\* parameter (with parameter set_initial_pose: true) when reset. Otherwise, by default AMCL will use the last known pose to initialize.
+:   Requires that AMCL is provided an initial pose either via topic or `initial_pose*` parameter (with parameter `set_initial_pose: true`) when reset. Otherwise, by default AMCL will use the last known pose to initialize.
 
 ### **`scan_topic`**
 
@@ -271,13 +271,13 @@ Type: `string` Default: `"map"`
 
 Type: `bool` Default: `false`
 
-:   Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the *LoadMap* service in *map_server*.
+:   Allows AMCL to accept maps more than once on the `map_topic`. This is especially useful when you're using the `LoadMap` service in `map_server`.
 
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
 
 ### **`allow_parameter_qos_overrides`**
 

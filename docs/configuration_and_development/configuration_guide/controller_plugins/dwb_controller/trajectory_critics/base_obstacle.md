@@ -5,9 +5,9 @@ To use this properly, you must use the inflation layer in costmap to expand obst
 
 ## Parameters
 
-`<dwb plugin>`: DWB plugin name defined in the **controller_plugin_ids** parameter in [Controller Server][controller-server].
+`<dwb plugin>`: DWB plugin name defined in the **`controller_plugin_ids`** parameter in [Controller Server][controller-server].
 
-`<name>`: BaseObstacleCritic critic name defined in the **<dwb plugin>.critics** parameter defined in [DWB Controller][dwb-controller].
+`<name>`: BaseObstacleCritic critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
 
 ### **`<dwb plugin>.<name>.sum_scores`**
 
