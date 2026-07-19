@@ -127,7 +127,7 @@ Type: `double` Default: `0.0`
 
 Type: `string` Default: `"LaserScan"`
 
-:   Data type of input, LaserScan or PointCloud2.
+:   Data type of input, `"LaserScan"` or `"PointCloud2"`.
 
 ### **`<voxel layer>.<data source>.transport_type`**
 

@@ -466,7 +466,7 @@ This route operation will receive service requests from a 3rd party application 
 ## TriggerEvent
 
 This route operation will trigger an external service when a graph node or edge contains a route operation of this name.
-It uses a `std_srvs/Trigger` interface and is a demonstration of the `RouteOperationClient<SrvT\>` base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
+It uses a `std_srvs/Trigger` interface and is a demonstration of the `RouteOperationClient<SrvT>` base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
 
 ## Example
 

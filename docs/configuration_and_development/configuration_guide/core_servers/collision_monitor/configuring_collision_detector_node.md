@@ -73,7 +73,7 @@ Type: `vector<string>` Default: `N/A`
 
 Type: `string` Default: `N/A`
 
-:   Type of polygon shape. Available values are `polygon`, `circle`. Causes an error, if not specialized.
+:   Type of polygon shape. Available values are `"polygon"`, `"circle"`. Causes an error, if not specialized.
 
 ### **`<polygon_name>.points`**
 
@@ -91,7 +91,7 @@ Type: `string` Default: `N/A`
 
 Type: `double` Default: `N/A`
 
-:   Circle radius. Used for `circle` type. Causes an error, if not specialized.
+:   Circle radius. Used for `"circle"` type. Causes an error, if not specialized.
 
 ### **`<polygon_name>.action_type`**
 
@@ -171,25 +171,25 @@ Type: `string` Default: `"scan"`
 
 Type: `double` Default: `0.05`
 
-:   Minimum height the PointCloud projection to 2D space started from. Applicable for `pointcloud` type.
+:   Minimum height the PointCloud projection to 2D space started from. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.max_height`**
 
 Type: `double` Default: `0.5`
 
-:   Maximum height the PointCloud projection to 2D space ended with. Applicable for `pointcloud` type.
+:   Maximum height the PointCloud projection to 2D space ended with. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.obstacles_angle`**
 
 Type: `double` Default: `PI / 180 (1 degree)`
 
-:   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `range` type.
+:   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `"range"` type.
 
 ### **`<source name>.sampling_distance`**
 
 Type: `double` Default: `0.1`
 
-:   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `polygon` source type.
+:   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `"polygon"` source type.
 
 ### **`<source name>.enabled`**
 

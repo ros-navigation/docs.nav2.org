@@ -72,21 +72,21 @@ Type: `double` Default: `0.3`
 Type: `int` Default: `20`
 
 :   Default timeout value (in milliseconds) for a BT action node to wait for acknowledgement from an action server.
-    This value will be overwritten for a BT node if the input port "server_timeout" is provided.
+    This value will be overwritten for a BT node if the input port `server_timeout` is provided.
 
 ### **`default_cancel_timeout`**
 
 Type: `int` Default: `50`
 
 :   Default timeout (in milliseconds) for BT action node cancellation requests during node halt.
-    This value will be overwritten for a BT node if the input port "cancel_timeout" is provided.
+    This value will be overwritten for a BT node if the input port `cancel_timeout` is provided.
 
 ### **`wait_for_service_timeout`**
 
 Type: `int` Default: `1000`
 
 :   Default timeout value (in milliseconds) for an Action or Service BT nodes to wait for acknowledgement from an service or action server on BT initialization (e.g. `wait_for_action_server(timeout)`).
-    This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
+    This value will be overwritten for a BT node if the input port `wait_for_service_timeout` is provided.
 
 ### **`introspection_mode`**
 

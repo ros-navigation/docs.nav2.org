@@ -111,7 +111,7 @@ Type: `double` Default: `0.5`
 
 Type: `double` Default: `0.5`
 
-:   Target maximum lateral velocity, if using `Omni` motion model (m/s).
+:   Target maximum lateral velocity, if using `"Omni"` motion model (m/s).
 
 ### **`vx_min`**
 
@@ -135,13 +135,13 @@ Type: `double` Default: `3.0`
 
 Type: `double` Default: `-3.0`
 
-:   Minimum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
+:   Minimum lateral acceleration in either direction, if using `"Omni"` motion model (m/s^2).
 
 ### **`ay_max`**
 
 Type: `double` Default: `3.0`
 
-:   Maximum lateral acceleration in either direction, if using `Omni` motion model (m/s^2).
+:   Maximum lateral acceleration in either direction, if using `"Omni"` motion model (m/s^2).
 
 ### **`ax_min`**
 
@@ -423,7 +423,7 @@ Type: `int` Default: `253`
 
 Type: `double` Default: `300.0`
 
-:   Cost to apply to a pose with a cost higher than the near_collision_cost.
+:   Cost to apply to a pose with a cost higher than the `near_collision_cost`.
 
 ### **`near_goal_distance`**
 

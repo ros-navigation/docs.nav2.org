@@ -150,7 +150,7 @@ Type: `bool` Default: `true`
 
 Type: `string` Default: `N/A`
 
-:   Type of polygon shape. Available values are `polygon`, `circle`. Causes an error, if not specialized.
+:   Type of polygon shape. Available values are `"polygon"`, `"circle"`. Causes an error, if not specialized.
 
 ### **`<polygon_name>.points`**
 
@@ -354,37 +354,37 @@ Type: `string` Default: `"scan"`
 
 Type: `double` Default: `0.05`
 
-:   Minimum height the PointCloud projection to 2D space started from. Applicable for `pointcloud` type.
+:   Minimum height the PointCloud projection to 2D space started from. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.max_height`**
 
 Type: `double` Default: `0.5`
 
-:   Maximum height the PointCloud projection to 2D space ended with. Applicable for `pointcloud` type.
+:   Maximum height the PointCloud projection to 2D space ended with. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.use_global_height`**
 
 Type: `bool` Default: `false`
 
-:   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `pointcloud` type.
+:   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.min_range`**
 
 Type: `double` Default: `0.0`
 
-:   Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for `pointcloud` type.
+:   Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.obstacles_angle`**
 
 Type: `double` Default: `PI / 180` (1 degree)
 
-:   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `range` type.
+:   Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for `"range"` type.
 
 ### **`<source name>.sampling_distance`**
 
 Type: `double` Default: `0.1`
 
-:   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `polygon` source type.
+:   Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for `"polygon"` source type.
 
 ### **`<source name>.enabled`**
 
@@ -402,7 +402,7 @@ Type: `double` Default: (node parameter `source_timeout` value)
 
 Type: `int` Default: `253`
 
-:   For `costmap` sources only. Minimum cell cost (0–255) to be treated as an
+:   For `"costmap"` sources only. Minimum cell cost (0–255) to be treated as an
     obstacle. By default this matches inscribed/lethal cells (253–254) and ignores
     lower-cost cells.
 
@@ -410,7 +410,7 @@ Type: `int` Default: `253`
 
 Type: `bool` Default: `true`
 
-:   For `costmap` sources only. If `true`, cells with cost `255` (`NO_INFORMATION`)
+:   For `"costmap"` sources only. If `true`, cells with cost `255` (`NO_INFORMATION`)
     will also be turned into obstacle points. Set to `false` if your costmap has
     large unknown areas you don't want to trigger Collision Monitor.
 

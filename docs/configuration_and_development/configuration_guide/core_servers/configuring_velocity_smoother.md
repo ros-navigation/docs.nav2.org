@@ -32,7 +32,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `"OPEN_LOOP"`
 
-:   Type of feedback to use for the current state of the robot's velocity. In `OPEN_LOOP`, it will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately, this is a good assumption. In `CLOSED_LOOP`, it will use the odometry from the `odom` topic to estimate the robot's current speed. In closed loop mode, it is important that the odometry is high rate and low latency, relative to the smoothing frequency.
+:   Type of feedback to use for the current state of the robot's velocity. In `"OPEN_LOOP"`, it will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately, this is a good assumption. In `"CLOSED_LOOP"`, it will use the odometry from the `odom` topic to estimate the robot's current speed. In closed loop mode, it is important that the odometry is high rate and low latency, relative to the smoothing frequency.
 
 ### **`max_velocity`**
 
@@ -77,13 +77,13 @@ Type: `vector<double>` Default: `[-2.5, 0.0, -3.2]`
 
 Type: `string` Default: `"odom"`
 
-:   Topic to find robot odometry, if in `CLOSED_LOOP` operational mode.
+:   Topic to find robot odometry, if in `"CLOSED_LOOP"` operational mode.
 
 ### **`odom_duration`**
 
 Type: `double` Default: `0.1`
 
-:   Time (s) to buffer odometry commands to estimate the robot speed, if in `CLOSED_LOOP` operational mode.
+:   Time (s) to buffer odometry commands to estimate the robot speed, if in `"CLOSED_LOOP"` operational mode.
 
 ### **`enable_stamped_cmd_vel`**
 
