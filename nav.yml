@@ -168,8 +168,6 @@ nav:
           - ProgressCheckerSelector: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ProgressCheckerSelector.md
           - NavigateThroughPoses: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/NavigateThroughPoses.md
           - ComputePathThroughPoses: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputePathThroughPoses.md
-          # - ComputeCoveragePath: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputeCoveragePath.md
-          # - CancelCoverage: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelCoverage.md
           - RemovePassedGoals: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/RemovePassedGoals.md
           - CancelControl: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelControl.md
           - CancelBackUp: configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelBackUp.md
