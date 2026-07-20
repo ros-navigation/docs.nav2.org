@@ -1299,6 +1299,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer</a></li>
 </ul>
 </li>
 </ul>
@@ -1429,8 +1430,34 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.cost_scaling_factor</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.custom_inscribed_radius</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>Description</dt><dd><p>Custom inscribed radius for the robot which overwrites the default footprint-based calculated one.
+If set to a negative value, the default inscribed radius of the robot is used.</p>
+<p><strong>POTENTIAL SAFETY ISSUE!</strong></p>
+<p>Make sure you fully understand the consequences of changing the inscribed radius!
+This can have serious implications on the robot’s safety and is not recommended unless specifically needed.
+This practice is intended only for controllers that are customized explicitly to feed on such data.
+It is NOT intended for global path planners or setups that depend on the footprint-based inscribed radius!</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.cost_scaling_factor</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1449,8 +1476,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflate_unknown</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflate_unknown</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1469,8 +1496,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflate_around_unknown</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.inflate_around_unknown</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1489,8 +1516,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.num_threads</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.num_threads</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />

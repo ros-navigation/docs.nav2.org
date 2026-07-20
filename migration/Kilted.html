@@ -1300,6 +1300,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#speedfilter-path-lookahead">SpeedFilter path lookahead</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer</a></li>
 </ul>
 </li>
 </ul>
@@ -2324,6 +2325,29 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 <div class="figure align-center">
 <img alt="Costmap with asymmetric inflation layer" src="../_images/asymmetric_layer_active1.png" />
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="custom-inscribed-radius-for-inflation-layer">
+<h2>Custom Inscribed Radius for Inflation Layer<a class="headerlink" href="#custom-inscribed-radius-for-inflation-layer" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6223">PR #6223</a> adds a new <code class="docutils literal notranslate"><span class="pre">custom_inscribed_radius</span></code> parameter to the Inflation Layer, allowing users to override the default footprint-based inscribed radius.
+When set to a negative value (default <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>), the standard inscribed radius computed from the robot footprint is used.</p>
+<p>The default inscribed radius computed from the robot footprint, would give the same cost value of <code class="docutils literal notranslate"><span class="pre">INSCRIBED_INFLATED_OBSTACLE</span></code> for all the cells within the inscribed radius region.
+Consequently, in situations such as the two examples shown below, the <code class="docutils literal notranslate"><span class="pre">footprintCost</span></code> function would return the same value since it picks up the highest cost along the footprint.</p>
+<p><a class="reference internal" href="../_images/default_inscribed_radius_large_overlap.png"><img alt="large_overlap" src="../_images/default_inscribed_radius_large_overlap.png" style="width: 45%;" /></a> <a class="reference internal" href="../_images/default_inscribed_radius_low_overlap.png"><img alt="low_overlap" src="../_images/default_inscribed_radius_low_overlap.png" style="width: 45%;" /></a></p>
+<p>This however may not be ideal for situations where one wants to have a more granular cost distribution in order to better reflect the actual risk of collision.
+Now with the new <code class="docutils literal notranslate"><span class="pre">custom_inscribed_radius</span></code> parameter, users can set a custom inscribed radius for the robot which overwrites the default one.
+For example, setting it to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> would result in skipping the inscribed radius region altogether and give a decay cost distribution right after the <code class="docutils literal notranslate"><span class="pre">LETHAL</span></code> region.</p>
+<a class="reference internal image-reference" href="../_images/custom_inscribed_radius_zero.png"><img alt="Costmap with custom inscribed radius of 0.0m" class="align-center" src="../_images/custom_inscribed_radius_zero.png" style="width: 800px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Warning:</strong> This is however a potential safety issue!
+Changing the inscribed radius can have serious implications on the robot’s safety.
+This parameter is intended only for controllers that are customized explicitly to use such data.
+It is <strong>not</strong> intended for global path planners or setups that depend on the footprint-based inscribed radius.</p>
+<p>See the <a class="reference external" href="../configuration/packages/costmap-plugins/inflation.html">Inflation Layer configuration guide</a> for full parameter documentation.</p>
 </div>
 </div>
 
