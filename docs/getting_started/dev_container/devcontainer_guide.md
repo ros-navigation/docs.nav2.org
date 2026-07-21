@@ -124,7 +124,7 @@ If you prefer using an alternate terminal emulator, rather than the built-in VS 
 - [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli)
 
     ```shell
-    devcontainer exec –workspace-folder $NAV2_WS/src/navigation2 bash
+    devcontainer exec --workspace-folder $NAV2_WS/src/navigation2 bash
     ```
 
 - [docker exec](https://docs.docker.com/engine/reference/commandline/exec/)
