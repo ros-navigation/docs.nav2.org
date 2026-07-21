@@ -1453,6 +1453,7 @@ Remove any EOL distributions at this time.</p>
 <p>Next, bump the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch’s distribution number to the same set in Step 2 above (i.e. <code class="docutils literal notranslate"><span class="pre">1.4.0</span></code>).
 Add the distribution branch to <code class="docutils literal notranslate"><span class="pre">.github/workflows/update_ci_image.yaml</span></code> so that future pushes will result in CI image updates.
 Remove any EOL distributions at this time.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">mergify.yml</span></code> file, add a new backport automation for the new distribution. Make to to create the tag in GitHub’s UX as well for later use.</p>
 <p>Finally, create the new distribution branch from <code class="docutils literal notranslate"><span class="pre">main</span></code> and push to the server.
 Go into the GitHub Actions tab on <code class="docutils literal notranslate"><span class="pre">nav2_docker</span></code> and retrigger its build job.
 The nightly and release jobs should now exist for the new distribution and return successfully (validate this).</p>

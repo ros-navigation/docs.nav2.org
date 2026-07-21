@@ -89,6 +89,8 @@ Next, bump the ``main`` branch's distribution number to the same set in Step 2 a
 Add the distribution branch to ``.github/workflows/update_ci_image.yaml`` so that future pushes will result in CI image updates.
 Remove any EOL distributions at this time.
 
+In the ``mergify.yml`` file, add a new backport automation for the new distribution. Make to to create the tag in GitHub's UX as well for later use.
+
 Finally, create the new distribution branch from ``main`` and push to the server.
 Go into the GitHub Actions tab on ``nav2_docker`` and retrigger its build job.
 The nightly and release jobs should now exist for the new distribution and return successfully (validate this).
