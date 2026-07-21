@@ -55,7 +55,7 @@ references:
   install_deployment_key: &install_deployment_key
     add_ssh_keys:
       fingerprints:
-        - "0" # add fingerprint
+        - "SHA256:ZnRqrDobYvOKwaOK93Ro6i0MI7sITLQlf4DGjX+mYcE"
 
 commands:
   install_doc_dependencies:
@@ -91,7 +91,7 @@ jobs:
     steps:
       - *on_checkout
       - install_doc_dependencies
-      # - *install_deployment_key
+      - *install_deployment_key
       - publish_and_store_docs
 
 workflows:
