@@ -11,11 +11,13 @@ Before creating a dev container, you'll want to choose the exact configuration t
     The specification, reference, and schema for the `devcontainer.json` config file format can be found here:
 
     - [Specification](https://containers.dev/implementors/spec)
-        - Development Container Specification
+    :   Development Container Specification
+
     - [Reference](https://containers.dev/implementors/json_reference)
-        - Metadata and properties reference
+    :   Metadata and properties reference
+
     - [Schema](https://containers.dev/implementors/json_schema)
-        - JSON schema for `devcontainer.json`
+    :   JSON schema for `devcontainer.json`
 
 ### Building the image
 
@@ -30,7 +32,7 @@ To speed up the initial build, images layers from this `builder` stage are cache
     More details on the project's CI and related docker image registry can be found here:
 
     - [Chronicles of Caching and Containerising CI for Nav2](https://vimeo.com/649647161/5b0c278e6c)
-        - Video presentation from ROS World 2021 - Ruffin White
+    :   Video presentation from ROS World 2021 - Ruffin White
 
 Once the base image from the target stage is built, the supporting tool or service may then add additional layers to the image, such as installing additional [features](https://containers.dev/features) or customizations. For VS Code, this also includes some fancy file caching for any extensions to install later. Once this custom image is built, it is then used to start the dev container.
 
@@ -61,9 +63,10 @@ While the colcon workspace is being built, VS Code will simultaneously install a
     More documentation about these additional colcon verb extensions can be found here:
 
     - [colcon-cache](https://github.com/ruffsl/colcon-cache)
-        - A colcon extension to cache the processing of packages
+    :   A colcon extension to cache the processing of packages
+
     - [colcon-clean](https://github.com/colcon/colcon-clean)
-        - A colcon extension to clean package workspaces
+    :   A colcon extension to clean package workspaces
 
 Finally, the `postCreateCommand` is executed, which also reruns whenever the container is started or restarted. Specifically, for this project, this command makes a last few tweaks to the user's environment to improve the development experience.
 
@@ -98,11 +101,13 @@ Additionally, the container can be granted [privileged](https://docs.docker.com/
     More details on using DDS, debuggers, or devices with Docker containers can be found here:
 
     - [How to Communicate Across Docker Containers Using the Host Driver](https://community.rti.com/kb/how-use-rti-connext-dds-communicate-across-docker-containers-using-host-driver)
-        - Using the `host` network driver to access all network interfaces of the host machine from the Docker container
+    :   Using the `host` network driver to access all network interfaces of the host machine from the Docker container
+
     - [Communicate between two Docker containers using DDS and shared memory](https://community.rti.com/kb/communicate-between-two-docker-containers-using-rti-connext-dds-and-shared-memory)
-        - Enabling containers to communicate with one another and with the host machine using interprocess communication (IPC)
+    :   Enabling containers to communicate with one another and with the host machine using interprocess communication (IPC)
+
     - [Debugging programs running inside Docker containers, in production](https://nvartolomei.com/debugging-programs-running-inside-docker-containers--in-production/)
-        - Using tools like strace, perf, gdb when debugging programs running inside containers
+    :   Using tools like strace, perf, gdb when debugging programs running inside containers
 
 ## Using Dev Containers
 
@@ -151,7 +156,7 @@ While using the dev container, try and keep in mind the lifecycle of the contain
     This is particularly important when the host machine is inherently ephemeral as well, as the case may be when using cloud based environments such as Codespaces, so be sure to commit and push local changes to a remote repository:
 
     - [The codespace lifecycle](https://docs.github.com/en/codespaces/about-codespaces/understanding-the-codespace-lifecycle)
-        - Maintain your data throughout the entire codespace lifecycle
+    :   Maintain your data throughout the entire codespace lifecycle
 
 ### Rebuilding
 
@@ -191,6 +196,6 @@ Specifically, for this project, volumes remain unaffected by this rebuilding pro
     Docker volume management can be done via the Docker CLI, or the VS Code Docker extension:
 
     - [Docker Volume CLI](https://docs.docker.com/engine/reference/commandline/volume)
-        - Manage volumes using subcommands to create, inspect, list, remove, or prune volumes
+    :   Manage volumes using subcommands to create, inspect, list, remove, or prune volumes
     - [VS Code Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
-        - Makes it easy to create, manage, and debug containerized applications
+    :   Makes it easy to create, manage, and debug containerized applications
