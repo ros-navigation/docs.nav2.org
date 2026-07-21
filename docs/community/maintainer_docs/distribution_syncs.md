@@ -3,7 +3,7 @@
 This is the instructions for updating a Nav2 version in a ROS distribution sync.
 We do this by bulk cherry picking commits from the `main` branch after they've had time to soak and apply them to the branch we looking to sync with the newest features.
 
-## 0. Initial Setup
+## 1. Initial Setup
 
 First we need to create a temporary workspace to perform the sync.
 Typically, this is done in the `/tmp` directory so that it is cleaned up after a reboot.
@@ -26,7 +26,7 @@ Scroll back in the `main` and `<distro>` git logs to find the last sync commit t
 
 Once you have a local clone, the git logs, and the date of the last sync, we can begin the process.
 
-## 1. Backporting Process
+## 2. Backporting Process
 
 Starting with the first commit in `main` after the last sync date, we will look at each commit individually.
 Each commit should be evaluated for the following criteria:
@@ -55,7 +55,7 @@ We may need to roll it back if the merge conflict is too complex or it relies on
 
 Once all commits to the present are evaluated, we can proceed to the next step.
 
-## 2. Testing
+## 3. Testing
 
 Before we can merge our changes, we need to ensure that everything is working correctly.
 This involves compiling the code, running any unit tests, and performing functional testing.
@@ -75,14 +75,14 @@ colcon test
 
 If all tests pass, we can launch the Nav2 bringup demos and navigate the TB3 and TB4 robots in both Gazebo and the loopback simulator for 10-15 minutes to validate functional stability of the backport.
 
-## 3. Open a PR
+## 4. Open a PR
 
 Once we have validated the changes, we can open a pull request (PR) against the `<distro>` branch.
 Increment the package.xml versions for all packages using search and replace to increment one minor version (i.e. 1.1.X).
 Open a PR with the title `<Branch> Sync: <Date>` and include a description of the changes made.
 Let CI run and merge once passes for a second independent validation of compilation and testing.
 
-## 4. Bloom Release
+## 5. Bloom Release
 
 Once the PR is merged, we can release the changes to the distribution.
 Create a release of the same version as the `package.xml` files targeting the `<distro>` branch.

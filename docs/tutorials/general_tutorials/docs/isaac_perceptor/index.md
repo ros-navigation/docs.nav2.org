@@ -115,7 +115,7 @@ Using the features at the initial pose, it will match those with the pre-built m
 This will be used to set the initial pose of the robot before starting navigation sessions.
 It may also be used to relocalize the robot during runtime as well, which can be run in just under 1 second.
 
-## 0. NVIDIA Jetson Setup
+## 1. NVIDIA Jetson Setup
 
 ### Jetpack
 
@@ -180,7 +180,7 @@ NvBlox uses the pose estimates that cuVSLAM provides, but those pose estimates c
 It uses these pose estimates to place the sensor data in the scene to populate the environmental model.
 NvBlox can work well on just a single stereo camera, but cuVSLAM typically requires two or more cameras to see enough of the scene to obtain robust results.
 
-## 1. Initial Setup
+## 2. Initial Setup
 
 First, we need to set up a [Isaac ROS Dev](https://nvidia-isaac-ros.github.io/getting_started/dev_env_setup.html) environment using Docker, as highly recommended by NVIDIA.
 
@@ -241,7 +241,7 @@ Once we've obtained and setup Isaac, we can add in the `opennav_visual_navigatio
 cd ${ISAAC_ROS_WS}/src && git clone git@github.com:open-navigation/opennav_visual_navigation.git
 ```
 
-## 2. Software & Workflow Walkthrough
+## 3. Software & Workflow Walkthrough
 
 The demonstration leverages the Nova Carter robot, so the hardware is brought up using the [nova_carter_bringup](https://github.com/NVIDIA-ISAAC-ROS/nova_carter/tree/main/nova_carter_bringup) launch file `navigation.launch.py` and `teleop.launch.py` which launches the robot hardware and other nodes needed for the demonstration.
 This has been preconfigured with Nav2, Isaac Perceptor, and is highly integrated with the Nova reference platform.
@@ -260,7 +260,7 @@ While the rear camera would also provide useful information (and is also used du
 This may be improved at a future time or when using newer Jetson platforms such as the Thor.
 The 2D and 3D lidars are disabled and not used anywhere in this work.
 
-## 3. Initial Environment Mapping
+## 4. Initial Environment Mapping
 
 ### Data Collection
 
@@ -415,7 +415,7 @@ Let's take a look at the `occupancy_map.png` file itself:
 
 We'll note that this lacks the typical fine detail we're used to seeing from a LIDAR-generated occupancy grid map. This is an artifact of image data being converted to depth data and highlights the importance of using the loop-closure techniques mentioned above when recording the visual data. Despite appearances, this map is quite sufficient for visual navigation around the space. The occupancy map is really only one layer in the whole localization stack used by the robot during visual navigation. Isaac ROS Perceptor will also use the cuvslam_map, cuvgl_map and live image data from the cameras on the robot for localization against features in the mapped space.
 
-## 4. Navigation Testing
+## 5. Navigation Testing
 
 Now that this initial setup is complete, we're ready to start navigating using visual localization and collision avoidance!
 
@@ -460,7 +460,7 @@ And be able to now navigate as shown in the video below! A special thanks to Nav
   <iframe width="100%" height="480" src="https://www.youtube.com/embed/axvemCE_lLE?playlist=axvemCE_lLE&autoplay=1&mute=1&loop=1" title="Isaac Perceptor Nav2 demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## 5. Conclusions & Extensions
+## 6. Conclusions & Extensions
 
 In this tutorial, we showed how Nav2 can be used without lidar or depth cameras to conduct vision-only navigation leveraging NVIDA's technologies (Jetson, Isaac ROS, Isaac Perceptor, Nova reference platform).
 To leverage even more vision features during Visual Navigation, you can also use the Isaac SDK, ZED SDK, or other AI technologies to leverage the GPU for:

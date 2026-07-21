@@ -35,7 +35,7 @@ git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/slam_toolbox.git
 
 ## Tutorial Steps
 
-### 0. Launch Robot Interfaces
+### 1. Launch Robot Interfaces
 
 For this tutorial, we will use the turtlebot3.
 The turtlebot3 software can be installed via the following or on the [turtlebot3 repository](https://github.com/ROBOTIS-GIT/turtlebot3):
@@ -68,7 +68,7 @@ Launch your robot's interface and robot state publisher, for example:
 ros2 launch turtlebot3_bringup robot.launch.py
 ```
 
-### 1. Launch Navigation2
+### 2. Launch Navigation2
 
 Launch Navigation without nav2_amcl and nav2_map_server.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map->odom transform.
@@ -77,7 +77,7 @@ It is assumed that the SLAM node(s) will publish to /map topic and provide the m
 ros2 launch nav2_bringup navigation_launch.py
 ```
 
-### 2. Launch SLAM
+### 3. Launch SLAM
 
 Bring up your choice of SLAM implementation.
 Make sure it provides the map->odom transform and /map topic.
@@ -88,7 +88,7 @@ For this tutorial, we will use [SLAM Toolbox](https://github.com/SteveMacenski/s
 ros2 launch slam_toolbox online_async_launch.py
 ```
 
-### 3. Working with SLAM
+### 4. Working with SLAM
 
 Move your robot by requesting a goal through RViz or the ROS 2 CLI, ie:
 
@@ -106,7 +106,7 @@ ros2 run nav2_map_server map_saver_cli -f ~/map
   ![Navigation2 with SLAM](images/navigation2_with_slam.gif){ width="700px" title="Navigation2 with SLAM" }
 </figure>
 
-### 4. Getting Started Simplification
+### 5. Getting Started Simplification
 
 If you're only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
 Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the `tb3_simulation_launch.py` with `slam` config set to true.

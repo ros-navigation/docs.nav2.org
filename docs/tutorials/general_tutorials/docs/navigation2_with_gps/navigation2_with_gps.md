@@ -71,7 +71,7 @@ For the purposes of this tutorial, we model a well-built system using an IMU tha
 
 ## Tutorial Steps
 
-### 0. Setup Gazebo World
+### 1. Setup Gazebo World
 
 To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the [Sonoma Raceway](https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway) because its aligned with the real location. A sample [world](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro) has been setup using gazebo's navsat and spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
@@ -158,7 +158,7 @@ A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo 
   ![Turtlebot in the sonoma raceway](images/gazebo_sonoma_raceway.png){ width="700px" title="Turtlebot in the sonoma raceway" }
 </figure>
 
-### 1. Setup GPS Localization system
+### 2. Setup GPS Localization system
 
 Once you have your simulation (or real robot) up and running, it's time to set up your localization system. Remember that Nav2 uses a `tf` chain with the structure `map` -> `odom` -> `base_link` -> `[sensor frames]`; global localization (`map` -> `odom`) is usually provided by `amcl`, while `odom` -> `base_link` is usually provided by the user's odometry system (wheel odometry, visual odometry, etc).
 
@@ -307,7 +307,7 @@ Sensors in a real robot may be less accurate than Gazebo's, especially GPSs and 
 1. If your IMU does not provide absolute yaw measurements accurately, consider setting the `differential` parameter of its input to RL to `true`. This way the filter will only fuse changes in the orientation and derive the absolute value from its motion model internally, differentiating changes in the position to estimate where the robot was heading (e.g. If the robot had a speed of 1m/s forward according to the wheel odometry and moved 1 meter north according to the GPS, that means it should be facing north). Note that if that's the case, you won't have an accurate absolute heading until your robot moves around a bit and the filter can estimate it from that movement; if this is not possible in your application consider adding another sensor that can measure absolute heading accurately, like a dual GPS system.
 2. If your GPS is noisy but you have another trustworthy odometry source (ex: wheel odometry, visual odometry), consider tuning the sensors and process noise covariances to make the filter "trust" more or less one data source or its own internal state estimate. A properly tuned filter should be able to reject wrong GPS measurements to some degree.
 
-### 2. Setup Navigation system
+### 3. Setup Navigation system
 
 Once you have your localization system up and running it's time to set up Nav2. Since RL is already providing the `tf` tree we don't need to launch `amcl`, thus we can remove its parameters from the params file and not launch Nav2's localization launch file.
 
@@ -360,7 +360,7 @@ The gif below shows what you should see Nav2 navigating the robot autonomously!
   ![](images/navigation_check.gif){ width="800px" }
 </figure>
 
-### 3.  Interactive GPS Waypoint Follower
+### 4.  Interactive GPS Waypoint Follower
 
 Now that we have performed our complete system setup, let's leverage Nav2 GPS waypoint follower capabilities to navigate to goals that are expressed directly in GPS coordinates. For this demo we want to build an interactive interface similar to rviz's, that allows us to click over a map to make the robot navigate to the clicked location. For that we will use mapviz's point click publisher on the `wgs84` reference frame, which will publish a `PointStamped` message with the GPS coordinates of the point clicked over the satellite image. This is a great way to get started in your custom GPS navigation setup!
 
@@ -376,7 +376,7 @@ You can now click on the mapviz map the pose you want the robot to go. The gif b
   ![](images/interactive_wpf.gif){ width="800px" }
 </figure>
 
-### 4.  Logged GPS Waypoint Follower & Waypoint Logging
+### 5.  Logged GPS Waypoint Follower & Waypoint Logging
 
 Finally let's make a robot go through a set of predefined GPS waypoints. We provide a [waypoint logging tool](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py) that subscribes to the robot's GPS and IMU and offers a simple GUI to save the robot coordinates and heading on demand to a `yaml` file with the format:
 
