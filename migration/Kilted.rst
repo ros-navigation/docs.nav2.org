@@ -860,3 +860,16 @@ See:
 
 - :ref:`configuring_collision_monitor_node`
 - :ref:`configuring_collision_detector_node`
+
+Collision Monitor exclusion zones
+---------------------------------
+
+`PR #6233 <https://github.com/ros-navigation/navigation2/pull/6233>`_ adds per-source exclusion zones to Collision Monitor and Collision Detector.
+An exclusion zone masks out data points falling inside a polygon or circle before they are checked against the collision polygons, e.g. to ignore a docking station the robot must approach closely, or to self-filter robot body points from a source.
+A zone can be anchored to an arbitrary TF ``frame_id`` (e.g. ``dock_link``), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+Zones fail safe: if the zone frame transform is unavailable, no points are excluded.
+
+See:
+
+- :ref:`configuring_collision_monitor_node`
+- :ref:`configuring_collision_detector_node`
