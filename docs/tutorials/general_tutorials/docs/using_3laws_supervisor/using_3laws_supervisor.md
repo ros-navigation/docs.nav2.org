@@ -72,14 +72,14 @@ If you wish to learn more about the technology behind the Supervisor, checkout t
   ![3Laws AMR demo](images/3laws_amr2.gif){ width="100%" title="3Laws AMR demo" }
 </figure>
 
-## 0. Obtain a License Key
+## 1. Obtain a License Key
 
 Supervisor ROS is available in a free community tier, but still requires a license key to be used.
 The license key can be obtained by requesting a key from the [3Laws Robotics Free-Trial](https://3laws.io/free-trial-new/) page or by navigating from the 3Laws home page and clicking 'Get Started' in the upper right corner.
 Once approved, the license key will be sent to the email address provided in the request form.
 It can be verified in Step 1 below in the Supervisor configuration GUI.
 
-## 1. Installation
+## 2. Installation
 
 The GUI can be setup using the instructions provided by [3Laws Robotics Install Supervisor](https://docs.3laws.io/en/latest/sources/getting_started.html#install-supervisor). To install the Supervisor via binaries, run the following install command:
 
@@ -133,7 +133,7 @@ bash
 Whether using the binaries or Docker image, you can now run the Supervisor control panel to configure the Supervisor and deploy it to your robot.
 When you visit [http://localhost:8080](http://localhost:8080), you should now see a web-based control panel for the Supervisor, shown below.
 
-## 2. Initial Configuration Walkthrough
+## 3. Initial Configuration Walkthrough
 
 ### Initializing Configuration with Nav2
 
@@ -378,7 +378,7 @@ This was created using the steps above:
 - We set the Supervisor's settings to Aggressiveness 1.5, Conservativeness 0.01, Pointiness 0.0, and Evasion Aggressiveness: 500.
 - A collision distance threshold of 0.25 meters is set for a good sized buffer.
 
-## 3. Nav2-Supervisor Configuration
+## 4. Nav2-Supervisor Configuration
 
 ### Collision Monitor Integration
 
@@ -466,7 +466,7 @@ def generate_launch_description():
 That's it - you're ready to use the Supervisor with Nav2!
 Rebuild your Nav2 configuration package and you're ready to get started.
 
-## 4. Nav2 Turtlebot4 Simulation Demonstration
+## 5. Nav2 Turtlebot4 Simulation Demonstration
 
 In this demonstration, we use the Nav2 Turtlebot4 simulation in `nav2_bringup` with the Nav2 Route Server and insert a pallet in the middle of the graph to block the route.
 The aim of this demonstration is to mimic an industrial application where the robot is not to deviate from the lane unless absolutely required due to blockages.
@@ -492,7 +492,7 @@ Note that a similar thing could be created via an intermediate configuration of 
 However, that requires more effort to setup and manage and only provides benefit if strict management over the robot behavior is required.
 If using replanning and MPPI (and an intermediate to advanced application-specific behavior tree), the improvements using Supervisor in such a situation are relatively nominal, but can (a) increase throughput marginally, (b) provide an additional hierarchical layer of collision avoidance as part of a larger safety story, and (c) reduce some of the most tedious fine tuning of predictive controller behavior in close proximity to obstacles.
 
-## 5. Hardware Demonstrations
+## 6. Hardware Demonstrations
 
 Hardware demonstrations were performed in a bin-picking environment.
 Two double-sided aisles are configured with the Nav2 Route Server to simulate the lanes of a warehouse or factory.
@@ -541,7 +541,7 @@ As shown in the demonstration, the Supervisor's ability to handle narrow passage
 - Teleoperations in tight spaces where remote operators may have difficulty judging clearances
 - Reducing the need for extensive controller parameter tuning for specific environmental features
 
-## 6. Resources
+## 7. Resources
 
 More detailed information can be found in the following documentation:
 

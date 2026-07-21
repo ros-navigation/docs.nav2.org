@@ -7,7 +7,7 @@ This is the instructions for releasing a new Nav2 version for a ROS distribution
     We require `osrf/ros:<distro>-desktop-full` images to exist for a distribution before this process may be completed.
     This usually means we wait until the release date to perform Nav2's release and have it included in the first distribution sync.
 
-## 0. Initial Freeze
+## 1. Initial Freeze
 
 Look at the ROS 2 timeline for release and decide on a date to freeze Nav2 new contributions.
 Mark any open tickets and/or pull requests with a new tag `<distro>-release` that we want to get in before the branch off.
@@ -15,7 +15,7 @@ These are the actions items to focus on before the chosen release date which wou
 
 These tickets or pull requests should represent major features, meaningful bug fixes, or ABI/API breaking changes that are necessary to be included before the branch off so that those feature(s) or API change(s) are represented in the new distribution.
 
-## 1. Local Functional Testing
+## 2. Local Functional Testing
 
 Once pre-release images are available on [ros_oci_images](https://github.com/sloretz/ros_oci_images), locally pull this docker image
 In a workspace root containing Nav2 and `nav2_minimal_turtlebot_simulations`, run the following:
@@ -63,7 +63,7 @@ Shutdown the Nav2 lifecycle nodes, hit Control+C, and ensure the stack shuts dow
 This step may be performed early to catch and resolve issues before the release process.
 Once all testing passes, move onto the next steps.
 
-## 2. Setup Nav2 Docker Images
+## 3. Setup Nav2 Docker Images
 
 Next, we need to setup Nav2's Nightly and Release docker image jobs in [nav2_docker](https://github.com/ros-navigation/nav2_docker).
 
@@ -78,7 +78,7 @@ Open the `README.md` and update the distributions to include this.
 
 At this time, the build should fail because there is no `distro` branch on Nav2, which is our next step.
 
-## 3. Branch Off Distribution
+## 4. Branch Off Distribution
 
 Now, we will setup the new branch and its CI system.
 
@@ -94,14 +94,14 @@ Finally, create the new distribution branch from `main` and push to the server.
 Go into the GitHub Actions tab on `nav2_docker` and retrigger its build job.
 The nightly and release jobs should now exist for the new distribution and return successfully (validate this).
 
-## 4. Mark Branch as Protected
+## 5. Mark Branch as Protected
 
 Go to the Repo Settings -> Branches. Create a branch protection rule for the new branch that matches the last.
 
 - Request a PR before merging -> Require approvals & override for infra-admins.
 - Restrict who can push branches that match this rule.
 
-## 5. Setup Branch CI
+## 6. Setup Branch CI
 
 The final change to the branch is to setup CI so PRs targeting it can be successfully built.
 In the new distribution branch, update the files for CI ([Humble Example](https://github.com/ros-navigation/navigation2/commit/4eb4ee01967a3b881c05d962ffd856c668b2e4c0)).
@@ -114,7 +114,7 @@ In the new distribution branch, update the files for CI ([Humble Example](https:
 Then, retrigger the Update CI Image workflow in Nav2's GitHub Actions tab, it should now also be successful.
 Open a dummy PR against the new distribution branch and ensure that it builds successfully.
 
-## 6. Update Auxiliary Projects
+## 7. Update Auxiliary Projects
 
 Nav2 has a number of auxiliary projects that also need to be updated for a new distribution.
 These include:
@@ -129,7 +129,7 @@ For each:
 - Update CI on the new branch to use this new distribution image
 - Review and update the readme as needed
 
-## 7. Run Bloom Release
+## 8. Run Bloom Release
 
 Once the new branches, versions, and CI are setup and ready, we can run the bloom release process.
 Run the following command to create a new release for the distribution for each Nav2 repository (Nav2, Minimal Turtlebot Simulation, SLAM Toolbox, NPVL, STVL etc).
@@ -140,14 +140,14 @@ bloom-release navigation2 --rosdistro distro --track distro --new-track --edit
 
 Be patient, this will take a while to run.
 
-## 8. Nav2 Docker Build
+## 9. Nav2 Docker Build
 
 To allow the `nav2_docker` build of the released version in Step 7, we need to enable the first build to pass the latest tag check in the workflow.
 You should see that the nightly of this distribution works, but the release version is failing with `Error: No matching package versions found.`.
 To resolve, comment out the `exit 1` in the `latest_version` validity check.
 Once the job turns over, revert this commit to reintroduce the error.
 
-## 9. Announcements
+## 10. Announcements
 
 Finally, we can announce the updates!
 Create a new migration guide page on the Nav2 website for contributors to populate with notable changes in the next distribution cycle.

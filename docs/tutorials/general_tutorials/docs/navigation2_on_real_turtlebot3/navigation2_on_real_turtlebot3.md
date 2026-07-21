@@ -33,7 +33,7 @@ sudo apt install ros-$ROS_DISTRO-turtlebot3 ros-$ROS_DISTRO-turtlebot3-msgs ros-
 
 ## Tutorial Steps
 
-### 0. Setup Your Environment Variables
+### 1. Setup Your Environment Variables
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
@@ -42,7 +42,7 @@ source /opt/ros/<ros2-distro>/setup.bash &&
 export TURTLEBOT3_MODEL=waffle
 ```
 
-### 1. Launch Turtlebot 3
+### 2. Launch Turtlebot 3
 
 You will need to launch your robot's interface, for example:
 
@@ -50,7 +50,7 @@ You will need to launch your robot's interface, for example:
 ros2 launch turtlebot3_bringup robot.launch.py use_sim_time:=False
 ```
 
-### 2. Launch Nav2
+### 3. Launch Nav2
 
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
@@ -76,7 +76,7 @@ ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False autostart:=False 
 
 Note: Don't forget to change **/path/to/your-map.yaml** to the actual path to the your-map.yaml file.
 
-### 3.  Launch RVIZ
+### 4.  Launch RVIZ
 
 Launch RVIZ with a pre-defined configuration file.
 
@@ -93,7 +93,7 @@ Then, the map should appear in RViz.
 	![](images/rviz_slam_map_view.png)
 </div>
 
-### 4. Initialize the Location of Turtlebot 3
+### 5. Initialize the Location of Turtlebot 3
 
 First, find where the robot is on the map. Check where your robot is in the room.
 
@@ -108,7 +108,7 @@ The direction of the green arrow is the orientation of Turtlebot.
 Now, the 3D model of Turtlebot should move to that location.
 A small error in the estimated location is tolerable.
 
-### 5.  Send a Goal Pose
+### 6.  Send a Goal Pose
 
 Pick a target location for Turtlebot on the map.
 You can send Turtlebot 3 a goal position and a goal orientation by using the **Nav2 Goal** or the **GoalTool** buttons.
