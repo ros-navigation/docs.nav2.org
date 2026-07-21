@@ -7,11 +7,13 @@ You can use dev containers to build the project if you prefer a streamlined setu
     More info on Dev Containers can be found here:
 
     - [Development Containers](https://containers.dev/)
-        - An open specification for enriching containers with development specific content and settings
+    :   An open specification for enriching containers with development specific content and settings
+
     - [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
-        - Learn how to use Visual Studio Code to develop inside a Docker container
+    :   Learn how to use Visual Studio Code to develop inside a Docker container
+
     - [GitHub Codespaces overview](https://docs.github.com/en/codespaces/overview)
-        - A development environment hosted in the cloud
+    :   A development environment hosted in the cloud
 
 ## What, Why, How?
 
@@ -22,11 +24,13 @@ Lets briefly explain what dev containers are, why you should use them, and how t
     Here we'll assume the use of VS Code, but still applies to alternative tools and services, including  other CLIs, IDEs, etc. such as:
 
     - [Dev Container CLI](https://github.com/devcontainers/cli)
-        - A reference implementation for the open specification
+    :   A reference implementation for the open specification
+
     - [JetBrains Space | Develop in Dev Environment](https://www.jetbrains.com/help/space/develop-in-a-dev-environment.html)
-        - Using Dev Containers with JetBrain based products
+    :   Using Dev Containers with JetBrain based products
+
     - [Supporting tools](https://containers.dev/supporting)
-        - List of tools and services supporting the development container specification
+    :   List of tools and services supporting the development container specification
 
 ### What is a Dev Container?
 
@@ -62,9 +66,10 @@ To use dev containers, you'll need the following:
     Alternatively, you could use GitHub Codespaces directly from the project repo, or any other remote host machine:
 
     - [Creating a codespace for a repository](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository?tool=webui)
-        - How to create a codespace for repository via GitHub CLI, VS Code, or Web browser
+    :   How to create a codespace for repository via GitHub CLI, VS Code, or Web browser
+
     - [Develop on a remote Docker host](https://code.visualstudio.com/remote/advancedcontainers/develop-remote-host)
-        - How to connect VS Code to a remote Docker host using SSH tunnels or TCP sockets
+    :   How to connect VS Code to a remote Docker host using SSH tunnels or TCP sockets
 
 ## Getting started { #dev-containers-getting-started }
 
@@ -77,7 +82,7 @@ Getting started using dev containers is as simple as opening the project in VS C
 While waiting for the initial setup, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about creating and using dev containers, or how to visualize and leverage graphical user interfaces from a headless development environment.
 
 - **[Dev Container Guide][dev-container-guide]**
-    - How to develop Nav2 using dev containers and supporting tools
+:   How to develop Nav2 using dev containers and supporting tools
 
 ## Security
 
@@ -92,4 +97,4 @@ A word of caution when using dev containers: they are powerful tools, but can be
     More info on trusting workspaces and extensions in general can be found here:
 
     - [Workspace Trust](https://code.visualstudio.com/docs/editor/workspace-trust)
-        - VS Code user guid on trusting and configure workspaces
+    :   VS Code user guid on trusting and configure workspaces
