@@ -313,42 +313,52 @@ The layer's behavior is highly tunable, so start with the provided defaults, the
 
 **Layer not being used in costmap**
 
-   - Verify the plugin is installed: `ros2 pkg list | grep ground_consistency`
-   - Check that the layer name matches in your configuration (`ground_consistency`)
-   - Ensure the plugin name is fully qualified: `nav2_ground_consistency_costmap_plugin::GroundConsistencyLayer`
+- Verify the plugin is installed:
+
+    ```bash
+    ros2 pkg list | grep ground_consistency
+    ```
+
+- Check that the layer name matches in your configuration (`ground_consistency`)
+- Ensure the plugin name is fully qualified: `nav2_ground_consistency_costmap_plugin::GroundConsistencyLayer`
 
 **No cells marked as obstacles**
 
-   - Verify ground and obstacle point topics are being published
-   - Check that point cloud data is arriving: `ros2 topic hz /ground_segmentation/obstacle_points`
-   - If no points arrive, the segmentation algorithm may not be running or publishing to wrong topics
-   - Verify `nonground_occ_thresh` isn't too high
+- Verify ground and obstacle point topics are being published
+- Check that point cloud data is arriving:
+
+    ```bash
+    ros2 topic hz /ground_segmentation/obstacle_points
+    ```
+
+- If no points arrive, the segmentation algorithm may not be running or publishing to wrong topics
+- Verify `nonground_occ_thresh` isn't too high
 
 **Costmap too conservative (marks too many obstacles)**
 
-   - Decrease `nonground_inc` (evidence accumulates slower)
-   - Increase `ground_decay` (ground evidence fades faster)
-   - Increase `nonground_occ_thresh` (higher evidence needed to mark as occupied)
-   - Verify `robot_height` is correct
+- Decrease `nonground_inc` (evidence accumulates slower)
+- Increase `ground_decay` (ground evidence fades faster)
+- Increase `nonground_occ_thresh` (higher evidence needed to mark as occupied)
+- Verify `robot_height` is correct
 
 **Costmap too aggressive (misses obstacles)**
 
-   - Increase `nonground_inc` (evidence accumulates faster)
-   - Decrease `nonground_decay` (obstacles persist longer)
-   - Decrease `nonground_occ_thresh` (lower evidence to mark as occupied)
-   - Verify point cloud data quality from segmentation algorithm
+- Increase `nonground_inc` (evidence accumulates faster)
+- Decrease `nonground_decay` (obstacles persist longer)
+- Decrease `nonground_occ_thresh` (lower evidence to mark as occupied)
+- Verify point cloud data quality from segmentation algorithm
 
 **Overhead structures blocking navigation**
 
-   - Increase `maximum_height_filter` to the height of your structures
-   - Verify that overhead points are actually coming through in the point cloud
-   - Check that `robot_height` is correctly set
+- Increase `maximum_height_filter` to the height of your structures
+- Verify that overhead points are actually coming through in the point cloud
+- Check that `robot_height` is correctly set
 
 **Performance Issues**
 
-   - Reduce `max_data_range` if using only nearby points
-   - Disable `enable_kpi_logging` in production
-   - Verify that `ground_neighbor_search_cells` is set appropriately (0 is fastest)
+- Reduce `max_data_range` if using only nearby points
+- Disable `enable_kpi_logging` in production
+- Verify that `ground_neighbor_search_cells` is set appropriately (0 is fastest)
 
 ## Funding
 

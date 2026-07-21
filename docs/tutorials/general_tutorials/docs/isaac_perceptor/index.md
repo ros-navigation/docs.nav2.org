@@ -138,11 +138,29 @@ If not already setup, make sure to install and configure Nova Init using [the fo
 If not already setup in Max Power Mode, we recommend you do so now to be able to leverage the full power of the Jetson.
 Power Mode settings are accessed and controlled with the `nvpmodel` command and the CPU/GPU clock settings are controlled via `jetsonclocks`. The following commands will set the Jetson to Max Power Mode with the CPU/GPU clocks set to maximum performance as well.
 
-Set CPU/GPU clocks to maximum: `sudo /usr/bin/jetson_clocks`
+Set CPU/GPU clocks to maximum:
 
-Set Max Power Mode for power consumption: `sudo nvpmodel -m 2`
+```bash
+sudo /usr/bin/jetson_clocks
+```
 
-Confirm settings by running: `sudo /usr/bin/jetson_clocks --show|tail -1` and `sudo /usr/bin/nvpmodel -q|head -1`
+Set Max Power Mode for power consumption:
+
+```bash
+sudo nvpmodel -m 2
+```
+
+Confirm settings by running:
+
+```bash
+sudo /usr/bin/jetson_clocks --show|tail -1
+```
+
+and
+
+```bash
+sudo /usr/bin/nvpmodel -q|head -1
+```
 
 Details on power consumption, CPU/GPU frequencies, cooling fan speeds, etc. can be found at [https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/SD/PlatformPowerAndPerformance/JetsonOrinNxSeriesAndJetsonAgxOrinSeries.html](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/SD/PlatformPowerAndPerformance/JetsonOrinNxSeriesAndJetsonAgxOrinSeries.html)
 
@@ -328,7 +346,9 @@ ros2 run isaac_mapping_ros create_map_offline.py --sensor_data_bag=/mnt/nova_ssd
     Starting with version 4.1.0 of the `isaac-ros-ess` code, the plugin architecture was changed to allow for custom plugins. This means you need to explicitly provide the path to the plugins for the models you've installed, even if they are the default ones provided by NVIDIA.
     For the `dnn_stereo_disparity` models, installed as part of the `isaac-ros-ess-install-models` package, this looks like:
 
-    `export LD_LIBRARY_PATH="/workspaces/isaac_ros-dev/ros_ws/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64/:$LD_LIBRARY_PATH"`
+    ```bash
+    export LD_LIBRARY_PATH="/workspaces/isaac_ros-dev/ros_ws/isaac_ros_assets/models/dnn_stereo_disparity/dnn_stereo_disparity_v4.1.0_onnx/plugins/aarch64/:$LD_LIBRARY_PATH"
+    ```
 
     Not setting this will cause the depth and occupancy_map generation steps to fail.
 
@@ -413,11 +433,18 @@ ros2 launch opennav_visual_nav_demo visual_nav_demo_launch.py
 
     This wraps the larger command:
 
-    `ros2 launch nova_carter_bringup perceptor.launch.py use_foxglove_whitelist:=false stereo_camera_configuration:=front_left_right_configuration disable_vgl:=False vslam_load_map_folder_path:=$vslam_dir vgl_map_dir:=$vgl_dir occupancy_map_yaml_file:=$occupancy_map_path vslam_enable_slam:=True`
+    ```bash
+    ros2 launch nova_carter_bringup perceptor.launch.py \
+    use_foxglove_whitelist:=false stereo_camera_configuration:=front_left_right_configuration \
+    disable_vgl:=False vslam_load_map_folder_path:=$vslam_dir vgl_map_dir:=$vgl_dir \
+    occupancy_map_yaml_file:=$occupancy_map_path vslam_enable_slam:=True
+    ```
 
     Running this will require the user to attach to the container from a separate terminal and run:
 
-    `ros2 launch nav2_bringup navigation_launch.py`
+    ```bash
+    ros2 launch nav2_bringup navigation_launch.py
+    ```
 
     to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default.
 

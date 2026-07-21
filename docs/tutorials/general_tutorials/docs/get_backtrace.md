@@ -30,7 +30,12 @@ Be sure to remove this flag after debugging, it will slow down performance at ru
 
 Adding the following line to your `CMakeLists.txt` for your project should do the trick.
 If your project already has a `add_compile_options()`, you can simply add `-g` to it.
-Then simply rebuild your workspace with this package `colcon build --packages-select <package-name>`.
+Then simply rebuild your workspace with this package:
+
+```bash
+colcon build --packages-select <package-name>
+```
+
 It may take a little longer than usual to compile.
 
 ```cmake
