@@ -21,11 +21,14 @@ The zones around the robot and the data sources are the same as for the Collisio
 
 Any data source can optionally define one or more **exclusion zones**.
 An exclusion zone is a region that *removes* (masks out) that source's points which fall inside it, before the detector polygons are evaluated.
-Unlike the polygons above, an exclusion zone does **not** trigger detection — it is a per-source pre-filter.
+Unlike the polygons above, an exclusion zone does **not** trigger detection, it is a per-source pre-filter.
 A typical use case is ignoring known structure the robot deliberately approaches, such as a charging dock or a conveyor, whose returns would otherwise trip the detection zones.
+Another common use case is self-filtering: masking out returns from parts of the robot itself (e.g. arms, mast, bumpers, or trailers) that fall within a sensor's field of view, which would otherwise be mistaken for obstacles. Anchoring the zone to the relevant robot frame keeps the mask aligned with that structure as it moves.
 A zone can be a polygon or circle anchored to an arbitrary ``frame_id`` (e.g. ``dock_link``), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
 The filter is fail-safe: if the zone transform is unavailable, no points are removed.
 Each zone inherits its owning source's ``base_shift_correction`` policy, so the mask and the source points are always transformed under the same assumptions.
+See YAML at the bottom for an example.
+
 
 Parameters
 **********
