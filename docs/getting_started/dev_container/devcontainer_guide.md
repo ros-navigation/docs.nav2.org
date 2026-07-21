@@ -117,9 +117,16 @@ Once the dev container has been created and setup completed, VS Code will open a
 If you prefer using an alternate terminal emulator, rather than the built-in VS Code terminal, you can open a separate shell session by simply using the Dev Container CLI or directly using the Docker CLI via the `exec` subcommands.
 
 - [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli)
-    - `devcontainer exec –workspace-folder $NAV2_WS/src/navigation2 bash`
+
+    ```shell
+    devcontainer exec –workspace-folder $NAV2_WS/src/navigation2 bash
+    ```
+
 - [docker exec](https://docs.docker.com/engine/reference/commandline/exec/)
-    - `docker exec -it <container-id> bash`
+
+    ```shell
+    docker exec -it <container-id> bash
+    ```
 
 !!! warning "Attention"
 

@@ -40,10 +40,21 @@ This will obtain the testing docker image from `ros_oci_images`, open a containe
 
 Next, run each major Nav2 launch file and navigate the robot around.
 
-- `ros2 launch nav2_bringup tb3_simulation_launch.py`
-- `ros2 launch nav2_bringup tb4_simulation_launch.py`
-- `ros2 launch nav2_bringup tb3_loopback_sim_launch.py`
-- `ros2 launch nav2_bringup tb4_loopback_sim_launch.py`
+```shell
+ros2 launch nav2_bringup tb3_simulation_launch.py
+```
+
+```shell
+ros2 launch nav2_bringup tb4_simulation_launch.py
+```
+
+```shell
+ros2 launch nav2_bringup tb3_loopback_sim_launch.py
+```
+
+```shell
+ros2 launch nav2_bringup tb4_loopback_sim_launch.py
+```
 
 Ensure that you see all the data, costmap, footprint, path planning, control and other topics visible.
 Send Navigate To Pose, Navigate Through Poses goals and cancel goals periodically.

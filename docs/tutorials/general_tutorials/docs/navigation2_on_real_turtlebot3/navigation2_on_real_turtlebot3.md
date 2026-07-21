@@ -37,14 +37,18 @@ sudo apt install ros-$ROS_DISTRO-turtlebot3 ros-$ROS_DISTRO-turtlebot3-msgs ros-
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
-- `source /opt/ros/<ros2-distro>/setup.bash`
-- `export TURTLEBOT3_MODEL=waffle`
+```bash
+source /opt/ros/<ros2-distro>/setup.bash &&
+export TURTLEBOT3_MODEL=waffle
+```
 
 ### 1. Launch Turtlebot 3
 
 You will need to launch your robot's interface, for example:
 
-`ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False`
+```bash
+ros2 launch turtlebot3_bringup robot.launch.py use_sim_time:=False
+```
 
 ### 2. Launch Nav2
 
@@ -66,7 +70,9 @@ More information about the map.yaml can be found [here](http://wiki.ros.org/map_
 Launch Nav2. If you set autostart:=False, you need to click on the start button in RViz to initialize the nodes.
 Make sure *use_sim time* is set to **False**, because we want to use the system time instead of the time simulation time from Gazebo.
 
-`ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False autostart:=False map:=/path/to/your-map.yaml`
+```bash
+ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False autostart:=False map:=/path/to/your-map.yaml
+```
 
 Note: Don't forget to change **/path/to/your-map.yaml** to the actual path to the your-map.yaml file.
 
@@ -74,7 +80,9 @@ Note: Don't forget to change **/path/to/your-map.yaml** to the actual path to th
 
 Launch RVIZ with a pre-defined configuration file.
 
-`ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz`
+```bash
+ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz
+```
 
 Now, you should see a shadow of Turtlebot 3 robot model in the center of the plot in Rviz.
 Click on the Start button (Bottom Left) if you set the auto_start parameter to false.
