@@ -112,7 +112,7 @@ Type: `string` Default: `""`
 
 Type: `double` Default: `3.0`
 
-:   Ratio of the rate of change of angle relative to distance from the target. Much be > 0.
+:   Ratio of the rate of change of angle relative to distance from the target. Much be `> 0`.
 
 ### **`controller.k_delta`**
 
@@ -124,13 +124,13 @@ Type: `double` Default: `2.0`
 
 Type: `double` Default: `0.4`
 
-:   Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta \* |curv|^lambda)).
+:   Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (`v(t) = v_max / (1 + beta * |curv|^lambda)`).
 
 ### **`controller.lambda`**
 
 Type: `double` Default: `2.0`
 
-:   Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta \* |curv|^lambda)).
+:   Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (`v(t) = v_max / (1 + beta * |curv|^lambda)`).
 
 ### **`controller.v_linear_min`**
 
@@ -260,7 +260,7 @@ Type: `double` Default: `1.57`
 :   Pitch offset from detected pose for docking pose (rad).
 
     Note
-    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
+    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in `image_proc` and `isaac_ros`.
 
 ### **`<dock_name>.external_detection_rotation_roll`**
 
@@ -269,7 +269,7 @@ Type: `double` Default: `-1.57`
 :   Roll offset from detected pose for docking pose (rad).
 
     Note
-    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
+    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in `image_proc` and `isaac_ros`.
 
 ### **`<dock_name>.filter_coef`**
 

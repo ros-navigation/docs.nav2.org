@@ -133,7 +133,7 @@ Type: `vector<string>` Default: `["compute_path_error_code", "follow_path_error_
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ## NavigateToPose Parameters
 
@@ -150,7 +150,7 @@ Type: `int` Default: `1667`
 :   The port number for the Groot2 server.
 
     Note
-    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be `1669`.
 
 ## NavigateThroughPoses Parameters
 
@@ -167,7 +167,7 @@ Type: `int` Default: `1669`
 :   The port number for the Groot2 server.
 
     Note
-    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
+    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be `1671`.
 
 ## Example
 

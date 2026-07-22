@@ -127,7 +127,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `false`
 
-:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data. True uses TwistStamped, false uses Twist.
+:   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data. `true` uses `TwistStamped`, `false` uses `Twist`.
 
     Note
     :   This parameter is default `false` in Jazzy or older.
@@ -146,19 +146,19 @@ Type: `string` Default: `N/A`
 
 Type: `string` Default: `N/A`
 
-:   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `polygon` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to `polygon_sub_topic` for points in the `stop`/`slowdown`/`limit` action types, or footprint subscriber to `footprint_topic` for `approach` action type.
+:   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `"polygon"` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to `polygon_sub_topic` for points in the `"stop"`/`"slowdown"`/`"limit"` action types, or footprint subscriber to `footprint_topic` for `"approach"` action type.
 
 ### **`<polygon_name>.polygon_sub_topic`**
 
 Type: `string` Default: `N/A`
 
-:   For `polygon` type, topic to listen the polygon points from. For `circle` type, topic to listen the circle radius from. Applicable for `stop`/`slowdown`/`limit` action types. Causes an error if not specified **and** static polygon geometry (using parameter `points` for `polygon` type or `radius` for `circle` type) is also not specified. If both static polygon geometry and `polygon_sub_topic` are specified, the static parameter takes priority.
+:   For `"polygon"` type, topic to listen the polygon points from. For `"circle"` type, topic to listen the circle radius from. Applicable for `"stop"`/`"slowdown"`/`"limit"` action types. Causes an error if not specified **and** static polygon geometry (using parameter `points` for `"polygon"` type or `radius` for `"circle"` type) is also not specified. If both static polygon geometry and `polygon_sub_topic` are specified, the static parameter takes priority.
 
 ### **`<polygon_name>.footprint_topic`**
 
 Type: `string` Default: `"local_costmap/published_footprint"`
 
-:   Topic to listen the robot footprint from. Applicable only for `polygon` type and `approach` action type. If both `points` and `footprint_topic` are specified, the static `points` takes priority.
+:   Topic to listen the robot footprint from. Applicable only for `"polygon"` type and `"approach"` action type. If both `points` and `footprint_topic` are specified, the static `points` takes priority.
 
 ### **`<polygon_name>.polygon_subscribe_transient_local`**
 
@@ -170,13 +170,13 @@ Type: `bool` Default: `false`
 
 Type: `double` Default: `N/A`
 
-:   Circle radius. Used for `circle` type. If not specified, the collision monitor will use dynamic polygon subscription to `polygon_sub_topic` for circle radius in the `stop`/`slowdown`/`limit` action types.
+:   Circle radius. Used for `"circle"` type. If not specified, the collision monitor will use dynamic polygon subscription to `polygon_sub_topic` for circle radius in the `"stop"`/`"slowdown"`/`"limit"` action types.
 
 ### **`<polygon_name>.action_type`**
 
 Type: `string` Default: `N/A`
 
-:   Zone behavior model. Available values are `stop`, `slowdown`, `limit`, `approach`. Causes an error, if not specialized.
+:   Zone behavior model. Available values are `"stop"`, `"slowdown"`, `"limit"`, `"approach"`. Causes an error, if not specialized.
 
 ### **`<polygon_name>.min_points`**
 
@@ -188,31 +188,31 @@ Type: `int` Default: `4`
 
 Type: `double` Default: `0.5`
 
-:   Robot slowdown (share of its actual speed). Applicable for `slowdown` action type.
+:   Robot slowdown (share of its actual speed). Applicable for `"slowdown"` action type.
 
 ### **`<polygon_name>.linear_limit`**
 
 Type: `double` Default: `0.5`
 
-:   Robot linear speed limit. Applicable for `limit` action type.
+:   Robot linear speed limit. Applicable for `"limit"` action type.
 
 ### **`<polygon_name>.angular_limit`**
 
 Type: `double` Default: `0.5`
 
-:   Robot angular speed limit. Applicable for `limit` action type.
+:   Robot angular speed limit. Applicable for `"limit"` action type.
 
 ### **`<polygon_name>.time_before_collision`**
 
 Type: `double` Default: `2.0`
 
-:   Time before collision in seconds. Maximum simulation time used in collision prediction. Higher values mean lower performance. Applicable for `approach` action type.
+:   Time before collision in seconds. Maximum simulation time used in collision prediction. Higher values mean lower performance. Applicable for `"approach"` action type.
 
 ### **`<polygon_name>.simulation_time_step`**
 
 Type: `double` Default: `0.1`
 
-:   Time iteration step for robot movement simulation during collision prediction. Higher values mean lower prediction accuracy but better performance. Applicable for `approach` action type.
+:   Time iteration step for robot movement simulation during collision prediction. Higher values mean lower prediction accuracy but better performance. Applicable for `"approach"` action type.
 
 ### **`<polygon_name>.visualize`**
 
@@ -224,7 +224,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `<polygon_name>`
 
-:   Topic name to publish a polygon to. Used only if `visualize` is true.
+:   Topic name to publish a polygon to. Used only if `visualize` is `true`.
 
 ### **`<polygon_name name>.enabled`**
 
@@ -252,7 +252,7 @@ Type: `vector<string>` Default: `N/A`
 
 Type: `vector<string>` Default: `N/A`
 
-:   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `polygon` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
+:   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `"polygon"` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.linear_min`**
 
@@ -288,13 +288,13 @@ Type: `double` Default: `N/A`
 
 Type: `double` Default: `-PI`
 
-:   Start angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
+:   Start angle of the movement direction (for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
 
 ### **`<vel_poly>.<subpoly>.direction_end_angle`**
 
 Type: `double` Default: `PI`
 
-:   End angle of the movement direction(for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
+:   End angle of the movement direction (for holonomic robot only). Refer to the [Example](#example) section for the common configurations. Applicable for *holonomic* mode only.
 
 ## Observation sources parameters
 
@@ -328,7 +328,7 @@ Type: `double` Default: `0.5`
 
 Type: `bool` Default: `false`
 
-:   Set true for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `"pointcloud"` type.
+:   Set `true` for pointcloud sources containing a "height" field relative to a real world ground contour. The "height" field will be used for the min and max height checks instead of the "z" field and will not be transformed as it is assumed that height is already global frame referenced. Applicable for `"pointcloud"` type.
 
 ### **`<source name>.min_range`**
 
@@ -364,7 +364,7 @@ Type: `double` Default: (node parameter `source_timeout` value)
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ## Example
 

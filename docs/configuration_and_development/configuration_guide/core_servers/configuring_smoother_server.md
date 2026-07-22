@@ -61,7 +61,7 @@ Type: `vector<string>` Default: `["simple_smoother"]`
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ## Example
 

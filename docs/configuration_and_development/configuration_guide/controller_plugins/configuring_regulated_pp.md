@@ -110,7 +110,7 @@ Type: `double` Default: `0.6`
 
 Type: `double` Default: `1.0`
 
-:   A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within `cost_scaling_dist`. Lower value reduces speed more quickly.
+:   A multiplier gain, which should be `<= 1.0`, used to further scale the speed when an obstacle is within `cost_scaling_dist`. Lower value reduces speed more quickly.
 
 ### **`regulated_linear_scaling_min_radius`**
 
@@ -143,13 +143,13 @@ Type: `bool` Default: `true`
 :   Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
 
     Note
-    :   both `use_rotate_to_heading` and `allow_reversing` cannot be set to `true` at the same time as it would result in ambiguous situations.
+    :   Both `use_rotate_to_heading` and `allow_reversing` cannot be set to `true` at the same time as it would result in ambiguous situations.
 
 ### **`allow_reversing`**
 
 Type: `bool` Default: `false`
 
-:   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner][smac-planner] to know more.
+:   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the `smac_planner` comes with the support of reversing. Checkout the [Smac Planner][smac-planner] to know more.
 
 ### **`rotate_to_heading_min_angle`**
 
@@ -194,7 +194,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `true`
 
-:   Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
+:   Enables stateful goal handling behavior. When set to `true`, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
 
 ## Example
 

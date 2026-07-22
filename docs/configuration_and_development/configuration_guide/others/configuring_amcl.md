@@ -88,13 +88,13 @@ Type: `double` Default: `2.0`
 
 Type: `double` Default: `100.0`
 
-:   Maximum scan range to be considered, -1.0 will cause the laser's reported maximum range to be used.
+:   Maximum scan range to be considered, `-1.0` will cause the laser's reported maximum range to be used.
 
 ### **`laser_min_range`**
 
 Type: `double` Default: `-1.0`
 
-:   Minimum scan range to be considered, -1.0 will cause the laser's reported minimum range to be used.
+:   Minimum scan range to be considered, `-1.0` will cause the laser's reported minimum range to be used.
 
 ### **`laser_model_type`**
 
@@ -106,7 +106,7 @@ Type: `string` Default: `"likelihood_field"`
 
 Type: `bool` Default: `false`
 
-:   Causes AMCL to set initial pose from the initial_pose\* parameters instead of waiting for the initial_pose message.
+:   Causes AMCL to set initial pose from the `initial_pose*` parameters instead of waiting for the `initial_pose` message.
 
 ### **`initial_pose`**
 
@@ -148,19 +148,19 @@ Type: `double` Default: `0.05`
 
 Type: `double` Default: `0.99`
 
-:   Particle filter population density. 2.33 is the 99% percentile.
+:   Particle filter population density. `2.33` is the 99% percentile.
 
 ### **`recovery_alpha_fast`**
 
 Type: `double` Default: `0.0`
 
-:   Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.1.
+:   Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. A good value might be `0.1`.
 
 ### **`recovery_alpha_slow`**
 
 Type: `double` Default: `0.0`
 
-:   Exponential decay rate for the slow average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.001.
+:   Exponential decay rate for the slow average weight filter, used in deciding when to recover by adding random poses. A good value might be `0.001`.
 
 ### **`resample_interval`**
 
@@ -175,13 +175,13 @@ Type: `string` Default: `"nav2_amcl::DifferentialMotionModel"`
 :   The fully-qualified type of the plugin class. Options are `"nav2_amcl::DifferentialMotionModel"` and `"nav2_amcl::OmniMotionModel"`. Users can also provide their own custom motion model plugin type.
 
     Note for users of galactic and earlier
-    :   The models are selectable by string key (valid options: "differential", "omnidirectional") rather than plugins.
+    :   The models are selectable by string key (valid options: `"differential"`, `"omnidirectional"`) rather than plugins.
 
 ### **`save_pose_rate`**
 
 Type: `double` Default: `0.5`
 
-:   Maximum rate (Hz) at which to store the last estimated pose and covariance to the parameter server, in the variables `~initial_pose_*` and `~initial_cov_*`. This saved pose will be used on subsequent runs to initialize the filter (-1.0 to disable).
+:   Maximum rate (Hz) at which to store the last estimated pose and covariance to the parameter server, in the variables `~initial_pose_*` and `~initial_cov_*`. This saved pose will be used on subsequent runs to initialize the filter (`-1.0` to disable).
 
 ### **`sigma_hit`**
 
@@ -193,7 +193,7 @@ Type: `double` Default: `0.2`
 
 Type: `bool` Default: `true`
 
-:   Set this to false to prevent amcl from publishing the transform between the global frame and the odometry frame.
+:   Set this to `false` to prevent amcl from publishing the transform between the global frame and the odometry frame.
 
 ### **`transform_tolerance`**
 
@@ -265,7 +265,7 @@ Type: `bool` Default: `false`
 
 Type: `double` Default: `0.1`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ## Example
 

@@ -53,13 +53,13 @@ Type: `int` Default: `100`
 
 Type: `string` Default: `"map"`
 
-:   Topic of map from map_server or SLAM.
+:   Topic of map from `map_server` or SLAM.
 
 ### **`map_vis_z`**
 
 Type: `double` Default: `0.0`
 
-:   The height of the map used for visualization, helping to avoid RViz flickering issues (e.g., at -0.008).
+:   The height of the map used for visualization, helping to avoid RViz flickering issues (e.g., at `-0.008`).
 
 ### **`origin_x`**
 
@@ -104,15 +104,15 @@ Type: `double` Default: `0.1`
 
 Type: `bool` Default: `false`
 
-:   If true, the costmap moves with the robot, maintaining a local view centered around it.
+:   If `true`, the costmap moves with the robot, maintaining a local view centered around it.
     This is typically used for local costmaps.
-    If false, the costmap remains fixed in the global frame.
+    If `false`, the costmap remains fixed in the global frame.
 
 ### **`track_unknown_space`**
 
 Type: `bool` Default: `false`
 
-:   If false, treats unknown space as free space, else as unknown space.
+:   If `false`, treats unknown space as free space, else as unknown space.
 
 ### **`transform_tolerance`**
 
@@ -149,8 +149,8 @@ Type: `double` Default: `5.0`
 Type: `bool` Default: `false`
 
 :   Whether to use the maximum cost when combining multiple costmap layers.
-    If true, the highest cost is preserved, ensuring obstacles are not overwritten.
-    If false, newer layers may override previous cost values.
+    If `true`, the highest cost is preserved, ensuring obstacles are not overwritten.
+    If `false`, newer layers may override previous cost values.
 
 ### **`plugins`**
 

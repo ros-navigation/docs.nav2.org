@@ -37,7 +37,7 @@ Type: `double` Default: `0.25`
 
 Type: `int` Default: `1000000`
 
-:   Maximum number of search iterations before failing to limit compute time, disabled by -1.
+:   Maximum number of search iterations before failing to limit compute time, disabled by `-1`.
 
 ### **`<name>.max_on_approach_iterations`**
 
@@ -79,7 +79,7 @@ Type: `double` Default: `200.0`
 
 Type: `bool` Default: `false`
 
-:   For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2\*pi\*min_r of the goal, then it will override the max cost if `false`.
+:   For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within `2*pi*min_r` of the goal, then it will override the max cost if `false`.
 
 ### **`<name>.motion_model_for_search`**
 
@@ -91,19 +91,19 @@ Type: `string` Default: `"DUBIN"`
 
 Type: `int` Default: `72`
 
-:   Number of angular bins to use for SE2 search. This can be any even number, but a good baseline is 64 or 72 (for 5 degree increments).
+:   Number of angular bins to use for SE2 search. This can be any even number, but a good baseline is `64` or `72` (for 5 degree increments).
 
 ### **`<name>.minimum_turning_radius`**
 
 Type: `double` Default: `0.4`
 
-:   Minimum turning radius in meters of vehicle. Also used in the smoother to compute maximum curvature. Must be greater than 0.
+:   Minimum turning radius in meters of vehicle. Also used in the smoother to compute maximum curvature. Must be greater than `0`.
 
 ### **`<name>.reverse_penalty`**
 
 Type: `double` Default: `2.0`
 
-:   Heuristic penalty to apply to SE2 node if searching in reverse direction. Only used in `REEDS_SHEPP` motion model.
+:   Heuristic penalty to apply to SE2 node if searching in reverse direction. Only used in `"REEDS_SHEPP"` motion model.
 
 ### **`<name>.change_penalty`**
 
@@ -127,7 +127,7 @@ Type: `double` Default: `2.0`
 
 Type: `double` Default: `0.015`
 
-:   Heuristic penalty to apply to SE2 node penalty. Causes Hybrid-A\* to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0. Must be *0.0* to be fully admissible.
+:   Heuristic penalty to apply to SE2 node penalty. Causes Hybrid-A\* to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be `>= 0.0` and `<= 1.0`. Must be `0.0` to be fully admissible.
 
 ### **`<name>.lookup_table_size`**
 
@@ -173,7 +173,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `true`
 
-:   If true, does simple and fast smoothing post-processing to the path from search
+:   If `true`, does simple and fast smoothing post-processing to the path from search
 
 ### **`<name>.smoother.max_iterations`**
 

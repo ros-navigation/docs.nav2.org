@@ -22,7 +22,7 @@ Type: `string` Default: `N/A`
 
 Type: `bool` Default: `false`
 
-:   When true, check if the robot is in a lethal keepout zone, if so, replaces those lethal costs with lethal_override_cost.
+:   When `true`, check if the robot is in a lethal keepout zone, if so, replaces those lethal costs with `lethal_override_cost`.
 
 ### **`<filter name>.lethal_override_cost`**
 

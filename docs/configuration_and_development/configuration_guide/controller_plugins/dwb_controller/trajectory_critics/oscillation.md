@@ -6,7 +6,7 @@ Prevents the robot from just moving backwards and forwards.
 
 `<dwb plugin>`: DWB plugin name defined in the **`controller_plugin_ids`** parameter in [Controller Server][controller-server].
 
-`<name>`: OscillationCritic critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
+`<name>`: `OscillationCritic` critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
 
 ### **`<dwb plugin>.<name>.oscillation_reset_dist`**
 
@@ -24,7 +24,7 @@ Type: `double` Default: `0.2`
 
 Type: `double` Default: `-1.0`
 
-:   Duration when a reset may be called. If -1, cannot be reset..
+:   Duration when a reset may be called. If `-1`, cannot be reset.
 
 ### **`<dwb plugin>.<name>.x_only_threshold`**
 

@@ -4,7 +4,7 @@ Scores a trajectory based on how well it is aligned to the path provided by the 
 
 ## Parameters
 
-`<name>`: PathDistCritic critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
+`<name>`: `PathDistCritic` critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
 
 ### **`<dwb plugin>.<name>.aggregation_type`**
 
