@@ -96,6 +96,10 @@ Costmap Layers
 |                                |                        | registered pointclouds for       |
 |                                |                        | terrain-aware navigation.        |
 +--------------------------------+------------------------+----------------------------------+
+| `Virtual Layer`_               |  Sherif Fathey         | Creates dynamic virtual cost     |
+|                                |                        | zones and restriction areas using|
+|                                |                        | polygons, lines, and circles     |
++--------------------------------+------------------------+----------------------------------+
 
 .. _Semantic Segmentation Layer: https://github.com/kiwicampus/semantic_segmentation_layer
 .. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
@@ -110,6 +114,7 @@ Costmap Layers
 .. _Denoise Layer: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 .. _Plugin Container Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 .. _Ground Consistency Layer: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
+.. _Virtual Layer: https://github.com/SherifFathey/nav2-virtual-layer
 
 Costmap Filters
 ===============
