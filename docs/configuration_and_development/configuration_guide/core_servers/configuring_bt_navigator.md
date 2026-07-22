@@ -25,7 +25,6 @@ Type: `string` Default: `N/A`
 
 :   Path to the default behavior tree XML description for `NavigateToPose`,
     see [Behavior Tree XML Nodes][behavior-tree-xml-nodes] for details on this file.
-    This parameter used to be `default_bt_xml_filename` pre-Galactic.
     You can use substitution to specify file path like `$(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml`. However, if left empty, the default behavior tree XML will be loaded from the `nav2_bt_navigator` package.
 
 ### **`default_nav_through_poses_bt_xml`**
@@ -33,7 +32,7 @@ Type: `string` Default: `N/A`
 Type: `string` Default: `N/A`
 
 :   Path to the default behavior tree XML description for `NavigateThroughPoses`,
-    see [Behavior Tree XML Nodes][behavior-tree-xml-nodes] for details on this file. New to Galactic after `NavigateThroughPoses` was added.
+    see [Behavior Tree XML Nodes][behavior-tree-xml-nodes] for details on this file.
     You can use substitution to specify file path like `$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml`. However, if left empty, the default behavior tree XML will be loaded from the `nav2_bt_navigator` package.
 
 ### **`always_reload_bt_xml`**
