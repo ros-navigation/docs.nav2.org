@@ -6,7 +6,7 @@ Prevents holonomic robots from spinning as they make their way to the goal.
 
 `<dwb plugin>`: DWB plugin name defined in the **`controller_plugin_ids`** parameter in [Controller Server][controller-server].
 
-`<name>`: TwirlingCritic critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
+`<name>`: `TwirlingCritic` critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
 
 ### **`<dwb plugin>.<name>.scale`**
 

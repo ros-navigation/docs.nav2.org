@@ -10,10 +10,10 @@ Type: `int` Default: `0`
 
 :   Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:
 
-    - 0: keepout zones / preferred lanes filter
-    - 1: speed filter, speed limit is specified in % of maximum speed
-    - 2: speed filter, speed limit is specified in absolute value (m/s)
-    - 3: binary filter
+    - `0`: keepout zones / preferred lanes filter
+    - `1`: speed filter, speed limit is specified in % of maximum speed
+    - `2`: speed filter, speed limit is specified in absolute value (m/s)
+    - `3`: binary filter
 
 ### **`filter_info_topic`**
 
@@ -45,7 +45,7 @@ Type: `double` Default: `1.0`
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ### **`allow_parameter_qos_overrides`**
 

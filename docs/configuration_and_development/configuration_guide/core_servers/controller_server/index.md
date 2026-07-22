@@ -110,28 +110,28 @@ Type: `vector<string>` Default: `["PathHandler"]`
 Type: `double` Default: `0.0001`
 
 :   The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
-    Odometry values below this threshold (in m/s) will be set to 0.0.
+    Odometry values below this threshold (in m/s) will be set to `0.0`.
 
 ### **`min_y_velocity_threshold`**
 
 Type: `double` Default: `0.0001`
 
 :   The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
-    Odometry values below this threshold (in m/s) will be set to 0.0. For non-holonomic robots
+    Odometry values below this threshold (in m/s) will be set to `0.0`. For non-holonomic robots
 
 ### **`min_theta_velocity_threshold`**
 
 Type: `double` Default: `0.0001`
 
 :   The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
-    Odometry values below this threshold (in rad/s) will be set to 0.0.
+    Odometry values below this threshold (in rad/s) will be set to `0.0`.
 
 ### **`failure_tolerance`**
 
 Type: `double` Default: `0.0`
 
 :   The maximum duration in seconds the called controller plugin can fail (i.e. the `computeVelocityCommands` function of the plugin throwing an exception) before the `nav2_msgs::action::FollowPath` action fails.
-    Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any positive value for the appropriate timeout.
+    Setting it to the special value of `-1.0` makes it infinite, `0` to disable, and any positive value for the appropriate timeout.
 
 ### **`speed_limit_topic`**
 
@@ -156,13 +156,13 @@ Type: `double` Default: `0.3`
 Type: `bool` Default: `true`
 
 :   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
-    True uses TwistStamped, false uses Twist.
+    `true` uses `TwistStamped`, `false` uses `Twist`.
 
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ### **`introspection_mode`**
 

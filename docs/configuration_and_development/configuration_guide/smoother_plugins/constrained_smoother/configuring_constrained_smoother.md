@@ -2,7 +2,7 @@
 
 Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother).
 
-A smoother plugin for nav2_smoother based on the original deprecated smoother in nav2_smac_planner and put into operational state by [RoboTech Vision](https://robotechvision.com/).
+A smoother plugin for `nav2_smoother` based on the original deprecated smoother in `nav2_smac_planner` and put into operational state by [RoboTech Vision](https://robotechvision.com/).
 Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models. It optimizes for path length, smoothness, distance from obstacles, and curvature in a large Ceres-based optimization program.
 
 !!! warning "Important"
@@ -22,7 +22,7 @@ increasing its smoothness and distance from obstacles. Resulting path is marked 
 
 Type: `bool` Default: `true`
 
-:   Whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned
+:   Whether to detect forward/reverse direction and cusps. Should be set to `false` for paths without orientations assigned
 
 ### **`path_downsampling_factor`**
 
@@ -36,9 +36,9 @@ Type: `int` Default: `1`
 
 :   Upsampling factor for refining.
 
-    - 0 - path remains downsampled (see `path_downsampling_factor`)
-    - 1 - path is upsampled back to original granularity using cubic bezier
-    - 2... - more upsampling
+    - `0` - path remains downsampled (see `path_downsampling_factor`)
+    - `1` - path is upsampled back to original granularity using cubic bezier
+    - `2...` - more upsampling
 
 ### **`keep_start_orientation`**
 
@@ -56,13 +56,13 @@ Type: `bool` Default: `true`
 
 Type: `double` Default: `0.4`
 
-:   Minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots
+:   Minimum turning radius the robot can perform. Can be set to `0.0` (or `w_curve` can be set to `0.0` with the same effect) for diff-drive/holonomic robots
 
 ### **`w_curve`**
 
 Type: `double` Default: `30.0`
 
-:   Weight to enforce minimum_turning_radius
+:   Weight to enforce `minimum_turning_radius`
 
 ### **`w_dist`**
 
@@ -96,7 +96,7 @@ Type: `double` Default: `3.0`
 
 Type: `double` Default: `2.5`
 
-:   Length of the section around cusp in which nodes use `w_cost_cusp_multiplier` (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost\*w_cost_cusp_multiplier)
+:   Length of the section around cusp in which nodes use `w_cost_cusp_multiplier` (`w_cost` rises gradually inside the zone towards the cusp point, whose costmap weight eqals `w_cost * w_cost_cusp_multiplier`)
 
 ### **`cost_check_points`**
 

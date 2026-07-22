@@ -18,7 +18,7 @@ This algorithm is deterministic and low-parameter. In the below image, some odd 
 
 Type: `int` Default: `7`
 
-:   Size of the smoothing window. Must be an odd integer, with a minimum value of 3
+:   Size of the smoothing window. Must be an odd integer, with a minimum value of `3`
 
 ### **`poly_order`**
 

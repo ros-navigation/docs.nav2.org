@@ -11,7 +11,7 @@ See the package's `README` for more information.
 ## Features
 
 Similarly to the Collision Monitor, the Collision Detector uses robot's relative polygons to define "zones".
-However, unlike the Collision Monitor that uses different behavior models, the Collision Detector does not use any of them and therefore the *action_type* should always be set to *none*. If set to anything else, it will throw an error
+However, unlike the Collision Monitor that uses different behavior models, the Collision Detector does not use any of them and therefore the `action_type` should always be set to `"none"`. If set to anything else, it will throw an error
 
 The zones around the robot and the data sources are the same as for the Collision Monitor, with the exception of the footprint polygon, which is not supported by the Collision Detector.
 
@@ -79,7 +79,7 @@ Type: `string` Default: `N/A`
 
 Type: `string` Default: `N/A`
 
-:   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `polygon` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to `polygon_sub_topic`
+:   Polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format (e.g. `"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"` for the square in the front). Used for `"polygon"` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to `polygon_sub_topic`
 
 ### **`<polygon_name>.polygon_sub_topic`**
 
@@ -97,7 +97,7 @@ Type: `double` Default: `N/A`
 
 Type: `string` Default: `N/A`
 
-:   Only `none` action type is supported (more options available for collision monitor)
+:   Only `"none"` action type is supported (more options available for collision monitor)
 
 ### **`<polygon_name>.min_points`**
 
@@ -130,7 +130,7 @@ Type: `bool` Default: `false`
 
 Type: `string` Default: `<polygon_name>`
 
-:   Topic name to publish a polygon to. Used only if `visualize` is true.
+:   Topic name to publish a polygon to. Used only if `visualize` is `true`.
 
 ### **`<source name>.enabled`**
 
@@ -207,7 +207,7 @@ Type: `double` Default: (node parameter `source_timeout` value)
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ### **`allow_parameter_qos_overrides`**
 

@@ -5,7 +5,7 @@ within the costmap bounds, and handles in-place rotation and cusp pruning.
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **path_handler_plugin_id** parameter in [Controller Server][controller-server].
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **`path_handler_plugin_id`** parameter in [Controller Server][controller-server].
 
 ### **`<nav2_controller plugin>.reject_unit_path`**
 
@@ -29,13 +29,13 @@ Type: `double` Default: `Costmap size / 2`
 
 Type: `bool` Default: `false`
 
-:   If true, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner's requested inversion point. In addition, these cusping points will also be treated by the critics as local goals that the robot will attempt to reach. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.
+:   If `true`, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner's requested inversion point. In addition, these cusping points will also be treated by the critics as local goals that the robot will attempt to reach. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.
 
 ### **`<nav2_controller plugin>.enforce_path_rotation`**
 
 Type: `bool` Default: `false`
 
-:   If true, the controller will detect in-place rotation segments (where translation is near zero) and prune the remaining poses after the rotation point. This forces the robot to explicitly perform the rotation before proceeding along the rest of the path.
+:   If `true`, the controller will detect in-place rotation segments (where translation is near zero) and prune the remaining poses after the rotation point. This forces the robot to explicitly perform the rotation before proceeding along the rest of the path.
     This is particularly useful for feasible planners (e.g., Smac Planner) where direction changes are intentionally introduced and must be respected during execution.
 
 ### **`<nav2_controller plugin>.minimum_rotation_angle`**

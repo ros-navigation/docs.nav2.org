@@ -44,31 +44,31 @@ Type: `bool` Default: `true`
 
 Type: `double` Default: `N/A`
 
-:   Old version of PathAlign.scale, use that instead.
+:   Old version of `PathAlign.scale`, use that instead.
 
 ### **`<dwb plugin>.goal_distance_bias`** (Legacy)
 
 Type: `double` Default: `N/A`
 
-:   Old version of GoalAlign.scale, use that instead.
+:   Old version of `GoalAlign.scale`, use that instead.
 
 ### **`<dwb plugin>.occdist_scale`** (Legacy)
 
 Type: `double` Default: `N/A`
 
-:   Old version of ObstacleFootprint.scale, use that instead.
+:   Old version of `ObstacleFootprint.scale`, use that instead.
 
 ### **`<dwb plugin>.max_scaling_factor`** (Legacy)
 
 Type: `double` Default: `N/A`
 
-:   Old version of ObstacleFootprint.max_scaling_factor, use that instead.
+:   Old version of `ObstacleFootprint.max_scaling_factor`, use that instead.
 
 ### **`<dwb plugin>.scaling_speed`** (Legacy)
 
 Type: `double` Default: `N/A`
 
-:   Old version of ObstacleFootprint.scaling_speed, use that instead.
+:   Old version of `ObstacleFootprint.scaling_speed`, use that instead.
 
 ### **`<dwb plugin>.PathAlign.scale`**
 

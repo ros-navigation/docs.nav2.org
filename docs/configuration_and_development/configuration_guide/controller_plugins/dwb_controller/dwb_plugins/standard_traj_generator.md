@@ -14,7 +14,7 @@ Type: `double` Default: `1.7`
 
 Type: `bool` Default: `false`
 
-:   If true, forward simulate by time. If False, forward simulate by linear and angular granularity.
+:   If `true`, forward simulate by time. If `false`, forward simulate by linear and angular granularity.
 
 ### **`<dwb plugin>.time_granularity`**
 

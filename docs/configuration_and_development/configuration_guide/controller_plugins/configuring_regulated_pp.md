@@ -201,7 +201,7 @@ Type: `double` Default: `0.6`
 
 Type: `double` Default: `1.0`
 
-:   A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within `cost_scaling_dist`. Lower value reduces speed more quickly.
+:   A multiplier gain, which should be `<= 1.0`, used to further scale the speed when an obstacle is within `cost_scaling_dist`. Lower value reduces speed more quickly.
 
 ### **`regulated_linear_scaling_min_radius`**
 
@@ -234,13 +234,13 @@ Type: `bool` Default: `true`
 :   Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
 
     Note
-    :   both `use_rotate_to_heading` and `allow_reversing` cannot be set to `true` at the same time as it would result in ambiguous situations.
+    :   Both `use_rotate_to_heading` and `allow_reversing` cannot be set to `true` at the same time as it would result in ambiguous situations.
 
 ### **`allow_reversing`**
 
 Type: `bool` Default: `false`
 
-:   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the [Smac Planner][smac-planner] to know more.
+:   Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the `smac_planner` comes with the support of reversing. Checkout the [Smac Planner][smac-planner] to know more.
 
 ### **`rotate_to_heading_min_angle`**
 
@@ -279,7 +279,7 @@ Type: `bool` Default: `true`
 
 Type: `double` Default: `-1.0`
 
-:   The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
+:   The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set `<= 0.0` to disable. It is limited to maximum distance of lookahead distance selected.
 
 ### **`use_dynamic_window`**
 
@@ -292,7 +292,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `false`
 
-:   Whether to continue obstacle checking past the goal position up to `min_distance_to_obstacle`. When enabled, obstacles located beyond the goal along the projected trajectory may prevent motion. This can be useful when the goal pose is close to obstacles or when a safety margin must be enforced beyond the final path pose. For example, in constrained environments, users may prefer to ensure that obstacle checking continues slightly past the goal to avoid approaching obstacles that lie immediately beyond it. Requires `use_velocity_scaled_lookahead_dist` to be enabled and `min_distance_to_obstacle` > 0.0.
+:   Whether to continue obstacle checking past the goal position up to `min_distance_to_obstacle`. When enabled, obstacles located beyond the goal along the projected trajectory may prevent motion. This can be useful when the goal pose is close to obstacles or when a safety margin must be enforced beyond the final path pose. For example, in constrained environments, users may prefer to ensure that obstacle checking continues slightly past the goal to avoid approaching obstacles that lie immediately beyond it. Requires `use_velocity_scaled_lookahead_dist` to be enabled and `min_distance_to_obstacle > 0.0`.
 
 
 ## Example

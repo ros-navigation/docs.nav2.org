@@ -36,7 +36,7 @@ Type: `double` Default: `5.0`
 
 Type: `double` Default: `-1.0`
 
-:   If > 0, amount of time to look forward for a collision for..
+:   If `> 0`, amount of time to look forward for a collision for.
 
 ### **`<dwb plugin>.<name>.scale`**
 

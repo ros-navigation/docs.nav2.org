@@ -6,7 +6,7 @@ Scores a trajectory based on how well aligned the trajectory is with the goal po
 
 `<dwb plugin>`: DWB plugin name defined in the **`controller_plugin_ids`** parameter in [Controller Server][controller-server].
 
-`<name>`: GoalAlignCritic critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
+`<name>`: `GoalAlignCritic` critic name defined in the **`<dwb plugin>.critics`** parameter defined in [DWB Controller][dwb-controller].
 
 ### **`<dwb plugin>.<name>.forward_point_distance`**
 

@@ -30,7 +30,7 @@ Type: `double` Default: `0.25`
 
 Type: `int` Default: `1000000`
 
-:   Maximum number of search iterations before failing to limit compute time, disabled by -1.
+:   Maximum number of search iterations before failing to limit compute time, disabled by `-1`.
 
 ### **`<name>.max_on_approach_iterations`**
 
@@ -72,7 +72,7 @@ Type: `double` Default: `200.0`
 
 Type: `bool` Default: `false`
 
-:   For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2\*pi\*min_r of the goal, then it will override the max cost if `false`.
+:   For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within `2*pi*min_r` of the goal, then it will override the max cost if `false`.
 
 ### **`<name>.reverse_penalty`**
 
@@ -108,7 +108,7 @@ Type: `double` Default: `5.0`
 
 Type: `double` Default: `0.015`
 
-:   Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0. Must be *0.0* to be fully admissible.
+:   Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be `>= 0.0` and `<= 1.0`. Must be `0.0` to be fully admissible.
 
 ### **`<name>.lattice_filepath`**
 
@@ -132,7 +132,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `false`
 
-:   If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
+:   If `true`, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
 
 ### **`<name>.debug_visualizations`**
 
@@ -148,7 +148,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `true`
 
-:   If true, does simple and fast smoothing post-processing to the path from search
+:   If `true`, does simple and fast smoothing post-processing to the path from search
 
 ### **`<name>.smoother.max_iterations`**
 
@@ -196,7 +196,7 @@ Type: `string` Default: `"DEFAULT"`
 
 Type: `int` Default: `1`
 
-:   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to `"ALL_DIRECTION"` and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to `"ALL_DIRECTION"` and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are > 24. Otherwise, leave as 1 (fine search).
+:   Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to `"ALL_DIRECTION"` and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to `"ALL_DIRECTION"` and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are > 24. Otherwise, leave as `1`(fine search).
 
 ### **`<name>.downsample_obstacle_heuristic`**
 

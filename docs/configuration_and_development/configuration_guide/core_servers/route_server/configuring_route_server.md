@@ -47,7 +47,7 @@ Type: `double` Default: `0.05`
 
 Type: `int` Default: `0`
 
-:   The maximum number of planning iterations to perform. If 0, the maximum number of iterations is used.
+:   The maximum number of planning iterations to perform. If `0`, the maximum number of iterations is used.
 
 ### **`max_planning_time`**
 
@@ -131,7 +131,7 @@ Type: `bool` Default: `true`
 
 Type: `bool` Default: `true`
 
-:   Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
+:   Whether to use Breadth-first search to find the nearest traversable node (`true`) or simply the nearest node (`false`) for the start and goal when using pose requests.
 
 ### **`max_nn_search_iterations`**
 
@@ -215,7 +215,7 @@ Type: `string` Default: `"global_costmap/costmap_raw"`
 
 Type: `double` Default: `253.0`
 
-:   Maximum cost to consider an route blocked (253.0)
+:   Maximum cost to consider an route blocked (`253.0`)
 
 ### **`use_maximum`**
 
@@ -239,7 +239,7 @@ Type: `bool` Default: `true`
 
 Type: `int` Default: `2`
 
-:   Resolution to check costs at (1 = costmap resolution, 2 = 2x costmap resolution, etc)
+:   Resolution to check costs at (`1` = costmap resolution, `2` = 2x costmap resolution, etc)
 
 ## DistanceScorer
 
@@ -257,7 +257,7 @@ Type: `double` Default: `1.0`
 
 Type: `string` Default: `"speed_limit"`
 
-:   Graph metadata key to look for percentage speed limits (speed_limit).
+:   Graph metadata key to look for percentage speed limits (`speed_limit`).
 
 ## TimeScorer
 
@@ -310,7 +310,7 @@ Type: `string` Default: `"penalty"`
 ## SemanticScorer
 
 This edge scoring plugin will score based on semantic information provided in the graph file.
-It can either check for the edge's semantic class via a parameterized key's value **or** search all key names to match known semantic classes to apply weight (e.g. *class: highway* or *highway: <some other application info\>*).
+It can either check for the edge's semantic class via a parameterized key's value **or** search all key names to match known semantic classes to apply weight (e.g. `class: highway` or `highway: <some other application info>`).
 
 ### **`weight`**
 
@@ -441,7 +441,7 @@ Type: `double` Default: `5.0`
 
 Type: `int` Default: `1`
 
-:   The resolution to check at in terms of multiples of the costmap's resolution (1 = 1 cell, 2 = every 2 cells, and so on). This reduces the computational complexity for long-range routes.
+:   The resolution to check at in terms of multiples of the costmap's resolution (`1` = 1 cell, `2` = every 2 cells, and so on). This reduces the computational complexity for long-range routes.
 
 ### **`reroute_on_collision`**
 

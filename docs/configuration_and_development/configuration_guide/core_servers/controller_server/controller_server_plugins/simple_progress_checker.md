@@ -4,7 +4,7 @@ Checks whether the robot has made positional progress.
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **progress_checker_plugin_id** parameter in [Controller Server][controller-server].
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **`progress_checker_plugin_id`** parameter in [Controller Server][controller-server].
 
 ### **`<nav2_controller plugin>.required_movement_radius`**
 

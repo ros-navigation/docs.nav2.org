@@ -4,7 +4,7 @@ Checks whether the robot has reached the goal pose.
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server][controller-server].
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **`goal_checker_plugin_id`** parameter in [Controller Server][controller-server].
 
 ### **`<nav2_controller plugin>.xy_goal_tolerance`**
 

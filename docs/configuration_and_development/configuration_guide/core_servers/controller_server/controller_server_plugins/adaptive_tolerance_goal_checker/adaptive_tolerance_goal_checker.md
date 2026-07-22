@@ -15,7 +15,7 @@ The goal is cosidered reached when one of the following conditions is met:
 
 ## Parameters
 
-`<nav2_controller plugin>`: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in [Controller Server][controller-server].
+`<nav2_controller plugin>`: nav2_controller plugin name defined in the **`goal_checker_plugin_id`** parameter in [Controller Server][controller-server].
 
 ### **`<nav2_controller plugin>.fine_xy_goal_tolerance`**
 
@@ -45,13 +45,13 @@ Type: `double` Default: `1.0`
 
 Type: `bool` Default: `true`
 
-:   If true, once the XY tolerance is satisfied the checker latches that result and only re-evaluates yaw on subsequent cycles. If false, both XY and yaw are re-checked every cycle.
+:   If `true`, once the XY tolerance is satisfied the checker latches that result and only re-evaluates yaw on subsequent cycles. If `false`, both XY and yaw are re-checked every cycle.
 
 ### **`<nav2_controller plugin>.symmetric_yaw_tolerance`**
 
 Type: `bool` Default: `false`
 
-:   If true, the yaw check accepts both the goal orientation and its 180° opposite (useful for symmetric robots that can drive forward or backward). If false, only the goal orientation is accepted.
+:   If `true`, the yaw check accepts both the goal orientation and its 180° opposite (useful for symmetric robots that can drive forward or backward). If `false`, only the goal orientation is accepted.
 
 ### **`<nav2_controller plugin>.trans_stopped_velocity`**
 

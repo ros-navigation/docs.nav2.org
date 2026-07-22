@@ -131,14 +131,14 @@ Type: `double` Default: `0.4`
 
 Type: `double` Default: `3.2`
 
-:   maximum rotational acceleration (rad/s^2).
+:   Maximum rotational acceleration (rad/s^2).
 
 ### **`enable_stamped_cmd_vel`**
 
 Type: `bool` Default: `true`
 
 :   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
-    True uses TwistStamped, false uses Twist.
+    `true` uses `TwistStamped`, `false` uses `Twist`.
 
 ## BackUp Behavior Parameters
 
@@ -155,7 +155,7 @@ Type: `double` Default: `2.0`
 Type: `bool` Default: `true`
 
 :   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
-    True uses TwistStamped, false uses Twist.
+    `true` uses `TwistStamped`, `false` uses `Twist`.
 
 ### **`backup.acceleration_limit`**
 
@@ -190,13 +190,13 @@ Type: `double` Default: `2.0`
 Type: `bool` Default: `true`
 
 :   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
-    True uses TwistStamped, false uses Twist.
+    `true` uses `TwistStamped`, `false` uses `Twist`.
 
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -249,7 +249,7 @@ Type: `string` Default: `"cmd_vel_teleop"`
 Type: `bool` Default: `true`
 
 :   Whether to use `geometry_msgs::msg::Twist` or `geometry_msgs::msg::TwistStamped` velocity data.
-    True uses TwistStamped, false uses Twist.
+    `true` uses `TwistStamped`, `false` uses `Twist`.
 
 ## Example
 

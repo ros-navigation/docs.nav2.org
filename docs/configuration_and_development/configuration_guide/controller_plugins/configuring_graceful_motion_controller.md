@@ -42,7 +42,7 @@ Type: `double` Default: `0.4`
 
 Type: `double` Default: `2.0`
 
-:   Constant factor applied to the path curvature. This value must be greater or equal to 1. Determines the sharpness of the curve: higher lambda implies sharper curves.
+:   Constant factor applied to the path curvature. This value must be greater or equal to `1`. Determines the sharpness of the curve: higher lambda implies sharper curves.
 
 ### **`v_linear_min`**
 

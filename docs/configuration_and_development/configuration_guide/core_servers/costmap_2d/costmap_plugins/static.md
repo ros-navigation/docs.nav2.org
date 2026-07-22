@@ -21,7 +21,7 @@ Type: `bool` Default: `false`
 Type: `bool` Default: `true`
 
 :   Restore map after clearing the area the footprint occupied.
-    If `footprint_clearing_enabled` is false, this parameter is ignored.
+    If `footprint_clearing_enabled` is `false`, this parameter is ignored.
 
 ### **`<static layer>.subscribe_to_updates`**
 

@@ -34,13 +34,13 @@ Type: `double` Default: `2.0`
 
 Type: `int` Default: `1`
 
-:   Enum for method to add data to master costmap. Must be 0, 1 or 2, default to 1 (see below).
+:   Enum for method to add data to master costmap. Must be `0`, `1` or `2`, default to `1`(see below).
 
-    - 0 - Overwrite: Overwrite master costmap with every valid observation.
+    - `0` - Overwrite: Overwrite master costmap with every valid observation.
 
-    - 1 - Max: Sets the new value to the maximum of the `master_grid`'s value and this layer's value. This is the default.
+    - `1` - Max: Sets the new value to the maximum of the `master_grid`'s value and this layer's value. This is the default.
 
-    - 2 - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the `master_grid`'s value and this layer's value. If the master value is NO_INFORMATION, it is NOT overwritten.
+    - `2` - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the `master_grid`'s value and this layer's value. If the master value is NO_INFORMATION, it is NOT overwritten.
     It can be used to make sure that the static map is the dominant source of information, and prevent the robot to go through places that are not present in the static map.
 
 ### **`<obstacle layer>.tf_filter_tolerance`**
@@ -91,7 +91,7 @@ Type: `double` Default: `0.0`
 
 Type: `string` Default: `"LaserScan"`
 
-:   Data type of input, LaserScan or PointCloud2.
+:   Data type of input, `"LaserScan"` or `"PointCloud2"`.
 
 ### **`<obstacle layer>.<data source>.transport_type`**
 

@@ -13,7 +13,7 @@ If a waypoint is not achievable, the `stop_on_failure` parameter will determine 
 
 Type: `bool` Default: `true`
 
-:   Whether to fail action task if a single waypoint fails. If false, will continue to next waypoint.
+:   Whether to fail action task if a single waypoint fails. If `false`, will continue to next waypoint.
 
 ### **`loop_rate`**
 
@@ -38,7 +38,7 @@ Type: `string` Default: `"disabled"`
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ### **`allow_parameter_qos_overrides`**
 

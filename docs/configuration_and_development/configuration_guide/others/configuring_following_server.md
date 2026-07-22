@@ -35,7 +35,7 @@ Type: `double` Default: `10.0`
 
 Type: `double` Default: `-1.0`
 
-:   Timeout (s) to stop following when the object remains static. If -1.0, the robot will follow indefinitely.
+:   Timeout (s) to stop following when the object remains static. If `-1.0`, the robot will follow indefinitely.
 
 ### **`linear_tolerance`**
 
@@ -83,13 +83,13 @@ Type: `double` Default: `1.0`
 
 Type: `bool` Default: `true`
 
-:   If true, ignore the detected object's orientation and point toward it from the robot's position.
+:   If `true`, ignore the detected object's orientation and point toward it from the robot's position.
 
 ### **`search_by_rotating`**
 
 Type: `bool` Default: `false`
 
-:   If true, the robot will rotate in place when it loses object detection to try to find it again.
+:   If `true`, the robot will rotate in place when it loses object detection to try to find it again.
 
 ### **`search_angle`**
 

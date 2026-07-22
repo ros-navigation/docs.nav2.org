@@ -45,13 +45,13 @@ Type: `vector<string>` Default: `N/A`
 
 Type: `int` Default: `1`
 
-:   Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.
+:   Iteration count in the MPPI algorithm. Recommended to remain as `1` and instead prefer larger batch sizes.
 
 ### **`batch_size`**
 
 Type: `int` Default: `1000`
 
-:   Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 @ 50 Hz or 2000 @ 30 Hz seems to produce good results.
+:   Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. `1000` @ 50 Hz or `2000` @ 30 Hz seems to produce good results.
 
 ### **`time_steps`**
 
@@ -159,7 +159,7 @@ Type: `double` Default: `3.5`
 
 Type: `double` Default: `0.3`
 
-:   Selectiveness of trajectories by their costs (The closer this value to 0, the "more" we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
+:   Selectiveness of trajectories by their costs (The closer this value to `0`, the "more" we take in consideration controls with less cost), `0` mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.
 
 ### **`gamma`**
 
@@ -177,7 +177,7 @@ Type: `bool` Default: `false`
 
 Type: `int` Default: `0`
 
-:   Selects which critic to visualize the color-scheme of when `visualize` is true publishing Marker messages for visualization in rviz. `0` shows the total cost across all critics, `1..N` selects an individual critic by index (in the order listed in the `critics` parameter).
+:   Selects which critic to visualize the color-scheme of when `visualize` is `true` publishing Marker messages for visualization in rviz. `0` shows the total cost across all critics, `1..N` selects an individual critic by index (in the order listed in the `critics` parameter).
 
 ### **`publish_optimal_trajectory`**
 
@@ -371,7 +371,7 @@ Type: `double` Default: `100000.0`
 
 Type: `double` Default: `0.1`
 
-:   Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
+:   Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between `0.05-0.2` is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.
 
 ### **`near_goal_distance`**
 
@@ -475,13 +475,13 @@ Type: `int` Default: `20`
 
 Type: `double` Default: `0.07`
 
-:   Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path's intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
+:   Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path's intent in presence of dynamic objects in the scene. Between `0-1` for `0-100%`.
 
 ### **`use_path_orientations`**
 
 Type: `bool` Default: `false`
 
-:   Whether to consider path's orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.
+:   Whether to consider path's orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as `false`. If your plans do not contain orientation information (e.g. navfn), keep as `false`.
 
 ### **`trajectory_point_step`**
 
@@ -529,9 +529,9 @@ Type: `int` Default: `0`
 
 :   Enum type for mode of operations for the path angle critic depending on path input types and behavioral desires.
 
-    - 0: Forward Preference, penalizes high path angles relative to the robot's orientation to incentivize turning towards the path.
-    - 1: No directional preference, penalizes high path angles relative to the robot's orientation or mirrored orientation (e.g. reverse), which ever is less, when a particular direction of travel is not preferable.
-    - 2: Consider feasible path orientation, when using a feasible path whereas the path points have orientation information (e.g. Smac Planners), consider the path's requested direction of travel to penalize path angles such that the robot will follow the path in the requested direction.
+    - `0`: Forward Preference, penalizes high path angles relative to the robot's orientation to incentivize turning towards the path.
+    - `1`: No directional preference, penalizes high path angles relative to the robot's orientation or mirrored orientation (e.g. reverse), which ever is less, when a particular direction of travel is not preferable.
+    - `2`: Consider feasible path orientation, when using a feasible path whereas the path points have orientation information (e.g. Smac Planners), consider the path's requested direction of travel to penalize path angles such that the robot will follow the path in the requested direction.
 
 ## Path Follow Critic
 

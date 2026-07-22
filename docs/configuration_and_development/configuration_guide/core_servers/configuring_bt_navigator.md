@@ -128,7 +128,7 @@ Type: `vector<string>` Default: `["assisted_teleop", "backup", "compute_path", "
 
 Type: `double` Default: `0.25`
 
-:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to 0.0.
+:   The lifecycle node bond mechanism publishing period (on the `/bond` topic). Disabled if inferior or equal to `0.0`.
 
 ### **`allow_parameter_qos_overrides`**
 
@@ -146,13 +146,13 @@ Type: `vector<string>` Default: `$(find-pkg-share nav2_bt_navigator)/behavior_tr
 
 Type: `bool` Default: `false`
 
-:   Controls whether a new navigation goal can preempt a currently active navigator. If set to false, if a navigator is already running and a new goal arrives for a different navigator, the new goal is rejected. If set to true, the new goal signals the active navigator to stop, waits for it to finish, then hands control over to the new navigator.
+:   Controls whether a new navigation goal can preempt a currently active navigator. If set to `false`, if a navigator is already running and a new goal arrives for a different navigator, the new goal is rejected. If set to `true`, the new goal signals the active navigator to stop, waits for it to finish, then hands control over to the new navigator.
 
 ### **`navigator_preemption_timeout`**
 
 Type: `int` Default: `500`
 
-:   Only relevant when `allow_navigator_preemption` is true. Sets the maximum time (in ms) to wait for the currently active navigator to stop. If the active navigator doesn't finish within this timeout, the new goal is rejected.
+:   Only relevant when `allow_navigator_preemption` is `true`. Sets the maximum time (in ms) to wait for the currently active navigator to stop. If the active navigator doesn't finish within this timeout, the new goal is rejected.
 
 
 ## NavigateToPose Parameters
@@ -188,7 +188,7 @@ Type: `int` Default: `1667`
 :   The port number for the Groot2 server.
 
     Note
-    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be `1669`.
 
 ### **`<navigate_to_pose_name>.search_window`**
 
@@ -235,7 +235,7 @@ Type: `int` Default: `1669`
 :   The port number for the Groot2 server.
 
     Note
-    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
+    :   In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be `1671`.
 
 ### **`<navigate_through_poses>.search_window`**
 

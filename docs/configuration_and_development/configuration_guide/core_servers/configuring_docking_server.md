@@ -52,7 +52,7 @@ Type: `double` Default: `0.05`
 
 Type: `double` Default: `0.05`
 
-:   Angular tolerance (rad) to exit the rotation loop when rotate_to_dock is enabled.
+:   Angular tolerance (rad) to exit the rotation loop when `rotate_to_dock` is enabled.
 
 ### **`max_retries`**
 
@@ -76,7 +76,7 @@ Type: `string` Default: `"odom"`
 
 Type: `string` Default: `"odom"`
 
-:   The topic to use for the odometry data when rotate_to_dock is enabled.
+:   The topic to use for the odometry data when `rotate_to_dock` is enabled.
 
 ### **`odom_duration`**
 
@@ -136,7 +136,7 @@ Type: `bool` Default: `true`
 
 Type: `double` Default: `3.0`
 
-:   Ratio of the rate of change of angle relative to distance from the target. Much be > 0.
+:   Ratio of the rate of change of angle relative to distance from the target. Much be `> 0`.
 
 ### **`controller.k_delta`**
 
@@ -148,13 +148,13 @@ Type: `double` Default: `2.0`
 
 Type: `double` Default: `0.4`
 
-:   Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta \* |curv|^lambda)).
+:   Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (`v(t) = v_max / (1 + beta * |curv|^lambda)`).
 
 ### **`controller.lambda`**
 
 Type: `double` Default: `2.0`
 
-:   Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta \* |curv|^lambda)).
+:   Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (`v(t) = v_max / (1 + beta * |curv|^lambda)`).
 
 ### **`controller.v_linear_min`**
 
@@ -190,13 +190,13 @@ Type: `double` Default: `2.5`
 
 Type: `double` Default: `1.0`
 
-:   Angular velocity (rad/s) to rotate to the goal heading when rotate_to_dock is enabled.
+:   Angular velocity (rad/s) to rotate to the goal heading when `rotate_to_dock` is enabled.
 
 ### **`controller.rotate_to_heading_max_angular_accel`**
 
 Type: `double` Default: `3.2`
 
-:   Maximum angular acceleration (rad/s^2) to rotate to the goal heading when rotate_to_dock is enabled.
+:   Maximum angular acceleration (rad/s^2) to rotate to the goal heading when `rotate_to_dock` is enabled.
 
 ### **`controller.use_collision_detection`**
 
@@ -257,7 +257,7 @@ Type: `double` Default: `-0.7`
 
 Type: `double` Default: `0.0`
 
-:   Staging pose angle relative to dock pose (rad). If `dock_direction` is set to "backward", this angle must be faced in the opposite direction of the dock pose. However, if `rotate_to_dock` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
+:   Staging pose angle relative to dock pose (rad). If `dock_direction` is set to `"backward"`, this angle must be faced in the opposite direction of the dock pose. However, if `rotate_to_dock` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
 
 ### **`<dock_name>.use_battery_status`**
 
@@ -287,7 +287,7 @@ Type: `double` Default: `5.0`
 
 Type: `bool` Default: `false`
 
-:   When true, subscribe to `detected_dock_pose` only while detection is active; otherwise keep the subscription persistent.
+:   When `true`, subscribe to `detected_dock_pose` only while detection is active; otherwise keep the subscription persistent.
 
 ### **`<dock_name>.external_detection_timeout`**
 
@@ -320,7 +320,7 @@ Type: `double` Default: `1.57`
 :   Pitch offset from detected pose for docking pose (rad).
 
     Note
-    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
+    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in `image_proc` and `isaac_ros`.
 
 ### **`<dock_name>.external_detection_rotation_roll`**
 
@@ -329,7 +329,7 @@ Type: `double` Default: `-1.57`
 :   Roll offset from detected pose for docking pose (rad).
 
     Note
-    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in *image_proc* and *isaac_ros*.
+    :   The external detection rotation angles are setup to work out of the box with Apriltags detectors in `image_proc` and `isaac_ros`.
 
 ### **`<dock_name>.filter_coef`**
 
