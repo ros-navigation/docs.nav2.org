@@ -237,6 +237,7 @@ nav:
         - Static Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/static.md
         - Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation.md
         - Legacy Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation_legacy.md
+        - Asymmetric Inflation Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/asymmetric_inflation/asymmetric_inflation.md
         - Obstacle Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/obstacle.md
         - Voxel Layer Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/voxel.md
         - Range Sensor Parameters: configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/range.md

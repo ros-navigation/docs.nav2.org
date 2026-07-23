@@ -229,6 +229,7 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 [Static Layer Parameters][static-layer-parameters]{ .md-button .md-button--primary }
 [Inflation Layer Parameters][inflation-layer-parameters]{ .md-button .md-button--primary }
 [Legacy Inflation Layer Parameters][legacy-inflation-layer-parameters]{ .md-button .md-button--primary }
+[Asymmetric Inflation Layer Parameters][asymmetric-inflation-layer-parameters]{ .md-button .md-button--primary }
 [Obstacle Layer Parameters][obstacle-layer-parameters]{ .md-button .md-button--primary }
 [Voxel Layer Parameters][voxel-layer-parameters]{ .md-button .md-button--primary }
 [Range Sensor Parameters][range-sensor-parameters]{ .md-button .md-button--primary }

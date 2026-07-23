@@ -42,6 +42,7 @@ For tutorials on creating your own plugins, please see:
 | [Static Layer][]                       | Eitan Marder-Eppstein      | Gets static `map` and loads occupancy information into costmap                                                                                                             |
 | [Inflation Layer][]                    | Tony Najjar                | Inflates lethal obstacles in costmap with exponential decay (with the option to use OpenMP for parallelization)                                                            |
 | [Legacy Inflation Layer][]             | Eitan Marder-Eppstein      | Inflates lethal obstacles in costmap with exponential decay                                                                                                                |
+| [Asymmetric Inflation Layer][]         | Marc Blöchlinger           | Uses the global plan to asymmetrically inflate lethal obstacles depending on path side                                                                                                               |
 | [Obstacle Layer][]                     | Eitan Marder-Eppstein      | Maintains persistent 2D costmap from 2D laser scans with raycasting to clear free space                                                                                    |
 | [Spatio-Temporal Voxel Layer][]        | Steve Macenski             | Maintains temporal 3D sparse volumetric voxel grid with decay through sensor models                                                                                        |
 | [Non-Persistent Voxel Layer][]         | Steve Macenski             | Maintains 3D occupancy grid consisting only of the most sets of measurements                                                                                               |
@@ -57,6 +58,7 @@ For tutorials on creating your own plugins, please see:
 [Static Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
 [Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
 [Legacy Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp
+[Asymmetric Inflation Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/asymmetric_inflation_layer.cpp
 [Obstacle Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 [Spatio-Temporal Voxel Layer]: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 [Non-Persistent Voxel Layer]: https://github.com/SteveMacenski/nonpersistent_voxel_layer
