@@ -48,6 +48,7 @@ For tutorials on creating your own plugins, please see:
 | [Denoise Layer][]                      | Andrey Ryzhikov            | Filters noise-induced standalone obstacles or small obstacles groups                                                                                                       |
 | [Plugin Container Layer][]             | Alexander Yuen             | Combines the different costmap layers specified under this layer in order populate the same costmap with different isolated combinations of costmap layers                 |
 | [Ground Consistency Layer][]           | Muhammad Haider Khan Lodhi | Height-aware costmap layer using 3D ground segmentation. Pair with Inflation Layer for terrain-aware navigation.                                                           |
+| [Semantic Segmentation Layer][]        | Pedro Gonzalez             | Vision-based semantic segmentation costmap layer using per-pixel class masks and registered pointclouds for terrain-aware navigation.                                      |
 
 </div>
 
@@ -62,6 +63,7 @@ For tutorials on creating your own plugins, please see:
 [Denoise Layer]: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 [Plugin Container Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 [Ground Consistency Layer]: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
+[Semantic Segmentation Layer]: https://github.com/kiwicampus/semantic_segmentation_layer
 
 ## Costmap Filters { #navigation-plugins-costmap-filters }
 

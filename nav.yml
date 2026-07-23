@@ -83,6 +83,7 @@ nav:
         - tutorials/general_tutorials/docs/isaac_perceptor/index.md
         - Rebuilding TensorRT Engine: tutorials/general_tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.md
       - Navigating with Semantic Segmentation (Nvidia Jetson): tutorials/general_tutorials/docs/navigation2_with_semantic_segmentation/navigation2_with_semantic_segmentation.md
+      - Navigating with Semantic Segmentation (SAM3, AMD Strix Halo): tutorials/general_tutorials/docs/navigation2_with_sam3_semantic_segmentation/navigation2_with_sam3_semantic_segmentation.md
       - Groot Tutorials:
         - tutorials/general_tutorials/docs/groot_tutorials/index.md
         - Groot - Interacting with Behavior Trees: tutorials/general_tutorials/docs/groot_tutorials/groot/groot.md

@@ -10,6 +10,7 @@ Nav2 Tutorials
 [Navigating using GPS Localization][navigating-using-gps-localization]{ .md-button .md-button--primary }
 [Lidar-Free, Vision-Based Navigation][lidar-free-vision-based-navigation]{ .md-button .md-button--primary }
 [Navigating with Semantic Segmentation (Nvidia Jetson)][navigating-with-semantic-segmentation-nvidia-jetson]{ .md-button .md-button--primary }
+[Navigating with Semantic Segmentation (SAM3, AMD Strix Halo)][navigating-with-semantic-segmentation-sam3-amd-strix-halo]{ .md-button .md-button--primary }
 [Groot Tutorials][groot-tutorials]{ .md-button .md-button--primary }
 [Using VIO to Augment Robot Odometry][using-vio-to-augment-robot-odometry]{ .md-button .md-button--primary }
 [Dynamic Object Following][dynamic-object-following]{ .md-button .md-button--primary }
