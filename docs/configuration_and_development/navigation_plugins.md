@@ -42,7 +42,7 @@ For tutorials on creating your own plugins, please see:
 | [Static Layer][]                       | Eitan Marder-Eppstein      | Gets static `map` and loads occupancy information into costmap                                                                                                             |
 | [Inflation Layer][]                    | Tony Najjar                | Inflates lethal obstacles in costmap with exponential decay (with the option to use OpenMP for parallelization)                                                            |
 | [Legacy Inflation Layer][]             | Eitan Marder-Eppstein      | Inflates lethal obstacles in costmap with exponential decay                                                                                                                |
-| [Asymmetric Inflation Layer][]         | Marc Blöchlinger           | Uses the global plan to asymmetrically inflate lethal obstacles depending on path side                                                                                                               |
+| [Asymmetric Inflation Layer][]         | Marc Blöchlinger           | Uses the global plan to asymmetrically inflate lethal obstacles depending on path side                                                                                     |
 | [Obstacle Layer][]                     | Eitan Marder-Eppstein      | Maintains persistent 2D costmap from 2D laser scans with raycasting to clear free space                                                                                    |
 | [Spatio-Temporal Voxel Layer][]        | Steve Macenski             | Maintains temporal 3D sparse volumetric voxel grid with decay through sensor models                                                                                        |
 | [Non-Persistent Voxel Layer][]         | Steve Macenski             | Maintains 3D occupancy grid consisting only of the most sets of measurements                                                                                               |
@@ -50,6 +50,7 @@ For tutorials on creating your own plugins, please see:
 | [Plugin Container Layer][]             | Alexander Yuen             | Combines the different costmap layers specified under this layer in order populate the same costmap with different isolated combinations of costmap layers                 |
 | [Ground Consistency Layer][]           | Muhammad Haider Khan Lodhi | Height-aware costmap layer using 3D ground segmentation. Pair with Inflation Layer for terrain-aware navigation.                                                           |
 | [Semantic Segmentation Layer][]        | Pedro Gonzalez             | Vision-based semantic segmentation costmap layer using per-pixel class masks and registered pointclouds for terrain-aware navigation.                                      |
+| [Virtual Layer][]                      | Sherif Fathey              | Creates dynamic virtual cost zones and restriction areas using polygons, lines, and circles                                                                                |
 
 </div>
 
@@ -66,6 +67,7 @@ For tutorials on creating your own plugins, please see:
 [Plugin Container Layer]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 [Ground Consistency Layer]: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
 [Semantic Segmentation Layer]: https://github.com/kiwicampus/semantic_segmentation_layer
+[Virtual Layer]: https://github.com/SherifFathey/nav2-virtual-layer
 
 ## Costmap Filters { #navigation-plugins-costmap-filters }
 
