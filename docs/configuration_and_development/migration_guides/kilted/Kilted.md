@@ -962,3 +962,31 @@ The asymmetric inflation field allows the user to create an asymmetry that shift
 <figure markdown="span">
   ![Costmap with asymmetric inflation layer](images/asymmetric_layer_active.png){ title="Costmap with asymmetric inflation layer" }
 </figure>
+
+## Custom Inscribed Radius for Inflation Layer
+
+[PR #6223](https://github.com/ros-navigation/navigation2/pull/6223) adds a new `custom_inscribed_radius` parameter to the Inflation Layer, allowing users to override the default footprint-based inscribed radius.
+When set to a negative value (default `-1.0`), the standard inscribed radius computed from the robot footprint is used.
+
+The default inscribed radius computed from the robot footprint, would give the same cost value of `INSCRIBED_INFLATED_OBSTACLE` for all the cells within the inscribed radius region.
+Consequently, in situations such as the two examples shown below, the `footprintCost` function would return the same value since it picks up the highest cost along the footprint.
+
+<div markdown="span" class="flex-images">
+  ![](images/default_inscribed_radius_large_overlap.png)
+  ![](images/default_inscribed_radius_low_overlap.png)
+</div>
+
+This however may not be ideal for situations where one wants to have a more granular cost distribution in order to better reflect the actual risk of collision.
+Now with the new `custom_inscribed_radius` parameter, users can set a custom inscribed radius for the robot which overwrites the default one.
+For example, setting it to `0.0` would result in skipping the inscribed radius region altogether and give a decay cost distribution right after the `LETHAL` region.
+
+<figure markdown="span">
+  ![Costmap with custom inscribed radius of 0.0m](images/custom_inscribed_radius_zero.png){ width="800" title="Costmap with custom inscribed radius of 0.0m"}
+</figure>
+
+**Warning:** This is however a potential safety issue!
+Changing the inscribed radius can have serious implications on the robot's safety.
+This parameter is intended only for controllers that are customized explicitly to use such data.
+It is **not** intended for global path planners or setups that depend on the footprint-based inscribed radius.
+
+See the [Inflation Layer Parameters][inflation-layer-parameters] for full parameter documentation.

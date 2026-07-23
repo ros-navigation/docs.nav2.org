@@ -1,5 +1,3 @@
-<!-- inflation: -->
-
 # Inflation Layer Parameters { #inflation-layer-parameters }
 
 This layer places an exponential decay functions around obstacles to increase cost to traverse near collision. It also places a lethal cost around obstacles within the robot's fully inscribed radius - even if a robot is non-circular for optimized first-order collision checking.
@@ -17,6 +15,20 @@ Type: `bool` Default: `true`
 Type: `double` Default: `0.55`
 
 :   Radius to inflate costmap around lethal obstacles.
+
+### **`<inflation layer>.custom_inscribed_radius`**
+
+Type: `double` Default: `-1.0`
+
+:   Custom inscribed radius for the robot which overwrites the default footprint-based calculated one.
+    If set to a negative value, the default inscribed radius of the robot is used.
+
+    **POTENTIAL SAFETY ISSUE!**
+
+    Make sure you fully understand the consequences of changing the inscribed radius!
+    This can have serious implications on the robot's safety and is not recommended unless specifically needed.
+    This practice is intended only for controllers that are customized explicitly to feed on such data.
+    It is NOT intended for global path planners or setups that depend on the footprint-based inscribed radius!
 
 ### **`<inflation layer>.cost_scaling_factor`**
 
