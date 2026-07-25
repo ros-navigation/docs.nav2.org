@@ -1339,7 +1339,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#update-auxiliary-projects">5. Update Auxiliary Projects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-bloom-release">6. Run Bloom Release</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nav2-docker-build">7. Nav2 Docker Build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#announcements">8. Announcements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bloom-related-packages">8. Bloom Related Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#announcements">9. Announcements</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="distribution_syncs.html">ROS Distribution Sync Process</a><ul>
@@ -1511,8 +1512,19 @@ You should see that the nightly of this distribution works, but the release vers
 To resolve, comment out the <code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">1</span></code> in the <code class="docutils literal notranslate"><span class="pre">latest_version</span></code> validity check.
 Once the job turns over, revert this commit to reintroduce the error.</p>
 </div>
+<div class="section" id="bloom-related-packages">
+<h2>8. Bloom Related Packages<a class="headerlink" href="#bloom-related-packages" title="Permalink to this heading"></a></h2>
+<p>Related packages also must be bloomed, such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nav2_minimal_turtlebot_simulation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spatio_temporal_voxel_layer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nonpersistent_voxel_layer</span></code></p></li>
+</ul>
+<p>Note: There is a circular dependency between <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> and Nav2. SLAM Toolbox must be released first, then Nav2, then SLAM Toolbox again after the testing repository is updated with Nav2’s build.</p>
+</div>
 <div class="section" id="announcements">
-<h2>8. Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading"></a></h2>
+<h2>9. Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading"></a></h2>
 <p>Finally, we can announce the updates!
 Create a new migration guide page on the Nav2 website for contributors to populate with notable changes in the next distribution cycle.
 Update the Roadmap page with a new table of projects and features to be added over the next distribution.</p>

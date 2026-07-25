@@ -154,7 +154,19 @@ You should see that the nightly of this distribution works, but the release vers
 To resolve, comment out the ``exit 1`` in the ``latest_version`` validity check.
 Once the job turns over, revert this commit to reintroduce the error.
 
-8. Announcements
+8. Bloom Related Packages
+-------------------------
+
+Related packages also must be bloomed, such as:
+
+* ``slam_toolbox``
+* ``nav2_minimal_turtlebot_simulation``
+* ``spatio_temporal_voxel_layer``
+* ``nonpersistent_voxel_layer``
+
+Note: There is a circular dependency between ``slam_toolbox`` and Nav2. SLAM Toolbox must be released first, then Nav2, then SLAM Toolbox again after the testing repository is updated with Nav2's build.
+
+9. Announcements
 ----------------
 
 Finally, we can announce the updates!
