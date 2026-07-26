@@ -3,15 +3,22 @@
 Zone Parameter Filter Parameters
 ================================
 
-Zone Parameter Filter applies a configurable set of nav2 parameter
-overrides to one or more target nodes based on the mask value at the
-robot's current pose. Configure the per-state overrides in YAML.
+Zone Parameter Filter - is a Costmap Filter that sets ROS parameters on other nodes based on where the robot is on the filter mask. Each mask value selects a declared state; each state carries setpoints (``node``, ``parameter`` and ``value``) that are applied when the robot enters a zone of that value, for example a lower ``FollowPath.max_vel_x`` inside a snow zone. Leaving all zones, or entering a zone with mask value ``0``, restores the declared ``nominal_defaults``. Filter mask published by Map Server, goes in a pair with filter info topic published by Costmap Filter Info Server. The ``type`` field of the ``CostmapFilterInfo`` message must be ``4``; ``base`` and ``multiplier`` are unused by this filter and warn when not left at ``0.0`` and ``1.0``.
 
-The mask value is interpreted as a state ID. State ``0`` is the reset
-state and restores parameters to their YAML-declared nominal values.
-Mask values in ``[1, 127]`` map to configured states.
+The mask cell under the robot is checked at each costmap update:
+
+- A cell value with a declared state id switches to that state. Value ``0`` is reserved: it resets all parameters to their ``nominal_defaults`` values.
+- An unknown (negative) cell holds the current state and logs a throttled warning.
+- If the robot is outside the mask bounds, the filter logs a warning and resets to state ``0``.
+- A positive cell value with no declared state makes the filter throw. Declare a state for every value the mask contains.
+
+On a transition between two states, parameters set by the previous state but not by the new one are first reset to their ``nominal_defaults`` values, then the new state's setpoints are applied. Parameter updates are batched per target node and issued asynchronously; an update that fails makes the filter throw rather than being logged and ignored, so the robot does not keep driving on a value a zone was meant to change. Every transition publishes the new state id on ``state_event_topic``.
 
 `<filter name>`: is the corresponding plugin name selected for this type.
+
+`<state name>`: is a state name listed in ``states``.
+
+`<setpoint name>`: is a setpoint name listed in the state's ``setpoints``.
 
 :``<filter name>``.enabled:
 
@@ -46,107 +53,144 @@ Mask values in ``[1, 127]`` map to configured states.
   Description
     Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
 
-:``<filter name>``.target_nodes:
+:``<filter name>``.state_event_topic:
+
+  ====== ===================
+  Type   Default
+  ------ -------------------
+  string "zone_filter_state"
+  ====== ===================
+
+  Description
+    Topic of ``std_msgs::msg::UInt8`` type to publish the new state id to on every state transition.
+
+:``<filter name>``.states:
 
   ============== =======
   Type           Default
   -------------- -------
-  vector<string> []
+  vector<string> {}
   ============== =======
 
   Description
-    Required. Explicit list of target node names the filter is allowed to mutate. Catches typos at config-load. Example: ``["controller_server", "local_costmap"]``.
+    Names of the declared states. Each name opens a ``<filter name>.<state name>`` parameter namespace holding the state's ``id`` and ``setpoints``. When empty, the filter warns and only handles state ``0`` (reset).
 
-:``<filter name>``.state_ids:
+:``<filter name>``.<state name>.id:
 
-  ============= =======
-  Type          Default
-  ------------- -------
-  vector<int>   []
-  ============= =======
+  ==== =======
+  Type Default
+  ---- -------
+  int  0
+  ==== =======
 
   Description
-    Required. List of mask values (each in ``[1, 127]``) that map to a configured state. Each listed value must have a corresponding ``state_<N>`` block. State ``0`` is the implicit reset state and is not listed here.
+    Filter mask cell value that selects this state. Valid range is ``[1, 255]``; ``0`` is reserved for the reset state. An out-of-range id logs an error and the state is skipped.
 
-:``<filter name>``.state_<N>.<target_node>.<parameter_path>:
+  Note
+    An ``OccupancyGrid`` cell is ``int8``, so only values up to ``127`` can actually appear in a mask; negative cells are treated as unknown.
+
+:``<filter name>``.<state name>.setpoints:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  vector<string> {}
+  ============== =======
+
+  Description
+    Names of the setpoint entries for this state. Each name opens a ``<filter name>.<state name>.<setpoint name>`` parameter namespace holding ``node``, ``parameter`` and ``value``. A state with no valid setpoints logs a warning.
+
+:``<filter name>``.<state name>.<setpoint name>.node:
 
   ====== =======
   Type   Default
   ------ -------
-  any    N/A
+  string N/A
   ====== =======
 
   Description
-    For each ``N`` in ``state_ids``, declare the parameter overrides to apply when the robot enters mask state ``N``. ``<target_node>`` must be one of the names listed in ``target_nodes``. ``<parameter_path>`` is the parameter name on that target node, dots and all (e.g., ``inflation_layer.inflation_radius``). The parameter type must match the target's declared type. Example: ``state_1.controller_server.FollowPath.max_vel_x: 0.5``.
+    Name of the node whose parameter this setpoint sets. An empty ``node`` or ``parameter`` logs an error and the setpoint is skipped.
 
-:``<filter name>``.nominal_defaults.<target_node>.<parameter_path>:
+:``<filter name>``.<state name>.<setpoint name>.parameter:
 
   ====== =======
   Type   Default
   ------ -------
-  any    N/A
+  string N/A
   ====== =======
 
   Description
-    Value to restore for each parameter on state ``0`` reset and on state-``N``-to-state-``M`` transitions for parameters touched by ``N`` but not ``M``.
+    Full name of the parameter to set on the target node, e.g. ``FollowPath.max_vel_x``.
 
-:``<filter name>``.state_event_topic:
+:``<filter name>``.<state name>.<setpoint name>.value:
 
-  ====== ====================
-  Type   Default
-  ------ --------------------
-  string "zone_filter_state"
-  ====== ====================
-
-  Description
-    Topic name on which the filter publishes a ``std_msgs::msg::UInt8`` message containing the new state ID on every state transition (including transitions to state ``0``). The publisher is always created.
-
-:``<filter name>``.on_param_set_failure:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "throw"
-  ====== =======
+  ======= =======
+  Type    Default
+  ------- -------
+  dynamic N/A
+  ======= =======
 
   Description
-    Behavior when a target node's ``set_parameters`` call returns ``successful = false``. Either ``"throw"`` (raise an exception, terminating the filter) or ``"warn"`` (log the failure and continue — the costmap update loop is preserved). The default is ``"throw"`` for fail-safe behavior on persistent set-parameter faults; ``"warn"`` is offered for environments where transient RPC faults (target node mid-restart, parameter-service overloaded) are common and continuing through them is preferred over the lifecycle-stopping exception.
+    Value to set. Declared with dynamic typing, so a setpoint can carry a parameter of any type (double, int, bool, string or list). An unset ``value`` logs an error and the setpoint is skipped.
 
-Example Fully-Described YAML
-----------------------------
+  Note
+    YAML typing applies to the target parameter: write ``0.0``, not ``0``, for a double-typed parameter.
 
+:``<filter name>``.nominal_defaults:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  vector<string> {}
+  ============== =======
+
+  Description
+    Names of the nominal default entries: the baseline values the state ``0`` reset restores. Each name opens a ``<filter name>.nominal_defaults.<name>`` parameter namespace holding ``node``, ``parameter`` and ``value``, the same shape as a setpoint. A state setpoint with no matching nominal default (same node and parameter) logs a warning at configuration load: the state ``0`` reset will not restore that parameter.
+
+  Note
+    ``nominal_defaults`` is both this list and the namespace its entries live under. In YAML, write the entry keys in dotted form (``nominal_defaults.fwd_speed:``) so the ``nominal_defaults`` key is not repeated, as in the example below.
+
+Example
+*******
 .. code-block:: yaml
 
-    local_costmap:
-      ros__parameters:
-        plugins: ["voxel_layer", "inflation_layer"]
-        filters: ["zone_parameter_filter"]
-        zone_parameter_filter:
-          plugin: "nav2_costmap_2d::ZoneParameterFilter"
-          enabled: true
-          filter_info_topic: "/zone_filter_info"
-          state_event_topic: "zone_filter_state"     # default
-          on_param_set_failure: "throw"              # default; or "warn"
-          target_nodes: [controller_server, local_costmap]
-          state_ids: [1, 2]
-          state_1:                                   # winter / icy zone
-            controller_server:
-              FollowPath.max_vel_x: 0.5
-            local_costmap:
-              inflation_layer.inflation_radius: 0.8
-          state_2:                                   # construction zone
-            controller_server:
-              FollowPath.max_vel_x: 0.2
-            local_costmap:
-              inflation_layer.inflation_radius: 1.2
-          nominal_defaults:                          # state-0 restores these
-            controller_server:
-              FollowPath.max_vel_x: 1.0
-            local_costmap:
-              inflation_layer.inflation_radius: 0.55
-
-Notes
------
-
-- **State-to-state transitions reconcile to the active state's configuration.**
-  At any time, the active parameter set equals ``nominal_defaults`` except for the overrides specifically declared in the current state. On a transition from state ``N`` to state ``M``, the filter resets each parameter touched by ``N`` but not by ``M`` to its ``nominal_defaults`` value, then applies ``M``'s overrides. A parameter declared in a state-``N`` override but absent from ``nominal_defaults`` cannot be restored: the filter warns at config-load and that parameter retains its state-``N`` value across the transition until state ``0`` reset. State ``0`` continues to restore every entry in ``nominal_defaults``.
+    global_costmap:
+      global_costmap:
+        ros__parameters:
+          ...
+          plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+          filters: ["zone_params"]
+          ...
+          zone_params:
+            plugin: "nav2_costmap_2d::ZoneParameterFilter"
+            enabled: True
+            filter_info_topic: "/costmap_filter_info"
+            state_event_topic: "zone_filter_state"
+            states: ["snow_zone", "work_zone"]
+            snow_zone:
+              id: 1
+              setpoints: ["slow_fwd", "long_backup"]
+              slow_fwd:
+                node: "controller_server"
+                parameter: "FollowPath.max_vel_x"
+                value: 0.15
+              long_backup:
+                node: "behavior_server"
+                parameter: "backup.simulate_ahead_time"
+                value: 2.5
+            work_zone:
+              id: 2
+              setpoints: ["crawl_fwd"]
+              crawl_fwd:
+                node: "controller_server"
+                parameter: "FollowPath.max_vel_x"
+                value: 0.10
+            nominal_defaults: ["fwd_speed", "backup_time"]
+            nominal_defaults.fwd_speed:
+              node: "controller_server"
+              parameter: "FollowPath.max_vel_x"
+              value: 0.26
+            nominal_defaults.backup_time:
+              node: "behavior_server"
+              parameter: "backup.simulate_ahead_time"
+              value: 2.0
