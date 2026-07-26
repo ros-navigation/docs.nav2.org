@@ -87,6 +87,7 @@ extra_javascript:
 
   # Path relative to custom_dir (overrides/):
   - assets/javascripts/katex.js
+  - assets/javascripts/sidebar_scrollwrap.js
 
 markdown_extensions:
   - admonition
