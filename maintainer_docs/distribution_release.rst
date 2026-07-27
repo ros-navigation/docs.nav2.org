@@ -93,7 +93,8 @@ In the ``mergify.yml`` file, add a new backport automation for the new distribut
 
 Finally, create the new distribution branch from ``main`` and push to the server.
 Go into the GitHub Actions tab on ``nav2_docker`` and retrigger its build job.
-The nightly and release jobs should now exist for the new distribution and return successfully (validate this).
+The nightly jobs should now exist for the new distribution and return successfully (validate this).
+The release jobs will fail until Bloom is run to obtain the tagged version to build and release in Step 7.
 
 3. Mark Branch as Protected
 ---------------------------
