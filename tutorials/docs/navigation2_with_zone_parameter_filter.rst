@@ -10,7 +10,7 @@ Navigating with Zone Parameter Overrides
 Overview
 ========
 
-This tutorial shows how to change parameters of Nav2 servers automatically when the robot enters marked zones on the map. A typical case is a snow or ice covered section of an outdoor route, or a work cell shared with people: the robot may still drive there, but it should behave more carefully - lower maximum velocity, longer backup simulation time, and so on. Keepout Filter blocks such areas entirely and Speed Filter changes only the speed limit, while ``ZoneParameterFilter`` costmap filter plugin, which will be enabled and used in this document, can change any parameter on any node. When the robot enters a zone, the filter applies the parameter setpoints configured for that zone; when the robot returns to a nominal area, it restores the declared nominal defaults.
+This tutorial shows how to change parameters of Nav2 servers automatically when the robot enters marked zones on the map. An example case is a snow or ice covered section of an outdoor route or a work cell shared with people: the robot may still drive there, but it should behave more carefully - lower maximum velocity, longer backup simulation time, and so on. Keepout Filter blocks such areas entirely and Speed Filter changes only the speed limit, while ``ZoneParameterFilter`` costmap filter plugin, which will be enabled and used in this document, can change any parameter on any node. When the robot enters a zone, the filter applies the parameter setpoints configured for that zone; when the robot returns to a nominal area, it restores the declared nominal defaults.
 
 Requirements
 ============
