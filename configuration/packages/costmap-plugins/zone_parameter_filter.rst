@@ -3,7 +3,7 @@
 Zone Parameter Filter Parameters
 ================================
 
-Zone Parameter Filter - is a Costmap Filter that sets ROS parameters on other nodes based on where the robot is on the filter mask. Each mask value selects a declared state; each state carries setpoints (``node``, ``parameter`` and ``value``) that are applied when the robot enters a zone of that value, for example a lower ``FollowPath.max_vel_x`` inside a snow zone. Leaving all zones, or entering a zone with mask value ``0``, restores the declared ``nominal_defaults``. Filter mask published by Map Server, goes in a pair with filter info topic published by Costmap Filter Info Server. The ``type`` field of the ``CostmapFilterInfo`` message must be ``4``; ``base`` and ``multiplier`` are unused by this filter and warn when not left at ``0.0`` and ``1.0``.
+Zone Parameter Filter is a Costmap Filter that sets ROS parameters on other nodes based on where the robot is on the filter mask. Each mask value selects a declared state; each state carries setpoints (``node``, ``parameter`` and ``value``) that are applied when the robot enters a zone of that value, for example a lower ``FollowPath.max_vel_x`` inside a snow zone. Leaving all zones, or entering a zone with mask value ``0``, restores the declared ``nominal_defaults``. Filter mask published by Map Server, goes in a pair with filter info topic published by Costmap Filter Info Server. The ``type`` field of the ``CostmapFilterInfo`` message must be ``4``; ``base`` and ``multiplier`` are unused by this filter and warn when not left at ``0.0`` and ``1.0``.
 
 The mask cell under the robot is checked at each costmap update:
 
