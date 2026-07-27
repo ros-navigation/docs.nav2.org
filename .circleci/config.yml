@@ -39,15 +39,13 @@ references:
         . /nav2_docs/venv/bin/activate
 
         TITLE=${CIRCLE_BRANCH^}
-        # Uncomment --push flag once SSH key fingerprint is added
-        mike deploy $CIRCLE_BRANCH --title=$TITLE # --push
+        mike deploy $CIRCLE_BRANCH --title=$TITLE --push
 
-        # Uncomment once SSH key fingerprint is added
-        # # Set default version only once
-        # if ! git cat-file -e origin/gh-pages:index.html; then
-        #   mike set-default rolling --push
-        #   echo "The default version is set to Rolling"
-        # fi
+        # Set default version only once
+        if ! git cat-file -e origin/gh-pages:index.html; then
+          mike set-default rolling --push
+          echo "The default version is set to Rolling"
+        fi
   store_published_docs: &store_published_docs
     store_artifacts:
       path: ./site
