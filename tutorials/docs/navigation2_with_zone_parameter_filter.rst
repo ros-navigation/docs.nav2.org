@@ -23,7 +23,7 @@ Tutorial Steps
 1. Prepare filter mask
 ----------------------
 
-As was written in :ref:`concepts`, any Costmap Filter (including Zone Parameter Filter) reads the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The first step of the :ref:`navigation2_with_keepout_filter` tutorial explains in detail how the color lightness of mask pixels converts to ``OccupancyGrid`` values depending on the map ``mode``; please refer to it if you have not prepared a filter mask before.
+As was written in :ref:`concepts`, any Costmap Filter (including Zone Parameter Filter) reads the data marked in a filter mask file. Filter mask is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The first step of the :ref:`navigation2_with_keepout_filter` tutorial explains in detail how the color lightness of mask pixels converts to ``OccupancyGrid`` values depending on the map ``mode``; please refer to it if you have not prepared a filter mask before.
 
 For Zone Parameter Filter the ``OccupancyGrid`` value of a mask cell is the id of the state that must be active while the robot stands on that cell. Value ``0`` means the nominal state: no overrides. Values ``1`` and higher select the states declared in the filter configuration (see step 3). Since exact integer values matter here, use the ``raw`` map mode, where the ``OccupancyGrid`` value is equal to the color lightness of the pixel:
 
