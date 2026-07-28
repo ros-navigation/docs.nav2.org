@@ -166,6 +166,7 @@ Note: There is a circular dependency between `slam_toolbox` and Nav2. SLAM Toolb
 Finally, we can announce the updates!
 Create a new migration guide page on the Nav2 website for contributors to populate with notable changes in the next distribution cycle.
 Update the Roadmap page with a new table of projects and features to be added over the next distribution.
+Update landing page with new distribution art in the table (and update status of other distros)
 
 Make announcements on Slack, ROS Discourse, and LinkedIn to announce the new distribution and its major new features.
 Gifs, videos, and images are always welcome to be included in the announcements!
