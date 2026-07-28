@@ -39,7 +39,7 @@ references:
         . /nav2_docs/venv/bin/activate
 
         TITLE=${CIRCLE_BRANCH^}
-        mike deploy $CIRCLE_BRANCH --title=$TITLE --push --message "[skip ci] deploy docs"
+        mike deploy $CIRCLE_BRANCH --title=$TITLE --push --allow-empty --message "[skip ci] deploy docs"
 
         # Set default version only once
         if ! git cat-file -e origin/gh-pages:index.html; then
