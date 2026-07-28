@@ -14,6 +14,7 @@ Nav2 Tutorials
    docs/navigation2_with_gps.rst
    docs/using_isaac_perceptor.rst
    docs/navigation2_with_semantic_segmentation.rst
+   docs/navigation2_with_sam3_semantic_segmentation.rst
    docs/using_groot.rst
    docs/integrating_vio.rst
    docs/navigation2_dynamic_point_following.rst
@@ -33,3 +34,5 @@ Nav2 Tutorials
    docs/navigation2_with_vector_objects.rst
    docs/roscon_uk_2025_state_estimation.rst
    docs/using_3laws_supervisor.rst
+   docs/navigation2_with_ground_consistency_layer.rst
+   docs/depth_ai_integration.rst

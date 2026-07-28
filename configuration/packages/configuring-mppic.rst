@@ -35,11 +35,23 @@ MPPI Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  string         "DiffDrive"
+  string         "diff_drive"
   ============== ===========================
 
   Description
-    The desired motion model to use for trajectory planning. Options are ``DiffDrive``, ``Omni``, or ``Ackermann``. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.
+    The desired motion model plugin to use for trajectory planning. The plugin type is required to be specified in the corresponding namespace.
+
+:``<motion_model>``.plugin:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  string         N/A
+  ============== ===========================
+
+  Description
+    The plugin to use for the motion model constraints of the MPPI planner.
+    Supported motion model plugins include "mppi::DiffDriveMotionModel", "mppi::OmniMotionModel", and "mppi::AckermannMotionModel" for differential drive, omnidirectional, and Ackermann robots respectively.
 
 :critics:
 
@@ -95,6 +107,41 @@ MPPI Parameters
 
   Description
     Length of each time step's ``dt`` timestep, in seconds. ``time_steps * model_dt`` is the prediction horizon.
+
+:model_delay_vx:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+    Actuator delay in seconds. The rollout shifts the control sequence by ``round(model_delay_vx / model_dt)`` steps and replays recently published commands during the delay window.
+
+
+:model_delay_vy:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+   Same as ``model_delay_vx`` for the vy axis (holonomic only)
+
+:model_delay_wx
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+   Same as ``model_delay_vx`` for the wz axis
+
 
 :vx_std:
 
@@ -250,6 +297,17 @@ MPPI Parameters
   Description
     A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
 
+:clamp_raw_controls:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         false
+  ============== ===========================
+
+  Description
+    Whether to apply acceleration limits on the raw controls. Set to ``true`` when the command output from MPPI is too noisy, especially with a high time_steps value. May cause issues if ``ax_max`` && ``ax_min`` are very asymmetric.
+
 :visualize:
 
   ============== ===========================
@@ -259,7 +317,18 @@ MPPI Parameters
   ============== ===========================
 
   Description
-    Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+    Whether to publish debugging trajectories for visualization and critic statistics. When enabled, candidate trajectories are colored by cost (green to red gradient, magenta for collisions) and a ``nav2_msgs::msg::CriticsStats`` message is published on the ``~/critics_stats`` topic. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
+
+:critic_index_to_visualize:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            0
+  ============== ===========================
+
+  Description
+    Selects which critic to visualize the color-scheme of when ``visualize`` is true publishing Marker messages for visualization in rviz. ``0`` shows the total cost across all critics, ``1..N`` selects an individual critic by index (in the order listed in the ``critics`` parameter).
 
 :publish_optimal_trajectory:
 
@@ -304,6 +373,17 @@ MPPI Parameters
 
   Description
     Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
+
+:sgf_order:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            2
+  ============== ===========================
+
+  Description
+    The order of the Savitzky-Golay filter (SGF) used for smoothing the optimal control sequence. Must be either ``1`` (1st order) or ``2`` (2nd order). Recommend using second order, as first order can oversmooth making it difficult to fit through tight situations, but comes with the benefit of being smoother.
 
 :publish_critics_stats:
 
@@ -374,10 +454,10 @@ Trajectory Visualization
   Description
     Whether to allow QoS profiles to be overwritten with parameterized values.
 
-Ackermann Motion Model
-----------------------
+AckermannMotionModel
+--------------------
 
-:min_turning_r:
+:``<motion_model>``.min_turning_r:
 
   ============== ===========================
   Type           Default
@@ -386,7 +466,7 @@ Ackermann Motion Model
   ============== ===========================
 
   Description
-    The minimum turning radius possible for the vehicle platform (m).
+    The minimum turning radius possible for the vehicle platform (m). This is only used if ``<motion_model>``.plugin is set to "mppi::AckermannMotionModel".
 
 Default Optimal Trajectory Validator
 ------------------------------------
@@ -1085,10 +1165,14 @@ Example
           iteration_count: 1
           temperature: 0.3
           gamma: 0.015
-          motion_model: "DiffDrive"
+          motion_model: "diff_drive"
+          diff_drive:
+            plugin: "mppi::DiffDriveMotionModel"
           visualize: false
+          critic_index_to_visualize: 0
           reset_period: 1.0 # (only in Humble)
           regenerate_noises: false
+          sgf_order: 2
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
@@ -1096,8 +1180,6 @@ Example
             plugin: "mppi::DefaultOptimalTrajectoryValidator"
             collision_lookahead_time: 2.0
             consider_footprint: false
-          AckermannConstraints:
-            min_turning_r: 0.2
           critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
           ConstraintCritic:
             enabled: true
@@ -1183,6 +1265,8 @@ The ``model_dt`` parameter generally should be set to the duration of your contr
 Visualization of the trajectories using ``visualize`` uses compute resources to back out trajectories for visualization and therefore slows compute time. It is not suggested that this parameter is set to ``true`` during a deployed use, but is a useful debug instrument while tuning the system, but use sparingly. Visualizing 2000 batches @ 56 points at 30 hz is *a lot*.
 
 The most common parameters you might want to start off changing are the velocity profiles (``vx_max``, ``vx_min``, ``wz_max``, and ``vy_max`` if holonomic) and the ``motion_model`` to correspond to your vehicle. Its wise to consider the ``prune_distance`` of the path plan in proportion to your maximum velocity and prediction horizon. The only deeper parameter that will likely need to be adjusted for your particular settings is the Obstacle critics' ``repulsion_weight`` since the tuning of this is proprtional to your inflation layer's radius. Higher radii should correspond to reduced ``repulsion_weight`` due to the penalty formation (e.g. ``inflation_radius - min_dist_to_obstacle``). If this penalty is too high, the robot will slow significantly when entering cost-space from non-cost space or jitter in narrow corridors. It is noteworthy, but likely not necessary to be changed, that the Obstacle critic may use the full footprint information if ``consider_footprint = true``, though comes at an increased compute cost.
+
+Tune std's carefully for low acceleration. If you're seeing a lot of chatter in the angular velocity, reduce its std. If you're not seeing your robot get to full speed, increase your std to explore more of the space. Also take care that your odometry publishes at least as fast as your control frequency (ideally much faster) when using low accelerations to make the fullest use of the acceleration limits.
 
 Otherwise, the parameters have been closely pre-tuned by your friendly neighborhood navigator to give you a decent starting point that hopefully you only need to retune for your specific desired behavior lightly (if at all). Varying costmap parameters or maximum speeds are the actions which require the most attention, as described below:
 

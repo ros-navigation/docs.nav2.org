@@ -25,11 +25,11 @@ Input Ports
   ====== ===========
   Type   Default
   ------ -----------
-  string "base_link"
+  string N/A
   ====== ===========
 
   Description
-    Robot base frame.
+    Robot base frame. If not provided, uses the BT Navigator's ``robot_base_frame`` setting automatically.
 
 :input_goals:
 

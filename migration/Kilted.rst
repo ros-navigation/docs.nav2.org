@@ -202,6 +202,16 @@ Removed Parameter action_server_result_timeout
 Removed the parameter ``action_server_result_timeout`` from all action servers after resolution within ``rcl`` and ``rclcpp`` to address early goal removal.
 This is not longer required to be set.
 
+Dock Plugin External Detection Rotation
+---------------------------------------
+
+The external detection rotation order of ``Simple(Non)ChargingDock`` dock plugins has changed to the more natural Rx -> Ry -> Rz (was: Rz -> Rx -> Ry). From implementation point of view, ``setEuler()`` calls have been replaced with ``setRPY()``. The old behavior is retained only when
+
+- ``external_detection_rotation_yaw`` equals 0.0, or
+- ``external_detection_rotation_pitch`` and ``external_detection_rotation_roll`` both equal 0.0
+
+Non-default external detection rotation that differs from the above cases needs to be adjusted appropriately.
+
 Dock Plugin Detector Control
 ----------------------------
 
@@ -804,6 +814,35 @@ Add support for switching between SMAC planners
 
 Prior to `PR 5840 <https://github.com/ros-navigation/navigation2/pull/5840>`_, switching between SMAC planners at runtime was not supported due to static variables in the SMAC planner implementations causing conflicts when multiple instances were created. The PR addressed this issue by refactoring the SMAC planner code to eliminate the use of static variables, allowing multiple instances of different SMAC planners to coexist without conflicts.
 
+OMNI Analytic Expansion Support in SmacPlannerLattice
+-----------------------------------------------------
+
+`PR #5965 <https://github.com/ros-navigation/navigation2/pull/5965>`_ adds omnidirectional (OMNI) analytic expansion support to ``SmacPlannerLattice``.
+When a lattice primitives file specifies ``motion_model: "omni"`` in its metadata, the planner now automatically:
+
+- Uses ``SE2StateSpace`` (straight-line with linear heading interpolation) instead of Dubins/Reeds-Shepp for analytic expansion and distance heuristics
+- Skips turning-radius refinement in analytic path expansion (SE2 paths are radius-independent)
+- Configures the path smoother in holonomic mode
+- Disables ``allow_reverse_expansion`` with a warning (meaningless for omnidirectional robots)
+
+No parameter changes are required — the OMNI motion model is auto-detected from the lattice file metadata.
+
+Before:
+
+.. image:: images/smac_lattice_omni_before_1.png
+  :width: 418
+
+.. image:: images/smac_lattice_omni_before_2.png
+  :width: 418
+
+After:
+
+.. image:: images/smac_lattice_omni_after_1.png
+  :width: 418
+
+.. image:: images/smac_lattice_omni_after_2.png
+  :width: 418
+
 New bt_log_idle_transitions parameter in bt_navigator
 -----------------------------------------------------
 
@@ -860,6 +899,199 @@ See:
 
 - :ref:`configuring_collision_monitor_node`
 - :ref:`configuring_collision_detector_node`
+
+MPPI per-critic trajectory cost visualization
+---------------------------------------------
+
+`PR #6036 <https://github.com/ros-navigation/navigation2/pull/6036>`_ enhances MPPI trajectory visualization with per-critic cost coloring.
+When ``visualize`` is enabled, candidate trajectories are now rendered as cost-colored lines using a green-to-yellow-to-red gradient, with collision trajectories shown in magenta.
+A new ``critic_index_to_visualize`` parameter (default ``0``) selects which critic's costs to display: ``0`` shows the total cost across all critics, while ``1..N`` selects an individual critic by index.
+The ``publish_critics_stats`` parameter has been removed; critic statistics (``~/critics_stats`` topic) are now published automatically when ``visualize`` is enabled.
+
+Constrained Smoother cost function formulation corrected
+--------------------------------------------------------
+
+`PR #6000 <https://github.com/ros-navigation/navigation2/pull/6000>`_ changes the cost function formulation in `nav2_constrained_smoother`. Weights for the constrained smoother may need to be adjusted as a result.
+
+Earlier, `nav2_constrained_smoother` was using a cost formulation of :math:`cost = w_1^2 * cost_1^4 + w_2^2 * cost_2^4 + ...` because the internal squaring of residuals performed by `Ceres Solver` was not accounted for. This caused the optimizer to frequently fail to converge.
+
+The internal squaring of `Ceres` is now considered and the cost formulation is corrected to :math:`cost = w_1 * cost_1^2 + w_2 * cost_2^2 + ...`. This makes the constrained smoother approximately 10x faster in testing and results in converged solutions and improved path quality. A detailed analysis of improvement is available in: `Issue #5072 <https://github.com/ros-navigation/navigation2/issues/5072#issuecomment-3992795987>`_
+
+Values for the weights will need to be retuned for all users, unfortunately, but will get faster and more reliable results!
+
+ValidatePath / IsPathValid parameter changes
+---------------------------------------------
+
+`PR #6027 <https://github.com/ros-navigation/navigation2/pull/6027>`_ renames the ``check_full_path`` parameter to ``stop_at_first_collision`` in both the ``ValidatePath`` BT node and the ``IsPathValid`` service definition. The boolean semantics are inverted: ``check_full_path=false`` (old default) is equivalent to ``stop_at_first_collision=true`` (new default).
+
+Additionally, a new ``max_lookahead_distance`` parameter (default ``-1.0``) has been added to both the BT node and the service. When set to a positive value, only the portion of the path within that distance ahead of the robot is validated, improving efficiency when full path validation is not necessary.
+
+Nav2 Loopback Simulator converted to C++
+----------------------------------------
+
+`PR #6062 <https://github.com/ros-navigation/navigation2/pull/6062>`_ converts ``nav2_loopback_sim`` from Python to C++ for improved performance and consistency with the rest of the Nav2 stack. This results in roughly a 2x improvement in CPU consumption.
+
+Key changes:
+
+- The ``clock_publisher`` is no longer a separate node. It is now embedded within the ``loopback_simulator`` node. Launch files that previously launched both nodes should be updated to launch only the ``loopback_simulator`` node.
+- A new ``speed_factor`` parameter (default ``1.0``) controls the simulated clock speed (e.g. ``2.0`` for 2x). This parameter is dynamically reconfigurable.
+- New parameters ``publish_scan``, ``odom_publish_dur``, and ``scan_noise_std`` are available.
+
+See :ref:`configuring_loopback_sim` for full parameter documentation.
+
+Global planner plugin natively accepts viapoints
+-------------------------------------------------
+
+`PR #5995 <https://github.com/ros-navigation/navigation2/pull/5995>`_ updates the ``createPath`` API for the ``BaseGlobalPlanner`` to include a vector ``std::vector<geometry_msgs::msg::PoseStamped>`` argument that takes in a list of intermediate points and passes them to the planner plugin implementation.
+
+The function signature for ``createPath`` must be updated accordingly for all custom planner plugins inheriting from the ``BaseGlobalPlanner``. This change does not alter the behavior of ``ComputePathThroughPoses`` that connects consecutive segments end-to-end but does upgrade the ``ComputePathToPose`` action.
+
+MPPI motion models use plugin-based configuration
+--------------------------------------------------
+
+`PR #6076 <https://github.com/ros-navigation/navigation2/pull/6076>`_ adds support for plugin-based configuration of motion models in MPPI.
+
+Motion model now has to be set up by specifying plugin to use:
+
+.. code-block:: yaml
+
+  MPPIController:
+    plugin: "nav2_mppi_controller::MPPIController"
+    motion_model: "diff_drive"
+    diff_drive:
+      plugin: "mppi::DiffDriveMotionModel"
+
+Supported motion model plugins are:
+  - ``mppi::DiffDriveMotionModel`` : replaces ``motion_model: DiffDrive``
+  - ``mppi::OmniMotionModel`` : replaces ``motion_model: Omni``
+  - ``mppi::AckermannMotionModel`` : replaces ``motion_model: Ackermann``
+
+While "diff_drive" is the default value for ``motion_model`` parameter, it is still required to specify the plugin for it, as shown above.
+
+Adaptive tolerance goal checker
+-------------------------------
+
+`PR #6052 <https://github.com/ros-navigation/navigation2/pull/6052>`_ adds a new adaptive tolerance goal checker.
+
+The adaptive tolerance goal checker uses two underlying goal tolerances a fine and a coarse one. The fine tolerance is used to instantly trigger goal reached when the robot is close to the goal (functionally same as simple goal checker), while the coarse tolerance is used to trigger goal reached when the robot is further from the goal but is making no meaningful progress towards it (or not expected to).
+
+The goal is cosidered reached when one of the following conditions is met:
+  - The robot is within the fine goal tolerance
+  - The robot is within the coarse goal tolerance and its linear velocity and orientational velocity are below a specified threshold for a set amount of cycles
+  - The robot is within the coarse goal tolerance and robots distance to the goal is not improving for a set amount of cycles
+  - The robot is within the coarse goal tolerance and it has passed the finish line (the line perpendicular to the first robot pose within the coarse tolerance and passing through the goal pose)
+
+See :ref:`configuring_nav2_controller_adaptive_tolerance_goal_checker_plugin` for full details.
+
+Stateful parameter removed from Regulated Pure Pursuit Controller
+-----------------------------------------------------------------
+`PR #6071 <https://github.com/ros-navigation/navigation2/pull/6071>`_ removes the stateful parameter from the Regulated Pure Pursuit Controller. That parameter previously enabled stateful goal handling, allowing the controller to keep the goal active and continue aligning heading once the XY tolerance was reached, rather than reverting to XY position corrections.
+
+A new `isGoalXYReached` API has been added to the GoalChecker, which checks if the XY position has been reached but not the yaw. It takes the stateful parameter into consideration if set to true in the goal checker configuration. This removes the need for a separate controller plugin parameter, and the behavior now applies consistently across the Graceful controller, the Rotation Shim controller, and the Regulated Pure Pursuit controller.
+
+Clearing Individual Costmap Plugins
+-----------------------------------
+
+`PR #6140 <https://github.com/ros-navigation/navigation2/pull/6140>`_ extends the below costmap clearing services to allow optionally clearing a subset of selected costmap plugins.
+
+  - ClearEntireCostmap
+  - ClearCostmapAroundRobot
+  - ClearCostmapAroundPose
+  - ClearCostmapExceptRegion
+
+An new field ``plugins`` has been added to these service requests, which takes a list of plugin names to clear.
+If this field is empty, all plugins will be cleared as before. If specific plugin names are provided, only those plugins will be cleared while the others remain unchanged.
+This is useful for selectively clearing specific layers (e.g. completely clearing only the obstacle layer while keeping the static layer intact).
+
+Any plugin name that is specified in the service request must satisfy the following conditions. If either of these conditions is not met, no clearing operation is performed and the service returns a failure response.
+
+  - The plugin name must correspond to a plugin that is currently loaded in the costmap.
+  - The requested plugin must be ``clearable``. For example, a plugin of type ``ObstacleLayer`` is clearable while that of type ``StaticLayer`` is not.
+
+
+MPPI Controller: Per-Axis Delay Compensation with command history replay
+------------------------------------------------------------------------
+`PR #6154 <https://github.com/ros-navigation/navigation2/pull/6154>`_ adds a feature to compensate per-axis actuator and transport delay. Without it the planner assumes commands take effect instantly. On platforms with hydraulic steering or any other source of lag, this mismatch causes oscillations while tracking the path. The feature works best in combination with setting ``open_loop: true``.
+
+Three new MPPIController parameters, default ``0.0`` (feature disabled):
+
+- ``model_delay_vx`` — linear-x command delay
+- ``model_delay_vy`` — linear-y command delay (holonomic platforms only)
+- ``model_delay_wz`` — angular-z command delay
+
+When non-zero, the optimizer fills the first ``round(delay / model_dt)`` rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.
+
+.. image:: images/mppi_delay_compensation_serpentines.png
+  :width: 800
+  :alt: Open-loop trajectory with and without per-axis delay compensation.
+  :align: center
+
+The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation ``model_delay_wz=0.6`` (right), tracking is visibly better.
+
+SpeedFilter path lookahead
+--------------------------
+`PR #6150 <https://github.com/ros-navigation/navigation2/pull/6150>`_ adds an optional path-lookahead mode to the SpeedFilter plugin, enabled via the ``enable_path_lookahead`` parameter (default disabled). When enabled, the filter looks ahead along the planned path and applies the strictest speed limit found within a velocity-dependent window, allowing the robot to decelerate before entering a speed-restricted zone. The default behavior of speed limits being applied only at the robot's current pose is unchanged when the parameter ``enable_path_lookahead`` is left disabled. See the :ref:`speed_filter` configuration page for the new parameters that control the lookahead behavior.
+
+TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame
+------------------------------------------------------------------
+`PR #6242 <https://github.com/ros-navigation/navigation2/pull/6242>`_ renames the ``robot_frame`` input port to ``robot_base_frame`` to align with Nav2 naming conventions. The node now uses ``deconflictPortAndParamFrame()`` to respect the ``robot_base_frame`` parameter from the BT Navigator config when the port is omitted, matching the behavior of other BT nodes like ``GetCurrentPose`` and ``GoalReached``.
+
+Behavior trees using ``TruncatePathLocal`` with the old port name will need to update:
+
+.. code-block:: xml
+
+   <!-- Before -->
+   <TruncatePathLocal robot_frame="base_link" ... />
+
+   <!-- After -->
+   <TruncatePathLocal robot_base_frame="base_link" ... />
+
+Asymmetric Inflation Field
+--------------------------
+`PR #6118 <https://github.com/ros-navigation/navigation2/pull/6118>`_ adds a new asymmetric inflation field.
+
+The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.
+
+.. figure:: images/asymmetric_layer_active.png
+    :align: center
+    :alt: Costmap with asymmetric inflation layer
+
+|
+
+Custom Inscribed Radius for Inflation Layer
+-------------------------------------------
+
+`PR #6223 <https://github.com/ros-navigation/navigation2/pull/6223>`_ adds a new ``custom_inscribed_radius`` parameter to the Inflation Layer, allowing users to override the default footprint-based inscribed radius.
+When set to a negative value (default ``-1.0``), the standard inscribed radius computed from the robot footprint is used.
+
+The default inscribed radius computed from the robot footprint, would give the same cost value of ``INSCRIBED_INFLATED_OBSTACLE`` for all the cells within the inscribed radius region.
+Consequently, in situations such as the two examples shown below, the ``footprintCost`` function would return the same value since it picks up the highest cost along the footprint.
+
+|large_overlap| |low_overlap|
+
+.. |large_overlap| image:: images/default_inscribed_radius_large_overlap.png
+   :width: 45%
+
+.. |low_overlap| image:: images/default_inscribed_radius_low_overlap.png
+   :width: 45%
+
+This however may not be ideal for situations where one wants to have a more granular cost distribution in order to better reflect the actual risk of collision.
+Now with the new ``custom_inscribed_radius`` parameter, users can set a custom inscribed radius for the robot which overwrites the default one.
+For example, setting it to ``0.0`` would result in skipping the inscribed radius region altogether and give a decay cost distribution right after the ``LETHAL`` region.
+
+.. image:: images/custom_inscribed_radius_zero.png
+  :width: 800
+  :alt: Costmap with custom inscribed radius of 0.0m
+  :align: center
+
+|
+
+**Warning:** This is however a potential safety issue!
+Changing the inscribed radius can have serious implications on the robot's safety.
+This parameter is intended only for controllers that are customized explicitly to use such data.
+It is **not** intended for global path planners or setups that depend on the footprint-based inscribed radius.
+
+See the `Inflation Layer configuration guide <../configuration/packages/costmap-plugins/inflation.html>`_ for full parameter documentation.
 
 Collision Monitor exclusion zones
 ---------------------------------

@@ -80,18 +80,32 @@ Input Ports
     e.g., "[[x1,y1],[x2,y2],...]". If empty, uses the robot's
     configured footprint.
 
-:check_full_path:
+:stop_at_first_collision:
 
   ====== =======
   Type   Default
   ------ -------
-  bool   false
+  bool   true
   ====== =======
 
   Description
-    Whether to check all poses in the path (true) or stop at the
-    first invalid pose (false). When true, all collision poses
+    Whether to stop validation at the first collision (true) or check
+    all poses in the path (false). When false, all collision poses
     are reported.
+
+:max_lookahead_distance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double -1.0
+  ====== =======
+
+  Description
+    Maximum distance ahead of the robot along the path to validate.
+    When set to -1.0 (default), the full path is validated.
+    A positive value limits validation to only the portion of the
+    path within that distance from the robot's current position.
 
 Output Ports
 ------------
@@ -121,7 +135,16 @@ Example
       consider_unknown_as_obstacle="false"
       layer_name=""
       footprint=""
-      check_full_path="false"
+      stop_at_first_collision="true"
+      collision_poses="{collision_poses}" />
+
+With max_lookahead_distance:
+
+.. code-block:: xml
+
+    <ValidatePath
+      path="{path}"
+      max_lookahead_distance="5.0"
       collision_poses="{collision_poses}" />
 
 With custom footprint:
@@ -140,5 +163,5 @@ Checking a specific costmap layer:
     <ValidatePath
       path="{path}"
       layer_name="obstacle_layer"
-      check_full_path="true"
+      stop_at_first_collision="false"
       collision_poses="{collision_poses}" />

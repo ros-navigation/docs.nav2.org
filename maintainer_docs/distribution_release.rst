@@ -89,9 +89,12 @@ Next, bump the ``main`` branch's distribution number to the same set in Step 2 a
 Add the distribution branch to ``.github/workflows/update_ci_image.yaml`` so that future pushes will result in CI image updates.
 Remove any EOL distributions at this time.
 
+In the ``mergify.yml`` file, add a new backport automation for the new distribution. Make to to create the tag in GitHub's UX as well for later use.
+
 Finally, create the new distribution branch from ``main`` and push to the server.
 Go into the GitHub Actions tab on ``nav2_docker`` and retrigger its build job.
-The nightly and release jobs should now exist for the new distribution and return successfully (validate this).
+The nightly jobs should now exist for the new distribution and return successfully (validate this).
+The release jobs will fail until Bloom is run to obtain the tagged version to build and release in Step 7.
 
 3. Mark Branch as Protected
 ---------------------------
@@ -152,12 +155,25 @@ You should see that the nightly of this distribution works, but the release vers
 To resolve, comment out the ``exit 1`` in the ``latest_version`` validity check.
 Once the job turns over, revert this commit to reintroduce the error.
 
-8. Announcements
+8. Bloom Related Packages
+-------------------------
+
+Related packages also must be bloomed, such as:
+
+* ``slam_toolbox``
+* ``nav2_minimal_turtlebot_simulation``
+* ``spatio_temporal_voxel_layer``
+* ``nonpersistent_voxel_layer``
+
+Note: There is a circular dependency between ``slam_toolbox`` and Nav2. SLAM Toolbox must be released first, then Nav2, then SLAM Toolbox again after the testing repository is updated with Nav2's build.
+
+9. Announcements
 ----------------
 
 Finally, we can announce the updates!
 Create a new migration guide page on the Nav2 website for contributors to populate with notable changes in the next distribution cycle.
 Update the Roadmap page with a new table of projects and features to be added over the next distribution.
+Update landing page with new distribution art in the table (and update status of other distros)
 
 Make announcements on Slack, ROS Discourse, and LinkedIn to announce the new distribution and its major new features.
 Gifs, videos, and images are always welcome to be included in the announcements!

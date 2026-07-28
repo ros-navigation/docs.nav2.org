@@ -47,16 +47,16 @@ S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
 
 Smac Planner (Hybrid A*, State Lattice, 2D):
 
-S. Macenski, M. Booker, J. Wallace,
+S. Macenski, M. Booker, J. Wallace, T. Fischer,
 `**Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics** <https://arxiv.org/abs/2401.13078>`_,
 
 .. code-block:: bash
 
   @article{macenski2024smac,
         title={Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics},
-        author={Steve Macenski and Matthew Booker and Josh Wallace},
-        year={2024},
-        journal = {Arxiv}
+        author={Steve Macenski and Matthew Booker and Josh Wallace and Tobias Fischer},
+        year={2026},
+        journal = {IEEE Robotics and Automation Practice}
   }
 
 Regulated Pure Pursuit Controller:

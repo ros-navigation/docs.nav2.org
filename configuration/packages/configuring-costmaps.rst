@@ -386,6 +386,7 @@ Plugin Parameters
   costmap-plugins/static.rst
   costmap-plugins/inflation.rst
   costmap-plugins/inflation_legacy.rst
+  costmap-plugins/asymmetric_inflation.rst
   costmap-plugins/obstacle.rst
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst

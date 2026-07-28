@@ -59,9 +59,10 @@ Let's learn more about the methods needed to write a planner plugin.
 |                      | method should clean up resources which are created for the planner.         |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | createPlan()         | Method is called when planner server demands a global plan for specified    | Yes                     |
-|                      | start and goal pose. This method returns `nav_msgs\:\:msg\:\:Path` carrying |                         |
-|                      | global plan. This method takes 3 input params: start pose, goal pose and    |                         |
-|                      | a function to check if the action has been canceled.                        |                         |
+|                      | start pose, goal pose, and intermediate viapoint poses. This method returns |                         |
+|                      | `nav_msgs\:\:msg\:\:Path` carrying global plan. This method takes 4 input   |                         |
+|                      | params: start pose, goal pose, a vector of intermediate poses and a function|                         |
+|                      | to check if the action has been canceled.                                   |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For this tutorial, we will be using methods ``StraightLine::configure()`` and ``StraightLine::createPlan()`` to create straight-line planner.
@@ -82,11 +83,15 @@ In planners, ``configure()`` method must set member variables from ROS parameter
 
 Here, ``name_ + ".interpolation_resolution"`` is fetching the ROS parameters ``interpolation_resolution`` which is specific to our planner. Nav2 allows the loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name. Now if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. For example, our example planner is mapped to the name "GridBased" and to retrieve the ``interpolation_resolution`` parameter which is specific to "GridBased", we used ``Gridbased.interpolation_resolution``. In other words, ``GridBased`` is used as a namespace for plugin-specific parameters. We will see more on this when we discuss the parameters file (or params file).
 
-In ``createPlan()`` method, we need to create a path from the given start to goal poses. The ``StraightLine::createPlan()`` is called using start pose and goal pose to solve the global path planning problem. Upon succeeding, it converts the path to the ``nav_msgs::msg::Path`` and returns to the planner server. Below annotation shows the implementation of this method.
+In ``createPlan()`` method, we need to create a path from the given start to goal poses, passing through intermediate viapoints if provided. The ``StraightLine::createPlan()`` is called with a start pose, a goal pose, and a vector of intermediate viapoints to solve the global path planning problem. Upon succeeding, it converts the path to the ``nav_msgs::msg::Path`` and returns to the planner server. Below annotation shows the implementation of this method.
 
 .. code-block:: c++
 
   nav_msgs::msg::Path global_path;
+
+  // copy the viapoints and append the goal since intermediate points would not include the goal
+  std::vector<geometry_msgs::msg::PoseStamped> goals = viapoints;
+  goals.push_back(goal);
 
   // Checking if the goal and start state is in the global frame
   if (start.header.frame_id != global_frame_) {
@@ -106,28 +111,33 @@ In ``createPlan()`` method, we need to create a path from the given start to goa
   global_path.poses.clear();
   global_path.header.stamp = node_->now();
   global_path.header.frame_id = global_frame_;
-  // calculating the number of loops for current value of interpolation_resolution_
-  int total_number_of_loop = std::hypot(
-    goal.pose.position.x - start.pose.position.x,
-    goal.pose.position.y - start.pose.position.y) /
-    interpolation_resolution_;
-  double x_increment = (goal.pose.position.x - start.pose.position.x) / total_number_of_loop;
-  double y_increment = (goal.pose.position.y - start.pose.position.y) / total_number_of_loop;
 
-  for (int i = 0; i < total_number_of_loop; ++i) {
-    geometry_msgs::msg::PoseStamped pose;
-    pose.pose.position.x = start.pose.position.x + x_increment * i;
-    pose.pose.position.y = start.pose.position.y + y_increment * i;
-    pose.pose.position.z = 0.0;
-    pose.pose.orientation.x = 0.0;
-    pose.pose.orientation.y = 0.0;
-    pose.pose.orientation.z = 0.0;
-    pose.pose.orientation.w = 1.0;
-    pose.header.stamp = node_->now();
-    pose.header.frame_id = global_frame_;
-    global_path.poses.push_back(pose);
+  geometry_msgs::msg::PoseStamped start_i = start;
+  for (auto goal_i : goals)
+  {
+    // calculating the number of loops for current value of interpolation_resolution_
+    int total_number_of_loop = std::hypot(
+      goal_i.pose.position.x - start_i.pose.position.x,
+      goal_i.pose.position.y - start_i.pose.position.y) /
+      interpolation_resolution_;
+    double x_increment = (goal_i.pose.position.x - start_i.pose.position.x) / total_number_of_loop;
+    double y_increment = (goal_i.pose.position.y - start_i.pose.position.y) / total_number_of_loop;
+
+    for (int i = 0; i < total_number_of_loop; ++i) {
+      geometry_msgs::msg::PoseStamped pose;
+      pose.pose.position.x = start_i.pose.position.x + x_increment * i;
+      pose.pose.position.y = start_i.pose.position.y + y_increment * i;
+      pose.pose.position.z = 0.0;
+      pose.pose.orientation.x = 0.0;
+      pose.pose.orientation.y = 0.0;
+      pose.pose.orientation.z = 0.0;
+      pose.pose.orientation.w = 1.0;
+      pose.header.stamp = node_->now();
+      pose.header.frame_id = global_frame_;
+      global_path.poses.push_back(pose);
+    }
+    start_i = goal_i;
   }
-
   global_path.poses.push_back(goal);
 
   return global_path;

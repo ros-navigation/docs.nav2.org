@@ -59,6 +59,10 @@ Costmap Layers
 | `Legacy Inflation Layer`_      | Eitan Marder-Eppstein  | Inflates lethal obstacles in     |
 |                                |                        | costmap with exponential decay   |
 +--------------------------------+------------------------+----------------------------------+
+| `Asymmetric Inflation Layer`_  | Marc Blöchlinger       | Uses the global plan to          |
+|                                |                        | asymmetrically inflate lethal    |
+|                                |                        | obstacles depending on path side |
++--------------------------------+------------------------+----------------------------------+
 |  `Obstacle Layer`_             | Eitan Marder-Eppstein  | Maintains persistent 2D costmap  |
 |                                |                        | from 2D laser scans with         |
 |                                |                        | raycasting to clear free space   |
@@ -81,17 +85,36 @@ Costmap Layers
 |                                |                        | costmap with different isolated  |
 |                                |                        | combinations of costmap layers   |
 +--------------------------------+------------------------+----------------------------------+
+| `Ground Consistency Layer`_    |  Muhammad Haider Khan  | Height-aware costmap layer using |
+|                                |  Lodhi                 | 3D ground segmentation. Pair     |
+|                                |                        | with Inflation Layer for terrain-|
+|                                |                        | aware navigation.                |
++--------------------------------+------------------------+----------------------------------+
+| `Semantic Segmentation Layer`_ |  Pedro Gonzalez        | Vision-based semantic            |
+|                                |                        | segmentation costmap layer using |
+|                                |                        | per-pixel class masks and        |
+|                                |                        | registered pointclouds for       |
+|                                |                        | terrain-aware navigation.        |
++--------------------------------+------------------------+----------------------------------+
+| `Virtual Layer`_               |  Sherif Fathey         | Creates dynamic virtual cost     |
+|                                |                        | zones and restriction areas using|
+|                                |                        | polygons, lines, and circles     |
++--------------------------------+------------------------+----------------------------------+
 
+.. _Semantic Segmentation Layer: https://github.com/kiwicampus/semantic_segmentation_layer
 .. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
 .. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
 .. _Range Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 .. _Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
 .. _Legacy Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/legacy_inflation_layer.cpp
+.. _Asymmetric Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/asymmetric_inflation_layer.cpp
 .. _Obstacle Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 .. _Denoise Layer: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 .. _Plugin Container Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
+.. _Ground Consistency Layer: https://github.com/dfki-ric/nav2_ground_consistency_costmap_plugin
+.. _Virtual Layer: https://github.com/SherifFathey/nav2-virtual-layer
 
 Costmap Filters
 ===============
@@ -322,10 +345,23 @@ Goal Checkers
 |                                 |                        | of goal, without requiring       |
 |                                 |                        | rotational convergence.          |
 +---------------------------------+------------------------+----------------------------------+
+| `AxisGoalChecker`_              | Guillaume Doisy &      | A plugin check whether robot     |
+|                                 | Tony Najjar            | is within tolerance along the    |
+|                                 |                        | is within tolerance along the    |
+|                                 |                        | path direction and perpendicular |
+|                                 |                        | to it (cross-track).             |
++---------------------------------+------------------------+----------------------------------+
+| `AdaptiveToleranceGoalChecker`_ | David Grbac            | A plugin check whether robot     |
+|                                 |                        | is within translational distance |
+|                                 |                        | (using two tolerance levels)     |
+|                                 |                        | and rotational distance of goal. |
++---------------------------------+------------------------+----------------------------------+
 
 .. _SimpleGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 .. _StoppedGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
 .. _PositionGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp
+.. _AxisGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/axis_goal_checker.cpp
+.. _AdaptiveToleranceGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/adaptive_tolerance_goal_checker.cpp
 
 Progress Checkers
 =================

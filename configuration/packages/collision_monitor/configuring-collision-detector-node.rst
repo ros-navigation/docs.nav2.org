@@ -425,6 +425,17 @@ Exclusion zones remove (mask out) a source's points and never trigger detection.
   Description:
     Frame the zone shape is anchored to and tracked via TF (e.g. ``dock_link``). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.
 
+:``<zone name>``.frame_hold_timeout:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.0
+  ============== =============================
+
+  Description:
+    Extra time (in seconds) beyond ``transform_tolerance`` that the last known pose of a stale zone ``frame_id`` keeps being used before the zone fails safe and stops masking points. While held, the zone is frozen at its last valid pose in the ``odom_frame_id`` frame, so it stays world-fixed even if the robot moves. Useful to ride out brief detection dropouts of a marker-based zone frame. ``0.0`` means only the transform tolerance applies.
+
 :``<zone name>``.min_height:
 
   ============== =============================
@@ -513,7 +524,7 @@ Here is an example of configuration YAML for the Collision Detector.
           min_points: 4
           visualize: True
           polygon_pub_topic: "polygon_front"
-        observation_sources: ["scan"]
+        observation_sources: ["scan", "pointcloud"]
         scan:
           source_timeout: 0.2
           type: "scan"

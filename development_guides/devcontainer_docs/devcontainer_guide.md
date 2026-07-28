@@ -144,7 +144,7 @@ While using the dev container, try and keep in mind the lifecycle of the contain
 :::{important}
 This is particularly important when the host machine is inherently ephemeral as well, as the case may be when using cloud based environments such as Codespaces, so be sure to commit and push local changes to a remote repository:
 
-- [The codespace lifecycle](https://docs.github.com/en/codespaces/getting-started/the-codespace-lifecycle)
+- [The codespace lifecycle](https://docs.github.com/en/codespaces/about-codespaces/understanding-the-codespace-lifecycle)
   - Maintain your data throughout the entire codespace lifecycle
 :::
 
