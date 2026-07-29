@@ -10,7 +10,7 @@ for instructions how to build Nav2 from source.
 
 ## Installation
 
-1. Install the [ROS 2 binary packages](https://docs.ros.org/en/lyrical/Installation/Ubuntu-Install-Debians.html) as described in the official docs
+1. Install the [ROS 2 binary packages](https://docs.ros.org/en/lyrical/Installation/Ubuntu-Install-Debs.html) as described in the official docs
 
 2. Source your ROS 2 installation to set up the environment:
     ```bash
