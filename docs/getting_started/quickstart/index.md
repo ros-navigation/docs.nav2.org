@@ -18,7 +18,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
 
 === "Jazzy and newer"
 
-    1. Install the [ROS 2 binary packages](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html) as described in the official docs
+    1. Install the [ROS 2 binary packages](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) as described in the official docs
 
     2. Source your ROS 2 installation to set up the environment:
 
@@ -48,7 +48,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
 
 === "Iron and older"
 
-    1. Install the [ROS 2 binary packages](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html) as described in the official docs
+    1. Install the [ROS 2 binary packages](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debs.html) as described in the official docs
 
     2. Source your ROS 2 installation to set up the environment:
 
