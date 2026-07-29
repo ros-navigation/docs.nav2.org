@@ -116,7 +116,7 @@ bt_navigator:
     default_nav_to_pose_bt_xml: $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
 ```
 
-For more information about substitutions syntax, see [here](https://docs.ros.org/en/rolling/How-To-Guides/Launch-files-migration-guide.html#substitutions)
+For more information about substitutions syntax, see [here](https://docs.ros.org/en/iron/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html#substitutions)
 
 ## Allow Behavior Server Plugins to Access The Action Result
 

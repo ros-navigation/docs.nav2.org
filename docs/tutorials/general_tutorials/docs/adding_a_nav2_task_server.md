@@ -62,7 +62,7 @@ Composition is the second key component nav2 task servers that was introduced to
 
 !!! info "See also"
 
-    More information on Composition can be found [here](https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html).
+    More information on Composition can be found [here](https://docs.ros.org/en/rolling/ROS-Framework/nodes/Working-with-nodes/Composition.html).
 
 In the following section, we give an example on how to add a new Nav2 server, which we notionally call the `route_server`, to our system.
 

@@ -8,8 +8,8 @@ To use Nav2, you'll first need to build or install ROS 2 and related development
 
     For more information on building or installing ROS 2 distros, see the official documentation:
 
-    - [ROS 2 Installation](https://docs.ros.org/en/rolling/Installation.html)
-    - [Install development tools and ROS tools](https://docs.ros.org/en/rolling/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools)
+    - [ROS 2 Installation](https://docs.ros.org/en/rolling/Get-Started/Installation.html)
+    - [Install development tools and ROS tools](https://docs.ros.org/en/rolling/Get-Started/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools)
 
     Once your environment is ready, source the ROS 2 setup file:
 
@@ -21,7 +21,7 @@ To use Nav2, you'll first need to build or install ROS 2 and related development
 
     For more information on building ROS 2 from source, see the official documentation:
 
-    - [ROS 2 Building from source](https://docs.ros.org/en/rolling/Installation.html#building-from-source)
+    - [ROS 2 Building from source](https://docs.ros.org/en/rolling/Get-Started/Installation.html#building-from-source)
 
     Once your environment is ready, source the ROS 2 setup file:
 

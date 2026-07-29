@@ -256,7 +256,7 @@ def generate_launch_description():
 
 !!! info "See also"
 
-    For more information regarding the launch system in ROS 2, you can have a look at the official [ROS 2 Launch System Documentation](https://docs.ros.org/en/rolling/Tutorials/Launch-system.html)
+    For more information regarding the launch system in ROS 2, you can have a look at the official [ROS 2 Launch System Documentation](https://docs.ros.org/en/rolling/Developer-Tools/Launch/Launch-system.html)
 
 To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named `rviz` in the root of your project and a file named `config.rviz` under it. Place the following as the contents of `config.rviz`
 

@@ -13,7 +13,7 @@ and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 
 ## Installation
 
-1. Install the [ROS 2 binary packages](https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html) as described in the official docs
+1. Install the [ROS 2 binary packages](https://docs.ros.org/en/rolling/Get-Started/Installation/Ubuntu-Install-Debs.html) as described in the official docs
 
 2. Source your ROS 2 installation to set up the environment:
     ```bash
