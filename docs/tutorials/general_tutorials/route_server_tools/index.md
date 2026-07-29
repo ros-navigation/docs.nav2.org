@@ -77,7 +77,7 @@ This will by default initialize the Turtlebot4 in the depot map in the **3rd nod
 </figure>
 
 In order to run the demonstration in the warehouse map, you can set the `MAP_TYPE` variable in the
-[route_example_launch.py](https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py) file to `warehouse` and run the same command as above.
+[route_example_launch.py](https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_simple_commander/launch/route_example_launch.py) file to `warehouse` and run the same command as above.
 
 <figure markdown="span">
   ![](assets/route_warehouse_demo.gif){ width="90%" }

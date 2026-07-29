@@ -1,6 +1,6 @@
 # AMCL { #amcl }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_amcl).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_amcl).
 
 AMCL implements the server for taking a static map and localizing the robot within it using an Adaptive Monte-Carlo Localizer.
 

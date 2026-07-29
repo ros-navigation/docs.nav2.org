@@ -18,13 +18,13 @@ Type: `bool` Default: `true`
 
 Type: `string` Default: `N/A`
 
-:   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server][map-server-index] configuration page.
+:   Name of the incoming [CostmapFilterInfo](https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_msgs/msg/CostmapFilterInfo.msg) topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the [Map Server][map-server-index] configuration page.
 
 ### **`<filter name>.speed_limit_topic`**
 
 Type: `string` Default: `"speed_limit"`
 
-:   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg) have the following fields' meaning:
+:   Topic to publish speed limit to. The [messages](https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_msgs/msg/SpeedLimit.msg) have the following fields' meaning:
 
     - `percentage`: speed limit is expressed in percentage if `true` or in absolute values in `false` case. This parameter is set depending on `type` field of `CostmapFilterInfo` message.
     - `speed_limit`: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on `percentage` value. Zero value means no speed restriction (independently on `percentage`). `speed_limit` is being linearly converted from `OccupancyGrid` filter mask value as: `speed_limit = base + multiplier * mask_value`, where `base` and `multiplier` coefficients are taken from `CostmapFilterInfo` message.

@@ -62,7 +62,7 @@ Composition is the second key component nav2 task servers that was introduced to
 
 !!! info "See also"
 
-    More information on Composition can be found [here](https://docs.ros.org/en/rolling/ROS-Framework/nodes/Working-with-nodes/Composition.html).
+    More information on Composition can be found [here](https://docs.ros.org/en/lyrical/Tutorials/Intermediate/Composition.html).
 
 In the following section, we give an example on how to add a new Nav2 server, which we notionally call the `route_server`, to our system.
 
@@ -126,12 +126,12 @@ The table below shows the current servers along with the expected error code str
 
 </div>
 
-[Controller Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/src/controller_server.cpp
-[Planner Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_planner/src/planner_server.cpp
-[Smoother Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_smoother/src/nav2_smoother.cpp
-[Waypoint Follower Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp
-[Behavior Server]: https://github.com/ros-navigation/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp
-[Navigator]: https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/
+[Controller Server]: https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_controller/src/controller_server.cpp
+[Planner Server]: https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_planner/src/planner_server.cpp
+[Smoother Server]: https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_smoother/src/nav2_smoother.cpp
+[Waypoint Follower Server]: https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_waypoint_follower/src/waypoint_follower.cpp
+[Behavior Server]: https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_behaviors/src/behavior_server.cpp
+[Navigator]: https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_bt_navigator/
 
 Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to `error_code` and the error message field to `error_msg`.
 

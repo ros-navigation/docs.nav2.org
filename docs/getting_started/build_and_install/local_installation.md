@@ -8,8 +8,8 @@ To use Nav2, you'll first need to build or install ROS 2 and related development
 
     For more information on building or installing ROS 2 distros, see the official documentation:
 
-    - [ROS 2 Installation](https://docs.ros.org/en/rolling/Get-Started/Installation.html)
-    - [Install development tools and ROS tools](https://docs.ros.org/en/rolling/Get-Started/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools)
+    - [ROS 2 Installation](https://docs.ros.org/en/lyrical/Installation.html)
+    - [Install development tools and ROS tools](https://docs.ros.org/en/lyrical/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools)
 
     Once your environment is ready, source the ROS 2 setup file:
 
@@ -21,7 +21,7 @@ To use Nav2, you'll first need to build or install ROS 2 and related development
 
     For more information on building ROS 2 from source, see the official documentation:
 
-    - [ROS 2 Building from source](https://docs.ros.org/en/rolling/Get-Started/Installation.html#building-from-source)
+    - [ROS 2 Building from source](https://docs.ros.org/en/lyrical/Installation.html#building-from-source)
 
     Once your environment is ready, source the ROS 2 setup file:
 
@@ -48,7 +48,7 @@ Similarly, you can install the Nav2 project in different ways:
 
     !!! tip "Hint"
 
-        For more examples on building Nav2 from released distribution binaries, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile).
+        For more examples on building Nav2 from released distribution binaries, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/lyrical/tools/distro.Dockerfile).
 
 
 === "Nav2 from Source"
@@ -90,4 +90,4 @@ Similarly, you can install the Nav2 project in different ways:
 
     !!! tip "Hint"
 
-        For more examples on building Nav2 from rolling development source, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile).
+        For more examples on building Nav2 from rolling development source, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/lyrical/tools/distro.Dockerfile).

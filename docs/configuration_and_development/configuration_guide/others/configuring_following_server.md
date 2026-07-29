@@ -1,6 +1,6 @@
 # Following Server { #following-server }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_following/opennav_following).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_following/opennav_following).
 
 The Following Server in `opennav_following` implements a server for following dynamic objects from a detection topic or specific reference frame.
 This server allows the robot to follow and maintain a determined distance from a detected object or specific frame,

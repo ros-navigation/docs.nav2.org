@@ -1,6 +1,6 @@
 # Smac Planner { #smac-planner }
 
-Source code and `README` with design, explanations, and metrics can be found on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner). A brief explanation can be found below, but the `README` contains the most detailed overview of the framework and planner implementations.
+Source code and `README` with design, explanations, and metrics can be found on [Github](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_smac_planner). A brief explanation can be found below, but the `README` contains the most detailed overview of the framework and planner implementations.
 
 The Smac Planner plugin implements three A\* based planning algorithms: 2D A\*, Hybrid-A\*, and State Lattice path planners.
 It is important to know that in June 2021 and December 2021, the package received a several **major** updates both improving path quality and run-times by 2-3x.

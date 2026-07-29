@@ -4,7 +4,7 @@ For this guide, we will be creating the SDF (Simulation Description Format) file
 
 !!! info "See also"
 
-    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/lyrical/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## About SDF
 
@@ -28,7 +28,7 @@ This package contains a C++ library and urdf_parser_plugin for converting SDForm
 
 !!! info "See also"
 
-    If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official [SDFormat Website](http://sdformat.org/) and the [sdformat_urdf GitHub repository](https://github.com/ros/sdformat_urdf/tree/rolling/sdformat_urdf)
+    If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official [SDFormat Website](http://sdformat.org/) and the [sdformat_urdf GitHub repository](https://github.com/ros/sdformat_urdf/tree/lyrical/sdformat_urdf)
 
 ## Writing the SDF
 

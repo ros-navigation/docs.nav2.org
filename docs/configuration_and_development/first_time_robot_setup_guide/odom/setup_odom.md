@@ -8,7 +8,7 @@ In the second case, we will build a demo that simulates a functioning odometry s
 
 !!! info "See also"
 
-    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/lyrical/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## Odometry Introduction
 
@@ -63,7 +63,7 @@ For other types of sensors such as IMU, VIO, etc, their respective ROS drivers s
 
 ## Simulating an Odometry System using Gazebo
 
-In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description/).
+In this section, we will be using Gazebo to simulate the odometry system of `sam_bot`, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the [complete source here](https://github.com/ros-navigation/navigation2_tutorials/tree/lyrical/sam_bot_description/).
 
 !!! note
 
@@ -314,9 +314,9 @@ bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
 
 ### Making a Gazebo world
 
-Create a `world` directory in your package and add [this code](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/world/my_world.sdf) to a new file named `my_world.sdf`:
+Create a `world` directory in your package and add [this code](https://github.com/ros-navigation/navigation2_tutorials/blob/lyrical/sam_bot_description/world/my_world.sdf) to a new file named `my_world.sdf`:
 
-We also have to add the `world` directory to our `CMakeLists.txt` file. Open [CMakeLists.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/CMakeLists.txt) and append the `world` directory inside the install(DIRECTORY...), as shown in the snippet below.
+We also have to add the `world` directory to our `CMakeLists.txt` file. Open [CMakeLists.txt](https://github.com/ros-navigation/navigation2_tutorials/blob/lyrical/sam_bot_description/CMakeLists.txt) and append the `world` directory inside the install(DIRECTORY...), as shown in the snippet below.
 
 ```cmake
 install(
@@ -359,7 +359,7 @@ joint_state_publisher_node,
 joint_state_publisher_gui_node,
 ```
 
-Next, open [package.xml](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/package.xml) and delete the lines:
+Next, open [package.xml](https://github.com/ros-navigation/navigation2_tutorials/blob/lyrical/sam_bot_description/package.xml) and delete the lines:
 
 ```xml
 <exec_depend>joint_state_publisher</exec_depend>

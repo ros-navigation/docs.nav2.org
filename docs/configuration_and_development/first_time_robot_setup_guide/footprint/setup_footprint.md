@@ -24,9 +24,9 @@ In this section, we will configure the footprint of `sam_bot` such that `footpri
 
 !!! note
 
-    The complete source code for `sam_bot` can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description) repository.
+    The complete source code for `sam_bot` can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/lyrical/sam_bot_description) repository.
 
-Under the `config` directory, create a new file named  `nav2_params.yaml`. Next, copy the contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/config/nav2_params.yaml) and paste them into the newly created file. The contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/config/nav2_params.yaml) are copied from the default configuration file of Nav2 but with changes in the `footprint` and  `robot_radius` parameters to match the shape of `sam_bot`.
+Under the `config` directory, create a new file named  `nav2_params.yaml`. Next, copy the contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/lyrical/sam_bot_description/config/nav2_params.yaml) and paste them into the newly created file. The contents of [config/nav2_params.yaml](https://github.com/ros-navigation/navigation2_tutorials/blob/lyrical/sam_bot_description/config/nav2_params.yaml) are copied from the default configuration file of Nav2 but with changes in the `footprint` and  `robot_radius` parameters to match the shape of `sam_bot`.
 
 !!! info "See also"
 
@@ -51,7 +51,7 @@ resolution: 0.05
 
 We will now confirm that we have properly set up `sam_bot`'s footprint.
 
-First, we launch [launch/display.launch.py](https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/launch/display.launch.py) to launch the robot state publisher, spawn `sam_bot` in Gazebo, and visualize `sam_bot` and its footprint in Rviz. The robot state publisher publishes the `base_link` => `sensors` transforms defined in `sam_bot`'s URDF, while Gazebo's differential drive plugin publishes the `odom` => `base_link` transform. Open a new terminal and execute the lines below.
+First, we launch [launch/display.launch.py](https://github.com/ros-navigation/navigation2_tutorials/blob/lyrical/sam_bot_description/launch/display.launch.py) to launch the robot state publisher, spawn `sam_bot` in Gazebo, and visualize `sam_bot` and its footprint in Rviz. The robot state publisher publishes the `base_link` => `sensors` transforms defined in `sam_bot`'s URDF, while Gazebo's differential drive plugin publishes the `odom` => `base_link` transform. Open a new terminal and execute the lines below.
 
 ```shell
 colcon build

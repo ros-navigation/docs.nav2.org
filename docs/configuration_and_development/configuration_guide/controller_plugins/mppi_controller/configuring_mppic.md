@@ -1,6 +1,6 @@
 # Model Predictive Path Integral Controller { #model-predictive-path-integral-controller }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_mppi_controller).
 
 <figure markdown="span">
   ![MPPI on Turtlebot3 demo](assets/mppi_demo.gif){ width="600" title="MPPI on Turtlebot3 demo" }

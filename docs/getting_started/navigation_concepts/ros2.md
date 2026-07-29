@@ -1,13 +1,13 @@
 # ROS 2 { #ros-2 }
 
-ROS 2 is the core middleware used for Nav2. If you are unfamiliar with this, please visit [the ROS 2 documentation](https://docs.ros.org/en/rolling/) before continuing.
+ROS 2 is the core middleware used for Nav2. If you are unfamiliar with this, please visit [the ROS 2 documentation](https://docs.ros.org/en/lyrical/) before continuing.
 
 ## Action Server
 
 Just as in ROS, action servers are a common way to control long running tasks like navigation.
 This stack makes more extensive use of actions, and in some cases, without an easy topic interface.
 It is more important to understand action servers as a developer in ROS 2.
-Some simple CLI examples can be found in the [ROS 2 documentation](https://docs.ros.org/en/rolling/ROS-Framework/interfaces/actions/Working-with-actions/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html).
+Some simple CLI examples can be found in the [ROS 2 documentation](https://docs.ros.org/en/lyrical/Tutorials/Understanding-ROS2-Actions.html).
 
 Action servers are similar to a canonical service server.
 A client will request some task to be completed, except, this task may take a long time.

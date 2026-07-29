@@ -19,7 +19,7 @@ It may be beneficial to write your own Navigator if you have a custom action mes
 
 ### 1. Create a new Navigator Plugin
 
-We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in [Nav2's BT Navigator package](https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator) as the `NavigateToPoseNavigator`. This package can be considered as a reference for writing your own plugin.
+We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in [Nav2's BT Navigator package](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_bt_navigator) as the `NavigateToPoseNavigator`. This package can be considered as a reference for writing your own plugin.
 
 Our example plugin class `nav2_bt_navigator::NavigateToPoseNavigator` inherits from the base class `nav2_core::BehaviorTreeNavigator`. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.
 

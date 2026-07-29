@@ -8,7 +8,7 @@ For this guide, we will be creating the Unified Robot Description Format (URDF) 
 
 !!! info "See also"
 
-    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+    The complete source code in this tutorial can be found in [navigation2_tutorials](https://github.com/ros-navigation/navigation2_tutorials/tree/lyrical/sam_bot_description) repository under the `sam_bot_description` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 ## URDF and the Robot State Publisher
 
@@ -256,7 +256,7 @@ def generate_launch_description():
 
 !!! info "See also"
 
-    For more information regarding the launch system in ROS 2, you can have a look at the official [ROS 2 Launch System Documentation](https://docs.ros.org/en/rolling/Developer-Tools/Launch/Launch-system.html)
+    For more information regarding the launch system in ROS 2, you can have a look at the official [ROS 2 Launch System Documentation](https://docs.ros.org/en/lyrical/Tutorials/Launch-system.html)
 
 To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named `rviz` in the root of your project and a file named `config.rviz` under it. Place the following as the contents of `config.rviz`
 

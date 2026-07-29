@@ -1,6 +1,6 @@
 # Route Server { #route-server }
 
-Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/nav2_route).
+Source code on [Github](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_route).
 
 The Route Server in `nav2_route` implements the server for computing routes through a predefined navigation graph rather than using freespace planning like the Planner Server.
 It may be used to fully replace freespace planning when following a particular route closely or to augment the global planner with long-distance routing to a goal.
@@ -512,7 +512,7 @@ route_server:
 ## Configuring the Nav2 Route Server Demo
 
 The Nav2 Route Server demo is a simulation of a Turtlebot4 robot navigating through a depot or a warehouse environment using the Nav2 Route Server.
-The [route_example_launch.py](https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py)  file is used to launch the demo, and can be configured in place with the following parameters:
+The [route_example_launch.py](https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_simple_commander/launch/route_example_launch.py)  file is used to launch the demo, and can be configured in place with the following parameters:
 
 - `MAP_TYPE`:
     - Set to either `depot` or `warehouse` to choose the environment.
@@ -521,7 +521,7 @@ The [route_example_launch.py](https://github.com/ros-navigation/navigation2/blob
 - `ROUTE_POSES_DICT`:
     - A dictionary containing the start and goal poses for the robot in the depot and warehouse environments.
 
-All the graphs files for the depot and warehouse environments are located in the [graphs](https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs) directory under the `nav2_bringup` package.
+All the graphs files for the depot and warehouse environments are located in the [graphs](https://github.com/ros-navigation/navigation2/tree/lyrical/nav2_bringup/graphs) directory under the `nav2_bringup` package.
 These are the current visualizations of the route graphs for the depot and warehouse environments:
 
 <figure markdown="span">
