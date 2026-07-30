@@ -1301,6 +1301,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collision-monitor-exclusion-zones">Collision Monitor exclusion zones</a></li>
 </ul>
 </li>
 </ul>
@@ -2349,6 +2350,18 @@ Changing the inscribed radius can have serious implications on the robot’s saf
 This parameter is intended only for controllers that are customized explicitly to use such data.
 It is <strong>not</strong> intended for global path planners or setups that depend on the footprint-based inscribed radius.</p>
 <p>See the <a class="reference external" href="../configuration/packages/costmap-plugins/inflation.html">Inflation Layer configuration guide</a> for full parameter documentation.</p>
+</div>
+<div class="section" id="collision-monitor-exclusion-zones">
+<h2>Collision Monitor exclusion zones<a class="headerlink" href="#collision-monitor-exclusion-zones" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6233">PR #6233</a> adds per-source exclusion zones to Collision Monitor and Collision Detector.
+An exclusion zone masks out data points falling inside a polygon or circle before they are checked against the collision polygons, e.g. to ignore a docking station the robot must approach closely, or to self-filter robot body points from a source.
+A zone can be anchored to an arbitrary TF <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">dock_link</span></code>), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+Zones fail safe: if the zone frame transform is unavailable, no points are excluded.</p>
+<p>See:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-monitor-node.html#configuring-collision-monitor-node"><span class="std std-ref">Collision Monitor Node</span></a></p></li>
+<li><p><a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-detector-node.html#configuring-collision-detector-node"><span class="std std-ref">Collision Detector Node</span></a></p></li>
+</ul>
 </div>
 </div>
 

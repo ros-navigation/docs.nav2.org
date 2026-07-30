@@ -1300,6 +1300,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#truncatepathlocal-bt-node-robot-frame-renamed-to-robot-base-frame">TruncatePathLocal BT Node: robot_frame renamed to robot_base_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#collision-monitor-exclusion-zones">Collision Monitor exclusion zones</a></li>
 </ul>
 </li>
 </ul>
@@ -1438,6 +1439,15 @@ Subscribed footprint is also having the same properties as other polygons, but i
 Collision Monitor normally <strong>bypasses the costmap</strong> to minimize reaction latency using fresh sensor data.
 Use at your own caution or when using external costmap sources from derived sources.</p>
 </div>
+<p>Any data source can optionally define one or more <strong>exclusion zones</strong>.
+An exclusion zone is a region that <em>removes</em> (masks out) that source’s points which fall inside it, before the action polygons are evaluated.
+Unlike the polygons above, an exclusion zone does <strong>not</strong> trigger a behavior, it is a per-source pre-filter.
+A typical use case is ignoring known structure the robot deliberately approaches, such as a charging dock or a conveyor, whose returns would otherwise trip the stop/slowdown zones.
+Another common use case is self-filtering: masking out returns from parts of the robot itself (e.g. arms, mast, bumpers, or trailers) that fall within a sensor’s field of view, which would otherwise be mistaken for obstacles. Anchoring the zone to the relevant robot frame keeps the mask aligned with that structure as it moves.
+A zone can be a polygon or circle anchored to an arbitrary <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">dock_link</span></code>), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+The filter is fail-safe: if the zone transform is unavailable, no points are removed, so collision protection is never silently lost.
+Each zone inherits its owning source’s <code class="docutils literal notranslate"><span class="pre">base_shift_correction</span></code> policy, so the mask and the source points are always transformed under the same assumptions.
+See YAML at the bottom for an example.</p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
@@ -2566,6 +2576,215 @@ large unknown areas you don’t want to trigger Collision Monitor.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.exclusion_zones</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>List of exclusion zone name IDs defined for this source. Each name refers to a
+zone parameter block (see <a class="reference internal" href="#exclusion-zones-parameters">Exclusion zones parameters</a>). Points from this source
+that fall inside an enabled zone are removed before the action polygons are evaluated.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="exclusion-zones-parameters">
+<h3>Exclusion zones parameters<a class="headerlink" href="#exclusion-zones-parameters" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code> is a parameter block referenced by name from a source’s <code class="docutils literal notranslate"><span class="pre">exclusion_zones</span></code> list. Zone names are global across the node.
+Exclusion zones remove (mask out) a source’s points and never trigger an action. Each zone inherits the owning source’s <code class="docutils literal notranslate"><span class="pre">base_shift_correction</span></code> policy.</p>
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.type</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“polygon”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Type of zone shape. Available values are <code class="docutils literal notranslate"><span class="pre">polygon</span></code> and <code class="docutils literal notranslate"><span class="pre">circle</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.points</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Zone polygon vertices, listed in <code class="docutils literal notranslate"><span class="pre">&quot;[[p1.x,</span> <span class="pre">p1.y],</span> <span class="pre">[p2.x,</span> <span class="pre">p2.y],</span> <span class="pre">[p3.x,</span> <span class="pre">p3.y],</span> <span class="pre">...]&quot;</span></code> format, expressed in <code class="docutils literal notranslate"><span class="pre">frame_id</span></code>. Used for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type. Minimum 3 points. Causes an error, if invalid for a <code class="docutils literal notranslate"><span class="pre">polygon</span></code> zone.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.radius</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Circle radius. Used for <code class="docutils literal notranslate"><span class="pre">circle</span></code> type. Must be greater than 0. Causes an error, if not specified for a <code class="docutils literal notranslate"><span class="pre">circle</span></code> zone.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.frame_id</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>(node <code class="docutils literal notranslate"><span class="pre">base_frame_id</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Frame the zone shape is anchored to and tracked via TF (e.g. <code class="docutils literal notranslate"><span class="pre">dock_link</span></code>). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.frame_hold_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Extra time (in seconds) beyond <code class="docutils literal notranslate"><span class="pre">transform_tolerance</span></code> that the last known pose of a stale zone <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> keeps being used before the zone fails safe and stops masking points. While held, the zone is frozen at its last valid pose in the <code class="docutils literal notranslate"><span class="pre">odom_frame_id</span></code> frame, so it stays world-fixed even if the robot moves. Useful to ride out brief detection dropouts of a marker-based zone frame. <code class="docutils literal notranslate"><span class="pre">0.0</span></code> means only the transform tolerance applies.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.min_height</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-inf</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Lower bound (in the base frame <code class="docutils literal notranslate"><span class="pre">z</span></code>) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.max_height</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>+inf</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Upper bound (in the base frame <code class="docutils literal notranslate"><span class="pre">z</span></code>) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether this zone actively masks points. (Can be dynamically set)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;zone</span> <span class="pre">name&gt;</span></code>.visualize</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to publish the zone footprint as a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PolygonStamped</span></code> for visualization.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-even">bond_heartbeat_period</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
@@ -2715,6 +2934,17 @@ large unknown areas you don’t want to trigger Collision Monitor.</p>
 <span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">exclusion_zones</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dock&quot;</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># references the &quot;dock&quot; zone block below</span>
+<span class="w">    </span><span class="c1"># Exclusion zone blocks are referenced by name from a source&#39;s &quot;exclusion_zones&quot; list.</span>
+<span class="w">    </span><span class="nt">dock</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span><span class="w">          </span><span class="c1"># &quot;polygon&quot; or &quot;circle&quot;</span>
+<span class="w">      </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dock_link&quot;</span><span class="w">    </span><span class="c1"># frame the zone is anchored to; empty -&gt; robot base frame (static)</span>
+<span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.5,</span><span class="nv"> </span><span class="s">0.5],</span><span class="nv"> </span><span class="s">[0.5,</span><span class="nv"> </span><span class="s">-0.5],</span><span class="nv"> </span><span class="s">[-0.5,</span><span class="nv"> </span><span class="s">-0.5],</span><span class="nv"> </span><span class="s">[-0.5,</span><span class="nv"> </span><span class="s">0.5]]&quot;</span><span class="w">  </span><span class="c1"># polygon type only</span>
+<span class="w">      </span><span class="c1"># radius: 0.5            # circle type only (must be &gt; 0)</span>
+<span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span><span class="w">         </span><span class="c1"># base-frame z band a point must be within to be masked</span>
+<span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w">          </span><span class="c1"># publish the zone footprint as a PolygonStamped</span>
 <span class="w">    </span><span class="c1"># costmap:</span>
 <span class="w">    </span><span class="c1">#   type: &quot;costmap&quot;   # relative, respects namespaces</span>
 <span class="w">    </span><span class="c1">#   topic: &quot;local_costmap/costmap&quot;</span>
