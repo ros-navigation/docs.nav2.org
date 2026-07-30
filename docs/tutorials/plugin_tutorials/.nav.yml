@@ -1,0 +1,8 @@
+nav:
+  - index.md
+  - Writing a New Behavior Plugin: writing_new_behavior_plugin.md
+  - Writing a New Behavior Tree Plugin: writing_new_bt_plugin.md
+  - Writing a New Controller Plugin: writing_new_controller_plugin/writing_new_controller_plugin.md
+  - Writing a New Costmap2D Plugin: writing_new_costmap2d_plugin/writing_new_costmap2d_plugin.md
+  - Writing a New Navigator Plugin: writing_new_navigator_plugin.md
+  - Writing a New Planner Plugin: writing_new_planner_plugin/writing_new_planner_plugin.md

@@ -1,0 +1,18 @@
+nav:
+  - index.md
+  - DWB Controller: dwb_params/controller.md
+  - XYTheta Iterator: dwb_params/iterator.md
+  - Kinematic Parameters: dwb_params/kinematic.md
+  - Publisher: dwb_params/visualization.md
+  - LimitedAccelGenerator: dwb_plugins/limited_accel_generator.md
+  - StandardTrajectoryGenerator: dwb_plugins/standard_traj_generator.md
+  - BaseObstacleCritic: trajectory_critics/base_obstacle.md
+  - GoalAlignCritic: trajectory_critics/goal_align.md
+  - GoalDistCritic: trajectory_critics/goal_dist.md
+  - ObstacleFootprintCritic: trajectory_critics/obstacle_footprint.md
+  - OscillationCritic: trajectory_critics/oscillation.md
+  - PathAlignCritic: trajectory_critics/path_align.md
+  - PathDistCritic: trajectory_critics/path_dist.md
+  - PreferForwardCritic: trajectory_critics/prefer_forward.md
+  - RotateToGoalCritic: trajectory_critics/rotate_to_goal.md
+  - TwirlingCritic: trajectory_critics/twirling.md

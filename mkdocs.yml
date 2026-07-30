@@ -43,6 +43,7 @@ plugins:
   - mike # All parameters: https://github.com/jimporter/mike#configuration
   - autorefs
   - glightbox
+  - awesome-nav
   - macros:
       module_name: macros/main
       include_yaml:
@@ -133,5 +134,3 @@ exclude_docs: |
   adaptive_tolerance_goal_checker_illustration.py
   CancelCoverage.md
   ComputeCoveragePath.md
-
-INHERIT: nav.yml

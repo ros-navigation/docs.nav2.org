@@ -1,0 +1,5 @@
+nav:
+  - index.md
+  - WaitAtWaypoint: waypoint_follower_plugins/wait_at_waypoint.md
+  - PhotoAtWaypoint: waypoint_follower_plugins/photo_at_waypoint.md
+  - InputAtWaypoint: waypoint_follower_plugins/input_at_waypoint.md

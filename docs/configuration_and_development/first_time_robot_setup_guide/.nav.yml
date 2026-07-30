@@ -1,0 +1,11 @@
+nav:
+  - index.md
+  - Setting Up Transformations: transformation/setup_transforms.md
+  - Setting Up The URDF: urdf/setup_urdf.md
+  - Setting Up The SDF: sdf/setup_sdf.md
+  - Setting Up Odometry: odom/setup_odom.md
+  - Smoothing Odometry using Robot Localization: odom/setup_robot_localization.md
+  - Setting Up Sensors: sensors/setup_sensors.md
+  - Mapping and Localization: sensors/mapping_localization.md
+  - Setting Up the Robot's Footprint: footprint/setup_footprint.md
+  - Setting Up Navigation Plugins: navigation_plugins/setup_navigation_plugins.md

@@ -1,0 +1,5 @@
+nav:
+  - index.md
+  - Local Installation: local_installation.md
+  - Docker Installation: docker_installation.md
+  - Build Troubleshooting Guide: build_troubleshooting_guide.md

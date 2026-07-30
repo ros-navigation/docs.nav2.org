@@ -1,0 +1,4 @@
+nav:
+  - index.md
+  - Collision Monitor Node: configuring_collision_monitor_node.md
+  - Collision Detector Node: configuring_collision_detector_node.md

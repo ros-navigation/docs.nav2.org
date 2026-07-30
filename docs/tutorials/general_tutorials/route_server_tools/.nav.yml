@@ -1,0 +1,6 @@
+nav:
+  - index.md
+  - Using the Nav2 Route Tool: navigation2_route_tool/navigation2_route_tool.md
+  - Route Graph Generation LIF Editor: route_graph_generation_lif_editor/route_graph_generation_lif_editor.md
+  - Route Graph Generation: route_graph_generation/route_graph_generation.md
+  - SWAGGER Route Graph Generation: route_graph_generation_swagger/swagger_generation.md

@@ -3,6 +3,7 @@
 click<=8.2.1
 mike
 mkdocs-autorefs
+mkdocs-awesome-nav
 mkdocs-glightbox
 mkdocs-macros-plugin
 mkdocs-material==9.7.1
