@@ -80,6 +80,7 @@ extra_css:
   - assets/stylesheets/images.css
   - assets/stylesheets/video.css
   - assets/stylesheets/watermark.css
+  - assets/stylesheets/version_selector.css
 
 extra_javascript:
   - https://unpkg.com/katex@0/dist/katex.min.js
