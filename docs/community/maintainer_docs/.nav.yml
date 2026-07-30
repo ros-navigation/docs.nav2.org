@@ -1,0 +1,5 @@
+nav:
+  - index.md
+  - ROS Distribution Release Process: distribution_release.md
+  - ROS Distribution Sync Process: distribution_syncs.md
+  - Docs Distribution Release Process: docs_release.md

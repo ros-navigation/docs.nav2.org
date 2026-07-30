@@ -1,0 +1,42 @@
+nav:
+  - Home:
+    - index.md
+    - Getting Started:
+      - getting_started/index.md
+      - Quickstart: getting_started/quickstart/quickstart.md
+      - Build and Install: getting_started/build_and_install/index.md
+      - Dev Container: getting_started/dev_container/index.md
+      - Navigation Concepts: getting_started/navigation_concepts/index.md
+      - Nav2 Behavior Trees: getting_started/nav2_behavior_trees/index.md
+    - Tutorials:
+      - tutorials/index.md
+      - Plugin Tutorials: tutorials/plugin_tutorials/index.md
+      - General Tutorials: tutorials/general_tutorials/index.md
+    - Configuration & Development:
+      - configuration_and_development/index.md
+      - First-Time Robot Setup Guide: configuration_and_development/first_time_robot_setup_guide/index.md
+      - Navigation Plugins: configuration_and_development/navigation_plugins.md
+      - Configuration Guide: configuration_and_development/configuration_guide/index.md
+      - Tuning Guide: configuration_and_development/tuning_guide.md
+      - Simple Commander API: configuration_and_development/simple_commander_api/simple_commander_api.md
+      - Migration Guides: configuration_and_development/migration_guides/index.md
+      - API Docs: https://api.nav2.org/
+    - Community:
+      - community/index.md
+      - Getting Involved: community/getting_involved.md
+      - Maintainer Docs: community/maintainer_docs/index.md
+      - Roadmaps: community/roadmaps.md
+      - ROSCon Talks: community/roscon_talks.md
+    - Robots Using:
+      - robots_using/index.md
+    - About & Contact:
+      - about_and_contact/index.md
+      - Related Projects: about_and_contact/related_projects.md
+      - Citations: about_and_contact/citations.md
+  - Getting Started: getting_started
+  - Tutorials: tutorials
+  - Configuration & Development: configuration_and_development
+  - Community: community
+  - Robots Using:
+    - robots_using/index.md
+  - About & Contact: about_and_contact
