@@ -319,6 +319,7 @@ nav:
       - community/maintainer_docs/index.md
       - ROS Distribution Release Process: community/maintainer_docs/distribution_release.md
       - ROS Distribution Sync Process: community/maintainer_docs/distribution_syncs.md
+      - Docs Distribution Release Process: community/maintainer_docs/docs_release.md
     - Roadmaps: community/roadmaps.md
     - ROSCon Talks: community/roscon_talks.md
   - Robots Using:
