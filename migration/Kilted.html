@@ -1302,6 +1302,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#asymmetric-inflation-field">Asymmetric Inflation Field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-exclusion-zones">Collision Monitor exclusion zones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#behavior-tree-action-request-error-reporting">Behavior Tree action request error reporting</a></li>
 </ul>
 </li>
 </ul>
@@ -2362,6 +2363,17 @@ Zones fail safe: if the zone frame transform is unavailable, no points are exclu
 <li><p><a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-monitor-node.html#configuring-collision-monitor-node"><span class="std std-ref">Collision Monitor Node</span></a></p></li>
 <li><p><a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-detector-node.html#configuring-collision-detector-node"><span class="std std-ref">Collision Detector Node</span></a></p></li>
 </ul>
+</div>
+<div class="section" id="behavior-tree-action-request-error-reporting">
+<h2>Behavior Tree action request error reporting<a class="headerlink" href="#behavior-tree-action-request-error-reporting" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6289">PR #6289</a> updates <code class="docutils literal notranslate"><span class="pre">BtActionNode</span></code> so that failures while requesting an action goal can be reported through the behavior tree. The base node now provides the <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> and <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> output ports and handles the following callbacks:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">on_timeout</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on_goal_rejected</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on_send_goal_failure</span></code></p></li>
+</ul>
+<p>The Nav2 action definitions now include <code class="docutils literal notranslate"><span class="pre">GOAL_REJECTED=1</span></code> and <code class="docutils literal notranslate"><span class="pre">SEND_GOAL_FAILURE=2</span></code> error codes. Action definitions that support timeout handling also define a <code class="docutils literal notranslate"><span class="pre">TIMEOUT</span></code> error code. These codes are written to the <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> output and the corresponding reason is written to <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> when the action request or execution fails.</p>
+<p>Custom action definitions used with <code class="docutils literal notranslate"><span class="pre">BtActionNode</span></code> should add the new error codes to their result definitions. Custom BT action nodes should remove duplicate <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> and <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> output ports and <code class="docutils literal notranslate"><span class="pre">on_timeout</span></code> overrides that only provide this common behavior. Override <code class="docutils literal notranslate"><span class="pre">on_goal_rejected</span></code> or <code class="docutils literal notranslate"><span class="pre">on_send_goal_failure</span></code> when custom handling is required. If an action definition does not provide one of the standard codes, <code class="docutils literal notranslate"><span class="pre">BtActionNode</span></code> uses <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code> when available and warns during construction.</p>
 </div>
 </div>
 
