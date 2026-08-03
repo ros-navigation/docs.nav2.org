@@ -990,3 +990,15 @@ This parameter is intended only for controllers that are customized explicitly t
 It is **not** intended for global path planners or setups that depend on the footprint-based inscribed radius.
 
 See the [Inflation Layer Parameters][inflation-layer-parameters] for full parameter documentation.
+
+## Collision Monitor exclusion zones
+
+[PR #6233](https://github.com/ros-navigation/navigation2/pull/6233) adds per-source exclusion zones to Collision Monitor and Collision Detector.
+An exclusion zone masks out data points falling inside a polygon or circle before they are checked against the collision polygons, e.g. to ignore a docking station the robot must approach closely, or to self-filter robot body points from a source.
+A zone can be anchored to an arbitrary TF `frame_id` (e.g. `dock_link`), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+Zones fail safe: if the zone frame transform is unavailable, no points are excluded.
+
+See:
+
+- [Collision Monitor Node][collision-monitor-node]
+- [Collision Detector Node][collision-detector-node]

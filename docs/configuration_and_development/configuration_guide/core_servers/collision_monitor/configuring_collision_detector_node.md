@@ -15,6 +15,16 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 
 The zones around the robot and the data sources are the same as for the Collision Monitor, with the exception of the footprint polygon, which is not supported by the Collision Detector.
 
+Any data source can optionally define one or more **exclusion zones**.
+An exclusion zone is a region that *removes* (masks out) that source's points which fall inside it, before the detector polygons are evaluated.
+Unlike the polygons above, an exclusion zone does **not** trigger detection, it is a per-source pre-filter.
+A typical use case is ignoring known structure the robot deliberately approaches, such as a charging dock or a conveyor, whose returns would otherwise trip the detection zones.
+Another common use case is self-filtering: masking out returns from parts of the robot itself (e.g. arms, mast, bumpers, or trailers) that fall within a sensor's field of view, which would otherwise be mistaken for obstacles. Anchoring the zone to the relevant robot frame keeps the mask aligned with that structure as it moves.
+A zone can be a polygon or circle anchored to an arbitrary `frame_id` (e.g. `dock_link`), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+The filter is fail-safe: if the zone transform is unavailable, no points are removed.
+Each zone inherits its owning source's `base_shift_correction` policy, so the mask and the source points are always transformed under the same assumptions.
+See YAML at the bottom for an example.
+
 ## Parameters
 
 ### **`frequency`**
@@ -203,6 +213,73 @@ Type: `double` Default: (node parameter `source_timeout` value)
 
 :   Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting `source_timeout: 0.0` disables it. Overrides node parameter for each source individually, if desired.
 
+### **`<source name>.exclusion_zones`**
+
+Type: `vector<string>` Default: `[""]`
+
+:   List of exclusion zone name IDs defined for this source. Each name refers to a
+    zone parameter block (see [Exclusion zones parameters](#collision-detector-exclusion-zones-parameters)).
+    Points from this source that fall inside an enabled zone are removed before the detector polygons are evaluated.
+
+## Exclusion zones parameters { #collision-detector-exclusion-zones-parameters }
+
+`<zone name>` is a parameter block referenced by name from a source's `exclusion_zones` list. Zone names are global across the node.
+Exclusion zones remove (mask out) a source's points and never trigger detection. Each zone inherits the owning source's `base_shift_correction` policy.
+
+### **`<zone name>.type`**
+
+Type: `string` Default: `"polygon"`
+
+:   Type of zone shape. Available values are `"polygon"` and `"circle"`.
+
+### **`<zone name>.points`**
+
+Type: `string` Default: `""`
+
+:   Zone polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format, expressed in `frame_id`. Used for `"polygon"` type. Minimum 3 points. Causes an error, if invalid for a `"polygon"` zone.
+
+### **`<zone name>.radius`**
+
+Type: `double` Default: `N/A`
+
+:   Circle radius. Used for `"circle"` type. Must be greater than `0`. Causes an error, if not specified for a `"circle"` zone.
+
+### **`<zone name>.frame_id`**
+
+Type: `string` Default: (node parameter `base_frame_id`)
+
+:   Frame the zone shape is anchored to and tracked via TF (e.g. `dock_link`). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.
+
+### **`<zone name>.frame_hold_timeout`**
+
+Type: `double` Default: `0.0`
+
+:   Extra time (in seconds) beyond `transform_tolerance` that the last known pose of a stale zone `frame_id` keeps being used before the zone fails safe and stops masking points. While held, the zone is frozen at its last valid pose in the `odom_frame_id` frame, so it stays world-fixed even if the robot moves. Useful to ride out brief detection dropouts of a marker-based zone frame. `0.0` means only the transform tolerance applies.
+
+### **`<zone name>.min_height`**
+
+Type: `double` Default: `-inf`
+
+:   Lower bound (in the base frame `z`) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.
+
+### **`<zone name>.max_height`**
+
+Type: `double` Default: `+inf`
+
+:   Upper bound (in the base frame `z`) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.
+
+### **`<zone name>.enabled`**
+
+Type: `bool` Default: `false`
+
+:   Whether this zone actively masks points. (Can be dynamically set)
+
+### **`<zone name>.visualize`**
+
+Type: `bool` Default: `false`
+
+:   Whether to publish the zone footprint as a `geometry_msgs/PolygonStamped` for visualization.
+
 ### **`bond_heartbeat_period`**
 
 Type: `double` Default: `0.25`
@@ -235,7 +312,7 @@ collision_detector:
       min_points: 4
       visualize: True
       polygon_pub_topic: "polygon_front"
-    observation_sources: ["scan"]
+    observation_sources: ["scan", "pointcloud"]
     scan:
       source_timeout: 0.2
       type: "scan"
@@ -248,4 +325,15 @@ collision_detector:
       min_height: 0.1
       max_height: 0.5
       enabled: True
+      exclusion_zones: ["dock"]   # references the "dock" zone block below
+    # Exclusion zone blocks are referenced by name from a source's "exclusion_zones" list.
+    dock:
+      enabled: True
+      type: "polygon"          # "polygon" or "circle"
+      frame_id: "dock_link"    # frame the zone is anchored to; empty -> robot base frame (static)
+      points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"  # polygon type only
+      # radius: 0.5            # circle type only (must be > 0)
+      min_height: -1.0         # base-frame z band a point must be within to be masked
+      max_height: 1.0
+      visualize: True          # publish the zone footprint as a PolygonStamped
 ```
