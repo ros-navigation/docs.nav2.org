@@ -645,20 +645,6 @@ This removes O(N²) DDS fan-out when many managed servers are bonded: each
 heartbeat is delivered only to the matching manager/server pair instead of to
 every Bond subscription on a shared topic.
 
-**Migration notes** (atomic upgrade required):
-
-* Upgrade the lifecycle manager and all managed Nav2 servers together. Mixed
-  old/new binaries cannot form bonds because they publish and subscribe on
-  different topics.
-* Launch remappings that targeted the old shared ``bond`` topic no longer apply.
-  Remap ``bond/<server_name>`` (or a pattern that covers ``bond/*``) instead.
-* Monitoring and diagnostic tools that subscribed to ``/bond`` (or a namespaced
-  ``bond``) must subscribe to ``bond/<server_name>`` for each server, or to
-  ``bond/*`` if your tooling supports wildcards.
-* Under a non-empty ROS namespace, relative topics resolve as before
-  (for example ``/robot/bond/controller_server`` when both peers are in
-  ``/robot``).
-
 Centralize Path Handler logic in Controller Server
 --------------------------------------------------
 
