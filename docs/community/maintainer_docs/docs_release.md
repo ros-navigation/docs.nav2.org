@@ -4,17 +4,19 @@ This page outlines the main steps to add a new documentation version following a
 
 ## 1. Branch Off Docs Distribution
 
-Create new distribution branch from `rolling`:
+Create new distribution branch from `rolling` and switch to it:
 
 ```shell
 git checkout -b <distro> rolling
 ```
 
+All following actions and commands execute in the new branch only. Replace `<distro>` with the actual distribution name (e.g. `lyrical`).
+
 ## 2. Update Configuration files
 
 ### 2.1 CircleCI
 
-Add new distribution branch to `filters` in `.circleci/config.yml`:
+Replace the `rolling` branch with a new one for workflow `filters` in `.circleci/config.yml`:
 
 ```yaml
 workflows:
@@ -24,7 +26,6 @@ workflows:
           filters:
             branches:
               ignore:
-                - rolling
                 - <distro>
   publish_docs:
     jobs:
@@ -32,28 +33,26 @@ workflows:
           filters:
             branches:
               only:
-                - rolling
                 - <distro>
 ```
 
 ### 2.2 Github Actions
 
-Add new branch in configuration files located in `.github/workflows`:
+Update branch name in all configuration files located in `.github/workflows`:
 
-- Update conditions for `pre-commit`:
+- Update condition for `pre-commit`:
 
     ```yaml
     on:
       pull_request:
       push:
         branches:
-          - rolling
           - <distro>
     ```
 
 ### 2.3 MkDocs Material
 
-Update link for `edit_uri` in `mkdocs.yml` configuration file:
+Update link for `edit_uri` key in `mkdocs.yml` configuration file:
 
 ```yaml
 edit_uri: https://github.com/ros-navigation/docs.nav2.org/blob/<distro>/docs/
@@ -70,12 +69,24 @@ github_repositories:
 
 ## 3. Update Documentation
 
-- Update all github links to point to new distribution branch where it applies.
+### 3.1 Update links
+
+- Update all GitHub links to point to new distribution branch where it applies.
 - Update all links referring to ROS 2 Documentation.
 
-    !!! warning Important
+    !!! warning "Important"
 
-        The ROS 2 Rolling documentation has a different structure than released distributions. Update links with the correct path, not just the branch name.
+        The ROS 2 documentation for the Rolling version has a different structure than other released distributions. Each link must be checked to ensure the correct path to the ROS 2 documentation page.
+
+    Here is an example showing the difference on one of the pages:
+
+    **Rolling**: [https://docs.ros.org/en/rolling/ROS-Framework/interfaces/actions/Working-with-actions/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html](https://docs.ros.org/en/rolling/ROS-Framework/interfaces/actions/Working-with-actions/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html)
+
+    **Lyrical**: [https://docs.ros.org/en/lyrical/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html](https://docs.ros.org/en/lyrical/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html)
+
+### 3.2 Review tutorials
+
+Review [tutorials][tutorials] for compatibility with the new distribution, including API and behavior changes.
 
 ## 4. Build and Publish Documentation
 
@@ -89,7 +100,7 @@ pip3 install -r requirements.txt
 mkdocs build
 ```
 
-Refer to README.md for additional commands, such as previewing multiple versions locally before publishing.
+Refer to [README.md](https://github.com/ros-navigation/docs.nav2.org/blob/master/README.md) for additional commands, such as previewing multiple versions locally before publishing.
 
 Publish the documentation to the new distribution branch:
 
