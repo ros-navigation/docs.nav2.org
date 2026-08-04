@@ -107,3 +107,10 @@ Publish the documentation to the new distribution branch:
 ```shell
 git push origin <distro>
 ```
+
+## 5. Mark Branch as Protected
+
+Go to the Repo Settings -> Branches. Create a branch protection rule for the new branch that matches the last.
+
+- Request a PR before merging -> Require approvals & override for infra-admins.
+- Restrict who can push branches that match this rule.
