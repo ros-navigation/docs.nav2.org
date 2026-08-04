@@ -1118,3 +1118,51 @@ Behavior Tree action request error reporting
 The Nav2 action definitions now include ``GOAL_REJECTED=1`` and ``SEND_GOAL_FAILURE=2`` error codes. Action definitions that support timeout handling also define a ``TIMEOUT`` error code. These codes are written to the ``error_code_id`` output and the corresponding reason is written to ``error_msg`` when the action request or execution fails.
 
 Custom action definitions used with ``BtActionNode`` should add the new error codes to their result definitions. Custom BT action nodes should remove duplicate ``error_code_id`` and ``error_msg`` output ports and ``on_timeout`` overrides that only provide this common behavior. Override ``on_goal_rejected`` or ``on_send_goal_failure`` when custom handling is required. If an action definition does not provide one of the standard codes, ``BtActionNode`` uses ``UNKNOWN`` when available and warns during construction.
+
+Goal Validation in Action Servers
+-----------------------------------------------------------------
+
+`PR #6279 <https://github.com/ros-navigation/navigation2/pull/6279>`_  adds a dedicated goal validation callback to Nav2 action servers.
+That means ``goal_received_callback`` can now be used to check incoming goals statically and reject if needed, instead of starting and aborting execution.
+
+This changes the ``create_action_server`` signature. It now expects a goal validation callback before the completion callback:
+
+.. code-block:: cpp
+
+   // Old style
+   action_server_ = create_action_server<ActionT>(
+     "my_action",
+     std::bind(&MyServer::execute, this),
+     std::bind(&MyServer::onCompletion, this),
+     std::chrono::milliseconds(500),
+     true);
+
+To:
+
+.. code-block:: cpp
+
+   // New style
+   action_server_ = create_action_server<ActionT>(
+     "my_action",
+     std::bind(&MyServer::execute, this),
+     std::bind(&MyServer::goalReceived, this, std::placeholders::_1),
+     std::bind(&MyServer::onCompletion, this),
+     std::chrono::milliseconds(500),
+     true);
+
+If you do not need goal-time validation, pass ``nullptr``.
+
+.. code-block:: cpp
+
+   action_server_ = create_action_server<ActionT>(
+     "my_action",
+     std::bind(&MyServer::execute, this),
+     nullptr,
+     std::bind(&MyServer::onCompletion, this),
+     std::chrono::milliseconds(500),
+     true);
+
+The recommended migration pattern is to move fast validation checks (e.g. invalid plugin IDs, empty paths / waypoint lists) out of execute-time logic and into ``goal_received_callback``.
+This makes invalid requests fail earlier, avoids unnecessary execution spin-up, and cleanly rejects unsupported goals.
+
+Additionally, ``BtActionServer`` now reports ``GOAL_REJECTED`` (instead of ``UNKNOWN``) when execution cannot start due to a missing current goal.
