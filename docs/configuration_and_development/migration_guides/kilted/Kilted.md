@@ -1002,3 +1002,15 @@ See:
 
 - [Collision Monitor Node][collision-monitor-node]
 - [Collision Detector Node][collision-detector-node]
+
+## Behavior Tree action request error reporting
+
+[PR #6289](https://github.com/ros-navigation/navigation2/pull/6289) updates `BtActionNode` so that failures while requesting an action goal can be reported through the behavior tree. The base node now provides the `error_code_id` and `error_msg` output ports and handles the following callbacks:
+
+- `on_timeout`
+- `on_goal_rejected`
+- `on_send_goal_failure`
+
+The Nav2 action definitions now include `GOAL_REJECTED=1` and `SEND_GOAL_FAILURE=2` error codes. Action definitions that support timeout handling also define a `TIMEOUT` error code. These codes are written to the `error_code_id` output and the corresponding reason is written to `error_msg` when the action request or execution fails.
+
+Custom action definitions used with `BtActionNode` should add the new error codes to their result definitions. Custom BT action nodes should remove duplicate `error_code_id` and `error_msg` output ports and `on_timeout` overrides that only provide this common behavior. Override `on_goal_rejected` or `on_send_goal_failure` when custom handling is required. If an action definition does not provide one of the standard codes, `BtActionNode` uses `UNKNOWN` when available and warns during construction.
