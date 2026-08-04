@@ -87,7 +87,7 @@ We make use of the launch files to compose different servers into a single proce
 
     !!! info "See also"
 
-        See example in composition demo's [composition_demo.launch.py](https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py).
+        See example in composition demo's [composition_demo.launch.py](https://github.com/ros2/demos/blob/master/composition/launch/composition_demo_launch.py).
 
 2. Add the package containing the server to your `package.xml` file.
     ```xml
