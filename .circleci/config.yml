@@ -100,7 +100,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - rolling
+                - lyrical
   publish_docs:
     jobs:
       - docs_publish:
@@ -110,4 +110,4 @@ workflows:
           filters:
             branches:
               only:
-                - rolling
+                - lyrical

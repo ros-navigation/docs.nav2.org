@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - rolling
+      - lyrical
 
 jobs:
   pre-commit:
