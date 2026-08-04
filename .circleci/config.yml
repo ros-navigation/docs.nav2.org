@@ -104,6 +104,9 @@ workflows:
   publish_docs:
     jobs:
       - docs_publish:
+          # 'serial-group' prevents gh-pages push conflicts when multiple branches deploy simultaneously.
+          # Serial group ensures only one docs_publish job runs at a time across the org.
+          serial-group: << pipeline.project.slug >>/gh-pages-deploy
           filters:
             branches:
               only:
