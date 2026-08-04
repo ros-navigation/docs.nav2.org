@@ -1303,6 +1303,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-exclusion-zones">Collision Monitor exclusion zones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behavior-tree-action-request-error-reporting">Behavior Tree action request error reporting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#goal-validation-in-action-servers">Goal Validation in Action Servers</a></li>
 </ul>
 </li>
 </ul>
@@ -2374,6 +2375,45 @@ Zones fail safe: if the zone frame transform is unavailable, no points are exclu
 </ul>
 <p>The Nav2 action definitions now include <code class="docutils literal notranslate"><span class="pre">GOAL_REJECTED=1</span></code> and <code class="docutils literal notranslate"><span class="pre">SEND_GOAL_FAILURE=2</span></code> error codes. Action definitions that support timeout handling also define a <code class="docutils literal notranslate"><span class="pre">TIMEOUT</span></code> error code. These codes are written to the <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> output and the corresponding reason is written to <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> when the action request or execution fails.</p>
 <p>Custom action definitions used with <code class="docutils literal notranslate"><span class="pre">BtActionNode</span></code> should add the new error codes to their result definitions. Custom BT action nodes should remove duplicate <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> and <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> output ports and <code class="docutils literal notranslate"><span class="pre">on_timeout</span></code> overrides that only provide this common behavior. Override <code class="docutils literal notranslate"><span class="pre">on_goal_rejected</span></code> or <code class="docutils literal notranslate"><span class="pre">on_send_goal_failure</span></code> when custom handling is required. If an action definition does not provide one of the standard codes, <code class="docutils literal notranslate"><span class="pre">BtActionNode</span></code> uses <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code> when available and warns during construction.</p>
+</div>
+<div class="section" id="goal-validation-in-action-servers">
+<h2>Goal Validation in Action Servers<a class="headerlink" href="#goal-validation-in-action-servers" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6279">PR #6279</a>  adds a dedicated goal validation callback to Nav2 action servers.
+That means <code class="docutils literal notranslate"><span class="pre">goal_received_callback</span></code> can now be used to check incoming goals statically and reject if needed, instead of starting and aborting execution.</p>
+<p>This changes the <code class="docutils literal notranslate"><span class="pre">create_action_server</span></code> signature. It now expects a goal validation callback before the completion callback:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Old style</span>
+<span class="n">action_server_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_action_server</span><span class="o">&lt;</span><span class="n">ActionT</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;my_action&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">execute</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">onCompletion</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
+<span class="w">  </span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// New style</span>
+<span class="n">action_server_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_action_server</span><span class="o">&lt;</span><span class="n">ActionT</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;my_action&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">execute</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">goalReceived</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">),</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">onCompletion</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
+<span class="w">  </span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you do not need goal-time validation, pass <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">action_server_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_action_server</span><span class="o">&lt;</span><span class="n">ActionT</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;my_action&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">execute</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyServer</span><span class="o">::</span><span class="n">onCompletion</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
+<span class="w">  </span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The recommended migration pattern is to move fast validation checks (e.g. invalid plugin IDs, empty paths / waypoint lists) out of execute-time logic and into <code class="docutils literal notranslate"><span class="pre">goal_received_callback</span></code>.
+This makes invalid requests fail earlier, avoids unnecessary execution spin-up, and cleanly rejects unsupported goals.</p>
+<p>Additionally, <code class="docutils literal notranslate"><span class="pre">BtActionServer</span></code> now reports <code class="docutils literal notranslate"><span class="pre">GOAL_REJECTED</span></code> (instead of <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code>) when execution cannot start due to a missing current goal.</p>
 </div>
 </div>
 
