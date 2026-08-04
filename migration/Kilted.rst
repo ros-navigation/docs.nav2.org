@@ -1120,7 +1120,7 @@ The Nav2 action definitions now include ``GOAL_REJECTED=1`` and ``SEND_GOAL_FAIL
 Custom action definitions used with ``BtActionNode`` should add the new error codes to their result definitions. Custom BT action nodes should remove duplicate ``error_code_id`` and ``error_msg`` output ports and ``on_timeout`` overrides that only provide this common behavior. Override ``on_goal_rejected`` or ``on_send_goal_failure`` when custom handling is required. If an action definition does not provide one of the standard codes, ``BtActionNode`` uses ``UNKNOWN`` when available and warns during construction.
 
 Goal Validation in Action Servers
------------------------------------------------------------------
+---------------------------------
 
 `PR #6279 <https://github.com/ros-navigation/navigation2/pull/6279>`_  adds a dedicated goal validation callback to Nav2 action servers.
 That means ``goal_received_callback`` can now be used to check incoming goals statically and reject if needed, instead of starting and aborting execution.
