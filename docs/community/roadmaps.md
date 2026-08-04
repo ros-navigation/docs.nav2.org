@@ -5,18 +5,28 @@ This is *not* an exhaustive list of planned features or what changes may be foun
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the [ROS 2 Roadmap](https://docs.ros.org/en/rolling/The-ROS2-Project/Roadmap.html).
 For a full list of important completed changes in the project, see the Migration Guides [Migration Guides][migration-guides].
 
+## M-Turtle Roadmap
+
+- [ ] :roadmap-size-medium: - Update and refine behavior trees for more intelligent behavior.
+- [ ] :roadmap-size-large: - Create initial prototype of a framework for environmental modeling, sensor processing, and external model integration.
+- [ ] :roadmap-size-medium: - Continue to abstract ROS APIs into the Nav2 ROS Common package for better multi-distro support (Time, Clock, TF, etc).
+- [ ] :roadmap-size-large: - Global Planner benchmark evaluation testing framework for more confident changes over large scale datasets
+- [ ] :roadmap-size-medium: - Reduce bond connection overhead to Nav2 Task Servers
+- [ ] :roadmap-size-large: - Review time synchronous behavior in Nav2 (no uses of ``Time(0)``, arbitrary ``now()``, etc) of subscriptions, publishers, TF, and others
+- [x] :roadmap-size-large: - Update to new documentation website with a modern format and styling
+
 ## Lyrical Roadmap
 
-- [ ] :roadmap-size-large: :roadmap-note-in-progress: - Controller Server and Plugin factor for centralized path handling and crosstrack error estimation and enforcement.
-- [ ] :roadmap-size-large: :roadmap-note-in-progress: - Massive refactor of `rclcpp` types to `nav2` types for ROS API abstraction.
+- [x] :roadmap-size-large: - Controller Server and Plugin factor for centralized path handling and crosstrack error estimation and enforcement.
+- [x] :roadmap-size-large: - Massive refactor of `rclcpp` types to `nav2` types for ROS API abstraction.
 - [x] :roadmap-size-medium: - Improve dynamic feasibility on approach to goal on all control and behavior plugins.
 - [x] :roadmap-size-medium: - Introduce Vector Object Server to augment Costmap Filters with polygons rather than annotated masks.
-- [ ] :roadmap-size-medium: - [Continued Route Server][]
+- [ ] :roadmap-size-medium: :roadmap-note-incomplete: - [Continued Route Server][]
 - [x] :roadmap-size-medium: - Add Pause and Resume feature to Nav2 behavior tree tasks.
 - [x] :roadmap-size-medium: - Use PointCloud Transport for all pointcloud subscriptions.
-- [ ] :roadmap-size-medium: - Update and refine behavior trees for more intelligent behavior.
+- [ ] :roadmap-size-medium: :roadmap-note-incomplete: - Update and refine behavior trees for more intelligent behavior.
 - [x] :roadmap-size-medium: - Fix for statics in Smac Planner to allow for multiple instances in a server not to conflict.
-- [ ] :roadmap-size-large: - Create initial prototype of a framework for environmental modeling, sensor processing, and external model integration.
+- [ ] :roadmap-size-large: :roadmap-note-incomplete: - Create initial prototype of a framework for environmental modeling, sensor processing, and external model integration.
 
 [Continued Route Server]: https://github.com/ros-navigation/navigation2/issues/5082
 
