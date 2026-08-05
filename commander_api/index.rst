@@ -68,8 +68,9 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | goToPose(pose, behavior_tree='')      | Requests the robot to drive to a pose (``PoseStamped``).                   |
 +---------------------------------------+----------------------------------------------------------------------------+
 | followWaypoints(poses,                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``), |
-| number_of_loops=0,                    | starting at ``goal_index`` and repeating ``number_of_loops`` times after   |
-| goal_index=0)                         | the first pass (0 runs it once).                                           |
+| number_of_loops=0,                    | starting at ``goal_index`` (default ``0``) and repeating                   |
+| goal_index=0)                         | ``number_of_loops`` times after the first pass (default ``0``, runs once). |
+|                                       | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
 +---------------------------------------+----------------------------------------------------------------------------+
 | followPath(path, controller_id='',    | Requests the robot to follow a path from a starting to a goal              |
 | goal_checker_id='',                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
