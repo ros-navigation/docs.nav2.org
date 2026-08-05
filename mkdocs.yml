@@ -1,14 +1,11 @@
-# Keep site_name empty; the header title displays alongside the logo
-# The tab title is overridden in the htmltitle block of overrides/main.html
+# Keep site_name empty since the header title displays alongside the logo as a single image
+# Associated browser tab's title is overridden in the htmltitle block of overrides/main.html
 site_name: ""
-# site_url: https://docs.nav2.org/ # Uncomment after documentation release
-repo_url: https://github.com/ros-navigation/navigation2
+# site_url: https://docs.nav2.org/ # TODO: Uncomment after documentation release
 repo_name: ros-navigation/navigation2
-# repo_url: https://github.com/ros-navigation/docs.nav2.org
-# repo_name: ros-navigation/docs.nav2.org
+repo_url: https://github.com/ros-navigation/navigation2
+edit_uri: https://github.com/ros-navigation/mk.docs.nav2.org/blob/rolling/docs/ # TODO: Update link after documentation release
 copyright: "&copy; Copyright 2026, Open Navigation LLC."
-
-edit_uri: https://github.com/ros-navigation/mk.docs.nav2.org/blob/rolling/docs/ # Update link after documentation release
 
 theme:
   name: material
@@ -20,13 +17,11 @@ theme:
   icon:
     repo: fontawesome/brands/github
   palette:
-  # Palette for light mode
-  - scheme: default
+  - scheme: default # Palette for light mode
     toggle:
       icon: toggle/nav2-balloon-light
       name: Switch to dark mode
-  # Palette for dark mode
-  - scheme: slate
+  - scheme: slate # Palette for dark mode
     toggle:
       icon: toggle/nav2-balloon-dark
       name: Switch to light mode
@@ -39,17 +34,17 @@ theme:
     - navigation.top # back-to-top button
 
 plugins:
-  - search
-  - mike # All parameters: https://github.com/jimporter/mike#configuration
-  - autorefs
-  - glightbox
-  - awesome-nav
-  - macros:
+  - autorefs    # Docs: https://mkdocstrings.github.io/autorefs/
+  - awesome-nav # Docs: https://lukasgeiter.github.io/mkdocs-awesome-nav/
+  - glightbox   # Docs: https://blueswen.github.io/mkdocs-glightbox/
+  - macros:     # Docs: https://mkdocs-macros-plugin.readthedocs.io
       module_name: macros/main
       include_yaml:
         - macros/variables.yml
       on_error_fail: true
       on_undefined: strict
+  - mike        # Docs: https://github.com/jimporter/mike#configuration
+  - search      # Docs: https://squidfunk.github.io/mkdocs-material/plugins/search/
 
 extra:
   version:
@@ -69,19 +64,19 @@ extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
 
   # Path relative to custom_dir (overrides/):
-  - assets/stylesheets/extra.css
-  - assets/stylesheets/search_button.css
-  - assets/stylesheets/sidebar.css
   - assets/stylesheets/distro_grid.css
-  - assets/stylesheets/robots_grid.css
-  - assets/stylesheets/table.css
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/images.css
   - assets/stylesheets/nav_buttons.css
   - assets/stylesheets/permalink.css
+  - assets/stylesheets/robots_grid.css
+  - assets/stylesheets/search_button.css
+  - assets/stylesheets/sidebar.css
   - assets/stylesheets/sponsorship_banner.css
-  - assets/stylesheets/images.css
+  - assets/stylesheets/table.css
+  - assets/stylesheets/version_selector.css
   - assets/stylesheets/video.css
   - assets/stylesheets/watermark.css
-  - assets/stylesheets/version_selector.css
 
 extra_javascript:
   - https://unpkg.com/katex@0/dist/katex.min.js
@@ -94,28 +89,28 @@ extra_javascript:
 markdown_extensions:
   - admonition
   - attr_list
-  - md_in_html
   - def_list
-  - toc:
-      permalink: ''
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight:
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.tasklist:
-      custom_checkbox: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
       options:
         custom_icons:
           - overrides/.icons
-  - pymdownx.arithmatex:
-      generic: true
+  - pymdownx.highlight:
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: ''
 
 # Terminate the build on warning
 strict: true
