@@ -13,7 +13,7 @@ This tutorial shows how to set up a localization system using a GPS sensor(s) as
 It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally you will have to install robot_localization and mapviz:
 
 ```bash
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb3*
 sudo apt install ros-$ROS_DISTRO-robot-localization
 sudo apt install ros-$ROS_DISTRO-mapviz

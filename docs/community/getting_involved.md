@@ -11,12 +11,12 @@ project so your patch will be accepted quickly in the codebase.
 
 ## Getting Involved
 
-If you're interested in getting involved in Navigation 2, first of all, welcome!
+If you're interested in getting involved in Nav2, first of all, welcome!
 We encourage everyone to get involved from students, to junior developers, to senior developers, and executives.
 There's something to do for everyone from bug fixes, to feature development, new algorithms, and refactoring.
 
 All ROS 2 TSC Working Groups have their meetings on the [working group calendar](https://calendar.google.com/calendar/embed?src=agf3kajirket8khktupm9go748%40group.calendar.google.com).
-Here, you can find the date and time of the Navigation2 working group meeting. Make sure you're checking in your local timezone.
+Here, you can find the date and time of the Nav2 working group meeting. Make sure you're checking in your local timezone.
 From this calendar, you can add yourself to the event so it will appear on your google calendar and get the event link to the call through Google Hangouts.
 We encourage everyone interested to come to the meeting to introduce yourself, your project, and see what everyone is working on.
 

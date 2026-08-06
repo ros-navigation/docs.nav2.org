@@ -23,7 +23,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
     2. Source your ROS 2 installation to set up the environment:
 
         ```bash
-        source /opt/ros/<ros2-distro>/setup.bash
+        source /opt/ros/{{ ros2_distro }}/setup.bash
         ```
 
     3. Install the Nav2 packages using your operating system's package manager:
@@ -53,7 +53,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
     2. Source your ROS 2 installation to set up the environment:
 
         ```bash
-        source /opt/ros/<ros2-distro>/setup.bash
+        source /opt/ros/iron/setup.bash # replace iron with your ROS 2 distro
         ```
 
     3. Install the Nav2 packages using your operating system's package manager:
@@ -80,7 +80,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
     2. In the same terminal, run:
 
         ```bash
-        source /opt/ros/<ros2-distro>/setup.bash
+        source /opt/ros/{{ ros2_distro }}/setup.bash
         ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
         ```
 
@@ -121,7 +121,7 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
     3. In the same terminal, run:
 
         ```bash
-        source /opt/ros/<ros2-distro>/setup.bash
+        source /opt/ros/iron/setup.bash # replace iron with your ROS 2 distro
         ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
         ```
 

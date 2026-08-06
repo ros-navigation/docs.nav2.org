@@ -260,7 +260,7 @@ For each distribution, there are a couple of variants:
 
 These are the same as if you were to use *apt install ros-rolling-desktop-full*, but in container form.
 Each of those containers build off of the previous one using `FROM` and then install the binaries described to serve to the container user.
-Which you use depends on your application and needs, but `osrf/ros:<distro>-ros-base` is a good default for development and deployment.
+Which you use depends on your application and needs, but `osrf/ros:{{ ros2_distro }}-ros-base` is a good default for development and deployment.
 We're using desktop-full in the context of this tutorial for ease of having rviz2 and such built-in batteries-included.
 
 You can pull and use them the same way as before, for example:

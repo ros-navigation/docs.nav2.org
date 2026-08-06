@@ -18,7 +18,7 @@ If you don't have them installed, please follow [Quickstart][quickstart].
 First, source your ROS 2 installation to set the environment variables:
 
 ```bash
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 SLAM Toolbox can be installed via:
@@ -43,7 +43,7 @@ The turtlebot3 software can be installed via the following or on the [turtlebot3
 First, source your ROS 2 installation to set the environment variables:
 
 ```bash
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 Then install the Turtlebot3 packages:
@@ -58,7 +58,7 @@ Typically, this includes the robot state publisher of the URDF, simulated or phy
 Run the following commands first whenever you open a new terminal during this tutorial.
 
 ```bash
-source /opt/ros/<ros2-distro>/setup.bash &&
+source /opt/ros/{{ ros2_distro }}/setup.bash &&
 export TURTLEBOT3_MODEL=waffle
 ```
 

@@ -58,6 +58,13 @@ Update link for `edit_uri` key in `mkdocs.yml` configuration file:
 edit_uri: https://github.com/ros-navigation/docs.nav2.org/blob/<distro>/docs/
 ```
 
+Update `ros2_distro` variable in `mkdocs.yml`:
+
+```yaml
+extra:
+  ros2_distro: "<distro>"
+```
+
 Update `branch` variable in `macros/variables.yml`:
 
 ```yaml

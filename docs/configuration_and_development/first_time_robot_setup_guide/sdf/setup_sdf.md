@@ -15,7 +15,7 @@ We can also use our SDF with the robot_state_publisher using the following packa
 First, source your ROS 2 installation to set the environment variables:
 
 ```shell
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 Then install the sdformat-urdf package:

@@ -14,7 +14,7 @@ To use Nav2, you'll first need to build or install ROS 2 and related development
     Once your environment is ready, source the ROS 2 setup file:
 
     ```bash
-    source /opt/ros/<distro>/setup.bash
+    source /opt/ros/{{ ros2_distro }}/setup.bash
     ```
 
 === "ROS 2 from Source"
