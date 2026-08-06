@@ -41,12 +41,12 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         4.0
+  int            4
   ============== =======
 
   Description
-    Factor multiplied by the largest costmap dimension, in cells, and rounded up to determine the maximum number of path extraction cycles.
-    For example, a 500 by 400 cell costmap with a factor of 4.0 allows 2000 path extraction cycles.
+    Integer factor multiplied by the largest costmap dimension, in cells, to determine the maximum number of path extraction cycles.
+    For example, a 500 by 400 cell costmap with a factor of 4 allows 2000 path extraction cycles.
     Increase this value for maps with long or winding paths that may exceed the default cycle limit.
     Higher values allow more path extraction work before failure and may increase planning time when a path cannot be extracted.
 
@@ -95,4 +95,4 @@ Example
           use_astar: True
           allow_unknown: True
           tolerance: 1.0
-          max_cycles_factor: 4.0
+          max_cycles_factor: 4
