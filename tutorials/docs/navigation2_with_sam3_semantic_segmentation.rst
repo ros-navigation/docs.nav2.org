@@ -244,7 +244,7 @@ It useful to visualize the segmentation mask topic to visualize the detection ov
     :align: center
     :alt: SAM3 semantic segmentation overlay on bike lane camera feed
 
-How that we have that working, we can focus on the costmap integration to use this information.
+Now that we have that working, we can focus on the costmap integration to use this information.
 
 7 - Configure Nav2 to use the layer
 -----------------------------------
