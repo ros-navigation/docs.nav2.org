@@ -1457,8 +1457,12 @@ behavior_tree=’’)</p></td>
 <tr class="row-even"><td><p>goToPose(pose, behavior_tree=’’)</p></td>
 <td><p>Requests the robot to drive to a pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p>followWaypoints(poses)</p></td>
-<td><p>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).
+<tr class="row-odd"><td><p>followWaypoints(poses,
+number_of_loops=0,
+goal_index=0)</p></td>
+<td><p>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>),
+starting at <code class="docutils literal notranslate"><span class="pre">goal_index</span></code> (default <code class="docutils literal notranslate"><span class="pre">0</span></code>) and repeating
+<code class="docutils literal notranslate"><span class="pre">number_of_loops</span></code> times after the first pass (default <code class="docutils literal notranslate"><span class="pre">0</span></code>, runs once).
 This will execute the chosen <code class="docutils literal notranslate"><span class="pre">TaskExecutor</span></code> plugin at each pose.</p></td>
 </tr>
 <tr class="row-even"><td><p>followPath(path, controller_id=’’,
