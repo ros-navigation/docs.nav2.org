@@ -1436,8 +1436,31 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.allow_unknown</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_cycles_factor</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Integer factor multiplied by the largest costmap dimension, in cells, to determine the maximum number of path extraction cycles.
+For example, a 500 by 400 cell costmap with a factor of 4 allows 2000 path extraction cycles.
+Increase this value for maps with long or winding paths that may exceed the default cycle limit.
+Higher values allow more path extraction work before failure and may increase planning time when a path cannot be extracted.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.allow_unknown</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1456,8 +1479,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.use_final_approach_orientation</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.use_final_approach_orientation</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1476,8 +1499,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1508,6 +1531,7 @@
 <span class="w">      </span><span class="nt">use_astar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">allow_unknown</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">max_cycles_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 </pre></div>
 </div>
 </div>
