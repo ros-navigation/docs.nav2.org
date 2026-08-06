@@ -1,0 +1,62 @@
+@keyframes progress-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 0; }
+}
+
+.roadmap-progress {
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+.roadmap-progress-track {
+  position: relative;
+  width: 100%;
+  height: 1.6rem;
+  background-color: var(--sidebar-bg-color);
+  border: 1px solid var(--sidebar-border-color);
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.roadmap-progress-fill {
+  position: relative;
+  height: 100%;
+  border-radius: 0.4rem 0 0 0.4rem;
+  background-color: var(--color-nav2-blue);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+  box-shadow: 0 0 8px rgba(71, 199, 239, 0.3);
+}
+
+.roadmap-progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    -45deg,
+    var(--color-nav2-light-blue) 25%,
+    transparent 25%,
+    transparent 50%,
+    var(--color-nav2-light-blue) 50%,
+    var(--color-nav2-light-blue) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 50px 50px;
+  animation: progress-stripes 2s linear infinite;
+}
+
+.roadmap-progress-fill[style*="width: 100%"],
+.roadmap-progress-fill[style*="width:100%"] {
+  border-radius: 0.4rem;
+}
+
+.roadmap-progress-dates {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.55rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: 0.2rem;
+}

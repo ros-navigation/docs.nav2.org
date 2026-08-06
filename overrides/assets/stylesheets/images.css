@@ -1,4 +1,15 @@
 
+/* Thumbnail images in tables (e.g. ROSCon talks) */
+.center-table td img {
+  width: 250px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.center-table td:first-child {
+  width: 30%;
+}
+
 /* For paired images */
 .flex-images {
   display: flex;

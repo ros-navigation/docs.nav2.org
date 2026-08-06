@@ -1,5 +1,28 @@
 /* For buttons used for navigation in the main index pages */
 
+.md-typeset .md-button {
+  border-radius: .4rem;
+  padding: .8rem 2rem;
+  background-color: var(--button-primary-fg-color);
+  border-color: var(--button-primary-bg-color);
+  color: var(--md-primary-fg-color);
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: var(--color-nav2-light-blue);
+    background-color: var(--color-nav2-light-blue);
+    box-shadow: 0 2px 2px #00000034;
+    transform: translateY(-1px);
+    transition: position 0.2s ease;
+  }
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--button-primary-bg-color);
+  border-color: var(--button-primary-bg-color);
+  color: var(--md-primary-bg-color);
+}
+
 /* Adapt the grid to work with buttons */
 .md-typeset .grid {
   display: grid;
@@ -18,18 +41,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    border-radius: .4rem;
-    padding: .8rem 2rem;
     background-color: var(--button-primary-bg-color);
     border-color: var(--button-primary-bg-color);
-    box-sizing: border-box;
-
-    &:hover {
-      border-color: var(--color-nav2-light-blue);
-      background-color: var(--color-nav2-light-blue);
-      box-shadow: 0 2px 2px #00000034;
-      transform: translateY(-1px);
-      transition: position 0.2s ease;
-    }
   }
 }

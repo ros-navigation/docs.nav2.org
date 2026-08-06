@@ -43,7 +43,7 @@ Follow the same process as in [Quickstart][quickstart] for installing and settin
 First, source your ROS 2 installation to set the environment variables:
 
 ```bash
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 STVL can be installed in ROS 2 via the ROS Build Farm:

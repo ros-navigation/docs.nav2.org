@@ -9,7 +9,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
 1. First, source your ROS 2 installation to set the environment variables:
 
     ```shell
-    source /opt/ros/<ros2-distro>/setup.bash
+    source /opt/ros/{{ ros2_distro }}/setup.bash
     ```
 
 2. Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake:

@@ -3,6 +3,8 @@
 If you use the navigation framework, an algorithm from this repository, or ideas from it
 please cite this work in your papers!
 
+---
+
 S. Macenski, F. Martín, R. White, J. Clavero.
 [**The Marathon 2: A Navigation System**](https://arxiv.org/abs/2003.00368/).
 **IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020.**
@@ -22,6 +24,8 @@ year = {2020}
 }
 ```
 
+---
+
 If you use any of the algorithms in Nav2 or the analysis of the algorithms in your work, please cite this work in your papers!
 
 S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
@@ -37,6 +41,8 @@ S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
 }
 ```
 
+---
+
 Smac Planner (Hybrid A\*, State Lattice, 2D):
 
 S. Macenski, M. Booker, J. Wallace, T. Fischer,
@@ -50,6 +56,8 @@ S. Macenski, M. Booker, J. Wallace, T. Fischer,
       journal = {IEEE Robotics and Automation Practice}
 }
 ```
+
+---
 
 Regulated Pure Pursuit Controller:
 
@@ -65,6 +73,8 @@ S. Macenski, S. Singh, F. Martin, J. Gines,
       journal = {Autonomous Robots}
 }
 ```
+
+---
 
 VSLAM and formal comparisons for service robot needs:
 

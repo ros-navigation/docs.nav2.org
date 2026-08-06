@@ -2,26 +2,26 @@
 
 ## About
 
-Navigation is a community effort to lower the barrier of entry of mobile robotics technology for all.
+Nav2 is a community effort to lower the barrier of entry of mobile robotics technology for all.
 This project is one of the flagship projects along with MoveIt that acts as an applications entry point and frameworks for ROS.
 Navigation in ROS 2 builds on the wild success of the original Navigation Stack (Nav Stack) in ROS (1).
 This project has been used by researchers, educators, and industry for over 10 years.
 There are very few projects that have lasted as long or were as successful as ROS (1) Navigation.
 We would like to thank David Lu!! and Mike Ferguson for their tireless over the span of a decade to keep the Nav Stack alive and well.
 Without their hard work, this project would not have been able to happen.
-For a list of robots using Navigation2, see [Robots Using][robots-using].
+For a list of robots using Nav2, see [Robots Using][robots-using].
 
 Aslas, as time moves on, so must we.
 ROS (1) had a great run and those of us that build projects using it will remember it fondly(ish).
 With change comes possibilities.
-Navigation2 builds on the success but redesigns the framework to be more flexible and the feedback gathered over 10 years.
+Nav2 builds on the success but redesigns the framework to be more flexible and the feedback gathered over 10 years.
 
 We strive to create an open community and encourage new ROS users and experts alike to collaborate.
 However, that can't happen without your issues, pull requests, and support.
-Navigation, like all open-source projects, is kept going by a dedicated group of developers, maintainers, users, and collaborators.
+Nav2, like all open-source projects, is kept going by a dedicated group of developers, maintainers, users, and collaborators.
 We would like to thank here our current and past contributors and maintainers.
 
-If you or your organization are interested in sponsoring Navigation or any work around it, please reach out to the current project lead.
+If you or your organization are interested in sponsoring Nav2 or any work around it, please reach out to the current project lead.
 
 Our current leadership team includes:
 

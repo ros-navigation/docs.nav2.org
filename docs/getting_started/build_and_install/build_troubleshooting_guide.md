@@ -6,7 +6,7 @@
 - Make sure to run rosdep for the correct ROS 2 distribution.
 
     ```shell
-    rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
+    rosdep install -y -r -q --from-paths src --ignore-src --rosdistro {{ ros2_distro }}
     ```
 
 - Make sure that the `setup.bash` is sourced in the ROS 2 installation or ROS 2 main build workspace, if applicable. Check if you can run talker and listener nodes.

@@ -33,7 +33,7 @@ Let's begin by installing some additional ROS 2 packages that we will be using d
 First, source your ROS 2 installation to set the environment variables:
 
 ```shell
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 Then install the required packages:

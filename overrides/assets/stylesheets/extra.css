@@ -128,3 +128,8 @@ update the style of scrollbar */
 .md-header__title {
   font-weight: 700;
 }
+
+.md-typeset h1,
+.md-typeset h2 {
+  font-weight: 700;
+}

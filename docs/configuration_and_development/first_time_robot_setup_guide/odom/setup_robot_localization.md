@@ -27,7 +27,7 @@ Let us now configure the `robot_localization` package to use an Extended Kalman 
 First, source your ROS 2 installation to set the environment variables:
 
 ```shell
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 Then install the `robot_localization` package:

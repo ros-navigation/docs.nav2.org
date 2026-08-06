@@ -47,6 +47,8 @@ plugins:
   - search      # Docs: https://squidfunk.github.io/mkdocs-material/plugins/search/
 
 extra:
+  ros2_distro: rolling
+  generator: false
   version:
     provider: mike
   scope: /
@@ -70,6 +72,7 @@ extra_css:
   - assets/stylesheets/nav_buttons.css
   - assets/stylesheets/permalink.css
   - assets/stylesheets/robots_grid.css
+  - assets/stylesheets/robots_marquee.css
   - assets/stylesheets/search_button.css
   - assets/stylesheets/sidebar.css
   - assets/stylesheets/sponsorship_banner.css
@@ -77,6 +80,7 @@ extra_css:
   - assets/stylesheets/version_selector.css
   - assets/stylesheets/video.css
   - assets/stylesheets/watermark.css
+  - assets/stylesheets/progress_bar.css
 
 extra_javascript:
   - https://unpkg.com/katex@0/dist/katex.min.js
@@ -84,6 +88,7 @@ extra_javascript:
 
   # Path relative to custom_dir (overrides/):
   - assets/javascripts/katex.js
+  - assets/javascripts/progress_bar.js
   - assets/javascripts/sidebar_scrollwrap.js
 
 markdown_extensions:

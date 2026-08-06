@@ -17,7 +17,7 @@ and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 
 2. Source your ROS 2 installation to set up the environment:
     ```bash
-    source /opt/ros/<ros2-distro>/setup.bash
+    source /opt/ros/{{ ros2_distro }}/setup.bash
     ```
 
 3. Install the Nav2 packages using your operating system's package manager:
@@ -46,7 +46,7 @@ and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 
 2. In the same terminal, run:
     ```bash
-    source /opt/ros/<ros2-distro>/setup.bash
+    source /opt/ros/{{ ros2_distro }}/setup.bash
     ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
     ```
 

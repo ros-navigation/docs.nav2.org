@@ -13,7 +13,7 @@ This tutorial demonstrates how to use semantic segmentation in costmaps with ste
 It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally, you will need:
 
 ```bash
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb4*
 sudo apt install ros-$ROS_DISTRO-ros-gz-sim
 sudo apt install ros-$ROS_DISTRO-ros-gz-interfaces

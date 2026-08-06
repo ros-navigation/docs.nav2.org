@@ -1,0 +1,60 @@
+/* Auto-scrolling robot marquee for the landing page */
+
+.robots-marquee {
+  overflow: hidden;
+  position: relative;
+  margin: 3rem 0;
+}
+
+.robots-marquee::before,
+.robots-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.robots-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--md-default-bg-color), transparent);
+}
+
+.robots-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--md-default-bg-color), transparent);
+}
+
+.robots-marquee-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.robots-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.robots-marquee-track img {
+  height: 120px;
+  width: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.robots-marquee-track img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

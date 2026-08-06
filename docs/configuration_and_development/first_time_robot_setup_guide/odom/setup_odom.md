@@ -78,7 +78,7 @@ As an overview for this section, we will first setup Gazebo and the necessary pa
 First, source your ROS 2 installation to set the environment variables:
 
 ```shell
-source /opt/ros/<ros2-distro>/setup.bash
+source /opt/ros/{{ ros2_distro }}/setup.bash
 ```
 
 Then install the ROS-Gazebo integration package:
