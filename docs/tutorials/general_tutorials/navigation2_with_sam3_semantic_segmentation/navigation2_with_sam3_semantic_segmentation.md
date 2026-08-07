@@ -216,7 +216,7 @@ It useful to visualize the segmentation mask topic to visualize the detection ov
   ![SAM3 semantic segmentation overlay on bike lane camera feed](images/bike_lane_camera.gif){ width="700" title="SAM3 semantic segmentation overlay on bike lane camera feed" }
 </figure>
 
-How that we have that working, we can focus on the costmap integration to use this information.
+Now that we have that working, we can focus on the costmap integration to use this information.
 
 ### 8. Configure Nav2 to use the layer
 
