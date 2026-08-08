@@ -40,22 +40,22 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string "map"
+  string N/A
   ====== =======
 
   Description
-    Reference frame.
+    Reference frame. If not provided, uses the BT Navigator's ``global_frame`` setting automatically.
 
 :robot_base_frame:
 
   ====== ===========
   Type   Default
   ------ -----------
-  string "base_link"
+  string N/A
   ====== ===========
 
   Description
-    Robot base frame.
+    Robot base frame. If not provided, uses the BT Navigator's ``robot_base_frame`` setting automatically.
 
 Example
 -------

@@ -1093,6 +1093,80 @@ It is **not** intended for global path planners or setups that depend on the foo
 
 See the `Inflation Layer configuration guide <../configuration/packages/costmap-plugins/inflation.html>`_ for full parameter documentation.
 
+Collision Monitor exclusion zones
+---------------------------------
+
+`PR #6233 <https://github.com/ros-navigation/navigation2/pull/6233>`_ adds per-source exclusion zones to Collision Monitor and Collision Detector.
+An exclusion zone masks out data points falling inside a polygon or circle before they are checked against the collision polygons, e.g. to ignore a docking station the robot must approach closely, or to self-filter robot body points from a source.
+A zone can be anchored to an arbitrary TF ``frame_id`` (e.g. ``dock_link``), so it tracks that frame as the robot moves, with an optional height band for 3D sources.
+Zones fail safe: if the zone frame transform is unavailable, no points are excluded.
+
+See:
+
+- :ref:`configuring_collision_monitor_node`
+- :ref:`configuring_collision_detector_node`
+
+Behavior Tree action request error reporting
+---------------------------------------------
+
+`PR #6289 <https://github.com/ros-navigation/navigation2/pull/6289>`_ updates ``BtActionNode`` so that failures while requesting an action goal can be reported through the behavior tree. The base node now provides the ``error_code_id`` and ``error_msg`` output ports and handles the following callbacks:
+
+- ``on_timeout``
+- ``on_goal_rejected``
+- ``on_send_goal_failure``
+
+The Nav2 action definitions now include ``GOAL_REJECTED=1`` and ``SEND_GOAL_FAILURE=2`` error codes. Action definitions that support timeout handling also define a ``TIMEOUT`` error code. These codes are written to the ``error_code_id`` output and the corresponding reason is written to ``error_msg`` when the action request or execution fails.
+
+Custom action definitions used with ``BtActionNode`` should add the new error codes to their result definitions. Custom BT action nodes should remove duplicate ``error_code_id`` and ``error_msg`` output ports and ``on_timeout`` overrides that only provide this common behavior. Override ``on_goal_rejected`` or ``on_send_goal_failure`` when custom handling is required. If an action definition does not provide one of the standard codes, ``BtActionNode`` uses ``UNKNOWN`` when available and warns during construction.
+
+Goal Validation in Action Servers
+---------------------------------
+
+`PR #6279 <https://github.com/ros-navigation/navigation2/pull/6279>`_  adds a dedicated goal validation callback to Nav2 action servers.
+That means ``goal_received_callback`` can now be used to check incoming goals statically and reject if needed, instead of starting and aborting execution.
+
+This changes the ``create_action_server`` signature. It now expects a goal validation callback before the completion callback:
+
+.. code-block:: cpp
+
+   // Old style
+   action_server_ = create_action_server<ActionT>(
+     "my_action",
+     std::bind(&MyServer::execute, this),
+     std::bind(&MyServer::onCompletion, this),
+     std::chrono::milliseconds(500),
+     true);
+
+To:
+
+.. code-block:: cpp
+
+   // New style
+   action_server_ = create_action_server<ActionT>(
+     "my_action",
+     std::bind(&MyServer::execute, this),
+     std::bind(&MyServer::goalReceived, this, std::placeholders::_1),
+     std::bind(&MyServer::onCompletion, this),
+     std::chrono::milliseconds(500),
+     true);
+
+If you do not need goal-time validation, pass ``nullptr``.
+
+.. code-block:: cpp
+
+   action_server_ = create_action_server<ActionT>(
+     "my_action",
+     std::bind(&MyServer::execute, this),
+     nullptr,
+     std::bind(&MyServer::onCompletion, this),
+     std::chrono::milliseconds(500),
+     true);
+
+The recommended migration pattern is to move fast validation checks (e.g. invalid plugin IDs, empty paths / waypoint lists) out of execute-time logic and into ``goal_received_callback``.
+This makes invalid requests fail earlier, avoids unnecessary execution spin-up, and cleanly rejects unsupported goals.
+
+Additionally, ``BtActionServer`` now reports ``GOAL_REJECTED`` (instead of ``UNKNOWN``) when execution cannot start due to a missing current goal.
+
 New ZoneParameterFilter Costmap Filter
 --------------------------------------
 `PR #6104 <https://github.com/ros-navigation/navigation2/pull/6104>`_ adds a new ``ZoneParameterFilter`` costmap filter that sets ROS parameters on other nodes based on the robot's position using a filter mask. Each mask value selects a declared state carrying parameter setpoints, for example a lower ``FollowPath.max_vel_x`` inside a snow zone. Leaving all zones, or entering a zone with mask value ``0``, restores the declared ``nominal_defaults``. Every state transition is published as ``std_msgs/UInt8`` on the ``state_event_topic``. See the :ref:`zone_parameter_filter` configuration page for the parameters and an example, and the :ref:`navigation2_with_zone_parameter_filter` tutorial.
