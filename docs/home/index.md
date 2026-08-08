@@ -14,9 +14,9 @@ An open-source, production-grade autonomy framework trusted by 300+ companies wo
   </video>
 </div>
 
-[Get Started :octicons-arrow-right-16:](../getting_started/index.md){ .md-button .md-button--primary }
-[Concepts :octicons-light-bulb-16:](../getting_started/navigation_concepts/index.md){ .md-button }
-[First-Time Setup :octicons-tools-16:](../configuration_and_development/first_time_robot_setup_guide/index.md){ .md-button }
+[Get Started :octicons-arrow-right-16:][getting-started]{ .md-button .md-button--primary }
+[Concepts :octicons-light-bulb-16:][navigation-concepts]{ .md-button }
+[First-Time Setup :octicons-tools-16:][first-time-robot-setup-guide]{ .md-button }
 
 ## **Our Sponsors**
 
