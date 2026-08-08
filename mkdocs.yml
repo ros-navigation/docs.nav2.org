@@ -48,6 +48,7 @@ plugins:
 
 extra:
   ros2_distro: rolling
+  homepage: /home/
   generator: false
   version:
     provider: mike

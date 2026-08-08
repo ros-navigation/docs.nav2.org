@@ -14,14 +14,14 @@ An open-source, production-grade autonomy framework trusted by 300+ companies wo
   </video>
 </div>
 
-[Get Started :octicons-arrow-right-16:](getting_started/index.md){ .md-button .md-button--primary }
-[Concepts :octicons-light-bulb-16:](getting_started/navigation_concepts/index.md){ .md-button }
-[First-Time Setup :octicons-tools-16:](configuration_and_development/first_time_robot_setup_guide/index.md){ .md-button }
+[Get Started :octicons-arrow-right-16:](../getting_started/index.md){ .md-button .md-button--primary }
+[Concepts :octicons-light-bulb-16:](../getting_started/navigation_concepts/index.md){ .md-button }
+[First-Time Setup :octicons-tools-16:](../configuration_and_development/first_time_robot_setup_guide/index.md){ .md-button }
 
 ## **Our Sponsors**
 
 <figure markdown="span">
-  ![Our Sponsors](images/sponsors_oct_2025.png){ width="700px" title="Our Sponsors"}
+  ![Our Sponsors](images/sponsors/sponsors_oct_2025.png){ width="700px" title="Our Sponsors"}
 </figure>
 
 ## **Services**
@@ -79,41 +79,41 @@ A list of all plugins can be found on [Navigation Plugins][navigation-plugins] -
 <!-- CSS located in overrides/assets/stylesheets/robots_marquee.css -->
 <div class="robots-marquee">
   <div class="robots-marquee-track">
-    <a href="robots_using/"><img src="robots_using/images/dexory.png" alt="Dexory"></a>
-    <a href="robots_using/"><img src="robots_using/images/novacarter.png" alt="Nvidia Nova Carter"></a>
-    <a href="robots_using/"><img src="robots_using/images/kiwibot.png" alt="Kiwibot"></a>
-    <a href="robots_using/"><img src="robots_using/images/firefly.png" alt="Firefly Automatix"></a>
-    <a href="robots_using/"><img src="robots_using/images/g1.png" alt="Unitree G1"></a>
-    <a href="robots_using/"><img src="robots_using/images/go2.png" alt="Unitree Go2"></a>
-    <a href="robots_using/"><img src="robots_using/images/angsa.png" alt="Angsa"></a>
-    <a href="robots_using/"><img src="robots_using/images/polymath.png" alt="Polymath Robotics"></a>
-    <a href="robots_using/"><img src="robots_using/images/karelics2.png" alt="Karelics"></a>
-    <a href="robots_using/"><img src="robots_using/images/tailos.png" alt="Rosie"></a>
-    <a href="robots_using/"><img src="robots_using/images/seasony.png" alt="Seasony"></a>
-    <a href="robots_using/"><img src="robots_using/images/barnowl.png" alt="Barn Owl"></a>
-    <a href="robots_using/"><img src="robots_using/images/tb4.png" alt="Turtlebot4"></a>
-    <a href="robots_using/"><img src="robots_using/images/tri.png" alt="Toyota"></a>
-    <a href="robots_using/"><img src="robots_using/images/elroy.png" alt="Elroy Air"></a>
-    <a href="robots_using/"><img src="robots_using/images/torch.png" alt="Torch Technologies"></a>
-    <a href="robots_using/"><img src="robots_using/images/botronics.png" alt="Botronics"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/dexory.png" alt="Dexory"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/novacarter.png" alt="Nvidia Nova Carter"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/kiwibot.png" alt="Kiwibot"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/firefly.png" alt="Firefly Automatix"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/g1.png" alt="Unitree G1"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/go2.png" alt="Unitree Go2"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/angsa.png" alt="Angsa"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/polymath.png" alt="Polymath Robotics"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/karelics2.png" alt="Karelics"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/tailos.png" alt="Rosie"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/seasony.png" alt="Seasony"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/barnowl.png" alt="Barn Owl"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/tb4.png" alt="Turtlebot4"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/tri.png" alt="Toyota"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/elroy.png" alt="Elroy Air"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/torch.png" alt="Torch Technologies"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/botronics.png" alt="Botronics"></a>
     <!-- Duplicate for seamless loop -->
-    <a href="robots_using/"><img src="robots_using/images/dexory.png" alt="Dexory"></a>
-    <a href="robots_using/"><img src="robots_using/images/novacarter.png" alt="Nvidia Nova Carter"></a>
-    <a href="robots_using/"><img src="robots_using/images/kiwibot.png" alt="Kiwibot"></a>
-    <a href="robots_using/"><img src="robots_using/images/firefly.png" alt="Firefly Automatix"></a>
-    <a href="robots_using/"><img src="robots_using/images/g1.png" alt="Unitree G1"></a>
-    <a href="robots_using/"><img src="robots_using/images/go2.png" alt="Unitree Go2"></a>
-    <a href="robots_using/"><img src="robots_using/images/angsa.png" alt="Angsa"></a>
-    <a href="robots_using/"><img src="robots_using/images/polymath.png" alt="Polymath Robotics"></a>
-    <a href="robots_using/"><img src="robots_using/images/karelics2.png" alt="Karelics"></a>
-    <a href="robots_using/"><img src="robots_using/images/tailos.png" alt="Rosie"></a>
-    <a href="robots_using/"><img src="robots_using/images/seasony.png" alt="Seasony"></a>
-    <a href="robots_using/"><img src="robots_using/images/barnowl.png" alt="Barn Owl"></a>
-    <a href="robots_using/"><img src="robots_using/images/tb4.png" alt="Turtlebot4"></a>
-    <a href="robots_using/"><img src="robots_using/images/tri.png" alt="Toyota"></a>
-    <a href="robots_using/"><img src="robots_using/images/elroy.png" alt="Elroy Air"></a>
-    <a href="robots_using/"><img src="robots_using/images/torch.png" alt="Torch Technologies"></a>
-    <a href="robots_using/"><img src="robots_using/images/botronics.png" alt="Botronics"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/dexory.png" alt="Dexory"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/novacarter.png" alt="Nvidia Nova Carter"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/kiwibot.png" alt="Kiwibot"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/firefly.png" alt="Firefly Automatix"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/g1.png" alt="Unitree G1"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/go2.png" alt="Unitree Go2"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/angsa.png" alt="Angsa"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/polymath.png" alt="Polymath Robotics"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/karelics2.png" alt="Karelics"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/tailos.png" alt="Rosie"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/seasony.png" alt="Seasony"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/barnowl.png" alt="Barn Owl"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/tb4.png" alt="Turtlebot4"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/tri.png" alt="Toyota"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/elroy.png" alt="Elroy Air"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/torch.png" alt="Torch Technologies"></a>
+    <a href="../robots_using/"><img src="../robots_using/images/botronics.png" alt="Botronics"></a>
   </div>
 </div>
 
