@@ -1166,3 +1166,7 @@ The recommended migration pattern is to move fast validation checks (e.g. invali
 This makes invalid requests fail earlier, avoids unnecessary execution spin-up, and cleanly rejects unsupported goals.
 
 Additionally, ``BtActionServer`` now reports ``GOAL_REJECTED`` (instead of ``UNKNOWN``) when execution cannot start due to a missing current goal.
+
+New ZoneParameterFilter Costmap Filter
+--------------------------------------
+`PR #6104 <https://github.com/ros-navigation/navigation2/pull/6104>`_ adds a new ``ZoneParameterFilter`` costmap filter that sets ROS parameters on other nodes based on the robot's position using a filter mask. Each mask value selects a declared state carrying parameter setpoints, for example a lower ``FollowPath.max_vel_x`` inside a snow zone. Leaving all zones, or entering a zone with mask value ``0``, restores the declared ``nominal_defaults``. Every state transition is published as ``std_msgs/UInt8`` on the ``state_event_topic``. See the :ref:`zone_parameter_filter` configuration page for the parameters and an example, and the :ref:`navigation2_with_zone_parameter_filter` tutorial.

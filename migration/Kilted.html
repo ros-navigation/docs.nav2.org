@@ -471,6 +471,19 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html">Navigating with Zone Parameter Overrides</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#enable-zone-parameter-filter">3. Enable Zone Parameter Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#verify-zone-transitions">5. Verify zone transitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_docking.html">Using Docking Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#requirements">Requirements</a></li>
@@ -1304,6 +1317,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-exclusion-zones">Collision Monitor exclusion zones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behavior-tree-action-request-error-reporting">Behavior Tree action request error reporting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#goal-validation-in-action-servers">Goal Validation in Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-zoneparameterfilter-costmap-filter">New ZoneParameterFilter Costmap Filter</a></li>
 </ul>
 </li>
 </ul>
@@ -2414,6 +2428,10 @@ That means <code class="docutils literal notranslate"><span class="pre">goal_rec
 <p>The recommended migration pattern is to move fast validation checks (e.g. invalid plugin IDs, empty paths / waypoint lists) out of execute-time logic and into <code class="docutils literal notranslate"><span class="pre">goal_received_callback</span></code>.
 This makes invalid requests fail earlier, avoids unnecessary execution spin-up, and cleanly rejects unsupported goals.</p>
 <p>Additionally, <code class="docutils literal notranslate"><span class="pre">BtActionServer</span></code> now reports <code class="docutils literal notranslate"><span class="pre">GOAL_REJECTED</span></code> (instead of <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code>) when execution cannot start due to a missing current goal.</p>
+</div>
+<div class="section" id="new-zoneparameterfilter-costmap-filter">
+<h2>New ZoneParameterFilter Costmap Filter<a class="headerlink" href="#new-zoneparameterfilter-costmap-filter" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/6104">PR #6104</a> adds a new <code class="docutils literal notranslate"><span class="pre">ZoneParameterFilter</span></code> costmap filter that sets ROS parameters on other nodes based on the robot’s position using a filter mask. Each mask value selects a declared state carrying parameter setpoints, for example a lower <code class="docutils literal notranslate"><span class="pre">FollowPath.max_vel_x</span></code> inside a snow zone. Leaving all zones, or entering a zone with mask value <code class="docutils literal notranslate"><span class="pre">0</span></code>, restores the declared <code class="docutils literal notranslate"><span class="pre">nominal_defaults</span></code>. Every state transition is published as <code class="docutils literal notranslate"><span class="pre">std_msgs/UInt8</span></code> on the <code class="docutils literal notranslate"><span class="pre">state_event_topic</span></code>. See the <a class="reference internal" href="../configuration/packages/costmap-plugins/zone_parameter_filter.html#zone-parameter-filter"><span class="std std-ref">Zone Parameter Filter Parameters</span></a> configuration page for the parameters and an example, and the <a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#navigation2-with-zone-parameter-filter"><span class="std std-ref">Navigating with Zone Parameter Overrides</span></a> tutorial.</p>
 </div>
 </div>
 

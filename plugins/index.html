@@ -470,6 +470,19 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html">Navigating with Zone Parameter Overrides</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#enable-zone-parameter-filter">3. Enable Zone Parameter Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_zone_parameter_filter.html#verify-zone-transitions">5. Verify zone transitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_docking.html">Using Docking Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#requirements">Requirements</a></li>
@@ -1303,6 +1316,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#collision-monitor-exclusion-zones">Collision Monitor exclusion zones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#behavior-tree-action-request-error-reporting">Behavior Tree action request error reporting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#goal-validation-in-action-servers">Goal Validation in Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-zoneparameterfilter-costmap-filter">New ZoneParameterFilter Costmap Filter</a></li>
 </ul>
 </li>
 </ul>
@@ -1541,9 +1555,9 @@ polygons, lines, and circles</p></td>
 <h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 27%" />
-<col style="width: 27%" />
-<col style="width: 47%" />
+<col style="width: 32%" />
+<col style="width: 25%" />
+<col style="width: 43%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
@@ -1566,6 +1580,12 @@ in speed restriction areas</p></td>
 <td><p>Alexey Merzlyakov</p></td>
 <td><p>Enables binary (boolean) mask
 behavior to trigger actions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/zone_parameter_filter.cpp">Zone Parameter Filter</a></p></td>
+<td><p>Akihiko Komada</p></td>
+<td><p>Applies a configured set of ROS
+parameters based on the mask
+value at the robot’s pose</p></td>
 </tr>
 </tbody>
 </table>
