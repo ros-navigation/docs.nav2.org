@@ -21,3 +21,13 @@ Type: `double` Default: `0.25`
 Type: `double` Default: `0.65`
 
 :   Occupied space minimum probability threshold value for occupancy grid.
+
+## Example
+
+```yaml
+map_saver:
+  ros__parameters:
+    save_map_timeout: 2
+    free_thresh_default: 0.25
+    occupied_thresh_default: 0.65
+```

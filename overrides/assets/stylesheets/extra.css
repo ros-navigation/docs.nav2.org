@@ -84,6 +84,28 @@
   font-size: .67rem;
 }
 
+/* Note admonition uses Nav2 blue */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: var(--color-nav2-blue) !important;
+}
+.md-typeset .admonition.note:focus-within,
+.md-typeset details.note:focus-within {
+  box-shadow: 0 0 0 .2rem rgba(71, 199, 239, 0.1) !important;
+}
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary {
+  background-color: rgba(71, 199, 239, 0.1) !important;
+}
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before {
+  background-color: var(--color-nav2-blue) !important;
+}
+.md-typeset .note > .admonition-title::after,
+.md-typeset .note > summary::after {
+  color: var(--color-nav2-blue) !important;
+}
+
 .md-typeset code {
   border-radius: 0.3rem;
   border-width: 1px;

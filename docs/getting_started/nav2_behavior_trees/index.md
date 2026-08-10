@@ -1,23 +1,75 @@
 # Nav2 Behavior Trees { #nav2-behavior-trees }
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Introduction To Nav2 Specific Nodes][introduction-to-nav2-specific-nodes]{ .md-button .md-button--primary }
-[Detailed Behavior Tree Walkthrough][detailed-behavior-tree-walkthrough]{ .md-button .md-button--primary }
+- :material-book-open-variant: **Introduction To Nav2 Specific Nodes**
+
+    ---
+    Overview of Nav2's custom BT action, condition, control, and decorator nodes.
+
+    [:octicons-arrow-right-24: Go][introduction-to-nav2-specific-nodes]
+
+- :material-magnify: **Detailed Behavior Tree Walkthrough**
+
+    ---
+    Step-by-step walkthrough of the default navigate-to-pose behavior tree.
+
+    [:octicons-arrow-right-24: Go][detailed-behavior-tree-walkthrough]
 
 </div>
 
 <span class="section-title">Provided Nav2 Behavior Trees</span>
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Navigate To Pose][nav2-bt-navigate-to-pose]{ .md-button .md-button--primary }
-[Navigate Through Poses][nav2-bt-navigate-through-poses]{ .md-button .md-button--primary }
-[Navigate To Pose and Pause Near Goal-Obstacle][navigate-to-pose-and-pause-near-goal-obstacle]{ .md-button .md-button--primary }
-[Navigate To Pose With Consistent Replanning And If Path Becomes Invalid][navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid]{ .md-button .md-button--primary }
-[Navigate on Route Graph with Recovery][navigate-on-route-graph-with-recovery]{ .md-button .md-button--primary }
-[Follow Dynamic Point][follow-dynamic-point]{ .md-button .md-button--primary }
-[Odometry Calibration][odometry-calibration]{ .md-button .md-button--primary }
+- :material-map-marker: **Navigate To Pose**
+
+    ---
+    Standard point-to-point navigation with recovery.
+
+    [:octicons-arrow-right-24: Go][nav2-bt-navigate-to-pose]
+
+- :material-map-marker-path: **Navigate Through Poses**
+
+    ---
+    Multi-waypoint navigation through a sequence of poses.
+
+    [:octicons-arrow-right-24: Go][nav2-bt-navigate-through-poses]
+
+- :material-pause-circle: **Navigate To Pose and Pause Near Goal-Obstacle**
+
+    ---
+    Pause and wait for obstacles near the goal to clear before detouring.
+
+    [:octicons-arrow-right-24: Go][navigate-to-pose-and-pause-near-goal-obstacle]
+
+- :material-refresh: **Navigate To Pose With Consistent Replanning And If Path Becomes Invalid**
+
+    ---
+    Continuous replanning with path validity monitoring.
+
+    [:octicons-arrow-right-24: Go][navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid]
+
+- :material-graph: **Navigate on Route Graph with Recovery**
+
+    ---
+    Route-graph-based navigation with failure recovery.
+
+    [:octicons-arrow-right-24: Go][navigate-on-route-graph-with-recovery]
+
+- :material-target: **Follow Dynamic Point**
+
+    ---
+    Track and follow a moving target in real time.
+
+    [:octicons-arrow-right-24: Go][follow-dynamic-point]
+
+- :material-compass: **Odometry Calibration**
+
+    ---
+    BT for automated odometry calibration routines.
+
+    [:octicons-arrow-right-24: Go][odometry-calibration]
 
 </div>
 

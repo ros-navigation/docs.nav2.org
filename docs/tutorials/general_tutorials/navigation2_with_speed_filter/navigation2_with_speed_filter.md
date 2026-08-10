@@ -383,4 +383,4 @@ Set the goal behind the speed restriction areas and check that the filter is wor
 
 !!! note
 
-    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/jazzy/rolling/nav2_costmap_filters_demo)
+    For another example and additional context, check the Nav2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/jazzy/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/jazzy/rolling/nav2_costmap_filters_demo)

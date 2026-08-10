@@ -45,3 +45,24 @@
     border-color: var(--button-primary-bg-color);
   }
 }
+
+/* Card grid blue left accent */
+.md-typeset .grid.cards {
+
+  & > ul > li {
+  border-left: 4px solid var(--color-nav2-blue);
+  }
+
+  &.bottom-align > ul > li {
+    display: flex;
+    flex-direction: column;
+
+    & > p {
+      margin: 0;
+    }
+
+    & > :last-child {
+      margin-top: auto;
+    }
+  }
+}

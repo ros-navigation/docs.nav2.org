@@ -2,10 +2,21 @@
 
 You can install the Nav2 project in two ways: locally on your machine or using Docker.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Local Installation][local-installation]{ .md-button .md-button--primary }
-[Docker Installation][docker-installation]{ .md-button .md-button--primary }
+- :material-desktop-classic: **Local Installation**
+
+    ---
+    Install Nav2 from binaries or source on your local machine.
+
+    [:octicons-arrow-right-24: Go][local-installation]
+
+- :material-docker: **Docker Installation**
+
+    ---
+    Run Nav2 in Docker containers for isolated development.
+
+    [:octicons-arrow-right-24: Go][docker-installation]
 
 </div>
 

@@ -21,3 +21,13 @@ Type: `string` Default: `"map"`
 Type: `string` Default: `"map"`
 
 :   Frame to publish loaded map in.
+
+## Example
+
+```yaml
+map_server:
+  ros__parameters:
+    yaml_filename: "map.yaml"
+    topic_name: "map"
+    frame_id: "map"
+```

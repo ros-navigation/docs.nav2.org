@@ -152,13 +152,42 @@ Type: `double` Default: `0.1`
 
 The plugins listed below are inside the `nav2_controller` namespace.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[SimpleProgressChecker][simple-progress-checker]{ .md-button .md-button--primary }
-[PoseProgressChecker][pose-progress-checker]{ .md-button .md-button--primary }
-[SimpleGoalChecker][simple-goal-checker]{ .md-button .md-button--primary }
-[StoppedGoalChecker][stopped-goal-checker]{ .md-button .md-button--primary }
-[PositionGoalChecker][position-goal-checker]{ .md-button .md-button--primary }
+- :material-progress-check: **SimpleProgressChecker**
+
+    ---
+    Monitors forward progress by distance traveled.
+
+    [:octicons-arrow-right-24: Go][simple-progress-checker]
+
+- :material-progress-check: **PoseProgressChecker**
+
+    ---
+    Monitors progress by pose change over time.
+
+    [:octicons-arrow-right-24: Go][pose-progress-checker]
+
+- :material-crosshairs: **SimpleGoalChecker**
+
+    ---
+    Basic distance and angle goal tolerance check.
+
+    [:octicons-arrow-right-24: Go][simple-goal-checker]
+
+- :material-stop: **StoppedGoalChecker**
+
+    ---
+    Verifies the robot has fully stopped at the goal.
+
+    [:octicons-arrow-right-24: Go][stopped-goal-checker]
+
+- :material-crosshairs-gps: **PositionGoalChecker**
+
+    ---
+    Position-only goal check (ignores orientation).
+
+    [:octicons-arrow-right-24: Go][position-goal-checker]
 
 </div>
 

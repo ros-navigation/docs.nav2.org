@@ -17,12 +17,35 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 
 ## Provided Tools
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Using the Nav2 Route Tool][using-the-nav2-route-tool]{ .md-button .md-button--primary }
-[Route Graph Generation LIF Editor][route-graph-generation-lif-editor]{ .md-button .md-button--primary }
-[Route Graph Generation][route-graph-generation]{ .md-button .md-button--primary }
-[SWAGGER Route Graph Generation][swagger-route-graph-generation]{ .md-button .md-button--primary }
+- :material-map-marker-plus: **Using the Nav2 Route Tool**
+
+    ---
+    Interactive route creation in RViz.
+
+    [:octicons-arrow-right-24: Go][using-the-nav2-route-tool]
+
+- :material-pencil-ruler: **Route Graph Generation LIF Editor**
+
+    ---
+    Generate route graphs using the LIF editor tool.
+
+    [:octicons-arrow-right-24: Go][route-graph-generation-lif-editor]
+
+- :material-map-marker-path: **Route Graph Generation**
+
+    ---
+    Programmatic route graph creation.
+
+    [:octicons-arrow-right-24: Go][route-graph-generation]
+
+- :material-scatter-plot: **SWAGGER Route Graph Generation**
+
+    ---
+    Generate route graphs from SWAGGER/VDA5050 definitions.
+
+    [:octicons-arrow-right-24: Go][swagger-route-graph-generation]
 
 </div>
 

@@ -12,7 +12,7 @@ For this guide, we will be creating the Unified Robot Description Format (URDF) 
 
 ## URDF and the Robot State Publisher
 
-As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  `base_link` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  `base_link` to `laser_link` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms.
+As discussed in the previous tutorial, one of the requirements for Nav2 is the transformation from  `base_link` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  `base_link` to `laser_link` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms.
 
 The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct URDF and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees.
 
@@ -115,7 +115,7 @@ For the code block below, we access the `base` properties from the robot constan
   </link>
 ```
 
-Next, let us define a `base_footprint` link. The `base_footprint` link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot's center is in when it is projected to the ground plane.
+Next, let us define a `base_footprint` link. The `base_footprint` link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Nav2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot's center is in when it is projected to the ground plane.
 
 After defining our base_link, we then add a joint to connect it to `base_link`. In URDF, a `joint` element describes the kinematic and dynamic properties between coordinate frames. For this case, we will be defining a `fixed` joint with the appropriate offsets to place our `base_footprint` link in the proper location based on the description above. Remember that we want to set our base_footprint to be at the ground plane when projected from the center of the main chassis, hence we get the sum of the `wheel_radius` and the `wheel_zoff` to get the appropriate location along the z-axis.
 
