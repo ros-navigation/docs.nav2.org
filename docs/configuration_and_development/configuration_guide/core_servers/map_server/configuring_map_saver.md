@@ -27,3 +27,14 @@ Type: `double` Default: `0.65`
 Type: `string` Default: `"disabled"`
 
 :   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
+
+## Example
+
+```yaml
+map_saver:
+  ros__parameters:
+    save_map_timeout: 2
+    free_thresh_default: 0.25
+    occupied_thresh_default: 0.65
+    introspection_mode: "disabled"
+```

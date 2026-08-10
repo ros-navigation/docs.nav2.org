@@ -70,11 +70,28 @@ Type: `string` Default: `"wait_at_waypoint"`
 
 The plugins listed below are inside the `nav2_waypoint_follower` namespace.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[WaitAtWaypoint][wait-at-waypoint]{ .md-button .md-button--primary }
-[PhotoAtWaypoint][photo-at-waypoint]{ .md-button .md-button--primary }
-[InputAtWaypoint][input-at-waypoint]{ .md-button .md-button--primary }
+- :material-timer-sand: **WaitAtWaypoint**
+
+    ---
+    Pause for a specified duration at each waypoint.
+
+    [:octicons-arrow-right-24: Go][wait-at-waypoint]
+
+- :material-camera: **PhotoAtWaypoint**
+
+    ---
+    Capture an image at each waypoint.
+
+    [:octicons-arrow-right-24: Go][photo-at-waypoint]
+
+- :material-human-greeting: **InputAtWaypoint**
+
+    ---
+    Wait for operator input before proceeding.
+
+    [:octicons-arrow-right-24: Go][input-at-waypoint]
 
 </div>
 

@@ -2,13 +2,42 @@
 
 This page is to help familiarize new roboticists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[ROS 2][ros-2]{ .md-button .md-button--primary }
-[Behavior Trees][behavior-trees]{ .md-button .md-button--primary }
-[Navigation Servers][navigation-servers]{ .md-button .md-button--primary }
-[State Estimation][state-estimation]{ .md-button .md-button--primary }
-[Environmental Representation][environmental-representation]{ .md-button .md-button--primary }
+- :material-robot: **ROS 2**
+
+    ---
+    Foundation middleware for Nav2's communication and lifecycle management.
+
+    [:octicons-arrow-right-24: Go][ros-2]
+
+- :material-file-tree: **Behavior Trees**
+
+    ---
+    Task orchestration: how Nav2 coordinates planning, control, and recovery.
+
+    [:octicons-arrow-right-24: Go][behavior-trees]
+
+- :material-server: **Navigation Servers**
+
+    ---
+    The modular server architecture: planners, controllers, behaviors, and more.
+
+    [:octicons-arrow-right-24: Go][navigation-servers]
+
+- :material-crosshairs-gps: **State Estimation**
+
+    ---
+    Localization, odometry, and sensor fusion for robot pose tracking.
+
+    [:octicons-arrow-right-24: Go][state-estimation]
+
+- :material-map: **Environmental Representation**
+
+    ---
+    Costmaps, map servers, and how the robot perceives its surroundings.
+
+    [:octicons-arrow-right-24: Go][environmental-representation]
 
 </div>
 

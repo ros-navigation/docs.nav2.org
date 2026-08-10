@@ -2,8 +2,8 @@
 
 This section is a collection of guides that aims to provide readers a good resource for setting up Nav2. The objectives for this section are as follows:
 
-- Help new users with setting up Navigation2 with a new robot
-- Help people with custom built robots to properly set up their robots to be used in ROS/Navigation2
+- Help new users with setting up Nav2 with a new robot
+- Help people with custom built robots to properly set up their robots to be used in ROS/Nav2
 - Act as a checklist, template or boilerplate reference for more experienced readers
 - Provide examples which can be run on simulators/tools like Gazebo or RViz to guide readers on the Nav2 setup process even without a physical robot.
 - Broad strokes, tips, and tricks for configuring certain packages and integrating different components of the robot platform (sensors, odometry, etc.)
@@ -19,21 +19,74 @@ To guide you through the first-time setup of your robot, we will be tackling the
 
 !!! note
 
-    This guide covers setting up Navigation2 with the modern Gazebo simulator (Gazebo Harmonic or newer), used with ROS 2 Jazzy or newer.
+    This guide covers setting up Nav2 with the modern Gazebo simulator (Gazebo Harmonic or newer), used with ROS 2 Jazzy or newer.
 
 Follow these tutorials in order to set up your robot for Nav2:
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Setting Up Transformations][setting-up-transformations]{ .md-button .md-button--primary }
-[Setting Up The URDF][setting-up-the-urdf]{ .md-button .md-button--primary }
-[Setting Up The SDF][setting-up-the-sdf]{ .md-button .md-button--primary }
-[Setting Up Odometry][setting-up-odometry]{ .md-button .md-button--primary }
-[Smoothing Odometry using Robot Localization][smoothing-odometry-using-robot-localization]{ .md-button .md-button--primary }
-[Setting Up Sensors][setting-up-sensors]{ .md-button .md-button--primary }
-[Mapping and Localization][mapping-and-localization]{ .md-button .md-button--primary }
-[Setting Up the Robot's Footprint][setting-up-the-robots-footprint]{ .md-button .md-button--primary }
-[Setting Up Navigation Plugins][setting-up-navigation-plugins]{ .md-button .md-button--primary }
+- :material-axis-arrow: **Setting Up Transformations**
+
+    ---
+    Configure TF2 transforms between robot frames.
+
+    [:octicons-arrow-right-24: Go][setting-up-transformations]
+
+- :material-cube-outline: **Setting Up The URDF**
+
+    ---
+    Create the robot description your robot.
+
+    [:octicons-arrow-right-24: Go][setting-up-the-urdf]
+
+- :material-cube: **Setting Up The SDF**
+
+    ---
+    Create the simulation model for Gazebo.
+
+    [:octicons-arrow-right-24: Go][setting-up-the-sdf]
+
+- :material-speedometer: **Setting Up Odometry**
+
+    ---
+    Configure wheel encoders and odometry publishers.
+
+    [:octicons-arrow-right-24: Go][setting-up-odometry]
+
+- :material-chart-bell-curve: **Smoothing Odometry using Robot Localization**
+
+    ---
+    Fuse IMU and wheel odometry with an EKF for smoother estimates.
+
+    [:octicons-arrow-right-24: Go][smoothing-odometry-using-robot-localization]
+
+- :material-radar: **Setting Up Sensors**
+
+    ---
+    Configure lidar, depth cameras, and other perception sensors.
+
+    [:octicons-arrow-right-24: Go][setting-up-sensors]
+
+- :material-map-search: **Mapping and Localization**
+
+    ---
+    Create maps with SLAM and localize with AMCL.
+
+    [:octicons-arrow-right-24: Go][mapping-and-localization]
+
+- :material-shape-outline: **Setting Up the Robot's Footprint**
+
+    ---
+    Define the robot's physical footprint for collision checking.
+
+    [:octicons-arrow-right-24: Go][setting-up-the-robots-footprint]
+
+- :material-puzzle-outline: **Setting Up Navigation Plugins**
+
+    ---
+    Select and configure planner, controller, and behavior plugins.
+
+    [:octicons-arrow-right-24: Go][setting-up-navigation-plugins]
 
 </div>
 

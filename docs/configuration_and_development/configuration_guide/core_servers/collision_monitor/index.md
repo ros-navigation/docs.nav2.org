@@ -10,9 +10,20 @@ The Collision Detector works similarly to the Collision Monitor, but does not af
 
 The nodes listed below are inside the `nav2_collision_monitor` package. See the pages for individual configuration information.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Collision Monitor Node][collision-monitor-node]{ .md-button .md-button--primary }
-[Collision Detector Node][collision-detector-node]{ .md-button .md-button--primary }
+- :material-shield-alert: **Collision Monitor Node**
+
+    ---
+    Detects and prevents imminent collisions by limiting velocity commands.
+
+    [:octicons-arrow-right-24: Go][collision-monitor-node]
+
+- :material-shield-search: **Collision Detector Node**
+
+    ---
+    Reports detected collisions without modifying velocity commands.
+
+    [:octicons-arrow-right-24: Go][collision-detector-node]
 
 </div>

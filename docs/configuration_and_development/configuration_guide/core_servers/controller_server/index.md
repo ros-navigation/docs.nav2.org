@@ -186,16 +186,63 @@ Type: `double` Default: `2.0`
 
 The plugins listed below are inside the `nav2_controller` namespace.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[SimpleProgressChecker][simple-progress-checker]{ .md-button .md-button--primary }
-[PoseProgressChecker][pose-progress-checker]{ .md-button .md-button--primary }
-[AxisGoalChecker][axis-goal-checker]{ .md-button .md-button--primary }
-[AdaptiveToleranceGoalChecker][adaptive-tolerance-goal-checker]{ .md-button .md-button--primary }
-[SimpleGoalChecker][simple-goal-checker]{ .md-button .md-button--primary }
-[StoppedGoalChecker][stopped-goal-checker]{ .md-button .md-button--primary }
-[PositionGoalChecker][position-goal-checker]{ .md-button .md-button--primary }
-[FeasiblePathHandler][feasible-path-handler]{ .md-button .md-button--primary }
+- :material-progress-check: **SimpleProgressChecker**
+
+    ---
+    Monitors forward progress by distance traveled.
+
+    [:octicons-arrow-right-24: Go][simple-progress-checker]
+
+- :material-progress-check: **PoseProgressChecker**
+
+    ---
+    Monitors progress by pose change over time.
+
+    [:octicons-arrow-right-24: Go][pose-progress-checker]
+
+- :material-axis: **AxisGoalChecker**
+
+    ---
+    Checks goal with independent along-path and cross-track tolerances.
+
+    [:octicons-arrow-right-24: Go][axis-goal-checker]
+
+- :material-target-variant: **AdaptiveToleranceGoalChecker**
+
+    ---
+    Uses fine and coarse tolerances with velocity and progress monitoring.
+
+    [:octicons-arrow-right-24: Go][adaptive-tolerance-goal-checker]
+
+- :material-crosshairs: **SimpleGoalChecker**
+
+    ---
+    Basic distance and angle goal tolerance check.
+
+    [:octicons-arrow-right-24: Go][simple-goal-checker]
+
+- :material-stop: **StoppedGoalChecker**
+
+    ---
+    Verifies the robot has fully stopped at the goal.
+
+    [:octicons-arrow-right-24: Go][stopped-goal-checker]
+
+- :material-crosshairs-gps: **PositionGoalChecker**
+
+    ---
+    Position-only goal check (ignores orientation).
+
+    [:octicons-arrow-right-24: Go][position-goal-checker]
+
+- :material-road: **FeasiblePathHandler**
+
+    ---
+    Handles infeasible path segments from the planner.
+
+    [:octicons-arrow-right-24: Go][feasible-path-handler]
 
 </div>
 

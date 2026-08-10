@@ -24,7 +24,7 @@ Within Costmap2D, there are pluginlib plugin interfaces available to create cust
 Examples of included pluginlib plugins for Costmap2D are the Obstacle Layer, Voxel Layer, Static Layer, and Inflation Layer.
 
 However, these are simply example plugins offered by the base implementation.
-Another available pluginlib plugin for Costmap2D in Navigation2 is STVL.
+Another available pluginlib plugin for Costmap2D in Nav2 is STVL.
 
 STVL is another 3D perception plugin similar to the Voxel Layer.
 A more detailed overview of how it works can be found [in this repo](https://github.com/SteveMacenski/spatio_temporal_voxel_layer/), however it buffers 3D data from depth cameras, sonars, lidars, and more into a sparse volumetic world model and removes voxels over time proportional with a sensor model and time-based expiration.
@@ -36,7 +36,7 @@ The ROSCon talk for STVL can be found [in this video](https://vimeo.com/29269957
 
 ### 1. Setup
 
-Follow the same process as in [Quickstart][quickstart] for installing and setting up a robot for hardware testing or simulation, as applicable. Ensure ROS 2, Navigation2, and Gazebo are installed.
+Follow the same process as in [Quickstart][quickstart] for installing and setting up a robot for hardware testing or simulation, as applicable. Ensure ROS 2, Nav2, and Gazebo are installed.
 
 ### 2. Install STVL
 
@@ -52,15 +52,15 @@ STVL can be installed in ROS 2 via the ROS Build Farm:
 sudo apt install ros-$ROS_DISTRO-spatio-temporal-voxel-layer
 ```
 
-It can also be built from source by cloning the repository into your Navigation2 workspace:
+It can also be built from source by cloning the repository into your Nav2 workspace:
 
 ```bash
 git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/spatio_temporal_voxel_layer
 ```
 
-### 3. Modify Navigation2 Parameter
+### 3. Modify Nav2 Parameter
 
-STVL is an optional plugin, like all plugins, in Costmap2D. Costmap Plugins in Navigation2 are loaded in the `plugin_names` and `plugin_types` variables inside of their respective costmaps.
+STVL is an optional plugin, like all plugins, in Costmap2D. Costmap Plugins in Nav2 are loaded in the `plugin_names` and `plugin_types` variables inside of their respective costmaps.
 For example, the following will load the static and obstacle layer plugins into the name `static_layer` and `obstacle_layer`, respectively:
 
 ```yaml
@@ -132,12 +132,12 @@ Make sure to change both the local and global costmaps.
 
 !!! note
 
-    Pluginlib plugins for other Navigation2 servers such as planning, behavior, and control can be set in this same way.
+    Pluginlib plugins for other Nav2 servers such as planning, behavior, and control can be set in this same way.
 
-### 4. Launch Navigation2
+### 4. Launch Nav2
 
-Follow the same process as in [Quickstart][quickstart] to launch a simulated robot in gazebo with Navigation2.
-Navigation2 is now using STVL as its 3D sensing costmap layer.
+Follow the same process as in [Quickstart][quickstart] to launch a simulated robot in gazebo with Nav2.
+Nav2 is now using STVL as its 3D sensing costmap layer.
 
 ### 5.  RVIZ
 

@@ -23,9 +23,20 @@ In the video above you can see Groot side-by-side with RViz and a test platform 
 
 There are tutorials available for both Groot and Groot2, with Groot2 being the newer version. Groot is used with BehaviorTree.CPP v3.x, while Groot2 is designed for v4.x.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Groot - Interacting with Behavior Trees][groot-interacting-with-behavior-trees]{ .md-button .md-button--primary }
-[Groot2 - Interacting with Behavior Trees][groot2-interacting-with-behavior-trees]{ .md-button .md-button--primary }
+- :material-file-tree: **Groot - Interacting with Behavior Trees**
+
+    ---
+    Visualize and monitor BTs with Groot v1.
+
+    [:octicons-arrow-right-24: Go][groot-interacting-with-behavior-trees]
+
+- :material-file-tree: **Groot2 - Interacting with Behavior Trees**
+
+    ---
+    Updated workflow with Groot v2.
+
+    [:octicons-arrow-right-24: Go][groot2-interacting-with-behavior-trees]
 
 </div>

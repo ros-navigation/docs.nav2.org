@@ -8,12 +8,35 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 <span class="section-title">Controller</span>
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[DWB Controller][dwb-controller]{ .md-button .md-button--primary }
-[XYTheta Iterator][xytheta-iterator]{ .md-button .md-button--primary }
-[Kinematic Parameters][kinematic-parameters]{ .md-button .md-button--primary }
-[Publisher][publisher]{ .md-button .md-button--primary }
+- :material-steering: **DWB Controller**
+
+    ---
+    Core DWB local planner parameters.
+
+    [:octicons-arrow-right-24: Go][dwb-controller]
+
+- :material-axis-arrow: **XYTheta Iterator**
+
+    ---
+    Velocity space sampling configuration.
+
+    [:octicons-arrow-right-24: Go][xytheta-iterator]
+
+- :material-cog: **Kinematic Parameters**
+
+    ---
+    Robot velocity and acceleration limits.
+
+    [:octicons-arrow-right-24: Go][kinematic-parameters]
+
+- :material-publish: **Publisher**
+
+    ---
+    Debug visualization publishers.
+
+    [:octicons-arrow-right-24: Go][publisher]
 
 </div>
 
@@ -21,10 +44,21 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 The plugins listed below are inside the `dwb_plugins` namespace.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[LimitedAccelGenerator][limited-accel-generator]{ .md-button .md-button--primary }
-[StandardTrajectoryGenerator][standard-trajectory-generator]{ .md-button .md-button--primary }
+- :material-speedometer: **LimitedAccelGenerator**
+
+    ---
+    Generates trajectories within acceleration limits.
+
+    [:octicons-arrow-right-24: Go][limited-accel-generator]
+
+- :material-chart-timeline: **StandardTrajectoryGenerator**
+
+    ---
+    Default trajectory sampling generator.
+
+    [:octicons-arrow-right-24: Go][standard-trajectory-generator]
 
 </div>
 
@@ -32,18 +66,77 @@ The plugins listed below are inside the `dwb_plugins` namespace.
 
 The trajectory critics listed below are inside the `dwb_critics` namespace.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[BaseObstacleCritic][base-obstacle-critic]{ .md-button .md-button--primary }
-[GoalAlignCritic][goal-align-critic]{ .md-button .md-button--primary }
-[GoalDistCritic][goal-dist-critic]{ .md-button .md-button--primary }
-[ObstacleFootprintCritic][obstacle-footprint-critic]{ .md-button .md-button--primary }
-[OscillationCritic][oscillation-critic]{ .md-button .md-button--primary }
-[PathAlignCritic][path-align-critic]{ .md-button .md-button--primary }
-[PathDistCritic][path-dist-critic]{ .md-button .md-button--primary }
-[PreferForwardCritic][prefer-forward-critic]{ .md-button .md-button--primary }
-[RotateToGoalCritic][rotate-to-goal-critic]{ .md-button .md-button--primary }
-[TwirlingCritic][twirling-critic]{ .md-button .md-button--primary }
+- :material-alert-circle: **BaseObstacleCritic**
+
+    ---
+    Penalizes trajectories near obstacles.
+
+    [:octicons-arrow-right-24: Go][base-obstacle-critic]
+
+- :material-target: **GoalAlignCritic**
+
+    ---
+    Scores alignment with the goal heading.
+
+    [:octicons-arrow-right-24: Go][goal-align-critic]
+
+- :material-map-marker-distance: **GoalDistCritic**
+
+    ---
+    Scores proximity to the goal position.
+
+    [:octicons-arrow-right-24: Go][goal-dist-critic]
+
+- :material-shoe-print: **ObstacleFootprintCritic**
+
+    ---
+    Checks full robot footprint against obstacles.
+
+    [:octicons-arrow-right-24: Go][obstacle-footprint-critic]
+
+- :material-sine-wave: **OscillationCritic**
+
+    ---
+    Penalizes oscillating back-and-forth motion.
+
+    [:octicons-arrow-right-24: Go][oscillation-critic]
+
+- :material-road: **PathAlignCritic**
+
+    ---
+    Scores alignment with the global path heading.
+
+    [:octicons-arrow-right-24: Go][path-align-critic]
+
+- :material-ruler: **PathDistCritic**
+
+    ---
+    Scores proximity to the global path.
+
+    [:octicons-arrow-right-24: Go][path-dist-critic]
+
+- :material-arrow-up: **PreferForwardCritic**
+
+    ---
+    Penalizes backward and lateral motion.
+
+    [:octicons-arrow-right-24: Go][prefer-forward-critic]
+
+- :material-rotate-right: **RotateToGoalCritic**
+
+    ---
+    Encourages in-place rotation to match goal heading.
+
+    [:octicons-arrow-right-24: Go][rotate-to-goal-critic]
+
+- :material-rotate-3d-variant: **TwirlingCritic**
+
+    ---
+    Penalizes unnecessary spinning during transit.
+
+    [:octicons-arrow-right-24: Go][twirling-critic]
 
 </div>
 

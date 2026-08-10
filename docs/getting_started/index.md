@@ -4,12 +4,41 @@ watermark: true
 
 # Getting Started { #getting-started }
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Quickstart][quickstart]{ .md-button .md-button--primary }
-[Build and Install][build-and-install]{ .md-button .md-button--primary }
-[Dev Container][dev-containers]{ .md-button .md-button--primary }
-[Navigation Concepts][navigation-concepts]{ .md-button .md-button--primary }
-[Nav2 Behavior Trees][nav2-behavior-trees]{ .md-button .md-button--primary }
+- :material-rocket-launch: **Quickstart**
+
+    ---
+    Launch Nav2 in simulation in under 5 minutes with Turtlebot.
+
+    [:octicons-arrow-right-24: Go][quickstart]
+
+- :material-hammer-wrench: **Build and Install**
+
+    ---
+    Binary packages, source builds, and Docker installation options.
+
+    [:octicons-arrow-right-24: Go][build-and-install]
+
+- :material-docker: **Dev Container**
+
+    ---
+    Pre-configured development environment with VS Code.
+
+    [:octicons-arrow-right-24: Go][dev-containers]
+
+- :material-head-lightbulb: **Navigation Concepts**
+
+    ---
+    Architecture overview: servers, costmaps, planners, controllers, and behavior trees.
+
+    [:octicons-arrow-right-24: Go][navigation-concepts]
+
+- :material-file-tree: **Nav2 Behavior Trees**
+
+    ---
+    Understanding and configuring Nav2's behavior tree orchestration.
+
+    [:octicons-arrow-right-24: Go][nav2-behavior-trees]
 
 </div>

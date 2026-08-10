@@ -282,7 +282,7 @@ Smac and Theta\* planners have a new parameter `terminal_checking_interval` whic
 
 ## Standardization of Plugin Naming with Double Colons (::)
 
-[PR #4220](https://github.com/ros-planning/navigation2/pull/4220) standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
+[PR #4220](https://github.com/ros-planning/navigation2/pull/4220) standardizes plugin naming across the Nav2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
 
 - Behavior Server: `nav2_behaviors::Spin`, `nav2_behaviors::BackUp`, `nav2_behaviors::DriveOnHeading`, `nav2_behaviors::Wait`, `nav2_behaviors::AssistedTeleop`
 - Planner Server: `nav2_navfn_planner::NavfnPlanner`, `nav2_smac_planner::SmacPlanner2D`, `nav2_smac_planner::SmacPlannerHybrid`, `nav2_theta_star_planner::ThetaStarPlanner`

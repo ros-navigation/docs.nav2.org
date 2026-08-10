@@ -31,18 +31,11 @@ To use Nav2, you'll first need to build or install ROS 2 and related development
 
 ## Nav2 Project
 
-!!! warning
-
-    The branch naming schema for Nav2 is organized by ROS distro, while the default branch for Rolling is `main`.
-
 Similarly, you can install the Nav2 project in different ways:
 
 === "Nav2 Released Distribution Binaries"
 
-    !!! warning
-        Nav2 does not currently release binaries on rolling, so it must be [build from source](#__tabbed_2_2).
-
-    Nav2 and its dependencies are released as binaries.
+    Nav2 and its dependencies are released as binaries for non-Rolling released distributions.
     You may install it via the following to get the latest stable released version:
 
     ```bash

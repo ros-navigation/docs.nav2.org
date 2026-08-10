@@ -415,4 +415,4 @@ The lookahead distance is sized from the robot's current speed using `d = v² / 
 
 !!! note
 
-    For another example and additional context, check the Navigation2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)
+    For another example and additional context, check the Nav2 tutorials [https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo](https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo)

@@ -224,27 +224,97 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 ## Plugin Parameters
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Static Layer Parameters][static-layer-parameters]{ .md-button .md-button--primary }
-[Inflation Layer Parameters][inflation-layer-parameters]{ .md-button .md-button--primary }
-[Legacy Inflation Layer Parameters][legacy-inflation-layer-parameters]{ .md-button .md-button--primary }
-[Asymmetric Inflation Layer Parameters][asymmetric-inflation-layer-parameters]{ .md-button .md-button--primary }
-[Obstacle Layer Parameters][obstacle-layer-parameters]{ .md-button .md-button--primary }
-[Voxel Layer Parameters][voxel-layer-parameters]{ .md-button .md-button--primary }
-[Range Sensor Parameters][range-sensor-parameters]{ .md-button .md-button--primary }
-[Denoise Layer Parameters][denoise-layer-parameters]{ .md-button .md-button--primary }
-[Plugin Container Layer Parameters][plugin-container-layer-parameters]{ .md-button .md-button--primary }
+- :material-map: **Static Layer**
+
+    ---
+    Loads the static map as a base costmap layer.
+
+    [:octicons-arrow-right-24: Go][static-layer-parameters]
+
+- :material-circle-expand: **Inflation Layer**
+
+    ---
+    Expands obstacles by inflation radius for safety margins.
+
+    [:octicons-arrow-right-24: Go][inflation-layer-parameters]
+
+- :material-circle-expand: **Legacy Inflation Layer**
+
+    ---
+    Original inflation implementation for backward compatibility.
+
+    [:octicons-arrow-right-24: Go][legacy-inflation-layer-parameters]
+
+- :material-circle-half-full: **Asymmetric Inflation Layer**
+
+    ---
+    Directional inflation with different radii per side.
+
+    [:octicons-arrow-right-24: Go][asymmetric-inflation-layer-parameters]
+
+- :material-radar: **Obstacle Layer**
+
+    ---
+    Marks obstacles from sensor data.
+
+    [:octicons-arrow-right-24: Go][obstacle-layer-parameters]
+
+- :material-cube-scan: **Voxel Layer**
+
+    ---
+    3D obstacle detection using pointclouds.
+
+    [:octicons-arrow-right-24: Go][voxel-layer-parameters]
+
+- :material-signal-distance-variant: **Range Sensor**
+
+    ---
+    Obstacle marking from sonar and IR range sensors.
+
+    [:octicons-arrow-right-24: Go][range-sensor-parameters]
+
+- :material-blur: **Denoise Layer**
+
+    ---
+    Filters noise-induced false obstacles from the costmap.
+
+    [:octicons-arrow-right-24: Go][denoise-layer-parameters]
+
+- :material-layers: **Plugin Container Layer**
+
+    ---
+    Groups multiple costmap layers into a single composable unit.
+
+    [:octicons-arrow-right-24: Go][plugin-container-layer-parameters]
 
 </div>
 
 ## Costmap Filters Parameters
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Keepout Filter Parameters][keepout-filter-parameters]{ .md-button .md-button--primary }
-[Speed Filter Parameters][speed-filter-parameters]{ .md-button .md-button--primary }
-[Binary Filter Parameters][binary-filter-parameters]{ .md-button .md-button--primary }
+- :material-cancel: **Keepout Filter**
+
+    ---
+    Marks restricted zones as impassable.
+
+    [:octicons-arrow-right-24: Go][keepout-filter-parameters]
+
+- :material-speedometer-slow: **Speed Filter**
+
+    ---
+    Enforces speed limits in designated regions.
+
+    [:octicons-arrow-right-24: Go][speed-filter-parameters]
+
+- :material-toggle-switch: **Binary Filter**
+
+    ---
+    Applies binary on/off spatial constraints.
+
+    [:octicons-arrow-right-24: Go][binary-filter-parameters]
 
 </div>
 

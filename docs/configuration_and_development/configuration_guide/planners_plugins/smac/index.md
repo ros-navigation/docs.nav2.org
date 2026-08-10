@@ -9,11 +9,28 @@ It is important to know that in June 2021 and December 2021, the package receive
 
 The plugins listed below are inside the `nav2_smac_planner` package. See the pages for individual configuration information.
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Smac 2D Planner][smac-2d-planner]{ .md-button .md-button--primary }
-[Smac Hybrid-A\* Planner][smac-hybrid-a-star-planner]{ .md-button .md-button--primary }
-[Smac State Lattice Planner][smac-state-lattice-planner]{ .md-button .md-button--primary }
+- :material-grid: **Smac 2D Planner**
+
+    ---
+    Grid-based A* for circular or omnidirectional robots.
+
+    [:octicons-arrow-right-24: Go][smac-2d-planner]
+
+- :material-road-variant: **Smac Hybrid-A\* Planner**
+
+    ---
+    SE2 planner for ackermann and car-like robots.
+
+    [:octicons-arrow-right-24: Go][smac-hybrid-a-star-planner]
+
+- :material-graphql: **Smac State Lattice Planner**
+
+    ---
+    Lattice planner supporting arbitrary robot kinematics.
+
+    [:octicons-arrow-right-24: Go][smac-state-lattice-planner]
 
 </div>
 

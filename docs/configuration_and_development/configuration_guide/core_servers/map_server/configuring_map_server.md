@@ -27,3 +27,14 @@ Type: `string` Default: `"map"`
 Type: `string` Default: `"disabled"`
 
 :   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
+
+## Example
+
+```yaml
+map_server:
+  ros__parameters:
+    yaml_filename: "map.yaml"
+    topic_name: "map"
+    frame_id: "map"
+    introspection_mode: "disabled"
+```

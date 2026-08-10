@@ -233,7 +233,7 @@ It may ask you if you want to kill some threads at the end, say yes.
 
 The [backward-cpp](https://github.com/bombela/backward-cpp) library provides beautiful stack traces, and the [backward_ros](https://github.com/pal-robotics/backward_ros/tree/foxy-devel) wrapper simplifies its integration.
 
-Navigation2 packages come pre-compiled with backward_ros, so you can automatically get a backtrace when a process crashes. This changes the logs to include a backtrace when the process crashes. Instead of getting a simple error log such as:
+Nav2 packages come pre-compiled with backward_ros, so you can automatically get a backtrace when a process crashes. This changes the logs to include a backtrace when the process crashes. Instead of getting a simple error log such as:
 
 ```bash
 [planner_server-13] [INFO] [1754377648.634265021] [planner_server]: Computing path to goal....

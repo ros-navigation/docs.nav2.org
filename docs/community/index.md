@@ -4,11 +4,34 @@ watermark: true
 
 # Community { #community }
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-[Getting Involved][getting-involved]{ .md-button .md-button--primary }
-[Maintainer Docs][maintainer-docs]{ .md-button .md-button--primary }
-[Roadmaps][roadmaps]{ .md-button .md-button--primary }
-[ROSCon Talks][roscon-talks]{ .md-button .md-button--primary }
+- :material-account-group: **Getting Involved**
+
+    ---
+    How to contribute code, docs, and community support.
+
+    [:octicons-arrow-right-24: Go][getting-involved]
+
+- :material-account-wrench: **Maintainer Docs**
+
+    ---
+    Internal processes for project maintainers.
+
+    [:octicons-arrow-right-24: Go][maintainer-docs]
+
+- :material-road: **Roadmaps**
+
+    ---
+    Current development priorities and feature planning.
+
+    [:octicons-arrow-right-24: Go][roadmaps]
+
+- :material-presentation: **ROSCon Talks**
+
+    ---
+    Nav2 presentations and talks at ROSCon conferences.
+
+    [:octicons-arrow-right-24: Go][roscon-talks]
 
 </div>

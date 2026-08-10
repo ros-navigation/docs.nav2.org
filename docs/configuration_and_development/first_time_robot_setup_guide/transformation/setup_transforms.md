@@ -76,7 +76,7 @@ And that's it for this short demo - we were able to successfully publish a trans
 
     If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official [TF2 Documentation](https://wiki.ros.org/tf2/Tutorials)
 
-## Transforms in Navigation2
+## Transforms in Nav2
 
 There are two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.
 
@@ -87,7 +87,7 @@ To quickly summarize REP 105, this document specifies the naming conventions and
 
 REP 103, on the other hand, discusses some standard units of measure and other related conventions to keep integration issues between different ROS packages to a minimum. The basic overview is that frames are defined using the right hand rule, with Z up and X forward, and units should be standard SI units.
 
-Now let's move on to some specifics for the Navigation2 package to function correctly. Nav2 requires the following transformations to be published in ROS:
+Now let's move on to some specifics for the Nav2 package to function correctly. Nav2 requires the following transformations to be published in ROS:
 
 1. `map` => `odom`
 2. `odom` => `base_link`

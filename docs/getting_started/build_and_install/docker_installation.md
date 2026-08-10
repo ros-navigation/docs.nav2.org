@@ -2,7 +2,7 @@
 
 !!! tip
 
-    For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using [Dev Containers][dev-containers]!
+    For a *repeatable*, *reproducible* and *streamlined* development experience, check out [Dev Containers][dev-containers]!
 
 ## Docker Container Images
 
@@ -14,10 +14,6 @@ Building Nav2 using Docker container images provides a repeatable and reproducib
 
     - [Docker Engine](https://docs.docker.com/engine/install)
     - [Dockerfile reference](https://docs.docker.com/engine/reference/builder)
-
-!!! warning
-
-    The branch naming schema for Nav2 is organized by ROS distro, while the default branch for Rolling is `main`.
 
 Once your system is setup, you can build the Nav2 Dockerfile from the root of the repo:
 
