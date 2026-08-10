@@ -20,6 +20,7 @@ Nav2 Tutorials
    docs/navigation2_dynamic_point_following.rst
    docs/navigation2_with_keepout_filter.rst
    docs/navigation2_with_speed_filter.rst
+   docs/navigation2_with_zone_parameter_filter.rst
    docs/using_docking.rst
    docs/using_shim_controller.rst
    docs/adding_smoother.rst
