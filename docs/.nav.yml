@@ -25,21 +25,21 @@ nav:
       - Migration Guides: configuration_and_development/migration_guides/index.md
       - API Docs: https://api.nav2.org/
     - Community:
-      - community/index.md
-      - Getting Involved: community/getting_involved.md
-      - Maintainer Docs: community/maintainer_docs/index.md
-      - Roadmaps: community/roadmaps.md
-      - ROSCon Talks: community/roscon_talks.md
+      - shared/mkdocs.nav2.org/docs/community/index.md
+      - Getting Involved: shared/mkdocs.nav2.org/docs/community/getting_involved.md
+      - Maintainer Docs: shared/mkdocs.nav2.org/docs/community/maintainer_docs/index.md
+      - Roadmaps: shared/mkdocs.nav2.org/docs/community/roadmaps.md
+      - ROSCon Talks: shared/mkdocs.nav2.org/docs/community/roscon_talks.md
     - Robots Using:
-      - robots_using/index.md
+      - shared/mkdocs.nav2.org/docs/robots_using/index.md
     - About & Contact:
-      - about_and_contact/index.md
-      - Related Projects: about_and_contact/related_projects.md
-      - Citations: about_and_contact/citations.md
+      - shared/mkdocs.nav2.org/docs/about_and_contact/index.md
+      - Related Projects: shared/mkdocs.nav2.org/docs/about_and_contact/related_projects.md
+      - Citations: shared/mkdocs.nav2.org/docs/about_and_contact/citations.md
   - Getting Started: getting_started
   - Tutorials: tutorials
   - Configuration & Development: configuration_and_development
-  - Community: community
+  - Community: shared/mkdocs.nav2.org/docs/community
   - Robots Using:
-    - robots_using/index.md
-  - About & Contact: about_and_contact
+    - shared/mkdocs.nav2.org/docs/robots_using/index.md
+  - About & Contact: shared/mkdocs.nav2.org/docs/about_and_contact

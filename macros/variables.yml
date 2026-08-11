@@ -15,3 +15,11 @@ github_repositories:
       - "/nav2_behavior_tree/nav2_tree_nodes.xml"
       - "/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
       - "/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
+  mkdocs.nav2.org:
+    owner: "ros-navigation"
+    branch: "rolling" # keep unchanged between distributions
+    destination_dir: "docs/shared"
+    data_to_clone:
+      - "/docs/community"
+      - "/docs/robots_using"
+      - "/docs/about_and_contact"
