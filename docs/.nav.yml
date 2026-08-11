@@ -3,7 +3,7 @@ nav:
     # The Home page displays the first two levels of the navigation structure
     # with manually specified links to each page for quick access.
     # Update this section whenever the documentation directory structure or page order changes.
-    - home/index.md
+    - index.md
     - Getting Started:
       - getting_started/index.md
       - Quickstart: getting_started/quickstart/quickstart.md
