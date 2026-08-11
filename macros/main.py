@@ -392,7 +392,9 @@ def define_env(env):
 
     for repo_name, repo_info in github_repos.items():
 
-        local_repo_path = cache_dir / Path(repo_name)
+        destination_dir = Path(repo_info['destination_dir'])
+
+        local_repo_path = destination_dir / Path(repo_name)
         if local_repo_path.exists() \
                 and repo_info['branch'] == _get_git_branch_name(local_repo_path) \
                 and _is_git_workdir_synced(local_repo_path):
@@ -408,7 +410,7 @@ def define_env(env):
                 owner=repo_info['owner'],
                 branch=repo_info['branch'],
                 data_to_clone=repo_info['data_to_clone'],
-                clone_dir=cache_dir
+                clone_dir=destination_dir
             )
         except subprocess.CalledProcessError as exc:
             stderr = getattr(exc, 'stderr', None)
@@ -419,7 +421,7 @@ def define_env(env):
                     repo_name=repo_name,
                     owner=repo_info['owner'],
                     branch=repo_info['branch'],
-                    clone_dir=cache_dir
+                    clone_dir=destination_dir
                 )
             except (subprocess.CalledProcessError, ValueError, OSError) as exc:
                 stderr = getattr(exc, 'stderr', None)

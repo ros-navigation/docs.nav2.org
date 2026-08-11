@@ -135,3 +135,4 @@ exclude_docs: |
   adaptive_tolerance_goal_checker_illustration.py
   CancelCoverage.md
   ComputeCoveragePath.md
+  shared/README.md

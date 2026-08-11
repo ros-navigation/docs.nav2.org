@@ -1,5 +1,9 @@
 venv
 site
 __pycache__
+
 macros/cache/*
 !macros/cache/README.md
+
+docs/shared/*
+!docs/shared/README.md
