@@ -10,7 +10,7 @@ The Collision Detector works similarly to the Collision Monitor, but does not af
 
 The nodes listed below are inside the `nav2_collision_monitor` package. See the pages for individual configuration information.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-shield-alert: **Collision Monitor Node**
 

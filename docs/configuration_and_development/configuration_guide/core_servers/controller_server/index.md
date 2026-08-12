@@ -152,7 +152,7 @@ Type: `double` Default: `0.1`
 
 The plugins listed below are inside the `nav2_controller` namespace.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-progress-check: **SimpleProgressChecker**
 

@@ -2,7 +2,7 @@
 
 Nav2 Tutorials
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-robot: **Navigating with a Physical Turtlebot 3**
 

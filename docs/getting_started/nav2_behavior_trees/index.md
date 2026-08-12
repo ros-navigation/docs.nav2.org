@@ -1,6 +1,6 @@
 # Nav2 Behavior Trees { #nav2-behavior-trees }
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-book-open-variant: **Introduction To Nav2 Specific Nodes**
 
@@ -20,7 +20,7 @@
 
 <span class="section-title">Provided Nav2 Behavior Trees</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-map-marker: **Navigate To Pose**
 

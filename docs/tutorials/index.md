@@ -4,7 +4,7 @@ watermark: true
 
 # Tutorials { #tutorials }
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-puzzle-edit: **Plugin Tutorials**
 

@@ -4,7 +4,7 @@ watermark: true
 
 # Configuration & Development { #configuration-and-development }
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-robot-outline: **First-Time Robot Setup Guide**
 

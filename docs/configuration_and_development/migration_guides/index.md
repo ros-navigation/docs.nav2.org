@@ -2,7 +2,7 @@
 
 Nav2 guides for migration between distributions.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-swap-horizontal: **Dashing to Eloquent**
 

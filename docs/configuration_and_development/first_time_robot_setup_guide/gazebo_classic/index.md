@@ -4,7 +4,7 @@ This guide covers setting up Nav2 with Gazebo Classic simulator, used with ROS 2
 
 Follow these tutorials in order to set up your robot for Nav2:
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-axis-arrow: **Setting Up Transformations**
 
