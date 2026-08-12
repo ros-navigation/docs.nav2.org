@@ -10,6 +10,7 @@ github_repositories:
   navigation2:
     owner: "ros-navigation"
     branch: "main" # Rolling
+    destination_dir: "macros/cache"
     data_to_clone:
       - "/nav2_behavior_tree/nav2_tree_nodes.xml"
       - "/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
