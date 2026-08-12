@@ -17,7 +17,7 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 
 ## Provided Tools
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-map-marker-plus: **Using the Nav2 Route Tool**
 

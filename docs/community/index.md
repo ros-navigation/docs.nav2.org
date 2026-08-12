@@ -4,7 +4,7 @@ watermark: true
 
 # Community { #community }
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-account-group: **Getting Involved**
 

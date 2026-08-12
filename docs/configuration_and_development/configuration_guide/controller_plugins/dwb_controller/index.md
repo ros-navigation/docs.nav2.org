@@ -8,7 +8,7 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 <span class="section-title">Controller</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-steering: **DWB Controller**
 
@@ -44,7 +44,7 @@ modified for ROS 2 using the Dynamic Window Approach.
 
 The plugins listed below are inside the `dwb_plugins` namespace.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-speedometer: **LimitedAccelGenerator**
 
@@ -66,7 +66,7 @@ The plugins listed below are inside the `dwb_plugins` namespace.
 
 The trajectory critics listed below are inside the `dwb_critics` namespace.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-alert-circle: **BaseObstacleCritic**
 

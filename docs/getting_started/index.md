@@ -4,7 +4,7 @@ watermark: true
 
 # Getting Started { #getting-started }
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-rocket-launch: **Quickstart**
 

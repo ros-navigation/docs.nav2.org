@@ -5,7 +5,7 @@ the best navigation performance.
 
 <span class="section-title">Core Servers</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-graph: **Behavior Server**
 
@@ -109,7 +109,7 @@ the best navigation performance.
 
 <span class="section-title">Planners Plugins</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-grid: **NavFn Planner**
 
@@ -136,7 +136,7 @@ the best navigation performance.
 
 <span class="section-title">Controller Plugins</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-axis-arrow: **DWB Controller**
 
@@ -177,7 +177,7 @@ the best navigation performance.
 
 <span class="section-title">Smoother Plugins</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-vector-curve: **Constrained Smoother**
 
@@ -204,7 +204,7 @@ the best navigation performance.
 
 <span class="section-title">Others</span>
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-crosshairs-gps: **AMCL**
 

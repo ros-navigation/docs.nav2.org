@@ -2,7 +2,7 @@
 
 You can install the Nav2 project in two ways: locally on your machine or using Docker.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-desktop-classic: **Local Installation**
 

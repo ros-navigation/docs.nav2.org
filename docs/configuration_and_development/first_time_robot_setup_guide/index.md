@@ -23,7 +23,7 @@ To guide you through the first-time setup of your robot, we will be tackling the
 
 Follow these tutorials in order to set up your robot for Nav2:
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-axis-arrow: **Setting Up Transformations**
 

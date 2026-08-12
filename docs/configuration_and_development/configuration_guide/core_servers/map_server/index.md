@@ -4,7 +4,7 @@ Source code on [Github](https://github.com/ros-navigation/navigation2/tree/main/
 
 The Map server package implements various components for handling grid maps, including loading, saving, and publishing maps and their metadata. Currently the following components are supported in Nav2:
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-map: **Map Server**
 

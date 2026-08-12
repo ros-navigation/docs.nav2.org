@@ -3,7 +3,7 @@
 This page is a set of maintainer procedures and documentation used for maintenance of Nav2.
 These are published publicly for visibility and as a resource for the maintainer community.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-package-variant: **ROS Distribution Release Process**
 

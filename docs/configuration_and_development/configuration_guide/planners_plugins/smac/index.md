@@ -9,7 +9,7 @@ It is important to know that in June 2021 and December 2021, the package receive
 
 The plugins listed below are inside the `nav2_smac_planner` package. See the pages for individual configuration information.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-grid: **Smac 2D Planner**
 

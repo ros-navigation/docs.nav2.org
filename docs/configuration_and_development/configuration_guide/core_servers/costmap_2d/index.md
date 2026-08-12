@@ -224,7 +224,7 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 ## Plugin Parameters
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-map: **Static Layer**
 
@@ -293,7 +293,7 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
 ## Costmap Filters Parameters
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-cancel: **Keepout Filter**
 

@@ -70,7 +70,7 @@ Type: `string` Default: `"wait_at_waypoint"`
 
 The plugins listed below are inside the `nav2_waypoint_follower` namespace.
 
-<div class="grid cards" markdown>
+<div class="grid cards bottom-align" markdown>
 
 - :material-timer-sand: **WaitAtWaypoint**
 
