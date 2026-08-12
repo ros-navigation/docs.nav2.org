@@ -41,8 +41,19 @@
     display: flex;
     align-items: center;
     height: 100%;
+    border-radius: .4rem;
+    padding: .8rem 2rem;
     background-color: var(--button-primary-bg-color);
     border-color: var(--button-primary-bg-color);
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: var(--color-nav2-light-blue);
+      background-color: var(--color-nav2-light-blue);
+      box-shadow: 0 2px 2px #00000034;
+      transform: translateY(-1px);
+      transition: position 0.2s ease;
+    }
   }
 }
 
