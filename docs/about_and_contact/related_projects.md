@@ -1,3 +1,7 @@
+---
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+---
+
 # Related Projects { #related-projects }
 
 This is a community maintained list of related repositories and projects to Navigation2.

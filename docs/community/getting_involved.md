@@ -1,3 +1,7 @@
+---
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+---
+
 # Getting Involved { #getting-involved }
 
 As an open-source project, we welcome and encourage the community to

@@ -1,3 +1,7 @@
+---
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+---
+
 # ROS Distribution Release Process { #ros-distribution-release-process }
 
 This is the instructions for releasing a new Nav2 version for a ROS distribution release.

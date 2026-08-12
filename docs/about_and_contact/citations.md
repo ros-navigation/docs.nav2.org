@@ -1,3 +1,7 @@
+---
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+---
+
 # Citations { #citations }
 
 If you use the navigation framework, an algorithm from this repository, or ideas from it

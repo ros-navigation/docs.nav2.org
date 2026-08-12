@@ -1,3 +1,7 @@
+---
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+---
+
 # Docs Distribution Release Process { #docs-distribution-release-process }
 
 This page outlines the main steps to add a new documentation version following a Nav2 distribution release.

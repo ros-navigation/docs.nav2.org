@@ -4,7 +4,7 @@ site_name: ""
 # site_url: https://docs.nav2.org/ # TODO: Uncomment after documentation release
 repo_name: ros-navigation/navigation2
 repo_url: https://github.com/ros-navigation/navigation2
-edit_uri: https://github.com/ros-navigation/mk.docs.nav2.org/blob/rolling/docs/ # TODO: Update link after documentation release
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/ # TODO: Update link after documentation release
 copyright: "&copy; Copyright 2026, Open Navigation LLC."
 
 theme:

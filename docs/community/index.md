@@ -1,5 +1,6 @@
 ---
 watermark: true
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
 ---
 
 # Community { #community }

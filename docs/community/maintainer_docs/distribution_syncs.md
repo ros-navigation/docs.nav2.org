@@ -1,3 +1,7 @@
+---
+edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+---
+
 # ROS Distribution Sync Process { #ros-distribution-sync-process }
 
 This is the instructions for updating a Nav2 version in a ROS distribution sync.
