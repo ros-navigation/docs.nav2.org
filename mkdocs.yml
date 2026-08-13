@@ -1,7 +1,7 @@
 # Keep site_name empty since the header title displays alongside the logo as a single image
 # Associated browser tab's title is overridden in the htmltitle block of overrides/main.html
 site_name: ""
-# site_url: https://docs.nav2.org/ # TODO: Uncomment after documentation release
+site_url: https://ros-navigation.github.io/mkdocs.nav2.org/ # TODO: Update domain name after documentation release
 repo_name: ros-navigation/navigation2
 repo_url: https://github.com/ros-navigation/navigation2
 edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/ # TODO: Update link after documentation release
