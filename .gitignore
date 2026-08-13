@@ -5,5 +5,8 @@ __pycache__
 macros/cache/*
 !macros/cache/README.md
 
-docs/shared/*
-!docs/shared/README.md
+# For non-rolling branches only
+docs/index.md
+docs/community
+docs/robots_using
+docs/about_and_contact
