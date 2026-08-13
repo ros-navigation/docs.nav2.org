@@ -46,6 +46,9 @@ plugins:
   - mike        # Docs: https://github.com/jimporter/mike#configuration
   - search      # Docs: https://squidfunk.github.io/mkdocs-material/plugins/search/
 
+hooks:
+  - hooks/replace_edit_uri.py
+
 extra:
   ros2_distro: rolling
   generator: false

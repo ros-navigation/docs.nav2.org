@@ -383,27 +383,24 @@ def _extract_doxygen_code_block(
     return code_lines
 
 
-def define_env(env):
-    """This is the hook for the variables, macros and filters."""
-    cache_dir = Path(env.variables['cache_dir'])
-    nav2_bt_xml_file_path = Path(env.variables['nav2_bt_xml_file_path'])
-    github_repos = env.variables['github_repositories']
-    cached_bt_xml_file_path = cache_dir / nav2_bt_xml_file_path
-
+def _sync_github_repositories(github_repos: dict) -> None:
+    """Ensure each configured repo is cloned locally and up to date."""
     for repo_name, repo_info in github_repos.items():
-
         destination_dir = Path(repo_info['destination_dir'])
-
         local_repo_path = destination_dir / Path(repo_name)
         if local_repo_path.exists() \
-                and repo_info['branch'] == _get_git_branch_name(local_repo_path) \
-                and _is_git_workdir_synced(local_repo_path):
+                and  repo_info['branch'] == _get_git_branch_name(local_repo_path) \
+                and  _is_git_workdir_synced(local_repo_path):
             logger.info(
                 f'Cached Git repository "{local_repo_path}" '
-                f'is synced with remote GitHub repository. '
-                f'Skipping clone.'
+                'is synced with remote GitHub repository. '
+                'Skipping clone.'
             )
             continue
+
+        logger.info(
+            f'Cached Git repository "{local_repo_path}" is out of date.'
+        )
         try:
             _clone_sparse_github_data(
                 repo_name=repo_name,
@@ -430,6 +427,41 @@ def define_env(env):
         except (ValueError, OSError) as exc:
             logger.error(f'Failed to clone GitHub data: {exc}')
             sys.exit(1)
+
+
+def _create_symlinks(github_repos: dict) -> None:
+    """Create configured symlinks if available."""
+    for _, repo_info in github_repos.items():
+        for target, source in repo_info.get('symlinks', {}).items():
+            cwd = Path.cwd()
+            symlink_target = cwd / target
+            symlink_source = cwd / source
+            if symlink_target.is_symlink():
+                logger.info('Symlink already exists:')
+                logger.info(f'    Source: {symlink_target.resolve()}')
+                logger.info(f'    Target: {symlink_target}')
+                continue
+            try:
+                symlink_target.symlink_to(symlink_source)
+                logger.info('Created symlink:')
+                logger.info(f'    Source: {symlink_target.resolve()}')
+                logger.info(f'    Target: {symlink_target}')
+            except OSError as exc:
+                logger.error(
+                    f'Failed to create symlink: {exc}'
+                )
+                sys.exit(1)
+
+
+def define_env(env):
+    """This is the hook for the variables, macros and filters."""
+    cache_dir = Path(env.variables['cache_dir'])
+    nav2_bt_xml_file_path = Path(env.variables['nav2_bt_xml_file_path'])
+    cached_bt_xml_file_path = cache_dir / nav2_bt_xml_file_path
+    github_repos = env.variables['github_repositories']
+
+    _sync_github_repositories(github_repos)
+    _create_symlinks(github_repos)
 
     try:
         bt_xml_content = ET.parse(cached_bt_xml_file_path)
