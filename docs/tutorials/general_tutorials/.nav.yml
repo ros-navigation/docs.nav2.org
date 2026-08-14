@@ -12,6 +12,7 @@ nav:
   - Dynamic Object Following: navigation2_dynamic_point_following/navigation2_dynamic_point_following.md
   - Navigating with Keepout Zones: navigation2_with_keepout_filter/navigation2_with_keepout_filter.md
   - Navigating with Speed Limits: navigation2_with_speed_filter/navigation2_with_speed_filter.md
+  - Navigating with Zone Parameter Overrides: navigation2_with_zone_parameter_filter.md
   - Using Docking Server: using_docking.md
   - Using Rotation Shim Controller: using_shim_controller.md
   - Adding a Smoother to a BT: adding_smoother/adding_smoother.md

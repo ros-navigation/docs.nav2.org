@@ -88,6 +88,13 @@ Nav2 Tutorials
 
     [:octicons-arrow-right-24: Go][navigating-with-speed-limits]
 
+- :material-set-split: **Navigating with Zone Parameter Overrides**
+
+    ---
+    Set ROS parameters based on the marked zones on the map.
+
+    [:octicons-arrow-right-24: Go][navigating-with-zone-parameter-overrides]
+
 - :material-ev-plug-type2: **Using Docking Server**
 
     ---

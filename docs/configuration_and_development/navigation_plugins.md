@@ -73,17 +73,19 @@ For tutorials on creating your own plugins, please see:
 
 <div class="center-table" markdown>
 
-| Plugin Name          | Creator           | Description                                                        |
-|----------------------|-------------------|--------------------------------------------------------------------|
-| [Keepout Filter][]   | Alexey Merzlyakov | Maintains keep-out/safety zones and preferred lanes for moving     |
-| [Speed Filter][]     | Alexey Merzlyakov | Limits maximum velocity of robot in speed restriction areas        |
-| [Binary Filter][]    | Alexey Merzlyakov | Enables binary (boolean) mask behavior to trigger actions          |
+| Plugin Name               | Creator           | Description                                                                            |
+|---------------------------|-------------------|----------------------------------------------------------------------------------------|
+| [Keepout Filter][]        | Alexey Merzlyakov | Maintains keep-out/safety zones and preferred lanes for moving                         |
+| [Speed Filter][]          | Alexey Merzlyakov | Limits maximum velocity of robot in speed restriction areas                            |
+| [Binary Filter][]         | Alexey Merzlyakov | Enables binary (boolean) mask behavior to trigger actions                              |
+| [Zone Parameter Filter][] | Akihiko Komada    | Applies a configured set of ROS parameters based on the mask value at the robot's pose |
 
 </div>
 
 [Keepout Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
 [Speed Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
 [Binary Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
+[Zone Parameter Filter]: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/zone_parameter_filter.cpp
 
 ## Controllers
 

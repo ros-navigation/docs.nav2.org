@@ -14,6 +14,7 @@ Type: `int` Default: `0`
     - `1`: speed filter, speed limit is specified in % of maximum speed
     - `2`: speed filter, speed limit is specified in absolute value (m/s)
     - `3`: binary filter
+    - `4`: zone parameter filter
 
 ### **`filter_info_topic`**
 

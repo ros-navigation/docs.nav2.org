@@ -316,6 +316,13 @@ When the `plugins` parameter is not overridden, the following default plugins ar
 
     [:octicons-arrow-right-24: Go][binary-filter-parameters]
 
+- :material-set-split: **Zone Parameter Filter**
+
+    ---
+    Sets zone-based ROS parameters.
+
+    [:octicons-arrow-right-24: Go][zone-parameter-filter-parameters]
+
 </div>
 
 ## Example
