@@ -166,6 +166,12 @@ Type: `bool` Default: `false`
 
 :   Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
 
+### **`open_loop`**
+
+Type: `bool` Default: `false`
+
+:   Whether to use last command velocity or use odometry for MPPI initial state estimation. When enable, use last command velocity for MPPI initial state estimation.
+
 ## Trajectory Visualization
 
 ### **`trajectory_step`**
