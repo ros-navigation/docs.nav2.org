@@ -3,7 +3,7 @@
 In this guide, we will be looking at the necessary transforms required by Nav2. These transforms allow Nav2 to interpret information coming in from various sources, such as sensors and odometry, by transforming them to the coordinate frames for use. Below is what a full transform tree for a robot looks like but we'll start with something much more simpler.
 
 <figure markdown="span">
-  ![](images/tf_full_tree.png)
+  ![](assets/tf_full_tree.png)
 </figure>
 
 For this tutorial, we will first provide a brief introduction to transforms in ROS. Second, we will be working on a simple command-line demo of a TF2 static publisher to see it in action. Lastly, we will outline the necessary transforms that need to be published for Nav2 to function.
@@ -23,7 +23,7 @@ At this point, let's assume that we have some data from the laser in the form of
 Now, suppose we want to take this data and use it to help the mobile base avoid obstacles in the world. To do this successfully, we need a way to transform the laser scan we've received from the `base_laser` frame to the  `base_link` frame. In essence, we need to define a relationship between the `base_laser` and  `base_link` coordinate frames.
 
 <figure markdown="span">
-  ![](images/simple_robot.png)
+  ![](assets/simple_robot.png)
 </figure>
 
 In defining this relationship, let us assume that the only data we have is that the laser is mounted 10cm forward and 20cm above the center point of the mobile base. This gives us a translational offset that relates the  `base_link` frame to the `base_laser` frame. Specifically, we know that to get data from the  `base_link` frame to the `base_laser` frame, we must apply a translation of (x: 0.1m, y: 0.0m, z: 0.2m), and transversely, to get data from the `base_laser` frame to the  `base_link` frame, we must apply the opposite translation (x: -0.1m, y: 0.0m, z: -0.20m).
@@ -33,7 +33,7 @@ We could choose to manage this relationship ourselves, meaning to store and appl
 To define and store the relationship between the  `base_link` and `base_laser` frames using TF2, we need to add them to a transform tree. Conceptually, each node in the transform tree corresponds to a coordinate frame, and each edge corresponds to the transform that needs to be applied to move from the current node to its child. TF2 uses a tree structure to guarantee that there is only a single traversal that links any two coordinate frames together, and assumes that all edges in the tree are directed from parent to child nodes.
 
 <figure markdown="span">
-  ![](images/tf_robot.png)
+  ![](assets/tf_robot.png)
 </figure>
 
 To create a transform tree for our simple example, we'll create two nodes: one for the  `base_link` coordinate frame and one for the `base_laser` coordinate frame. To create the edge between them, we first need to decide which node will be the parent and which will be the child. Remember — this distinction is important because TF2 assumes that all transforms move from parent to child.

@@ -542,7 +542,7 @@ ros2 launch sam_bot_description display.launch.py
 Gazebo should launch and you should see a 3D model of `sam_bot`:
 
 <figure markdown="span">
-  ![](images/gazebo_sam_bot.png){ width="50%" }
+  ![](assets/gazebo_sam_bot.png){ width="50%" }
 </figure>
 
 To see the active topics in the system, open a new terminal and execute:

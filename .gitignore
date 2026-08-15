@@ -7,8 +7,7 @@ macros/cache/*
 
 # For non-rolling branches only
 docs/index.md
-docs/images
-docs/videos
+docs/assets
 docs/community
 docs/robots_using
 docs/about_and_contact

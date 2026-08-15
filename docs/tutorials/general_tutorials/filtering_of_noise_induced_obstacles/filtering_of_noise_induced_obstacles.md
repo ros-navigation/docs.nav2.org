@@ -1,7 +1,7 @@
 # Filtering of Noise-Induced Obstacles { #filtering-of-noise-induced-obstacles }
 
 <figure markdown="span">
-  ![](images/title.png){ width="100%" }
+  ![](assets/title.png){ width="100%" }
 </figure>
 
 ## Overview
@@ -90,7 +90,7 @@ It apply [erosion](https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatatio
 White color of the kernel pixel means to use the value, black means to ignore it.
 
 <figure markdown="span">
-  ![](images/3x3_kernels.png){ width="222px" }
+  ![](assets/3x3_kernels.png){ width="222px" }
 </figure>
 
 As a result of erosion function the neighbors image is created. Each possible position of the kernel on the costmap corresponds to one pixel of the neighbors image. The pixel value of this image is equal to the maximum of 4/8 costmap pixels corresponding to the white pixels of the mask.
@@ -101,7 +101,7 @@ This process is illustrated below. On the left side of the image is a costmap, o
 Obstacles marked at the end of the animation will be removed.
 
 <figure markdown="span">
-  ![](images/dilate.gif){ width="600px" }
+  ![](assets/dilate.gif){ width="600px" }
 </figure>
 
 When parameter `minimal_group_size` > 2, the second algorithm is executed.
@@ -117,5 +117,5 @@ This algorithm is illustrated in the animation below (`group_connectivity_type` 
 Obstacles marked at the end of the animation will be removed (groups that size less 3).
 
 <figure markdown="span">
-  ![](images/connected_components.gif){ width="600px" }
+  ![](assets/connected_components.gif){ width="600px" }
 </figure>

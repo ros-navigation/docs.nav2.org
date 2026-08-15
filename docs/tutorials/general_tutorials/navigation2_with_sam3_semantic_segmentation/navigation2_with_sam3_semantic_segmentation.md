@@ -52,7 +52,7 @@ This tutorial assumes you already have:
 - `conda` / `miniforge` for the Python environment SAM3 runs in. Install instructions: [miniforge](https://github.com/conda-forge/miniforge).
 
 <figure markdown="span">
-  ![AMD Strix Halo robot platform used for semantic navigation](images/opennav_amd_robot.png){ width="90%" title="AMD Strix Halo robot platform used for semantic navigation"}
+  ![AMD Strix Halo robot platform used for semantic navigation](assets/opennav_amd_robot.png){ width="90%" title="AMD Strix Halo robot platform used for semantic navigation"}
 </figure>
 
 ## Architecture Overview
@@ -65,7 +65,7 @@ In the range or below ~400x200 is sufficient.
 Finally, planning and control uses the semantically annotated costmap cells and their associated costs to impact navigation behavior to prevent navigating over certain spaces, prefer some surfaces over others, or treat particular objects uniquely.
 
 <figure markdown="span">
-  ![Architecture diagram showing data flow from Depth Camera through SAM3 Semantic Segmentation to Semantic Segmentation Costmap Layer and Costmap2D](images/diagram.png){ width="90%" title="Architecture diagram showing data flow from Depth Camera through SAM3 Semantic Segmentation to Semantic Segmentation Costmap Layer and Costmap2D"}
+  ![Architecture diagram showing data flow from Depth Camera through SAM3 Semantic Segmentation to Semantic Segmentation Costmap Layer and Costmap2D](assets/diagram.png){ width="90%" title="Architecture diagram showing data flow from Depth Camera through SAM3 Semantic Segmentation to Semantic Segmentation Costmap Layer and Costmap2D"}
 </figure>
 
 If your sensor does not produce registered RGB + depth, `sensor_processing_pipeline.launch.py` can decimate and align them for you.
@@ -213,7 +213,7 @@ Within a few seconds you should see the three topics published.
 It useful to visualize the segmentation mask topic to visualize the detection overlay to see it working!
 
 <figure markdown="span">
-  ![SAM3 semantic segmentation overlay on bike lane camera feed](images/bike_lane_camera.gif){ width="700" title="SAM3 semantic segmentation overlay on bike lane camera feed" }
+  ![SAM3 semantic segmentation overlay on bike lane camera feed](assets/bike_lane_camera.gif){ width="700" title="SAM3 semantic segmentation overlay on bike lane camera feed" }
 </figure>
 
 Now that we have that working, we can focus on the costmap integration to use this information.
@@ -336,7 +336,7 @@ The other side of foundation-model perception is that you can ask SAM3 about spe
 I hope these provide some motivational examples of use-cases of SAM3 to detect and avoid obstacles (or adjust robot behavior) in situations that have been traditionally difficult for robots :-)
 
 <figure markdown="span">
-  ![SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images](images/examples.gif){ width="700" title="SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images"}
+  ![SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images](assets/examples.gif){ width="700" title="SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images"}
 </figure>
 
 Happy segmenting!

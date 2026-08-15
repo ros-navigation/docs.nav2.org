@@ -242,7 +242,7 @@ ros2 launch sam_bot_description display.launch.py
     You may get a warning like `[kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia. As a workaround, you can add an extra dummy link to your URDF.` This warning can be safely ignored as it is just a quirk of the conversion from SDF to URDF.
 
 <figure markdown="span">
-  ![](../urdf/images/base_bot_3.png)
+  ![](../urdf/assets/base_bot_3.png)
 </figure>
 
 ## Conclusion

@@ -43,7 +43,7 @@ ros2 launch zed_wrapper zedxm.launch.py
 ```
 
 <figure markdown="span">
-  ![](images/vio.png){ width="100%" }
+  ![](assets/vio.png){ width="100%" }
 </figure>
 
 As of September 2023, the driver out of the box produces the full `map->odom->base_link->camera` tree on its own. This is since the Pose SDK can produce not only VIO, but loop-closure VSLAM representing the full state estimation TF tree.

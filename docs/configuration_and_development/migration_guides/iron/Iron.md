@@ -229,7 +229,7 @@ In order to facilitate the dynamic selection of the specified components, the BT
 Here we can see the working demo of the plugin:
 
 <figure markdown="span">
-  ![](images/selector_plugin_demo.gif)
+  ![](assets/selector_plugin_demo.gif)
 </figure>
 
 In the GIF, it can be seen that there are two controller_ids namely, *FollowPath* and *HighSpeedFollowPath*. By default, the one defined in the Behavior tree is utilized.
@@ -247,7 +247,7 @@ In this case, the *FollowPath* is the default controller_id. The difference betw
 Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when `interpolate_curvature_after_goal` is `true`. It can be used only when `use_fixed_curvature_lookahead: true`.
 
 <figure markdown="span">
-  ![](images/rpp_goal_lookahead_interpolate.gif){ width="45%" }
+  ![](assets/rpp_goal_lookahead_interpolate.gif){ width="45%" }
 </figure>
 
 Additionally, the conflict between `use_rotate_to_heading` and `allow_reversing` was fixed so `use_rotate_to_heading` can now be used backward.
@@ -322,7 +322,7 @@ A service client was also added to the clear costmap plugin in the *nav2_behavio
 This is particularly useful in scenarios where the planner fails due to outdated costmap data at the goal location which is outside of your obstacle/raytrace range—often caused by dynamic obstacles that have since moved. Instead of clearing the entire costmap as a recovery behavior, this feature would enable targeted clearing, preserving useful map data.
 
 <figure markdown="span">
-  ![](images/ClearCostmapGoalPose.gif){ width="100%" }
+  ![](assets/ClearCostmapGoalPose.gif){ width="100%" }
   <figcaption>RViz visualization shows an example of clearing outdated cost at the desired goal location, this would have previously caused planners like SMAC planner to fail.</figcaption>
 </figure>
 

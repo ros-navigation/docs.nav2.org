@@ -5,7 +5,7 @@
 This tutorial demonstrates how to use semantic segmentation in costmaps with stereo cameras, using a custom [semantic_segmentation_layer plugin](https://github.com/kiwicampus/semantic_segmentation_layer) and a pre-trained segmentation model that works on Gazebo's Baylands world. It was written by Pedro Gonzalez at [robot.com](https://robot.com/).
 
 <figure markdown="span">
-  ![](images/video.gif){ width="90%" }
+  ![](assets/video.gif){ width="90%" }
 </figure>
 
 ## Requirements
@@ -54,7 +54,7 @@ As said above, a pre-trained model is included in this tutorial, so you can skip
 However, if you want to train your own model, you can use the [Simple Segmentation Toolkit](https://github.com/pepisg/simple_segmentation_toolkit) to easily prototype one with SAM-based auto-labeling (no manual annotation required).
 
 <figure markdown="span">
-  ![Example of semantic segmentation showing original image and segmented mask](images/segmentation_example.png){ width="600px" title="Example of semantic segmentation showing original image and segmented mask" }
+  ![Example of semantic segmentation showing original image and segmented mask](assets/segmentation_example.png){ width="600px" title="Example of semantic segmentation showing original image and segmented mask" }
 </figure>
 
 Once trained, the output of a semantic segmentation model is typically an image with the same size as the input, where each pixel holds the probability of that pixel belonging to each class.
@@ -90,7 +90,7 @@ ros2 launch semantic_segmentation_sim simulation_launch.py headless:=0
 You should see Gazebo launch with the TurtleBot 4 in the Baylands world.
 
 <figure markdown="span">
-  ![Gazebo Baylands world](images/gazebo_baylands.png){ width="700px" title="Gazebo Baylands world" }
+  ![Gazebo Baylands world](assets/gazebo_baylands.png){ width="700px" title="Gazebo Baylands world" }
 </figure>
 
 ### 2. Setup Semantic Segmentation Inference Node
@@ -201,14 +201,14 @@ ros2 launch semantic_segmentation_sim segmentation_simulation_launch.py
 The Baylands simulation and *rviz* should appear. You should be able to send navigation goals via *rviz* and the robot should navigate the Baylands world, preferring sidewalks and avoiding grass:
 
 <figure markdown="span">
-  ![](images/demo.gif){ width="90%" }
+  ![](assets/demo.gif){ width="90%" }
 </figure>
 
 To better see what the plugin is doing, you can enable the segmentation tile map visualization in *rviz*. This will show a pointcloud of the segmentation observations for each tile, colored by their confidence.
 Again, you can refer to the picture on the Layer's [README](https://github.com/kiwicampus/semantic_segmentation_layer) for a visual explanation of how observations are accumulated on the costmap tiles and how that translates to the cost assigned to each tile.
 
 <figure markdown="span">
-  ![](images/tile_map.gif){ width="90%" }
+  ![](assets/tile_map.gif){ width="90%" }
 </figure>
 
 !!! warning "Important"

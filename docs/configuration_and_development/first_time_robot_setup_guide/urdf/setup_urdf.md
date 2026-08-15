@@ -58,8 +58,8 @@ ros2 pkg create --build-type ament_cmake sam_bot_description
 Now that we have our project workspace set up, let's dive straight into writing the URDF. Below is an image of the robot we will be trying to build.
 
 <div markdown="span" class="flex-images">
-  ![](images/base_bot_1.png)
-  ![](images/base_bot_2.png)
+  ![](assets/base_bot_1.png)
+  ![](assets/base_bot_2.png)
 </div>
 
 To get started, create a file named `sam_bot_description.urdf` under `src/description` and input the following as the initial contents of the file.
@@ -356,7 +356,7 @@ ROS 2 should now launch a robot publisher node and start up RVIZ using our URDF.
 RVIZ is a robot visualization tool that allows us to see a 3D model of our robot using its URDF. Upon a successful launch using the commands in the previous section, RVIZ should now be visible on your screen and should look like the image below. You may need to move around and manipulate the view to get a good look at your robot.
 
 <figure markdown="span">
-  ![](images/base_bot_3.png)
+  ![](assets/base_bot_3.png)
 </figure>
 
 As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it's a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations.
@@ -364,7 +364,7 @@ As you can see, we have successfully created a simple differential drive robot a
 You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS 2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.
 
 <figure markdown="span">
-  ![](images/base_bot_4.png)
+  ![](assets/base_bot_4.png)
 </figure>
 
 !!! note
@@ -464,7 +464,7 @@ ros2 launch sam_bot_description display.launch.py
 You can verify whether you have properly set up the collision areas by enabling `Collision Enabled` under `RobotModel` on the left pane (it may be easier to see if you also turn off `Visual Enabled`). For this tutorial we defined a collision area which is similar to our visual properties. Note that this may not always be the case since you may opt for simpler collision areas based on how your robot looks.
 
 <figure markdown="span">
-  ![](images/base_bot_5.png)
+  ![](assets/base_bot_5.png)
 </figure>
 
 For now, we will have to stop here since we will need to set up a lot more components to actually start simulating our robot in Gazebo. We will be coming back to this project during the course of these setup guides, and we will eventually see our robot move in a virtual environment once we get to the simulation sections. The major components that are missing from this work are the simulation plugins required to mimic your robot controllers. We will introduce those and add them to this URDF in the appropriate section.

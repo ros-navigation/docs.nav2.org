@@ -112,7 +112,7 @@ The panel displays the action goal status and feedback published by `nav2_msgs/D
 Here we can see the working demo of the plugin:
 
 <figure markdown="span">
-  ![](images/docking_panel.gif)
+  ![](assets/docking_panel.gif)
 </figure>
 
 !!! warning "Attention"
@@ -143,7 +143,7 @@ Usage:
 Working demo of the tool:
 
 <figure markdown="span">
-  ![](images/rviz_costmap_cost_tool.gif)
+  ![](assets/rviz_costmap_cost_tool.gif)
 </figure>
 
 !!! warning "Attention"
@@ -165,13 +165,13 @@ Minimum Value Without Flickering:
 Before:
 
 <figure markdown="span">
-  ![](images/fix_flickering_visualization_before.png)
+  ![](assets/fix_flickering_visualization_before.png)
 </figure>
 
 After:
 
 <figure markdown="span">
-  ![](images/fix_flickering_visualization_after.png)
+  ![](assets/fix_flickering_visualization_after.png)
 </figure>
 
 ## Option to limit velocity through DWB trajectory
@@ -323,19 +323,19 @@ In addition to this, the coarse_search_resolution parameter is added to the smac
 Here is an Example of the smacHybrid planner with the default goal_heading_mode to see the difference in the planned path.
 
 <figure markdown="span">
-  ![Navigation2 with smacHybrid planner with default goal_heading_mode](images/smacHybrid_with_default_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with default goal_heading_mode" }
+  ![Navigation2 with smacHybrid planner with default goal_heading_mode](assets/smacHybrid_with_default_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with default goal_heading_mode" }
 </figure>
 
 Here is an Example of the smacHybrid planner with the bidirectional goal_heading_mode to see the difference in the planned path.
 
 <figure markdown="span">
-  ![Navigation2 with smacHybrid planner with bidirectional goal_heading_mode](images/smacHybrid_with_bidirectional_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with bidirectional goal_heading_mode" }
+  ![Navigation2 with smacHybrid planner with bidirectional goal_heading_mode](assets/smacHybrid_with_bidirectional_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with bidirectional goal_heading_mode" }
 </figure>
 
 Here is an Example of the smacHybrid planner with the all_directions goal_heading_mode to see the difference in the planned path.
 
 <figure markdown="span">
-  ![Navigation2 with smacHybrid planner with all_direction goal_heading_mode](images/smacHybrid_with_all_direction_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with all_direction goal_heading_mode" }
+  ![Navigation2 with smacHybrid planner with all_direction goal_heading_mode](assets/smacHybrid_with_all_direction_goal_heading_mode.gif){ width="700px" title="Navigation2 with smacHybrid planner with all_direction goal_heading_mode" }
 </figure>
 
 ## DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
@@ -362,7 +362,7 @@ A demo can be seen below with the following parameters:
 ```
 
 <figure markdown="span">
-  ![Rotation Shim Deceleration](images/rotation_shim_decel.gif){ width="800" title="Rotation Shim Deceleration" }
+  ![Rotation Shim Deceleration](assets/rotation_shim_decel.gif){ width="800" title="Rotation Shim Deceleration" }
 </figure>
 
 ## Rotation Shim Open-loop Control
@@ -465,7 +465,7 @@ See [Docking Server][docking-server] for more information.
 Here we can see the working demo of the feature:
 
 <figure markdown="span">
-  ![](images/reverse_to_dock.gif)
+  ![](assets/reverse_to_dock.gif)
 </figure>
 
 ## RegulatedPurePursuit Controller [RPP]: new parameter `stateful`
@@ -495,7 +495,7 @@ For the depot map, the shelves were encompassed in a speed zone of 75% of the ma
 For the warehouse map, the area around the beams and the middle of the warehouse were limited to 80% of the maximum speed.
 
 <figure markdown="span">
-  ![](/configuration_and_development/configuration_guide/core_servers/route_server/images/depot_graph.png){ width="100%" }
+  ![](/configuration_and_development/configuration_guide/core_servers/route_server/assets/depot_graph.png){ width="100%" }
   <figcaption>The keepout zones are marked in pink, and the speed zones are marked with grey with proportional opacity to the speed limit.</figcaption>
 </figure>
 
@@ -503,6 +503,6 @@ In [PR #5160](https://github.com/ros-navigation/navigation2/pull/5160), graph su
 This allows users to visualize the route server in action and test the new features of the route server. The demo includes a simple route with a few waypoints and a graph to follow.
 
 <figure markdown="span">
-  ![](/configuration_and_development/configuration_guide/core_servers/route_server/images/warehouse_graph.png){ width="100%" }
+  ![](/configuration_and_development/configuration_guide/core_servers/route_server/assets/warehouse_graph.png){ width="100%" }
   <figcaption>RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated. Speed zones are marked in grey with proportional opacity of 0.8 to match the speed limit.</figcaption>
 </figure>

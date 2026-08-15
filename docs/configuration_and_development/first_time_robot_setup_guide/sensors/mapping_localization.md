@@ -172,7 +172,7 @@ The `slam_toolbox` should now be publishing to the `/map` topic and providing th
 We can verify in RViz that the `/map` topic is being published. In the RViz window, click the add button at the bottom-left part then go to `By topic` tab then select the `Map` under the `/map` topic. You should be able to visualize the message received in the `/map` as shown in the image below.
 
 <figure markdown="span">
-  ![](images/map.png)
+  ![](assets/map.png)
 </figure>
 
 We can also check that the transforms are correct by executing the following lines in a new terminal:
@@ -184,7 +184,7 @@ ros2 run tf2_tools view_frames
 The line above will create a `frames.pdf` file that shows the current transform tree. Your transform tree should be similar to the one shown below:
 
 <figure markdown="span">
-  ![](images/view_frames.png)
+  ![](assets/view_frames.png)
 </figure>
 
 #### Launching Nav2
@@ -221,13 +221,13 @@ The `global_costmap`, `local_costmap` and the voxel representation of the detect
 To visualize the `global_costmap` in RViz, click the add button at the bottom-left part of the RViz window. Go to `By topic` tab then select the `Map` under the `/global_costmap/costmap` topic. The `global_costmap` should show in the RViz window, as shown below. The `global_costmap` shows areas which should be avoided (black) by our robot when it navigates our simulated world in Gazebo.
 
 <figure markdown="span">
-  ![](images/costmap_global_rviz.png)
+  ![](assets/costmap_global_rviz.png)
 </figure>
 
 To visualize the `local_costmap` in RViz, select the `Map` under the `/local_costmap/costmap` topic. Set the `color scheme` in RViz to `costmap` to make it appear similar to the image below.
 
 <figure markdown="span">
-  ![](images/local_costmap_rviz.png)
+  ![](assets/local_costmap_rviz.png)
 </figure>
 
 To visualize the voxel representation of the detected object, open a new terminal and execute the following lines:
@@ -239,13 +239,13 @@ ros2 run nav2_costmap_2d nav2_costmap_2d_markers voxel_grid:=/local_costmap/voxe
 The line above sets the topic where the the markers will be published to `/my_marker`. To see the markers in RViz, select `Marker` under the `/my_marker` topic, as shown below.
 
 <figure markdown="span">
-  ![](images/add_my_marker.png){ width="100%" }
+  ![](assets/add_my_marker.png){ width="100%" }
 </figure>
 
 Then set the `fixed frame` in RViz to `odom` and you should now see the voxels in RViz, which represent the cube and the sphere that we have in the Gazebo world:
 
 <figure markdown="span">
-  ![](images/voxel_layer.png)
+  ![](assets/voxel_layer.png)
 </figure>
 
 ## Conclusion

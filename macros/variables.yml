@@ -21,15 +21,13 @@ github_repositories:
     destination_dir: "macros/cache"
     data_to_clone:
       - "/docs/index.md"
-      - "/docs/images"
-      - "/docs/videos"
+      - "/docs/assets"
       - "/docs/community"
       - "/docs/robots_using"
       - "/docs/about_and_contact"
     symlinks:
       "docs/index.md": "macros/cache/mkdocs.nav2.org/docs/index.md"
-      "docs/images": "macros/cache/mkdocs.nav2.org/docs/images"
-      "docs/videos": "macros/cache/mkdocs.nav2.org/docs/videos"
+      "docs/assets": "macros/cache/mkdocs.nav2.org/docs/assets"
       "docs/community": "macros/cache/mkdocs.nav2.org/docs/community"
       "docs/robots_using": "macros/cache/mkdocs.nav2.org/docs/robots_using"
       "docs/about_and_contact": "macros/cache/mkdocs.nav2.org/docs/about_and_contact"
