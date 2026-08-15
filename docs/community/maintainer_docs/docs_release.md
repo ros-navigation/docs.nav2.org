@@ -69,18 +69,74 @@ extra:
   ros2_distro: "<distro>"
 ```
 
-Update `branch` variable in `macros/variables.yml`:
+Update `branch` variable and include the new cloning source in `macros/variables.yml`:
 
 ```yaml
 github_repositories:
   navigation2:
-    owner: "ros-navigation"
+    ...
     branch: "<distro>"
+    ...
+
+  # This is required for point 3.1
+  docs.nav2.org:
+    owner: "ros-navigation"
+    branch: "rolling" # keep unchanged between distributions
+    destination_dir: "macros/cache"
+    data_to_clone:
+      - "/docs/index.md"
+      - "/docs/images"
+      - "/docs/videos"
+      - "/docs/community"
+      - "/docs/robots_using"
+      - "/docs/about_and_contact"
+    symlinks:
+      "docs/index.md": "macros/cache/docs.nav2.org/docs/index.md"
+      "docs/images": "macros/cache/docs.nav2.org/docs/images"
+      "docs/videos": "macros/cache/docs.nav2.org/docs/videos"
+      "docs/community": "macros/cache/docs.nav2.org/docs/community"
+      "docs/robots_using": "macros/cache/docs.nav2.org/docs/robots_using"
+      "docs/about_and_contact": "macros/cache/docs.nav2.org/docs/about_and_contact"
 ```
 
 ## 3. Update Documentation
 
-### 3.1 Update links
+### 3.1 Remove shared content
+
+Delete the following directories and files that are shared across multiple documentation distributions:
+
+- `docs/index.md`
+- `docs/images`
+- `docs/videos`
+- `docs/community`
+- `docs/robots_using`
+- `docs/about_and_contact`
+
+Include them in `.gitignore`:
+
+```
+# For non-rolling branches only
+docs/index.md
+docs/images
+docs/videos
+docs/community
+docs/robots_using
+docs/about_and_contact
+```
+
+!!! note
+
+    If any new common pages are added, add the following metadata to the header of each shared `.md` file in the Rolling branch to use the "Edit this page" function:
+
+    ```
+    ---
+    edit_uri: https://github.com/ros-navigation/docs.nav2.org/tree/rolling/docs/
+    ---
+    ```
+
+    Additionally, in the released branch, update the paths to the new common pages or directories as specified in sections [2.3](#23-mkdocs-material) and [3.1](#31-remove-shared-content).
+
+### 3.2 Update links
 
 - Update all GitHub links to point to new distribution branch where it applies.
 - Update all links referring to ROS 2 Documentation.
@@ -95,7 +151,7 @@ github_repositories:
 
     **Lyrical**: [https://docs.ros.org/en/lyrical/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html](https://docs.ros.org/en/lyrical/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html)
 
-### 3.2 Review tutorials
+### 3.3 Review tutorials
 
 Review [tutorials][tutorials] for compatibility with the new distribution, including API and behavior changes.
 
