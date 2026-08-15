@@ -505,7 +505,7 @@ def main():
     )
 
     plt.tight_layout(rect=[0, 0.06, 1, 0.95])
-    out_path = "/opt/auto_ws/src/auto-sandbox/src/vendor/docs.nav2.org/docs/configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/adaptive_tolerance_goal_checker/images/adaptive_tolerance_goal_checker.png"
+    out_path = "/opt/auto_ws/src/auto-sandbox/src/vendor/docs.nav2.org/docs/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/adaptive_tolerance_goal_checker/assets/adaptive_tolerance_goal_checker.png"
     plt.savefig(out_path, dpi=160, bbox_inches="tight")
     print(f"Saved → {out_path}")
     plt.close()

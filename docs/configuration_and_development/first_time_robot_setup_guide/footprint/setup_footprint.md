@@ -82,25 +82,25 @@ We should now be able to visualize the footprints in RViz, which will be discuss
 To visualize the footprint of the local costmap, click the add button at the bottom-left part of the RViz window. Under the `By topic` tab, select the `Polygon` under the `/local_costmap/published_footprint` topic, as shown below.
 
 <figure markdown="span">
-  ![](images/add_topic_local_costmap.png){ width="400" }
+  ![](assets/add_topic_local_costmap.png){ width="400" }
 </figure>
 
 Set the fixed frame in RViz to `odom` and you should see the rectangular-shaped footprint of `sam_bot`:
 
 <figure markdown="span">
-  ![](images/polygon_footprint.png)
+  ![](assets/polygon_footprint.png)
 </figure>
 
 On the other hand, for the global costmap, click the add button at the bottom-left part of the RViz window. Go to `By topic` tab then select the `Polygon` under the `/global_costmap/published_footprint` topic, as shown below.
 
 <figure markdown="span">
-  ![](images/add_topic_global_costmap.png){ width="400" }
+  ![](assets/add_topic_global_costmap.png){ width="400" }
 </figure>
 
 Set the fixed frame in RViz to `map` and you should see the circular footprint of `sam_bot`:
 
 <figure markdown="span">
-  ![](images/circular_footprint.png)
+  ![](assets/circular_footprint.png)
 </figure>
 
 ## Conclusion

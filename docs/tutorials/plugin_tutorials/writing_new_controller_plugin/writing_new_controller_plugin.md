@@ -1,7 +1,7 @@
 # Writing a New Controller Plugin { #writing-a-new-controller-plugin }
 
 <figure markdown="span">
-  ![Animated gif of pure pursuit controller demo](images/nav2_pure_pursuit_gif.gif){ width="640px" title="Animated gif of pure pursuit controller demo" }
+  ![Animated gif of pure pursuit controller demo](assets/nav2_pure_pursuit_gif.gif){ width="640px" title="Animated gif of pure pursuit controller demo" }
 </figure>
 
 ## Overview

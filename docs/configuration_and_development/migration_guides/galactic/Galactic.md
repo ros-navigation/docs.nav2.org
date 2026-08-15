@@ -159,8 +159,8 @@ Recoveries in Nav2, spin and backup, now have `time_allowance` ports in their BT
 For example, below, for the same goal with an orientaton pointed left of the screen, `use_final_approach_orientation=false` (left) and `use_final_approach_orientation=true` (right)
 
 <div markdown="span" class="flex-images">
-	![](images/use_final_approach_orientation_false.gif)
-	![](images/use_final_approach_orientation_true.gif)
+	![](assets/use_final_approach_orientation_false.gif)
+	![](assets/use_final_approach_orientation_true.gif)
 </div>
 
 ## SmacPlanner2D and Theta\*: fix goal orientation being ignored
@@ -250,13 +250,13 @@ In the [PR](https://github.com/ros-navigation/navigation2/pull/2802), a new Deco
 Obstacle does not clear at all, with *obstacle_clearance_time* to be 3 seconds:
 
 <figure markdown="span">
-  ![](/getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/images/nav2_patience_near_goal_and_clear_obstacle.gif)
+  ![](/getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/assets/nav2_patience_near_goal_and_clear_obstacle.gif)
 </figure>
 
 Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:
 
 <figure markdown="span">
-  ![](/getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/images/nav2_patience_near_goal_and_go_around.gif)
+  ![](/getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/assets/nav2_patience_near_goal_and_go_around.gif)
 </figure>
 
 ## BT TruncatePathLocal Node

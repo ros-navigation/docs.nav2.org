@@ -31,7 +31,7 @@ In this subsection, we discuss some of the common types of `sensor_msgs` you mig
 This message represents a single scan from a planar laser range-finder. This message is used in `slam_toolbox` and `nav2_amcl` for localization and mapping, or in `nav2_costmap_2d` for perception.
 
 <figure markdown="span">
-  ![](images/sensor_laserscan.png)
+  ![](assets/sensor_laserscan.png)
 </figure>
 
 #### sensor_msgs/PointCloud2
@@ -39,7 +39,7 @@ This message represents a single scan from a planar laser range-finder. This mes
 This message holds a collection of 3D points, plus optional additional information about each point. This can be from a 3D lidar, a 2D lidar, a depth camera or more.
 
 <figure markdown="span">
-  ![](images/sensor_pointcloud2.png)
+  ![](assets/sensor_pointcloud2.png)
 </figure>
 
 #### sensor_msgs/Range
@@ -47,7 +47,7 @@ This message holds a collection of 3D points, plus optional additional informati
 This is a single range reading from an active ranger that emits energy and reports one range reading that is valid along an arc at the distance measured. A sonar, IR sensor, or 1D range finder are examples of sensors that use this message.
 
 <figure markdown="span">
-  ![](images/sensor_range.png)
+  ![](assets/sensor_range.png)
 </figure>
 
 #### sensor_msgs/Image
@@ -55,7 +55,7 @@ This is a single range reading from an active ranger that emits energy and repor
 This represents the sensor readings from RGB or depth camera, corresponding to RGB or range values.
 
 <figure markdown="span">
-  ![](images/sensor_image.png)
+  ![](assets/sensor_image.png)
 </figure>
 
 ## Simulating Sensors using Gazebo
@@ -307,43 +307,43 @@ ros2 launch sam_bot_description display.launch.py
 RViz and the Gazebo will then be launched with `sam_bot` present in both. In the Gazebo window, the world that we created should be launched and `sam_bot` should be spawned in that world. You should now be able to observe `sam_bot` with the 360 lidar sensor and the depth camera, as shown in the image below.
 
 <figure markdown="span">
-  ![](images/gazebo_sensors.png)
+  ![](assets/gazebo_sensors.png)
 </figure>
 
 In the RViz window, we can verify if we have properly modeled our sensors and if the transforms of our newly added sensors are correct:
 
 <figure markdown="span">
-  ![](images/rviz_sensors.png)
+  ![](assets/rviz_sensors.png)
 </figure>
 
 Lastly, we can also visualize the sensor readings in RViz.  To visualize the `sensor_msgs/LaserScan` message published on `/scan` topic, click the add button at the bottom part of the RViz window. Then go to the `By topic` tab and select the `LaserScan` option under `/scan`, as shown below.
 
 <figure markdown="span">
-  ![](images/add_topic_laserscan.png){ width="400" }
+  ![](assets/add_topic_laserscan.png){ width="400" }
 </figure>
 
 Next, set the `Reliability Policy` in RViz to `Best Effort` and set the `size` to 0.1 to see the points clearer. You should see the visualized `LaserScan` detection as shown below. This corresponds to the detected cube and sphere that we added to the Gazebo world.
 
 <figure markdown="span">
-  ![](images/demo_laserscan_rviz.png)
+  ![](assets/demo_laserscan_rviz.png)
 </figure>
 
 To visualize `sensor_msgs/Image` and `sensor_msgs/PointCloud2`, do the same for topics `/depth_camera/image_raw` and `/depth_camera/points` respectively:
 
 <figure markdown="span">
-  ![](images/add_topic_image_pointcloud2.png)
+  ![](assets/add_topic_image_pointcloud2.png)
 </figure>
 
 After adding the `/depth_camera/image_raw` topic in RViz, set the `Reliability Policy` in RViz to `Best Effort`. Then you should see the cube in the image window at the lower-left side of the RViz window, as shown below.
 
 <figure markdown="span">
-  ![](images/demo_image_rviz.png)
+  ![](assets/demo_image_rviz.png)
 </figure>
 
 You should also see the `sensor_msgs/PointCloud2`, as shown below.
 
 <figure markdown="span">
-  ![](images/pointcloud2_data.png)
+  ![](assets/pointcloud2_data.png)
 </figure>
 
 ## Conclusion

@@ -13,7 +13,7 @@ Following image depicts how Constrained Smoother can improve quality of an input
 increasing its smoothness and distance from obstacles. Resulting path is marked by green color. Note: last few path poses are not smoothed since TruncatePathLocal is used on this path.
 
 <figure markdown="span">
-  ![](images/constrained_smoother.png){ width="698" height="593" }
+  ![](assets/constrained_smoother.png){ width="698" height="593" }
 </figure>
 
 ## Smoother Server Parameters
@@ -89,7 +89,7 @@ Type: `double` Default: `3.0`
 :   Option to use higher weight during forward/reverse direction change, helping optimizer to converge or add an extra obstacle avoidance at these problematic segments.
     Following image depicts improvement of the path with `w_cost_cusp_multiplier` (green) compared to one without it (purple). Original path has cyan color.
     <figure markdown="span">
-      ![](images/w_cost_cusp_multiplier.png){ height="429px" width="282px" }
+      ![](assets/w_cost_cusp_multiplier.png){ height="429px" width="282px" }
     </figure>
 
 ### **`cusp_zone_length`**
@@ -110,7 +110,7 @@ Type: `vector<double>` Default: `[]`
 
     Following image depicts how two cost check points can be used to improve cost awareness of a rectangular robot.
     <figure markdown="span">
-      ![](images/cost_check_points.png){ height="284px" width="176px" }
+      ![](assets/cost_check_points.png){ height="284px" width="176px" }
     </figure>
 
 ### **`optimizer.max_iterations`**

@@ -214,7 +214,7 @@ Non-default external detection rotation that differs from the above cases needs 
 In [PR #5226](https://github.com/ros-navigation/navigation2/pull/5226) the ability to stitch two successive edges in `route_server` with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.
 
 <figure markdown="span">
-  ![](images/smoothing.png)
+  ![](assets/smoothing.png)
 </figure>
 
 New parameters include `smooth_corners` which enable or disable corner smoothing and `smoothing_radius` which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that's longer than the edge lengths, then it will not add a corner arc.
@@ -523,7 +523,7 @@ The UI workflow is now organized into two primary navigation modes:
     - Execution: Once the list is defined, navigation can be executed via `NavigateThroughPoses` or `Waypoint Following` actions.
 
 <figure markdown="span">
-  ![Multiple-Goal Navigation in Nav2 RViz Panel](images/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }
+  ![Multiple-Goal Navigation in Nav2 RViz Panel](assets/nav2_new_rviz_panel.gif){ width="800" title="Multiple-Goal Navigation in Nav2 RViz Panel" }
 </figure>
 
 GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.
@@ -535,7 +535,7 @@ In [PR #5783](https://github.com/ros-navigation/navigation2/pull/5783), an optio
 - Fumiya Ohnishi and Masaki Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
 
 <figure markdown="span">
-  ![Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants](images/dwpp_comparison.gif){ width="800" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" }
+  ![Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants](assets/dwpp_comparison.gif){ width="800" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" }
 </figure>
 
 The following parameters are updated for this feature.
@@ -753,15 +753,15 @@ No parameter changes are required — the OMNI motion model is auto-detected fro
 Before:
 
 <div markdown="span" class="flex-images">
-	![](images/smac_lattice_omni_before_1.png)
-	![](images/smac_lattice_omni_before_2.png)
+	![](assets/smac_lattice_omni_before_1.png)
+	![](assets/smac_lattice_omni_before_2.png)
 </div>
 
 After:
 
 <div markdown="span" class="flex-images">
-	![](images/smac_lattice_omni_after_1.png)
-	![](images/smac_lattice_omni_after_2.png)
+	![](assets/smac_lattice_omni_after_1.png)
+	![](assets/smac_lattice_omni_after_2.png)
 </div>
 
 ## New bt_log_idle_transitions parameter in bt_navigator
@@ -930,7 +930,7 @@ Three new MPPIController parameters, default `0.0` (feature disabled):
 When non-zero, the optimizer fills the first `round(delay / model_dt)` rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.
 
 <figure markdown="span">
-  ![Open-loop trajectory with and without per-axis delay compensation.](images/mppi_delay_compensation_serpentines.png){ width="800px" title="Open-loop trajectory with and without per-axis delay compensation."}
+  ![Open-loop trajectory with and without per-axis delay compensation.](assets/mppi_delay_compensation_serpentines.png){ width="800px" title="Open-loop trajectory with and without per-axis delay compensation."}
 </figure>
 
 The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation `model_delay_wz=0.6` (right), tracking is visibly better.
@@ -960,7 +960,7 @@ Behavior trees using `TruncatePathLocal` with the old port name will need to upd
 The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.
 
 <figure markdown="span">
-  ![Costmap with asymmetric inflation layer](images/asymmetric_layer_active.png){ title="Costmap with asymmetric inflation layer" }
+  ![Costmap with asymmetric inflation layer](assets/asymmetric_layer_active.png){ title="Costmap with asymmetric inflation layer" }
 </figure>
 
 ## Custom Inscribed Radius for Inflation Layer
@@ -972,8 +972,8 @@ The default inscribed radius computed from the robot footprint, would give the s
 Consequently, in situations such as the two examples shown below, the `footprintCost` function would return the same value since it picks up the highest cost along the footprint.
 
 <div markdown="span" class="flex-images">
-  ![](images/default_inscribed_radius_large_overlap.png)
-  ![](images/default_inscribed_radius_low_overlap.png)
+  ![](assets/default_inscribed_radius_large_overlap.png)
+  ![](assets/default_inscribed_radius_low_overlap.png)
 </div>
 
 This however may not be ideal for situations where one wants to have a more granular cost distribution in order to better reflect the actual risk of collision.
@@ -981,7 +981,7 @@ Now with the new `custom_inscribed_radius` parameter, users can set a custom ins
 For example, setting it to `0.0` would result in skipping the inscribed radius region altogether and give a decay cost distribution right after the `LETHAL` region.
 
 <figure markdown="span">
-  ![Costmap with custom inscribed radius of 0.0m](images/custom_inscribed_radius_zero.png){ width="800" title="Costmap with custom inscribed radius of 0.0m"}
+  ![Costmap with custom inscribed radius of 0.0m](assets/custom_inscribed_radius_zero.png){ width="800" title="Costmap with custom inscribed radius of 0.0m"}
 </figure>
 
 **Warning:** This is however a potential safety issue!

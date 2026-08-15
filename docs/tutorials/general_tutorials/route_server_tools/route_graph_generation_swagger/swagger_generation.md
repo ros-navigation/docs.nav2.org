@@ -29,7 +29,7 @@ The safety distance is the minimum distance away from any obstacle that the grap
 When completed, the output should look similar to the following:
 
 <figure markdown="span">
-  ![](images/waypoint_graph.png){ width="530px" height="550px" }
+  ![](assets/waypoint_graph.png){ width="530px" height="550px" }
 </figure>
 
 This process is performed by:

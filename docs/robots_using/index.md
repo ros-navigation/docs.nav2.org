@@ -12,112 +12,112 @@ Click on the images below for a link to the drivers or navigation configurations
 <!-- CSS located in overrides/assets/stylesheets/robots_grid.css -->
 <div class="robots-grid" markdown>
 <figure markdown="span">
-  [![Dexory](images/dexory.png)](https://www.dexory.com/)
+  [![Dexory](assets/dexory.png)](https://www.dexory.com/)
 </figure>
 <figure markdown="span">
-  [![Polymath Robotics](images/polymath.png)](https://www.polymathrobotics.com/)
+  [![Polymath Robotics](assets/polymath.png)](https://www.polymathrobotics.com/)
 </figure>
 <figure markdown="span">
-  [![Nvidia Segway Nova Carter](images/novacarter.png)](https://robotics.segway.com/nova-carter/)
+  [![Nvidia Segway Nova Carter](assets/novacarter.png)](https://robotics.segway.com/nova-carter/)
 </figure>
 <figure markdown="span">
-  [![Angsa](images/angsa.png)](https://angsa-robotics.com/en-de/roboter/)
+  [![Angsa](assets/angsa.png)](https://angsa-robotics.com/en-de/roboter/)
 </figure>
 <figure markdown="span">
-  [![Firefly Automatix](images/firefly.png)](https://fireflyautomatix.com/m220/)
+  [![Firefly Automatix](assets/firefly.png)](https://fireflyautomatix.com/m220/)
 </figure>
 <figure markdown="span">
-  [![Kiwibot](images/kiwibot.png)](https://www.kiwibot.com/)
+  [![Kiwibot](assets/kiwibot.png)](https://www.kiwibot.com/)
 </figure>
 <figure markdown="span">
-  [![Rosie](images/tailos.png)](https://tailos.com/)
+  [![Rosie](assets/tailos.png)](https://tailos.com/)
 </figure>
 <figure markdown="span">
-  [![Karelics](images/karelics2.png)](https://karelics.fi/)
+  [![Karelics](assets/karelics2.png)](https://karelics.fi/)
 </figure>
 <figure markdown="span">
-  [![Seasony](images/seasony.png)](https://www.seasony.io/)
+  [![Seasony](assets/seasony.png)](https://www.seasony.io/)
 </figure>
 <figure markdown="span">
-  [![Unitree G1 Humanoid](images/g1.png)](https://www.unitree.com/)
+  [![Unitree G1 Humanoid](assets/g1.png)](https://www.unitree.com/)
 </figure>
 <figure markdown="span">
-  [![Unitree Go2 Quadruped](images/go2.png)](https://www.unitree.com/)
+  [![Unitree Go2 Quadruped](assets/go2.png)](https://www.unitree.com/)
 </figure>
 <figure markdown="span">
-  [![Barn Owl](images/barnowl.png)](https://barnowlag.com/)
+  [![Barn Owl](assets/barnowl.png)](https://barnowlag.com/)
 </figure>
 <figure markdown="span">
-  [![Pixel](images/pixel.png)](https://pixel-robotics.eu/)
+  [![Pixel](assets/pixel.png)](https://pixel-robotics.eu/)
 </figure>
 <figure markdown="span">
-  [![Brisa](images/brisa.png)](https://www.brisa.tech/)
+  [![Brisa](assets/brisa.png)](https://www.brisa.tech/)
 </figure>
 <figure markdown="span">
-  [![Olympics2020](images/tri.png)](https://www.tri.global/news/toyota-introduces-tris-t-tr1-a-virtual-mobility-2019-7-22/)
+  [![Olympics2020](assets/tri.png)](https://www.tri.global/news/toyota-introduces-tris-t-tr1-a-virtual-mobility-2019-7-22/)
 </figure>
 <figure markdown="span">
-  [![Wyca Robotics](images/wyca.png)](https://www.wyca-robotics.fr/)
+  [![Wyca Robotics](assets/wyca.png)](https://www.wyca-robotics.fr/)
 </figure>
 <figure markdown="span">
-  [![ElroyAir](images/elroy.png)](https://elroyair.com/)
+  [![ElroyAir](assets/elroy.png)](https://elroyair.com/)
 </figure>
 <figure markdown="span">
-  [![Birds Eye](images/birdseye.png)](https://www.birdseyerobotics.com/)
+  [![Birds Eye](assets/birdseye.png)](https://www.birdseyerobotics.com/)
 </figure>
 <figure markdown="span">
-  [![UBR-1](images/ubr1.png)](https://www.robotandchisel.com/2020/09/01/navigation2)
+  [![UBR-1](assets/ubr1.png)](https://www.robotandchisel.com/2020/09/01/navigation2)
 </figure>
 <figure markdown="span">
-  [![Tiago Robot](images/tiago.png)](https://github.com/IntelligentRoboticsLabs/marathon_ros2)
+  [![Tiago Robot](assets/tiago.png)](https://github.com/IntelligentRoboticsLabs/marathon_ros2)
 </figure>
 <figure markdown="span">
-  [![Turtlebot2](images/tb2.png)](https://github.com/kobuki-base/kobuki_ros)
+  [![Turtlebot2](assets/tb2.png)](https://github.com/kobuki-base/kobuki_ros)
 </figure>
 <figure markdown="span">
-  [![Neobotix MPO-700](images/mpo_700.png)](https://github.com/neobotix/neo_mpo_700-2)
+  [![Neobotix MPO-700](assets/mpo_700.png)](https://github.com/neobotix/neo_mpo_700-2)
 </figure>
 <figure markdown="span">
-  [![Datavision Software](images/datavision.png)](https://rex.software)
+  [![Datavision Software](assets/datavision.png)](https://rex.software)
 </figure>
 <figure markdown="span">
-  [![Robotnik Rb1 base](images/rb1.png)](https://github.com/IntelligentRoboticsLabs/marathon_ros2)
+  [![Robotnik Rb1 base](assets/rb1.png)](https://github.com/IntelligentRoboticsLabs/marathon_ros2)
 </figure>
 <figure markdown="span">
-  [![Yunji Robot](images/yunji.png)](https://en.yunjichina.com.cn/a/53.html)
+  [![Yunji Robot](assets/yunji.png)](https://en.yunjichina.com.cn/a/53.html)
 </figure>
 <figure markdown="span">
-  [![Polymath Robotics](images/polymath_boat.png)](https://www.polymathrobotics.com/)
+  [![Polymath Robotics](assets/polymath_boat.png)](https://www.polymathrobotics.com/)
 </figure>
 <figure markdown="span">
-  [![Karelics](images/karelics.png)](https://karelics.fi/)
+  [![Karelics](assets/karelics.png)](https://karelics.fi/)
 </figure>
 <figure markdown="span">
-  [![Torch Technologies](images/torch.png)](https://torchtechnologies.com/)
+  [![Torch Technologies](assets/torch.png)](https://torchtechnologies.com/)
 </figure>
 <figure markdown="span">
-  [![Australian Centre for Robotics](images/ACFR.png)](https://robotics.sydney.edu.au/)
+  [![Australian Centre for Robotics](assets/ACFR.png)](https://robotics.sydney.edu.au/)
 </figure>
 <figure markdown="span">
-  [![Rover Robotics](images/rover.png)](https://github.com/RoverRobotics/openrover-ros2)
+  [![Rover Robotics](assets/rover.png)](https://github.com/RoverRobotics/openrover-ros2)
 </figure>
 <figure markdown="span">
-  [![Turtlebot4](images/tb4.png)](https://clearpathrobotics.com/turtlebot-4/)
+  [![Turtlebot4](assets/tb4.png)](https://clearpathrobotics.com/turtlebot-4/)
 </figure>
 <figure markdown="span">
-  [![Turtlebot3](images/tb3.png)](https://github.com/ROBOTIS-GIT/turtlebot3)
+  [![Turtlebot3](assets/tb3.png)](https://github.com/ROBOTIS-GIT/turtlebot3)
 </figure>
 <figure markdown="span">
-  [![Husarion ROSbot XL](images/rosbot_xl.png)](https://github.com/husarion/rosbot-xl-autonomy)
+  [![Husarion ROSbot XL](assets/rosbot_xl.png)](https://github.com/husarion/rosbot-xl-autonomy)
 </figure>
 <figure markdown="span">
-  [![Saxion Robotics](images/saxion.jpeg)](https://www.saxion.nl/)
+  [![Saxion Robotics](assets/saxion.jpeg)](https://www.saxion.nl/)
 </figure>
 <figure markdown="span">
-  [![Botronics](images/botronics.png)](https://botronics.be/)
+  [![Botronics](assets/botronics.png)](https://botronics.be/)
 </figure>
 <figure markdown="span">
-  [![Coming Soon](images/soon.png)](https://www.youtube.com/watch?v=oHg5SJYRHA0)
+  [![Coming Soon](assets/soon.png)](https://www.youtube.com/watch?v=oHg5SJYRHA0)
 </figure>
 </div>
 
@@ -125,12 +125,12 @@ Click on the images below for a link to the drivers or navigation configurations
 
 <div class="robots-grid" markdown>
 <figure markdown="span">
-  [![Waratah from Monash Nova Rocer](images/waratah.png)](https://www.novarover.space/)
+  [![Waratah from Monash Nova Rocer](assets/waratah.png)](https://www.novarover.space/)
 </figure>
 <figure markdown="span">
-  [![walking](images/walking.png)](https://www.aztrobotics.com/walking-y2.html)
+  [![walking](assets/walking.png)](https://www.aztrobotics.com/walking-y2.html)
 </figure>
 <figure markdown="span">
-  [![Coming Soon](images/soon.png)](https://www.youtube.com/watch?v=oHg5SJYRHA0)
+  [![Coming Soon](assets/soon.png)](https://www.youtube.com/watch?v=oHg5SJYRHA0)
 </figure>
 </div>

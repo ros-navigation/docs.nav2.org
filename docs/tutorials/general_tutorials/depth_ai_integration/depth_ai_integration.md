@@ -13,13 +13,13 @@ Traditional 3D navigation typically requires expensive hardware like LiDAR or St
 Depth Anything 3 (DA3) is an AI model that predicts spatially consistent geometry from an arbitrary number of visual inputs, with or without known camera poses. [For more details](https://arxiv.org/abs/2511.10647). In this tutorial, we are using ROS 2 implementation of Depth Anything 3 [[2]][repo-link], which provides the ROS 2 composable node to run the inference of the DA3 model. The attached image shows Rviz2 with two image views, one is showig the Color Image topic and other is showing Depth Image topic, published by DA3 ROS2 Node.
 
 <figure markdown="span">
-  ![](images/depth_ai_nav2_costmap.png){ width="80%" }
+  ![](assets/depth_ai_nav2_costmap.png){ width="80%" }
 </figure>
 
 ### Pipeline to process image
 
 <figure markdown="span">
-  ![](images/depth_ai_data_pipeline.png){ width="80%" }
+  ![](assets/depth_ai_data_pipeline.png){ width="80%" }
 </figure>
 
 The data flows sequentially through five distinct steps:

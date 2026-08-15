@@ -49,7 +49,7 @@ If at any point a child returns `FAILURE`, all children will be halted and the p
 To explain this further, here is an example BT that uses PipelineSequence.
 
 <figure markdown="span">
-  ![](images/control_pipelineSequence.png)
+  ![](assets/control_pipelineSequence.png)
 </figure>
 
 ```xml
@@ -68,25 +68,25 @@ To explain this further, here is an example BT that uses PipelineSequence.
 2. When the parent PipelineSequence is first ticked, let's assume `Action_A` returns `RUNNING`. The parent node will now return `RUNNING` and no other nodes are ticked.
 
     <figure markdown="span">
-      ![](images/control_pipelineSequence_RUNNING_IDLE_IDLE.png)
+      ![](assets/control_pipelineSequence_RUNNING_IDLE_IDLE.png)
     </figure>
 
 3. Now, let's assume `Action_A` returns `SUCCESS`, `Action_B` will now get ticked and will return `RUNNING`. `Action_C` has not yet been ticked so will return `IDLE`.
 
     <figure markdown="span">
-      ![](images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png)
+      ![](assets/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png)
     </figure>
 
 4. `Action_A` gets ticked again and returns `RUNNING`, and `Action_B` gets re-ticked and returns `SUCCESS` and therefore the BT goes on to tick `Action_C` for the first time. Let's assume `Action_C` returns `RUNNING`. The retick-ing of `Action_A` is what makes PipelineSequence useful.
 
     <figure markdown="span">
-      ![](images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png)
+      ![](assets/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png)
     </figure>
 
 5. All actions in the sequence will be re-ticked. Let's assume `Action_A` still returns `RUNNING`, where as `Action_B` returns `SUCCESS` again, and `Action_C` now returns `SUCCESS` on this tick. The sequence is now complete, and therefore `Action_A` is halted, even though it was still `RUNNING`.
 
     <figure markdown="span">
-      ![](images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png)
+      ![](assets/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png)
     </figure>
 
 Recall that if `Action_A`, `Action_B`, or `Action_C` returned `FAILURE` at any point of time, the parent would have returned `FAILURE` and halted any children as well.
@@ -106,7 +106,7 @@ This node is usually used to link together an action, and a recovery action as t
 and the second action will be something to be done in case of `FAILURE` of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.
 
 <figure markdown="span">
-  ![](images/control_recovery_node.png)
+  ![](assets/control_recovery_node.png)
 </figure>
 
 ```xml
@@ -133,7 +133,7 @@ If all children return `FAILURE` so will the parent RoundRobin.
 Here is an example BT we will use to walk through the concept.
 
 <figure markdown="span">
-  ![](images/control_round_robin.png)
+  ![](assets/control_round_robin.png)
 </figure>
 
 ```xml
@@ -151,14 +151,14 @@ Here is an example BT we will use to walk through the concept.
 1. All the nodes start at `IDLE`
 
     <figure markdown="span">
-      ![](images/control_round_robin_IDLE_IDLE_IDLE.png)
+      ![](assets/control_round_robin_IDLE_IDLE_IDLE.png)
     </figure>
 
 2. Upon tick of the parent node, the first child (`Action_A`) is ticked. Let's assume on tick the child returns `RUNNING`.
 In this case, no other children are ticked and the parent node returns `RUNNING` as well.
 
     <figure markdown="span">
-      ![](images/control_round_robin_RUNNING_IDLE_IDLE.png)
+      ![](assets/control_round_robin_RUNNING_IDLE_IDLE.png)
     </figure>
 
 3. Upon the next tick, let's assume that `Action_A` returns `FAILURE`.
@@ -166,26 +166,26 @@ This means that `Action_B` will get ticked next, and `Action_C` remains unticked
 Let's assume `Action_B` returns `RUNNING` this time. That means the parent RoundRobin node will also return `RUNNING`.
 
     <figure markdown="span">
-      ![](images/control_round_robin_FAILURE_RUNNING_IDLE.png)
+      ![](assets/control_round_robin_FAILURE_RUNNING_IDLE.png)
     </figure>
 
 4. Upon this next tick,  let's assume that `Action_B` returns `SUCCESS`. The parent RoundRobin will now halt all children and return `SUCCESS`.
 The parent node retains this state information, and will tick `Action_C` upon the next tick rather than start from `Action_A` like Step 2 did.
 
     <figure markdown="span">
-      ![](images/control_round_robin_FAILURE_SUCCESS_IDLE.png)
+      ![](assets/control_round_robin_FAILURE_SUCCESS_IDLE.png)
     </figure>
 
 5. On this tick, let's assume `Action_C` returns `RUNNING`, and so does the parent RoundRobin. No other nodes are ticked.
 
     <figure markdown="span">
-      ![](images/control_round_robin_FAILURE_SUCCESS_RUNNING.png)
+      ![](assets/control_round_robin_FAILURE_SUCCESS_RUNNING.png)
     </figure>
 
 6. On this last tick, let's assume `Action_C` returns `FAILURE`. The parent will circle and tick `Action_A` again. `Action_A` returns `RUNNING` and so will the parent RoundRobin node. This pattern will continue indefinitely unless all children return `FAILURE`.
 
     <figure markdown="span">
-      ![](images/control_round_robin_RUNNING_IDLE_FAILURE.png)
+      ![](assets/control_round_robin_RUNNING_IDLE_FAILURE.png)
     </figure>
 
 For additional details regarding the `RoundRobin` please see the [RoundRobin configuration guide][round-robin].
@@ -199,7 +199,7 @@ Note that even if a node returns `SUCCESS` in a previous tick, on the next tick,
 To explain this further, here is an example BT that uses NonblockingSequence.
 
 <figure markdown="span">
-  ![](images/control_nonblockingSequence.png)
+  ![](assets/control_nonblockingSequence.png)
 </figure>
 
 ```xml
@@ -218,25 +218,25 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 2. When the parent NonblockingSequence is first ticked, let's assume `Action_A` returns `RUNNING`. Following this, `Action_B` will be ticked, and let's assume it also returns `RUNNING`. Finally, `Action_C` will be ticked, and let's assume it also returns `RUNNING`. With three `RUNNING` children, the NonblockingSequence will return `RUNNING`
 
     <figure markdown="span">
-      ![](images/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png)
+      ![](assets/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png)
     </figure>
 
 3. On the next tick of the the parent NonblockingSequence, all actions in the sequence will be re-ticked. Let's assume `Action_A` returns `SUCCESS`, and `Action_B` and `Action_C` still return `RUNNING`. In this configuration, the NonblockingSequence still returns `RUNNING`, as there are two nodes in the children that are `RUNNING`
 
     <figure markdown="span">
-      ![](images/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png)
+      ![](assets/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png)
     </figure>
 
 4. Now, let's assume on the next re-tick, `Action_A` and `Action_C`  return `SUCCESS`, and `Action_B` returns `RUNNING`. In this configuration, the NonblockingSequence still returns `RUNNING`, as there is still one child node that is `RUNNING`. Note that `ActionA` was re-ticked and again returned `SUCCESS` in this case, it did not skip due to previously returning `SUCCESS`.
 
     <figure markdown="span">
-      ![](images/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png)
+      ![](assets/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png)
     </figure>
 
 5. Finally, Let's assume `Action_A`, `Action_B`, and `Action_C`  all return `SUCCESS`. The sequence is now complete, and therefore `Action_A`, `Action_B`, and `Action_C` are all halted and NonblockingSequence returns `SUCCESS`.
 
     <figure markdown="span">
-      ![](images/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png)
+      ![](assets/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png)
     </figure>
 
 Recall that if `Action_A`, `Action_B`, or `Action_C` returned `FAILURE` at any point of time, the parent would have returned `FAILURE` and halted any children as well.

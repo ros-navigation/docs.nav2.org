@@ -1,7 +1,7 @@
 # Using Collision Monitor { #using-collision-monitor }
 
 <figure markdown="span">
-  ![](images/collision_monitor.gif){ width="800px" }
+  ![](assets/collision_monitor.gif){ width="800px" }
 </figure>
 
 ## Overview
@@ -19,7 +19,7 @@ The Collision Monitor node has its own `collision_monitor_node.launch.py` launch
 For the demonstration, two shapes will be created - an inner stop and a larger slowdown bounding boxes placed in the front of the robot:
 
 <figure markdown="span">
-  ![](images/polygons.png){ width="800px" }
+  ![](assets/polygons.png){ width="800px" }
 </figure>
 
 If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to `30%` from its value.
@@ -103,7 +103,7 @@ collision_monitor:
 ## Configuring Collision Monitor with VelocityPolygon
 
 <figure markdown="span">
-  ![](images/dexory_velocity_polygon.gif){ width="800px" }
+  ![](assets/dexory_velocity_polygon.gif){ width="800px" }
 </figure>
 
 For this part of tutorial, we will set up the Collision Monitor with `VelocityPolygon` type for a `stop` action. `VelocityPolygon` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
@@ -173,13 +173,13 @@ VelocityPolygonStop:
 For holomic robots, the `holonomic` property should be set to `true`. In this scenario, the `linear_min` and `linear_max` parameters should cover  the magnitude of the robot's resultant velocity limits (using only non-negative values), while the `theta_min` and `theta_max` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, `direction_start_angle` and `direction_end_angle`, to specify the resultant velocity direction. The covered direction will always span from `direction_start_angle` to `direction_end_angle` in the **counter-clockwise** direction.
 
 <figure markdown="span">
-  ![](images/holonomic_direction.png){ width="365px" }
+  ![](assets/holonomic_direction.png){ width="365px" }
 </figure>
 
 Below shows some common configurations for holonomic robots that cover multiple directions of the resultant velocity:
 
 <figure markdown="span">
-  ![](images/holonomic_examples.png){ height="2880px" }
+  ![](assets/holonomic_examples.png){ height="2880px" }
 </figure>
 
 ```yaml
@@ -351,12 +351,12 @@ ros2 launch nav2_collision_monitor collision_monitor_node.launch.py
 Since both `PolygonStop` and `PolygonSlow` polygons will have their own publishers, they could be added to visualization as shown at the picture below:
 
 <figure markdown="span">
-  ![](images/polygons_visualization.png){ width="800px" }
+  ![](assets/polygons_visualization.png){ width="800px" }
 </figure>
 
 Set the initial pose and then put Nav2 goal on map.
 The robot will start its movement, slowing down while running near the obstacles, and stopping in close proximity to them:
 
 <figure markdown="span">
-  ![](images/collision.png){ width="800px" }
+  ![](assets/collision.png){ width="800px" }
 </figure>

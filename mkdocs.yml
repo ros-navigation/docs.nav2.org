@@ -10,8 +10,8 @@ copyright: "&copy; Copyright 2026, Open Navigation LLC."
 theme:
   name: material
   custom_dir: overrides
-  logo: images/nav2_logo_with_text.png
-  favicon: images/nav2_logo_48x48.png
+  logo: assets/nav2_logo_with_text.png
+  favicon: assets/nav2_logo_48x48.png
   font:
     text: Inter
   icon:

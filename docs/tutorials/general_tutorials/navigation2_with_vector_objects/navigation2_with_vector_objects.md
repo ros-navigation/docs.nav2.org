@@ -1,7 +1,7 @@
 # Navigating with Vector Objects { #navigating-with-vector-objects }
 
 <figure markdown="span">
-  ![](images/vector_objects_demo.gif)
+  ![](assets/vector_objects_demo.gif)
 </figure>
 
 ## Overview
@@ -148,13 +148,13 @@ The last lines mean that all three nodes: Vector Object server, Costmap Filter I
 Set the initial pose for the robot, and check that vector objects were appeared on global costmap:
 
 <figure markdown="span">
-  ![](images/vector_objects_on_costmap.png){ width="860px" }
+  ![](assets/vector_objects_on_costmap.png){ width="860px" }
 </figure>
 
 As well as for the Keepout Filter, robot will consider vector objects as obstacles on costmaps and will avoid them:
 
 <figure markdown="span">
-  ![](images/vector_objects_avoidance.png){ width="860px" }
+  ![](assets/vector_objects_avoidance.png){ width="860px" }
 </figure>
 
 ## Working with Vector Objects
@@ -192,7 +192,7 @@ ros2 service call /vector_object_server/add_shapes nav2_msgs/srv/AddShapes "poly
 The polygon shape in Vector Object server will be changed, `vo_map` will be updated and resulting costmap will look as follows - triangle obstacle was updated to bar:
 
 <figure markdown="span">
-  ![](images/vector_objects_updated.png)
+  ![](assets/vector_objects_updated.png)
 </figure>
 
 Finally, remove all shapes from map.
@@ -205,5 +205,5 @@ ros2 service call /vector_object_server/remove_shapes nav2_msgs/srv/RemoveShapes
 As a result, all vector shapes were disappeared from global costmap:
 
 <figure markdown="span">
-  ![](images/vector_objects_removed.png)
+  ![](assets/vector_objects_removed.png)
 </figure>

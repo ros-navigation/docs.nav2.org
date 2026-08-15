@@ -1,7 +1,7 @@
 # Writing a New Costmap2D Plugin { #writing-a-new-costmap-2d-plugin }
 
 <figure markdown="span">
-  ![Animated gif with gradient demo](images/gradient_layer_preview.gif){ width="700px" title="Animated gif with gradient demo" }
+  ![Animated gif with gradient demo](assets/gradient_layer_preview.gif){ width="700px" title="Animated gif with gradient demo" }
 </figure>
 
 ## Overview
@@ -88,7 +88,7 @@ In our example these methods have the following functionality:
     where the `GRADIENT_SIZE` is the size of each gradient period in map cells, `GRADIENT_FACTOR` - decrement of costmap's value per each step:
 
     <figure markdown="span">
-      ![](images/gradient_explanation.png)
+      ![](assets/gradient_explanation.png)
     </figure>
 
     These parameters are defined in plugin's header file.
@@ -226,5 +226,5 @@ ros2 launch nav2_bringup tb3_simulation_launch.py
 Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on map as it was described in [Quickstart][quickstart]. Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by `GradientLayer::updateCosts()` costmap within its bounds and global path curved by gradient:
 
 <figure markdown="span">
-  ![Image of gradient costmap used](images/gradient_layer_run.png){ width="700px" title="Image of gradient costmap used" }
+  ![Image of gradient costmap used](assets/gradient_layer_run.png){ width="700px" title="Image of gradient costmap used" }
 </figure>

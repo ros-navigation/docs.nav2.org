@@ -7,7 +7,7 @@ Rather than rastering vector objects each iteration or at run-time, it is done o
 A typical setup model for this is a Nav2 stack with Costmap Filters enabled, running in conjunction with a Vector Object server, which produces vectorised OccupancyGrid maps as input masks for the Costmap Filters:
 
 <figure markdown="span">
-  ![](images/vo_design.png){ width="1000" }
+  ![](assets/vo_design.png){ width="1000" }
 </figure>
 
 These vector shapes could be added by using ROS input parameters as well as being handled by the following service calls: `AddShapes.srv` which adds new shapes or modifies existing ones, `RemoveShapes.srv` which removes any or all shapes from the map `GetShapes.srv` which returns all shapes on the map.
@@ -26,13 +26,13 @@ This page describes all the configuration parameters of the Vector Object server
 - Polygons can be filled with any value or drawn as a polygonal chain, if it is not supposed to be a closed shape:
 
 <figure markdown="span">
-  ![](images/polygon_closed.png){ width="400" height="200" }
+  ![](assets/polygon_closed.png){ width="400" height="200" }
 </figure>
 
 - Circles can be filled with any value or drawn without any fill (only the circle boundary is placed on the map):
 
 <figure markdown="span">
-  ![](images/circle_fill.png){ width="400px" height="200px" }
+  ![](assets/circle_fill.png){ width="400px" height="200px" }
 </figure>
 
 - Vector shapes could be set once during the Vector Object server startup as ROS-parameters, and added/modified/removed over the time using the following service calls:
@@ -223,5 +223,5 @@ vector_object_server:
 For this, Vector Object server will produce the following map:
 
 <figure markdown="span">
-  ![](images/vo_config_map.png){ width="636px" height="638px" }
+  ![](assets/vo_config_map.png){ width="636px" height="638px" }
 </figure>

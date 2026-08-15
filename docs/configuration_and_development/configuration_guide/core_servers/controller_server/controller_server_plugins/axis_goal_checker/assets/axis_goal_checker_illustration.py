@@ -275,7 +275,7 @@ if __name__ == '__main__':
     fig = create_illustration()
 
     # Save to Nav2 docs folder where RST looks for it
-    output_path = '/opt/auto_ws/src/auto-sandbox/src/vendor/docs.nav2.org/docs/configuration_and_development/configuration_guide/core_servers/controller_server/nav2_controller-plugins/axis_goal_checker/images/axis_goal_checker.png'
+    output_path = '/opt/auto_ws/src/auto-sandbox/src/vendor/docs.nav2.org/docs/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/axis_goal_checker/assets/axis_goal_checker.png'
     fig.savefig(output_path, dpi=300, bbox_inches='tight')
     print(f"Saved to: {output_path}")
 

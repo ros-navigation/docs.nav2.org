@@ -263,5 +263,5 @@ Users can find information like the estimated time of arrival, distance remainin
 This feature was introduced in this [pull request 2338](https://github.com/ros-navigation/navigation2/pull/2338).
 
 <figure markdown="span">
-  ![Navigation feedback in RViz.](images/panel_feedback.gif){ width="600px" title="Navigation feedback in RViz." }
+  ![Navigation feedback in RViz.](assets/panel_feedback.gif){ width="600px" title="Navigation feedback in RViz." }
 </figure>

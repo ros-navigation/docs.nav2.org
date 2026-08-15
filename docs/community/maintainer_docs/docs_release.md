@@ -85,15 +85,13 @@ github_repositories:
     destination_dir: "macros/cache"
     data_to_clone:
       - "/docs/index.md"
-      - "/docs/images"
-      - "/docs/videos"
+      - "/docs/assets"
       - "/docs/community"
       - "/docs/robots_using"
       - "/docs/about_and_contact"
     symlinks:
       "docs/index.md": "macros/cache/docs.nav2.org/docs/index.md"
-      "docs/images": "macros/cache/docs.nav2.org/docs/images"
-      "docs/videos": "macros/cache/docs.nav2.org/docs/videos"
+      "docs/assets": "macros/cache/docs.nav2.org/docs/assets"
       "docs/community": "macros/cache/docs.nav2.org/docs/community"
       "docs/robots_using": "macros/cache/docs.nav2.org/docs/robots_using"
       "docs/about_and_contact": "macros/cache/docs.nav2.org/docs/about_and_contact"
@@ -106,8 +104,7 @@ github_repositories:
 Delete the following directories and files that are shared across multiple documentation distributions:
 
 - `docs/index.md`
-- `docs/images`
-- `docs/videos`
+- `docs/assets`
 - `docs/community`
 - `docs/robots_using`
 - `docs/about_and_contact`
@@ -117,8 +114,7 @@ Include them in `.gitignore`:
 ```
 # For non-rolling branches only
 docs/index.md
-docs/images
-docs/videos
+docs/assets
 docs/community
 docs/robots_using
 docs/about_and_contact

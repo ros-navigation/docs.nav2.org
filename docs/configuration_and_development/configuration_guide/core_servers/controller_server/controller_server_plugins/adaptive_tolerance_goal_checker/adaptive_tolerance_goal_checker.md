@@ -12,7 +12,7 @@ The goal is cosidered reached when one of the following conditions is met:
 When `stateful` is enabled, the XY goal reached state is preserved after one of the above conditions has been satisfied. See `xy_goal_tolerance_buffer` for configuring the hysteresis behavior.
 
 <figure markdown="span">
-  ![AdaptiveToleranceGoalChecker Illustration](images/adaptive_tolerance_goal_checker.png){ title="AdaptiveToleranceGoalChecker Illustration"}
+  ![AdaptiveToleranceGoalChecker Illustration](assets/adaptive_tolerance_goal_checker.png){ title="AdaptiveToleranceGoalChecker Illustration"}
 </figure>
 
 ## Parameters

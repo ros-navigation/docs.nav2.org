@@ -44,7 +44,7 @@ In this tutorial we will use the first type of speed restriction expressed in a 
 Create a new image with a PGM/PNG/BMP format: copy [depot.pgm](https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm) main map which will be used in a world simulation from a Nav2 repository to a new `depot_speed.pgm` file. Open `depot_speed.pgm` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
 
 <figure markdown="span">
-  ![](images/drawing_speed_mask.png){ width="500px" }
+  ![](assets/drawing_speed_mask.png){ width="500px" }
 </figure>
 
 Area "A" is filled with `25%` gray color, area "B" - with `50%` gray, that means that speed restriction will take `100% - 25% = 75%` in area "A" and `100% - 50% = 50%` in area "B" from maximum speed value allowed for this robot.
@@ -378,7 +378,7 @@ For better visualization of speed filter mask, in RViz in the left `Displays` pa
 Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look:
 
 <figure markdown="span">
-  ![](images/speed_global.png){ height="400px" }
+  ![](assets/speed_global.png){ height="400px" }
 </figure>
 
 ### 5. Optional: Enable path lookahead

@@ -525,14 +525,14 @@ All the graphs files for the depot and warehouse environments are located in the
 These are the current visualizations of the route graphs for the depot and warehouse environments:
 
 <figure markdown="span">
-  ![](images/depot_graph.png){ width="100%" }
+  ![](assets/depot_graph.png){ width="100%" }
   <figcaption>
     RViz visualization of the bidirectional route graph for the depot environment.
   </figcaption>
 </figure>
 
 <figure markdown="span">
-  ![](images/warehouse_graph.png){ width="100%" }
+  ![](assets/warehouse_graph.png){ width="100%" }
   <figcaption>
     RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated.
   </figcaption>

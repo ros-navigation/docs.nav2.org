@@ -3,7 +3,7 @@
 This layer implements an asymmetric variant of the inflation layer, by scaling inflation costs based on the planned path to incentivize left- or right-hand navigation.
 
 <figure markdown="span">
-  ![Costmap with asymmetric inflation layer](images/asymmetric_layer_active.png){ title="Costmap with asymmetric inflation layer" }
+  ![Costmap with asymmetric inflation layer](assets/asymmetric_layer_active.png){ title="Costmap with asymmetric inflation layer" }
 </figure>
 
 `<asymmetric inflation layer>` is the corresponding plugin name selected for this type.

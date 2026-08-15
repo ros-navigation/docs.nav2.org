@@ -103,7 +103,7 @@ ros2 run nav2_map_server map_saver_cli -f ~/map
 ```
 
 <figure markdown="span">
-  ![Navigation2 with SLAM](images/navigation2_with_slam.gif){ width="700px" title="Navigation2 with SLAM" }
+  ![Navigation2 with SLAM](assets/navigation2_with_slam.gif){ width="700px" title="Navigation2 with SLAM" }
 </figure>
 
 ### 5. Getting Started Simplification

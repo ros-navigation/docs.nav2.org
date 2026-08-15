@@ -104,7 +104,7 @@ The detection of the dynamic object (like a person) to follow is outside the sco
 send the initial pose to the `NavigateToPose` action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:
 
 <figure markdown="span">
-  ![](images/main_diagram.png){ width="80%" }
+  ![](assets/main_diagram.png){ width="80%" }
 </figure>
 
 ### ComputePathToPose Tutorial Steps

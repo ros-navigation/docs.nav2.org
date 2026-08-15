@@ -21,7 +21,7 @@ Set the project coordinate reference system by selecting *Project->Properties->C
     For more information about coordinate reference systems please review [https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html](https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
 
 <figure markdown="span">
-  ![image](images/coordinate_reference_system.png){ height="800" }
+  ![image](assets/coordinate_reference_system.png){ height="800" }
 </figure>
 
 ### 2. Setup Coordinate System
@@ -41,7 +41,7 @@ To georeference image select *Raster -> Georefencer*. Set the *Transformation Se
 type*, *WGS 84/ Pseudo-Mercator* for *Target SRS* and set your desired path for the *Output Raster*.
 
 <figure markdown="span">
-  ![image](images/transformation_settings.png){ width="500" }
+  ![image](assets/transformation_settings.png){ width="500" }
 </figure>
 
 Select the raster image you wish to georeference and place control point by selecting *Add Point* and clicking on the raster image.
@@ -49,13 +49,13 @@ The control points can be modified by clicking on the control point table and ty
 by selecting *Start Transformation*.
 
 <figure markdown="span">
-  ![image](images/georeferencer.png){ width="800" }
+  ![image](assets/georeferencer.png){ width="800" }
 </figure>
 
 Close the window. Drag and drop the georeferenced raster file that was just created into the layers window. This should be a tiff file, by default.
 
 <figure markdown="span">
-  ![image](images/raster_layer.png){ width="800" }
+  ![image](assets/raster_layer.png){ width="800" }
 </figure>
 
 To verify the transformation worked, move the mouse around the raster image and look at the coordinates being displayed at the bottom of the window.
@@ -68,14 +68,14 @@ Select *Layer -> Create Layer -> New ShapeFile Layer*. Set the shapefile layer s
 *nodes* for the *File name*, *Point* for the *Geometry type and WGS 84/ Pseudo-Mercator* for the coordinate system. Press *OK*.
 
 <figure markdown="span">
-  ![image](images/node_layer.png){ width="700" }
+  ![image](assets/node_layer.png){ width="700" }
 </figure>
 
 In order to have the *id* field auto increment, right click on the layer and select the *Properties -> Attribute Form*.
 Expand the *Fields* drop down menu and select *id*. Select the *Expression Dialog* icon which is across from *Default value* field.
 
 <figure markdown="span">
-  ![](images/attribute_form.png){ width="800" }
+  ![](assets/attribute_form.png){ width="800" }
 </figure>
 
 Within the *Expression Dialog* select *Import user expressions* and import *increment_node_id.json* which exists in the scripts file with the nav2 route module. Expand *User expressions* and double click on *increment_node_id*.
@@ -83,7 +83,7 @@ The expression should show up in the left window. Click *OK* to save the express
 This will increment the node *id* by one every time a new node is added. The first node *id* will be zero.
 
 <figure markdown="span">
-  ![](images/expression_dialog.png){ width="800" }
+  ![](assets/expression_dialog.png){ width="800" }
 </figure>
 
 Click on the node layer and then select *Toggle Editing* icon represented as a pencil to start editing the layer.
@@ -92,7 +92,7 @@ Each time a node is added, a window will pop up with the auto incremented id. Pr
 Once complete, unselect 'Toggle Editing' and save changes.
 
 <figure markdown="span">
-  ![](images/nodes.png){ width="800" }
+  ![](assets/nodes.png){ width="800" }
 </figure>
 
 !!! note
@@ -107,7 +107,7 @@ To auto increment the *id* field follow the same steps as above except replace *
 This will increment the edge *id* by one every time a new edge is added. The first edge *id* will be *10000*.
 
 <figure markdown="span">
-  ![](images/edge_layer.png){ width="600" }
+  ![](assets/edge_layer.png){ width="600" }
 </figure>
 
 To see the directionality of the edges, right click on the edge layer and select *Properties*. Click *Symbology -> Simple Line* and change the *Symbol layer type* to *Arrow*.
@@ -120,7 +120,7 @@ The edge locations must exactly match up to the node locations, so if Snapping i
 Once complete, unselect 'Toggle Editing' and save changes.
 
 <figure markdown="span">
-  ![](images/edges.png){ width="800" }
+  ![](assets/edges.png){ width="800" }
 </figure>
 
 ### 5. Associate Nodes With Edges
@@ -134,7 +134,7 @@ point. Then export the layer as a ShapeFile by right clicking on the layer selec
 coordinate reference system is *WGS 84 /Pseudo-Mercator*. Press *OK*.
 
 <figure markdown="span">
-  ![image](images/db_manager.png){ width="800" }
+  ![image](assets/db_manager.png){ width="800" }
 </figure>
 
 ### 6. Export To Geojson

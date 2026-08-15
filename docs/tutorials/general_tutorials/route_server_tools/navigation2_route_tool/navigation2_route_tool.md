@@ -1,7 +1,7 @@
 # Using the Nav2 Route Tool { #using-the-nav2-route-tool }
 
 <figure markdown="span">
-  ![](images/route_tool_demo.gif){ width="90%" }
+  ![](assets/route_tool_demo.gif){ width="90%" }
 </figure>
 
 ## Overview
@@ -29,7 +29,7 @@ This should open Rviz with the route tool panel on the left side and your occupa
 ### Loading a Route Graph
 
 <figure markdown="span">
-  ![](images/route_load.gif){ width="90%" }
+  ![](assets/route_load.gif){ width="90%" }
 </figure>
 
 To load in an existing route graph, click on the load button on the bottom left of the route tool panel.
@@ -39,7 +39,7 @@ After clicking open, you should see the route graph overlaid with your occupancy
 ### Adding Nodes and Edges
 
 <figure markdown="span">
-  ![](images/route_add.gif){ width="90%" }
+  ![](assets/route_add.gif){ width="90%" }
 </figure>
 
 To add nodes and edges to your route graph, select the "Add" tab of the route tool panel.
@@ -51,7 +51,7 @@ For edges, follow the same process with the "Edge" option selected and specifyin
 ### Editing Nodes and Edges
 
 <figure markdown="span">
-  ![](images/route_edit.gif){ width="90%" }
+  ![](assets/route_edit.gif){ width="90%" }
 </figure>
 
 To edit an existing node or edge, select the "Edit" tab of the route tool panel.
@@ -64,7 +64,7 @@ Existing edges can be edited by selecting the "Edge" option, entering the ID of 
 ### Removing Nodes and Edges
 
 <figure markdown="span">
-  ![](images/route_delete.gif){ width="90%" }
+  ![](assets/route_delete.gif){ width="90%" }
 </figure>
 
 To remove an existing node or edge, select the "Remove" tab of the route tool panel.
@@ -76,7 +76,7 @@ You may need to toggle the visibility of the route graph in Rviz to see the chan
 ### Saving a Route Graph
 
 <figure markdown="span">
-  ![](images/route_save.gif){ width="90%" }
+  ![](assets/route_save.gif){ width="90%" }
 </figure>
 
 Once you are ready to save your route graph, click the "Save" button at the bottom right of the panel.

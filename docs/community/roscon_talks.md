@@ -12,18 +12,18 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 
 | Talk | Thumbnail | Description |
 |------|-----------|-------------|
-| [On Use of Nav2 Route Server][route-server] | ![thumbnail](images/roscon2025_route_server.jpg) | ROSCon 2025 |
-| [On Use of Nav2 Docking][docking] | ![thumbnail](images/roscon2024_docking.jpg) | ROSCon 2024 |
-| [Nav2 Whys over What's: Navigating the Philosophies Behind the Features][whys-over-whats] | ![thumbnail](images/roscon2023_whys_over_whats.jpg) | ROSCon FR 2023 |
-| [On Use of Nav2 MPPI Controller][mppi] | ![thumbnail](images/roscon2023_mppi.jpg) | ROSCon 2023 |
-| [Bidirectional navigation with Nav2][bidirectional] | ![thumbnail](images/roscon2023_bidirectional.jpg) | ROSCon 2023 |
-| [On Use of Nav2 Smac Planners][smac] | ![thumbnail](images/roscon2022_smac_planners.jpg) | ROSCon 2022 |
-| [The Past, Present, and Future of Navigation][past-present-future] | ![thumbnail](images/roscon2021_past_present_future.jpg) | ROSCon JP 2021 |
-| [Chronicles of Caching and Containerising CI for Nav2][ci-chronicles] | ![thumbnail](images/roscon2021_ci_chronicles.jpg) | ROSCon 2021 |
-| [Navigation2: The Next Generation Navigation System][next-gen] | ![thumbnail](images/roscon2020_next_gen.jpg) | ROSCon 2020 |
-| [On Use of SLAM Toolbox][slam-toolbox] | ![thumbnail](images/roscon2019_slam_toolbox.jpg) | ROSCon 2019 |
-| [Navigation 2 Overview][nav2-overview] | ![thumbnail](images/roscon2019_nav2_overview.jpg) | ROSCon 2019 |
-| [On Use of the Spatio-Temporal Voxel Layer][stvl] | ![thumbnail](images/roscon2018_stvl.jpg) | ROSCon 2018 |
+| [On Use of Nav2 Route Server][route-server] | ![thumbnail](assets/roscon2025_route_server.jpg) | ROSCon 2025 |
+| [On Use of Nav2 Docking][docking] | ![thumbnail](assets/roscon2024_docking.jpg) | ROSCon 2024 |
+| [Nav2 Whys over What's: Navigating the Philosophies Behind the Features][whys-over-whats] | ![thumbnail](assets/roscon2023_whys_over_whats.jpg) | ROSCon FR 2023 |
+| [On Use of Nav2 MPPI Controller][mppi] | ![thumbnail](assets/roscon2023_mppi.jpg) | ROSCon 2023 |
+| [Bidirectional navigation with Nav2][bidirectional] | ![thumbnail](assets/roscon2023_bidirectional.jpg) | ROSCon 2023 |
+| [On Use of Nav2 Smac Planners][smac] | ![thumbnail](assets/roscon2022_smac_planners.jpg) | ROSCon 2022 |
+| [The Past, Present, and Future of Navigation][past-present-future] | ![thumbnail](assets/roscon2021_past_present_future.jpg) | ROSCon JP 2021 |
+| [Chronicles of Caching and Containerising CI for Nav2][ci-chronicles] | ![thumbnail](assets/roscon2021_ci_chronicles.jpg) | ROSCon 2021 |
+| [Navigation2: The Next Generation Navigation System][next-gen] | ![thumbnail](assets/roscon2020_next_gen.jpg) | ROSCon 2020 |
+| [On Use of SLAM Toolbox][slam-toolbox] | ![thumbnail](assets/roscon2019_slam_toolbox.jpg) | ROSCon 2019 |
+| [Navigation 2 Overview][nav2-overview] | ![thumbnail](assets/roscon2019_nav2_overview.jpg) | ROSCon 2019 |
+| [On Use of the Spatio-Temporal Voxel Layer][stvl] | ![thumbnail](assets/roscon2018_stvl.jpg) | ROSCon 2018 |
 
 </div>
 
@@ -46,10 +46,10 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 
 | Talk | Thumbnail | Description |
 |------|-----------|-------------|
-| [Navegación robusta en ROS2][navegacion-robusta] | ![thumbnail](images/roscon2024_navegacion_robusta.jpg) | ROSCon ES 2024 |
-| [BehaviorTree.CPP 4.0. What is new and roadmap][bt-cpp] | ![thumbnail](images/roscon2022_bt_cpp.jpg) | ROSCon 2022 |
-| [Mobile Robotics Scale-up Leveraging ROS][mobile-scaleup] | ![thumbnail](images/roscon2024_mobile_robotics_scaleup.jpg) | ROSCon 2024 |
-| [Radar Tracks for Path Planning in the presence of Dynamic Obstacles][radar-tracks] | ![thumbnail](images/roscon2024_radar_tracks.jpg) | ROSCon 2024 |
+| [Navegación robusta en ROS2][navegacion-robusta] | ![thumbnail](assets/roscon2024_navegacion_robusta.jpg) | ROSCon ES 2024 |
+| [BehaviorTree.CPP 4.0. What is new and roadmap][bt-cpp] | ![thumbnail](assets/roscon2022_bt_cpp.jpg) | ROSCon 2022 |
+| [Mobile Robotics Scale-up Leveraging ROS][mobile-scaleup] | ![thumbnail](assets/roscon2024_mobile_robotics_scaleup.jpg) | ROSCon 2024 |
+| [Radar Tracks for Path Planning in the presence of Dynamic Obstacles][radar-tracks] | ![thumbnail](assets/roscon2024_radar_tracks.jpg) | ROSCon 2024 |
 
 </div>
 

@@ -51,7 +51,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     ```
 
     <figure markdown="span">
-      ![](images/ROS2_topic_hz.png){ width="600" }
+      ![](assets/ROS2_topic_hz.png){ width="600" }
     </figure>
 
 5. Start the camera calibration node
@@ -104,7 +104,7 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     ```
 
     <figure markdown="span">
-      ![](images/window1.png){ width="600" }
+      ![](assets/window1.png){ width="600" }
     </figure>
 
 6. In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:
@@ -117,23 +117,23 @@ This tutorial shows how to obtain calibration parameters for monocular camera.
     - checkerboard tilted to the left, right, top and bottom (Skew)
 
     <figure markdown="span">
-      ![](images/calibration.jpg){ width="600" }
+      ![](assets/calibration.jpg){ width="600" }
     </figure>
 
 7. As the checkerboard is moved around the 4 bars on the calibration sidebar increases in length. When all then the 4 bars are green and enough data is available for calibration the CALIBRATE button will light up. Click it to see the results. It takes around the minute for calibration to take place.
 
     <figure markdown="span">
-      ![](images/greenbars.png){ width="600" }
+      ![](assets/greenbars.png){ width="600" }
     </figure>
 
 8. After the calibration is completed the save and commit buttons light up. And you can also see the result in terminal.
 
     <figure markdown="span">
-      ![](images/calibration_complete.png){ width="600" }
+      ![](assets/calibration_complete.png){ width="600" }
     </figure>
 
     <figure markdown="span">
-      ![](images/calibration_parameters.png){ width="600" }
+      ![](assets/calibration_parameters.png){ width="600" }
     </figure>
 
 
