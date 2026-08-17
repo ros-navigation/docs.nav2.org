@@ -22,7 +22,7 @@ An open-source, production-grade autonomy framework trusted by 300+ companies wo
 ## **Our Sponsors**
 
 <figure markdown="span">
-  ![Our Sponsors](assets/sponsors_oct_2025.png){ width="700px" title="Our Sponsors"}
+  ![Our Sponsors](assets/sponsors/sponsors_oct_2025.png){ width="700px" title="Our Sponsors"}
 </figure>
 
 ## **Services**
