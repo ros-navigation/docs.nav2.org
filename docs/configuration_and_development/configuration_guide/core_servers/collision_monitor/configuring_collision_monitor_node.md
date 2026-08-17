@@ -437,55 +437,55 @@ Type: `vector<string>` Default: `[""]`
 `<zone name>` is a parameter block referenced by name from a source's `exclusion_zones` list. Zone names are global across the node.
 Exclusion zones remove (mask out) a source's points and never trigger an action. Each zone inherits the owning source's `base_shift_correction` policy.
 
-### **`<zone name>`.type**
+### **`<zone name>.type`**
 
 Type: `string` Default: `"polygon"`
 
 :   Type of zone shape. Available values are `"polygon"` and `"circle"`.
 
-### **`<zone name>`.points**
+### **`<zone name>.points`**
 
 Type: `string` Default: `""`
 
 :   Zone polygon vertices, listed in `"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"` format, expressed in `frame_id`. Used for `"polygon"` type. Minimum 3 points. Causes an error, if invalid for a `"polygon"` zone.
 
-### **`<zone name>`.radius**
+### **`<zone name>.radius`**
 
 Type: `double` Default: `N/A`
 
 :   Circle radius. Used for `"circle"` type. Must be greater than `0`. Causes an error, if not specified for a `"circle"` zone.
 
-### **`<zone name>`.frame_id**
+### **`<zone name>.frame_id`**
 
 Type: `string` Default: (node parameter `base_frame_id`)
 
 :   Frame the zone shape is anchored to and tracked via TF (e.g. `dock_link`). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.
 
-### **`<zone name>`.frame_hold_timeout**
+### **`<zone name>.frame_hold_timeout`**
 
 Type: `double` Default: `0.0`
 
 :   Extra time (in seconds) beyond `transform_tolerance` that the last known pose of a stale zone `frame_id` keeps being used before the zone fails safe and stops masking points. While held, the zone is frozen at its last valid pose in the `odom_frame_id` frame, so it stays world-fixed even if the robot moves. Useful to ride out brief detection dropouts of a marker-based zone frame. `0.0` means only the transform tolerance applies.
 
-### **`<zone name>`.min_height**
+### **`<zone name>.min_height`**
 
 Type: `double` Default: `-inf`
 
 :   Lower bound (in the base frame `z`) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.
 
-### **`<zone name>`.max_height**
+### **`<zone name>.max_height`**
 
 Type: `double` Default: `+inf`
 
 :   Upper bound (in the base frame `z`) of the height band a point must be within to be masked. Unbounded by default so 2D sources are fully covered.
 
-### **`<zone name>`.enabled**
+### **`<zone name>.enabled`**
 
 Type: `bool` Default: `false`
 
 :   Whether this zone actively masks points. (Can be dynamically set)
 
-### **`<zone name>`.visualize**
+### **`<zone name>.visualize`**
 
 Type: `bool` Default: `false`
 
