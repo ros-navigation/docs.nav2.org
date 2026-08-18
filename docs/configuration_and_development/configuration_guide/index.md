@@ -220,6 +220,13 @@ the best navigation performance.
 
     [:octicons-arrow-right-24: Go][coverage-server]
 
+- :material-target-account: **Following Server**
+
+    ---
+    Dynamic object following with tracking recovery.
+
+    [:octicons-arrow-right-24: Go][following-server]
+
 - :material-replay: **Loopback Simulator**
 
     ---

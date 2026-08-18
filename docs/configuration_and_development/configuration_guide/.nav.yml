@@ -27,4 +27,5 @@ nav:
   - Simple Smoother: smoother_plugins/configuring_simple_smoother.md
   - AMCL: others/configuring_amcl.md
   - Coverage Server: others/configuring_coverage_server.md
+  - Following Server: others/configuring_following_server.md
   - Loopback Simulator: others/configuring_loopback_sim.md

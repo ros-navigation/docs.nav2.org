@@ -156,6 +156,18 @@ Type: `double` Default: `0.25`
 
 :   Radius to end goal to commense slow down.
 
+### **`controller.rotate_to_heading_angular_vel`**
+
+Type: `double` Default: `1.0`
+
+:   Angular velocity (rad/s) to rotate to the goal heading.
+
+### **`controller.rotate_to_heading_max_angular_accel`**
+
+Type: `double` Default: `3.2`
+
+:   Maximum angular acceleration (rad/s^2) to rotate to the goal heading.
+
 ### **`controller.use_collision_detection`**
 
 Type: `bool` Default: `true`
