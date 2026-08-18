@@ -3,6 +3,7 @@
 .md-typeset .md-button {
   border-radius: .4rem;
   padding: .8rem 2rem;
+  margin-top: .3rem;
   background-color: var(--button-primary-fg-color);
   border-color: var(--button-primary-bg-color);
   color: var(--md-primary-fg-color);
@@ -43,6 +44,7 @@
     height: 100%;
     border-radius: .4rem;
     padding: .8rem 2rem;
+    margin: 0;
     background-color: var(--button-primary-bg-color);
     border-color: var(--button-primary-bg-color);
     box-sizing: border-box;
