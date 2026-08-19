@@ -1,6 +1,0 @@
-_build
-lib/
-bin/
-pyvenv.cfg
-.DS_Store
-venv/
