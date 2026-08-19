@@ -1065,3 +1065,9 @@ Additionally, `BtActionServer` now reports `GOAL_REJECTED` (instead of `UNKNOWN`
 ## New ZoneParameterFilter Costmap Filter
 
 [PR #6104](https://github.com/ros-navigation/navigation2/pull/6104) adds a new `ZoneParameterFilter` costmap filter that sets ROS parameters on other nodes based on the robot's position using a filter mask. Each mask value selects a declared state carrying parameter setpoints, for example a lower `FollowPath.max_vel_x` inside a snow zone. Leaving all zones, or entering a zone with mask value `0`, restores the declared `nominal_defaults`. Every state transition is published as `std_msgs/UInt8` on the `state_event_topic`. See the [Zone Parameter Filter Parameters][zone-parameter-filter-parameters] configuration page for the parameters and an example, and the [Navigating with Zone Parameter Overrides][navigating-with-zone-parameter-overrides] tutorial.
+
+<figure markdown="span">
+  ![A single zone raising inflation_radius on the local and global costmap nodes, with a panel tracking both parameter values](../../configuration_guide/core_servers/costmap_2d/costmap_filters/zone_parameter_filter/assets/zone_parameter_filter_demo.gif){ width="960px" title="A single zone raising inflation_radius on the local and global costmap nodes, with a panel tracking both parameter values"}
+</figure>
+
+GIF above shows one filter instance raising `inflation_layer.inflation_radius` on both costmap nodes on entry to a single zone, and restoring the `nominal_defaults` on the way out. The scene is a simulation, with a synthetic map and a scripted `base_link` transform.

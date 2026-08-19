@@ -12,4 +12,4 @@ nav:
   - Keepout Filter Parameters: costmap_filters/keepout_filter.md
   - Speed Filter Parameters: costmap_filters/speed_filter.md
   - Binary Filter Parameters: costmap_filters/binary_filter/binary_filter.md
-  - Zone Parameter Filter Parameters: costmap_filters/zone_parameter_filter.md
+  - Zone Parameter Filter Parameters: costmap_filters/zone_parameter_filter/zone_parameter_filter.md

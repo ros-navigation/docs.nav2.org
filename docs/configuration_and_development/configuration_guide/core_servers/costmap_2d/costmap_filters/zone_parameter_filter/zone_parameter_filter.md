@@ -4,6 +4,12 @@ Zone Parameter Filter is a Costmap Filter that sets ROS parameters on other node
 
 On a transition between two states, parameters set by the previous state but not by the new one are first reset to their `nominal_defaults` values, then the new state's setpoints are applied. Parameter updates are batched per target node and issued asynchronously; an update that fails makes the filter throw rather than being logged and ignored, so the robot does not keep driving on a value a zone was meant to change. Every transition publishes the new state id on `state_event_topic`.
 
+<figure markdown="span">
+  ![A single zone raising inflation_radius on the local and global costmap nodes, with a panel tracking both parameter values](assets/zone_parameter_filter_demo.gif){ width="960px" title="A single zone raising inflation_radius on the local and global costmap nodes, with a panel tracking both parameter values"}
+</figure>
+
+The demo above runs one filter instance on `local_costmap` with a single zone: entering it applies a `caution_zone` setpoint that raises `inflation_layer.inflation_radius` from `0.55` to `1.75`, both on the node the filter runs on and, through the setpoint's `node` field, on `global_costmap`; leaving the zone restores the `nominal_defaults`. The scene is a simulation, with a synthetic map and a scripted `base_link` transform.
+
 `<filter name>`: is the corresponding plugin name selected for this type.
 
 `<state name>`: is a state name listed in `states`.
