@@ -15,7 +15,7 @@ github_repositories:
       - "/nav2_behavior_tree/nav2_tree_nodes.xml"
       - "/nav2_behavior_tree/include/nav2_behavior_tree/plugins"
       - "/nav2_docking/opennav_docking_bt/include/opennav_docking_bt"
-  mkdocs.nav2.org:
+  docs.nav2.org:
     owner: "ros-navigation"
     branch: "rolling" # keep unchanged between distributions
     destination_dir: "macros/cache"
@@ -26,8 +26,8 @@ github_repositories:
       - "/docs/robots_using"
       - "/docs/about_and_contact"
     symlinks:
-      "docs/index.md": "macros/cache/mkdocs.nav2.org/docs/index.md"
-      "docs/assets": "macros/cache/mkdocs.nav2.org/docs/assets"
-      "docs/community": "macros/cache/mkdocs.nav2.org/docs/community"
-      "docs/robots_using": "macros/cache/mkdocs.nav2.org/docs/robots_using"
-      "docs/about_and_contact": "macros/cache/mkdocs.nav2.org/docs/about_and_contact"
+      "docs/index.md": "macros/cache/docs.nav2.org/docs/index.md"
+      "docs/assets": "macros/cache/docs.nav2.org/docs/assets"
+      "docs/community": "macros/cache/docs.nav2.org/docs/community"
+      "docs/robots_using": "macros/cache/docs.nav2.org/docs/robots_using"
+      "docs/about_and_contact": "macros/cache/docs.nav2.org/docs/about_and_contact"
