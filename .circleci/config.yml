@@ -54,7 +54,7 @@ references:
   install_deployment_key: &install_deployment_key
     add_ssh_keys:
       fingerprints:
-        - "SHA256:ZnRqrDobYvOKwaOK93Ro6i0MI7sITLQlf4DGjX+mYcE"
+        - "f1:50:e5:1b:95:e6:38:aa:f8:71:f3:f8:ba:35:f5:46"
 
 commands:
   install_doc_dependencies:
