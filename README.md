@@ -1,6 +1,6 @@
-# mk.docs.nav2.org
+# docs.nav2.org
 
-[![CircleCI](https://img.shields.io/badge/-circleci-1b273a?style=for-the-badge&logo=circleci&logoColor=white)](https://app.circleci.com/pipelines/github/ros-navigation/mk.docs.nav2.org)
+[![CircleCI](https://img.shields.io/badge/-circleci-1b273a?style=for-the-badge&logo=circleci&logoColor=white)](https://app.circleci.com/pipelines/github/ros-navigation/docs.nav2.org)
 
 <!-- Placeholder for the link / logo -->
 

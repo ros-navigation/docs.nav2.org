@@ -1,5 +1,5 @@
 ---
-edit_uri: https://github.com/ros-navigation/mkdocs.nav2.org/tree/rolling/docs/
+edit_uri: https://github.com/ros-navigation/docs.nav2.org/tree/rolling/docs/
 ---
 
 # Robots Using { #robots-using }
