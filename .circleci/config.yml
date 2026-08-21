@@ -1,92 +1,92 @@
-version: 2.1
-
-references:
-  on_checkout: &on_checkout
-    checkout:
-      path: .
-  setup_doc_dependencies: &setup_doc_dependencies
-    run:
-      name: Install Doc Dependencies
-      command: |
-        export DEBIAN_FRONTEND=noninteractive
-        apt update
-        apt install -y \
-          doxygen \
-          git \
-          graphviz \
-          make \
-          openjdk-8-jre \
-          openssh-server \
-          python3-pip \
-          ttf-dejavu
-        pip3 install -r requirements.txt
-  make_docs: &make_docs
-    run:
-      command: |
-        make html
-  store_docs: &store_docs
-    store_artifacts:
-        path: _build/html
-        destination: html
-  publish_docs: &publish_docs
-    run:
-      command: |
-        make publish
-  install_deployment_key: &install_deployment_key
-    add_ssh_keys:
-      fingerprints:
-        - "f1:50:e5:1b:95:e6:38:aa:f8:71:f3:f8:ba:35:f5:46"
-
-commands:
-  install_doc_dependencies:
-    description: "Install documentation dependencies"
-    steps:
-      - *setup_doc_dependencies
-  build_docs:
-    description: "Build docs"
-    steps:
-      - *make_docs
-      - *store_docs
-  publish_docs_to_gh_pages_branch:
-    description: "Commit newly built docs to gh-pages branch"
-    steps:
-      - *publish_docs
-
-executors:
-  docs_exec:
-    docker:
-      - image: ubuntu:focal
-    working_directory: /nav2_docs
-
-jobs:
-  docs_build:
-    executor: docs_exec
-    steps:
-      - *on_checkout
-      - install_doc_dependencies
-      - build_docs
-      - persist_to_workspace:
-          root: .
-          paths:
-            - _build
-  docs_publish:
-    executor: docs_exec
-    steps:
-      - *on_checkout
-      - install_doc_dependencies
-      - *install_deployment_key
-      - attach_workspace:
-          at: .
-      - publish_docs_to_gh_pages_branch
-
-workflows:
-  version: 2
-  build_and_publish_docs:
-    jobs:
-      - docs_build
-      - docs_publish:
-          requires:
-            - docs_build
-          filters:
-            branches:
-              only: master
+# version: 2.1
+#
+# references:
+#   on_checkout: &on_checkout
+#     checkout:
+#       path: .
+#   setup_doc_dependencies: &setup_doc_dependencies
+#     run:
+#       name: Install Doc Dependencies
+#       command: |
+#         export DEBIAN_FRONTEND=noninteractive
+#         apt update
+#         apt install -y \
+#           doxygen \
+#           git \
+#           graphviz \
+#           make \
+#           openjdk-8-jre \
+#           openssh-server \
+#           python3-pip \
+#           ttf-dejavu
+#         pip3 install -r requirements.txt
+#   make_docs: &make_docs
+#     run:
+#       command: |
+#         make html
+#   store_docs: &store_docs
+#     store_artifacts:
+#         path: _build/html
+#         destination: html
+#   publish_docs: &publish_docs
+#     run:
+#       command: |
+#         make publish
+#   install_deployment_key: &install_deployment_key
+#     add_ssh_keys:
+#       fingerprints:
+#         - "f1:50:e5:1b:95:e6:38:aa:f8:71:f3:f8:ba:35:f5:46"
+#
+# commands:
+#   install_doc_dependencies:
+#     description: "Install documentation dependencies"
+#     steps:
+#       - *setup_doc_dependencies
+#   build_docs:
+#     description: "Build docs"
+#     steps:
+#       - *make_docs
+#       - *store_docs
+#   publish_docs_to_gh_pages_branch:
+#     description: "Commit newly built docs to gh-pages branch"
+#     steps:
+#       - *publish_docs
+#
+# executors:
+#   docs_exec:
+#     docker:
+#       - image: ubuntu:focal
+#     working_directory: /nav2_docs
+#
+# jobs:
+#   docs_build:
+#     executor: docs_exec
+#     steps:
+#       - *on_checkout
+#       - install_doc_dependencies
+#       - build_docs
+#       - persist_to_workspace:
+#           root: .
+#           paths:
+#             - _build
+#   docs_publish:
+#     executor: docs_exec
+#     steps:
+#       - *on_checkout
+#       - install_doc_dependencies
+#       - *install_deployment_key
+#       - attach_workspace:
+#           at: .
+#       - publish_docs_to_gh_pages_branch
+#
+# workflows:
+#   version: 2
+#   build_and_publish_docs:
+#     jobs:
+#       - docs_build
+#       - docs_publish:
+#           requires:
+#             - docs_build
+#           filters:
+#             branches:
+#               only: master
