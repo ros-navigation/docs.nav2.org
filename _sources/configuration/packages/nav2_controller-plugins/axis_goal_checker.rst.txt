@@ -3,7 +3,7 @@
 AxisGoalChecker
 ===============
 
-Checks whether the robot has reached the goal pose by projecting the robot's position onto the path direction defined by the last segment of the path. This goal checker uses the last two poses of the path (``before_goal_pose`` and ``goal_pose``) to determine the path direction and then checks if the robot is within tolerance along that axis.
+Checks whether the robot has reached the goal pose by projecting the robot's position onto the path direction near the goal. This goal checker estimates the path direction from the ``goal_pose`` and the first plan pose at least ``direction_estimation_distance`` behind it, then checks if the robot is within tolerance along that axis.
 
 Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (``along_path_tolerance``) and perpendicular to it (``cross_track_tolerance``). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.
 
@@ -48,6 +48,17 @@ Parameters
 
     Description
         Maximum path length to consider for goal checking (m). If the remaining path length exceeds this value, the goal check is skipped. This prevents premature goal acceptance when far from the goal.
+
+:``<nav2_controller plugin>``.direction_estimation_distance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.15
+  ====== =======
+
+    Description
+        Distance back along the plan, from the goal, used to estimate the approach direction (m). The checker walks back from the goal and uses the first pose at least this far away as the direction reference. Larger values are more robust to erroneous end-of-plan poses and sharp final turns, but average the direction over a longer segment. Must be greater than 0 and less than ``path_length_tolerance``.
 
 :``<nav2_controller plugin>``.is_overshoot_valid:
 

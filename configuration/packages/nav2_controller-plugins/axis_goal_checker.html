@@ -1405,7 +1405,7 @@
              
   <div class="section" id="axisgoalchecker">
 <span id="configuring-nav2-controller-axis-goal-checker-plugin"></span><h1>AxisGoalChecker<a class="headerlink" href="#axisgoalchecker" title="Permalink to this heading"></a></h1>
-<p>Checks whether the robot has reached the goal pose by projecting the robot’s position onto the path direction defined by the last segment of the path. This goal checker uses the last two poses of the path (<code class="docutils literal notranslate"><span class="pre">before_goal_pose</span></code> and <code class="docutils literal notranslate"><span class="pre">goal_pose</span></code>) to determine the path direction and then checks if the robot is within tolerance along that axis.</p>
+<p>Checks whether the robot has reached the goal pose by projecting the robot’s position onto the path direction near the goal. This goal checker estimates the path direction from the <code class="docutils literal notranslate"><span class="pre">goal_pose</span></code> and the first plan pose at least <code class="docutils literal notranslate"><span class="pre">direction_estimation_distance</span></code> behind it, then checks if the robot is within tolerance along that axis.</p>
 <p>Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (<code class="docutils literal notranslate"><span class="pre">along_path_tolerance</span></code>) and perpendicular to it (<code class="docutils literal notranslate"><span class="pre">cross_track_tolerance</span></code>). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.</p>
 <img alt="AxisGoalChecker Illustration" class="align-center" src="../../../_images/axis_goal_checker.png" />
 <div class="section" id="parameters">
@@ -1478,8 +1478,30 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.is_overshoot_valid</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.direction_estimation_distance</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.15</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Distance back along the plan, from the goal, used to estimate the approach direction (m). The checker walks back from the goal and uses the first pose at least this far away as the direction reference. Larger values are more robust to erroneous end-of-plan poses and sharp final turns, but average the direction over a longer segment. Must be greater than 0 and less than <code class="docutils literal notranslate"><span class="pre">path_length_tolerance</span></code>.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.is_overshoot_valid</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
