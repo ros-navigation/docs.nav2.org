@@ -20,6 +20,14 @@ Type: `double` Default: `0.3`
 
 :   The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum allowed age (seconds) of the transform used to obtain the robot pose in the local costmap's global frame.
+    If the transform is older than this threshold, the controller server reports a transform error instead of computing a velocity command.
+    The check is enabled for positive values; values less than or equal to `0.0` disable it.
+
 ### **`use_realtime_priority`**
 
 Type: `bool` Default: `false`
@@ -264,6 +272,7 @@ controller_server:
   ros__parameters:
     controller_frequency: 20.0
     costmap_update_timeout: 0.3
+    transform_staleness_threshold: 1.0
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.5
     min_theta_velocity_threshold: 0.001
