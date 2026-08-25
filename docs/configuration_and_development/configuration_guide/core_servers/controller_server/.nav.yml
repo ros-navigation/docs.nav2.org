@@ -1,0 +1,10 @@
+nav:
+  - index.md
+  - SimpleProgressChecker: controller_server_plugins/simple_progress_checker.md
+  - PoseProgressChecker: controller_server_plugins/pose_progress_checker.md
+  - AxisGoalChecker: controller_server_plugins/axis_goal_checker/axis_goal_checker.md
+  - AdaptiveToleranceGoalChecker: controller_server_plugins/adaptive_tolerance_goal_checker/adaptive_tolerance_goal_checker.md
+  - SimpleGoalChecker: controller_server_plugins/simple_goal_checker.md
+  - StoppedGoalChecker: controller_server_plugins/stopped_goal_checker.md
+  - PositionGoalChecker: controller_server_plugins/position_goal_checker.md
+  - FeasiblePathHandler: controller_server_plugins/feasible_path_handler.md

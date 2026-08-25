@@ -1,0 +1,157 @@
+:root {
+  /* Nav2 Color Palette */
+  --color-nav2-blue:#47c7ef;
+  --color-nav2-light-blue:#76cfe5;
+  --color-nav2-gray:#434343;
+}
+
+/* Override default schemes */
+/* Light mode */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--color-nav2-blue);
+  --md-default-fg-color:#000000d6;
+  --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
+  --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
+
+  /* Custom colors */
+  --sidebar-bg-color:#f5f5f5;
+  --sidebar-border-color:#dddddd;
+  --search-form-bg-color:#e7e7e7;
+  --search-form-bg-hover-color:#e1e1e1;
+  --search-form-border-color:#ddd;
+  --search-form-border-hover-color:#d7d7d7;
+  --code-border-color:#e5e5e5;
+  --button-primary-bg-color: var(--md-primary-fg-color);
+  --sponsorship-banner-typeset-a-color: var(--color-nav2-gray);
+}
+
+/* Dark mode */
+[data-md-color-scheme="slate"][data-md-color-primary] {
+  --md-primary-fg-color: var(--color-nav2-blue);
+  --md-default-bg-color: var(--color-nav2-gray);
+  --md-default-fg-color:#fffffff5;
+  --md-typeset-a-color:#02a6f2; /* default light-blue color from material for mkdocs */
+  --md-accent-fg-color:#4287ff; /* default blue color from material for mkdocs */
+  --md-code-fg-color:#d8d8d8;
+  --md-code-bg-color:#383835;
+
+  /* Custom colors */
+  --sidebar-bg-color:#383835;
+  --sidebar-border-color:#52555a;
+  --search-form-bg-color:#30302d;
+  --search-form-bg-hover-color:#2d2d29;
+  --search-form-border-color:#424242;
+  --search-form-border-hover-color:#424242;
+  --code-border-color:#4b4b4b;
+  --button-primary-bg-color: var(--sidebar-bg-color);
+  --sponsorship-banner-typeset-a-color: var(--md-default-fg-color);
+}
+
+.md-header__title {
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+}
+
+.md-header__button.md-logo {
+  margin: .3rem;
+  padding: 0;
+}
+
+.md-header__button.md-logo img {
+  height: 2.6rem;
+  width: auto;
+}
+
+.md-tabs {
+  display: flex;
+  justify-content: safe center;
+}
+
+.md-code__nav {
+  background-color: var(--md-code-bg-color);
+}
+
+:hover > .md-code__nav {
+  background-color: var(--md-code-bg-color);
+}
+
+:root  > * {
+  --nav-sidebar-source-bg-color: #31b7f6;
+}
+
+.md-typeset .admonition{
+  border-radius: 0.4rem;
+  font-size: .67rem;
+}
+
+/* Note admonition uses Nav2 blue */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: var(--color-nav2-blue) !important;
+}
+.md-typeset .admonition.note:focus-within,
+.md-typeset details.note:focus-within {
+  box-shadow: 0 0 0 .2rem rgba(71, 199, 239, 0.1) !important;
+}
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary {
+  background-color: rgba(71, 199, 239, 0.1) !important;
+}
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before {
+  background-color: var(--color-nav2-blue) !important;
+}
+.md-typeset .note > .admonition-title::after,
+.md-typeset .note > summary::after {
+  color: var(--color-nav2-blue) !important;
+}
+
+.md-typeset code {
+  border-radius: 0.3rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--code-border-color);
+}
+
+/* A custom class for wrapping tables that need to be centered */
+.center-table {
+  text-align: center;
+}
+
+/* Use full width for Roadmaps badges */
+.md-typeset .twemoji svg {
+  width: 100%;
+}
+
+.md-top:focus, .md-top:hover {
+  background-color: var(--color-nav2-blue);
+}
+
+/* Prevent long headings from wrapping in the path and
+update the style of scrollbar */
+.md-content .md-path {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--light) transparent;
+
+  .md-path__list {
+    margin: 0.5rem 0;
+
+    .md-path__link .md-ellipsis {
+      white-space: nowrap;
+    }
+  }
+}
+
+.section-title {
+  font-size: 1.25em; /* The same as h3 */
+}
+
+.md-header__title {
+  font-weight: 700;
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+  font-weight: 700;
+}

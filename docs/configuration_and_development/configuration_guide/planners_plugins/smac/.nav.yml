@@ -1,0 +1,5 @@
+nav:
+  - index.md
+  - Smac 2D Planner: smac_2d/configuring_smac_2d.md
+  - Smac Hybrid-A* Planner: smac_hybrid/configuring_smac_hybrid.md
+  - Smac State Lattice Planner: smac_lattice/configuring_smac_lattice.md
