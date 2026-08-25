@@ -26,6 +26,7 @@ For a full list of important completed changes in the project, see the Migration
 - [ ] :roadmap-size-medium: - Reduce bond connection overhead to Nav2 Task Servers
 - [ ] :roadmap-size-small: - Review time synchronous behavior in Nav2 (no uses of ``Time(0)``, arbitrary ``now()``, etc) of subscriptions, publishers, TF, and others
 - [x] :roadmap-size-large: - Update to new documentation website with a modern format and styling
+- [ ] :roadmap-size-medium: - Continue developing solutions to use path tracking error in plugins and servers
 
 ## Lyrical Roadmap
 
