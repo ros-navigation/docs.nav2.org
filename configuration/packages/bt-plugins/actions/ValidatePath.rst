@@ -1,0 +1,167 @@
+.. _bt_validate_path_action:
+
+ValidatePath
+============
+
+Checks to see if the global path is valid. If there is an
+obstacle along the path, it returns FAILURE, otherwise
+it returns SUCCESS. Optionally checks specific costmap layers and
+can use a custom footprint for validation.
+
+Input Ports
+-----------
+
+:server_timeout:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 20.0
+  ====== =======
+
+  Description
+    Service response timeout (ms).
+
+:path:
+
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  nav_msgs::msg::Path                  N/A
+  ==================================== =======
+
+  Description
+    The global path to check for validity.
+
+:max_cost:
+
+  ============== ==========
+  Type           Default
+  -------------- ----------
+  unsigned int   254
+  ============== ==========
+
+  Description
+    The maximum allowable cost for the path to be considered valid.
+
+:consider_unknown_as_obstacle:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+    Whether to consider unknown cost (255) as obstacle.
+
+:layer_name:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string ""
+  ====== =======
+
+  Description
+    Name of the specific costmap layer to check against.
+    If empty, checks against the full costmap.
+
+:footprint:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string ""
+  ====== =======
+
+  Description
+    Custom footprint specification as a bracketed array of arrays,
+    e.g., "[[x1,y1],[x2,y2],...]". If empty, uses the robot's
+    configured footprint.
+
+:stop_at_first_collision:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   true
+  ====== =======
+
+  Description
+    Whether to stop validation at the first collision (true) or check
+    all poses in the path (false). When false, all collision poses
+    are reported.
+
+:max_lookahead_distance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double -1.0
+  ====== =======
+
+  Description
+    Maximum distance ahead of the robot along the path to validate.
+    When set to -1.0 (default), the full path is validated.
+    A positive value limits validation to only the portion of the
+    path within that distance from the robot's current position.
+
+Output Ports
+------------
+
+:collision_poses:
+
+  ============================================ =======
+  Type                                         Default
+  -------------------------------------------- -------
+  std::vector<geometry_msgs::msg::PoseStamped> N/A
+  ============================================ =======
+
+  Description
+    Vector of poses in the path that are in collision or invalid.
+    Empty if the path is valid.
+
+
+Example
+-------
+
+.. code-block:: xml
+
+    <ValidatePath
+      server_timeout="10"
+      path="{path}"
+      max_cost="100"
+      consider_unknown_as_obstacle="false"
+      layer_name=""
+      footprint=""
+      stop_at_first_collision="true"
+      collision_poses="{collision_poses}" />
+
+With max_lookahead_distance:
+
+.. code-block:: xml
+
+    <ValidatePath
+      path="{path}"
+      max_lookahead_distance="5.0"
+      collision_poses="{collision_poses}" />
+
+With custom footprint:
+
+.. code-block:: xml
+
+    <ValidatePath
+      path="{path}"
+      footprint="[[0.5,0.5],[0.5,-0.5],[-0.5,-0.5],[-0.5,0.5]]"
+      collision_poses="{collision_poses}" />
+
+Checking a specific costmap layer:
+
+.. code-block:: xml
+
+    <ValidatePath
+      path="{path}"
+      layer_name="obstacle_layer"
+      stop_at_first_collision="false"
+      collision_poses="{collision_poses}" />
