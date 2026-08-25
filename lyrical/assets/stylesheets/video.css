@@ -1,0 +1,19 @@
+.video-container {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-flex-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.video-flex-iframe {
+  flex: 1 1 clamp(10rem, 45vw, 15rem);
+  aspect-ratio: 16/9;
+  max-width: 100%;
+}

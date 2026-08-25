@@ -3,5 +3,10 @@
     "version": "rolling",
     "title": "Rolling",
     "aliases": []
+  },
+  {
+    "version": "lyrical",
+    "title": "Lyrical",
+    "aliases": []
   }
 ]
