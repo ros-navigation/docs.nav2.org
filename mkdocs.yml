@@ -1,0 +1,140 @@
+# Keep site_name empty since the header title displays alongside the logo as a single image
+# Associated browser tab's title is overridden in the htmltitle block of overrides/main.html
+site_name: ""
+site_url: https://docs.nav2.org/
+repo_name: ros-navigation/navigation2
+repo_url: https://github.com/ros-navigation/navigation2
+edit_uri: https://github.com/ros-navigation/docs.nav2.org/tree/rolling/docs/
+copyright: "&copy; Copyright 2026, Open Navigation LLC."
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/nav2_logo_with_text.png
+  favicon: assets/nav2_logo_48x48.png
+  font:
+    text: Inter
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+  - scheme: default # Palette for light mode
+    toggle:
+      icon: toggle/nav2-balloon-light
+      name: Switch to dark mode
+  - scheme: slate # Palette for dark mode
+    toggle:
+      icon: toggle/nav2-balloon-dark
+      name: Switch to light mode
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.tabs
+    - navigation.path
+    - navigation.indexes
+    - navigation.top # back-to-top button
+
+plugins:
+  - autorefs    # Docs: https://mkdocstrings.github.io/autorefs/
+  - awesome-nav # Docs: https://lukasgeiter.github.io/mkdocs-awesome-nav/
+  - glightbox   # Docs: https://blueswen.github.io/mkdocs-glightbox/
+  - macros:     # Docs: https://mkdocs-macros-plugin.readthedocs.io
+      module_name: macros/main
+      include_yaml:
+        - macros/variables.yml
+      on_error_fail: true
+      on_undefined: strict
+  - mike        # Docs: https://github.com/jimporter/mike#configuration
+  - search      # Docs: https://squidfunk.github.io/mkdocs-material/plugins/search/
+
+hooks:
+  - hooks/replace_edit_uri.py
+
+extra:
+  ros2_distro: rolling
+  generator: false
+  version:
+    provider: mike
+  scope: /
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ros-navigation/navigation2
+    - icon: fontawesome/brands/docker
+      link: https://github.com/ros-navigation/nav2_docker/pkgs/container/nav2_docker
+    - icon: fontawesome/brands/slack
+      link: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/open-nav
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+  # Path relative to custom_dir (overrides/):
+  - assets/stylesheets/distro_grid.css
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/images.css
+  - assets/stylesheets/nav_buttons.css
+  - assets/stylesheets/permalink.css
+  - assets/stylesheets/robots_grid.css
+  - assets/stylesheets/robots_marquee.css
+  - assets/stylesheets/search_button.css
+  - assets/stylesheets/sidebar.css
+  - assets/stylesheets/sponsorship_banner.css
+  - assets/stylesheets/table.css
+  - assets/stylesheets/version_selector.css
+  - assets/stylesheets/video.css
+  - assets/stylesheets/watermark.css
+  - assets/stylesheets/progress_bar.css
+
+extra_javascript:
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+  # Path relative to custom_dir (overrides/):
+  - assets/javascripts/katex.js
+  - assets/javascripts/progress_bar.js
+  - assets/javascripts/sidebar_scrollwrap.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.highlight:
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: ''
+
+# Terminate the build on warning
+strict: true
+
+validation:
+  links:
+    absolute_links: relative_to_docs
+    anchors: warn
+    unrecognized_links: warn
+  nav:
+    omitted_files: warn
+    absolute_links: warn
+
+exclude_docs: |
+  axis_goal_checker_illustration.py
+  adaptive_tolerance_goal_checker_illustration.py
+  CancelCoverage.md
+  ComputeCoveragePath.md
+  README.md

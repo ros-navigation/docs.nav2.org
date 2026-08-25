@@ -1,6 +1,6 @@
-_build
-lib/
-bin/
-pyvenv.cfg
-.DS_Store
-venv/
+venv
+site
+__pycache__
+
+macros/cache/*
+!macros/cache/README.md
