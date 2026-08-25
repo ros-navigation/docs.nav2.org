@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page moved &middot; Nav2 documentation</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem; line-height: 1.6;
+  }
+  code { background: rgba(128,128,128,.18); padding: .1em .35em; border-radius: .2em; }
+  a { color: #2a7ae2; }
+</style>
+</head>
+<body>
+<h1>This page moved</h1>
+<p id="msg">The Nav2 documentation was reorganized and is now versioned. Looking for
+the new location&hellip;</p>
+<p id="fallback" hidden>
+  We could not find a new home for <code id="path"></code>.
+  Try the <a href="/rolling/" id="home">documentation home</a> or
+  <a href="/rolling/?q=" id="search">search</a>.
+</p>
+<script>
+(function () {
+  var routes = {
+"2021summerOfCode/Summer_2021_Student_Program.html":"/rolling/community/",
+"2021summerOfCode/projects/assisted_teleop.html":"/rolling/community/",
+"2021summerOfCode/projects/create_configuration_assistant.html":"/rolling/community/",
+"2021summerOfCode/projects/create_plugins.html":"/rolling/community/",
+"2021summerOfCode/projects/dynamic.html":"/rolling/community/",
+"2021summerOfCode/projects/grid_maps.html":"/rolling/community/",
+"2021summerOfCode/projects/localization.html":"/rolling/community/",
+"2021summerOfCode/projects/multithreading.html":"/rolling/community/",
+"2021summerOfCode/projects/navigation_rebranding.html":"/rolling/community/",
+"2021summerOfCode/projects/safety_node.html":"/rolling/community/",
+"2021summerOfCode/projects/semantics.html":"/rolling/community/",
+"2021summerOfCode/projects/spinners.html":"/rolling/community/",
+"2021summerOfCode/projects/testing.html":"/rolling/community/",
+"2021summerOfCode/projects/twist_n_config.html":"/rolling/community/",
+"about/index.html":"/rolling/about_and_contact/",
+"about/related_projects.html":"/rolling/about_and_contact/related_projects/",
+"about/robots.html":"/rolling/robots_using/",
+"about/roscon.html":"/rolling/community/roscon_talks/",
+"behavior_trees/index.html":"/rolling/getting_started/nav2_behavior_trees/",
+"behavior_trees/overview/detailed_behavior_tree_walkthrough.html":"/rolling/getting_started/nav2_behavior_trees/detailed_behavior_tree_walkthrough/detailed_behavior_tree_walkthrough/",
+"behavior_trees/overview/nav2_specific_nodes.html":"/rolling/getting_started/nav2_behavior_trees/nav2_specific_nodes/nav2_specific_nodes/",
+"behavior_trees/trees/follow_point.html":"/rolling/getting_started/nav2_behavior_trees/trees/follow_point/",
+"behavior_trees/trees/nav_through_poses_recovery.html":"/rolling/getting_started/nav2_behavior_trees/trees/nav_through_poses_recovery/",
+"behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html":"/rolling/getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/nav_to_pose_and_pause_near_goal_obstacle/",
+"behavior_trees/trees/nav_to_pose_recovery.html":"/rolling/getting_started/nav2_behavior_trees/trees/nav_to_pose_recovery/",
+"behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html":"/rolling/getting_started/nav2_behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid/",
+"behavior_trees/trees/navigate_on_route_graph_w_recovery.html":"/rolling/getting_started/nav2_behavior_trees/trees/navigate_on_route_graph_w_recovery/",
+"behavior_trees/trees/odometry_calibration.html":"/rolling/getting_started/nav2_behavior_trees/trees/odometry_calibration/odometry_calibration/",
+"citations.html":"/rolling/about_and_contact/citations/",
+"commander_api/index.html":"/rolling/configuration_and_development/simple_commander_api/simple_commander_api/",
+"concepts/index.html":"/rolling/getting_started/navigation_concepts/",
+"configuration/index.html":"/rolling/configuration_and_development/configuration_guide/",
+"configuration/packages/bt-plugins/actions/AppendGoalPoseToGoals.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/AppendGoalPoseToGoals/",
+"configuration/packages/bt-plugins/actions/AssistedTeleop.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/AssistedTeleop/",
+"configuration/packages/bt-plugins/actions/BackUp.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/BackUp/",
+"configuration/packages/bt-plugins/actions/CancelAssistedTeleop.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelAssistedTeleop/",
+"configuration/packages/bt-plugins/actions/CancelBackUp.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelBackUp/",
+"configuration/packages/bt-plugins/actions/CancelComputeAndTrackRoute.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelComputeAndTrackRoute/",
+"configuration/packages/bt-plugins/actions/CancelControl.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelControl/",
+"configuration/packages/bt-plugins/actions/CancelCoverage.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/",
+"configuration/packages/bt-plugins/actions/CancelDriveOnHeading.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelDriveOnHeading/",
+"configuration/packages/bt-plugins/actions/CancelFollowObject.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelFollowObject/",
+"configuration/packages/bt-plugins/actions/CancelSpin.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelSpin/",
+"configuration/packages/bt-plugins/actions/CancelWait.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelWait/",
+"configuration/packages/bt-plugins/actions/CheckPoseOccupancy.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CheckPoseOccupancy/",
+"configuration/packages/bt-plugins/actions/CheckStopStatus.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CheckStopStatus/",
+"configuration/packages/bt-plugins/actions/ClearCostmapAroundPose.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearCostmapAroundPose/",
+"configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearCostmapAroundRobot/",
+"configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearCostmapExceptRegion/",
+"configuration/packages/bt-plugins/actions/ClearEntireCostmap.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearEntireCostmap/",
+"configuration/packages/bt-plugins/actions/ComputeAndTrackRoute.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputeAndTrackRoute/",
+"configuration/packages/bt-plugins/actions/ComputeCoveragePath.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/",
+"configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputePathThroughPoses/",
+"configuration/packages/bt-plugins/actions/ComputePathToPose.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputePathToPose/",
+"configuration/packages/bt-plugins/actions/ComputeRoute.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputeRoute/",
+"configuration/packages/bt-plugins/actions/ConcatenatePaths.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ConcatenatePaths/",
+"configuration/packages/bt-plugins/actions/ControllerSelector.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ControllerSelector/",
+"configuration/packages/bt-plugins/actions/DockRobot.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/DockRobot/",
+"configuration/packages/bt-plugins/actions/DriveOnHeading.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/DriveOnHeading/",
+"configuration/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ExtractRouteNodesAsGoals/",
+"configuration/packages/bt-plugins/actions/FollowObject.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/FollowObject/",
+"configuration/packages/bt-plugins/actions/FollowPath.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/FollowPath/",
+"configuration/packages/bt-plugins/actions/GetCurrentPose.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GetCurrentPose/",
+"configuration/packages/bt-plugins/actions/GetNextFewGoals.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GetNextFewGoals/",
+"configuration/packages/bt-plugins/actions/GetPoseFromPath.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GetPoseFromPath/",
+"configuration/packages/bt-plugins/actions/GoalCheckerSelector.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GoalCheckerSelector/",
+"configuration/packages/bt-plugins/actions/NavigateThroughPoses.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/NavigateThroughPoses/",
+"configuration/packages/bt-plugins/actions/NavigateToPose.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/NavigateToPose/",
+"configuration/packages/bt-plugins/actions/PathHandlerSelector.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/PathHandlerSelector/",
+"configuration/packages/bt-plugins/actions/PlannerSelector.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/PlannerSelector/",
+"configuration/packages/bt-plugins/actions/ProgressCheckerSelector.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ProgressCheckerSelector/",
+"configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ReinitializeGlobalLocalization/",
+"configuration/packages/bt-plugins/actions/RemoveInCollisionGoals.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/RemoveInCollisionGoals/",
+"configuration/packages/bt-plugins/actions/RemovePassedGoals.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/RemovePassedGoals/",
+"configuration/packages/bt-plugins/actions/Smooth.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/Smooth/",
+"configuration/packages/bt-plugins/actions/SmootherSelector.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/SmootherSelector/",
+"configuration/packages/bt-plugins/actions/Spin.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/Spin/",
+"configuration/packages/bt-plugins/actions/ToggleCollisionMonitor.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ToggleCollisionMonitor/",
+"configuration/packages/bt-plugins/actions/TruncatePath.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/TruncatePath/",
+"configuration/packages/bt-plugins/actions/TruncatePathLocal.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/TruncatePathLocal/",
+"configuration/packages/bt-plugins/actions/UndockRobot.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/UndockRobot/",
+"configuration/packages/bt-plugins/actions/ValidatePath.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ValidatePath/",
+"configuration/packages/bt-plugins/actions/Wait.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/Wait/",
+"configuration/packages/bt-plugins/conditions/AreErrorCodesPresent.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/AreErrorCodesPresent/",
+"configuration/packages/bt-plugins/conditions/ArePosesNear.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/ArePosesNear/",
+"configuration/packages/bt-plugins/conditions/DistanceTraveled.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/DistanceTraveled/",
+"configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/GlobalUpdatedGoal/",
+"configuration/packages/bt-plugins/conditions/GoalReached.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/GoalReached/",
+"configuration/packages/bt-plugins/conditions/GoalUpdated.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/GoalUpdated/",
+"configuration/packages/bt-plugins/conditions/InitialPoseReceived.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/InitialPoseReceived/",
+"configuration/packages/bt-plugins/conditions/IsBatteryCharging.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsBatteryCharging/",
+"configuration/packages/bt-plugins/conditions/IsBatteryLow.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsBatteryLow/",
+"configuration/packages/bt-plugins/conditions/IsGoalNearby.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsGoalNearby/",
+"configuration/packages/bt-plugins/conditions/IsStuck.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsStuck/",
+"configuration/packages/bt-plugins/conditions/IsWithinPathTrackingBounds.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsWithinPathTrackingBounds/",
+"configuration/packages/bt-plugins/conditions/PathExpiringTimer.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/PathExpiringTimer/",
+"configuration/packages/bt-plugins/conditions/TimeExpired.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/TimeExpired/",
+"configuration/packages/bt-plugins/conditions/TransformAvailable.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/TransformAvailable/",
+"configuration/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldAControllerRecoveryHelp/",
+"configuration/packages/bt-plugins/conditions/WouldAPlannerRecoveryHelp.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldAPlannerRecoveryHelp/",
+"configuration/packages/bt-plugins/conditions/WouldARouteRecoveryHelp.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldARouteRecoveryHelp/",
+"configuration/packages/bt-plugins/conditions/WouldASmootherRecoveryHelp.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldASmootherRecoveryHelp/",
+"configuration/packages/bt-plugins/controls/NonblockingSequence.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/NonblockingSequence/",
+"configuration/packages/bt-plugins/controls/PauseResumeController.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/PauseResumeController/",
+"configuration/packages/bt-plugins/controls/PersistentSequence.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/PersistentSequence/",
+"configuration/packages/bt-plugins/controls/PipelineSequence.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/PipelineSequence/",
+"configuration/packages/bt-plugins/controls/RecoveryNode.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/RecoveryNode/",
+"configuration/packages/bt-plugins/controls/RoundRobin.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/RoundRobin/",
+"configuration/packages/bt-plugins/decorators/DistanceController.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/DistanceController/",
+"configuration/packages/bt-plugins/decorators/GoalUpdatedController.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/GoalUpdatedController/",
+"configuration/packages/bt-plugins/decorators/GoalUpdater.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/GoalUpdater/",
+"configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/PathLongerOnApproach/",
+"configuration/packages/bt-plugins/decorators/RateController.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/RateController/",
+"configuration/packages/bt-plugins/decorators/SingleTrigger.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/SingleTrigger/",
+"configuration/packages/bt-plugins/decorators/SpeedController.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/SpeedController/",
+"configuration/packages/collision_monitor/configuring-collision-detector-node.html":"/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/configuring_collision_detector_node/",
+"configuration/packages/collision_monitor/configuring-collision-monitor-node.html":"/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/configuring_collision_monitor_node/",
+"configuration/packages/configuring-amcl.html":"/rolling/configuration_and_development/configuration_guide/others/configuring_amcl/",
+"configuration/packages/configuring-behavior-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_behavior_server/",
+"configuration/packages/configuring-bt-navigator.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_bt_navigator/",
+"configuration/packages/configuring-bt-xml.html":"/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/",
+"configuration/packages/configuring-collision-monitor.html":"/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/",
+"configuration/packages/configuring-constrained-smoother.html":"/rolling/configuration_and_development/configuration_guide/smoother_plugins/constrained_smoother/configuring_constrained_smoother/",
+"configuration/packages/configuring-controller-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/",
+"configuration/packages/configuring-costmaps.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/",
+"configuration/packages/configuring-coverage-server.html":"/rolling/configuration_and_development/configuration_guide/others/configuring_coverage_server/",
+"configuration/packages/configuring-docking-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_docking_server/",
+"configuration/packages/configuring-dwb-controller.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/",
+"configuration/packages/configuring-following-server.html":"/rolling/configuration_and_development/configuration_guide/others/configuring_following_server/",
+"configuration/packages/configuring-graceful-motion-controller.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/configuring_graceful_motion_controller/",
+"configuration/packages/configuring-lifecycle.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_lifecycle_manager/",
+"configuration/packages/configuring-loopback-sim.html":"/rolling/configuration_and_development/configuration_guide/others/configuring_loopback_sim/",
+"configuration/packages/configuring-map-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_map_server/",
+"configuration/packages/configuring-mppic.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/mppi_controller/configuring_mppic/",
+"configuration/packages/configuring-navfn.html":"/rolling/configuration_and_development/configuration_guide/planners_plugins/configuring_navfn/",
+"configuration/packages/configuring-planner-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_planner_server/",
+"configuration/packages/configuring-regulated-pp.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/configuring_regulated_pp/",
+"configuration/packages/configuring-rotation-shim-controller.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/configuring_rotation_shim_controller/",
+"configuration/packages/configuring-route-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/route_server/configuring_route_server/",
+"configuration/packages/configuring-savitzky-golay-smoother.html":"/rolling/configuration_and_development/configuration_guide/smoother_plugins/savitzky_golay_smoother/configuring_savitzky_golay_smoother/",
+"configuration/packages/configuring-simple-smoother.html":"/rolling/configuration_and_development/configuration_guide/smoother_plugins/configuring_simple_smoother/",
+"configuration/packages/configuring-smac-planner.html":"/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/",
+"configuration/packages/configuring-smoother-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_smoother_server/",
+"configuration/packages/configuring-thetastar.html":"/rolling/configuration_and_development/configuration_guide/planners_plugins/thetastar/configuring_thetastar/",
+"configuration/packages/configuring-velocity-smoother.html":"/rolling/configuration_and_development/configuration_guide/core_servers/configuring_velocity_smoother/",
+"configuration/packages/configuring-waypoint-follower.html":"/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/",
+"configuration/packages/costmap-plugins/asymmetric_inflation.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/asymmetric_inflation/asymmetric_inflation/",
+"configuration/packages/costmap-plugins/binary_filter.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/binary_filter/binary_filter/",
+"configuration/packages/costmap-plugins/denoise.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/denoise/",
+"configuration/packages/costmap-plugins/inflation.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation/",
+"configuration/packages/costmap-plugins/inflation_legacy.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation_legacy/",
+"configuration/packages/costmap-plugins/keepout_filter.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/keepout_filter/",
+"configuration/packages/costmap-plugins/obstacle.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/obstacle/",
+"configuration/packages/costmap-plugins/plugin_container.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/plugin_container/plugin_container/",
+"configuration/packages/costmap-plugins/range.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/range/",
+"configuration/packages/costmap-plugins/speed_filter.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/speed_filter/",
+"configuration/packages/costmap-plugins/static.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/static/",
+"configuration/packages/costmap-plugins/voxel.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/voxel/",
+"configuration/packages/costmap-plugins/zone_parameter_filter.html":"/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/zone_parameter_filter/zone_parameter_filter/",
+"configuration/packages/dwb-params/controller.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/controller/",
+"configuration/packages/dwb-params/iterator.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/iterator/",
+"configuration/packages/dwb-params/kinematic.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/kinematic/",
+"configuration/packages/dwb-params/visualization.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/visualization/",
+"configuration/packages/dwb-plugins/limited_accel_generator.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_plugins/limited_accel_generator/",
+"configuration/packages/dwb-plugins/standard_traj_generator.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_plugins/standard_traj_generator/",
+"configuration/packages/map_server/configuring-costmap-filter-info-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_costmap_filter_info_server/",
+"configuration/packages/map_server/configuring-map-saver.html":"/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_map_saver/",
+"configuration/packages/map_server/configuring-map-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_map_server/",
+"configuration/packages/map_server/configuring-vector-object-server.html":"/rolling/configuration_and_development/configuration_guide/core_servers/map_server/vector_object_server/configuring_vector_object_server/",
+"configuration/packages/nav2_controller-plugins/adaptive_tolerance_goal_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/adaptive_tolerance_goal_checker/adaptive_tolerance_goal_checker/",
+"configuration/packages/nav2_controller-plugins/axis_goal_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/axis_goal_checker/axis_goal_checker/",
+"configuration/packages/nav2_controller-plugins/feasible_path_handler.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/feasible_path_handler/",
+"configuration/packages/nav2_controller-plugins/pose_progress_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/pose_progress_checker/",
+"configuration/packages/nav2_controller-plugins/position_goal_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/position_goal_checker/",
+"configuration/packages/nav2_controller-plugins/simple_goal_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/simple_goal_checker/",
+"configuration/packages/nav2_controller-plugins/simple_progress_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/simple_progress_checker/",
+"configuration/packages/nav2_controller-plugins/stopped_goal_checker.html":"/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/stopped_goal_checker/",
+"configuration/packages/nav2_waypoint_follower-plugins/input_at_waypoint.html":"/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/waypoint_follower_plugins/input_at_waypoint/",
+"configuration/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.html":"/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/waypoint_follower_plugins/photo_at_waypoint/",
+"configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html":"/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/waypoint_follower_plugins/wait_at_waypoint/",
+"configuration/packages/smac/configuring-smac-2d.html":"/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/smac_2d/configuring_smac_2d/",
+"configuration/packages/smac/configuring-smac-hybrid.html":"/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/smac_hybrid/configuring_smac_hybrid/",
+"configuration/packages/smac/configuring-smac-lattice.html":"/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/smac_lattice/configuring_smac_lattice/",
+"configuration/packages/trajectory_critics/base_obstacle.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/base_obstacle/",
+"configuration/packages/trajectory_critics/goal_align.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/goal_align/",
+"configuration/packages/trajectory_critics/goal_dist.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/goal_dist/",
+"configuration/packages/trajectory_critics/obstacle_footprint.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/obstacle_footprint/",
+"configuration/packages/trajectory_critics/oscillation.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/oscillation/",
+"configuration/packages/trajectory_critics/path_align.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/path_align/",
+"configuration/packages/trajectory_critics/path_dist.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/path_dist/",
+"configuration/packages/trajectory_critics/prefer_forward.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/prefer_forward/",
+"configuration/packages/trajectory_critics/rotate_to_goal.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/rotate_to_goal/",
+"configuration/packages/trajectory_critics/twirling.html":"/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/twirling/",
+"development_guides/build_docs/build_troubleshooting_guide.html":"/rolling/getting_started/build_and_install/build_troubleshooting_guide/",
+"development_guides/build_docs/index.html":"/rolling/getting_started/build_and_install/",
+"development_guides/devcontainer_docs/devcontainer_guide.html":"/rolling/getting_started/dev_container/devcontainer_guide/",
+"development_guides/devcontainer_docs/index.html":"/rolling/getting_started/dev_container/",
+"development_guides/index.html":"/rolling/getting_started/",
+"development_guides/involvement_docs/index.html":"/rolling/community/getting_involved/",
+"genindex.html":"/rolling/",
+"getting_started/index.html":"/rolling/getting_started/",
+"maintainer_docs/distribution_release.html":"/rolling/community/maintainer_docs/distribution_release/",
+"maintainer_docs/distribution_syncs.html":"/rolling/community/maintainer_docs/distribution_syncs/",
+"maintainer_docs/index.html":"/rolling/community/maintainer_docs/",
+"migration/Dashing.html":"/rolling/configuration_and_development/migration_guides/Dashing/",
+"migration/Eloquent.html":"/rolling/configuration_and_development/migration_guides/Eloquent/",
+"migration/Foxy.html":"/rolling/configuration_and_development/migration_guides/foxy/Foxy/",
+"migration/Galactic.html":"/rolling/configuration_and_development/migration_guides/galactic/Galactic/",
+"migration/Humble.html":"/rolling/configuration_and_development/migration_guides/Humble/",
+"migration/Iron.html":"/rolling/configuration_and_development/migration_guides/iron/Iron/",
+"migration/Jazzy.html":"/rolling/configuration_and_development/migration_guides/jazzy/Jazzy/",
+"migration/Kilted.html":"/rolling/configuration_and_development/migration_guides/kilted/Kilted/",
+"migration/index.html":"/rolling/configuration_and_development/migration_guides/",
+"plugin_tutorials/docs/writing_new_behavior_plugin.html":"/rolling/tutorials/plugin_tutorials/writing_new_behavior_plugin/",
+"plugin_tutorials/docs/writing_new_bt_plugin.html":"/rolling/tutorials/plugin_tutorials/writing_new_bt_plugin/",
+"plugin_tutorials/docs/writing_new_costmap2d_plugin.html":"/rolling/tutorials/plugin_tutorials/writing_new_costmap2d_plugin/writing_new_costmap2d_plugin/",
+"plugin_tutorials/docs/writing_new_nav2controller_plugin.html":"/rolling/tutorials/plugin_tutorials/writing_new_controller_plugin/writing_new_controller_plugin/",
+"plugin_tutorials/docs/writing_new_nav2planner_plugin.html":"/rolling/tutorials/plugin_tutorials/writing_new_planner_plugin/writing_new_planner_plugin/",
+"plugin_tutorials/docs/writing_new_navigator_plugin.html":"/rolling/tutorials/plugin_tutorials/writing_new_navigator_plugin/",
+"plugin_tutorials/index.html":"/rolling/tutorials/plugin_tutorials/",
+"plugins/index.html":"/rolling/configuration_and_development/navigation_plugins/",
+"roadmap/roadmap.html":"/rolling/community/roadmaps/",
+"search.html":"/rolling/",
+"setup_guides/algorithm/select_algorithm.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/navigation_plugins/setup_navigation_plugins/",
+"setup_guides/footprint/setup_footprint.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint/",
+"setup_guides/gazebo.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf/",
+"setup_guides/gazebo_classic.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf/",
+"setup_guides/index.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/",
+"setup_guides/odom/setup_odom_gz.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/odom/setup_odom/",
+"setup_guides/odom/setup_odom_gz_classic.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/odom/setup_odom/",
+"setup_guides/odom/setup_robot_localization.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization/",
+"setup_guides/sdf/setup_sdf.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf/",
+"setup_guides/sensors/mapping_localization.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization/",
+"setup_guides/sensors/setup_sensors_gz.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors/",
+"setup_guides/sensors/setup_sensors_gz_classic.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors/",
+"setup_guides/transformation/setup_transforms.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms/",
+"setup_guides/urdf/setup_urdf.html":"/rolling/configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf/",
+"tuning/index.html":"/rolling/configuration_and_development/tuning_guide/",
+"tutorials/docs/adding_a_nav2_task_server.html":"/rolling/tutorials/general_tutorials/adding_a_nav2_task_server/",
+"tutorials/docs/adding_smoother.html":"/rolling/tutorials/general_tutorials/adding_smoother/adding_smoother/",
+"tutorials/docs/camera_calibration.html":"/rolling/tutorials/general_tutorials/camera_calibration/camera_calibration/",
+"tutorials/docs/depth_ai_integration.html":"/rolling/tutorials/general_tutorials/depth_ai_integration/depth_ai_integration/",
+"tutorials/docs/docker_dev.html":"/rolling/tutorials/general_tutorials/docker_dev/",
+"tutorials/docs/filtering_of_noise-induced_obstacles.html":"/rolling/tutorials/general_tutorials/filtering_of_noise_induced_obstacles/filtering_of_noise_induced_obstacles/",
+"tutorials/docs/get_backtrace.html":"/rolling/tutorials/general_tutorials/get_backtrace/",
+"tutorials/docs/get_profile.html":"/rolling/tutorials/general_tutorials/get_profile/get_profile/",
+"tutorials/docs/groot.html":"/rolling/tutorials/general_tutorials/groot_tutorials/groot/groot/",
+"tutorials/docs/groot2.html":"/rolling/tutorials/general_tutorials/groot_tutorials/groot2/groot2/",
+"tutorials/docs/integrating_vio.html":"/rolling/tutorials/general_tutorials/integrating_vio/integrating_vio/",
+"tutorials/docs/isaac_perceptor/rebuilding_tensorrt_engine.html":"/rolling/tutorials/general_tutorials/isaac_perceptor/rebuilding_tensorrt_engine/",
+"tutorials/docs/navigation2_dynamic_point_following.html":"/rolling/tutorials/general_tutorials/navigation2_dynamic_point_following/navigation2_dynamic_point_following/",
+"tutorials/docs/navigation2_on_real_turtlebot3.html":"/rolling/tutorials/general_tutorials/navigation2_on_real_turtlebot3/navigation2_on_real_turtlebot3/",
+"tutorials/docs/navigation2_with_gps.html":"/rolling/tutorials/general_tutorials/navigation2_with_gps/navigation2_with_gps/",
+"tutorials/docs/navigation2_with_ground_consistency_layer.html":"/rolling/tutorials/general_tutorials/navigation2_with_ground_consistency_layer/navigation2_with_ground_consistency_layer/",
+"tutorials/docs/navigation2_with_keepout_filter.html":"/rolling/tutorials/general_tutorials/navigation2_with_keepout_filter/navigation2_with_keepout_filter/",
+"tutorials/docs/navigation2_with_sam3_semantic_segmentation.html":"/rolling/tutorials/general_tutorials/navigation2_with_sam3_semantic_segmentation/navigation2_with_sam3_semantic_segmentation/",
+"tutorials/docs/navigation2_with_semantic_segmentation.html":"/rolling/tutorials/general_tutorials/navigation2_with_semantic_segmentation/navigation2_with_semantic_segmentation/",
+"tutorials/docs/navigation2_with_slam.html":"/rolling/tutorials/general_tutorials/navigation2_with_slam/navigation2_with_slam/",
+"tutorials/docs/navigation2_with_speed_filter.html":"/rolling/tutorials/general_tutorials/navigation2_with_speed_filter/navigation2_with_speed_filter/",
+"tutorials/docs/navigation2_with_stvl.html":"/rolling/tutorials/general_tutorials/navigation2_with_stvl/",
+"tutorials/docs/navigation2_with_vector_objects.html":"/rolling/tutorials/general_tutorials/navigation2_with_vector_objects/navigation2_with_vector_objects/",
+"tutorials/docs/navigation2_with_zone_parameter_filter.html":"/rolling/tutorials/general_tutorials/navigation2_with_zone_parameter_filter/",
+"tutorials/docs/roscon_uk_2025_state_estimation.html":"/rolling/tutorials/general_tutorials/roscon_uk_2025_state_estimation/",
+"tutorials/docs/route_server_tools.html":"/rolling/tutorials/general_tutorials/route_server_tools/",
+"tutorials/docs/route_server_tools/navigation2_route_tool.html":"/rolling/tutorials/general_tutorials/route_server_tools/navigation2_route_tool/navigation2_route_tool/",
+"tutorials/docs/route_server_tools/route_graph_generation.html":"/rolling/tutorials/general_tutorials/route_server_tools/route_graph_generation/route_graph_generation/",
+"tutorials/docs/route_server_tools/route_graph_generation_lif_editor.html":"/rolling/tutorials/general_tutorials/route_server_tools/route_graph_generation_lif_editor/route_graph_generation_lif_editor/",
+"tutorials/docs/route_server_tools/swagger_generation.html":"/rolling/tutorials/general_tutorials/route_server_tools/route_graph_generation_swagger/swagger_generation/",
+"tutorials/docs/using_3laws_supervisor.html":"/rolling/tutorials/general_tutorials/using_3laws_supervisor/using_3laws_supervisor/",
+"tutorials/docs/using_collision_monitor.html":"/rolling/tutorials/general_tutorials/using_collision_monitor/using_collision_monitor/",
+"tutorials/docs/using_docking.html":"/rolling/tutorials/general_tutorials/using_docking/",
+"tutorials/docs/using_groot.html":"/rolling/tutorials/general_tutorials/groot_tutorials/",
+"tutorials/docs/using_isaac_perceptor.html":"/rolling/tutorials/general_tutorials/isaac_perceptor/",
+"tutorials/docs/using_shim_controller.html":"/rolling/tutorials/general_tutorials/using_shim_controller/",
+"tutorials/index.html":"/rolling/tutorials/"
+};
+  var versions = ["rolling", "lyrical", "jazzy", "kilted", "iron", "humble", "galactic", "foxy"];
+  var version = "rolling";
+
+  function slug(p) {
+    p = p.replace(/\/+$/, "");
+    p = p.replace(/\/index\.html$/, "").replace(/\.html$/, "");
+    var base = p.split("/").pop() || "";
+    return base.toLowerCase().replace(/[-_]/g, "");
+  }
+
+  // Slug index over the current map's targets, for near-miss lookups.
+  var bySlug = {};
+  for (var key in routes) {
+    var s = slug(routes[key]);
+    if (s && !(s in bySlug)) { bySlug[s] = routes[key]; }
+  }
+
+  function lookup(path) {
+    if (routes[path]) { return routes[path]; }
+    if (routes[path + "index.html"]) { return routes[path + "index.html"]; }
+    var s = slug(path);
+    return s ? bySlug[s] : null;
+  }
+
+  var path = window.location.pathname.replace(/^\//, "");
+
+  // A miss inside a published version should offer that version, not another
+  // distro -- readers of /jazzy/ pages must not be quietly sent to rolling.
+  var parts = path.split("/");
+  var inVersion = versions.indexOf(parts[0]) !== -1 ? parts[0] : version;
+
+  // Try as-is, then with a leading version segment stripped -- catches
+  // hand-built /rolling/<old-sphinx-path> guesses.
+  var found = lookup(path);
+  if (!found) {
+    if (versions.indexOf(parts[0]) !== -1) {
+      found = lookup(parts.slice(1).join("/"));
+    }
+  }
+
+  if (found) {
+    window.location.replace(found + window.location.search + window.location.hash);
+    return;
+  }
+
+  // Nothing matched: offer the page name as a search term, words intact.
+  var words = path.replace(/\/+$/, "")
+                  .replace(/\/index\.html$/, "")
+                  .replace(/\.html$/, "")
+                  .split("/").pop()
+                  .replace(/[-_]+/g, " ")
+                  .trim();
+
+  document.getElementById("msg").hidden = true;
+  document.getElementById("path").textContent = window.location.pathname;
+  document.getElementById("home").href = "/" + inVersion + "/";
+  document.getElementById("search").href =
+    "/" + inVersion + "/?q=" + encodeURIComponent(words);
+  document.getElementById("fallback").hidden = false;
+})();
+</script>
+</body>
+</html>
