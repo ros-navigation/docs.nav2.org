@@ -3,38 +3,110 @@
 Navigate Through Poses
 ######################
 
-This behavior tree implements a navigation behavior from a starting point, through many intermediary hard pose constraints, to a final goal in freespace.
+This behavior tree implements navigation from a starting point, through
+intermediary hard pose constraints, to a final goal in freespace.
 It contains both use of custom behaviors for recovery in specific sub-contexts as well as a global recovery subtree for system-level failures.
 It also provides the opportunity for users to retry tasks multiple times before returning a failed state.
 
+Prerequisites
+*************
+
+- Understand BehaviorTree `fallback control <https://www.behaviortree.dev/docs/nodes-library/fallbacknode/>`_.
+- Understand BehaviorTree `reactive behavior <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_04_sequence/>`_.
+- Understand `Nav2 Specific Nodes <https://docs.nav2.org/behavior_trees/overview/nav2_specific_nodes.html>`_ (PipelineSequence, Recovery, RoundRobin).
+
+Detailed Explanations
+*********************
+
 The ``ComputePathThroughPoses`` and ``FollowPath`` BT nodes both also specify their algorithms to utilize.
-By convention we name these by the style of algorithms that they are (e.g. not ``DWB`` but rather ``FollowPath``) such that a behavior tree or application developer need not worry about the technical specifics. They just want to use a path following controller.
+By convention we name these by their role (e.g. ``FollowPath`` instead of ``DWB``)
+such that a behavior tree or application developer need not worry about the technical specifics.
+They just want to use a path following controller.
 
-In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
-This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
+In this behavior tree, the full navigation task is retried up to 6 times before
+returning failure to the caller. This gives the system ample time and opportunity to try to
+recovery from failure conditions or wait for transient issues to pass,
+such as crowding from people or a temporary sensor failure.
 
-In nominal execution, this will replan the path at every 3 seconds if not close enough to goal and pass that path onto the controller, similar to the behavior tree in :ref:`behavior_trees`.
-The planner though is now ``ComputePathThroughPoses`` taking a vector, ``goals``, rather than a single pose ``goal`` to plan to.
-The ``RemovePassedGoals`` node is used to cull out ``goals`` that the robot has passed on its path.
-In this case, it is set to remove a pose from the poses when the robot is within ``0.5`` of the goal and it is the next goal in the list.
-Additionally, it records the status of each waypoint (e.g. ``PENDING``, ``COMPLETED``, ``SKIPPED`` or ``FAILED``) in the ``waypoint_statuses``.
-This is implemented such that replanning can be computed after the robot has passed by some of the intermediary poses and not continue to try to replan through them in the future.
-This time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
-Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.
+NavigateWithReplanning PipelineSequence -- Main Branch
+======================================================
 
-Similarly, the controller has similar logic. If it fails, it also attempts a costmap clearing of the local costmap impacting the controller.
-It is worth noting the ``GoalUpdated`` node in the reactive fallback.
-This allows us to exit recovery conditions when a new goal has been passed to the navigation system through a preemption.
-This ensures that the navigation system will be very responsive immediately when a new goal is issued, even when the last goal was in an attempted recovery.
+In nominal execution, ``PipelineSequence`` keeps control active while the
+planner side is evaluated at ``0.333`` Hz (about every 3 seconds), similar to
+:ref:`behavior_trees`.
 
-If these contextual recoveries fail, this behavior tree enters the recovery subtree.
-This subtree is reserved for system-level failures to help resolve issues like the robot being stuck or in a bad spot.
-This subtree also has the ``GoalUpdated`` BT node it ticks every iteration to ensure responsiveness of new goals.
-Next, the recovery subtree will tick the costmap clearing operations, spinning, waiting, and backing up.
-After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
-If it continues to fail, the next recovery in the recovery subtree is ticked.
+The selector nodes (progress checker, goal checker, path handler, controller,
+planner) are ticked first so plugins are configured before motion continues.
 
-While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, ``GoalCheckerSelector``, ``ProgressCheckerSelector``, and ``PathHandlerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``GridBased`` and ``FollowPath``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
+Once an initial valid path is found by ``FallbackComputePathToPose`` planner branch,
+``FollowPath`` controller branch is ticked while the planner branch
+continues running, so planning and control run in a pipeline.
+
+The pipeline continues while branches return ``RUNNING`` and none returns
+``FAILURE``. If all required branches return ``SUCCESS``, navigation succeeds.
+If any main branch fails, control goes to recovery.
+
+Planner and Controller RecoveryNode
+-----------------------------------
+
+The planner branch now uses a ``Fallback`` with two reactive branches:
+
+- ``ReactiveSequence`` ``CheckIfNewPathNeeded`` tries to keep using the current path.
+- A second ``ReactiveSequence`` removes passed goals and computes a new path through remaining goals.
+
+The ``Inverter`` wrapping ``GlobalUpdatedGoal`` is central in the first branch.
+``GlobalUpdatedGoal`` returns ``SUCCESS`` when the global goal has changed in
+the blackboard. The ``Inverter`` flips that result, so this condition returns
+``SUCCESS`` when the goal has *not* changed.
+
+Combined with ``IsGoalNearby`` and ``IsPathValid`` (after ``TruncatePathLocal``),
+this allows the tree to continue following a valid current path and avoid
+unnecessary cancel/replan cycles when no new goal is received.
+
+If any check in ``CheckIfNewPathNeeded`` fails (for example, goal changed or
+path invalid), the ``Fallback`` executes the second branch and replans.
+
+In that branch, ``RemovePassedGoals`` culls passed waypoints from ``goals``
+(radius ``0.7``), updates ``waypoint_statuses`` (``PENDING``, ``COMPLETED``,
+``SKIPPED``, ``FAILED``), and ``ComputePathThroughPoses`` plans through the
+remaining waypoints. Unlike ``NavigateToPose``, this planner uses a goal vector
+(``goals``), not a single pose goal.
+
+If planning fails, the planner ``RecoveryNode`` runs contextual planner
+recovery (``WouldAPlannerRecoveryHelp`` then global costmap clearing).
+Similarly, if ``FollowPath`` fails, controller contextual recovery clears the local
+costmap.
+
+System-Level Recovery Sequence - Auxiliary Branch
+=================================================
+
+If contextual planner/controller recoveries fail, the tree enters the
+system-level recovery subtree.
+
+This subtree is a ``ReactiveFallback`` with ``GoalUpdated`` first, so recovery
+can be interrupted quickly when a new goal is preempted.
+
+If the goal is unchanged, control moves to ``RoundRobin`` (``RecoveryActions``),
+which rotates through actions in this order:
+
+- local + global costmap clearing (``ClearingActions`` sequence)
+- ``Spin``
+- ``Wait``
+- ``BackUp``
+
+After each recovery attempt, the main navigation subtree is retried.
+If it fails again, ``RoundRobin`` advances to the next recovery action.
+
+Selector Nodes Note
+===================
+
+Although this tree uses default selections (``GridBased`` and ``FollowPath``),
+the selector nodes (planner/controller/goal checker/progress checker/path
+handler) support runtime algorithm switching via topics.
+
+In many cases, subtree-level BT logic is still the preferred way to switch
+behavior internally. However, selector nodes are useful when an external
+application needs to control algorithm choice at runtime.
 
 .. code-block:: xml
 
