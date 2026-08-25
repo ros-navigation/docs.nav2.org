@@ -8,5 +8,10 @@
     "version": "lyrical",
     "title": "Lyrical",
     "aliases": []
+  },
+  {
+    "version": "jazzy",
+    "title": "Jazzy",
+    "aliases": []
   }
 ]
