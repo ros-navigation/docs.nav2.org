@@ -10,4 +10,4 @@
 .vscode/
 **.Dockerfile
 **Dockerfile
-site
+_build/

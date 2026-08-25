@@ -12,6 +12,7 @@
             "extensions": [
                 "eamodio.gitlens",
                 "esbenp.prettier-vscode",
+                "GitHub.copilot",
                 "streetsidesoftware.code-spell-checker"
             ]
         }
