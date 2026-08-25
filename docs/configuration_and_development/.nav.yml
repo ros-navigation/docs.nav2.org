@@ -1,0 +1,9 @@
+nav:
+  - index.md
+  - First-Time Robot Setup Guide: first_time_robot_setup_guide
+  - Navigation Plugins: navigation_plugins.md
+  - Configuration Guide: configuration_guide
+  - Tuning Guide: tuning_guide.md
+  - Simple Commander API: simple_commander_api/simple_commander_api.md
+  - Migration Guides: migration_guides
+  - API Docs: https://api.nav2.org/

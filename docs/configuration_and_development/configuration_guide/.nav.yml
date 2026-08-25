@@ -1,0 +1,31 @@
+nav:
+  - index.md
+  - Behavior Server: core_servers/configuring_behavior_server.md
+  - Behavior-Tree Navigator: core_servers/configuring_bt_navigator.md
+  - Behavior Tree XML Nodes: core_servers/bt_plugins
+  - Collision Monitor: core_servers/collision_monitor
+  - Controller Server: core_servers/controller_server
+  - Costmap 2D: core_servers/costmap_2d
+  - Docking Server: core_servers/configuring_docking_server.md
+  - Lifecycle Manager: core_servers/configuring_lifecycle_manager.md
+  - Map Server: core_servers/map_server
+  - Planner Server: core_servers/configuring_planner_server.md
+  - Route Server: core_servers/route_server/configuring_route_server.md
+  - Smoother Server: core_servers/configuring_smoother_server.md
+  - Velocity Smoother: core_servers/configuring_velocity_smoother.md
+  - Waypoint Follower: core_servers/waypoint_follower
+  - NavFn Planner: planners_plugins/configuring_navfn.md
+  - Smac Planner: planners_plugins/smac
+  - Theta Star Planner: planners_plugins/thetastar/configuring_thetastar.md
+  - DWB Controller: controller_plugins/dwb_controller
+  - Graceful Controller: controller_plugins/configuring_graceful_motion_controller.md
+  - Model Predictive Path Integral Controller: controller_plugins/mppi_controller/configuring_mppic.md
+  - Regulated Pure Pursuit: controller_plugins/configuring_regulated_pp.md
+  - Rotation Shim Controller: controller_plugins/configuring_rotation_shim_controller.md
+  - Constrained Smoother: smoother_plugins/constrained_smoother/configuring_constrained_smoother.md
+  - Savitzky-Golay Smoother: smoother_plugins/savitzky_golay_smoother/configuring_savitzky_golay_smoother.md
+  - Simple Smoother: smoother_plugins/configuring_simple_smoother.md
+  - AMCL: others/configuring_amcl.md
+  - Coverage Server: others/configuring_coverage_server.md
+  - Following Server: others/configuring_following_server.md
+  - Loopback Simulator: others/configuring_loopback_sim.md
