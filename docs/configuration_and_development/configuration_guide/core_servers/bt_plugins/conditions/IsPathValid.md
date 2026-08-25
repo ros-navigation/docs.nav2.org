@@ -1,0 +1,14 @@
+# IsPathValid { #is-path-valid }
+
+Checks to see if the global path is valid. If there is an
+obstacle along the path, it returns FAILURE, otherwise
+it returns SUCCESS. Optionally checks specific costmap layers and
+can use a custom footprint for validation.
+
+{{ render_bt_node_ports(page.title) }}
+
+## Example
+
+{% set bt_hpp_file_path = nav2_bt_hpp_dir_path + "/condition/is_path_valid_condition.hpp" %}
+
+{{ render_bt_node_example(bt_hpp_file_path) }}

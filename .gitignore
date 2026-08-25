@@ -1,6 +1,13 @@
-_build
-lib/
-bin/
-pyvenv.cfg
-.DS_Store
-venv/
+venv
+site
+__pycache__
+
+macros/cache/*
+!macros/cache/README.md
+
+# For non-rolling branches only
+docs/index.md
+docs/assets
+docs/community
+docs/robots_using
+docs/about_and_contact
