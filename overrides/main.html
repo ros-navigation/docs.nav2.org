@@ -100,43 +100,25 @@
     {% endif %}
     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
 
+      <!-- Sponsorship banner -->
+      <!-- Display expanded version if toc is not present or expand_sponsorship_banner metadata property is set -->
       {% set first = page.toc | first %}
       {% set has_toc = first and first.children %}
-      {% if has_toc %}
-
-        <!-- Add sponsorship banner above the Table of Contents -->
-        <div class="sidebar-banner">
-          <span class="sponsorship-banner">
-            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
-          </span>
-          <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
+      {% set show_expanded = not has_toc or (page.meta and page.meta.expand_sponsorship_banner) %}
+      <div class="sidebar-banner {% if show_expanded %}sidebar-banner--expanded{% endif %}">
+        <span class="sponsorship-banner">
+          <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
+        </span>
+        <img class="sponsorship-banner-logo" src="{{ 'assets/nav2_logo_powered_gray_text.png' | url }}" alt="Nav2 Logo"/>
+        <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
+      </div>
+      <div class="md-sidebar__scrollwrap {% if show_expanded %}md-sidebar__scrollwrap--empty{% endif %}">
+        <div class="md-sidebar__inner">
+          {% include "partials/toc.html" %}
         </div>
-
-        <div class="md-sidebar__scrollwrap">
-          <div class="md-sidebar__inner">
-            {% include "partials/toc.html" %}
-          </div>
-        </div>
-
-      {% else %}
-
-        <div class="sidebar-banner">
-          <span class="sponsorship-banner">
-            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
-          </span>
-          <img class="sponsorship-expanded-banner-logo" src="{{ 'assets/nav2_logo_powered_gray_text.png' | url }}"/>
-          <a class="sponsorship-expanded-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
-          <a class="sponsorship-banner-button sponsorship-banner-button--fallback" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
-        </div>
-
-        <!-- Dummy wrapper for Table of Contents -->
-        <!-- Needed for correct sidebar generation -->
-        <div class="md-sidebar__scrollwrap md-sidebar__scrollwrap--empty">
-        </div>
-
-      {% endif %}
-
+      </div>
     </div>
+
   {% endif %}
 
 {% endblock %}
