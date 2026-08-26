@@ -28,6 +28,10 @@
     }
   }
 
+  .sponsorship-banner-logo {
+    display: none;
+  }
+
   .sponsorship-banner-button {
     color:white;
     background: var(--color-nav2-blue);
@@ -44,11 +48,12 @@
     }
   }
 
-  .sponsorship-banner-button--fallback {
-    display: none;
-  }
+}
 
-  .sponsorship-expanded-banner-logo {
+.sidebar-banner--expanded {
+
+  .sponsorship-banner-logo {
+    display: block;
     width: 10rem;
     margin: 0.8rem 0 0.5rem;
 
@@ -58,35 +63,18 @@
     @media screen and (min-height: 670px) and (max-height: 739px) {
       width: 6rem;
     }
-  }
-
-  @media screen and (max-height: 669px) {
-    .sponsorship-expanded-banner-logo {
+    @media screen and (max-height: 669px) {
       display: none;
-    }
-
-    .sponsorship-expanded-banner-button {
-      display: none;
-    }
-
-    .sponsorship-banner-button--fallback {
-      display: inline-block;
     }
   }
 
-  .sponsorship-expanded-banner-button {
-    color:white;
-    background: var(--color-nav2-blue);
+  .sponsorship-banner-button {
     padding: 0.5rem 1.6rem;
-    border-radius: 0.3rem;
-    text-decoration: none;
-    font-weight: bold;
     font-size: 0.76rem;
-    text-align: center;
 
-    &:hover {
-      color: white;
-      background: var(--color-nav2-light-blue);
+    @media screen and (max-height: 669px) {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.65rem;
     }
   }
 }
