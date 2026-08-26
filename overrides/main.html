@@ -102,24 +102,9 @@
 
       {% set first = page.toc | first %}
       {% set has_toc = first and first.children %}
-      {% if has_toc %}
+      {% if not has_toc or (page.meta and page.meta.expand_sponsorship_banner) %}
 
-        <!-- Add sponsorship banner above the Table of Contents -->
-        <div class="sidebar-banner">
-          <span class="sponsorship-banner">
-            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
-          </span>
-          <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
-        </div>
-
-        <div class="md-sidebar__scrollwrap">
-          <div class="md-sidebar__inner">
-            {% include "partials/toc.html" %}
-          </div>
-        </div>
-
-      {% else %}
-
+        <!-- Add expanded sponsorship banner instead of Table of Contents -->
         <div class="sidebar-banner">
           <span class="sponsorship-banner">
             <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
@@ -132,6 +117,22 @@
         <!-- Dummy wrapper for Table of Contents -->
         <!-- Needed for correct sidebar generation -->
         <div class="md-sidebar__scrollwrap md-sidebar__scrollwrap--empty">
+        </div>
+
+      {% else %}
+
+        <!-- Add collapsed sponsorship banner above Table of Contents -->
+        <div class="sidebar-banner">
+          <span class="sponsorship-banner">
+            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
+          </span>
+          <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
+        </div>
+
+        <div class="md-sidebar__scrollwrap">
+          <div class="md-sidebar__inner">
+            {% include "partials/toc.html" %}
+          </div>
         </div>
 
       {% endif %}

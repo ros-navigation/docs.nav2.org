@@ -1,5 +1,6 @@
 ---
 expand_sidebar_nav: true
+expand_sponsorship_banner: true
 edit_uri: https://github.com/ros-navigation/docs.nav2.org/tree/rolling/docs/
 ---
 
