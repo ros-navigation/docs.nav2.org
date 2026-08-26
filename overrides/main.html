@@ -102,39 +102,33 @@
 
       {% set first = page.toc | first %}
       {% set has_toc = first and first.children %}
-      {% if not has_toc or (page.meta and page.meta.expand_sponsorship_banner) %}
-
-        <!-- Add expanded sponsorship banner instead of Table of Contents -->
-        <div class="sidebar-banner">
-          <span class="sponsorship-banner">
-            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
-          </span>
+      {% set show_expanded = not has_toc or (page.meta and page.meta.expand_sponsorship_banner) %}
+      
+      <div class="sidebar-banner">
+        <span class="sponsorship-banner">
+          <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
+        </span>
+        {% if show_expanded %}
+          <!-- Add expanded sponsorship banner instead of Table of Contents -->
           <img class="sponsorship-expanded-banner-logo" src="{{ 'assets/nav2_logo_powered_gray_text.png' | url }}"/>
           <a class="sponsorship-expanded-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
           <a class="sponsorship-banner-button sponsorship-banner-button--fallback" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
-        </div>
+        {% else %}
+          <!-- Add collapsed sponsorship banner above Table of Contents -->
+          <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
+        {% endif %}
+      </div>
 
+      {% if show_expanded %}
         <!-- Dummy wrapper for Table of Contents -->
         <!-- Needed for correct sidebar generation -->
-        <div class="md-sidebar__scrollwrap md-sidebar__scrollwrap--empty">
-        </div>
-
+        <div class="md-sidebar__scrollwrap md-sidebar__scrollwrap--empty"></div>
       {% else %}
-
-        <!-- Add collapsed sponsorship banner above Table of Contents -->
-        <div class="sidebar-banner">
-          <span class="sponsorship-banner">
-            <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
-          </span>
-          <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
-        </div>
-
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
             {% include "partials/toc.html" %}
           </div>
         </div>
-
       {% endif %}
 
     </div>
