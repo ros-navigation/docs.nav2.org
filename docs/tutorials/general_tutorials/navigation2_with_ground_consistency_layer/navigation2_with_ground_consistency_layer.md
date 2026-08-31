@@ -95,6 +95,8 @@ more accurate costmaps that allow the robot to navigate safely and efficiently i
 While ground segmentation is traditionally used to filter out ground points from costmaps, we can instead use ground points in our decision-making process to implement an
 evidence accumulation and height-based classification system. This approach creates more accurate and stable costmaps in outdoor challenging environments.
 
+For more details on GSeg3D, see the [paper](https://doi.org/10.1109/ICRCV67407.2025.11349133) and the [presentation slides](https://github.com/dfki-ric/ground_segmentation/blob/master/docs/ICRCV_Lodhi.pdf).
+
 ## Ground Consistency Layer
 
 Ground Consistency is a costmap layer that leverages ground segmentation to create more reliable occupancy estimates for navigation in
