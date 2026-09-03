@@ -2,1066 +2,1066 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.nav2.org/rolling/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/about_and_contact/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/about_and_contact/citations/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/about_and_contact/related_projects/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/getting_involved/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/roadmaps/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/roscon_talks/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/maintainer_docs/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/maintainer_docs/distribution_release/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/maintainer_docs/distribution_syncs/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/community/maintainer_docs/docs_release/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/navigation_plugins/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/tuning_guide/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/configuring_graceful_motion_controller/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/configuring_regulated_pp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/configuring_rotation_shim_controller/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/controller/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/iterator/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/kinematic/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_params/visualization/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_plugins/limited_accel_generator/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/dwb_plugins/standard_traj_generator/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/base_obstacle/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/goal_align/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/goal_dist/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/obstacle_footprint/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/oscillation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/path_align/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/path_dist/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/prefer_forward/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/rotate_to_goal/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/dwb_controller/trajectory_critics/twirling/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/controller_plugins/mppi_controller/configuring_mppic/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_behavior_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_bt_navigator/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_docking_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_lifecycle_manager/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_planner_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_smoother_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/configuring_velocity_smoother/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/AppendGoalPoseToGoals/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/AssistedTeleop/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/BackUp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelAssistedTeleop/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelBackUp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelComputeAndTrackRoute/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelControl/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelDriveOnHeading/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelFollowObject/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelSpin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CancelWait/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CheckPoseOccupancy/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/CheckStopStatus/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearCostmapAroundPose/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearCostmapAroundRobot/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearCostmapExceptRegion/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ClearEntireCostmap/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputeAndTrackRoute/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputePathThroughPoses/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputePathToPose/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ComputeRoute/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ConcatenatePaths/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ControllerSelector/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/DockRobot/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/DriveOnHeading/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ExtractRouteNodesAsGoals/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/FollowObject/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/FollowPath/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GetCurrentPose/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GetNextFewGoals/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GetPoseFromPath/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/GoalCheckerSelector/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/NavigateThroughPoses/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/NavigateToPose/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/PathHandlerSelector/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/PlannerSelector/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ProgressCheckerSelector/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ReinitializeGlobalLocalization/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/RemoveInCollisionGoals/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/RemovePassedGoals/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/Smooth/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/SmootherSelector/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/Spin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ToggleCollisionMonitor/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/TruncatePath/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/TruncatePathLocal/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/UndockRobot/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/ValidatePath/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/actions/Wait/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/AreErrorCodesPresent/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/ArePosesNear/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/DistanceTraveled/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/GlobalUpdatedGoal/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/GoalReached/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/GoalUpdated/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/InitialPoseReceived/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsBatteryCharging/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsBatteryLow/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsGoalNearby/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsStuck/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/IsWithinPathTrackingBounds/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/PathExpiringTimer/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/TimeExpired/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/TransformAvailable/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldAControllerRecoveryHelp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldAPlannerRecoveryHelp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldARouteRecoveryHelp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/conditions/WouldASmootherRecoveryHelp/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/NonblockingSequence/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/PauseResumeController/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/PersistentSequence/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/PipelineSequence/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/RecoveryNode/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/controls/RoundRobin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/DistanceController/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/GoalUpdatedController/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/GoalUpdater/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/PathLongerOnApproach/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/RateController/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/SingleTrigger/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/bt_plugins/decorators/SpeedController/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/configuring_collision_detector_node/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/configuring_collision_monitor_node/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/feasible_path_handler/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/pose_progress_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/position_goal_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/simple_goal_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/simple_progress_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/stopped_goal_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/adaptive_tolerance_goal_checker/adaptive_tolerance_goal_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/controller_server/controller_server_plugins/axis_goal_checker/axis_goal_checker/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/keepout_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/speed_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/binary_filter/binary_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_filters/zone_parameter_filter/zone_parameter_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/denoise/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/inflation_legacy/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/obstacle/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/range/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/static/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/voxel/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/asymmetric_inflation/asymmetric_inflation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/costmap_plugins/plugin_container/plugin_container/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/map_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_costmap_filter_info_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_map_saver/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/map_server/configuring_map_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/map_server/vector_object_server/configuring_vector_object_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/route_server/configuring_route_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/waypoint_follower_plugins/input_at_waypoint/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/waypoint_follower_plugins/photo_at_waypoint/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/waypoint_follower/waypoint_follower_plugins/wait_at_waypoint/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/others/configuring_amcl/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/others/configuring_coverage_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/others/configuring_following_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/others/configuring_loopback_sim/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/planners_plugins/configuring_navfn/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/smac_2d/configuring_smac_2d/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/smac_hybrid/configuring_smac_hybrid/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/planners_plugins/smac/smac_lattice/configuring_smac_lattice/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/planners_plugins/thetastar/configuring_thetastar/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/smoother_plugins/configuring_simple_smoother/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/smoother_plugins/constrained_smoother/configuring_constrained_smoother/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/smoother_plugins/savitzky_golay_smoother/configuring_savitzky_golay_smoother/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/footprint/setup_footprint/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/navigation_plugins/setup_navigation_plugins/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/odom/setup_odom/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/odom/setup_robot_localization/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/sdf/setup_sdf/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/sensors/setup_sensors/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/transformation/setup_transforms/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/urdf/setup_urdf/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/Dashing/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/Eloquent/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/Humble/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/Lyrical/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/foxy/Foxy/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/galactic/Galactic/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/iron/Iron/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/jazzy/Jazzy/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/migration_guides/kilted/Kilted/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/configuration_and_development/simple_commander_api/simple_commander_api/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/build_and_install/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/build_and_install/build_troubleshooting_guide/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/build_and_install/docker_installation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/build_and_install/local_installation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/dev_container/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/dev_container/devcontainer_guide/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/detailed_behavior_tree_walkthrough/detailed_behavior_tree_walkthrough/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/nav2_specific_nodes/nav2_specific_nodes/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/follow_point/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/nav_through_poses_recovery/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/nav_to_pose_recovery/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/navigate_on_route_graph_w_recovery/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle/nav_to_pose_and_pause_near_goal_obstacle/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/nav2_behavior_trees/trees/odometry_calibration/odometry_calibration/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/navigation_concepts/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/navigation_concepts/behavior_trees/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/navigation_concepts/environmental_representation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/navigation_concepts/navigation_servers/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/navigation_concepts/ros2/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/navigation_concepts/state_estimation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/getting_started/quickstart/quickstart/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/robots_using/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/adding_a_nav2_task_server/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/docker_dev/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/get_backtrace/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_stvl/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_zone_parameter_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/roscon_uk_2025_state_estimation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/using_docking/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/using_shim_controller/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/adding_smoother/adding_smoother/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/camera_calibration/camera_calibration/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/depth_ai_integration/depth_ai_integration/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/filtering_of_noise_induced_obstacles/filtering_of_noise_induced_obstacles/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/get_profile/get_profile/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/groot_tutorials/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/groot_tutorials/groot/groot/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/groot_tutorials/groot2/groot2/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/integrating_vio/integrating_vio/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/isaac_perceptor/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/isaac_perceptor/rebuilding_tensorrt_engine/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_dynamic_point_following/navigation2_dynamic_point_following/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_on_real_turtlebot3/navigation2_on_real_turtlebot3/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_gps/navigation2_with_gps/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_ground_consistency_layer/navigation2_with_ground_consistency_layer/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_keepout_filter/navigation2_with_keepout_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_sam3_semantic_segmentation/navigation2_with_sam3_semantic_segmentation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_semantic_segmentation/navigation2_with_semantic_segmentation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_slam/navigation2_with_slam/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_speed_filter/navigation2_with_speed_filter/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/navigation2_with_vector_objects/navigation2_with_vector_objects/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/route_server_tools/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/route_server_tools/navigation2_route_tool/navigation2_route_tool/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/route_server_tools/route_graph_generation/route_graph_generation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/route_server_tools/route_graph_generation_lif_editor/route_graph_generation_lif_editor/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/route_server_tools/route_graph_generation_swagger/swagger_generation/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/using_3laws_supervisor/using_3laws_supervisor/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/general_tutorials/using_collision_monitor/using_collision_monitor/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/writing_new_behavior_plugin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/writing_new_bt_plugin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/writing_new_navigator_plugin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/writing_new_controller_plugin/writing_new_controller_plugin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/writing_new_costmap2d_plugin/writing_new_costmap2d_plugin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
     <url>
          <loc>https://docs.nav2.org/rolling/tutorials/plugin_tutorials/writing_new_planner_plugin/writing_new_planner_plugin/</loc>
-         <lastmod>2026-08-31</lastmod>
+         <lastmod>2026-09-03</lastmod>
     </url>
 </urlset>
