@@ -92,6 +92,10 @@ Type: `bool` Default: `false`
 
 :   If `true`, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. If `false`, the controller will compute the heading from the path point's relative locations instead of using the path point orientations. Use for feasible planners like the Smac Planner which generate feasible paths with orientations for forward and reverse motion.
 
+## Configuration Advice
+
+While rotating, the controller accelerates and decelerates within ``max_angular_accel``, slowing down on approach to the target heading as if it were going to stop on it. Because control is handed off at ``angular_disengage_threshold`` rather than at the heading itself, the robot is still rotating at hand-off, at approximately ``min(rotate_to_heading_angular_vel, sqrt(2 * max_angular_accel * angular_disengage_threshold))`` rad/s. Keep that value at or below the primary controller's maximum angular velocity so the hand-off is dynamically feasible for it. With the defaults it works out to ``min(1.8, sqrt(2 * 3.2 * 0.3925)) = 1.59 rad/s``. Lowering ``angular_disengage_threshold`` (or ``max_angular_accel``) tightens it; a small threshold makes the robot rotate in place, slow to a near-stop on the path heading, and then start tracking.
+
 ## Example
 
 ```yaml
