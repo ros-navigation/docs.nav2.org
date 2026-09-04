@@ -18636,6 +18636,17 @@ SUVORK5CYII=
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-advice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Advice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20755,6 +20766,17 @@ SUVORK5CYII=
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-advice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Advice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20980,6 +21002,8 @@ in overrides/partials/header.html -->
 <p>If <code>true</code>, the controller will use the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. If <code>false</code>, the controller will compute the heading from the path point's relative locations instead of using the path point orientations. Use for feasible planners like the Smac Planner which generate feasible paths with orientations for forward and reverse motion.</p>
 </dd>
 </dl>
+<h2 id="configuration-advice">Configuration Advice<a class="headerlink" href="#configuration-advice" title="Permanent link"></a></h2>
+<p>While rotating, the controller accelerates and decelerates within <code>max_angular_accel</code>, slowing down on approach to the target heading as if it were going to stop on it. Because control is handed off at <code>angular_disengage_threshold</code> rather than at the heading itself, the robot is still rotating at hand-off, at approximately <code>min(rotate_to_heading_angular_vel, sqrt(2 * max_angular_accel * angular_disengage_threshold))</code> rad/s. Keep that value at or below the primary controller's maximum angular velocity so the hand-off is dynamically feasible for it. With the defaults it works out to <code>min(1.8, sqrt(2 * 3.2 * 0.3925)) = 1.59 rad/s</code>. Lowering <code>angular_disengage_threshold</code> (or <code>max_angular_accel</code>) tightens it; a small threshold makes the robot rotate in place, slow to a near-stop on the path heading, and then start tracking.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link"></a></h2>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">controller_server</span><span class="p">:</span>
 </span><span id="__span-0-2"><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
