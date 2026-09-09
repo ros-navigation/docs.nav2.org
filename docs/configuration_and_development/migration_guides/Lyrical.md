@@ -65,15 +65,18 @@ The `AssistedTeleop` behavior now stops the robot and fails the action with the 
 [PR #6558](https://github.com/ros-navigation/navigation2/pull/6558) replaces the broad `rclcpp/rclcpp.hpp` includes throughout Nav2 with the specific headers each file needs to speed up compilation and reduce build memory usage. We now recommend including specific `rclcpp` headers instead of globally including `rclcpp/rclcpp.hpp`.
 
 See the [ROS 2 documentation note on the `rclcpp` convenience header](https://github.com/ros2/ros2_documentation/blob/rolling/source/_internal/Rclcpp-Convenience-Header-Note.rst) for more details.
-### Controller Server Transform Staleness Checking and Time-Coherent Robot Pose
 
-The Controller Server can now optionally detect stale transforms used to obtain the robot pose in the local costmap's global frame.
+### Transform Staleness Checking and Time-Coherent Transformations
+
+The Following Nodes can now optionally detect stale transforms used to obtain the robot pose in the local costmap's global frame:
+
+- Controller Server
 
 A new transform_staleness_threshold parameter specifies the maximum allowed age of this transform in seconds. Positive values enable the staleness check, while values less than or equal to 0.0 disable it. The default value is 0.0, so no configuration changes are required to retain the previous behavior with respect to stale-transform rejection.
 
-When the check is enabled and the transform is older than the configured threshold, the Controller Server reports a transform error rather than computing a velocity command.
+When the check is enabled and the transform is older than the configured threshold, the Nodes will report an error.
 
-The Controller Server also now retrieves the robot pose once at the beginning of each control cycle and reuses that pose and its timestamp for plan transformation, goal and progress checking, controller computation, and related feedback. This ensures that components within a control cycle operate using a time-coherent robot pose. Custom controller implementations performing related TF operations should use the timestamp supplied with the robot pose where appropriate, rather than independently requesting the latest transform, to remain time-coherent with the Controller Server.
+Whenever possible the nodes will retrieve the required transformations once at the beginning of each execution cycle and reuses them / their timestamp across the rest of the computation. This ensures that components within an execution cycle operate using time-coherent information. Custom plugins performing related TF operations should use the timestamp supplied with these transformations / poses where appropriate, rather than independently requesting additional transformations.
 
 ### ProgressChecker API Uses a Const Robot Pose
 
