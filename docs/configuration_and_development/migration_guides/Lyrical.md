@@ -26,4 +26,3 @@ virtual bool check(
   const geometry_msgs::msg::PoseStamped & current_pose) = 0;
 ```
 
-Custom `ProgressChecker` plugins must update both the declaration and implementation of `check()` to use a `const geometry_msgs::msg::PoseStamped &`. No other behavioral changes are required for progress checker plugins as a result of this API change.
