@@ -32,7 +32,9 @@ The `AssistedTeleop` behavior now stops the robot and fails the action with the 
 
 ### Transform Staleness Checking and Time-Coherent Transformations
 
-The Following Nodes can now optionally detect stale transforms used to obtain the robot pose in the local costmap's global frame:
+The navigation stack can behave incorrectly when some of its input transformations are not provided for a long period of time, possibly leading to loss of control and collisions. It is advised to configure the stack to fail in this condition.
+
+The Following Nodes can now optionally detect stale transforms:
 
 - Controller Server
 
@@ -41,6 +43,8 @@ A new transform_staleness_threshold parameter specifies the maximum allowed age 
 When the check is enabled and the transform is older than the configured threshold, the Nodes will report an error.
 
 Whenever possible the nodes will retrieve the required transformations once at the beginning of each execution cycle and reuses them / their timestamp across the rest of the computation. This ensures that components within an execution cycle operate using time-coherent information. Custom plugins performing related TF operations should use the timestamp supplied with these transformations / poses where appropriate, rather than independently requesting additional transformations.
+
+This parameter should be configured to a value bigger than the maximum periodiciy of the non static transformations in your tree. A couple of seconds is usually a reasonable conservative choice, but a stricter check is advised for systems where timely updates are critical.
 
 ### ProgressChecker API Uses a Const Robot Pose
 
