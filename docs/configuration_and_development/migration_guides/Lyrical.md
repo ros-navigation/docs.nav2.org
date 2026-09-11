@@ -59,4 +59,3 @@ Now:
 virtual bool check(
   const geometry_msgs::msg::PoseStamped & current_pose) = 0;
 ```
-
