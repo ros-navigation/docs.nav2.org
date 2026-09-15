@@ -30,7 +30,7 @@ Type: `double` Default: `0.25`
 
 Type: `double` Default: minimum of the initial `along_path_tolerance` and `cross_track_tolerance` values (`0.25` with their defaults)
 
-:   Radial goal tolerance (m) used when no path direction has been estimated. The Euclidean distance to the goal must be strictly less than this value. Can be updated independently of the axis tolerances at runtime; negative updates are rejected.
+:   Radial goal tolerance (m) used when no path direction has been estimated. The Euclidean distance to the goal must be strictly less than this value.
 
 ### **`<nav2_controller plugin>.path_length_tolerance`**
 
