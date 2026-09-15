@@ -627,6 +627,34 @@ Type: `vector<double>` Default: `[0.05, 0.05, 0.05]`
 
 :   The array of deadband velocities `[vx, vz, wz]`. A zero array indicates that the critic will take no action.
 
+## Axis Align Critic
+
+This critic penalizes diagonal motion, i.e. commanding `vx` and `vy` at the same time, on holonomic platforms. Mecanum bases only drive two of their four wheels when translating at 45 degrees, which slips on real hardware, while pure forward/backward or pure lateral motion drives all four wheels. The critic is inactive for non-holonomic motion models. Weights of 2 to 4 work well alongside the default critic set; much larger weights start to trade diagonal motion for in-place rotation.
+
+### **`cost_weight`**
+
+Type: `double` Default: `3.0`
+
+:   Weight to apply to critic term.
+
+### **`cost_power`**
+
+Type: `int` Default: `1`
+
+:   Power order to apply to term.
+
+### **`threshold_to_consider`**
+
+Type: `double` Default: `0.5`
+
+:   Distance (m) between robot and goal to **stop** considering axis alignment and allow goal critics to take over.
+
+### **`normalize`**
+
+Type: `bool` Default: `true`
+
+:   Score the ratio of the minor to the major body-axis velocity (`0` for axis-aligned motion, `1` at 45 degrees), which is independent of speed. If `false`, score the minor-axis velocity magnitude itself, which also discourages driving fast.
+
 ## Example
 
 ```yaml
