@@ -15242,6 +15242,17 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#nav2_controller-pluginfallback_radial_goal_tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;nav2_controller plugin&gt;.fallback_radial_goal_tolerance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nav2_controller-pluginpath_length_tolerance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20554,6 +20565,17 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#nav2_controller-pluginfallback_radial_goal_tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;nav2_controller plugin&gt;.fallback_radial_goal_tolerance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nav2_controller-pluginpath_length_tolerance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20727,6 +20749,7 @@ in overrides/partials/header.html -->
 <h1 id="axis-goal-checker">AxisGoalChecker<a class="headerlink" href="#axis-goal-checker" title="Permanent link"></a></h1>
 <p>Checks whether the robot has reached the goal pose by projecting the robot's position onto the path direction near the goal. This goal checker estimates the path direction from the <code>goal_pose</code> and the first plan pose at least <code>direction_estimation_distance</code> behind it, then checks if the robot is within tolerance along that axis.</p>
 <p>Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (<code>along_path_tolerance</code>) and perpendicular to it (<code>cross_track_tolerance</code>). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.</p>
+<p>The estimated direction is cached until the checker is reset for a new path. If no direction has been estimated, for example when a new path is shorter than <code>direction_estimation_distance</code>, the checker falls back to a radial distance check using <code>fallback_radial_goal_tolerance</code>.</p>
 <figure>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/axis_goal_checker.png" data-desc-position="bottom"><img alt="AxisGoalChecker Illustration" src="../assets/axis_goal_checker.png" title="AxisGoalChecker Illustration"></a>
 </figure>
@@ -20744,6 +20767,13 @@ in overrides/partials/header.html -->
 <dt>Type: <code>double</code> Default: <code>0.25</code></dt>
 <dd>
 <p>Tolerance for the perpendicular distance from the path direction (m). This checks how far to the left or right of the path axis the robot is.</p>
+</dd>
+</dl>
+<h3 id="nav2_controller-pluginfallback_radial_goal_tolerance"><strong><code>&lt;nav2_controller plugin&gt;.fallback_radial_goal_tolerance</code></strong><a class="headerlink" href="#nav2_controller-pluginfallback_radial_goal_tolerance" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: minimum of <code>along_path_tolerance</code> and <code>cross_track_tolerance</code></dt>
+<dd>
+<p>Radial goal tolerance (m) used when no path direction has been estimated. The Euclidean distance to the goal must be strictly less than this value.</p>
 </dd>
 </dl>
 <h3 id="nav2_controller-pluginpath_length_tolerance"><strong><code>&lt;nav2_controller plugin&gt;.path_length_tolerance</code></strong><a class="headerlink" href="#nav2_controller-pluginpath_length_tolerance" title="Permanent link"></a></h3>
