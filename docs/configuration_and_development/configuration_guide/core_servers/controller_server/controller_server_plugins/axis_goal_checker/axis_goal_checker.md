@@ -4,6 +4,8 @@ Checks whether the robot has reached the goal pose by projecting the robot's pos
 
 Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (`along_path_tolerance`) and perpendicular to it (`cross_track_tolerance`). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.
 
+The estimated direction is cached until the checker is reset for a new path. If no direction has been estimated, for example when a new path is shorter than `direction_estimation_distance`, the checker falls back to a radial distance check using `fallback_radial_goal_tolerance`.
+
 <figure markdown="span">
   ![AxisGoalChecker Illustration](assets/axis_goal_checker.png){ title="AxisGoalChecker Illustration" }
 </figure>
@@ -23,6 +25,12 @@ Type: `double` Default: `0.25`
 Type: `double` Default: `0.25`
 
 :   Tolerance for the perpendicular distance from the path direction (m). This checks how far to the left or right of the path axis the robot is.
+
+### **`<nav2_controller plugin>.fallback_radial_goal_tolerance`**
+
+Type: `double` Default: minimum of `along_path_tolerance` and `cross_track_tolerance`
+
+:   Radial goal tolerance (m) used when no path direction has been estimated. The Euclidean distance to the goal must be strictly less than this value.
 
 ### **`<nav2_controller plugin>.path_length_tolerance`**
 
