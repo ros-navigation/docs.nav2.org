@@ -63,6 +63,18 @@ Type: `double` Default: `5.0`
 
 :   Maximum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
 
+### **`<filter name>.max_path_rewind`**
+
+Type: `double` Default: `1.0`
+
+:   Length of path (m) the lookahead search may rewind each update, when path lookahead mode is enabled. Without it the filter keeps sampling ahead of a robot that has reversed. Set above the spacing between a path's legs, the search can snap onto an earlier leg.
+
+### **`<filter name>.clear_path_on_reset`**
+
+Type: `bool` Default: `false`
+
+:   Whether to drop the cached path when the filter is reset, when path lookahead mode is enabled. The filter is also reset when the costmap is cleared, which the default behavior trees do as a recovery, so enable this only if your behavior tree replans afterwards.
+
 ### **`<filter name>.path_topic`**
 
 Type: `string` Default: `"plan"`
@@ -95,6 +107,8 @@ global_costmap:
       max_decel: -0.3
       min_lookahead: 1.0
       max_lookahead: 5.0
+      max_path_rewind: 1.0
+      clear_path_on_reset: false
       path_topic: "plan"
       odom_topic: "odom"
 ```
