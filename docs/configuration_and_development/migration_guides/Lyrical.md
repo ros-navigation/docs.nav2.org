@@ -1,6 +1,10 @@
 # Lyrical to M-Turtle { #lyrical-to-m-turtle }
 
-## Static Layer Overlays Without Resizing the Master
+## Migration Actions and Deprecations
+
+## New Features and Improvements
+
+### Static Layer Overlays Without Resizing the Master
 
 [PR #6488](https://github.com/ros-navigation/navigation2/pull/6488) adds the Static Layer parameter `resize_master`, which defaults to `true`. Existing configurations require no changes: a Static Layer still resizes a non-rolling master costmap to match its incoming map.
 
