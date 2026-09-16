@@ -1,6 +1,6 @@
 # Static Layer Parameters { #static-layer-parameters }
 
-This implements a costmap layer taking in a map from either SLAM or `map_server` (or other) to place into the costmap. It resizes the costmap to its size and places the static obstacles on the planning space.
+This implements a costmap layer taking in a map from either SLAM or `map_server` (or other) to place into the costmap. By default, it resizes a non-rolling costmap to match the incoming map and places the static obstacles on the planning space. Set `resize_master` to `false` to add a map as an overlay without resizing the master costmap.
 
 `<static layer>` is the corresponding plugin name selected for this type.
 
@@ -9,6 +9,12 @@ This implements a costmap layer taking in a map from either SLAM or `map_server`
 Type: `bool` Default: `true`
 
 :   Whether it is enabled.
+
+### **`<static layer>.resize_master`**
+
+Type: `bool` Default: `true`
+
+:   Resize a non-rolling master costmap to match the incoming map. When `false`, overlay the map without changing the master's geometry.
 
 ### **`<static layer>.footprint_clearing_enabled`**
 
