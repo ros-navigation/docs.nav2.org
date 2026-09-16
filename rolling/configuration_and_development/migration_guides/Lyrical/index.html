@@ -19379,6 +19379,36 @@ SUVORK5CYII=
 
       <!-- Navigation link to table of contents -->
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Lyrical to M-Turtle
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -19409,6 +19439,64 @@ SUVORK5CYII=
       </a>
 
       <!-- Table of contents -->
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#migration-actions-and-deprecations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration Actions and Deprecations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-features-and-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Features and Improvements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New Features and Improvements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-layer-overlays-without-resizing-the-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Layer Overlays Without Resizing the Master
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
 
@@ -20372,14 +20460,14 @@ SUVORK5CYII=
       
       
       
-      <div class="sidebar-banner sidebar-banner--expanded">
+      <div class="sidebar-banner ">
         <span class="sponsorship-banner">
           <h3>Partner with Nav2</h3> Sponsorship opportunities &amp; professional services available.
         </span>
         <img class="sponsorship-banner-logo" src="../../../assets/nav2_logo_powered_gray_text.png" alt="Nav2 Logo">
         <a class="sponsorship-banner-button" href="https://opennav.org" target="_blank" rel="noopener">Learn More</a>
       </div>
-      <div class="md-sidebar__scrollwrap md-sidebar__scrollwrap--empty">
+      <div class="md-sidebar__scrollwrap ">
         <div class="md-sidebar__inner">
           
 
@@ -20389,6 +20477,53 @@ SUVORK5CYII=
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#migration-actions-and-deprecations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration Actions and Deprecations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-features-and-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Features and Improvements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New Features and Improvements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-layer-overlays-without-resizing-the-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Layer Overlays Without Resizing the Master
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
         </div>
@@ -20504,6 +20639,11 @@ in overrides/partials/header.html -->
 
 <!-- Page content -->
 <h1 id="lyrical-to-m-turtle">Lyrical to M-Turtle<a class="headerlink" href="#lyrical-to-m-turtle" title="Permanent link"></a></h1>
+<h2 id="migration-actions-and-deprecations">Migration Actions and Deprecations<a class="headerlink" href="#migration-actions-and-deprecations" title="Permanent link"></a></h2>
+<h2 id="new-features-and-improvements">New Features and Improvements<a class="headerlink" href="#new-features-and-improvements" title="Permanent link"></a></h2>
+<h3 id="static-layer-overlays-without-resizing-the-master">Static Layer Overlays Without Resizing the Master<a class="headerlink" href="#static-layer-overlays-without-resizing-the-master" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6488">PR #6488</a> adds the Static Layer parameter <code>resize_master</code>, which defaults to <code>true</code>. Existing configurations require no changes: a Static Layer still resizes a non-rolling master costmap to match its incoming map.</p>
+<p>Set <code>resize_master: false</code> for additional Static Layers whose maps should not control the master's geometry. For example, a Vector Object Server can publish an obstacle map with a smaller or changing extent while the primary Static Layer continues to own the site map geometry.</p>
 
 
 

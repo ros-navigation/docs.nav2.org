@@ -15644,6 +15644,17 @@ SUVORK5CYII=
 </li>
       
         <li class="md-nav__item">
+  <a href="#static-layerresize_master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;static layer&gt;.resize_master
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#static-layerfootprint_clearing_enabled" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20525,6 +20536,17 @@ SUVORK5CYII=
 </li>
       
         <li class="md-nav__item">
+  <a href="#static-layerresize_master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;static layer&gt;.resize_master
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#static-layerfootprint_clearing_enabled" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20713,13 +20735,20 @@ in overrides/partials/header.html -->
 
 <!-- Page content -->
 <h1 id="static-layer-parameters">Static Layer Parameters<a class="headerlink" href="#static-layer-parameters" title="Permanent link"></a></h1>
-<p>This implements a costmap layer taking in a map from either SLAM or <code>map_server</code> (or other) to place into the costmap. It resizes the costmap to its size and places the static obstacles on the planning space.</p>
+<p>This implements a costmap layer taking in a map from either SLAM or <code>map_server</code> (or other) to place into the costmap. By default, it resizes a non-rolling costmap to match the incoming map and places the static obstacles on the planning space. Set <code>resize_master</code> to <code>false</code> to add a map as an overlay without resizing the master costmap.</p>
 <p><code>&lt;static layer&gt;</code> is the corresponding plugin name selected for this type.</p>
 <h3 id="static-layerenabled"><strong><code>&lt;static layer&gt;.enabled</code></strong><a class="headerlink" href="#static-layerenabled" title="Permanent link"></a></h3>
 <dl>
 <dt>Type: <code>bool</code> Default: <code>true</code></dt>
 <dd>
 <p>Whether it is enabled.</p>
+</dd>
+</dl>
+<h3 id="static-layerresize_master"><strong><code>&lt;static layer&gt;.resize_master</code></strong><a class="headerlink" href="#static-layerresize_master" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>bool</code> Default: <code>true</code></dt>
+<dd>
+<p>Resize a non-rolling master costmap to match the incoming map. When <code>false</code>, overlay the map without changing the master's geometry.</p>
 </dd>
 </dl>
 <h3 id="static-layerfootprint_clearing_enabled"><strong><code>&lt;static layer&gt;.footprint_clearing_enabled</code></strong><a class="headerlink" href="#static-layerfootprint_clearing_enabled" title="Permanent link"></a></h3>
