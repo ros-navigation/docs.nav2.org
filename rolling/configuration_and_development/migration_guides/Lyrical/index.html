@@ -19489,6 +19489,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#assisted-teleop-times-out-on-stale-teleop-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assisted Teleop Times Out on Stale Teleop Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20518,6 +20529,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#assisted-teleop-times-out-on-stale-teleop-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assisted Teleop Times Out on Stale Teleop Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20644,6 +20666,8 @@ in overrides/partials/header.html -->
 <h3 id="static-layer-overlays-without-resizing-the-master">Static Layer Overlays Without Resizing the Master<a class="headerlink" href="#static-layer-overlays-without-resizing-the-master" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6488">PR #6488</a> adds the Static Layer parameter <code>resize_master</code>, which defaults to <code>true</code>. Existing configurations require no changes: a Static Layer still resizes a non-rolling master costmap to match its incoming map.</p>
 <p>Set <code>resize_master: false</code> for additional Static Layers whose maps should not control the master's geometry. For example, a Vector Object Server can publish an obstacle map with a smaller or changing extent while the primary Static Layer continues to own the site map geometry.</p>
+<h3 id="assisted-teleop-times-out-on-stale-teleop-commands">Assisted Teleop Times Out on Stale Teleop Commands<a class="headerlink" href="#assisted-teleop-times-out-on-stale-teleop-commands" title="Permanent link"></a></h3>
+<p>The <code>AssistedTeleop</code> behavior now stops the robot and fails the action with the new <code>TELEOP_INPUT_TIMEOUT</code> error code (733) when no teleop command has been received within the new <code>teleop_command_timeout</code> parameter (default <code>0.25</code> s).</p>
 
 
 

@@ -10649,6 +10649,17 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#teleop_command_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        teleop_command_timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#enable_stamped_cmd_vel_3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -21337,6 +21348,17 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#teleop_command_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        teleop_command_timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#enable_stamped_cmd_vel_3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -21759,6 +21781,13 @@ It is also possible to implement independent behavior servers for each custom be
 <p>Topic to listen for teleop messages.</p>
 </dd>
 </dl>
+<h3 id="teleop_command_timeout"><strong><code>teleop_command_timeout</code></strong><a class="headerlink" href="#teleop_command_timeout" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: <code>0.25</code></dt>
+<dd>
+<p>Maximum age (s) of the last teleop command before stopping the robot and failing the action with <code>TELEOP_INPUT_TIMEOUT</code>. <code>0.0</code> disables.</p>
+</dd>
+</dl>
 <h3 id="enable_stamped_cmd_vel_3"><strong><code>enable_stamped_cmd_vel</code></strong><a class="headerlink" href="#enable_stamped_cmd_vel_3" title="Permanent link"></a></h3>
 <dl>
 <dt>Type: <code>bool</code> Default: <code>true</code></dt>
@@ -21786,15 +21815,16 @@ It is also possible to implement independent behavior servers for each custom be
 </span><span id="__span-1-16"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_behaviors::Wait"</span>
 </span><span id="__span-1-17"><span class="w">    </span><span class="nt">assisted_teleop</span><span class="p">:</span>
 </span><span id="__span-1-18"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_behaviors::AssistedTeleop"</span>
-</span><span id="__span-1-19"><span class="w">    </span><span class="nt">local_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
-</span><span id="__span-1-20"><span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
-</span><span id="__span-1-21"><span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
-</span><span id="__span-1-22"><span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
-</span><span id="__span-1-23"><span class="w">    </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
-</span><span id="__span-1-24"><span class="w">    </span><span class="nt">max_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-</span><span id="__span-1-25"><span class="w">    </span><span class="nt">min_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
-</span><span id="__span-1-26"><span class="w">    </span><span class="nt">rotational_acc_lim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
-</span><span id="__span-1-27"><span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-19"><span class="w">      </span><span class="nt">teleop_command_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+</span><span id="__span-1-20"><span class="w">    </span><span class="nt">local_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
+</span><span id="__span-1-21"><span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+</span><span id="__span-1-22"><span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
+</span><span id="__span-1-23"><span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</span><span id="__span-1-24"><span class="w">    </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+</span><span id="__span-1-25"><span class="w">    </span><span class="nt">max_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-1-26"><span class="w">    </span><span class="nt">min_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+</span><span id="__span-1-27"><span class="w">    </span><span class="nt">rotational_acc_lim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
+</span><span id="__span-1-28"><span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span></code></pre></div>
 
 
