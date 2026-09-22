@@ -10,6 +10,12 @@ Filter space value is being calculated as: `Fv = base + multiplier * mask_value`
 
 `<filter name>`: is the corresponding plugin name selected for this type.
 
+### **`<filter name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest transform used to place the filter mask in the costmap. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`<filter name>.enabled`**
 
 Type: `bool` Default: `true`

@@ -109,6 +109,12 @@ Type: `double` Default: `0.3`
 
 :   Time (s) to buffer odometry commands to estimate the robot speed.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest robot-pose transform used by the following control loop. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1`

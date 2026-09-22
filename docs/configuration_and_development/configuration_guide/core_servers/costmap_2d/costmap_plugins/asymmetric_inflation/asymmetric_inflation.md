@@ -8,6 +8,12 @@ This layer implements an asymmetric variant of the inflation layer, by scaling i
 
 `<asymmetric inflation layer>` is the corresponding plugin name selected for this type.
 
+### **`<asymmetric inflation layer>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest transform used for path-based asymmetric inflation. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`<asymmetric inflation layer>.enabled`**
 
 Type: `bool` Default: `true`
