@@ -250,13 +250,9 @@ Type: `string` Default: `"cmd_vel_teleop"`
 
 :   Topic to listen for teleop messages.
 
-### **`assisted_teleop.teleop_command_timeout`**
+### **`teleop_command_timeout`**
 
-Type: `double` Default: `0.25`
-
-:   Maximum time (s) allowed between teleop commands once the operator has started driving.
-    If no command is received within this window, the robot is stopped and the action fails with the `TELEOP_INPUT_TIMEOUT` (733) error code.
-    Set to `0.0` to disable the check for sparse teleop sources.
+:   Maximum age (s) of the last teleop command before stopping the robot and failing the action with `TELEOP_INPUT_TIMEOUT`. `0.0` disables.
 
 ### **`enable_stamped_cmd_vel`**
 
