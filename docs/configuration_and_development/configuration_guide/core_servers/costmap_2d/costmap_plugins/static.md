@@ -4,6 +4,12 @@ This implements a costmap layer taking in a map from either SLAM or `map_server`
 
 `<static layer>` is the corresponding plugin name selected for this type.
 
+### **`<static layer>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest transform used to place the static map in the costmap. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`<static layer>.enabled`**
 
 Type: `bool` Default: `true`
