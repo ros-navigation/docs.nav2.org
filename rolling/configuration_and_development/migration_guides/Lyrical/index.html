@@ -19464,6 +19464,23 @@ SUVORK5CYII=
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Migration Actions and Deprecations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavior-server-plugin-parameters-are-now-namespaced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior Server plugin parameters are now namespaced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -20504,6 +20521,23 @@ SUVORK5CYII=
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Migration Actions and Deprecations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavior-server-plugin-parameters-are-now-namespaced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior Server plugin parameters are now namespaced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -20662,6 +20696,47 @@ in overrides/partials/header.html -->
 <!-- Page content -->
 <h1 id="lyrical-to-m-turtle">Lyrical to M-Turtle<a class="headerlink" href="#lyrical-to-m-turtle" title="Permanent link"></a></h1>
 <h2 id="migration-actions-and-deprecations">Migration Actions and Deprecations<a class="headerlink" href="#migration-actions-and-deprecations" title="Permanent link"></a></h2>
+<h3 id="behavior-server-plugin-parameters-are-now-namespaced">Behavior Server plugin parameters are now namespaced<a class="headerlink" href="#behavior-server-plugin-parameters-are-now-namespaced" title="Permanent link"></a></h3>
+<p>The behavior plugins' parameters are now declared under the plugin's name from <code>behavior_plugins</code>, in the same way the <code>acceleration_limit</code>, <code>deceleration_limit</code> and <code>minimum_speed</code> parameters of <code>BackUp</code> and <code>DriveOnHeading</code> already were. The old node-level names are no longer read, so existing configurations must be updated or the defaults will silently apply:</p>
+<table>
+<thead>
+<tr>
+<th>Old (node-level)</th>
+<th>New (per plugin)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>simulate_ahead_time</code></td>
+<td><code>spin.simulate_ahead_time</code>, <code>backup.simulate_ahead_time</code>, <code>drive_on_heading.simulate_ahead_time</code></td>
+</tr>
+<tr>
+<td><code>max_rotational_vel</code></td>
+<td><code>spin.max_rotational_vel</code></td>
+</tr>
+<tr>
+<td><code>min_rotational_vel</code></td>
+<td><code>spin.min_rotational_vel</code></td>
+</tr>
+<tr>
+<td><code>rotational_acc_lim</code></td>
+<td><code>spin.rotational_acc_lim</code></td>
+</tr>
+<tr>
+<td><code>projection_time</code></td>
+<td><code>assisted_teleop.projection_time</code></td>
+</tr>
+<tr>
+<td><code>simulation_time_step</code></td>
+<td><code>assisted_teleop.simulation_time_step</code></td>
+</tr>
+<tr>
+<td><code>cmd_vel_teleop</code></td>
+<td><code>assisted_teleop.cmd_vel_teleop</code></td>
+</tr>
+</tbody>
+</table>
+<p>Substitute your own plugin names if they differ from the defaults. Simply move the parameter under the plugin's declaration in your configuration.</p>
 <h2 id="new-features-and-improvements">New Features and Improvements<a class="headerlink" href="#new-features-and-improvements" title="Permanent link"></a></h2>
 <h3 id="static-layer-overlays-without-resizing-the-master">Static Layer Overlays Without Resizing the Master<a class="headerlink" href="#static-layer-overlays-without-resizing-the-master" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6488">PR #6488</a> adds the Static Layer parameter <code>resize_master</code>, which defaults to <code>true</code>. Existing configurations require no changes: a Static Layer still resizes a non-rolling master costmap to match its incoming map.</p>
