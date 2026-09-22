@@ -93,6 +93,12 @@ Type: `string` Default: `"disabled"`
 
 :   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of latest transforms used by built-in BT nodes including GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, ArePosesNear, DistanceTraveled, and DistanceController. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1` Unit: `seconds`
@@ -156,6 +162,12 @@ Type: `int` Default: `500`
 
 ## NavigateToPose Parameters
 
+### **`<navigate_to_pose_name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest robot-pose transform used for navigation feedback and goal checks. Positive values enable the age check; non-positive values disable it.
+
 ### **`<navigate_to_pose_name>.goal_blackboard_id`**
 
 Type: `string` Default: `"goal"`
@@ -196,6 +208,12 @@ Type: `double` Default: `2.0`
 :   How far (in meters) along the path the searching algorithm will look for the closest point.
 
 ## NavigateThroughPoses Parameters
+
+### **`<navigate_through_poses>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest robot-pose transform used for navigation feedback and goal checks. Positive values enable the age check; non-positive values disable it.
 
 ### **`<navigate_through_poses>.goals_blackboard_id`**
 
