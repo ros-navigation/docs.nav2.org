@@ -250,7 +250,7 @@ Type: `string` Default: `"cmd_vel_teleop"`
 
 :   Topic to listen for teleop messages.
 
-### **`teleop_command_timeout`**
+### **`assisted_teleop.teleop_command_timeout`**
 
 Type: `double` Default: `0.25`
 
