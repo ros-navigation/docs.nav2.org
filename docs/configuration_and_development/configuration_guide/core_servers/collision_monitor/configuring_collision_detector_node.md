@@ -45,11 +45,17 @@ Type: `string` Default: `"odom"`
 
 :   Which frame to use for odometry.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `1.0`
+
+:   Maximum age (seconds) of latest transforms used by collision sources and zones. A stale transform makes the affected observation or zone unavailable; configure the resulting action for your safety needs. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1`
 
-:   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
+:   Maximum time (seconds) to wait for a requested TF transform.
 
 ### **`source_timeout`**
 
@@ -222,6 +228,13 @@ Type: `vector<string>` Default: `[""]`
     Points from this source that fall inside an enabled zone are removed before the detector polygons are evaluated.
 
 ## Exclusion zones parameters { #collision-detector-exclusion-zones-parameters }
+
+### **`<zone name>.transform_staleness_threshold`**
+
+Type: `double` Default: value of `transform_staleness_threshold`
+
+:   Zone-frame transform age limit; inherits the node-level threshold when omitted. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 
 `<zone name>` is a parameter block referenced by name from a source's `exclusion_zones` list. Zone names are global across the node.
 Exclusion zones remove (mask out) a source's points and never trigger detection. Each zone inherits the owning source's `base_shift_correction` policy.
