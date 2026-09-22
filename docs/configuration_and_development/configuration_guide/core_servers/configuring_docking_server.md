@@ -12,6 +12,12 @@ Thanks to NVIDIA for sponsoring this Docking Server package!
 
 ## Parameters
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest robot-pose or dock-frame transform used by the docking server. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`controller_frequency`**
 
 Type: `double` Default: `50.0`
@@ -246,6 +252,12 @@ Type: `double` Default: `0.3`
 ## SimpleChargingDock Parameters
 
 Simple Charging Dock is a provided charging dock plugin that can handle many docks and common techniques.
+
+### **`<dock_name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of latest transforms used by the Simple Charging Dock or Simple Non-Charging Dock plugin to interpret a dock detection or robot pose. Positive values enable the age check; non-positive values disable it.
 
 ### **`<dock_name>.staging_x_offset`**
 

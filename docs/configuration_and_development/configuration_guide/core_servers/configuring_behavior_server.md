@@ -39,11 +39,11 @@ Type: `double` Default: `10.0`
 
 :   Frequency to run behavior plugins.
 
-### **`transform_tolerance`**
+### **`transform_staleness_threshold`**
 
-Type: `double` Default: `0.1`
+Type: `double` Default: `0.0`
 
-:   TF transform tolerance.
+:   Maximum age (seconds) of the latest robot-pose transform used by Spin, Drive On Heading, Back Up, and Assisted Teleop. A stale pose causes the behavior to fail and stop commanding motion. Values greater than `0.0` enable the age check; non-positive values disable it.
 
 ### **`local_frame`**
 
