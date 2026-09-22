@@ -252,6 +252,8 @@ Type: `string` Default: `"cmd_vel_teleop"`
 
 ### **`teleop_command_timeout`**
 
+Type: `double` Default: `0.25`
+
 :   Maximum age (s) of the last teleop command before stopping the robot and failing the action with `TELEOP_INPUT_TIMEOUT`. `0.0` disables.
 
 ### **`enable_stamped_cmd_vel`**
