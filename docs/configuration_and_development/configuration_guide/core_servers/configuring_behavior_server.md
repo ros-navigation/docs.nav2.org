@@ -105,29 +105,35 @@ When the `behavior_plugins` parameter is not overridden, the following default p
 | "drive_on_heading" | "nav2_behaviors::DriveOnHeading" |
 | "wait"             | "nav2_behaviors::Wait"           |
 
+## Behavior Plugin Parameters
+
+Each behavior plugin's parameters are namespaced under the plugin's name from `behavior_plugins` (e.g. `spin.max_rotational_vel`, `backup.simulate_ahead_time`).
+The sections below use the default plugin names; substitute your own if you rename or add instances.
+This allows multiple instances of the same behavior type to be configured independently.
+
 ## Spin Behavior Parameters
 
 Spin distance is given from the action request
 
-### **`simulate_ahead_time`**
+### **`spin.simulate_ahead_time`**
 
 Type: `double` Default: `2.0`
 
 :   Time to look ahead for collisions (s).
 
-### **`max_rotational_vel`**
+### **`spin.max_rotational_vel`**
 
 Type: `double` Default: `1.0`
 
 :   Maximum rotational velocity (rad/s).
 
-### **`min_rotational_vel`**
+### **`spin.min_rotational_vel`**
 
 Type: `double` Default: `0.4`
 
 :   Minimum rotational velocity (rad/s).
 
-### **`rotational_acc_lim`**
+### **`spin.rotational_acc_lim`**
 
 Type: `double` Default: `3.2`
 
@@ -144,7 +150,7 @@ Type: `bool` Default: `true`
 
 Backup distance, speed and time_allowance is given from the action request.
 
-### **`simulate_ahead_time`**
+### **`backup.simulate_ahead_time`**
 
 Type: `double` Default: `2.0`
 
@@ -179,7 +185,7 @@ Type: `double` Default: `0.1`
 
 DriveOnHeading distance, speed and time_allowance is given from the action request.
 
-### **`simulate_ahead_time`**
+### **`drive_on_heading.simulate_ahead_time`**
 
 Type: `double` Default: `2.0`
 
@@ -226,23 +232,31 @@ Type: `double` Default: `0.1`
 
 AssistedTeleop time_allowance is given in the action request
 
-### **`projection_time`**
+### **`assisted_teleop.projection_time`**
 
 Type: `double` Default: `1.0`
 
 :   Time to look ahead for collisions (s).
 
-### **`simulation_time_step`**
+### **`assisted_teleop.simulation_time_step`**
 
 Type: `double` Default: `0.1`
 
 :   Time step for projections (s).
 
-### **`cmd_vel_teleop`**
+### **`assisted_teleop.cmd_vel_teleop`**
 
 Type: `string` Default: `"cmd_vel_teleop"`
 
 :   Topic to listen for teleop messages.
+
+### **`assisted_teleop.teleop_command_timeout`**
+
+Type: `double` Default: `0.25`
+
+:   Maximum time (s) allowed between teleop commands once the operator has started driving.
+    If no command is received within this window, the robot is stopped and the action fails with the `TELEOP_INPUT_TIMEOUT` (733) error code.
+    Set to `0.0` to disable the check for sparse teleop sources.
 
 ### **`enable_stamped_cmd_vel`**
 
@@ -264,21 +278,32 @@ behavior_server:
     behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
     spin:
       plugin: "nav2_behaviors::Spin"
+      simulate_ahead_time: 2.0
+      max_rotational_vel: 1.0
+      min_rotational_vel: 0.4
+      rotational_acc_lim: 3.2
     backup:
       plugin: "nav2_behaviors::BackUp"
+      simulate_ahead_time: 2.0
+      acceleration_limit: 2.5
+      deceleration_limit: -2.5
+      minimum_speed: 0.10
     drive_on_heading:
       plugin: "nav2_behaviors::DriveOnHeading"
+      simulate_ahead_time: 2.0
+      acceleration_limit: 2.5
+      deceleration_limit: -2.5
+      minimum_speed: 0.10
     wait:
       plugin: "nav2_behaviors::Wait"
     assisted_teleop:
       plugin: "nav2_behaviors::AssistedTeleop"
+      projection_time: 1.0
+      simulation_time_step: 0.1
+      teleop_command_timeout: 0.25
     local_frame: odom
     global_frame: map
     robot_base_frame: base_link
     transform_tolerance: 0.1
-    simulate_ahead_time: 2.0
-    max_rotational_vel: 1.0
-    min_rotational_vel: 0.4
-    rotational_acc_lim: 3.2
     enable_stamped_cmd_vel: true
 ```

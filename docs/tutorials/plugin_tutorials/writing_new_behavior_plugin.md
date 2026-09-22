@@ -190,17 +190,18 @@ recoveries_server:
     recovery_plugins: ["spin", "backup", "wait"]
     spin:
       plugin: "nav2_behaviors::Spin"
+      simulate_ahead_time: 2.0
+      max_rotational_vel: 1.0
+      min_rotational_vel: 0.4
+      rotational_acc_lim: 3.2
     backup:
       plugin: "nav2_behaviors::BackUp"
+      simulate_ahead_time: 2.0
     wait:
       plugin: "nav2_behaviors::Wait"
     global_frame: odom
     robot_base_frame: base_link
     transform_tolerance: 0.1
-    simulate_ahead_time: 2.0
-    max_rotational_vel: 1.0
-    min_rotational_vel: 0.4
-    rotational_acc_lim: 3.2
 ```
 
 with
@@ -218,8 +219,13 @@ recoveries_server:
     recovery_plugins: ["spin", "backup", "wait","send_sms"]
     spin:
       plugin: "nav2_behaviors::Spin"
+      simulate_ahead_time: 2.0
+      max_rotational_vel: 1.0
+      min_rotational_vel: 0.4
+      rotational_acc_lim: 3.2
     backup:
       plugin: "nav2_behaviors::BackUp"
+      simulate_ahead_time: 2.0
     wait:
       plugin: "nav2_behaviors::Wait"
     send_sms:
@@ -231,10 +237,6 @@ recoveries_server:
     global_frame: odom
     robot_base_frame: base_link
     transform_tolerance: 0.1
-    simulate_ahead_time: 2.0
-    max_rotational_vel: 1.0
-    min_rotational_vel: 0.4
-    rotational_acc_lim: 3.2
 ```
 
 In the above snippet, you can observe that we add the SMS behavior under the `send_sms` ROS 2 action server name.

@@ -1071,3 +1071,19 @@ Additionally, `BtActionServer` now reports `GOAL_REJECTED` (instead of `UNKNOWN`
 </figure>
 
 GIF above shows one filter instance raising `inflation_layer.inflation_radius` on both costmap nodes on entry to a single zone, and restoring the `nominal_defaults` on the way out. The scene is a simulation, with a synthetic map and a scripted `base_link` transform.
+
+## Behavior Server plugin parameters are now namespaced
+
+The behavior plugins' parameters are now declared under the plugin's name from `behavior_plugins`, in the same way the `acceleration_limit`, `deceleration_limit` and `minimum_speed` parameters of `BackUp` and `DriveOnHeading` already were. The old node-level names are no longer read, so existing configurations must be updated or the defaults will silently apply:
+
+| Old (node-level)       | New (per plugin)                                                     |
+|------------------------|----------------------------------------------------------------------|
+| `simulate_ahead_time`  | `spin.simulate_ahead_time`, `backup.simulate_ahead_time`, `drive_on_heading.simulate_ahead_time` |
+| `max_rotational_vel`   | `spin.max_rotational_vel`                                            |
+| `min_rotational_vel`   | `spin.min_rotational_vel`                                            |
+| `rotational_acc_lim`   | `spin.rotational_acc_lim`                                            |
+| `projection_time`      | `assisted_teleop.projection_time`                                    |
+| `simulation_time_step` | `assisted_teleop.simulation_time_step`                               |
+| `cmd_vel_teleop`       | `assisted_teleop.cmd_vel_teleop`                                     |
+
+Substitute your own plugin names if they differ from the defaults.
