@@ -74,7 +74,7 @@ Since filter mask image was created as a copy of main map, other fields of YAML-
 
 Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in a messages of `nav2_msgs/CostmapFilterInfo` type. These messages are being published by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info). The server is running as a lifecycle node. According to the [design document](https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf), `nav2_msgs/CostmapFilterInfo` messages are going in a pair with `OccupancyGrid` filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter mask.
 
-In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. It is also possible to add them as Composition Nodes to your Navigation Component Container, which might look as follows:
+In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. It is also possible to add them as Composition Nodes to your Navigation Component Container. Nav2 ships this as `keepout_zone_launch.py`, which `bringup_launch.py` includes when `use_keepout_zones` is `True`. It does not start a Lifecycle Manager of its own: `get_lifecycle_nodes()` returns the two node names and `bringup_launch.py` adds them to `lifecycle_manager_nav2`. In your own launch file, add both servers to the `node_names` of your Lifecycle Manager. The launch file might look as follows:
 
 ```python
 import os
@@ -89,6 +89,10 @@ from launch_ros.descriptions import ComposableNode, ParameterFile
 from nav2_common.launch import LaunchConfigAsBool, RewrittenYaml
 
 
+def get_lifecycle_nodes(context):
+    return ('keepout_filter_mask_server', 'keepout_costmap_filter_info_server')
+
+
 def generate_launch_description() -> LaunchDescription:
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
@@ -96,16 +100,14 @@ def generate_launch_description() -> LaunchDescription:
     namespace = LaunchConfiguration('namespace')
     keepout_mask_yaml_file = LaunchConfiguration('keepout_mask')
     use_sim_time = LaunchConfigAsBool('use_sim_time')
-    autostart = LaunchConfigAsBool('autostart')
     params_file = LaunchConfiguration('params_file')
     use_composition = LaunchConfigAsBool('use_composition')
+    use_intra_process_comms = LaunchConfigAsBool('use_intra_process_comms')
     container_name = LaunchConfiguration('container_name')
     container_name_full = (namespace, '/', container_name)
     use_respawn = LaunchConfigAsBool('use_respawn')
     use_keepout_zones = LaunchConfigAsBool('use_keepout_zones')
     log_level = LaunchConfiguration('log_level')
-
-    lifecycle_nodes = ['keepout_filter_mask_server', 'keepout_costmap_filter_info_server']
 
     # Map fully qualified names to relative ones so the node's namespace can be prepended.
     remappings = [('/tf', 'tf'), ('/tf_static', 'tf_static')]
@@ -155,6 +157,12 @@ def generate_launch_description() -> LaunchDescription:
         'use_composition',
         default_value='False',
         description='Use composed bringup if True',
+    )
+
+    declare_use_intra_process_comms_cmd = DeclareLaunchArgument(
+        'use_intra_process_comms',
+        default_value='False',
+        description='Whether to use intra process communication',
     )
 
     declare_container_name_cmd = DeclareLaunchArgument(
@@ -207,14 +215,6 @@ def generate_launch_description() -> LaunchDescription:
                 arguments=['--ros-args', '--log-level', log_level],
                 remappings=remappings,
             ),
-            Node(
-                package='nav2_lifecycle_manager',
-                executable='lifecycle_manager',
-                name='lifecycle_manager_keepout_zone',
-                output='screen',
-                arguments=['--ros-args', '--log-level', log_level],
-                parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}],
-            ),
         ],
     )
     # LoadComposableNode for map server twice depending if we should use the
@@ -240,6 +240,7 @@ def generate_launch_description() -> LaunchDescription:
                             {'yaml_filename': keepout_mask_yaml_file}
                         ],
                         remappings=remappings,
+                        extra_arguments=[{'use_intra_process_comms': use_intra_process_comms}],
                     ),
                     ComposableNode(
                         package='nav2_map_server',
@@ -247,23 +248,11 @@ def generate_launch_description() -> LaunchDescription:
                         name='keepout_costmap_filter_info_server',
                         parameters=[configured_params],
                         remappings=remappings,
+                        extra_arguments=[{'use_intra_process_comms': use_intra_process_comms}],
                     ),
                 ],
             ),
 
-            LoadComposableNodes(
-                target_container=container_name_full,
-                composable_node_descriptions=[
-                    ComposableNode(
-                        package='nav2_lifecycle_manager',
-                        plugin='nav2_lifecycle_manager::LifecycleManager',
-                        name='lifecycle_manager_keepout_zone',
-                        parameters=[
-                            {'autostart': autostart, 'node_names': lifecycle_nodes}
-                        ],
-                    ),
-                ],
-            ),
         ],
     )
 
@@ -279,6 +268,7 @@ def generate_launch_description() -> LaunchDescription:
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_use_composition_cmd)
+    ld.add_action(declare_use_intra_process_comms_cmd)
     ld.add_action(declare_container_name_cmd)
     ld.add_action(declare_use_respawn_cmd)
     ld.add_action(declare_use_keepout_zones_cmd)

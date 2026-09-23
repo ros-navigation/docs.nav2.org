@@ -70,12 +70,16 @@ ros2 launch turtlebot3_bringup robot.launch.py
 
 ### 2. Launch Nav2
 
-Launch Navigation without nav2_amcl and nav2_map_server.
+Launch Navigation without nav2_amcl and nav2_map_server, which is what `use_localization:=False` does.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map->odom transform.
 
 ```bash
-ros2 launch nav2_bringup navigation_launch.py
+ros2 launch nav2_bringup bringup_launch.py use_localization:=False
 ```
+
+!!! note
+
+    `bringup_launch.py` starts the lifecycle manager that brings the Nav2 servers up. Launching `navigation_launch.py` on its own leaves them unconfigured.
 
 ### 3. Launch SLAM
 

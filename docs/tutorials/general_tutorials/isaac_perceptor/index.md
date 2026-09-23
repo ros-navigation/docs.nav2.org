@@ -443,10 +443,14 @@ ros2 launch opennav_visual_nav_demo visual_nav_demo_launch.py
     Running this will require the user to attach to the container from a separate terminal and run:
 
     ```bash
-    ros2 launch nav2_bringup navigation_launch.py
+    ros2 launch nav2_bringup bringup_launch.py use_localization:=False
     ```
 
-    to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default.
+    to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default, and `use_localization:=False` skips `nav2_amcl` and `nav2_map_server`.
+
+    !!! note
+
+        `bringup_launch.py` starts the lifecycle manager that brings the Nav2 servers up. Launching `navigation_launch.py` on its own leaves them unconfigured.
 
 You should now see something like this in Foxglove Studio:
 

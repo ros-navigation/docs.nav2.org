@@ -196,13 +196,17 @@ sudo apt install ros-$ROS_DISTRO-navigation2
 sudo apt install ros-$ROS_DISTRO-nav2-bringup
 ```
 
-We will now launch Nav2 using the `nav2_bringup`'s built-in launch file, `navigation_launch.py` . Open a new terminal and execute the following:
+We will now launch Nav2 using the `nav2_bringup`'s built-in launch file, `bringup_launch.py`. SLAM Toolbox provides the map and the `map` => `odom` transform, so we set `use_localization:=False` to skip `nav2_amcl` and `nav2_map_server`. Open a new terminal and execute the following:
 
 ```shell
-ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
+ros2 launch nav2_bringup bringup_launch.py use_localization:=False use_sim_time:=true
 ```
 
-Note that the parameters of the `nav2_costmap_2d` that we discussed in the previous subsection are included in the default parameters of `navigation_launch.py`. Aside from the `nav2_costmap_2d` parameters, it also contains parameters for the other nodes that are included in Nav2 implementation.
+!!! note
+
+    `bringup_launch.py` starts the lifecycle manager that brings the Nav2 servers up. Launching `navigation_launch.py` on its own leaves them unconfigured.
+
+Note that the parameters of the `nav2_costmap_2d` that we discussed in the previous subsection are included in the default parameters file of `nav2_bringup`, `nav2_params.yaml`. Aside from the `nav2_costmap_2d` parameters, it also contains parameters for the other nodes that are included in Nav2 implementation.
 
 After we have properly set up and launched Nav2, the `/global_costmap` and `/local_costmap` topics should now be active.
 

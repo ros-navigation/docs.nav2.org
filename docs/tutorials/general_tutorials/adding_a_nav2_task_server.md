@@ -18,16 +18,46 @@ The primary states of a Lifecycle node are `Unconfigured`, `Inactive`, `Active`,
 
     For more information on Lifecycle management, see the article on [Managed Nodes](https://design.ros2.org/articles/node_lifecycle.html).
 
-You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node `sensor_driver`, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a `sensor_driver` node in your launch file and adding it to the list of nodes to be activated by the `lifecycle_manager` before navigation, as shown in the example below.
+Nav2 runs one Lifecycle Manager, `lifecycle_manager_nav2`, for the whole stack. `bringup_launch.py` starts it and passes it the names of every lifecycle node it should manage. The nested launch files (`navigation_launch.py`, `localization_launch.py`, `slam_launch.py`, `keepout_zone_launch.py` and `speed_zone_launch.py`) do not start a manager of their own. Each one has a `get_lifecycle_nodes(context)` function that returns the names of the lifecycle nodes it launches, and `bringup_launch.py` joins those lists in launch order:
 
 ```python
-lifecycle_nodes = ['sensor_driver',
-                   'controller_server',
-                   'smoother_server',
-                   'planner_server',
-                   'behavior_server',
-                   'bt_navigator',
-                   'waypoint_follower']
+from nav2_bringup.localization_launch import get_lifecycle_nodes as get_localization_nodes
+from nav2_bringup.navigation_launch import get_lifecycle_nodes as get_navigation_nodes
+
+def launch_lifecycle_manager(context):
+    lifecycle_nodes = []
+    lifecycle_nodes.extend(get_localization_nodes(context))
+    lifecycle_nodes.extend(get_navigation_nodes(context))
+
+    return [
+        Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_nav2',
+            output='screen',
+            parameters=[{'autostart': autostart},
+                        {'node_names': lifecycle_nodes}]),
+    ]
+```
+
+You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node `sensor_driver`, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a `sensor_driver` node in your launch file and adding it to the list of nodes to be activated by `lifecycle_manager_nav2` before navigation, as shown in the example below.
+
+```python
+from nav2_bringup.navigation_launch import get_lifecycle_nodes as get_navigation_nodes
+
+def launch_lifecycle_manager(context):
+    lifecycle_nodes = ['sensor_driver']
+    lifecycle_nodes.extend(get_navigation_nodes(context))
+
+    return [
+        Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_nav2',
+            output='screen',
+            parameters=[{'autostart': autostart},
+                        {'node_names': lifecycle_nodes}]),
+    ]
 
 ...
 
@@ -39,16 +69,12 @@ Node(
     parameters=[configured_params],
     remappings=remappings),
 
-Node(
-    package='nav2_lifecycle_manager',
-    executable='lifecycle_manager',
-    name='lifecycle_manager_navigation',
-    output='screen',
-    parameters=[{'autostart': autostart},
-                {'node_names': lifecycle_nodes}]),
+OpaqueFunction(function=launch_lifecycle_manager),
 ```
 
-In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the `node_names` parameter. The `node_names` parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the `node_names` parameter takes in `lifecycle_nodes` which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (`Configuring` and `Activating`) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the `sensor_driver` is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.
+In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the `node_names` parameter. The `node_names` parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the `node_names` parameter takes in `lifecycle_nodes` which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (`Configuring` and `Activating`) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the `sensor_driver` is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated. The list is built inside an `OpaqueFunction` so that `get_lifecycle_nodes()` can read launch arguments such as `use_localization` from the context.
+
+If your node has its own launch file that `bringup_launch.py` includes, follow the same pattern as the Nav2 launch files: define `get_lifecycle_nodes(context)` in that file and extend the list in `bringup_launch.py` with its result. That keeps each launch file's node names in that file.
 
 Two other parameters of the Lifecycle Manager are `autostart` and `bond_timeout`. Set `autostart` to `true` if you want to set the transition nodes to the `Active` state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The `bond_timeout` sets the waiting time to decide when to transition down all of the nodes if a node is not responding.
 
