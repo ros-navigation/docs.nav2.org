@@ -72,12 +72,8 @@ The `map` => `odom` transform should now be being published and the `map` frame 
 Lastly, we will launch Nav2 using the `nav2_params.yaml` configuration file we just made and `bringup_launch.py`, the built-in launch file of `nav2_bringup`. Since we are not using `nav2_amcl` or `nav2_map_server` in this guide, we set `use_localization:=False`. Open a new terminal and execute the following:
 
 ```shell
-ros2 launch nav2_bringup bringup_launch.py use_localization:=False params_file:=<full/path/to/config/nav2_params.yaml>
+ros2 launch nav2_bringup bringup_launch.py use_localization:=False use_keepout_zones:=False use_speed_zones:=False params_file:=<full/path/to/config/nav2_params.yaml>
 ```
-
-!!! note
-
-    `bringup_launch.py` starts the lifecycle manager that brings the Nav2 servers up. Launching `navigation_launch.py` on its own leaves them unconfigured.
 
 We should now be able to visualize the footprints in RViz, which will be discussed in the next section.
 

@@ -74,12 +74,8 @@ Launch Navigation without nav2_amcl and nav2_map_server, which is what `use_loca
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map->odom transform.
 
 ```bash
-ros2 launch nav2_bringup bringup_launch.py use_localization:=False
+ros2 launch nav2_bringup bringup_launch.py use_localization:=False use_keepout_zones:=False use_speed_zones:=False
 ```
-
-!!! note
-
-    `bringup_launch.py` starts the lifecycle manager that brings the Nav2 servers up. Launching `navigation_launch.py` on its own leaves them unconfigured.
 
 ### 3. Launch SLAM
 
