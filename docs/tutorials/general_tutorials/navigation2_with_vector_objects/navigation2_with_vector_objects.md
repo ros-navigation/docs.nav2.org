@@ -115,8 +115,8 @@ Since vector objects are being enabled in global costmaps, Keepout Filter called
 ```yaml
 global_costmap:
   ros__parameters:
-    plugins: ["static_layer", "obstacle_layer", "keepout_filter", "inflation_layer"]
-    filters: ["speed_filter", "vector_object_layer"]
+    plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+    filters: ["keepout_filter", "speed_filter", "vector_object_layer"]
     ...
     vector_object_layer:
       plugin: "nav2_costmap_2d::KeepoutFilter"
