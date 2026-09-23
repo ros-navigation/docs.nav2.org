@@ -316,7 +316,9 @@ Note, that:
 
 ### 3. Enable Keepout Filter
 
-Costmap Filters are Costamp2D plugins. You can enable the `KeepoutFilter` plugin in Costmap2D by adding `keepout_filter` to the `plugins` parameter in `nav2_params.yaml`. You can place it in the `global_costmap` for planning with keepouts and `local_costmap` to make sure the robot won't attempt to drive through a keepout zone. It is recommended to use the keepout fiter together with an inflation layer. The KeepoutFilter plugin should have the following parameters defined:
+Costmap Filters are Costamp2D plugins. You can enable the `KeepoutFilter` plugin in Costmap2D by adding `keepout_filter` to the `plugins` parameter in `nav2_params.yaml`. You can place it in the `global_costmap` for planning with keepouts and `local_costmap` to make sure the robot won't attempt to drive through a keepout zone.
+
+You may use the keepout fiter together with an inflation layer. If you plan on using the keepout filter with a planner or controller that has SE2 check enabled, the keepout filter should have inflation, otherwise the robot can get stuck on the edge of the keepout. The KeepoutFilter plugin should have the following parameters defined:
 
 - `plugin`: type of plugin. In our case `nav2_costmap_2d::KeepoutFilter`.
 - `filter_info_topic`: filter info topic name. This need to be equal to `filter_info_topic` parameter of Costmap Filter Info Publisher Server from the chapter above.

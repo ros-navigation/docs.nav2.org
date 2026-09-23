@@ -2,7 +2,7 @@
 
 Keepout Filter - is a Costmap Filter that enforces robot to avoid keepout areas or stay on preferred lanes, by updating corresponding costmap layer using filter mask information.
 
-It is recommended to use this filter with an inflation layer to inflate the keepout costs around the keepout zone. This helps planners and controllers account for contact with any part of the robot footprint, rather than only its center. If `override_lethal_cost` is enabled, it allows the robot to navigate out after it enters a keepout zone.
+You may use this filter with an inflation layer to inflate the keepout costs around the keepout zone. This helps planners and controllers account for contact with any part of the robot footprint, rather than only its center. If `override_lethal_cost` is enabled, it allows the robot to navigate out after it enters a keepout zone. If you plan on using the keepout filter with a planner or controller that has SE2 check enabled, the keepout filter should have inflation, otherwise the robot can get stuck on the edge of the keepout.
 
 `<filter name>`: is the corresponding plugin name selected for this type.
 
