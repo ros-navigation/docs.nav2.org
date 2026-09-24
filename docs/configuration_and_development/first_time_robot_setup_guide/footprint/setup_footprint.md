@@ -69,10 +69,10 @@ ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map odom
 
 The `map` => `odom` transform should now be being published and the `map` frame should be added in RViz without errors.
 
-Lastly, we will launch Nav2 using the `nav2_params.yaml` configuration file we just made and `navigation_launch.py`, the built-in launch file of `nav2_bringup`. Open a new terminal and execute the following:
+Lastly, we will launch Nav2 using the `nav2_params.yaml` configuration file we just made and `bringup_launch.py`, the built-in launch file of `nav2_bringup`. Since we are not using `nav2_amcl` or `nav2_map_server` in this guide, we set `use_localization:=False`. Open a new terminal and execute the following:
 
 ```shell
-ros2 launch nav2_bringup navigation_launch.py params_file:=<full/path/to/config/nav2_params.yaml>
+ros2 launch nav2_bringup bringup_launch.py use_localization:=False use_keepout_zones:=False use_speed_zones:=False params_file:=<full/path/to/config/nav2_params.yaml>
 ```
 
 We should now be able to visualize the footprints in RViz, which will be discussed in the next section.

@@ -18,6 +18,27 @@ The behavior plugins' parameters are now declared under the plugin's name from `
 
 Substitute your own plugin names if they differ from the defaults. Simply move the parameter under the plugin's declaration in your configuration.
 
+### Single Lifecycle Manager in Nav2 Bringup
+
+[PR #6410](https://github.com/ros-navigation/navigation2/pull/6410) combines the separate lifecycle managers for localization, navigation, SLAM, keepout zones, speed zones and the loopback simulator into a single `lifecycle_manager_nav2`, started by `bringup_launch.py`. Measured on the Turtlebot 4 simulation launch, which previously ran four lifecycle managers, this reduces Nav2's CPU use by around 25%. The nested launch files in `nav2_bringup` no longer start a lifecycle manager of their own. Each has a `get_lifecycle_nodes(context)` function that returns its lifecycle node names, which `bringup_launch.py` collects into the `node_names` of the single manager.
+
+Launching a nested file by itself, such as `ros2 launch nav2_bringup navigation_launch.py`, now leaves the servers unconfigured. Launch `bringup_launch.py` instead and use its arguments to turn off what you do not need, for example `use_localization:=False` when SLAM or another source provides the map and the `map` to `odom` transform. Anything that used the old manager names, such as `lifecycle_manager_navigation/manage_nodes`, should use `lifecycle_manager_nav2` instead; the Nav2 RViz panel is already updated. Custom bringup launch files can build their `node_names` from the `get_lifecycle_nodes()` functions plus their own nodes, see the [task server tutorial][adding-a-new-nav2-task-server].
+
+To keep using a component launch file on its own, start a lifecycle manager next to it and give it the node names to manage. The names are the ones that launch file returns from its `get_lifecycle_nodes()` function:
+
+```bash
+ros2 launch nav2_bringup navigation_launch.py
+```
+
+```bash
+ros2 run nav2_lifecycle_manager lifecycle_manager --ros-args -r __node:=lifecycle_manager_nav2 \
+  -p autostart:=true \
+  -p node_names:="[controller_server, smoother_server, planner_server, route_server, behavior_server, \
+  velocity_smoother, collision_monitor, bt_navigator, waypoint_follower, docking_server, following_server]"
+```
+
+Naming the manager `lifecycle_manager_nav2` keeps the Nav2 RViz panel working, since that is the manager it talks to.
+
 ## New Features and Improvements
 
 ### Static Layer Overlays Without Resizing the Master

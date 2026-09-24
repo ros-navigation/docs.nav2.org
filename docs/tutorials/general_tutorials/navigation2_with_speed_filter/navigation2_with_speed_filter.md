@@ -86,7 +86,7 @@ Since Costmap2D does not support orientation, the last third "yaw" component of 
 
 Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in messages of `nav2_msgs/CostmapFilterInfo` type. These messages are being published by [Costmap Filter Info Publisher Server](https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info). The server is running as a lifecycle node. According to the [design document](https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf), `nav2_msgs/CostmapFilterInfo` messages are going in a pair with `OccupancyGrid` filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter masks.
 
-In order to enable Speed Filter in your configuration, both servers should be enabled as lifecycle nodes in Python launch-file. For example, this might look as follows, though adding them as Composition Nodes to your Navigation Component Container is also possible:
+In order to enable Speed Filter in your configuration, both servers should be enabled as lifecycle nodes in Python launch-file. The launch file below does not start a Lifecycle Manager of its own: `bringup_launch.py` adds the nodes returned by its `get_lifecycle_nodes()` function to `lifecycle_manager_nav2`. For example, this might look as follows, though adding them as Composition Nodes to your Navigation Component Container is also possible:
 
 ```python
 import os
@@ -101,6 +101,10 @@ from launch_ros.descriptions import ComposableNode, ParameterFile
 from nav2_common.launch import LaunchConfigAsBool, RewrittenYaml
 
 
+def get_lifecycle_nodes(context):
+    return ('speed_filter_mask_server', 'speed_costmap_filter_info_server')
+
+
 def generate_launch_description() -> LaunchDescription:
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
@@ -108,16 +112,14 @@ def generate_launch_description() -> LaunchDescription:
     namespace = LaunchConfiguration('namespace')
     speed_mask_yaml_file = LaunchConfiguration('speed_mask')
     use_sim_time = LaunchConfigAsBool('use_sim_time')
-    autostart = LaunchConfigAsBool('autostart')
     params_file = LaunchConfiguration('params_file')
     use_composition = LaunchConfigAsBool('use_composition')
+    use_intra_process_comms = LaunchConfigAsBool('use_intra_process_comms')
     container_name = LaunchConfiguration('container_name')
     container_name_full = (namespace, '/', container_name)
     use_respawn = LaunchConfigAsBool('use_respawn')
     use_speed_zones = LaunchConfigAsBool('use_speed_zones')
     log_level = LaunchConfiguration('log_level')
-
-    lifecycle_nodes = ['speed_filter_mask_server', 'speed_costmap_filter_info_server']
 
     # Map fully qualified names to relative ones so the node's namespace can be prepended.
     remappings = [('/tf', 'tf'), ('/tf_static', 'tf_static')]
@@ -167,6 +169,12 @@ def generate_launch_description() -> LaunchDescription:
         'use_composition',
         default_value='False',
         description='Use composed bringup if True',
+    )
+
+    declare_use_intra_process_comms_cmd = DeclareLaunchArgument(
+        'use_intra_process_comms',
+        default_value='True',
+        description='Whether to use intra process communication',
     )
 
     declare_container_name_cmd = DeclareLaunchArgument(
@@ -219,14 +227,6 @@ def generate_launch_description() -> LaunchDescription:
                 arguments=['--ros-args', '--log-level', log_level],
                 remappings=remappings,
             ),
-            Node(
-                package='nav2_lifecycle_manager',
-                executable='lifecycle_manager',
-                name='lifecycle_manager_speed_zone',
-                output='screen',
-                arguments=['--ros-args', '--log-level', log_level],
-                parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}],
-            ),
         ],
     )
     # LoadComposableNode for map server twice depending if we should use the
@@ -252,6 +252,7 @@ def generate_launch_description() -> LaunchDescription:
                             {'yaml_filename': speed_mask_yaml_file}
                         ],
                         remappings=remappings,
+                        extra_arguments=[{'use_intra_process_comms': use_intra_process_comms}],
                     ),
                     ComposableNode(
                         package='nav2_map_server',
@@ -259,23 +260,11 @@ def generate_launch_description() -> LaunchDescription:
                         name='speed_costmap_filter_info_server',
                         parameters=[configured_params],
                         remappings=remappings,
+                        extra_arguments=[{'use_intra_process_comms': use_intra_process_comms}],
                     ),
                 ],
             ),
 
-            LoadComposableNodes(
-                target_container=container_name_full,
-                composable_node_descriptions=[
-                    ComposableNode(
-                        package='nav2_lifecycle_manager',
-                        plugin='nav2_lifecycle_manager::LifecycleManager',
-                        name='lifecycle_manager_speed_zone',
-                        parameters=[
-                            {'autostart': autostart, 'node_names': lifecycle_nodes}
-                        ],
-                    ),
-                ],
-            ),
         ],
     )
 
@@ -291,6 +280,7 @@ def generate_launch_description() -> LaunchDescription:
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_use_composition_cmd)
+    ld.add_action(declare_use_intra_process_comms_cmd)
     ld.add_action(declare_container_name_cmd)
     ld.add_action(declare_use_respawn_cmd)
     ld.add_action(declare_use_speed_zones_cmd)
