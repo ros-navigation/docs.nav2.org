@@ -24,6 +24,21 @@ Substitute your own plugin names if they differ from the defaults. Simply move t
 
 Launching a nested file by itself, such as `ros2 launch nav2_bringup navigation_launch.py`, now leaves the servers unconfigured. Launch `bringup_launch.py` instead and use its arguments to turn off what you do not need, for example `use_localization:=False` when SLAM or another source provides the map and the `map` to `odom` transform. Anything that used the old manager names, such as `lifecycle_manager_navigation/manage_nodes`, should use `lifecycle_manager_nav2` instead; the Nav2 RViz panel is already updated. Custom bringup launch files can build their `node_names` from the `get_lifecycle_nodes()` functions plus their own nodes, see the [task server tutorial][adding-a-new-nav2-task-server].
 
+To keep using a component launch file on its own, start a lifecycle manager next to it and give it the node names to manage. The names are the ones that launch file returns from its `get_lifecycle_nodes()` function:
+
+```bash
+ros2 launch nav2_bringup navigation_launch.py
+```
+
+```bash
+ros2 run nav2_lifecycle_manager lifecycle_manager --ros-args -r __node:=lifecycle_manager_nav2 \
+  -p autostart:=true \
+  -p node_names:="[controller_server, smoother_server, planner_server, route_server, behavior_server, \
+  velocity_smoother, collision_monitor, bt_navigator, waypoint_follower, docking_server, following_server]"
+```
+
+Naming the manager `lifecycle_manager_nav2` keeps the Nav2 RViz panel working, since that is the manager it talks to.
+
 ## New Features and Improvements
 
 ### Static Layer Overlays Without Resizing the Master
