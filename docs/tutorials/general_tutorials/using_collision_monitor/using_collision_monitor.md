@@ -331,7 +331,7 @@ With one sub-polygon per motion, each shape covers only the area that motion can
 | ------ | --------------------------------- |
 | Forward | The footprint swept along the commanded arc over the stopping distance (see [Sizing a sub-polygon](#sizing-a-sub-polygon)): extended at the front, and also to the sides if the range accepts a large `angular.z` |
 | Backward | The same at the rear |
-| Rotation in place | The circle swept by the footprint corners (the largest distance from the base frame origin to the footprint), because the corners move outside the footprint while turning |
+| Rotation in place | The circle swept by the footprint corners (radius: the largest distance from the base frame origin to the footprint), because the corners move outside the footprint while turning |
 | Stopped | The footprint plus a small margin (see below) |
 
 When the motion sub-polygons cover every other command (including rotation in place), `stopped` is only selected for a zero or near-zero command.
@@ -416,7 +416,7 @@ $$
   The selection uses the command, not the measured speed, so right after the command drops from a faster sub-polygon into this one, the base can still be faster than `linear_max` (or `|linear_min|` for backward motion).
   The gap grows when the Velocity Smoother decelerates the command faster than the base can follow (`max_decel` defaults to -2.5 m/s² for `x`).
   Either size the shape for that speed, or limit the Velocity Smoother deceleration to what the base achieves and add the remaining tracking lag.
-  This only matters for sub-polygons selected by a command that still moves the base: with a zero linear command, the base is already braking as hard as it can, so a stop cannot shorten the distance.
+  This only matters for sub-polygons selected by a command that still moves the base in the direction it is moving: with a zero linear command, the base already brakes at `a`, so a stop cannot shorten the distance.
 - `a`: the deceleration the base actually achieves for a zero command.
   For a `stop` action, the Collision Monitor publishes a zero velocity on `cmd_vel_out_topic` directly, so deceleration limits configured upstream (e.g. in the Velocity Smoother) do not apply.
   Measure it on the robot.
