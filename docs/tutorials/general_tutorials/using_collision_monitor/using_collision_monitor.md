@@ -150,8 +150,9 @@ VelocityPolygonStop:
     theta_min: -1.0
     theta_max: 1.0
   # This is the last polygon to be checked, it should cover the entire range of robot's velocities
-  # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
-  # is not covered by any of the other sub-polygons
+  # It is used as a fallback if the velocity is not covered by any of the other sub-polygons
+  # (here, the sub-polygons above already cover every velocity within +-1.0, including zero,
+  # so it is never selected)
   stopped:
     points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
     linear_min: -1.0
@@ -197,6 +198,11 @@ collision_monitor:
     holonomic: true       # Set to true for holonomic robots
 
     polygons: ["VelocityPolygonSlow"]
+
+    observation_sources: ["scan"]
+    scan:
+      type: "scan"
+      topic: "scan"
 
     VelocityPolygonSlow:
       type: "velocity_polygon"
@@ -283,13 +289,12 @@ collision_monitor:
         theta_min: -1.0
         theta_max: 1.0
 
-      # Stopped
+      # Stopped: direction_start_angle and direction_end_angle are left
+      # at their defaults (-pi and pi) to cover all directions
       stopped:
         points: "[[0.4, 0.4], [0.4, -0.4], [-0.4, -0.4], [-0.4, 0.4]]"
         linear_min: 0.0
         linear_max: 0.05
-        direction_start_angle: -3.1415
-        direction_end_angle: 3.1415
         theta_min: -1.0
         theta_max: 1.0
 ```
