@@ -1,6 +1,8 @@
 venv
+.venv
 site
 __pycache__
+*.egg-info/
 
 macros/cache/*
 !macros/cache/README.md

@@ -156,11 +156,8 @@ Review [tutorials][tutorials] for compatibility with the new distribution, inclu
 Once all the changes are made, use the command below to check the build:
 
 ```shell
-sudo apt install python3-pip python3-venv
-python3 -m venv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
-mkdocs build
+uv sync
+uv run mkdocs build
 ```
 
 Refer to [README.md](https://github.com/ros-navigation/docs.nav2.org/blob/master/README.md) for additional commands, such as previewing multiple versions locally before publishing.

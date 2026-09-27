@@ -11,3 +11,6 @@
 **.Dockerfile
 **Dockerfile
 site
+.venv
+venv
+*.egg-info/

@@ -15,6 +15,8 @@
 
 FROM ubuntu:noble
 
+COPY --from=ghcr.io/astral-sh/uv:0.9.28 /uv /uvx /usr/local/bin/
+
 ARG user=nav2doc
 ARG uid=1000
 
@@ -28,17 +30,18 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         git \
         openssh-server \
-        python3-pip && \
+        python3 && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd -u $uid -m $user
 
 ENV HOME=/home/$user
-ENV PATH="$HOME/.local/bin:$PATH"
+ENV PATH="$HOME/.venv/bin:$PATH"
 
 USER $user
 
-COPY requirements.txt ./
-RUN pip3 install --no-warn-script-location --user --break-system-packages -r requirements.txt
+WORKDIR $HOME
+COPY --chown=$user pyproject.toml uv.lock ./
+RUN uv sync --locked --python 3.12
 
 WORKDIR /docs

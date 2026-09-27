@@ -1,0 +1,21 @@
+---
+name: uv lock
+
+on:
+  pull_request:
+  push:
+    branches:
+      - rolling
+
+permissions:
+  contents: read
+
+jobs:
+  check-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.2.0
+        with:
+          version: "0.9.28"
+      - run: uv lock --check

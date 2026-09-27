@@ -1,0 +1,17 @@
+[project]
+name = "nav2-docs"
+version = "0.0.0"
+description = "Local build environment for the Navigation2 documentation"
+requires-python = ">=3.12"
+dependencies = [
+  "click<=8.2.1",
+  "mike",
+  "mkdocs-autorefs",
+  "mkdocs-awesome-nav",
+  "mkdocs-glightbox",
+  "mkdocs-macros-plugin",
+  "mkdocs-material==9.7.7",
+]
+
+[tool.uv]
+package = false

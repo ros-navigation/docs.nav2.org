@@ -6,23 +6,15 @@
 
 ## Installation
 
-### Virtual Environment
+### uv
 
-Install `pip` and `venv` if not already installed:
-``` shell
-sudo apt install python3-pip python3-venv
-```
+With [uv](https://docs.astral.sh/uv/) installed, set up the environment:
 
-Create a virtual environment and activate it:
 ```shell
-python3 -m venv venv &&
-source venv/bin/activate
+uv sync
 ```
 
-Install all required dependencies:
-```shell
-pip3 install -r requirements.txt
-```
+uv creates `.venv/` and uses Python 3.12 or newer, as required by the macros.
 
 ### Docker Container
 
@@ -63,7 +55,7 @@ The dev container automatically sets up all dependencies. You can then use the b
 
 Use the following command from the required distribution branch to build the documentation:
 ```shell
-mkdocs build
+uv run mkdocs build
 ```
 
 The build result can be found in the `site` directory, and the entry point in `site/index.html` file.
@@ -71,7 +63,7 @@ The build result can be found in the `site` directory, and the entry point in `s
 
 Instead of the usual build process, MkDocs provides a live preview server that can be started with:
 ```shell
-mkdocs serve
+uv run mkdocs serve
 ```
 
 It allows to preview new changes during documentation update. The server will automatically rebuild the entire documentation after each file saving and display result at http://127.0.0.1:8000/. See [more options][mkdocs-serve-url] for the command.
@@ -86,7 +78,7 @@ It allows to preview new changes during documentation update. The server will au
 The current documentation relies on the [mike][mike-url] utility to support multiple versions.
 To build the documentation, execute the following command from the corresponding `<distribution>` branch for each version that needs to be displayed:
 ```shell
-mike deploy <distribution>
+uv run mike deploy <distribution>
 ```
 
 After execution, a new directory with the selected `<distribution>` name will be created on the local `gh-pages` branch. This directory will also contain the build result with the corresponding entry point `<distribution>/index.html`.
@@ -97,22 +89,22 @@ You can set the `--title` option to change the version name displayed on the web
 Example for two branches:
 - Execute from `rolling` branch:
   ```shell
-  mike deploy rolling --title=Rolling
+  uv run mike deploy rolling --title=Rolling
   ```
 
 - Execute from `jazzy` branch:
   ```shell
-  mike deploy jazzy --title=Jazzy
+  uv run mike deploy jazzy --title=Jazzy
   ```
 
 Before viewing, you need to set the default version:
 ```shell
-mike set-default <distribution>
+uv run mike set-default <distribution>
 ```
 
 Similar to `mkdocs serve`, mike provides a server that can be started with:
 ```shell
-mike serve
+uv run mike serve
 ```
 
 The documentation will be available at the same address http://127.0.0.1:8000/, and each version at the corresponding address `http://127.0.0.1:8000/<distribution>/`. \
@@ -125,17 +117,9 @@ See [more options][mike-serve-url] for this command.
 This command is useful for local testing and viewing differences between versions without the need to use a real web server.
 If you need to make changes for only one version, it will be more convenient to use `mkdocs serve` for this purpose, due to its live preview ability.
 
-After completing all changes, use these commands to exit the working environment:
+After completing all changes, exit the working environment if using the VS Code Dev Container:
 
-- If using the virtual environment (venv):
-
-  ```shell
-  deactivate
-  ```
-
-- If using the VS Code Dev Container:
-
-  Select in the Command Palette: `Dev Containers: Reopen Folder Locally`
+- Select in the Command Palette: `Dev Containers: Reopen Folder Locally`
 
 ## License
 

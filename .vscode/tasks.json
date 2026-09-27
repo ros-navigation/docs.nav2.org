@@ -4,25 +4,17 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Create venv",
-            "type": "shell",
-            "command": "python3",
-            "args": ["-m", "venv", "venv"],
-            "problemMatcher": []
-        },
-        {
             "label": "Install dependencies",
             "type": "shell",
-            "command": "${workspaceFolder}/venv/bin/pip",
-            "args": ["install", "-r", "requirements.txt"],
-            "dependsOn": ["Create venv"],
+            "command": "uv",
+            "args": ["sync"],
             "problemMatcher": []
         },
         {
             "label": "Build Nav2 Docs",
             "type": "shell",
-            "command": "${workspaceFolder}/venv/bin/mkdocs",
-            "args": ["build"],
+            "command": "uv",
+            "args": ["run", "mkdocs", "build"],
             "dependsOn": ["Install dependencies"],
             "problemMatcher": [],
             "presentation": {
@@ -33,8 +25,8 @@
         {
             "label": "Start Nav2 Docs live preview server",
             "type": "shell",
-            "command": "${workspaceFolder}/venv/bin/mkdocs",
-            "args": ["serve"],
+            "command": "uv",
+            "args": ["run", "mkdocs", "serve"],
             "dependsOn": ["Install dependencies"],
             "problemMatcher": [],
             "presentation": {

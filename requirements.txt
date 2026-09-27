@@ -1,9 +1,0 @@
-# click downgrade due to https://github.com/mkdocs/mkdocs/issues/4032, higher version breaks mkdocs live preview.
-# Or use `mkdocs serve --livereload` instead.
-click<=8.2.1
-mike
-mkdocs-autorefs
-mkdocs-awesome-nav
-mkdocs-glightbox
-mkdocs-macros-plugin
-mkdocs-material==9.7.7

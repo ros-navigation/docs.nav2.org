@@ -11,19 +11,17 @@ references:
         export DEBIAN_FRONTEND=noninteractive
         apt update
         apt install -y \
+          ca-certificates \
+          curl \
           git \
-          openssh-server \
-          python3-pip \
-          python3-venv
-        python3 -m venv /nav2_docs/venv
-        . /nav2_docs/venv/bin/activate
-        pip3 install -r requirements.txt
+          openssh-server
+        curl -LsSf https://astral.sh/uv/0.9.28/install.sh | env UV_UNMANAGED_INSTALL=/usr/local/bin sh
+        uv sync --locked --python 3.12
   build_docs: &build_docs
     run:
       name: Build documentation
       command: |
-        . /nav2_docs/venv/bin/activate
-        mkdocs build
+        uv run --locked mkdocs build
   store_built_docs: &store_built_docs
     store_artifacts:
       path: ./site
@@ -36,15 +34,13 @@ references:
         git config user.name ci
         git config user.email ci@noreply.com
 
-        . /nav2_docs/venv/bin/activate
-
         TITLE=${CIRCLE_BRANCH^}
-        mike deploy $CIRCLE_BRANCH --title=$TITLE --push --allow-empty \
+        uv run --locked mike deploy $CIRCLE_BRANCH --title=$TITLE --push --allow-empty \
           --message "[skip ci] Deployed $CIRCLE_SHA1 to $CIRCLE_BRANCH"
 
         # Set default version only once
         if ! git cat-file -e origin/gh-pages:index.html; then
-          mike set-default rolling --push
+          uv run --locked mike set-default rolling --push
           echo "The default version is set to Rolling"
         fi
   store_published_docs: &store_published_docs
