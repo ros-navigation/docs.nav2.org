@@ -294,6 +294,177 @@ collision_monitor:
         theta_max: 1.0
 ```
 
+## Designing Velocity Polygons
+
+The configuration above shows the syntax.
+This section explains how a sub-polygon is selected at runtime, how to split the velocity space into regimes, and how to size each sub-polygon.
+All parameters are described in the [Collision Monitor][collision-monitor] configuration guide.
+
+### How a sub-polygon is selected
+
+Each time a velocity command arrives on `cmd_vel_in_topic`, the Collision Monitor switches each enabled `velocity_polygon` to one of its sub-polygons and checks the sensor data against that shape only.
+The rules below are implemented in [`VelocityPolygon::updatePolygon()` and `VelocityPolygon::isInRange()`](https://github.com/ros-navigation/navigation2/blob/main/nav2_collision_monitor/src/velocity_polygon.cpp):
+
+- The selection uses the **incoming command**, not odometry and not the output of the Collision Monitor.
+  The shape follows what the robot is asked to do, not how fast it is actually moving.
+- Sub-polygons are tested in the order of `velocity_polygons` and the **first match wins**.
+  All limits are inclusive, e.g. `linear_min <= v <= linear_max`.
+- `theta_min` and `theta_max` are compared with `angular.z`.
+  With `holonomic: false`, `linear_min` and `linear_max` are compared with the signed `linear.x`, and `linear.y` is ignored.
+  With `holonomic: true`, they are compared with the speed `hypot(linear.x, linear.y)`, and the heading `atan2(linear.y, linear.x)` must lie between `direction_start_angle` and `direction_end_angle`.
+  The direction range wraps through ±π when the start angle is greater than the end angle.
+  At zero speed, the heading is taken as `0.0`.
+- If no sub-polygon matches, the warning `Velocity is not covered by any of the velocity polygons` is printed and the **previous shape is kept**.
+  If no command has matched since startup, the polygon has no shape yet and is skipped (`Polygon shape is not set yet`).
+- If a data source is invalid (e.g. no data received within `source_timeout`; this check is disabled when `source_timeout` is `0.0`), the robot is stopped and no polygon is updated.
+  If a polygon earlier in `polygons` has already triggered a stop, the polygons after it are not updated.
+  In both cases, their shape does not change for that command.
+- `state_topic` reports the name of the `velocity_polygon` that triggered (e.g. `VelocityPolygonStop`), not the name of the sub-polygon.
+  To see which sub-polygon is in use, set `visualize: True` and watch `polygon_pub_topic`, which carries the vertices of the selected sub-polygon.
+
+### Choosing velocity regimes
+
+A single fixed polygon has to cover the worst case of every motion, so it is either too large for narrow passages or too small for some motions.
+With one sub-polygon per motion, each shape covers only the area that motion can reach before the robot stops:
+
+| Motion | What the sub-polygon has to cover |
+| ------ | --------------------------------- |
+| Forward | The footprint, extended at the front by the stopping distance (see [Sizing a sub-polygon](#sizing-a-sub-polygon)) |
+| Backward | The footprint, extended at the rear by the stopping distance |
+| Rotation in place | The circle swept by the footprint corners (the circumscribed radius), because the corners move outside the footprint while turning |
+| Stopped | The footprint plus a small margin. When the motion sub-polygons cover every other command (including rotation in place), it is only selected for a zero or near-zero command, so it mainly decides whether the zone reports a stop while the robot stands still and, with `release_consecutive_points` above `1`, how long the robot waits before moving again. If it also covers slow motion or rotation in place, as in the holonomic example above, size it for those motions too |
+
+Because the first match wins and the limits are inclusive, check which sub-polygon a **zero command** selects.
+Any sub-polygon placed before `stopped` whose ranges contain `(0, 0)` takes precedence at standstill (with `holonomic: true`, any sub-polygon with `linear_min: 0.0` whose `theta` range and direction range both contain `0.0`).
+In the non-holonomic example above, `rotation` (`linear_min: 0.0`, `theta_min: -1.0`, `theta_max: 1.0`) contains the zero command, so a robot standing still uses the `rotation` shape.
+Together with `translation_forward` and `translation_backward`, it also covers every other command within ±1.0, so `stopped` is never selected there.
+To make `stopped` the standstill shape, keep zero out of the motion ranges with a small deadband, as in the example below.
+
+The following `StopZone` is an example for a differential-drive robot with a 0.5 m x 0.5 m footprint centered on the base frame (`x` and `y` within ±0.25 m), whose commands are limited to 0.5 m/s forward, 0.2 m/s backward and ±1.0 rad/s:
+
+- The rotation is split by direction, and no motion range contains a command with both `|linear.x| < 0.005` m/s and `|angular.z| < 0.005` rad/s, so a zero command falls through to `stopped`.
+  With a single rotation sub-polygon whose angular range contains zero placed before `stopped`, a zero command would select the rotation shape instead, and an obstacle beside the robot (outside the stopped shape, but inside the rotation shape) would keep `StopZone` triggered after the robot has stopped.
+- The motion sub-polygons cover every command within the limits, so `stopped` only catches the deadband around zero.
+  A command beyond the limits matches no sub-polygon and is reported by the warning described above.
+- The dimensions follow the formula of the next section with the illustrative values `t_r = 0.3` s, `a = 1.0` m/s² and `d_m = 0.05` m.
+  The front of `translation_forward` is at `0.25 + 0.325 = 0.575` m (`d` at 0.5 m/s), the rear of `translation_backward` is at `-(0.25 + 0.13) = -0.38` m (`d` at 0.2 m/s), and their other edges are `d_m` outside the footprint.
+  The octagon of the rotation sub-polygons stays at least 0.41 m from the center, more than `d_m` outside the 0.354 m corner radius of the footprint.
+- The forward and backward shapes only extend the leading edge by the stopping distance; clearance while turning along a path is left to an `approach` polygon on the footprint, which projects the full footprint along the commanded motion.
+
+```yaml
+StopZone:
+  type: "velocity_polygon"
+  action_type: "stop"
+  min_points: 3
+  visualize: True
+  polygon_pub_topic: "stop_zone"
+  enabled: True
+  holonomic: false
+  velocity_polygons: ["rotation", "rotation_clockwise", "translation_forward", "translation_backward", "stopped"]
+  # Turning in place: an octagon enclosing the 0.354 m corner radius of the footprint
+  rotation:
+    points: "[[0.41, 0.17], [0.17, 0.41], [-0.17, 0.41], [-0.41, 0.17], [-0.41, -0.17], [-0.17, -0.41], [0.17, -0.41], [0.41, -0.17]]"
+    linear_min: -0.005
+    linear_max: 0.005
+    theta_min: 0.005   # counter-clockwise only, zero is excluded
+    theta_max: 1.0
+  rotation_clockwise:
+    points: "[[0.41, 0.17], [0.17, 0.41], [-0.17, 0.41], [-0.41, 0.17], [-0.41, -0.17], [-0.17, -0.41], [0.17, -0.41], [0.41, -0.17]]"
+    linear_min: -0.005
+    linear_max: 0.005
+    theta_min: -1.0
+    theta_max: -0.005  # clockwise only, zero is excluded
+  # Front extended by d at 0.5 m/s, other edges by d_m
+  translation_forward:
+    points: "[[0.575, 0.3], [0.575, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+    linear_min: 0.005
+    linear_max: 0.5
+    theta_min: -1.0
+    theta_max: 1.0
+  # Rear extended by d at 0.2 m/s, other edges by d_m
+  translation_backward:
+    points: "[[0.3, 0.3], [0.3, -0.3], [-0.38, -0.3], [-0.38, 0.3]]"
+    linear_min: -0.2
+    linear_max: -0.005
+    theta_min: -1.0
+    theta_max: 1.0
+  # Footprint plus d_m, selected for a zero command and the deadband around it
+  stopped:
+    points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+    linear_min: -0.2
+    linear_max: 0.5
+    theta_min: -1.0
+    theta_max: 1.0
+```
+
+### Sizing a sub-polygon
+
+A `stop` sub-polygon has to reach, in the direction of motion, at least as far as the robot travels between an obstacle entering the shape and the robot standing still.
+This is the same reasoning used to dimension the protective fields of safety laser scanners, although the Collision Monitor itself is not safety-rated (see [Collision Monitor Node][collision-monitor-node]):
+
+$$
+d = v \, t_r + \frac{v^2}{2a} + d_m
+$$
+
+- `v`: the highest speed the base can actually have while the sub-polygon is selected.
+  The selection uses the command, not the measured speed, so right after the command drops from a faster sub-polygon into this one, the base can still be faster than `linear_max` (or `|linear_min|` for backward motion).
+  The gap grows when the Velocity Smoother decelerates the command faster than the base can follow (`max_decel` defaults to -2.5 m/s² for `x`).
+  Either size the shape for that speed, or limit the Velocity Smoother deceleration to what the base achieves and add the remaining tracking lag.
+- `a`: the deceleration the base actually achieves for a zero command.
+  For a `stop` action, the Collision Monitor publishes a zero velocity on `cmd_vel_out_topic` directly, so deceleration limits configured upstream (e.g. in the Velocity Smoother) do not apply.
+  Measure it on the robot.
+- `t_r`: the reaction time from an obstacle entering the shape to the base starting to brake.
+  It is the sum of:
+    - the sensor delay: an obstacle appears in the next scan, up to one period later, and a spinning scanner that publishes after a full revolution can add up to one more period (0.1 to 0.2 s at 10 Hz);
+    - late or dropped scans: each one adds a period, because the last scan is reused until `source_timeout`, so keep `source_timeout` a small multiple of the sensor period;
+    - the command period: the check only runs when a command arrives on `cmd_vel_in_topic`, up to one period later (0.05 s for a Velocity Smoother running at 20 Hz);
+    - with `base_shift_correction`, the wait for the odometry transform, up to one odometry period (about half on average);
+    - `trigger_consecutive_points - 1` further command periods, if it is set above `1`;
+    - the latency of the base driver from `cmd_vel` to braking.
+- `d_m`: a margin for the range noise of the sensor and the position error of the shape itself.
+
+For the example above, with `t_r = 0.3` s, `a = 1.0` m/s² and `d_m = 0.05` m, 0.5 m/s forward needs `0.15 + 0.125 + 0.05 = 0.325` m in front of the footprint and 0.2 m/s backward needs `0.06 + 0.02 + 0.05 = 0.13` m behind it.
+These numbers are only an illustration; use the values measured on your robot.
+Because `d` grows with `v²` (the same values give 0.85 m at 1.0 m/s), splitting a speed range into a slow and a fast sub-polygon keeps the slow shape small enough for narrow passages, as long as the slow shape is sized for the speed the base can still have when the command enters its range (see `v` above).
+
+An `approach` polygon complements the `stop` sub-polygons.
+On each command, it moves the polygon along the commanded velocity in steps of `simulation_time_step` for up to `time_before_collision` seconds.
+If a collision is found in this projection, the command is scaled by `t / time_before_collision`, where `t` is the projected time to the collision, so the robot slows down as it gets closer to the obstacle.
+`simulation_time_step` is the spatial resolution of this projection: `v * simulation_time_step` is 0.1 m at 1.0 m/s with the default of 0.1 s.
+
+Two properties of the sensor also limit the shape:
+
+- Scan readings outside `[range_min, range_max]` of the `LaserScan` message are dropped, so any part of a shape that is closer to the sensor than its minimum range can never contain a point.
+  A stop has to be triggered while the object is still farther away than the minimum range, so in the direction of motion a stop shape has to reach at least `d` beyond it.
+  Once an object is inside the minimum range, it disappears from the scan and the stop can be released; cover that range with another sensor if the robot has to stop for objects there.
+- A thin object of width `w` at range `r` returns about `w / (r * angle_increment)` points.
+  A 3 cm chair leg returns about 7 points at 0.5 m but only 3 at 1.0 m with a 0.5° resolution.
+  `min_points` is shared by all sub-polygons of a `velocity_polygon`, and the points of all its sources are counted together.
+  Choose it below the count of the thinnest object you need to stop for at the far edge of the largest sub-polygon, and above the count produced by isolated noise.
+
+### Common mistakes and how to check them
+
+- **A motion range contains zero before `stopped`:** the motion shape is used at standstill (see above).
+- **Commands outside every range:** the previous shape is kept.
+  Make the motion sub-polygons cover every command the robot can receive (the Velocity Smoother limits and any other publisher on `cmd_vel_in_topic`), so that the last entry only catches the deadband around zero.
+  A command that falls through to a small `stopped` shape is checked against that shape without any warning.
+- **Rounded direction limits:** for a holonomic sub-polygon covering all directions, leave `direction_start_angle` and `direction_end_angle` unset.
+  The defaults are exactly -π and π, while rounded values such as ±3.1415 exclude pure backward motion, where the heading is exactly π.
+- **Reading `state_topic` to find the sub-polygon:** it only contains the `velocity_polygon` name.
+  Use `polygon_pub_topic` instead.
+
+To check the selection, publish commands and watch the selected vertices.
+Do this in simulation or with the base driver stopped, since the Collision Monitor forwards the command to `cmd_vel`.
+Keep the sensor data valid, since an invalid source stops the robot before the shape is updated:
+
+```bash
+# Terminal 1: vertices of the selected sub-polygon
+ros2 topic echo /velocity_polygon_stop --field polygon.points
+# Terminal 2: command a rotation in place
+# (TwistStamped, as enable_stamped_cmd_vel is True by default; use geometry_msgs/msg/Twist otherwise)
+ros2 topic pub -r 20 /cmd_vel_smoothed geometry_msgs/msg/TwistStamped "{twist: {angular: {z: 0.5}}}"
+```
+
 ## Preparing Nav2 stack
 
 The Collision Monitor is designed to operate below Nav2 as an independent safety node.
