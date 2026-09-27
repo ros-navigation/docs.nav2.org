@@ -15,7 +15,7 @@
 
 FROM ubuntu:noble
 
-COPY --from=ghcr.io/astral-sh/uv:0.9.28 /uv /uvx /usr/local/bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
 ARG user=nav2doc
 ARG uid=1000
