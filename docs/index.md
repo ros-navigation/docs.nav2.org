@@ -132,7 +132,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
     <img src="assets/distro_graphics/rolling.png"/>
   </div>
   <div class="distro-cell">
-    <div class="distro-title">Lyrical Lynx</div>
+    <div class="distro-title">Lyrical Luth</div>
     <div class="distro-badge active">Active Support</div>
     <img src="assets/distro_graphics/lyrical.png"/>
   </div>
