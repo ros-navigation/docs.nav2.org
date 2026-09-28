@@ -46,7 +46,7 @@ You may wish to integrate your own nodes into the Nav2 framework or add new life
 from nav2_bringup.navigation_launch import get_lifecycle_nodes as get_navigation_nodes
 
 def launch_lifecycle_manager(context):
-    lifecycle_nodes = ['sensor_driver']
+    lifecycle_nodes = ['sensor_driver']  # Or retrieved from its launch file's get lifecycle nodes fn
     lifecycle_nodes.extend(get_navigation_nodes(context))
 
     return [
