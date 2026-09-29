@@ -351,13 +351,14 @@ The following `StopZone` is an example for a differential-drive robot with a 0.5
 - The motion sub-polygons cover every command within the limits, so `stopped` only catches the deadband around zero.
   A command beyond the limits matches no sub-polygon and is reported by the warning described above.
 - The dimensions follow the formula of the next section with the illustrative values `t_r = 0.3` s, `a = 1.0` m/s² and `d_m = 0.05` m.
-  The front of `translation_forward` is at `0.25 + 0.325 = 0.575` m (`d` at 0.5 m/s), the rear of `translation_backward` is at `-(0.25 + 0.13) = -0.38` m (`d` at 0.2 m/s), and their other edges are `d_m` outside the footprint.
+  The front of `translation_forward` is at `0.25 + 0.325 = 0.575` m (`d` at 0.5 m/s), the rear of `translation_backward` is at `-(0.25 + 0.13) = -0.38` m (`d` at 0.2 m/s), and their other edges, like all edges of `stopped`, are `d_m` outside the footprint.
   The octagon of the rotation sub-polygons stays at least 0.41 m from the center, more than `d_m` outside the 0.354 m corner radius of the footprint.
 - `translation_forward` and `translation_backward` are sized for straight motion only, although they accept `angular.z` up to ±1.0 rad/s.
   A command such as `linear.x = 0.006` m/s with `angular.z = 1.0` rad/s selects `translation_forward` although it is almost a rotation in place, and the footprint corners leave the rectangle while the robot stops (by about 0.12 m at 0.5 m/s and 1.0 rad/s, if the robot keeps its curvature while braking).
   Either split the angular range and size the turning sub-polygons for the swept arc, or pair this `StopZone` with an `approach` polygon on the footprint (see `FootprintApproach` in the [Collision Monitor Node][collision-monitor-node] example), which slows the robot down along the commanded motion.
 
 ```yaml
+polygons: ["StopZone"]
 StopZone:
   type: "velocity_polygon"
   action_type: "stop"
@@ -366,35 +367,36 @@ StopZone:
   polygon_pub_topic: "stop_zone"
   enabled: True
   holonomic: false
-  velocity_polygons: ["rotation", "rotation_clockwise", "translation_forward", "translation_backward", "stopped"]
-  # Turning in place: an octagon enclosing the 0.354 m corner radius of the footprint
-  rotation:
+  velocity_polygons: ["rotation_counter_clockwise", "rotation_clockwise", "translation_forward", "translation_backward", "stopped"]
+  # Rotating counter-clockwise
+  rotation_counter_clockwise:
     points: "[[0.41, 0.17], [0.17, 0.41], [-0.17, 0.41], [-0.41, 0.17], [-0.41, -0.17], [-0.17, -0.41], [0.17, -0.41], [0.41, -0.17]]"
     linear_min: -0.005
     linear_max: 0.005
-    theta_min: 0.005   # counter-clockwise only, zero is excluded
+    theta_min: 0.005
     theta_max: 1.0
+  # Rotating clockwise
   rotation_clockwise:
     points: "[[0.41, 0.17], [0.17, 0.41], [-0.17, 0.41], [-0.41, 0.17], [-0.41, -0.17], [-0.17, -0.41], [0.17, -0.41], [0.41, -0.17]]"
     linear_min: -0.005
     linear_max: 0.005
     theta_min: -1.0
-    theta_max: -0.005  # clockwise only, zero is excluded
-  # Front extended by d at 0.5 m/s, other edges by d_m
+    theta_max: -0.005
+  # Moving forward
   translation_forward:
     points: "[[0.575, 0.3], [0.575, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
     linear_min: 0.005
     linear_max: 0.5
     theta_min: -1.0
     theta_max: 1.0
-  # Rear extended by d at 0.2 m/s, other edges by d_m
+  # Moving backward
   translation_backward:
     points: "[[0.3, 0.3], [0.3, -0.3], [-0.38, -0.3], [-0.38, 0.3]]"
     linear_min: -0.2
     linear_max: -0.005
     theta_min: -1.0
     theta_max: 1.0
-  # Footprint plus d_m, selected for a zero command and the deadband around it
+  # Stopped
   stopped:
     points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
     linear_min: -0.2
@@ -457,20 +459,22 @@ Two properties of the sensor also limit the shape:
 - **Commands outside every range:** the previous shape is kept.
   Make the motion sub-polygons cover every command the robot can receive (the Velocity Smoother limits and any other publisher on `cmd_vel_in_topic`), so that the last entry only catches the deadband around zero.
   A command that falls through to a small `stopped` shape is checked against that shape without any warning.
-- **Rounded direction limits:** for a holonomic sub-polygon covering all directions, leave `direction_start_angle` and `direction_end_angle` unset.
-  The defaults are exactly -π and π, while rounded values such as ±3.1415 exclude pure backward motion, where the heading is exactly ±π.
 - **Reading `state_topic` to find the sub-polygon:** it only contains the `velocity_polygon` name.
   Use `polygon_pub_topic` instead.
 
 To check the selection, publish commands and watch the selected vertices.
 Do this in simulation or with the base driver stopped, since the Collision Monitor forwards the command to `cmd_vel`.
-Keep the sensor data valid, since an invalid source stops the robot before the shape is updated:
+Keep the sensor data valid, since an invalid source stops the robot before the shape is updated.
+For the `StopZone` example above, watch the vertices of the selected sub-polygon:
 
 ```bash
-# Terminal 1: vertices of the selected sub-polygon
-ros2 topic echo /velocity_polygon_stop --field polygon.points
-# Terminal 2: command a rotation in place
-# (TwistStamped, as enable_stamped_cmd_vel is True by default; use geometry_msgs/msg/Twist otherwise)
+ros2 topic echo /stop_zone --field polygon.points
+```
+
+In a new terminal, command a rotation in place.
+The command below uses `geometry_msgs/msg/TwistStamped`, as `enable_stamped_cmd_vel` is `True` by default; use `geometry_msgs/msg/Twist` otherwise:
+
+```bash
 ros2 topic pub -r 20 /cmd_vel_smoothed geometry_msgs/msg/TwistStamped "{twist: {angular: {z: 0.5}}}"
 ```
 
