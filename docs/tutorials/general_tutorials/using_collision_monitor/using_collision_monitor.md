@@ -289,12 +289,14 @@ collision_monitor:
         theta_min: -1.0
         theta_max: 1.0
 
-      # Stopped: direction_start_angle and direction_end_angle are left
-      # at their defaults (-pi and pi) to cover all directions
+      # Stopped
       stopped:
         points: "[[0.4, 0.4], [0.4, -0.4], [-0.4, -0.4], [-0.4, 0.4]]"
         linear_min: 0.0
         linear_max: 0.05
+        # Full-precision pi, so that pure backward motion (heading exactly +-pi) is covered
+        direction_start_angle: -3.141592653589793   # -pi
+        direction_end_angle: 3.141592653589793      # pi
         theta_min: -1.0
         theta_max: 1.0
 ```
