@@ -294,8 +294,8 @@ collision_monitor:
         points: "[[0.4, 0.4], [0.4, -0.4], [-0.4, -0.4], [-0.4, 0.4]]"
         linear_min: 0.0
         linear_max: 0.05
-        direction_start_angle: -3.141592653589793   # -pi
-        direction_end_angle: 3.141592653589793      # pi
+        direction_start_angle: -3.1415
+        direction_end_angle: 3.1415
         theta_min: -1.0
         theta_max: 1.0
 ```
