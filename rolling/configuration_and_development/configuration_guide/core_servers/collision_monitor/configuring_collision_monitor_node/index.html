@@ -22885,45 +22885,46 @@ Exclusion zones remove (mask out) a source's points and never trigger an action.
 </span><span id="__span-0-77"><span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
 </span><span id="__span-0-78"><span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </span><span id="__span-0-79"><span class="w">      </span><span class="c1"># This is the last polygon to be checked, it should cover the entire range of robot's velocities</span>
-</span><span id="__span-0-80"><span class="w">      </span><span class="c1"># It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity</span>
-</span><span id="__span-0-81"><span class="w">      </span><span class="c1"># is not covered by any of the other sub-polygons</span>
-</span><span id="__span-0-82"><span class="w">      </span><span class="nt">stopped</span><span class="p">:</span>
-</span><span id="__span-0-83"><span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">"[[0.25,</span><span class="nv"> </span><span class="s">0.25],</span><span class="nv"> </span><span class="s">[0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">0.25]]"</span>
-</span><span id="__span-0-84"><span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
-</span><span id="__span-0-85"><span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-</span><span id="__span-0-86"><span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
-</span><span id="__span-0-87"><span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-</span><span id="__span-0-88"><span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"scan"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pointcloud"</span><span class="p p-Indicator">]</span>
-</span><span id="__span-0-89"><span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
-</span><span id="__span-0-90"><span class="w">      </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-</span><span id="__span-0-91"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"scan"</span>
-</span><span id="__span-0-92"><span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">"/scan"</span>
-</span><span id="__span-0-93"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-</span><span id="__span-0-94"><span class="w">    </span><span class="nt">pointcloud</span><span class="p">:</span>
-</span><span id="__span-0-95"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"pointcloud"</span>
-</span><span id="__span-0-96"><span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">"/intel_realsense_r200_depth/points"</span>
-</span><span id="__span-0-97"><span class="w">      </span><span class="nt">transport_type</span><span class="p">:</span><span class="w"> </span><span class="s">"raw"</span><span class="w">  </span><span class="c1"># raw or/ with compression (zlib, draco, zstd)</span>
-</span><span id="__span-0-98"><span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
-</span><span id="__span-0-99"><span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-</span><span id="__span-0-100"><span class="w">      </span><span class="nt">min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-</span><span id="__span-0-101"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-</span><span id="__span-0-102"><span class="w">      </span><span class="nt">exclusion_zones</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dock"</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># references the "dock" zone block below</span>
-</span><span id="__span-0-103"><span class="w">    </span><span class="c1"># Exclusion zone blocks are referenced by name from a source's "exclusion_zones" list.</span>
-</span><span id="__span-0-104"><span class="w">    </span><span class="nt">dock</span><span class="p">:</span>
-</span><span id="__span-0-105"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-</span><span id="__span-0-106"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"polygon"</span><span class="w">          </span><span class="c1"># "polygon" or "circle"</span>
-</span><span id="__span-0-107"><span class="w">      </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"dock_link"</span><span class="w">    </span><span class="c1"># frame the zone is anchored to; empty -&gt; robot base frame (static)</span>
-</span><span id="__span-0-108"><span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">"[[0.5,</span><span class="nv"> </span><span class="s">0.5],</span><span class="nv"> </span><span class="s">[0.5,</span><span class="nv"> </span><span class="s">-0.5],</span><span class="nv"> </span><span class="s">[-0.5,</span><span class="nv"> </span><span class="s">-0.5],</span><span class="nv"> </span><span class="s">[-0.5,</span><span class="nv"> </span><span class="s">0.5]]"</span><span class="w">  </span><span class="c1"># polygon type only</span>
-</span><span id="__span-0-109"><span class="w">      </span><span class="c1"># radius: 0.5            # circle type only (must be &gt; 0)</span>
-</span><span id="__span-0-110"><span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span><span class="w">         </span><span class="c1"># base-frame z band a point must be within to be masked</span>
-</span><span id="__span-0-111"><span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-</span><span id="__span-0-112"><span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w">          </span><span class="c1"># publish the zone footprint as a PolygonStamped</span>
-</span><span id="__span-0-113"><span class="w">    </span><span class="c1"># costmap:</span>
-</span><span id="__span-0-114"><span class="w">    </span><span class="c1">#   type: "costmap"   # relative, respects namespaces</span>
-</span><span id="__span-0-115"><span class="w">    </span><span class="c1">#   topic: "local_costmap/costmap"</span>
-</span><span id="__span-0-116"><span class="w">    </span><span class="c1">#   cost_threshold: 254</span>
-</span><span id="__span-0-117"><span class="w">    </span><span class="c1">#   enabled: True</span>
-</span><span id="__span-0-118"><span class="w">    </span><span class="c1">#   treat_unknown_as_obstacle: True</span>
+</span><span id="__span-0-80"><span class="w">      </span><span class="c1"># It is used as a fallback if the velocity is not covered by any of the other sub-polygons</span>
+</span><span id="__span-0-81"><span class="w">      </span><span class="c1"># (here, the sub-polygons above already cover every velocity within +-1.0, including zero,</span>
+</span><span id="__span-0-82"><span class="w">      </span><span class="c1"># so it is never selected)</span>
+</span><span id="__span-0-83"><span class="w">      </span><span class="nt">stopped</span><span class="p">:</span>
+</span><span id="__span-0-84"><span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">"[[0.25,</span><span class="nv"> </span><span class="s">0.25],</span><span class="nv"> </span><span class="s">[0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">0.25]]"</span>
+</span><span id="__span-0-85"><span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+</span><span id="__span-0-86"><span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-0-87"><span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+</span><span id="__span-0-88"><span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-0-89"><span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"scan"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pointcloud"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-0-90"><span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
+</span><span id="__span-0-91"><span class="w">      </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</span><span id="__span-0-92"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"scan"</span>
+</span><span id="__span-0-93"><span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">"/scan"</span>
+</span><span id="__span-0-94"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</span><span id="__span-0-95"><span class="w">    </span><span class="nt">pointcloud</span><span class="p">:</span>
+</span><span id="__span-0-96"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"pointcloud"</span>
+</span><span id="__span-0-97"><span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">"/intel_realsense_r200_depth/points"</span>
+</span><span id="__span-0-98"><span class="w">      </span><span class="nt">transport_type</span><span class="p">:</span><span class="w"> </span><span class="s">"raw"</span><span class="w">  </span><span class="c1"># raw or/ with compression (zlib, draco, zstd)</span>
+</span><span id="__span-0-99"><span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</span><span id="__span-0-100"><span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+</span><span id="__span-0-101"><span class="w">      </span><span class="nt">min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</span><span id="__span-0-102"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</span><span id="__span-0-103"><span class="w">      </span><span class="nt">exclusion_zones</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dock"</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># references the "dock" zone block below</span>
+</span><span id="__span-0-104"><span class="w">    </span><span class="c1"># Exclusion zone blocks are referenced by name from a source's "exclusion_zones" list.</span>
+</span><span id="__span-0-105"><span class="w">    </span><span class="nt">dock</span><span class="p">:</span>
+</span><span id="__span-0-106"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</span><span id="__span-0-107"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"polygon"</span><span class="w">          </span><span class="c1"># "polygon" or "circle"</span>
+</span><span id="__span-0-108"><span class="w">      </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"dock_link"</span><span class="w">    </span><span class="c1"># frame the zone is anchored to; empty -&gt; robot base frame (static)</span>
+</span><span id="__span-0-109"><span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">"[[0.5,</span><span class="nv"> </span><span class="s">0.5],</span><span class="nv"> </span><span class="s">[0.5,</span><span class="nv"> </span><span class="s">-0.5],</span><span class="nv"> </span><span class="s">[-0.5,</span><span class="nv"> </span><span class="s">-0.5],</span><span class="nv"> </span><span class="s">[-0.5,</span><span class="nv"> </span><span class="s">0.5]]"</span><span class="w">  </span><span class="c1"># polygon type only</span>
+</span><span id="__span-0-110"><span class="w">      </span><span class="c1"># radius: 0.5            # circle type only (must be &gt; 0)</span>
+</span><span id="__span-0-111"><span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span><span class="w">         </span><span class="c1"># base-frame z band a point must be within to be masked</span>
+</span><span id="__span-0-112"><span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-0-113"><span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w">          </span><span class="c1"># publish the zone footprint as a PolygonStamped</span>
+</span><span id="__span-0-114"><span class="w">    </span><span class="c1"># costmap:</span>
+</span><span id="__span-0-115"><span class="w">    </span><span class="c1">#   type: "costmap"   # relative, respects namespaces</span>
+</span><span id="__span-0-116"><span class="w">    </span><span class="c1">#   topic: "local_costmap/costmap"</span>
+</span><span id="__span-0-117"><span class="w">    </span><span class="c1">#   cost_threshold: 254</span>
+</span><span id="__span-0-118"><span class="w">    </span><span class="c1">#   enabled: True</span>
+</span><span id="__span-0-119"><span class="w">    </span><span class="c1">#   treat_unknown_as_obstacle: True</span>
 </span></code></pre></div>
 
 
