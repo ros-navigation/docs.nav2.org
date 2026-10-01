@@ -20787,9 +20787,9 @@ Typically, this includes the robot state publisher of the URDF, simulated or phy
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1">ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_bringup<span class="w"> </span>robot.launch.py
 </span></code></pre></div>
 <h3 id="2-launch-nav2">2. Launch Nav2<a class="headerlink" href="#2-launch-nav2" title="Permanent link"></a></h3>
-<p>Launch Navigation without nav2_amcl and nav2_map_server.
+<p>Launch Navigation without nav2_amcl and nav2_map_server, which is what <code>use_localization:=False</code> does.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map-&gt;odom transform.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1">ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>navigation_launch.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1">ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>bringup_launch.py<span class="w"> </span>use_localization:<span class="o">=</span>False<span class="w"> </span>use_keepout_zones:<span class="o">=</span>False<span class="w"> </span>use_speed_zones:<span class="o">=</span>False
 </span></code></pre></div>
 <h3 id="3-launch-slam">3. Launch SLAM<a class="headerlink" href="#3-launch-slam" title="Permanent link"></a></h3>
 <p>Bring up your choice of SLAM implementation.

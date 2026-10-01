@@ -20778,7 +20778,7 @@ in overrides/partials/header.html -->
 </div>
 <h3 id="2-configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server<a class="headerlink" href="#2-configure-costmap-filter-info-publisher-server" title="Permanent link"></a></h3>
 <p>Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in a messages of <code>nav2_msgs/CostmapFilterInfo</code> type. These messages are being published by <a href="https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>. The server is running as a lifecycle node. According to the <a href="https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf">design document</a>, <code>nav2_msgs/CostmapFilterInfo</code> messages are going in a pair with <code>OccupancyGrid</code> filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter mask.</p>
-<p>In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. It is also possible to add them as Composition Nodes to your Navigation Component Container, which might look as follows:</p>
+<p>In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. The launch file below does not start a Lifecycle Manager of its own: <code>bringup_launch.py</code> adds the nodes returned by its <code>get_lifecycle_nodes()</code> function to <code>lifecycle_manager_nav2</code>. It is also possible to add them as Composition Nodes to your Navigation Component Container, which might look as follows:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </span><span id="__span-1-2">
 </span><span id="__span-1-3"><span class="kn">from</span><span class="w"> </span><span class="nn">ament_index_python.packages</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -20791,131 +20791,131 @@ in overrides/partials/header.html -->
 </span><span id="__span-1-10"><span class="kn">from</span><span class="w"> </span><span class="nn">nav2_common.launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchConfigAsBool</span><span class="p">,</span> <span class="n">RewrittenYaml</span>
 </span><span id="__span-1-11">
 </span><span id="__span-1-12">
-</span><span id="__span-1-13"><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LaunchDescription</span><span class="p">:</span>
-</span><span id="__span-1-14">    <span class="c1"># Get the launch directory</span>
-</span><span id="__span-1-15">    <span class="n">bringup_dir</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">'nav2_bringup'</span><span class="p">)</span>
+</span><span id="__span-1-13"><span class="k">def</span><span class="w"> </span><span class="nf">get_lifecycle_nodes</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+</span><span id="__span-1-14">    <span class="k">return</span> <span class="p">(</span><span class="s1">'keepout_filter_mask_server'</span><span class="p">,</span> <span class="s1">'keepout_costmap_filter_info_server'</span><span class="p">)</span>
+</span><span id="__span-1-15">
 </span><span id="__span-1-16">
-</span><span id="__span-1-17">    <span class="n">namespace</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'namespace'</span><span class="p">)</span>
-</span><span id="__span-1-18">    <span class="n">keepout_mask_yaml_file</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'keepout_mask'</span><span class="p">)</span>
-</span><span id="__span-1-19">    <span class="n">use_sim_time</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_sim_time'</span><span class="p">)</span>
-</span><span id="__span-1-20">    <span class="n">autostart</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'autostart'</span><span class="p">)</span>
-</span><span id="__span-1-21">    <span class="n">params_file</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'params_file'</span><span class="p">)</span>
-</span><span id="__span-1-22">    <span class="n">use_composition</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_composition'</span><span class="p">)</span>
-</span><span id="__span-1-23">    <span class="n">container_name</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'container_name'</span><span class="p">)</span>
-</span><span id="__span-1-24">    <span class="n">container_name_full</span> <span class="o">=</span> <span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s1">'/'</span><span class="p">,</span> <span class="n">container_name</span><span class="p">)</span>
-</span><span id="__span-1-25">    <span class="n">use_respawn</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_respawn'</span><span class="p">)</span>
-</span><span id="__span-1-26">    <span class="n">use_keepout_zones</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_keepout_zones'</span><span class="p">)</span>
-</span><span id="__span-1-27">    <span class="n">log_level</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'log_level'</span><span class="p">)</span>
-</span><span id="__span-1-28">
-</span><span id="__span-1-29">    <span class="n">lifecycle_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'keepout_filter_mask_server'</span><span class="p">,</span> <span class="s1">'keepout_costmap_filter_info_server'</span><span class="p">]</span>
-</span><span id="__span-1-30">
-</span><span id="__span-1-31">    <span class="c1"># Map fully qualified names to relative ones so the node's namespace can be prepended.</span>
-</span><span id="__span-1-32">    <span class="n">remappings</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'/tf'</span><span class="p">,</span> <span class="s1">'tf'</span><span class="p">),</span> <span class="p">(</span><span class="s1">'/tf_static'</span><span class="p">,</span> <span class="s1">'tf_static'</span><span class="p">)]</span>
-</span><span id="__span-1-33">
-</span><span id="__span-1-34">    <span class="n">yaml_substitutions</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-1-35">        <span class="s1">'KEEPOUT_ZONE_ENABLED'</span><span class="p">:</span> <span class="n">use_keepout_zones</span><span class="p">,</span>
-</span><span id="__span-1-36">    <span class="p">}</span>
-</span><span id="__span-1-37">
-</span><span id="__span-1-38">    <span class="n">configured_params</span> <span class="o">=</span> <span class="n">ParameterFile</span><span class="p">(</span>
-</span><span id="__span-1-39">        <span class="n">RewrittenYaml</span><span class="p">(</span>
-</span><span id="__span-1-40">            <span class="n">source_file</span><span class="o">=</span><span class="n">params_file</span><span class="p">,</span>
-</span><span id="__span-1-41">            <span class="n">root_key</span><span class="o">=</span><span class="n">namespace</span><span class="p">,</span>
-</span><span id="__span-1-42">            <span class="n">param_rewrites</span><span class="o">=</span><span class="p">{},</span>
-</span><span id="__span-1-43">            <span class="n">value_rewrites</span><span class="o">=</span><span class="n">yaml_substitutions</span><span class="p">,</span>
-</span><span id="__span-1-44">            <span class="n">convert_types</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-1-45">        <span class="p">),</span>
-</span><span id="__span-1-46">        <span class="n">allow_substs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-1-47">    <span class="p">)</span>
-</span><span id="__span-1-48">
-</span><span id="__span-1-49">    <span class="n">stdout_linebuf_envvar</span> <span class="o">=</span> <span class="n">SetEnvironmentVariable</span><span class="p">(</span>
-</span><span id="__span-1-50">        <span class="s1">'RCUTILS_LOGGING_BUFFERED_STREAM'</span><span class="p">,</span> <span class="s1">'1'</span>
-</span><span id="__span-1-51">    <span class="p">)</span>
-</span><span id="__span-1-52">
-</span><span id="__span-1-53">    <span class="n">declare_namespace_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-54">        <span class="s1">'namespace'</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">'Top-level namespace'</span>
-</span><span id="__span-1-55">    <span class="p">)</span>
-</span><span id="__span-1-56">
-</span><span id="__span-1-57">    <span class="n">declare_keepout_mask_yaml_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-58">        <span class="s1">'keepout_mask'</span><span class="p">,</span>
-</span><span id="__span-1-59">        <span class="n">default_value</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
-</span><span id="__span-1-60">        <span class="n">description</span><span class="o">=</span><span class="s1">'Full path to keepout mask yaml file to load'</span><span class="p">,</span>
-</span><span id="__span-1-61">    <span class="p">)</span>
-</span><span id="__span-1-62">
-</span><span id="__span-1-63">    <span class="n">declare_use_sim_time_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-64">        <span class="s1">'use_sim_time'</span><span class="p">,</span>
-</span><span id="__span-1-65">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'false'</span><span class="p">,</span>
-</span><span id="__span-1-66">        <span class="n">description</span><span class="o">=</span><span class="s1">'Use simulation (Gazebo) clock if true'</span><span class="p">,</span>
-</span><span id="__span-1-67">    <span class="p">)</span>
-</span><span id="__span-1-68">
-</span><span id="__span-1-69">    <span class="n">declare_params_file_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-70">        <span class="s1">'params_file'</span><span class="p">,</span>
-</span><span id="__span-1-71">        <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bringup_dir</span><span class="p">,</span> <span class="s1">'params'</span><span class="p">,</span> <span class="s1">'nav2_params.yaml'</span><span class="p">),</span>
-</span><span id="__span-1-72">        <span class="n">description</span><span class="o">=</span><span class="s1">'Full path to the ROS2 parameters file to use for all launched nodes'</span><span class="p">,</span>
-</span><span id="__span-1-73">    <span class="p">)</span>
-</span><span id="__span-1-74">
-</span><span id="__span-1-75">    <span class="n">declare_use_composition_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-76">        <span class="s1">'use_composition'</span><span class="p">,</span>
-</span><span id="__span-1-77">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'False'</span><span class="p">,</span>
-</span><span id="__span-1-78">        <span class="n">description</span><span class="o">=</span><span class="s1">'Use composed bringup if True'</span><span class="p">,</span>
-</span><span id="__span-1-79">    <span class="p">)</span>
-</span><span id="__span-1-80">
-</span><span id="__span-1-81">    <span class="n">declare_container_name_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-82">        <span class="s1">'container_name'</span><span class="p">,</span>
-</span><span id="__span-1-83">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'nav2_container'</span><span class="p">,</span>
-</span><span id="__span-1-84">        <span class="n">description</span><span class="o">=</span><span class="s1">'the name of container that nodes will load in if use composition'</span><span class="p">,</span>
-</span><span id="__span-1-85">    <span class="p">)</span>
-</span><span id="__span-1-86">
-</span><span id="__span-1-87">    <span class="n">declare_use_respawn_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-88">        <span class="s1">'use_respawn'</span><span class="p">,</span>
-</span><span id="__span-1-89">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'False'</span><span class="p">,</span>
-</span><span id="__span-1-90">        <span class="n">description</span><span class="o">=</span><span class="s1">'Whether to respawn if a node crashes. Applied when composition is disabled.'</span><span class="p">,</span>
-</span><span id="__span-1-91">    <span class="p">)</span>
-</span><span id="__span-1-92">
-</span><span id="__span-1-93">    <span class="n">declare_use_keepout_zones_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-94">        <span class="s1">'use_keepout_zones'</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">'True'</span><span class="p">,</span>
-</span><span id="__span-1-95">        <span class="n">description</span><span class="o">=</span><span class="s1">'Whether to enable keepout zones or not'</span>
-</span><span id="__span-1-96">    <span class="p">)</span>
-</span><span id="__span-1-97">
-</span><span id="__span-1-98">    <span class="n">declare_log_level_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-</span><span id="__span-1-99">        <span class="s1">'log_level'</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">'info'</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">'log level'</span>
-</span><span id="__span-1-100">    <span class="p">)</span>
-</span><span id="__span-1-101">
-</span><span id="__span-1-102">    <span class="n">load_nodes</span> <span class="o">=</span> <span class="n">GroupAction</span><span class="p">(</span>
-</span><span id="__span-1-103">        <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">PythonExpression</span><span class="p">([</span><span class="s1">'not '</span><span class="p">,</span> <span class="n">use_composition</span><span class="p">])),</span>
-</span><span id="__span-1-104">        <span class="n">actions</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-1-105">            <span class="n">PushROSNamespace</span><span class="p">(</span><span class="n">namespace</span><span class="p">),</span>
-</span><span id="__span-1-106">            <span class="n">SetParameter</span><span class="p">(</span><span class="s1">'use_sim_time'</span><span class="p">,</span> <span class="n">use_sim_time</span><span class="p">),</span>
-</span><span id="__span-1-107">            <span class="n">Node</span><span class="p">(</span>
-</span><span id="__span-1-108">                <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">use_keepout_zones</span><span class="p">),</span>
-</span><span id="__span-1-109">                <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_map_server'</span><span class="p">,</span>
-</span><span id="__span-1-110">                <span class="n">executable</span><span class="o">=</span><span class="s1">'map_server'</span><span class="p">,</span>
-</span><span id="__span-1-111">                <span class="n">name</span><span class="o">=</span><span class="s1">'keepout_filter_mask_server'</span><span class="p">,</span>
-</span><span id="__span-1-112">                <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
-</span><span id="__span-1-113">                <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>
-</span><span id="__span-1-114">                <span class="n">respawn_delay</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
-</span><span id="__span-1-115">                <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">,</span> <span class="p">{</span><span class="s1">'yaml_filename'</span><span class="p">:</span> <span class="n">keepout_mask_yaml_file</span><span class="p">}],</span>
-</span><span id="__span-1-116">                <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">'--ros-args'</span><span class="p">,</span> <span class="s1">'--log-level'</span><span class="p">,</span> <span class="n">log_level</span><span class="p">],</span>
-</span><span id="__span-1-117">                <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
-</span><span id="__span-1-118">            <span class="p">),</span>
-</span><span id="__span-1-119">            <span class="n">Node</span><span class="p">(</span>
-</span><span id="__span-1-120">                <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">use_keepout_zones</span><span class="p">),</span>
-</span><span id="__span-1-121">                <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_map_server'</span><span class="p">,</span>
-</span><span id="__span-1-122">                <span class="n">executable</span><span class="o">=</span><span class="s1">'costmap_filter_info_server'</span><span class="p">,</span>
-</span><span id="__span-1-123">                <span class="n">name</span><span class="o">=</span><span class="s1">'keepout_costmap_filter_info_server'</span><span class="p">,</span>
-</span><span id="__span-1-124">                <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
-</span><span id="__span-1-125">                <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>
-</span><span id="__span-1-126">                <span class="n">respawn_delay</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
-</span><span id="__span-1-127">                <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-</span><span id="__span-1-128">                <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">'--ros-args'</span><span class="p">,</span> <span class="s1">'--log-level'</span><span class="p">,</span> <span class="n">log_level</span><span class="p">],</span>
-</span><span id="__span-1-129">                <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
-</span><span id="__span-1-130">            <span class="p">),</span>
-</span><span id="__span-1-131">            <span class="n">Node</span><span class="p">(</span>
-</span><span id="__span-1-132">                <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_lifecycle_manager'</span><span class="p">,</span>
-</span><span id="__span-1-133">                <span class="n">executable</span><span class="o">=</span><span class="s1">'lifecycle_manager'</span><span class="p">,</span>
-</span><span id="__span-1-134">                <span class="n">name</span><span class="o">=</span><span class="s1">'lifecycle_manager_keepout_zone'</span><span class="p">,</span>
-</span><span id="__span-1-135">                <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-1-17"><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LaunchDescription</span><span class="p">:</span>
+</span><span id="__span-1-18">    <span class="c1"># Get the launch directory</span>
+</span><span id="__span-1-19">    <span class="n">bringup_dir</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">'nav2_bringup'</span><span class="p">)</span>
+</span><span id="__span-1-20">
+</span><span id="__span-1-21">    <span class="n">namespace</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'namespace'</span><span class="p">)</span>
+</span><span id="__span-1-22">    <span class="n">keepout_mask_yaml_file</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'keepout_mask'</span><span class="p">)</span>
+</span><span id="__span-1-23">    <span class="n">use_sim_time</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_sim_time'</span><span class="p">)</span>
+</span><span id="__span-1-24">    <span class="n">params_file</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'params_file'</span><span class="p">)</span>
+</span><span id="__span-1-25">    <span class="n">use_composition</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_composition'</span><span class="p">)</span>
+</span><span id="__span-1-26">    <span class="n">use_intra_process_comms</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_intra_process_comms'</span><span class="p">)</span>
+</span><span id="__span-1-27">    <span class="n">container_name</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'container_name'</span><span class="p">)</span>
+</span><span id="__span-1-28">    <span class="n">container_name_full</span> <span class="o">=</span> <span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s1">'/'</span><span class="p">,</span> <span class="n">container_name</span><span class="p">)</span>
+</span><span id="__span-1-29">    <span class="n">use_respawn</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_respawn'</span><span class="p">)</span>
+</span><span id="__span-1-30">    <span class="n">use_keepout_zones</span> <span class="o">=</span> <span class="n">LaunchConfigAsBool</span><span class="p">(</span><span class="s1">'use_keepout_zones'</span><span class="p">)</span>
+</span><span id="__span-1-31">    <span class="n">log_level</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'log_level'</span><span class="p">)</span>
+</span><span id="__span-1-32">
+</span><span id="__span-1-33">    <span class="c1"># Map fully qualified names to relative ones so the node's namespace can be prepended.</span>
+</span><span id="__span-1-34">    <span class="n">remappings</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'/tf'</span><span class="p">,</span> <span class="s1">'tf'</span><span class="p">),</span> <span class="p">(</span><span class="s1">'/tf_static'</span><span class="p">,</span> <span class="s1">'tf_static'</span><span class="p">)]</span>
+</span><span id="__span-1-35">
+</span><span id="__span-1-36">    <span class="n">yaml_substitutions</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-1-37">        <span class="s1">'KEEPOUT_ZONE_ENABLED'</span><span class="p">:</span> <span class="n">use_keepout_zones</span><span class="p">,</span>
+</span><span id="__span-1-38">    <span class="p">}</span>
+</span><span id="__span-1-39">
+</span><span id="__span-1-40">    <span class="n">configured_params</span> <span class="o">=</span> <span class="n">ParameterFile</span><span class="p">(</span>
+</span><span id="__span-1-41">        <span class="n">RewrittenYaml</span><span class="p">(</span>
+</span><span id="__span-1-42">            <span class="n">source_file</span><span class="o">=</span><span class="n">params_file</span><span class="p">,</span>
+</span><span id="__span-1-43">            <span class="n">root_key</span><span class="o">=</span><span class="n">namespace</span><span class="p">,</span>
+</span><span id="__span-1-44">            <span class="n">param_rewrites</span><span class="o">=</span><span class="p">{},</span>
+</span><span id="__span-1-45">            <span class="n">value_rewrites</span><span class="o">=</span><span class="n">yaml_substitutions</span><span class="p">,</span>
+</span><span id="__span-1-46">            <span class="n">convert_types</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-1-47">        <span class="p">),</span>
+</span><span id="__span-1-48">        <span class="n">allow_substs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-1-49">    <span class="p">)</span>
+</span><span id="__span-1-50">
+</span><span id="__span-1-51">    <span class="n">stdout_linebuf_envvar</span> <span class="o">=</span> <span class="n">SetEnvironmentVariable</span><span class="p">(</span>
+</span><span id="__span-1-52">        <span class="s1">'RCUTILS_LOGGING_BUFFERED_STREAM'</span><span class="p">,</span> <span class="s1">'1'</span>
+</span><span id="__span-1-53">    <span class="p">)</span>
+</span><span id="__span-1-54">
+</span><span id="__span-1-55">    <span class="n">declare_namespace_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-56">        <span class="s1">'namespace'</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">'Top-level namespace'</span>
+</span><span id="__span-1-57">    <span class="p">)</span>
+</span><span id="__span-1-58">
+</span><span id="__span-1-59">    <span class="n">declare_keepout_mask_yaml_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-60">        <span class="s1">'keepout_mask'</span><span class="p">,</span>
+</span><span id="__span-1-61">        <span class="n">default_value</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
+</span><span id="__span-1-62">        <span class="n">description</span><span class="o">=</span><span class="s1">'Full path to keepout mask yaml file to load'</span><span class="p">,</span>
+</span><span id="__span-1-63">    <span class="p">)</span>
+</span><span id="__span-1-64">
+</span><span id="__span-1-65">    <span class="n">declare_use_sim_time_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-66">        <span class="s1">'use_sim_time'</span><span class="p">,</span>
+</span><span id="__span-1-67">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'false'</span><span class="p">,</span>
+</span><span id="__span-1-68">        <span class="n">description</span><span class="o">=</span><span class="s1">'Use simulation (Gazebo) clock if true'</span><span class="p">,</span>
+</span><span id="__span-1-69">    <span class="p">)</span>
+</span><span id="__span-1-70">
+</span><span id="__span-1-71">    <span class="n">declare_params_file_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-72">        <span class="s1">'params_file'</span><span class="p">,</span>
+</span><span id="__span-1-73">        <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bringup_dir</span><span class="p">,</span> <span class="s1">'params'</span><span class="p">,</span> <span class="s1">'nav2_params.yaml'</span><span class="p">),</span>
+</span><span id="__span-1-74">        <span class="n">description</span><span class="o">=</span><span class="s1">'Full path to the ROS2 parameters file to use for all launched nodes'</span><span class="p">,</span>
+</span><span id="__span-1-75">    <span class="p">)</span>
+</span><span id="__span-1-76">
+</span><span id="__span-1-77">    <span class="n">declare_use_composition_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-78">        <span class="s1">'use_composition'</span><span class="p">,</span>
+</span><span id="__span-1-79">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'False'</span><span class="p">,</span>
+</span><span id="__span-1-80">        <span class="n">description</span><span class="o">=</span><span class="s1">'Use composed bringup if True'</span><span class="p">,</span>
+</span><span id="__span-1-81">    <span class="p">)</span>
+</span><span id="__span-1-82">
+</span><span id="__span-1-83">    <span class="n">declare_use_intra_process_comms_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-84">        <span class="s1">'use_intra_process_comms'</span><span class="p">,</span>
+</span><span id="__span-1-85">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'False'</span><span class="p">,</span>
+</span><span id="__span-1-86">        <span class="n">description</span><span class="o">=</span><span class="s1">'Whether to use intra process communication'</span><span class="p">,</span>
+</span><span id="__span-1-87">    <span class="p">)</span>
+</span><span id="__span-1-88">
+</span><span id="__span-1-89">    <span class="n">declare_container_name_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-90">        <span class="s1">'container_name'</span><span class="p">,</span>
+</span><span id="__span-1-91">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'nav2_container'</span><span class="p">,</span>
+</span><span id="__span-1-92">        <span class="n">description</span><span class="o">=</span><span class="s1">'the name of container that nodes will load in if use composition'</span><span class="p">,</span>
+</span><span id="__span-1-93">    <span class="p">)</span>
+</span><span id="__span-1-94">
+</span><span id="__span-1-95">    <span class="n">declare_use_respawn_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-96">        <span class="s1">'use_respawn'</span><span class="p">,</span>
+</span><span id="__span-1-97">        <span class="n">default_value</span><span class="o">=</span><span class="s1">'False'</span><span class="p">,</span>
+</span><span id="__span-1-98">        <span class="n">description</span><span class="o">=</span><span class="s1">'Whether to respawn if a node crashes. Applied when composition is disabled.'</span><span class="p">,</span>
+</span><span id="__span-1-99">    <span class="p">)</span>
+</span><span id="__span-1-100">
+</span><span id="__span-1-101">    <span class="n">declare_use_keepout_zones_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-102">        <span class="s1">'use_keepout_zones'</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">'True'</span><span class="p">,</span>
+</span><span id="__span-1-103">        <span class="n">description</span><span class="o">=</span><span class="s1">'Whether to enable keepout zones or not'</span>
+</span><span id="__span-1-104">    <span class="p">)</span>
+</span><span id="__span-1-105">
+</span><span id="__span-1-106">    <span class="n">declare_log_level_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+</span><span id="__span-1-107">        <span class="s1">'log_level'</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">'info'</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">'log level'</span>
+</span><span id="__span-1-108">    <span class="p">)</span>
+</span><span id="__span-1-109">
+</span><span id="__span-1-110">    <span class="n">load_nodes</span> <span class="o">=</span> <span class="n">GroupAction</span><span class="p">(</span>
+</span><span id="__span-1-111">        <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">PythonExpression</span><span class="p">([</span><span class="s1">'not '</span><span class="p">,</span> <span class="n">use_composition</span><span class="p">])),</span>
+</span><span id="__span-1-112">        <span class="n">actions</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-1-113">            <span class="n">PushROSNamespace</span><span class="p">(</span><span class="n">namespace</span><span class="p">),</span>
+</span><span id="__span-1-114">            <span class="n">SetParameter</span><span class="p">(</span><span class="s1">'use_sim_time'</span><span class="p">,</span> <span class="n">use_sim_time</span><span class="p">),</span>
+</span><span id="__span-1-115">            <span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-1-116">                <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">use_keepout_zones</span><span class="p">),</span>
+</span><span id="__span-1-117">                <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_map_server'</span><span class="p">,</span>
+</span><span id="__span-1-118">                <span class="n">executable</span><span class="o">=</span><span class="s1">'map_server'</span><span class="p">,</span>
+</span><span id="__span-1-119">                <span class="n">name</span><span class="o">=</span><span class="s1">'keepout_filter_mask_server'</span><span class="p">,</span>
+</span><span id="__span-1-120">                <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-1-121">                <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>
+</span><span id="__span-1-122">                <span class="n">respawn_delay</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+</span><span id="__span-1-123">                <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">,</span> <span class="p">{</span><span class="s1">'yaml_filename'</span><span class="p">:</span> <span class="n">keepout_mask_yaml_file</span><span class="p">}],</span>
+</span><span id="__span-1-124">                <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">'--ros-args'</span><span class="p">,</span> <span class="s1">'--log-level'</span><span class="p">,</span> <span class="n">log_level</span><span class="p">],</span>
+</span><span id="__span-1-125">                <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
+</span><span id="__span-1-126">            <span class="p">),</span>
+</span><span id="__span-1-127">            <span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-1-128">                <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">use_keepout_zones</span><span class="p">),</span>
+</span><span id="__span-1-129">                <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_map_server'</span><span class="p">,</span>
+</span><span id="__span-1-130">                <span class="n">executable</span><span class="o">=</span><span class="s1">'costmap_filter_info_server'</span><span class="p">,</span>
+</span><span id="__span-1-131">                <span class="n">name</span><span class="o">=</span><span class="s1">'keepout_costmap_filter_info_server'</span><span class="p">,</span>
+</span><span id="__span-1-132">                <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-1-133">                <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>
+</span><span id="__span-1-134">                <span class="n">respawn_delay</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+</span><span id="__span-1-135">                <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
 </span><span id="__span-1-136">                <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">'--ros-args'</span><span class="p">,</span> <span class="s1">'--log-level'</span><span class="p">,</span> <span class="n">log_level</span><span class="p">],</span>
-</span><span id="__span-1-137">                <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">'autostart'</span><span class="p">:</span> <span class="n">autostart</span><span class="p">},</span> <span class="p">{</span><span class="s1">'node_names'</span><span class="p">:</span> <span class="n">lifecycle_nodes</span><span class="p">}],</span>
+</span><span id="__span-1-137">                <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
 </span><span id="__span-1-138">            <span class="p">),</span>
 </span><span id="__span-1-139">        <span class="p">],</span>
 </span><span id="__span-1-140">    <span class="p">)</span>
@@ -20942,55 +20942,45 @@ in overrides/partials/header.html -->
 </span><span id="__span-1-161">                            <span class="p">{</span><span class="s1">'yaml_filename'</span><span class="p">:</span> <span class="n">keepout_mask_yaml_file</span><span class="p">}</span>
 </span><span id="__span-1-162">                        <span class="p">],</span>
 </span><span id="__span-1-163">                        <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
-</span><span id="__span-1-164">                    <span class="p">),</span>
-</span><span id="__span-1-165">                    <span class="n">ComposableNode</span><span class="p">(</span>
-</span><span id="__span-1-166">                        <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_map_server'</span><span class="p">,</span>
-</span><span id="__span-1-167">                        <span class="n">plugin</span><span class="o">=</span><span class="s1">'nav2_map_server::CostmapFilterInfoServer'</span><span class="p">,</span>
-</span><span id="__span-1-168">                        <span class="n">name</span><span class="o">=</span><span class="s1">'keepout_costmap_filter_info_server'</span><span class="p">,</span>
-</span><span id="__span-1-169">                        <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-</span><span id="__span-1-170">                        <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
-</span><span id="__span-1-171">                    <span class="p">),</span>
-</span><span id="__span-1-172">                <span class="p">],</span>
-</span><span id="__span-1-173">            <span class="p">),</span>
-</span><span id="__span-1-174">
-</span><span id="__span-1-175">            <span class="n">LoadComposableNodes</span><span class="p">(</span>
-</span><span id="__span-1-176">                <span class="n">target_container</span><span class="o">=</span><span class="n">container_name_full</span><span class="p">,</span>
-</span><span id="__span-1-177">                <span class="n">composable_node_descriptions</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-1-178">                    <span class="n">ComposableNode</span><span class="p">(</span>
-</span><span id="__span-1-179">                        <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_lifecycle_manager'</span><span class="p">,</span>
-</span><span id="__span-1-180">                        <span class="n">plugin</span><span class="o">=</span><span class="s1">'nav2_lifecycle_manager::LifecycleManager'</span><span class="p">,</span>
-</span><span id="__span-1-181">                        <span class="n">name</span><span class="o">=</span><span class="s1">'lifecycle_manager_keepout_zone'</span><span class="p">,</span>
-</span><span id="__span-1-182">                        <span class="n">parameters</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-1-183">                            <span class="p">{</span><span class="s1">'autostart'</span><span class="p">:</span> <span class="n">autostart</span><span class="p">,</span> <span class="s1">'node_names'</span><span class="p">:</span> <span class="n">lifecycle_nodes</span><span class="p">}</span>
-</span><span id="__span-1-184">                        <span class="p">],</span>
-</span><span id="__span-1-185">                    <span class="p">),</span>
-</span><span id="__span-1-186">                <span class="p">],</span>
-</span><span id="__span-1-187">            <span class="p">),</span>
-</span><span id="__span-1-188">        <span class="p">],</span>
-</span><span id="__span-1-189">    <span class="p">)</span>
-</span><span id="__span-1-190">
-</span><span id="__span-1-191">    <span class="c1"># Create the launch description and populate</span>
-</span><span id="__span-1-192">    <span class="n">ld</span> <span class="o">=</span> <span class="n">LaunchDescription</span><span class="p">()</span>
-</span><span id="__span-1-193">
-</span><span id="__span-1-194">    <span class="c1"># Set environment variables</span>
-</span><span id="__span-1-195">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">stdout_linebuf_envvar</span><span class="p">)</span>
-</span><span id="__span-1-196">
-</span><span id="__span-1-197">    <span class="c1"># Declare the launch options</span>
-</span><span id="__span-1-198">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_namespace_cmd</span><span class="p">)</span>
-</span><span id="__span-1-199">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_keepout_mask_yaml_cmd</span><span class="p">)</span>
-</span><span id="__span-1-200">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_sim_time_cmd</span><span class="p">)</span>
-</span><span id="__span-1-201">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_params_file_cmd</span><span class="p">)</span>
-</span><span id="__span-1-202">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_composition_cmd</span><span class="p">)</span>
-</span><span id="__span-1-203">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_container_name_cmd</span><span class="p">)</span>
-</span><span id="__span-1-204">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_respawn_cmd</span><span class="p">)</span>
-</span><span id="__span-1-205">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_keepout_zones_cmd</span><span class="p">)</span>
-</span><span id="__span-1-206">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_log_level_cmd</span><span class="p">)</span>
-</span><span id="__span-1-207">
-</span><span id="__span-1-208">    <span class="c1"># Add the actions to launch all of the map modifier nodes</span>
-</span><span id="__span-1-209">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">load_nodes</span><span class="p">)</span>
-</span><span id="__span-1-210">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">load_composable_nodes</span><span class="p">)</span>
-</span><span id="__span-1-211">
-</span><span id="__span-1-212">    <span class="k">return</span> <span class="n">ld</span>
+</span><span id="__span-1-164">                        <span class="n">extra_arguments</span><span class="o">=</span><span class="p">[{</span><span class="s1">'use_intra_process_comms'</span><span class="p">:</span> <span class="n">use_intra_process_comms</span><span class="p">}],</span>
+</span><span id="__span-1-165">                    <span class="p">),</span>
+</span><span id="__span-1-166">                    <span class="n">ComposableNode</span><span class="p">(</span>
+</span><span id="__span-1-167">                        <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_map_server'</span><span class="p">,</span>
+</span><span id="__span-1-168">                        <span class="n">plugin</span><span class="o">=</span><span class="s1">'nav2_map_server::CostmapFilterInfoServer'</span><span class="p">,</span>
+</span><span id="__span-1-169">                        <span class="n">name</span><span class="o">=</span><span class="s1">'keepout_costmap_filter_info_server'</span><span class="p">,</span>
+</span><span id="__span-1-170">                        <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
+</span><span id="__span-1-171">                        <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">,</span>
+</span><span id="__span-1-172">                        <span class="n">extra_arguments</span><span class="o">=</span><span class="p">[{</span><span class="s1">'use_intra_process_comms'</span><span class="p">:</span> <span class="n">use_intra_process_comms</span><span class="p">}],</span>
+</span><span id="__span-1-173">                    <span class="p">),</span>
+</span><span id="__span-1-174">                <span class="p">],</span>
+</span><span id="__span-1-175">            <span class="p">),</span>
+</span><span id="__span-1-176">
+</span><span id="__span-1-177">        <span class="p">],</span>
+</span><span id="__span-1-178">    <span class="p">)</span>
+</span><span id="__span-1-179">
+</span><span id="__span-1-180">    <span class="c1"># Create the launch description and populate</span>
+</span><span id="__span-1-181">    <span class="n">ld</span> <span class="o">=</span> <span class="n">LaunchDescription</span><span class="p">()</span>
+</span><span id="__span-1-182">
+</span><span id="__span-1-183">    <span class="c1"># Set environment variables</span>
+</span><span id="__span-1-184">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">stdout_linebuf_envvar</span><span class="p">)</span>
+</span><span id="__span-1-185">
+</span><span id="__span-1-186">    <span class="c1"># Declare the launch options</span>
+</span><span id="__span-1-187">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_namespace_cmd</span><span class="p">)</span>
+</span><span id="__span-1-188">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_keepout_mask_yaml_cmd</span><span class="p">)</span>
+</span><span id="__span-1-189">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_sim_time_cmd</span><span class="p">)</span>
+</span><span id="__span-1-190">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_params_file_cmd</span><span class="p">)</span>
+</span><span id="__span-1-191">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_composition_cmd</span><span class="p">)</span>
+</span><span id="__span-1-192">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_intra_process_comms_cmd</span><span class="p">)</span>
+</span><span id="__span-1-193">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_container_name_cmd</span><span class="p">)</span>
+</span><span id="__span-1-194">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_respawn_cmd</span><span class="p">)</span>
+</span><span id="__span-1-195">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_use_keepout_zones_cmd</span><span class="p">)</span>
+</span><span id="__span-1-196">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">declare_log_level_cmd</span><span class="p">)</span>
+</span><span id="__span-1-197">
+</span><span id="__span-1-198">    <span class="c1"># Add the actions to launch all of the map modifier nodes</span>
+</span><span id="__span-1-199">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">load_nodes</span><span class="p">)</span>
+</span><span id="__span-1-200">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">load_composable_nodes</span><span class="p">)</span>
+</span><span id="__span-1-201">
+</span><span id="__span-1-202">    <span class="k">return</span> <span class="n">ld</span>
 </span></code></pre></div>
 <p>where the <code>params_file</code> variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at <a class="autorefs autorefs-internal" href="../../../../configuration_and_development/configuration_guide/core_servers/map_server/#map-server-index">Map Server</a> page. Please, refer to it for more information. The example of <code>params_file</code> could be found below:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">keepout_filter_mask_server</span><span class="p">:</span>

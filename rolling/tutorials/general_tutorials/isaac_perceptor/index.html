@@ -21117,9 +21117,9 @@ For the <code>dnn_stereo_disparity</code> models, installed as part of the <code
 </span><span id="__span-18-4">occupancy_map_yaml_file:<span class="o">=</span><span class="nv">$occupancy_map_path</span><span class="w"> </span>vslam_enable_slam:<span class="o">=</span>True
 </span></code></pre></div>
 <p>Running this will require the user to attach to the container from a separate terminal and run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1">ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>navigation_launch.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1">ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>bringup_launch.py<span class="w"> </span>use_localization:<span class="o">=</span>False<span class="w"> </span>use_keepout_zones:<span class="o">=</span>False<span class="w"> </span>use_speed_zones:<span class="o">=</span>False
 </span></code></pre></div>
-<p>to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default.</p>
+<p>to launch Nav2. NVIDIA provides its own VSLAM stack, so Nav2 is not launched by default, and <code>use_localization:=False</code> skips <code>nav2_amcl</code> and <code>nav2_map_server</code>.</p>
 </div>
 <p>You should now see something like this in Foxglove Studio:</p>
 <figure>

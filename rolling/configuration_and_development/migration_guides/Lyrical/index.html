@@ -19478,6 +19478,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#single-lifecycle-manager-in-nav2-bringup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single Lifecycle Manager in Nav2 Bringup
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20535,6 +20546,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#single-lifecycle-manager-in-nav2-bringup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single Lifecycle Manager in Nav2 Bringup
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20737,6 +20759,11 @@ in overrides/partials/header.html -->
 </tbody>
 </table>
 <p>Substitute your own plugin names if they differ from the defaults. Simply move the parameter under the plugin's declaration in your configuration.</p>
+<h3 id="single-lifecycle-manager-in-nav2-bringup">Single Lifecycle Manager in Nav2 Bringup<a class="headerlink" href="#single-lifecycle-manager-in-nav2-bringup" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6410">PR #6410</a> combines the separate lifecycle managers for localization, navigation, SLAM, keepout zones, speed zones and the loopback simulator into a single <code>lifecycle_manager_nav2</code>, started by <code>bringup_launch.py</code>. Measured on the Turtlebot 4 simulation launch, which previously ran four lifecycle managers, this reduces Nav2's CPU use by around 25%. The nested launch files in <code>nav2_bringup</code> no longer start a lifecycle manager of their own. Each has a <code>get_lifecycle_nodes(context)</code> function that returns its lifecycle node names, which <code>bringup_launch.py</code> collects into the <code>node_names</code> of the single manager.</p>
+<p>Launching a nested file by itself, such as <code>ros2 launch nav2_bringup navigation_launch.py</code>, now leaves the servers unconfigured. Launch <code>bringup_launch.py</code> instead and use its arguments to turn off what you do not need, for example <code>use_localization:=False</code> when SLAM or another source provides the map and the <code>map</code> to <code>odom</code> transform. Anything that used the old manager names, such as <code>lifecycle_manager_navigation/manage_nodes</code>, should use <code>lifecycle_manager_nav2</code> instead; the Nav2 RViz panel is already updated.</p>
+<p>Move your own nested launch files to the same pattern: remove the lifecycle manager from each one, add a <code>get_lifecycle_nodes(context)</code> function that returns its lifecycle node names, and build the <code>node_names</code> of your single manager from those functions plus your own nodes. The <a class="autorefs autorefs-internal" title="Adding a New Nav2 Task Server" href="../../../tutorials/general_tutorials/adding_a_nav2_task_server/#adding-a-new-nav2-task-server">task server tutorial</a> shows this.</p>
+<p>If you would rather run a launch file on its own, start a lifecycle manager beside it.</p>
 <h2 id="new-features-and-improvements">New Features and Improvements<a class="headerlink" href="#new-features-and-improvements" title="Permanent link"></a></h2>
 <h3 id="static-layer-overlays-without-resizing-the-master">Static Layer Overlays Without Resizing the Master<a class="headerlink" href="#static-layer-overlays-without-resizing-the-master" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6488">PR #6488</a> adds the Static Layer parameter <code>resize_master</code>, which defaults to <code>true</code>. Existing configurations require no changes: a Static Layer still resizes a non-rolling master costmap to match its incoming map.</p>

@@ -20660,34 +20660,58 @@ in overrides/partials/header.html -->
 <p class="admonition-title">See also</p>
 <p>For more information on Lifecycle management, see the article on <a href="https://design.ros2.org/articles/node_lifecycle.html">Managed Nodes</a>.</p>
 </div>
-<p>You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node <code>sensor_driver</code>, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a <code>sensor_driver</code> node in your launch file and adding it to the list of nodes to be activated by the <code>lifecycle_manager</code> before navigation, as shown in the example below.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="n">lifecycle_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'sensor_driver'</span><span class="p">,</span>
-</span><span id="__span-0-2">                   <span class="s1">'controller_server'</span><span class="p">,</span>
-</span><span id="__span-0-3">                   <span class="s1">'smoother_server'</span><span class="p">,</span>
-</span><span id="__span-0-4">                   <span class="s1">'planner_server'</span><span class="p">,</span>
-</span><span id="__span-0-5">                   <span class="s1">'behavior_server'</span><span class="p">,</span>
-</span><span id="__span-0-6">                   <span class="s1">'bt_navigator'</span><span class="p">,</span>
-</span><span id="__span-0-7">                   <span class="s1">'waypoint_follower'</span><span class="p">]</span>
+<p>Nav2 runs one Lifecycle Manager, <code>lifecycle_manager_nav2</code>, for the whole stack. <code>bringup_launch.py</code> starts it and passes it the names of every lifecycle node it should manage. The nested launch files (<code>navigation_launch.py</code>, <code>localization_launch.py</code>, <code>slam_launch.py</code>, <code>keepout_zone_launch.py</code> and <code>speed_zone_launch.py</code>) do not start a manager of their own. Each one has a <code>get_lifecycle_nodes(context)</code> function that returns the names of the lifecycle nodes it launches, and <code>bringup_launch.py</code> joins those lists in launch order:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="kn">from</span><span class="w"> </span><span class="nn">nav2_bringup.localization_launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_lifecycle_nodes</span> <span class="k">as</span> <span class="n">get_localization_nodes</span>
+</span><span id="__span-0-2"><span class="kn">from</span><span class="w"> </span><span class="nn">nav2_bringup.navigation_launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_lifecycle_nodes</span> <span class="k">as</span> <span class="n">get_navigation_nodes</span>
+</span><span id="__span-0-3">
+</span><span id="__span-0-4"><span class="k">def</span><span class="w"> </span><span class="nf">launch_lifecycle_manager</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+</span><span id="__span-0-5">    <span class="n">lifecycle_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-6">    <span class="n">lifecycle_nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_localization_nodes</span><span class="p">(</span><span class="n">context</span><span class="p">))</span>
+</span><span id="__span-0-7">    <span class="n">lifecycle_nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_navigation_nodes</span><span class="p">(</span><span class="n">context</span><span class="p">))</span>
 </span><span id="__span-0-8">
-</span><span id="__span-0-9"><span class="o">...</span>
-</span><span id="__span-0-10">
-</span><span id="__span-0-11"><span class="n">Node</span><span class="p">(</span>
-</span><span id="__span-0-12">    <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_sensor_driver'</span><span class="p">,</span>
-</span><span id="__span-0-13">    <span class="n">executable</span><span class="o">=</span><span class="s1">'sensor_driver'</span><span class="p">,</span>
-</span><span id="__span-0-14">    <span class="n">name</span><span class="o">=</span><span class="s1">'sensor_driver'</span><span class="p">,</span>
-</span><span id="__span-0-15">    <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
-</span><span id="__span-0-16">    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-</span><span id="__span-0-17">    <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">),</span>
-</span><span id="__span-0-18">
-</span><span id="__span-0-19"><span class="n">Node</span><span class="p">(</span>
-</span><span id="__span-0-20">    <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_lifecycle_manager'</span><span class="p">,</span>
-</span><span id="__span-0-21">    <span class="n">executable</span><span class="o">=</span><span class="s1">'lifecycle_manager'</span><span class="p">,</span>
-</span><span id="__span-0-22">    <span class="n">name</span><span class="o">=</span><span class="s1">'lifecycle_manager_navigation'</span><span class="p">,</span>
-</span><span id="__span-0-23">    <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
-</span><span id="__span-0-24">    <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">'autostart'</span><span class="p">:</span> <span class="n">autostart</span><span class="p">},</span>
-</span><span id="__span-0-25">                <span class="p">{</span><span class="s1">'node_names'</span><span class="p">:</span> <span class="n">lifecycle_nodes</span><span class="p">}]),</span>
+</span><span id="__span-0-9">    <span class="k">return</span> <span class="p">[</span>
+</span><span id="__span-0-10">        <span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-0-11">            <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_lifecycle_manager'</span><span class="p">,</span>
+</span><span id="__span-0-12">            <span class="n">executable</span><span class="o">=</span><span class="s1">'lifecycle_manager'</span><span class="p">,</span>
+</span><span id="__span-0-13">            <span class="n">name</span><span class="o">=</span><span class="s1">'lifecycle_manager_nav2'</span><span class="p">,</span>
+</span><span id="__span-0-14">            <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-0-15">            <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">'autostart'</span><span class="p">:</span> <span class="n">autostart</span><span class="p">,</span>
+</span><span id="__span-0-16">                         <span class="s1">'use_sim_time'</span><span class="p">:</span> <span class="n">use_sim_time</span><span class="p">},</span>
+</span><span id="__span-0-17">                        <span class="p">{</span><span class="s1">'node_names'</span><span class="p">:</span> <span class="n">lifecycle_nodes</span><span class="p">}]),</span>
+</span><span id="__span-0-18">    <span class="p">]</span>
 </span></code></pre></div>
-<p>In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the <code>node_names</code> parameter. The <code>node_names</code> parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the <code>node_names</code> parameter takes in <code>lifecycle_nodes</code> which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (<code>Configuring</code> and <code>Activating</code>) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the <code>sensor_driver</code> is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.</p>
+<p>You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node <code>sensor_driver</code>, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a <code>sensor_driver</code> node in your launch file and adding it to the list of nodes to be activated by <code>lifecycle_manager_nav2</code> before navigation, as shown in the example below.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="kn">from</span><span class="w"> </span><span class="nn">nav2_bringup.navigation_launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_lifecycle_nodes</span> <span class="k">as</span> <span class="n">get_navigation_nodes</span>
+</span><span id="__span-1-2">
+</span><span id="__span-1-3"><span class="k">def</span><span class="w"> </span><span class="nf">launch_lifecycle_manager</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+</span><span id="__span-1-4">    <span class="n">lifecycle_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'sensor_driver'</span><span class="p">]</span>  <span class="c1"># Or retrieved from its launch file's get lifecycle nodes fn</span>
+</span><span id="__span-1-5">    <span class="n">lifecycle_nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_navigation_nodes</span><span class="p">(</span><span class="n">context</span><span class="p">))</span>
+</span><span id="__span-1-6">
+</span><span id="__span-1-7">    <span class="k">return</span> <span class="p">[</span>
+</span><span id="__span-1-8">        <span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-1-9">            <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_lifecycle_manager'</span><span class="p">,</span>
+</span><span id="__span-1-10">            <span class="n">executable</span><span class="o">=</span><span class="s1">'lifecycle_manager'</span><span class="p">,</span>
+</span><span id="__span-1-11">            <span class="n">name</span><span class="o">=</span><span class="s1">'lifecycle_manager_nav2'</span><span class="p">,</span>
+</span><span id="__span-1-12">            <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-1-13">            <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">'autostart'</span><span class="p">:</span> <span class="n">autostart</span><span class="p">,</span>
+</span><span id="__span-1-14">                         <span class="s1">'use_sim_time'</span><span class="p">:</span> <span class="n">use_sim_time</span><span class="p">},</span>
+</span><span id="__span-1-15">                        <span class="p">{</span><span class="s1">'node_names'</span><span class="p">:</span> <span class="n">lifecycle_nodes</span><span class="p">}]),</span>
+</span><span id="__span-1-16">    <span class="p">]</span>
+</span><span id="__span-1-17">
+</span><span id="__span-1-18"><span class="o">...</span>
+</span><span id="__span-1-19">
+</span><span id="__span-1-20"><span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-1-21">    <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_sensor_driver'</span><span class="p">,</span>
+</span><span id="__span-1-22">    <span class="n">executable</span><span class="o">=</span><span class="s1">'sensor_driver'</span><span class="p">,</span>
+</span><span id="__span-1-23">    <span class="n">name</span><span class="o">=</span><span class="s1">'sensor_driver'</span><span class="p">,</span>
+</span><span id="__span-1-24">    <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-1-25">    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
+</span><span id="__span-1-26">    <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span><span class="p">),</span>
+</span><span id="__span-1-27">
+</span><span id="__span-1-28"><span class="n">OpaqueFunction</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="n">launch_lifecycle_manager</span><span class="p">),</span>
+</span></code></pre></div>
+<p>In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the <code>node_names</code> parameter. The <code>node_names</code> parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the <code>node_names</code> parameter takes in <code>lifecycle_nodes</code> which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (<code>Configuring</code> and <code>Activating</code>) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the <code>sensor_driver</code> is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated. The list is built inside an <code>OpaqueFunction</code> so that <code>get_lifecycle_nodes()</code> can read launch arguments such as <code>use_localization</code> from the context.</p>
+<p>If your node has its own launch file that <code>bringup_launch.py</code> includes, follow the same pattern as the Nav2 launch files: define <code>get_lifecycle_nodes(context)</code> in that file and extend the list in <code>bringup_launch.py</code> with its result. That keeps each launch file's node names in that file.</p>
 <p>Two other parameters of the Lifecycle Manager are <code>autostart</code> and <code>bond_timeout</code>. Set <code>autostart</code> to <code>true</code> if you want to set the transition nodes to the <code>Active</code> state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The <code>bond_timeout</code> sets the waiting time to decide when to transition down all of the nodes if a node is not responding.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -20704,19 +20728,19 @@ in overrides/partials/header.html -->
 <ol>
 <li>
 <p>Add a new <code>ComposableNode()</code> instance in your launch file pointing to the component container of your choice.
-    </p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="n">container</span> <span class="o">=</span> <span class="n">ComposableNodeContainer</span><span class="p">(</span>
-</span><span id="__span-1-2">    <span class="n">name</span><span class="o">=</span><span class="s1">'my_container'</span><span class="p">,</span>
-</span><span id="__span-1-3">    <span class="n">namespace</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
-</span><span id="__span-1-4">    <span class="n">package</span><span class="o">=</span><span class="s1">'rclcpp_components'</span><span class="p">,</span>
-</span><span id="__span-1-5">    <span class="n">executable</span><span class="o">=</span><span class="s1">'component_container'</span><span class="p">,</span>
-</span><span id="__span-1-6">    <span class="n">composable_node_descriptions</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-1-7">        <span class="n">ComposableNode</span><span class="p">(</span>
-</span><span id="__span-1-8">            <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_route_server'</span><span class="p">,</span>
-</span><span id="__span-1-9">            <span class="n">plugin</span><span class="o">=</span><span class="s1">'nav2_route_server::RouteServer'</span><span class="p">,</span>
-</span><span id="__span-1-10">            <span class="n">name</span><span class="o">=</span><span class="s1">'nav2_route_server'</span><span class="p">),</span>
-</span><span id="__span-1-11">    <span class="p">],</span>
-</span><span id="__span-1-12">    <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
-</span><span id="__span-1-13"><span class="p">)</span>
+    </p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="n">container</span> <span class="o">=</span> <span class="n">ComposableNodeContainer</span><span class="p">(</span>
+</span><span id="__span-2-2">    <span class="n">name</span><span class="o">=</span><span class="s1">'my_container'</span><span class="p">,</span>
+</span><span id="__span-2-3">    <span class="n">namespace</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
+</span><span id="__span-2-4">    <span class="n">package</span><span class="o">=</span><span class="s1">'rclcpp_components'</span><span class="p">,</span>
+</span><span id="__span-2-5">    <span class="n">executable</span><span class="o">=</span><span class="s1">'component_container'</span><span class="p">,</span>
+</span><span id="__span-2-6">    <span class="n">composable_node_descriptions</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-2-7">        <span class="n">ComposableNode</span><span class="p">(</span>
+</span><span id="__span-2-8">            <span class="n">package</span><span class="o">=</span><span class="s1">'nav2_route_server'</span><span class="p">,</span>
+</span><span id="__span-2-9">            <span class="n">plugin</span><span class="o">=</span><span class="s1">'nav2_route_server::RouteServer'</span><span class="p">,</span>
+</span><span id="__span-2-10">            <span class="n">name</span><span class="o">=</span><span class="s1">'nav2_route_server'</span><span class="p">),</span>
+</span><span id="__span-2-11">    <span class="p">],</span>
+</span><span id="__span-2-12">    <span class="n">output</span><span class="o">=</span><span class="s1">'screen'</span><span class="p">,</span>
+</span><span id="__span-2-13"><span class="p">)</span>
 </span></code></pre></div><p></p>
 <div class="admonition info">
 <p class="admonition-title">See also</p>
@@ -20725,7 +20749,7 @@ in overrides/partials/header.html -->
 </li>
 <li>
 <p>Add the package containing the server to your <code>package.xml</code> file.
-    </p><div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">&lt;exec_depend&gt;</span>nav2_route_server<span class="nt">&lt;/exec_depend&gt;</span>
+    </p><div class="language-xml highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">&lt;exec_depend&gt;</span>nav2_route_server<span class="nt">&lt;/exec_depend&gt;</span>
 </span></code></pre></div><p></p>
 </li>
 </ol>
@@ -20837,44 +20861,44 @@ The table below shows the current servers along with the expected error code str
 </table>
 </div>
 <p>Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to <code>error_code</code> and the error message field to <code>error_msg</code>.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="c1"># Error codes</span>
-</span><span id="__span-3-2"><span class="c1"># Note: The expected priority order of the errors should match the message order</span>
-</span><span id="__span-3-3">uint16<span class="w"> </span><span class="nv">NONE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="c1"># 0 is reserved for NONE</span>
-</span><span id="__span-3-4">uint16<span class="w"> </span><span class="nv">UNKNOWN</span><span class="o">=</span><span class="m">10000</span><span class="w"> </span><span class="c1"># first error code in the sequence is reserved for UNKNOWN</span>
-</span><span id="__span-3-5">
-</span><span id="__span-3-6"><span class="c1"># User Error codes below</span>
-</span><span id="__span-3-7">int16<span class="w"> </span><span class="nv">INVALID_START</span><span class="o">=</span><span class="m">10001</span>
-</span><span id="__span-3-8">int16<span class="w"> </span><span class="nv">NO_VALID_ROUTE</span><span class="o">=</span><span class="m">10002</span>
-</span><span id="__span-3-9">
-</span><span id="__span-3-10"><span class="c1">#goal definition</span>
-</span><span id="__span-3-11">route_msgs/PoseStamped<span class="w"> </span>goal
-</span><span id="__span-3-12">route_msgs/PoseStamped<span class="w"> </span>start
-</span><span id="__span-3-13">string<span class="w"> </span>route_id
-</span><span id="__span-3-14">---
-</span><span id="__span-3-15"><span class="c1">#result definition</span>
-</span><span id="__span-3-16">nav_msgs/Route<span class="w"> </span>route
-</span><span id="__span-3-17">builtin_interfaces/Duration<span class="w"> </span>route_time
-</span><span id="__span-3-18">uint16<span class="w"> </span>error_code
-</span><span id="__span-3-19">string<span class="w"> </span>error_msg
-</span><span id="__span-3-20">---
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="c1"># Error codes</span>
+</span><span id="__span-4-2"><span class="c1"># Note: The expected priority order of the errors should match the message order</span>
+</span><span id="__span-4-3">uint16<span class="w"> </span><span class="nv">NONE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="c1"># 0 is reserved for NONE</span>
+</span><span id="__span-4-4">uint16<span class="w"> </span><span class="nv">UNKNOWN</span><span class="o">=</span><span class="m">10000</span><span class="w"> </span><span class="c1"># first error code in the sequence is reserved for UNKNOWN</span>
+</span><span id="__span-4-5">
+</span><span id="__span-4-6"><span class="c1"># User Error codes below</span>
+</span><span id="__span-4-7">int16<span class="w"> </span><span class="nv">INVALID_START</span><span class="o">=</span><span class="m">10001</span>
+</span><span id="__span-4-8">int16<span class="w"> </span><span class="nv">NO_VALID_ROUTE</span><span class="o">=</span><span class="m">10002</span>
+</span><span id="__span-4-9">
+</span><span id="__span-4-10"><span class="c1">#goal definition</span>
+</span><span id="__span-4-11">route_msgs/PoseStamped<span class="w"> </span>goal
+</span><span id="__span-4-12">route_msgs/PoseStamped<span class="w"> </span>start
+</span><span id="__span-4-13">string<span class="w"> </span>route_id
+</span><span id="__span-4-14">---
+</span><span id="__span-4-15"><span class="c1">#result definition</span>
+</span><span id="__span-4-16">nav_msgs/Route<span class="w"> </span>route
+</span><span id="__span-4-17">builtin_interfaces/Duration<span class="w"> </span>route_time
+</span><span id="__span-4-18">uint16<span class="w"> </span>error_code
+</span><span id="__span-4-19">string<span class="w"> </span>error_msg
+</span><span id="__span-4-20">---
 </span></code></pre></div>
 <p>As stated in the message, the priority order of the error codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 Since the route server is a external server, the error codes start at 10000 and go up to 10099.</p>
 <p>To ensure your server's error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.</p>
 <p>The BT Navigator parameter <em>error_code_name_prefixes</em> defines a list of prefixes used to search the behavior tree blackboard for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><span class="nt">error_code_name_prefixes</span><span class="p">:</span>
-</span><span id="__span-4-2"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assisted_teleop</span>
-</span><span id="__span-4-3"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backup</span>
-</span><span id="__span-4-4"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path</span>
-</span><span id="__span-4-5"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock_robot</span>
-</span><span id="__span-4-6"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drive_on_heading</span>
-</span><span id="__span-4-7"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path</span>
-</span><span id="__span-4-8"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_thru_poses</span>
-</span><span id="__span-4-9"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_to_pose</span>
-</span><span id="__span-4-10"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spin</span>
-</span><span id="__span-4-11"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route</span>
-</span><span id="__span-4-12"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">undock_robot</span>
-</span><span id="__span-4-13"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wait</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><span class="nt">error_code_name_prefixes</span><span class="p">:</span>
+</span><span id="__span-5-2"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assisted_teleop</span>
+</span><span id="__span-5-3"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backup</span>
+</span><span id="__span-5-4"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path</span>
+</span><span id="__span-5-5"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock_robot</span>
+</span><span id="__span-5-6"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drive_on_heading</span>
+</span><span id="__span-5-7"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path</span>
+</span><span id="__span-5-8"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_thru_poses</span>
+</span><span id="__span-5-9"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_to_pose</span>
+</span><span id="__span-5-10"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spin</span>
+</span><span id="__span-5-11"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route</span>
+</span><span id="__span-5-12"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">undock_robot</span>
+</span><span id="__span-5-13"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wait</span>
 </span></code></pre></div>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>In this section of the guide, we have discussed Lifecycle Nodes, Composition and Error Codes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle Nodes, Composition and Error Codes to your newly created nodes/servers with Nav2. These three concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.</p>

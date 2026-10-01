@@ -20905,10 +20905,10 @@ in overrides/partials/header.html -->
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-navigation2
 </span><span id="__span-6-2">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-bringup
 </span></code></pre></div>
-<p>We will now launch Nav2 using the <code>nav2_bringup</code>'s built-in launch file, <code>navigation_launch.py</code> . Open a new terminal and execute the following:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1">ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>navigation_launch.py<span class="w"> </span>use_sim_time:<span class="o">=</span><span class="nb">true</span>
+<p>We will now launch Nav2 using the <code>nav2_bringup</code>'s built-in launch file, <code>bringup_launch.py</code>. SLAM Toolbox provides the map and the <code>map</code> =&gt; <code>odom</code> transform, so we set <code>use_localization:=False</code> to skip <code>nav2_amcl</code> and <code>nav2_map_server</code>. Open a new terminal and execute the following:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1">ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>bringup_launch.py<span class="w"> </span>use_localization:<span class="o">=</span>False<span class="w"> </span>use_keepout_zones:<span class="o">=</span>False<span class="w"> </span>use_speed_zones:<span class="o">=</span>False<span class="w"> </span>use_sim_time:<span class="o">=</span><span class="nb">true</span>
 </span></code></pre></div>
-<p>Note that the parameters of the <code>nav2_costmap_2d</code> that we discussed in the previous subsection are included in the default parameters of <code>navigation_launch.py</code>. Aside from the <code>nav2_costmap_2d</code> parameters, it also contains parameters for the other nodes that are included in Nav2 implementation.</p>
+<p>Note that the parameters of the <code>nav2_costmap_2d</code> that we discussed in the previous subsection are included in the default parameters file of <code>nav2_bringup</code>, <code>nav2_params.yaml</code>. Aside from the <code>nav2_costmap_2d</code> parameters, it also contains parameters for the other nodes that are included in Nav2 implementation.</p>
 <p>After we have properly set up and launched Nav2, the <code>/global_costmap</code> and <code>/local_costmap</code> topics should now be active.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

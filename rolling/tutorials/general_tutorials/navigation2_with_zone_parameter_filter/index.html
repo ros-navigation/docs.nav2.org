@@ -20846,6 +20846,7 @@ in overrides/partials/header.html -->
 </span><span id="__span-2-48">    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">start_lifecycle_manager_cmd</span><span class="p">)</span>
 </span><span id="__span-2-49">    <span class="k">return</span> <span class="n">ld</span>
 </span></code></pre></div>
+<p>The launch file above starts its own <code>lifecycle_manager_costmap_filters</code>. If these servers are part of your Nav2 bringup, you can instead add <code>filter_mask_server</code> and <code>costmap_filter_info_server</code> to the <code>node_names</code> of <code>lifecycle_manager_nav2</code>, as <code>keepout_zone_launch.py</code> and <code>speed_zone_launch.py</code> do.</p>
 <h3 id="3-enable-zone-parameter-filter">3. Enable Zone Parameter Filter<a class="headerlink" href="#3-enable-zone-parameter-filter" title="Permanent link"></a></h3>
 <p>Costmap Filters are Costmap2D plugins. You can enable the <code>ZoneParameterFilter</code> plugin by adding <code>zone_params</code> to the <code>filters</code> parameter in <code>nav2_params.yaml</code>. Zone Parameter Filter does not change the costmap values: it only tracks which mask cell the robot stands on and issues parameter updates on state changes. One instance in the <code>global_costmap</code> is enough; a second instance in <code>local_costmap</code> would send every update twice.</p>
 <p>The filter configuration consists of three parts: the states, their setpoints and the nominal defaults.</p>
