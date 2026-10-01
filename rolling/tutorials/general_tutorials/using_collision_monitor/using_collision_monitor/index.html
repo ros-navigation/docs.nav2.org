@@ -20830,14 +20830,24 @@ The whole <code>nav2_collision_monitor/params/collision_monitor_params.yaml</cod
 </span><span id="__span-3-37"><span class="w">    </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
 </span><span id="__span-3-38"><span class="w">    </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is recommended to include a <code>stopped</code> sub polygon as the last entry in the <code>velocity_polygons</code> list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.</p>
-</div>
+<p>Each time a velocity command arrives on <code>cmd_vel_in_topic</code>, the Collision Monitor switches each enabled <code>velocity_polygon</code> to one of its sub-polygons based on the <code>cmd_vel</code> command and checks the sensor data against that shape only.</p>
+<ul>
+<li>The sub-polygons are checked in the order of the <code>velocity_polygons</code> list and the first match is used. All limits are inclusive.</li>
+<li>If no sub-polygon matches, the Collision Monitor logs a warning and keeps the previously matched sub-polygon.</li>
+<li>Put a default sub-polygon, such as <code>stopped</code> above, last in the list and make it cover the full range of the robot's velocity limits, so that every command matches.</li>
+<li>With <code>visualize: True</code>, the selected sub-polygon is published on <code>polygon_pub_topic</code>.</li>
+</ul>
+<p>For a <code>stop</code> action, each sub-polygon has to reach beyond the footprint, in its direction of motion, by at least the distance the robot needs to stop:</p>
+<div class="arithmatex">\[
+d = v \, t_r + \frac{v^2}{2a} + d_m
+\]</div>
+<ul>
+<li><code>v</code>: the highest speed of the base while the sub-polygon is selected.</li>
+<li><code>t_r</code>: the reaction time, including the sensor period, the period of <code>cmd_vel_in_topic</code> and the latency of the base driver (measure it on the robot).</li>
+<li><code>a</code>: the deceleration of the base for a zero command (measure it on the robot).</li>
+<li><code>d_m</code>: a margin for sensor noise.</li>
+</ul>
+<p>A rotation sub-polygon has to cover the circle swept by the footprint corners, and a translation sub-polygon that also accepts a large <code>angular.z</code> has to cover the corners swept while turning.</p>
 <p><strong>For holomic robots:</strong></p>
 <p>For holomic robots, the <code>holonomic</code> property should be set to <code>true</code>. In this scenario, the <code>linear_min</code> and <code>linear_max</code> parameters should cover  the magnitude of the robot's resultant velocity limits (using only non-negative values), while the <code>theta_min</code> and <code>theta_max</code> parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, <code>direction_start_angle</code> and <code>direction_end_angle</code>, to specify the resultant velocity direction. The covered direction will always span from <code>direction_start_angle</code> to <code>direction_end_angle</code> in the <strong>counter-clockwise</strong> direction.</p>
 <figure>
