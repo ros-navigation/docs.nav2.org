@@ -163,10 +163,9 @@ VelocityPolygonStop:
 Each time a velocity command arrives on `cmd_vel_in_topic`, the Collision Monitor switches each enabled `velocity_polygon` to one of its sub-polygons based on the `cmd_vel` command and checks the sensor data against that shape only.
 
 - The sub-polygons are checked in the order of the `velocity_polygons` list and the first match is used. All limits are inclusive.
-- With `holonomic: false`, `linear_min` and `linear_max` are compared with `linear.x`. With `holonomic: true`, they are compared with the speed of the command, and its direction with `direction_start_angle` and `direction_end_angle` (see below).
-- Pure backward motion has a direction of exactly ±π, which the default direction limits (`-π` and `π`) include but rounded limits such as `±3.1415` do not.
-- If no sub-polygon matches, the Collision Monitor logs a warning and keeps the previously matched polygon. Put a default sub-polygon, such as `stopped` above, last in the list and let it cover the full range of the robot's velocity limits, so that every command matches.
-- With `visualize: True`, the selected sub-polygon is published on `polygon_pub_topic`. `state_topic` only reports the name of the `velocity_polygon`.
+- If no sub-polygon matches, the Collision Monitor logs a warning and keeps the previously matched sub-polygon.
+- Put a default sub-polygon, such as `stopped` above, last in the list and make it cover the full range of the robot's velocity limits, so that every command matches.
+- With `visualize: True`, the selected sub-polygon is published on `polygon_pub_topic`.
 
 For a `stop` action, each sub-polygon has to reach beyond the footprint, in its direction of motion, by at least the distance the robot needs to stop:
 
@@ -174,14 +173,12 @@ $$
 d = v \, t_r + \frac{v^2}{2a} + d_m
 $$
 
-- `v`: the highest speed of the base while the sub-polygon is selected. It can be above `linear_max` right after the command drops from a faster sub-polygon.
-- `t_r`: the reaction time, including the sensor period, the period of `cmd_vel_in_topic` and the latency of the base driver.
-- `a`: the deceleration of the base for a zero command.
+- `v`: the highest speed of the base while the sub-polygon is selected.
+- `t_r`: the reaction time, including the sensor period, the period of `cmd_vel_in_topic` and the latency of the base driver (measure it on the robot).
+- `a`: the deceleration of the base for a zero command (measure it on the robot).
 - `d_m`: a margin for sensor noise.
 
-Measure `t_r` and `a` on the robot.
 A rotation sub-polygon has to cover the circle swept by the footprint corners, and a translation sub-polygon that also accepts a large `angular.z` has to cover the corners swept while turning.
-Obstacles closer to the sensor than its minimum range are not detected, so a stop has to be triggered before they get that close.
 
 To check which sub-polygon is selected, stop the base driver (or use simulation) and run these commands in two terminals:
 
