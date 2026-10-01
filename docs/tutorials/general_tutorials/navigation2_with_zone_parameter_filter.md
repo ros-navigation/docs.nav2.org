@@ -116,6 +116,8 @@ def generate_launch_description() -> LaunchDescription:
     return ld
 ```
 
+The launch file above starts its own `lifecycle_manager_costmap_filters`. If these servers are part of your Nav2 bringup, you can instead add `filter_mask_server` and `costmap_filter_info_server` to the `node_names` of `lifecycle_manager_nav2`, as `keepout_zone_launch.py` and `speed_zone_launch.py` do.
+
 ### 3. Enable Zone Parameter Filter
 
 Costmap Filters are Costmap2D plugins. You can enable the `ZoneParameterFilter` plugin by adding `zone_params` to the `filters` parameter in `nav2_params.yaml`. Zone Parameter Filter does not change the costmap values: it only tracks which mask cell the robot stands on and issues parameter updates on state changes. One instance in the `global_costmap` is enough; a second instance in `local_costmap` would send every update twice.
