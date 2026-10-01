@@ -180,13 +180,6 @@ $$
 
 A rotation sub-polygon has to cover the circle swept by the footprint corners, and a translation sub-polygon that also accepts a large `angular.z` has to cover the corners swept while turning.
 
-To check which sub-polygon is selected, stop the base driver (or use simulation) and run these commands in two terminals:
-
-```bash
-ros2 topic echo /velocity_polygon_stop --field polygon.points
-ros2 topic pub -r 20 /cmd_vel_smoothed geometry_msgs/msg/TwistStamped "{twist: {angular: {z: 0.5}}}"
-```
-
 **For holomic robots:**
 
 For holomic robots, the `holonomic` property should be set to `true`. In this scenario, the `linear_min` and `linear_max` parameters should cover  the magnitude of the robot's resultant velocity limits (using only non-negative values), while the `theta_min` and `theta_max` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, `direction_start_angle` and `direction_end_angle`, to specify the resultant velocity direction. The covered direction will always span from `direction_start_angle` to `direction_end_angle` in the **counter-clockwise** direction.
