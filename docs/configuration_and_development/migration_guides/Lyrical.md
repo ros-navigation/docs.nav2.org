@@ -26,7 +26,7 @@ Launching a nested file by itself, such as `ros2 launch nav2_bringup navigation_
 
 Move your own nested launch files to the same pattern: remove the lifecycle manager from each one, add a `get_lifecycle_nodes(context)` function that returns its lifecycle node names, and build the `node_names` of your single manager from those functions plus your own nodes. The [task server tutorial][adding-a-new-nav2-task-server] shows this.
 
-If you would rather run a launch file on its own, start a lifecycle manager beside it with `ros2 run nav2_lifecycle_manager lifecycle_manager` and give it `autostart` and the `node_names` to manage. Name it `lifecycle_manager_nav2` so the Nav2 RViz panel still finds it.
+If you would rather run a launch file on its own, start a lifecycle manager beside it.
 
 ## New Features and Improvements
 
