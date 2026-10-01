@@ -161,13 +161,25 @@ VelocityPolygonStop:
     theta_max: 1.0
 ```
 
-!!! note
+Each time a velocity command arrives on `cmd_vel_in_topic`, the Collision Monitor switches each enabled `velocity_polygon` to one of its sub-polygons based on the `cmd_vel` command and checks the sensor data against that shape only.
 
-    It is recommended to include a `stopped` sub polygon as the last entry in the `velocity_polygons` list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
+- The sub-polygons are checked in the order of the `velocity_polygons` list and the first match is used. All limits are inclusive.
+- If no sub-polygon matches, the Collision Monitor logs a warning and keeps the previously matched sub-polygon.
+- Put a default sub-polygon, such as `stopped` above, last in the list and make it cover the full range of the robot's velocity limits, so that every command matches.
+- With `visualize: True`, the selected sub-polygon is published on `polygon_pub_topic`.
 
-!!! note
+For a `stop` action, each sub-polygon has to reach beyond the footprint, in its direction of motion, by at least the distance the robot needs to stop:
 
-    When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.
+$$
+d = v \, t_r + \frac{v^2}{2a} + d_m
+$$
+
+- `v`: the highest speed of the base while the sub-polygon is selected.
+- `t_r`: the reaction time, including the sensor period, the period of `cmd_vel_in_topic` and the latency of the base driver (measure it on the robot).
+- `a`: the deceleration of the base for a zero command (measure it on the robot).
+- `d_m`: a margin for sensor noise.
+
+A rotation sub-polygon has to cover the circle swept by the footprint corners, and a translation sub-polygon that also accepts a large `angular.z` has to cover the corners swept while turning.
 
 **For holomic robots:**
 
