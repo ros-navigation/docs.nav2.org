@@ -35,7 +35,8 @@ def launch_lifecycle_manager(context):
             executable='lifecycle_manager',
             name='lifecycle_manager_nav2',
             output='screen',
-            parameters=[{'autostart': autostart},
+            parameters=[{'autostart': autostart,
+                         'use_sim_time': use_sim_time},
                         {'node_names': lifecycle_nodes}]),
     ]
 ```
@@ -55,7 +56,8 @@ def launch_lifecycle_manager(context):
             executable='lifecycle_manager',
             name='lifecycle_manager_nav2',
             output='screen',
-            parameters=[{'autostart': autostart},
+            parameters=[{'autostart': autostart,
+                         'use_sim_time': use_sim_time},
                         {'node_names': lifecycle_nodes}]),
     ]
 
