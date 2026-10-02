@@ -21120,7 +21120,7 @@ This is available in ROS 2 Iron and newer.</p>
 <li>If your GPS is noisy but you have another trustworthy odometry source (ex: wheel odometry, visual odometry), consider tuning the sensors and process noise covariances to make the filter "trust" more or less one data source or its own internal state estimate. A properly tuned filter should be able to reject wrong GPS measurements to some degree.</li>
 </ol>
 <h3 id="3-setup-navigation-system">3. Setup Navigation system<a class="headerlink" href="#3-setup-navigation-system" title="Permanent link"></a></h3>
-<p>Once you have your localization system up and running it's time to set up Nav2. Since RL is already providing the <code>tf</code> tree we don't need to launch <code>amcl</code>, thus we can remove its parameters from the params file and not launch Nav2's localization launch file.</p>
+<p>Once you have your localization system up and running it's time to set up Nav2. Since RL is already providing the <code>tf</code> tree we don't need to launch <code>amcl</code>, thus we can remove its parameters from the params file and launch Nav2's <code>bringup_launch.py</code> with <code>use_localization:=False</code>, which skips <code>amcl</code> and <code>map_server</code> while still starting the lifecycle manager that brings up the navigation servers.</p>
 <p>There are three main possible setups for the global costmap:</p>
 <ol>
 <li>
