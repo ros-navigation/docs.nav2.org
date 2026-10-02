@@ -309,7 +309,7 @@ Sensors in a real robot may be less accurate than Gazebo's, especially GPSs and 
 
 ### 3. Setup Navigation system
 
-Once you have your localization system up and running it's time to set up Nav2. Since RL is already providing the `tf` tree we don't need to launch `amcl`, thus we can remove its parameters from the params file and not launch Nav2's localization launch file.
+Once you have your localization system up and running it's time to set up Nav2. Since RL is already providing the `tf` tree we don't need to launch `amcl`, thus we can remove its parameters from the params file and launch Nav2's `bringup_launch.py` with `use_localization:=False`, which skips `amcl` and `map_server` while still starting the lifecycle manager that brings up the navigation servers.
 
 There are three main possible setups for the global costmap:
 
