@@ -111,7 +111,7 @@ Type: `double` Default: `1.0`
 
 Type: `double` Default: `0.1`
 
-:   Transform tolerance for the case when any of the shapes are placed in different than map's frame.
+:   Maximum time (seconds) to wait when a shape must be transformed from another frame. Polygons and circles use the transform at the shape message timestamp; this server has no `transform_staleness_threshold` parameter.
 
 ### **`shapes`**
 
