@@ -263,12 +263,6 @@ Type: `string` Default: (node parameter `base_frame_id`)
 
 :   Frame the zone shape is anchored to and tracked via TF (e.g. `dock_link`). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.
 
-### **`<zone name>.frame_hold_timeout`**
-
-Type: `double` Default: `0.0`
-
-:   Extra time (in seconds) beyond `transform_tolerance` that the last known pose of a stale zone `frame_id` keeps being used before the zone fails safe and stops masking points. While held, the zone is frozen at its last valid pose in the `odom_frame_id` frame, so it stays world-fixed even if the robot moves. Useful to ride out brief detection dropouts of a marker-based zone frame. `0.0` means only the transform tolerance applies.
-
 ### **`<zone name>.min_height`**
 
 Type: `double` Default: `-inf`

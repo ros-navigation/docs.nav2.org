@@ -119,7 +119,7 @@ Type: `double` Default: `0.0`
 
 Type: `double` Default: `0.1`
 
-:   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
+:   Maximum time (seconds) to wait for stamped transforms used to interpret target detections.
 
 ## Example
 

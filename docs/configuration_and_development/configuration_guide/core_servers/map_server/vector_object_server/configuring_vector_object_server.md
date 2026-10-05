@@ -107,17 +107,11 @@ Type: `double` Default: `1.0`
 
 :   Output map update frequency (when dynamic update model is switched-on).
 
-### **`transform_staleness_threshold`**
-
-Type: `double` Default: `0.0`
-
-:   Maximum age (seconds) of latest transforms used when converting vector object polygons and circles into the configured global frame. Values greater than `0.0` enable the age check; non-positive values disable it.
-
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1`
 
-:   Transform tolerance for the case when any of the shapes are placed in different than map's frame.
+:   Maximum time (seconds) to wait when a shape must be transformed from another frame. Polygons and circles use the transform at the shape message timestamp; this server has no `transform_staleness_threshold` parameter.
 
 ### **`shapes`**
 
