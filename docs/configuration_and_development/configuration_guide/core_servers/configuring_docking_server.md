@@ -257,7 +257,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of latest transforms used by the Simple Charging Dock or Simple Non-Charging Dock plugin to interpret a dock detection or robot pose. Positive values enable the age check; non-positive values disable it.
+:   Maximum age (seconds) of the latest robot-pose transform used by the Simple Charging Dock or Simple Non-Charging Dock plugin. Dock detections retain their message timestamps. Positive values enable the age check; non-positive values disable it.
 
 ### **`<dock_name>.staging_x_offset`**
 

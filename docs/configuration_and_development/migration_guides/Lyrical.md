@@ -47,22 +47,22 @@ The navigation stack can behave incorrectly when some of its input transformatio
 The following components can detect stale transforms when their staleness check is enabled:
 
 - Controller Server and its path handler
-- Local and global costmaps, their clearing services, Static Layer, and Asymmetric Inflation Layer
+- Local and global costmaps, Static Layer, and Asymmetric Inflation Layer
 - Keepout, Speed, Binary, and Zone Parameter costmap filters
 - Spin, Drive On Heading, Back Up, and Assisted Teleop behaviors
 - Docking Server and the Simple Charging and Simple Non-Charging Dock plugins
 - Following Server
 - Collision Monitor and Collision Detector, including collision sources, polygons, and exclusion zones
-- BT Navigator (NavigateToPose and NavigateThroughPoses) and GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, ArePosesNear, DistanceTraveled, and DistanceController BT nodes
+- BT Navigator (NavigateToPose and NavigateThroughPoses) and GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, DistanceTraveled, and DistanceController BT nodes
 - Planner Server (through its costmap), Route Server (RouteTracker and GoalIntentExtractor)
-- Vector Object Server
-- Footprint transform helpers
 
 The `transform_staleness_threshold` parameter specifies the maximum allowed age of a latest transform in seconds. Positive values enable the staleness check, while values less than or equal to 0.0 disable it. The default is `0.0` for most components. Collision Monitor and Collision Detector default to `1.0`, enabling the check.
 
 When the check is enabled and the transform is older than the configured threshold, the affected component reports an error or rejects the transform.
 
 This parameter should be configured to a value bigger than the maximum period of the dynamic transforms in your tree. A couple of seconds is usually a reasonable conservative choice, but a stricter check is advised for systems where timely updates are critical.
+
+Collision Monitor and Collision Detector exclusion zones no longer use `<zone name>.frame_hold_timeout`. Configure `<zone name>.transform_staleness_threshold` instead to limit the age of a zone-frame transform; it inherits the node-level threshold when omitted.
 
 The Behavior Server no longer reads `transform_tolerance`; remove it from Behavior Server configuration when migrating.
 
