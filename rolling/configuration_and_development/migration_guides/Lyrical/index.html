@@ -19539,6 +19539,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#include-specific-rclcpp-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Include Specific rclcpp Headers
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20618,6 +20629,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#include-specific-rclcpp-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Include Specific rclcpp Headers
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20824,6 +20846,9 @@ in overrides/partials/header.html -->
 <p>Set <code>resize_master: false</code> for additional Static Layers whose maps should not control the master's geometry. For example, a Vector Object Server can publish an obstacle map with a smaller or changing extent while the primary Static Layer continues to own the site map geometry.</p>
 <h3 id="assisted-teleop-times-out-on-stale-teleop-commands">Assisted Teleop Times Out on Stale Teleop Commands<a class="headerlink" href="#assisted-teleop-times-out-on-stale-teleop-commands" title="Permanent link"></a></h3>
 <p>The <code>AssistedTeleop</code> behavior now stops the robot and fails the action with the new <code>TELEOP_INPUT_TIMEOUT</code> error code (733) when no teleop command has been received within the new <code>teleop_command_timeout</code> parameter (default <code>0.25</code> s).</p>
+<h3 id="include-specific-rclcpp-headers">Include Specific rclcpp Headers<a class="headerlink" href="#include-specific-rclcpp-headers" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6558">PR #6558</a> replaces the broad <code>rclcpp/rclcpp.hpp</code> includes throughout Nav2 with the specific headers each file needs to speed up compilation and reduce build memory usage. We now recommend including specific <code>rclcpp</code> headers instead of globally including <code>rclcpp/rclcpp.hpp</code>.</p>
+<p>See the <a href="https://github.com/ros2/ros2_documentation/blob/rolling/source/_internal/Rclcpp-Convenience-Header-Note.rst">ROS 2 documentation note on the <code>rclcpp</code> convenience header</a> for more details.</p>
 
 
 
