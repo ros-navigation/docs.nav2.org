@@ -28,7 +28,7 @@ Move your own nested launch files to the same pattern: remove the lifecycle mana
 
 If you would rather run a launch file on its own, start a lifecycle manager beside it.
 
-## Changes in message types
+## Changes in FollowObject Action
 
 FollowObject.action error codes are changed as below. If you are using this action you will have to adapt to handle new error codes:
 
