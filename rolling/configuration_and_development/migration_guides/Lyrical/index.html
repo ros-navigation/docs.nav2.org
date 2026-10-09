@@ -19495,6 +19495,17 @@ SUVORK5CYII=
 </li>
       
         <li class="md-nav__item">
+  <a href="#changes-in-followobject-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes in FollowObject Action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#new-features-and-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20563,6 +20574,17 @@ SUVORK5CYII=
 </li>
       
         <li class="md-nav__item">
+  <a href="#changes-in-followobject-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes in FollowObject Action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#new-features-and-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20764,6 +20786,38 @@ in overrides/partials/header.html -->
 <p>Launching a nested file by itself, such as <code>ros2 launch nav2_bringup navigation_launch.py</code>, now leaves the servers unconfigured. Launch <code>bringup_launch.py</code> instead and use its arguments to turn off what you do not need, for example <code>use_localization:=False</code> when SLAM or another source provides the map and the <code>map</code> to <code>odom</code> transform. Anything that used the old manager names, such as <code>lifecycle_manager_navigation/manage_nodes</code>, should use <code>lifecycle_manager_nav2</code> instead; the Nav2 RViz panel is already updated.</p>
 <p>Move your own nested launch files to the same pattern: remove the lifecycle manager from each one, add a <code>get_lifecycle_nodes(context)</code> function that returns its lifecycle node names, and build the <code>node_names</code> of your single manager from those functions plus your own nodes. The <a class="autorefs autorefs-internal" title="Adding a New Nav2 Task Server" href="../../../tutorials/general_tutorials/adding_a_nav2_task_server/#adding-a-new-nav2-task-server">task server tutorial</a> shows this.</p>
 <p>If you would rather run a launch file on its own, start a lifecycle manager beside it.</p>
+<h2 id="changes-in-followobject-action">Changes in FollowObject Action<a class="headerlink" href="#changes-in-followobject-action" title="Permanent link"></a></h2>
+<p>FollowObject.action error codes are changed as below. If you are using this action you will have to adapt to handle new error codes:</p>
+<table>
+<thead>
+<tr>
+<th>Old</th>
+<th>New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TF_ERROR = 901</code></td>
+<td><code>TF_ERROR = 801</code></td>
+</tr>
+<tr>
+<td><code>FAILED_TO_DETECT_OBJECT = 902</code></td>
+<td><code>FAILED_TO_DETECT_OBJECT = 802</code></td>
+</tr>
+<tr>
+<td><code>FAILED_TO_CONTROL = 903</code></td>
+<td><code>FAILED_TO_CONTROL = 803</code></td>
+</tr>
+<tr>
+<td><code>TIMEOUT = 904</code></td>
+<td><code>TIMEOUT = 804</code></td>
+</tr>
+<tr>
+<td><code>UNKNOWN = 999</code></td>
+<td><code>UNKNOWN = 899</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="new-features-and-improvements">New Features and Improvements<a class="headerlink" href="#new-features-and-improvements" title="Permanent link"></a></h2>
 <h3 id="static-layer-overlays-without-resizing-the-master">Static Layer Overlays Without Resizing the Master<a class="headerlink" href="#static-layer-overlays-without-resizing-the-master" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6488">PR #6488</a> adds the Static Layer parameter <code>resize_master</code>, which defaults to <code>true</code>. Existing configurations require no changes: a Static Layer still resizes a non-rolling master costmap to match its incoming map.</p>
