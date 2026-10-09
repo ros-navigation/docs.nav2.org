@@ -28,6 +28,18 @@ Move your own nested launch files to the same pattern: remove the lifecycle mana
 
 If you would rather run a launch file on its own, start a lifecycle manager beside it.
 
+## Changes in message types
+
+FollowObject.action error codes are changed as below. If you are using this action you will have to adapt to handle new error codes:
+
+| Old                             | New                             |
+| ------------------------------- | ------------------------------- |
+| `TF_ERROR = 901`                | `TF_ERROR = 801`                |
+| `FAILED_TO_DETECT_OBJECT = 902` | `FAILED_TO_DETECT_OBJECT = 802` |
+| `FAILED_TO_CONTROL = 903`       | `FAILED_TO_CONTROL = 803`       |
+| `TIMEOUT = 904`                 | `TIMEOUT = 804`                 |
+| `UNKNOWN = 999`                 | `UNKNOWN = 899`                 |
+
 ## New Features and Improvements
 
 ### Static Layer Overlays Without Resizing the Master
