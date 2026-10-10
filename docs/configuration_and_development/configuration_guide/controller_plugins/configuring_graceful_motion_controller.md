@@ -18,7 +18,7 @@ Type: `double` Default: `1.0`
 
 Type: `double` Default: `0.25`
 
-:   The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning.
+:   The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning. It is not applied when approaching the goal.
 
 ### **`k_phi`**
 
@@ -42,7 +42,7 @@ Type: `double` Default: `0.4`
 
 Type: `double` Default: `2.0`
 
-:   Constant factor applied to the path curvature. This value must be greater or equal to `1`. Determines the sharpness of the curve: higher lambda implies sharper curves.
+:   Constant factor applied to the path curvature. This value must be greater than `1`. Determines the sharpness of the curve: higher lambda implies sharper curves.
 
 ### **`v_linear_min`**
 
@@ -185,7 +185,7 @@ controller_server:
       min_lookahead: 0.25
       max_lookahead: 1.0
       initial_rotation: true
-      initial_rotation_threshold: 0.75
+      initial_rotation_tolerance: 0.75
       prefer_final_rotation: true
       allow_backward: false
       k_phi: 2.0
