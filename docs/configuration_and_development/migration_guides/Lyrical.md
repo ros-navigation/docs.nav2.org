@@ -28,6 +28,14 @@ Move your own nested launch files to the same pattern: remove the lifecycle mana
 
 If you would rather run a launch file on its own, start a lifecycle manager beside it.
 
+## Default BT Updates
+
+### Backup recovery now waits for the robot to move
+
+[PR #6635](https://github.com/ros-navigation/navigation2/pull/6635) replaces `BackUp` with the `BackupWithReset` subtree in six bundled navigation behavior trees with recovery actions. After a successful backup, the subtree skips another backup near the same pose. It allows backup again once the robot has moved at least `reset_distance` from the last backup pose. The backup history resets when the behavior tree is reloaded.
+
+The updated trees also set `wrap_around="true"` on their `RecoveryActions` `RoundRobin` node so the recovery sequence can cycle (and for example spin can be executed multiple times). If you maintain a copy of one of these trees and want the same behavior, replace its recovery `BackUp` node with the `BackupWithReset` subtree and set `wrap_around="true"` on the `RoundRobin`. Adjust the frame names and reset distance for your robot.
+
 ## Changes in FollowObject Action
 
 FollowObject.action error codes are changed as below. If you are using this action you will have to adapt to handle new error codes:
