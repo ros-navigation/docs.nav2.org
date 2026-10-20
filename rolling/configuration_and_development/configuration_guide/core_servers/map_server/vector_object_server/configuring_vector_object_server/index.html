@@ -21184,7 +21184,7 @@ in overrides/partials/header.html -->
 Rather than rastering vector objects each iteration or at run-time, it is done one-time on startup, and served to costmap layers or other consumers improving performance.
 A typical setup model for this is a Nav2 stack with Costmap Filters enabled, running in conjunction with a Vector Object server, which produces vectorised OccupancyGrid maps as input masks for the Costmap Filters:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vo_design.png" data-desc-position="bottom"><img alt="" src="../assets/vo_design.png" width="1000"></a>
+  
 </figure>
 <p>These vector shapes could be added by using ROS input parameters as well as being handled by the following service calls: <code>AddShapes.srv</code> which adds new shapes or modifies existing ones, <code>RemoveShapes.srv</code> which removes any or all shapes from the map <code>GetShapes.srv</code> which returns all shapes on the map.</p>
 <p>Each vector shape is being handled by its <code>unique_identifier_msgs/UUID</code>. Developers can choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a <code>GetShapes.srv</code> request and getting the response with all shapes' UUIDs and their properties.</p>
@@ -21200,13 +21200,13 @@ A typical setup model for this is a Nav2 stack with Costmap Filters enabled, run
 <li>Polygons can be filled with any value or drawn as a polygonal chain, if it is not supposed to be a closed shape:</li>
 </ul>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/polygon_closed.png" data-desc-position="bottom"><img alt="" height="200" src="../assets/polygon_closed.png" width="400"></a>
+  
 </figure>
 <ul>
 <li>Circles can be filled with any value or drawn without any fill (only the circle boundary is placed on the map):</li>
 </ul>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/circle_fill.png" data-desc-position="bottom"><img alt="" height="200px" src="../assets/circle_fill.png" width="400px"></a>
+  
 </figure>
 <ul>
 <li>Vector shapes could be set once during the Vector Object server startup as ROS-parameters, and added/modified/removed over the time using the following service calls:<ul>
@@ -21409,7 +21409,7 @@ The following values are supported:</p>
 </span></code></pre></div>
 <p>For this, Vector Object server will produce the following map:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vo_config_map.png" data-desc-position="bottom"><img alt="" height="638px" src="../assets/vo_config_map.png" width="636px"></a>
+  
 </figure>
 
 

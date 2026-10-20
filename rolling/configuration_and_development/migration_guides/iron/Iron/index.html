@@ -21813,7 +21813,7 @@ if the transformation from the robot base frame to the global frame does not bec
 <p>In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes.</p>
 <p>Here we can see the working demo of the plugin:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/selector_plugin_demo.gif" data-desc-position="bottom"><img alt="" src="../assets/selector_plugin_demo.gif"></a>
+  
 </figure>
 <p>In the GIF, it can be seen that there are two controller_ids namely, <em>FollowPath</em> and <em>HighSpeedFollowPath</em>. By default, the one defined in the Behavior tree is utilized.</p>
 <p>In this case, the <em>FollowPath</em> is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.</p>
@@ -21825,7 +21825,7 @@ if the transformation from the robot base frame to the global frame does not bec
 <p><a href="https://github.com/ros-navigation/navigation2/pull/4140">In PR #4140</a> a new optional <code>interpolate_curvature_after_goal</code> parameter (default <code>false</code>) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same.</p>
 <p>Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when <code>interpolate_curvature_after_goal</code> is <code>true</code>. It can be used only when <code>use_fixed_curvature_lookahead: true</code>.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/rpp_goal_lookahead_interpolate.gif" data-desc-position="bottom"><img alt="" src="../assets/rpp_goal_lookahead_interpolate.gif" width="45%"></a>
+  
 </figure>
 <p>Additionally, the conflict between <code>use_rotate_to_heading</code> and <code>allow_reversing</code> was fixed so <code>use_rotate_to_heading</code> can now be used backward.</p>
 <h2 id="cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner<a class="headerlink" href="#cancel-checker-interface-for-globalplanner" title="Permanent link"></a></h2>
@@ -21870,7 +21870,7 @@ Smac and Theta* planners have a new parameter <code>terminal_checking_interval</
 <p>A service client was also added to the clear costmap plugin in the <em>nav2_behavior_tree</em> package.</p>
 <p>This is particularly useful in scenarios where the planner fails due to outdated costmap data at the goal location which is outside of your obstacle/raytrace range—often caused by dynamic obstacles that have since moved. Instead of clearing the entire costmap as a recovery behavior, this feature would enable targeted clearing, preserving useful map data.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ClearCostmapGoalPose.gif" data-desc-position="bottom"><img alt="" src="../assets/ClearCostmapGoalPose.gif" width="100%"></a>
+  
 <br>
 <figcaption>RViz visualization shows an example of clearing outdated cost at the desired goal location, this would have previously caused planners like SMAC planner to fail.</figcaption>
 </figure>

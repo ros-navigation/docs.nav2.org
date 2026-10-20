@@ -20891,14 +20891,14 @@ in overrides/partials/header.html -->
 <p>The <code>slam_toolbox</code> should now be publishing to the <code>/map</code> topic and providing the <code>map</code> =&gt; <code>odom</code> transform.</p>
 <p>We can verify in RViz that the <code>/map</code> topic is being published. In the RViz window, click the add button at the bottom-left part then go to <code>By topic</code> tab then select the <code>Map</code> under the <code>/map</code> topic. You should be able to visualize the message received in the <code>/map</code> as shown in the image below.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/map.png" data-desc-position="bottom"><img alt="" src="../assets/map.png"></a>
+  
 </figure>
 <p>We can also check that the transforms are correct by executing the following lines in a new terminal:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1">ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
 </span></code></pre></div>
 <p>The line above will create a <code>frames.pdf</code> file that shows the current transform tree. Your transform tree should be similar to the one shown below:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/view_frames.png" data-desc-position="bottom"><img alt="" src="../assets/view_frames.png"></a>
+  
 </figure>
 <h4 id="launching-nav2">Launching Nav2<a class="headerlink" href="#launching-nav2" title="Permanent link"></a></h4>
 <p>First, Make sure you have installed the Nav2 packages by executing the following:</p>
@@ -20923,22 +20923,22 @@ in overrides/partials/header.html -->
 <p>The <code>global_costmap</code>, <code>local_costmap</code> and the voxel representation of the detected obstacles can be visualized in RViz.</p>
 <p>To visualize the <code>global_costmap</code> in RViz, click the add button at the bottom-left part of the RViz window. Go to <code>By topic</code> tab then select the <code>Map</code> under the <code>/global_costmap/costmap</code> topic. The <code>global_costmap</code> should show in the RViz window, as shown below. The <code>global_costmap</code> shows areas which should be avoided (black) by our robot when it navigates our simulated world in Gazebo.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/costmap_global_rviz.png" data-desc-position="bottom"><img alt="" src="../assets/costmap_global_rviz.png"></a>
+  
 </figure>
 <p>To visualize the <code>local_costmap</code> in RViz, select the <code>Map</code> under the <code>/local_costmap/costmap</code> topic. Set the <code>color scheme</code> in RViz to <code>costmap</code> to make it appear similar to the image below.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/local_costmap_rviz.png" data-desc-position="bottom"><img alt="" src="../assets/local_costmap_rviz.png"></a>
+  
 </figure>
 <p>To visualize the voxel representation of the detected object, open a new terminal and execute the following lines:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1">ros2<span class="w"> </span>run<span class="w"> </span>nav2_costmap_2d<span class="w"> </span>nav2_costmap_2d_markers<span class="w"> </span>voxel_grid:<span class="o">=</span>/local_costmap/voxel_grid<span class="w"> </span>visualization_marker:<span class="o">=</span>/my_marker
 </span></code></pre></div>
 <p>The line above sets the topic where the the markers will be published to <code>/my_marker</code>. To see the markers in RViz, select <code>Marker</code> under the <code>/my_marker</code> topic, as shown below.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/add_my_marker.png" data-desc-position="bottom"><img alt="" src="../assets/add_my_marker.png" width="100%"></a>
+  
 </figure>
 <p>Then set the <code>fixed frame</code> in RViz to <code>odom</code> and you should now see the voxels in RViz, which represent the cube and the sphere that we have in the Gazebo world:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/voxel_layer.png" data-desc-position="bottom"><img alt="" src="../assets/voxel_layer.png"></a>
+  
 </figure>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>In this section of our robot setup guide, we have discussed the importance of sensor information for different tasks associated with Nav2. More specifically, tasks such as mapping (SLAM), localization (AMCL), and perception (costmap) tasks.

@@ -20728,7 +20728,7 @@ in overrides/partials/header.html -->
 <!-- Page content -->
 <h1 id="writing-a-new-costmap-2d-plugin">Writing a New Costmap2D Plugin<a class="headerlink" href="#writing-a-new-costmap-2d-plugin" title="Permanent link"></a></h1>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gradient_layer_preview.gif" data-desc-position="bottom"><img alt="Animated gif with gradient demo" src="../assets/gradient_layer_preview.gif" title="Animated gif with gradient demo" width="700px"></a>
+  
 </figure>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"></a></h2>
 <p>This tutorial shows how to create your own simple <a href="http://wiki.ros.org/pluginlib">plugin</a> for Costmap2D.</p>
@@ -20830,7 +20830,7 @@ Please refer to it when making your own layer plugin for Costmap2D.</p>
 </span></code></pre></div>
 <p>where the <code>GRADIENT_SIZE</code> is the size of each gradient period in map cells, <code>GRADIENT_FACTOR</code> - decrement of costmap's value per each step:</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gradient_explanation.png" data-desc-position="bottom"><img alt="" src="../assets/gradient_explanation.png"></a>
+  
 </figure><p></p>
 <p>These parameters are defined in plugin's header file.</p>
 </li>
@@ -20936,7 +20936,7 @@ Please refer to it when making your own layer plugin for Costmap2D.</p>
 </span></code></pre></div>
 <p>Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on map as it was described in <a class="autorefs autorefs-internal" href="../../../../getting_started/quickstart/quickstart/#quickstart">Quickstart</a>. Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by <code>GradientLayer::updateCosts()</code> costmap within its bounds and global path curved by gradient:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gradient_layer_run.png" data-desc-position="bottom"><img alt="Image of gradient costmap used" src="../assets/gradient_layer_run.png" title="Image of gradient costmap used" width="700px"></a>
+  
 </figure>
 
 

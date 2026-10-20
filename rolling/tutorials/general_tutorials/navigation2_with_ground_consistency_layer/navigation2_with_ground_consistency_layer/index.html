@@ -20989,7 +20989,7 @@ in overrides/partials/header.html -->
 to classify terrain into traversable ground and obstacles for intelligent outdoor
 navigation in non-planar environments, creating smarter and safer costmaps.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ground_consistency_layer.gif" data-desc-position="bottom"><img alt="Ground Consistency Layer Demo" src="../assets/ground_consistency_layer.gif" title="Ground Consistency Layer Demo"></a>
+  
 <br>
 <figcaption>Ground Consistency Layer in action: Green points are ground, magenta points are obstacles overlaid on the costmap</figcaption>
 </figure>
@@ -21045,12 +21045,12 @@ more accurate costmaps that allow the robot to navigate safely and efficiently i
 <li><strong>Underground/tunnel navigation</strong>: Enables navigation in challenging environments where traditional costmaps fail</li>
 </ul>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/raw_points.png" data-desc-position="bottom"><img alt="Raw Input Point Cloud" src="../assets/raw_points.png" title="Raw Input Point Cloud"></a>
+  
 <br>
 <figcaption>Raw Input Point Cloud</figcaption>
 </figure>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/segmented_points.png" data-desc-position="bottom"><img alt="Segmented Ground and Obstacle Points" src="../assets/segmented_points.png" title="Segmented Ground and Obstacle Points"></a>
+<p>
   </p>
 <figcaption>
 <p>Segmented Ground (Green) and Obstacle Points (Magenta) based on <a href="https://github.com/dfki-ric/ground_segmentation_ros2">GSeg3D</a></p>
@@ -21194,21 +21194,21 @@ Setting a reasonable <code>min_clearance</code> can prevent these misclassificat
 <li>
 <p>Demonstration of ground consistency layer with <a href="https://robotik.dfki-bremen.de/en/research/robot-systems/arter">Arter Excavator</a> at the <a href="https://robotik.dfki-bremen.de/en/startpage">Robotics Innovation Center</a> (DFKI) in Bremen, Germany:</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/arter.gif" data-desc-position="bottom"><img alt="Ground Consistency Layer Use Cases" src="../assets/arter.gif" title="Ground Consistency Layer Use Cases" width="700px"></a>
+  
   <figcaption></figcaption>
 </figure><p></p>
 </li>
 <li>
 <p>Demonstration in <a href="https://github.com/robot-pesg/BotanicGarden">BotanicGarden</a> dataset:</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/botanic_garden.gif" data-desc-position="bottom"><img alt="Ground Consistency Layer Use Cases" src="../assets/botanic_garden.gif" title="Ground Consistency Layer Use Cases" width="700px"></a>
+  
   <figcaption></figcaption>
 </figure><p></p>
 </li>
 <li>
 <p>Demonstration in <a href="https://github.com/UCR-Robotics/Citrus-Farm-Dataset">CitrusFarm</a> dataset:</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/citrus_farm.gif" data-desc-position="bottom"><img alt="Ground Consistency Layer Use Cases" src="../assets/citrus_farm.gif" title="Ground Consistency Layer Use Cases" width="700px"></a>
+  
   <figcaption></figcaption>
 </figure><p></p>
 </li>
@@ -21223,7 +21223,7 @@ Setting a reasonable <code>min_clearance</code> can prevent these misclassificat
 <p>Note: The <code>grep -v "SampleConsensus"</code> is used to filter out expected warnings from the ground segmentation algorithm that do not affect the demo. You can omit it if you want to see all output.</p>
 <p>You should see Gazebo launch with Husky in the Baylands world:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/husky_in_baylands.png" data-desc-position="bottom"><img alt="Gazebo Baylands world" src="../assets/husky_in_baylands.png" title="Gazebo Baylands world" width="700px"></a>
+  
 <br>
 <figcaption></figcaption>
 </figure>
@@ -21238,7 +21238,7 @@ Setting a reasonable <code>min_clearance</code> can prevent these misclassificat
 <p><strong>Important</strong>: Set RViz2 target frame rate to <strong>~8 Hz</strong> to match the LiDAR sensor publish rate from Gazebo. If set higher, point clouds will display intermittently.</p>
 <p>You should now see the ground points and obstacle points from the segmentation algorithm overlaid on the costmap with the ground consistency layer applied:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/rviz_window.png" data-desc-position="bottom"><img alt="RViz2 window showing costmap layers" src="../assets/rviz_window.png" title="RViz2 window showing costmap layers" width="700px"></a>
+  
 <br>
 <figcaption></figcaption>
 </figure>
@@ -21246,7 +21246,7 @@ Setting a reasonable <code>min_clearance</code> can prevent these misclassificat
 <p>Use the <code>Nav2 Goal</code> tool in RViz2 to set navigation goals for the robot. Try setting goals in different areas of the map, such as on slopes, under the tree canopies, and through the uneven terrain. Observe how the ground consistency
 layer allows the robot to navigate through these challenging terrains by correctly classifying obstacles and traversable ground:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/robot_in_action.png" data-desc-position="bottom"><img alt="Robot navigating through terrain with ground consistency layer" src="../assets/robot_in_action.png" title="Robot navigating through terrain with ground consistency layer" width="700px"></a>
+  
 <br>
 <figcaption></figcaption>
 </figure>

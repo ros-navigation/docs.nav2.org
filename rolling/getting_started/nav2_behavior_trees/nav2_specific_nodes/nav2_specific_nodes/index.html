@@ -20803,7 +20803,7 @@ This node is similar to the <code>Sequence</code> node, with the additional prop
 If at any point a child returns <code>FAILURE</code>, all children will be halted and the parent node will also return <code>FAILURE</code>. Upon <code>SUCCESS</code> of the <strong>last node</strong> in the sequence, this node will halt and return <code>SUCCESS</code>.</p>
 <p>To explain this further, here is an example BT that uses PipelineSequence.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_pipelineSequence.png" data-desc-position="bottom"><img alt="" src="../assets/control_pipelineSequence.png"></a>
+  
 </figure>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
 </span><span id="__span-0-2"><span class="w">    </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
@@ -20820,25 +20820,25 @@ If at any point a child returns <code>FAILURE</code>, all children will be halte
 <li>
 <p>When the parent PipelineSequence is first ticked, let's assume <code>Action_A</code> returns <code>RUNNING</code>. The parent node will now return <code>RUNNING</code> and no other nodes are ticked.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_pipelineSequence_RUNNING_IDLE_IDLE.png" data-desc-position="bottom"><img alt="" src="../assets/control_pipelineSequence_RUNNING_IDLE_IDLE.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>Now, let's assume <code>Action_A</code> returns <code>SUCCESS</code>, <code>Action_B</code> will now get ticked and will return <code>RUNNING</code>. <code>Action_C</code> has not yet been ticked so will return <code>IDLE</code>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png" data-desc-position="bottom"><img alt="" src="../assets/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p><code>Action_A</code> gets ticked again and returns <code>RUNNING</code>, and <code>Action_B</code> gets re-ticked and returns <code>SUCCESS</code> and therefore the BT goes on to tick <code>Action_C</code> for the first time. Let's assume <code>Action_C</code> returns <code>RUNNING</code>. The retick-ing of <code>Action_A</code> is what makes PipelineSequence useful.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png" data-desc-position="bottom"><img alt="" src="../assets/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>All actions in the sequence will be re-ticked. Let's assume <code>Action_A</code> still returns <code>RUNNING</code>, where as <code>Action_B</code> returns <code>SUCCESS</code> again, and <code>Action_C</code> now returns <code>SUCCESS</code> on this tick. The sequence is now complete, and therefore <code>Action_A</code> is halted, even though it was still <code>RUNNING</code>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png" data-desc-position="bottom"><img alt="" src="../assets/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png"></a>
+  
 </figure><p></p>
 </li>
 </ol>
@@ -20855,7 +20855,7 @@ If the first child returns <code>FAILURE</code>, the second child will be ticked
 <p>This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the "main" behavior,
 and the second action will be something to be done in case of <code>FAILURE</code> of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_recovery_node.png" data-desc-position="bottom"><img alt="" src="../assets/control_recovery_node.png"></a>
+  
 </figure>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
 </span><span id="__span-1-2"><span class="w">    </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
@@ -20874,7 +20874,7 @@ Now that we have cleared the costmap, let's say the robot is correctly able to c
 If all children return <code>FAILURE</code> so will the parent RoundRobin.</p>
 <p>Here is an example BT we will use to walk through the concept.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin.png"></a>
+  
 </figure>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
 </span><span id="__span-2-2"><span class="w">    </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
@@ -20890,14 +20890,14 @@ If all children return <code>FAILURE</code> so will the parent RoundRobin.</p>
 <li>
 <p>All the nodes start at <code>IDLE</code></p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin_IDLE_IDLE_IDLE.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin_IDLE_IDLE_IDLE.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>Upon tick of the parent node, the first child (<code>Action_A</code>) is ticked. Let's assume on tick the child returns <code>RUNNING</code>.
 In this case, no other children are ticked and the parent node returns <code>RUNNING</code> as well.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin_RUNNING_IDLE_IDLE.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin_RUNNING_IDLE_IDLE.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
@@ -20905,26 +20905,26 @@ In this case, no other children are ticked and the parent node returns <code>RUN
 This means that <code>Action_B</code> will get ticked next, and <code>Action_C</code> remains unticked.
 Let's assume <code>Action_B</code> returns <code>RUNNING</code> this time. That means the parent RoundRobin node will also return <code>RUNNING</code>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin_FAILURE_RUNNING_IDLE.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin_FAILURE_RUNNING_IDLE.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>Upon this next tick,  let's assume that <code>Action_B</code> returns <code>SUCCESS</code>. The parent RoundRobin will now halt all children and return <code>SUCCESS</code>.
 The parent node retains this state information, and will tick <code>Action_C</code> upon the next tick rather than start from <code>Action_A</code> like Step 2 did.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin_FAILURE_SUCCESS_IDLE.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin_FAILURE_SUCCESS_IDLE.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>On this tick, let's assume <code>Action_C</code> returns <code>RUNNING</code>, and so does the parent RoundRobin. No other nodes are ticked.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin_FAILURE_SUCCESS_RUNNING.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin_FAILURE_SUCCESS_RUNNING.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>On this last tick, let's assume <code>Action_C</code> returns <code>FAILURE</code>. The parent will circle and tick <code>Action_A</code> again. <code>Action_A</code> returns <code>RUNNING</code> and so will the parent RoundRobin node. This pattern will continue indefinitely unless all children return <code>FAILURE</code>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_round_robin_RUNNING_IDLE_FAILURE.png" data-desc-position="bottom"><img alt="" src="../assets/control_round_robin_RUNNING_IDLE_FAILURE.png"></a>
+  
 </figure><p></p>
 </li>
 </ol>
@@ -20934,7 +20934,7 @@ The parent node retains this state information, and will tick <code>Action_C</co
 <p>Note that even if a node returns <code>SUCCESS</code> in a previous tick, on the next tick, the <code>NonblockingSequence</code> will still tick the successful node, possibly restarting it. This is to ensure that successful nodes do not latch a stale state while waiting for another long running node to be complete</p>
 <p>To explain this further, here is an example BT that uses NonblockingSequence.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_nonblockingSequence.png" data-desc-position="bottom"><img alt="" src="../assets/control_nonblockingSequence.png"></a>
+  
 </figure>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
 </span><span id="__span-3-2"><span class="w">    </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">"MainTree"</span><span class="nt">&gt;</span>
@@ -20951,25 +20951,25 @@ The parent node retains this state information, and will tick <code>Action_C</co
 <li>
 <p>When the parent NonblockingSequence is first ticked, let's assume <code>Action_A</code> returns <code>RUNNING</code>. Following this, <code>Action_B</code> will be ticked, and let's assume it also returns <code>RUNNING</code>. Finally, <code>Action_C</code> will be ticked, and let's assume it also returns <code>RUNNING</code>. With three <code>RUNNING</code> children, the NonblockingSequence will return <code>RUNNING</code></p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png" data-desc-position="bottom"><img alt="" src="../assets/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>On the next tick of the the parent NonblockingSequence, all actions in the sequence will be re-ticked. Let's assume <code>Action_A</code> returns <code>SUCCESS</code>, and <code>Action_B</code> and <code>Action_C</code> still return <code>RUNNING</code>. In this configuration, the NonblockingSequence still returns <code>RUNNING</code>, as there are two nodes in the children that are <code>RUNNING</code></p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png" data-desc-position="bottom"><img alt="" src="../assets/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>Now, let's assume on the next re-tick, <code>Action_A</code> and <code>Action_C</code>  return <code>SUCCESS</code>, and <code>Action_B</code> returns <code>RUNNING</code>. In this configuration, the NonblockingSequence still returns <code>RUNNING</code>, as there is still one child node that is <code>RUNNING</code>. Note that <code>ActionA</code> was re-ticked and again returned <code>SUCCESS</code> in this case, it did not skip due to previously returning <code>SUCCESS</code>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png" data-desc-position="bottom"><img alt="" src="../assets/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png"></a>
+  
 </figure><p></p>
 </li>
 <li>
 <p>Finally, Let's assume <code>Action_A</code>, <code>Action_B</code>, and <code>Action_C</code>  all return <code>SUCCESS</code>. The sequence is now complete, and therefore <code>Action_A</code>, <code>Action_B</code>, and <code>Action_C</code> are all halted and NonblockingSequence returns <code>SUCCESS</code>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png" data-desc-position="bottom"><img alt="" src="../assets/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png"></a>
+  
 </figure><p></p>
 </li>
 </ol>

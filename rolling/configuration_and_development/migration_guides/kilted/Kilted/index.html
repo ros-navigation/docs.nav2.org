@@ -22330,7 +22330,7 @@ This is not longer required to be set.</p>
 <h2 id="added-corner-smoothing-functionality-to-route_server">Added Corner Smoothing functionality to route_server<a class="headerlink" href="#added-corner-smoothing-functionality-to-route_server" title="Permanent link"></a></h2>
 <p>In <a href="https://github.com/ros-navigation/navigation2/pull/5226">PR #5226</a> the ability to stitch two successive edges in <code>route_server</code> with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/smoothing.png" data-desc-position="bottom"><img alt="" src="../assets/smoothing.png"></a>
+  
 </figure>
 <p>New parameters include <code>smooth_corners</code> which enable or disable corner smoothing and <code>smoothing_radius</code> which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that's longer than the edge lengths, then it will not add a corner arc.</p>
 <h2 id="added-nonblockingsequence-control-node">Added NonblockingSequence Control Node<a class="headerlink" href="#added-nonblockingsequence-control-node" title="Permanent link"></a></h2>
@@ -22592,7 +22592,7 @@ You can enable this by building with <code>--cmake-args -DUSE_ISOLATED_TESTS=ON<
 </li>
 </ol>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/nav2_new_rviz_panel.gif" data-desc-position="bottom"><img alt="Multiple-Goal Navigation in Nav2 RViz Panel" src="../assets/nav2_new_rviz_panel.gif" title="Multiple-Goal Navigation in Nav2 RViz Panel" width="800"></a>
+  
 </figure>
 <p>GIF above shows how multiple-goal navigation is configured mixing visual goal setting and file loading for NavigateThroughPoses and Waypoint Following actions.</p>
 <h2 id="add-dynamic-window-pure-pursuit-option-to-regulated-pure-pursuit-controller">Add Dynamic Window Pure Pursuit Option to Regulated Pure Pursuit Controller<a class="headerlink" href="#add-dynamic-window-pure-pursuit-option-to-regulated-pure-pursuit-controller" title="Permanent link"></a></h2>
@@ -22601,7 +22601,7 @@ You can enable this by building with <code>--cmake-args -DUSE_ISOLATED_TESTS=ON<
 <li>Fumiya Ohnishi and Masaki Takahashi, <a href="https://arxiv.org/abs/2601.15006">DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints</a>. arXiv:2601.15006., 2026.</li>
 </ul>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/dwpp_comparison.gif" data-desc-position="bottom"><img alt="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" src="../assets/dwpp_comparison.gif" title="Comparison of Dynamic Window Pure Pursuit with Other Pure Pursuit Variants" width="800"></a>
+  
 </figure>
 <p>The following parameters are updated for this feature.</p>
 <p><strong><code>max_linear_vel</code> (renamed):</strong></p>
@@ -22788,13 +22788,13 @@ When a lattice primitives file specifies <code>motion_model: "omni"</code> in it
 <p>No parameter changes are required — the OMNI motion model is auto-detected from the lattice file metadata.</p>
 <p>Before:</p>
 <div class="flex-images">
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/smac_lattice_omni_before_1.png" data-desc-position="bottom"><img alt="" src="../assets/smac_lattice_omni_before_1.png"></a>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/smac_lattice_omni_before_2.png" data-desc-position="bottom"><img alt="" src="../assets/smac_lattice_omni_before_2.png"></a>
+    
+    
 </div>
 <p>After:</p>
 <div class="flex-images">
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/smac_lattice_omni_after_1.png" data-desc-position="bottom"><img alt="" src="../assets/smac_lattice_omni_after_1.png"></a>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/smac_lattice_omni_after_2.png" data-desc-position="bottom"><img alt="" src="../assets/smac_lattice_omni_after_2.png"></a>
+    
+    
 </div>
 <h2 id="new-bt_log_idle_transitions-parameter-in-bt_navigator">New bt_log_idle_transitions parameter in bt_navigator<a class="headerlink" href="#new-bt_log_idle_transitions-parameter-in-bt_navigator" title="Permanent link"></a></h2>
 <p>In <a href="https://github.com/ros-navigation/navigation2/pull/5963">PR 5963</a>, A new <code>bt_log_idle_transitions</code> parameter has been added to the BT navigator. When set to <code>true</code> (default), idle (no state change) transitions in the behavior tree are published to the <code>/behavior_tree_log</code> topic and console output. When <code>false</code>, only state changes are logged, reducing topic and console noise. This is useful for debugging behavior tree execution without being overwhelmed by repetitive idle tick messages.</p>
@@ -22914,7 +22914,7 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 </ul>
 <p>When non-zero, the optimizer fills the first <code>round(delay / model_dt)</code> rollout steps per axis from a ring buffer of recently published commands (the ones still in flight) and shifts the planned control sequence forward by the same number of steps. The first new command lands at the rollout position, where it will actually execute.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/mppi_delay_compensation_serpentines.png" data-desc-position="bottom"><img alt="Open-loop trajectory with and without per-axis delay compensation." src="../assets/mppi_delay_compensation_serpentines.png" title="Open-loop trajectory with and without per-axis delay compensation." width="800px"></a>
+  
 </figure>
 <p>The plot shows the path of a vehicle with 600 ms steering delay. Without delay compensation (left), the controller oscillates around the planned path. With active delay compensation <code>model_delay_wz=0.6</code> (right), tracking is visibly better.</p>
 <h2 id="speedfilter-path-lookahead">SpeedFilter path lookahead<a class="headerlink" href="#speedfilter-path-lookahead" title="Permanent link"></a></h2>
@@ -22932,7 +22932,7 @@ This is useful for selectively clearing specific layers (e.g. completely clearin
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6118">PR #6118</a> adds a new asymmetric inflation field.</p>
 <p>The asymmetric inflation field allows the user to create an asymmetry that shifts the Voronoi border depending on the global path. This is useful for situations where the robot should prefer to imitate a keep-right or keep-left behavior, keeping enough space for another actor to pass by the robot without requiring an evasive maneuver.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/asymmetric_layer_active.png" data-desc-position="bottom"><img alt="Costmap with asymmetric inflation layer" src="../assets/asymmetric_layer_active.png" title="Costmap with asymmetric inflation layer"></a>
+  
 </figure>
 <h2 id="custom-inscribed-radius-for-inflation-layer">Custom Inscribed Radius for Inflation Layer<a class="headerlink" href="#custom-inscribed-radius-for-inflation-layer" title="Permanent link"></a></h2>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6223">PR #6223</a> adds a new <code>custom_inscribed_radius</code> parameter to the Inflation Layer, allowing users to override the default footprint-based inscribed radius.
@@ -22940,14 +22940,14 @@ When set to a negative value (default <code>-1.0</code>), the standard inscribed
 <p>The default inscribed radius computed from the robot footprint, would give the same cost value of <code>INSCRIBED_INFLATED_OBSTACLE</code> for all the cells within the inscribed radius region.
 Consequently, in situations such as the two examples shown below, the <code>footprintCost</code> function would return the same value since it picks up the highest cost along the footprint.</p>
 <div class="flex-images">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/default_inscribed_radius_large_overlap.png" data-desc-position="bottom"><img alt="" src="../assets/default_inscribed_radius_large_overlap.png"></a>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/default_inscribed_radius_low_overlap.png" data-desc-position="bottom"><img alt="" src="../assets/default_inscribed_radius_low_overlap.png"></a>
+  
+  
 </div>
 <p>This however may not be ideal for situations where one wants to have a more granular cost distribution in order to better reflect the actual risk of collision.
 Now with the new <code>custom_inscribed_radius</code> parameter, users can set a custom inscribed radius for the robot which overwrites the default one.
 For example, setting it to <code>0.0</code> would result in skipping the inscribed radius region altogether and give a decay cost distribution right after the <code>LETHAL</code> region.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/custom_inscribed_radius_zero.png" data-desc-position="bottom"><img alt="Costmap with custom inscribed radius of 0.0m" src="../assets/custom_inscribed_radius_zero.png" title="Costmap with custom inscribed radius of 0.0m" width="800"></a>
+  
 </figure>
 <p><strong>Warning:</strong> This is however a potential safety issue!
 Changing the inscribed radius can have serious implications on the robot's safety.
@@ -23010,7 +23010,7 @@ This makes invalid requests fail earlier, avoids unnecessary execution spin-up, 
 <h2 id="new-zoneparameterfilter-costmap-filter">New ZoneParameterFilter Costmap Filter<a class="headerlink" href="#new-zoneparameterfilter-costmap-filter" title="Permanent link"></a></h2>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6104">PR #6104</a> adds a new <code>ZoneParameterFilter</code> costmap filter that sets ROS parameters on other nodes based on the robot's position using a filter mask. Each mask value selects a declared state carrying parameter setpoints, for example a lower <code>FollowPath.max_vel_x</code> inside a snow zone. Leaving all zones, or entering a zone with mask value <code>0</code>, restores the declared <code>nominal_defaults</code>. Every state transition is published as <code>std_msgs/UInt8</code> on the <code>state_event_topic</code>. See the <a class="autorefs autorefs-internal" href="../../../configuration_guide/core_servers/costmap_2d/costmap_filters/zone_parameter_filter/zone_parameter_filter/#zone-parameter-filter-parameters">Zone Parameter Filter Parameters</a> configuration page for the parameters and an example, and the <a class="autorefs autorefs-internal" href="../../../../tutorials/general_tutorials/navigation2_with_zone_parameter_filter/#navigating-with-zone-parameter-overrides">Navigating with Zone Parameter Overrides</a> tutorial.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../configuration_guide/core_servers/costmap_2d/costmap_filters/zone_parameter_filter/assets/zone_parameter_filter_demo.gif" data-desc-position="bottom"><img alt="A single zone raising inflation_radius on the local and global costmap nodes, with a panel tracking both parameter values" src="../../../configuration_guide/core_servers/costmap_2d/costmap_filters/zone_parameter_filter/assets/zone_parameter_filter_demo.gif" title="A single zone raising inflation_radius on the local and global costmap nodes, with a panel tracking both parameter values" width="960px"></a>
+  
 </figure>
 <p>GIF above shows one filter instance raising <code>inflation_layer.inflation_radius</code> on both costmap nodes on entry to a single zone, and restoring the <code>nominal_defaults</code> on the way out. The scene is a simulation, with a synthetic map and a scripted <code>base_link</code> transform.</p>
 
