@@ -281,7 +281,7 @@ Type: `bool` Default: `false`
 
 Type: `vector<string>` Default: `N/A`
 
-:   List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
+:   List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Always have the last polygon in the list be a 'catch all' to cover edge-cases defensively. Causes an error, if not specified.
 
 ### **`<vel_poly>.<subpoly>.points`**
 
