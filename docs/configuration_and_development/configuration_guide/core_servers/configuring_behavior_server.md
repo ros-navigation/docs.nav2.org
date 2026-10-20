@@ -302,6 +302,6 @@ behavior_server:
     local_frame: odom
     global_frame: map
     robot_base_frame: base_link
-    transform_tolerance: 0.1
+    transform_staleness_threshold: 0.0
     enable_stamped_cmd_vel: true
 ```
