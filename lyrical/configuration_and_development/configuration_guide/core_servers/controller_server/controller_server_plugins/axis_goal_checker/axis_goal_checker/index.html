@@ -20751,7 +20751,7 @@ in overrides/partials/header.html -->
 <p>Unlike simple distance-based goal checkers, the AxisGoalChecker allows independent control of tolerances along the path direction (<code>along_path_tolerance</code>) and perpendicular to it (<code>cross_track_tolerance</code>). This is particularly useful for applications where precise alignment along a specific axis is more important than radial distance from the goal.</p>
 <p>The estimated direction is cached until the checker is reset for a new path. If no direction has been estimated, for example when a new path is shorter than <code>direction_estimation_distance</code>, the checker falls back to a radial distance check using <code>fallback_radial_goal_tolerance</code>.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/axis_goal_checker.png" data-desc-position="bottom"><img alt="AxisGoalChecker Illustration" src="../assets/axis_goal_checker.png" title="AxisGoalChecker Illustration"></a>
+  
 </figure>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
 <p><code>&lt;nav2_controller plugin&gt;</code>: nav2_controller plugin name defined in the <strong><code>goal_checker_plugin_id</code></strong> parameter in <a class="autorefs autorefs-internal" href="../../../#controller-server">Controller Server</a>.</p>

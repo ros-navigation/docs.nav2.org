@@ -20690,7 +20690,7 @@ in great detail.</p>
 <p>The following section will describe in detail the concept of the main and default BT currently used in Nav2, <code>navigate_to_pose_w_replanning_and_recovery.xml</code>.
 This behavior tree replans the global path periodically at 1 Hz and it also has recovery actions.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/overall_bt.png" data-desc-position="bottom"><img alt="" src="../assets/overall_bt.png"></a>
+  
 </figure>
 <p>BTs are primarily defined in XML. The tree shown above is represented in XML as follows.</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">&lt;root</span><span class="w"> </span><span class="na">BTCPP_format=</span><span class="s">"4"</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">"NavigateToPoseWReplanningAndRecovery"</span><span class="nt">&gt;</span>
@@ -20777,7 +20777,7 @@ This behavior tree replans the global path periodically at 1 Hz and it also has 
 These smaller subtrees are the children of the top-most <code>RecoveryNode</code>. From this point forward the <code>NavigateWithReplanning</code> subtree will be referred to as the <code>Navigation</code> subtree, and the <code>RecoveryFallback</code> subtree will be known as the <code>Recovery</code> subtree.
 This can be represented in the following way:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/overall_bt_w_breakdown.png" data-desc-position="bottom"><img alt="" src="../assets/overall_bt_w_breakdown.png"></a>
+  
 </figure>
 <p>The <code>Navigation</code> subtree mainly involves actual navigation behavior:</p>
 <ul>
@@ -20797,7 +20797,7 @@ The system will move on to the <code>Recovery</code> subtree to attempt to clear
 <h2 id="navigation-subtree">Navigation Subtree<a class="headerlink" href="#navigation-subtree" title="Permanent link"></a></h2>
 <p>Now that we have gone over the control flow between the <code>Navigation</code> subtree and the <code>Recovery</code> subtree, let's focus on the Navigation subtree.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/navigation_subtree.png" data-desc-position="bottom"><img alt="" src="../assets/navigation_subtree.png"></a>
+  
 </figure>
 <p>The XML of this subtree is as follows:</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">&lt;PipelineSequence</span><span class="w"> </span><span class="na">name=</span><span class="s">"NavigateWithReplanning"</span><span class="nt">&gt;</span>
@@ -20855,7 +20855,7 @@ The system will move on to the <code>Recovery</code> subtree to attempt to clear
 If either of these two actions fail, they will attempt to clear the failure contextually.
 The crux of the tree can be represented with only one parent and two children nodes like this:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/navigation_subtree_bare.png" data-desc-position="bottom"><img alt="" src="../assets/navigation_subtree_bare.png"></a>
+  
 </figure>
 <p>The parent <code>PipelineSequence</code> node allows the <code>ComputePathToPose</code> to be ticked, and once that succeeds, <code>FollowPath</code> to be ticked.
 While the <code>FollowPath</code> subtree is being ticked, the <code>ComputePathToPose</code> subtree will be ticked as well. This allows for the path to be recomputed as the robot moves around.</p>
@@ -20866,7 +20866,7 @@ While the <code>FollowPath</code> subtree is being ticked, the <code>ComputePath
 </ul>
 <p>The below is the <code>ComputePathToPose</code> subtree:</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/contextual_recoveries.png" data-desc-position="bottom"><img alt="" src="../assets/contextual_recoveries.png"></a>
+  
 </figure>
 <p>The parent <code>RecoveryNode</code> controls the flow between the action, and the contextual recovery subtree.
 The contextual recoveries for both <code>ComputePathToPose</code> and <code>FollowPath</code> involve checking if the recovery could help clear the error code and clearing the relevant costmap.</p>
@@ -20903,7 +20903,7 @@ To prevent this, the subtree uses a <code>ReactiveSequence</code> with the <code
 <p>The <code>Recovery</code> subtree is the second big "half" of the Nav2 default <code>navigate_to_pose_w_replanning_and_recovery.xml</code> tree.
 In short, this subtree is triggered when the <code>Navigation</code> subtree returns <code>FAILURE</code> and controls the recoveries at the system level (in the case the contextual recoveries in the <code>Navigation</code> subtree were not sufficient).</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/recovery_subtree.png" data-desc-position="bottom"><img alt="" src="../assets/recovery_subtree.png"></a>
+  
 </figure>
 <p>And the XML snippet:</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">&lt;Sequence&gt;</span>

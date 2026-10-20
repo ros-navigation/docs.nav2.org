@@ -21026,7 +21026,7 @@ The Strix Halo has as much CPU power as a high-end AMD laptop and as much GPU as
 <li><code>conda</code> / <code>miniforge</code> for the Python environment SAM3 runs in. Install instructions: <a href="https://github.com/conda-forge/miniforge">miniforge</a>.</li>
 </ul>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/opennav_amd_robot.png" data-desc-position="bottom"><img alt="AMD Strix Halo robot platform used for semantic navigation" src="../assets/opennav_amd_robot.png" title="AMD Strix Halo robot platform used for semantic navigation" width="90%"></a>
+  
 </figure>
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link"></a></h2>
 <p>The pipeline takes in synchronized and aligned RGB image and pointcloud from the camera and runs SAM3 interence to produce a label mask of classes.
@@ -21036,7 +21036,7 @@ There is little benefit to using a 504x504 or 1008x1008 mask in the costmap laye
 In the range or below ~400x200 is sufficient.
 Finally, planning and control uses the semantically annotated costmap cells and their associated costs to impact navigation behavior to prevent navigating over certain spaces, prefer some surfaces over others, or treat particular objects uniquely.</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/diagram.png" data-desc-position="bottom"><img alt="Architecture diagram showing data flow from Depth Camera through SAM3 Semantic Segmentation to Semantic Segmentation Costmap Layer and Costmap2D" src="../assets/diagram.png" title="Architecture diagram showing data flow from Depth Camera through SAM3 Semantic Segmentation to Semantic Segmentation Costmap Layer and Costmap2D" width="90%"></a>
+  
 </figure>
 <p>If your sensor does not produce registered RGB + depth, <code>sensor_processing_pipeline.launch.py</code> can decimate and align them for you.
 The SAM3 node itself only requires a color image topic as input; the costmap layer is where the registered pointcloud comes in.</p>
@@ -21138,7 +21138,7 @@ In general, I think folks would prefer not to.</p>
 <p>Within a few seconds you should see the three topics published.
 It useful to visualize the segmentation mask topic to visualize the detection overlay to see it working!</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/bike_lane_camera.gif" data-desc-position="bottom"><img alt="SAM3 semantic segmentation overlay on bike lane camera feed" src="../assets/bike_lane_camera.gif" title="SAM3 semantic segmentation overlay on bike lane camera feed" width="700"></a>
+  
 </figure>
 <p>Now that we have that working, we can focus on the costmap integration to use this information.</p>
 <h3 id="8-configure-nav2-to-use-the-layer">8. Configure Nav2 to use the layer<a class="headerlink" href="#8-configure-nav2-to-use-the-layer" title="Permanent link"></a></h3>
@@ -21236,7 +21236,7 @@ The accuracy, sharpness, and consistency of the masks is a huge step up from tra
 The other side of foundation-model perception is that you can ask SAM3 about specific things like cables on the floor, a puddle, a piece of debris, a low-profile pallet without training a detector for each one.
 I hope these provide some motivational examples of use-cases of SAM3 to detect and avoid obstacles (or adjust robot behavior) in situations that have been traditionally difficult for robots :-)</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/examples.gif" data-desc-position="bottom"><img alt="SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images" src="../assets/examples.gif" title="SAM3 detecting cables, spills, debris, pallets, and other low-profile obstacles across various test images" width="700"></a>
+  
 </figure>
 <p>Happy segmenting!</p>
 
