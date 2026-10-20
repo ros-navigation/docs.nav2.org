@@ -2,6 +2,38 @@
 
 ## Migration Actions and Deprecations
 
+### Transform Buffer API
+
+[PR #6651](https://github.com/ros-navigation/navigation2/pull/6651) replaces the `nav2::TransformBuffer` alias for `tf2_ros::Buffer` with a wrapper in `nav2_ros_common/tf_buffer.hpp`. Custom servers and plugins must migrate direct TF lookups and the removed TF helpers in `nav2_util/robot_utils.hpp` to the wrapper's methods. Lookup methods take the target frame before the source frame and return `std::optional`; check the result before using it. Lookup failures return `std::nullopt` and log an error by default. Pass `nav2::Log::Disabled` as the final argument when the caller handles diagnostics or expects a lookup to fail.
+
+| Previous API | Replacement |
+| --- | --- |
+| `getCurrentPose()` for the latest robot pose | `buffer->getLatestPose(target_frame, source_frame, staleness_threshold)` |
+| `nav2_util::getTransform()` or `lookupTransform()` at a specified time | `or buffer->getLatestTransform(target_frame, source_frame, staleness_threshold)` if the latest available transformation is required, otherwise `buffer->getStampedTransform(target_frame, source_frame, stamp, transform_tolerance)` for a specific time-stamp. |
+| `nav2_util::transformPoseInTargetFrame()` or a pose `transform()` | `buffer->transformStampedPose(target_frame, input_pose, transform_tolerance)` |
+
+See [Transform Staleness Checking](#transform-staleness-checking) for lookup timing and age-check behavior. Stamped methods accept the wait timeout as a `tf2::Duration`. For lookups between different times through a fixed frame, use the `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` overload.
+
+For example, obtain a robot pose with an age limit, then transform it using that same timestamp:
+
+```cpp
+const auto robot_pose = tf_buffer_->getLatestPose("odom", "base_link", 1.0);
+if (!robot_pose) {
+  return false;
+}
+const auto map_pose = tf_buffer_->transformStampedPose(
+  "map", *robot_pose, tf2::durationFromSec(0.1));
+if (!map_pose) {
+  return false;
+}
+```
+
+For points, point clouds, and other message types, obtain a transform from the wrapper and apply it with `tf2::doTransform`. Reuse the transform or its timestamp for related operations within a cycle to keep their inputs consistent. To transform an arbitrary pose while intentionally ignoring its timestamp, use `getLatestTransform` followed by `tf2::doTransform`.
+
+Continue creating buffers with `nav2::create_transform_buffer(node)`. The buffer now owns its listener: replace `nav2::create_transform_listener(*buffer, node)` and the separately stored listener with `buffer->createListener(node)`. The default starts a dedicated listener thread; pass `false` only when your application spins the node itself. `buffer->createListener()` instead uses a hidden node and dedicated thread. Call `buffer->resetListener()` during teardown or before creating another listener; it stops the listener while retaining buffered transforms. Serialize listener creation and reset.
+
+Pass the wrapper to `nav2::create_message_filter`, which accesses the native buffer internally. Integrations requiring a native TF buffer, such as `laser_geometry`, can use `buffer->getRawBuffer()`, which returns a reference valid for the buffer's lifetime. Use the wrapper for ordinary lookups. Test fixtures can continue inserting transforms with `setTransform()` and clearing data with `clear()`.
+
 ### Behavior Server plugin parameters are now namespaced
 
 The behavior plugins' parameters are now declared under the plugin's name from `behavior_plugins`, in the same way the `acceleration_limit`, `deceleration_limit` and `minimum_speed` parameters of `BackUp` and `DriveOnHeading` already were. The old node-level names are no longer read, so existing configurations must be updated or the defaults will silently apply:
@@ -65,3 +97,47 @@ The `AssistedTeleop` behavior now stops the robot and fails the action with the 
 [PR #6558](https://github.com/ros-navigation/navigation2/pull/6558) replaces the broad `rclcpp/rclcpp.hpp` includes throughout Nav2 with the specific headers each file needs to speed up compilation and reduce build memory usage. We now recommend including specific `rclcpp` headers instead of globally including `rclcpp/rclcpp.hpp`.
 
 See the [ROS 2 documentation note on the `rclcpp` convenience header](https://github.com/ros2/ros2_documentation/blob/rolling/source/_internal/Rclcpp-Convenience-Header-Note.rst) for more details.
+
+### Transform Staleness Checking
+
+The navigation stack can behave incorrectly when some of its input transformations are not provided for a long period of time, possibly leading to loss of control and collisions. It is advised to configure the stack to fail in this condition.
+
+The following components can detect stale transforms when their staleness check is enabled:
+
+- Controller Server and its path handler
+- Local and global costmaps, Static Layer, and Asymmetric Inflation Layer
+- Keepout, Speed, Binary, and Zone Parameter costmap filters
+- Spin, Drive On Heading, Back Up, and Assisted Teleop behaviors
+- Docking Server and the Simple Charging and Simple Non-Charging Dock plugins
+- Following Server
+- Collision Monitor and Collision Detector, including collision sources, polygons, and exclusion zones
+- BT Navigator (NavigateToPose and NavigateThroughPoses) and GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, DistanceTraveled, and DistanceController BT nodes
+- Planner Server (through its costmap), Route Server (RouteTracker and GoalIntentExtractor)
+
+The `transform_staleness_threshold` parameter specifies the maximum allowed age of a latest transform in seconds, measured against the buffer's clock. Positive values enable the staleness check, while values less than or equal to `0.0` disable it. The default is `0.0` for most components. Collision Monitor and Collision Detector default to `1.0`, enabling the check. Static-only TF chains are exempt from the age check.
+
+When the check is enabled and the transform is older than the configured threshold, the affected component reports an error or rejects the transform.
+
+Choose a threshold that accounts for the update period and expected latency of the dynamic transforms in each relevant TF chain, while meeting your system's requirements for timely pose updates.
+
+Collision Monitor and Collision Detector exclusion zones no longer use `<zone name>.frame_hold_timeout`. Configure `<zone name>.transform_staleness_threshold` instead to limit the age of a zone-frame transform; it inherits the node-level threshold when omitted.
+
+The Behavior Server no longer reads `transform_tolerance`; remove it from Behavior Server configuration when migrating.
+
+### ProgressChecker API Uses a Const Robot Pose
+
+The `nav2_core::ProgressChecker::check()` interface now takes the current robot pose by const reference.
+
+Previously:
+
+```cpp
+virtual bool check(
+  geometry_msgs::msg::PoseStamped & current_pose) = 0;
+```
+
+Now:
+
+```cpp
+virtual bool check(
+  const geometry_msgs::msg::PoseStamped & current_pose) = 0;
+```
