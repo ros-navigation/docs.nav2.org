@@ -130,13 +130,13 @@ Type: `bool` Default: `false`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the transforms obtained without specifying a time stamp. Values greater than `0.0` enable the age check; non-positive values disable it.
+:   Maximum age (seconds) of the latest robot-pose transform in the costmap global frame. Positive values enable the age check; non-positive values disable it.
 
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.3`
 
-:   TF transform tolerance.
+:   Maximum time (seconds) to wait for stamped TF transforms.
 
 ### **`initial_transform_timeout`**
 

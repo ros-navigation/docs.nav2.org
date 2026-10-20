@@ -111,7 +111,7 @@ Type: `double` Default: `1.0`
 
 Type: `double` Default: `0.1`
 
-:   Maximum time (seconds) to wait when a shape must be transformed from another frame. Polygons and circles use the transform at the shape message timestamp; this server has no `transform_staleness_threshold` parameter.
+:   Maximum time (seconds) to wait when a shape must be transformed from another frame. Polygons and circles use the transform at the shape message timestamp. A zero timestamp requests the latest transform without an age check.
 
 ### **`shapes`**
 

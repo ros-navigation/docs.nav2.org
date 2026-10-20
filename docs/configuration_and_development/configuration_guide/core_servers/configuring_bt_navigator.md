@@ -97,13 +97,13 @@ Type: `string` Default: `"disabled"`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of latest transforms used by built-in BT nodes including GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, DistanceTraveled, and DistanceController. Values greater than `0.0` enable the age check; non-positive values disable it.
+:   Maximum age (seconds) of latest transforms used by built-in BT nodes including GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, DistanceTraveled, and DistanceController. The NavigateToPose and NavigateThroughPoses navigator plugins have separate thresholds under their plugin names. Values greater than `0.0` enable the age check; non-positive values disable it.
 
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1` Unit: `seconds`
 
-:   TF transform tolerance.
+:   Maximum time (seconds) to wait for stamped TF transforms.
 
 ### **`global_frame`**
 

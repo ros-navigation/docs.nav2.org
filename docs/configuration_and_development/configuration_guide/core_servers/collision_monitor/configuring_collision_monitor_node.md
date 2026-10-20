@@ -107,13 +107,13 @@ Type: `string` Default: `""`
 
 Type: `double` Default: `1.0`
 
-:   Maximum age (seconds) of latest transforms used by collision sources and zones. A stale transform makes the affected observation or zone unavailable; configure the resulting action for your safety needs. Values greater than `0.0` enable the age check; non-positive values disable it.
+:   Maximum age (seconds) of latest transforms used by collision sources when `base_shift_correction` is `false`, and by exclusion zones. With shift correction enabled, sources use transforms at the observation and current timestamps instead of applying this age check. A stale latest transform makes the affected observation or zone unavailable; an unavailable exclusion zone stops masking points. Positive values enable the age check; non-positive values disable it. Static-only TF chains are exempt.
 
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1`
 
-:   Maximum time (seconds) to wait for a requested TF transform. This is separate from `transform_staleness_threshold`, which limits the age of the latest transform.
+:   Maximum time (seconds) to wait for a requested stamped TF transform. This is separate from `transform_staleness_threshold`, which limits the age of latest transforms. Latest-transform and exclusion-zone lookups do not wait.
 
 ### **`source_timeout`**
 
@@ -444,8 +444,7 @@ Type: `vector<string>` Default: `[""]`
 
 Type: `double` Default: value of `transform_staleness_threshold`
 
-:   Zone-frame transform age limit; inherits the node-level threshold when omitted. Values greater than `0.0` enable the age check; non-positive values disable it.
-
+:   Zone-frame transform age limit; inherits the node-level threshold when omitted. Values greater than `0.0` enable the age check; non-positive values disable it. If the transform is unavailable or stale, the zone stops masking points.
 
 `<zone name>` is a parameter block referenced by name from a source's `exclusion_zones` list. Zone names are global across the node.
 Exclusion zones remove (mask out) a source's points and never trigger an action. Each zone inherits the owning source's `base_shift_correction` policy.
