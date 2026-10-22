@@ -589,6 +589,60 @@ Type: `double` Default: `0.5`
 
 :   Distance (m) between robot and goal to **stop** considering preferring forward and allow goal critics to take over.
 
+## Omni Constraint Critic { #mppi-omni-constraint-critic }
+
+This critic is intended to replace the Constraint Critic, when you use an omnidirectional robot. Bounding omnidirectional robot velocities per axis individually (as done in the Constraint Critic) makes an omnidirectional robot prefer diagonal velocities. This, because critics rewarding progress incentivize diagonal driving, as sqrt(vx_max² + vy_max²) exceeds vx_max and vy_max individually. This critic bounds vx and vy by the ellipse spanned by the controller's vx_max, vx_min and vy_max instead. This penalizes combined translational speeds above the individual axis limits.
+
+If you are using a mecanum drivetrain, use this critic alongside [Mecanum Critic][mppi-mecanum-critic], which specializes in mecanum wheel kinematics.
+
+### **`cost_weight`**
+
+Type: `double` Default: `4.0`
+
+:   Weight to apply to critic term.
+
+### **`cost_power`**
+
+Type: `int` Default: `1`
+
+:   Power order to apply to term.
+
+## Mecanum Critic { #mppi-mecanum-critic }
+
+This critic penalizes velocities outside the reachable velocity space of a mecanum drivetrain. All four wheels produce `vx`, `vy` and `wz` together, so the fastest wheel saturates once `|vx| / vx_max + |vy| / vy_max + |wz| / wz_max` reaches 1.
+
+The critic's velocity limits are defined by the drivetrain itself. Set `vx_max`, `vy_max` and `wz_max` to what the robot reaches when driving that axis alone, for example by commanding an unreachably high velocity and measuring where the speed stops increasing. For behavioral velocity limits such as a lower reverse speed, use the [Omni Constraint Critic][mppi-omni-constraint-critic] alongside it.
+
+### **`cost_weight`**
+
+Type: `double` Default: `4.0`
+
+:   Weight to apply to critic term.
+
+### **`cost_power`**
+
+Type: `int` Default: `1`
+
+:   Power order to apply to term.
+
+### **`vx_max`**
+
+Type: `double` Default: `0.5`
+
+:   Max speed (m/s) the drivetrain reaches along x.
+
+### **`vy_max`**
+
+Type: `double` Default: `0.5`
+
+:   Max speed (m/s) the drivetrain reaches along y.
+
+### **`wz_max`**
+
+Type: `double` Default: `1.7`
+
+:   Max rotational speed (rad/s) the drivetrain reaches.
+
 ## Twirling Critic { #mppi-twirling-critic }
 
 This critic penalizes unnecessary 'twisting' with holonomic vehicles. It adds a constraint on the rotation angle to keep it consistent.
@@ -733,6 +787,17 @@ controller_server:
       #   cost_power: 1
       #   cost_weight: 35.0
       #   deadband_velocities: [0.05, 0.05, 0.05]
+      # OmniConstraintCritic:
+      #   enabled: true
+      #   cost_power: 1
+      #   cost_weight: 4.0
+      # MecanumCritic:
+      #   enabled: true
+      #   cost_power: 1
+      #   cost_weight: 4.0
+      #   vx_max: 0.5
+      #   vy_max: 0.5
+      #   wz_max: 1.7
       # TwirlingCritic:
       #   enabled: true
       #   twirling_cost_power: 1
