@@ -20737,7 +20737,7 @@ in overrides/partials/header.html -->
 </span><span id="__span-0-2">ros2<span class="w"> </span>launch<span class="w"> </span>zed_wrapper<span class="w"> </span>zedxm.launch.py
 </span></code></pre></div>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vio.png" data-desc-position="bottom"><img alt="" src="../assets/vio.png" width="100%"></a>
 </figure>
 <p>As of September 2023, the driver out of the box produces the full <code>map-&gt;odom-&gt;base_link-&gt;camera</code> tree on its own. This is since the Pose SDK can produce not only VIO, but loop-closure VSLAM representing the full state estimation TF tree.</p>
 <p>We want to be able to fuse in other information such as an external IMU, wheel odometry, GPS, or other sensors into our local or global state estimates, so we need to disable TF publication of <code>map-&gt;odom</code> and <code>odom-&gt;base_link</code> to be provided by our fused outputs. Especially considering the ZED X camera knows nothing about the nature of the <code>base_link</code> frame. However, if you would like to use the ZED's state estimate for your entire system without further sensor fusion, you certainly can!</p>

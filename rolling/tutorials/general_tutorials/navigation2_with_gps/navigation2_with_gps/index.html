@@ -20917,14 +20917,14 @@ This is available in ROS 2 Iron and newer.</p>
 <p>GPS (Global Positioning System) or more broadly GNSS (Global Navigation Satellite System) is a technology that relies on satellites to provide receivers with an estimate of where they are located on the earth. These satellites are in orbit at altitudes around 20.000km and use radio frequency to continuously broadcast time signals, these are picked up by receivers when satellites are along their line of sight, they use trilateration to estimate their latitude, longitude and altitude.</p>
 <p>Commonly GPS devices calculate their position using the <a href="https://en.wikipedia.org/wiki/World_Geodetic_System">WGS84 standard</a>, which defines a cartesian system with its origin on the earth's center of mass, the <code>z</code> axis pointing north and the <code>x</code> axis pointing to the first meridian as the image below shows.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/wgs_84_reference_frame.svg" data-desc-position="bottom"><img alt="WGS84 reference frame" src="../assets/wgs_84_reference_frame.svg" title="WGS84 reference frame" width="562px"></a>
 </figure>
 <p>However, this reference system is impractical for describing the motion and representing the environment around objects in or close to the earth's surface: Imagine your robot is located on a soccer field and you want it to move from one end to the other, your navigation task would look something like:</p>
 <p>"go from X=4789.413km, Y=177.511km z=4194.292km to X=4789.475km, Y=177.553km z=4194.22km"</p>
 <p>Addinally, if your robot has for instance a 2D lidar, you would have to transform its data to this reference system as well. It would make much more sense to create a local reference system where you could tell your robot "go 100 meters forward" and your sensor data could populate your environment representation accordingly, right?</p>
 <p>To cope with this, geodesy proposes several planar projection systems for localization with respect to the surface of the earth. One of them is the <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM coordinate system</a>, which assumes earth is an ellipsoid and divides it in 60 zones, each of them spanning across 6 longitude degrees. A zone represents the projection of the ellipsoid's surface over a secant cylinder parallel to its central meridian; each of them is then split into 20 latitude bands that span across 8 latitude degrees, which create local grid zones where positions are expressed using planar coordinates from the origin of the zone. The image below shows the grid zones spanning across South America.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/south_americ_utm_zones.png" data-desc-position="bottom"><img alt="UTM grid zones in South America" src="../assets/south_americ_utm_zones.png" title="UTM grid zones in South America" width="520px"></a>
 </figure>
 <p><a href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">robot_localization</a> uses this projection system to transform GPS measurements in the WGS84 reference system to a cartesian system, which centered on the origin of the grid zone where the GPS is at. This is achieved through the <a href="http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html">navsat_transform node</a>. This node complies with the ENU convention in <a href="https://www.ros.org/reps/rep-0103.html">REP 103</a>, meaning that the <code>+x</code> axis of the <code>utm</code> coordinate system faces east, the <code>+y</code> faces north and the <code>+z</code> axis points up.</p>
 <p>In the real world GPS sensors can be noisy: With standalone GPSs you should expect accuracies of 1-2 meters under excellent conditions and up to 10 meters, and frequent jumps in the position as the GPS sensor picks up less or more satellites, which can degrade the quality of navigation significantly. Several positioning augmentation technologies exists to reduce the error of GPS measurements, one of the most common ones is called <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning">RTK</a> (Real Time Kinematic Positioning), which can bring the accuracy of receivers down to 1cm. If accuracy matters in your application this technology is highly recommended; though this requires the deployment of a second fixed GPS called base, most of the US and Europe are already covered with public free to use bases that you can connect to. You can read more about RTK and how to get started <a href="https://learn.sparkfun.com/tutorials/setting-up-a-rover-base-rtk-system">here</a>. In this tutorial we assume the robot's GPS produces an accurate and smooth estimation of the robot's position.</p>
@@ -21005,7 +21005,7 @@ This is available in ROS 2 Iron and newer.</p>
 </span></code></pre></div>
 <p>A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo the topic <code>/gps/fix</code> to verify the robot is indeed producing GPS measurements</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gazebo_sonoma_raceway.png" data-desc-position="bottom"><img alt="Turtlebot in the sonoma raceway" src="../assets/gazebo_sonoma_raceway.png" title="Turtlebot in the sonoma raceway" width="700px"></a>
 </figure>
 <h3 id="2-setup-gps-localization-system">2. Setup GPS Localization system<a class="headerlink" href="#2-setup-gps-localization-system" title="Permanent link"></a></h3>
 <p>Once you have your simulation (or real robot) up and running, it's time to set up your localization system. Remember that Nav2 uses a <code>tf</code> chain with the structure <code>map</code> -&gt; <code>odom</code> -&gt; <code>base_link</code> -&gt; <code>[sensor frames]</code>; global localization (<code>map</code> -&gt; <code>odom</code>) is usually provided by <code>amcl</code>, while <code>odom</code> -&gt; <code>base_link</code> is usually provided by the user's odometry system (wheel odometry, visual odometry, etc).</p>
@@ -21100,7 +21100,7 @@ This is available in ROS 2 Iron and newer.</p>
 </span></code></pre></div>
 <p>You should see the window below after properly setting the API key:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/mapviz_init.png" data-desc-position="bottom"><img alt="Turtlebot in the sonoma raceway" src="../assets/mapviz_init.png" title="Turtlebot in the sonoma raceway" width="800px"></a>
 </figure>
 <p>Finally run the teleop twist keyboard node to teleoperate the simulated Turtlebot:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1">ros2<span class="w"> </span>run<span class="w"> </span>teleop_twist_keyboard<span class="w"> </span>teleop_twist_keyboard<span class="w"> </span>--ros-args<span class="w"> </span>--param<span class="w"> </span>stamped:<span class="o">=</span>True
@@ -21112,7 +21112,7 @@ This is available in ROS 2 Iron and newer.</p>
 </ol>
 <p>The gif below shows what you should see:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/localization_check.gif" data-desc-position="bottom"><img alt="" src="../assets/localization_check.gif" width="800px"></a>
 </figure>
 <p>Sensors in a real robot may be less accurate than Gazebo's, especially GPSs and absolute heading measurements from IMUs. To mitigate this you can leverage robot_localization's EKFs to complement sensor's capabilities:</p>
 <ol>
@@ -21161,7 +21161,7 @@ This is available in ROS 2 Iron and newer.</p>
 </span></code></pre></div>
 <p>The gif below shows what you should see Nav2 navigating the robot autonomously!</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/navigation_check.gif" data-desc-position="bottom"><img alt="" src="../assets/navigation_check.gif" width="800px"></a>
 </figure>
 <h3 id="4-interactive-gps-waypoint-follower">4.  Interactive GPS Waypoint Follower<a class="headerlink" href="#4-interactive-gps-waypoint-follower" title="Permanent link"></a></h3>
 <p>Now that we have performed our complete system setup, let's leverage Nav2 GPS waypoint follower capabilities to navigate to goals that are expressed directly in GPS coordinates. For this demo we want to build an interactive interface similar to rviz's, that allows us to click over a map to make the robot navigate to the clicked location. For that we will use mapviz's point click publisher on the <code>wgs84</code> reference frame, which will publish a <code>PointStamped</code> message with the GPS coordinates of the point clicked over the satellite image. This is a great way to get started in your custom GPS navigation setup!</p>
@@ -21170,7 +21170,7 @@ This is available in ROS 2 Iron and newer.</p>
 </span></code></pre></div>
 <p>You can now click on the mapviz map the pose you want the robot to go. The gif below shows the robot navigating to the finish line going through some obstacles:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/interactive_wpf.gif" data-desc-position="bottom"><img alt="" src="../assets/interactive_wpf.gif" width="800px"></a>
 </figure>
 <h3 id="5-logged-gps-waypoint-follower-waypoint-logging">5.  Logged GPS Waypoint Follower &amp; Waypoint Logging<a class="headerlink" href="#5-logged-gps-waypoint-follower-waypoint-logging" title="Permanent link"></a></h3>
 <p>Finally let's make a robot go through a set of predefined GPS waypoints. We provide a <a href="https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py">waypoint logging tool</a> that subscribes to the robot's GPS and IMU and offers a simple GUI to save the robot coordinates and heading on demand to a <code>yaml</code> file with the format:</p>
@@ -21187,7 +21187,7 @@ This is available in ROS 2 Iron and newer.</p>
 </span></code></pre></div>
 <p>If you don't provide a path to save your waypoints, they will be saved in your <code>home</code> folder by default with the name <code>gps_waypoints.yaml</code>. Once the node launches you should see a small GUI with a button to log waypoints, you may now move the robot around and click that button to record its position as the gif below shows:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/waypoint_logging.gif" data-desc-position="bottom"><img alt="" src="../assets/waypoint_logging.gif" width="800px"></a>
 </figure>
 <p>After that you should get a <code>yaml</code> file in the location you specified with the format shown above; let's now make the robot follow the logged waypoints. For this purpose we provide the <a href="https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py">logged_waypoint_follower</a> node, which takes in the path to the waypoints file as an argument and uses the <code>BasicNavigator</code> in <code>nav2_simple_commander</code> to send the logged goals to the <code>/follow_gps_waypoints</code> action server. If not provided, the node uses the <a href="https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml">default waypoints</a> in the <code>nav2_gps_waypoint_follower_demo</code> package.</p>
 <p>To run this node source your workspace and with the rest of the system running type:</p>
@@ -21195,7 +21195,7 @@ This is available in ROS 2 Iron and newer.</p>
 </span></code></pre></div>
 <p>You should now see the robot following the waypoints you previously logged:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/logged_waypoint_follower.gif" data-desc-position="bottom"><img alt="" src="../assets/logged_waypoint_follower.gif" width="800px"></a>
 </figure>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>This tutorial discussed the usage of a GPS sensor for global localization using RL and the <code>navsat_transform</code> node, covering the setup of a gazebo simulation with a GPS equipped robot as well. It also went through the configuration changes in Nav2 for navigating with GPS localization, emphasizing on some different possibilities for setting up the global costmap. Finally it showcased the capabilities of Nav2's GPS waypoint follower as a demonstration on how to use the stack in outdoors environments.</p>

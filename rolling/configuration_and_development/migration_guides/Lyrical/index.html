@@ -19578,6 +19578,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mppi-critics-for-omnidirectional-velocity-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPPI Critics for Omnidirectional Velocity Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20696,6 +20707,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mppi-critics-for-omnidirectional-velocity-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPPI Critics for Omnidirectional Velocity Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20909,6 +20931,13 @@ in overrides/partials/header.html -->
 <h3 id="include-specific-rclcpp-headers">Include Specific rclcpp Headers<a class="headerlink" href="#include-specific-rclcpp-headers" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6558">PR #6558</a> replaces the broad <code>rclcpp/rclcpp.hpp</code> includes throughout Nav2 with the specific headers each file needs to speed up compilation and reduce build memory usage. We now recommend including specific <code>rclcpp</code> headers instead of globally including <code>rclcpp/rclcpp.hpp</code>.</p>
 <p>See the <a href="https://github.com/ros2/ros2_documentation/blob/rolling/source/_internal/Rclcpp-Convenience-Header-Note.rst">ROS 2 documentation note on the <code>rclcpp</code> convenience header</a> for more details.</p>
+<h3 id="mppi-critics-for-omnidirectional-velocity-limits">MPPI Critics for Omnidirectional Velocity Limits<a class="headerlink" href="#mppi-critics-for-omnidirectional-velocity-limits" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6498">PR #6498</a> adds two MPPI critics. The ConstraintCritic bounds <code>vx</code> and <code>vy</code> separately. This creates a rectangular velocity space, with maximum translational velocity being <code>sqrt(vx_max² + vy_max²)</code>. Therefore, any critic rewarding speed on an omnidirectional platform will lead to the robot driving diagonally, as <code>sqrt(vx_max² + vy_max²)</code> is larger than <code>vx_max</code> and <code>vy_max</code> alone.</p>
+<ul>
+<li>The <a class="autorefs autorefs-internal" title="Omni Constraint Critic" href="../../configuration_guide/controller_plugins/mppi_controller/configuring_mppic/#mppi-omni-constraint-critic">OmniConstraintCritic</a> (<code>mppi::critics::OmniConstraintCritic</code>) is intended to be used for omnidirectional models instead of the ConstraintCritic. Its velocity space is an ellipse spanned by the controller's <code>vx_max</code>, <code>vx_min</code> and <code>vy_max</code>, so it keeps the same functionality as the ConstraintCritic, while preventing speed rewarding critics from forcing the robot to drive diagonally.</li>
+<li>The <a class="autorefs autorefs-internal" title="Mecanum Critic" href="../../configuration_guide/controller_plugins/mppi_controller/configuring_mppic/#mppi-mecanum-critic">MecanumCritic</a> (<code>mppi::critics::MecanumCritic</code>) is intended to be used to constrain a mecanum robot's drivetrain to its reachable velocity. This, because a mecanum model's velocities <code>vx</code>, <code>vy</code> and <code>wz</code> are not independent from each other. Driving with <code>vx_max</code> is only possible when <code>vy</code> and <code>wz</code> are zero, as otherwise a wheel would saturate.</li>
+</ul>
+<p>Neither critic is enabled by default; existing configurations are unaffected.</p>
 
 
 

@@ -20706,7 +20706,7 @@ in overrides/partials/header.html -->
 <!-- Page content -->
 <h1 id="filtering-of-noise-induced-obstacles">Filtering of Noise-Induced Obstacles<a class="headerlink" href="#filtering-of-noise-induced-obstacles" title="Permanent link"></a></h1>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/title.png" data-desc-position="bottom"><img alt="" src="../assets/title.png" width="100%"></a>
 </figure>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"></a></h2>
 <p>Noisy sensor measurements can cause to errors in <code>Voxel Layer</code> or <code>Obstacle Layer</code>. As a result, salt and pepper noise may appear on the costmap. This noise creates false obstacles that prevent the robot from finding the best path on the map. While the images above show both salt and pepper noise as well as error due to mislocalization, this layer will only remove sensor noise, not mislocalized artifacts misaligned with the static map.
@@ -20774,7 +20774,7 @@ no standalone obstacles should remain on the cost map. This can be checked, for 
 It apply <a href="https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html">erosion</a> function with kernel from image below (left if <code>group_connectivity_type</code> = 4 or right if <code>group_connectivity_type</code> = 8) to the costmap.
 White color of the kernel pixel means to use the value, black means to ignore it.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3x3_kernels.png" data-desc-position="bottom"><img alt="" src="../assets/3x3_kernels.png" width="222px"></a>
 </figure>
 <p>As a result of erosion function the neighbors image is created. Each possible position of the kernel on the costmap corresponds to one pixel of the neighbors image. The pixel value of this image is equal to the maximum of 4/8 costmap pixels corresponding to the white pixels of the mask.
 In other words, the pixel of the neighbors image is equal to the obstacle code if there is an obstacle nearby, the free space code in other case.
@@ -20782,7 +20782,7 @@ After that, obstacles corresponding to free space code on neighbors image are re
 <p>This process is illustrated below. On the left side of the image is a costmap, on the right is a neighbors image. White pixels are free space, black pixels are obstacles, <code>group_connectivity_type</code> = 4.
 Obstacles marked at the end of the animation will be removed.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/dilate.gif" data-desc-position="bottom"><img alt="" src="../assets/dilate.gif" width="600px"></a>
 </figure>
 <p>When parameter <code>minimal_group_size</code> &gt; 2, the second algorithm is executed.
 This is a generalized solution that allows you to remove groups of adjacent obstacles if their total number is less than <code>minimal_group_size</code>.
@@ -20795,7 +20795,7 @@ Its execution time depends on the size of the processed map fragment (and not de
 <p>This algorithm is illustrated in the animation below (<code>group_connectivity_type</code> = 8).
 Obstacles marked at the end of the animation will be removed (groups that size less 3).</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/connected_components.gif" data-desc-position="bottom"><img alt="" src="../assets/connected_components.gif" width="600px"></a>
 </figure>
 
 

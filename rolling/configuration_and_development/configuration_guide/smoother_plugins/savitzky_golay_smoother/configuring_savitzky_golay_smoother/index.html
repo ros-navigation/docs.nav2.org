@@ -20732,7 +20732,7 @@ in overrides/partials/header.html -->
 <p>It is useful for all types of planners, but particularly in NavFn to remove tiny artifacts that can occur near the end of paths or Theta* to slightly soften the transition between Line of Sight line segments <strong>without</strong> modifying the primary path. It is very fast (&lt;&lt; 1ms) so is a recommended default for planners that may result in slight discontinuities. However, it will not smooth out larger scale discontinuities, oscillations, or improve smoothness. For those, use one of the other provided smoother plugins. It also provides estimated orientation vectors of the path points after smoothing.</p>
 <p>This algorithm is deterministic and low-parameter. In the below image, some odd points from NavFn's gradient descent are smoothed out by the smoother in the middle and end of a given path, while otherwise retaining the exact character of the path.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/savitzky_golay_example.png" data-desc-position="bottom"><img alt="" src="../assets/savitzky_golay_example.png"></a>
 </figure>
 <h2 id="savitzky-golay-smoother-parameters">Savitzky-Golay Smoother Parameters<a class="headerlink" href="#savitzky-golay-smoother-parameters" title="Permanent link"></a></h2>
 <h3 id="window_size"><strong><code>window_size</code></strong><a class="headerlink" href="#window_size" title="Permanent link"></a></h3>

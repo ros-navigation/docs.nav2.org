@@ -20859,22 +20859,22 @@ in overrides/partials/header.html -->
 <h4 id="sensor_msgslaserscan">sensor_msgs/LaserScan<a class="headerlink" href="#sensor_msgslaserscan" title="Permanent link"></a></h4>
 <p>This message represents a single scan from a planar laser range-finder. This message is used in <code>slam_toolbox</code> and <code>nav2_amcl</code> for localization and mapping, or in <code>nav2_costmap_2d</code> for perception.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/sensor_laserscan.png" data-desc-position="bottom"><img alt="" src="../assets/sensor_laserscan.png"></a>
 </figure>
 <h4 id="sensor_msgspointcloud2">sensor_msgs/PointCloud2<a class="headerlink" href="#sensor_msgspointcloud2" title="Permanent link"></a></h4>
 <p>This message holds a collection of 3D points, plus optional additional information about each point. This can be from a 3D lidar, a 2D lidar, a depth camera or more.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/sensor_pointcloud2.png" data-desc-position="bottom"><img alt="" src="../assets/sensor_pointcloud2.png"></a>
 </figure>
 <h4 id="sensor_msgsrange">sensor_msgs/Range<a class="headerlink" href="#sensor_msgsrange" title="Permanent link"></a></h4>
 <p>This is a single range reading from an active ranger that emits energy and reports one range reading that is valid along an arc at the distance measured. A sonar, IR sensor, or 1D range finder are examples of sensors that use this message.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/sensor_range.png" data-desc-position="bottom"><img alt="" src="../assets/sensor_range.png"></a>
 </figure>
 <h4 id="sensor_msgsimage">sensor_msgs/Image<a class="headerlink" href="#sensor_msgsimage" title="Permanent link"></a></h4>
 <p>This represents the sensor readings from RGB or depth camera, corresponding to RGB or range values.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/sensor_image.png" data-desc-position="bottom"><img alt="" src="../assets/sensor_image.png"></a>
 </figure>
 <h2 id="simulating-sensors-using-gazebo">Simulating Sensors using Gazebo<a class="headerlink" href="#simulating-sensors-using-gazebo" title="Permanent link"></a></h2>
 <p>To give you a better grasp of how to set up sensors on a simulated robot, we will build up on our previous tutorials and attach sensors to our simulated robot <code>sam_bot</code>. Similar to the previous tutorial where we used Gazebo plugins to add odometry sensors to <code>sam_bot</code>, we will be using the Gazebo plugins to simulate a lidar sensor and a depth camera on <code>sam_bot</code>. If you are working with a real robot, most of these steps are still required for setting up your URDF frames and it will not hurt to also add in the gazebo plugins for later use.</p>
@@ -21098,31 +21098,31 @@ in overrides/partials/header.html -->
 </span></code></pre></div>
 <p>RViz and the Gazebo will then be launched with <code>sam_bot</code> present in both. In the Gazebo window, the world that we created should be launched and <code>sam_bot</code> should be spawned in that world. You should now be able to observe <code>sam_bot</code> with the 360 lidar sensor and the depth camera, as shown in the image below.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gazebo_sensors.png" data-desc-position="bottom"><img alt="" src="../assets/gazebo_sensors.png"></a>
 </figure>
 <p>In the RViz window, we can verify if we have properly modeled our sensors and if the transforms of our newly added sensors are correct:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/rviz_sensors.png" data-desc-position="bottom"><img alt="" src="../assets/rviz_sensors.png"></a>
 </figure>
 <p>Lastly, we can also visualize the sensor readings in RViz.  To visualize the <code>sensor_msgs/LaserScan</code> message published on <code>/scan</code> topic, click the add button at the bottom part of the RViz window. Then go to the <code>By topic</code> tab and select the <code>LaserScan</code> option under <code>/scan</code>, as shown below.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/add_topic_laserscan.png" data-desc-position="bottom"><img alt="" src="../assets/add_topic_laserscan.png" width="400"></a>
 </figure>
 <p>Next, set the <code>Reliability Policy</code> in RViz to <code>Best Effort</code> and set the <code>size</code> to 0.1 to see the points clearer. You should see the visualized <code>LaserScan</code> detection as shown below. This corresponds to the detected cube and sphere that we added to the Gazebo world.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/demo_laserscan_rviz.png" data-desc-position="bottom"><img alt="" src="../assets/demo_laserscan_rviz.png"></a>
 </figure>
 <p>To visualize <code>sensor_msgs/Image</code> and <code>sensor_msgs/PointCloud2</code>, do the same for topics <code>/depth_camera/image_raw</code> and <code>/depth_camera/points</code> respectively:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/add_topic_image_pointcloud2.png" data-desc-position="bottom"><img alt="" src="../assets/add_topic_image_pointcloud2.png"></a>
 </figure>
 <p>After adding the <code>/depth_camera/image_raw</code> topic in RViz, set the <code>Reliability Policy</code> in RViz to <code>Best Effort</code>. Then you should see the cube in the image window at the lower-left side of the RViz window, as shown below.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/demo_image_rviz.png" data-desc-position="bottom"><img alt="" src="../assets/demo_image_rviz.png"></a>
 </figure>
 <p>You should also see the <code>sensor_msgs/PointCloud2</code>, as shown below.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pointcloud2_data.png" data-desc-position="bottom"><img alt="" src="../assets/pointcloud2_data.png"></a>
 </figure>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>In this section of our robot setup guide, we had a discussion on the common types of sensor messages in Nav2 which standardize the message formats for different sensor vendors. We also discussed how to add sensors to a simulated robot using Gazebo and how to verify that the sensors are working correctly through RViz.</p>

@@ -20694,7 +20694,7 @@ in overrides/partials/header.html -->
 <!-- Page content -->
 <h1 id="navigating-with-vector-objects">Navigating with Vector Objects<a class="headerlink" href="#navigating-with-vector-objects" title="Permanent link"></a></h1>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vector_objects_demo.gif" data-desc-position="bottom"><img alt="" src="../assets/vector_objects_demo.gif"></a>
 </figure>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"></a></h2>
 <p>This tutorial shows how to navigate with vector objects added to raster costmaps.
@@ -20808,11 +20808,11 @@ Since vector objects are being enabled in global costmaps, Keepout Filter called
 <p>The last lines mean that all three nodes: Vector Object server, Costmap Filter Info server, and the Lifecycle Manager handling them, were successfully loaded into the Nav2 container <code>nav2_container</code>.</p>
 <p>Set the initial pose for the robot, and check that vector objects were appeared on global costmap:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vector_objects_on_costmap.png" data-desc-position="bottom"><img alt="" src="../assets/vector_objects_on_costmap.png" width="860px"></a>
 </figure>
 <p>As well as for the Keepout Filter, robot will consider vector objects as obstacles on costmaps and will avoid them:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vector_objects_avoidance.png" data-desc-position="bottom"><img alt="" src="../assets/vector_objects_avoidance.png" width="860px"></a>
 </figure>
 <h2 id="working-with-vector-objects">Working with Vector Objects<a class="headerlink" href="#working-with-vector-objects" title="Permanent link"></a></h2>
 <p>During the operation, vector objects can be changed, added or removed.
@@ -20836,7 +20836,7 @@ Call the following service request with obtained UUID to do this:</p>
 </span></code></pre></div>
 <p>The polygon shape in Vector Object server will be changed, <code>vo_map</code> will be updated and resulting costmap will look as follows - triangle obstacle was updated to bar:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vector_objects_updated.png" data-desc-position="bottom"><img alt="" src="../assets/vector_objects_updated.png"></a>
 </figure>
 <p>Finally, remove all shapes from map.
 To remove any existing shape, there is <code>RemoveShapes.srv</code> service supported. It has array of UUID-s to specify which shapes to remove or just <code>all_objects</code> option for the case if we want to remove all shapes at once. Let's do the latter:</p>
@@ -20844,7 +20844,7 @@ To remove any existing shape, there is <code>RemoveShapes.srv</code> service sup
 </span></code></pre></div>
 <p>As a result, all vector shapes were disappeared from global costmap:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/vector_objects_removed.png" data-desc-position="bottom"><img alt="" src="../assets/vector_objects_removed.png"></a>
 </figure>
 
 
