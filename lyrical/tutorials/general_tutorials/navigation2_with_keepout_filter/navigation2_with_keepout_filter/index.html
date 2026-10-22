@@ -20742,7 +20742,7 @@ in overrides/partials/header.html -->
 <p>Open <code>depot_keepout.pgm</code> in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the <code>[0..255]</code> range (or <code>[0..100]</code> in percent scale), where <code>0</code> means black color and <code>255</code> - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words <code>color_darkness = 100% - color_lightness</code>.</p>
 <p>In the GIMP lightness is expressed through color components value (e.g. <code>R</code> in percent scale) and might be set by moving <code>L</code> slider in color changing tool:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ligtness_in_GIMP.png" data-desc-position="bottom"><img alt="" src="../assets/ligtness_in_GIMP.png"></a>
 </figure>
 <p>The incoming mask file is being read by the Map Server and converted into <code>OccupancyGrid</code> values from <code>[0..100]</code> range (where <code>0</code> means free cell, <code>100</code> - occupied, anything in between - less or more occupied cells on map) or be equal to <code>-1</code> for unknown value. In Nav2 stack each map has <code>mode</code> attribute which could be <code>trinary</code>, <code>scale</code> or <code>raw</code>. Depending on <code>mode</code> selected, the color lightness of PGM/PNG/BMP is being converted to <code>OccupancyGrid</code> by one of the following principles:</p>
 <ul>
@@ -20759,7 +20759,7 @@ in overrides/partials/header.html -->
 <p>Keepout Filter also covers preferred lanes case, where robots should moving only on pre-defined lanes and permitted areas e.g. in warehouses. To use this feature you need to prepare the mask image where the lanes and permitted areas will be marked with free values while all other areas will be occupied. TIP for drawing the mask in a <code>trinary</code> or <code>scale</code> mode: typically, amount of pixels belonging to lanes are much less than pixels covering other areas. In this case initially all lanes data might be drawn with a black pencil over white background and then (just before saving a PGM) "color inversion" tool in a image raster editor might be used.</p>
 <p>For simplicity, in the example fill the areas with black color (in <code>trinary</code> mode this means occupied map) that you are going to mark as a keep-out zones:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/drawing_keepout_mask.png" data-desc-position="bottom"><img alt="" src="../assets/drawing_keepout_mask.png" width="500px"></a>
 </figure>
 <p>After all keepout areas will be filled, save the <code>depot_keepout.pgm</code> image.</p>
 <p>Like all other maps, filter mask should have its own YAML metadata file. Copy <a href="https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_bringup/maps/depot.yaml">depot.yaml</a> to <code>depot_keepout.yaml</code>. Open <code>depot_keepout.yaml</code> and correct <code>image</code> field to a newly made PGM mask:</p>
@@ -21055,7 +21055,7 @@ in overrides/partials/header.html -->
 </span></code></pre></div>
 <p>And check that filter is working properly as in the pictures below</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/keepout_global.png" data-desc-position="bottom"><img alt="" height="400px" src="../assets/keepout_global.png"></a>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

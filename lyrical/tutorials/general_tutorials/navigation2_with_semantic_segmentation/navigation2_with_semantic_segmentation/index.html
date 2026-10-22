@@ -20808,7 +20808,7 @@ in overrides/partials/header.html -->
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"></a></h2>
 <p>This tutorial demonstrates how to use semantic segmentation in costmaps with stereo cameras, using a custom <a href="https://github.com/kiwicampus/semantic_segmentation_layer">semantic_segmentation_layer plugin</a> and a pre-trained segmentation model that works on Gazebo's Baylands world. It was written by Pedro Gonzalez at <a href="https://robot.com/">robot.com</a>.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/video.gif" data-desc-position="bottom"><img alt="" src="../assets/video.gif" width="90%"></a>
 </figure>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h2>
 <p>It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally, you will need:</p>
@@ -20842,7 +20842,7 @@ During training, the model learns to recognize patterns and features that distin
 <p>As said above, a pre-trained model is included in this tutorial, so you can skip the training part and go directly to the integration with Nav2.
 However, if you want to train your own model, you can use the <a href="https://github.com/pepisg/simple_segmentation_toolkit">Simple Segmentation Toolkit</a> to easily prototype one with SAM-based auto-labeling (no manual annotation required).</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/segmentation_example.png" data-desc-position="bottom"><img alt="Example of semantic segmentation showing original image and segmented mask" src="../assets/segmentation_example.png" title="Example of semantic segmentation showing original image and segmented mask" width="600px"></a>
 </figure>
 <p>Once trained, the output of a semantic segmentation model is typically an image with the same size as the input, where each pixel holds the probability of that pixel belonging to each class.
 For instance, the model provided in this tutorial has 3 classes: sidewalk, grass, and background; hence its raw output is a 3-channel tensor, where each channel corresponds to the probability of the pixel belonging to that class.
@@ -20866,7 +20866,7 @@ Everything is already set up in the <a href="https://github.com/ros-navigation/n
 </span></code></pre></div>
 <p>You should see Gazebo launch with the TurtleBot 4 in the Baylands world.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gazebo_baylands.png" data-desc-position="bottom"><img alt="Gazebo Baylands world" src="../assets/gazebo_baylands.png" title="Gazebo Baylands world" width="700px"></a>
 </figure>
 <h3 id="2-setup-semantic-segmentation-inference-node">2. Setup Semantic Segmentation Inference Node<a class="headerlink" href="#2-setup-semantic-segmentation-inference-node" title="Permanent link"></a></h3>
 <p>The semantic segmentation node performs real-time inference on camera images using an ONNX model. It subscribes to camera images, runs inference, and publishes segmentation masks, confidence maps, and label information.
@@ -20951,12 +20951,12 @@ To run the semantic segmentation node, you need to install the dependencies from
 </span></code></pre></div>
 <p>The Baylands simulation and <em>rviz</em> should appear. You should be able to send navigation goals via <em>rviz</em> and the robot should navigate the Baylands world, preferring sidewalks and avoiding grass:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/demo.gif" data-desc-position="bottom"><img alt="" src="../assets/demo.gif" width="90%"></a>
 </figure>
 <p>To better see what the plugin is doing, you can enable the segmentation tile map visualization in <em>rviz</em>. This will show a pointcloud of the segmentation observations for each tile, colored by their confidence.
 Again, you can refer to the picture on the Layer's <a href="https://github.com/kiwicampus/semantic_segmentation_layer">README</a> for a visual explanation of how observations are accumulated on the costmap tiles and how that translates to the cost assigned to each tile.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/tile_map.gif" data-desc-position="bottom"><img alt="" src="../assets/tile_map.gif" width="90%"></a>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Important</p>

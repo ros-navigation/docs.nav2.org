@@ -20694,7 +20694,7 @@ in overrides/partials/header.html -->
 <!-- Page content -->
 <h1 id="using-collision-monitor">Using Collision Monitor<a class="headerlink" href="#using-collision-monitor" title="Permanent link"></a></h1>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/collision_monitor.gif" data-desc-position="bottom"><img alt="" src="../assets/collision_monitor.gif" width="800px"></a>
 </figure>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"></a></h2>
 <p>This tutorial shows how to use a Collision Monitor with Nav2 stack. Based on this tutorial, you can setup it for your environment and needs.</p>
@@ -20705,7 +20705,7 @@ Please make sure that Nav2 project is also built locally as it was made in <a cl
 <p>The Collision Monitor node has its own <code>collision_monitor_node.launch.py</code> launch-file and preset parameters in the <code>collision_monitor_params.yaml</code> file for demonstration, though its trivial to add this to Nav2's main launch file if being used in practice.
 For the demonstration, two shapes will be created - an inner stop and a larger slowdown bounding boxes placed in the front of the robot:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/polygons.png" data-desc-position="bottom"><img alt="" src="../assets/polygons.png" width="800px"></a>
 </figure>
 <p>If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to <code>30%</code> from its value.
 For the cases when obstacles are dangerously close to the robot, inner stop zone will work.
@@ -20778,7 +20778,7 @@ The whole <code>nav2_collision_monitor/params/collision_monitor_params.yaml</cod
 </span></code></pre></div>
 <h2 id="configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon<a class="headerlink" href="#configuring-collision-monitor-with-velocitypolygon" title="Permanent link"></a></h2>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/dexory_velocity_polygon.gif" data-desc-position="bottom"><img alt="" src="../assets/dexory_velocity_polygon.gif" width="800px"></a>
 </figure>
 <p>For this part of tutorial, we will set up the Collision Monitor with <code>VelocityPolygon</code> type for a <code>stop</code> action. <code>VelocityPolygon</code> allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.</p>
 <p>In general, here are the steps to configure the Collision Monitor with <code>VelocityPolygon</code> type:</p>
@@ -20851,11 +20851,11 @@ d = v \, t_r + \frac{v^2}{2a} + d_m
 <p><strong>For holomic robots:</strong></p>
 <p>For holomic robots, the <code>holonomic</code> property should be set to <code>true</code>. In this scenario, the <code>linear_min</code> and <code>linear_max</code> parameters should cover  the magnitude of the robot's resultant velocity limits (using only non-negative values), while the <code>theta_min</code> and <code>theta_max</code> parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, <code>direction_start_angle</code> and <code>direction_end_angle</code>, to specify the resultant velocity direction. The covered direction will always span from <code>direction_start_angle</code> to <code>direction_end_angle</code> in the <strong>counter-clockwise</strong> direction.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/holonomic_direction.png" data-desc-position="bottom"><img alt="" src="../assets/holonomic_direction.png" width="365px"></a>
 </figure>
 <p>Below shows some common configurations for holonomic robots that cover multiple directions of the resultant velocity:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/holonomic_examples.png" data-desc-position="bottom"><img alt="" height="2880px" src="../assets/holonomic_examples.png"></a>
 </figure>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><span class="nt">collision_monitor</span><span class="p">:</span>
 </span><span id="__span-4-2"><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
@@ -21015,12 +21015,12 @@ For that, run Nav2 stack as written in <a class="autorefs autorefs-internal" hre
 </span></code></pre></div>
 <p>Since both <code>PolygonStop</code> and <code>PolygonSlow</code> polygons will have their own publishers, they could be added to visualization as shown at the picture below:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/polygons_visualization.png" data-desc-position="bottom"><img alt="" src="../assets/polygons_visualization.png" width="800px"></a>
 </figure>
 <p>Set the initial pose and then put Nav2 goal on map.
 The robot will start its movement, slowing down while running near the obstacles, and stopping in close proximity to them:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/collision.png" data-desc-position="bottom"><img alt="" src="../assets/collision.png" width="800px"></a>
 </figure>
 
 

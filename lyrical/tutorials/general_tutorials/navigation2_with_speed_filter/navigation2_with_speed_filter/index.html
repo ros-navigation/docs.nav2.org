@@ -20781,7 +20781,7 @@ In this tutorial we will use the first type of speed restriction expressed in a 
 </div>
 <p>Create a new image with a PGM/PNG/BMP format: copy <a href="https://github.com/ros-navigation/navigation2/blob/lyrical/nav2_bringup/maps/depot.pgm">depot.pgm</a> main map which will be used in a world simulation from a Nav2 repository to a new <code>depot_speed.pgm</code> file. Open <code>depot_speed.pgm</code> in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/drawing_speed_mask.png" data-desc-position="bottom"><img alt="" src="../assets/drawing_speed_mask.png" width="500px"></a>
 </figure>
 <p>Area "A" is filled with <code>25%</code> gray color, area "B" - with <code>50%</code> gray, that means that speed restriction will take <code>100% - 25% = 75%</code> in area "A" and <code>100% - 50% = 50%</code> in area "B" from maximum speed value allowed for this robot.
 We will use <code>scale</code> map mode with no thresholds. In this mode darker colors will have higher <code>OccupancyGrid</code> values. E.g. for area "B" with <code>50%</code> of gray <code>OccupancyGrid</code> data will be equal to <code>50</code>. So in order to hit the target, we need to choose <code>base = 100.0</code> and <code>multiplier = -1.0</code>. This will reverse the scale <code>OccupancyGrid</code> values to a desired one. No thresholds (<code>free_thresh</code> <code>occupied_thresh</code>) were chosen for the convenience in the <code>yaml</code>  file: to have 1:1 full range conversion of lightness value from filter mask -&gt; to speed restriction percent.</p>
@@ -21084,7 +21084,7 @@ We will use <code>scale</code> map mode with no thresholds. In this mode darker 
 <p>For better visualization of speed filter mask, in RViz in the left <code>Displays</code> pane unfold <code>Map</code> and change <code>Topic</code> from <code>/map</code> -&gt; to <code>/speed_filter_mask</code>.
 Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/speed_global.png" data-desc-position="bottom"><img alt="" height="400px" src="../assets/speed_global.png"></a>
 </figure>
 <h3 id="5-optional-enable-path-lookahead">5. Optional: Enable path lookahead<a class="headerlink" href="#5-optional-enable-path-lookahead" title="Permanent link"></a></h3>
 <p>By default the Speed Filter applies the speed limit of the cell directly under the robot. This means the speed limit is published only once the robot has already entered a speed-restricted zone, and the controller is responsible for the deceleration. For most cases this is sufficient.</p>

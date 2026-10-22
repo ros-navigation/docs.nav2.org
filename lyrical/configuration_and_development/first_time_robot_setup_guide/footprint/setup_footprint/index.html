@@ -20721,19 +20721,19 @@ in overrides/partials/header.html -->
 <h2 id="visualizing-footprint-in-rviz">Visualizing Footprint in RViz<a class="headerlink" href="#visualizing-footprint-in-rviz" title="Permanent link"></a></h2>
 <p>To visualize the footprint of the local costmap, click the add button at the bottom-left part of the RViz window. Under the <code>By topic</code> tab, select the <code>Polygon</code> under the <code>/local_costmap/published_footprint</code> topic, as shown below.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/add_topic_local_costmap.png" data-desc-position="bottom"><img alt="" src="../assets/add_topic_local_costmap.png" width="400"></a>
 </figure>
 <p>Set the fixed frame in RViz to <code>odom</code> and you should see the rectangular-shaped footprint of <code>sam_bot</code>:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/polygon_footprint.png" data-desc-position="bottom"><img alt="" src="../assets/polygon_footprint.png"></a>
 </figure>
 <p>On the other hand, for the global costmap, click the add button at the bottom-left part of the RViz window. Go to <code>By topic</code> tab then select the <code>Polygon</code> under the <code>/global_costmap/published_footprint</code> topic, as shown below.</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/add_topic_global_costmap.png" data-desc-position="bottom"><img alt="" src="../assets/add_topic_global_costmap.png" width="400"></a>
 </figure>
 <p>Set the fixed frame in RViz to <code>map</code> and you should see the circular footprint of <code>sam_bot</code>:</p>
 <figure>
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/circular_footprint.png" data-desc-position="bottom"><img alt="" src="../assets/circular_footprint.png"></a>
 </figure>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
 <p>In this guide, we have shown how to configure a circular and polygon-shaped footprint for your robot. This footprint is important since it plays a major role in Nav2's pathfinding algorithms function.</p>
