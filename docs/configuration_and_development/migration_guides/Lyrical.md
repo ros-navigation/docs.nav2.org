@@ -96,3 +96,10 @@ The filled check reads every cell inside the footprint rather than only its outl
 Previously, the filter looked at the mask cell under the robot's center. A robot whose edge overlapped a keepout zone, but whose center was still outside of it, was not considered to be in the zone. The lethal cost was therefore not overridden, and the robot could be stuck on the border of the zone with part of its footprint in lethal space. Now the filter checks the cells along the footprint outline (the footprint of the local or global costmap it runs in) against the mask. As soon as any part of the footprint touches a lethal or inscribed keepout cell, the lethal cost is replaced by `lethal_override_cost`, so the robot can navigate out of the zone.
 
 Existing configurations require no changes. The behavior is identical when `override_lethal_cost` is `false`, and for robots whose footprint is entirely inside or outside of the keepout zones.
+
+### OpenMP support for MPPI CostCritic
+--------------------------------------------
+
+`PR #6228 <https://github.com/ros-navigation/navigation2/pull/6228>`_ added OpenMP support for parallel processing, significantly improving the processing time for CostCritic.
+
+When build with OpenMp available & `-DENABLE_OPENMP=ON`, OpenMP will be used. Otherwise, scoring remains is single-threaded.

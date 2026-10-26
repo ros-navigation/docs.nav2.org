@@ -449,6 +449,13 @@ Type: `int` Default: `2`
 
 :   The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
 
+### **`num_threads`**
+
+Type: `int` Default: `-1`
+
+:   Number of OpenMP threads used to score trajectories when OpenMP is enabled. -1 uses half of the available cores.
+    Only has an effect if built with `-DENABLE_OPENMP=ON` and OpenMP is available, otherwise scoring is single-threaded.
+
 ## Path Align Critic { #mppi-path-align-critic }
 
 This critic incentivizes aligning with the global path, if relevant. It does not implement path following behavior.
