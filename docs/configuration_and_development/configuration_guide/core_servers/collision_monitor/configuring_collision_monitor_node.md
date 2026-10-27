@@ -103,11 +103,17 @@ Type: `string` Default: `""`
 
 :   Output the currently activated polygon action type and name. Optional parameter. No publisher will be created if it is unspecified.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `1.0`
+
+:   Maximum age (seconds) of latest transforms used by collision sources when `base_shift_correction` is `false`, and by exclusion zones. With shift correction enabled, sources use transforms at the observation and current timestamps instead of applying this age check. A stale latest transform makes the affected observation or zone unavailable; an unavailable exclusion zone stops masking points. Positive values enable the age check; non-positive values disable it. Static-only TF chains are exempt.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1`
 
-:   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
+:   Maximum time (seconds) to wait for a requested stamped TF transform. This is separate from `transform_staleness_threshold`, which limits the age of latest transforms. Latest-transform and exclusion-zone lookups do not wait.
 
 ### **`source_timeout`**
 
@@ -434,6 +440,12 @@ Type: `vector<string>` Default: `[""]`
 
 ## Exclusion zones parameters { #collision-monitor-exclusion-zones-parameters }
 
+### **`<zone name>.transform_staleness_threshold`**
+
+Type: `double` Default: value of `transform_staleness_threshold`
+
+:   Zone-frame transform age limit; inherits the node-level threshold when omitted. Values greater than `0.0` enable the age check; non-positive values disable it. If the transform is unavailable or stale, the zone stops masking points.
+
 `<zone name>` is a parameter block referenced by name from a source's `exclusion_zones` list. Zone names are global across the node.
 Exclusion zones remove (mask out) a source's points and never trigger an action. Each zone inherits the owning source's `base_shift_correction` policy.
 
@@ -460,12 +472,6 @@ Type: `double` Default: `N/A`
 Type: `string` Default: (node parameter `base_frame_id`)
 
 :   Frame the zone shape is anchored to and tracked via TF (e.g. `dock_link`). Leaving it empty, or equal to the base frame, makes a static, robot-relative zone.
-
-### **`<zone name>.frame_hold_timeout`**
-
-Type: `double` Default: `0.0`
-
-:   Extra time (in seconds) beyond `transform_tolerance` that the last known pose of a stale zone `frame_id` keeps being used before the zone fails safe and stops masking points. While held, the zone is frozen at its last valid pose in the `odom_frame_id` frame, so it stays world-fixed even if the robot moves. Useful to ride out brief detection dropouts of a marker-based zone frame. `0.0` means only the transform tolerance applies.
 
 ### **`<zone name>.min_height`**
 

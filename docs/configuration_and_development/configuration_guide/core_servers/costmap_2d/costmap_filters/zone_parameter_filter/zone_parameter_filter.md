@@ -16,6 +16,12 @@ The demo above runs one filter instance on `local_costmap` with a single zone: e
 
 `<setpoint name>`: is a setpoint name listed in the state's `setpoints`.
 
+### **`<filter name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest transform used to place the filter mask in the costmap. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`<filter name>.enabled`**
 
 Type: `bool` Default: `true`

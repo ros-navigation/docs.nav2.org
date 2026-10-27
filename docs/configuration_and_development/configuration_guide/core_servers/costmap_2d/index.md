@@ -126,11 +126,17 @@ Type: `bool` Default: `false`
 
 :   If `false`, treats unknown space as free space, else as unknown space.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest robot-pose transform in the costmap global frame. Positive values enable the age check; non-positive values disable it.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.3`
 
-:   TF transform tolerance.
+:   Maximum time (seconds) to wait for stamped TF transforms.
 
 ### **`initial_transform_timeout`**
 
