@@ -56,8 +56,8 @@ In controllers, `configure()` method must set member variables from ROS paramete
 
 ```c++
 void PurePursuitController::configure(
-  const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
-  std::string name, nav2::TransformBuffer::SharedPtr tf,
+  const nav2::LifecycleNode::WeakPtr & parent,
+  std::string name, nav2::TransformManager::SharedPtr tf,
   std::shared_ptr<nav2_costmap_2d::Costmap2DROS> costmap_ros)
 {
   node_ = parent;
@@ -117,12 +117,17 @@ geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
 {
   // Transform the plan from costmap's global frame to robot base frame
   nav_msgs::msg::Path transformed_plan;
-  if (!nav2_util::transformPathInTargetFrame(
-      transformed_global_plan, transformed_plan, *tf_,
-      costmap_ros_->getBaseFrameID(), costmap_ros_->getTransformTolerance()))
-  {
-    throw nav2_core::ControllerTFError(
-    "Unable to transform plan pose into local frame");
+  transformed_plan.header.stamp = transformed_global_plan.header.stamp;
+  transformed_plan.header.frame_id = costmap_ros_->getBaseFrameID();
+  for (const auto & plan_pose : transformed_global_plan.poses) {
+    const auto transformed_pose = tf_->transformStampedPose(
+      costmap_ros_->getBaseFrameID(), plan_pose,
+      tf2::durationFromSec(costmap_ros_->getTransformTolerance()));
+    if (!transformed_pose) {
+      throw nav2_core::ControllerTFError(
+        "Unable to transform plan pose into local frame");
+    }
+    transformed_plan.poses.push_back(*transformed_pose);
   }
 
   // Find the first pose which is at a distance greater than the specified lookahead distance
