@@ -98,7 +98,6 @@ Previously, the filter looked at the mask cell under the robot's center. A robot
 Existing configurations require no changes. The behavior is identical when `override_lethal_cost` is `false`, and for robots whose footprint is entirely inside or outside of the keepout zones.
 
 ### OpenMP support for MPPI CostCritic
---------------------------------------------
 
 `PR #6228 <https://github.com/ros-navigation/navigation2/pull/6228>`_ added OpenMP support for parallel processing, significantly improving the processing time for CostCritic.
 
