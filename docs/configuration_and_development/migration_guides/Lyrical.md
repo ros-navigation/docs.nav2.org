@@ -76,7 +76,6 @@ See the [ROS 2 documentation note on the `rclcpp` convenience header](https://gi
 Neither critic is enabled by default; existing configurations are unaffected.
 
 ### OpenMP support for MPPI CostCritic
---------------------------------------------
 
 `PR #6228 <https://github.com/ros-navigation/navigation2/pull/6228>`_ added OpenMP support for parallel processing, significantly improving the processing time for CostCritic.
 
