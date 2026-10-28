@@ -12,6 +12,9 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 
 | Talk | Thumbnail | Description |
 |------|-----------|-------------|
+| [On Use Of Redbull: A Nav2 Feature Speedrun][feature-speedrun] | ![thumbnail](assets/roscon2026_feature_speedrun.jpg) | ROSCon 2026 |
+| [Nav2 Semantic & Ground Segmentation for Contextual Cross-Environment Navigation][semantic-segmentation] | ![thumbnail](assets/roscon2026_semantic_segmentation.jpg) | ROSCon 2026 |
+| [Dynamic Window Pure Pursuit in Nav2 Regulated Pure Pursuit][dwpp] | ![thumbnail](assets/roscon2026_dwpp.jpg) | ROSCon 2026 |
 | [On Use of Nav2 Route Server][route-server] | ![thumbnail](assets/roscon2025_route_server.jpg) | ROSCon 2025 |
 | [On Use of Nav2 Docking][docking] | ![thumbnail](assets/roscon2024_docking.jpg) | ROSCon 2024 |
 | [Nav2 Whys over What's: Navigating the Philosophies Behind the Features][whys-over-whats] | ![thumbnail](assets/roscon2023_whys_over_whats.jpg) | ROSCon FR 2023 |
@@ -27,6 +30,9 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 
 </div>
 
+[feature-speedrun]: https://vimeo.com/showcase/12459077?video=1235288906
+[semantic-segmentation]: https://vimeo.com/showcase/12459077?video=1235288869
+[dwpp]: https://vimeo.com/showcase/12459077?video=1235288719
 [route-server]: https://vimeo.com/1136164030
 [docking]: https://vimeo.com/1024971348
 [whys-over-whats]: https://www.youtube.com/watch?v=2W3zWO-msEo
@@ -46,6 +52,7 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 
 | Talk | Thumbnail | Description |
 |------|-----------|-------------|
+| [How big is your map? 4 years of indoor scaling: from 1,000 m² to 220,000 m²][map-scaling] | ![thumbnail](assets/roscon2026_map_scaling.jpg) | ROSCon 2026 |
 | [Navegación robusta en ROS2][navegacion-robusta] | ![thumbnail](assets/roscon2024_navegacion_robusta.jpg) | ROSCon ES 2024 |
 | [BehaviorTree.CPP 4.0. What is new and roadmap][bt-cpp] | ![thumbnail](assets/roscon2022_bt_cpp.jpg) | ROSCon 2022 |
 | [Mobile Robotics Scale-up Leveraging ROS][mobile-scaleup] | ![thumbnail](assets/roscon2024_mobile_robotics_scaleup.jpg) | ROSCon 2024 |
@@ -53,6 +60,7 @@ Below is a list of ROSCon talks that have been given by the Nav2 team and the co
 
 </div>
 
+[map-scaling]: https://vimeo.com/showcase/12459077?video=1235288814
 [navegacion-robusta]: https://vimeo.com/showcase/11453818/video/1029492785
 [bt-cpp]: https://vimeo.com/showcase/9954564/video/767160437
 [mobile-scaleup]: https://vimeo.com/1024971160
