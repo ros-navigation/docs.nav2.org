@@ -21182,7 +21182,7 @@ in overrides/partials/header.html -->
 <dl>
 <dt>Type: <code>double</code> Default: <code>0.25</code></dt>
 <dd>
-<p>The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning.</p>
+<p>The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning. It is not applied when approaching the goal.</p>
 </dd>
 </dl>
 <h3 id="k_phi"><strong><code>k_phi</code></strong><a class="headerlink" href="#k_phi" title="Permanent link"></a></h3>
@@ -21210,7 +21210,7 @@ in overrides/partials/header.html -->
 <dl>
 <dt>Type: <code>double</code> Default: <code>2.0</code></dt>
 <dd>
-<p>Constant factor applied to the path curvature. This value must be greater or equal to <code>1</code>. Determines the sharpness of the curve: higher lambda implies sharper curves.</p>
+<p>Constant factor applied to the path curvature. This value must be greater than <code>1</code>. Determines the sharpness of the curve: higher lambda implies sharper curves.</p>
 </dd>
 </dl>
 <h3 id="v_linear_min"><strong><code>v_linear_min</code></strong><a class="headerlink" href="#v_linear_min" title="Permanent link"></a></h3>
@@ -21287,7 +21287,7 @@ in overrides/partials/header.html -->
 <dl>
 <dt>Type: <code>bool</code> Default: <code>false</code></dt>
 <dd>
-<p>Whether to allow the robot to move backward.</p>
+<p>Whether to allow the robot to move backward. It cannot be enabled together with <code>initial_rotation</code>: if both are <code>true</code>, <code>allow_backward</code> is set to <code>false</code>.</p>
 </dd>
 </dl>
 <h3 id="in_place_collision_resolution"><strong><code>in_place_collision_resolution</code></strong><a class="headerlink" href="#in_place_collision_resolution" title="Permanent link"></a></h3>
@@ -21301,7 +21301,7 @@ in overrides/partials/header.html -->
 <dl>
 <dt>Type: <code>bool</code> Default: <code>true</code></dt>
 <dd>
-<p>Whether to use collision detection to avoid obstacles.</p>
+<p>Whether to use collision detection to avoid obstacles. When disabled, no collision or cost checks are done, including the search for a safer approach angle.</p>
 </dd>
 </dl>
 <h3 id="footprint_scaling_linear_vel"><strong><code>footprint_scaling_linear_vel</code></strong><a class="headerlink" href="#footprint_scaling_linear_vel" title="Permanent link"></a></h3>
@@ -21371,7 +21371,7 @@ in overrides/partials/header.html -->
 </span><span id="__span-0-22"><span class="w">      </span><span class="nt">min_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 </span><span id="__span-0-23"><span class="w">      </span><span class="nt">max_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </span><span id="__span-0-24"><span class="w">      </span><span class="nt">initial_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-0-25"><span class="w">      </span><span class="nt">initial_rotation_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
+</span><span id="__span-0-25"><span class="w">      </span><span class="nt">initial_rotation_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
 </span><span id="__span-0-26"><span class="w">      </span><span class="nt">prefer_final_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-0-27"><span class="w">      </span><span class="nt">allow_backward</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </span><span id="__span-0-28"><span class="w">      </span><span class="nt">k_phi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
