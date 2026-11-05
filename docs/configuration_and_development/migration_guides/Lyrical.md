@@ -77,11 +77,11 @@ Neither critic is enabled by default; existing configurations are unaffected.
 
 ### Filled Footprint Option for Costmap Cost Queries
 
-[PR #6739](https://github.com/ros-navigation/navigation2/pull/6739) adds the `footprint_fill` field to the `nav2_msgs/srv/GetCosts` request. With `use_footprint` set, the service returns the maximum cost along the footprint outline. With `footprint_fill` also set, it returns the maximum cost over every cell inside the footprint. The [CheckPoseOccupancy][check-pose-occupancy] and [RemoveInCollisionGoals][remove-in-collision-goals] BT nodes expose it as the `footprint_fill` input port. 
+[PR #6739](https://github.com/ros-navigation/navigation2/pull/6739) adds the `footprint_fill` field to the `nav2_msgs/srv/GetCosts` request. With `use_footprint` set, the service returns the maximum cost along the footprint outline. With `footprint_fill` also set, it returns the maximum cost over every cell inside the footprint. The [CheckPoseOccupancy][check-pose-occupancy] and [RemoveInCollisionGoals][remove-in-collision-goals] BT nodes expose it as the `footprint_fill` input port.
 
-The option defaults to `false`, so existing callers are unaffected. 
+The option defaults to `false`, so existing callers are unaffected.
 
-The outline check cannot report a lethal cell strictly inside the footprint as lethal. With an inflation layer, such a cell might be reported as inscribed cost, and without inflation, the outline does not see it at all. This matters for large or elongated footprints, where an obstacle can be inside the footprint far from its outline and center. Use the filled check where a pose must be known to be occupied, such as deciding whether a goal itself is blocked before choosing a recovery. 
+The outline check cannot report a lethal cell strictly inside the footprint as lethal. With an inflation layer, such a cell might be reported as inscribed cost, and without inflation, the outline does not see it at all. This matters for large or elongated footprints, where an obstacle can be inside the footprint far from its outline and center. Use the filled check where a pose must be known to be occupied, such as deciding whether a goal itself is blocked before choosing a recovery.
 
 The filled check reads every cell inside the footprint rather than only its outline, so prefer the outline check for frequent checks along whole paths. Some benchmark metrics for comparison, measured per pose on a free costmap with 0.05 m resolution:
 
