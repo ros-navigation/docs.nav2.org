@@ -88,4 +88,3 @@ The filled check reads every cell inside the footprint rather than only its outl
 | 0.70 m x 0.70 m | 0.28 µs      | 3.57 µs             |
 | 1.45 m x 1.10 m | 0.41 µs      | 9.25 µs             |
 | 2.00 m x 2.00 m | 0.56 µs      | 20.3 µs             |
-
