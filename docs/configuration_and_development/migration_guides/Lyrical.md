@@ -74,3 +74,21 @@ See the [ROS 2 documentation note on the `rclcpp` convenience header](https://gi
 - The [MecanumCritic][mppi-mecanum-critic] (`mppi::critics::MecanumCritic`) is intended to be used to constrain a mecanum robot's drivetrain to its reachable velocity. This, because a mecanum model's velocities `vx`, `vy` and `wz` are not independent from each other. Driving with `vx_max` is only possible when `vy` and `wz` are zero, as otherwise a wheel would saturate.
 
 Neither critic is enabled by default; existing configurations are unaffected.
+
+### Filled Footprint Option for Costmap Cost Queries
+
+[PR #6739](https://github.com/ros-navigation/navigation2/pull/6739) adds the `footprint_fill` field to the `nav2_msgs/srv/GetCosts` request. With `use_footprint` set, the service returns the maximum cost along the footprint outline. With `footprint_fill` also set, it returns the maximum cost over every cell inside the footprint. The [CheckPoseOccupancy][check-pose-occupancy] and [RemoveInCollisionGoals][remove-in-collision-goals] BT nodes expose it as the `footprint_fill` input port. 
+
+The option defaults to `false`, so existing callers are unaffected. 
+
+The outline check cannot report a lethal cell strictly inside the footprint as lethal. With an inflation layer, such a cell might be reported as inscribed cost, and without inflation, the outline does not see it at all. This matters for large or elongated footprints, where an obstacle can be inside the footprint far from its outline and center. Use the filled check where a pose must be known to be occupied, such as deciding whether a goal itself is blocked before choosing a recovery. 
+
+The filled check reads every cell inside the footprint rather than only its outline, so prefer the outline check for frequent checks along whole paths. Some benchmark metrics for comparison, measured per pose on a free costmap with 0.05 m resolution:
+
+| Robot footprint | Outline time | Footprint fill time |
+|-----------------|--------------|---------------------|
+| 0.70 m x 0.70 m | 0.28 µs      | 3.57 µs             |
+| 1.45 m x 1.10 m | 0.41 µs      | 9.25 µs             |
+| 2.00 m x 2.00 m | 0.56 µs      | 20.3 µs             |
+
+The filled check assumes a convex footprint. A concave footprint may be over-approximated, never under-approximated.
