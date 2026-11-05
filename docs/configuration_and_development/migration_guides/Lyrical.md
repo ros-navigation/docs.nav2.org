@@ -81,7 +81,6 @@ Neither critic is enabled by default; existing configurations are unaffected.
 
 The option defaults to `false`, so existing callers are unaffected.
 
-
 The filled check reads every cell inside the footprint rather than only its outline, so prefer the outline check for frequent checks along whole paths. Some benchmark metrics for comparison, measured per pose on a free costmap with 0.05 m resolution:
 
 | Robot footprint | Outline time | Footprint fill time |
