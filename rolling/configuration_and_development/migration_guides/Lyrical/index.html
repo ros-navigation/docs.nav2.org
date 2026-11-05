@@ -19589,6 +19589,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#filled-footprint-option-for-costmap-cost-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filled Footprint Option for Costmap Cost Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20718,6 +20729,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#filled-footprint-option-for-costmap-cost-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filled Footprint Option for Costmap Cost Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20938,6 +20960,36 @@ in overrides/partials/header.html -->
 <li>The <a class="autorefs autorefs-internal" title="Mecanum Critic" href="../../configuration_guide/controller_plugins/mppi_controller/configuring_mppic/#mppi-mecanum-critic">MecanumCritic</a> (<code>mppi::critics::MecanumCritic</code>) is intended to be used to constrain a mecanum robot's drivetrain to its reachable velocity. This, because a mecanum model's velocities <code>vx</code>, <code>vy</code> and <code>wz</code> are not independent from each other. Driving with <code>vx_max</code> is only possible when <code>vy</code> and <code>wz</code> are zero, as otherwise a wheel would saturate.</li>
 </ul>
 <p>Neither critic is enabled by default; existing configurations are unaffected.</p>
+<h3 id="filled-footprint-option-for-costmap-cost-queries">Filled Footprint Option for Costmap Cost Queries<a class="headerlink" href="#filled-footprint-option-for-costmap-cost-queries" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6739">PR #6739</a> adds the <code>footprint_fill</code> field to the <code>nav2_msgs/srv/GetCosts</code> request. With <code>use_footprint</code> set, the service returns the maximum cost along the footprint outline. With <code>footprint_fill</code> also set, it returns the maximum cost over every cell inside the footprint. The <a class="autorefs autorefs-internal" href="../../configuration_guide/core_servers/bt_plugins/actions/CheckPoseOccupancy/#check-pose-occupancy">CheckPoseOccupancy</a> and <a class="autorefs autorefs-internal" href="../../configuration_guide/core_servers/bt_plugins/actions/RemoveInCollisionGoals/#remove-in-collision-goals">RemoveInCollisionGoals</a> BT nodes expose it as the <code>footprint_fill</code> input port.</p>
+<p>The option defaults to <code>false</code>, so existing callers are unaffected.</p>
+<p>The filled check reads every cell inside the footprint rather than only its outline, so prefer the outline check for frequent checks along whole paths. Some benchmark metrics for comparison, measured per pose on a free costmap with 0.05 m resolution:</p>
+<table>
+<thead>
+<tr>
+<th>Robot footprint</th>
+<th>Outline time</th>
+<th>Footprint fill time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.70 m x 0.70 m</td>
+<td>0.28 µs</td>
+<td>3.57 µs</td>
+</tr>
+<tr>
+<td>1.45 m x 1.10 m</td>
+<td>0.41 µs</td>
+<td>9.25 µs</td>
+</tr>
+<tr>
+<td>2.00 m x 2.00 m</td>
+<td>0.56 µs</td>
+<td>20.3 µs</td>
+</tr>
+</tbody>
+</table>
 
 
 
