@@ -81,7 +81,6 @@ Neither critic is enabled by default; existing configurations are unaffected.
 
 The option defaults to `false`, so existing callers are unaffected.
 
-The outline check cannot report a lethal cell strictly inside the footprint as lethal. With an inflation layer, such a cell might be reported as inscribed cost, and without inflation, the outline does not see it at all. This matters for large or elongated footprints, where an obstacle can be inside the footprint far from its outline and center. Use the filled check where a pose must be known to be occupied, such as deciding whether a goal itself is blocked before choosing a recovery.
 
 The filled check reads every cell inside the footprint rather than only its outline, so prefer the outline check for frequent checks along whole paths. Some benchmark metrics for comparison, measured per pose on a free costmap with 0.05 m resolution:
 
