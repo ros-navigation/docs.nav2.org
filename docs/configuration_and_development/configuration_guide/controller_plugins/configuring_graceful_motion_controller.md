@@ -108,7 +108,7 @@ Type: `double` Default: `0.5`
 
 Type: `bool` Default: `false`
 
-:   Whether to allow the robot to move backward.
+:   Whether to allow the robot to move backward. It cannot be enabled together with `initial_rotation`: if both are `true`, `allow_backward` is set to `false`.
 
 ### **`in_place_collision_resolution`**
 
@@ -120,7 +120,7 @@ Type: `double` Default: `0.1`
 
 Type: `bool` Default: `true`
 
-:   Whether to use collision detection to avoid obstacles.
+:   Whether to use collision detection to avoid obstacles. When disabled, no collision or cost checks are done, including the search for a safer approach angle.
 
 ### **`footprint_scaling_linear_vel`**
 
