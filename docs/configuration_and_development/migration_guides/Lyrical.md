@@ -97,7 +97,3 @@ Previously, the filter looked at the mask cell under the robot's center. A robot
 
 Existing configurations require no changes. The behavior is identical when `override_lethal_cost` is `false`, and for robots whose footprint is entirely inside or outside of the keepout zones.
 
-Developers should note the following API changes:
-
-- `nav2_costmap_2d::FootprintCollisionChecker` has a new optional constructor argument, `unknown_is_valid` (default `false`). When `true`, `NO_INFORMATION` cells are ignored instead of being returned as the footprint cost. Because `NO_INFORMATION` (255) is numerically higher than `LETHAL_OBSTACLE` (254), it otherwise hides lethal cells along the footprint. The default keeps the previous behavior, so existing users are unaffected. The Keepout Filter sets it to `true`, so unknown cells of the mask never count as keepout.
-- `nav2_costmap_2d::KeepoutFilter` now stores the mask as a `Costmap2D` (`filter_mask_costmap_`) together with its frame (`filter_mask_frame_`), replacing the protected `nav_msgs::msg::OccupancyGrid` member `filter_mask_`. Plugins deriving from `KeepoutFilter` that access `filter_mask_` need to be updated.
