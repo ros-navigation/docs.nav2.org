@@ -88,3 +88,11 @@ The filled check reads every cell inside the footprint rather than only its outl
 | 0.70 m x 0.70 m | 0.28 µs      | 3.57 µs             |
 | 1.45 m x 1.10 m | 0.41 µs      | 9.25 µs             |
 | 2.00 m x 2.00 m | 0.56 µs      | 20.3 µs             |
+
+### Keepout Filter Checks the Whole Robot Footprint
+
+[PR #6526](https://github.com/ros-navigation/navigation2/pull/6526) makes the Keepout Filter check the whole robot footprint, instead of only the robot's center, when deciding whether the robot is inside a keepout zone. This only affects filters with `override_lethal_cost` enabled.
+
+Previously, the filter looked at the mask cell under the robot's center. A robot whose edge overlapped a keepout zone, but whose center was still outside of it, was not considered to be in the zone. The lethal cost was therefore not overridden, and the robot could be stuck on the border of the zone with part of its footprint in lethal space. Now the filter checks the cells along the footprint outline (the footprint of the local or global costmap it runs in) against the mask. As soon as any part of the footprint touches a lethal or inscribed keepout cell, the lethal cost is replaced by `lethal_override_cost`, so the robot can navigate out of the zone.
+
+Existing configurations require no changes. The behavior is identical when `override_lethal_cost` is `false`, and for robots whose footprint is entirely inside or outside of the keepout zones.
