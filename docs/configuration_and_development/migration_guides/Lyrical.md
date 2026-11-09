@@ -100,3 +100,11 @@ Existing configurations require no changes. The behavior is identical when `over
 ### OpenMP support for MPPI CostCritic
 
 `PR #6228 <https://github.com/ros-navigation/navigation2/pull/6228>`_ added OpenMP support for parallel processing, significantly improving the processing time for CostCritic. When build with OpenMp available & `-DENABLE_OPENMP=ON`, OpenMP will be used. Otherwise, scoring remains is single-threaded.
+
+Increasing the thread number reduces computation time with the cost of higher CPU. Rough estimates:
+| threads | speed-up |
+|---------|----------|
+| 1       | 1.0x     |
+| 2       | 1.8x     |
+| 4       | 3.3x     |
+| 8       | 5.9x     |
