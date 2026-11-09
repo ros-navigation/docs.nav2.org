@@ -19268,6 +19268,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#num_threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        num_threads
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22747,6 +22758,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#num_threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        num_threads
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23908,6 +23930,14 @@ Dynamic and kinematic constraints are not required to be checked as trajectories
 <dt>Type: <code>int</code> Default: <code>2</code></dt>
 <dd>
 <p>The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.</p>
+</dd>
+</dl>
+<h3 id="num_threads"><strong><code>num_threads</code></strong><a class="headerlink" href="#num_threads" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>int</code> Default: <code>-1</code></dt>
+<dd>
+<p>Number of OpenMP threads used to score trajectories when OpenMP is enabled. -1 uses half of the available cores.
+Only has an effect if built with <code>-DENABLE_OPENMP=ON</code> and OpenMP is available, otherwise scoring is single-threaded.</p>
 </dd>
 </dl>
 <h2 id="mppi-path-align-critic">Path Align Critic<a class="headerlink" href="#mppi-path-align-critic" title="Permanent link"></a></h2>
