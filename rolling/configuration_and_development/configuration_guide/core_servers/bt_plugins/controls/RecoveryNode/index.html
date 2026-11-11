@@ -14140,6 +14140,67 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#reset_distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset_distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robot_base_frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        robot_base_frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global_frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        global_frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Ports
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retry_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        retry_count
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20511,6 +20572,67 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#reset_distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset_distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robot_base_frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        robot_base_frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global_frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        global_frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Ports
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retry_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        retry_count
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20694,8 +20816,37 @@ In nav2, the RecoveryNode is included in Behavior Trees to implement recovery ac
 <p>Number of retries.</p>
 </dd>
 </dl>
+<h3 id="reset_distance"><strong><code>reset_distance</code></strong><a class="headerlink" href="#reset_distance" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: <code>0.0</code></dt>
+<dd>
+<p>Displacement in meters during a single main-child attempt to reset retries. Recovery motion does not count. Non-positive disables distance resets.</p>
+</dd>
+</dl>
+<h3 id="robot_base_frame"><strong><code>robot_base_frame</code></strong><a class="headerlink" href="#robot_base_frame" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>string</code> Default: <code>N/A</code></dt>
+<dd>
+<p>Robot frame.</p>
+</dd>
+</dl>
+<h3 id="global_frame"><strong><code>global_frame</code></strong><a class="headerlink" href="#global_frame" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>string</code> Default: <code>N/A</code></dt>
+<dd>
+<p>Reference frame.</p>
+</dd>
+</dl>
+<h2 id="output-ports">Output Ports<a class="headerlink" href="#output-ports" title="Permanent link"></a></h2>
+<h3 id="retry_count"><strong><code>retry_count</code></strong><a class="headerlink" href="#retry_count" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>unsigned int</code> Default: <code>N/A</code></dt>
+<dd>
+<p>Current retry count; resets on halt or progress.</p>
+</dd>
+</dl>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link"></a></h2>
-<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">"1"</span><span class="w"> </span><span class="na">retry_count=</span><span class="s">"{recovery_retry_count}"</span><span class="nt">&gt;</span>
 </span><span id="__span-0-2"><span class="w">    </span><span class="cm">&lt;!--Add tree components here--&gt;</span>
 </span><span id="__span-0-3"><span class="nt">&lt;/RecoveryNode&gt;</span>
 </span></code></pre></div>

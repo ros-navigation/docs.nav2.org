@@ -19507,6 +19507,17 @@ SUVORK5CYII=
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#recovery-retries-reset-after-navigation-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovery retries reset after navigation progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#backup-recovery-now-waits-for-the-robot-to-move" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20669,6 +20680,17 @@ SUVORK5CYII=
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#recovery-retries-reset-after-navigation-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovery retries reset after navigation progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#backup-recovery-now-waits-for-the-robot-to-move" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20953,6 +20975,15 @@ in overrides/partials/header.html -->
 <p>Move your own nested launch files to the same pattern: remove the lifecycle manager from each one, add a <code>get_lifecycle_nodes(context)</code> function that returns its lifecycle node names, and build the <code>node_names</code> of your single manager from those functions plus your own nodes. The <a class="autorefs autorefs-internal" title="Adding a New Nav2 Task Server" href="../../../tutorials/general_tutorials/adding_a_nav2_task_server/#adding-a-new-nav2-task-server">task server tutorial</a> shows this.</p>
 <p>If you would rather run a launch file on its own, start a lifecycle manager beside it.</p>
 <h2 id="default-bt-updates">Default BT Updates<a class="headerlink" href="#default-bt-updates" title="Permanent link"></a></h2>
+<h3 id="recovery-retries-reset-after-navigation-progress">Recovery retries reset after navigation progress<a class="headerlink" href="#recovery-retries-reset-after-navigation-progress" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6652">PR #6652</a> adds distance-based retry resets to <a class="autorefs autorefs-internal" href="../../configuration_guide/core_servers/bt_plugins/controls/RecoveryNode/#recovery-node">RecoveryNode</a>. When its new <code>reset_distance</code> input is positive, the retry count resets to zero once the robot's displacement during an attempt of the first (main) child reaches that distance in meters. This allows navigation to recover from later failures after making progress without exhausting retries used earlier.</p>
+<p>If you maintain a custom copy of these trees, add the new inputs to its outer recovery node to adopt this behavior:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">"6"</span><span class="w"> </span><span class="na">reset_distance=</span><span class="s">"3.0"</span>
+</span><span id="__span-0-2"><span class="w">              </span><span class="na">global_frame=</span><span class="s">"odom"</span><span class="w"> </span><span class="na">name=</span><span class="s">"NavigateRecovery"</span><span class="nt">&gt;</span>
+</span><span id="__span-0-3"><span class="w">  </span><span class="cm">&lt;!-- Existing navigation and recovery children --&gt;</span>
+</span><span id="__span-0-4"><span class="nt">&lt;/RecoveryNode&gt;</span>
+</span></code></pre></div>
+<p>For existing custom trees, no change is required: <code>reset_distance</code> defaults to <code>0.0</code>, and any non-positive value disables distance resets.</p>
 <h3 id="backup-recovery-now-waits-for-the-robot-to-move">Backup recovery now waits for the robot to move<a class="headerlink" href="#backup-recovery-now-waits-for-the-robot-to-move" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6635">PR #6635</a> replaces <code>BackUp</code> with the <code>BackupWithReset</code> subtree in six bundled navigation behavior trees with recovery actions. After a successful backup, the subtree skips another backup near the same pose. It allows backup again once the robot has moved at least <code>reset_distance</code> from the last backup pose. The backup history resets when the behavior tree is reloaded.</p>
 <p>The updated trees also set <code>wrap_around="true"</code> on their <code>RecoveryActions</code> <code>RoundRobin</code> node so the recovery sequence can cycle (and for example spin can be executed multiple times). If you maintain a copy of one of these trees and want the same behavior, replace its recovery <code>BackUp</code> node with the <code>BackupWithReset</code> subtree and set <code>wrap_around="true"</code> on the <code>RoundRobin</code>. Adjust the frame names and reset distance for your robot.</p>
