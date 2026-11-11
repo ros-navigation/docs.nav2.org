@@ -30,6 +30,21 @@ If you would rather run a launch file on its own, start a lifecycle manager besi
 
 ## Default BT Updates
 
+### Recovery retries reset after navigation progress
+
+[PR #6652](https://github.com/ros-navigation/navigation2/pull/6652) adds distance-based retry resets to [RecoveryNode][recovery-node]. When its new `reset_distance` input is positive, the retry count resets to zero once the robot's displacement during an attempt of the first (main) child reaches that distance in meters. This allows navigation to recover from later failures after making progress without exhausting retries used earlier.
+
+If you maintain a custom copy of these trees, add the new inputs to its outer recovery node to adopt this behavior:
+
+```xml
+<RecoveryNode number_of_retries="6" reset_distance="3.0"
+              global_frame="odom" name="NavigateRecovery">
+  <!-- Existing navigation and recovery children -->
+</RecoveryNode>
+```
+
+For existing custom trees, no change is required: `reset_distance` defaults to `0.0`, and any non-positive value disables distance resets.
+
 ### Backup recovery now waits for the robot to move
 
 [PR #6635](https://github.com/ros-navigation/navigation2/pull/6635) replaces `BackUp` with the `BackupWithReset` subtree in six bundled navigation behavior trees with recovery actions. After a successful backup, the subtree skips another backup near the same pose. It allows backup again once the robot has moved at least `reset_distance` from the last backup pose. The backup history resets when the behavior tree is reloaded.
