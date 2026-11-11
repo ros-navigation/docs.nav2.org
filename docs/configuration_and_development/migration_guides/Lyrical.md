@@ -45,8 +45,6 @@ If you maintain a custom copy of these trees, add the new inputs to its outer re
 </RecoveryNode>
 ```
 
-Adjust `reset_distance` and the frame names for your robot. The new `global_frame` and `robot_base_frame` inputs select the frames used to measure displacement; when omitted, they use the BT Navigator's corresponding parameters. If a robot pose cannot be obtained, the retry limit remains in effect without a distance reset.
-
 For existing custom trees, no change is required: `reset_distance` defaults to `0.0`, and any non-positive value disables distance resets.
 
 RecoveryNode also exposes an optional `retry_count` output port, for example `retry_count="{navigation_retry_count}"`. It reports the current retry count, increments when the recovery child succeeds, and resets to zero on sufficient progress or when the node halts, including when it finishes. This can be optionally used to perform a sequence of recovery+retry in a defined order, resetting the sequence together with the counter.
