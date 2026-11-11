@@ -32,7 +32,7 @@ If you would rather run a launch file on its own, start a lifecycle manager besi
 
 ### Recovery retries reset after navigation progress
 
-[PR #6652](https://github.com/ros-navigation/navigation2/pull/6652) adds distance-based retry resets to [RecoveryNode][recovery-node]. When its new `reset_distance` input is positive, the retry count resets to zero once the robot's displacement during a single attempt of the first (main) child reaches that distance in meters. Each main-child attempt starts with a new reference pose: motion during recovery actions does not count, and progress from separate attempts does not accumulate. This allows navigation to recover from later failures after making progress without exhausting retries used earlier in the task.
+[PR #6652](https://github.com/ros-navigation/navigation2/pull/6652) adds distance-based retry resets to [RecoveryNode][recovery-node]. When its new `reset_distance` input is positive, the retry count resets to zero once the robot's displacement during an attempt of the first (main) child reaches that distance in meters. This allows navigation to recover from later failures after making progress without exhausting retries used earlier.
 
 If you maintain a custom copy of these trees, add the new inputs to its outer recovery node to adopt this behavior:
 
