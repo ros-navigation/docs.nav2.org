@@ -45,8 +45,6 @@ If you maintain a custom copy of these trees, add the new inputs to its outer re
 
 For existing custom trees, no change is required: `reset_distance` defaults to `0.0`, and any non-positive value disables distance resets.
 
-RecoveryNode also exposes an optional `retry_count` output port, for example `retry_count="{navigation_retry_count}"`. It reports the current retry count, increments when the recovery child succeeds, and resets to zero on sufficient progress or when the node halts, including when it finishes. This can be optionally used to perform a sequence of recovery+retry in a defined order, resetting the sequence together with the counter.
-
 ### Backup recovery now waits for the robot to move
 
 [PR #6635](https://github.com/ros-navigation/navigation2/pull/6635) replaces `BackUp` with the `BackupWithReset` subtree in six bundled navigation behavior trees with recovery actions. After a successful backup, the subtree skips another backup near the same pose. It allows backup again once the robot has moved at least `reset_distance` from the last backup pose. The backup history resets when the behavior tree is reloaded.
