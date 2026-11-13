@@ -67,7 +67,7 @@ If you use the Regulated Pure Pursuit Controller algorithm or software from this
 
 If you use the Dynamic Window Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
 
-- F. Ohnishi, M. Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://arxiv.org/abs/2601.15006). arXiv:2601.15006., 2026.
+- F. Ohnishi, M. Takahashi, [DWPP: Dynamic Window Pure Pursuit Considering Velocity and Acceleration Constraints](https://doi.org/10.1016/j.robot.2026.105839). Robotics and Autonomous Systems, 2027.
 
 ## Regulated Pure Pursuit Parameters
 
@@ -286,7 +286,6 @@ Type: `double` Default: `-1.0`
 Type: `bool` Default: `false`
 
 :   Whether to use the Dynamic Window Pure Pursuit (DWPP) Algorithm. This algorithm computes command velocities that track the path as accurately as possible while respecting velocity and acceleration constraints. It automatically slows down in sharp turns without manual tuning, reducing path tracking errors.
-    Fumiya Ohnishi and Masaki Takahashi, "Dynamic Window Pure Pursuit for Robot Path Tracking Considering Velocity and Acceleration Constraints", the 19th International Conference on Intelligent Autonomous Systems (IAS-19), 2025.
 
 ### **`allow_obstacle_checking_beyond_goal`**
 
