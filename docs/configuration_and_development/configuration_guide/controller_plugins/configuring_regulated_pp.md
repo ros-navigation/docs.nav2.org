@@ -83,6 +83,12 @@ Type: `double` Default: `-0.5`
 
 :   The minimum linear velocity (m/s) used when `use_dynamic_window` is `true`.
 
+### **`use_collision_detection`**
+
+Type: `bool` Default: `true`
+
+:   Whether to enable collision detection.
+
 ### **`max_angular_vel`**
 
 Type: `double` Default: `2.5`
@@ -166,12 +172,6 @@ Type: `double` Default: `0.05`
 Type: `double` Default: `0.6`
 
 :   The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width.
-
-### **`use_collision_detection`**
-
-Type: `bool` Default: `true`
-
-:   Whether to enable collision detection.
 
 ### **`max_allowed_time_to_collision_up_to_carrot`**
 
@@ -264,10 +264,10 @@ Type: `double` Default: `3.2`
 
 Type: `bool` Default: `false`
 
-:   Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the `/curvature_lookahead_point` topic similarly to `/lookahead_point`
+:   Interpolate a carrot after the goal dedicated to the curvature calculation (to avoid oscillations at the end of the path). For visualization, it will be published on the `/curvature_lookahead_point` topic similarly to `/lookahead_point`.
 
     Note
-    :   Needs `use_fixed_curvature_lookahead` to be `true`
+    :   Needs `use_fixed_curvature_lookahead` to be `true`.
 
 ### **`allow_parameter_qos_overrides`**
 
