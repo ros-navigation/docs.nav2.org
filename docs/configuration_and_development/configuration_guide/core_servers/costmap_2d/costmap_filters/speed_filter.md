@@ -63,6 +63,12 @@ Type: `double` Default: `5.0`
 
 :   Maximum lookahead distance (m) used to clamp the lookahead window size, when path lookahead mode is enabled.
 
+### **`<filter name>.clear_path_on_reset`**
+
+Type: `bool` Default: `false`
+
+:   Whether to drop the cached path when the filter is reset, when path lookahead mode is enabled. The filter is also reset when the costmap is cleared, which the default behavior trees do as a recovery, so enable this only if your behavior tree replans afterwards.
+
 ### **`<filter name>.path_topic`**
 
 Type: `string` Default: `"plan"`
@@ -95,6 +101,7 @@ global_costmap:
       max_decel: -0.3
       min_lookahead: 1.0
       max_lookahead: 5.0
+      clear_path_on_reset: false
       path_topic: "plan"
       odom_topic: "odom"
 ```
