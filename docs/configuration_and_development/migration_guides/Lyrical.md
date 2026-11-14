@@ -123,3 +123,11 @@ Increasing the thread number reduces computation time with the cost of higher CP
 | 2       | 1.8x     |
 | 4       | 3.3x     |
 | 8       | 5.9x     |
+
+### DWB Distance Critics Can Measure Around Obstacles
+
+[PR #6693](https://github.com/ros-navigation/navigation2/pull/6693) adds the `obstacle_aware_propagation` parameter to [PathDistCritic][path-dist-critic] and [GoalDistCritic][goal-dist-critic]. When enabled, the distance to the path or goal is measured around lethal obstacles instead of through them.
+
+Previously, the distance was measured in a straight line from the path or goal, through obstacles. When the path ran behind an obstacle, the cells next to the obstacle looked closest to the path, so the robot could be pulled into the obstacle and stall. Now the distance follows the free cells around lethal obstacles. If the robot cannot be reached around obstacles, the critic falls back to straight line distances.
+
+Existing configurations require no changes, as `obstacle_aware_propagation` defaults to `false`. [PathAlignCritic][path-align-critic] and [GoalAlignCritic][goal-align-critic] ignore it.
