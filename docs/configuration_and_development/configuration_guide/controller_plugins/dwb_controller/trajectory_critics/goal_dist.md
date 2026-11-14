@@ -14,6 +14,12 @@ Type: `string` Default: `"last"`
 
 :   last, sum, or product combination methods.
 
+### **`<dwb plugin>.<name>.obstacle_aware_propagation`**
+
+Type: `bool` Default: `false`
+
+:   Whether to measure the distance to the goal around lethal obstacles instead of through them. Falls back to straight line distances if the robot cannot be reached around obstacles.
+
 ### **`<dwb plugin>.<name>.scale`**
 
 Type: `double` Default: `1.0`
