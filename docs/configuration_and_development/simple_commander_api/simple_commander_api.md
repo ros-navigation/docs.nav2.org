@@ -57,7 +57,7 @@ New as of September 2023: the simple navigator constructor will accept a *namesp
 
 ### **`goThroughPoses(poses, behavior_tree='')`**
 
-:   Requests the robot to drive through a set of poses (list of `PoseStamped`).
+:   Requests the robot to drive through a set of poses (list of `PoseStamped` or `nav_msgs/Goals`).
 
 ### **`goToPose(pose, behavior_tree='')`**
 
