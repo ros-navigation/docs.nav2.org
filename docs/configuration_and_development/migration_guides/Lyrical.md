@@ -122,12 +122,23 @@ Existing configurations require no changes. The behavior is identical when `over
 
 ### OpenMP support for MPPI CostCritic
 
-`PR #6228 <https://github.com/ros-navigation/navigation2/pull/6228>`_ added OpenMP support for parallel processing, significantly improving the processing time for CostCritic. When build with OpenMp available & `-DENABLE_OPENMP=ON`, OpenMP will be used. Otherwise, scoring remains is single-threaded.
+[PR #6228](https://github.com/ros-navigation/navigation2/pull/6228) added OpenMP support for parallel processing, significantly improving the processing time for CostCritic. When build with OpenMp available & `-DENABLE_OPENMP=ON`, OpenMP will be used. Otherwise, scoring remains is single-threaded.
 
 Increasing the thread number reduces computation time with the cost of higher CPU. Rough estimates:
+
 | threads | speed-up |
 |---------|----------|
 | 1       | 1.0x     |
 | 2       | 1.8x     |
 | 4       | 3.3x     |
 | 8       | 5.9x     |
+
+### Smac Planner Max Traversal Cost
+
+[PR #6664](https://github.com/ros-navigation/navigation2/pull/6664) adds the `max_traversal_cost` and `max_traversal_cost_relief_radius` parameters to the  Smac Planners. `max_traversal_cost` sets the maximum non-lethal cost the robot may traverse, so that small gaps and overly narrow corridors are effectively closed off to the planner. Even a small margin, like `240` rather than `252`, can produce routes closer to what you would expect the robot to take and keeps further margins from obstacles. To pick a value, identify the specification for the narrowest passage the robot should still plan through and use the inflation cost at its center. This also may be hand-tuned for subjective performance.
+
+Because this prevents expansion through narrow spaces, `max_traversal_cost_relief_radius` disables the check near the start and goal so the robot can still plan from and to poses close to obstacles.
+
+<figure markdown="span">
+  ![Smac Hybrid-A* in a 0.7 m wide aisle with max_traversal_cost disabled, 240 and 200](lyrical/assets/smac_max_traversal_cost.png){ width="500" title="Smac Hybrid-A* in a 0.7 m wide aisle with max_traversal_cost disabled, 240 and 200" }
+</figure>
