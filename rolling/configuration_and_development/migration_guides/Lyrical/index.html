@@ -19489,6 +19489,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#smac-planner-direction-change-penalty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smac Planner Direction Change Penalty
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20662,6 +20673,17 @@ SUVORK5CYII=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#smac-planner-direction-change-penalty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smac Planner Direction Change Penalty
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20974,6 +20996,10 @@ in overrides/partials/header.html -->
 <p>Launching a nested file by itself, such as <code>ros2 launch nav2_bringup navigation_launch.py</code>, now leaves the servers unconfigured. Launch <code>bringup_launch.py</code> instead and use its arguments to turn off what you do not need, for example <code>use_localization:=False</code> when SLAM or another source provides the map and the <code>map</code> to <code>odom</code> transform. Anything that used the old manager names, such as <code>lifecycle_manager_navigation/manage_nodes</code>, should use <code>lifecycle_manager_nav2</code> instead; the Nav2 RViz panel is already updated.</p>
 <p>Move your own nested launch files to the same pattern: remove the lifecycle manager from each one, add a <code>get_lifecycle_nodes(context)</code> function that returns its lifecycle node names, and build the <code>node_names</code> of your single manager from those functions plus your own nodes. The <a class="autorefs autorefs-internal" title="Adding a New Nav2 Task Server" href="../../../tutorials/general_tutorials/adding_a_nav2_task_server/#adding-a-new-nav2-task-server">task server tutorial</a> shows this.</p>
 <p>If you would rather run a launch file on its own, start a lifecycle manager beside it.</p>
+<h3 id="smac-planner-direction-change-penalty">Smac Planner Direction Change Penalty<a class="headerlink" href="#smac-planner-direction-change-penalty" title="Permanent link"></a></h3>
+<p><a href="https://github.com/ros-navigation/navigation2/pull/6734">PR #6734</a> creates a new <code>direction_change_penalty</code> parameter to explicitly penalize inverting the direction of travel (forward to reverse, or reverse to forward), commonly called gear changes or cusps. It only applies when reversing is enabled (<code>"REEDS_SHEPP"</code> motion model or <code>allow_reverse_expansion</code>) and defaults to <code>0.0</code>. Values of <code>2.0</code> - <code>8.0</code> are reasonable to minimize direction changes while still allowing them when beneficial.</p>
+<p>It however adjusts the existing <code>change_penalty</code> to penalize <em>only</em> changes in steering direction (left to right, or right to left), independent of the direction of travel. Previously, it also penalized some forward / reverse direction changes, so some users increased <code>change_penalty</code> to reduce cusps in their paths.</p>
+<p>As such, anyone that relies on the <code>change_penalty</code> increase for directional changes should reduce/remove that and instead use the <code>direction_change_penalty</code> with retuning or disabling the change penalty.</p>
 <h2 id="default-bt-updates">Default BT Updates<a class="headerlink" href="#default-bt-updates" title="Permanent link"></a></h2>
 <h3 id="recovery-retries-reset-after-navigation-progress">Recovery retries reset after navigation progress<a class="headerlink" href="#recovery-retries-reset-after-navigation-progress" title="Permanent link"></a></h3>
 <p><a href="https://github.com/ros-navigation/navigation2/pull/6652">PR #6652</a> adds distance-based retry resets to <a class="autorefs autorefs-internal" href="../../configuration_guide/core_servers/bt_plugins/controls/RecoveryNode/#recovery-node">RecoveryNode</a>. When its new <code>reset_distance</code> input is positive, the retry count resets to zero once the robot's displacement during an attempt of the first (main) child reaches that distance in meters. This allows navigation to recover from later failures after making progress without exhausting retries used earlier.</p>
