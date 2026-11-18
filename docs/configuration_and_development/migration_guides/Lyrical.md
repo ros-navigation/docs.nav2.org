@@ -28,6 +28,14 @@ Move your own nested launch files to the same pattern: remove the lifecycle mana
 
 If you would rather run a launch file on its own, start a lifecycle manager beside it.
 
+### Smac Planner Direction Change Penalty
+
+[PR #6734](https://github.com/ros-navigation/navigation2/pull/6734) creates a new `direction_change_penalty` parameter to explicitly penalize inverting the direction of travel (forward to reverse, or reverse to forward), commonly called gear changes or cusps. It only applies when reversing is enabled (`"REEDS_SHEPP"` motion model or `allow_reverse_expansion`) and defaults to `0.0`. Values of `2.0` - `8.0` are reasonable to minimize direction changes while still allowing them when beneficial.
+
+It however adjusts the existing `change_penalty` to penalize _only_ changes in steering direction (left to right, or right to left), independent of the direction of travel. Previously, it also penalized some forward / reverse direction changes, so some users increased `change_penalty` to reduce cusps in their paths.
+
+As such, anyone that relies on the `change_penalty` increase for directional changes should reduce/remove that and instead use the `direction_change_penalty` with retuning or disabling the change penalty.
+
 ## Default BT Updates
 
 ### Recovery retries reset after navigation progress
