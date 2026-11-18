@@ -17375,6 +17375,28 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#namemax_traversal_cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;name&gt;.max_traversal_cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namemax_traversal_cost_relief_radius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;name&gt;.max_traversal_cost_relief_radius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nameuse_final_approach_orientation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20774,6 +20796,28 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#namemax_traversal_cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;name&gt;.max_traversal_cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namemax_traversal_cost_relief_radius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;name&gt;.max_traversal_cost_relief_radius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nameuse_final_approach_orientation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -21080,6 +21124,20 @@ in overrides/partials/header.html -->
 <p>Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-<em>FREE</em> cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of <code>1.0</code> is reasonable. A reasonable tradeoff value is <code>2.0</code>. A value of <code>0.0</code> effective disables steering away from obstacles and acts like a naive binary search A*.</p>
 </dd>
 </dl>
+<h3 id="namemax_traversal_cost"><strong><code>&lt;name&gt;.max_traversal_cost</code></strong><a class="headerlink" href="#namemax_traversal_cost" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>int</code> Default: <code>252</code></dt>
+<dd>
+<p>The maximum cost of the robot's center to traverse, except within <code>max_traversal_cost_relief_radius</code> of the start or goal. Prevents planning through narrower passages than you would like. Can be set such that the narrowest width passages spec you want to plan through remain traversable, in cost terms. Must be in <code>[0, 252]</code>, where <code>252</code> disables it.</p>
+</dd>
+</dl>
+<h3 id="namemax_traversal_cost_relief_radius"><strong><code>&lt;name&gt;.max_traversal_cost_relief_radius</code></strong><a class="headerlink" href="#namemax_traversal_cost_relief_radius" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: <code>2.0</code></dt>
+<dd>
+<p>Radius around the start and goal, in meters, within which <code>max_traversal_cost</code> is not applied, allowing planning from and to poses close to obstacles. <code>0.0</code> disables the relief zone.</p>
+</dd>
+</dl>
 <h3 id="nameuse_final_approach_orientation"><strong><code>&lt;name&gt;.use_final_approach_orientation</code></strong><a class="headerlink" href="#nameuse_final_approach_orientation" title="Permanent link"></a></h3>
 <dl>
 <dt>Type: <code>bool</code> Default: <code>false</code></dt>
@@ -21151,12 +21209,14 @@ in overrides/partials/header.html -->
 </span><span id="__span-0-12"><span class="w">      </span><span class="nt">max_on_approach_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w">      </span><span class="c1"># maximum number of iterations to attempt to reach goal once in tolerance</span>
 </span><span id="__span-0-13"><span class="w">      </span><span class="nt">max_planning_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">                </span><span class="c1"># max time in s for planner to plan, smooth</span>
 </span><span id="__span-0-14"><span class="w">      </span><span class="nt">cost_travel_multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">           </span><span class="c1"># Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.</span>
-</span><span id="__span-0-15"><span class="w">      </span><span class="nt">use_final_approach_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)</span>
-</span><span id="__span-0-16"><span class="w">      </span><span class="nt">smoother</span><span class="p">:</span>
-</span><span id="__span-0-17"><span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-</span><span id="__span-0-18"><span class="w">        </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-</span><span id="__span-0-19"><span class="w">        </span><span class="nt">w_data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-</span><span id="__span-0-20"><span class="w">        </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-10</span>
+</span><span id="__span-0-15"><span class="w">      </span><span class="nt">max_traversal_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">252</span><span class="w">             </span><span class="c1"># Maximum cost of the robot's center to traverse, except near the start or goal. 252 disables it</span>
+</span><span id="__span-0-16"><span class="w">      </span><span class="nt">max_traversal_cost_relief_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"> </span><span class="c1"># Radius (m) around the start and goal within which max_traversal_cost is not applied</span>
+</span><span id="__span-0-17"><span class="w">      </span><span class="nt">use_final_approach_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)</span>
+</span><span id="__span-0-18"><span class="w">      </span><span class="nt">smoother</span><span class="p">:</span>
+</span><span id="__span-0-19"><span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</span><span id="__span-0-20"><span class="w">        </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+</span><span id="__span-0-21"><span class="w">        </span><span class="nt">w_data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</span><span id="__span-0-22"><span class="w">        </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-10</span>
 </span></code></pre></div>
 
 
