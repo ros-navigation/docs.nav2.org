@@ -64,6 +64,18 @@ Type: `double` Default: `2.0`
 
 :   Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-*FREE* cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of `1.0` is reasonable. A reasonable tradeoff value is `2.0`. A value of `0.0` effective disables steering away from obstacles and acts like a naive binary search A\*.
 
+### **`<name>.max_traversal_cost`**
+
+Type: `int` Default: `252`
+
+:   The maximum cost of the robot's center to traverse, except within `max_traversal_cost_relief_radius` of the start or goal. Prevents planning through narrower passages than you would like. Can be set such that the narrowest width passages spec you want to plan through remain traversable, in cost terms. Must be in `[0, 252]`, where `252` disables it.
+
+### **`<name>.max_traversal_cost_relief_radius`**
+
+Type: `double` Default: `2.0`
+
+:   Radius around the start and goal, in meters, within which `max_traversal_cost` is not applied, allowing planning from and to poses close to obstacles. `0.0` disables the relief zone.
+
 ### **`<name>.use_final_approach_orientation`**
 
 Type: `bool` Default: `false`
@@ -129,6 +141,8 @@ planner_server:
       max_on_approach_iterations: 1000      # maximum number of iterations to attempt to reach goal once in tolerance
       max_planning_time: 2.0                # max time in s for planner to plan, smooth
       cost_travel_multiplier: 2.0           # Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
+      max_traversal_cost: 252             # Maximum cost of the robot's center to traverse, except near the start or goal. 252 disables it
+      max_traversal_cost_relief_radius: 2.0 # Radius (m) around the start and goal within which max_traversal_cost is not applied
       use_final_approach_orientation: false # Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)
       smoother:
         max_iterations: 1000

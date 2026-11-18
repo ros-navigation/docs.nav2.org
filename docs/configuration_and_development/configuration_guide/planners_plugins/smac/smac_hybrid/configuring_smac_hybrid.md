@@ -81,6 +81,18 @@ Type: `bool` Default: `false`
 
 :   For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within `2*pi*min_r` of the goal, then it will override the max cost if `false`.
 
+### **`<name>.max_traversal_cost`**
+
+Type: `int` Default: `252`
+
+:   The maximum cost of the robot's center to traverse, except within `max_traversal_cost_relief_radius` of the start or goal. Prevents planning through narrower passages than you would like. Can be set such that the narrowest width passages spec you want to plan through remain traversable, in cost terms. Must be in `[0, 252]`, where `252` disables it.
+
+### **`<name>.max_traversal_cost_relief_radius`**
+
+Type: `double` Default: `2.0`
+
+:   Radius around the start and goal, in meters, within which `max_traversal_cost` is not applied, allowing planning from and to poses close to obstacles. `0.0` disables the relief zone. A radius `> 0` with `max_traversal_cost` enabled cannot be used with `cache_obstacle_heuristic`, in which case the relief radius is disabled.
+
 ### **`<name>.motion_model_for_search`**
 
 Type: `string` Default: `"DUBIN"`
@@ -155,7 +167,7 @@ Type: `bool` Default: `false`
 
 Type: `bool` Default: `false`
 
-:   Advanced feature: Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+:   Advanced feature: Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static. Cannot be used with `max_traversal_cost` and a `max_traversal_cost_relief_radius` `> 0`.
 
 ### **`<name>.allow_primitive_interpolation`**
 
@@ -257,6 +269,8 @@ planner_server:
       analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
       analytic_expansion_max_cost: 200.0  # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
       analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
+      max_traversal_cost: 252             # Maximum cost of the robot's center to traverse, except near the start or goal. 252 disables it
+      max_traversal_cost_relief_radius: 2.0 # Radius (m) around the start and goal within which max_traversal_cost is not applied
       minimum_turning_radius: 0.40        # minimum turning radius in m of path / vehicle
       reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
       change_penalty: 0.0                 # Penalty to apply if motion is changing steering directions (L to R), must be >= 0
