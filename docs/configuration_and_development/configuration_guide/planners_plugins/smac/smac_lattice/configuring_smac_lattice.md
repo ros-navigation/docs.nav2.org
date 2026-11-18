@@ -84,7 +84,13 @@ Type: `double` Default: `2.0`
 
 Type: `double` Default: `0.05`
 
-:   Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search.
+:   Heuristic penalty to apply to SE2 node if changing steering direction (e.g. left to right) in search, independent of the direction of travel. Use `direction_change_penalty` to penalize changes between forward and reverse.
+
+### **`<name>.direction_change_penalty`**
+
+Type: `double` Default: `0.0`
+
+:   Heuristic penalty to apply to SE2 node if inverting the direction of travel (forward to reverse, or reverse to forward) in search, commonly called gear changes or cusps. Must be `>= 0`. Only used in `"REEDS_SHEPP"` motion model or state lattice with reversing enabled. Values of `2.0` - `8.0` are reasonable to minimize direction changes while still allowing them when beneficial.
 
 ### **`<name>.non_straight_penalty`**
 
@@ -237,7 +243,8 @@ planner_server:
       downsample_obstacle_heuristic: true   # Downsample the obstacle map dynamic programming distance expansion heuristic to speed up search at the cost of some path quality
       use_quadratic_cost_penalty: false   # Use quadratic cost penalty for traversal and heuristic cost computations rather than linear
       reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
-      change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
+      change_penalty: 0.05                # Penalty to apply if motion is changing steering directions (L to R), must be >= 0
+      direction_change_penalty: 0.0       # Penalty to apply if motion inverts the direction of travel (forward to reverse), must be >= 0
       non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
       cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
       rotation_penalty: 5.0               # Penalty to apply to in-place rotations, if minimum control set contains them
