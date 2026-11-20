@@ -9,7 +9,7 @@ The following is a description of where to use what kinds of the Nav2 Transform 
 | Data or operation | Time to use | Transform manager API |
 | --- | --- | --- |
 | Sensor observations, such as scans and point clouds | The observation's capture timestamp | `getStampedTransform(target_frame, source_frame, stamp, transform_tolerance)` |
-| Stamped computed results, such as paths and poses | The result's own timestamp | `transformStampedPose(target_frame, pose, transform_tolerance)` for poses; `getStampedTransform()` and `tf2::doTransform` for other data |
+| Stamped computed results, such as paths and poses | The result's own timestamp | `transformStampedPose(target_frame, pose, transform_tolerance)` for poses; `getStampedTransform()`  for other data |
 | The robot's current pose or another current frame relationship | The latest common time available along the TF chain | `getLatestPose()` or `getLatestTransform()`, with a positive staleness threshold when old TF must be rejected |
 | A source observation at one time expressed in a target frame at another time | Both timestamps, through a fixed frame such as `odom` | `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` |
 
