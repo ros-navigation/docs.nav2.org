@@ -13,6 +13,8 @@ The following is a description of where to use what kinds of the Nav2 Transform 
 | The robot's current pose or another current frame relationship | The latest common time available along the TF chain | `getLatestPose()` or `getLatestTransform()`, with a positive staleness threshold when old TF must be rejected |
 | A source observation at one time expressed in a target frame at another time | Both timestamps, through a fixed frame such as `odom` | `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` |
 
-When a server needs a current robot pose, obtain it once for that operation and carry its timestamp through downstream calculations. If several values must refer to the same instant, reuse that timestamp or the resolved transform rather than independently requesting the latest transform for each value. Preserve the original timestamp of sensor data and computed results unless an operation intentionally changes the time being represented.
+When a current robot pose or transform is needed in a non-data driven context to provide a reference timestamp, obtain the latest pose or transform once and carry its timestamp through all downstream calculations so that they all reference the same instance.
+
+Otherwise, preserve the original timestamp of sensor data and computed results unless an operation intentionally changes the time being represented.
 
 Use `nav2::TransformManager` from `nav2_ros_common/tf_manager.hpp` for these lookups and for `sendTransform()` or `sendStaticTransform()` when broadcasting. See the [Lyrical to M-Turtle migration guide][lyrical-to-m-turtle] for the API mapping and staleness parameter.
