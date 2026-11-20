@@ -4,7 +4,7 @@
 
 ### Transform Manager API
 
-[PR #6651](https://github.com/ros-navigation/navigation2/pull/6651) introduces `nav2::TransformManager` to simplify and standardize how Nav2 receives, looks up, and broadcasts TF transforms. Its common lookup methods make the choice between the latest available transform and a transform at a message's timestamp explicit. This reduces repeated TF2 setup and helps components apply the same timing and staleness rules.
+[PR #6651](https://github.com/ros-navigation/navigation2/pull/6651) introduces `nav2::TransformManager` to simplify and standardize how Nav2 receives, looks up, and broadcasts frame transforms. Transformation lookups can be either the latest available or at a specific timestamp. This reduces repeated TF2 boilerplate and creates consistency in how transforms are handled.
 
 Note that this is a breaking API change: custom components, including behavior tree nodes, that previously accepted a TF buffer must update their interfaces to use nav2::TransformManager instead.
 
