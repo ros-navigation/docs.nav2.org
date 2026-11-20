@@ -1,6 +1,8 @@
 # Transform Synchronization Strategy { #transform-synchronization-strategy }
 
-Nav2 combines sensor observations, robot poses, paths, and commands that may have been produced at different times. A transform that is valid now may not describe where the robot or sensor was when older data was recorded. Preserve timestamps when moving data between frames so each operation uses a consistent view of the robot and its surroundings.
+Nav2 utilizes and produces data in many frames of reference with respect to the vehicle and the environment. Many of its sources are asynchronous and are made available for use at different times. As such, it is important to have a consistent strategy for how to manage internal computations, frames of reference, and sensor data to ensure proper synchronization.
+
+The following is a description of where to use what kinds of the Nav2 Transform Manager APIs and why.
 
 ## Use the timestamp of the data
 
