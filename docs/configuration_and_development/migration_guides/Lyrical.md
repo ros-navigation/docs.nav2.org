@@ -23,9 +23,9 @@ Choose **Latest** for a current frame relationship, such as the robot pose used 
 
 Choose **Stamped** when transforming data recorded or computed at a particular time, so motion since that time does not distort its placement. These lookups can wait up to `transform_tolerance` (a `double` in seconds) for the required TF; this is a wait timeout, not an allowance for timestamp error or extrapolation. They do not check age against the current time. A zero stamp requests the latest common time without an age check. See the [Transform Synchronization Strategy][transform-synchronization-strategy] for guidance on preserving timestamps.
 
-Lookup methods return `std::optional`; check the result before using it and handle failures in the caller. They do not log failures automatically. Supply an optional `std::string * error_msg` as the final argument to receive diagnostic details. For points, point clouds, and other message types, obtain the appropriate transform from the manager and apply it with `tf2::doTransform`.
+Lookup methods return `std::optional`; check the result before using it. An optional `error_msg` receives diagnostic details on failures.
 
-The manager receives TF on a dedicated listener thread by default. For a broadcaster-only manager, pass `activate_listener=false` to the factory. Only for native TF integrations that require a `tf2_ros::Buffer`, such as `laser_geometry`, use `getRawBuffer()`. Pass the manager to `nav2::create_message_filter()` for TF-aware subscriptions.
+For a broadcaster-only manager, pass `activate_listener=false` to the factory. Pass the manager to `nav2::create_message_filter()` for TF-aware subscriptions.
 
 ### Behavior Server plugin parameters are now namespaced
 
