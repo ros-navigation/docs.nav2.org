@@ -6,7 +6,7 @@
 
 [PR #6651](https://github.com/ros-navigation/navigation2/pull/6651) introduces `nav2::TransformManager` to simplify and standardize how Nav2 receives, looks up, and broadcasts frame transforms. Transformation lookups can be either the latest available or at a specific timestamp. This reduces repeated TF2 boilerplate and creates consistency in how transforms are handled.
 
-Note that this is a breaking API change: custom components, including behavior tree nodes, that previously accepted a TF buffer must update their interfaces to use nav2::TransformManager instead.
+Note that this is a breaking API change: custom components, including behavior tree nodes, that previously accepted a TF buffer must update their interfaces to use `nav2::TransformManager` instead.
 
 The manager should be used for lookups and broadcasting in place of direct TF2 calls, the old `nav2::TransformBuffer` alias and listener factories, and the removed transform helpers in `nav2_util/robot_utils.hpp`. Update custom plugin interfaces that previously accepted a TF buffer to accept `nav2::TransformManager::SharedPtr` and use the manager supplied by the server.
 
