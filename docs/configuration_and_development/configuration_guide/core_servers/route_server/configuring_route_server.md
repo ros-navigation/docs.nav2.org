@@ -25,6 +25,12 @@ See the package's README file for additional information such as performance met
 
 ## Server Parameters
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:   Maximum age (seconds) of the latest robot-pose transforms used by RouteTracker and GoalIntentExtractor. Values greater than `0.0` enable the age check; non-positive values disable it.
+
 ### **`base_frame`**
 
 Type: `string` Default: `"base_link"`

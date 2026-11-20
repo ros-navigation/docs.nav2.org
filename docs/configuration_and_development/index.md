@@ -27,6 +27,13 @@ watermark: true
 
     [:octicons-arrow-right-24: Go][configuration-guide]
 
+- :material-clock-outline: **Transform Synchronization Strategy**
+
+    ---
+    Choose the right timestamps and TF lookups for Nav2 data.
+
+    [:octicons-arrow-right-24: Go][transform-synchronization-strategy]
+
 - :material-tune: **Tuning Guide**
 
     ---
