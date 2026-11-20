@@ -39,6 +39,12 @@ Type: `double` Default: `10.0`
 
 :   Frequency to run behavior plugins.
 
+### **`transform_tolerance`**
+
+Type: `double` Default: `0.1`
+
+:   Maximum time (seconds) to wait for a transform at a footprint message's timestamp when converting the footprint into the robot base frame for collision checking. This is separate from `transform_staleness_threshold`, which limits the age of the latest robot-pose transform.
+
 ### **`transform_staleness_threshold`**
 
 Type: `double` Default: `0.0`
@@ -302,6 +308,7 @@ behavior_server:
     local_frame: odom
     global_frame: map
     robot_base_frame: base_link
+    transform_tolerance: 0.1
     transform_staleness_threshold: 0.0
     enable_stamped_cmd_vel: true
 ```
