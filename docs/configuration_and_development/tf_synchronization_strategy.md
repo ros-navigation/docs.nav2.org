@@ -6,7 +6,7 @@ The following is a description of where to use what kinds of the Nav2 Transform 
 
 ## Use the timestamp of the data
 
-| Data or operation | Time to use | Transform manager API |
+| Data or operation | Timestamp to use | Transform manager API |
 | --- | --- | --- |
 | Sensor observations, such as scans and point clouds | The observation's capture timestamp | `getStampedTransform(target_frame, source_frame, stamp, transform_tolerance)` |
 | Stamped computed results, such as paths and poses | The result's own timestamp | `transformStampedPose(target_frame, pose, transform_tolerance)` for poses; `getStampedTransform()`  for other data |
