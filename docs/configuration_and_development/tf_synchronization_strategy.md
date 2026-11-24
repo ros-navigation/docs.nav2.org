@@ -2,7 +2,7 @@
 
 Nav2 utilizes and produces data in many frames of reference with respect to the vehicle and the environment. Many of its sources are asynchronous and are made available for use at different times. As such, it is important to have a consistent strategy for how to manage internal computations, frames of reference, and sensor data to ensure proper synchronization.
 
-Tf operations are facilitated by the `nav2::TransformManager`, which provides a shared interface for receiving, looking up, and broadcasting transforms throughout Nav2. It reduces repeated TF2 boilerplate and makes transform handling consistent across components.
+Transform operations are facilitated by the `nav2::TransformManager`, which provides a shared interface for receiving, looking up, and broadcasting transforms throughout Nav2. It reduces repeated boilerplate and makes transform handling consistent across components.
 
 ## Choosing the lookup timestamp and Transform Manager API
 
