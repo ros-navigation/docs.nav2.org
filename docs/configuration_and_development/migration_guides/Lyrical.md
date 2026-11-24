@@ -8,24 +8,7 @@
 
 Note that this is a breaking API change: custom components, including behavior tree nodes, that previously accepted a TF buffer must update their interfaces to use `nav2::TransformManager` instead.
 
-
-| `nav2::TransformManager` API | When to use it |
-| --- | --- |
-| `getLatestPose(target_frame, source_frame, staleness_threshold)` | Get the latest robot or other frame pose, with an optional age limit. |
-| `getLatestTransform(target_frame, source_frame, staleness_threshold)` | Get the latest available transform between frames, with an optional age limit. |
-| `getStampedTransform(target_frame, source_frame, stamp, transform_tolerance)` | Transform sensor data or computed results at their timestamp. |
-| `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` | Transform data into a frame at a particular time, accounting for robot motion through a fixed frame. |
-| `transformStampedPose(target_frame, input_pose, transform_tolerance)` | Express an arbitrary stamped pose in another frame at the pose's timestamp. |
-| `sendTransform(transform)` or `sendStaticTransform(transform)` | Publish dynamic or static transforms. |
-| `transformToPoseStamped()`, `poseToTransformStamped()`, or `invertTransform()` | Convert between pose and transform messages, or invert a transform; these are static methods and do not look up TF. |
-
-Choose **Latest** for a current frame relationship, such as the robot pose used for control. These lookups use the latest common time in the TF chain and do not wait for unavailable TF. Supply a positive `staleness_threshold` to reject outdated dynamic transforms.
-
-Choose **Stamped** when transforming data recorded or computed at a particular time, so motion since that time does not distort its placement. These lookups can wait up to `transform_tolerance` (a `double` in seconds) for the required TF; this is a wait timeout, not an allowance for timestamp error or extrapolation. They do not check age against the current time. A zero stamp requests the latest common time without an age check. See the [Transform Synchronization Strategy][transform-synchronization-strategy] for guidance on preserving timestamps.
-
-Lookup methods return `std::optional`; check the result before using it. An optional `error_msg` receives diagnostic details on failures.
-
-For a broadcaster-only manager, pass `activate_listener=false` to the factory. Pass the manager to `nav2::create_message_filter()` for TF-aware subscriptions.
+See the [Transform Synchronization Strategy][transform-synchronization-strategy] for API usage, timestamp selection guidance, and an introduction to transform staleness checking.
 
 ### Behavior Server plugin parameters are now namespaced
 
@@ -170,11 +153,7 @@ Because this prevents expansion through narrow spaces, `max_traversal_cost_relie
 
 ### Transform Staleness Checking
 
-When a dynamic TF publisher stops updating, its last transform can still be returned as the latest available one. Navigation based on that old pose can produce incorrect commands or miss hazards. Staleness checking lets a component reject an outdated latest transform and report the failure so the robot can respond safely.
-
-The `transform_staleness_threshold` parameter sets the maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check. Most components default to `0.0`, while Collision Monitor and Collision Detector default to `1.0`. Static-only TF chains are exempt. Choose a threshold that covers the normal update period and expected latency of your dynamic transforms, but still catches a stopped publisher promptly.
-
-Staleness checking has been applied throughout Nav2 wherever latest transforms are used, through the related [staleness changes](https://github.com/ros-navigation/navigation2/pull/6391), [TF lookup changes](https://github.com/ros-navigation/navigation2/pull/6436), and [TF manager PR #6651](https://github.com/ros-navigation/navigation2/pull/6651). Set the parameter in each relevant component's configuration when you want it to reject stale TF; it is not a single stack-wide setting. Stamped lookups use the data's timestamp and do not use this age check.
+Staleness checking has been applied throughout Nav2 wherever latest transforms are used, through the related [staleness changes](https://github.com/ros-navigation/navigation2/pull/6391), [TF lookup changes](https://github.com/ros-navigation/navigation2/pull/6436), and [TF manager PR #6651](https://github.com/ros-navigation/navigation2/pull/6651). See the [Transform Synchronization Strategy][transform-synchronization-strategy] for configuration and lookup behavior.
 
 Collision Monitor and Collision Detector exclusion zones no longer use `<zone name>.frame_hold_timeout`. Configure `<zone name>.transform_staleness_threshold` instead to limit the age of a zone-frame transform; it inherits the node-level threshold when omitted.
 
