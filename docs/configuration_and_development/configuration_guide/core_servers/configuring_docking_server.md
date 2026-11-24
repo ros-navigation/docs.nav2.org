@@ -12,6 +12,12 @@ Thanks to NVIDIA for sponsoring this Docking Server package!
 
 ## Parameters
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`controller_frequency`**
 
 Type: `double` Default: `50.0`
@@ -246,6 +252,12 @@ Type: `double` Default: `0.3`
 ## SimpleChargingDock Parameters
 
 Simple Charging Dock is a provided charging dock plugin that can handle many docks and common techniques.
+
+### **`<dock_name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<dock_name>.staging_x_offset`**
 

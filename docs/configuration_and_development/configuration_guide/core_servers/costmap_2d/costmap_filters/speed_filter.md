@@ -8,6 +8,12 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
 `<filter name>`: is the corresponding plugin name selected for this type.
 
+### **`<filter name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`<filter name>.enabled`**
 
 Type: `bool` Default: `true`

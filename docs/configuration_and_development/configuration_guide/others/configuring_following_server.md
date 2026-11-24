@@ -109,11 +109,17 @@ Type: `double` Default: `0.3`
 
 :   Time (s) to buffer odometry commands to estimate the robot speed.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1`
 
-:   Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
+:   Maximum time (seconds) to wait for stamped transforms used to interpret target detections.
 
 ## Example
 

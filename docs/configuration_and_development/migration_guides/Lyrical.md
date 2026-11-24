@@ -2,6 +2,14 @@
 
 ## Migration Actions and Deprecations
 
+### Transform Manager API
+
+[PR #6651](https://github.com/ros-navigation/navigation2/pull/6651) introduces `nav2::TransformManager` to simplify and standardize how Nav2 receives, looks up, and broadcasts frame transforms. Transformation lookups can be either the latest available or at a specific timestamp. This reduces repeated TF2 boilerplate and creates consistency in how transforms are handled.
+
+Note that this is a breaking API change: custom components, including behavior tree nodes, that previously accepted a TF buffer must update their interfaces to use `nav2::TransformManager` instead.
+
+See the [Transform Synchronization Strategy][transform-synchronization-strategy] for API usage, timestamp selection guidance, and an introduction to transform staleness checking.
+
 ### Behavior Server plugin parameters are now namespaced
 
 The behavior plugins' parameters are now declared under the plugin's name from `behavior_plugins`, in the same way the `acceleration_limit`, `deceleration_limit` and `minimum_speed` parameters of `BackUp` and `DriveOnHeading` already were. The old node-level names are no longer read, so existing configurations must be updated or the defaults will silently apply:
@@ -142,3 +150,27 @@ Because this prevents expansion through narrow spaces, `max_traversal_cost_relie
 <figure markdown="span">
   ![Smac Hybrid-A* in a 0.7 m wide aisle with max_traversal_cost disabled, 240 and 200](lyrical/assets/smac_max_traversal_cost.png){ width="500" title="Smac Hybrid-A* in a 0.7 m wide aisle with max_traversal_cost disabled, 240 and 200" }
 </figure>
+
+### Transform Staleness Checking
+
+Staleness checking has been applied throughout Nav2 wherever latest transforms are used, through the related [staleness changes](https://github.com/ros-navigation/navigation2/pull/6391), [TF lookup changes](https://github.com/ros-navigation/navigation2/pull/6436), and [TF manager PR #6651](https://github.com/ros-navigation/navigation2/pull/6651). See the [Transform Synchronization Strategy][transform-synchronization-strategy] for configuration and lookup behavior.
+
+Collision Monitor and Collision Detector exclusion zones no longer use `<zone name>.frame_hold_timeout`. Configure `<zone name>.transform_staleness_threshold` instead to limit the age of a zone-frame transform; it inherits the node-level threshold when omitted.
+
+### ProgressChecker API Uses a Const Robot Pose
+
+The `nav2_core::ProgressChecker::check()` interface now takes the current robot pose by const reference.
+
+Previously:
+
+```cpp
+virtual bool check(
+  geometry_msgs::msg::PoseStamped & current_pose) = 0;
+```
+
+Now:
+
+```cpp
+virtual bool check(
+  const geometry_msgs::msg::PoseStamped & current_pose) = 0;
+```

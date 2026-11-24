@@ -25,6 +25,12 @@ See the package's README file for additional information such as performance met
 
 ## Server Parameters
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`base_frame`**
 
 Type: `string` Default: `"base_link"`

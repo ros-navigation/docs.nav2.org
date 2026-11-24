@@ -126,11 +126,17 @@ Type: `bool` Default: `false`
 
 :   If `false`, treats unknown space as free space, else as unknown space.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.3`
 
-:   TF transform tolerance.
+:   Maximum time (seconds) to wait for stamped TF transforms.
 
 ### **`initial_transform_timeout`**
 

@@ -93,11 +93,17 @@ Type: `string` Default: `"disabled"`
 
 :   The introspection mode for services and actions. Options are `"disabled"`, `"metadata"`, `"contents"`.
 
+### **`transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`transform_tolerance`**
 
 Type: `double` Default: `0.1` Unit: `seconds`
 
-:   TF transform tolerance.
+:   Maximum time (seconds) to wait for stamped TF transforms.
 
 ### **`global_frame`**
 
@@ -156,6 +162,12 @@ Type: `int` Default: `500`
 
 ## NavigateToPose Parameters
 
+### **`<navigate_to_pose_name>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
+
 ### **`<navigate_to_pose_name>.goal_blackboard_id`**
 
 Type: `string` Default: `"goal"`
@@ -196,6 +208,12 @@ Type: `double` Default: `2.0`
 :   How far (in meters) along the path the searching algorithm will look for the closest point.
 
 ## NavigateThroughPoses Parameters
+
+### **`<navigate_through_poses>.transform_staleness_threshold`**
+
+Type: `double` Default: `0.0`
+
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<navigate_through_poses>.goals_blackboard_id`**
 

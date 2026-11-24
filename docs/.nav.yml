@@ -20,6 +20,7 @@ nav:
       - First-Time Robot Setup Guide: configuration_and_development/first_time_robot_setup_guide/index.md
       - Navigation Plugins: configuration_and_development/navigation_plugins.md
       - Configuration Guide: configuration_and_development/configuration_guide/index.md
+      - Transform Synchronization Strategy: configuration_and_development/tf_synchronization_strategy.md
       - Tuning Guide: configuration_and_development/tuning_guide.md
       - Simple Commander API: configuration_and_development/simple_commander_api/simple_commander_api.md
       - Migration Guides: configuration_and_development/migration_guides/index.md
