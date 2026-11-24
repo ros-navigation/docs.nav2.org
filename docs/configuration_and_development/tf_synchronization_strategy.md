@@ -21,7 +21,7 @@ You can refer to the following guide to choose which combination of timestamp an
 While choosing an API, account for how it handles unavailable transforms:
 
 - **Latest** lookups return immediately. A positive `staleness_threshold` rejects outdated dynamic transforms. See [Transform staleness checking](#transform-staleness-checking) below for configuration details.
-- **Stamped** lookups can wait up to `transform_tolerance` (a `double` in seconds) for the required TF. This is a wait timeout, not an allowance for timestamp error or extrapolation.
+- **Stamped** lookups can wait up to `transform_tolerance` (a `double` in seconds). This is a wait timeout, not an allowance for timestamp error or extrapolation.
 
 ### Handling lookup results
 
