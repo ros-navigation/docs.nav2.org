@@ -51,4 +51,4 @@ When a dynamic TF publisher stops updating, its last transform can still be retu
 
 The `transform_staleness_threshold` parameter sets the maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. If set to 0.0, it disables the age check. Static-only TF chains are exempt. Choose a threshold that covers the normal update period and expected latency of your dynamic transforms, but still catches a stopped publisher promptly.
 
-Set `transform_staleness_threshold` in each relevant component's configuration when you want it to reject stale TF; it is not a single stack-wide setting.
+Set `transform_staleness_threshold` in each relevant component's configuration when you want it to reject stale transformations; it is not a single stack-wide setting.
