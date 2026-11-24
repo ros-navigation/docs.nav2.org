@@ -29,7 +29,7 @@ Lookup methods return `std::optional`; check the result before using it. An opti
 
 ### Timestamp propagation
 
-Subsequent TF operations on related data should reuse coherent time-stamps. When the operation has no input data timestamp, obtain the latest pose/transform once, then reuse its timestamp downstream; otherwise preserve the data’s original timestamp. Avoid using `now()` as reference for transform lookups unless you have a motivated reason: this can request a transform newer than the available TF and potentially result in unnecessary wait time or extrapolation errors.
+Subsequent operations on related data should reuse coherent time-stamps. When the operation has no input data timestamp, obtain the latest pose/transform once, then reuse its timestamp downstream; otherwise preserve the data’s original timestamp. Avoid using `now()` as reference for transform lookups unless you have a motivated reason: this can request a transform newer than the available transformations and potentially result in unnecessary wait time or extrapolation errors.
 
 ## Broadcasting and other utilities
 
