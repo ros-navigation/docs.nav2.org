@@ -16,8 +16,6 @@ You can refer to the following guide to choose which combination of timestamp an
 | Get the current transform between frames for an operation with no incoming data timestamp | The latest common time available along the TF chain | `getLatestTransform(target_frame, source_frame, staleness_threshold)` |
 | Express an observation from one time in a target frame at another time, accounting for motion | Both timestamps, through a fixed frame such as `odom` | `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` |
 
-If your application requires access to the native implementation of `tf2_ros::Buffer`, you can still access it through `getRawBuffer()`, which exposes it as a shared pointer, but the manager API should be preferred whenever possible.
-
 ### Waiting and timestamp handling
 
 While choosing an API, account for how it handles unavailable transforms:
@@ -27,7 +25,11 @@ While choosing an API, account for how it handles unavailable transforms:
 
 ### Handling lookup results
 
-Lookup methods in the TfManager return `std::optional`; check the result before using it. An optional `error_msg` receives diagnostic details on failures, logging is responsibility of the caller.
+Lookup methods return `std::optional`; check the result before using it. An optional `error_msg` receives diagnostic details on failures.
+
+### Timestamps propagation
+
+Subsequent tf operations on related data should reuse coherent time-stamps. When the operation has no input data timestamp, obtain the latest pose/transform once, then reuse its timestamp downstream; otherwise preserve the data’s original timestamp. Avoid using now() as reference for transformations lookups unless you have a motivated reason: this can can request a transform newer than the available TF and potentially result in unnecessary wait time or extrapolation errors.
 
 ## Broadcasting and other utilities
 
@@ -36,6 +38,12 @@ Use `sendTransform(transform)` or `sendStaticTransform(transform)` to publish dy
 If you only need to broadcast, pass `activate_listener=false` when constructing the manager to avoid unnecessary overhead.
 
 The static methods `transformToPoseStamped()`, `poseToTransformStamped()`, and `invertTransform()` convert between pose and transform messages or invert a transform; they do not look up TF.
+
+## Native TF integrations
+
+If your application requires access to the native implementation of `tf2_ros::Buffer`, you can still access it through `getRawBuffer()`, which exposes it as a shared pointer, but the manager API should be preferred whenever possible.
+
+Pass the manager to `nav2::create_message_filter()` for TF-aware subscriptions.
 
 ## Transform staleness checking
 
