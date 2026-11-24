@@ -91,3 +91,27 @@ Similarly, you can install the Nav2 project in different ways:
     !!! tip "Hint"
 
         For more examples on building Nav2 from rolling development source, checkout [distro.Dockerfile](https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile).
+
+=== "Nav2 from Source with Pixi"
+
+    [Pixi](https://pixi.sh) builds Nav2 from source with its dependencies from [RoboStack](https://robostack.github.io/), so you do not need a system ROS 2 installation or the tools listed in [Dependencies](#dependencies).
+    The `main` branch provides one environment per ROS 2 distribution: `jazzy`, `lyrical` and `rolling`.
+
+    Install Pixi, clone the Nav2 repo and build the workspace, selecting the distribution with `-e`:
+
+    ```bash
+    curl -fsSL https://pixi.sh/install.sh | sh
+    git clone https://github.com/ros-navigation/navigation2.git --branch main
+    cd navigation2
+    pixi run -e rolling build
+    ```
+
+    You can then launch the TurtleBot 4 simulation with Nav2, forwarding any launch arguments:
+
+    ```bash
+    pixi run -e rolling tb4-sim
+    ```
+
+    `pixi run -e rolling test` and `pixi run -e rolling test-result` run the tests and show their results, and `pixi shell -e rolling` opens a shell with the workspace sourced.
+
+    All distributions share the `build`, `install` and `log` directories, so run `pixi run clean` before switching to another distribution.
