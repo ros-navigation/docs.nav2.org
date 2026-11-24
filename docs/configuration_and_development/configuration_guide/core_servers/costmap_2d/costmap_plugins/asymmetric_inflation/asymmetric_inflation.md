@@ -12,7 +12,7 @@ This layer implements an asymmetric variant of the inflation layer, by scaling i
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest transform used for path-based asymmetric inflation. Values greater than `0.0` enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<asymmetric inflation layer>.enabled`**
 

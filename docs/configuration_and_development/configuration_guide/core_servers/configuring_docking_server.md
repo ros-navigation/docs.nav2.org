@@ -16,7 +16,7 @@ Thanks to NVIDIA for sponsoring this Docking Server package!
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest robot-pose or dock-frame transform used by the docking server. Values greater than `0.0` enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`controller_frequency`**
 
@@ -257,7 +257,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest robot-pose transform used by the Simple Charging Dock or Simple Non-Charging Dock plugin. Dock detections retain their message timestamps. Positive values enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<dock_name>.staging_x_offset`**
 

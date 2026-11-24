@@ -97,7 +97,7 @@ Type: `string` Default: `"disabled"`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of latest transforms used by built-in BT nodes including GetCurrentPose, RemovePassedGoals, TruncatePathLocal, GoalReached, IsGoalNearby, DistanceTraveled, and DistanceController. The NavigateToPose and NavigateThroughPoses navigator plugins have separate thresholds under their plugin names. Values greater than `0.0` enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`transform_tolerance`**
 
@@ -166,7 +166,7 @@ Type: `int` Default: `500`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest robot-pose transform used for navigation feedback and goal checks. Positive values enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<navigate_to_pose_name>.goal_blackboard_id`**
 
@@ -213,7 +213,7 @@ Type: `double` Default: `2.0`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest robot-pose transform used for navigation feedback and goal checks. Positive values enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<navigate_through_poses>.goals_blackboard_id`**
 

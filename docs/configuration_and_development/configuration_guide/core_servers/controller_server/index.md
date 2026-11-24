@@ -24,9 +24,7 @@ Type: `double` Default: `0.3`
 
 Type: `double` Default: `0.0`
 
-:   Maximum allowed age (seconds) of the transform used to obtain the robot pose in the local costmap's global frame.
-    If the transform is older than this threshold, the controller server reports a transform error instead of computing a velocity command.
-    The check is enabled for positive values; values less than or equal to `0.0` disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`use_realtime_priority`**
 

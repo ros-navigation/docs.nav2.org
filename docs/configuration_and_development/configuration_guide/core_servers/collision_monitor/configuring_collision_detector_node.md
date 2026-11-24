@@ -49,7 +49,7 @@ Type: `string` Default: `"odom"`
 
 Type: `double` Default: `1.0`
 
-:   Maximum age (seconds) of latest transforms used by collision sources when `base_shift_correction` is `false`, and by exclusion zones. With shift correction enabled, sources use transforms at the observation and current timestamps instead of applying this age check. A stale latest transform makes the affected observation or zone unavailable; an unavailable exclusion zone stops masking points. Positive values enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`transform_tolerance`**
 
@@ -233,7 +233,7 @@ Type: `vector<string>` Default: `[""]`
 
 Type: `double` Default: value of `transform_staleness_threshold`
 
-:   Zone-frame transform age limit; inherits the node-level threshold when omitted. Values greater than `0.0` enable the age check; non-positive values disable it. Static-only TF chains are exempt. If the transform is unavailable or stale, the zone stops masking points.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 `<zone name>` is a parameter block referenced by name from a source's `exclusion_zones` list. Zone names are global across the node.
 Exclusion zones remove (mask out) a source's points and never trigger detection. Each zone inherits the owning source's `base_shift_correction` policy.

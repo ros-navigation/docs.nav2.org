@@ -113,7 +113,7 @@ Type: `double` Default: `0.3`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest robot-pose transform used by the following control loop. Values greater than `0.0` enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`transform_tolerance`**
 

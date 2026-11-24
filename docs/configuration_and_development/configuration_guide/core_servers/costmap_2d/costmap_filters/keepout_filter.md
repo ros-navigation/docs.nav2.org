@@ -10,7 +10,7 @@ You may use this filter with an inflation layer to inflate the keepout costs aro
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest transform used to place the filter mask in the costmap. Values greater than `0.0` enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`<filter name>.enabled`**
 

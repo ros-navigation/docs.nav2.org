@@ -130,7 +130,7 @@ Type: `bool` Default: `false`
 
 Type: `double` Default: `0.0`
 
-:   Maximum age (seconds) of the latest robot-pose transform in the costmap global frame. Positive values enable the age check; non-positive values disable it.
+:    Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.
 
 ### **`transform_tolerance`**
 
