@@ -37,7 +37,7 @@ Use `sendTransform(transform)` or `sendStaticTransform(transform)` to publish dy
 
 If you only need to broadcast, pass `activate_listener=false` when constructing the manager to avoid unnecessary overhead.
 
-The static methods `transformToPoseStamped()`, `poseToTransformStamped()`, and `invertTransform()` convert between pose and transform messages or invert a transform; they do not look up TF.
+The static methods `transformToPoseStamped()`, `poseToTransformStamped()`, and `invertTransform()` convert between pose and transform messages or invert a transform; they do not look up transformations.
 
 ## Native TF integrations
 
