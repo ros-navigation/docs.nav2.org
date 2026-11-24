@@ -9,15 +9,15 @@
 Note that this is a breaking API change: custom components, including behavior tree nodes, that previously accepted a TF buffer must update their interfaces to use `nav2::TransformManager` instead.
 
 
-| New `nav2::TransformManager` API | Previous API | When to use it |
-| --- | --- | --- |
-| `getLatestPose(target_frame, source_frame, staleness_threshold)` | `nav2_util::getCurrentPose()` with a zero stamp or `nav2_util::getFreshPose()` | Get the latest robot or other frame pose, with an optional age limit. |
-| `getLatestTransform(target_frame, source_frame, staleness_threshold)` | `nav2_util::getTransform()`, `nav2_util::lookupTransformWithStalenessCheck()`, or `lookupTransform()` with time zero | Get the latest available transform between frames, with an optional age limit. |
-| `getStampedTransform(target_frame, source_frame, stamp, transform_tolerance)` | `lookupTransform()` at a specified time | Transform sensor data or computed results at their timestamp. |
-| `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` | The corresponding two-time `nav2_util::getTransform()` or advanced `lookupTransform()` overload | Express an earlier observation in a frame at a later time, accounting for robot motion through a fixed frame such as `odom`. |
-| `transformStampedPose(target_frame, input_pose, transform_tolerance)` | `nav2_util::transformPoseInTargetFrame()` or `transform()` | Express an arbitrary stamped pose in another frame at the pose's timestamp. |
-| `sendTransform(transform)` or `sendStaticTransform(transform)` | A separate `tf2_ros::TransformBroadcaster` or `tf2_ros::StaticTransformBroadcaster` | Publish dynamic or static transforms. |
-| `transformToPoseStamped()`, `poseToTransformStamped()`, or `invertTransform()` | The same functions in `nav2_util` | Convert between pose and transform messages, or invert a transform; these are static methods and do not look up TF. |
+| `nav2::TransformManager` API | When to use it |
+| --- | --- |
+| `getLatestPose(target_frame, source_frame, staleness_threshold)` | Get the latest robot or other frame pose, with an optional age limit. |
+| `getLatestTransform(target_frame, source_frame, staleness_threshold)` | Get the latest available transform between frames, with an optional age limit. |
+| `getStampedTransform(target_frame, source_frame, stamp, transform_tolerance)` | Transform sensor data or computed results at their timestamp. |
+| `getStampedTransform(target_frame, target_time, source_frame, source_time, fixed_frame, transform_tolerance)` | Transform data into a frame at a particular time, accounting for robot motion through a fixed frame. |
+| `transformStampedPose(target_frame, input_pose, transform_tolerance)` | Express an arbitrary stamped pose in another frame at the pose's timestamp. |
+| `sendTransform(transform)` or `sendStaticTransform(transform)` | Publish dynamic or static transforms. |
+| `transformToPoseStamped()`, `poseToTransformStamped()`, or `invertTransform()` | Convert between pose and transform messages, or invert a transform; these are static methods and do not look up TF. |
 
 Choose **Latest** for a current frame relationship, such as the robot pose used for control. These lookups use the latest common time in the TF chain and do not wait for unavailable TF. Supply a positive `staleness_threshold` to reject outdated dynamic transforms.
 
