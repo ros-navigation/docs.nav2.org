@@ -27,9 +27,9 @@ While choosing an API, account for how it handles unavailable transforms:
 
 Lookup methods return `std::optional`; check the result before using it. An optional `error_msg` receives diagnostic details on failures.
 
-### Timestamps propagation
+### Timestamp propagation
 
-Subsequent tf operations on related data should reuse coherent time-stamps. When the operation has no input data timestamp, obtain the latest pose/transform once, then reuse its timestamp downstream; otherwise preserve the data’s original timestamp. Avoid using now() as reference for transformations lookups unless you have a motivated reason: this can can request a transform newer than the available TF and potentially result in unnecessary wait time or extrapolation errors.
+Subsequent TF operations on related data should reuse coherent time-stamps. When the operation has no input data timestamp, obtain the latest pose/transform once, then reuse its timestamp downstream; otherwise preserve the data’s original timestamp. Avoid using `now()` as reference for transform lookups unless you have a motivated reason: this can request a transform newer than the available TF and potentially result in unnecessary wait time or extrapolation errors.
 
 ## Broadcasting and other utilities
 
