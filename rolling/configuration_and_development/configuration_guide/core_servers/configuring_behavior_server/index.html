@@ -3970,6 +3970,8 @@ SUVORK5CYII=
       
         
       
+        
+      
     
     
 
@@ -4179,6 +4181,52 @@ SUVORK5CYII=
   <!-- Typeset title -->
   
     Configuration Guide
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+
+  <!-- Determine classes -->
+  
+  
+
+  <!-- Determine active page for paginated views -->
+  
+
+  <!-- Navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../tf_synchronization_strategy/" class="md-nav__link">
+        
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Transform Synchronization Strategy
   
 
 
@@ -9247,6 +9295,8 @@ SUVORK5CYII=
       
         
       
+        
+      
     
     
 
@@ -10288,6 +10338,17 @@ SUVORK5CYII=
     <span class="md-ellipsis">
       
         transform_tolerance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform_staleness_threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        transform_staleness_threshold
       
     </span>
   </a>
@@ -19325,6 +19386,52 @@ SUVORK5CYII=
   <!-- Navigation item with nested items -->
   
     <li class="md-nav__item">
+      <a href="../../../tf_synchronization_strategy/" class="md-nav__link">
+        
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Transform Synchronization Strategy
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+
+  <!-- Determine classes -->
+  
+  
+
+  <!-- Determine active page for paginated views -->
+  
+
+  <!-- Navigation item with nested items -->
+  
+    <li class="md-nav__item">
       <a href="../../../tuning_guide/" class="md-nav__link">
         
   
@@ -19470,7 +19577,7 @@ SUVORK5CYII=
         
 
         <!-- Active checkbox expands items contained within nested section -->
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
 
         <!-- Toggle to expand nested items -->
         
@@ -19508,7 +19615,7 @@ SUVORK5CYII=
             <!-- Only render toggle if there's at least one more page -->
             
               
-              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -19516,8 +19623,8 @@ SUVORK5CYII=
         
 
         <!-- Nested navigation -->
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
 
@@ -21005,6 +21112,17 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#transform_staleness_threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        transform_staleness_threshold
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#local_frame" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -21567,7 +21685,14 @@ It is also possible to implement independent behavior servers for each custom be
 <dl>
 <dt>Type: <code>double</code> Default: <code>0.1</code></dt>
 <dd>
-<p>TF transform tolerance.</p>
+<p>Maximum time (seconds) to wait for a transform at a footprint message's timestamp when converting the footprint into the robot base frame for collision checking. This is separate from <code>transform_staleness_threshold</code>, which limits the age of the latest robot-pose transform.</p>
+</dd>
+</dl>
+<h3 id="transform_staleness_threshold"><strong><code>transform_staleness_threshold</code></strong><a class="headerlink" href="#transform_staleness_threshold" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: <code>0.0</code></dt>
+<dd>
+<p>Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.</p>
 </dd>
 </dl>
 <h3 id="local_frame"><strong><code>local_frame</code></strong><a class="headerlink" href="#local_frame" title="Permanent link"></a></h3>
@@ -21860,7 +21985,8 @@ This allows multiple instances of the same behavior type to be configured indepe
 </span><span id="__span-1-35"><span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
 </span><span id="__span-1-36"><span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
 </span><span id="__span-1-37"><span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
-</span><span id="__span-1-38"><span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-38"><span class="w">    </span><span class="nt">transform_staleness_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+</span><span id="__span-1-39"><span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span></code></pre></div>
 
 

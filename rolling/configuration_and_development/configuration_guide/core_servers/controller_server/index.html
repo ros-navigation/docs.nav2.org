@@ -3970,6 +3970,8 @@ SUVORK5CYII=
       
         
       
+        
+      
     
     
 
@@ -4179,6 +4181,52 @@ SUVORK5CYII=
   <!-- Typeset title -->
   
     Configuration Guide
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+
+  <!-- Determine classes -->
+  
+  
+
+  <!-- Determine active page for paginated views -->
+  
+
+  <!-- Navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../tf_synchronization_strategy/" class="md-nav__link">
+        
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Transform Synchronization Strategy
   
 
 
@@ -9231,6 +9279,8 @@ SUVORK5CYII=
       
         
           
+        
+      
         
       
         
@@ -18777,6 +18827,52 @@ SUVORK5CYII=
   <!-- Navigation item with nested items -->
   
     <li class="md-nav__item">
+      <a href="../../../tf_synchronization_strategy/" class="md-nav__link">
+        
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Transform Synchronization Strategy
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+
+  <!-- Determine classes -->
+  
+  
+
+  <!-- Determine active page for paginated views -->
+  
+
+  <!-- Navigation item with nested items -->
+  
+    <li class="md-nav__item">
       <a href="../../../tuning_guide/" class="md-nav__link">
         
   
@@ -18922,7 +19018,7 @@ SUVORK5CYII=
         
 
         <!-- Active checkbox expands items contained within nested section -->
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
 
         <!-- Toggle to expand nested items -->
         
@@ -18960,7 +19056,7 @@ SUVORK5CYII=
             <!-- Only render toggle if there's at least one more page -->
             
               
-              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -18968,8 +19064,8 @@ SUVORK5CYII=
         
 
         <!-- Nested navigation -->
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
 
@@ -20413,6 +20509,17 @@ SUVORK5CYII=
 </li>
         
           <li class="md-nav__item">
+  <a href="#transform_staleness_threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        transform_staleness_threshold
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#use_realtime_priority" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20801,6 +20908,13 @@ It also hosts the local costmap.</p>
 <p>The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.</p>
 </dd>
 </dl>
+<h3 id="transform_staleness_threshold"><strong><code>transform_staleness_threshold</code></strong><a class="headerlink" href="#transform_staleness_threshold" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: <code>0.0</code></dt>
+<dd>
+<p>Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.</p>
+</dd>
+</dl>
 <h3 id="use_realtime_priority"><strong><code>use_realtime_priority</code></strong><a class="headerlink" href="#use_realtime_priority" title="Permanent link"></a></h3>
 <dl>
 <dt>Type: <code>bool</code> Default: <code>false</code></dt>
@@ -21071,37 +21185,38 @@ Setting it to the special value of <code>-1.0</code> makes it infinite, <code>0<
 </span><span id="__span-4-2"><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 </span><span id="__span-4-3"><span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
 </span><span id="__span-4-4"><span class="w">    </span><span class="nt">costmap_update_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-</span><span id="__span-4-5"><span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
-</span><span id="__span-4-6"><span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-</span><span id="__span-4-7"><span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
-</span><span id="__span-4-8"><span class="w">    </span><span class="nt">failure_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-</span><span id="__span-4-9"><span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">"odom"</span>
-</span><span id="__span-4-10"><span class="w">    </span><span class="nt">odom_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-</span><span id="__span-4-11"><span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"progress_checker"</span><span class="p p-Indicator">]</span>
-</span><span id="__span-4-12"><span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"goal_checker"</span><span class="p p-Indicator">]</span>
-</span><span id="__span-4-13"><span class="w">    </span><span class="nt">path_handler_plguins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"PathHandler"</span><span class="p p-Indicator">]</span>
-</span><span id="__span-4-14"><span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"FollowPath"</span><span class="p p-Indicator">]</span>
-</span><span id="__span-4-15"><span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span>
-</span><span id="__span-4-16"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_controller::SimpleProgressChecker"</span>
-</span><span id="__span-4-17"><span class="w">      </span><span class="nt">required_movement_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-</span><span id="__span-4-18"><span class="w">      </span><span class="nt">movement_time_allowance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
-</span><span id="__span-4-19"><span class="w">    </span><span class="nt">goal_checker</span><span class="p">:</span>
-</span><span id="__span-4-20"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_controller::SimpleGoalChecker"</span>
-</span><span id="__span-4-21"><span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
-</span><span id="__span-4-22"><span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
-</span><span id="__span-4-23"><span class="w">      </span><span class="nt">path_length_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-</span><span id="__span-4-24"><span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-</span><span id="__span-4-25"><span class="w">    </span><span class="nt">PathHandler</span><span class="p">:</span>
-</span><span id="__span-4-26"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_controller::FeasiblePathHandler"</span>
-</span><span id="__span-4-27"><span class="w">      </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
-</span><span id="__span-4-28"><span class="w">      </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-</span><span id="__span-4-29"><span class="w">      </span><span class="nt">enforce_path_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-4-30"><span class="w">      </span><span class="nt">inversion_xy_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-</span><span id="__span-4-31"><span class="w">      </span><span class="nt">inversion_yaw_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
-</span><span id="__span-4-32"><span class="w">      </span><span class="nt">minimum_rotation_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
-</span><span id="__span-4-33"><span class="w">      </span><span class="nt">reject_unit_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span id="__span-4-34"><span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
-</span><span id="__span-4-35"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"dwb_core::DWBLocalPlanner"</span>
+</span><span id="__span-4-5"><span class="w">    </span><span class="nt">transform_staleness_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
+</span><span id="__span-4-6"><span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+</span><span id="__span-4-7"><span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+</span><span id="__span-4-8"><span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+</span><span id="__span-4-9"><span class="w">    </span><span class="nt">failure_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+</span><span id="__span-4-10"><span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">"odom"</span>
+</span><span id="__span-4-11"><span class="w">    </span><span class="nt">odom_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+</span><span id="__span-4-12"><span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"progress_checker"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-4-13"><span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"goal_checker"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-4-14"><span class="w">    </span><span class="nt">path_handler_plguins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"PathHandler"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-4-15"><span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"FollowPath"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-4-16"><span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span>
+</span><span id="__span-4-17"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_controller::SimpleProgressChecker"</span>
+</span><span id="__span-4-18"><span class="w">      </span><span class="nt">required_movement_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+</span><span id="__span-4-19"><span class="w">      </span><span class="nt">movement_time_allowance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+</span><span id="__span-4-20"><span class="w">    </span><span class="nt">goal_checker</span><span class="p">:</span>
+</span><span id="__span-4-21"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_controller::SimpleGoalChecker"</span>
+</span><span id="__span-4-22"><span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+</span><span id="__span-4-23"><span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+</span><span id="__span-4-24"><span class="w">      </span><span class="nt">path_length_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-4-25"><span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</span><span id="__span-4-26"><span class="w">    </span><span class="nt">PathHandler</span><span class="p">:</span>
+</span><span id="__span-4-27"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"nav2_controller::FeasiblePathHandler"</span>
+</span><span id="__span-4-28"><span class="w">      </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+</span><span id="__span-4-29"><span class="w">      </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</span><span id="__span-4-30"><span class="w">      </span><span class="nt">enforce_path_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-4-31"><span class="w">      </span><span class="nt">inversion_xy_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</span><span id="__span-4-32"><span class="w">      </span><span class="nt">inversion_yaw_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+</span><span id="__span-4-33"><span class="w">      </span><span class="nt">minimum_rotation_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
+</span><span id="__span-4-34"><span class="w">      </span><span class="nt">reject_unit_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</span><span id="__span-4-35"><span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
+</span><span id="__span-4-36"><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">"dwb_core::DWBLocalPlanner"</span>
 </span></code></pre></div>
 
 

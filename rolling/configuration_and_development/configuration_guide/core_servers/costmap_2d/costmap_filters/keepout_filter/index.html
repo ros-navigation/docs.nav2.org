@@ -3970,6 +3970,8 @@ SUVORK5CYII=
       
         
       
+        
+      
     
     
 
@@ -4179,6 +4181,52 @@ SUVORK5CYII=
   <!-- Typeset title -->
   
     Configuration Guide
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+
+  <!-- Determine classes -->
+  
+  
+
+  <!-- Determine active page for paginated views -->
+  
+
+  <!-- Navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tf_synchronization_strategy/" class="md-nav__link">
+        
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Transform Synchronization Strategy
   
 
 
@@ -9231,6 +9279,8 @@ SUVORK5CYII=
       
         
           
+        
+      
         
       
         
@@ -16047,6 +16097,17 @@ SUVORK5CYII=
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#filter-nametransform_staleness_threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;filter name&gt;.transform_staleness_threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#filter-nameenabled" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -18912,6 +18973,52 @@ SUVORK5CYII=
   <!-- Navigation item with nested items -->
   
     <li class="md-nav__item">
+      <a href="../../../../../tf_synchronization_strategy/" class="md-nav__link">
+        
+  
+
+  <!-- Navigation link icon -->
+  
+
+  <!-- Navigation link title -->
+  <span class="md-ellipsis">
+    
+
+  <!-- Typeset title -->
+  
+    Transform Synchronization Strategy
+  
+
+
+    <!-- Navigation link subtitle -->
+    
+  </span>
+
+  <!-- Navigation link to encrypted content -->
+  
+
+  <!-- Navigation link status -->
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+
+  <!-- Determine classes -->
+  
+  
+
+  <!-- Determine active page for paginated views -->
+  
+
+  <!-- Navigation item with nested items -->
+  
+    <li class="md-nav__item">
       <a href="../../../../../tuning_guide/" class="md-nav__link">
         
   
@@ -19057,7 +19164,7 @@ SUVORK5CYII=
         
 
         <!-- Active checkbox expands items contained within nested section -->
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
 
         <!-- Toggle to expand nested items -->
         
@@ -19095,7 +19202,7 @@ SUVORK5CYII=
             <!-- Only render toggle if there's at least one more page -->
             
               
-              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -19103,8 +19210,8 @@ SUVORK5CYII=
         
 
         <!-- Nested navigation -->
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
 
@@ -20514,6 +20621,17 @@ SUVORK5CYII=
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#filter-nametransform_staleness_threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;filter name&gt;.transform_staleness_threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#filter-nameenabled" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -20716,6 +20834,13 @@ in overrides/partials/header.html -->
 <p>Keepout Filter - is a Costmap Filter that enforces robot to avoid keepout areas or stay on preferred lanes, by updating corresponding costmap layer using filter mask information.</p>
 <p>You may use this filter with an inflation layer to inflate the keepout costs around the keepout zone. This helps planners and controllers account for contact with any part of the robot footprint, rather than only its center. If <code>override_lethal_cost</code> is enabled, it allows the robot to navigate out after it enters a keepout zone. If you plan on using the keepout filter with a planner or controller that has SE2 check enabled, the keepout filter should have inflation, otherwise the robot can get stuck on the edge of the keepout.</p>
 <p><code>&lt;filter name&gt;</code>: is the corresponding plugin name selected for this type.</p>
+<h3 id="filter-nametransform_staleness_threshold"><strong><code>&lt;filter name&gt;.transform_staleness_threshold</code></strong><a class="headerlink" href="#filter-nametransform_staleness_threshold" title="Permanent link"></a></h3>
+<dl>
+<dt>Type: <code>double</code> Default: <code>0.0</code></dt>
+<dd>
+<p>Maximum allowed age, in seconds, of transforms retrieved using the latest available timestamp. Set to 0.0 to disable the age check.</p>
+</dd>
+</dl>
 <h3 id="filter-nameenabled"><strong><code>&lt;filter name&gt;.enabled</code></strong><a class="headerlink" href="#filter-nameenabled" title="Permanent link"></a></h3>
 <dl>
 <dt>Type: <code>bool</code> Default: <code>true</code></dt>
