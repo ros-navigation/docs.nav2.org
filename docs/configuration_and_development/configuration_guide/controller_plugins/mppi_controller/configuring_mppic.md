@@ -482,7 +482,7 @@ Type: `double` Default: `0.5`
 
 Type: `int` Default: `20`
 
-:   Checks that the candidate trajectories are sufficiently far along their way tracking the path to apply the alignment critic. This ensures that path alignment is only considered when actually tracking the path, preventing awkward initialization motions preventing the robot from leaving the path to achieve the appropriate heading.
+:   Checks that the candidate trajectories are sufficiently far along their way tracking the path to apply the alignment critic. This ensures that path alignment is only considered when actually tracking the path, preventing awkward initialization motions preventing the robot from leaving the path to achieve the appropriate heading. Below this threshold the critic returns without contributing any cost, so `cost_weight` has no effect until it is met. See [Prediction Horizon, Costmap Sizing, and Offsets](#mppi-prediction-horizon-offsets) for sizing this relative to your path resolution.
 
 ### **`max_path_occupancy_ratio`**
 
@@ -526,9 +526,9 @@ Type: `double` Default: `0.5`
 
 ### **`offset_from_furthest`**
 
-Type: `int` Default: `20`
+Type: `int` Default: `4`
 
-:   Number of path points after furthest one any trajectory achieves to compute path angle relative to.
+:   Number of path points after furthest one any trajectory achieves to compute path angle relative to. See [Prediction Horizon, Costmap Sizing, and Offsets](#mppi-prediction-horizon-offsets) for sizing this relative to your path resolution.
 
 ### **`max_angle_to_furthest`**
 
@@ -572,7 +572,7 @@ Type: `double` Default: `1.4`
 
 Type: `int` Default: `6`
 
-:   Number of path points after furthest one any trajectory achieves to drive path tracking relative to.
+:   Number of path points after furthest one any trajectory achieves to drive path tracking relative to. See [Prediction Horizon, Costmap Sizing, and Offsets](#mppi-prediction-horizon-offsets) for sizing this relative to your path resolution.
 
 ## Prefer Forward Critic { #mppi-prefer-forward-critic }
 
@@ -825,7 +825,7 @@ Tune std's carefully for low acceleration. If you're seeing a lot of chatter in 
 
 Otherwise, the parameters have been closely pre-tuned by your friendly neighborhood navigator to give you a decent starting point that hopefully you only need to retune for your specific desired behavior lightly (if at all). Varying costmap parameters or maximum speeds are the actions which require the most attention, as described below:
 
-### Prediction Horizon, Costmap Sizing, and Offsets
+### Prediction Horizon, Costmap Sizing, and Offsets { #mppi-prediction-horizon-offsets }
 
 As this is a predictive planner, there is some relationship between maximum speed, prediction times, std sampling, and costmap size that users should keep in mind while tuning for their application. If a controller server costmap is set to 3.0m in size, that means that with the robot in the center, there is 1.5m of information on either side of the robot. When your prediction horizon (`time_steps * model_dt`) at maximum speed (`vx_max`) is larger than this, then your robot will be artificially limited in its maximum speeds and behavior by the costmap limitation. For example, if you predict forward 3 seconds (60 steps @ 0.05s per step) at 0.5m/s maximum speed, the **minimum** required costmap radius is 1.5m - or 3m total width. The faster the robot is set to go, the higher the velocity sampling standard deviations should be in order to effectively explore the velocity space.
 
